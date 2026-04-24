@@ -9,7 +9,7 @@ _Electron beam spot size setting_
 
 
 
-URI: [lambdaber:spotsize](https://w3id.org/lambda-ber-schema/spotsize)
+URI: [lambda:spotsize](http://w3id.org/lambda/spotsize)
 Alias: spotsize
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: spotsize
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: spotsize
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:spotsize |
-| native | lambdaber:spotsize |
+| self | lambda:spotsize |
+| native | lambda:spotsize |
+| exact | mmCIF:_em_imaging.detector_spot_size |
 
 
 
@@ -67,7 +68,9 @@ Alias: spotsize
 ```yaml
 name: spotsize
 description: Electron beam spot size setting
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_em_imaging.detector_spot_size
 rank: 1000
 alias: spotsize
 owner: CryoEMInstrument

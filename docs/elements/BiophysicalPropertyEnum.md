@@ -7,7 +7,7 @@ _Types of biophysical properties_
 
 
 
-URI: [lambdaber:BiophysicalPropertyEnum](https://w3id.org/lambda-ber-schema/BiophysicalPropertyEnum)
+URI: [lambda:BiophysicalPropertyEnum](http://w3id.org/lambda/BiophysicalPropertyEnum)
 
 ## Permissible Values
 
@@ -51,7 +51,7 @@ URI: [lambdaber:BiophysicalPropertyEnum](https://w3id.org/lambda-ber-schema/Biop
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -64,7 +64,7 @@ URI: [lambdaber:BiophysicalPropertyEnum](https://w3id.org/lambda-ber-schema/Biop
 ```yaml
 name: BiophysicalPropertyEnum
 description: Types of biophysical properties
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   melting_temperature:

@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:energy_min](https://w3id.org/lambda-ber-schema/energy_min)
+URI: [lambda:energy_min](http://w3id.org/lambda/energy_min)
 Alias: energy_min
 
 <!-- no inheritance hierarchy -->
@@ -44,8 +44,8 @@ Alias: energy_min
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:energy_min |
-| native | lambdaber:energy_min |
+| self | lambda:energy_min |
+| native | lambda:energy_min |
 
 
 

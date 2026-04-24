@@ -7,7 +7,7 @@ _Secondary structure types_
 
 
 
-URI: [lambdaber:SecondaryStructureEnum](https://w3id.org/lambda-ber-schema/SecondaryStructureEnum)
+URI: [lambda:SecondaryStructureEnum](http://w3id.org/lambda/SecondaryStructureEnum)
 
 ## Permissible Values
 
@@ -45,7 +45,7 @@ URI: [lambdaber:SecondaryStructureEnum](https://w3id.org/lambda-ber-schema/Secon
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -58,7 +58,7 @@ URI: [lambdaber:SecondaryStructureEnum](https://w3id.org/lambda-ber-schema/Secon
 ```yaml
 name: SecondaryStructureEnum
 description: Secondary structure types
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   helix:

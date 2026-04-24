@@ -9,7 +9,7 @@ _Software version_
 
 
 
-URI: [lambdaber:software_version](https://w3id.org/lambda-ber-schema/software_version)
+URI: [lambda:software_version](http://w3id.org/lambda/software_version)
 Alias: software_version
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: software_version
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: software_version
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:software_version |
-| native | lambdaber:software_version |
+| self | lambda:software_version |
+| native | lambda:software_version |
 
 
 
@@ -67,7 +67,7 @@ Alias: software_version
 ```yaml
 name: software_version
 description: Software version
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: software_version
 owner: WorkflowRun

@@ -9,7 +9,7 @@ _Wilson B-factor in Angstroms squared_
 
 
 
-URI: [lambdaber:wilson_b_factor_a2](https://w3id.org/lambda-ber-schema/wilson_b_factor_a2)
+URI: [lambda:wilson_b_factor_a2](http://w3id.org/lambda/wilson_b_factor_a2)
 Alias: wilson_b_factor_a2
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: wilson_b_factor_a2
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: wilson_b_factor_a2
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:wilson_b_factor_a2 |
-| native | lambdaber:wilson_b_factor_a2 |
+| self | lambda:wilson_b_factor_a2 |
+| native | lambda:wilson_b_factor_a2 |
+| exact | mmCIF:_reflns.B_iso_Wilson_estimate |
 
 
 
@@ -67,7 +68,9 @@ Alias: wilson_b_factor_a2
 ```yaml
 name: wilson_b_factor_a2
 description: Wilson B-factor in Angstroms squared
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_reflns.B_iso_Wilson_estimate
 rank: 1000
 alias: wilson_b_factor_a2
 owner: QualityMetrics

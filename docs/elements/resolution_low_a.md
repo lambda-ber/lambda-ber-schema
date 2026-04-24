@@ -9,7 +9,7 @@ _Low resolution limit, typically specified in Angstroms. Data providers may spec
 
 
 
-URI: [lambdaber:resolution_low_a](https://w3id.org/lambda-ber-schema/resolution_low_a)
+URI: [lambda:resolution_low_a](http://w3id.org/lambda/resolution_low_a)
 Alias: resolution_low_a
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: resolution_low_a
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: resolution_low_a
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:resolution_low_a |
-| native | lambdaber:resolution_low_a |
+| self | lambda:resolution_low_a |
+| native | lambda:resolution_low_a |
 
 
 
@@ -68,7 +68,7 @@ Alias: resolution_low_a
 name: resolution_low_a
 description: Low resolution limit, typically specified in Angstroms. Data providers
   may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: resolution_low_a
 owner: QualityMetrics

@@ -9,7 +9,7 @@ _Stability assessment of the complex_
 
 
 
-URI: [lambdaber:complex_stability](https://w3id.org/lambda-ber-schema/complex_stability)
+URI: [lambda:complex_stability](http://w3id.org/lambda/complex_stability)
 Alias: complex_stability
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: complex_stability
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: complex_stability
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:complex_stability |
-| native | lambdaber:complex_stability |
+| self | lambda:complex_stability |
+| native | lambda:complex_stability |
 
 
 
@@ -67,7 +67,7 @@ Alias: complex_stability
 ```yaml
 name: complex_stability
 description: Stability assessment of the complex
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: complex_stability
 owner: ProteinProteinInteraction

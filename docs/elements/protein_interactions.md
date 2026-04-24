@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:protein_interactions](https://w3id.org/lambda-ber-schema/protein_interactions)
+URI: [lambda:protein_interactions](http://w3id.org/lambda/protein_interactions)
 Alias: protein_interactions
 
 <!-- no inheritance hierarchy -->
@@ -17,8 +17,8 @@ Alias: protein_interactions
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AggregatedProteinView](AggregatedProteinView.md) | Aggregated view of all structural and functional data for a protein |  no  |
 | [Sample](Sample.md) | A biological sample used in structural biology experiments |  no  |
+| [AggregatedProteinView](AggregatedProteinView.md) | Aggregated view of all structural and functional data for a protein |  no  |
 
 
 
@@ -44,8 +44,8 @@ Alias: protein_interactions
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:protein_interactions |
-| native | lambdaber:protein_interactions |
+| self | lambda:protein_interactions |
+| native | lambda:protein_interactions |
 
 
 

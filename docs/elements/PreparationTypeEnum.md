@@ -7,7 +7,7 @@ _Types of sample preparation_
 
 
 
-URI: [lambdaber:PreparationTypeEnum](https://w3id.org/lambda-ber-schema/PreparationTypeEnum)
+URI: [lambda:PreparationTypeEnum](http://w3id.org/lambda/PreparationTypeEnum)
 
 ## Permissible Values
 
@@ -44,7 +44,7 @@ URI: [lambdaber:PreparationTypeEnum](https://w3id.org/lambda-ber-schema/Preparat
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,7 +57,7 @@ URI: [lambdaber:PreparationTypeEnum](https://w3id.org/lambda-ber-schema/Preparat
 ```yaml
 name: PreparationTypeEnum
 description: Types of sample preparation
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   cryo_em:

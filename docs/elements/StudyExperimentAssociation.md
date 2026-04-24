@@ -9,7 +9,7 @@ _M:N link between Study and ExperimentRun_
 
 
 
-URI: [lambdaber:StudyExperimentAssociation](https://w3id.org/lambda-ber-schema/StudyExperimentAssociation)
+URI: [lambda:StudyExperimentAssociation](http://w3id.org/lambda/StudyExperimentAssociation)
 
 
 
@@ -83,7 +83,7 @@ URI: [lambdaber:StudyExperimentAssociation](https://w3id.org/lambda-ber-schema/S
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -92,8 +92,8 @@ URI: [lambdaber:StudyExperimentAssociation](https://w3id.org/lambda-ber-schema/S
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:StudyExperimentAssociation |
-| native | lambdaber:StudyExperimentAssociation |
+| self | lambda:StudyExperimentAssociation |
+| native | lambda:StudyExperimentAssociation |
 
 
 
@@ -110,12 +110,12 @@ URI: [lambdaber:StudyExperimentAssociation](https://w3id.org/lambda-ber-schema/S
 ```yaml
 name: StudyExperimentAssociation
 description: M:N link between Study and ExperimentRun
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 attributes:
   study_id:
     name: study_id
     description: Reference to the study
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - StudySampleAssociation
     - StudyExperimentAssociation
@@ -125,7 +125,7 @@ attributes:
   experiment_id:
     name: experiment_id
     description: Reference to the experiment run
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - StudyExperimentAssociation
@@ -144,12 +144,12 @@ attributes:
 ```yaml
 name: StudyExperimentAssociation
 description: M:N link between Study and ExperimentRun
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 attributes:
   study_id:
     name: study_id
     description: Reference to the study
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: study_id
     owner: StudyExperimentAssociation
     domain_of:
@@ -161,7 +161,7 @@ attributes:
   experiment_id:
     name: experiment_id
     description: Reference to the experiment run
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: experiment_id
     owner: StudyExperimentAssociation

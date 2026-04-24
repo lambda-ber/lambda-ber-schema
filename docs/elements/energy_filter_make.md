@@ -9,7 +9,7 @@ _Energy filter manufacturer_
 
 
 
-URI: [lambdaber:energy_filter_make](https://w3id.org/lambda-ber-schema/energy_filter_make)
+URI: [lambda:energy_filter_make](http://w3id.org/lambda/energy_filter_make)
 Alias: energy_filter_make
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: energy_filter_make
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: energy_filter_make
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:energy_filter_make |
-| native | lambdaber:energy_filter_make |
+| self | lambda:energy_filter_make |
+| native | lambda:energy_filter_make |
 
 
 
@@ -67,7 +67,7 @@ Alias: energy_filter_make
 ```yaml
 name: energy_filter_make
 description: Energy filter manufacturer
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: energy_filter_make
 owner: CryoEMInstrument

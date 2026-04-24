@@ -9,7 +9,7 @@ _Description of functional impact_
 
 
 
-URI: [lambdaber:functional_impact_description](https://w3id.org/lambda-ber-schema/functional_impact_description)
+URI: [lambda:functional_impact_description](http://w3id.org/lambda/functional_impact_description)
 Alias: functional_impact_description
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: functional_impact_description
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: functional_impact_description
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:functional_impact_description |
-| native | lambdaber:functional_impact_description |
+| self | lambda:functional_impact_description |
+| native | lambda:functional_impact_description |
 
 
 
@@ -67,7 +67,7 @@ Alias: functional_impact_description
 ```yaml
 name: functional_impact_description
 description: Description of functional impact
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: functional_impact_description
 owner: MutationEffect

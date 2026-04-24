@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:label](https://w3id.org/lambda-ber-schema/label)
+URI: [lambda:label](http://w3id.org/lambda/label)
 Alias: label
 
 <!-- no inheritance hierarchy -->
@@ -17,8 +17,8 @@ Alias: label
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OntologyTerm](OntologyTerm.md) | A term from a controlled vocabulary or ontology |  no  |
 | [Attribute](Attribute.md) | A domain, measurement, attribute, property, or any descriptor for additional ... |  no  |
+| [OntologyTerm](OntologyTerm.md) | A term from a controlled vocabulary or ontology |  no  |
 
 
 
@@ -44,8 +44,8 @@ Alias: label
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:label |
-| native | lambdaber:label |
+| self | lambda:label |
+| native | lambda:label |
 
 
 

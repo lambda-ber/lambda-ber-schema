@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:experimental_method](https://w3id.org/lambda-ber-schema/experimental_method)
+URI: [lambda:experimental_method](http://w3id.org/lambda/experimental_method)
 Alias: experimental_method
 
 <!-- no inheritance hierarchy -->
@@ -17,8 +17,8 @@ Alias: experimental_method
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentRun](ExperimentRun.md) | An experimental data collection session |  no  |
 | [BiophysicalProperty](BiophysicalProperty.md) | Measured or calculated biophysical properties |  no  |
+| [ExperimentRun](ExperimentRun.md) | An experimental data collection session |  no  |
 
 
 
@@ -44,8 +44,8 @@ Alias: experimental_method
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:experimental_method |
-| native | lambdaber:experimental_method |
+| self | lambda:experimental_method |
+| native | lambda:experimental_method |
 
 
 

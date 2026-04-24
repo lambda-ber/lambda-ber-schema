@@ -9,7 +9,7 @@ _Camera binning factor. This must be a positive float value (e.g., 1, 1.5, 2, 3)
 
 
 
-URI: [lambdaber:camera_binning](https://w3id.org/lambda-ber-schema/camera_binning)
+URI: [lambda:camera_binning](http://w3id.org/lambda/camera_binning)
 Alias: camera_binning
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: camera_binning
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: camera_binning
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:camera_binning |
-| native | lambdaber:camera_binning |
+| self | lambda:camera_binning |
+| native | lambda:camera_binning |
 
 
 
@@ -68,7 +68,7 @@ Alias: camera_binning
 name: camera_binning
 description: Camera binning factor. This must be a positive float value (e.g., 1,
   1.5, 2, 3).
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: camera_binning
 owner: ExperimentRun

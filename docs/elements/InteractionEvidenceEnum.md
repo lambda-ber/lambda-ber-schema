@@ -7,7 +7,7 @@ _Evidence for interactions_
 
 
 
-URI: [lambdaber:InteractionEvidenceEnum](https://w3id.org/lambda-ber-schema/InteractionEvidenceEnum)
+URI: [lambda:InteractionEvidenceEnum](http://w3id.org/lambda/InteractionEvidenceEnum)
 
 ## Permissible Values
 
@@ -45,7 +45,7 @@ URI: [lambdaber:InteractionEvidenceEnum](https://w3id.org/lambda-ber-schema/Inte
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -58,7 +58,7 @@ URI: [lambdaber:InteractionEvidenceEnum](https://w3id.org/lambda-ber-schema/Inte
 ```yaml
 name: InteractionEvidenceEnum
 description: Evidence for interactions
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   experimental:

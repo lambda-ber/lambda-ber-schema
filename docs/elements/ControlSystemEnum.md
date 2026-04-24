@@ -7,7 +7,7 @@ _Low-level control systems and middleware frameworks for device communication an
 
 
 
-URI: [lambdaber:ControlSystemEnum](https://w3id.org/lambda-ber-schema/ControlSystemEnum)
+URI: [lambda:ControlSystemEnum](http://w3id.org/lambda/ControlSystemEnum)
 
 ## Permissible Values
 
@@ -41,7 +41,7 @@ URI: [lambdaber:ControlSystemEnum](https://w3id.org/lambda-ber-schema/ControlSys
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -56,7 +56,7 @@ name: ControlSystemEnum
 description: Low-level control systems and middleware frameworks for device communication
   and hardware abstraction at experimental facilities. These provide the foundation
   layer that data acquisition systems build upon.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   epics:

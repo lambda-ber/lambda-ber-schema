@@ -7,7 +7,7 @@ _Types of functional sites in proteins_
 
 
 
-URI: [lambdaber:FunctionalSiteTypeEnum](https://w3id.org/lambda-ber-schema/FunctionalSiteTypeEnum)
+URI: [lambda:FunctionalSiteTypeEnum](http://w3id.org/lambda/FunctionalSiteTypeEnum)
 
 ## Permissible Values
 
@@ -56,7 +56,7 @@ URI: [lambdaber:FunctionalSiteTypeEnum](https://w3id.org/lambda-ber-schema/Funct
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -69,7 +69,7 @@ URI: [lambdaber:FunctionalSiteTypeEnum](https://w3id.org/lambda-ber-schema/Funct
 ```yaml
 name: FunctionalSiteTypeEnum
 description: Types of functional sites in proteins
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   active_site:

@@ -9,7 +9,7 @@ _Temperature during mounting, typically specified in Kelvin. Data providers may 
 
 
 
-URI: [nsls2:Temperature](https://github.com/NSLS2/BER-LAMBDA/Temperature)
+URI: [lambda:mounting_temperature](http://w3id.org/lambda/mounting_temperature)
 Alias: mounting_temperature
 
 <!-- no inheritance hierarchy -->
@@ -36,10 +36,6 @@ Alias: mounting_temperature
 
 
 
-## Comments
-
-* Maps to NSLS2 spreadsheet: Temperature
-
 ## Identifier and Mapping Information
 
 
@@ -50,7 +46,7 @@ Alias: mounting_temperature
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -59,8 +55,9 @@ Alias: mounting_temperature
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | nsls2:Temperature |
-| native | lambdaber:mounting_temperature |
+| self | lambda:mounting_temperature |
+| native | lambda:mounting_temperature |
+| exact | nsls2:Temperature |
 
 
 
@@ -72,11 +69,10 @@ Alias: mounting_temperature
 name: mounting_temperature
 description: Temperature during mounting, typically specified in Kelvin. Data providers
   may specify alternative units by including the unit in the QuantityValue.
-comments:
-- 'Maps to NSLS2 spreadsheet: Temperature'
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- nsls2:Temperature
 rank: 1000
-slot_uri: nsls2:Temperature
 alias: mounting_temperature
 owner: XRayPreparation
 domain_of:

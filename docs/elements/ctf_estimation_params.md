@@ -9,7 +9,7 @@ _CTF estimation specific parameters_
 
 
 
-URI: [lambdaber:ctf_estimation_params](https://w3id.org/lambda-ber-schema/ctf_estimation_params)
+URI: [lambda:ctf_estimation_params](http://w3id.org/lambda/ctf_estimation_params)
 Alias: ctf_estimation_params
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: ctf_estimation_params
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: ctf_estimation_params
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:ctf_estimation_params |
-| native | lambdaber:ctf_estimation_params |
+| self | lambda:ctf_estimation_params |
+| native | lambda:ctf_estimation_params |
 
 
 
@@ -67,7 +67,7 @@ Alias: ctf_estimation_params
 ```yaml
 name: ctf_estimation_params
 description: CTF estimation specific parameters
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: ctf_estimation_params
 owner: WorkflowRun

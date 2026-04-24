@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:seeding_type](https://w3id.org/lambda-ber-schema/seeding_type)
+URI: [lambda:seeding_type](http://w3id.org/lambda/seeding_type)
 Alias: seeding_type
 
 <!-- no inheritance hierarchy -->
@@ -44,8 +44,8 @@ Alias: seeding_type
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:seeding_type |
-| native | lambdaber:seeding_type |
+| self | lambda:seeding_type |
+| native | lambda:seeding_type |
 
 
 

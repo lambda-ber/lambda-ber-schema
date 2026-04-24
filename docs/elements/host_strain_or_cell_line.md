@@ -9,7 +9,7 @@ _Specific strain or cell line used (e.g., BL21(DE3), Sf9, HEK293F)_
 
 
 
-URI: [lambdaber:host_strain_or_cell_line](https://w3id.org/lambda-ber-schema/host_strain_or_cell_line)
+URI: [lambda:host_strain_or_cell_line](http://w3id.org/lambda/host_strain_or_cell_line)
 Alias: host_strain_or_cell_line
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: host_strain_or_cell_line
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: host_strain_or_cell_line
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:host_strain_or_cell_line |
-| native | lambdaber:host_strain_or_cell_line |
+| self | lambda:host_strain_or_cell_line |
+| native | lambda:host_strain_or_cell_line |
 
 
 
@@ -67,7 +67,7 @@ Alias: host_strain_or_cell_line
 ```yaml
 name: host_strain_or_cell_line
 description: Specific strain or cell line used (e.g., BL21(DE3), Sf9, HEK293F)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: host_strain_or_cell_line
 owner: SamplePreparation

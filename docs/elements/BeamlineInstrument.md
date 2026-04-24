@@ -9,7 +9,7 @@ _Multi-technique synchrotron beamline that supports multiple experimental method
 
 
 
-URI: [lambdaber:BeamlineInstrument](https://w3id.org/lambda-ber-schema/BeamlineInstrument)
+URI: [lambda:BeamlineInstrument](http://w3id.org/lambda/BeamlineInstrument)
 
 
 
@@ -242,7 +242,7 @@ URI: [lambdaber:BeamlineInstrument](https://w3id.org/lambda-ber-schema/BeamlineI
 ## Comments
 
 * Use for beamlines like SIBYLS that support both SAXS and crystallography
-* For single-technique beamlines, use XRayInstrument or SAXSInstrument
+* For single-technique beamlines, use XRayInstrument, SANSInstrument, or SAXSInstrument
 
 ## Identifier and Mapping Information
 
@@ -254,7 +254,7 @@ URI: [lambdaber:BeamlineInstrument](https://w3id.org/lambda-ber-schema/BeamlineI
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -263,8 +263,8 @@ URI: [lambdaber:BeamlineInstrument](https://w3id.org/lambda-ber-schema/BeamlineI
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:BeamlineInstrument |
-| native | lambdaber:BeamlineInstrument |
+| self | lambda:BeamlineInstrument |
+| native | lambda:BeamlineInstrument |
 
 
 
@@ -284,8 +284,8 @@ description: Multi-technique synchrotron beamline that supports multiple experim
   methods
 comments:
 - Use for beamlines like SIBYLS that support both SAXS and crystallography
-- For single-technique beamlines, use XRayInstrument or SAXSInstrument
-from_schema: https://w3id.org/lambda-ber-schema/
+- For single-technique beamlines, use XRayInstrument, SANSInstrument, or SAXSInstrument
+from_schema: http://w3id.org/lambda/
 is_a: Instrument
 attributes:
   techniques_supported:
@@ -294,7 +294,7 @@ attributes:
     comments:
     - List all techniques this beamline supports
     - 'Example: [saxs, xray_crystallography] for SIBYLS'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - BeamlineInstrument
@@ -304,16 +304,17 @@ attributes:
   source_type:
     name: source_type
     description: Type of X-ray source
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - XRayInstrument
+    - SANSSource
     - BeamlineInstrument
     - XRFImage
     range: XRaySourceTypeEnum
   energy_min:
     name: energy_min
     description: Minimum X-ray energy in keV
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - XRayInstrument
     - BeamlineInstrument
@@ -322,7 +323,7 @@ attributes:
   energy_max:
     name: energy_max
     description: Maximum X-ray energy in keV
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - XRayInstrument
     - BeamlineInstrument
@@ -331,8 +332,9 @@ attributes:
   q_range_min:
     name: q_range_min
     description: Minimum q value for SAXS in inverse Angstroms
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
+    - SANSInstrument
     - SAXSInstrument
     - BeamlineInstrument
     range: QuantityValue
@@ -340,8 +342,9 @@ attributes:
   q_range_max:
     name: q_range_max
     description: Maximum q value for SAXS in inverse Angstroms
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
+    - SANSInstrument
     - SAXSInstrument
     - BeamlineInstrument
     range: QuantityValue
@@ -349,7 +352,7 @@ attributes:
   sample_changer_capacity:
     name: sample_changer_capacity
     description: Automatic sample changer capacity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - SAXSInstrument
     - BeamlineInstrument
@@ -358,7 +361,7 @@ attributes:
   mail_in_service:
     name: mail_in_service
     description: Whether mail-in sample service is available
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - BeamlineInstrument
@@ -366,7 +369,7 @@ attributes:
   website:
     name: website
     description: Beamline website URL
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - BeamlineInstrument
@@ -374,7 +377,7 @@ attributes:
   lims_system:
     name: lims_system
     description: Laboratory Information Management System used at this beamline
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - BeamlineInstrument
@@ -382,7 +385,7 @@ attributes:
   daq_system:
     name: daq_system
     description: Data acquisition system used for experiment orchestration
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - BeamlineInstrument
@@ -391,7 +394,7 @@ attributes:
   control_system:
     name: control_system
     description: Low-level control system for device communication
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - BeamlineInstrument
@@ -409,8 +412,8 @@ description: Multi-technique synchrotron beamline that supports multiple experim
   methods
 comments:
 - Use for beamlines like SIBYLS that support both SAXS and crystallography
-- For single-technique beamlines, use XRayInstrument or SAXSInstrument
-from_schema: https://w3id.org/lambda-ber-schema/
+- For single-technique beamlines, use XRayInstrument, SANSInstrument, or SAXSInstrument
+from_schema: http://w3id.org/lambda/
 is_a: Instrument
 attributes:
   techniques_supported:
@@ -419,7 +422,7 @@ attributes:
     comments:
     - List all techniques this beamline supports
     - 'Example: [saxs, xray_crystallography] for SIBYLS'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: techniques_supported
     owner: BeamlineInstrument
@@ -431,18 +434,19 @@ attributes:
   source_type:
     name: source_type
     description: Type of X-ray source
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: source_type
     owner: BeamlineInstrument
     domain_of:
     - XRayInstrument
+    - SANSSource
     - BeamlineInstrument
     - XRFImage
     range: XRaySourceTypeEnum
   energy_min:
     name: energy_min
     description: Minimum X-ray energy in keV
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: energy_min
     owner: BeamlineInstrument
     domain_of:
@@ -453,7 +457,7 @@ attributes:
   energy_max:
     name: energy_max
     description: Maximum X-ray energy in keV
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: energy_max
     owner: BeamlineInstrument
     domain_of:
@@ -464,10 +468,11 @@ attributes:
   q_range_min:
     name: q_range_min
     description: Minimum q value for SAXS in inverse Angstroms
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: q_range_min
     owner: BeamlineInstrument
     domain_of:
+    - SANSInstrument
     - SAXSInstrument
     - BeamlineInstrument
     range: QuantityValue
@@ -475,10 +480,11 @@ attributes:
   q_range_max:
     name: q_range_max
     description: Maximum q value for SAXS in inverse Angstroms
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: q_range_max
     owner: BeamlineInstrument
     domain_of:
+    - SANSInstrument
     - SAXSInstrument
     - BeamlineInstrument
     range: QuantityValue
@@ -486,7 +492,7 @@ attributes:
   sample_changer_capacity:
     name: sample_changer_capacity
     description: Automatic sample changer capacity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: sample_changer_capacity
     owner: BeamlineInstrument
     domain_of:
@@ -497,7 +503,7 @@ attributes:
   mail_in_service:
     name: mail_in_service
     description: Whether mail-in sample service is available
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: mail_in_service
     owner: BeamlineInstrument
@@ -507,7 +513,7 @@ attributes:
   website:
     name: website
     description: Beamline website URL
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: website
     owner: BeamlineInstrument
@@ -517,7 +523,7 @@ attributes:
   lims_system:
     name: lims_system
     description: Laboratory Information Management System used at this beamline
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: lims_system
     owner: BeamlineInstrument
@@ -527,7 +533,7 @@ attributes:
   daq_system:
     name: daq_system
     description: Data acquisition system used for experiment orchestration
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: daq_system
     owner: BeamlineInstrument
@@ -538,7 +544,7 @@ attributes:
   control_system:
     name: control_system
     description: Low-level control system for device communication
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: control_system
     owner: BeamlineInstrument
@@ -550,7 +556,7 @@ attributes:
     description: Human-friendly facility or laboratory identifier for the instrument
       (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local
       reference and equipment tracking.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: instrument_code
     owner: BeamlineInstrument
@@ -564,7 +570,7 @@ attributes:
     comments:
     - Use SYNCHROTRON_BEAMLINE for synchrotron beamlines
     - Use ELECTRON_MICROSCOPE for cryo-EM instruments
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: instrument_category
     owner: BeamlineInstrument
@@ -577,7 +583,7 @@ attributes:
     comments:
     - Select from the standardized list of major synchrotron facilities
     - Leave empty for laboratory-based instruments
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: facility_name
     owner: BeamlineInstrument
@@ -590,7 +596,7 @@ attributes:
     comments:
     - Persistent identifier for the facility organization
     - 'Example: https://ror.org/02jbv0t02 (Lawrence Berkeley National Laboratory)'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: facility_ror
     owner: BeamlineInstrument
@@ -604,9 +610,10 @@ attributes:
     comments:
     - Use facility-specific naming convention
     - 'Examples: ''12.3.1'' (ALS), ''17-ID-1'' (NSLS-II), ''I04'' (Diamond)'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_diffrn_source.pdbx_synchrotron_beamline
     rank: 1000
-    slot_uri: mmCIF:_diffrn_source.pdbx_synchrotron_beamline
     alias: beamline_id
     owner: BeamlineInstrument
     domain_of:
@@ -615,7 +622,7 @@ attributes:
   manufacturer:
     name: manufacturer
     description: Instrument manufacturer
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: manufacturer
     owner: BeamlineInstrument
@@ -625,7 +632,7 @@ attributes:
   model:
     name: model
     description: Instrument model
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: model
     owner: BeamlineInstrument
@@ -635,7 +642,7 @@ attributes:
   installation_date:
     name: installation_date
     description: Date of instrument installation
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: installation_date
     owner: BeamlineInstrument
@@ -645,7 +652,7 @@ attributes:
   current_status:
     name: current_status
     description: Current operational status
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: current_status
     owner: BeamlineInstrument
@@ -657,7 +664,7 @@ attributes:
     description: Globally unique identifier as an IRI or CURIE for machine processing
       and external references. Used for linking data across systems and semantic web
       integration.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     identifier: true
     alias: id
@@ -670,7 +677,7 @@ attributes:
   title:
     name: title
     description: A human-readable name or title for this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     slot_uri: dcterms:title
     alias: title
@@ -681,7 +688,7 @@ attributes:
   description:
     name: description
     description: A detailed textual description of this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: description
     owner: BeamlineInstrument

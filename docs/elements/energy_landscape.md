@@ -9,7 +9,7 @@ _Description of the energy landscape_
 
 
 
-URI: [lambdaber:energy_landscape](https://w3id.org/lambda-ber-schema/energy_landscape)
+URI: [lambda:energy_landscape](http://w3id.org/lambda/energy_landscape)
 Alias: energy_landscape
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: energy_landscape
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: energy_landscape
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:energy_landscape |
-| native | lambdaber:energy_landscape |
+| self | lambda:energy_landscape |
+| native | lambda:energy_landscape |
 
 
 
@@ -67,7 +67,7 @@ Alias: energy_landscape
 ```yaml
 name: energy_landscape
 description: Description of the energy landscape
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: energy_landscape
 owner: ConformationalEnsemble

@@ -9,7 +9,7 @@ _Strategy used to optimize crystals_
 
 
 
-URI: [lambdaber:optimization_strategy](https://w3id.org/lambda-ber-schema/optimization_strategy)
+URI: [lambda:optimization_strategy](http://w3id.org/lambda/optimization_strategy)
 Alias: optimization_strategy
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: optimization_strategy
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: optimization_strategy
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:optimization_strategy |
-| native | lambdaber:optimization_strategy |
+| self | lambda:optimization_strategy |
+| native | lambda:optimization_strategy |
 
 
 
@@ -67,7 +67,7 @@ Alias: optimization_strategy
 ```yaml
 name: optimization_strategy
 description: Strategy used to optimize crystals
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: optimization_strategy
 owner: XRayPreparation

@@ -9,7 +9,7 @@ _Links between workflows and input files_
 
 
 
-URI: [lambdaber:workflow_input_associations](https://w3id.org/lambda-ber-schema/workflow_input_associations)
+URI: [lambda:workflow_input_associations](http://w3id.org/lambda/workflow_input_associations)
 Alias: workflow_input_associations
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: workflow_input_associations
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: workflow_input_associations
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:workflow_input_associations |
-| native | lambdaber:workflow_input_associations |
+| self | lambda:workflow_input_associations |
+| native | lambda:workflow_input_associations |
 
 
 
@@ -69,7 +69,7 @@ Alias: workflow_input_associations
 ```yaml
 name: workflow_input_associations
 description: Links between workflows and input files
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: workflow_input_associations
 owner: Dataset

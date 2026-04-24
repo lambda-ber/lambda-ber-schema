@@ -9,7 +9,7 @@ _Number of blots applied_
 
 
 
-URI: [lambdaber:blot_number](https://w3id.org/lambda-ber-schema/blot_number)
+URI: [lambda:blot_number](http://w3id.org/lambda/blot_number)
 Alias: blot_number
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: blot_number
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: blot_number
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:blot_number |
-| native | lambdaber:blot_number |
+| self | lambda:blot_number |
+| native | lambda:blot_number |
 
 
 
@@ -67,7 +67,7 @@ Alias: blot_number
 ```yaml
 name: blot_number
 description: Number of blots applied
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: blot_number
 owner: CryoEMPreparation

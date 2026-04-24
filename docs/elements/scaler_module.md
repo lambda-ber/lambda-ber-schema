@@ -9,7 +9,7 @@ _Scaling module used (e.g., AIMLESS, SCALA)_
 
 
 
-URI: [lambdaber:scaler_module](https://w3id.org/lambda-ber-schema/scaler_module)
+URI: [lambda:scaler_module](http://w3id.org/lambda/scaler_module)
 Alias: scaler_module
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: scaler_module
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: scaler_module
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:scaler_module |
-| native | lambdaber:scaler_module |
+| self | lambda:scaler_module |
+| native | lambda:scaler_module |
 
 
 
@@ -67,7 +67,7 @@ Alias: scaler_module
 ```yaml
 name: scaler_module
 description: Scaling module used (e.g., AIMLESS, SCALA)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: scaler_module
 owner: WorkflowRun

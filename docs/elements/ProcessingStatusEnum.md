@@ -7,7 +7,7 @@ _Processing status_
 
 
 
-URI: [lambdaber:ProcessingStatusEnum](https://w3id.org/lambda-ber-schema/ProcessingStatusEnum)
+URI: [lambda:ProcessingStatusEnum](http://w3id.org/lambda/ProcessingStatusEnum)
 
 ## Permissible Values
 
@@ -43,7 +43,7 @@ URI: [lambdaber:ProcessingStatusEnum](https://w3id.org/lambda-ber-schema/Process
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -56,7 +56,7 @@ URI: [lambdaber:ProcessingStatusEnum](https://w3id.org/lambda-ber-schema/Process
 ```yaml
 name: ProcessingStatusEnum
 description: Processing status
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   collected:

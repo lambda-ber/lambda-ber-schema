@@ -9,7 +9,7 @@ _Duration of protease cleavage in hours_
 
 
 
-URI: [lambdaber:cleavage_time_h](https://w3id.org/lambda-ber-schema/cleavage_time_h)
+URI: [lambda:cleavage_time_h](http://w3id.org/lambda/cleavage_time_h)
 Alias: cleavage_time_h
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: cleavage_time_h
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: cleavage_time_h
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:cleavage_time_h |
-| native | lambdaber:cleavage_time_h |
+| self | lambda:cleavage_time_h |
+| native | lambda:cleavage_time_h |
 
 
 
@@ -67,7 +67,7 @@ Alias: cleavage_time_h
 ```yaml
 name: cleavage_time_h
 description: Duration of protease cleavage in hours
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: cleavage_time_h
 owner: SamplePreparation

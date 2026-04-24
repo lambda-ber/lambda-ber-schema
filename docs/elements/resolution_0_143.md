@@ -9,7 +9,7 @@ _Resolution at FSC=0.143, typically specified in Angstroms. Data providers may s
 
 
 
-URI: [lambdaber:resolution_0_143](https://w3id.org/lambda-ber-schema/resolution_0_143)
+URI: [lambda:resolution_0_143](http://w3id.org/lambda/resolution_0_143)
 Alias: resolution_0_143
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: resolution_0_143
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: resolution_0_143
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:resolution_0_143 |
-| native | lambdaber:resolution_0_143 |
+| self | lambda:resolution_0_143 |
+| native | lambda:resolution_0_143 |
+| exact | mmCIF:_em_3d_reconstruction.resolution |
 
 
 
@@ -68,7 +69,9 @@ Alias: resolution_0_143
 name: resolution_0_143
 description: Resolution at FSC=0.143, typically specified in Angstroms. Data providers
   may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_em_3d_reconstruction.resolution
 rank: 1000
 alias: resolution_0_143
 owner: RefinementParameters

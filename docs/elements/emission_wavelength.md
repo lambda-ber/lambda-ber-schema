@@ -9,7 +9,7 @@ _Emission wavelength, typically specified in nanometers. Data providers may spec
 
 
 
-URI: [lambdaber:emission_wavelength](https://w3id.org/lambda-ber-schema/emission_wavelength)
+URI: [lambda:emission_wavelength](http://w3id.org/lambda/emission_wavelength)
 Alias: emission_wavelength
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: emission_wavelength
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: emission_wavelength
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:emission_wavelength |
-| native | lambdaber:emission_wavelength |
+| self | lambda:emission_wavelength |
+| native | lambda:emission_wavelength |
 
 
 
@@ -68,7 +68,7 @@ Alias: emission_wavelength
 name: emission_wavelength
 description: Emission wavelength, typically specified in nanometers. Data providers
   may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: emission_wavelength
 owner: FluorescenceImage

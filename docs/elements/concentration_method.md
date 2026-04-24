@@ -9,7 +9,7 @@ _Method used to concentrate protein_
 
 
 
-URI: [lambdaber:concentration_method](https://w3id.org/lambda-ber-schema/concentration_method)
+URI: [lambda:concentration_method](http://w3id.org/lambda/concentration_method)
 Alias: concentration_method
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: concentration_method
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: concentration_method
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:concentration_method |
-| native | lambdaber:concentration_method |
+| self | lambda:concentration_method |
+| native | lambda:concentration_method |
 
 
 
@@ -67,7 +67,7 @@ Alias: concentration_method
 ```yaml
 name: concentration_method
 description: Method used to concentrate protein
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: concentration_method
 owner: SamplePreparation

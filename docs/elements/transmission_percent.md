@@ -9,7 +9,7 @@ _Beam transmission, typically specified as a percentage (0-100). Data providers 
 
 
 
-URI: [lambdaber:transmission_percent](https://w3id.org/lambda-ber-schema/transmission_percent)
+URI: [lambda:transmission_percent](http://w3id.org/lambda/transmission_percent)
 Alias: transmission_percent
 
 <!-- no inheritance hierarchy -->
@@ -35,6 +35,11 @@ Alias: transmission_percent
 
 
 
+## Aliases
+
+
+* attenuation
+
 
 ## Identifier and Mapping Information
 
@@ -46,7 +51,7 @@ Alias: transmission_percent
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +60,8 @@ Alias: transmission_percent
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:transmission_percent |
-| native | lambdaber:transmission_percent |
+| self | lambda:transmission_percent |
+| native | lambda:transmission_percent |
 
 
 
@@ -68,7 +73,9 @@ Alias: transmission_percent
 name: transmission_percent
 description: Beam transmission, typically specified as a percentage (0-100). Data
   providers may specify as decimal fraction by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+aliases:
+- attenuation
 rank: 1000
 alias: transmission_percent
 owner: DataCollectionStrategy

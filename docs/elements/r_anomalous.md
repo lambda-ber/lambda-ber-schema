@@ -9,7 +9,7 @@ _Anomalous R-factor_
 
 
 
-URI: [lambdaber:r_anomalous](https://w3id.org/lambda-ber-schema/r_anomalous)
+URI: [lambda:r_anomalous](http://w3id.org/lambda/r_anomalous)
 Alias: r_anomalous
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: r_anomalous
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: r_anomalous
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:r_anomalous |
-| native | lambdaber:r_anomalous |
+| self | lambda:r_anomalous |
+| native | lambda:r_anomalous |
 
 
 
@@ -67,7 +67,7 @@ Alias: r_anomalous
 ```yaml
 name: r_anomalous
 description: Anomalous R-factor
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: r_anomalous
 owner: WorkflowRun

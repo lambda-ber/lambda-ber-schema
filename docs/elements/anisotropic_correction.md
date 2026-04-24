@@ -9,7 +9,7 @@ _Whether anisotropic motion correction was applied_
 
 
 
-URI: [lambdaber:anisotropic_correction](https://w3id.org/lambda-ber-schema/anisotropic_correction)
+URI: [lambda:anisotropic_correction](http://w3id.org/lambda/anisotropic_correction)
 Alias: anisotropic_correction
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: anisotropic_correction
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: anisotropic_correction
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:anisotropic_correction |
-| native | lambdaber:anisotropic_correction |
+| self | lambda:anisotropic_correction |
+| native | lambda:anisotropic_correction |
 
 
 
@@ -67,7 +67,7 @@ Alias: anisotropic_correction
 ```yaml
 name: anisotropic_correction
 description: Whether anisotropic motion correction was applied
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: anisotropic_correction
 owner: MotionCorrectionParameters

@@ -9,7 +9,7 @@ _Version of acquisition software_
 
 
 
-URI: [lambdaber:acquisition_software_version](https://w3id.org/lambda-ber-schema/acquisition_software_version)
+URI: [lambda:acquisition_software_version](http://w3id.org/lambda/acquisition_software_version)
 Alias: acquisition_software_version
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: acquisition_software_version
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: acquisition_software_version
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:acquisition_software_version |
-| native | lambdaber:acquisition_software_version |
+| self | lambda:acquisition_software_version |
+| native | lambda:acquisition_software_version |
 
 
 
@@ -67,7 +67,7 @@ Alias: acquisition_software_version
 ```yaml
 name: acquisition_software_version
 description: Version of acquisition software
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: acquisition_software_version
 owner: ExperimentRun

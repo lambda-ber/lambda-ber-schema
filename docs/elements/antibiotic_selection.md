@@ -9,7 +9,7 @@ _Antibiotic or selection agent used_
 
 
 
-URI: [lambdaber:antibiotic_selection](https://w3id.org/lambda-ber-schema/antibiotic_selection)
+URI: [lambda:antibiotic_selection](http://w3id.org/lambda/antibiotic_selection)
 Alias: antibiotic_selection
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: antibiotic_selection
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: antibiotic_selection
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:antibiotic_selection |
-| native | lambdaber:antibiotic_selection |
+| self | lambda:antibiotic_selection |
+| native | lambda:antibiotic_selection |
 
 
 
@@ -67,7 +67,7 @@ Alias: antibiotic_selection
 ```yaml
 name: antibiotic_selection
 description: Antibiotic or selection agent used
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: antibiotic_selection
 owner: SamplePreparation

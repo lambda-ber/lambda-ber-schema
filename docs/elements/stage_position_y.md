@@ -9,7 +9,7 @@ _Stage Y position, typically specified in micrometers. Data providers may specif
 
 
 
-URI: [lambdaber:stage_position_y](https://w3id.org/lambda-ber-schema/stage_position_y)
+URI: [lambda:stage_position_y](http://w3id.org/lambda/stage_position_y)
 Alias: stage_position_y
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: stage_position_y
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: stage_position_y
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:stage_position_y |
-| native | lambdaber:stage_position_y |
+| self | lambda:stage_position_y |
+| native | lambda:stage_position_y |
 
 
 
@@ -68,7 +68,7 @@ Alias: stage_position_y
 name: stage_position_y
 description: Stage Y position, typically specified in micrometers. Data providers
   may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: stage_position_y
 owner: Movie

@@ -9,7 +9,7 @@ _Temperature control settings_
 
 
 
-URI: [lambdaber:temperature_control](https://w3id.org/lambda-ber-schema/temperature_control)
+URI: [lambda:temperature_control](http://w3id.org/lambda/temperature_control)
 Alias: temperature_control
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: temperature_control
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: temperature_control
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:temperature_control |
-| native | lambdaber:temperature_control |
+| self | lambda:temperature_control |
+| native | lambda:temperature_control |
 
 
 
@@ -67,7 +67,7 @@ Alias: temperature_control
 ```yaml
 name: temperature_control
 description: Temperature control settings
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: temperature_control
 owner: SAXSPreparation

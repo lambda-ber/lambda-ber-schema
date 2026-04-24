@@ -9,7 +9,7 @@ _FSC values corresponding to each resolution_
 
 
 
-URI: [lambdaber:fsc_value](https://w3id.org/lambda-ber-schema/fsc_value)
+URI: [lambda:fsc_value](http://w3id.org/lambda/fsc_value)
 Alias: fsc_value
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: fsc_value
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: fsc_value
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:fsc_value |
-| native | lambdaber:fsc_value |
+| self | lambda:fsc_value |
+| native | lambda:fsc_value |
 
 
 
@@ -67,7 +67,7 @@ Alias: fsc_value
 ```yaml
 name: fsc_value
 description: FSC values corresponding to each resolution
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: fsc_value
 owner: FSCCurve

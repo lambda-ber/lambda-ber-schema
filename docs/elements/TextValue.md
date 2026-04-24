@@ -80,7 +80,7 @@ URI: [nmdc:TextValue](https://w3id.org/nmdc/TextValue)
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -90,7 +90,7 @@ URI: [nmdc:TextValue](https://w3id.org/nmdc/TextValue)
 | Mapping Type | Mapped Value |
 | ---  | ---  |
 | self | nmdc:TextValue |
-| native | lambdaber:TextValue |
+| native | lambda:TextValue |
 
 
 
@@ -108,13 +108,13 @@ URI: [nmdc:TextValue](https://w3id.org/nmdc/TextValue)
 name: TextValue
 description: A value described using a text string, optionally with a controlled vocabulary
   ID.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: AttributeValue
 attributes:
   value:
     name: value
     description: The text value
-    from_schema: https://w3id.org/lambda-ber-schema/types
+    from_schema: http://w3id.org/lambda/types
     domain_of:
     - TextValue
     - DateTimeValue
@@ -124,7 +124,7 @@ attributes:
   value_cv_id:
     name: value_cv_id
     description: For values in a controlled vocabulary, the CV ID for the value.
-    from_schema: https://w3id.org/lambda-ber-schema/types
+    from_schema: http://w3id.org/lambda/types
     domain_of:
     - TextValue
     range: curie
@@ -140,13 +140,13 @@ class_uri: nmdc:TextValue
 name: TextValue
 description: A value described using a text string, optionally with a controlled vocabulary
   ID.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: AttributeValue
 attributes:
   value:
     name: value
     description: The text value
-    from_schema: https://w3id.org/lambda-ber-schema/types
+    from_schema: http://w3id.org/lambda/types
     alias: value
     owner: TextValue
     domain_of:
@@ -158,7 +158,7 @@ attributes:
   value_cv_id:
     name: value_cv_id
     description: For values in a controlled vocabulary, the CV ID for the value.
-    from_schema: https://w3id.org/lambda-ber-schema/types
+    from_schema: http://w3id.org/lambda/types
     alias: value_cv_id
     owner: TextValue
     domain_of:
@@ -167,7 +167,7 @@ attributes:
   attribute:
     name: attribute
     description: The attribute being represented.
-    from_schema: https://w3id.org/lambda-ber-schema/types
+    from_schema: http://w3id.org/lambda/types
     alias: attribute
     owner: TextValue
     domain_of:
@@ -177,7 +177,7 @@ attributes:
     name: raw_value
     description: Unnormalized atomic string representation, suggested syntax {number}
       {unit}
-    from_schema: https://w3id.org/lambda-ber-schema/types
+    from_schema: http://w3id.org/lambda/types
     alias: raw_value
     owner: TextValue
     domain_of:

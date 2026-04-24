@@ -7,7 +7,7 @@ _Types of mutations_
 
 
 
-URI: [lambdaber:MutationTypeEnum](https://w3id.org/lambda-ber-schema/MutationTypeEnum)
+URI: [lambda:MutationTypeEnum](http://w3id.org/lambda/MutationTypeEnum)
 
 ## Permissible Values
 
@@ -44,7 +44,7 @@ URI: [lambdaber:MutationTypeEnum](https://w3id.org/lambda-ber-schema/MutationTyp
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,7 +57,7 @@ URI: [lambdaber:MutationTypeEnum](https://w3id.org/lambda-ber-schema/MutationTyp
 ```yaml
 name: MutationTypeEnum
 description: Types of mutations
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   missense:

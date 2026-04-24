@@ -9,7 +9,7 @@ _The maximum value part, expressed as a number, of the quantity value when the v
 
 
 
-URI: [lambdaber:maximum_numeric_value](https://w3id.org/lambda-ber-schema/maximum_numeric_value)
+URI: [lambda:maximum_numeric_value](http://w3id.org/lambda/maximum_numeric_value)
 Alias: maximum_numeric_value
 
 
@@ -51,7 +51,7 @@ Alias: maximum_numeric_value
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -60,8 +60,8 @@ Alias: maximum_numeric_value
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:maximum_numeric_value |
-| native | lambdaber:maximum_numeric_value |
+| self | lambda:maximum_numeric_value |
+| native | lambda:maximum_numeric_value |
 | undefined | nmdc:maximum_numeric_value |
 
 
@@ -74,7 +74,7 @@ Alias: maximum_numeric_value
 name: maximum_numeric_value
 description: The maximum value part, expressed as a number, of the quantity value
   when the value covers a range.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 mappings:
 - nmdc:maximum_numeric_value
 rank: 1000

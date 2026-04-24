@@ -3,12 +3,10 @@
 @prefix ROR: <https://ror.org/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix lambdaber: <http://w3id.org/lambda/> .
-@prefix mmCIF: <http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/> .
 @prefix nmdc: <https://w3id.org/nmdc/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 lambdaber:instrument_als_831 a lambdaber:XRayInstrument ;
-    mmCIF:_diffrn_source.pdbx_synchrotron_beamline "8.3.1" ;
     dcterms:title "ALS Beamline 8.3.1" ;
     lambdaber:beam_size_max [ a nmdc:QuantityValue ;
             lambdaber:numeric_value "200.0"^^xsd:float ;
@@ -16,6 +14,7 @@ lambdaber:instrument_als_831 a lambdaber:XRayInstrument ;
     lambdaber:beam_size_min [ a nmdc:QuantityValue ;
             lambdaber:numeric_value "20.0"^^xsd:float ;
             lambdaber:unit "micrometers" ] ;
+    lambdaber:beamline_id "8.3.1" ;
     lambdaber:crystal_cooling_capability true ;
     lambdaber:current_status "operational" ;
     lambdaber:description "Advanced Light Source beamline 8.3.1 for macromolecular crystallography" ;

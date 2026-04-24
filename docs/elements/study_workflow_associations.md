@@ -9,7 +9,7 @@ _Links between studies and workflows (M:N)_
 
 
 
-URI: [lambdaber:study_workflow_associations](https://w3id.org/lambda-ber-schema/study_workflow_associations)
+URI: [lambda:study_workflow_associations](http://w3id.org/lambda/study_workflow_associations)
 Alias: study_workflow_associations
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: study_workflow_associations
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: study_workflow_associations
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:study_workflow_associations |
-| native | lambdaber:study_workflow_associations |
+| self | lambda:study_workflow_associations |
+| native | lambda:study_workflow_associations |
 
 
 
@@ -69,7 +69,7 @@ Alias: study_workflow_associations
 ```yaml
 name: study_workflow_associations
 description: Links between studies and workflows (M:N)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: study_workflow_associations
 owner: Dataset

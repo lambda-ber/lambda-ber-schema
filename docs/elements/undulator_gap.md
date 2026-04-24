@@ -9,7 +9,7 @@ _Undulator gap setting, typically specified in millimeters (mm). Data providers 
 
 
 
-URI: [lambdaber:undulator_gap](https://w3id.org/lambda-ber-schema/undulator_gap)
+URI: [lambda:undulator_gap](http://w3id.org/lambda/undulator_gap)
 Alias: undulator_gap
 
 <!-- no inheritance hierarchy -->
@@ -50,7 +50,7 @@ Alias: undulator_gap
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -59,8 +59,8 @@ Alias: undulator_gap
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:undulator_gap |
-| native | lambdaber:undulator_gap |
+| self | lambda:undulator_gap |
+| native | lambda:undulator_gap |
 | exact | ispyb:DataCollection.undulatorGap1 |
 
 
@@ -76,7 +76,7 @@ description: Undulator gap setting, typically specified in millimeters (mm). Dat
   Primary undulator gap for beamlines with insertion devices.
 comments:
 - Primary undulator gap for beamlines with insertion devices
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 exact_mappings:
 - ispyb:DataCollection.undulatorGap1
 rank: 1000

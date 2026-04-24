@@ -9,7 +9,7 @@ _File size in bytes_
 
 
 
-URI: [lambdaber:file_size_bytes](https://w3id.org/lambda-ber-schema/file_size_bytes)
+URI: [lambda:file_size_bytes](http://w3id.org/lambda/file_size_bytes)
 Alias: file_size_bytes
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: file_size_bytes
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: file_size_bytes
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:file_size_bytes |
-| native | lambdaber:file_size_bytes |
+| self | lambda:file_size_bytes |
+| native | lambda:file_size_bytes |
 
 
 
@@ -67,7 +67,7 @@ Alias: file_size_bytes
 ```yaml
 name: file_size_bytes
 description: File size in bytes
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: file_size_bytes
 owner: DataFile

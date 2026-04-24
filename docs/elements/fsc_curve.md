@@ -9,7 +9,7 @@ _Fourier Shell Correlation curve data_
 
 
 
-URI: [lambdaber:fsc_curve](https://w3id.org/lambda-ber-schema/fsc_curve)
+URI: [lambda:fsc_curve](http://w3id.org/lambda/fsc_curve)
 Alias: fsc_curve
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: fsc_curve
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: fsc_curve
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:fsc_curve |
-| native | lambdaber:fsc_curve |
+| self | lambda:fsc_curve |
+| native | lambda:fsc_curve |
 
 
 
@@ -67,7 +67,7 @@ Alias: fsc_curve
 ```yaml
 name: fsc_curve
 description: Fourier Shell Correlation curve data
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: fsc_curve
 owner: WorkflowRun

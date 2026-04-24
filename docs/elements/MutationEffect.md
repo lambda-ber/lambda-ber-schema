@@ -9,7 +9,7 @@ _Effects of mutations and variants on protein structure and function_
 
 
 
-URI: [lambdaber:MutationEffect](https://w3id.org/lambda-ber-schema/MutationEffect)
+URI: [lambda:MutationEffect](http://w3id.org/lambda/MutationEffect)
 
 
 
@@ -191,7 +191,7 @@ URI: [lambdaber:MutationEffect](https://w3id.org/lambda-ber-schema/MutationEffec
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -200,8 +200,8 @@ URI: [lambdaber:MutationEffect](https://w3id.org/lambda-ber-schema/MutationEffec
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:MutationEffect |
-| native | lambdaber:MutationEffect |
+| self | lambda:MutationEffect |
+| native | lambda:MutationEffect |
 
 
 
@@ -218,13 +218,13 @@ URI: [lambdaber:MutationEffect](https://w3id.org/lambda-ber-schema/MutationEffec
 ```yaml
 name: MutationEffect
 description: Effects of mutations and variants on protein structure and function
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: ProteinAnnotation
 attributes:
   mutation:
     name: mutation
     description: Mutation in standard notation (e.g., 'A123V')
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - MutationEffect
@@ -233,7 +233,7 @@ attributes:
   mutation_type:
     name: mutation_type
     description: Type of mutation
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - MutationEffect
@@ -241,7 +241,7 @@ attributes:
   effect_on_stability:
     name: effect_on_stability
     description: Effect on protein stability
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - MutationEffect
@@ -249,7 +249,7 @@ attributes:
   delta_delta_g:
     name: delta_delta_g
     description: Change in folding free energy (kcal/mol)
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - MutationEffect
@@ -259,7 +259,7 @@ attributes:
   effect_on_function:
     name: effect_on_function
     description: Effect on protein function
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - MutationEffect
@@ -267,21 +267,21 @@ attributes:
   functional_impact_description:
     name: functional_impact_description
     description: Description of functional impact
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - MutationEffect
   disease_association:
     name: disease_association
     description: Associated disease or phenotype
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - MutationEffect
   omim_id:
     name: omim_id
     description: OMIM database identifier
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - MutationEffect
@@ -289,7 +289,7 @@ attributes:
   clinical_significance:
     name: clinical_significance
     description: Clinical significance
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - MutationEffect
@@ -297,7 +297,7 @@ attributes:
   allele_frequency:
     name: allele_frequency
     description: 'Population allele frequency (range: 0-1)'
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - MutationEffect
@@ -314,13 +314,13 @@ attributes:
 ```yaml
 name: MutationEffect
 description: Effects of mutations and variants on protein structure and function
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: ProteinAnnotation
 attributes:
   mutation:
     name: mutation
     description: Mutation in standard notation (e.g., 'A123V')
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: mutation
     owner: MutationEffect
@@ -332,7 +332,7 @@ attributes:
   mutation_type:
     name: mutation_type
     description: Type of mutation
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: mutation_type
     owner: MutationEffect
@@ -342,7 +342,7 @@ attributes:
   effect_on_stability:
     name: effect_on_stability
     description: Effect on protein stability
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: effect_on_stability
     owner: MutationEffect
@@ -352,7 +352,7 @@ attributes:
   delta_delta_g:
     name: delta_delta_g
     description: Change in folding free energy (kcal/mol)
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: delta_delta_g
     owner: MutationEffect
@@ -364,7 +364,7 @@ attributes:
   effect_on_function:
     name: effect_on_function
     description: Effect on protein function
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: effect_on_function
     owner: MutationEffect
@@ -374,7 +374,7 @@ attributes:
   functional_impact_description:
     name: functional_impact_description
     description: Description of functional impact
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: functional_impact_description
     owner: MutationEffect
@@ -384,7 +384,7 @@ attributes:
   disease_association:
     name: disease_association
     description: Associated disease or phenotype
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: disease_association
     owner: MutationEffect
@@ -394,7 +394,7 @@ attributes:
   omim_id:
     name: omim_id
     description: OMIM database identifier
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: omim_id
     owner: MutationEffect
@@ -405,7 +405,7 @@ attributes:
   clinical_significance:
     name: clinical_significance
     description: Clinical significance
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: clinical_significance
     owner: MutationEffect
@@ -415,7 +415,7 @@ attributes:
   allele_frequency:
     name: allele_frequency
     description: 'Population allele frequency (range: 0-1)'
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: allele_frequency
     owner: MutationEffect
@@ -427,7 +427,7 @@ attributes:
   protein_id:
     name: protein_id
     description: UniProt accession number
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: protein_id
     owner: MutationEffect
@@ -440,7 +440,7 @@ attributes:
   pdb_entry:
     name: pdb_entry
     description: PDB identifier
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: pdb_entry
     owner: MutationEffect
@@ -451,7 +451,7 @@ attributes:
   chain_id:
     name: chain_id
     description: Chain identifier in the PDB structure
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: chain_id
     owner: MutationEffect
@@ -462,7 +462,7 @@ attributes:
   residue_range:
     name: residue_range
     description: Range of residues (e.g., '1-100', '25,27,30-35')
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: residue_range
     owner: MutationEffect
@@ -473,7 +473,7 @@ attributes:
   confidence_score:
     name: confidence_score
     description: 'Confidence score for the annotation (range: 0-1)'
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: confidence_score
     owner: MutationEffect
@@ -485,7 +485,7 @@ attributes:
   evidence_type:
     name: evidence_type
     description: Type of evidence supporting this annotation
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: evidence_type
     owner: MutationEffect
@@ -495,7 +495,7 @@ attributes:
   evidence_code:
     name: evidence_code
     description: Evidence and Conclusion Ontology (ECO) code
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: evidence_code
     owner: MutationEffect
@@ -505,7 +505,7 @@ attributes:
   source_database:
     name: source_database
     description: Source database or resource that provided this annotation
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: source_database
     owner: MutationEffect
@@ -515,7 +515,7 @@ attributes:
   annotation_method:
     name: annotation_method
     description: Computational or experimental method used
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: annotation_method
     owner: MutationEffect
@@ -526,7 +526,7 @@ attributes:
     name: publication_ids
     description: IDs of one or more publications supporting this annotation. Use PubMed
       IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: publication_ids
     owner: MutationEffect
@@ -540,7 +540,7 @@ attributes:
     description: Globally unique identifier as an IRI or CURIE for machine processing
       and external references. Used for linking data across systems and semantic web
       integration.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     identifier: true
     alias: id
@@ -553,7 +553,7 @@ attributes:
   title:
     name: title
     description: A human-readable name or title for this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     slot_uri: dcterms:title
     alias: title
@@ -564,7 +564,7 @@ attributes:
   description:
     name: description
     description: A detailed textual description of this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: description
     owner: MutationEffect

@@ -9,7 +9,7 @@ _Growth medium used_
 
 
 
-URI: [lambdaber:medium](https://w3id.org/lambda-ber-schema/medium)
+URI: [lambda:medium](http://w3id.org/lambda/medium)
 Alias: medium
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: medium
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: medium
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:medium |
-| native | lambdaber:medium |
+| self | lambda:medium |
+| native | lambda:medium |
 
 
 
@@ -67,7 +67,7 @@ Alias: medium
 ```yaml
 name: medium
 description: Growth medium used
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: medium
 owner: SamplePreparation

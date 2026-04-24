@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:unit_cell_gamma](https://w3id.org/lambda-ber-schema/unit_cell_gamma)
+URI: [lambda:unit_cell_gamma](http://w3id.org/lambda/unit_cell_gamma)
 Alias: unit_cell_gamma
 
 <!-- no inheritance hierarchy -->
@@ -44,8 +44,8 @@ Alias: unit_cell_gamma
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:unit_cell_gamma |
-| native | lambdaber:unit_cell_gamma |
+| self | lambda:unit_cell_gamma |
+| native | lambda:unit_cell_gamma |
 
 
 

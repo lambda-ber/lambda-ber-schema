@@ -9,7 +9,7 @@ _Type of processing workflow_
 
 
 
-URI: [lambdaber:workflow_type](https://w3id.org/lambda-ber-schema/workflow_type)
+URI: [lambda:workflow_type](http://w3id.org/lambda/workflow_type)
 Alias: workflow_type
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: workflow_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: workflow_type
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:workflow_type |
-| native | lambdaber:workflow_type |
+| self | lambda:workflow_type |
+| native | lambda:workflow_type |
 
 
 
@@ -69,7 +69,7 @@ Alias: workflow_type
 ```yaml
 name: workflow_type
 description: Type of processing workflow
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: workflow_type
 owner: WorkflowRun

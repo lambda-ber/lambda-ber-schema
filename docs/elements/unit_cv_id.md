@@ -9,7 +9,7 @@ _The unit of the quantity, expressed as a CURIE from the Unit Ontology (e.g., UO
 
 
 
-URI: [lambdaber:unit_cv_id](https://w3id.org/lambda-ber-schema/unit_cv_id)
+URI: [lambda:unit_cv_id](http://w3id.org/lambda/unit_cv_id)
 Alias: unit_cv_id
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: unit_cv_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: unit_cv_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:unit_cv_id |
-| native | lambdaber:unit_cv_id |
+| self | lambda:unit_cv_id |
+| native | lambda:unit_cv_id |
 
 
 
@@ -68,7 +68,7 @@ Alias: unit_cv_id
 name: unit_cv_id
 description: The unit of the quantity, expressed as a CURIE from the Unit Ontology
   (e.g., UO:0000016 for micrometer).
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: unit_cv_id
 domain_of:

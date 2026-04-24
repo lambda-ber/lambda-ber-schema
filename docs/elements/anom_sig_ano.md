@@ -9,7 +9,7 @@ _Anomalous signal strength_
 
 
 
-URI: [lambdaber:anom_sig_ano](https://w3id.org/lambda-ber-schema/anom_sig_ano)
+URI: [lambda:anom_sig_ano](http://w3id.org/lambda/anom_sig_ano)
 Alias: anom_sig_ano
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: anom_sig_ano
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: anom_sig_ano
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:anom_sig_ano |
-| native | lambdaber:anom_sig_ano |
+| self | lambda:anom_sig_ano |
+| native | lambda:anom_sig_ano |
 
 
 
@@ -67,7 +67,7 @@ Alias: anom_sig_ano
 ```yaml
 name: anom_sig_ano
 description: Anomalous signal strength
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: anom_sig_ano
 owner: QualityMetrics

@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:energy_max](https://w3id.org/lambda-ber-schema/energy_max)
+URI: [lambda:energy_max](http://w3id.org/lambda/energy_max)
 Alias: energy_max
 
 <!-- no inheritance hierarchy -->
@@ -44,8 +44,8 @@ Alias: energy_max
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:energy_max |
-| native | lambdaber:energy_max |
+| self | lambda:energy_max |
+| native | lambda:energy_max |
 
 
 

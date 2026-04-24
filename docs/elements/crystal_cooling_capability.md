@@ -9,7 +9,7 @@ _Crystal cooling system available_
 
 
 
-URI: [lambdaber:crystal_cooling_capability](https://w3id.org/lambda-ber-schema/crystal_cooling_capability)
+URI: [lambda:crystal_cooling_capability](http://w3id.org/lambda/crystal_cooling_capability)
 Alias: crystal_cooling_capability
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: crystal_cooling_capability
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: crystal_cooling_capability
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:crystal_cooling_capability |
-| native | lambdaber:crystal_cooling_capability |
+| self | lambda:crystal_cooling_capability |
+| native | lambda:crystal_cooling_capability |
 
 
 
@@ -67,7 +67,7 @@ Alias: crystal_cooling_capability
 ```yaml
 name: crystal_cooling_capability
 description: Crystal cooling system available
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: crystal_cooling_capability
 owner: XRayInstrument

@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:temperature_c](https://w3id.org/lambda-ber-schema/temperature_c)
+URI: [lambda:temperature_c](http://w3id.org/lambda/temperature_c)
 Alias: temperature_c
 
 <!-- no inheritance hierarchy -->
@@ -44,8 +44,8 @@ Alias: temperature_c
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:temperature_c |
-| native | lambdaber:temperature_c |
+| self | lambda:temperature_c |
+| native | lambda:temperature_c |
 
 
 

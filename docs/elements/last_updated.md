@@ -9,7 +9,7 @@ _Date of last update_
 
 
 
-URI: [lambdaber:last_updated](https://w3id.org/lambda-ber-schema/last_updated)
+URI: [lambda:last_updated](http://w3id.org/lambda/last_updated)
 Alias: last_updated
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: last_updated
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: last_updated
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:last_updated |
-| native | lambdaber:last_updated |
+| self | lambda:last_updated |
+| native | lambda:last_updated |
 
 
 
@@ -67,7 +67,7 @@ Alias: last_updated
 ```yaml
 name: last_updated
 description: Date of last update
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: last_updated
 owner: DatabaseCrossReference

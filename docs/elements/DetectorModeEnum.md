@@ -7,7 +7,7 @@ _Operating modes for detectors during data collection_
 
 
 
-URI: [lambdaber:DetectorModeEnum](https://w3id.org/lambda-ber-schema/DetectorModeEnum)
+URI: [lambda:DetectorModeEnum](http://w3id.org/lambda/DetectorModeEnum)
 
 ## Permissible Values
 
@@ -46,7 +46,7 @@ URI: [lambdaber:DetectorModeEnum](https://w3id.org/lambda-ber-schema/DetectorMod
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -61,7 +61,7 @@ name: DetectorModeEnum
 description: Operating modes for detectors during data collection
 comments:
 - Particularly relevant for cryo-EM direct electron detectors
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   counting:

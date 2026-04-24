@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:structural_features](https://w3id.org/lambda-ber-schema/structural_features)
+URI: [lambda:structural_features](http://w3id.org/lambda/structural_features)
 Alias: structural_features
 
 <!-- no inheritance hierarchy -->
@@ -17,8 +17,8 @@ Alias: structural_features
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AggregatedProteinView](AggregatedProteinView.md) | Aggregated view of all structural and functional data for a protein |  no  |
 | [Sample](Sample.md) | A biological sample used in structural biology experiments |  no  |
+| [AggregatedProteinView](AggregatedProteinView.md) | Aggregated view of all structural and functional data for a protein |  no  |
 
 
 
@@ -44,8 +44,8 @@ Alias: structural_features
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:structural_features |
-| native | lambdaber:structural_features |
+| self | lambda:structural_features |
+| native | lambda:structural_features |
 
 
 

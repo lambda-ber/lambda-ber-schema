@@ -9,7 +9,7 @@ _Excitation wavelength, typically specified in nanometers. Data providers may sp
 
 
 
-URI: [lambdaber:excitation_wavelength](https://w3id.org/lambda-ber-schema/excitation_wavelength)
+URI: [lambda:excitation_wavelength](http://w3id.org/lambda/excitation_wavelength)
 Alias: excitation_wavelength
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: excitation_wavelength
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: excitation_wavelength
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:excitation_wavelength |
-| native | lambdaber:excitation_wavelength |
+| self | lambda:excitation_wavelength |
+| native | lambda:excitation_wavelength |
 
 
 
@@ -68,7 +68,7 @@ Alias: excitation_wavelength
 name: excitation_wavelength
 description: Excitation wavelength, typically specified in nanometers. Data providers
   may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: excitation_wavelength
 owner: FluorescenceImage

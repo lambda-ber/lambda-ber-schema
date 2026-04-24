@@ -9,7 +9,7 @@ _Workflow start time_
 
 
 
-URI: [lambdaber:started_at](https://w3id.org/lambda-ber-schema/started_at)
+URI: [lambda:started_at](http://w3id.org/lambda/started_at)
 Alias: started_at
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: started_at
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: started_at
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:started_at |
-| native | lambdaber:started_at |
+| self | lambda:started_at |
+| native | lambda:started_at |
 
 
 
@@ -67,7 +67,7 @@ Alias: started_at
 ```yaml
 name: started_at
 description: Workflow start time
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: started_at
 owner: WorkflowRun

@@ -9,7 +9,7 @@ _An image file from structural biology experiments_
 
 
 
-URI: [lambdaber:Image](https://w3id.org/lambda-ber-schema/Image)
+URI: [lambda:Image](http://w3id.org/lambda/Image)
 
 
 
@@ -153,7 +153,7 @@ URI: [lambdaber:Image](https://w3id.org/lambda-ber-schema/Image)
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -162,8 +162,8 @@ URI: [lambdaber:Image](https://w3id.org/lambda-ber-schema/Image)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:Image |
-| native | lambdaber:Image |
+| self | lambda:Image |
+| native | lambda:Image |
 
 
 
@@ -180,13 +180,13 @@ URI: [lambdaber:Image](https://w3id.org/lambda-ber-schema/Image)
 ```yaml
 name: Image
 description: An image file from structural biology experiments
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: NamedThing
 attributes:
   file_name:
     name: file_name
     description: Image file name
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - DataFile
     - Image
@@ -194,7 +194,7 @@ attributes:
   acquisition_date:
     name: acquisition_date
     description: Date image was acquired
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Image
@@ -203,7 +203,7 @@ attributes:
     name: pixel_size
     description: Pixel size, typically specified in Angstroms. Data providers may
       specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Image
@@ -214,7 +214,7 @@ attributes:
     name: dimensions_x
     description: Image width, typically specified in pixels. Data providers may specify
       alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Image
@@ -224,7 +224,7 @@ attributes:
     name: dimensions_y
     description: Image height, typically specified in pixels. Data providers may specify
       alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Image
@@ -234,17 +234,18 @@ attributes:
     name: exposure_time
     description: Exposure time, typically specified in seconds. Data providers may
       specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - ExperimentRun
     - Image
     - ExperimentalConditions
+    - DataCollectionStrategy
     range: QuantityValue
     inlined: true
   dose:
     name: dose
     description: Electron dose in e-/Å²
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Image
@@ -261,13 +262,13 @@ attributes:
 ```yaml
 name: Image
 description: An image file from structural biology experiments
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: NamedThing
 attributes:
   file_name:
     name: file_name
     description: Image file name
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: file_name
     owner: Image
     domain_of:
@@ -278,7 +279,7 @@ attributes:
   acquisition_date:
     name: acquisition_date
     description: Date image was acquired
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: acquisition_date
     owner: Image
@@ -289,7 +290,7 @@ attributes:
     name: pixel_size
     description: Pixel size, typically specified in Angstroms. Data providers may
       specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: pixel_size
     owner: Image
@@ -302,7 +303,7 @@ attributes:
     name: dimensions_x
     description: Image width, typically specified in pixels. Data providers may specify
       alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: dimensions_x
     owner: Image
@@ -314,7 +315,7 @@ attributes:
     name: dimensions_y
     description: Image height, typically specified in pixels. Data providers may specify
       alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: dimensions_y
     owner: Image
@@ -326,19 +327,20 @@ attributes:
     name: exposure_time
     description: Exposure time, typically specified in seconds. Data providers may
       specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: exposure_time
     owner: Image
     domain_of:
     - ExperimentRun
     - Image
     - ExperimentalConditions
+    - DataCollectionStrategy
     range: QuantityValue
     inlined: true
   dose:
     name: dose
     description: Electron dose in e-/Å²
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: dose
     owner: Image
@@ -352,7 +354,7 @@ attributes:
     description: Globally unique identifier as an IRI or CURIE for machine processing
       and external references. Used for linking data across systems and semantic web
       integration.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     identifier: true
     alias: id
@@ -365,7 +367,7 @@ attributes:
   title:
     name: title
     description: A human-readable name or title for this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     slot_uri: dcterms:title
     alias: title
@@ -376,7 +378,7 @@ attributes:
   description:
     name: description
     description: A detailed textual description of this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: description
     owner: Image

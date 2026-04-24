@@ -9,7 +9,7 @@ _B-factor for dose weighting, typically specified in Angstroms squared. Data pro
 
 
 
-URI: [lambdaber:bfactor_dose_weighting](https://w3id.org/lambda-ber-schema/bfactor_dose_weighting)
+URI: [lambda:bfactor_dose_weighting](http://w3id.org/lambda/bfactor_dose_weighting)
 Alias: bfactor_dose_weighting
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: bfactor_dose_weighting
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: bfactor_dose_weighting
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:bfactor_dose_weighting |
-| native | lambdaber:bfactor_dose_weighting |
+| self | lambda:bfactor_dose_weighting |
+| native | lambda:bfactor_dose_weighting |
 
 
 
@@ -68,7 +68,7 @@ Alias: bfactor_dose_weighting
 name: bfactor_dose_weighting
 description: B-factor for dose weighting, typically specified in Angstroms squared.
   Data providers may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: bfactor_dose_weighting
 owner: MotionCorrectionParameters

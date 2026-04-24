@@ -9,7 +9,7 @@ _Affinity column specifications_
 
 
 
-URI: [lambdaber:affinity_column](https://w3id.org/lambda-ber-schema/affinity_column)
+URI: [lambda:affinity_column](http://w3id.org/lambda/affinity_column)
 Alias: affinity_column
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: affinity_column
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: affinity_column
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:affinity_column |
-| native | lambdaber:affinity_column |
+| self | lambda:affinity_column |
+| native | lambda:affinity_column |
 
 
 
@@ -67,7 +67,7 @@ Alias: affinity_column
 ```yaml
 name: affinity_column
 description: Affinity column specifications
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: affinity_column
 owner: SamplePreparation

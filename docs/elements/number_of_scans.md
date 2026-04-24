@@ -9,7 +9,7 @@ _Number of scans averaged for the spectrum_
 
 
 
-URI: [lambdaber:number_of_scans](https://w3id.org/lambda-ber-schema/number_of_scans)
+URI: [lambda:number_of_scans](http://w3id.org/lambda/number_of_scans)
 Alias: number_of_scans
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: number_of_scans
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: number_of_scans
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:number_of_scans |
-| native | lambdaber:number_of_scans |
+| self | lambda:number_of_scans |
+| native | lambda:number_of_scans |
 
 
 
@@ -67,7 +67,7 @@ Alias: number_of_scans
 ```yaml
 name: number_of_scans
 description: Number of scans averaged for the spectrum
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: number_of_scans
 owner: FTIRImage

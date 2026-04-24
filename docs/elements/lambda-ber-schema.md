@@ -30,8 +30,9 @@ All entities are stored in flat collections at the Dataset level:
 **Data Collection**
 - [Instruments](Instrument.md): The equipment used, from Titan Krios microscopes to synchrotron
   beamlines. Each instrument type ([CryoEMInstrument](CryoEMInstrument.md),
-  [XRayInstrument](XRayInstrument.md), [SAXSInstrument](SAXSInstrument.md)) has specific parameters
-  like accelerating voltage, detector type, or beam energy.
+  [XRayInstrument](XRayInstrument.md), [SANSInstrument](SANSInstrument.md),
+  [SAXSInstrument](SAXSInstrument.md)) has specific parameters like accelerating voltage,
+  detector type, or beam energy.
 
 - [Experiment Runs](ExperimentRun.md): Individual data collection sessions. An experiment run
   captures when, how, and under what conditions data was collected, including quality metrics
@@ -105,4 +106,4 @@ A multimodal plant imaging study might combine:
 - **Standards-compliant**: Follows FAIR principles and integrates with existing ontologies
 
 
-URI: https://w3id.org/lambda-ber-schema/
+URI: http://w3id.org/lambda/

@@ -9,7 +9,7 @@ _All post-translational modifications_
 
 
 
-URI: [lambdaber:ptms](https://w3id.org/lambda-ber-schema/ptms)
+URI: [lambda:ptms](http://w3id.org/lambda/ptms)
 Alias: ptms
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: ptms
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: ptms
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:ptms |
-| native | lambdaber:ptms |
+| self | lambda:ptms |
+| native | lambda:ptms |
 
 
 
@@ -69,7 +69,7 @@ Alias: ptms
 ```yaml
 name: ptms
 description: All post-translational modifications
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: ptms
 owner: AggregatedProteinView

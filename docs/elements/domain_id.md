@@ -9,7 +9,7 @@ _Domain identifier from domain database_
 
 
 
-URI: [lambdaber:domain_id](https://w3id.org/lambda-ber-schema/domain_id)
+URI: [lambda:domain_id](http://w3id.org/lambda/domain_id)
 Alias: domain_id
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: domain_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: domain_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:domain_id |
-| native | lambdaber:domain_id |
+| self | lambda:domain_id |
+| native | lambda:domain_id |
 
 
 
@@ -67,7 +67,7 @@ Alias: domain_id
 ```yaml
 name: domain_id
 description: Domain identifier from domain database
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: domain_id
 owner: StructuralFeature

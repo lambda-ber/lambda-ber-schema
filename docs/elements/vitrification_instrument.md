@@ -9,7 +9,7 @@ _Vitrification instrument used (e.g., Vitrobot)_
 
 
 
-URI: [lambdaber:vitrification_instrument](https://w3id.org/lambda-ber-schema/vitrification_instrument)
+URI: [lambda:vitrification_instrument](http://w3id.org/lambda/vitrification_instrument)
 Alias: vitrification_instrument
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: vitrification_instrument
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: vitrification_instrument
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:vitrification_instrument |
-| native | lambdaber:vitrification_instrument |
+| self | lambda:vitrification_instrument |
+| native | lambda:vitrification_instrument |
+| exact | mmCIF:_em_vitrification.instrument |
 
 
 
@@ -67,7 +68,9 @@ Alias: vitrification_instrument
 ```yaml
 name: vitrification_instrument
 description: Vitrification instrument used (e.g., Vitrobot)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_em_vitrification.instrument
 rank: 1000
 alias: vitrification_instrument
 owner: CryoEMPreparation

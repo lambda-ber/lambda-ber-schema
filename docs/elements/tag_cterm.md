@@ -9,7 +9,7 @@ _C-terminal tag_
 
 
 
-URI: [lambdaber:tag_cterm](https://w3id.org/lambda-ber-schema/tag_cterm)
+URI: [lambda:tag_cterm](http://w3id.org/lambda/tag_cterm)
 Alias: tag_cterm
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: tag_cterm
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: tag_cterm
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:tag_cterm |
-| native | lambdaber:tag_cterm |
+| self | lambda:tag_cterm |
+| native | lambda:tag_cterm |
 
 
 
@@ -67,7 +67,7 @@ Alias: tag_cterm
 ```yaml
 name: tag_cterm
 description: C-terminal tag
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: tag_cterm
 owner: ProteinConstruct

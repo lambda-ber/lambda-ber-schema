@@ -9,7 +9,7 @@ _Functional sites including catalytic, binding, and regulatory sites_
 
 
 
-URI: [lambdaber:FunctionalSite](https://w3id.org/lambda-ber-schema/FunctionalSite)
+URI: [lambda:FunctionalSite](http://w3id.org/lambda/FunctionalSite)
 
 
 
@@ -167,7 +167,7 @@ URI: [lambdaber:FunctionalSite](https://w3id.org/lambda-ber-schema/FunctionalSit
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -176,8 +176,8 @@ URI: [lambdaber:FunctionalSite](https://w3id.org/lambda-ber-schema/FunctionalSit
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:FunctionalSite |
-| native | lambdaber:FunctionalSite |
+| self | lambda:FunctionalSite |
+| native | lambda:FunctionalSite |
 
 
 
@@ -194,13 +194,13 @@ URI: [lambdaber:FunctionalSite](https://w3id.org/lambda-ber-schema/FunctionalSit
 ```yaml
 name: FunctionalSite
 description: Functional sites including catalytic, binding, and regulatory sites
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: ProteinAnnotation
 attributes:
   site_type:
     name: site_type
     description: Type of functional site
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - FunctionalSite
@@ -209,7 +209,7 @@ attributes:
   site_name:
     name: site_name
     description: Common name for this site
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - FunctionalSite
@@ -217,7 +217,7 @@ attributes:
     name: residues
     description: List of residues forming the functional site. Each should be specified
       as a string (e.g., "45", "120A").
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - FunctionalSite
@@ -225,7 +225,7 @@ attributes:
   ligand_interactions:
     name: ligand_interactions
     description: Ligands that interact with this site
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     domain_of:
     - Sample
     - FunctionalSite
@@ -237,7 +237,7 @@ attributes:
   conservation_score:
     name: conservation_score
     description: 'Evolutionary conservation score (range: 0-1)'
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - FunctionalSite
@@ -248,14 +248,14 @@ attributes:
   functional_importance:
     name: functional_importance
     description: Description of functional importance
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - FunctionalSite
   go_terms:
     name: go_terms
     description: Associated Gene Ontology terms
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - FunctionalSite
@@ -264,7 +264,7 @@ attributes:
   ec_number:
     name: ec_number
     description: Enzyme Commission number for catalytic sites
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - FunctionalSite
@@ -279,13 +279,13 @@ attributes:
 ```yaml
 name: FunctionalSite
 description: Functional sites including catalytic, binding, and regulatory sites
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: ProteinAnnotation
 attributes:
   site_type:
     name: site_type
     description: Type of functional site
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: site_type
     owner: FunctionalSite
@@ -296,7 +296,7 @@ attributes:
   site_name:
     name: site_name
     description: Common name for this site
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: site_name
     owner: FunctionalSite
@@ -307,7 +307,7 @@ attributes:
     name: residues
     description: List of residues forming the functional site. Each should be specified
       as a string (e.g., "45", "120A").
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: residues
     owner: FunctionalSite
@@ -318,7 +318,7 @@ attributes:
   ligand_interactions:
     name: ligand_interactions
     description: Ligands that interact with this site
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     alias: ligand_interactions
     owner: FunctionalSite
     domain_of:
@@ -332,7 +332,7 @@ attributes:
   conservation_score:
     name: conservation_score
     description: 'Evolutionary conservation score (range: 0-1)'
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: conservation_score
     owner: FunctionalSite
@@ -345,7 +345,7 @@ attributes:
   functional_importance:
     name: functional_importance
     description: Description of functional importance
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: functional_importance
     owner: FunctionalSite
@@ -355,7 +355,7 @@ attributes:
   go_terms:
     name: go_terms
     description: Associated Gene Ontology terms
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: go_terms
     owner: FunctionalSite
@@ -366,7 +366,7 @@ attributes:
   ec_number:
     name: ec_number
     description: Enzyme Commission number for catalytic sites
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: ec_number
     owner: FunctionalSite
@@ -377,7 +377,7 @@ attributes:
   protein_id:
     name: protein_id
     description: UniProt accession number
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: protein_id
     owner: FunctionalSite
@@ -390,7 +390,7 @@ attributes:
   pdb_entry:
     name: pdb_entry
     description: PDB identifier
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: pdb_entry
     owner: FunctionalSite
@@ -401,7 +401,7 @@ attributes:
   chain_id:
     name: chain_id
     description: Chain identifier in the PDB structure
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: chain_id
     owner: FunctionalSite
@@ -412,7 +412,7 @@ attributes:
   residue_range:
     name: residue_range
     description: Range of residues (e.g., '1-100', '25,27,30-35')
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: residue_range
     owner: FunctionalSite
@@ -423,7 +423,7 @@ attributes:
   confidence_score:
     name: confidence_score
     description: 'Confidence score for the annotation (range: 0-1)'
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: confidence_score
     owner: FunctionalSite
@@ -435,7 +435,7 @@ attributes:
   evidence_type:
     name: evidence_type
     description: Type of evidence supporting this annotation
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: evidence_type
     owner: FunctionalSite
@@ -445,7 +445,7 @@ attributes:
   evidence_code:
     name: evidence_code
     description: Evidence and Conclusion Ontology (ECO) code
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: evidence_code
     owner: FunctionalSite
@@ -455,7 +455,7 @@ attributes:
   source_database:
     name: source_database
     description: Source database or resource that provided this annotation
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: source_database
     owner: FunctionalSite
@@ -465,7 +465,7 @@ attributes:
   annotation_method:
     name: annotation_method
     description: Computational or experimental method used
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: annotation_method
     owner: FunctionalSite
@@ -476,7 +476,7 @@ attributes:
     name: publication_ids
     description: IDs of one or more publications supporting this annotation. Use PubMed
       IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: publication_ids
     owner: FunctionalSite
@@ -490,7 +490,7 @@ attributes:
     description: Globally unique identifier as an IRI or CURIE for machine processing
       and external references. Used for linking data across systems and semantic web
       integration.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     identifier: true
     alias: id
@@ -503,7 +503,7 @@ attributes:
   title:
     name: title
     description: A human-readable name or title for this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     slot_uri: dcterms:title
     alias: title
@@ -514,7 +514,7 @@ attributes:
   description:
     name: description
     description: A detailed textual description of this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: description
     owner: FunctionalSite

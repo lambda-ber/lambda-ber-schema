@@ -9,7 +9,7 @@ _Whether super-resolution mode was used_
 
 
 
-URI: [lambdaber:super_resolution](https://w3id.org/lambda-ber-schema/super_resolution)
+URI: [lambda:super_resolution](http://w3id.org/lambda/super_resolution)
 Alias: super_resolution
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: super_resolution
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: super_resolution
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:super_resolution |
-| native | lambdaber:super_resolution |
+| self | lambda:super_resolution |
+| native | lambda:super_resolution |
 
 
 
@@ -67,7 +67,7 @@ Alias: super_resolution
 ```yaml
 name: super_resolution
 description: Whether super-resolution mode was used
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: super_resolution
 owner: Movie

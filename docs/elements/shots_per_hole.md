@@ -9,7 +9,7 @@ _Number of shots taken per hole_
 
 
 
-URI: [lambdaber:shots_per_hole](https://w3id.org/lambda-ber-schema/shots_per_hole)
+URI: [lambda:shots_per_hole](http://w3id.org/lambda/shots_per_hole)
 Alias: shots_per_hole
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: shots_per_hole
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: shots_per_hole
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:shots_per_hole |
-| native | lambdaber:shots_per_hole |
+| self | lambda:shots_per_hole |
+| native | lambda:shots_per_hole |
 
 
 
@@ -67,7 +67,7 @@ Alias: shots_per_hole
 ```yaml
 name: shots_per_hole
 description: Number of shots taken per hole
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: shots_per_hole
 owner: ExperimentRun

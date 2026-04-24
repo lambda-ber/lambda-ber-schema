@@ -9,7 +9,7 @@ _Description of principal motions_
 
 
 
-URI: [lambdaber:principal_motions](https://w3id.org/lambda-ber-schema/principal_motions)
+URI: [lambda:principal_motions](http://w3id.org/lambda/principal_motions)
 Alias: principal_motions
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: principal_motions
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: principal_motions
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:principal_motions |
-| native | lambdaber:principal_motions |
+| self | lambda:principal_motions |
+| native | lambda:principal_motions |
 
 
 
@@ -69,7 +69,7 @@ Alias: principal_motions
 ```yaml
 name: principal_motions
 description: Description of principal motions
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: principal_motions
 owner: ConformationalEnsemble

@@ -7,7 +7,7 @@ _Types of X-ray sources_
 
 
 
-URI: [lambdaber:XRaySourceTypeEnum](https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum)
+URI: [lambda:XRaySourceTypeEnum](http://w3id.org/lambda/XRaySourceTypeEnum)
 
 ## Permissible Values
 
@@ -41,7 +41,7 @@ URI: [lambdaber:XRaySourceTypeEnum](https://w3id.org/lambda-ber-schema/XRaySourc
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -54,7 +54,7 @@ URI: [lambdaber:XRaySourceTypeEnum](https://w3id.org/lambda-ber-schema/XRaySourc
 ```yaml
 name: XRaySourceTypeEnum
 description: Types of X-ray sources
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   synchrotron:

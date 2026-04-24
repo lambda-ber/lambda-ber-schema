@@ -9,7 +9,7 @@ _Ethane temperature, typically specified in degrees Celsius. Data providers may 
 
 
 
-URI: [lambdaber:ethane_temperature](https://w3id.org/lambda-ber-schema/ethane_temperature)
+URI: [lambda:ethane_temperature](http://w3id.org/lambda/ethane_temperature)
 Alias: ethane_temperature
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: ethane_temperature
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: ethane_temperature
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:ethane_temperature |
-| native | lambdaber:ethane_temperature |
+| self | lambda:ethane_temperature |
+| native | lambda:ethane_temperature |
+| exact | mmCIF:_em_vitrification.cryogen_name |
 
 
 
@@ -68,7 +69,9 @@ Alias: ethane_temperature
 name: ethane_temperature
 description: Ethane temperature, typically specified in degrees Celsius. Data providers
   may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_em_vitrification.cryogen_name
 rank: 1000
 alias: ethane_temperature
 owner: CryoEMPreparation

@@ -9,7 +9,7 @@ _Change in folding free energy (kcal/mol)_
 
 
 
-URI: [lambdaber:delta_delta_g](https://w3id.org/lambda-ber-schema/delta_delta_g)
+URI: [lambda:delta_delta_g](http://w3id.org/lambda/delta_delta_g)
 Alias: delta_delta_g
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: delta_delta_g
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: delta_delta_g
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:delta_delta_g |
-| native | lambdaber:delta_delta_g |
+| self | lambda:delta_delta_g |
+| native | lambda:delta_delta_g |
 
 
 
@@ -67,7 +67,7 @@ Alias: delta_delta_g
 ```yaml
 name: delta_delta_g
 description: Change in folding free energy (kcal/mol)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: delta_delta_g
 owner: MutationEffect

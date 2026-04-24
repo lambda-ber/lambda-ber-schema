@@ -7,6 +7,35 @@ experiment_code: "NSLS2-AMX-317839-mx317839-1-run6"
 experiment_date: "2025-09-09T08:59:56.658171"
 operator_id: dkreitler
 technique: xray_crystallography
+detector: Eiger9
+wavelength:
+  numeric_value: 0.919723
+  unit: Angstroms
+energy:
+  numeric_value: 13480.6
+  unit: eV
+detector_distance:
+  numeric_value: 300.0
+  unit: millimeters
+oscillation_angle:
+  numeric_value: 0.1
+  unit: degrees
+sweep_start:
+  numeric_value: 0.01
+  unit: degrees
+sweep_end:
+  numeric_value: 1.01
+  unit: degrees
+beam_center_pixels:
+  xbeam:
+    numeric_value: 1569.0
+    unit: pixels
+  ybeam:
+    numeric_value: 1542.02
+    unit: pixels
+exposure_time:
+  numeric_value: 0.01
+  unit: seconds
 
 experimental_conditions:
   temperature:
@@ -62,9 +91,8 @@ data_collection_strategy:
     numeric_value: null
     unit: electrons per Angstrom squared
   strategy_notes: >
-    Detector model from source metadata: Eiger9. Sweep start/end from source
-    metadata: 0.01 to 1.01 degrees. Original attenuation reported as fraction
-    0.1 (mapped here to transmission_percent=10.0).
+    Original attenuation reported as fraction 0.1 (mapped here to
+    transmission_percent=10.0).
 
 quality_metrics:
   resolution:

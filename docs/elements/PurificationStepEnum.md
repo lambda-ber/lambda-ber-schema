@@ -7,7 +7,7 @@ _Protein purification steps and methods_
 
 
 
-URI: [lambdaber:PurificationStepEnum](https://w3id.org/lambda-ber-schema/PurificationStepEnum)
+URI: [lambda:PurificationStepEnum](http://w3id.org/lambda/PurificationStepEnum)
 
 ## Permissible Values
 
@@ -47,7 +47,7 @@ URI: [lambdaber:PurificationStepEnum](https://w3id.org/lambda-ber-schema/Purific
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -60,7 +60,7 @@ URI: [lambdaber:PurificationStepEnum](https://w3id.org/lambda-ber-schema/Purific
 ```yaml
 name: PurificationStepEnum
 description: Protein purification steps and methods
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   affinity_ni_nta:

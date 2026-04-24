@@ -9,7 +9,7 @@ _A data file generated or used in the study_
 
 
 
-URI: [lambdaber:DataFile](https://w3id.org/lambda-ber-schema/DataFile)
+URI: [lambda:DataFile](http://w3id.org/lambda/DataFile)
 
 
 
@@ -135,7 +135,7 @@ URI: [lambdaber:DataFile](https://w3id.org/lambda-ber-schema/DataFile)
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -144,8 +144,8 @@ URI: [lambdaber:DataFile](https://w3id.org/lambda-ber-schema/DataFile)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:DataFile |
-| native | lambdaber:DataFile |
+| self | lambda:DataFile |
+| native | lambda:DataFile |
 
 
 
@@ -162,13 +162,13 @@ URI: [lambdaber:DataFile](https://w3id.org/lambda-ber-schema/DataFile)
 ```yaml
 name: DataFile
 description: A data file generated or used in the study
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: NamedThing
 attributes:
   file_name:
     name: file_name
     description: Name of the file
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - DataFile
@@ -177,14 +177,14 @@ attributes:
   file_path:
     name: file_path
     description: Path to the file
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - DataFile
   file_format:
     name: file_format
     description: File format
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - DataFile
@@ -193,7 +193,7 @@ attributes:
   file_size_bytes:
     name: file_size_bytes
     description: File size in bytes
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - DataFile
@@ -202,14 +202,14 @@ attributes:
   checksum:
     name: checksum
     description: SHA-256 checksum for data integrity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - DataFile
   creation_date:
     name: creation_date
     description: File creation date
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - DataFile
@@ -217,7 +217,7 @@ attributes:
   data_type:
     name: data_type
     description: Type of data in the file
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - DataFile
@@ -225,7 +225,7 @@ attributes:
   storage_uri:
     name: storage_uri
     description: Storage URI (S3, Globus, etc.)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - DataFile
@@ -233,7 +233,7 @@ attributes:
   related_entity:
     name: related_entity
     description: ID of the entity that owns this file
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - DataFile
@@ -241,7 +241,7 @@ attributes:
   file_role:
     name: file_role
     description: Role of the file (raw, intermediate, final, diagnostic, metadata)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - DataFile
@@ -256,13 +256,13 @@ attributes:
 ```yaml
 name: DataFile
 description: A data file generated or used in the study
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: NamedThing
 attributes:
   file_name:
     name: file_name
     description: Name of the file
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: file_name
     owner: DataFile
@@ -274,7 +274,7 @@ attributes:
   file_path:
     name: file_path
     description: Path to the file
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: file_path
     owner: DataFile
@@ -284,7 +284,7 @@ attributes:
   file_format:
     name: file_format
     description: File format
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: file_format
     owner: DataFile
@@ -295,7 +295,7 @@ attributes:
   file_size_bytes:
     name: file_size_bytes
     description: File size in bytes
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: file_size_bytes
     owner: DataFile
@@ -306,7 +306,7 @@ attributes:
   checksum:
     name: checksum
     description: SHA-256 checksum for data integrity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: checksum
     owner: DataFile
@@ -316,7 +316,7 @@ attributes:
   creation_date:
     name: creation_date
     description: File creation date
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: creation_date
     owner: DataFile
@@ -326,7 +326,7 @@ attributes:
   data_type:
     name: data_type
     description: Type of data in the file
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: data_type
     owner: DataFile
@@ -336,7 +336,7 @@ attributes:
   storage_uri:
     name: storage_uri
     description: Storage URI (S3, Globus, etc.)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: storage_uri
     owner: DataFile
@@ -346,7 +346,7 @@ attributes:
   related_entity:
     name: related_entity
     description: ID of the entity that owns this file
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: related_entity
     owner: DataFile
@@ -356,7 +356,7 @@ attributes:
   file_role:
     name: file_role
     description: Role of the file (raw, intermediate, final, diagnostic, metadata)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: file_role
     owner: DataFile
@@ -368,7 +368,7 @@ attributes:
     description: Globally unique identifier as an IRI or CURIE for machine processing
       and external references. Used for linking data across systems and semantic web
       integration.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     identifier: true
     alias: id
@@ -381,7 +381,7 @@ attributes:
   title:
     name: title
     description: A human-readable name or title for this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     slot_uri: dcterms:title
     alias: title
@@ -392,7 +392,7 @@ attributes:
   description:
     name: description
     description: A detailed textual description of this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: description
     owner: DataFile

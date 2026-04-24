@@ -9,7 +9,7 @@ _Date of the experiment_
 
 
 
-URI: [lambdaber:experiment_date](https://w3id.org/lambda-ber-schema/experiment_date)
+URI: [lambda:experiment_date](http://w3id.org/lambda/experiment_date)
 Alias: experiment_date
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: experiment_date
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: experiment_date
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:experiment_date |
-| native | lambdaber:experiment_date |
+| self | lambda:experiment_date |
+| native | lambda:experiment_date |
 
 
 
@@ -67,7 +67,7 @@ Alias: experiment_date
 ```yaml
 name: experiment_date
 description: Date of the experiment
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: experiment_date
 owner: ExperimentRun

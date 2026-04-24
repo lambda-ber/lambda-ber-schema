@@ -9,7 +9,7 @@ _Percentage of Ramachandran outliers_
 
 
 
-URI: [lambdaber:ramachandran_outliers_percent](https://w3id.org/lambda-ber-schema/ramachandran_outliers_percent)
+URI: [lambda:ramachandran_outliers_percent](http://w3id.org/lambda/ramachandran_outliers_percent)
 Alias: ramachandran_outliers_percent
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: ramachandran_outliers_percent
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: ramachandran_outliers_percent
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:ramachandran_outliers_percent |
-| native | lambdaber:ramachandran_outliers_percent |
+| self | lambda:ramachandran_outliers_percent |
+| native | lambda:ramachandran_outliers_percent |
+| exact | mmCIF:_pdbx_struct_quality.ramachandran_outliers |
 
 
 
@@ -67,7 +68,9 @@ Alias: ramachandran_outliers_percent
 ```yaml
 name: ramachandran_outliers_percent
 description: Percentage of Ramachandran outliers
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_pdbx_struct_quality.ramachandran_outliers
 rank: 1000
 alias: ramachandran_outliers_percent
 owner: QualityMetrics

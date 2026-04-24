@@ -9,7 +9,7 @@ _Sample concentration, typically specified in mg/mL or µM. Data providers may s
 
 
 
-URI: [lambdaber:concentration](https://w3id.org/lambda-ber-schema/concentration)
+URI: [lambda:concentration](http://w3id.org/lambda/concentration)
 Alias: concentration
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: concentration
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: concentration
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:concentration |
-| native | lambdaber:concentration |
+| self | lambda:concentration |
+| native | lambda:concentration |
 
 
 
@@ -68,7 +68,7 @@ Alias: concentration
 name: concentration
 description: Sample concentration, typically specified in mg/mL or µM. Data providers
   may specify alternative units (e.g., molar, g/L) by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: concentration
 owner: Sample

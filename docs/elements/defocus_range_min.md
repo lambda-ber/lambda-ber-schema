@@ -9,7 +9,7 @@ _Minimum defocus range in micrometers_
 
 
 
-URI: [lambdaber:defocus_range_min](https://w3id.org/lambda-ber-schema/defocus_range_min)
+URI: [lambda:defocus_range_min](http://w3id.org/lambda/defocus_range_min)
 Alias: defocus_range_min
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: defocus_range_min
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: defocus_range_min
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:defocus_range_min |
-| native | lambdaber:defocus_range_min |
+| self | lambda:defocus_range_min |
+| native | lambda:defocus_range_min |
+| exact | mmCIF:_em_imaging.nominal_defocus_min |
 
 
 
@@ -67,7 +68,9 @@ Alias: defocus_range_min
 ```yaml
 name: defocus_range_min
 description: Minimum defocus range in micrometers
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_em_imaging.nominal_defocus_min
 rank: 1000
 alias: defocus_range_min
 owner: ExperimentRun

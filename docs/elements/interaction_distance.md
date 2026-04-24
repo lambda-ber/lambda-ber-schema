@@ -9,7 +9,7 @@ _Distance criteria for interaction (Angstroms)_
 
 
 
-URI: [lambdaber:interaction_distance](https://w3id.org/lambda-ber-schema/interaction_distance)
+URI: [lambda:interaction_distance](http://w3id.org/lambda/interaction_distance)
 Alias: interaction_distance
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: interaction_distance
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: interaction_distance
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:interaction_distance |
-| native | lambdaber:interaction_distance |
+| self | lambda:interaction_distance |
+| native | lambda:interaction_distance |
 
 
 
@@ -67,7 +67,7 @@ Alias: interaction_distance
 ```yaml
 name: interaction_distance
 description: Distance criteria for interaction (Angstroms)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: interaction_distance
 owner: LigandInteraction

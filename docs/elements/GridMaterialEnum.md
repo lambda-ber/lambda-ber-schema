@@ -7,7 +7,7 @@ _Materials used for EM grids_
 
 
 
-URI: [lambdaber:GridMaterialEnum](https://w3id.org/lambda-ber-schema/GridMaterialEnum)
+URI: [lambda:GridMaterialEnum](http://w3id.org/lambda/GridMaterialEnum)
 
 ## Permissible Values
 
@@ -41,7 +41,7 @@ URI: [lambdaber:GridMaterialEnum](https://w3id.org/lambda-ber-schema/GridMateria
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -54,7 +54,7 @@ URI: [lambdaber:GridMaterialEnum](https://w3id.org/lambda-ber-schema/GridMateria
 ```yaml
 name: GridMaterialEnum
 description: Materials used for EM grids
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   carbon:

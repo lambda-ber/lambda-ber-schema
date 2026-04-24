@@ -9,7 +9,7 @@ _Cross-references to external databases_
 
 
 
-URI: [lambdaber:database_cross_references](https://w3id.org/lambda-ber-schema/database_cross_references)
+URI: [lambda:database_cross_references](http://w3id.org/lambda/database_cross_references)
 Alias: database_cross_references
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: database_cross_references
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: database_cross_references
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:database_cross_references |
-| native | lambdaber:database_cross_references |
+| self | lambda:database_cross_references |
+| native | lambda:database_cross_references |
 
 
 
@@ -69,7 +69,7 @@ Alias: database_cross_references
 ```yaml
 name: database_cross_references
 description: Cross-references to external databases
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: database_cross_references
 owner: Sample

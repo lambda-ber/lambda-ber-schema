@@ -9,7 +9,7 @@ _Organism for which codons were optimized_
 
 
 
-URI: [lambdaber:codon_optimization_organism](https://w3id.org/lambda-ber-schema/codon_optimization_organism)
+URI: [lambda:codon_optimization_organism](http://w3id.org/lambda/codon_optimization_organism)
 Alias: codon_optimization_organism
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: codon_optimization_organism
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: codon_optimization_organism
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:codon_optimization_organism |
-| native | lambdaber:codon_optimization_organism |
+| self | lambda:codon_optimization_organism |
+| native | lambda:codon_optimization_organism |
 
 
 
@@ -67,7 +67,7 @@ Alias: codon_optimization_organism
 ```yaml
 name: codon_optimization_organism
 description: Organism for which codons were optimized
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: codon_optimization_organism
 owner: ProteinConstruct

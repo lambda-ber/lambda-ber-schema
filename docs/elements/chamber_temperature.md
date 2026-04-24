@@ -9,7 +9,7 @@ _Chamber temperature, typically specified in degrees Celsius. Data providers may
 
 
 
-URI: [lambdaber:chamber_temperature](https://w3id.org/lambda-ber-schema/chamber_temperature)
+URI: [lambda:chamber_temperature](http://w3id.org/lambda/chamber_temperature)
 Alias: chamber_temperature
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: chamber_temperature
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: chamber_temperature
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:chamber_temperature |
-| native | lambdaber:chamber_temperature |
+| self | lambda:chamber_temperature |
+| native | lambda:chamber_temperature |
+| exact | mmCIF:_em_vitrification.chamber_temperature |
 
 
 
@@ -68,7 +69,9 @@ Alias: chamber_temperature
 name: chamber_temperature
 description: Chamber temperature, typically specified in degrees Celsius. Data providers
   may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_em_vitrification.chamber_temperature
 rank: 1000
 alias: chamber_temperature
 owner: CryoEMPreparation

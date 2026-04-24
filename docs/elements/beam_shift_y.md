@@ -9,7 +9,7 @@ _Beam shift Y in microradians_
 
 
 
-URI: [lambdaber:beam_shift_y](https://w3id.org/lambda-ber-schema/beam_shift_y)
+URI: [lambda:beam_shift_y](http://w3id.org/lambda/beam_shift_y)
 Alias: beam_shift_y
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: beam_shift_y
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: beam_shift_y
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:beam_shift_y |
-| native | lambdaber:beam_shift_y |
+| self | lambda:beam_shift_y |
+| native | lambda:beam_shift_y |
 
 
 
@@ -67,7 +67,7 @@ Alias: beam_shift_y
 ```yaml
 name: beam_shift_y
 description: Beam shift Y in microradians
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: beam_shift_y
 owner: Movie

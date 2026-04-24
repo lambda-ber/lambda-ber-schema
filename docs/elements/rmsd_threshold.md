@@ -9,7 +9,7 @@ _RMSD threshold for clustering (Angstroms)_
 
 
 
-URI: [lambdaber:rmsd_threshold](https://w3id.org/lambda-ber-schema/rmsd_threshold)
+URI: [lambda:rmsd_threshold](http://w3id.org/lambda/rmsd_threshold)
 Alias: rmsd_threshold
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: rmsd_threshold
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: rmsd_threshold
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:rmsd_threshold |
-| native | lambdaber:rmsd_threshold |
+| self | lambda:rmsd_threshold |
+| native | lambda:rmsd_threshold |
 
 
 
@@ -67,7 +67,7 @@ Alias: rmsd_threshold
 ```yaml
 name: rmsd_threshold
 description: RMSD threshold for clustering (Angstroms)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: rmsd_threshold
 owner: ConformationalEnsemble

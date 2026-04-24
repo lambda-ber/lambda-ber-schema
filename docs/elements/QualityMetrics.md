@@ -9,7 +9,7 @@ _Quality metrics for experiments_
 
 
 
-URI: [lambdaber:QualityMetrics](https://w3id.org/lambda-ber-schema/QualityMetrics)
+URI: [lambda:QualityMetrics](http://w3id.org/lambda/QualityMetrics)
 
 
 
@@ -435,7 +435,7 @@ URI: [lambdaber:QualityMetrics](https://w3id.org/lambda-ber-schema/QualityMetric
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -444,8 +444,8 @@ URI: [lambdaber:QualityMetrics](https://w3id.org/lambda-ber-schema/QualityMetric
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:QualityMetrics |
-| native | lambdaber:QualityMetrics |
+| self | lambda:QualityMetrics |
+| native | lambda:QualityMetrics |
 
 
 
@@ -462,14 +462,14 @@ URI: [lambdaber:QualityMetrics](https://w3id.org/lambda-ber-schema/QualityMetric
 ```yaml
 name: QualityMetrics
 description: Quality metrics for experiments
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: AttributeGroup
 attributes:
   resolution:
     name: resolution
     description: Resolution, typically specified in Angstroms. Data providers may
       specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - ExperimentRun
     - QualityMetrics
@@ -479,7 +479,7 @@ attributes:
     name: resolution_high_shell_a
     description: High resolution shell limit, typically specified in Angstroms. Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - QualityMetrics
@@ -489,7 +489,7 @@ attributes:
     name: resolution_low_a
     description: Low resolution limit, typically specified in Angstroms. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - QualityMetrics
@@ -499,7 +499,7 @@ attributes:
     name: completeness
     description: Data completeness, typically specified as a percentage (0-100). Data
       providers may specify as decimal fraction by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - QualityMetrics
@@ -510,7 +510,7 @@ attributes:
     description: Completeness in highest resolution shell, typically specified as
       a percentage (0-100). Data providers may specify as decimal fraction by including
       the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - QualityMetrics
@@ -519,7 +519,7 @@ attributes:
   signal_to_noise:
     name: signal_to_noise
     description: Signal to noise ratio
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - QualityMetrics
@@ -528,7 +528,7 @@ attributes:
   mean_i_over_sigma_i:
     name: mean_i_over_sigma_i
     description: Mean I/sigma(I)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - QualityMetrics
@@ -537,7 +537,9 @@ attributes:
   space_group:
     name: space_group
     description: Crystallographic space group
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_symmetry.space_group_name_H-M
     domain_of:
     - WorkflowRun
     - QualityMetrics
@@ -545,7 +547,9 @@ attributes:
     name: unit_cell_a
     description: Unit cell parameter a, typically specified in Angstroms. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_cell.length_a
     domain_of:
     - WorkflowRun
     - QualityMetrics
@@ -555,7 +559,9 @@ attributes:
     name: unit_cell_b
     description: Unit cell parameter b, typically specified in Angstroms. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_cell.length_b
     domain_of:
     - WorkflowRun
     - QualityMetrics
@@ -565,7 +571,9 @@ attributes:
     name: unit_cell_c
     description: Unit cell parameter c, typically specified in Angstroms. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_cell.length_c
     domain_of:
     - WorkflowRun
     - QualityMetrics
@@ -575,7 +583,9 @@ attributes:
     name: unit_cell_alpha
     description: Unit cell angle alpha, typically specified in degrees. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_cell.angle_alpha
     domain_of:
     - WorkflowRun
     - QualityMetrics
@@ -585,7 +595,9 @@ attributes:
     name: unit_cell_beta
     description: Unit cell angle beta, typically specified in degrees. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_cell.angle_beta
     domain_of:
     - WorkflowRun
     - QualityMetrics
@@ -595,7 +607,9 @@ attributes:
     name: unit_cell_gamma
     description: Unit cell angle gamma, typically specified in degrees. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_cell.angle_gamma
     domain_of:
     - WorkflowRun
     - QualityMetrics
@@ -604,7 +618,9 @@ attributes:
   multiplicity:
     name: multiplicity
     description: Data multiplicity (redundancy)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_reflns.pdbx_redundancy
     domain_of:
     - WorkflowRun
     - QualityMetrics
@@ -613,7 +629,9 @@ attributes:
   cc_half:
     name: cc_half
     description: Half-set correlation coefficient CC(1/2)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_reflns.pdbx_CC_half
     domain_of:
     - WorkflowRun
     - QualityMetrics
@@ -622,7 +640,9 @@ attributes:
   r_merge:
     name: r_merge
     description: Rmerge - merge R-factor
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_reflns.pdbx_Rmerge_I_obs
     rank: 1000
     domain_of:
     - QualityMetrics
@@ -631,7 +651,9 @@ attributes:
   r_pim:
     name: r_pim
     description: Rpim - precision-indicating merging R-factor
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_reflns.pdbx_Rpim_I_all
     rank: 1000
     domain_of:
     - QualityMetrics
@@ -640,7 +662,9 @@ attributes:
   wilson_b_factor_a2:
     name: wilson_b_factor_a2
     description: Wilson B-factor in Angstroms squared
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_reflns.B_iso_Wilson_estimate
     rank: 1000
     domain_of:
     - QualityMetrics
@@ -649,7 +673,7 @@ attributes:
   anomalous_used:
     name: anomalous_used
     description: Whether anomalous signal was used
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - QualityMetrics
@@ -657,7 +681,9 @@ attributes:
   anom_corr:
     name: anom_corr
     description: Anomalous correlation
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_reflns.pdbx_CC_half_anomalous
     rank: 1000
     domain_of:
     - QualityMetrics
@@ -666,7 +692,7 @@ attributes:
   anom_sig_ano:
     name: anom_sig_ano
     description: Anomalous signal strength
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - QualityMetrics
@@ -675,7 +701,9 @@ attributes:
   r_work:
     name: r_work
     description: Refinement R-factor (working set)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_refine.ls_R_factor_R_work
     rank: 1000
     domain_of:
     - QualityMetrics
@@ -684,7 +712,9 @@ attributes:
   r_free:
     name: r_free
     description: R-free (test set)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_refine.ls_R_factor_R_free
     rank: 1000
     domain_of:
     - QualityMetrics
@@ -693,7 +723,9 @@ attributes:
   ramachandran_favored_percent:
     name: ramachandran_favored_percent
     description: Percentage of residues in favored Ramachandran regions
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_pdbx_struct_quality.ramachandran_favored
     rank: 1000
     domain_of:
     - QualityMetrics
@@ -702,7 +734,9 @@ attributes:
   ramachandran_outliers_percent:
     name: ramachandran_outliers_percent
     description: Percentage of Ramachandran outliers
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_pdbx_struct_quality.ramachandran_outliers
     rank: 1000
     domain_of:
     - QualityMetrics
@@ -711,7 +745,9 @@ attributes:
   clashscore:
     name: clashscore
     description: MolProbity clashscore
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_pdbx_struct_quality.clashscore
     domain_of:
     - WorkflowRun
     - QualityMetrics
@@ -720,7 +756,7 @@ attributes:
   molprobity_score:
     name: molprobity_score
     description: Overall MolProbity score
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - QualityMetrics
@@ -729,7 +765,9 @@ attributes:
   average_b_factor_a2:
     name: average_b_factor_a2
     description: Average B-factor in Angstroms squared
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_refine.B_iso_mean
     rank: 1000
     domain_of:
     - QualityMetrics
@@ -738,7 +776,7 @@ attributes:
   i_zero:
     name: i_zero
     description: Forward scattering intensity I(0)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - QualityMetrics
@@ -748,7 +786,7 @@ attributes:
     name: rg
     description: Radius of gyration, typically specified in Angstroms. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - QualityMetrics
@@ -757,7 +795,7 @@ attributes:
   r_factor:
     name: r_factor
     description: R-factor for crystallography (deprecated, use r_work)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - QualityMetrics
@@ -773,14 +811,14 @@ attributes:
 ```yaml
 name: QualityMetrics
 description: Quality metrics for experiments
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: AttributeGroup
 attributes:
   resolution:
     name: resolution
     description: Resolution, typically specified in Angstroms. Data providers may
       specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: resolution
     owner: QualityMetrics
     domain_of:
@@ -792,7 +830,7 @@ attributes:
     name: resolution_high_shell_a
     description: High resolution shell limit, typically specified in Angstroms. Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: resolution_high_shell_a
     owner: QualityMetrics
@@ -804,7 +842,7 @@ attributes:
     name: resolution_low_a
     description: Low resolution limit, typically specified in Angstroms. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: resolution_low_a
     owner: QualityMetrics
@@ -816,7 +854,7 @@ attributes:
     name: completeness
     description: Data completeness, typically specified as a percentage (0-100). Data
       providers may specify as decimal fraction by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: completeness
     owner: QualityMetrics
@@ -829,7 +867,7 @@ attributes:
     description: Completeness in highest resolution shell, typically specified as
       a percentage (0-100). Data providers may specify as decimal fraction by including
       the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: completeness_high_res_shell_percent
     owner: QualityMetrics
@@ -840,7 +878,7 @@ attributes:
   signal_to_noise:
     name: signal_to_noise
     description: Signal to noise ratio
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: signal_to_noise
     owner: QualityMetrics
@@ -851,7 +889,7 @@ attributes:
   mean_i_over_sigma_i:
     name: mean_i_over_sigma_i
     description: Mean I/sigma(I)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: mean_i_over_sigma_i
     owner: QualityMetrics
@@ -862,7 +900,9 @@ attributes:
   space_group:
     name: space_group
     description: Crystallographic space group
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_symmetry.space_group_name_H-M
     alias: space_group
     owner: QualityMetrics
     domain_of:
@@ -873,7 +913,9 @@ attributes:
     name: unit_cell_a
     description: Unit cell parameter a, typically specified in Angstroms. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_cell.length_a
     alias: unit_cell_a
     owner: QualityMetrics
     domain_of:
@@ -885,7 +927,9 @@ attributes:
     name: unit_cell_b
     description: Unit cell parameter b, typically specified in Angstroms. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_cell.length_b
     alias: unit_cell_b
     owner: QualityMetrics
     domain_of:
@@ -897,7 +941,9 @@ attributes:
     name: unit_cell_c
     description: Unit cell parameter c, typically specified in Angstroms. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_cell.length_c
     alias: unit_cell_c
     owner: QualityMetrics
     domain_of:
@@ -909,7 +955,9 @@ attributes:
     name: unit_cell_alpha
     description: Unit cell angle alpha, typically specified in degrees. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_cell.angle_alpha
     alias: unit_cell_alpha
     owner: QualityMetrics
     domain_of:
@@ -921,7 +969,9 @@ attributes:
     name: unit_cell_beta
     description: Unit cell angle beta, typically specified in degrees. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_cell.angle_beta
     alias: unit_cell_beta
     owner: QualityMetrics
     domain_of:
@@ -933,7 +983,9 @@ attributes:
     name: unit_cell_gamma
     description: Unit cell angle gamma, typically specified in degrees. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_cell.angle_gamma
     alias: unit_cell_gamma
     owner: QualityMetrics
     domain_of:
@@ -944,7 +996,9 @@ attributes:
   multiplicity:
     name: multiplicity
     description: Data multiplicity (redundancy)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_reflns.pdbx_redundancy
     alias: multiplicity
     owner: QualityMetrics
     domain_of:
@@ -955,7 +1009,9 @@ attributes:
   cc_half:
     name: cc_half
     description: Half-set correlation coefficient CC(1/2)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_reflns.pdbx_CC_half
     alias: cc_half
     owner: QualityMetrics
     domain_of:
@@ -966,7 +1022,9 @@ attributes:
   r_merge:
     name: r_merge
     description: Rmerge - merge R-factor
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_reflns.pdbx_Rmerge_I_obs
     rank: 1000
     alias: r_merge
     owner: QualityMetrics
@@ -977,7 +1035,9 @@ attributes:
   r_pim:
     name: r_pim
     description: Rpim - precision-indicating merging R-factor
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_reflns.pdbx_Rpim_I_all
     rank: 1000
     alias: r_pim
     owner: QualityMetrics
@@ -988,7 +1048,9 @@ attributes:
   wilson_b_factor_a2:
     name: wilson_b_factor_a2
     description: Wilson B-factor in Angstroms squared
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_reflns.B_iso_Wilson_estimate
     rank: 1000
     alias: wilson_b_factor_a2
     owner: QualityMetrics
@@ -999,7 +1061,7 @@ attributes:
   anomalous_used:
     name: anomalous_used
     description: Whether anomalous signal was used
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: anomalous_used
     owner: QualityMetrics
@@ -1009,7 +1071,9 @@ attributes:
   anom_corr:
     name: anom_corr
     description: Anomalous correlation
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_reflns.pdbx_CC_half_anomalous
     rank: 1000
     alias: anom_corr
     owner: QualityMetrics
@@ -1020,7 +1084,7 @@ attributes:
   anom_sig_ano:
     name: anom_sig_ano
     description: Anomalous signal strength
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: anom_sig_ano
     owner: QualityMetrics
@@ -1031,7 +1095,9 @@ attributes:
   r_work:
     name: r_work
     description: Refinement R-factor (working set)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_refine.ls_R_factor_R_work
     rank: 1000
     alias: r_work
     owner: QualityMetrics
@@ -1042,7 +1108,9 @@ attributes:
   r_free:
     name: r_free
     description: R-free (test set)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_refine.ls_R_factor_R_free
     rank: 1000
     alias: r_free
     owner: QualityMetrics
@@ -1053,7 +1121,9 @@ attributes:
   ramachandran_favored_percent:
     name: ramachandran_favored_percent
     description: Percentage of residues in favored Ramachandran regions
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_pdbx_struct_quality.ramachandran_favored
     rank: 1000
     alias: ramachandran_favored_percent
     owner: QualityMetrics
@@ -1064,7 +1134,9 @@ attributes:
   ramachandran_outliers_percent:
     name: ramachandran_outliers_percent
     description: Percentage of Ramachandran outliers
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_pdbx_struct_quality.ramachandran_outliers
     rank: 1000
     alias: ramachandran_outliers_percent
     owner: QualityMetrics
@@ -1075,7 +1147,9 @@ attributes:
   clashscore:
     name: clashscore
     description: MolProbity clashscore
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_pdbx_struct_quality.clashscore
     alias: clashscore
     owner: QualityMetrics
     domain_of:
@@ -1086,7 +1160,7 @@ attributes:
   molprobity_score:
     name: molprobity_score
     description: Overall MolProbity score
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: molprobity_score
     owner: QualityMetrics
@@ -1097,7 +1171,9 @@ attributes:
   average_b_factor_a2:
     name: average_b_factor_a2
     description: Average B-factor in Angstroms squared
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_refine.B_iso_mean
     rank: 1000
     alias: average_b_factor_a2
     owner: QualityMetrics
@@ -1108,7 +1184,7 @@ attributes:
   i_zero:
     name: i_zero
     description: Forward scattering intensity I(0)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: i_zero
     owner: QualityMetrics
@@ -1120,7 +1196,7 @@ attributes:
     name: rg
     description: Radius of gyration, typically specified in Angstroms. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: rg
     owner: QualityMetrics
@@ -1131,7 +1207,7 @@ attributes:
   r_factor:
     name: r_factor
     description: R-factor for crystallography (deprecated, use r_work)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: r_factor
     owner: QualityMetrics
@@ -1141,7 +1217,7 @@ attributes:
     inlined: true
   description:
     name: description
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: description
     owner: QualityMetrics
     domain_of:

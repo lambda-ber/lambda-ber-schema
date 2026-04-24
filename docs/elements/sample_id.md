@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:sample_id](https://w3id.org/lambda-ber-schema/sample_id)
+URI: [lambda:sample_id](http://w3id.org/lambda/sample_id)
 Alias: sample_id
 
 <!-- no inheritance hierarchy -->
@@ -17,8 +17,8 @@ Alias: sample_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentSampleAssociation](ExperimentSampleAssociation.md) | M:N link between ExperimentRun and Sample with role metadata |  no  |
 | [SamplePreparation](SamplePreparation.md) | A process that prepares a sample for imaging |  no  |
+| [ExperimentSampleAssociation](ExperimentSampleAssociation.md) | M:N link between ExperimentRun and Sample with role metadata |  no  |
 | [StudySampleAssociation](StudySampleAssociation.md) | M:N link between Study and Sample with role metadata |  no  |
 
 
@@ -45,8 +45,8 @@ Alias: sample_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:sample_id |
-| native | lambdaber:sample_id |
+| self | lambda:sample_id |
+| native | lambda:sample_id |
 
 
 

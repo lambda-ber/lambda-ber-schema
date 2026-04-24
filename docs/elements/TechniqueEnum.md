@@ -7,7 +7,7 @@ _Structural biology techniques_
 
 
 
-URI: [lambdaber:TechniqueEnum](https://w3id.org/lambda-ber-schema/TechniqueEnum)
+URI: [lambda:TechniqueEnum](http://w3id.org/lambda/TechniqueEnum)
 
 ## Permissible Values
 
@@ -37,8 +37,8 @@ URI: [lambdaber:TechniqueEnum](https://w3id.org/lambda-ber-schema/TechniqueEnum)
 
 | Name | Description |
 | ---  | --- |
+| [technique](technique.md) | Primary technique (should always be sans for this class) |
 | [techniques_supported](techniques_supported.md) | Experimental techniques available at this beamline |
-| [technique](technique.md) | Technique used for data collection |
 
 
 
@@ -54,7 +54,7 @@ URI: [lambdaber:TechniqueEnum](https://w3id.org/lambda-ber-schema/TechniqueEnum)
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -67,7 +67,7 @@ URI: [lambdaber:TechniqueEnum](https://w3id.org/lambda-ber-schema/TechniqueEnum)
 ```yaml
 name: TechniqueEnum
 description: Structural biology techniques
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   cryo_em:

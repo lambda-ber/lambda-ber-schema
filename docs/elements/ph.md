@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:ph](https://w3id.org/lambda-ber-schema/ph)
+URI: [lambda:ph](http://w3id.org/lambda/ph)
 Alias: ph
 
 <!-- no inheritance hierarchy -->
@@ -17,8 +17,8 @@ Alias: ph
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [MeasurementConditions](MeasurementConditions.md) | Conditions under which biophysical measurements were made |  no  |
 | [BufferComposition](BufferComposition.md) | Buffer composition for sample storage |  no  |
+| [MeasurementConditions](MeasurementConditions.md) | Conditions under which biophysical measurements were made |  no  |
 
 
 
@@ -44,8 +44,8 @@ Alias: ph
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:ph |
-| native | lambdaber:ph |
+| self | lambda:ph |
+| native | lambda:ph |
 
 
 

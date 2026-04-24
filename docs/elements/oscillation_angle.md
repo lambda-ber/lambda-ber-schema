@@ -9,7 +9,7 @@ _Oscillation angle per image, typically specified in degrees. Data providers may
 
 
 
-URI: [lambdaber:oscillation_angle](https://w3id.org/lambda-ber-schema/oscillation_angle)
+URI: [lambda:oscillation_angle](http://w3id.org/lambda/oscillation_angle)
 Alias: oscillation_angle
 
 <!-- no inheritance hierarchy -->
@@ -35,6 +35,12 @@ Alias: oscillation_angle
 
 
 
+## Aliases
+
+
+* oscillation_width
+* oscillation_per_image_deg
+
 
 ## Identifier and Mapping Information
 
@@ -46,7 +52,7 @@ Alias: oscillation_angle
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +61,8 @@ Alias: oscillation_angle
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:oscillation_angle |
-| native | lambdaber:oscillation_angle |
+| self | lambda:oscillation_angle |
+| native | lambda:oscillation_angle |
 | exact | nsls2:Angle_increment, imgCIF:_diffrn_scan_axis.angle_increment, mmCIF:_diffrn_scan.angle_increment, ispyb:DataCollection.axisRange |
 
 
@@ -69,7 +75,10 @@ Alias: oscillation_angle
 name: oscillation_angle
 description: Oscillation angle per image, typically specified in degrees. Data providers
   may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+aliases:
+- oscillation_width
+- oscillation_per_image_deg
 exact_mappings:
 - nsls2:Angle_increment
 - imgCIF:_diffrn_scan_axis.angle_increment

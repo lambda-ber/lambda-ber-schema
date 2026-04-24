@@ -9,7 +9,7 @@ _Color channels present (e.g., RGB, grayscale)_
 
 
 
-URI: [lambdaber:color_channels](https://w3id.org/lambda-ber-schema/color_channels)
+URI: [lambda:color_channels](http://w3id.org/lambda/color_channels)
 Alias: color_channels
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: color_channels
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: color_channels
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:color_channels |
-| native | lambdaber:color_channels |
+| self | lambda:color_channels |
+| native | lambda:color_channels |
 
 
 
@@ -69,7 +69,7 @@ Alias: color_channels
 ```yaml
 name: color_channels
 description: Color channels present (e.g., RGB, grayscale)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: color_channels
 owner: OpticalImage

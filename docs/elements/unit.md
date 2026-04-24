@@ -9,7 +9,7 @@ _The unit of measurement. Should be taken from the UCUM unit collection or the U
 
 
 
-URI: [lambdaber:unit](https://w3id.org/lambda-ber-schema/unit)
+URI: [lambda:unit](http://w3id.org/lambda/unit)
 Alias: unit
 
 <!-- no inheritance hierarchy -->
@@ -22,8 +22,8 @@ Alias: unit
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [QuantityValue](QuantityValue.md) | A simple quantity value, representing a measurement with a numeric value and ... |  yes  |
 | [BiophysicalProperty](BiophysicalProperty.md) | Measured or calculated biophysical properties |  no  |
+| [QuantityValue](QuantityValue.md) | A simple quantity value, representing a measurement with a numeric value and ... |  yes  |
 
 
 
@@ -52,7 +52,7 @@ Alias: unit
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -61,8 +61,8 @@ Alias: unit
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:unit |
-| native | lambdaber:unit |
+| self | lambda:unit |
+| native | lambda:unit |
 | undefined | nmdc:unit, qud:unit, schema:unitCode, UO:0000000 |
 
 
@@ -75,7 +75,7 @@ Alias: unit
 name: unit
 description: The unit of measurement. Should be taken from the UCUM unit collection
   or the Unit Ontology. Examples include Angstroms, micrometers, kilodaltons, degrees.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 aliases:
 - scale
 mappings:

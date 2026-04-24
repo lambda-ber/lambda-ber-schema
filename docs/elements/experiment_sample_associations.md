@@ -9,7 +9,7 @@ _Links between experiments and samples (M:N with role)_
 
 
 
-URI: [lambdaber:experiment_sample_associations](https://w3id.org/lambda-ber-schema/experiment_sample_associations)
+URI: [lambda:experiment_sample_associations](http://w3id.org/lambda/experiment_sample_associations)
 Alias: experiment_sample_associations
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: experiment_sample_associations
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: experiment_sample_associations
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:experiment_sample_associations |
-| native | lambdaber:experiment_sample_associations |
+| self | lambda:experiment_sample_associations |
+| native | lambda:experiment_sample_associations |
 
 
 
@@ -69,7 +69,7 @@ Alias: experiment_sample_associations
 ```yaml
 name: experiment_sample_associations
 description: Links between experiments and samples (M:N with role)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: experiment_sample_associations
 owner: Dataset

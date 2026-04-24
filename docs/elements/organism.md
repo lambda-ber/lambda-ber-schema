@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:organism](https://w3id.org/lambda-ber-schema/organism)
+URI: [lambda:organism](http://w3id.org/lambda/organism)
 Alias: organism
 
 <!-- no inheritance hierarchy -->
@@ -17,8 +17,8 @@ Alias: organism
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AggregatedProteinView](AggregatedProteinView.md) | Aggregated view of all structural and functional data for a protein |  no  |
 | [Sample](Sample.md) | A biological sample used in structural biology experiments |  no  |
+| [AggregatedProteinView](AggregatedProteinView.md) | Aggregated view of all structural and functional data for a protein |  no  |
 
 
 
@@ -44,8 +44,8 @@ Alias: organism
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:organism |
-| native | lambdaber:organism |
+| self | lambda:organism |
+| native | lambda:organism |
 
 
 

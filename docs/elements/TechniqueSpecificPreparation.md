@@ -11,7 +11,7 @@ _Base class for technique-specific preparation details_
 * __NOTE__: this is an abstract class and should not be instantiated directly
 
 
-URI: [lambdaber:TechniqueSpecificPreparation](https://w3id.org/lambda-ber-schema/TechniqueSpecificPreparation)
+URI: [lambda:TechniqueSpecificPreparation](http://w3id.org/lambda/TechniqueSpecificPreparation)
 
 
 
@@ -76,7 +76,7 @@ URI: [lambdaber:TechniqueSpecificPreparation](https://w3id.org/lambda-ber-schema
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -85,8 +85,8 @@ URI: [lambdaber:TechniqueSpecificPreparation](https://w3id.org/lambda-ber-schema
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:TechniqueSpecificPreparation |
-| native | lambdaber:TechniqueSpecificPreparation |
+| self | lambda:TechniqueSpecificPreparation |
+| native | lambda:TechniqueSpecificPreparation |
 
 
 
@@ -103,7 +103,7 @@ URI: [lambdaber:TechniqueSpecificPreparation](https://w3id.org/lambda-ber-schema
 ```yaml
 name: TechniqueSpecificPreparation
 description: Base class for technique-specific preparation details
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: AttributeGroup
 abstract: true
 
@@ -116,13 +116,13 @@ abstract: true
 ```yaml
 name: TechniqueSpecificPreparation
 description: Base class for technique-specific preparation details
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: AttributeGroup
 abstract: true
 attributes:
   description:
     name: description
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: description
     owner: TechniqueSpecificPreparation
     domain_of:

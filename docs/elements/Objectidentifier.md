@@ -35,7 +35,7 @@ URI: [shex:iri](http://www.w3.org/ns/shex#iri)
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -45,6 +45,6 @@ URI: [shex:iri](http://www.w3.org/ns/shex#iri)
 | Mapping Type | Mapped Value |
 | ---  | ---  |
 | self | shex:iri |
-| native | lambdaber:objectidentifier |
+| native | lambda:objectidentifier |
 
 

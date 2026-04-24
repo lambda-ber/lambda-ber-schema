@@ -9,7 +9,7 @@ _Method used to prepare the sample_
 
 
 
-URI: [lambdaber:preparation_method](https://w3id.org/lambda-ber-schema/preparation_method)
+URI: [lambda:preparation_method](http://w3id.org/lambda/preparation_method)
 Alias: preparation_method
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: preparation_method
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: preparation_method
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:preparation_method |
-| native | lambdaber:preparation_method |
+| self | lambda:preparation_method |
+| native | lambda:preparation_method |
 
 
 
@@ -67,7 +67,7 @@ Alias: preparation_method
 ```yaml
 name: preparation_method
 description: Method used to prepare the sample
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: preparation_method
 owner: Sample

@@ -9,7 +9,7 @@ _CPU hours used, measured in hours. Data providers may specify alternative time 
 
 
 
-URI: [lambdaber:cpu_hours](https://w3id.org/lambda-ber-schema/cpu_hours)
+URI: [lambda:cpu_hours](http://w3id.org/lambda/cpu_hours)
 Alias: cpu_hours
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: cpu_hours
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: cpu_hours
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:cpu_hours |
-| native | lambdaber:cpu_hours |
+| self | lambda:cpu_hours |
+| native | lambda:cpu_hours |
 
 
 
@@ -68,7 +68,7 @@ Alias: cpu_hours
 name: cpu_hours
 description: CPU hours used, measured in hours. Data providers may specify alternative
   time units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: cpu_hours
 owner: ComputeResources

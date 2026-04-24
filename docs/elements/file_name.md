@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:file_name](https://w3id.org/lambda-ber-schema/file_name)
+URI: [lambda:file_name](http://w3id.org/lambda/file_name)
 Alias: file_name
 
 <!-- no inheritance hierarchy -->
@@ -17,16 +17,16 @@ Alias: file_name
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OpticalImage](OpticalImage.md) | Visible light optical microscopy or photography image |  no  |
-| [Image2D](Image2D.md) | A 2D image (micrograph, diffraction pattern) |  no  |
-| [DataFile](DataFile.md) | A data file generated or used in the study |  no  |
-| [XRFImage](XRFImage.md) | X-ray fluorescence (XRF) image showing elemental distribution |  no  |
 | [Image3D](Image3D.md) | A 3D volume or tomogram |  no  |
+| [Image2D](Image2D.md) | A 2D image (micrograph, diffraction pattern) |  no  |
+| [XRFImage](XRFImage.md) | X-ray fluorescence (XRF) image showing elemental distribution |  no  |
 | [Micrograph](Micrograph.md) | Motion-corrected micrograph derived from movie |  no  |
+| [DataFile](DataFile.md) | A data file generated or used in the study |  no  |
+| [Image](Image.md) | An image file from structural biology experiments |  no  |
 | [FTIRImage](FTIRImage.md) | Fourier Transform Infrared (FTIR) spectroscopy image capturing molecular comp... |  no  |
+| [OpticalImage](OpticalImage.md) | Visible light optical microscopy or photography image |  no  |
 | [Movie](Movie.md) | Raw cryo-EM movie with frame-by-frame metadata for motion correction |  no  |
 | [FluorescenceImage](FluorescenceImage.md) | Fluorescence microscopy image capturing specific molecular targets through fl... |  no  |
-| [Image](Image.md) | An image file from structural biology experiments |  no  |
 
 
 
@@ -52,8 +52,8 @@ Alias: file_name
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:file_name |
-| native | lambdaber:file_name |
+| self | lambda:file_name |
+| native | lambda:file_name |
 
 
 

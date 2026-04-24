@@ -7,7 +7,7 @@ _Expression systems for recombinant protein production_
 
 
 
-URI: [lambdaber:ExpressionSystemEnum](https://w3id.org/lambda-ber-schema/ExpressionSystemEnum)
+URI: [lambda:ExpressionSystemEnum](http://w3id.org/lambda/ExpressionSystemEnum)
 
 ## Permissible Values
 
@@ -36,7 +36,7 @@ URI: [lambdaber:ExpressionSystemEnum](https://w3id.org/lambda-ber-schema/Express
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -49,7 +49,7 @@ URI: [lambdaber:ExpressionSystemEnum](https://w3id.org/lambda-ber-schema/Express
 ```yaml
 name: ExpressionSystemEnum
 description: Expression systems for recombinant protein production
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   bacteria:

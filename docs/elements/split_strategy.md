@@ -9,7 +9,7 @@ _Strategy for data splitting_
 
 
 
-URI: [lambdaber:split_strategy](https://w3id.org/lambda-ber-schema/split_strategy)
+URI: [lambda:split_strategy](http://w3id.org/lambda/split_strategy)
 Alias: split_strategy
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: split_strategy
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: split_strategy
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:split_strategy |
-| native | lambdaber:split_strategy |
+| self | lambda:split_strategy |
+| native | lambda:split_strategy |
 
 
 
@@ -67,7 +67,7 @@ Alias: split_strategy
 ```yaml
 name: split_strategy
 description: Strategy for data splitting
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: split_strategy
 owner: RefinementParameters

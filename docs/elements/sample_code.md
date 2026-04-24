@@ -9,7 +9,7 @@ _Human-friendly laboratory identifier or facility code for the sample (e.g., 'AL
 
 
 
-URI: [lambdaber:sample_code](https://w3id.org/lambda-ber-schema/sample_code)
+URI: [lambda:sample_code](http://w3id.org/lambda/sample_code)
 Alias: sample_code
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: sample_code
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: sample_code
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:sample_code |
-| native | lambdaber:sample_code |
+| self | lambda:sample_code |
+| native | lambda:sample_code |
 
 
 
@@ -71,7 +71,7 @@ name: sample_code
 description: Human-friendly laboratory identifier or facility code for the sample
   (e.g., 'ALS-12.3.1-SAMPLE-001', 'LAB-PROT-2024-01'). Used for local reference and
   tracking within laboratory workflows.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: sample_code
 owner: Sample

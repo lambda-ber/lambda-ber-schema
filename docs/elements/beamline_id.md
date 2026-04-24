@@ -9,7 +9,7 @@ _Beamline identifier at synchrotron/neutron facility_
 
 
 
-URI: [mmCIF:_diffrn_source.pdbx_synchrotron_beamline](http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_source.pdbx_synchrotron_beamline)
+URI: [lambda:beamline_id](http://w3id.org/lambda/beamline_id)
 Alias: beamline_id
 
 <!-- no inheritance hierarchy -->
@@ -22,11 +22,12 @@ Alias: beamline_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Instrument](Instrument.md) | An instrument used to collect data |  no  |
 | [XRayInstrument](XRayInstrument.md) | X-ray diffractometer or synchrotron beamline specifications |  no  |
 | [SAXSInstrument](SAXSInstrument.md) | SAXS/WAXS instrument specifications |  no  |
 | [CryoEMInstrument](CryoEMInstrument.md) | Cryo-EM microscope specifications |  no  |
+| [SANSInstrument](SANSInstrument.md) | Small-angle neutron scattering (SANS) instrument specifications |  no  |
 | [BeamlineInstrument](BeamlineInstrument.md) | Multi-technique synchrotron beamline that supports multiple experimental meth... |  no  |
+| [Instrument](Instrument.md) | An instrument used to collect data |  no  |
 
 
 
@@ -55,7 +56,7 @@ Alias: beamline_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -64,8 +65,9 @@ Alias: beamline_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | mmCIF:_diffrn_source.pdbx_synchrotron_beamline |
-| native | lambdaber:beamline_id |
+| self | lambda:beamline_id |
+| native | lambda:beamline_id |
+| exact | mmCIF:_diffrn_source.pdbx_synchrotron_beamline |
 
 
 
@@ -79,9 +81,10 @@ description: Beamline identifier at synchrotron/neutron facility
 comments:
 - Use facility-specific naming convention
 - 'Examples: ''12.3.1'' (ALS), ''17-ID-1'' (NSLS-II), ''I04'' (Diamond)'
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_diffrn_source.pdbx_synchrotron_beamline
 rank: 1000
-slot_uri: mmCIF:_diffrn_source.pdbx_synchrotron_beamline
 alias: beamline_id
 owner: Instrument
 domain_of:

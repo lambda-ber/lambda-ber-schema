@@ -9,7 +9,7 @@ _X-ray fluorescence (XRF) image showing elemental distribution_
 
 
 
-URI: [lambdaber:XRFImage](https://w3id.org/lambda-ber-schema/XRFImage)
+URI: [lambda:XRFImage](http://w3id.org/lambda/XRFImage)
 
 
 
@@ -241,7 +241,7 @@ URI: [lambdaber:XRFImage](https://w3id.org/lambda-ber-schema/XRFImage)
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -250,8 +250,8 @@ URI: [lambdaber:XRFImage](https://w3id.org/lambda-ber-schema/XRFImage)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:XRFImage |
-| native | lambdaber:XRFImage |
+| self | lambda:XRFImage |
+| native | lambda:XRFImage |
 
 
 
@@ -268,14 +268,14 @@ URI: [lambdaber:XRFImage](https://w3id.org/lambda-ber-schema/XRFImage)
 ```yaml
 name: XRFImage
 description: X-ray fluorescence (XRF) image showing elemental distribution
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: Image2D
 attributes:
   beam_energy:
     name: beam_energy
     description: X-ray beam energy, typically specified in kiloelectronvolts (keV).
       Data providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - XRFImage
@@ -286,7 +286,7 @@ attributes:
     name: beam_size
     description: X-ray beam size, typically specified in micrometers. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - XRFImage
@@ -296,7 +296,7 @@ attributes:
     name: dwell_time
     description: Dwell time per pixel, typically specified in milliseconds. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - XRFImage
@@ -305,7 +305,7 @@ attributes:
   elements_measured:
     name: elements_measured
     description: Elements detected and measured
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - XRFImage
@@ -314,9 +314,10 @@ attributes:
   source_type:
     name: source_type
     description: X-ray source type (synchrotron or lab-source)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - XRayInstrument
+    - SANSSource
     - BeamlineInstrument
     - XRFImage
     range: XRaySourceTypeEnum
@@ -325,7 +326,7 @@ attributes:
     description: Type of X-ray detector technology used
     comments:
     - For XRF, typically energy-dispersive or wavelength-dispersive detectors
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - CryoEMInstrument
     - XRayInstrument
@@ -334,7 +335,7 @@ attributes:
   detector_model:
     name: detector_model
     description: Specific detector model used for XRF measurement
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - CryoEMInstrument
     - XRayInstrument
@@ -344,8 +345,9 @@ attributes:
     name: flux
     description: Photon flux, typically specified in photons per second. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
+    - SANSSource
     - ExperimentRun
     - XRFImage
     range: QuantityValue
@@ -353,7 +355,7 @@ attributes:
   calibration_standard:
     name: calibration_standard
     description: Reference standard used for calibration
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - XRFImage
@@ -368,14 +370,14 @@ attributes:
 ```yaml
 name: XRFImage
 description: X-ray fluorescence (XRF) image showing elemental distribution
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: Image2D
 attributes:
   beam_energy:
     name: beam_energy
     description: X-ray beam energy, typically specified in kiloelectronvolts (keV).
       Data providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: beam_energy
     owner: XRFImage
@@ -388,7 +390,7 @@ attributes:
     name: beam_size
     description: X-ray beam size, typically specified in micrometers. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: beam_size
     owner: XRFImage
@@ -400,7 +402,7 @@ attributes:
     name: dwell_time
     description: Dwell time per pixel, typically specified in milliseconds. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: dwell_time
     owner: XRFImage
@@ -411,7 +413,7 @@ attributes:
   elements_measured:
     name: elements_measured
     description: Elements detected and measured
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: elements_measured
     owner: XRFImage
@@ -422,11 +424,12 @@ attributes:
   source_type:
     name: source_type
     description: X-ray source type (synchrotron or lab-source)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: source_type
     owner: XRFImage
     domain_of:
     - XRayInstrument
+    - SANSSource
     - BeamlineInstrument
     - XRFImage
     range: XRaySourceTypeEnum
@@ -435,7 +438,7 @@ attributes:
     description: Type of X-ray detector technology used
     comments:
     - For XRF, typically energy-dispersive or wavelength-dispersive detectors
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: detector_technology
     owner: XRFImage
     domain_of:
@@ -446,7 +449,7 @@ attributes:
   detector_model:
     name: detector_model
     description: Specific detector model used for XRF measurement
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: detector_model
     owner: XRFImage
     domain_of:
@@ -458,10 +461,11 @@ attributes:
     name: flux
     description: Photon flux, typically specified in photons per second. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: flux
     owner: XRFImage
     domain_of:
+    - SANSSource
     - ExperimentRun
     - XRFImage
     range: QuantityValue
@@ -469,7 +473,7 @@ attributes:
   calibration_standard:
     name: calibration_standard
     description: Reference standard used for calibration
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: calibration_standard
     owner: XRFImage
@@ -480,7 +484,7 @@ attributes:
     name: defocus
     description: Defocus value, typically specified in micrometers. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: defocus
     owner: XRFImage
@@ -492,7 +496,7 @@ attributes:
     name: astigmatism
     description: Astigmatism value, typically specified in Angstroms. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: astigmatism
     owner: XRFImage
@@ -503,7 +507,7 @@ attributes:
   file_name:
     name: file_name
     description: Image file name
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: file_name
     owner: XRFImage
     domain_of:
@@ -514,7 +518,7 @@ attributes:
   acquisition_date:
     name: acquisition_date
     description: Date image was acquired
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: acquisition_date
     owner: XRFImage
@@ -525,7 +529,7 @@ attributes:
     name: pixel_size
     description: Pixel size, typically specified in Angstroms. Data providers may
       specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: pixel_size
     owner: XRFImage
@@ -538,7 +542,7 @@ attributes:
     name: dimensions_x
     description: Image width, typically specified in pixels. Data providers may specify
       alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: dimensions_x
     owner: XRFImage
@@ -550,7 +554,7 @@ attributes:
     name: dimensions_y
     description: Image height, typically specified in pixels. Data providers may specify
       alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: dimensions_y
     owner: XRFImage
@@ -562,19 +566,20 @@ attributes:
     name: exposure_time
     description: Exposure time, typically specified in seconds. Data providers may
       specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: exposure_time
     owner: XRFImage
     domain_of:
     - ExperimentRun
     - Image
     - ExperimentalConditions
+    - DataCollectionStrategy
     range: QuantityValue
     inlined: true
   dose:
     name: dose
     description: Electron dose in e-/Å²
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: dose
     owner: XRFImage
@@ -588,7 +593,7 @@ attributes:
     description: Globally unique identifier as an IRI or CURIE for machine processing
       and external references. Used for linking data across systems and semantic web
       integration.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     identifier: true
     alias: id
@@ -601,7 +606,7 @@ attributes:
   title:
     name: title
     description: A human-readable name or title for this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     slot_uri: dcterms:title
     alias: title
@@ -612,7 +617,7 @@ attributes:
   description:
     name: description
     description: A detailed textual description of this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: description
     owner: XRFImage

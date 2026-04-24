@@ -9,7 +9,7 @@ _Detailed information about a protein construct including cloning and sequence d
 
 
 
-URI: [lambdaber:ProteinConstruct](https://w3id.org/lambda-ber-schema/ProteinConstruct)
+URI: [lambda:ProteinConstruct](http://w3id.org/lambda/ProteinConstruct)
 
 
 
@@ -147,7 +147,7 @@ URI: [lambdaber:ProteinConstruct](https://w3id.org/lambda-ber-schema/ProteinCons
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -156,8 +156,8 @@ URI: [lambdaber:ProteinConstruct](https://w3id.org/lambda-ber-schema/ProteinCons
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:ProteinConstruct |
-| native | lambdaber:ProteinConstruct |
+| self | lambda:ProteinConstruct |
+| native | lambda:ProteinConstruct |
 
 
 
@@ -175,13 +175,13 @@ URI: [lambdaber:ProteinConstruct](https://w3id.org/lambda-ber-schema/ProteinCons
 name: ProteinConstruct
 description: Detailed information about a protein construct including cloning and
   sequence design
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: NamedThing
 attributes:
   construct_id:
     name: construct_id
     description: Unique identifier for this construct
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ProteinConstruct
@@ -189,7 +189,7 @@ attributes:
   uniprot_id:
     name: uniprot_id
     description: UniProt accession for the target protein
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ProteinConstruct
@@ -197,21 +197,21 @@ attributes:
   gene_name:
     name: gene_name
     description: Gene name
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ProteinConstruct
   ncbi_taxid:
     name: ncbi_taxid
     description: NCBI Taxonomy ID for source organism
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ProteinConstruct
   sequence_length_aa:
     name: sequence_length_aa
     description: Length of the protein sequence in amino acids
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ProteinConstruct
@@ -220,112 +220,112 @@ attributes:
   construct_description:
     name: construct_description
     description: Human-readable description of the construct
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ProteinConstruct
   gene_synthesis_provider:
     name: gene_synthesis_provider
     description: Company or facility that synthesized the gene
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ProteinConstruct
   codon_optimization_organism:
     name: codon_optimization_organism
     description: Organism for which codons were optimized
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ProteinConstruct
   vector_backbone:
     name: vector_backbone
     description: Base plasmid backbone used
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ProteinConstruct
   vector_name:
     name: vector_name
     description: Complete vector name
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ProteinConstruct
   promoter:
     name: promoter
     description: Promoter used for expression
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ProteinConstruct
   tag_nterm:
     name: tag_nterm
     description: N-terminal tag (e.g., His6, MBP, GST)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ProteinConstruct
   tag_cterm:
     name: tag_cterm
     description: C-terminal tag
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ProteinConstruct
   cleavage_site:
     name: cleavage_site
     description: Protease cleavage site sequence
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ProteinConstruct
   signal_peptide:
     name: signal_peptide
     description: Signal peptide sequence if present
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ProteinConstruct
   selectable_marker:
     name: selectable_marker
     description: Antibiotic resistance or other selectable marker
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ProteinConstruct
   cloning_method:
     name: cloning_method
     description: Method used for cloning (e.g., restriction digest, Gibson, InFusion)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ProteinConstruct
   insert_boundaries:
     name: insert_boundaries
     description: Start and end positions of insert in vector
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ProteinConstruct
   sequence_file_path:
     name: sequence_file_path
     description: Path to sequence file
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ProteinConstruct
   sequence_verified_by:
     name: sequence_verified_by
     description: Method or person who verified the sequence
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ProteinConstruct
   verification_notes:
     name: verification_notes
     description: Notes from sequence verification
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ProteinConstruct
@@ -340,13 +340,13 @@ attributes:
 name: ProteinConstruct
 description: Detailed information about a protein construct including cloning and
   sequence design
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: NamedThing
 attributes:
   construct_id:
     name: construct_id
     description: Unique identifier for this construct
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: construct_id
     owner: ProteinConstruct
@@ -357,7 +357,7 @@ attributes:
   uniprot_id:
     name: uniprot_id
     description: UniProt accession for the target protein
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: uniprot_id
     owner: ProteinConstruct
@@ -368,7 +368,7 @@ attributes:
   gene_name:
     name: gene_name
     description: Gene name
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: gene_name
     owner: ProteinConstruct
@@ -378,7 +378,7 @@ attributes:
   ncbi_taxid:
     name: ncbi_taxid
     description: NCBI Taxonomy ID for source organism
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: ncbi_taxid
     owner: ProteinConstruct
@@ -388,7 +388,7 @@ attributes:
   sequence_length_aa:
     name: sequence_length_aa
     description: Length of the protein sequence in amino acids
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: sequence_length_aa
     owner: ProteinConstruct
@@ -399,7 +399,7 @@ attributes:
   construct_description:
     name: construct_description
     description: Human-readable description of the construct
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: construct_description
     owner: ProteinConstruct
@@ -409,7 +409,7 @@ attributes:
   gene_synthesis_provider:
     name: gene_synthesis_provider
     description: Company or facility that synthesized the gene
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: gene_synthesis_provider
     owner: ProteinConstruct
@@ -419,7 +419,7 @@ attributes:
   codon_optimization_organism:
     name: codon_optimization_organism
     description: Organism for which codons were optimized
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: codon_optimization_organism
     owner: ProteinConstruct
@@ -429,7 +429,7 @@ attributes:
   vector_backbone:
     name: vector_backbone
     description: Base plasmid backbone used
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: vector_backbone
     owner: ProteinConstruct
@@ -439,7 +439,7 @@ attributes:
   vector_name:
     name: vector_name
     description: Complete vector name
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: vector_name
     owner: ProteinConstruct
@@ -449,7 +449,7 @@ attributes:
   promoter:
     name: promoter
     description: Promoter used for expression
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: promoter
     owner: ProteinConstruct
@@ -459,7 +459,7 @@ attributes:
   tag_nterm:
     name: tag_nterm
     description: N-terminal tag (e.g., His6, MBP, GST)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: tag_nterm
     owner: ProteinConstruct
@@ -469,7 +469,7 @@ attributes:
   tag_cterm:
     name: tag_cterm
     description: C-terminal tag
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: tag_cterm
     owner: ProteinConstruct
@@ -479,7 +479,7 @@ attributes:
   cleavage_site:
     name: cleavage_site
     description: Protease cleavage site sequence
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: cleavage_site
     owner: ProteinConstruct
@@ -489,7 +489,7 @@ attributes:
   signal_peptide:
     name: signal_peptide
     description: Signal peptide sequence if present
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: signal_peptide
     owner: ProteinConstruct
@@ -499,7 +499,7 @@ attributes:
   selectable_marker:
     name: selectable_marker
     description: Antibiotic resistance or other selectable marker
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: selectable_marker
     owner: ProteinConstruct
@@ -509,7 +509,7 @@ attributes:
   cloning_method:
     name: cloning_method
     description: Method used for cloning (e.g., restriction digest, Gibson, InFusion)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: cloning_method
     owner: ProteinConstruct
@@ -519,7 +519,7 @@ attributes:
   insert_boundaries:
     name: insert_boundaries
     description: Start and end positions of insert in vector
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: insert_boundaries
     owner: ProteinConstruct
@@ -529,7 +529,7 @@ attributes:
   sequence_file_path:
     name: sequence_file_path
     description: Path to sequence file
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: sequence_file_path
     owner: ProteinConstruct
@@ -539,7 +539,7 @@ attributes:
   sequence_verified_by:
     name: sequence_verified_by
     description: Method or person who verified the sequence
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: sequence_verified_by
     owner: ProteinConstruct
@@ -549,7 +549,7 @@ attributes:
   verification_notes:
     name: verification_notes
     description: Notes from sequence verification
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: verification_notes
     owner: ProteinConstruct
@@ -561,7 +561,7 @@ attributes:
     description: Globally unique identifier as an IRI or CURIE for machine processing
       and external references. Used for linking data across systems and semantic web
       integration.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     identifier: true
     alias: id
@@ -574,7 +574,7 @@ attributes:
   title:
     name: title
     description: A human-readable name or title for this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     slot_uri: dcterms:title
     alias: title
@@ -585,7 +585,7 @@ attributes:
   description:
     name: description
     description: A detailed textual description of this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: description
     owner: ProteinConstruct

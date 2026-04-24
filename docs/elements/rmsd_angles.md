@@ -9,7 +9,7 @@ _RMSD from ideal bond angles, typically specified in degrees. Data providers may
 
 
 
-URI: [lambdaber:rmsd_angles](https://w3id.org/lambda-ber-schema/rmsd_angles)
+URI: [lambda:rmsd_angles](http://w3id.org/lambda/rmsd_angles)
 Alias: rmsd_angles
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: rmsd_angles
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,9 +55,9 @@ Alias: rmsd_angles
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:rmsd_angles |
-| native | lambdaber:rmsd_angles |
-| exact | nsls2:RMSD_angles, mmCIF:_refine.ls_d_res_low |
+| self | lambda:rmsd_angles |
+| native | lambda:rmsd_angles |
+| exact | nsls2:RMSD_angles, mmCIF:_refine.pdbx_ls_sigma_I |
 
 
 
@@ -69,10 +69,10 @@ Alias: rmsd_angles
 name: rmsd_angles
 description: RMSD from ideal bond angles, typically specified in degrees. Data providers
   may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 exact_mappings:
 - nsls2:RMSD_angles
-- mmCIF:_refine.ls_d_res_low
+- mmCIF:_refine.pdbx_ls_sigma_I
 rank: 1000
 alias: rmsd_angles
 owner: WorkflowRun

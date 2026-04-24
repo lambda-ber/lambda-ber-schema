@@ -9,7 +9,7 @@ _Anomalous correlation_
 
 
 
-URI: [lambdaber:anom_corr](https://w3id.org/lambda-ber-schema/anom_corr)
+URI: [lambda:anom_corr](http://w3id.org/lambda/anom_corr)
 Alias: anom_corr
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: anom_corr
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: anom_corr
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:anom_corr |
-| native | lambdaber:anom_corr |
+| self | lambda:anom_corr |
+| native | lambda:anom_corr |
+| exact | mmCIF:_reflns.pdbx_CC_half_anomalous |
 
 
 
@@ -67,7 +68,9 @@ Alias: anom_corr
 ```yaml
 name: anom_corr
 description: Anomalous correlation
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_reflns.pdbx_CC_half_anomalous
 rank: 1000
 alias: anom_corr
 owner: QualityMetrics

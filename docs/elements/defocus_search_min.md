@@ -9,7 +9,7 @@ _Minimum defocus search range, typically specified in micrometers. Data provider
 
 
 
-URI: [lambdaber:defocus_search_min](https://w3id.org/lambda-ber-schema/defocus_search_min)
+URI: [lambda:defocus_search_min](http://w3id.org/lambda/defocus_search_min)
 Alias: defocus_search_min
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: defocus_search_min
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: defocus_search_min
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:defocus_search_min |
-| native | lambdaber:defocus_search_min |
+| self | lambda:defocus_search_min |
+| native | lambda:defocus_search_min |
 
 
 
@@ -68,7 +68,7 @@ Alias: defocus_search_min
 name: defocus_search_min
 description: Minimum defocus search range, typically specified in micrometers. Data
   providers may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: defocus_search_min
 owner: CTFEstimationParameters

@@ -9,7 +9,7 @@ _How the protein was aliquoted for storage_
 
 
 
-URI: [lambdaber:aliquoting](https://w3id.org/lambda-ber-schema/aliquoting)
+URI: [lambda:aliquoting](http://w3id.org/lambda/aliquoting)
 Alias: aliquoting
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: aliquoting
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: aliquoting
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:aliquoting |
-| native | lambdaber:aliquoting |
+| self | lambda:aliquoting |
+| native | lambda:aliquoting |
 
 
 
@@ -67,7 +67,7 @@ Alias: aliquoting
 ```yaml
 name: aliquoting
 description: How the protein was aliquoted for storage
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: aliquoting
 owner: SamplePreparation

@@ -9,7 +9,7 @@ _Data collection start timestamp_
 
 
 
-URI: [lambdaber:start_time](https://w3id.org/lambda-ber-schema/start_time)
+URI: [lambda:start_time](http://w3id.org/lambda/start_time)
 Alias: start_time
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: start_time
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: start_time
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:start_time |
-| native | lambdaber:start_time |
+| self | lambda:start_time |
+| native | lambda:start_time |
 | exact | ispyb:DataCollection.startTime |
 
 
@@ -68,7 +68,7 @@ Alias: start_time
 ```yaml
 name: start_time
 description: Data collection start timestamp
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 exact_mappings:
 - ispyb:DataCollection.startTime
 rank: 1000

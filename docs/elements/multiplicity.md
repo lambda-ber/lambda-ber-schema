@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:multiplicity](https://w3id.org/lambda-ber-schema/multiplicity)
+URI: [lambda:multiplicity](http://w3id.org/lambda/multiplicity)
 Alias: multiplicity
 
 <!-- no inheritance hierarchy -->
@@ -44,8 +44,8 @@ Alias: multiplicity
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:multiplicity |
-| native | lambdaber:multiplicity |
+| self | lambda:multiplicity |
+| native | lambda:multiplicity |
 
 
 

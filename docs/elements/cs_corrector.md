@@ -9,7 +9,7 @@ _Spherical aberration corrector present_
 
 
 
-URI: [lambdaber:cs_corrector](https://w3id.org/lambda-ber-schema/cs_corrector)
+URI: [lambda:cs_corrector](http://w3id.org/lambda/cs_corrector)
 Alias: cs_corrector
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: cs_corrector
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: cs_corrector
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:cs_corrector |
-| native | lambdaber:cs_corrector |
+| self | lambda:cs_corrector |
+| native | lambda:cs_corrector |
+| exact | mmCIF:_em_imaging.alignment_procedure |
 
 
 
@@ -67,7 +68,9 @@ Alias: cs_corrector
 ```yaml
 name: cs_corrector
 description: Spherical aberration corrector present
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_em_imaging.alignment_procedure
 rank: 1000
 alias: cs_corrector
 owner: CryoEMInstrument

@@ -9,7 +9,7 @@ _Defocus search step, typically specified in micrometers. Data providers may spe
 
 
 
-URI: [lambdaber:defocus_step](https://w3id.org/lambda-ber-schema/defocus_step)
+URI: [lambda:defocus_step](http://w3id.org/lambda/defocus_step)
 Alias: defocus_step
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: defocus_step
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: defocus_step
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:defocus_step |
-| native | lambdaber:defocus_step |
+| self | lambda:defocus_step |
+| native | lambda:defocus_step |
 
 
 
@@ -68,7 +68,7 @@ Alias: defocus_step
 name: defocus_step
 description: Defocus search step, typically specified in micrometers. Data providers
   may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: defocus_step
 owner: CTFEstimationParameters

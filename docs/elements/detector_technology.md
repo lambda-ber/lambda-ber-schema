@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:detector_technology](https://w3id.org/lambda-ber-schema/detector_technology)
+URI: [lambda:detector_technology](http://w3id.org/lambda/detector_technology)
 Alias: detector_technology
 
 <!-- no inheritance hierarchy -->
@@ -17,9 +17,9 @@ Alias: detector_technology
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [CryoEMInstrument](CryoEMInstrument.md) | Cryo-EM microscope specifications |  no  |
-| [XRayInstrument](XRayInstrument.md) | X-ray diffractometer or synchrotron beamline specifications |  no  |
 | [XRFImage](XRFImage.md) | X-ray fluorescence (XRF) image showing elemental distribution |  no  |
+| [XRayInstrument](XRayInstrument.md) | X-ray diffractometer or synchrotron beamline specifications |  no  |
+| [CryoEMInstrument](CryoEMInstrument.md) | Cryo-EM microscope specifications |  no  |
 
 
 
@@ -45,8 +45,8 @@ Alias: detector_technology
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:detector_technology |
-| native | lambdaber:detector_technology |
+| self | lambda:detector_technology |
+| native | lambda:detector_technology |
 
 
 

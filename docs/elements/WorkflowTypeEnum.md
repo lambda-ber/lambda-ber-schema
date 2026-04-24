@@ -7,7 +7,7 @@ _Types of processing workflows_
 
 
 
-URI: [lambdaber:WorkflowTypeEnum](https://w3id.org/lambda-ber-schema/WorkflowTypeEnum)
+URI: [lambda:WorkflowTypeEnum](http://w3id.org/lambda/WorkflowTypeEnum)
 
 ## Permissible Values
 
@@ -59,7 +59,7 @@ URI: [lambdaber:WorkflowTypeEnum](https://w3id.org/lambda-ber-schema/WorkflowTyp
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -72,7 +72,7 @@ URI: [lambdaber:WorkflowTypeEnum](https://w3id.org/lambda-ber-schema/WorkflowTyp
 ```yaml
 name: WorkflowTypeEnum
 description: Types of processing workflows
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   motion_correction:

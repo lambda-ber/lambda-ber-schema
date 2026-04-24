@@ -9,7 +9,7 @@ _White balance settings_
 
 
 
-URI: [lambdaber:white_balance](https://w3id.org/lambda-ber-schema/white_balance)
+URI: [lambda:white_balance](http://w3id.org/lambda/white_balance)
 Alias: white_balance
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: white_balance
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: white_balance
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:white_balance |
-| native | lambdaber:white_balance |
+| self | lambda:white_balance |
+| native | lambda:white_balance |
 
 
 
@@ -67,7 +67,7 @@ Alias: white_balance
 ```yaml
 name: white_balance
 description: White balance settings
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: white_balance
 owner: OpticalImage

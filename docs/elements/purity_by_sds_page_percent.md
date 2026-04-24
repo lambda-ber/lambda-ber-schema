@@ -9,7 +9,7 @@ _Purity percentage by SDS-PAGE_
 
 
 
-URI: [lambdaber:purity_by_sds_page_percent](https://w3id.org/lambda-ber-schema/purity_by_sds_page_percent)
+URI: [lambda:purity_by_sds_page_percent](http://w3id.org/lambda/purity_by_sds_page_percent)
 Alias: purity_by_sds_page_percent
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: purity_by_sds_page_percent
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: purity_by_sds_page_percent
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:purity_by_sds_page_percent |
-| native | lambdaber:purity_by_sds_page_percent |
+| self | lambda:purity_by_sds_page_percent |
+| native | lambda:purity_by_sds_page_percent |
 
 
 
@@ -67,7 +67,7 @@ Alias: purity_by_sds_page_percent
 ```yaml
 name: purity_by_sds_page_percent
 description: Purity percentage by SDS-PAGE
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: purity_by_sds_page_percent
 owner: SamplePreparation

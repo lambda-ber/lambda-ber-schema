@@ -9,7 +9,7 @@ _Method used for cloning (e.g., restriction digest, Gibson, InFusion)_
 
 
 
-URI: [lambdaber:cloning_method](https://w3id.org/lambda-ber-schema/cloning_method)
+URI: [lambda:cloning_method](http://w3id.org/lambda/cloning_method)
 Alias: cloning_method
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: cloning_method
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: cloning_method
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:cloning_method |
-| native | lambdaber:cloning_method |
+| self | lambda:cloning_method |
+| native | lambda:cloning_method |
 
 
 
@@ -67,7 +67,7 @@ Alias: cloning_method
 ```yaml
 name: cloning_method
 description: Method used for cloning (e.g., restriction digest, Gibson, InFusion)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: cloning_method
 owner: ProteinConstruct

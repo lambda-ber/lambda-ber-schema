@@ -9,7 +9,7 @@ _Type of binding measurement (Kd, Ki, IC50)_
 
 
 
-URI: [lambdaber:binding_affinity_type](https://w3id.org/lambda-ber-schema/binding_affinity_type)
+URI: [lambda:binding_affinity_type](http://w3id.org/lambda/binding_affinity_type)
 Alias: binding_affinity_type
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: binding_affinity_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: binding_affinity_type
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:binding_affinity_type |
-| native | lambdaber:binding_affinity_type |
+| self | lambda:binding_affinity_type |
+| native | lambda:binding_affinity_type |
 
 
 
@@ -67,7 +67,7 @@ Alias: binding_affinity_type
 ```yaml
 name: binding_affinity_type
 description: Type of binding measurement (Kd, Ki, IC50)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: binding_affinity_type
 owner: LigandInteraction

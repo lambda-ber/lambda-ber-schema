@@ -9,7 +9,7 @@ _Role of the file (raw, intermediate, final, diagnostic, metadata)_
 
 
 
-URI: [lambdaber:file_role](https://w3id.org/lambda-ber-schema/file_role)
+URI: [lambda:file_role](http://w3id.org/lambda/file_role)
 Alias: file_role
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: file_role
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: file_role
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:file_role |
-| native | lambdaber:file_role |
+| self | lambda:file_role |
+| native | lambda:file_role |
 
 
 
@@ -67,7 +67,7 @@ Alias: file_role
 ```yaml
 name: file_role
 description: Role of the file (raw, intermediate, final, diagnostic, metadata)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: file_role
 owner: DataFile

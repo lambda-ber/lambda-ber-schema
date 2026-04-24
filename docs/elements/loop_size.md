@@ -9,7 +9,7 @@ _Loop size, typically specified in micrometers. Data providers may specify alter
 
 
 
-URI: [nsls2:Loop_Size](https://github.com/NSLS2/BER-LAMBDA/Loop_Size)
+URI: [lambda:loop_size](http://w3id.org/lambda/loop_size)
 Alias: loop_size
 
 <!-- no inheritance hierarchy -->
@@ -36,10 +36,6 @@ Alias: loop_size
 
 
 
-## Comments
-
-* Maps to NSLS2 spreadsheet: Loop_Size
-
 ## Identifier and Mapping Information
 
 
@@ -50,7 +46,7 @@ Alias: loop_size
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -59,8 +55,9 @@ Alias: loop_size
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | nsls2:Loop_Size |
-| native | lambdaber:loop_size |
+| self | lambda:loop_size |
+| native | lambda:loop_size |
+| exact | nsls2:Loop_Size |
 
 
 
@@ -72,11 +69,10 @@ Alias: loop_size
 name: loop_size
 description: Loop size, typically specified in micrometers. Data providers may specify
   alternative units by including the unit in the QuantityValue.
-comments:
-- 'Maps to NSLS2 spreadsheet: Loop_Size'
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- nsls2:Loop_Size
 rank: 1000
-slot_uri: nsls2:Loop_Size
 alias: loop_size
 owner: XRayPreparation
 domain_of:

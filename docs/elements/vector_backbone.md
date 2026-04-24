@@ -9,7 +9,7 @@ _Base plasmid backbone used_
 
 
 
-URI: [lambdaber:vector_backbone](https://w3id.org/lambda-ber-schema/vector_backbone)
+URI: [lambda:vector_backbone](http://w3id.org/lambda/vector_backbone)
 Alias: vector_backbone
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: vector_backbone
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: vector_backbone
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:vector_backbone |
-| native | lambdaber:vector_backbone |
+| self | lambda:vector_backbone |
+| native | lambda:vector_backbone |
 
 
 
@@ -67,7 +67,7 @@ Alias: vector_backbone
 ```yaml
 name: vector_backbone
 description: Base plasmid backbone used
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: vector_backbone
 owner: ProteinConstruct

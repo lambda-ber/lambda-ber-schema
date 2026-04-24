@@ -7,7 +7,7 @@ _Types of post-translational modifications_
 
 
 
-URI: [lambdaber:PTMTypeEnum](https://w3id.org/lambda-ber-schema/PTMTypeEnum)
+URI: [lambda:PTMTypeEnum](http://w3id.org/lambda/PTMTypeEnum)
 
 ## Permissible Values
 
@@ -71,7 +71,7 @@ URI: [lambdaber:PTMTypeEnum](https://w3id.org/lambda-ber-schema/PTMTypeEnum)
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -84,7 +84,7 @@ URI: [lambdaber:PTMTypeEnum](https://w3id.org/lambda-ber-schema/PTMTypeEnum)
 ```yaml
 name: PTMTypeEnum
 description: Types of post-translational modifications
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   acetylation:

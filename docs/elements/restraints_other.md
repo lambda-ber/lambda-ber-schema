@@ -9,7 +9,7 @@ _Other restraints applied during refinement_
 
 
 
-URI: [lambdaber:restraints_other](https://w3id.org/lambda-ber-schema/restraints_other)
+URI: [lambda:restraints_other](http://w3id.org/lambda/restraints_other)
 Alias: restraints_other
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: restraints_other
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: restraints_other
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:restraints_other |
-| native | lambdaber:restraints_other |
+| self | lambda:restraints_other |
+| native | lambda:restraints_other |
 
 
 
@@ -67,7 +67,7 @@ Alias: restraints_other
 ```yaml
 name: restraints_other
 description: Other restraints applied during refinement
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: restraints_other
 owner: WorkflowRun

@@ -9,7 +9,7 @@ _Target astigmatism in Angstroms_
 
 
 
-URI: [lambdaber:astigmatism_target](https://w3id.org/lambda-ber-schema/astigmatism_target)
+URI: [lambda:astigmatism_target](http://w3id.org/lambda/astigmatism_target)
 Alias: astigmatism_target
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: astigmatism_target
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: astigmatism_target
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:astigmatism_target |
-| native | lambdaber:astigmatism_target |
+| self | lambda:astigmatism_target |
+| native | lambda:astigmatism_target |
 
 
 
@@ -67,7 +67,7 @@ Alias: astigmatism_target
 ```yaml
 name: astigmatism_target
 description: Target astigmatism in Angstroms
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: astigmatism_target
 owner: ExperimentRun

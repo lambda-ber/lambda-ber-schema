@@ -9,7 +9,7 @@ _Reference to the instrument_
 
 
 
-URI: [lambdaber:instrument_id](https://w3id.org/lambda-ber-schema/instrument_id)
+URI: [lambda:instrument_id](http://w3id.org/lambda/instrument_id)
 Alias: instrument_id
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: instrument_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: instrument_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:instrument_id |
-| native | lambdaber:instrument_id |
+| self | lambda:instrument_id |
+| native | lambda:instrument_id |
 
 
 
@@ -69,7 +69,7 @@ Alias: instrument_id
 ```yaml
 name: instrument_id
 description: Reference to the instrument
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: instrument_id
 owner: ExperimentInstrumentAssociation

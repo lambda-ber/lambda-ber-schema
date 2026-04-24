@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:role](https://w3id.org/lambda-ber-schema/role)
+URI: [lambda:role](http://w3id.org/lambda/role)
 Alias: role
 
 <!-- no inheritance hierarchy -->
@@ -17,8 +17,8 @@ Alias: role
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentSampleAssociation](ExperimentSampleAssociation.md) | M:N link between ExperimentRun and Sample with role metadata |  no  |
 | [ExperimentInstrumentAssociation](ExperimentInstrumentAssociation.md) | M:N link between ExperimentRun and Instrument |  no  |
+| [ExperimentSampleAssociation](ExperimentSampleAssociation.md) | M:N link between ExperimentRun and Sample with role metadata |  no  |
 | [StudySampleAssociation](StudySampleAssociation.md) | M:N link between Study and Sample with role metadata |  no  |
 
 
@@ -45,8 +45,8 @@ Alias: role
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:role |
-| native | lambdaber:role |
+| self | lambda:role |
+| native | lambda:role |
 
 
 

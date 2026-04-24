@@ -9,7 +9,7 @@ _Refinement R-factor (working set)_
 
 
 
-URI: [lambdaber:rwork](https://w3id.org/lambda-ber-schema/rwork)
+URI: [lambda:rwork](http://w3id.org/lambda/rwork)
 Alias: rwork
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: rwork
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: rwork
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:rwork |
-| native | lambdaber:rwork |
+| self | lambda:rwork |
+| native | lambda:rwork |
+| exact | mmCIF:_refine.ls_R_factor_R_work |
 
 
 
@@ -67,7 +68,9 @@ Alias: rwork
 ```yaml
 name: rwork
 description: Refinement R-factor (working set)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_refine.ls_R_factor_R_work
 rank: 1000
 alias: rwork
 owner: WorkflowRun

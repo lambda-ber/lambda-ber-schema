@@ -9,7 +9,7 @@ _Minimum wavenumber, typically specified in inverse centimeters (cm⁻¹). Data 
 
 
 
-URI: [lambdaber:wavenumber_min](https://w3id.org/lambda-ber-schema/wavenumber_min)
+URI: [lambda:wavenumber_min](http://w3id.org/lambda/wavenumber_min)
 Alias: wavenumber_min
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: wavenumber_min
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: wavenumber_min
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:wavenumber_min |
-| native | lambdaber:wavenumber_min |
+| self | lambda:wavenumber_min |
+| native | lambda:wavenumber_min |
 
 
 
@@ -68,7 +68,7 @@ Alias: wavenumber_min
 name: wavenumber_min
 description: Minimum wavenumber, typically specified in inverse centimeters (cm⁻¹).
   Data providers may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: wavenumber_min
 owner: FTIRImage

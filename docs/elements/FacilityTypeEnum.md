@@ -7,7 +7,7 @@ _Types of research facilities_
 
 
 
-URI: [lambdaber:FacilityTypeEnum](https://w3id.org/lambda-ber-schema/FacilityTypeEnum)
+URI: [lambda:FacilityTypeEnum](http://w3id.org/lambda/FacilityTypeEnum)
 
 ## Permissible Values
 
@@ -35,7 +35,7 @@ URI: [lambdaber:FacilityTypeEnum](https://w3id.org/lambda-ber-schema/FacilityTyp
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -48,7 +48,7 @@ URI: [lambdaber:FacilityTypeEnum](https://w3id.org/lambda-ber-schema/FacilityTyp
 ```yaml
 name: FacilityTypeEnum
 description: Types of research facilities
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   SYNCHROTRON:

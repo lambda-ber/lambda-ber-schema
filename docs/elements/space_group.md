@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:space_group](https://w3id.org/lambda-ber-schema/space_group)
+URI: [lambda:space_group](http://w3id.org/lambda/space_group)
 Alias: space_group
 
 <!-- no inheritance hierarchy -->
@@ -44,8 +44,8 @@ Alias: space_group
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:space_group |
-| native | lambdaber:space_group |
+| self | lambda:space_group |
+| native | lambda:space_group |
 
 
 

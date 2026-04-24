@@ -9,7 +9,7 @@ _Evolutionary conservation information_
 
 
 
-URI: [lambdaber:EvolutionaryConservation](https://w3id.org/lambda-ber-schema/EvolutionaryConservation)
+URI: [lambda:EvolutionaryConservation](http://w3id.org/lambda/EvolutionaryConservation)
 
 
 
@@ -146,7 +146,7 @@ URI: [lambdaber:EvolutionaryConservation](https://w3id.org/lambda-ber-schema/Evo
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -155,8 +155,8 @@ URI: [lambdaber:EvolutionaryConservation](https://w3id.org/lambda-ber-schema/Evo
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:EvolutionaryConservation |
-| native | lambdaber:EvolutionaryConservation |
+| self | lambda:EvolutionaryConservation |
+| native | lambda:EvolutionaryConservation |
 
 
 
@@ -173,13 +173,13 @@ URI: [lambdaber:EvolutionaryConservation](https://w3id.org/lambda-ber-schema/Evo
 ```yaml
 name: EvolutionaryConservation
 description: Evolutionary conservation information
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: ProteinAnnotation
 attributes:
   conservation_score:
     name: conservation_score
     description: 'Overall conservation score (range: 0-1)'
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     domain_of:
     - FunctionalSite
     - EvolutionaryConservation
@@ -189,7 +189,7 @@ attributes:
   conserved_residues:
     name: conserved_residues
     description: Highly conserved residues
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - EvolutionaryConservation
@@ -197,7 +197,7 @@ attributes:
   variable_residues:
     name: variable_residues
     description: Highly variable residues
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - EvolutionaryConservation
@@ -205,14 +205,14 @@ attributes:
   conservation_method:
     name: conservation_method
     description: Method used for conservation analysis
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - EvolutionaryConservation
   alignment_depth:
     name: alignment_depth
     description: Number of sequences in alignment
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - EvolutionaryConservation
@@ -220,14 +220,14 @@ attributes:
   taxonomic_range:
     name: taxonomic_range
     description: Taxonomic range of conservation
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - EvolutionaryConservation
   coevolved_residues:
     name: coevolved_residues
     description: Pairs of coevolved residues
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - EvolutionaryConservation
@@ -242,13 +242,13 @@ attributes:
 ```yaml
 name: EvolutionaryConservation
 description: Evolutionary conservation information
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: ProteinAnnotation
 attributes:
   conservation_score:
     name: conservation_score
     description: 'Overall conservation score (range: 0-1)'
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     alias: conservation_score
     owner: EvolutionaryConservation
     domain_of:
@@ -260,7 +260,7 @@ attributes:
   conserved_residues:
     name: conserved_residues
     description: Highly conserved residues
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: conserved_residues
     owner: EvolutionaryConservation
@@ -271,7 +271,7 @@ attributes:
   variable_residues:
     name: variable_residues
     description: Highly variable residues
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: variable_residues
     owner: EvolutionaryConservation
@@ -282,7 +282,7 @@ attributes:
   conservation_method:
     name: conservation_method
     description: Method used for conservation analysis
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: conservation_method
     owner: EvolutionaryConservation
@@ -292,7 +292,7 @@ attributes:
   alignment_depth:
     name: alignment_depth
     description: Number of sequences in alignment
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: alignment_depth
     owner: EvolutionaryConservation
@@ -302,7 +302,7 @@ attributes:
   taxonomic_range:
     name: taxonomic_range
     description: Taxonomic range of conservation
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: taxonomic_range
     owner: EvolutionaryConservation
@@ -312,7 +312,7 @@ attributes:
   coevolved_residues:
     name: coevolved_residues
     description: Pairs of coevolved residues
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: coevolved_residues
     owner: EvolutionaryConservation
@@ -323,7 +323,7 @@ attributes:
   protein_id:
     name: protein_id
     description: UniProt accession number
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: protein_id
     owner: EvolutionaryConservation
@@ -336,7 +336,7 @@ attributes:
   pdb_entry:
     name: pdb_entry
     description: PDB identifier
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: pdb_entry
     owner: EvolutionaryConservation
@@ -347,7 +347,7 @@ attributes:
   chain_id:
     name: chain_id
     description: Chain identifier in the PDB structure
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: chain_id
     owner: EvolutionaryConservation
@@ -358,7 +358,7 @@ attributes:
   residue_range:
     name: residue_range
     description: Range of residues (e.g., '1-100', '25,27,30-35')
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: residue_range
     owner: EvolutionaryConservation
@@ -369,7 +369,7 @@ attributes:
   confidence_score:
     name: confidence_score
     description: 'Confidence score for the annotation (range: 0-1)'
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: confidence_score
     owner: EvolutionaryConservation
@@ -381,7 +381,7 @@ attributes:
   evidence_type:
     name: evidence_type
     description: Type of evidence supporting this annotation
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: evidence_type
     owner: EvolutionaryConservation
@@ -391,7 +391,7 @@ attributes:
   evidence_code:
     name: evidence_code
     description: Evidence and Conclusion Ontology (ECO) code
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: evidence_code
     owner: EvolutionaryConservation
@@ -401,7 +401,7 @@ attributes:
   source_database:
     name: source_database
     description: Source database or resource that provided this annotation
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: source_database
     owner: EvolutionaryConservation
@@ -411,7 +411,7 @@ attributes:
   annotation_method:
     name: annotation_method
     description: Computational or experimental method used
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: annotation_method
     owner: EvolutionaryConservation
@@ -422,7 +422,7 @@ attributes:
     name: publication_ids
     description: IDs of one or more publications supporting this annotation. Use PubMed
       IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: publication_ids
     owner: EvolutionaryConservation
@@ -436,7 +436,7 @@ attributes:
     description: Globally unique identifier as an IRI or CURIE for machine processing
       and external references. Used for linking data across systems and semantic web
       integration.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     identifier: true
     alias: id
@@ -449,7 +449,7 @@ attributes:
   title:
     name: title
     description: A human-readable name or title for this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     slot_uri: dcterms:title
     alias: title
@@ -460,7 +460,7 @@ attributes:
   description:
     name: description
     description: A detailed textual description of this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: description
     owner: EvolutionaryConservation

@@ -9,7 +9,7 @@ _All workflow runs (computational processing)_
 
 
 
-URI: [lambdaber:workflow_runs](https://w3id.org/lambda-ber-schema/workflow_runs)
+URI: [lambda:workflow_runs](http://w3id.org/lambda/workflow_runs)
 Alias: workflow_runs
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: workflow_runs
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: workflow_runs
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:workflow_runs |
-| native | lambdaber:workflow_runs |
+| self | lambda:workflow_runs |
+| native | lambda:workflow_runs |
 
 
 
@@ -69,7 +69,7 @@ Alias: workflow_runs
 ```yaml
 name: workflow_runs
 description: All workflow runs (computational processing)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: workflow_runs
 owner: Dataset

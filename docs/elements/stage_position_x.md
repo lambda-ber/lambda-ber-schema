@@ -9,7 +9,7 @@ _Stage X position, typically specified in micrometers. Data providers may specif
 
 
 
-URI: [lambdaber:stage_position_x](https://w3id.org/lambda-ber-schema/stage_position_x)
+URI: [lambda:stage_position_x](http://w3id.org/lambda/stage_position_x)
 Alias: stage_position_x
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: stage_position_x
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: stage_position_x
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:stage_position_x |
-| native | lambdaber:stage_position_x |
+| self | lambda:stage_position_x |
+| native | lambda:stage_position_x |
 
 
 
@@ -68,7 +68,7 @@ Alias: stage_position_x
 name: stage_position_x
 description: Stage X position, typically specified in micrometers. Data providers
   may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: stage_position_x
 owner: Movie

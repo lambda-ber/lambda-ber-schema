@@ -9,7 +9,7 @@ _Total number of unique reflections_
 
 
 
-URI: [lambdaber:n_total_unique](https://w3id.org/lambda-ber-schema/n_total_unique)
+URI: [lambda:n_total_unique](http://w3id.org/lambda/n_total_unique)
 Alias: n_total_unique
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: n_total_unique
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: n_total_unique
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:n_total_unique |
-| native | lambdaber:n_total_unique |
+| self | lambda:n_total_unique |
+| native | lambda:n_total_unique |
+| exact | mmCIF:_reflns.number_obs |
 
 
 
@@ -67,7 +68,9 @@ Alias: n_total_unique
 ```yaml
 name: n_total_unique
 description: Total number of unique reflections
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_reflns.number_obs
 rank: 1000
 alias: n_total_unique
 owner: WorkflowRun

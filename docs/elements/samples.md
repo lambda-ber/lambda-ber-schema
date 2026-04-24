@@ -9,7 +9,7 @@ _All samples across all studies_
 
 
 
-URI: [lambdaber:samples](https://w3id.org/lambda-ber-schema/samples)
+URI: [lambda:samples](http://w3id.org/lambda/samples)
 Alias: samples
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: samples
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: samples
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:samples |
-| native | lambdaber:samples |
+| self | lambda:samples |
+| native | lambda:samples |
 
 
 
@@ -69,7 +69,7 @@ Alias: samples
 ```yaml
 name: samples
 description: All samples across all studies
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: samples
 owner: Dataset

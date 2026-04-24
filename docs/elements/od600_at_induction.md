@@ -9,7 +9,7 @@ _Optical density at 600nm when induction was started. Data providers may include
 
 
 
-URI: [lambdaber:od600_at_induction](https://w3id.org/lambda-ber-schema/od600_at_induction)
+URI: [lambda:od600_at_induction](http://w3id.org/lambda/od600_at_induction)
 Alias: od600_at_induction
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: od600_at_induction
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: od600_at_induction
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:od600_at_induction |
-| native | lambdaber:od600_at_induction |
+| self | lambda:od600_at_induction |
+| native | lambda:od600_at_induction |
 
 
 
@@ -68,7 +68,7 @@ Alias: od600_at_induction
 name: od600_at_induction
 description: Optical density at 600nm when induction was started. Data providers may
   include unit information in the QuantityValue if needed.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: od600_at_induction
 owner: SamplePreparation

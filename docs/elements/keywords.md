@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:keywords](https://w3id.org/lambda-ber-schema/keywords)
+URI: [lambda:keywords](http://w3id.org/lambda/keywords)
 Alias: keywords
 
 <!-- no inheritance hierarchy -->
@@ -17,8 +17,8 @@ Alias: keywords
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Dataset](Dataset.md) | Root container holding flat entity collections and association tables |  no  |
 | [Study](Study.md) | A logical grouping of related experiments investigating a research question |  no  |
+| [Dataset](Dataset.md) | Root container holding flat entity collections and association tables |  no  |
 
 
 
@@ -44,8 +44,8 @@ Alias: keywords
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:keywords |
-| native | lambdaber:keywords |
+| self | lambda:keywords |
+| native | lambda:keywords |
 
 
 

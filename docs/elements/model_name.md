@@ -9,7 +9,7 @@ _Name or identifier of the deep learning model (e.g., 'resnet16', 'resnet8', 'cr
 
 
 
-URI: [lambdaber:model_name](https://w3id.org/lambda-ber-schema/model_name)
+URI: [lambda:model_name](http://w3id.org/lambda/model_name)
 Alias: model_name
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: model_name
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: model_name
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:model_name |
-| native | lambdaber:model_name |
+| self | lambda:model_name |
+| native | lambda:model_name |
 
 
 
@@ -69,7 +69,7 @@ name: model_name
 description: Name or identifier of the deep learning model (e.g., 'resnet16', 'resnet8',
   'cryolo_general'). Use this for standard pretrained models. Either model_name or
   model_file_path should be provided when using deep learning methods.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: model_name
 owner: ParticlePickingParameters

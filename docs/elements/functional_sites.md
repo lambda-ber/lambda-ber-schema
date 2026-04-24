@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:functional_sites](https://w3id.org/lambda-ber-schema/functional_sites)
+URI: [lambda:functional_sites](http://w3id.org/lambda/functional_sites)
 Alias: functional_sites
 
 <!-- no inheritance hierarchy -->
@@ -17,8 +17,8 @@ Alias: functional_sites
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AggregatedProteinView](AggregatedProteinView.md) | Aggregated view of all structural and functional data for a protein |  no  |
 | [Sample](Sample.md) | A biological sample used in structural biology experiments |  no  |
+| [AggregatedProteinView](AggregatedProteinView.md) | Aggregated view of all structural and functional data for a protein |  no  |
 
 
 
@@ -44,8 +44,8 @@ Alias: functional_sites
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:functional_sites |
-| native | lambdaber:functional_sites |
+| self | lambda:functional_sites |
+| native | lambda:functional_sites |
 
 
 

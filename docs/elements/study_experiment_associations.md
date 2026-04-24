@@ -9,7 +9,7 @@ _Links between studies and experiments (M:N)_
 
 
 
-URI: [lambdaber:study_experiment_associations](https://w3id.org/lambda-ber-schema/study_experiment_associations)
+URI: [lambda:study_experiment_associations](http://w3id.org/lambda/study_experiment_associations)
 Alias: study_experiment_associations
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: study_experiment_associations
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: study_experiment_associations
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:study_experiment_associations |
-| native | lambdaber:study_experiment_associations |
+| self | lambda:study_experiment_associations |
+| native | lambda:study_experiment_associations |
 
 
 
@@ -69,7 +69,7 @@ Alias: study_experiment_associations
 ```yaml
 name: study_experiment_associations
 description: Links between studies and experiments (M:N)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: study_experiment_associations
 owner: Dataset

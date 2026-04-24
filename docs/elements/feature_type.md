@@ -9,7 +9,7 @@ _Type of structural feature_
 
 
 
-URI: [lambdaber:feature_type](https://w3id.org/lambda-ber-schema/feature_type)
+URI: [lambda:feature_type](http://w3id.org/lambda/feature_type)
 Alias: feature_type
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: feature_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: feature_type
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:feature_type |
-| native | lambdaber:feature_type |
+| self | lambda:feature_type |
+| native | lambda:feature_type |
 
 
 
@@ -69,7 +69,7 @@ Alias: feature_type
 ```yaml
 name: feature_type
 description: Type of structural feature
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: feature_type
 owner: StructuralFeature

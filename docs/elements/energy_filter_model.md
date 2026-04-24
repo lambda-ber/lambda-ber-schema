@@ -9,7 +9,7 @@ _Energy filter model_
 
 
 
-URI: [lambdaber:energy_filter_model](https://w3id.org/lambda-ber-schema/energy_filter_model)
+URI: [lambda:energy_filter_model](http://w3id.org/lambda/energy_filter_model)
 Alias: energy_filter_model
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: energy_filter_model
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: energy_filter_model
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:energy_filter_model |
-| native | lambdaber:energy_filter_model |
+| self | lambda:energy_filter_model |
+| native | lambda:energy_filter_model |
 
 
 
@@ -67,7 +67,7 @@ Alias: energy_filter_model
 ```yaml
 name: energy_filter_model
 description: Energy filter model
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: energy_filter_model
 owner: CryoEMInstrument

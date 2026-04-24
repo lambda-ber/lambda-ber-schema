@@ -9,7 +9,7 @@ _Reference to parent sample for derivation tracking_
 
 
 
-URI: [lambdaber:parent_sample_id](https://w3id.org/lambda-ber-schema/parent_sample_id)
+URI: [lambda:parent_sample_id](http://w3id.org/lambda/parent_sample_id)
 Alias: parent_sample_id
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: parent_sample_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: parent_sample_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:parent_sample_id |
-| native | lambdaber:parent_sample_id |
+| self | lambda:parent_sample_id |
+| native | lambda:parent_sample_id |
 
 
 
@@ -67,7 +67,7 @@ Alias: parent_sample_id
 ```yaml
 name: parent_sample_id
 description: Reference to parent sample for derivation tracking
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: parent_sample_id
 owner: Sample

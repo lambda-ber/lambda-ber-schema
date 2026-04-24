@@ -9,7 +9,7 @@ _Laser power, typically specified in milliwatts. Data providers may specify alte
 
 
 
-URI: [lambdaber:laser_power](https://w3id.org/lambda-ber-schema/laser_power)
+URI: [lambda:laser_power](http://w3id.org/lambda/laser_power)
 Alias: laser_power
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: laser_power
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: laser_power
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:laser_power |
-| native | lambdaber:laser_power |
+| self | lambda:laser_power |
+| native | lambda:laser_power |
 
 
 
@@ -68,7 +68,7 @@ Alias: laser_power
 name: laser_power
 description: Laser power, typically specified in milliwatts. Data providers may specify
   alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: laser_power
 owner: FluorescenceImage

@@ -9,7 +9,7 @@ _Assessment of protein aggregation state_
 
 
 
-URI: [lambdaber:aggregation_assessment](https://w3id.org/lambda-ber-schema/aggregation_assessment)
+URI: [lambda:aggregation_assessment](http://w3id.org/lambda/aggregation_assessment)
 Alias: aggregation_assessment
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: aggregation_assessment
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: aggregation_assessment
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:aggregation_assessment |
-| native | lambdaber:aggregation_assessment |
+| self | lambda:aggregation_assessment |
+| native | lambda:aggregation_assessment |
 
 
 
@@ -67,7 +67,7 @@ Alias: aggregation_assessment
 ```yaml
 name: aggregation_assessment
 description: Assessment of protein aggregation state
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: aggregation_assessment
 owner: SamplePreparation

@@ -9,7 +9,7 @@ _Source or software associated with the model (e.g., 'topaz', 'cryolo', 'warp', 
 
 
 
-URI: [lambdaber:model_source](https://w3id.org/lambda-ber-schema/model_source)
+URI: [lambda:model_source](http://w3id.org/lambda/model_source)
 Alias: model_source
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: model_source
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: model_source
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:model_source |
-| native | lambdaber:model_source |
+| self | lambda:model_source |
+| native | lambda:model_source |
 
 
 
@@ -70,7 +70,7 @@ description: Source or software associated with the model (e.g., 'topaz', 'cryol
   'warp', 'custom', 'pretrained'). Helps track model provenance and should be provided
   alongside model_name or model_file_path to document which software/framework the
   model is for.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: model_source
 owner: ParticlePickingParameters

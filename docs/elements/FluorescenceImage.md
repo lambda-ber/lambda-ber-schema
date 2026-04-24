@@ -9,7 +9,7 @@ _Fluorescence microscopy image capturing specific molecular targets through fluo
 
 
 
-URI: [lambdaber:FluorescenceImage](https://w3id.org/lambda-ber-schema/FluorescenceImage)
+URI: [lambda:FluorescenceImage](http://w3id.org/lambda/FluorescenceImage)
 
 
 
@@ -232,7 +232,7 @@ URI: [lambdaber:FluorescenceImage](https://w3id.org/lambda-ber-schema/Fluorescen
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -241,8 +241,8 @@ URI: [lambdaber:FluorescenceImage](https://w3id.org/lambda-ber-schema/Fluorescen
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:FluorescenceImage |
-| native | lambdaber:FluorescenceImage |
+| self | lambda:FluorescenceImage |
+| native | lambda:FluorescenceImage |
 
 
 
@@ -260,14 +260,14 @@ URI: [lambdaber:FluorescenceImage](https://w3id.org/lambda-ber-schema/Fluorescen
 name: FluorescenceImage
 description: Fluorescence microscopy image capturing specific molecular targets through
   fluorescent labeling
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: Image2D
 attributes:
   excitation_wavelength:
     name: excitation_wavelength
     description: Excitation wavelength, typically specified in nanometers. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - FluorescenceImage
@@ -277,7 +277,7 @@ attributes:
     name: emission_wavelength
     description: Emission wavelength, typically specified in nanometers. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - FluorescenceImage
@@ -286,7 +286,7 @@ attributes:
   excitation_filter:
     name: excitation_filter
     description: Specifications of the excitation filter
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - FluorescenceImage
@@ -294,7 +294,7 @@ attributes:
   emission_filter:
     name: emission_filter
     description: Specifications of the emission filter
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - FluorescenceImage
@@ -302,7 +302,7 @@ attributes:
   fluorophore:
     name: fluorophore
     description: Name or type of fluorophore used
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - FluorescenceImage
@@ -310,7 +310,7 @@ attributes:
   channel_name:
     name: channel_name
     description: Name of the fluorescence channel (e.g., DAPI, GFP, RFP)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - FluorescenceImage
@@ -319,7 +319,7 @@ attributes:
     name: laser_power
     description: Laser power, typically specified in milliwatts. Data providers may
       specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - FluorescenceImage
@@ -329,7 +329,7 @@ attributes:
     name: pinhole_size
     description: Pinhole size, typically specified in Airy units for confocal microscopy.
       Data providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - FluorescenceImage
@@ -338,7 +338,7 @@ attributes:
   quantum_yield:
     name: quantum_yield
     description: Quantum yield of the fluorophore
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - FluorescenceImage
@@ -355,14 +355,14 @@ attributes:
 name: FluorescenceImage
 description: Fluorescence microscopy image capturing specific molecular targets through
   fluorescent labeling
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: Image2D
 attributes:
   excitation_wavelength:
     name: excitation_wavelength
     description: Excitation wavelength, typically specified in nanometers. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: excitation_wavelength
     owner: FluorescenceImage
@@ -374,7 +374,7 @@ attributes:
     name: emission_wavelength
     description: Emission wavelength, typically specified in nanometers. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: emission_wavelength
     owner: FluorescenceImage
@@ -385,7 +385,7 @@ attributes:
   excitation_filter:
     name: excitation_filter
     description: Specifications of the excitation filter
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: excitation_filter
     owner: FluorescenceImage
@@ -395,7 +395,7 @@ attributes:
   emission_filter:
     name: emission_filter
     description: Specifications of the emission filter
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: emission_filter
     owner: FluorescenceImage
@@ -405,7 +405,7 @@ attributes:
   fluorophore:
     name: fluorophore
     description: Name or type of fluorophore used
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: fluorophore
     owner: FluorescenceImage
@@ -415,7 +415,7 @@ attributes:
   channel_name:
     name: channel_name
     description: Name of the fluorescence channel (e.g., DAPI, GFP, RFP)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: channel_name
     owner: FluorescenceImage
@@ -426,7 +426,7 @@ attributes:
     name: laser_power
     description: Laser power, typically specified in milliwatts. Data providers may
       specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: laser_power
     owner: FluorescenceImage
@@ -438,7 +438,7 @@ attributes:
     name: pinhole_size
     description: Pinhole size, typically specified in Airy units for confocal microscopy.
       Data providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: pinhole_size
     owner: FluorescenceImage
@@ -449,7 +449,7 @@ attributes:
   quantum_yield:
     name: quantum_yield
     description: Quantum yield of the fluorophore
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: quantum_yield
     owner: FluorescenceImage
@@ -461,7 +461,7 @@ attributes:
     name: defocus
     description: Defocus value, typically specified in micrometers. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: defocus
     owner: FluorescenceImage
@@ -473,7 +473,7 @@ attributes:
     name: astigmatism
     description: Astigmatism value, typically specified in Angstroms. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: astigmatism
     owner: FluorescenceImage
@@ -484,7 +484,7 @@ attributes:
   file_name:
     name: file_name
     description: Image file name
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: file_name
     owner: FluorescenceImage
     domain_of:
@@ -495,7 +495,7 @@ attributes:
   acquisition_date:
     name: acquisition_date
     description: Date image was acquired
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: acquisition_date
     owner: FluorescenceImage
@@ -506,7 +506,7 @@ attributes:
     name: pixel_size
     description: Pixel size, typically specified in Angstroms. Data providers may
       specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: pixel_size
     owner: FluorescenceImage
@@ -519,7 +519,7 @@ attributes:
     name: dimensions_x
     description: Image width, typically specified in pixels. Data providers may specify
       alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: dimensions_x
     owner: FluorescenceImage
@@ -531,7 +531,7 @@ attributes:
     name: dimensions_y
     description: Image height, typically specified in pixels. Data providers may specify
       alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: dimensions_y
     owner: FluorescenceImage
@@ -543,19 +543,20 @@ attributes:
     name: exposure_time
     description: Exposure time, typically specified in seconds. Data providers may
       specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: exposure_time
     owner: FluorescenceImage
     domain_of:
     - ExperimentRun
     - Image
     - ExperimentalConditions
+    - DataCollectionStrategy
     range: QuantityValue
     inlined: true
   dose:
     name: dose
     description: Electron dose in e-/Å²
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: dose
     owner: FluorescenceImage
@@ -569,7 +570,7 @@ attributes:
     description: Globally unique identifier as an IRI or CURIE for machine processing
       and external references. Used for linking data across systems and semantic web
       integration.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     identifier: true
     alias: id
@@ -582,7 +583,7 @@ attributes:
   title:
     name: title
     description: A human-readable name or title for this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     slot_uri: dcterms:title
     alias: title
@@ -593,7 +594,7 @@ attributes:
   description:
     name: description
     description: A detailed textual description of this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: description
     owner: FluorescenceImage

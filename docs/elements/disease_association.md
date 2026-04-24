@@ -9,7 +9,7 @@ _Associated disease or phenotype_
 
 
 
-URI: [lambdaber:disease_association](https://w3id.org/lambda-ber-schema/disease_association)
+URI: [lambda:disease_association](http://w3id.org/lambda/disease_association)
 Alias: disease_association
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: disease_association
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: disease_association
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:disease_association |
-| native | lambdaber:disease_association |
+| self | lambda:disease_association |
+| native | lambda:disease_association |
 
 
 
@@ -67,7 +67,7 @@ Alias: disease_association
 ```yaml
 name: disease_association
 description: Associated disease or phenotype
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: disease_association
 owner: MutationEffect

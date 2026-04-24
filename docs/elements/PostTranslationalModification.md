@@ -9,7 +9,7 @@ _Post-translational modifications observed or predicted_
 
 
 
-URI: [lambdaber:PostTranslationalModification](https://w3id.org/lambda-ber-schema/PostTranslationalModification)
+URI: [lambda:PostTranslationalModification](http://w3id.org/lambda/PostTranslationalModification)
 
 
 
@@ -158,7 +158,7 @@ URI: [lambdaber:PostTranslationalModification](https://w3id.org/lambda-ber-schem
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -167,8 +167,8 @@ URI: [lambdaber:PostTranslationalModification](https://w3id.org/lambda-ber-schem
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:PostTranslationalModification |
-| native | lambdaber:PostTranslationalModification |
+| self | lambda:PostTranslationalModification |
+| native | lambda:PostTranslationalModification |
 
 
 
@@ -185,13 +185,13 @@ URI: [lambdaber:PostTranslationalModification](https://w3id.org/lambda-ber-schem
 ```yaml
 name: PostTranslationalModification
 description: Post-translational modifications observed or predicted
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: ProteinAnnotation
 attributes:
   modification_type:
     name: modification_type
     description: Type of PTM
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - PostTranslationalModification
@@ -200,7 +200,7 @@ attributes:
   modified_residue:
     name: modified_residue
     description: Residue that is modified
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - PostTranslationalModification
@@ -208,14 +208,14 @@ attributes:
   modification_group:
     name: modification_group
     description: Chemical group added (e.g., 'phosphate', 'methyl')
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - PostTranslationalModification
   mass_shift:
     name: mass_shift
     description: Mass change due to modification (Da)
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - PostTranslationalModification
@@ -225,28 +225,28 @@ attributes:
   functional_effect:
     name: functional_effect
     description: Known functional effect of this PTM
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - PostTranslationalModification
   regulatory_role:
     name: regulatory_role
     description: Role in regulation
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - PostTranslationalModification
   enzyme:
     name: enzyme
     description: Enzyme responsible for modification
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - PostTranslationalModification
   removal_enzyme:
     name: removal_enzyme
     description: Enzyme that removes modification
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - PostTranslationalModification
@@ -260,13 +260,13 @@ attributes:
 ```yaml
 name: PostTranslationalModification
 description: Post-translational modifications observed or predicted
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: ProteinAnnotation
 attributes:
   modification_type:
     name: modification_type
     description: Type of PTM
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: modification_type
     owner: PostTranslationalModification
@@ -277,7 +277,7 @@ attributes:
   modified_residue:
     name: modified_residue
     description: Residue that is modified
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: modified_residue
     owner: PostTranslationalModification
@@ -288,7 +288,7 @@ attributes:
   modification_group:
     name: modification_group
     description: Chemical group added (e.g., 'phosphate', 'methyl')
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: modification_group
     owner: PostTranslationalModification
@@ -298,7 +298,7 @@ attributes:
   mass_shift:
     name: mass_shift
     description: Mass change due to modification (Da)
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: mass_shift
     owner: PostTranslationalModification
@@ -310,7 +310,7 @@ attributes:
   functional_effect:
     name: functional_effect
     description: Known functional effect of this PTM
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: functional_effect
     owner: PostTranslationalModification
@@ -320,7 +320,7 @@ attributes:
   regulatory_role:
     name: regulatory_role
     description: Role in regulation
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: regulatory_role
     owner: PostTranslationalModification
@@ -330,7 +330,7 @@ attributes:
   enzyme:
     name: enzyme
     description: Enzyme responsible for modification
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: enzyme
     owner: PostTranslationalModification
@@ -340,7 +340,7 @@ attributes:
   removal_enzyme:
     name: removal_enzyme
     description: Enzyme that removes modification
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: removal_enzyme
     owner: PostTranslationalModification
@@ -350,7 +350,7 @@ attributes:
   protein_id:
     name: protein_id
     description: UniProt accession number
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: protein_id
     owner: PostTranslationalModification
@@ -363,7 +363,7 @@ attributes:
   pdb_entry:
     name: pdb_entry
     description: PDB identifier
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: pdb_entry
     owner: PostTranslationalModification
@@ -374,7 +374,7 @@ attributes:
   chain_id:
     name: chain_id
     description: Chain identifier in the PDB structure
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: chain_id
     owner: PostTranslationalModification
@@ -385,7 +385,7 @@ attributes:
   residue_range:
     name: residue_range
     description: Range of residues (e.g., '1-100', '25,27,30-35')
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: residue_range
     owner: PostTranslationalModification
@@ -396,7 +396,7 @@ attributes:
   confidence_score:
     name: confidence_score
     description: 'Confidence score for the annotation (range: 0-1)'
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: confidence_score
     owner: PostTranslationalModification
@@ -408,7 +408,7 @@ attributes:
   evidence_type:
     name: evidence_type
     description: Type of evidence supporting this annotation
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: evidence_type
     owner: PostTranslationalModification
@@ -418,7 +418,7 @@ attributes:
   evidence_code:
     name: evidence_code
     description: Evidence and Conclusion Ontology (ECO) code
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: evidence_code
     owner: PostTranslationalModification
@@ -428,7 +428,7 @@ attributes:
   source_database:
     name: source_database
     description: Source database or resource that provided this annotation
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: source_database
     owner: PostTranslationalModification
@@ -438,7 +438,7 @@ attributes:
   annotation_method:
     name: annotation_method
     description: Computational or experimental method used
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: annotation_method
     owner: PostTranslationalModification
@@ -449,7 +449,7 @@ attributes:
     name: publication_ids
     description: IDs of one or more publications supporting this annotation. Use PubMed
       IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: publication_ids
     owner: PostTranslationalModification
@@ -463,7 +463,7 @@ attributes:
     description: Globally unique identifier as an IRI or CURIE for machine processing
       and external references. Used for linking data across systems and semantic web
       integration.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     identifier: true
     alias: id
@@ -476,7 +476,7 @@ attributes:
   title:
     name: title
     description: A human-readable name or title for this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     slot_uri: dcterms:title
     alias: title
@@ -487,7 +487,7 @@ attributes:
   description:
     name: description
     description: A detailed textual description of this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: description
     owner: PostTranslationalModification

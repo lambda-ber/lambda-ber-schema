@@ -9,7 +9,7 @@ _ISPyB AutoProcProgram.autoProcProgramId_
 
 
 
-URI: [lambdaber:ispyb_auto_proc_program_id](https://w3id.org/lambda-ber-schema/ispyb_auto_proc_program_id)
+URI: [lambda:ispyb_auto_proc_program_id](http://w3id.org/lambda/ispyb_auto_proc_program_id)
 Alias: ispyb_auto_proc_program_id
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: ispyb_auto_proc_program_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: ispyb_auto_proc_program_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:ispyb_auto_proc_program_id |
-| native | lambdaber:ispyb_auto_proc_program_id |
+| self | lambda:ispyb_auto_proc_program_id |
+| native | lambda:ispyb_auto_proc_program_id |
 
 
 
@@ -67,7 +67,7 @@ Alias: ispyb_auto_proc_program_id
 ```yaml
 name: ispyb_auto_proc_program_id
 description: ISPyB AutoProcProgram.autoProcProgramId
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: ispyb_auto_proc_program_id
 owner: WorkflowRun

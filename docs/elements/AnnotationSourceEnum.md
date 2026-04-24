@@ -7,7 +7,7 @@ _Sources of functional annotations_
 
 
 
-URI: [lambdaber:AnnotationSourceEnum](https://w3id.org/lambda-ber-schema/AnnotationSourceEnum)
+URI: [lambda:AnnotationSourceEnum](http://w3id.org/lambda/AnnotationSourceEnum)
 
 ## Permissible Values
 
@@ -77,7 +77,7 @@ URI: [lambdaber:AnnotationSourceEnum](https://w3id.org/lambda-ber-schema/Annotat
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -90,7 +90,7 @@ URI: [lambdaber:AnnotationSourceEnum](https://w3id.org/lambda-ber-schema/Annotat
 ```yaml
 name: AnnotationSourceEnum
 description: Sources of functional annotations
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   pdbe:

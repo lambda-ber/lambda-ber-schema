@@ -9,7 +9,7 @@ _M:N link between Study and Sample with role metadata_
 
 
 
-URI: [lambdaber:StudySampleAssociation](https://w3id.org/lambda-ber-schema/StudySampleAssociation)
+URI: [lambda:StudySampleAssociation](http://w3id.org/lambda/StudySampleAssociation)
 
 
 
@@ -98,7 +98,7 @@ URI: [lambdaber:StudySampleAssociation](https://w3id.org/lambda-ber-schema/Study
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -107,8 +107,8 @@ URI: [lambdaber:StudySampleAssociation](https://w3id.org/lambda-ber-schema/Study
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:StudySampleAssociation |
-| native | lambdaber:StudySampleAssociation |
+| self | lambda:StudySampleAssociation |
+| native | lambda:StudySampleAssociation |
 
 
 
@@ -125,12 +125,12 @@ URI: [lambdaber:StudySampleAssociation](https://w3id.org/lambda-ber-schema/Study
 ```yaml
 name: StudySampleAssociation
 description: M:N link between Study and Sample with role metadata
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 attributes:
   study_id:
     name: study_id
     description: Reference to the study
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - StudySampleAssociation
@@ -141,7 +141,7 @@ attributes:
   sample_id:
     name: sample_id
     description: Reference to the sample
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - SamplePreparation
     - StudySampleAssociation
@@ -151,7 +151,7 @@ attributes:
   role:
     name: role
     description: Role of sample in study (e.g., target, control, reference)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - StudySampleAssociation
@@ -161,7 +161,7 @@ attributes:
   date_added:
     name: date_added
     description: Date when sample was added to study
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - StudySampleAssociation
@@ -176,12 +176,12 @@ attributes:
 ```yaml
 name: StudySampleAssociation
 description: M:N link between Study and Sample with role metadata
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 attributes:
   study_id:
     name: study_id
     description: Reference to the study
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: study_id
     owner: StudySampleAssociation
@@ -194,7 +194,7 @@ attributes:
   sample_id:
     name: sample_id
     description: Reference to the sample
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: sample_id
     owner: StudySampleAssociation
     domain_of:
@@ -206,7 +206,7 @@ attributes:
   role:
     name: role
     description: Role of sample in study (e.g., target, control, reference)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: role
     owner: StudySampleAssociation
@@ -218,7 +218,7 @@ attributes:
   date_added:
     name: date_added
     description: Date when sample was added to study
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: date_added
     owner: StudySampleAssociation

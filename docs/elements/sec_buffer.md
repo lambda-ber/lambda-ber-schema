@@ -9,7 +9,7 @@ _Buffer for size-exclusion chromatography_
 
 
 
-URI: [lambdaber:sec_buffer](https://w3id.org/lambda-ber-schema/sec_buffer)
+URI: [lambda:sec_buffer](http://w3id.org/lambda/sec_buffer)
 Alias: sec_buffer
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: sec_buffer
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: sec_buffer
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:sec_buffer |
-| native | lambdaber:sec_buffer |
+| self | lambda:sec_buffer |
+| native | lambda:sec_buffer |
 
 
 
@@ -67,7 +67,7 @@ Alias: sec_buffer
 ```yaml
 name: sec_buffer
 description: Buffer for size-exclusion chromatography
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: sec_buffer
 owner: SamplePreparation

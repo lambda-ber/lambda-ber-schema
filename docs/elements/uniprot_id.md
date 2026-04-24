@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:uniprot_id](https://w3id.org/lambda-ber-schema/uniprot_id)
+URI: [lambda:uniprot_id](http://w3id.org/lambda/uniprot_id)
 Alias: uniprot_id
 
 <!-- no inheritance hierarchy -->
@@ -44,8 +44,8 @@ Alias: uniprot_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:uniprot_id |
-| native | lambdaber:uniprot_id |
+| self | lambda:uniprot_id |
+| native | lambda:uniprot_id |
 
 
 

@@ -9,7 +9,7 @@ _A domain, measurement, attribute, property, or any descriptor for additional pr
 
 
 
-URI: [lambdaber:Attribute](https://w3id.org/lambda-ber-schema/Attribute)
+URI: [lambda:Attribute](http://w3id.org/lambda/Attribute)
 
 
 
@@ -68,7 +68,7 @@ URI: [lambdaber:Attribute](https://w3id.org/lambda-ber-schema/Attribute)
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -77,8 +77,8 @@ URI: [lambdaber:Attribute](https://w3id.org/lambda-ber-schema/Attribute)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:Attribute |
-| native | lambdaber:Attribute |
+| self | lambda:Attribute |
+| native | lambda:Attribute |
 
 
 
@@ -98,14 +98,14 @@ description: A domain, measurement, attribute, property, or any descriptor for a
   properties to be added to an entity. Where available, please use OBO Foundry ontologies
   or other controlled vocabularies for attributes; the label should be the term name
   from the ontology and the id should be the fully-qualified CURIE.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 attributes:
   id:
     name: id
     description: A CURIE for the attribute, should one exist. Where available, please
       use OBO Foundry ontologies or other controlled vocabularies for labelling attributes;
       the id should be the term ID from the ontology.
-    from_schema: https://w3id.org/lambda-ber-schema/types
+    from_schema: http://w3id.org/lambda/types
     domain_of:
     - NamedThing
     - Attribute
@@ -115,7 +115,7 @@ attributes:
     description: Text string to describe the attribute. Where available, please use
       OBO Foundry ontologies or other controlled vocabularies for labelling attributes;
       the label should be the term name from the ontology.
-    from_schema: https://w3id.org/lambda-ber-schema/types
+    from_schema: http://w3id.org/lambda/types
     aliases:
     - name
     - title
@@ -136,14 +136,14 @@ description: A domain, measurement, attribute, property, or any descriptor for a
   properties to be added to an entity. Where available, please use OBO Foundry ontologies
   or other controlled vocabularies for attributes; the label should be the term name
   from the ontology and the id should be the fully-qualified CURIE.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 attributes:
   id:
     name: id
     description: A CURIE for the attribute, should one exist. Where available, please
       use OBO Foundry ontologies or other controlled vocabularies for labelling attributes;
       the id should be the term ID from the ontology.
-    from_schema: https://w3id.org/lambda-ber-schema/types
+    from_schema: http://w3id.org/lambda/types
     alias: id
     owner: Attribute
     domain_of:
@@ -156,7 +156,7 @@ attributes:
     description: Text string to describe the attribute. Where available, please use
       OBO Foundry ontologies or other controlled vocabularies for labelling attributes;
       the label should be the term name from the ontology.
-    from_schema: https://w3id.org/lambda-ber-schema/types
+    from_schema: http://w3id.org/lambda/types
     aliases:
     - name
     - title

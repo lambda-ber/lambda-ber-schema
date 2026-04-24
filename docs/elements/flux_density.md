@@ -9,7 +9,7 @@ _Photon flux density in photons/s/mm²_
 
 
 
-URI: [lambdaber:flux_density](https://w3id.org/lambda-ber-schema/flux_density)
+URI: [lambda:flux_density](http://w3id.org/lambda/flux_density)
 Alias: flux_density
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: flux_density
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: flux_density
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:flux_density |
-| native | lambdaber:flux_density |
+| self | lambda:flux_density |
+| native | lambda:flux_density |
+| exact | mmCIF:_diffrn_source.pdbx_flux |
 
 
 
@@ -67,7 +68,9 @@ Alias: flux_density
 ```yaml
 name: flux_density
 description: Photon flux density in photons/s/mm²
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_diffrn_source.pdbx_flux
 rank: 1000
 alias: flux_density
 owner: XRayInstrument

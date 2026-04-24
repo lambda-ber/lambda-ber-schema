@@ -9,7 +9,7 @@ _File creation date_
 
 
 
-URI: [lambdaber:creation_date](https://w3id.org/lambda-ber-schema/creation_date)
+URI: [lambda:creation_date](http://w3id.org/lambda/creation_date)
 Alias: creation_date
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: creation_date
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: creation_date
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:creation_date |
-| native | lambdaber:creation_date |
+| self | lambda:creation_date |
+| native | lambda:creation_date |
 
 
 
@@ -67,7 +67,7 @@ Alias: creation_date
 ```yaml
 name: creation_date
 description: File creation date
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: creation_date
 owner: DataFile

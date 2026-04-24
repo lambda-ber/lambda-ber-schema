@@ -9,7 +9,7 @@ _Semantic annotations describing features identified in images using controlled 
 
 
 
-URI: [lambdaber:ImageFeature](https://w3id.org/lambda-ber-schema/ImageFeature)
+URI: [lambda:ImageFeature](http://w3id.org/lambda/ImageFeature)
 
 
 
@@ -74,7 +74,7 @@ URI: [lambdaber:ImageFeature](https://w3id.org/lambda-ber-schema/ImageFeature)
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -83,8 +83,8 @@ URI: [lambdaber:ImageFeature](https://w3id.org/lambda-ber-schema/ImageFeature)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:ImageFeature |
-| native | lambdaber:ImageFeature |
+| self | lambda:ImageFeature |
+| native | lambda:ImageFeature |
 
 
 
@@ -102,13 +102,13 @@ URI: [lambdaber:ImageFeature](https://w3id.org/lambda-ber-schema/ImageFeature)
 name: ImageFeature
 description: Semantic annotations describing features identified in images using controlled
   vocabulary terms
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: AttributeGroup
 attributes:
   terms:
     name: terms
     description: Ontology terms describing features identified in the image
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ImageFeature
@@ -128,13 +128,13 @@ attributes:
 name: ImageFeature
 description: Semantic annotations describing features identified in images using controlled
   vocabulary terms
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: AttributeGroup
 attributes:
   terms:
     name: terms
     description: Ontology terms describing features identified in the image
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: terms
     owner: ImageFeature
@@ -147,7 +147,7 @@ attributes:
     inlined_as_list: true
   description:
     name: description
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: description
     owner: ImageFeature
     domain_of:

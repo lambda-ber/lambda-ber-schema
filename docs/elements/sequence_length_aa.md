@@ -9,7 +9,7 @@ _Length of the protein sequence in amino acids_
 
 
 
-URI: [lambdaber:sequence_length_aa](https://w3id.org/lambda-ber-schema/sequence_length_aa)
+URI: [lambda:sequence_length_aa](http://w3id.org/lambda/sequence_length_aa)
 Alias: sequence_length_aa
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: sequence_length_aa
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: sequence_length_aa
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:sequence_length_aa |
-| native | lambdaber:sequence_length_aa |
+| self | lambda:sequence_length_aa |
+| native | lambda:sequence_length_aa |
 
 
 
@@ -67,7 +67,7 @@ Alias: sequence_length_aa
 ```yaml
 name: sequence_length_aa
 description: Length of the protein sequence in amino acids
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: sequence_length_aa
 owner: ProteinConstruct

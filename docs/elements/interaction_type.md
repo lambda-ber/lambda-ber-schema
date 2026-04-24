@@ -9,7 +9,7 @@ _Type of interaction_
 
 
 
-URI: [lambdaber:interaction_type](https://w3id.org/lambda-ber-schema/interaction_type)
+URI: [lambda:interaction_type](http://w3id.org/lambda/interaction_type)
 Alias: interaction_type
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: interaction_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: interaction_type
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:interaction_type |
-| native | lambdaber:interaction_type |
+| self | lambda:interaction_type |
+| native | lambda:interaction_type |
 
 
 
@@ -67,7 +67,7 @@ Alias: interaction_type
 ```yaml
 name: interaction_type
 description: Type of interaction
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: interaction_type
 owner: LigandInteraction

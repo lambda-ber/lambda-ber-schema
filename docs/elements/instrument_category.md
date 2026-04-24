@@ -9,7 +9,7 @@ _Category distinguishing beamlines from laboratory equipment_
 
 
 
-URI: [lambdaber:instrument_category](https://w3id.org/lambda-ber-schema/instrument_category)
+URI: [lambda:instrument_category](http://w3id.org/lambda/instrument_category)
 Alias: instrument_category
 
 <!-- no inheritance hierarchy -->
@@ -22,11 +22,12 @@ Alias: instrument_category
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Instrument](Instrument.md) | An instrument used to collect data |  no  |
 | [XRayInstrument](XRayInstrument.md) | X-ray diffractometer or synchrotron beamline specifications |  no  |
 | [SAXSInstrument](SAXSInstrument.md) | SAXS/WAXS instrument specifications |  no  |
 | [CryoEMInstrument](CryoEMInstrument.md) | Cryo-EM microscope specifications |  no  |
+| [SANSInstrument](SANSInstrument.md) | Small-angle neutron scattering (SANS) instrument specifications |  no  |
 | [BeamlineInstrument](BeamlineInstrument.md) | Multi-technique synchrotron beamline that supports multiple experimental meth... |  no  |
+| [Instrument](Instrument.md) | An instrument used to collect data |  no  |
 
 
 
@@ -55,7 +56,7 @@ Alias: instrument_category
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -64,8 +65,8 @@ Alias: instrument_category
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:instrument_category |
-| native | lambdaber:instrument_category |
+| self | lambda:instrument_category |
+| native | lambda:instrument_category |
 
 
 
@@ -79,7 +80,7 @@ description: Category distinguishing beamlines from laboratory equipment
 comments:
 - Use SYNCHROTRON_BEAMLINE for synchrotron beamlines
 - Use ELECTRON_MICROSCOPE for cryo-EM instruments
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: instrument_category
 owner: Instrument

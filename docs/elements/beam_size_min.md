@@ -9,7 +9,7 @@ _Minimum beam size in micrometers_
 
 
 
-URI: [lambdaber:beam_size_min](https://w3id.org/lambda-ber-schema/beam_size_min)
+URI: [lambda:beam_size_min](http://w3id.org/lambda/beam_size_min)
 Alias: beam_size_min
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: beam_size_min
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: beam_size_min
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:beam_size_min |
-| native | lambdaber:beam_size_min |
+| self | lambda:beam_size_min |
+| native | lambda:beam_size_min |
 
 
 
@@ -67,7 +67,7 @@ Alias: beam_size_min
 ```yaml
 name: beam_size_min
 description: Minimum beam size in micrometers
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: beam_size_min
 owner: XRayInstrument

@@ -9,7 +9,7 @@ _Number of grids the autoloader can hold_
 
 
 
-URI: [lambdaber:autoloader_capacity](https://w3id.org/lambda-ber-schema/autoloader_capacity)
+URI: [lambda:autoloader_capacity](http://w3id.org/lambda/autoloader_capacity)
 Alias: autoloader_capacity
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: autoloader_capacity
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: autoloader_capacity
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:autoloader_capacity |
-| native | lambdaber:autoloader_capacity |
+| self | lambda:autoloader_capacity |
+| native | lambda:autoloader_capacity |
 
 
 
@@ -67,7 +67,7 @@ Alias: autoloader_capacity
 ```yaml
 name: autoloader_capacity
 description: Number of grids the autoloader can hold
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: autoloader_capacity
 owner: CryoEMInstrument

@@ -9,7 +9,7 @@ _Parameters specific to particle picking workflows_
 
 
 
-URI: [lambdaber:ParticlePickingParameters](https://w3id.org/lambda-ber-schema/ParticlePickingParameters)
+URI: [lambda:ParticlePickingParameters](http://w3id.org/lambda/ParticlePickingParameters)
 
 
 
@@ -129,7 +129,7 @@ URI: [lambdaber:ParticlePickingParameters](https://w3id.org/lambda-ber-schema/Pa
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -138,8 +138,8 @@ URI: [lambdaber:ParticlePickingParameters](https://w3id.org/lambda-ber-schema/Pa
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:ParticlePickingParameters |
-| native | lambdaber:ParticlePickingParameters |
+| self | lambda:ParticlePickingParameters |
+| native | lambda:ParticlePickingParameters |
 
 
 
@@ -156,14 +156,14 @@ URI: [lambdaber:ParticlePickingParameters](https://w3id.org/lambda-ber-schema/Pa
 ```yaml
 name: ParticlePickingParameters
 description: Parameters specific to particle picking workflows
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: AttributeGroup
 attributes:
   picking_method:
     name: picking_method
     description: Method used (manual, template_matching, deep_learning, LoG, Topaz,
       other)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ParticlePickingParameters
@@ -171,7 +171,7 @@ attributes:
   box_size:
     name: box_size
     description: Particle box size in pixels
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ParticlePickingParameters
@@ -181,7 +181,7 @@ attributes:
   threshold:
     name: threshold
     description: Picking threshold
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ParticlePickingParameters
@@ -190,7 +190,7 @@ attributes:
   power_score:
     name: power_score
     description: Power score threshold
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ParticlePickingParameters
@@ -199,7 +199,7 @@ attributes:
   ncc_score:
     name: ncc_score
     description: Normalized cross-correlation score threshold
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ParticlePickingParameters
@@ -210,7 +210,7 @@ attributes:
     description: Name or identifier of the deep learning model (e.g., 'resnet16',
       'resnet8', 'cryolo_general'). Use this for standard pretrained models. Either
       model_name or model_file_path should be provided when using deep learning methods.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ParticlePickingParameters
@@ -221,7 +221,7 @@ attributes:
       model file. Use this instead of model_name when pointing to a specific file
       on disk. Either model_name or model_file_path should be provided when using
       deep learning methods.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ParticlePickingParameters
@@ -232,7 +232,7 @@ attributes:
       'warp', 'custom', 'pretrained'). Helps track model provenance and should be
       provided alongside model_name or model_file_path to document which software/framework
       the model is for.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ParticlePickingParameters
@@ -247,14 +247,14 @@ attributes:
 ```yaml
 name: ParticlePickingParameters
 description: Parameters specific to particle picking workflows
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: AttributeGroup
 attributes:
   picking_method:
     name: picking_method
     description: Method used (manual, template_matching, deep_learning, LoG, Topaz,
       other)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: picking_method
     owner: ParticlePickingParameters
@@ -264,7 +264,7 @@ attributes:
   box_size:
     name: box_size
     description: Particle box size in pixels
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: box_size
     owner: ParticlePickingParameters
@@ -276,7 +276,7 @@ attributes:
   threshold:
     name: threshold
     description: Picking threshold
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: threshold
     owner: ParticlePickingParameters
@@ -287,7 +287,7 @@ attributes:
   power_score:
     name: power_score
     description: Power score threshold
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: power_score
     owner: ParticlePickingParameters
@@ -298,7 +298,7 @@ attributes:
   ncc_score:
     name: ncc_score
     description: Normalized cross-correlation score threshold
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: ncc_score
     owner: ParticlePickingParameters
@@ -311,7 +311,7 @@ attributes:
     description: Name or identifier of the deep learning model (e.g., 'resnet16',
       'resnet8', 'cryolo_general'). Use this for standard pretrained models. Either
       model_name or model_file_path should be provided when using deep learning methods.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: model_name
     owner: ParticlePickingParameters
@@ -324,7 +324,7 @@ attributes:
       model file. Use this instead of model_name when pointing to a specific file
       on disk. Either model_name or model_file_path should be provided when using
       deep learning methods.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: model_file_path
     owner: ParticlePickingParameters
@@ -337,7 +337,7 @@ attributes:
       'warp', 'custom', 'pretrained'). Helps track model provenance and should be
       provided alongside model_name or model_file_path to document which software/framework
       the model is for.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: model_source
     owner: ParticlePickingParameters
@@ -346,7 +346,7 @@ attributes:
     range: string
   description:
     name: description
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: description
     owner: ParticlePickingParameters
     domain_of:

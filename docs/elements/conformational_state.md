@@ -9,7 +9,7 @@ _Conformational state descriptor_
 
 
 
-URI: [lambdaber:conformational_state](https://w3id.org/lambda-ber-schema/conformational_state)
+URI: [lambda:conformational_state](http://w3id.org/lambda/conformational_state)
 Alias: conformational_state
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: conformational_state
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: conformational_state
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:conformational_state |
-| native | lambdaber:conformational_state |
+| self | lambda:conformational_state |
+| native | lambda:conformational_state |
 
 
 
@@ -67,7 +67,7 @@ Alias: conformational_state
 ```yaml
 name: conformational_state
 description: Conformational state descriptor
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: conformational_state
 owner: StructuralFeature

@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:study_id](https://w3id.org/lambda-ber-schema/study_id)
+URI: [lambda:study_id](http://w3id.org/lambda/study_id)
 Alias: study_id
 
 <!-- no inheritance hierarchy -->
@@ -17,9 +17,9 @@ Alias: study_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [StudyExperimentAssociation](StudyExperimentAssociation.md) | M:N link between Study and ExperimentRun |  no  |
 | [StudyWorkflowAssociation](StudyWorkflowAssociation.md) | M:N link between Study and WorkflowRun |  no  |
 | [StudySampleAssociation](StudySampleAssociation.md) | M:N link between Study and Sample with role metadata |  no  |
+| [StudyExperimentAssociation](StudyExperimentAssociation.md) | M:N link between Study and ExperimentRun |  no  |
 
 
 
@@ -45,8 +45,8 @@ Alias: study_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:study_id |
-| native | lambdaber:study_id |
+| self | lambda:study_id |
+| native | lambda:study_id |
 
 
 

@@ -9,7 +9,7 @@ _Final optimized crystallization condition_
 
 
 
-URI: [lambdaber:optimized_condition](https://w3id.org/lambda-ber-schema/optimized_condition)
+URI: [lambda:optimized_condition](http://w3id.org/lambda/optimized_condition)
 Alias: optimized_condition
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: optimized_condition
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: optimized_condition
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:optimized_condition |
-| native | lambdaber:optimized_condition |
+| self | lambda:optimized_condition |
+| native | lambda:optimized_condition |
 
 
 
@@ -67,7 +67,7 @@ Alias: optimized_condition
 ```yaml
 name: optimized_condition
 description: Final optimized crystallization condition
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: optimized_condition
 owner: XRayPreparation

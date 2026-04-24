@@ -9,7 +9,7 @@ _IDs of one or more publications supporting this annotation. Use PubMed IDs in t
 
 
 
-URI: [lambdaber:publication_ids](https://w3id.org/lambda-ber-schema/publication_ids)
+URI: [lambda:publication_ids](http://w3id.org/lambda/publication_ids)
 Alias: publication_ids
 
 <!-- no inheritance hierarchy -->
@@ -22,13 +22,13 @@ Alias: publication_ids
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ProteinAnnotation](ProteinAnnotation.md) | Base class for all protein-related functional and structural annotations |  no  |
-| [MutationEffect](MutationEffect.md) | Effects of mutations and variants on protein structure and function |  no  |
-| [ProteinProteinInteraction](ProteinProteinInteraction.md) | Protein-protein interactions and interfaces |  no  |
-| [StructuralFeature](StructuralFeature.md) | Structural features and properties of protein regions |  no  |
 | [FunctionalSite](FunctionalSite.md) | Functional sites including catalytic, binding, and regulatory sites |  no  |
-| [PostTranslationalModification](PostTranslationalModification.md) | Post-translational modifications observed or predicted |  no  |
+| [StructuralFeature](StructuralFeature.md) | Structural features and properties of protein regions |  no  |
+| [ProteinAnnotation](ProteinAnnotation.md) | Base class for all protein-related functional and structural annotations |  no  |
+| [ProteinProteinInteraction](ProteinProteinInteraction.md) | Protein-protein interactions and interfaces |  no  |
 | [EvolutionaryConservation](EvolutionaryConservation.md) | Evolutionary conservation information |  no  |
+| [PostTranslationalModification](PostTranslationalModification.md) | Post-translational modifications observed or predicted |  no  |
+| [MutationEffect](MutationEffect.md) | Effects of mutations and variants on protein structure and function |  no  |
 
 
 
@@ -56,7 +56,7 @@ Alias: publication_ids
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -65,8 +65,8 @@ Alias: publication_ids
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:publication_ids |
-| native | lambdaber:publication_ids |
+| self | lambda:publication_ids |
+| native | lambda:publication_ids |
 
 
 
@@ -78,7 +78,7 @@ Alias: publication_ids
 name: publication_ids
 description: IDs of one or more publications supporting this annotation. Use PubMed
   IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: publication_ids
 owner: ProteinAnnotation

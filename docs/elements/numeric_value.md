@@ -9,7 +9,7 @@ _The numerical part of a quantity value, expressed as a number._
 
 
 
-URI: [lambdaber:numeric_value](https://w3id.org/lambda-ber-schema/numeric_value)
+URI: [lambda:numeric_value](http://w3id.org/lambda/numeric_value)
 Alias: numeric_value
 
 
@@ -52,7 +52,7 @@ Alias: numeric_value
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -61,8 +61,8 @@ Alias: numeric_value
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:numeric_value |
-| native | lambdaber:numeric_value |
+| self | lambda:numeric_value |
+| native | lambda:numeric_value |
 | undefined | nmdc:numeric_value, qud:quantityValue, schema:value |
 
 
@@ -74,7 +74,7 @@ Alias: numeric_value
 ```yaml
 name: numeric_value
 description: The numerical part of a quantity value, expressed as a number.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 mappings:
 - nmdc:numeric_value
 - qud:quantityValue

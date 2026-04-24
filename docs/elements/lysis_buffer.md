@@ -9,7 +9,7 @@ _Buffer composition for lysis_
 
 
 
-URI: [lambdaber:lysis_buffer](https://w3id.org/lambda-ber-schema/lysis_buffer)
+URI: [lambda:lysis_buffer](http://w3id.org/lambda/lysis_buffer)
 Alias: lysis_buffer
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: lysis_buffer
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: lysis_buffer
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:lysis_buffer |
-| native | lambdaber:lysis_buffer |
+| self | lambda:lysis_buffer |
+| native | lambda:lysis_buffer |
 
 
 
@@ -67,7 +67,7 @@ Alias: lysis_buffer
 ```yaml
 name: lysis_buffer
 description: Buffer composition for lysis
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: lysis_buffer
 owner: SamplePreparation

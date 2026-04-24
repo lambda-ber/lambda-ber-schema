@@ -9,7 +9,7 @@ _Detector distance, typically specified in millimeters. Data providers may speci
 
 
 
-URI: [lambdaber:detector_distance_mm](https://w3id.org/lambda-ber-schema/detector_distance_mm)
+URI: [lambda:detector_distance_mm](http://w3id.org/lambda/detector_distance_mm)
 Alias: detector_distance_mm
 
 <!-- no inheritance hierarchy -->
@@ -35,6 +35,11 @@ Alias: detector_distance_mm
 
 
 
+## Aliases
+
+
+* detector_distance
+
 
 ## Identifier and Mapping Information
 
@@ -46,7 +51,7 @@ Alias: detector_distance_mm
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +60,9 @@ Alias: detector_distance_mm
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:detector_distance_mm |
-| native | lambdaber:detector_distance_mm |
+| self | lambda:detector_distance_mm |
+| native | lambda:detector_distance_mm |
+| exact | mmCIF:_diffrn_detector.distance |
 
 
 
@@ -68,7 +74,11 @@ Alias: detector_distance_mm
 name: detector_distance_mm
 description: Detector distance, typically specified in millimeters. Data providers
   may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+aliases:
+- detector_distance
+exact_mappings:
+- mmCIF:_diffrn_detector.distance
 rank: 1000
 alias: detector_distance_mm
 owner: DataCollectionStrategy

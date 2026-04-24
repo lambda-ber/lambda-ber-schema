@@ -9,7 +9,7 @@ _Effects of mutations present in the sample_
 
 
 
-URI: [lambdaber:mutation_effects](https://w3id.org/lambda-ber-schema/mutation_effects)
+URI: [lambda:mutation_effects](http://w3id.org/lambda/mutation_effects)
 Alias: mutation_effects
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: mutation_effects
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: mutation_effects
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:mutation_effects |
-| native | lambdaber:mutation_effects |
+| self | lambda:mutation_effects |
+| native | lambda:mutation_effects |
 
 
 
@@ -69,7 +69,7 @@ Alias: mutation_effects
 ```yaml
 name: mutation_effects
 description: Effects of mutations present in the sample
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: mutation_effects
 owner: Sample

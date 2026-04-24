@@ -9,7 +9,7 @@ _The value that was specified in raw form, i.e. a string. E.g. "2 Angstroms" or 
 
 
 
-URI: [lambdaber:raw_value](https://w3id.org/lambda-ber-schema/raw_value)
+URI: [lambda:raw_value](http://w3id.org/lambda/raw_value)
 Alias: raw_value
 
 <!-- no inheritance hierarchy -->
@@ -22,10 +22,10 @@ Alias: raw_value
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AttributeValue](AttributeValue.md) | The value for any attribute of an entity |  no  |
-| [TextValue](TextValue.md) | A value described using a text string, optionally with a controlled vocabular... |  no  |
-| [DateTimeValue](DateTimeValue.md) | A date or date and time value |  no  |
 | [QuantityValue](QuantityValue.md) | A simple quantity value, representing a measurement with a numeric value and ... |  yes  |
+| [TextValue](TextValue.md) | A value described using a text string, optionally with a controlled vocabular... |  no  |
+| [AttributeValue](AttributeValue.md) | The value for any attribute of an entity |  no  |
+| [DateTimeValue](DateTimeValue.md) | A date or date and time value |  no  |
 
 
 
@@ -49,7 +49,7 @@ Alias: raw_value
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -58,8 +58,8 @@ Alias: raw_value
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:raw_value |
-| native | lambdaber:raw_value |
+| self | lambda:raw_value |
+| native | lambda:raw_value |
 | undefined | nmdc:raw_value |
 
 
@@ -72,7 +72,7 @@ Alias: raw_value
 name: raw_value
 description: The value that was specified in raw form, i.e. a string. E.g. "2 Angstroms"
   or "2-4 micrometers"
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 mappings:
 - nmdc:raw_value
 rank: 1000

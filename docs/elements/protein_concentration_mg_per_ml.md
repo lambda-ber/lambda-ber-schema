@@ -9,7 +9,7 @@ _Protein concentration for crystallization in mg/mL_
 
 
 
-URI: [lambdaber:protein_concentration_mg_per_ml](https://w3id.org/lambda-ber-schema/protein_concentration_mg_per_ml)
+URI: [lambda:protein_concentration_mg_per_ml](http://w3id.org/lambda/protein_concentration_mg_per_ml)
 Alias: protein_concentration_mg_per_ml
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: protein_concentration_mg_per_ml
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: protein_concentration_mg_per_ml
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:protein_concentration_mg_per_ml |
-| native | lambdaber:protein_concentration_mg_per_ml |
+| self | lambda:protein_concentration_mg_per_ml |
+| native | lambda:protein_concentration_mg_per_ml |
 
 
 
@@ -67,7 +67,7 @@ Alias: protein_concentration_mg_per_ml
 ```yaml
 name: protein_concentration_mg_per_ml
 description: Protein concentration for crystallization in mg/mL
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: protein_concentration_mg_per_ml
 owner: XRayPreparation

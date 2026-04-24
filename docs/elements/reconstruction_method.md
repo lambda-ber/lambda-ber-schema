@@ -9,7 +9,7 @@ _Method used for 3D reconstruction_
 
 
 
-URI: [lambdaber:reconstruction_method](https://w3id.org/lambda-ber-schema/reconstruction_method)
+URI: [lambda:reconstruction_method](http://w3id.org/lambda/reconstruction_method)
 Alias: reconstruction_method
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: reconstruction_method
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: reconstruction_method
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:reconstruction_method |
-| native | lambdaber:reconstruction_method |
+| self | lambda:reconstruction_method |
+| native | lambda:reconstruction_method |
 
 
 
@@ -67,7 +67,7 @@ Alias: reconstruction_method
 ```yaml
 name: reconstruction_method
 description: Method used for 3D reconstruction
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: reconstruction_method
 owner: Image3D

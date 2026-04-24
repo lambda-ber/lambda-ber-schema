@@ -9,7 +9,7 @@ _Cryoprotectant used for crystal cooling_
 
 
 
-URI: [nsls2:Cryo_Protectant](https://github.com/NSLS2/BER-LAMBDA/Cryo_Protectant)
+URI: [lambda:cryo_protectant](http://w3id.org/lambda/cryo_protectant)
 Alias: cryo_protectant
 
 <!-- no inheritance hierarchy -->
@@ -36,10 +36,6 @@ Alias: cryo_protectant
 
 
 
-## Comments
-
-* Maps to NSLS2 spreadsheet: Cryo_Protectant
-
 ## Identifier and Mapping Information
 
 
@@ -50,7 +46,7 @@ Alias: cryo_protectant
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -59,8 +55,9 @@ Alias: cryo_protectant
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | nsls2:Cryo_Protectant |
-| native | lambdaber:cryo_protectant |
+| self | lambda:cryo_protectant |
+| native | lambda:cryo_protectant |
+| exact | nsls2:Cryo_Protectant |
 
 
 
@@ -71,11 +68,10 @@ Alias: cryo_protectant
 ```yaml
 name: cryo_protectant
 description: Cryoprotectant used for crystal cooling
-comments:
-- 'Maps to NSLS2 spreadsheet: Cryo_Protectant'
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- nsls2:Cryo_Protectant
 rank: 1000
-slot_uri: nsls2:Cryo_Protectant
 alias: cryo_protectant
 owner: CrystallizationConditions
 domain_of:

@@ -9,7 +9,7 @@ _Type of data in the file_
 
 
 
-URI: [lambdaber:data_type](https://w3id.org/lambda-ber-schema/data_type)
+URI: [lambda:data_type](http://w3id.org/lambda/data_type)
 Alias: data_type
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: data_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: data_type
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:data_type |
-| native | lambdaber:data_type |
+| self | lambda:data_type |
+| native | lambda:data_type |
 
 
 
@@ -67,7 +67,7 @@ Alias: data_type
 ```yaml
 name: data_type
 description: Type of data in the file
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: data_type
 owner: DataFile

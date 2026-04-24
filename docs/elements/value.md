@@ -9,7 +9,7 @@ _The value, as a text string._
 
 
 
-URI: [lambdaber:value](https://w3id.org/lambda-ber-schema/value)
+URI: [lambda:value](http://w3id.org/lambda/value)
 Alias: value
 
 <!-- no inheritance hierarchy -->
@@ -22,9 +22,9 @@ Alias: value
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [BiophysicalProperty](BiophysicalProperty.md) | Measured or calculated biophysical properties |  no  |
 | [TextValue](TextValue.md) | A value described using a text string, optionally with a controlled vocabular... |  no  |
 | [DateTimeValue](DateTimeValue.md) | A date or date and time value |  no  |
-| [BiophysicalProperty](BiophysicalProperty.md) | Measured or calculated biophysical properties |  no  |
 
 
 
@@ -48,7 +48,7 @@ Alias: value
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: value
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:value |
-| native | lambdaber:value |
+| self | lambda:value |
+| native | lambda:value |
 
 
 
@@ -69,7 +69,7 @@ Alias: value
 ```yaml
 name: value
 description: The value, as a text string.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: value
 domain_of:

@@ -9,7 +9,7 @@ _Mode of data collection_
 
 
 
-URI: [lambdaber:collection_mode](https://w3id.org/lambda-ber-schema/collection_mode)
+URI: [lambda:collection_mode](http://w3id.org/lambda/collection_mode)
 Alias: collection_mode
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: collection_mode
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: collection_mode
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:collection_mode |
-| native | lambdaber:collection_mode |
+| self | lambda:collection_mode |
+| native | lambda:collection_mode |
 
 
 
@@ -67,7 +67,7 @@ Alias: collection_mode
 ```yaml
 name: collection_mode
 description: Mode of data collection
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: collection_mode
 owner: DataCollectionStrategy

@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:total_dose](https://w3id.org/lambda-ber-schema/total_dose)
+URI: [lambda:total_dose](http://w3id.org/lambda/total_dose)
 Alias: total_dose
 
 <!-- no inheritance hierarchy -->
@@ -17,8 +17,8 @@ Alias: total_dose
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentRun](ExperimentRun.md) | An experimental data collection session |  no  |
 | [DataCollectionStrategy](DataCollectionStrategy.md) | Strategy for data collection |  no  |
+| [ExperimentRun](ExperimentRun.md) | An experimental data collection session |  no  |
 
 
 
@@ -44,8 +44,8 @@ Alias: total_dose
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:total_dose |
-| native | lambdaber:total_dose |
+| self | lambda:total_dose |
+| native | lambda:total_dose |
 
 
 

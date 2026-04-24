@@ -9,7 +9,7 @@ _N-terminal tag (e.g., His6, MBP, GST)_
 
 
 
-URI: [lambdaber:tag_nterm](https://w3id.org/lambda-ber-schema/tag_nterm)
+URI: [lambda:tag_nterm](http://w3id.org/lambda/tag_nterm)
 Alias: tag_nterm
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: tag_nterm
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: tag_nterm
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:tag_nterm |
-| native | lambdaber:tag_nterm |
+| self | lambda:tag_nterm |
+| native | lambda:tag_nterm |
 
 
 
@@ -67,7 +67,7 @@ Alias: tag_nterm
 ```yaml
 name: tag_nterm
 description: N-terminal tag (e.g., His6, MBP, GST)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: tag_nterm
 owner: ProteinConstruct

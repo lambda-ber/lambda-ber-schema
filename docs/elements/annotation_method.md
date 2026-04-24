@@ -9,7 +9,7 @@ _Computational or experimental method used_
 
 
 
-URI: [lambdaber:annotation_method](https://w3id.org/lambda-ber-schema/annotation_method)
+URI: [lambda:annotation_method](http://w3id.org/lambda/annotation_method)
 Alias: annotation_method
 
 <!-- no inheritance hierarchy -->
@@ -22,13 +22,13 @@ Alias: annotation_method
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ProteinAnnotation](ProteinAnnotation.md) | Base class for all protein-related functional and structural annotations |  no  |
-| [MutationEffect](MutationEffect.md) | Effects of mutations and variants on protein structure and function |  no  |
-| [ProteinProteinInteraction](ProteinProteinInteraction.md) | Protein-protein interactions and interfaces |  no  |
-| [StructuralFeature](StructuralFeature.md) | Structural features and properties of protein regions |  no  |
 | [FunctionalSite](FunctionalSite.md) | Functional sites including catalytic, binding, and regulatory sites |  no  |
-| [PostTranslationalModification](PostTranslationalModification.md) | Post-translational modifications observed or predicted |  no  |
+| [StructuralFeature](StructuralFeature.md) | Structural features and properties of protein regions |  no  |
+| [ProteinAnnotation](ProteinAnnotation.md) | Base class for all protein-related functional and structural annotations |  no  |
+| [ProteinProteinInteraction](ProteinProteinInteraction.md) | Protein-protein interactions and interfaces |  no  |
 | [EvolutionaryConservation](EvolutionaryConservation.md) | Evolutionary conservation information |  no  |
+| [PostTranslationalModification](PostTranslationalModification.md) | Post-translational modifications observed or predicted |  no  |
+| [MutationEffect](MutationEffect.md) | Effects of mutations and variants on protein structure and function |  no  |
 
 
 
@@ -52,7 +52,7 @@ Alias: annotation_method
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -61,8 +61,8 @@ Alias: annotation_method
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:annotation_method |
-| native | lambdaber:annotation_method |
+| self | lambda:annotation_method |
+| native | lambda:annotation_method |
 
 
 
@@ -73,7 +73,7 @@ Alias: annotation_method
 ```yaml
 name: annotation_method
 description: Computational or experimental method used
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: annotation_method
 owner: ProteinAnnotation

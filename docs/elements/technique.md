@@ -3,13 +3,8 @@
 # Slot: technique 
 
 
-_Technique used for data collection_
 
-
-
-
-
-URI: [lambdaber:technique](https://w3id.org/lambda-ber-schema/technique)
+URI: [lambda:technique](http://w3id.org/lambda/technique)
 Alias: technique
 
 <!-- no inheritance hierarchy -->
@@ -22,6 +17,7 @@ Alias: technique
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [SANSInstrument](SANSInstrument.md) | Small-angle neutron scattering (SANS) instrument specifications |  no  |
 | [ExperimentRun](ExperimentRun.md) | An experimental data collection session |  no  |
 
 
@@ -31,9 +27,7 @@ Alias: technique
 
 ## Properties
 
-* Range: [TechniqueEnum](TechniqueEnum.md)
-
-* Required: True
+* Range: [String](String.md)
 
 
 
@@ -45,20 +39,13 @@ Alias: technique
 
 
 
-### Schema Source
-
-
-* from schema: https://w3id.org/lambda-ber-schema/
-
-
-
 
 ## Mappings
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:technique |
-| native | lambdaber:technique |
+| self | lambda:technique |
+| native | lambda:technique |
 
 
 
@@ -68,15 +55,11 @@ Alias: technique
 <details>
 ```yaml
 name: technique
-description: Technique used for data collection
-from_schema: https://w3id.org/lambda-ber-schema/
-rank: 1000
 alias: technique
-owner: ExperimentRun
 domain_of:
+- SANSInstrument
 - ExperimentRun
-range: TechniqueEnum
-required: true
+range: string
 
 ```
 </details>

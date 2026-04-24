@@ -9,7 +9,7 @@ _Dwell time per pixel, typically specified in milliseconds. Data providers may s
 
 
 
-URI: [lambdaber:dwell_time](https://w3id.org/lambda-ber-schema/dwell_time)
+URI: [lambda:dwell_time](http://w3id.org/lambda/dwell_time)
 Alias: dwell_time
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: dwell_time
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: dwell_time
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:dwell_time |
-| native | lambdaber:dwell_time |
+| self | lambda:dwell_time |
+| native | lambda:dwell_time |
 
 
 
@@ -68,7 +68,7 @@ Alias: dwell_time
 name: dwell_time
 description: Dwell time per pixel, typically specified in milliseconds. Data providers
   may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: dwell_time
 owner: XRFImage

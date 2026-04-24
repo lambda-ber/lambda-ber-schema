@@ -9,7 +9,7 @@ _Temperature during cleavage in Celsius_
 
 
 
-URI: [lambdaber:cleavage_temperature_c](https://w3id.org/lambda-ber-schema/cleavage_temperature_c)
+URI: [lambda:cleavage_temperature_c](http://w3id.org/lambda/cleavage_temperature_c)
 Alias: cleavage_temperature_c
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: cleavage_temperature_c
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: cleavage_temperature_c
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:cleavage_temperature_c |
-| native | lambdaber:cleavage_temperature_c |
+| self | lambda:cleavage_temperature_c |
+| native | lambda:cleavage_temperature_c |
 
 
 
@@ -67,7 +67,7 @@ Alias: cleavage_temperature_c
 ```yaml
 name: cleavage_temperature_c
 description: Temperature during cleavage in Celsius
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: cleavage_temperature_c
 owner: SamplePreparation

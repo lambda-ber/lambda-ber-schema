@@ -9,7 +9,7 @@ _Links output DataFiles to WorkflowRun_
 
 
 
-URI: [lambdaber:WorkflowOutputAssociation](https://w3id.org/lambda-ber-schema/WorkflowOutputAssociation)
+URI: [lambda:WorkflowOutputAssociation](http://w3id.org/lambda/WorkflowOutputAssociation)
 
 
 
@@ -95,7 +95,7 @@ URI: [lambdaber:WorkflowOutputAssociation](https://w3id.org/lambda-ber-schema/Wo
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -104,8 +104,8 @@ URI: [lambdaber:WorkflowOutputAssociation](https://w3id.org/lambda-ber-schema/Wo
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:WorkflowOutputAssociation |
-| native | lambdaber:WorkflowOutputAssociation |
+| self | lambda:WorkflowOutputAssociation |
+| native | lambda:WorkflowOutputAssociation |
 
 
 
@@ -122,12 +122,12 @@ URI: [lambdaber:WorkflowOutputAssociation](https://w3id.org/lambda-ber-schema/Wo
 ```yaml
 name: WorkflowOutputAssociation
 description: Links output DataFiles to WorkflowRun
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 attributes:
   workflow_id:
     name: workflow_id
     description: Reference to the workflow run
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - StudyWorkflowAssociation
     - WorkflowExperimentAssociation
@@ -138,7 +138,7 @@ attributes:
   file_id:
     name: file_id
     description: Reference to the output data file
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - WorkflowInputAssociation
     - WorkflowOutputAssociation
@@ -147,7 +147,7 @@ attributes:
   output_type:
     name: output_type
     description: Type of output from the workflow
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowOutputAssociation
@@ -162,12 +162,12 @@ attributes:
 ```yaml
 name: WorkflowOutputAssociation
 description: Links output DataFiles to WorkflowRun
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 attributes:
   workflow_id:
     name: workflow_id
     description: Reference to the workflow run
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: workflow_id
     owner: WorkflowOutputAssociation
     domain_of:
@@ -180,7 +180,7 @@ attributes:
   file_id:
     name: file_id
     description: Reference to the output data file
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: file_id
     owner: WorkflowOutputAssociation
     domain_of:
@@ -191,7 +191,7 @@ attributes:
   output_type:
     name: output_type
     description: Type of output from the workflow
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: output_type
     owner: WorkflowOutputAssociation

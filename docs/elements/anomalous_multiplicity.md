@@ -9,7 +9,7 @@ _Multiplicity of anomalous data_
 
 
 
-URI: [lambdaber:anomalous_multiplicity](https://w3id.org/lambda-ber-schema/anomalous_multiplicity)
+URI: [lambda:anomalous_multiplicity](http://w3id.org/lambda/anomalous_multiplicity)
 Alias: anomalous_multiplicity
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: anomalous_multiplicity
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: anomalous_multiplicity
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:anomalous_multiplicity |
-| native | lambdaber:anomalous_multiplicity |
+| self | lambda:anomalous_multiplicity |
+| native | lambda:anomalous_multiplicity |
 
 
 
@@ -67,7 +67,7 @@ Alias: anomalous_multiplicity
 ```yaml
 name: anomalous_multiplicity
 description: Multiplicity of anomalous data
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: anomalous_multiplicity
 owner: WorkflowRun

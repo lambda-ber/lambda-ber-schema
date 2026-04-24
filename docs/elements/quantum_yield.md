@@ -9,7 +9,7 @@ _Quantum yield of the fluorophore_
 
 
 
-URI: [lambdaber:quantum_yield](https://w3id.org/lambda-ber-schema/quantum_yield)
+URI: [lambda:quantum_yield](http://w3id.org/lambda/quantum_yield)
 Alias: quantum_yield
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: quantum_yield
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: quantum_yield
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:quantum_yield |
-| native | lambdaber:quantum_yield |
+| self | lambda:quantum_yield |
+| native | lambda:quantum_yield |
 
 
 
@@ -67,7 +67,7 @@ Alias: quantum_yield
 ```yaml
 name: quantum_yield
 description: Quantum yield of the fluorophore
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: quantum_yield
 owner: FluorescenceImage

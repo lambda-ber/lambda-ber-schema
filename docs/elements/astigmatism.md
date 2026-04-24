@@ -9,7 +9,7 @@ _Astigmatism value, typically specified in Angstroms. Data providers may specify
 
 
 
-URI: [lambdaber:astigmatism](https://w3id.org/lambda-ber-schema/astigmatism)
+URI: [lambda:astigmatism](http://w3id.org/lambda/astigmatism)
 Alias: astigmatism
 
 <!-- no inheritance hierarchy -->
@@ -22,10 +22,10 @@ Alias: astigmatism
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OpticalImage](OpticalImage.md) | Visible light optical microscopy or photography image |  no  |
 | [Image2D](Image2D.md) | A 2D image (micrograph, diffraction pattern) |  no  |
 | [XRFImage](XRFImage.md) | X-ray fluorescence (XRF) image showing elemental distribution |  no  |
 | [Micrograph](Micrograph.md) | Motion-corrected micrograph derived from movie |  no  |
+| [OpticalImage](OpticalImage.md) | Visible light optical microscopy or photography image |  no  |
 | [Movie](Movie.md) | Raw cryo-EM movie with frame-by-frame metadata for motion correction |  no  |
 | [FluorescenceImage](FluorescenceImage.md) | Fluorescence microscopy image capturing specific molecular targets through fl... |  no  |
 
@@ -51,7 +51,7 @@ Alias: astigmatism
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -60,8 +60,8 @@ Alias: astigmatism
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:astigmatism |
-| native | lambdaber:astigmatism |
+| self | lambda:astigmatism |
+| native | lambda:astigmatism |
 
 
 
@@ -73,7 +73,7 @@ Alias: astigmatism
 name: astigmatism
 description: Astigmatism value, typically specified in Angstroms. Data providers may
   specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: astigmatism
 owner: Image2D

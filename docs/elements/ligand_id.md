@@ -9,7 +9,7 @@ _Ligand identifier (ChEMBL, ChEBI, PubChem)_
 
 
 
-URI: [lambdaber:ligand_id](https://w3id.org/lambda-ber-schema/ligand_id)
+URI: [lambda:ligand_id](http://w3id.org/lambda/ligand_id)
 Alias: ligand_id
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: ligand_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: ligand_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:ligand_id |
-| native | lambdaber:ligand_id |
+| self | lambda:ligand_id |
+| native | lambda:ligand_id |
 
 
 
@@ -69,7 +69,7 @@ Alias: ligand_id
 ```yaml
 name: ligand_id
 description: Ligand identifier (ChEMBL, ChEBI, PubChem)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: ligand_id
 owner: LigandInteraction

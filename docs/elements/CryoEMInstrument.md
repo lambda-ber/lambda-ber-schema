@@ -9,7 +9,7 @@ _Cryo-EM microscope specifications_
 
 
 
-URI: [lambdaber:CryoEMInstrument](https://w3id.org/lambda-ber-schema/CryoEMInstrument)
+URI: [lambda:CryoEMInstrument](http://w3id.org/lambda/CryoEMInstrument)
 
 
 
@@ -327,7 +327,7 @@ URI: [lambdaber:CryoEMInstrument](https://w3id.org/lambda-ber-schema/CryoEMInstr
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -336,8 +336,8 @@ URI: [lambdaber:CryoEMInstrument](https://w3id.org/lambda-ber-schema/CryoEMInstr
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:CryoEMInstrument |
-| native | lambdaber:CryoEMInstrument |
+| self | lambda:CryoEMInstrument |
+| native | lambda:CryoEMInstrument |
 
 
 
@@ -354,13 +354,15 @@ URI: [lambdaber:CryoEMInstrument](https://w3id.org/lambda-ber-schema/CryoEMInstr
 ```yaml
 name: CryoEMInstrument
 description: Cryo-EM microscope specifications
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: Instrument
 attributes:
   accelerating_voltage:
     name: accelerating_voltage
     description: Accelerating voltage in kV
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_imaging.accelerating_voltage
     rank: 1000
     domain_of:
     - CryoEMInstrument
@@ -369,7 +371,9 @@ attributes:
   cs_corrector:
     name: cs_corrector
     description: Spherical aberration corrector present
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_imaging.alignment_procedure
     rank: 1000
     domain_of:
     - CryoEMInstrument
@@ -377,7 +381,7 @@ attributes:
   phase_plate:
     name: phase_plate
     description: Phase plate available
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - CryoEMInstrument
@@ -388,7 +392,9 @@ attributes:
     comments:
     - Use this for technology classification (e.g., direct_electron_detector, ccd)
     - See detector_manufacturer and detector_model for specific equipment details
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_image_recording.film_or_detector_model
     rank: 1000
     domain_of:
     - CryoEMInstrument
@@ -400,7 +406,7 @@ attributes:
     description: Detector manufacturer (e.g., Gatan, ThermoFisher, DirectElectron)
     comments:
     - 'Examples: Gatan, ThermoFisher Scientific, DirectElectron'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - CryoEMInstrument
@@ -411,7 +417,9 @@ attributes:
     description: Detector model (e.g., K3, Falcon 4i, DE-64)
     comments:
     - 'Examples: K3 BioQuantum, Falcon 4i, DE-64'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_image_recording.film_or_detector_model
     rank: 1000
     domain_of:
     - CryoEMInstrument
@@ -423,7 +431,9 @@ attributes:
     description: Supported or default detector operating mode
     comments:
     - Indicates operating mode capabilities (e.g., counting, super_resolution)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_image_recording.detector_mode
     rank: 1000
     domain_of:
     - CryoEMInstrument
@@ -432,7 +442,7 @@ attributes:
   detector_position:
     name: detector_position
     description: Physical position of detector in microscope (e.g., post-GIF, pre-column)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - CryoEMInstrument
@@ -440,7 +450,7 @@ attributes:
   detector_dimensions:
     name: detector_dimensions
     description: Detector dimensions in pixels (e.g., 4096x4096, 5760x4092)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - CryoEMInstrument
@@ -448,7 +458,7 @@ attributes:
   pixel_size_physical_um:
     name: pixel_size_physical_um
     description: Physical pixel size of the detector in micrometers
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - CryoEMInstrument
@@ -457,7 +467,7 @@ attributes:
   autoloader_capacity:
     name: autoloader_capacity
     description: Number of grids the autoloader can hold
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - CryoEMInstrument
@@ -466,7 +476,9 @@ attributes:
   cs:
     name: cs
     description: Spherical aberration (Cs) in millimeters
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_imaging.nominal_cs
     rank: 1000
     domain_of:
     - CryoEMInstrument
@@ -475,7 +487,9 @@ attributes:
   c2_aperture:
     name: c2_aperture
     description: C2 aperture size in micrometers
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_imaging.c2_aperture_diameter
     rank: 1000
     domain_of:
     - CryoEMInstrument
@@ -484,7 +498,7 @@ attributes:
   objective_aperture:
     name: objective_aperture
     description: Objective aperture size in micrometers
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - CryoEMInstrument
@@ -493,7 +507,7 @@ attributes:
   phase_plate_type:
     name: phase_plate_type
     description: Type of phase plate if present
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - CryoEMInstrument
@@ -501,7 +515,7 @@ attributes:
   energy_filter_present:
     name: energy_filter_present
     description: Whether energy filter is present
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - CryoEMInstrument
@@ -509,7 +523,7 @@ attributes:
   energy_filter_make:
     name: energy_filter_make
     description: Energy filter manufacturer
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - CryoEMInstrument
@@ -517,7 +531,7 @@ attributes:
   energy_filter_model:
     name: energy_filter_model
     description: Energy filter model
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - CryoEMInstrument
@@ -525,7 +539,9 @@ attributes:
   energy_filter_slit_width:
     name: energy_filter_slit_width
     description: Energy filter slit width in eV
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_imaging.energy_filter_slit_width
     rank: 1000
     domain_of:
     - CryoEMInstrument
@@ -534,7 +550,7 @@ attributes:
   pixel_size_physical:
     name: pixel_size_physical
     description: Physical pixel size in micrometers
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - CryoEMInstrument
@@ -543,7 +559,7 @@ attributes:
   microscope_software:
     name: microscope_software
     description: Microscope control software (e.g., SerialEM, EPU, Leginon)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - CryoEMInstrument
@@ -551,7 +567,7 @@ attributes:
   microscope_software_version:
     name: microscope_software_version
     description: Software version
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - CryoEMInstrument
@@ -559,7 +575,9 @@ attributes:
   spotsize:
     name: spotsize
     description: Electron beam spot size setting
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_imaging.detector_spot_size
     rank: 1000
     domain_of:
     - CryoEMInstrument
@@ -568,7 +586,7 @@ attributes:
   gunlens:
     name: gunlens
     description: Gun lens setting
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - CryoEMInstrument
@@ -577,7 +595,9 @@ attributes:
   imaging_mode:
     name: imaging_mode
     description: Imaging mode for electron microscopy
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_imaging.mode
     rank: 1000
     domain_of:
     - CryoEMInstrument
@@ -585,7 +605,7 @@ attributes:
   tem_beam_diameter:
     name: tem_beam_diameter
     description: TEM beam diameter in micrometers
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - CryoEMInstrument
@@ -601,13 +621,15 @@ attributes:
 ```yaml
 name: CryoEMInstrument
 description: Cryo-EM microscope specifications
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: Instrument
 attributes:
   accelerating_voltage:
     name: accelerating_voltage
     description: Accelerating voltage in kV
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_imaging.accelerating_voltage
     rank: 1000
     alias: accelerating_voltage
     owner: CryoEMInstrument
@@ -618,7 +640,9 @@ attributes:
   cs_corrector:
     name: cs_corrector
     description: Spherical aberration corrector present
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_imaging.alignment_procedure
     rank: 1000
     alias: cs_corrector
     owner: CryoEMInstrument
@@ -628,7 +652,7 @@ attributes:
   phase_plate:
     name: phase_plate
     description: Phase plate available
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: phase_plate
     owner: CryoEMInstrument
@@ -641,7 +665,9 @@ attributes:
     comments:
     - Use this for technology classification (e.g., direct_electron_detector, ccd)
     - See detector_manufacturer and detector_model for specific equipment details
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_image_recording.film_or_detector_model
     rank: 1000
     alias: detector_technology
     owner: CryoEMInstrument
@@ -655,7 +681,7 @@ attributes:
     description: Detector manufacturer (e.g., Gatan, ThermoFisher, DirectElectron)
     comments:
     - 'Examples: Gatan, ThermoFisher Scientific, DirectElectron'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: detector_manufacturer
     owner: CryoEMInstrument
@@ -668,7 +694,9 @@ attributes:
     description: Detector model (e.g., K3, Falcon 4i, DE-64)
     comments:
     - 'Examples: K3 BioQuantum, Falcon 4i, DE-64'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_image_recording.film_or_detector_model
     rank: 1000
     alias: detector_model
     owner: CryoEMInstrument
@@ -682,7 +710,9 @@ attributes:
     description: Supported or default detector operating mode
     comments:
     - Indicates operating mode capabilities (e.g., counting, super_resolution)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_image_recording.detector_mode
     rank: 1000
     alias: detector_mode
     owner: CryoEMInstrument
@@ -693,7 +723,7 @@ attributes:
   detector_position:
     name: detector_position
     description: Physical position of detector in microscope (e.g., post-GIF, pre-column)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: detector_position
     owner: CryoEMInstrument
@@ -703,7 +733,7 @@ attributes:
   detector_dimensions:
     name: detector_dimensions
     description: Detector dimensions in pixels (e.g., 4096x4096, 5760x4092)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: detector_dimensions
     owner: CryoEMInstrument
@@ -713,7 +743,7 @@ attributes:
   pixel_size_physical_um:
     name: pixel_size_physical_um
     description: Physical pixel size of the detector in micrometers
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: pixel_size_physical_um
     owner: CryoEMInstrument
@@ -724,7 +754,7 @@ attributes:
   autoloader_capacity:
     name: autoloader_capacity
     description: Number of grids the autoloader can hold
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: autoloader_capacity
     owner: CryoEMInstrument
@@ -735,7 +765,9 @@ attributes:
   cs:
     name: cs
     description: Spherical aberration (Cs) in millimeters
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_imaging.nominal_cs
     rank: 1000
     alias: cs
     owner: CryoEMInstrument
@@ -746,7 +778,9 @@ attributes:
   c2_aperture:
     name: c2_aperture
     description: C2 aperture size in micrometers
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_imaging.c2_aperture_diameter
     rank: 1000
     alias: c2_aperture
     owner: CryoEMInstrument
@@ -757,7 +791,7 @@ attributes:
   objective_aperture:
     name: objective_aperture
     description: Objective aperture size in micrometers
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: objective_aperture
     owner: CryoEMInstrument
@@ -768,7 +802,7 @@ attributes:
   phase_plate_type:
     name: phase_plate_type
     description: Type of phase plate if present
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: phase_plate_type
     owner: CryoEMInstrument
@@ -778,7 +812,7 @@ attributes:
   energy_filter_present:
     name: energy_filter_present
     description: Whether energy filter is present
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: energy_filter_present
     owner: CryoEMInstrument
@@ -788,7 +822,7 @@ attributes:
   energy_filter_make:
     name: energy_filter_make
     description: Energy filter manufacturer
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: energy_filter_make
     owner: CryoEMInstrument
@@ -798,7 +832,7 @@ attributes:
   energy_filter_model:
     name: energy_filter_model
     description: Energy filter model
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: energy_filter_model
     owner: CryoEMInstrument
@@ -808,7 +842,9 @@ attributes:
   energy_filter_slit_width:
     name: energy_filter_slit_width
     description: Energy filter slit width in eV
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_imaging.energy_filter_slit_width
     rank: 1000
     alias: energy_filter_slit_width
     owner: CryoEMInstrument
@@ -819,7 +855,7 @@ attributes:
   pixel_size_physical:
     name: pixel_size_physical
     description: Physical pixel size in micrometers
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: pixel_size_physical
     owner: CryoEMInstrument
@@ -830,7 +866,7 @@ attributes:
   microscope_software:
     name: microscope_software
     description: Microscope control software (e.g., SerialEM, EPU, Leginon)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: microscope_software
     owner: CryoEMInstrument
@@ -840,7 +876,7 @@ attributes:
   microscope_software_version:
     name: microscope_software_version
     description: Software version
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: microscope_software_version
     owner: CryoEMInstrument
@@ -850,7 +886,9 @@ attributes:
   spotsize:
     name: spotsize
     description: Electron beam spot size setting
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_imaging.detector_spot_size
     rank: 1000
     alias: spotsize
     owner: CryoEMInstrument
@@ -861,7 +899,7 @@ attributes:
   gunlens:
     name: gunlens
     description: Gun lens setting
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: gunlens
     owner: CryoEMInstrument
@@ -872,7 +910,9 @@ attributes:
   imaging_mode:
     name: imaging_mode
     description: Imaging mode for electron microscopy
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_imaging.mode
     rank: 1000
     alias: imaging_mode
     owner: CryoEMInstrument
@@ -882,7 +922,7 @@ attributes:
   tem_beam_diameter:
     name: tem_beam_diameter
     description: TEM beam diameter in micrometers
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: tem_beam_diameter
     owner: CryoEMInstrument
@@ -895,7 +935,7 @@ attributes:
     description: Human-friendly facility or laboratory identifier for the instrument
       (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local
       reference and equipment tracking.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: instrument_code
     owner: CryoEMInstrument
@@ -909,7 +949,7 @@ attributes:
     comments:
     - Use SYNCHROTRON_BEAMLINE for synchrotron beamlines
     - Use ELECTRON_MICROSCOPE for cryo-EM instruments
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: instrument_category
     owner: CryoEMInstrument
@@ -922,7 +962,7 @@ attributes:
     comments:
     - Select from the standardized list of major synchrotron facilities
     - Leave empty for laboratory-based instruments
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: facility_name
     owner: CryoEMInstrument
@@ -935,7 +975,7 @@ attributes:
     comments:
     - Persistent identifier for the facility organization
     - 'Example: https://ror.org/02jbv0t02 (Lawrence Berkeley National Laboratory)'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: facility_ror
     owner: CryoEMInstrument
@@ -949,9 +989,10 @@ attributes:
     comments:
     - Use facility-specific naming convention
     - 'Examples: ''12.3.1'' (ALS), ''17-ID-1'' (NSLS-II), ''I04'' (Diamond)'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_diffrn_source.pdbx_synchrotron_beamline
     rank: 1000
-    slot_uri: mmCIF:_diffrn_source.pdbx_synchrotron_beamline
     alias: beamline_id
     owner: CryoEMInstrument
     domain_of:
@@ -960,7 +1001,7 @@ attributes:
   manufacturer:
     name: manufacturer
     description: Instrument manufacturer
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: manufacturer
     owner: CryoEMInstrument
@@ -970,7 +1011,7 @@ attributes:
   model:
     name: model
     description: Instrument model
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: model
     owner: CryoEMInstrument
@@ -980,7 +1021,7 @@ attributes:
   installation_date:
     name: installation_date
     description: Date of instrument installation
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: installation_date
     owner: CryoEMInstrument
@@ -990,7 +1031,7 @@ attributes:
   current_status:
     name: current_status
     description: Current operational status
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: current_status
     owner: CryoEMInstrument
@@ -1002,7 +1043,7 @@ attributes:
     description: Globally unique identifier as an IRI or CURIE for machine processing
       and external references. Used for linking data across systems and semantic web
       integration.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     identifier: true
     alias: id
@@ -1015,7 +1056,7 @@ attributes:
   title:
     name: title
     description: A human-readable name or title for this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     slot_uri: dcterms:title
     alias: title
@@ -1026,7 +1067,7 @@ attributes:
   description:
     name: description
     description: A detailed textual description of this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: description
     owner: CryoEMInstrument

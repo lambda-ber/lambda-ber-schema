@@ -9,7 +9,7 @@ _Relative free energy (kcal/mol)_
 
 
 
-URI: [lambdaber:free_energy](https://w3id.org/lambda-ber-schema/free_energy)
+URI: [lambda:free_energy](http://w3id.org/lambda/free_energy)
 Alias: free_energy
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: free_energy
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: free_energy
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:free_energy |
-| native | lambdaber:free_energy |
+| self | lambda:free_energy |
+| native | lambda:free_energy |
 
 
 
@@ -67,7 +67,7 @@ Alias: free_energy
 ```yaml
 name: free_energy
 description: Relative free energy (kcal/mol)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: free_energy
 owner: ConformationalState

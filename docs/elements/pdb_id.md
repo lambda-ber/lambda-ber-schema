@@ -9,7 +9,7 @@ _PDB accession code if deposited_
 
 
 
-URI: [lambdaber:pdb_id](https://w3id.org/lambda-ber-schema/pdb_id)
+URI: [lambda:pdb_id](http://w3id.org/lambda/pdb_id)
 Alias: pdb_id
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: pdb_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: pdb_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:pdb_id |
-| native | lambdaber:pdb_id |
+| self | lambda:pdb_id |
+| native | lambda:pdb_id |
 
 
 
@@ -67,7 +67,7 @@ Alias: pdb_id
 ```yaml
 name: pdb_id
 description: PDB accession code if deposited
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: pdb_id
 owner: WorkflowRun

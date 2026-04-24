@@ -9,7 +9,7 @@ _Mean I/sigma(I)_
 
 
 
-URI: [lambdaber:mean_i_over_sigma_i](https://w3id.org/lambda-ber-schema/mean_i_over_sigma_i)
+URI: [lambda:mean_i_over_sigma_i](http://w3id.org/lambda/mean_i_over_sigma_i)
 Alias: mean_i_over_sigma_i
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: mean_i_over_sigma_i
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: mean_i_over_sigma_i
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:mean_i_over_sigma_i |
-| native | lambdaber:mean_i_over_sigma_i |
+| self | lambda:mean_i_over_sigma_i |
+| native | lambda:mean_i_over_sigma_i |
 
 
 
@@ -67,7 +67,7 @@ Alias: mean_i_over_sigma_i
 ```yaml
 name: mean_i_over_sigma_i
 description: Mean I/sigma(I)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: mean_i_over_sigma_i
 owner: QualityMetrics

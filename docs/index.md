@@ -109,7 +109,7 @@ A multimodal plant imaging study might combine:
 - **Standards-compliant**: Follows FAIR principles and integrates with existing ontologies
 
 
-URI: https://w3id.org/lambda-ber-schema/
+URI: http://w3id.org/lambda/
 
 Name: lambda-ber-schema-schema
 

@@ -9,7 +9,7 @@ _Conditions under which biophysical measurements were made_
 
 
 
-URI: [lambdaber:MeasurementConditions](https://w3id.org/lambda-ber-schema/MeasurementConditions)
+URI: [lambda:MeasurementConditions](http://w3id.org/lambda/MeasurementConditions)
 
 
 
@@ -123,7 +123,7 @@ URI: [lambdaber:MeasurementConditions](https://w3id.org/lambda-ber-schema/Measur
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -132,8 +132,8 @@ URI: [lambdaber:MeasurementConditions](https://w3id.org/lambda-ber-schema/Measur
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:MeasurementConditions |
-| native | lambdaber:MeasurementConditions |
+| self | lambda:MeasurementConditions |
+| native | lambda:MeasurementConditions |
 
 
 
@@ -150,13 +150,13 @@ URI: [lambdaber:MeasurementConditions](https://w3id.org/lambda-ber-schema/Measur
 ```yaml
 name: MeasurementConditions
 description: Conditions under which biophysical measurements were made
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: NamedThing
 attributes:
   buffer_composition:
     name: buffer_composition
     description: Composition of the buffer used
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     domain_of:
     - Sample
     - MeasurementConditions
@@ -166,7 +166,7 @@ attributes:
     description: 'pH value of the solution during measurement (range: 0-14), typically
       expressed in pH units. Data providers may specify alternative units by including
       the unit in the QuantityValue.'
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     domain_of:
     - BufferComposition
     - MeasurementConditions
@@ -176,7 +176,7 @@ attributes:
     name: ionic_strength
     description: Ionic strength, typically specified in molar (mol/L). Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - MeasurementConditions
@@ -186,7 +186,7 @@ attributes:
     name: temperature
     description: Temperature during measurement, typically specified in Kelvin. Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     domain_of:
     - StorageConditions
     - ExperimentalConditions
@@ -203,13 +203,13 @@ attributes:
 ```yaml
 name: MeasurementConditions
 description: Conditions under which biophysical measurements were made
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: NamedThing
 attributes:
   buffer_composition:
     name: buffer_composition
     description: Composition of the buffer used
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     alias: buffer_composition
     owner: MeasurementConditions
     domain_of:
@@ -221,7 +221,7 @@ attributes:
     description: 'pH value of the solution during measurement (range: 0-14), typically
       expressed in pH units. Data providers may specify alternative units by including
       the unit in the QuantityValue.'
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     alias: ph
     owner: MeasurementConditions
     domain_of:
@@ -233,7 +233,7 @@ attributes:
     name: ionic_strength
     description: Ionic strength, typically specified in molar (mol/L). Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: ionic_strength
     owner: MeasurementConditions
@@ -245,7 +245,7 @@ attributes:
     name: temperature
     description: Temperature during measurement, typically specified in Kelvin. Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     alias: temperature
     owner: MeasurementConditions
     domain_of:
@@ -259,7 +259,7 @@ attributes:
     description: Globally unique identifier as an IRI or CURIE for machine processing
       and external references. Used for linking data across systems and semantic web
       integration.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     identifier: true
     alias: id
@@ -272,7 +272,7 @@ attributes:
   title:
     name: title
     description: A human-readable name or title for this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     slot_uri: dcterms:title
     alias: title
@@ -283,7 +283,7 @@ attributes:
   description:
     name: description
     description: A detailed textual description of this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: description
     owner: MeasurementConditions

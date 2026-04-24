@@ -9,7 +9,7 @@ _Data collection temperature, typically specified in Kelvin. Data providers may 
 
 
 
-URI: [lambdaber:temperature_k](https://w3id.org/lambda-ber-schema/temperature_k)
+URI: [lambda:temperature_k](http://w3id.org/lambda/temperature_k)
 Alias: temperature_k
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: temperature_k
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: temperature_k
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:temperature_k |
-| native | lambdaber:temperature_k |
+| self | lambda:temperature_k |
+| native | lambda:temperature_k |
+| exact | mmCIF:_diffrn.ambient_temp |
 
 
 
@@ -68,7 +69,9 @@ Alias: temperature_k
 name: temperature_k
 description: Data collection temperature, typically specified in Kelvin. Data providers
   may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_diffrn.ambient_temp
 rank: 1000
 alias: temperature_k
 owner: DataCollectionStrategy

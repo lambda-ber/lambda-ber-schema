@@ -9,7 +9,7 @@ _Pressure, typically specified in kilopascals (kPa). Data providers may specify 
 
 
 
-URI: [lambdaber:pressure](https://w3id.org/lambda-ber-schema/pressure)
+URI: [lambda:pressure](http://w3id.org/lambda/pressure)
 Alias: pressure
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: pressure
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: pressure
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:pressure |
-| native | lambdaber:pressure |
+| self | lambda:pressure |
+| native | lambda:pressure |
 
 
 
@@ -68,7 +68,7 @@ Alias: pressure
 name: pressure
 description: Pressure, typically specified in kilopascals (kPa). Data providers may
   specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: pressure
 owner: ExperimentalConditions

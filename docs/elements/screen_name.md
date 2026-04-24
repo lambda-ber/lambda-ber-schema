@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:screen_name](https://w3id.org/lambda-ber-schema/screen_name)
+URI: [lambda:screen_name](http://w3id.org/lambda/screen_name)
 Alias: screen_name
 
 <!-- no inheritance hierarchy -->
@@ -44,8 +44,8 @@ Alias: screen_name
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:screen_name |
-| native | lambdaber:screen_name |
+| self | lambda:screen_name |
+| native | lambda:screen_name |
 
 
 

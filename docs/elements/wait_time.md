@@ -9,7 +9,7 @@ _Wait time before blotting, typically specified in seconds. Data providers may s
 
 
 
-URI: [lambdaber:wait_time](https://w3id.org/lambda-ber-schema/wait_time)
+URI: [lambda:wait_time](http://w3id.org/lambda/wait_time)
 Alias: wait_time
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: wait_time
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: wait_time
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:wait_time |
-| native | lambdaber:wait_time |
+| self | lambda:wait_time |
+| native | lambda:wait_time |
 
 
 
@@ -68,7 +68,7 @@ Alias: wait_time
 name: wait_time
 description: Wait time before blotting, typically specified in seconds. Data providers
   may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: wait_time
 owner: CryoEMPreparation

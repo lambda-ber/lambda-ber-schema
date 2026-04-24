@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:unit_cell_b](https://w3id.org/lambda-ber-schema/unit_cell_b)
+URI: [lambda:unit_cell_b](http://w3id.org/lambda/unit_cell_b)
 Alias: unit_cell_b
 
 <!-- no inheritance hierarchy -->
@@ -44,8 +44,8 @@ Alias: unit_cell_b
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:unit_cell_b |
-| native | lambdaber:unit_cell_b |
+| self | lambda:unit_cell_b |
+| native | lambda:unit_cell_b |
 
 
 

@@ -9,7 +9,7 @@ _Accelerating voltage in kV_
 
 
 
-URI: [lambdaber:accelerating_voltage](https://w3id.org/lambda-ber-schema/accelerating_voltage)
+URI: [lambda:accelerating_voltage](http://w3id.org/lambda/accelerating_voltage)
 Alias: accelerating_voltage
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: accelerating_voltage
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: accelerating_voltage
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:accelerating_voltage |
-| native | lambdaber:accelerating_voltage |
+| self | lambda:accelerating_voltage |
+| native | lambda:accelerating_voltage |
+| exact | mmCIF:_em_imaging.accelerating_voltage |
 
 
 
@@ -67,7 +68,9 @@ Alias: accelerating_voltage
 ```yaml
 name: accelerating_voltage
 description: Accelerating voltage in kV
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_em_imaging.accelerating_voltage
 rank: 1000
 alias: accelerating_voltage
 owner: CryoEMInstrument

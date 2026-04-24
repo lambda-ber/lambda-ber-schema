@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:q_range_min](https://w3id.org/lambda-ber-schema/q_range_min)
+URI: [lambda:q_range_min](http://w3id.org/lambda/q_range_min)
 Alias: q_range_min
 
 <!-- no inheritance hierarchy -->
@@ -18,6 +18,7 @@ Alias: q_range_min
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [SAXSInstrument](SAXSInstrument.md) | SAXS/WAXS instrument specifications |  no  |
+| [SANSInstrument](SANSInstrument.md) | Small-angle neutron scattering (SANS) instrument specifications |  no  |
 | [BeamlineInstrument](BeamlineInstrument.md) | Multi-technique synchrotron beamline that supports multiple experimental meth... |  no  |
 
 
@@ -44,8 +45,8 @@ Alias: q_range_min
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:q_range_min |
-| native | lambdaber:q_range_min |
+| self | lambda:q_range_min |
+| native | lambda:q_range_min |
 
 
 
@@ -57,6 +58,7 @@ Alias: q_range_min
 name: q_range_min
 alias: q_range_min
 domain_of:
+- SANSInstrument
 - SAXSInstrument
 - BeamlineInstrument
 range: string

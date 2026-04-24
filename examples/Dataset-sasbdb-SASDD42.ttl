@@ -4,7 +4,6 @@
 @prefix lambdaber: <http://w3id.org/lambda/> .
 @prefix nmdc: <https://w3id.org/nmdc/> .
 @prefix ns1: <http://w3id.org/lambda/functional_annotation/> .
-@prefix nsls2: <https://github.com/NSLS2/BER-LAMBDA/> .
 @prefix sasbdb: <https://www.sasbdb.org/data/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -35,13 +34,13 @@ sasbdb:SASDD42 a lambdaber:Dataset ;
             lambdaber:study_id <https://www.sasbdb.org/data/SASDD42/study> ] ;
     lambdaber:workflow_experiment_associations [ a lambdaber:WorkflowExperimentAssociation ;
             lambdaber:experiment_id <https://www.sasbdb.org/data/SASDD42/experiment> ;
+            lambdaber:workflow_id <https://www.sasbdb.org/data/SASDD42/workflow/fit2_model1> ],
+        [ a lambdaber:WorkflowExperimentAssociation ;
+            lambdaber:experiment_id <https://www.sasbdb.org/data/SASDD42/experiment> ;
             lambdaber:workflow_id <https://www.sasbdb.org/data/SASDD42/workflow/pddf> ],
         [ a lambdaber:WorkflowExperimentAssociation ;
             lambdaber:experiment_id <https://www.sasbdb.org/data/SASDD42/experiment> ;
-            lambdaber:workflow_id <https://www.sasbdb.org/data/SASDD42/workflow/fit1_model1> ],
-        [ a lambdaber:WorkflowExperimentAssociation ;
-            lambdaber:experiment_id <https://www.sasbdb.org/data/SASDD42/experiment> ;
-            lambdaber:workflow_id <https://www.sasbdb.org/data/SASDD42/workflow/fit2_model1> ] ;
+            lambdaber:workflow_id <https://www.sasbdb.org/data/SASDD42/workflow/fit1_model1> ] ;
     lambdaber:workflow_runs <https://www.sasbdb.org/data/SASDD42/workflow/fit1_model1>,
         <https://www.sasbdb.org/data/SASDD42/workflow/fit2_model1>,
         <https://www.sasbdb.org/data/SASDD42/workflow/pddf> .
@@ -132,9 +131,9 @@ sasbdb:SASDD42 a lambdaber:Dataset ;
             lambdaber:numeric_value "23.25"^^xsd:float ;
             lambdaber:unit "kDa" ] ;
     lambdaber:oligomeric_state "dimer" ;
+    lambdaber:protein_name "Fluorescence recovery protein" ;
     lambdaber:sample_code "SASBDB-SASDD42" ;
-    lambdaber:sample_type "protein" ;
-    nsls2:Protein_Name "Fluorescence recovery protein" .
+    lambdaber:sample_type "protein" .
 
 <https://www.sasbdb.org/data/SASDD42/study> a lambdaber:Study ;
     dcterms:title "Functional interaction of low-homology FRPs from different cyanobacteria with Synechocystis OCP." .

@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:atmosphere](https://w3id.org/lambda-ber-schema/atmosphere)
+URI: [lambda:atmosphere](http://w3id.org/lambda/atmosphere)
 Alias: atmosphere
 
 <!-- no inheritance hierarchy -->
@@ -17,8 +17,8 @@ Alias: atmosphere
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Environmental and experimental conditions |  no  |
 | [StorageConditions](StorageConditions.md) | Storage conditions for samples |  no  |
+| [ExperimentalConditions](ExperimentalConditions.md) | Environmental and experimental conditions |  no  |
 
 
 
@@ -44,8 +44,8 @@ Alias: atmosphere
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:atmosphere |
-| native | lambdaber:atmosphere |
+| self | lambda:atmosphere |
+| native | lambda:atmosphere |
 
 
 

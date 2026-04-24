@@ -9,7 +9,7 @@ _Known structural motif_
 
 
 
-URI: [lambdaber:structural_motif](https://w3id.org/lambda-ber-schema/structural_motif)
+URI: [lambda:structural_motif](http://w3id.org/lambda/structural_motif)
 Alias: structural_motif
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: structural_motif
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: structural_motif
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:structural_motif |
-| native | lambdaber:structural_motif |
+| self | lambda:structural_motif |
+| native | lambda:structural_motif |
 
 
 
@@ -67,7 +67,7 @@ Alias: structural_motif
 ```yaml
 name: structural_motif
 description: Known structural motif
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: structural_motif
 owner: StructuralFeature

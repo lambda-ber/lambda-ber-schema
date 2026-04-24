@@ -9,7 +9,7 @@ _Raw cryo-EM movie with frame-by-frame metadata for motion correction_
 
 
 
-URI: [lambdaber:Movie](https://w3id.org/lambda-ber-schema/Movie)
+URI: [lambda:Movie](http://w3id.org/lambda/Movie)
 
 
 
@@ -295,7 +295,7 @@ URI: [lambdaber:Movie](https://w3id.org/lambda-ber-schema/Movie)
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -304,8 +304,8 @@ URI: [lambdaber:Movie](https://w3id.org/lambda-ber-schema/Movie)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:Movie |
-| native | lambdaber:Movie |
+| self | lambda:Movie |
+| native | lambda:Movie |
 
 
 
@@ -322,13 +322,13 @@ URI: [lambdaber:Movie](https://w3id.org/lambda-ber-schema/Movie)
 ```yaml
 name: Movie
 description: Raw cryo-EM movie with frame-by-frame metadata for motion correction
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: Image2D
 attributes:
   frames:
     name: frames
     description: Number of frames in the movie
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Movie
@@ -337,7 +337,7 @@ attributes:
   super_resolution:
     name: super_resolution
     description: Whether super-resolution mode was used
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Movie
@@ -346,7 +346,7 @@ attributes:
     name: pixel_size_unbinned
     description: Unbinned pixel size, typically specified in Angstroms per pixel.
       Data providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Movie
@@ -355,7 +355,7 @@ attributes:
   timestamp:
     name: timestamp
     description: Acquisition timestamp
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Movie
@@ -364,7 +364,7 @@ attributes:
     name: stage_position_x
     description: Stage X position, typically specified in micrometers. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Movie
@@ -374,7 +374,7 @@ attributes:
     name: stage_position_y
     description: Stage Y position, typically specified in micrometers. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Movie
@@ -384,7 +384,7 @@ attributes:
     name: stage_position_z
     description: Stage Z position, typically specified in micrometers. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Movie
@@ -394,7 +394,7 @@ attributes:
     name: nominal_defocus
     description: Nominal defocus value, typically specified in micrometers. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Movie
@@ -403,7 +403,7 @@ attributes:
   dose_per_frame:
     name: dose_per_frame
     description: Electron dose per frame in e-/Angstrom^2
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Movie
@@ -413,7 +413,7 @@ attributes:
   beam_shift_x:
     name: beam_shift_x
     description: Beam shift X in microradians
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Movie
@@ -422,7 +422,7 @@ attributes:
   beam_shift_y:
     name: beam_shift_y
     description: Beam shift Y in microradians
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Movie
@@ -432,7 +432,7 @@ attributes:
     name: ice_thickness_estimate
     description: Estimated ice thickness, typically specified in nanometers. Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Movie
@@ -441,7 +441,7 @@ attributes:
   grid_square_id:
     name: grid_square_id
     description: Grid square identifier
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Movie
@@ -449,7 +449,7 @@ attributes:
   hole_id:
     name: hole_id
     description: Hole identifier within grid square
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Movie
@@ -457,7 +457,7 @@ attributes:
   acquisition_group:
     name: acquisition_group
     description: Acquisition group identifier (e.g., template or area)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Movie
@@ -472,13 +472,13 @@ attributes:
 ```yaml
 name: Movie
 description: Raw cryo-EM movie with frame-by-frame metadata for motion correction
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: Image2D
 attributes:
   frames:
     name: frames
     description: Number of frames in the movie
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: frames
     owner: Movie
@@ -489,7 +489,7 @@ attributes:
   super_resolution:
     name: super_resolution
     description: Whether super-resolution mode was used
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: super_resolution
     owner: Movie
@@ -500,7 +500,7 @@ attributes:
     name: pixel_size_unbinned
     description: Unbinned pixel size, typically specified in Angstroms per pixel.
       Data providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: pixel_size_unbinned
     owner: Movie
@@ -511,7 +511,7 @@ attributes:
   timestamp:
     name: timestamp
     description: Acquisition timestamp
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: timestamp
     owner: Movie
@@ -522,7 +522,7 @@ attributes:
     name: stage_position_x
     description: Stage X position, typically specified in micrometers. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: stage_position_x
     owner: Movie
@@ -534,7 +534,7 @@ attributes:
     name: stage_position_y
     description: Stage Y position, typically specified in micrometers. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: stage_position_y
     owner: Movie
@@ -546,7 +546,7 @@ attributes:
     name: stage_position_z
     description: Stage Z position, typically specified in micrometers. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: stage_position_z
     owner: Movie
@@ -558,7 +558,7 @@ attributes:
     name: nominal_defocus
     description: Nominal defocus value, typically specified in micrometers. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: nominal_defocus
     owner: Movie
@@ -569,7 +569,7 @@ attributes:
   dose_per_frame:
     name: dose_per_frame
     description: Electron dose per frame in e-/Angstrom^2
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: dose_per_frame
     owner: Movie
@@ -581,7 +581,7 @@ attributes:
   beam_shift_x:
     name: beam_shift_x
     description: Beam shift X in microradians
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: beam_shift_x
     owner: Movie
@@ -592,7 +592,7 @@ attributes:
   beam_shift_y:
     name: beam_shift_y
     description: Beam shift Y in microradians
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: beam_shift_y
     owner: Movie
@@ -604,7 +604,7 @@ attributes:
     name: ice_thickness_estimate
     description: Estimated ice thickness, typically specified in nanometers. Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: ice_thickness_estimate
     owner: Movie
@@ -615,7 +615,7 @@ attributes:
   grid_square_id:
     name: grid_square_id
     description: Grid square identifier
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: grid_square_id
     owner: Movie
@@ -625,7 +625,7 @@ attributes:
   hole_id:
     name: hole_id
     description: Hole identifier within grid square
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: hole_id
     owner: Movie
@@ -635,7 +635,7 @@ attributes:
   acquisition_group:
     name: acquisition_group
     description: Acquisition group identifier (e.g., template or area)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: acquisition_group
     owner: Movie
@@ -646,7 +646,7 @@ attributes:
     name: defocus
     description: Defocus value, typically specified in micrometers. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: defocus
     owner: Movie
@@ -658,7 +658,7 @@ attributes:
     name: astigmatism
     description: Astigmatism value, typically specified in Angstroms. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: astigmatism
     owner: Movie
@@ -669,7 +669,7 @@ attributes:
   file_name:
     name: file_name
     description: Image file name
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: file_name
     owner: Movie
     domain_of:
@@ -680,7 +680,7 @@ attributes:
   acquisition_date:
     name: acquisition_date
     description: Date image was acquired
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: acquisition_date
     owner: Movie
@@ -691,7 +691,7 @@ attributes:
     name: pixel_size
     description: Pixel size, typically specified in Angstroms. Data providers may
       specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: pixel_size
     owner: Movie
@@ -704,7 +704,7 @@ attributes:
     name: dimensions_x
     description: Image width, typically specified in pixels. Data providers may specify
       alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: dimensions_x
     owner: Movie
@@ -716,7 +716,7 @@ attributes:
     name: dimensions_y
     description: Image height, typically specified in pixels. Data providers may specify
       alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: dimensions_y
     owner: Movie
@@ -728,19 +728,20 @@ attributes:
     name: exposure_time
     description: Exposure time, typically specified in seconds. Data providers may
       specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: exposure_time
     owner: Movie
     domain_of:
     - ExperimentRun
     - Image
     - ExperimentalConditions
+    - DataCollectionStrategy
     range: QuantityValue
     inlined: true
   dose:
     name: dose
     description: Electron dose in e-/Å²
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: dose
     owner: Movie
@@ -754,7 +755,7 @@ attributes:
     description: Globally unique identifier as an IRI or CURIE for machine processing
       and external references. Used for linking data across systems and semantic web
       integration.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     identifier: true
     alias: id
@@ -767,7 +768,7 @@ attributes:
   title:
     name: title
     description: A human-readable name or title for this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     slot_uri: dcterms:title
     alias: title
@@ -778,7 +779,7 @@ attributes:
   description:
     name: description
     description: A detailed textual description of this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: description
     owner: Movie

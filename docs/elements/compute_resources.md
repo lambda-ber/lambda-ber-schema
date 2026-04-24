@@ -9,7 +9,7 @@ _Computational resources used_
 
 
 
-URI: [lambdaber:compute_resources](https://w3id.org/lambda-ber-schema/compute_resources)
+URI: [lambda:compute_resources](http://w3id.org/lambda/compute_resources)
 Alias: compute_resources
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: compute_resources
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: compute_resources
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:compute_resources |
-| native | lambdaber:compute_resources |
+| self | lambda:compute_resources |
+| native | lambda:compute_resources |
 
 
 
@@ -67,7 +67,7 @@ Alias: compute_resources
 ```yaml
 name: compute_resources
 description: Computational resources used
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: compute_resources
 owner: WorkflowRun

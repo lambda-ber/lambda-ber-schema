@@ -9,7 +9,7 @@ _Notes from sequence verification_
 
 
 
-URI: [lambdaber:verification_notes](https://w3id.org/lambda-ber-schema/verification_notes)
+URI: [lambda:verification_notes](http://w3id.org/lambda/verification_notes)
 Alias: verification_notes
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: verification_notes
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: verification_notes
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:verification_notes |
-| native | lambdaber:verification_notes |
+| self | lambda:verification_notes |
+| native | lambda:verification_notes |
 
 
 
@@ -67,7 +67,7 @@ Alias: verification_notes
 ```yaml
 name: verification_notes
 description: Notes from sequence verification
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: verification_notes
 owner: ProteinConstruct

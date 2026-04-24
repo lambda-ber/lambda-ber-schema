@@ -9,7 +9,7 @@ _Type of functional site_
 
 
 
-URI: [lambdaber:site_type](https://w3id.org/lambda-ber-schema/site_type)
+URI: [lambda:site_type](http://w3id.org/lambda/site_type)
 Alias: site_type
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: site_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: site_type
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:site_type |
-| native | lambdaber:site_type |
+| self | lambda:site_type |
+| native | lambda:site_type |
 
 
 
@@ -69,7 +69,7 @@ Alias: site_type
 ```yaml
 name: site_type
 description: Type of functional site
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: site_type
 owner: FunctionalSite

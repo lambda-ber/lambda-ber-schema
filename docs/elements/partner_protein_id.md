@@ -9,7 +9,7 @@ _UniProt ID of interacting partner_
 
 
 
-URI: [lambdaber:partner_protein_id](https://w3id.org/lambda-ber-schema/partner_protein_id)
+URI: [lambda:partner_protein_id](http://w3id.org/lambda/partner_protein_id)
 Alias: partner_protein_id
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: partner_protein_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: partner_protein_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:partner_protein_id |
-| native | lambdaber:partner_protein_id |
+| self | lambda:partner_protein_id |
+| native | lambda:partner_protein_id |
 
 
 
@@ -69,7 +69,7 @@ Alias: partner_protein_id
 ```yaml
 name: partner_protein_id
 description: UniProt ID of interacting partner
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: partner_protein_id
 owner: ProteinProteinInteraction

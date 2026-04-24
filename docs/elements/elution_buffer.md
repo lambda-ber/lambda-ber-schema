@@ -9,7 +9,7 @@ _Buffer composition for elution_
 
 
 
-URI: [lambdaber:elution_buffer](https://w3id.org/lambda-ber-schema/elution_buffer)
+URI: [lambda:elution_buffer](http://w3id.org/lambda/elution_buffer)
 Alias: elution_buffer
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: elution_buffer
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: elution_buffer
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:elution_buffer |
-| native | lambdaber:elution_buffer |
+| self | lambda:elution_buffer |
+| native | lambda:elution_buffer |
 
 
 
@@ -67,7 +67,7 @@ Alias: elution_buffer
 ```yaml
 name: elution_buffer
 description: Buffer composition for elution
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: elution_buffer
 owner: SamplePreparation

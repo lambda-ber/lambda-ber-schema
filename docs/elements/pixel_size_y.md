@@ -3,13 +3,8 @@
 # Slot: pixel_size_y 
 
 
-_Pixel size Y dimension, typically specified in micrometers (µm). Data providers may specify alternative units (e.g., Angstroms) by including the unit in the QuantityValue._
 
-
-
-
-
-URI: [lambdaber:pixel_size_y](https://w3id.org/lambda-ber-schema/pixel_size_y)
+URI: [lambda:pixel_size_y](http://w3id.org/lambda/pixel_size_y)
 Alias: pixel_size_y
 
 <!-- no inheritance hierarchy -->
@@ -23,6 +18,7 @@ Alias: pixel_size_y
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [ExperimentRun](ExperimentRun.md) | An experimental data collection session |  no  |
+| [SANSDetector](SANSDetector.md) | Description of a detector used in a SANS instrument |  no  |
 
 
 
@@ -31,14 +27,10 @@ Alias: pixel_size_y
 
 ## Properties
 
-* Range: [QuantityValue](QuantityValue.md)
+* Range: [String](String.md)
 
 
 
-
-## Comments
-
-* imgCIF: _array_element_size.size[2]
 
 ## Identifier and Mapping Information
 
@@ -47,21 +39,13 @@ Alias: pixel_size_y
 
 
 
-### Schema Source
-
-
-* from schema: https://w3id.org/lambda-ber-schema/
-
-
-
 
 ## Mappings
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:pixel_size_y |
-| native | lambdaber:pixel_size_y |
-| exact | nsls2:Pixel_size_y, imgCIF:_array_element_size.size |
+| self | lambda:pixel_size_y |
+| native | lambda:pixel_size_y |
 
 
 
@@ -71,22 +55,11 @@ Alias: pixel_size_y
 <details>
 ```yaml
 name: pixel_size_y
-description: Pixel size Y dimension, typically specified in micrometers (µm). Data
-  providers may specify alternative units (e.g., Angstroms) by including the unit
-  in the QuantityValue.
-comments:
-- 'imgCIF: _array_element_size.size[2]'
-from_schema: https://w3id.org/lambda-ber-schema/
-exact_mappings:
-- nsls2:Pixel_size_y
-- imgCIF:_array_element_size.size
-rank: 1000
 alias: pixel_size_y
-owner: ExperimentRun
 domain_of:
+- SANSDetector
 - ExperimentRun
-range: QuantityValue
-inlined: true
+range: string
 
 ```
 </details>

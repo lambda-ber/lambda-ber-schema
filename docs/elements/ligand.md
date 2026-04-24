@@ -9,7 +9,7 @@ _Ligand or small molecule bound to sample_
 
 
 
-URI: [nsls2:Ligand](https://github.com/NSLS2/BER-LAMBDA/Ligand)
+URI: [lambda:ligand](http://w3id.org/lambda/ligand)
 Alias: ligand
 
 <!-- no inheritance hierarchy -->
@@ -36,10 +36,6 @@ Alias: ligand
 
 
 
-## Comments
-
-* Maps to NSLS2 spreadsheet: Ligand
-
 ## Identifier and Mapping Information
 
 
@@ -50,7 +46,7 @@ Alias: ligand
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -59,8 +55,9 @@ Alias: ligand
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | nsls2:Ligand |
-| native | lambdaber:ligand |
+| self | lambda:ligand |
+| native | lambda:ligand |
+| exact | nsls2:Ligand |
 
 
 
@@ -71,11 +68,10 @@ Alias: ligand
 ```yaml
 name: ligand
 description: Ligand or small molecule bound to sample
-comments:
-- 'Maps to NSLS2 spreadsheet: Ligand'
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- nsls2:Ligand
 rank: 1000
-slot_uri: nsls2:Ligand
 alias: ligand
 owner: Sample
 domain_of:

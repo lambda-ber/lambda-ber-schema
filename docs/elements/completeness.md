@@ -9,7 +9,7 @@ _Data completeness, typically specified as a percentage (0-100). Data providers 
 
 
 
-URI: [lambdaber:completeness](https://w3id.org/lambda-ber-schema/completeness)
+URI: [lambda:completeness](http://w3id.org/lambda/completeness)
 Alias: completeness
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: completeness
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: completeness
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:completeness |
-| native | lambdaber:completeness |
+| self | lambda:completeness |
+| native | lambda:completeness |
 
 
 
@@ -68,7 +68,7 @@ Alias: completeness
 name: completeness
 description: Data completeness, typically specified as a percentage (0-100). Data
   providers may specify as decimal fraction by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: completeness
 owner: QualityMetrics

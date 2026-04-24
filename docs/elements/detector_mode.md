@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:detector_mode](https://w3id.org/lambda-ber-schema/detector_mode)
+URI: [lambda:detector_mode](http://w3id.org/lambda/detector_mode)
 Alias: detector_mode
 
 <!-- no inheritance hierarchy -->
@@ -17,8 +17,8 @@ Alias: detector_mode
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [CryoEMInstrument](CryoEMInstrument.md) | Cryo-EM microscope specifications |  no  |
 | [DataCollectionStrategy](DataCollectionStrategy.md) | Strategy for data collection |  no  |
+| [CryoEMInstrument](CryoEMInstrument.md) | Cryo-EM microscope specifications |  no  |
 
 
 
@@ -44,8 +44,8 @@ Alias: detector_mode
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:detector_mode |
-| native | lambdaber:detector_mode |
+| self | lambda:detector_mode |
+| native | lambda:detector_mode |
 
 
 

@@ -9,7 +9,7 @@ _Links between studies and samples (M:N)_
 
 
 
-URI: [lambdaber:study_sample_associations](https://w3id.org/lambda-ber-schema/study_sample_associations)
+URI: [lambda:study_sample_associations](http://w3id.org/lambda/study_sample_associations)
 Alias: study_sample_associations
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: study_sample_associations
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: study_sample_associations
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:study_sample_associations |
-| native | lambdaber:study_sample_associations |
+| self | lambda:study_sample_associations |
+| native | lambda:study_sample_associations |
 
 
 
@@ -69,7 +69,7 @@ Alias: study_sample_associations
 ```yaml
 name: study_sample_associations
 description: Links between studies and samples (M:N)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: study_sample_associations
 owner: Dataset

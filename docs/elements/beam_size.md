@@ -9,7 +9,7 @@ _X-ray beam size, typically specified in micrometers. Data providers may specify
 
 
 
-URI: [lambdaber:beam_size](https://w3id.org/lambda-ber-schema/beam_size)
+URI: [lambda:beam_size](http://w3id.org/lambda/beam_size)
 Alias: beam_size
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: beam_size
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: beam_size
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:beam_size |
-| native | lambdaber:beam_size |
+| self | lambda:beam_size |
+| native | lambda:beam_size |
 
 
 
@@ -68,7 +68,7 @@ Alias: beam_size
 name: beam_size
 description: X-ray beam size, typically specified in micrometers. Data providers may
   specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: beam_size
 owner: XRFImage

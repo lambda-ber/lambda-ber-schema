@@ -82,7 +82,7 @@ URI: [nmdc:AttributeValue](https://w3id.org/nmdc/AttributeValue)
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -92,7 +92,7 @@ URI: [nmdc:AttributeValue](https://w3id.org/nmdc/AttributeValue)
 | Mapping Type | Mapped Value |
 | ---  | ---  |
 | self | nmdc:AttributeValue |
-| native | lambdaber:AttributeValue |
+| native | lambda:AttributeValue |
 
 
 
@@ -110,13 +110,13 @@ URI: [nmdc:AttributeValue](https://w3id.org/nmdc/AttributeValue)
 name: AttributeValue
 description: The value for any attribute of an entity. This object can hold both the
   un-normalized atomic value and the structured value.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 abstract: true
 attributes:
   attribute:
     name: attribute
     description: The attribute being represented.
-    from_schema: https://w3id.org/lambda-ber-schema/types
+    from_schema: http://w3id.org/lambda/types
     domain_of:
     - AttributeValue
     range: Attribute
@@ -124,7 +124,7 @@ attributes:
     name: raw_value
     description: Unnormalized atomic string representation, suggested syntax {number}
       {unit}
-    from_schema: https://w3id.org/lambda-ber-schema/types
+    from_schema: http://w3id.org/lambda/types
     domain_of:
     - AttributeValue
     range: string
@@ -140,13 +140,13 @@ class_uri: nmdc:AttributeValue
 name: AttributeValue
 description: The value for any attribute of an entity. This object can hold both the
   un-normalized atomic value and the structured value.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 abstract: true
 attributes:
   attribute:
     name: attribute
     description: The attribute being represented.
-    from_schema: https://w3id.org/lambda-ber-schema/types
+    from_schema: http://w3id.org/lambda/types
     alias: attribute
     owner: AttributeValue
     domain_of:
@@ -156,7 +156,7 @@ attributes:
     name: raw_value
     description: Unnormalized atomic string representation, suggested syntax {number}
       {unit}
-    from_schema: https://w3id.org/lambda-ber-schema/types
+    from_schema: http://w3id.org/lambda/types
     alias: raw_value
     owner: AttributeValue
     domain_of:

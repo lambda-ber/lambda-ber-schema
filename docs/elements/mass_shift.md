@@ -9,7 +9,7 @@ _Mass change due to modification (Da)_
 
 
 
-URI: [lambdaber:mass_shift](https://w3id.org/lambda-ber-schema/mass_shift)
+URI: [lambda:mass_shift](http://w3id.org/lambda/mass_shift)
 Alias: mass_shift
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: mass_shift
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: mass_shift
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:mass_shift |
-| native | lambdaber:mass_shift |
+| self | lambda:mass_shift |
+| native | lambda:mass_shift |
 
 
 
@@ -67,7 +67,7 @@ Alias: mass_shift
 ```yaml
 name: mass_shift
 description: Mass change due to modification (Da)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: mass_shift
 owner: PostTranslationalModification

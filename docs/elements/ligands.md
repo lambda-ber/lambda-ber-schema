@@ -9,7 +9,7 @@ _Bound ligands or cofactors_
 
 
 
-URI: [lambdaber:ligands](https://w3id.org/lambda-ber-schema/ligands)
+URI: [lambda:ligands](http://w3id.org/lambda/ligands)
 Alias: ligands
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: ligands
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: ligands
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:ligands |
-| native | lambdaber:ligands |
+| self | lambda:ligands |
+| native | lambda:ligands |
 
 
 
@@ -69,7 +69,7 @@ Alias: ligands
 ```yaml
 name: ligands
 description: Bound ligands or cofactors
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: ligands
 owner: MolecularComposition

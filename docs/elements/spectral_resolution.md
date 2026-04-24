@@ -9,7 +9,7 @@ _Spectral resolution, typically specified in inverse centimeters (cm⁻¹). Data
 
 
 
-URI: [lambdaber:spectral_resolution](https://w3id.org/lambda-ber-schema/spectral_resolution)
+URI: [lambda:spectral_resolution](http://w3id.org/lambda/spectral_resolution)
 Alias: spectral_resolution
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: spectral_resolution
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: spectral_resolution
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:spectral_resolution |
-| native | lambdaber:spectral_resolution |
+| self | lambda:spectral_resolution |
+| native | lambda:spectral_resolution |
 
 
 
@@ -68,7 +68,7 @@ Alias: spectral_resolution
 name: spectral_resolution
 description: Spectral resolution, typically specified in inverse centimeters (cm⁻¹).
   Data providers may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: spectral_resolution
 owner: FTIRImage

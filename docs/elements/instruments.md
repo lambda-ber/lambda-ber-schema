@@ -9,7 +9,7 @@ _All instruments used across studies_
 
 
 
-URI: [lambdaber:instruments](https://w3id.org/lambda-ber-schema/instruments)
+URI: [lambda:instruments](http://w3id.org/lambda/instruments)
 Alias: instruments
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: instruments
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: instruments
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:instruments |
-| native | lambdaber:instruments |
+| self | lambda:instruments |
+| native | lambda:instruments |
 
 
 
@@ -69,7 +69,7 @@ Alias: instruments
 ```yaml
 name: instruments
 description: All instruments used across studies
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: instruments
 owner: Dataset

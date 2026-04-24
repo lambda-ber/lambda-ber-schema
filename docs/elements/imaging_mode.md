@@ -9,7 +9,7 @@ _Imaging mode for electron microscopy_
 
 
 
-URI: [lambdaber:imaging_mode](https://w3id.org/lambda-ber-schema/imaging_mode)
+URI: [lambda:imaging_mode](http://w3id.org/lambda/imaging_mode)
 Alias: imaging_mode
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: imaging_mode
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: imaging_mode
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:imaging_mode |
-| native | lambdaber:imaging_mode |
+| self | lambda:imaging_mode |
+| native | lambda:imaging_mode |
+| exact | mmCIF:_em_imaging.mode |
 
 
 
@@ -67,7 +68,9 @@ Alias: imaging_mode
 ```yaml
 name: imaging_mode
 description: Imaging mode for electron microscopy
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_em_imaging.mode
 rank: 1000
 alias: imaging_mode
 owner: CryoEMInstrument

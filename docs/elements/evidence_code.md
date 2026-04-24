@@ -9,7 +9,7 @@ _Evidence and Conclusion Ontology (ECO) code_
 
 
 
-URI: [lambdaber:evidence_code](https://w3id.org/lambda-ber-schema/evidence_code)
+URI: [lambda:evidence_code](http://w3id.org/lambda/evidence_code)
 Alias: evidence_code
 
 <!-- no inheritance hierarchy -->
@@ -22,13 +22,13 @@ Alias: evidence_code
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ProteinAnnotation](ProteinAnnotation.md) | Base class for all protein-related functional and structural annotations |  no  |
-| [MutationEffect](MutationEffect.md) | Effects of mutations and variants on protein structure and function |  no  |
-| [ProteinProteinInteraction](ProteinProteinInteraction.md) | Protein-protein interactions and interfaces |  no  |
-| [StructuralFeature](StructuralFeature.md) | Structural features and properties of protein regions |  no  |
 | [FunctionalSite](FunctionalSite.md) | Functional sites including catalytic, binding, and regulatory sites |  no  |
-| [PostTranslationalModification](PostTranslationalModification.md) | Post-translational modifications observed or predicted |  no  |
+| [StructuralFeature](StructuralFeature.md) | Structural features and properties of protein regions |  no  |
+| [ProteinAnnotation](ProteinAnnotation.md) | Base class for all protein-related functional and structural annotations |  no  |
+| [ProteinProteinInteraction](ProteinProteinInteraction.md) | Protein-protein interactions and interfaces |  no  |
 | [EvolutionaryConservation](EvolutionaryConservation.md) | Evolutionary conservation information |  no  |
+| [PostTranslationalModification](PostTranslationalModification.md) | Post-translational modifications observed or predicted |  no  |
+| [MutationEffect](MutationEffect.md) | Effects of mutations and variants on protein structure and function |  no  |
 
 
 
@@ -52,7 +52,7 @@ Alias: evidence_code
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -61,8 +61,8 @@ Alias: evidence_code
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:evidence_code |
-| native | lambdaber:evidence_code |
+| self | lambda:evidence_code |
+| native | lambda:evidence_code |
 
 
 
@@ -73,7 +73,7 @@ Alias: evidence_code
 ```yaml
 name: evidence_code
 description: Evidence and Conclusion Ontology (ECO) code
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: evidence_code
 owner: ProteinAnnotation

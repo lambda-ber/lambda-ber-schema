@@ -9,7 +9,7 @@ _Number of water molecules modeled_
 
 
 
-URI: [lambdaber:number_of_waters](https://w3id.org/lambda-ber-schema/number_of_waters)
+URI: [lambda:number_of_waters](http://w3id.org/lambda/number_of_waters)
 Alias: number_of_waters
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: number_of_waters
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: number_of_waters
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:number_of_waters |
-| native | lambdaber:number_of_waters |
+| self | lambda:number_of_waters |
+| native | lambda:number_of_waters |
 
 
 
@@ -67,7 +67,7 @@ Alias: number_of_waters
 ```yaml
 name: number_of_waters
 description: Number of water molecules modeled
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: number_of_waters
 owner: WorkflowRun

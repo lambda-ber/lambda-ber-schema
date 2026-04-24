@@ -9,7 +9,7 @@ _Human-friendly laboratory or facility identifier for the experiment (e.g., 'SIB
 
 
 
-URI: [lambdaber:experiment_code](https://w3id.org/lambda-ber-schema/experiment_code)
+URI: [lambda:experiment_code](http://w3id.org/lambda/experiment_code)
 Alias: experiment_code
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: experiment_code
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: experiment_code
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:experiment_code |
-| native | lambdaber:experiment_code |
+| self | lambda:experiment_code |
+| native | lambda:experiment_code |
 
 
 
@@ -71,7 +71,7 @@ name: experiment_code
 description: Human-friendly laboratory or facility identifier for the experiment (e.g.,
   'SIBYLS-2024-02-01-hetBGL', 'CRYOEM-RUN-240815-001'). Used for local tracking and
   cross-referencing within laboratory systems.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: experiment_code
 owner: ExperimentRun

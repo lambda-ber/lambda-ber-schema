@@ -9,7 +9,7 @@ _M:N link between Study and WorkflowRun_
 
 
 
-URI: [lambdaber:StudyWorkflowAssociation](https://w3id.org/lambda-ber-schema/StudyWorkflowAssociation)
+URI: [lambda:StudyWorkflowAssociation](http://w3id.org/lambda/StudyWorkflowAssociation)
 
 
 
@@ -83,7 +83,7 @@ URI: [lambdaber:StudyWorkflowAssociation](https://w3id.org/lambda-ber-schema/Stu
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -92,8 +92,8 @@ URI: [lambdaber:StudyWorkflowAssociation](https://w3id.org/lambda-ber-schema/Stu
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:StudyWorkflowAssociation |
-| native | lambdaber:StudyWorkflowAssociation |
+| self | lambda:StudyWorkflowAssociation |
+| native | lambda:StudyWorkflowAssociation |
 
 
 
@@ -110,12 +110,12 @@ URI: [lambdaber:StudyWorkflowAssociation](https://w3id.org/lambda-ber-schema/Stu
 ```yaml
 name: StudyWorkflowAssociation
 description: M:N link between Study and WorkflowRun
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 attributes:
   study_id:
     name: study_id
     description: Reference to the study
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - StudySampleAssociation
     - StudyExperimentAssociation
@@ -125,7 +125,7 @@ attributes:
   workflow_id:
     name: workflow_id
     description: Reference to the workflow run
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - StudyWorkflowAssociation
@@ -144,12 +144,12 @@ attributes:
 ```yaml
 name: StudyWorkflowAssociation
 description: M:N link between Study and WorkflowRun
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 attributes:
   study_id:
     name: study_id
     description: Reference to the study
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: study_id
     owner: StudyWorkflowAssociation
     domain_of:
@@ -161,7 +161,7 @@ attributes:
   workflow_id:
     name: workflow_id
     description: Reference to the workflow run
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: workflow_id
     owner: StudyWorkflowAssociation

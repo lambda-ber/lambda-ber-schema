@@ -9,7 +9,7 @@ _Support film type_
 
 
 
-URI: [lambdaber:support_film](https://w3id.org/lambda-ber-schema/support_film)
+URI: [lambda:support_film](http://w3id.org/lambda/support_film)
 Alias: support_film
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: support_film
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: support_film
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:support_film |
-| native | lambdaber:support_film |
+| self | lambda:support_film |
+| native | lambda:support_film |
+| exact | mmCIF:_em_sample_support.grid_support_film |
 
 
 
@@ -67,7 +68,9 @@ Alias: support_film
 ```yaml
 name: support_film
 description: Support film type
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_em_sample_support.grid_support_film
 rank: 1000
 alias: support_film
 owner: CryoEMPreparation

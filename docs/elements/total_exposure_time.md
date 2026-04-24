@@ -9,7 +9,7 @@ _Total exposure time in milliseconds_
 
 
 
-URI: [lambdaber:total_exposure_time](https://w3id.org/lambda-ber-schema/total_exposure_time)
+URI: [lambda:total_exposure_time](http://w3id.org/lambda/total_exposure_time)
 Alias: total_exposure_time
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: total_exposure_time
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: total_exposure_time
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:total_exposure_time |
-| native | lambdaber:total_exposure_time |
+| self | lambda:total_exposure_time |
+| native | lambda:total_exposure_time |
 
 
 
@@ -67,7 +67,7 @@ Alias: total_exposure_time
 ```yaml
 name: total_exposure_time
 description: Total exposure time in milliseconds
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: total_exposure_time
 owner: ExperimentRun

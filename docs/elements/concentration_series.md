@@ -9,7 +9,7 @@ _Concentration values for series measurements_
 
 
 
-URI: [lambdaber:concentration_series](https://w3id.org/lambda-ber-schema/concentration_series)
+URI: [lambda:concentration_series](http://w3id.org/lambda/concentration_series)
 Alias: concentration_series
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: concentration_series
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: concentration_series
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:concentration_series |
-| native | lambdaber:concentration_series |
+| self | lambda:concentration_series |
+| native | lambda:concentration_series |
 
 
 
@@ -67,7 +67,7 @@ Alias: concentration_series
 ```yaml
 name: concentration_series
 description: Concentration values for series measurements
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: concentration_series
 owner: SAXSPreparation

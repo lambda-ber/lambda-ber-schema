@@ -9,7 +9,7 @@ _Symmetry applied (C1, Cn, Dn, T, O, I)_
 
 
 
-URI: [lambdaber:symmetry](https://w3id.org/lambda-ber-schema/symmetry)
+URI: [lambda:symmetry](http://w3id.org/lambda/symmetry)
 Alias: symmetry
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: symmetry
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: symmetry
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:symmetry |
-| native | lambdaber:symmetry |
+| self | lambda:symmetry |
+| native | lambda:symmetry |
+| exact | mmCIF:_em_3d_reconstruction.symmetry_type |
 
 
 
@@ -67,7 +68,9 @@ Alias: symmetry
 ```yaml
 name: symmetry
 description: Symmetry applied (C1, Cn, Dn, T, O, I)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_em_3d_reconstruction.symmetry_type
 rank: 1000
 alias: symmetry
 owner: RefinementParameters

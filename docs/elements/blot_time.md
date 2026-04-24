@@ -9,7 +9,7 @@ _Blotting time, typically specified in seconds (range: 0.5-10.0). Data providers
 
 
 
-URI: [lambdaber:blot_time](https://w3id.org/lambda-ber-schema/blot_time)
+URI: [lambda:blot_time](http://w3id.org/lambda/blot_time)
 Alias: blot_time
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: blot_time
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: blot_time
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:blot_time |
-| native | lambdaber:blot_time |
+| self | lambda:blot_time |
+| native | lambda:blot_time |
+| exact | mmCIF:_em_vitrification.time_resolved_state |
 
 
 
@@ -68,7 +69,9 @@ Alias: blot_time
 name: blot_time
 description: 'Blotting time, typically specified in seconds (range: 0.5-10.0). Data
   providers may specify alternative units by including the unit in the QuantityValue.'
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_em_vitrification.time_resolved_state
 rank: 1000
 alias: blot_time
 owner: CryoEMPreparation

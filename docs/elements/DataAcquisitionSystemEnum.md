@@ -7,7 +7,7 @@ _Data acquisition (DAQ) systems for orchestrating experimental data collection a
 
 
 
-URI: [lambdaber:DataAcquisitionSystemEnum](https://w3id.org/lambda-ber-schema/DataAcquisitionSystemEnum)
+URI: [lambda:DataAcquisitionSystemEnum](http://w3id.org/lambda/DataAcquisitionSystemEnum)
 
 ## Permissible Values
 
@@ -44,7 +44,7 @@ URI: [lambdaber:DataAcquisitionSystemEnum](https://w3id.org/lambda-ber-schema/Da
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -59,7 +59,7 @@ name: DataAcquisitionSystemEnum
 description: Data acquisition (DAQ) systems for orchestrating experimental data collection
   at facilities. These systems coordinate hardware, execute scan sequences, and stream
   data and metadata during experiments.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   bluesky:

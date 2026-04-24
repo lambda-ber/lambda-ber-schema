@@ -7,7 +7,7 @@ _File formats_
 
 
 
-URI: [lambdaber:FileFormatEnum](https://w3id.org/lambda-ber-schema/FileFormatEnum)
+URI: [lambda:FileFormatEnum](http://w3id.org/lambda/FileFormatEnum)
 
 ## Permissible Values
 
@@ -27,6 +27,7 @@ URI: [lambdaber:FileFormatEnum](https://w3id.org/lambda-ber-schema/FileFormatEnu
 | ascii | None | ASCII text format |
 | thermo_raw | None | Thermo Fisher RAW format |
 | zip | None | ZIP compressed archive |
+| tar | None | TAR archive format |
 | mrcs | None | MRC stack format for particle stacks |
 | eer | None | EER format for electron counting |
 | cs | None | CryoSPARC format |
@@ -58,7 +59,7 @@ URI: [lambdaber:FileFormatEnum](https://w3id.org/lambda-ber-schema/FileFormatEnu
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -71,7 +72,7 @@ URI: [lambdaber:FileFormatEnum](https://w3id.org/lambda-ber-schema/FileFormatEnu
 ```yaml
 name: FileFormatEnum
 description: File formats
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   mrc:
@@ -116,6 +117,9 @@ permissible_values:
   zip:
     text: zip
     description: ZIP compressed archive
+  tar:
+    text: tar
+    description: TAR archive format
   mrcs:
     text: mrcs
     description: MRC stack format for particle stacks

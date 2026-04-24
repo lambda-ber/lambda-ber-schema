@@ -9,7 +9,7 @@ _Descriptive name (e.g., 'open', 'closed')_
 
 
 
-URI: [lambdaber:state_name](https://w3id.org/lambda-ber-schema/state_name)
+URI: [lambda:state_name](http://w3id.org/lambda/state_name)
 Alias: state_name
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: state_name
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: state_name
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:state_name |
-| native | lambdaber:state_name |
+| self | lambda:state_name |
+| native | lambda:state_name |
 
 
 
@@ -67,7 +67,7 @@ Alias: state_name
 ```yaml
 name: state_name
 description: Descriptive name (e.g., 'open', 'closed')
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: state_name
 owner: ConformationalState

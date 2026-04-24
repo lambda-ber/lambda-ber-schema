@@ -9,7 +9,7 @@ _Microscope control software (e.g., SerialEM, EPU, Leginon)_
 
 
 
-URI: [lambdaber:microscope_software](https://w3id.org/lambda-ber-schema/microscope_software)
+URI: [lambda:microscope_software](http://w3id.org/lambda/microscope_software)
 Alias: microscope_software
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: microscope_software
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: microscope_software
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:microscope_software |
-| native | lambdaber:microscope_software |
+| self | lambda:microscope_software |
+| native | lambda:microscope_software |
 
 
 
@@ -67,7 +67,7 @@ Alias: microscope_software
 ```yaml
 name: microscope_software
 description: Microscope control software (e.g., SerialEM, EPU, Leginon)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: microscope_software
 owner: CryoEMInstrument

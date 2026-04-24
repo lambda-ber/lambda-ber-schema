@@ -9,7 +9,7 @@ _Hydrophobic interaction column used_
 
 
 
-URI: [lambdaber:hic_column](https://w3id.org/lambda-ber-schema/hic_column)
+URI: [lambda:hic_column](http://w3id.org/lambda/hic_column)
 Alias: hic_column
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: hic_column
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: hic_column
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:hic_column |
-| native | lambdaber:hic_column |
+| self | lambda:hic_column |
+| native | lambda:hic_column |
 
 
 
@@ -67,7 +67,7 @@ Alias: hic_column
 ```yaml
 name: hic_column
 description: Hydrophobic interaction column used
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: hic_column
 owner: SamplePreparation

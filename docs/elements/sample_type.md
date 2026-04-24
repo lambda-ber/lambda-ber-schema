@@ -9,7 +9,7 @@ _Type of biological sample_
 
 
 
-URI: [lambdaber:sample_type](https://w3id.org/lambda-ber-schema/sample_type)
+URI: [lambda:sample_type](http://w3id.org/lambda/sample_type)
 Alias: sample_type
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: sample_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: sample_type
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:sample_type |
-| native | lambdaber:sample_type |
+| self | lambda:sample_type |
+| native | lambda:sample_type |
 
 
 
@@ -69,7 +69,7 @@ Alias: sample_type
 ```yaml
 name: sample_type
 description: Type of biological sample
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: sample_type
 owner: Sample

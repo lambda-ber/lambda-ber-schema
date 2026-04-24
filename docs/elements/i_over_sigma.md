@@ -9,7 +9,7 @@ _Mean I/sigma(I) - signal to noise ratio_
 
 
 
-URI: [lambdaber:i_over_sigma](https://w3id.org/lambda-ber-schema/i_over_sigma)
+URI: [lambda:i_over_sigma](http://w3id.org/lambda/i_over_sigma)
 Alias: i_over_sigma
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: i_over_sigma
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: i_over_sigma
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:i_over_sigma |
-| native | lambdaber:i_over_sigma |
+| self | lambda:i_over_sigma |
+| native | lambda:i_over_sigma |
 
 
 
@@ -67,7 +67,7 @@ Alias: i_over_sigma
 ```yaml
 name: i_over_sigma
 description: Mean I/sigma(I) - signal to noise ratio
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: i_over_sigma
 owner: WorkflowRun

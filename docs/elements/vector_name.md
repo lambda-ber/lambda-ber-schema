@@ -9,7 +9,7 @@ _Complete vector name_
 
 
 
-URI: [lambdaber:vector_name](https://w3id.org/lambda-ber-schema/vector_name)
+URI: [lambda:vector_name](http://w3id.org/lambda/vector_name)
 Alias: vector_name
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: vector_name
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: vector_name
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:vector_name |
-| native | lambdaber:vector_name |
+| self | lambda:vector_name |
+| native | lambda:vector_name |
 
 
 
@@ -67,7 +67,7 @@ Alias: vector_name
 ```yaml
 name: vector_name
 description: Complete vector name
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: vector_name
 owner: ProteinConstruct

@@ -9,7 +9,7 @@ _Type of illumination (brightfield, darkfield, phase contrast, DIC)_
 
 
 
-URI: [lambdaber:illumination_type](https://w3id.org/lambda-ber-schema/illumination_type)
+URI: [lambda:illumination_type](http://w3id.org/lambda/illumination_type)
 Alias: illumination_type
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: illumination_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: illumination_type
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:illumination_type |
-| native | lambdaber:illumination_type |
+| self | lambda:illumination_type |
+| native | lambda:illumination_type |
 
 
 
@@ -67,7 +67,7 @@ Alias: illumination_type
 ```yaml
 name: illumination_type
 description: Type of illumination (brightfield, darkfield, phase contrast, DIC)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: illumination_type
 owner: OpticalImage

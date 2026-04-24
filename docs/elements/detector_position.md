@@ -9,7 +9,7 @@ _Physical position of detector in microscope (e.g., post-GIF, pre-column)_
 
 
 
-URI: [lambdaber:detector_position](https://w3id.org/lambda-ber-schema/detector_position)
+URI: [lambda:detector_position](http://w3id.org/lambda/detector_position)
 Alias: detector_position
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: detector_position
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: detector_position
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:detector_position |
-| native | lambdaber:detector_position |
+| self | lambda:detector_position |
+| native | lambda:detector_position |
 
 
 
@@ -67,7 +67,7 @@ Alias: detector_position
 ```yaml
 name: detector_position
 description: Physical position of detector in microscope (e.g., post-GIF, pre-column)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: detector_position
 owner: CryoEMInstrument

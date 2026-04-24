@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:drop_ratio_protein_to_reservoir](https://w3id.org/lambda-ber-schema/drop_ratio_protein_to_reservoir)
+URI: [lambda:drop_ratio_protein_to_reservoir](http://w3id.org/lambda/drop_ratio_protein_to_reservoir)
 Alias: drop_ratio_protein_to_reservoir
 
 <!-- no inheritance hierarchy -->
@@ -44,8 +44,8 @@ Alias: drop_ratio_protein_to_reservoir
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:drop_ratio_protein_to_reservoir |
-| native | lambdaber:drop_ratio_protein_to_reservoir |
+| self | lambda:drop_ratio_protein_to_reservoir |
+| native | lambda:drop_ratio_protein_to_reservoir |
 
 
 

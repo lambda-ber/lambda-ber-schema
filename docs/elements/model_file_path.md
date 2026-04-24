@@ -9,7 +9,7 @@ _Path to deep learning model file if using a local or custom trained model file.
 
 
 
-URI: [lambdaber:model_file_path](https://w3id.org/lambda-ber-schema/model_file_path)
+URI: [lambda:model_file_path](http://w3id.org/lambda/model_file_path)
 Alias: model_file_path
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: model_file_path
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: model_file_path
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:model_file_path |
-| native | lambdaber:model_file_path |
+| self | lambda:model_file_path |
+| native | lambda:model_file_path |
 
 
 
@@ -69,7 +69,7 @@ name: model_file_path
 description: Path to deep learning model file if using a local or custom trained model
   file. Use this instead of model_name when pointing to a specific file on disk. Either
   model_name or model_file_path should be provided when using deep learning methods.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: model_file_path
 owner: ParticlePickingParameters

@@ -9,7 +9,7 @@ _Horizontal slit gap aperture, typically specified in micrometers (µm). Data pr
 
 
 
-URI: [lambdaber:slit_gap_horizontal](https://w3id.org/lambda-ber-schema/slit_gap_horizontal)
+URI: [lambda:slit_gap_horizontal](http://w3id.org/lambda/slit_gap_horizontal)
 Alias: slit_gap_horizontal
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: slit_gap_horizontal
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: slit_gap_horizontal
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:slit_gap_horizontal |
-| native | lambdaber:slit_gap_horizontal |
+| self | lambda:slit_gap_horizontal |
+| native | lambda:slit_gap_horizontal |
 | exact | ispyb:DataCollection.slitGapHorizontal |
 
 
@@ -69,7 +69,7 @@ Alias: slit_gap_horizontal
 name: slit_gap_horizontal
 description: Horizontal slit gap aperture, typically specified in micrometers (µm).
   Data providers may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 exact_mappings:
 - ispyb:DataCollection.slitGapHorizontal
 rank: 1000

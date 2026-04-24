@@ -9,7 +9,7 @@ _Unique identifier for this construct_
 
 
 
-URI: [lambdaber:construct_id](https://w3id.org/lambda-ber-schema/construct_id)
+URI: [lambda:construct_id](http://w3id.org/lambda/construct_id)
 Alias: construct_id
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: construct_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: construct_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:construct_id |
-| native | lambdaber:construct_id |
+| self | lambda:construct_id |
+| native | lambda:construct_id |
 
 
 
@@ -69,7 +69,7 @@ Alias: construct_id
 ```yaml
 name: construct_id
 description: Unique identifier for this construct
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: construct_id
 owner: ProteinConstruct

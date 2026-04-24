@@ -9,7 +9,7 @@ _A biological sample used in structural biology experiments_
 
 
 
-URI: [lambdaber:Sample](https://w3id.org/lambda-ber-schema/Sample)
+URI: [lambda:Sample](http://w3id.org/lambda/Sample)
 
 
 
@@ -177,6 +177,8 @@ URI: [lambdaber:Sample](https://w3id.org/lambda-ber-schema/Sample)
         
       Sample : mutations
         
+      Sample : oligomeric_state
+        
       Sample : organism
         
           
@@ -324,6 +326,7 @@ URI: [lambdaber:Sample](https://w3id.org/lambda-ber-schema/Sample)
 | [mutations](mutations.md) | 0..1 <br/> [String](String.md) | Mutations present in the sample | direct |
 | [expression_system](expression_system.md) | 0..1 <br/> [String](String.md) | Expression system used | direct |
 | [ligand](ligand.md) | 0..1 <br/> [String](String.md) | Ligand or small molecule bound to sample | direct |
+| [oligomeric_state](oligomeric_state.md) | 0..1 <br/> [String](String.md) | Oligomeric state of the sample (e | direct |
 | [id](id.md) | 1 <br/> [Uriorcurie](Uriorcurie.md) | Globally unique identifier as an IRI or CURIE for machine processing and exte... | [NamedThing](NamedThing.md) |
 | [title](title.md) | 0..1 <br/> [String](String.md) | A human-readable name or title for this entity | [NamedThing](NamedThing.md) |
 | [description](description.md) | 0..1 <br/> [String](String.md) | A detailed textual description of this entity | [NamedThing](NamedThing.md) |
@@ -357,7 +360,7 @@ URI: [lambdaber:Sample](https://w3id.org/lambda-ber-schema/Sample)
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -366,8 +369,8 @@ URI: [lambdaber:Sample](https://w3id.org/lambda-ber-schema/Sample)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:Sample |
-| native | lambdaber:Sample |
+| self | lambda:Sample |
+| native | lambda:Sample |
 
 
 
@@ -384,7 +387,7 @@ URI: [lambdaber:Sample](https://w3id.org/lambda-ber-schema/Sample)
 ```yaml
 name: Sample
 description: A biological sample used in structural biology experiments
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: NamedThing
 attributes:
   sample_code:
@@ -392,7 +395,7 @@ attributes:
     description: Human-friendly laboratory identifier or facility code for the sample
       (e.g., 'ALS-12.3.1-SAMPLE-001', 'LAB-PROT-2024-01'). Used for local reference
       and tracking within laboratory workflows.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Sample
@@ -400,7 +403,7 @@ attributes:
   sample_type:
     name: sample_type
     description: Type of biological sample
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Sample
@@ -410,7 +413,7 @@ attributes:
     name: molecular_composition
     description: Description of molecular composition including sequences, modifications,
       ligands
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Sample
@@ -420,7 +423,9 @@ attributes:
     description: Molecular weight, typically specified in kilodaltons (kDa). Data
       providers may specify alternative units (e.g., Daltons, g/mol) by including
       the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_entity.formula_weight
     rank: 1000
     domain_of:
     - Sample
@@ -431,7 +436,7 @@ attributes:
     description: Sample concentration, typically specified in mg/mL or µM. Data providers
       may specify alternative units (e.g., molar, g/L) by including the unit in the
       QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Sample
@@ -440,7 +445,7 @@ attributes:
   buffer_composition:
     name: buffer_composition
     description: Buffer composition including pH, salts, additives
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Sample
@@ -449,14 +454,14 @@ attributes:
   preparation_method:
     name: preparation_method
     description: Method used to prepare the sample
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Sample
   storage_conditions:
     name: storage_conditions
     description: Storage conditions for the sample
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Sample
@@ -465,7 +470,7 @@ attributes:
     name: organism
     description: Source organism for the sample (e.g., NCBITaxon:3702 for Arabidopsis
       thaliana)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Sample
@@ -474,7 +479,7 @@ attributes:
   anatomy:
     name: anatomy
     description: Anatomical part or tissue (e.g., UBERON:0008945 for leaf)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Sample
@@ -482,7 +487,7 @@ attributes:
   cell_type:
     name: cell_type
     description: Cell type if applicable (e.g., CL:0000057 for fibroblast)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Sample
@@ -490,7 +495,7 @@ attributes:
   parent_sample_id:
     name: parent_sample_id
     description: Reference to parent sample for derivation tracking
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Sample
@@ -500,7 +505,7 @@ attributes:
     description: 'Sample purity, typically specified as a percentage (range: 0-100).
       Data providers may specify as decimal fraction by including the unit in the
       QuantityValue.'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Sample
@@ -509,7 +514,7 @@ attributes:
   quality_metrics:
     name: quality_metrics
     description: Quality control metrics for the sample
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Sample
@@ -517,7 +522,7 @@ attributes:
   functional_sites:
     name: functional_sites
     description: Functional site annotations for proteins in the sample
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Sample
@@ -529,7 +534,7 @@ attributes:
   structural_features:
     name: structural_features
     description: Structural feature annotations
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Sample
@@ -541,7 +546,7 @@ attributes:
   protein_interactions:
     name: protein_interactions
     description: Protein-protein interaction annotations
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Sample
@@ -553,7 +558,7 @@ attributes:
   ligand_interactions:
     name: ligand_interactions
     description: Small molecule interaction annotations
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Sample
@@ -566,7 +571,7 @@ attributes:
   mutation_effects:
     name: mutation_effects
     description: Effects of mutations present in the sample
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Sample
@@ -577,7 +582,7 @@ attributes:
   ptm_annotations:
     name: ptm_annotations
     description: Post-translational modification annotations
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Sample
@@ -588,7 +593,7 @@ attributes:
   biophysical_properties:
     name: biophysical_properties
     description: Measured or predicted biophysical properties
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Sample
@@ -600,7 +605,7 @@ attributes:
   evolutionary_conservation:
     name: evolutionary_conservation
     description: Evolutionary conservation data
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Sample
@@ -610,7 +615,7 @@ attributes:
   conformational_ensemble:
     name: conformational_ensemble
     description: Conformational states and dynamics
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Sample
@@ -620,7 +625,7 @@ attributes:
   database_cross_references:
     name: database_cross_references
     description: Cross-references to external databases
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Sample
@@ -631,11 +636,10 @@ attributes:
   protein_name:
     name: protein_name
     description: Name of the protein
-    comments:
-    - 'Maps to NSLS2 spreadsheet: Protein_Name'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - nsls2:Protein_Name
     rank: 1000
-    slot_uri: nsls2:Protein_Name
     domain_of:
     - Sample
     - AggregatedProteinView
@@ -643,33 +647,30 @@ attributes:
   construct:
     name: construct
     description: Construct description (e.g., domain boundaries, truncations)
-    comments:
-    - 'Maps to NSLS2 spreadsheet: Construct'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - nsls2:Construct
     rank: 1000
-    slot_uri: nsls2:Construct
     domain_of:
     - Sample
     range: string
   tag:
     name: tag
     description: Affinity tag (e.g., His6, GST, MBP)
-    comments:
-    - 'Maps to NSLS2 spreadsheet: Tag'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - nsls2:Tag
     rank: 1000
-    slot_uri: nsls2:Tag
     domain_of:
     - Sample
     range: string
   mutations:
     name: mutations
     description: Mutations present in the sample
-    comments:
-    - 'Maps to NSLS2 spreadsheet: Mutations'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - nsls2:Mutations
     rank: 1000
-    slot_uri: nsls2:Mutations
     domain_of:
     - Sample
     - AggregatedProteinView
@@ -677,11 +678,10 @@ attributes:
   expression_system:
     name: expression_system
     description: Expression system used
-    comments:
-    - 'Maps to NSLS2 spreadsheet: Expression_System'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - nsls2:Expression_System
     rank: 1000
-    slot_uri: nsls2:Expression_System
     domain_of:
     - Sample
     - SamplePreparation
@@ -689,11 +689,18 @@ attributes:
   ligand:
     name: ligand
     description: Ligand or small molecule bound to sample
-    comments:
-    - 'Maps to NSLS2 spreadsheet: Ligand'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - nsls2:Ligand
     rank: 1000
-    slot_uri: nsls2:Ligand
+    domain_of:
+    - Sample
+    range: string
+  oligomeric_state:
+    name: oligomeric_state
+    description: Oligomeric state of the sample (e.g., monomer, dimer, tetramer, hexamer)
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
     domain_of:
     - Sample
     range: string
@@ -707,7 +714,7 @@ attributes:
 ```yaml
 name: Sample
 description: A biological sample used in structural biology experiments
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: NamedThing
 attributes:
   sample_code:
@@ -715,7 +722,7 @@ attributes:
     description: Human-friendly laboratory identifier or facility code for the sample
       (e.g., 'ALS-12.3.1-SAMPLE-001', 'LAB-PROT-2024-01'). Used for local reference
       and tracking within laboratory workflows.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: sample_code
     owner: Sample
@@ -726,7 +733,7 @@ attributes:
   sample_type:
     name: sample_type
     description: Type of biological sample
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: sample_type
     owner: Sample
@@ -738,7 +745,7 @@ attributes:
     name: molecular_composition
     description: Description of molecular composition including sequences, modifications,
       ligands
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: molecular_composition
     owner: Sample
@@ -750,7 +757,9 @@ attributes:
     description: Molecular weight, typically specified in kilodaltons (kDa). Data
       providers may specify alternative units (e.g., Daltons, g/mol) by including
       the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_entity.formula_weight
     rank: 1000
     alias: molecular_weight
     owner: Sample
@@ -763,7 +772,7 @@ attributes:
     description: Sample concentration, typically specified in mg/mL or µM. Data providers
       may specify alternative units (e.g., molar, g/L) by including the unit in the
       QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: concentration
     owner: Sample
@@ -774,7 +783,7 @@ attributes:
   buffer_composition:
     name: buffer_composition
     description: Buffer composition including pH, salts, additives
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: buffer_composition
     owner: Sample
@@ -785,7 +794,7 @@ attributes:
   preparation_method:
     name: preparation_method
     description: Method used to prepare the sample
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: preparation_method
     owner: Sample
@@ -795,7 +804,7 @@ attributes:
   storage_conditions:
     name: storage_conditions
     description: Storage conditions for the sample
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: storage_conditions
     owner: Sample
@@ -806,7 +815,7 @@ attributes:
     name: organism
     description: Source organism for the sample (e.g., NCBITaxon:3702 for Arabidopsis
       thaliana)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: organism
     owner: Sample
@@ -817,7 +826,7 @@ attributes:
   anatomy:
     name: anatomy
     description: Anatomical part or tissue (e.g., UBERON:0008945 for leaf)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: anatomy
     owner: Sample
@@ -827,7 +836,7 @@ attributes:
   cell_type:
     name: cell_type
     description: Cell type if applicable (e.g., CL:0000057 for fibroblast)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: cell_type
     owner: Sample
@@ -837,7 +846,7 @@ attributes:
   parent_sample_id:
     name: parent_sample_id
     description: Reference to parent sample for derivation tracking
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: parent_sample_id
     owner: Sample
@@ -849,7 +858,7 @@ attributes:
     description: 'Sample purity, typically specified as a percentage (range: 0-100).
       Data providers may specify as decimal fraction by including the unit in the
       QuantityValue.'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: purity_percentage
     owner: Sample
@@ -860,7 +869,7 @@ attributes:
   quality_metrics:
     name: quality_metrics
     description: Quality control metrics for the sample
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: quality_metrics
     owner: Sample
@@ -871,7 +880,7 @@ attributes:
   functional_sites:
     name: functional_sites
     description: Functional site annotations for proteins in the sample
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: functional_sites
     owner: Sample
@@ -885,7 +894,7 @@ attributes:
   structural_features:
     name: structural_features
     description: Structural feature annotations
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: structural_features
     owner: Sample
@@ -899,7 +908,7 @@ attributes:
   protein_interactions:
     name: protein_interactions
     description: Protein-protein interaction annotations
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: protein_interactions
     owner: Sample
@@ -913,7 +922,7 @@ attributes:
   ligand_interactions:
     name: ligand_interactions
     description: Small molecule interaction annotations
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: ligand_interactions
     owner: Sample
@@ -928,7 +937,7 @@ attributes:
   mutation_effects:
     name: mutation_effects
     description: Effects of mutations present in the sample
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: mutation_effects
     owner: Sample
@@ -941,7 +950,7 @@ attributes:
   ptm_annotations:
     name: ptm_annotations
     description: Post-translational modification annotations
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: ptm_annotations
     owner: Sample
@@ -954,7 +963,7 @@ attributes:
   biophysical_properties:
     name: biophysical_properties
     description: Measured or predicted biophysical properties
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: biophysical_properties
     owner: Sample
@@ -968,7 +977,7 @@ attributes:
   evolutionary_conservation:
     name: evolutionary_conservation
     description: Evolutionary conservation data
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: evolutionary_conservation
     owner: Sample
@@ -980,7 +989,7 @@ attributes:
   conformational_ensemble:
     name: conformational_ensemble
     description: Conformational states and dynamics
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: conformational_ensemble
     owner: Sample
@@ -992,7 +1001,7 @@ attributes:
   database_cross_references:
     name: database_cross_references
     description: Cross-references to external databases
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: database_cross_references
     owner: Sample
@@ -1005,11 +1014,10 @@ attributes:
   protein_name:
     name: protein_name
     description: Name of the protein
-    comments:
-    - 'Maps to NSLS2 spreadsheet: Protein_Name'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - nsls2:Protein_Name
     rank: 1000
-    slot_uri: nsls2:Protein_Name
     alias: protein_name
     owner: Sample
     domain_of:
@@ -1019,11 +1027,10 @@ attributes:
   construct:
     name: construct
     description: Construct description (e.g., domain boundaries, truncations)
-    comments:
-    - 'Maps to NSLS2 spreadsheet: Construct'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - nsls2:Construct
     rank: 1000
-    slot_uri: nsls2:Construct
     alias: construct
     owner: Sample
     domain_of:
@@ -1032,11 +1039,10 @@ attributes:
   tag:
     name: tag
     description: Affinity tag (e.g., His6, GST, MBP)
-    comments:
-    - 'Maps to NSLS2 spreadsheet: Tag'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - nsls2:Tag
     rank: 1000
-    slot_uri: nsls2:Tag
     alias: tag
     owner: Sample
     domain_of:
@@ -1045,11 +1051,10 @@ attributes:
   mutations:
     name: mutations
     description: Mutations present in the sample
-    comments:
-    - 'Maps to NSLS2 spreadsheet: Mutations'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - nsls2:Mutations
     rank: 1000
-    slot_uri: nsls2:Mutations
     alias: mutations
     owner: Sample
     domain_of:
@@ -1059,11 +1064,10 @@ attributes:
   expression_system:
     name: expression_system
     description: Expression system used
-    comments:
-    - 'Maps to NSLS2 spreadsheet: Expression_System'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - nsls2:Expression_System
     rank: 1000
-    slot_uri: nsls2:Expression_System
     alias: expression_system
     owner: Sample
     domain_of:
@@ -1073,12 +1077,21 @@ attributes:
   ligand:
     name: ligand
     description: Ligand or small molecule bound to sample
-    comments:
-    - 'Maps to NSLS2 spreadsheet: Ligand'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - nsls2:Ligand
     rank: 1000
-    slot_uri: nsls2:Ligand
     alias: ligand
+    owner: Sample
+    domain_of:
+    - Sample
+    range: string
+  oligomeric_state:
+    name: oligomeric_state
+    description: Oligomeric state of the sample (e.g., monomer, dimer, tetramer, hexamer)
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    alias: oligomeric_state
     owner: Sample
     domain_of:
     - Sample
@@ -1088,7 +1101,7 @@ attributes:
     description: Globally unique identifier as an IRI or CURIE for machine processing
       and external references. Used for linking data across systems and semantic web
       integration.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     identifier: true
     alias: id
@@ -1101,7 +1114,7 @@ attributes:
   title:
     name: title
     description: A human-readable name or title for this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     slot_uri: dcterms:title
     alias: title
@@ -1112,7 +1125,7 @@ attributes:
   description:
     name: description
     description: A detailed textual description of this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: description
     owner: Sample

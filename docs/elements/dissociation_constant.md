@@ -9,7 +9,7 @@ _Experimental Kd if available_
 
 
 
-URI: [lambdaber:dissociation_constant](https://w3id.org/lambda-ber-schema/dissociation_constant)
+URI: [lambda:dissociation_constant](http://w3id.org/lambda/dissociation_constant)
 Alias: dissociation_constant
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: dissociation_constant
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: dissociation_constant
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:dissociation_constant |
-| native | lambdaber:dissociation_constant |
+| self | lambda:dissociation_constant |
+| native | lambda:dissociation_constant |
 
 
 
@@ -67,7 +67,7 @@ Alias: dissociation_constant
 ```yaml
 name: dissociation_constant
 description: Experimental Kd if available
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: dissociation_constant
 owner: ProteinProteinInteraction

@@ -9,7 +9,7 @@ _Additional notes about processing_
 
 
 
-URI: [lambdaber:processing_notes](https://w3id.org/lambda-ber-schema/processing_notes)
+URI: [lambda:processing_notes](http://w3id.org/lambda/processing_notes)
 Alias: processing_notes
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: processing_notes
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: processing_notes
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:processing_notes |
-| native | lambdaber:processing_notes |
+| self | lambda:processing_notes |
+| native | lambda:processing_notes |
 
 
 
@@ -67,7 +67,7 @@ Alias: processing_notes
 ```yaml
 name: processing_notes
 description: Additional notes about processing
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: processing_notes
 owner: WorkflowRun

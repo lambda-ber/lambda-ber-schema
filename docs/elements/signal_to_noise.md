@@ -9,7 +9,7 @@ _Signal to noise ratio_
 
 
 
-URI: [lambdaber:signal_to_noise](https://w3id.org/lambda-ber-schema/signal_to_noise)
+URI: [lambda:signal_to_noise](http://w3id.org/lambda/signal_to_noise)
 Alias: signal_to_noise
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: signal_to_noise
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: signal_to_noise
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:signal_to_noise |
-| native | lambdaber:signal_to_noise |
+| self | lambda:signal_to_noise |
+| native | lambda:signal_to_noise |
 
 
 
@@ -67,7 +67,7 @@ Alias: signal_to_noise
 ```yaml
 name: signal_to_noise
 description: Signal to noise ratio
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: signal_to_noise
 owner: QualityMetrics

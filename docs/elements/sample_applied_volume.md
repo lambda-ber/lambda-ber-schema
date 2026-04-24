@@ -9,7 +9,7 @@ _Volume of sample applied, typically specified in microliters. Data providers ma
 
 
 
-URI: [lambdaber:sample_applied_volume](https://w3id.org/lambda-ber-schema/sample_applied_volume)
+URI: [lambda:sample_applied_volume](http://w3id.org/lambda/sample_applied_volume)
 Alias: sample_applied_volume
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: sample_applied_volume
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: sample_applied_volume
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:sample_applied_volume |
-| native | lambdaber:sample_applied_volume |
+| self | lambda:sample_applied_volume |
+| native | lambda:sample_applied_volume |
 
 
 
@@ -68,7 +68,7 @@ Alias: sample_applied_volume
 name: sample_applied_volume
 description: Volume of sample applied, typically specified in microliters. Data providers
   may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: sample_applied_volume
 owner: CryoEMPreparation

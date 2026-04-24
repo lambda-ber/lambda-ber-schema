@@ -9,7 +9,7 @@ _Unbinned pixel size, typically specified in Angstroms per pixel. Data providers
 
 
 
-URI: [lambdaber:pixel_size_unbinned](https://w3id.org/lambda-ber-schema/pixel_size_unbinned)
+URI: [lambda:pixel_size_unbinned](http://w3id.org/lambda/pixel_size_unbinned)
 Alias: pixel_size_unbinned
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: pixel_size_unbinned
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: pixel_size_unbinned
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:pixel_size_unbinned |
-| native | lambdaber:pixel_size_unbinned |
+| self | lambda:pixel_size_unbinned |
+| native | lambda:pixel_size_unbinned |
 
 
 
@@ -68,7 +68,7 @@ Alias: pixel_size_unbinned
 name: pixel_size_unbinned
 description: Unbinned pixel size, typically specified in Angstroms per pixel. Data
   providers may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: pixel_size_unbinned
 owner: Movie

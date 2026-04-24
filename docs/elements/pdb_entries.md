@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:pdb_entries](https://w3id.org/lambda-ber-schema/pdb_entries)
+URI: [lambda:pdb_entries](http://w3id.org/lambda/pdb_entries)
 Alias: pdb_entries
 
 <!-- no inheritance hierarchy -->
@@ -44,8 +44,8 @@ Alias: pdb_entries
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:pdb_entries |
-| native | lambdaber:pdb_entries |
+| self | lambda:pdb_entries |
+| native | lambda:pdb_entries |
 
 
 

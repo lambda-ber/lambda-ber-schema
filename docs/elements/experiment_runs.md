@@ -9,7 +9,7 @@ _All experiment runs (data collection sessions)_
 
 
 
-URI: [lambdaber:experiment_runs](https://w3id.org/lambda-ber-schema/experiment_runs)
+URI: [lambda:experiment_runs](http://w3id.org/lambda/experiment_runs)
 Alias: experiment_runs
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: experiment_runs
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: experiment_runs
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:experiment_runs |
-| native | lambdaber:experiment_runs |
+| self | lambda:experiment_runs |
+| native | lambda:experiment_runs |
 
 
 
@@ -69,7 +69,7 @@ Alias: experiment_runs
 ```yaml
 name: experiment_runs
 description: All experiment runs (data collection sessions)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: experiment_runs
 owner: Dataset

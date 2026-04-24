@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:buffer_composition](https://w3id.org/lambda-ber-schema/buffer_composition)
+URI: [lambda:buffer_composition](http://w3id.org/lambda/buffer_composition)
 Alias: buffer_composition
 
 <!-- no inheritance hierarchy -->
@@ -44,8 +44,8 @@ Alias: buffer_composition
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:buffer_composition |
-| native | lambdaber:buffer_composition |
+| self | lambda:buffer_composition |
+| native | lambda:buffer_composition |
 
 
 

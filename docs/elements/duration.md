@@ -9,7 +9,7 @@ _Storage duration_
 
 
 
-URI: [lambdaber:duration](https://w3id.org/lambda-ber-schema/duration)
+URI: [lambda:duration](http://w3id.org/lambda/duration)
 Alias: duration
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: duration
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: duration
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:duration |
-| native | lambdaber:duration |
+| self | lambda:duration |
+| native | lambda:duration |
 
 
 
@@ -67,7 +67,7 @@ Alias: duration
 ```yaml
 name: duration
 description: Storage duration
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: duration
 owner: StorageConditions

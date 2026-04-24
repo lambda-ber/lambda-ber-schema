@@ -9,7 +9,7 @@ _Whether glow discharge treatment was applied_
 
 
 
-URI: [lambdaber:glow_discharge_applied](https://w3id.org/lambda-ber-schema/glow_discharge_applied)
+URI: [lambda:glow_discharge_applied](http://w3id.org/lambda/glow_discharge_applied)
 Alias: glow_discharge_applied
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: glow_discharge_applied
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: glow_discharge_applied
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:glow_discharge_applied |
-| native | lambdaber:glow_discharge_applied |
+| self | lambda:glow_discharge_applied |
+| native | lambda:glow_discharge_applied |
+| exact | mmCIF:_em_sample_support.pretreatment_type |
 
 
 
@@ -67,7 +68,9 @@ Alias: glow_discharge_applied
 ```yaml
 name: glow_discharge_applied
 description: Whether glow discharge treatment was applied
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_em_sample_support.pretreatment_type
 rank: 1000
 alias: glow_discharge_applied
 owner: CryoEMPreparation

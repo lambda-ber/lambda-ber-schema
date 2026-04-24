@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:cc_half](https://w3id.org/lambda-ber-schema/cc_half)
+URI: [lambda:cc_half](http://w3id.org/lambda/cc_half)
 Alias: cc_half
 
 <!-- no inheritance hierarchy -->
@@ -44,8 +44,8 @@ Alias: cc_half
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:cc_half |
-| native | lambdaber:cc_half |
+| self | lambda:cc_half |
+| native | lambda:cc_half |
 
 
 

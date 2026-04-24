@@ -9,7 +9,7 @@ _Experimental error or uncertainty_
 
 
 
-URI: [lambdaber:error](https://w3id.org/lambda-ber-schema/error)
+URI: [lambda:error](http://w3id.org/lambda/error)
 Alias: error
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: error
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: error
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:error |
-| native | lambdaber:error |
+| self | lambda:error |
+| native | lambda:error |
 
 
 
@@ -67,7 +67,7 @@ Alias: error
 ```yaml
 name: error
 description: Experimental error or uncertainty
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: error
 owner: BiophysicalProperty

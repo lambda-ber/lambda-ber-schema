@@ -9,7 +9,7 @@ _Relative solvent accessible surface area (range: 0-1)_
 
 
 
-URI: [lambdaber:solvent_accessibility](https://w3id.org/lambda-ber-schema/solvent_accessibility)
+URI: [lambda:solvent_accessibility](http://w3id.org/lambda/solvent_accessibility)
 Alias: solvent_accessibility
 
 <!-- no inheritance hierarchy -->
@@ -50,7 +50,7 @@ Alias: solvent_accessibility
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -59,8 +59,8 @@ Alias: solvent_accessibility
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:solvent_accessibility |
-| native | lambdaber:solvent_accessibility |
+| self | lambda:solvent_accessibility |
+| native | lambda:solvent_accessibility |
 
 
 
@@ -71,7 +71,7 @@ Alias: solvent_accessibility
 ```yaml
 name: solvent_accessibility
 description: 'Relative solvent accessible surface area (range: 0-1)'
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: solvent_accessibility
 owner: StructuralFeature

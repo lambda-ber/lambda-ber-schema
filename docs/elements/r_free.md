@@ -9,7 +9,7 @@ _R-free (test set)_
 
 
 
-URI: [lambdaber:r_free](https://w3id.org/lambda-ber-schema/r_free)
+URI: [lambda:r_free](http://w3id.org/lambda/r_free)
 Alias: r_free
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: r_free
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: r_free
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:r_free |
-| native | lambdaber:r_free |
+| self | lambda:r_free |
+| native | lambda:r_free |
+| exact | mmCIF:_refine.ls_R_factor_R_free |
 
 
 
@@ -67,7 +68,9 @@ Alias: r_free
 ```yaml
 name: r_free
 description: R-free (test set)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_refine.ls_R_factor_R_free
 rank: 1000
 alias: r_free
 owner: QualityMetrics

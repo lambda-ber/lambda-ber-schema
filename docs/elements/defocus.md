@@ -9,7 +9,7 @@ _Defocus value, typically specified in micrometers. Data providers may specify a
 
 
 
-URI: [lambdaber:defocus](https://w3id.org/lambda-ber-schema/defocus)
+URI: [lambda:defocus](http://w3id.org/lambda/defocus)
 Alias: defocus
 
 <!-- no inheritance hierarchy -->
@@ -22,10 +22,10 @@ Alias: defocus
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OpticalImage](OpticalImage.md) | Visible light optical microscopy or photography image |  no  |
 | [Image2D](Image2D.md) | A 2D image (micrograph, diffraction pattern) |  no  |
 | [XRFImage](XRFImage.md) | X-ray fluorescence (XRF) image showing elemental distribution |  no  |
 | [Micrograph](Micrograph.md) | Motion-corrected micrograph derived from movie |  no  |
+| [OpticalImage](OpticalImage.md) | Visible light optical microscopy or photography image |  no  |
 | [Movie](Movie.md) | Raw cryo-EM movie with frame-by-frame metadata for motion correction |  no  |
 | [FluorescenceImage](FluorescenceImage.md) | Fluorescence microscopy image capturing specific molecular targets through fl... |  no  |
 
@@ -51,7 +51,7 @@ Alias: defocus
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -60,8 +60,8 @@ Alias: defocus
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:defocus |
-| native | lambdaber:defocus |
+| self | lambda:defocus |
+| native | lambda:defocus |
 
 
 
@@ -73,7 +73,7 @@ Alias: defocus
 name: defocus
 description: Defocus value, typically specified in micrometers. Data providers may
   specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: defocus
 owner: Image2D

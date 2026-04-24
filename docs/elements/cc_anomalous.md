@@ -9,7 +9,7 @@ _Anomalous correlation coefficient_
 
 
 
-URI: [lambdaber:cc_anomalous](https://w3id.org/lambda-ber-schema/cc_anomalous)
+URI: [lambda:cc_anomalous](http://w3id.org/lambda/cc_anomalous)
 Alias: cc_anomalous
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: cc_anomalous
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: cc_anomalous
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:cc_anomalous |
-| native | lambdaber:cc_anomalous |
+| self | lambda:cc_anomalous |
+| native | lambda:cc_anomalous |
 
 
 
@@ -67,7 +67,7 @@ Alias: cc_anomalous
 ```yaml
 name: cc_anomalous
 description: Anomalous correlation coefficient
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: cc_anomalous
 owner: WorkflowRun

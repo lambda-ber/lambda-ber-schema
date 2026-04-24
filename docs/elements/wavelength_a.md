@@ -9,7 +9,7 @@ _X-ray wavelength, typically specified in Angstroms. Data providers may specify 
 
 
 
-URI: [lambdaber:wavelength_a](https://w3id.org/lambda-ber-schema/wavelength_a)
+URI: [lambda:wavelength_a](http://w3id.org/lambda/wavelength_a)
 Alias: wavelength_a
 
 <!-- no inheritance hierarchy -->
@@ -35,6 +35,11 @@ Alias: wavelength_a
 
 
 
+## Aliases
+
+
+* wavelength
+
 
 ## Identifier and Mapping Information
 
@@ -46,7 +51,7 @@ Alias: wavelength_a
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +60,9 @@ Alias: wavelength_a
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:wavelength_a |
-| native | lambdaber:wavelength_a |
+| self | lambda:wavelength_a |
+| native | lambda:wavelength_a |
+| exact | mmCIF:_diffrn_radiation_wavelength.wavelength |
 
 
 
@@ -68,7 +74,11 @@ Alias: wavelength_a
 name: wavelength_a
 description: X-ray wavelength, typically specified in Angstroms. Data providers may
   specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+aliases:
+- wavelength
+exact_mappings:
+- mmCIF:_diffrn_radiation_wavelength.wavelength
 rank: 1000
 alias: wavelength_a
 owner: DataCollectionStrategy

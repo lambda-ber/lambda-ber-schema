@@ -9,7 +9,7 @@ _Ionic strength, typically specified in molar (mol/L). Data providers may specif
 
 
 
-URI: [lambdaber:ionic_strength](https://w3id.org/lambda-ber-schema/ionic_strength)
+URI: [lambda:ionic_strength](http://w3id.org/lambda/ionic_strength)
 Alias: ionic_strength
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: ionic_strength
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: ionic_strength
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:ionic_strength |
-| native | lambdaber:ionic_strength |
+| self | lambda:ionic_strength |
+| native | lambda:ionic_strength |
 
 
 
@@ -68,7 +68,7 @@ Alias: ionic_strength
 name: ionic_strength
 description: Ionic strength, typically specified in molar (mol/L). Data providers
   may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: ionic_strength
 owner: MeasurementConditions

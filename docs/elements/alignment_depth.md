@@ -9,7 +9,7 @@ _Number of sequences in alignment_
 
 
 
-URI: [lambdaber:alignment_depth](https://w3id.org/lambda-ber-schema/alignment_depth)
+URI: [lambda:alignment_depth](http://w3id.org/lambda/alignment_depth)
 Alias: alignment_depth
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: alignment_depth
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: alignment_depth
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:alignment_depth |
-| native | lambdaber:alignment_depth |
+| self | lambda:alignment_depth |
+| native | lambda:alignment_depth |
 
 
 
@@ -67,7 +67,7 @@ Alias: alignment_depth
 ```yaml
 name: alignment_depth
 description: Number of sequences in alignment
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: alignment_depth
 owner: EvolutionaryConservation

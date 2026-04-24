@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:daq_system](https://w3id.org/lambda-ber-schema/daq_system)
+URI: [lambda:daq_system](http://w3id.org/lambda/daq_system)
 Alias: daq_system
 
 <!-- no inheritance hierarchy -->
@@ -44,8 +44,8 @@ Alias: daq_system
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:daq_system |
-| native | lambdaber:daq_system |
+| self | lambda:daq_system |
+| native | lambda:daq_system |
 
 
 

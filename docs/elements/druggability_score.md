@@ -9,7 +9,7 @@ _Druggability score of the binding site (range: 0-1)_
 
 
 
-URI: [lambdaber:druggability_score](https://w3id.org/lambda-ber-schema/druggability_score)
+URI: [lambda:druggability_score](http://w3id.org/lambda/druggability_score)
 Alias: druggability_score
 
 <!-- no inheritance hierarchy -->
@@ -50,7 +50,7 @@ Alias: druggability_score
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -59,8 +59,8 @@ Alias: druggability_score
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:druggability_score |
-| native | lambdaber:druggability_score |
+| self | lambda:druggability_score |
+| native | lambda:druggability_score |
 
 
 
@@ -71,7 +71,7 @@ Alias: druggability_score
 ```yaml
 name: druggability_score
 description: 'Druggability score of the binding site (range: 0-1)'
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: druggability_score
 owner: LigandInteraction

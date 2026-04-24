@@ -9,7 +9,7 @@ _Method used for conformational clustering_
 
 
 
-URI: [lambdaber:clustering_method](https://w3id.org/lambda-ber-schema/clustering_method)
+URI: [lambda:clustering_method](http://w3id.org/lambda/clustering_method)
 Alias: clustering_method
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: clustering_method
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: clustering_method
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:clustering_method |
-| native | lambdaber:clustering_method |
+| self | lambda:clustering_method |
+| native | lambda:clustering_method |
 
 
 
@@ -67,7 +67,7 @@ Alias: clustering_method
 ```yaml
 name: clustering_method
 description: Method used for conformational clustering
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: clustering_method
 owner: ConformationalEnsemble

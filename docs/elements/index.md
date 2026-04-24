@@ -30,8 +30,9 @@ All entities are stored in flat collections at the Dataset level:
 **Data Collection**
 - [Instruments](Instrument.md): The equipment used, from Titan Krios microscopes to synchrotron
   beamlines. Each instrument type ([CryoEMInstrument](CryoEMInstrument.md),
-  [XRayInstrument](XRayInstrument.md), [SAXSInstrument](SAXSInstrument.md)) has specific parameters
-  like accelerating voltage, detector type, or beam energy.
+  [XRayInstrument](XRayInstrument.md), [SANSInstrument](SANSInstrument.md),
+  [SAXSInstrument](SAXSInstrument.md)) has specific parameters like accelerating voltage,
+  detector type, or beam energy.
 
 - [Experiment Runs](ExperimentRun.md): Individual data collection sessions. An experiment run
   captures when, how, and under what conditions data was collected, including quality metrics
@@ -105,7 +106,7 @@ A multimodal plant imaging study might combine:
 - **Standards-compliant**: Follows FAIR principles and integrates with existing ontologies
 
 
-URI: https://w3id.org/lambda-ber-schema/
+URI: http://w3id.org/lambda/
 
 Name: lambda-ber-schema
 
@@ -118,6 +119,7 @@ Name: lambda-ber-schema
 | [Any](Any.md) |  |
 | [Attribute](Attribute.md) | A domain, measurement, attribute, property, or any descriptor for additional ... |
 | [AttributeGroup](AttributeGroup.md) | A grouping of related data attributes that form a logical unit |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[BeamCenterPixels](BeamCenterPixels.md) | Combined beam center coordinates in detector pixel units |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[BiophysicalProperty](BiophysicalProperty.md) | Measured or calculated biophysical properties |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[BufferComposition](BufferComposition.md) | Buffer composition for sample storage |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ComputeResources](ComputeResources.md) | Computational resources used |
@@ -135,6 +137,9 @@ Name: lambda-ber-schema
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ParticlePickingParameters](ParticlePickingParameters.md) | Parameters specific to particle picking workflows |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[QualityMetrics](QualityMetrics.md) | Quality metrics for experiments |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[RefinementParameters](RefinementParameters.md) | Parameters specific to 3D refinement workflows |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[SANSConfiguration](SANSConfiguration.md) | Experimental configuration for a SANS instrument |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[SANSDetector](SANSDetector.md) | Description of a detector used in a SANS instrument |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[SANSSource](SANSSource.md) | Beam source parameters for a SANS instrument |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[StorageConditions](StorageConditions.md) | Storage conditions for samples |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[TechniqueSpecificPreparation](TechniqueSpecificPreparation.md) | Base class for technique-specific preparation details |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[CryoEMPreparation](CryoEMPreparation.md) | Cryo-EM specific sample preparation |
@@ -164,6 +169,7 @@ Name: lambda-ber-schema
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Instrument](Instrument.md) | An instrument used to collect data |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[BeamlineInstrument](BeamlineInstrument.md) | Multi-technique synchrotron beamline that supports multiple experimental meth... |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[CryoEMInstrument](CryoEMInstrument.md) | Cryo-EM microscope specifications |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[SANSInstrument](SANSInstrument.md) | Small-angle neutron scattering (SANS) instrument specifications |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[SAXSInstrument](SAXSInstrument.md) | SAXS/WAXS instrument specifications |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[XRayInstrument](XRayInstrument.md) | X-ray diffractometer or synchrotron beamline specifications |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[MeasurementConditions](MeasurementConditions.md) | Conditions under which biophysical measurements were made |
@@ -221,13 +227,14 @@ Name: lambda-ber-schema
 | [astigmatism_angle](astigmatism_angle.md) | Astigmatism angle, typically specified in degrees |
 | [astigmatism_target](astigmatism_target.md) | Target astigmatism in Angstroms |
 | [atmosphere](atmosphere.md) | Storage atmosphere conditions |
-| [attenuator](attenuator.md) | Attenuator setting used |
+| [attenuator](attenuator.md) | Attenuator setting |
 | [attribute](attribute.md) | The attribute being represented |
 | [autoloader_capacity](autoloader_capacity.md) | Number of grids the autoloader can hold |
 | [autoloader_slot](autoloader_slot.md) | Autoloader slot identifier |
 | [average_b_factor_a2](average_b_factor_a2.md) | Average B-factor in Angstroms squared |
 | [backbone_flexibility](backbone_flexibility.md) | B-factor or flexibility measure |
 | [background_correction](background_correction.md) | Method used for background correction |
+| [beam_center_pixels](beam_center_pixels.md) | Combined beam center pixel coordinates as reported by systems such as NSLS-II... |
 | [beam_center_x](beam_center_x.md) | Beam center X coordinate, typically specified in pixels ([px]) |
 | [beam_center_x_px](beam_center_x_px.md) | Beam center X coordinate in pixels |
 | [beam_center_y](beam_center_y.md) | Beam center Y coordinate, typically specified in pixels ([px]) |
@@ -239,6 +246,9 @@ Name: lambda-ber-schema
 | [beam_size_max](beam_size_max.md) | Maximum beam size in micrometers |
 | [beam_size_min](beam_size_min.md) | Minimum beam size in micrometers |
 | [beam_size_um](beam_size_um.md) | Beam size, typically specified in micrometers |
+| [beam_trap_position_x](beam_trap_position_x.md) | X coordinate of beam trap |
+| [beam_trap_position_y](beam_trap_position_y.md) | Y coordinate of beam trap |
+| [beam_trap_type](beam_trap_type.md) | Type of beam trap (if any) |
 | [beamline](beamline.md) | Beamline identifier (e |
 | [beamline_id](beamline_id.md) | Beamline identifier at synchrotron/neutron facility |
 | [bfactor_dose_weighting](bfactor_dose_weighting.md) | B-factor for dose weighting, typically specified in Angstroms squared |
@@ -294,6 +304,7 @@ Name: lambda-ber-schema
 | [concentration_method](concentration_method.md) | Method used to concentrate protein |
 | [concentration_series](concentration_series.md) | Concentration values for series measurements |
 | [confidence_score](confidence_score.md) | Confidence score for the annotation (range: 0-1) |
+| [configuration](configuration.md) | Optical/mechanical configuration details |
 | [conformational_ensemble](conformational_ensemble.md) | Conformational states and dynamics |
 | [conformational_state](conformational_state.md) | Conformational state descriptor |
 | [conformational_states](conformational_states.md) | Individual conformational states |
@@ -347,6 +358,8 @@ Name: lambda-ber-schema
 | [delta_delta_g](delta_delta_g.md) | Change in folding free energy (kcal/mol) |
 | [deposited_to_pdb](deposited_to_pdb.md) | Whether structure was deposited to PDB |
 | [description](description.md) | A detailed textual description of this entity |
+| [detector](detector.md) | Run-specific detector identifier or detector component used for data collecti... |
+| [detector_description](detector_description.md) | Free-text description of the detector |
 | [detector_dimensions](detector_dimensions.md) | Detector dimensions in pixels (e |
 | [detector_distance](detector_distance.md) | Distance from sample to detector, typically specified in millimeters (mm) |
 | [detector_distance_max](detector_distance_max.md) | Maximum detector distance in mm |
@@ -355,8 +368,11 @@ Name: lambda-ber-schema
 | [detector_manufacturer](detector_manufacturer.md) | Detector manufacturer (e |
 | [detector_mode](detector_mode.md) | Supported or default detector operating mode |
 | [detector_model](detector_model.md) | Detector model (e |
+| [detector_name](detector_name.md) | User-assigned detector name |
 | [detector_position](detector_position.md) | Physical position of detector in microscope (e |
 | [detector_technology](detector_technology.md) | Generic detector technology type |
+| [detector_type](detector_type.md) | Type of detector |
+| [detectors](detectors.md) | List of detectors associated with the instrument |
 | [dimensions_x](dimensions_x.md) | Image width, typically specified in pixels |
 | [dimensions_y](dimensions_y.md) | Image height, typically specified in pixels |
 | [dimensions_z](dimensions_z.md) | Image depth, typically specified in pixels or slices |
@@ -384,6 +400,7 @@ Name: lambda-ber-schema
 | [emission_filter](emission_filter.md) | Specifications of the emission filter |
 | [emission_wavelength](emission_wavelength.md) | Emission wavelength, typically specified in nanometers |
 | [end_time](end_time.md) | Data collection end timestamp |
+| [energy](energy.md) | Beam energy |
 | [energy_filter_make](energy_filter_make.md) | Energy filter manufacturer |
 | [energy_filter_model](energy_filter_model.md) | Energy filter model |
 | [energy_filter_present](energy_filter_present.md) | Whether energy filter is present |
@@ -391,6 +408,7 @@ Name: lambda-ber-schema
 | [energy_landscape](energy_landscape.md) | Description of the energy landscape |
 | [energy_max](energy_max.md) | Maximum X-ray energy in keV |
 | [energy_min](energy_min.md) | Minimum X-ray energy in keV |
+| [environment](environment.md) | Textual description of environmental conditions |
 | [enzyme](enzyme.md) | Enzyme responsible for modification |
 | [error](error.md) | Experimental error or uncertainty |
 | [ethane_temperature](ethane_temperature.md) | Ethane temperature, typically specified in degrees Celsius |
@@ -423,7 +441,7 @@ Name: lambda-ber-schema
 | [final_concentration_mg_per_ml](final_concentration_mg_per_ml.md) | Final protein concentration in mg/mL |
 | [flash_cooling_method](flash_cooling_method.md) | Flash cooling protocol |
 | [fluorophore](fluorophore.md) | Name or type of fluorophore used |
-| [flux](flux.md) | Photon flux at sample position, typically specified in photons per second |
+| [flux](flux.md) | Beam flux |
 | [flux_density](flux_density.md) | Photon flux density in photons/s/mm² |
 | [flux_end](flux_end.md) | Photon flux at end of data collection, typically specified in photons per sec... |
 | [flux_photons_per_s](flux_photons_per_s.md) | Photon flux, typically specified in photons per second |
@@ -552,6 +570,7 @@ Name: lambda-ber-schema
 | [ncc_score](ncc_score.md) | Normalized cross-correlation score threshold |
 | [ncs_used](ncs_used.md) | Whether Non-Crystallographic Symmetry restraints were used |
 | [nominal_defocus](nominal_defocus.md) | Nominal defocus value, typically specified in micrometers |
+| [number_of_guides](number_of_guides.md) | Number of neutron guides |
 | [number_of_images](number_of_images.md) | Total number of diffraction images collected |
 | [number_of_scans](number_of_scans.md) | Number of scans averaged for the spectrum |
 | [number_of_waters](number_of_waters.md) | Number of water molecules modeled |
@@ -559,6 +578,7 @@ Name: lambda-ber-schema
 | [numerical_aperture](numerical_aperture.md) | Numerical aperture of the objective lens |
 | [objective_aperture](objective_aperture.md) | Objective aperture size in micrometers |
 | [od600_at_induction](od600_at_induction.md) | Optical density at 600nm when induction was started |
+| [oligomeric_state](oligomeric_state.md) | Oligomeric state of the sample (e |
 | [omim_id](omim_id.md) | OMIM database identifier |
 | [ontology](ontology.md) | The ontology or controlled vocabulary this term comes from (e |
 | [operator_id](operator_id.md) | Identifier or name of the person who performed the sample preparation (e |
@@ -594,8 +614,8 @@ Name: lambda-ber-schema
 | [pixel_size_physical](pixel_size_physical.md) | Physical pixel size in micrometers |
 | [pixel_size_physical_um](pixel_size_physical_um.md) | Physical pixel size of the detector in micrometers |
 | [pixel_size_unbinned](pixel_size_unbinned.md) | Unbinned pixel size, typically specified in Angstroms per pixel |
-| [pixel_size_x](pixel_size_x.md) | Pixel size X dimension, typically specified in micrometers (µm) |
-| [pixel_size_y](pixel_size_y.md) | Pixel size Y dimension, typically specified in micrometers (µm) |
+| [pixel_size_x](pixel_size_x.md) | Pixel size in x-direction |
+| [pixel_size_y](pixel_size_y.md) | Pixel size in y-direction |
 | [plasma_treatment](plasma_treatment.md) | Plasma treatment details |
 | [population](population.md) | Relative population of this state (range: 0-1) |
 | [power_score](power_score.md) | Power score threshold |
@@ -628,6 +648,8 @@ Name: lambda-ber-schema
 | [purification_steps](purification_steps.md) | Ordered list of purification steps performed |
 | [purity_by_sds_page_percent](purity_by_sds_page_percent.md) | Purity percentage by SDS-PAGE |
 | [purity_percentage](purity_percentage.md) | Sample purity, typically specified as a percentage (range: 0-100) |
+| [q_max](q_max.md) | Maximum q value |
+| [q_min](q_min.md) | Minimum q value |
 | [q_range_max](q_range_max.md) | Maximum q value in inverse Angstroms |
 | [q_range_min](q_range_min.md) | Minimum q value in inverse Angstroms |
 | [quality_metrics](quality_metrics.md) | Quality control metrics for the sample |
@@ -672,12 +694,18 @@ Name: lambda-ber-schema
 | [rmsd_from_reference](rmsd_from_reference.md) | RMSD from reference structure |
 | [rmsd_threshold](rmsd_threshold.md) | RMSD threshold for clustering (Angstroms) |
 | [role](role.md) | Role of sample in study (e |
+| [rotation_angle](rotation_angle.md) | Rotation angle of the detector |
 | [rpim](rpim.md) | Rpim - precision-indicating merging R-factor |
 | [rwork](rwork.md) | Refinement R-factor (working set) |
+| [sample_ap_to_main_distance](sample_ap_to_main_distance.md) | Sample aperture to main instrument distance |
+| [sample_ap_to_sample_distance](sample_ap_to_sample_distance.md) | Sample aperture to sample distance |
+| [sample_ap_to_si_distance](sample_ap_to_si_distance.md) | Sample aperture to silicon window distance |
+| [sample_aperature_diameter](sample_aperature_diameter.md) | Sample aperture diameter |
 | [sample_applied_volume](sample_applied_volume.md) | Volume of sample applied, typically specified in microliters |
 | [sample_cell_type](sample_cell_type.md) | Type of sample cell used |
 | [sample_changer_capacity](sample_changer_capacity.md) | Number of samples in automatic sample changer |
 | [sample_code](sample_code.md) | Human-friendly laboratory identifier or facility code for the sample (e |
+| [sample_detector_distance](sample_detector_distance.md) | Distance from sample to detector |
 | [sample_id](sample_id.md) | Reference to the sample being prepared |
 | [sample_preparations](sample_preparations.md) | All sample preparations |
 | [sample_type](sample_type.md) | Type of biological sample |
@@ -702,6 +730,7 @@ Name: lambda-ber-schema
 | [signal_to_noise](signal_to_noise.md) | Signal to noise ratio |
 | [site_name](site_name.md) | Common name for this site |
 | [site_type](site_type.md) | Type of functional site |
+| [siwindow_to_main_distance](siwindow_to_main_distance.md) | Silicon window to main instrument distance |
 | [slit_gap_horizontal](slit_gap_horizontal.md) | Horizontal slit gap aperture, typically specified in micrometers (µm) |
 | [slit_gap_vertical](slit_gap_vertical.md) | Vertical slit gap aperture, typically specified in micrometers (µm) |
 | [soak_compound](soak_compound.md) | Compound used for soaking (ligand, heavy atom) |
@@ -709,7 +738,12 @@ Name: lambda-ber-schema
 | [software_name](software_name.md) | Software used for processing |
 | [software_version](software_version.md) | Software version |
 | [solvent_accessibility](solvent_accessibility.md) | Relative solvent accessible surface area (range: 0-1) |
+| [source](source.md) | Source parameters for the instrument |
+| [source_ap_to_sample_ap_distance](source_ap_to_sample_ap_distance.md) | Source aperture to sample aperture distance |
+| [source_ap_to_siwindow_distance](source_ap_to_siwindow_distance.md) | Source aperture to silicon window distance |
+| [source_aperature_diameter](source_aperature_diameter.md) | Source aperture diameter |
 | [source_database](source_database.md) | Source database or resource that provided this annotation |
+| [source_description](source_description.md) | Free-text description of the source |
 | [source_type](source_type.md) | Type of X-ray source |
 | [space_group](space_group.md) | Crystallographic space group |
 | [spectral_resolution](spectral_resolution.md) | Spectral resolution, typically specified in inverse centimeters (cm⁻¹) |
@@ -737,6 +771,8 @@ Name: lambda-ber-schema
 | [study_workflow_associations](study_workflow_associations.md) | Links between studies and workflows (M:N) |
 | [super_resolution](super_resolution.md) | Whether super-resolution mode was used |
 | [support_film](support_film.md) | Support film type |
+| [sweep_end](sweep_end.md) | Ending angle of an X-ray oscillation sweep, typically specified in degrees |
+| [sweep_start](sweep_start.md) | Starting angle of an X-ray oscillation sweep, typically specified in degrees |
 | [symmetry](symmetry.md) | Symmetry applied (C1, Cn, Dn, T, O, I) |
 | [synchrotron_mode](synchrotron_mode.md) | Synchrotron storage ring fill mode |
 | [tag](tag.md) | Affinity tag (e |
@@ -744,7 +780,7 @@ Name: lambda-ber-schema
 | [tag_nterm](tag_nterm.md) | N-terminal tag (e |
 | [tag_removal](tag_removal.md) | Whether and how affinity tag was removed |
 | [taxonomic_range](taxonomic_range.md) | Taxonomic range of conservation |
-| [technique](technique.md) | Technique used for data collection |
+| [technique](technique.md) | Primary technique (should always be sans for this class) |
 | [techniques_supported](techniques_supported.md) | Experimental techniques available at this beamline |
 | [tem_beam_diameter](tem_beam_diameter.md) | TEM beam diameter in micrometers |
 | [temperature](temperature.md) | Storage temperature, typically specified in degrees Celsius |
@@ -788,8 +824,10 @@ Name: lambda-ber-schema
 | [voxel_size](voxel_size.md) | Voxel size, typically specified in Angstroms |
 | [wait_time](wait_time.md) | Wait time before blotting, typically specified in seconds |
 | [wash_buffer](wash_buffer.md) | Buffer composition for washing |
-| [wavelength](wavelength.md) | X-ray wavelength, typically specified in Angstroms (Å) |
+| [wavelength](wavelength.md) | Neutron wavelength |
 | [wavelength_a](wavelength_a.md) | X-ray wavelength, typically specified in Angstroms |
+| [wavelength_selection_method](wavelength_selection_method.md) | Method used to select wavelength |
+| [wavelength_spread](wavelength_spread.md) | Wavelength spread |
 | [wavenumber_max](wavenumber_max.md) | Maximum wavenumber, typically specified in inverse centimeters (cm⁻¹) |
 | [wavenumber_min](wavenumber_min.md) | Minimum wavenumber, typically specified in inverse centimeters (cm⁻¹) |
 | [website](website.md) | Beamline website URL |
@@ -803,6 +841,8 @@ Name: lambda-ber-schema
 | [workflow_output_associations](workflow_output_associations.md) | Links between workflows and output files |
 | [workflow_runs](workflow_runs.md) | All workflow runs (computational processing) |
 | [workflow_type](workflow_type.md) | Type of processing workflow |
+| [xbeam](xbeam.md) | Beam center X coordinate in pixels |
+| [ybeam](ybeam.md) | Beam center Y coordinate in pixels |
 | [yield_mg](yield_mg.md) | Total yield in milligrams |
 
 

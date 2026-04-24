@@ -9,7 +9,7 @@ _Reference standard used for calibration_
 
 
 
-URI: [lambdaber:calibration_standard](https://w3id.org/lambda-ber-schema/calibration_standard)
+URI: [lambda:calibration_standard](http://w3id.org/lambda/calibration_standard)
 Alias: calibration_standard
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: calibration_standard
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: calibration_standard
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:calibration_standard |
-| native | lambdaber:calibration_standard |
+| self | lambda:calibration_standard |
+| native | lambda:calibration_standard |
 
 
 
@@ -67,7 +67,7 @@ Alias: calibration_standard
 ```yaml
 name: calibration_standard
 description: Reference standard used for calibration
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: calibration_standard
 owner: XRFImage

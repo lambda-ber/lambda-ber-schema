@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:evolutionary_conservation](https://w3id.org/lambda-ber-schema/evolutionary_conservation)
+URI: [lambda:evolutionary_conservation](http://w3id.org/lambda/evolutionary_conservation)
 Alias: evolutionary_conservation
 
 <!-- no inheritance hierarchy -->
@@ -17,8 +17,8 @@ Alias: evolutionary_conservation
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AggregatedProteinView](AggregatedProteinView.md) | Aggregated view of all structural and functional data for a protein |  no  |
 | [Sample](Sample.md) | A biological sample used in structural biology experiments |  no  |
+| [AggregatedProteinView](AggregatedProteinView.md) | Aggregated view of all structural and functional data for a protein |  no  |
 
 
 
@@ -44,8 +44,8 @@ Alias: evolutionary_conservation
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:evolutionary_conservation |
-| native | lambdaber:evolutionary_conservation |
+| self | lambda:evolutionary_conservation |
+| native | lambda:evolutionary_conservation |
 
 
 

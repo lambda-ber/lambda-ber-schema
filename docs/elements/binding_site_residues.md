@@ -9,7 +9,7 @@ _Residues involved in ligand binding_
 
 
 
-URI: [lambdaber:binding_site_residues](https://w3id.org/lambda-ber-schema/binding_site_residues)
+URI: [lambda:binding_site_residues](http://w3id.org/lambda/binding_site_residues)
 Alias: binding_site_residues
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: binding_site_residues
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: binding_site_residues
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:binding_site_residues |
-| native | lambdaber:binding_site_residues |
+| self | lambda:binding_site_residues |
+| native | lambda:binding_site_residues |
 
 
 
@@ -69,7 +69,7 @@ Alias: binding_site_residues
 ```yaml
 name: binding_site_residues
 description: Residues involved in ligand binding
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: binding_site_residues
 owner: LigandInteraction

@@ -9,7 +9,7 @@ _Output binning factor. This must be a positive float value (e.g., 1, 1.5, 2, 3)
 
 
 
-URI: [lambdaber:output_binning](https://w3id.org/lambda-ber-schema/output_binning)
+URI: [lambda:output_binning](http://w3id.org/lambda/output_binning)
 Alias: output_binning
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: output_binning
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: output_binning
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:output_binning |
-| native | lambdaber:output_binning |
+| self | lambda:output_binning |
+| native | lambda:output_binning |
 
 
 
@@ -68,7 +68,7 @@ Alias: output_binning
 name: output_binning
 description: Output binning factor. This must be a positive float value (e.g., 1,
   1.5, 2, 3).
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: output_binning
 owner: MotionCorrectionParameters

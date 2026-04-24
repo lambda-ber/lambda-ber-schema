@@ -9,7 +9,7 @@ _Fourier Transform Infrared (FTIR) spectroscopy image capturing molecular compos
 
 
 
-URI: [lambdaber:FTIRImage](https://w3id.org/lambda-ber-schema/FTIRImage)
+URI: [lambda:FTIRImage](http://w3id.org/lambda/FTIRImage)
 
 
 
@@ -192,7 +192,7 @@ URI: [lambdaber:FTIRImage](https://w3id.org/lambda-ber-schema/FTIRImage)
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -201,8 +201,8 @@ URI: [lambdaber:FTIRImage](https://w3id.org/lambda-ber-schema/FTIRImage)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:FTIRImage |
-| native | lambdaber:FTIRImage |
+| self | lambda:FTIRImage |
+| native | lambda:FTIRImage |
 
 
 
@@ -220,14 +220,14 @@ URI: [lambdaber:FTIRImage](https://w3id.org/lambda-ber-schema/FTIRImage)
 name: FTIRImage
 description: Fourier Transform Infrared (FTIR) spectroscopy image capturing molecular
   composition through vibrational spectroscopy
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: Image
 attributes:
   wavenumber_min:
     name: wavenumber_min
     description: Minimum wavenumber, typically specified in inverse centimeters (cm⁻¹).
       Data providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - FTIRImage
@@ -237,7 +237,7 @@ attributes:
     name: wavenumber_max
     description: Maximum wavenumber, typically specified in inverse centimeters (cm⁻¹).
       Data providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - FTIRImage
@@ -247,7 +247,7 @@ attributes:
     name: spectral_resolution
     description: Spectral resolution, typically specified in inverse centimeters (cm⁻¹).
       Data providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - FTIRImage
@@ -256,7 +256,7 @@ attributes:
   number_of_scans:
     name: number_of_scans
     description: Number of scans averaged for the spectrum
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - FTIRImage
@@ -265,7 +265,7 @@ attributes:
   apodization_function:
     name: apodization_function
     description: Mathematical function used for apodization
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - FTIRImage
@@ -273,7 +273,7 @@ attributes:
   molecular_signatures:
     name: molecular_signatures
     description: Identified molecular signatures or peaks
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - FTIRImage
@@ -282,7 +282,7 @@ attributes:
   background_correction:
     name: background_correction
     description: Method used for background correction
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - FTIRImage
@@ -298,14 +298,14 @@ attributes:
 name: FTIRImage
 description: Fourier Transform Infrared (FTIR) spectroscopy image capturing molecular
   composition through vibrational spectroscopy
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: Image
 attributes:
   wavenumber_min:
     name: wavenumber_min
     description: Minimum wavenumber, typically specified in inverse centimeters (cm⁻¹).
       Data providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: wavenumber_min
     owner: FTIRImage
@@ -317,7 +317,7 @@ attributes:
     name: wavenumber_max
     description: Maximum wavenumber, typically specified in inverse centimeters (cm⁻¹).
       Data providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: wavenumber_max
     owner: FTIRImage
@@ -329,7 +329,7 @@ attributes:
     name: spectral_resolution
     description: Spectral resolution, typically specified in inverse centimeters (cm⁻¹).
       Data providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: spectral_resolution
     owner: FTIRImage
@@ -340,7 +340,7 @@ attributes:
   number_of_scans:
     name: number_of_scans
     description: Number of scans averaged for the spectrum
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: number_of_scans
     owner: FTIRImage
@@ -351,7 +351,7 @@ attributes:
   apodization_function:
     name: apodization_function
     description: Mathematical function used for apodization
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: apodization_function
     owner: FTIRImage
@@ -361,7 +361,7 @@ attributes:
   molecular_signatures:
     name: molecular_signatures
     description: Identified molecular signatures or peaks
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: molecular_signatures
     owner: FTIRImage
@@ -372,7 +372,7 @@ attributes:
   background_correction:
     name: background_correction
     description: Method used for background correction
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: background_correction
     owner: FTIRImage
@@ -382,7 +382,7 @@ attributes:
   file_name:
     name: file_name
     description: Image file name
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: file_name
     owner: FTIRImage
     domain_of:
@@ -393,7 +393,7 @@ attributes:
   acquisition_date:
     name: acquisition_date
     description: Date image was acquired
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: acquisition_date
     owner: FTIRImage
@@ -404,7 +404,7 @@ attributes:
     name: pixel_size
     description: Pixel size, typically specified in Angstroms. Data providers may
       specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: pixel_size
     owner: FTIRImage
@@ -417,7 +417,7 @@ attributes:
     name: dimensions_x
     description: Image width, typically specified in pixels. Data providers may specify
       alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: dimensions_x
     owner: FTIRImage
@@ -429,7 +429,7 @@ attributes:
     name: dimensions_y
     description: Image height, typically specified in pixels. Data providers may specify
       alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: dimensions_y
     owner: FTIRImage
@@ -441,19 +441,20 @@ attributes:
     name: exposure_time
     description: Exposure time, typically specified in seconds. Data providers may
       specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: exposure_time
     owner: FTIRImage
     domain_of:
     - ExperimentRun
     - Image
     - ExperimentalConditions
+    - DataCollectionStrategy
     range: QuantityValue
     inlined: true
   dose:
     name: dose
     description: Electron dose in e-/Å²
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: dose
     owner: FTIRImage
@@ -467,7 +468,7 @@ attributes:
     description: Globally unique identifier as an IRI or CURIE for machine processing
       and external references. Used for linking data across systems and semantic web
       integration.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     identifier: true
     alias: id
@@ -480,7 +481,7 @@ attributes:
   title:
     name: title
     description: A human-readable name or title for this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     slot_uri: dcterms:title
     alias: title
@@ -491,7 +492,7 @@ attributes:
   description:
     name: description
     description: A detailed textual description of this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: description
     owner: FTIRImage

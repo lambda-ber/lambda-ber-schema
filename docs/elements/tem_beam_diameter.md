@@ -9,7 +9,7 @@ _TEM beam diameter in micrometers_
 
 
 
-URI: [lambdaber:tem_beam_diameter](https://w3id.org/lambda-ber-schema/tem_beam_diameter)
+URI: [lambda:tem_beam_diameter](http://w3id.org/lambda/tem_beam_diameter)
 Alias: tem_beam_diameter
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: tem_beam_diameter
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: tem_beam_diameter
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:tem_beam_diameter |
-| native | lambdaber:tem_beam_diameter |
+| self | lambda:tem_beam_diameter |
+| native | lambda:tem_beam_diameter |
 
 
 
@@ -67,7 +67,7 @@ Alias: tem_beam_diameter
 ```yaml
 name: tem_beam_diameter
 description: TEM beam diameter in micrometers
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: tem_beam_diameter
 owner: CryoEMInstrument

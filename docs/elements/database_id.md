@@ -9,7 +9,7 @@ _Identifier in the external database_
 
 
 
-URI: [lambdaber:database_id](https://w3id.org/lambda-ber-schema/database_id)
+URI: [lambda:database_id](http://w3id.org/lambda/database_id)
 Alias: database_id
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: database_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: database_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:database_id |
-| native | lambdaber:database_id |
+| self | lambda:database_id |
+| native | lambda:database_id |
 
 
 
@@ -69,7 +69,7 @@ Alias: database_id
 ```yaml
 name: database_id
 description: Identifier in the external database
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: database_id
 owner: DatabaseCrossReference

@@ -9,7 +9,7 @@ _RMSD from reference structure_
 
 
 
-URI: [lambdaber:rmsd_from_reference](https://w3id.org/lambda-ber-schema/rmsd_from_reference)
+URI: [lambda:rmsd_from_reference](http://w3id.org/lambda/rmsd_from_reference)
 Alias: rmsd_from_reference
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: rmsd_from_reference
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: rmsd_from_reference
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:rmsd_from_reference |
-| native | lambdaber:rmsd_from_reference |
+| self | lambda:rmsd_from_reference |
+| native | lambda:rmsd_from_reference |
 
 
 
@@ -67,7 +67,7 @@ Alias: rmsd_from_reference
 ```yaml
 name: rmsd_from_reference
 description: RMSD from reference structure
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: rmsd_from_reference
 owner: ConformationalState

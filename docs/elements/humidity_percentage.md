@@ -9,7 +9,7 @@ _Chamber humidity during vitrification (range: 0-100), typically specified as a 
 
 
 
-URI: [lambdaber:humidity_percentage](https://w3id.org/lambda-ber-schema/humidity_percentage)
+URI: [lambda:humidity_percentage](http://w3id.org/lambda/humidity_percentage)
 Alias: humidity_percentage
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: humidity_percentage
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: humidity_percentage
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:humidity_percentage |
-| native | lambdaber:humidity_percentage |
+| self | lambda:humidity_percentage |
+| native | lambda:humidity_percentage |
+| exact | mmCIF:_em_vitrification.chamber_humidity |
 
 
 
@@ -69,7 +70,9 @@ name: humidity_percentage
 description: 'Chamber humidity during vitrification (range: 0-100), typically specified
   as a percentage. Data providers may specify as decimal fraction by including the
   unit in the QuantityValue.'
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_em_vitrification.chamber_humidity
 rank: 1000
 alias: humidity_percentage
 owner: CryoEMPreparation

@@ -9,7 +9,7 @@ _Path length, typically specified in millimeters (mm). Data providers may specif
 
 
 
-URI: [lambdaber:cell_path_length](https://w3id.org/lambda-ber-schema/cell_path_length)
+URI: [lambda:cell_path_length](http://w3id.org/lambda/cell_path_length)
 Alias: cell_path_length
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: cell_path_length
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: cell_path_length
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:cell_path_length |
-| native | lambdaber:cell_path_length |
+| self | lambda:cell_path_length |
+| native | lambda:cell_path_length |
 
 
 
@@ -68,7 +68,7 @@ Alias: cell_path_length
 name: cell_path_length
 description: Path length, typically specified in millimeters (mm). Data providers
   may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: cell_path_length
 owner: SAXSPreparation

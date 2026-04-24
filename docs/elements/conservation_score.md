@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:conservation_score](https://w3id.org/lambda-ber-schema/conservation_score)
+URI: [lambda:conservation_score](http://w3id.org/lambda/conservation_score)
 Alias: conservation_score
 
 <!-- no inheritance hierarchy -->
@@ -44,8 +44,8 @@ Alias: conservation_score
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:conservation_score |
-| native | lambdaber:conservation_score |
+| self | lambda:conservation_score |
+| native | lambda:conservation_score |
 
 
 

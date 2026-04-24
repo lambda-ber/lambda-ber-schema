@@ -9,7 +9,7 @@ _Crystallization method used_
 
 
 
-URI: [nsls2:Method](https://github.com/NSLS2/BER-LAMBDA/Method)
+URI: [lambda:method](http://w3id.org/lambda/method)
 Alias: method
 
 <!-- no inheritance hierarchy -->
@@ -36,10 +36,6 @@ Alias: method
 
 
 
-## Comments
-
-* Maps to NSLS2 spreadsheet: Method
-
 ## Identifier and Mapping Information
 
 
@@ -50,7 +46,7 @@ Alias: method
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -59,8 +55,9 @@ Alias: method
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | nsls2:Method |
-| native | lambdaber:method |
+| self | lambda:method |
+| native | lambda:method |
+| exact | nsls2:Method, mmCIF:_exptl_crystal_grow.method |
 
 
 
@@ -71,11 +68,11 @@ Alias: method
 ```yaml
 name: method
 description: Crystallization method used
-comments:
-- 'Maps to NSLS2 spreadsheet: Method'
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- nsls2:Method
+- mmCIF:_exptl_crystal_grow.method
 rank: 1000
-slot_uri: nsls2:Method
 alias: method
 owner: CrystallizationConditions
 domain_of:

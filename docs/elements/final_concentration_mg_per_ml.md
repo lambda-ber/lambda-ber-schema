@@ -9,7 +9,7 @@ _Final protein concentration in mg/mL_
 
 
 
-URI: [lambdaber:final_concentration_mg_per_ml](https://w3id.org/lambda-ber-schema/final_concentration_mg_per_ml)
+URI: [lambda:final_concentration_mg_per_ml](http://w3id.org/lambda/final_concentration_mg_per_ml)
 Alias: final_concentration_mg_per_ml
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: final_concentration_mg_per_ml
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: final_concentration_mg_per_ml
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:final_concentration_mg_per_ml |
-| native | lambdaber:final_concentration_mg_per_ml |
+| self | lambda:final_concentration_mg_per_ml |
+| native | lambda:final_concentration_mg_per_ml |
 
 
 
@@ -67,7 +67,7 @@ Alias: final_concentration_mg_per_ml
 ```yaml
 name: final_concentration_mg_per_ml
 description: Final protein concentration in mg/mL
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: final_concentration_mg_per_ml
 owner: SamplePreparation

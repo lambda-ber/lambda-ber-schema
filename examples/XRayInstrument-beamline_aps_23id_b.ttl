@@ -3,13 +3,10 @@
 @prefix ROR: <https://ror.org/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix lambdaber: <http://w3id.org/lambda/> .
-@prefix mmCIF: <http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/> .
 @prefix nmdc: <https://w3id.org/nmdc/> .
-@prefix nsls2: <https://github.com/NSLS2/BER-LAMBDA/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 lambdaber:beamline_aps_23id_b a lambdaber:XRayInstrument ;
-    mmCIF:_diffrn_source.pdbx_synchrotron_beamline "23-ID-B" ;
     dcterms:title "APS Beamline 23-ID-B (GM/CA)" ;
     lambdaber:beam_size_max [ a nmdc:QuantityValue ;
             lambdaber:numeric_value "5.0"^^xsd:float ;
@@ -17,11 +14,13 @@ lambdaber:beamline_aps_23id_b a lambdaber:XRayInstrument ;
     lambdaber:beam_size_min [ a nmdc:QuantityValue ;
             lambdaber:numeric_value "5.0"^^xsd:float ;
             lambdaber:unit "micrometers" ] ;
+    lambdaber:beamline_id "23-ID-B" ;
     lambdaber:crystal_cooling_capability true ;
     lambdaber:current_status "operational" ;
     lambdaber:description "GM/CA canted-undulator beamline for macromolecular crystallography" ;
     lambdaber:detector_manufacturer "Dectris" ;
     lambdaber:detector_model "" ;
+    lambdaber:detector_technology "hybrid_photon_counting" ;
     lambdaber:energy_max [ a nmdc:QuantityValue ;
             lambdaber:numeric_value "20.0"^^xsd:float ;
             lambdaber:unit "kiloelectronvolts" ] ;
@@ -40,6 +39,5 @@ lambdaber:beamline_aps_23id_b a lambdaber:XRayInstrument ;
     lambdaber:manufacturer "Argonne National Laboratory" ;
     lambdaber:model "APS Beamline 23-ID-B" ;
     lambdaber:monochromator_type "DCM Si(111)" ;
-    lambdaber:source_type "synchrotron" ;
-    nsls2:Detector "hybrid_photon_counting" .
+    lambdaber:source_type "synchrotron" .
 

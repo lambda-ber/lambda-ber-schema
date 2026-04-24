@@ -9,7 +9,7 @@ _Glow discharge time, typically specified in seconds. Data providers may specify
 
 
 
-URI: [lambdaber:glow_discharge_time](https://w3id.org/lambda-ber-schema/glow_discharge_time)
+URI: [lambda:glow_discharge_time](http://w3id.org/lambda/glow_discharge_time)
 Alias: glow_discharge_time
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: glow_discharge_time
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: glow_discharge_time
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:glow_discharge_time |
-| native | lambdaber:glow_discharge_time |
+| self | lambda:glow_discharge_time |
+| native | lambda:glow_discharge_time |
+| exact | mmCIF:_em_sample_support.pretreatment_time |
 
 
 
@@ -68,7 +69,9 @@ Alias: glow_discharge_time
 name: glow_discharge_time
 description: Glow discharge time, typically specified in seconds. Data providers may
   specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_em_sample_support.pretreatment_time
 rank: 1000
 alias: glow_discharge_time
 owner: CryoEMPreparation

@@ -17,7 +17,7 @@ __
 
 
 
-URI: [lambdaber:FSCCurve](https://w3id.org/lambda-ber-schema/FSCCurve)
+URI: [lambda:FSCCurve](http://w3id.org/lambda/FSCCurve)
 
 
 
@@ -101,7 +101,7 @@ URI: [lambdaber:FSCCurve](https://w3id.org/lambda-ber-schema/FSCCurve)
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -110,8 +110,8 @@ URI: [lambdaber:FSCCurve](https://w3id.org/lambda-ber-schema/FSCCurve)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:FSCCurve |
-| native | lambdaber:FSCCurve |
+| self | lambda:FSCCurve |
+| native | lambda:FSCCurve |
 
 
 
@@ -137,13 +137,13 @@ description: 'Fourier Shell Correlation curve data.
   10,000 elements.
 
   '
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: AttributeGroup
 attributes:
   resolution_angstrom:
     name: resolution_angstrom
     description: Resolution values in Angstroms
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - FSCCurve
@@ -152,7 +152,7 @@ attributes:
   fsc_value:
     name: fsc_value
     description: FSC values corresponding to each resolution
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - FSCCurve
@@ -177,13 +177,13 @@ description: 'Fourier Shell Correlation curve data.
   10,000 elements.
 
   '
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: AttributeGroup
 attributes:
   resolution_angstrom:
     name: resolution_angstrom
     description: Resolution values in Angstroms
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: resolution_angstrom
     owner: FSCCurve
@@ -194,7 +194,7 @@ attributes:
   fsc_value:
     name: fsc_value
     description: FSC values corresponding to each resolution
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: fsc_value
     owner: FSCCurve
@@ -204,7 +204,7 @@ attributes:
     inlined: true
   description:
     name: description
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: description
     owner: FSCCurve
     domain_of:

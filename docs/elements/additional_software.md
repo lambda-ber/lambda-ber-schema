@@ -9,7 +9,7 @@ _Additional software used in pipeline_
 
 
 
-URI: [lambdaber:additional_software](https://w3id.org/lambda-ber-schema/additional_software)
+URI: [lambda:additional_software](http://w3id.org/lambda/additional_software)
 Alias: additional_software
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: additional_software
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: additional_software
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:additional_software |
-| native | lambdaber:additional_software |
+| self | lambda:additional_software |
+| native | lambda:additional_software |
 
 
 
@@ -67,7 +67,7 @@ Alias: additional_software
 ```yaml
 name: additional_software
 description: Additional software used in pipeline
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: additional_software
 owner: WorkflowRun

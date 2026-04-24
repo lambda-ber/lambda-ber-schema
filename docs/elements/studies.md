@@ -9,7 +9,7 @@ _All studies in this dataset_
 
 
 
-URI: [lambdaber:studies](https://w3id.org/lambda-ber-schema/studies)
+URI: [lambda:studies](http://w3id.org/lambda/studies)
 Alias: studies
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: studies
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: studies
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:studies |
-| native | lambdaber:studies |
+| self | lambda:studies |
+| native | lambda:studies |
 
 
 
@@ -69,7 +69,7 @@ Alias: studies
 ```yaml
 name: studies
 description: All studies in this dataset
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: studies
 owner: Dataset

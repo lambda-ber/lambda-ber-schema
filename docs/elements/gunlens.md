@@ -9,7 +9,7 @@ _Gun lens setting_
 
 
 
-URI: [lambdaber:gunlens](https://w3id.org/lambda-ber-schema/gunlens)
+URI: [lambda:gunlens](http://w3id.org/lambda/gunlens)
 Alias: gunlens
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: gunlens
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: gunlens
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:gunlens |
-| native | lambdaber:gunlens |
+| self | lambda:gunlens |
+| native | lambda:gunlens |
 
 
 
@@ -67,7 +67,7 @@ Alias: gunlens
 ```yaml
 name: gunlens
 description: Gun lens setting
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: gunlens
 owner: CryoEMInstrument

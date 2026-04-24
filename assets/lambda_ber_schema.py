@@ -1,5 +1,5 @@
 # Auto generated from lambda_ber_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-04-24T14:02:37
+# Generation date: 2026-04-24T14:37:33
 # Schema: lambda-ber-schema
 #
 # id: http://w3id.org/lambda/
@@ -1636,12 +1636,17 @@ class ExperimentRun(NamedThing):
     holes_per_group: Optional[Union[dict, "QuantityValue"]] = None
     acquisition_software: Optional[str] = None
     acquisition_software_version: Optional[str] = None
+    detector: Optional[str] = None
     wavelength: Optional[Union[dict, "QuantityValue"]] = None
+    energy: Optional[Union[dict, "QuantityValue"]] = None
     oscillation_angle: Optional[Union[dict, "QuantityValue"]] = None
     start_angle: Optional[Union[dict, "QuantityValue"]] = None
+    sweep_start: Optional[Union[dict, "QuantityValue"]] = None
+    sweep_end: Optional[Union[dict, "QuantityValue"]] = None
     number_of_images: Optional[Union[dict, "QuantityValue"]] = None
     beam_center_x: Optional[Union[dict, "QuantityValue"]] = None
     beam_center_y: Optional[Union[dict, "QuantityValue"]] = None
+    beam_center_pixels: Optional[Union[dict, "BeamCenterPixels"]] = None
     detector_distance: Optional[Union[dict, "QuantityValue"]] = None
     pixel_size_x: Optional[Union[dict, "QuantityValue"]] = None
     pixel_size_y: Optional[Union[dict, "QuantityValue"]] = None
@@ -1765,14 +1770,26 @@ class ExperimentRun(NamedThing):
         if self.acquisition_software_version is not None and not isinstance(self.acquisition_software_version, str):
             self.acquisition_software_version = str(self.acquisition_software_version)
 
+        if self.detector is not None and not isinstance(self.detector, str):
+            self.detector = str(self.detector)
+
         if self.wavelength is not None and not isinstance(self.wavelength, QuantityValue):
             self.wavelength = QuantityValue(**as_dict(self.wavelength))
+
+        if self.energy is not None and not isinstance(self.energy, QuantityValue):
+            self.energy = QuantityValue(**as_dict(self.energy))
 
         if self.oscillation_angle is not None and not isinstance(self.oscillation_angle, QuantityValue):
             self.oscillation_angle = QuantityValue(**as_dict(self.oscillation_angle))
 
         if self.start_angle is not None and not isinstance(self.start_angle, QuantityValue):
             self.start_angle = QuantityValue(**as_dict(self.start_angle))
+
+        if self.sweep_start is not None and not isinstance(self.sweep_start, QuantityValue):
+            self.sweep_start = QuantityValue(**as_dict(self.sweep_start))
+
+        if self.sweep_end is not None and not isinstance(self.sweep_end, QuantityValue):
+            self.sweep_end = QuantityValue(**as_dict(self.sweep_end))
 
         if self.number_of_images is not None and not isinstance(self.number_of_images, QuantityValue):
             self.number_of_images = QuantityValue(**as_dict(self.number_of_images))
@@ -1782,6 +1799,9 @@ class ExperimentRun(NamedThing):
 
         if self.beam_center_y is not None and not isinstance(self.beam_center_y, QuantityValue):
             self.beam_center_y = QuantityValue(**as_dict(self.beam_center_y))
+
+        if self.beam_center_pixels is not None and not isinstance(self.beam_center_pixels, BeamCenterPixels):
+            self.beam_center_pixels = BeamCenterPixels(**as_dict(self.beam_center_pixels))
 
         if self.detector_distance is not None and not isinstance(self.detector_distance, QuantityValue):
             self.detector_distance = QuantityValue(**as_dict(self.detector_distance))
@@ -3235,13 +3255,18 @@ class DataCollectionStrategy(AttributeGroup):
     detector_distance_mm: Optional[Union[dict, "QuantityValue"]] = None
     beam_center_x_px: Optional[Union[dict, "QuantityValue"]] = None
     beam_center_y_px: Optional[Union[dict, "QuantityValue"]] = None
+    beam_center_pixels: Optional[Union[dict, "BeamCenterPixels"]] = None
     beam_size_um: Optional[Union[dict, "QuantityValue"]] = None
+    energy: Optional[Union[dict, "QuantityValue"]] = None
     flux_photons_per_s: Optional[Union[dict, "QuantityValue"]] = None
     transmission_percent: Optional[Union[dict, "QuantityValue"]] = None
     attenuator: Optional[str] = None
     temperature_k: Optional[Union[dict, "QuantityValue"]] = None
     oscillation_per_image_deg: Optional[Union[dict, "QuantityValue"]] = None
+    sweep_start: Optional[Union[dict, "QuantityValue"]] = None
+    sweep_end: Optional[Union[dict, "QuantityValue"]] = None
     total_rotation_deg: Optional[Union[dict, "QuantityValue"]] = None
+    exposure_time: Optional[Union[dict, "QuantityValue"]] = None
     strategy_notes: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -3278,8 +3303,14 @@ class DataCollectionStrategy(AttributeGroup):
         if self.beam_center_y_px is not None and not isinstance(self.beam_center_y_px, QuantityValue):
             self.beam_center_y_px = QuantityValue(**as_dict(self.beam_center_y_px))
 
+        if self.beam_center_pixels is not None and not isinstance(self.beam_center_pixels, BeamCenterPixels):
+            self.beam_center_pixels = BeamCenterPixels(**as_dict(self.beam_center_pixels))
+
         if self.beam_size_um is not None and not isinstance(self.beam_size_um, QuantityValue):
             self.beam_size_um = QuantityValue(**as_dict(self.beam_size_um))
+
+        if self.energy is not None and not isinstance(self.energy, QuantityValue):
+            self.energy = QuantityValue(**as_dict(self.energy))
 
         if self.flux_photons_per_s is not None and not isinstance(self.flux_photons_per_s, QuantityValue):
             self.flux_photons_per_s = QuantityValue(**as_dict(self.flux_photons_per_s))
@@ -3296,11 +3327,45 @@ class DataCollectionStrategy(AttributeGroup):
         if self.oscillation_per_image_deg is not None and not isinstance(self.oscillation_per_image_deg, QuantityValue):
             self.oscillation_per_image_deg = QuantityValue(**as_dict(self.oscillation_per_image_deg))
 
+        if self.sweep_start is not None and not isinstance(self.sweep_start, QuantityValue):
+            self.sweep_start = QuantityValue(**as_dict(self.sweep_start))
+
+        if self.sweep_end is not None and not isinstance(self.sweep_end, QuantityValue):
+            self.sweep_end = QuantityValue(**as_dict(self.sweep_end))
+
         if self.total_rotation_deg is not None and not isinstance(self.total_rotation_deg, QuantityValue):
             self.total_rotation_deg = QuantityValue(**as_dict(self.total_rotation_deg))
 
+        if self.exposure_time is not None and not isinstance(self.exposure_time, QuantityValue):
+            self.exposure_time = QuantityValue(**as_dict(self.exposure_time))
+
         if self.strategy_notes is not None and not isinstance(self.strategy_notes, str):
             self.strategy_notes = str(self.strategy_notes)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class BeamCenterPixels(AttributeGroup):
+    """
+    Combined beam center coordinates in detector pixel units
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDA["BeamCenterPixels"]
+    class_class_curie: ClassVar[str] = "lambda:BeamCenterPixels"
+    class_name: ClassVar[str] = "BeamCenterPixels"
+    class_model_uri: ClassVar[URIRef] = LAMBDA.BeamCenterPixels
+
+    xbeam: Optional[Union[dict, "QuantityValue"]] = None
+    ybeam: Optional[Union[dict, "QuantityValue"]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self.xbeam is not None and not isinstance(self.xbeam, QuantityValue):
+            self.xbeam = QuantityValue(**as_dict(self.xbeam))
+
+        if self.ybeam is not None and not isinstance(self.ybeam, QuantityValue):
+            self.ybeam = QuantityValue(**as_dict(self.ybeam))
 
         super().__post_init__(**kwargs)
 
@@ -8041,14 +8106,26 @@ slots.experimentRun__acquisition_software = Slot(uri=LAMBDA.acquisition_software
 slots.experimentRun__acquisition_software_version = Slot(uri=LAMBDA.acquisition_software_version, name="experimentRun__acquisition_software_version", curie=LAMBDA.curie('acquisition_software_version'),
                    model_uri=LAMBDA.experimentRun__acquisition_software_version, domain=None, range=Optional[str])
 
+slots.experimentRun__detector = Slot(uri=LAMBDA.detector, name="experimentRun__detector", curie=LAMBDA.curie('detector'),
+                   model_uri=LAMBDA.experimentRun__detector, domain=None, range=Optional[str])
+
 slots.experimentRun__wavelength = Slot(uri=LAMBDA.wavelength, name="experimentRun__wavelength", curie=LAMBDA.curie('wavelength'),
                    model_uri=LAMBDA.experimentRun__wavelength, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.experimentRun__energy = Slot(uri=LAMBDA.energy, name="experimentRun__energy", curie=LAMBDA.curie('energy'),
+                   model_uri=LAMBDA.experimentRun__energy, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentRun__oscillation_angle = Slot(uri=LAMBDA.oscillation_angle, name="experimentRun__oscillation_angle", curie=LAMBDA.curie('oscillation_angle'),
                    model_uri=LAMBDA.experimentRun__oscillation_angle, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentRun__start_angle = Slot(uri=LAMBDA.start_angle, name="experimentRun__start_angle", curie=LAMBDA.curie('start_angle'),
                    model_uri=LAMBDA.experimentRun__start_angle, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.experimentRun__sweep_start = Slot(uri=LAMBDA.sweep_start, name="experimentRun__sweep_start", curie=LAMBDA.curie('sweep_start'),
+                   model_uri=LAMBDA.experimentRun__sweep_start, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.experimentRun__sweep_end = Slot(uri=LAMBDA.sweep_end, name="experimentRun__sweep_end", curie=LAMBDA.curie('sweep_end'),
+                   model_uri=LAMBDA.experimentRun__sweep_end, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentRun__number_of_images = Slot(uri=LAMBDA.number_of_images, name="experimentRun__number_of_images", curie=LAMBDA.curie('number_of_images'),
                    model_uri=LAMBDA.experimentRun__number_of_images, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -8058,6 +8135,9 @@ slots.experimentRun__beam_center_x = Slot(uri=LAMBDA.beam_center_x, name="experi
 
 slots.experimentRun__beam_center_y = Slot(uri=LAMBDA.beam_center_y, name="experimentRun__beam_center_y", curie=LAMBDA.curie('beam_center_y'),
                    model_uri=LAMBDA.experimentRun__beam_center_y, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.experimentRun__beam_center_pixels = Slot(uri=LAMBDA.beam_center_pixels, name="experimentRun__beam_center_pixels", curie=LAMBDA.curie('beam_center_pixels'),
+                   model_uri=LAMBDA.experimentRun__beam_center_pixels, domain=None, range=Optional[Union[dict, BeamCenterPixels]])
 
 slots.experimentRun__detector_distance = Slot(uri=LAMBDA.detector_distance, name="experimentRun__detector_distance", curie=LAMBDA.curie('detector_distance'),
                    model_uri=LAMBDA.experimentRun__detector_distance, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -8824,8 +8904,14 @@ slots.dataCollectionStrategy__beam_center_x_px = Slot(uri=LAMBDA.beam_center_x_p
 slots.dataCollectionStrategy__beam_center_y_px = Slot(uri=LAMBDA.beam_center_y_px, name="dataCollectionStrategy__beam_center_y_px", curie=LAMBDA.curie('beam_center_y_px'),
                    model_uri=LAMBDA.dataCollectionStrategy__beam_center_y_px, domain=None, range=Optional[Union[dict, QuantityValue]])
 
+slots.dataCollectionStrategy__beam_center_pixels = Slot(uri=LAMBDA.beam_center_pixels, name="dataCollectionStrategy__beam_center_pixels", curie=LAMBDA.curie('beam_center_pixels'),
+                   model_uri=LAMBDA.dataCollectionStrategy__beam_center_pixels, domain=None, range=Optional[Union[dict, BeamCenterPixels]])
+
 slots.dataCollectionStrategy__beam_size_um = Slot(uri=LAMBDA.beam_size_um, name="dataCollectionStrategy__beam_size_um", curie=LAMBDA.curie('beam_size_um'),
                    model_uri=LAMBDA.dataCollectionStrategy__beam_size_um, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.dataCollectionStrategy__energy = Slot(uri=LAMBDA.energy, name="dataCollectionStrategy__energy", curie=LAMBDA.curie('energy'),
+                   model_uri=LAMBDA.dataCollectionStrategy__energy, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.dataCollectionStrategy__flux_photons_per_s = Slot(uri=LAMBDA.flux_photons_per_s, name="dataCollectionStrategy__flux_photons_per_s", curie=LAMBDA.curie('flux_photons_per_s'),
                    model_uri=LAMBDA.dataCollectionStrategy__flux_photons_per_s, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -8842,11 +8928,26 @@ slots.dataCollectionStrategy__temperature_k = Slot(uri=LAMBDA.temperature_k, nam
 slots.dataCollectionStrategy__oscillation_per_image_deg = Slot(uri=LAMBDA.oscillation_per_image_deg, name="dataCollectionStrategy__oscillation_per_image_deg", curie=LAMBDA.curie('oscillation_per_image_deg'),
                    model_uri=LAMBDA.dataCollectionStrategy__oscillation_per_image_deg, domain=None, range=Optional[Union[dict, QuantityValue]])
 
+slots.dataCollectionStrategy__sweep_start = Slot(uri=LAMBDA.sweep_start, name="dataCollectionStrategy__sweep_start", curie=LAMBDA.curie('sweep_start'),
+                   model_uri=LAMBDA.dataCollectionStrategy__sweep_start, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.dataCollectionStrategy__sweep_end = Slot(uri=LAMBDA.sweep_end, name="dataCollectionStrategy__sweep_end", curie=LAMBDA.curie('sweep_end'),
+                   model_uri=LAMBDA.dataCollectionStrategy__sweep_end, domain=None, range=Optional[Union[dict, QuantityValue]])
+
 slots.dataCollectionStrategy__total_rotation_deg = Slot(uri=LAMBDA.total_rotation_deg, name="dataCollectionStrategy__total_rotation_deg", curie=LAMBDA.curie('total_rotation_deg'),
                    model_uri=LAMBDA.dataCollectionStrategy__total_rotation_deg, domain=None, range=Optional[Union[dict, QuantityValue]])
 
+slots.dataCollectionStrategy__exposure_time = Slot(uri=LAMBDA.exposure_time, name="dataCollectionStrategy__exposure_time", curie=LAMBDA.curie('exposure_time'),
+                   model_uri=LAMBDA.dataCollectionStrategy__exposure_time, domain=None, range=Optional[Union[dict, QuantityValue]])
+
 slots.dataCollectionStrategy__strategy_notes = Slot(uri=LAMBDA.strategy_notes, name="dataCollectionStrategy__strategy_notes", curie=LAMBDA.curie('strategy_notes'),
                    model_uri=LAMBDA.dataCollectionStrategy__strategy_notes, domain=None, range=Optional[str])
+
+slots.beamCenterPixels__xbeam = Slot(uri=LAMBDA.xbeam, name="beamCenterPixels__xbeam", curie=LAMBDA.curie('xbeam'),
+                   model_uri=LAMBDA.beamCenterPixels__xbeam, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.beamCenterPixels__ybeam = Slot(uri=LAMBDA.ybeam, name="beamCenterPixels__ybeam", curie=LAMBDA.curie('ybeam'),
+                   model_uri=LAMBDA.beamCenterPixels__ybeam, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.qualityMetrics__resolution = Slot(uri=LAMBDA.resolution, name="qualityMetrics__resolution", curie=LAMBDA.curie('resolution'),
                    model_uri=LAMBDA.qualityMetrics__resolution, domain=None, range=Optional[Union[dict, QuantityValue]])

@@ -9,7 +9,7 @@ _Acquisition timestamp_
 
 
 
-URI: [lambdaber:timestamp](https://w3id.org/lambda-ber-schema/timestamp)
+URI: [lambda:timestamp](http://w3id.org/lambda/timestamp)
 Alias: timestamp
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: timestamp
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: timestamp
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:timestamp |
-| native | lambdaber:timestamp |
+| self | lambda:timestamp |
+| native | lambda:timestamp |
 
 
 
@@ -67,7 +67,7 @@ Alias: timestamp
 ```yaml
 name: timestamp
 description: Acquisition timestamp
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: timestamp
 owner: Movie

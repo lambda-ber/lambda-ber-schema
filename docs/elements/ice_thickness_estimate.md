@@ -9,7 +9,7 @@ _Estimated ice thickness, typically specified in nanometers. Data providers may 
 
 
 
-URI: [lambdaber:ice_thickness_estimate](https://w3id.org/lambda-ber-schema/ice_thickness_estimate)
+URI: [lambda:ice_thickness_estimate](http://w3id.org/lambda/ice_thickness_estimate)
 Alias: ice_thickness_estimate
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: ice_thickness_estimate
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: ice_thickness_estimate
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:ice_thickness_estimate |
-| native | lambdaber:ice_thickness_estimate |
+| self | lambda:ice_thickness_estimate |
+| native | lambda:ice_thickness_estimate |
 
 
 
@@ -68,7 +68,7 @@ Alias: ice_thickness_estimate
 name: ice_thickness_estimate
 description: Estimated ice thickness, typically specified in nanometers. Data providers
   may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: ice_thickness_estimate
 owner: Movie

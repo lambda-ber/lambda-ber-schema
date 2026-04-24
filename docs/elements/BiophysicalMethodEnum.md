@@ -7,7 +7,7 @@ _Methods for biophysical measurements_
 
 
 
-URI: [lambdaber:BiophysicalMethodEnum](https://w3id.org/lambda-ber-schema/BiophysicalMethodEnum)
+URI: [lambda:BiophysicalMethodEnum](http://w3id.org/lambda/BiophysicalMethodEnum)
 
 ## Permissible Values
 
@@ -40,7 +40,7 @@ URI: [lambdaber:BiophysicalMethodEnum](https://w3id.org/lambda-ber-schema/Biophy
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -53,7 +53,7 @@ URI: [lambdaber:BiophysicalMethodEnum](https://w3id.org/lambda-ber-schema/Biophy
 ```yaml
 name: BiophysicalMethodEnum
 description: Methods for biophysical measurements
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   differential_scanning_calorimetry:

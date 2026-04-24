@@ -9,7 +9,7 @@ _Beam center X coordinate, typically specified in pixels ([px]). Data providers 
 
 
 
-URI: [lambdaber:beam_center_x](https://w3id.org/lambda-ber-schema/beam_center_x)
+URI: [lambda:beam_center_x](http://w3id.org/lambda/beam_center_x)
 Alias: beam_center_x
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: beam_center_x
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: beam_center_x
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:beam_center_x |
-| native | lambdaber:beam_center_x |
+| self | lambda:beam_center_x |
+| native | lambda:beam_center_x |
 | exact | nsls2:Beam_xy_x, imgCIF:_diffrn_detector.beam_centre_x, mmCIF:_diffrn_detector.beam_center_x, ispyb:DataCollection.xBeam |
 
 
@@ -69,7 +69,7 @@ Alias: beam_center_x
 name: beam_center_x
 description: Beam center X coordinate, typically specified in pixels ([px]). Data
   providers may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 exact_mappings:
 - nsls2:Beam_xy_x
 - imgCIF:_diffrn_detector.beam_centre_x

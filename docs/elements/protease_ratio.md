@@ -9,7 +9,7 @@ _Ratio of protease to protein_
 
 
 
-URI: [lambdaber:protease_ratio](https://w3id.org/lambda-ber-schema/protease_ratio)
+URI: [lambda:protease_ratio](http://w3id.org/lambda/protease_ratio)
 Alias: protease_ratio
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: protease_ratio
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: protease_ratio
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:protease_ratio |
-| native | lambdaber:protease_ratio |
+| self | lambda:protease_ratio |
+| native | lambda:protease_ratio |
 
 
 
@@ -67,7 +67,7 @@ Alias: protease_ratio
 ```yaml
 name: protease_ratio
 description: Ratio of protease to protein
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: protease_ratio
 owner: SamplePreparation

@@ -9,7 +9,7 @@ _Whether and how affinity tag was removed_
 
 
 
-URI: [lambdaber:tag_removal](https://w3id.org/lambda-ber-schema/tag_removal)
+URI: [lambda:tag_removal](http://w3id.org/lambda/tag_removal)
 Alias: tag_removal
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: tag_removal
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: tag_removal
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:tag_removal |
-| native | lambdaber:tag_removal |
+| self | lambda:tag_removal |
+| native | lambda:tag_removal |
 
 
 
@@ -67,7 +67,7 @@ Alias: tag_removal
 ```yaml
 name: tag_removal
 description: Whether and how affinity tag was removed
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: tag_removal
 owner: SamplePreparation

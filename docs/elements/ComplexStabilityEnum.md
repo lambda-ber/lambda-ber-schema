@@ -7,7 +7,7 @@ _Stability of protein complexes_
 
 
 
-URI: [lambdaber:ComplexStabilityEnum](https://w3id.org/lambda-ber-schema/ComplexStabilityEnum)
+URI: [lambda:ComplexStabilityEnum](http://w3id.org/lambda/ComplexStabilityEnum)
 
 ## Permissible Values
 
@@ -43,7 +43,7 @@ URI: [lambdaber:ComplexStabilityEnum](https://w3id.org/lambda-ber-schema/Complex
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -56,7 +56,7 @@ URI: [lambdaber:ComplexStabilityEnum](https://w3id.org/lambda-ber-schema/Complex
 ```yaml
 name: ComplexStabilityEnum
 description: Stability of protein complexes
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   stable:

@@ -9,7 +9,7 @@ _Secondary structure assignment_
 
 
 
-URI: [lambdaber:secondary_structure](https://w3id.org/lambda-ber-schema/secondary_structure)
+URI: [lambda:secondary_structure](http://w3id.org/lambda/secondary_structure)
 Alias: secondary_structure
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: secondary_structure
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: secondary_structure
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:secondary_structure |
-| native | lambdaber:secondary_structure |
+| self | lambda:secondary_structure |
+| native | lambda:secondary_structure |
 
 
 
@@ -67,7 +67,7 @@ Alias: secondary_structure
 ```yaml
 name: secondary_structure
 description: Secondary structure assignment
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: secondary_structure
 owner: StructuralFeature

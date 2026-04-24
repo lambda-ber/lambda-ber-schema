@@ -9,7 +9,7 @@ _Particle picking specific parameters_
 
 
 
-URI: [lambdaber:particle_picking_params](https://w3id.org/lambda-ber-schema/particle_picking_params)
+URI: [lambda:particle_picking_params](http://w3id.org/lambda/particle_picking_params)
 Alias: particle_picking_params
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: particle_picking_params
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: particle_picking_params
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:particle_picking_params |
-| native | lambdaber:particle_picking_params |
+| self | lambda:particle_picking_params |
+| native | lambda:particle_picking_params |
 
 
 
@@ -67,7 +67,7 @@ Alias: particle_picking_params
 ```yaml
 name: particle_picking_params
 description: Particle picking specific parameters
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: particle_picking_params
 owner: WorkflowRun

@@ -9,7 +9,7 @@ _Detector dimensions in pixels (e.g., 4096x4096, 5760x4092)_
 
 
 
-URI: [lambdaber:detector_dimensions](https://w3id.org/lambda-ber-schema/detector_dimensions)
+URI: [lambda:detector_dimensions](http://w3id.org/lambda/detector_dimensions)
 Alias: detector_dimensions
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: detector_dimensions
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: detector_dimensions
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:detector_dimensions |
-| native | lambdaber:detector_dimensions |
+| self | lambda:detector_dimensions |
+| native | lambda:detector_dimensions |
 
 
 
@@ -67,7 +67,7 @@ Alias: detector_dimensions
 ```yaml
 name: detector_dimensions
 description: Detector dimensions in pixels (e.g., 4096x4096, 5760x4092)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: detector_dimensions
 owner: CryoEMInstrument

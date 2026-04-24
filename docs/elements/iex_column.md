@@ -9,7 +9,7 @@ _Ion-exchange column used_
 
 
 
-URI: [lambdaber:iex_column](https://w3id.org/lambda-ber-schema/iex_column)
+URI: [lambda:iex_column](http://w3id.org/lambda/iex_column)
 Alias: iex_column
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: iex_column
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: iex_column
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:iex_column |
-| native | lambdaber:iex_column |
+| self | lambda:iex_column |
+| native | lambda:iex_column |
 
 
 
@@ -67,7 +67,7 @@ Alias: iex_column
 ```yaml
 name: iex_column
 description: Ion-exchange column used
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: iex_column
 owner: SamplePreparation

@@ -9,7 +9,7 @@ _Spherical aberration (Cs) in millimeters_
 
 
 
-URI: [lambdaber:cs](https://w3id.org/lambda-ber-schema/cs)
+URI: [lambda:cs](http://w3id.org/lambda/cs)
 Alias: cs
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: cs
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: cs
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:cs |
-| native | lambdaber:cs |
+| self | lambda:cs |
+| native | lambda:cs |
+| exact | mmCIF:_em_imaging.nominal_cs |
 
 
 
@@ -67,7 +68,9 @@ Alias: cs
 ```yaml
 name: cs
 description: Spherical aberration (Cs) in millimeters
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_em_imaging.nominal_cs
 rank: 1000
 alias: cs
 owner: CryoEMInstrument

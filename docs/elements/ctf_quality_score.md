@@ -9,7 +9,7 @@ _CTF estimation quality score_
 
 
 
-URI: [lambdaber:ctf_quality_score](https://w3id.org/lambda-ber-schema/ctf_quality_score)
+URI: [lambda:ctf_quality_score](http://w3id.org/lambda/ctf_quality_score)
 Alias: ctf_quality_score
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: ctf_quality_score
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: ctf_quality_score
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:ctf_quality_score |
-| native | lambdaber:ctf_quality_score |
+| self | lambda:ctf_quality_score |
+| native | lambda:ctf_quality_score |
 
 
 
@@ -67,7 +67,7 @@ Alias: ctf_quality_score
 ```yaml
 name: ctf_quality_score
 description: CTF estimation quality score
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: ctf_quality_score
 owner: Micrograph

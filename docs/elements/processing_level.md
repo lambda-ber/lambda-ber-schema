@@ -9,7 +9,7 @@ _Processing level (0=raw, 1=corrected, 2=derived, 3=model)_
 
 
 
-URI: [lambdaber:processing_level](https://w3id.org/lambda-ber-schema/processing_level)
+URI: [lambda:processing_level](http://w3id.org/lambda/processing_level)
 Alias: processing_level
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: processing_level
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: processing_level
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:processing_level |
-| native | lambdaber:processing_level |
+| self | lambda:processing_level |
+| native | lambda:processing_level |
 
 
 
@@ -67,7 +67,7 @@ Alias: processing_level
 ```yaml
 name: processing_level
 description: Processing level (0=raw, 1=corrected, 2=derived, 3=model)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: processing_level
 owner: WorkflowRun

@@ -9,7 +9,7 @@ _C2 aperture size in micrometers_
 
 
 
-URI: [lambdaber:c2_aperture](https://w3id.org/lambda-ber-schema/c2_aperture)
+URI: [lambda:c2_aperture](http://w3id.org/lambda/c2_aperture)
 Alias: c2_aperture
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: c2_aperture
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: c2_aperture
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:c2_aperture |
-| native | lambdaber:c2_aperture |
+| self | lambda:c2_aperture |
+| native | lambda:c2_aperture |
+| exact | mmCIF:_em_imaging.c2_aperture_diameter |
 
 
 
@@ -67,7 +68,9 @@ Alias: c2_aperture
 ```yaml
 name: c2_aperture
 description: C2 aperture size in micrometers
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_em_imaging.c2_aperture_diameter
 rank: 1000
 alias: c2_aperture
 owner: CryoEMInstrument

@@ -9,7 +9,7 @@ _Associated Gene Ontology terms_
 
 
 
-URI: [lambdaber:go_terms](https://w3id.org/lambda-ber-schema/go_terms)
+URI: [lambda:go_terms](http://w3id.org/lambda/go_terms)
 Alias: go_terms
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: go_terms
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: go_terms
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:go_terms |
-| native | lambdaber:go_terms |
+| self | lambda:go_terms |
+| native | lambda:go_terms |
 
 
 
@@ -69,7 +69,7 @@ Alias: go_terms
 ```yaml
 name: go_terms
 description: Associated Gene Ontology terms
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: go_terms
 owner: FunctionalSite

@@ -7,7 +7,7 @@ _Methods for vitrification_
 
 
 
-URI: [lambdaber:VitrificationMethodEnum](https://w3id.org/lambda-ber-schema/VitrificationMethodEnum)
+URI: [lambda:VitrificationMethodEnum](http://w3id.org/lambda/VitrificationMethodEnum)
 
 ## Permissible Values
 
@@ -40,7 +40,7 @@ URI: [lambdaber:VitrificationMethodEnum](https://w3id.org/lambda-ber-schema/Vitr
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -53,7 +53,7 @@ URI: [lambdaber:VitrificationMethodEnum](https://w3id.org/lambda-ber-schema/Vitr
 ```yaml
 name: VitrificationMethodEnum
 description: Methods for vitrification
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   plunge_freezing:

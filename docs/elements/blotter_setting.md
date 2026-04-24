@@ -9,7 +9,7 @@ _Blotter setting value. Data providers may include unit information in the Quant
 
 
 
-URI: [lambdaber:blotter_setting](https://w3id.org/lambda-ber-schema/blotter_setting)
+URI: [lambda:blotter_setting](http://w3id.org/lambda/blotter_setting)
 Alias: blotter_setting
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: blotter_setting
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: blotter_setting
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:blotter_setting |
-| native | lambdaber:blotter_setting |
+| self | lambda:blotter_setting |
+| native | lambda:blotter_setting |
 
 
 
@@ -68,7 +68,7 @@ Alias: blotter_setting
 name: blotter_setting
 description: Blotter setting value. Data providers may include unit information in
   the QuantityValue if needed.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: blotter_setting
 owner: CryoEMPreparation

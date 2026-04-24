@@ -9,7 +9,7 @@ _Low-level control system for device communication_
 
 
 
-URI: [lambdaber:control_system](https://w3id.org/lambda-ber-schema/control_system)
+URI: [lambda:control_system](http://w3id.org/lambda/control_system)
 Alias: control_system
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: control_system
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: control_system
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:control_system |
-| native | lambdaber:control_system |
+| self | lambda:control_system |
+| native | lambda:control_system |
 
 
 
@@ -67,7 +67,7 @@ Alias: control_system
 ```yaml
 name: control_system
 description: Low-level control system for device communication
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: control_system
 owner: BeamlineInstrument

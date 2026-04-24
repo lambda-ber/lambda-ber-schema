@@ -9,7 +9,7 @@ _Contrast enhancement method used_
 
 
 
-URI: [lambdaber:contrast_method](https://w3id.org/lambda-ber-schema/contrast_method)
+URI: [lambda:contrast_method](http://w3id.org/lambda/contrast_method)
 Alias: contrast_method
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: contrast_method
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: contrast_method
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:contrast_method |
-| native | lambdaber:contrast_method |
+| self | lambda:contrast_method |
+| native | lambda:contrast_method |
 
 
 
@@ -67,7 +67,7 @@ Alias: contrast_method
 ```yaml
 name: contrast_method
 description: Contrast enhancement method used
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: contrast_method
 owner: OpticalImage

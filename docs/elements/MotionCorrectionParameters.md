@@ -9,7 +9,7 @@ _Parameters specific to motion correction workflows_
 
 
 
-URI: [lambdaber:MotionCorrectionParameters](https://w3id.org/lambda-ber-schema/MotionCorrectionParameters)
+URI: [lambda:MotionCorrectionParameters](http://w3id.org/lambda/MotionCorrectionParameters)
 
 
 
@@ -147,7 +147,7 @@ URI: [lambdaber:MotionCorrectionParameters](https://w3id.org/lambda-ber-schema/M
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -156,8 +156,8 @@ URI: [lambdaber:MotionCorrectionParameters](https://w3id.org/lambda-ber-schema/M
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:MotionCorrectionParameters |
-| native | lambdaber:MotionCorrectionParameters |
+| self | lambda:MotionCorrectionParameters |
+| native | lambda:MotionCorrectionParameters |
 
 
 
@@ -174,13 +174,13 @@ URI: [lambdaber:MotionCorrectionParameters](https://w3id.org/lambda-ber-schema/M
 ```yaml
 name: MotionCorrectionParameters
 description: Parameters specific to motion correction workflows
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: AttributeGroup
 attributes:
   patch_size:
     name: patch_size
     description: Patch size for local motion correction
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - MotionCorrectionParameters
@@ -190,7 +190,7 @@ attributes:
     name: binning
     description: Binning factor applied during motion correction. This must be a positive
       float value (e.g., 1, 1.5, 2, 3).
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - MotionCorrectionParameters
@@ -199,7 +199,7 @@ attributes:
   dose_weighting:
     name: dose_weighting
     description: Whether dose weighting was applied
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - MotionCorrectionParameters
@@ -208,7 +208,7 @@ attributes:
     name: bfactor_dose_weighting
     description: B-factor for dose weighting, typically specified in Angstroms squared.
       Data providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - MotionCorrectionParameters
@@ -217,7 +217,7 @@ attributes:
   anisotropic_correction:
     name: anisotropic_correction
     description: Whether anisotropic motion correction was applied
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - MotionCorrectionParameters
@@ -225,7 +225,7 @@ attributes:
   frame_grouping:
     name: frame_grouping
     description: Number of frames grouped together
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - MotionCorrectionParameters
@@ -235,7 +235,7 @@ attributes:
     name: output_binning
     description: Output binning factor. This must be a positive float value (e.g.,
       1, 1.5, 2, 3).
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - MotionCorrectionParameters
@@ -245,7 +245,7 @@ attributes:
     name: drift_total
     description: Total drift, typically specified in Angstroms. Data providers may
       specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - MotionCorrectionParameters
@@ -261,13 +261,13 @@ attributes:
 ```yaml
 name: MotionCorrectionParameters
 description: Parameters specific to motion correction workflows
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: AttributeGroup
 attributes:
   patch_size:
     name: patch_size
     description: Patch size for local motion correction
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: patch_size
     owner: MotionCorrectionParameters
@@ -279,7 +279,7 @@ attributes:
     name: binning
     description: Binning factor applied during motion correction. This must be a positive
       float value (e.g., 1, 1.5, 2, 3).
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: binning
     owner: MotionCorrectionParameters
@@ -290,7 +290,7 @@ attributes:
   dose_weighting:
     name: dose_weighting
     description: Whether dose weighting was applied
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: dose_weighting
     owner: MotionCorrectionParameters
@@ -301,7 +301,7 @@ attributes:
     name: bfactor_dose_weighting
     description: B-factor for dose weighting, typically specified in Angstroms squared.
       Data providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: bfactor_dose_weighting
     owner: MotionCorrectionParameters
@@ -312,7 +312,7 @@ attributes:
   anisotropic_correction:
     name: anisotropic_correction
     description: Whether anisotropic motion correction was applied
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: anisotropic_correction
     owner: MotionCorrectionParameters
@@ -322,7 +322,7 @@ attributes:
   frame_grouping:
     name: frame_grouping
     description: Number of frames grouped together
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: frame_grouping
     owner: MotionCorrectionParameters
@@ -334,7 +334,7 @@ attributes:
     name: output_binning
     description: Output binning factor. This must be a positive float value (e.g.,
       1, 1.5, 2, 3).
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: output_binning
     owner: MotionCorrectionParameters
@@ -346,7 +346,7 @@ attributes:
     name: drift_total
     description: Total drift, typically specified in Angstroms. Data providers may
       specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: drift_total
     owner: MotionCorrectionParameters
@@ -356,7 +356,7 @@ attributes:
     inlined: true
   description:
     name: description
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: description
     owner: MotionCorrectionParameters
     domain_of:

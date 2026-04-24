@@ -9,7 +9,7 @@ _ISPyB BLSession.sessionId_
 
 
 
-URI: [lambdaber:ispyb_session_id](https://w3id.org/lambda-ber-schema/ispyb_session_id)
+URI: [lambda:ispyb_session_id](http://w3id.org/lambda/ispyb_session_id)
 Alias: ispyb_session_id
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: ispyb_session_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: ispyb_session_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:ispyb_session_id |
-| native | lambdaber:ispyb_session_id |
+| self | lambda:ispyb_session_id |
+| native | lambda:ispyb_session_id |
 
 
 
@@ -67,7 +67,7 @@ Alias: ispyb_session_id
 ```yaml
 name: ispyb_session_id
 description: ISPyB BLSession.sessionId
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: ispyb_session_id
 owner: ExperimentRun

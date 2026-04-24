@@ -9,7 +9,7 @@ _Forward scattering intensity I(0)_
 
 
 
-URI: [lambdaber:i_zero](https://w3id.org/lambda-ber-schema/i_zero)
+URI: [lambda:i_zero](http://w3id.org/lambda/i_zero)
 Alias: i_zero
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: i_zero
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: i_zero
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:i_zero |
-| native | lambdaber:i_zero |
+| self | lambda:i_zero |
+| native | lambda:i_zero |
 
 
 
@@ -67,7 +67,7 @@ Alias: i_zero
 ```yaml
 name: i_zero
 description: Forward scattering intensity I(0)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: i_zero
 owner: QualityMetrics

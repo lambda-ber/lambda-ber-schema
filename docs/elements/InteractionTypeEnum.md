@@ -7,7 +7,7 @@ _Types of molecular interactions_
 
 
 
-URI: [lambdaber:InteractionTypeEnum](https://w3id.org/lambda-ber-schema/InteractionTypeEnum)
+URI: [lambda:InteractionTypeEnum](http://w3id.org/lambda/InteractionTypeEnum)
 
 ## Permissible Values
 
@@ -47,7 +47,7 @@ URI: [lambdaber:InteractionTypeEnum](https://w3id.org/lambda-ber-schema/Interact
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -60,7 +60,7 @@ URI: [lambdaber:InteractionTypeEnum](https://w3id.org/lambda-ber-schema/Interact
 ```yaml
 name: InteractionTypeEnum
 description: Types of molecular interactions
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   covalent:

@@ -9,7 +9,7 @@ _Method for rejecting outlier reflections_
 
 
 
-URI: [lambdaber:outlier_rejection_method](https://w3id.org/lambda-ber-schema/outlier_rejection_method)
+URI: [lambda:outlier_rejection_method](http://w3id.org/lambda/outlier_rejection_method)
 Alias: outlier_rejection_method
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: outlier_rejection_method
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: outlier_rejection_method
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:outlier_rejection_method |
-| native | lambdaber:outlier_rejection_method |
+| self | lambda:outlier_rejection_method |
+| native | lambda:outlier_rejection_method |
 
 
 
@@ -67,7 +67,7 @@ Alias: outlier_rejection_method
 ```yaml
 name: outlier_rejection_method
 description: Method for rejecting outlier reflections
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: outlier_rejection_method
 owner: WorkflowRun

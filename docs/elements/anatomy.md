@@ -9,7 +9,7 @@ _Anatomical part or tissue (e.g., UBERON:0008945 for leaf)_
 
 
 
-URI: [lambdaber:anatomy](https://w3id.org/lambda-ber-schema/anatomy)
+URI: [lambda:anatomy](http://w3id.org/lambda/anatomy)
 Alias: anatomy
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: anatomy
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: anatomy
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:anatomy |
-| native | lambdaber:anatomy |
+| self | lambda:anatomy |
+| native | lambda:anatomy |
 
 
 
@@ -67,7 +67,7 @@ Alias: anatomy
 ```yaml
 name: anatomy
 description: Anatomical part or tissue (e.g., UBERON:0008945 for leaf)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: anatomy
 owner: Sample

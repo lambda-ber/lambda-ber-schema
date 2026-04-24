@@ -7,7 +7,7 @@ _Generic detector technologies for structural biology imaging_
 
 
 
-URI: [lambdaber:DetectorTechnologyEnum](https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum)
+URI: [lambda:DetectorTechnologyEnum](http://w3id.org/lambda/DetectorTechnologyEnum)
 
 ## Permissible Values
 
@@ -49,7 +49,7 @@ URI: [lambdaber:DetectorTechnologyEnum](https://w3id.org/lambda-ber-schema/Detec
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -65,7 +65,7 @@ description: Generic detector technologies for structural biology imaging
 comments:
 - Separates detector technology from manufacturer/model for better ontology mapping
 - Use detector_manufacturer and detector_model fields for specific equipment details
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   direct_electron_detector:

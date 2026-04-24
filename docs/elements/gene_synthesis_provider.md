@@ -9,7 +9,7 @@ _Company or facility that synthesized the gene_
 
 
 
-URI: [lambdaber:gene_synthesis_provider](https://w3id.org/lambda-ber-schema/gene_synthesis_provider)
+URI: [lambda:gene_synthesis_provider](http://w3id.org/lambda/gene_synthesis_provider)
 Alias: gene_synthesis_provider
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: gene_synthesis_provider
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: gene_synthesis_provider
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:gene_synthesis_provider |
-| native | lambdaber:gene_synthesis_provider |
+| self | lambda:gene_synthesis_provider |
+| native | lambda:gene_synthesis_provider |
 
 
 
@@ -67,7 +67,7 @@ Alias: gene_synthesis_provider
 ```yaml
 name: gene_synthesis_provider
 description: Company or facility that synthesized the gene
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: gene_synthesis_provider
 owner: ProteinConstruct

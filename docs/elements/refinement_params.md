@@ -9,7 +9,7 @@ _3D refinement specific parameters_
 
 
 
-URI: [lambdaber:refinement_params](https://w3id.org/lambda-ber-schema/refinement_params)
+URI: [lambda:refinement_params](http://w3id.org/lambda/refinement_params)
 Alias: refinement_params
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: refinement_params
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: refinement_params
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:refinement_params |
-| native | lambdaber:refinement_params |
+| self | lambda:refinement_params |
+| native | lambda:refinement_params |
 
 
 
@@ -67,7 +67,7 @@ Alias: refinement_params
 ```yaml
 name: refinement_params
 description: 3D refinement specific parameters
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: refinement_params
 owner: WorkflowRun

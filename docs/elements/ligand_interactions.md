@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:ligand_interactions](https://w3id.org/lambda-ber-schema/ligand_interactions)
+URI: [lambda:ligand_interactions](http://w3id.org/lambda/ligand_interactions)
 Alias: ligand_interactions
 
 <!-- no inheritance hierarchy -->
@@ -17,9 +17,9 @@ Alias: ligand_interactions
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AggregatedProteinView](AggregatedProteinView.md) | Aggregated view of all structural and functional data for a protein |  no  |
 | [FunctionalSite](FunctionalSite.md) | Functional sites including catalytic, binding, and regulatory sites |  no  |
 | [Sample](Sample.md) | A biological sample used in structural biology experiments |  no  |
+| [AggregatedProteinView](AggregatedProteinView.md) | Aggregated view of all structural and functional data for a protein |  no  |
 
 
 
@@ -45,8 +45,8 @@ Alias: ligand_interactions
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:ligand_interactions |
-| native | lambdaber:ligand_interactions |
+| self | lambda:ligand_interactions |
+| native | lambda:ligand_interactions |
 
 
 

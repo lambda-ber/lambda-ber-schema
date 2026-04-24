@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:dose_per_frame](https://w3id.org/lambda-ber-schema/dose_per_frame)
+URI: [lambda:dose_per_frame](http://w3id.org/lambda/dose_per_frame)
 Alias: dose_per_frame
 
 <!-- no inheritance hierarchy -->
@@ -17,8 +17,8 @@ Alias: dose_per_frame
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Movie](Movie.md) | Raw cryo-EM movie with frame-by-frame metadata for motion correction |  no  |
 | [DataCollectionStrategy](DataCollectionStrategy.md) | Strategy for data collection |  no  |
+| [Movie](Movie.md) | Raw cryo-EM movie with frame-by-frame metadata for motion correction |  no  |
 
 
 
@@ -44,8 +44,8 @@ Alias: dose_per_frame
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:dose_per_frame |
-| native | lambdaber:dose_per_frame |
+| self | lambda:dose_per_frame |
+| native | lambda:dose_per_frame |
 
 
 

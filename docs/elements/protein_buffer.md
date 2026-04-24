@@ -9,7 +9,7 @@ _Buffer composition for protein solution_
 
 
 
-URI: [lambdaber:protein_buffer](https://w3id.org/lambda-ber-schema/protein_buffer)
+URI: [lambda:protein_buffer](http://w3id.org/lambda/protein_buffer)
 Alias: protein_buffer
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: protein_buffer
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: protein_buffer
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:protein_buffer |
-| native | lambdaber:protein_buffer |
+| self | lambda:protein_buffer |
+| native | lambda:protein_buffer |
 
 
 
@@ -67,7 +67,7 @@ Alias: protein_buffer
 ```yaml
 name: protein_buffer
 description: Buffer composition for protein solution
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: protein_buffer
 owner: XRayPreparation

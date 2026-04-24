@@ -9,7 +9,7 @@ _Maximum beam size in micrometers_
 
 
 
-URI: [lambdaber:beam_size_max](https://w3id.org/lambda-ber-schema/beam_size_max)
+URI: [lambda:beam_size_max](http://w3id.org/lambda/beam_size_max)
 Alias: beam_size_max
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: beam_size_max
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: beam_size_max
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:beam_size_max |
-| native | lambdaber:beam_size_max |
+| self | lambda:beam_size_max |
+| native | lambda:beam_size_max |
 
 
 
@@ -67,7 +67,7 @@ Alias: beam_size_max
 ```yaml
 name: beam_size_max
 description: Maximum beam size in micrometers
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: beam_size_max
 owner: XRayInstrument

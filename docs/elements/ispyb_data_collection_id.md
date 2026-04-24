@@ -9,7 +9,7 @@ _ISPyB DataCollection.dataCollectionId for traceability_
 
 
 
-URI: [lambdaber:ispyb_data_collection_id](https://w3id.org/lambda-ber-schema/ispyb_data_collection_id)
+URI: [lambda:ispyb_data_collection_id](http://w3id.org/lambda/ispyb_data_collection_id)
 Alias: ispyb_data_collection_id
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: ispyb_data_collection_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: ispyb_data_collection_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:ispyb_data_collection_id |
-| native | lambdaber:ispyb_data_collection_id |
+| self | lambda:ispyb_data_collection_id |
+| native | lambda:ispyb_data_collection_id |
 
 
 
@@ -67,7 +67,7 @@ Alias: ispyb_data_collection_id
 ```yaml
 name: ispyb_data_collection_id
 description: ISPyB DataCollection.dataCollectionId for traceability
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: ispyb_data_collection_id
 owner: ExperimentRun

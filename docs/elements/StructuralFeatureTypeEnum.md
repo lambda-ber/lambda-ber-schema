@@ -7,7 +7,7 @@ _Types of structural features_
 
 
 
-URI: [lambdaber:StructuralFeatureTypeEnum](https://w3id.org/lambda-ber-schema/StructuralFeatureTypeEnum)
+URI: [lambda:StructuralFeatureTypeEnum](http://w3id.org/lambda/StructuralFeatureTypeEnum)
 
 ## Permissible Values
 
@@ -57,7 +57,7 @@ URI: [lambdaber:StructuralFeatureTypeEnum](https://w3id.org/lambda-ber-schema/St
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -70,7 +70,7 @@ URI: [lambdaber:StructuralFeatureTypeEnum](https://w3id.org/lambda-ber-schema/St
 ```yaml
 name: StructuralFeatureTypeEnum
 description: Types of structural features
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   alpha_helix:

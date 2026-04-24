@@ -9,7 +9,7 @@ _Population allele frequency (range: 0-1)_
 
 
 
-URI: [lambdaber:allele_frequency](https://w3id.org/lambda-ber-schema/allele_frequency)
+URI: [lambda:allele_frequency](http://w3id.org/lambda/allele_frequency)
 Alias: allele_frequency
 
 <!-- no inheritance hierarchy -->
@@ -50,7 +50,7 @@ Alias: allele_frequency
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -59,8 +59,8 @@ Alias: allele_frequency
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:allele_frequency |
-| native | lambdaber:allele_frequency |
+| self | lambda:allele_frequency |
+| native | lambda:allele_frequency |
 
 
 
@@ -71,7 +71,7 @@ Alias: allele_frequency
 ```yaml
 name: allele_frequency
 description: 'Population allele frequency (range: 0-1)'
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: allele_frequency
 owner: MutationEffect

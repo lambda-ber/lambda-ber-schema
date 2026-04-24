@@ -9,7 +9,7 @@ _Whether TLS (Translation/Libration/Screw) refinement was used_
 
 
 
-URI: [lambdaber:tls_used](https://w3id.org/lambda-ber-schema/tls_used)
+URI: [lambda:tls_used](http://w3id.org/lambda/tls_used)
 Alias: tls_used
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: tls_used
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: tls_used
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:tls_used |
-| native | lambdaber:tls_used |
+| self | lambda:tls_used |
+| native | lambda:tls_used |
 
 
 
@@ -67,7 +67,7 @@ Alias: tls_used
 ```yaml
 name: tls_used
 description: Whether TLS (Translation/Libration/Screw) refinement was used
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: tls_used
 owner: WorkflowRun

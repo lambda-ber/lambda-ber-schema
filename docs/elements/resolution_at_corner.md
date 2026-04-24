@@ -9,7 +9,7 @@ _Resolution at corner of detector, typically specified in Angstroms (Å). Data p
 
 
 
-URI: [lambdaber:resolution_at_corner](https://w3id.org/lambda-ber-schema/resolution_at_corner)
+URI: [lambda:resolution_at_corner](http://w3id.org/lambda/resolution_at_corner)
 Alias: resolution_at_corner
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: resolution_at_corner
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: resolution_at_corner
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:resolution_at_corner |
-| native | lambdaber:resolution_at_corner |
+| self | lambda:resolution_at_corner |
+| native | lambda:resolution_at_corner |
 | exact | ispyb:DataCollection.resolutionAtCorner |
 
 
@@ -69,7 +69,7 @@ Alias: resolution_at_corner
 name: resolution_at_corner
 description: Resolution at corner of detector, typically specified in Angstroms (Å).
   Data providers may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 exact_mappings:
 - ispyb:DataCollection.resolutionAtCorner
 rank: 1000

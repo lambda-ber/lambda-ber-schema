@@ -9,7 +9,7 @@ _Voxel size, typically specified in Angstroms. Data providers may specify altern
 
 
 
-URI: [lambdaber:voxel_size](https://w3id.org/lambda-ber-schema/voxel_size)
+URI: [lambda:voxel_size](http://w3id.org/lambda/voxel_size)
 Alias: voxel_size
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: voxel_size
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: voxel_size
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:voxel_size |
-| native | lambdaber:voxel_size |
+| self | lambda:voxel_size |
+| native | lambda:voxel_size |
 
 
 
@@ -68,7 +68,7 @@ Alias: voxel_size
 name: voxel_size
 description: Voxel size, typically specified in Angstroms. Data providers may specify
   alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: voxel_size
 owner: Image3D

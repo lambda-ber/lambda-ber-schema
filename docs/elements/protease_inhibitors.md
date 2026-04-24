@@ -9,7 +9,7 @@ _Protease inhibitors added_
 
 
 
-URI: [lambdaber:protease_inhibitors](https://w3id.org/lambda-ber-schema/protease_inhibitors)
+URI: [lambda:protease_inhibitors](http://w3id.org/lambda/protease_inhibitors)
 Alias: protease_inhibitors
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: protease_inhibitors
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: protease_inhibitors
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:protease_inhibitors |
-| native | lambdaber:protease_inhibitors |
+| self | lambda:protease_inhibitors |
+| native | lambda:protease_inhibitors |
 
 
 
@@ -67,7 +67,7 @@ Alias: protease_inhibitors
 ```yaml
 name: protease_inhibitors
 description: Protease inhibitors added
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: protease_inhibitors
 owner: SamplePreparation

@@ -9,7 +9,7 @@ _OMIM database identifier_
 
 
 
-URI: [lambdaber:omim_id](https://w3id.org/lambda-ber-schema/omim_id)
+URI: [lambda:omim_id](http://w3id.org/lambda/omim_id)
 Alias: omim_id
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: omim_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: omim_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:omim_id |
-| native | lambdaber:omim_id |
+| self | lambda:omim_id |
+| native | lambda:omim_id |
 
 
 
@@ -69,7 +69,7 @@ Alias: omim_id
 ```yaml
 name: omim_id
 description: OMIM database identifier
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: omim_id
 owner: MutationEffect

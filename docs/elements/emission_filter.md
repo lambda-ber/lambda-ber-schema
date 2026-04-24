@@ -9,7 +9,7 @@ _Specifications of the emission filter_
 
 
 
-URI: [lambdaber:emission_filter](https://w3id.org/lambda-ber-schema/emission_filter)
+URI: [lambda:emission_filter](http://w3id.org/lambda/emission_filter)
 Alias: emission_filter
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: emission_filter
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: emission_filter
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:emission_filter |
-| native | lambdaber:emission_filter |
+| self | lambda:emission_filter |
+| native | lambda:emission_filter |
 
 
 
@@ -67,7 +67,7 @@ Alias: emission_filter
 ```yaml
 name: emission_filter
 description: Specifications of the emission filter
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: emission_filter
 owner: FluorescenceImage

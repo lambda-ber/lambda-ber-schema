@@ -9,7 +9,7 @@ _Stage Z position, typically specified in micrometers. Data providers may specif
 
 
 
-URI: [lambdaber:stage_position_z](https://w3id.org/lambda-ber-schema/stage_position_z)
+URI: [lambda:stage_position_z](http://w3id.org/lambda/stage_position_z)
 Alias: stage_position_z
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: stage_position_z
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: stage_position_z
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:stage_position_z |
-| native | lambdaber:stage_position_z |
+| self | lambda:stage_position_z |
+| native | lambda:stage_position_z |
 
 
 
@@ -68,7 +68,7 @@ Alias: stage_position_z
 name: stage_position_z
 description: Stage Z position, typically specified in micrometers. Data providers
   may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: stage_position_z
 owner: Movie

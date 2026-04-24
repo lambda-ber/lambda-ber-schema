@@ -9,7 +9,7 @@ _Human-friendly identifier for the computational workflow run (e.g., 'MOTION-COR
 
 
 
-URI: [lambdaber:workflow_code](https://w3id.org/lambda-ber-schema/workflow_code)
+URI: [lambda:workflow_code](http://w3id.org/lambda/workflow_code)
 Alias: workflow_code
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: workflow_code
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: workflow_code
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:workflow_code |
-| native | lambdaber:workflow_code |
+| self | lambda:workflow_code |
+| native | lambda:workflow_code |
 
 
 
@@ -71,7 +71,7 @@ name: workflow_code
 description: Human-friendly identifier for the computational workflow run (e.g., 'MOTION-CORR-RUN-001',
   'RELION-REFINE-240815'). Used for tracking processing pipelines and computational
   provenance.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: workflow_code
 owner: WorkflowRun

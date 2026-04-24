@@ -7,7 +7,7 @@ _Types of data_
 
 
 
-URI: [lambdaber:DataTypeEnum](https://w3id.org/lambda-ber-schema/DataTypeEnum)
+URI: [lambda:DataTypeEnum](http://w3id.org/lambda/DataTypeEnum)
 
 ## Permissible Values
 
@@ -54,7 +54,7 @@ URI: [lambdaber:DataTypeEnum](https://w3id.org/lambda-ber-schema/DataTypeEnum)
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -67,7 +67,7 @@ URI: [lambdaber:DataTypeEnum](https://w3id.org/lambda-ber-schema/DataTypeEnum)
 ```yaml
 name: DataTypeEnum
 description: Types of data
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   micrograph:

@@ -9,7 +9,7 @@ _Identifier for this state_
 
 
 
-URI: [lambdaber:state_id](https://w3id.org/lambda-ber-schema/state_id)
+URI: [lambda:state_id](http://w3id.org/lambda/state_id)
 Alias: state_id
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: state_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: state_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:state_id |
-| native | lambdaber:state_id |
+| self | lambda:state_id |
+| native | lambda:state_id |
 
 
 
@@ -69,7 +69,7 @@ Alias: state_id
 ```yaml
 name: state_id
 description: Identifier for this state
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: state_id
 owner: ConformationalState

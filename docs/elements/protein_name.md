@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:protein_name](https://w3id.org/lambda-ber-schema/protein_name)
+URI: [lambda:protein_name](http://w3id.org/lambda/protein_name)
 Alias: protein_name
 
 <!-- no inheritance hierarchy -->
@@ -17,8 +17,8 @@ Alias: protein_name
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AggregatedProteinView](AggregatedProteinView.md) | Aggregated view of all structural and functional data for a protein |  no  |
 | [Sample](Sample.md) | A biological sample used in structural biology experiments |  no  |
+| [AggregatedProteinView](AggregatedProteinView.md) | Aggregated view of all structural and functional data for a protein |  no  |
 
 
 
@@ -44,8 +44,8 @@ Alias: protein_name
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:protein_name |
-| native | lambdaber:protein_name |
+| self | lambda:protein_name |
+| native | lambda:protein_name |
 
 
 

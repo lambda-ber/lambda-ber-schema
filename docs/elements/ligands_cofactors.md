@@ -9,7 +9,7 @@ _Ligands or cofactors modeled in the structure_
 
 
 
-URI: [lambdaber:ligands_cofactors](https://w3id.org/lambda-ber-schema/ligands_cofactors)
+URI: [lambda:ligands_cofactors](http://w3id.org/lambda/ligands_cofactors)
 Alias: ligands_cofactors
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: ligands_cofactors
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: ligands_cofactors
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:ligands_cofactors |
-| native | lambdaber:ligands_cofactors |
+| self | lambda:ligands_cofactors |
+| native | lambda:ligands_cofactors |
 
 
 
@@ -67,7 +67,7 @@ Alias: ligands_cofactors
 ```yaml
 name: ligands_cofactors
 description: Ligands or cofactors modeled in the structure
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: ligands_cofactors
 owner: WorkflowRun

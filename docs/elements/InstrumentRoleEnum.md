@@ -7,7 +7,7 @@ _Role of an instrument in an experiment_
 
 
 
-URI: [lambdaber:InstrumentRoleEnum](https://w3id.org/lambda-ber-schema/InstrumentRoleEnum)
+URI: [lambda:InstrumentRoleEnum](http://w3id.org/lambda/InstrumentRoleEnum)
 
 ## Permissible Values
 
@@ -34,7 +34,7 @@ URI: [lambdaber:InstrumentRoleEnum](https://w3id.org/lambda-ber-schema/Instrumen
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -47,7 +47,7 @@ URI: [lambdaber:InstrumentRoleEnum](https://w3id.org/lambda-ber-schema/Instrumen
 ```yaml
 name: InstrumentRoleEnum
 description: Role of an instrument in an experiment
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   primary:

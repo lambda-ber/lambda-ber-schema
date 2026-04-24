@@ -9,7 +9,7 @@ _Post-translational modification annotations_
 
 
 
-URI: [lambdaber:ptm_annotations](https://w3id.org/lambda-ber-schema/ptm_annotations)
+URI: [lambda:ptm_annotations](http://w3id.org/lambda/ptm_annotations)
 Alias: ptm_annotations
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: ptm_annotations
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: ptm_annotations
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:ptm_annotations |
-| native | lambdaber:ptm_annotations |
+| self | lambda:ptm_annotations |
+| native | lambda:ptm_annotations |
 
 
 
@@ -69,7 +69,7 @@ Alias: ptm_annotations
 ```yaml
 name: ptm_annotations
 description: Post-translational modification annotations
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: ptm_annotations
 owner: Sample

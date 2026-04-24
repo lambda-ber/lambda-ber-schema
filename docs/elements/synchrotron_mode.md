@@ -9,7 +9,7 @@ _Synchrotron storage ring fill mode_
 
 
 
-URI: [lambdaber:synchrotron_mode](https://w3id.org/lambda-ber-schema/synchrotron_mode)
+URI: [lambda:synchrotron_mode](http://w3id.org/lambda/synchrotron_mode)
 Alias: synchrotron_mode
 
 <!-- no inheritance hierarchy -->
@@ -50,7 +50,7 @@ Alias: synchrotron_mode
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -59,8 +59,8 @@ Alias: synchrotron_mode
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:synchrotron_mode |
-| native | lambdaber:synchrotron_mode |
+| self | lambda:synchrotron_mode |
+| native | lambda:synchrotron_mode |
 | exact | ispyb:DataCollection.synchrotronMode |
 
 
@@ -74,7 +74,7 @@ name: synchrotron_mode
 description: Synchrotron storage ring fill mode
 comments:
 - e.g., 'Top-up', 'Decay', 'Hybrid'
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 exact_mappings:
 - ispyb:DataCollection.synchrotronMode
 rank: 1000

@@ -9,7 +9,7 @@ _Strategy for data collection_
 
 
 
-URI: [lambdaber:DataCollectionStrategy](https://w3id.org/lambda-ber-schema/DataCollectionStrategy)
+URI: [lambda:DataCollectionStrategy](http://w3id.org/lambda/DataCollectionStrategy)
 
 
 
@@ -23,6 +23,17 @@ URI: [lambdaber:DataCollectionStrategy](https://w3id.org/lambda-ber-schema/DataC
         click AttributeGroup href "../AttributeGroup/"
       
       DataCollectionStrategy : attenuator
+        
+      DataCollectionStrategy : beam_center_pixels
+        
+          
+    
+        
+        
+        DataCollectionStrategy --> "0..1" BeamCenterPixels : beam_center_pixels
+        click BeamCenterPixels href "../BeamCenterPixels/"
+    
+
         
       DataCollectionStrategy : beam_center_x_px
         
@@ -103,6 +114,28 @@ URI: [lambdaber:DataCollectionStrategy](https://w3id.org/lambda-ber-schema/DataC
     
 
         
+      DataCollectionStrategy : energy
+        
+          
+    
+        
+        
+        DataCollectionStrategy --> "0..1" QuantityValue : energy
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
+      DataCollectionStrategy : exposure_time
+        
+          
+    
+        
+        
+        DataCollectionStrategy --> "0..1" QuantityValue : exposure_time
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       DataCollectionStrategy : flux_photons_per_s
         
           
@@ -148,6 +181,28 @@ URI: [lambdaber:DataCollectionStrategy](https://w3id.org/lambda-ber-schema/DataC
 
         
       DataCollectionStrategy : strategy_notes
+        
+      DataCollectionStrategy : sweep_end
+        
+          
+    
+        
+        
+        DataCollectionStrategy --> "0..1" QuantityValue : sweep_end
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
+      DataCollectionStrategy : sweep_start
+        
+          
+    
+        
+        
+        DataCollectionStrategy --> "0..1" QuantityValue : sweep_start
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       DataCollectionStrategy : temperature_k
         
@@ -243,13 +298,18 @@ URI: [lambdaber:DataCollectionStrategy](https://w3id.org/lambda-ber-schema/DataC
 | [detector_distance_mm](detector_distance_mm.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Detector distance, typically specified in millimeters | direct |
 | [beam_center_x_px](beam_center_x_px.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Beam center X coordinate in pixels | direct |
 | [beam_center_y_px](beam_center_y_px.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Beam center Y coordinate in pixels | direct |
+| [beam_center_pixels](beam_center_pixels.md) | 0..1 <br/> [BeamCenterPixels](BeamCenterPixels.md) | Combined beam center pixel coordinates as reported by systems such as NSLS-II... | direct |
 | [beam_size_um](beam_size_um.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Beam size, typically specified in micrometers | direct |
+| [energy](energy.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | X-ray beam energy for this data collection strategy | direct |
 | [flux_photons_per_s](flux_photons_per_s.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Photon flux, typically specified in photons per second | direct |
 | [transmission_percent](transmission_percent.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Beam transmission, typically specified as a percentage (0-100) | direct |
 | [attenuator](attenuator.md) | 0..1 <br/> [String](String.md) | Attenuator setting used | direct |
 | [temperature_k](temperature_k.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Data collection temperature, typically specified in Kelvin | direct |
 | [oscillation_per_image_deg](oscillation_per_image_deg.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Oscillation angle per image, typically specified in degrees | direct |
+| [sweep_start](sweep_start.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Starting angle of an X-ray oscillation sweep, typically specified in degrees | direct |
+| [sweep_end](sweep_end.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Ending angle of an X-ray oscillation sweep, typically specified in degrees | direct |
 | [total_rotation_deg](total_rotation_deg.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Total rotation range, typically specified in degrees | direct |
+| [exposure_time](exposure_time.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Exposure time per image, typically specified in seconds | direct |
 | [strategy_notes](strategy_notes.md) | 0..1 <br/> [String](String.md) | Notes about data collection strategy | direct |
 | [description](description.md) | 0..1 <br/> [String](String.md) |  | [AttributeGroup](AttributeGroup.md) |
 
@@ -279,7 +339,7 @@ URI: [lambdaber:DataCollectionStrategy](https://w3id.org/lambda-ber-schema/DataC
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -288,8 +348,8 @@ URI: [lambdaber:DataCollectionStrategy](https://w3id.org/lambda-ber-schema/DataC
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:DataCollectionStrategy |
-| native | lambdaber:DataCollectionStrategy |
+| self | lambda:DataCollectionStrategy |
+| native | lambda:DataCollectionStrategy |
 
 
 
@@ -306,13 +366,13 @@ URI: [lambdaber:DataCollectionStrategy](https://w3id.org/lambda-ber-schema/DataC
 ```yaml
 name: DataCollectionStrategy
 description: Strategy for data collection
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: AttributeGroup
 attributes:
   collection_mode:
     name: collection_mode
     description: Mode of data collection
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - DataCollectionStrategy
@@ -320,7 +380,7 @@ attributes:
   total_frames:
     name: total_frames
     description: Total number of frames/images
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - DataCollectionStrategy
@@ -330,7 +390,7 @@ attributes:
     name: frame_rate
     description: Frame rate, typically specified in frames per second. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - DataCollectionStrategy
@@ -341,7 +401,7 @@ attributes:
     description: Total electron dose for cryo-EM, typically specified in electrons
       per Angstrom squared (e⁻/Å²). Data providers may specify alternative units by
       including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - ExperimentRun
     - DataCollectionStrategy
@@ -352,7 +412,7 @@ attributes:
     description: Dose per frame, typically specified in electrons per Angstrom squared
       (e⁻/Å²). Data providers may specify alternative units by including the unit
       in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - Movie
     - DataCollectionStrategy
@@ -362,7 +422,11 @@ attributes:
     name: wavelength_a
     description: X-ray wavelength, typically specified in Angstroms. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    aliases:
+    - wavelength
+    exact_mappings:
+    - mmCIF:_diffrn_radiation_wavelength.wavelength
     rank: 1000
     domain_of:
     - DataCollectionStrategy
@@ -374,7 +438,7 @@ attributes:
     comments:
     - 'For cryo-EM: counting, integrating, or super_resolution'
     - Detector technology, manufacturer, and model are specified in the Instrument
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - CryoEMInstrument
     - DataCollectionStrategy
@@ -388,7 +452,9 @@ attributes:
     - 'For cryo-EM: depends on magnification (Å/pixel)'
     - 'For X-ray: typically mm/pixel or µm/pixel'
     - Physical pixel size is hardware spec stored in Instrument
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_image_recording.calibrated_pixel_size
     rank: 1000
     domain_of:
     - DataCollectionStrategy
@@ -398,7 +464,11 @@ attributes:
     name: detector_distance_mm
     description: Detector distance, typically specified in millimeters. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    aliases:
+    - detector_distance
+    exact_mappings:
+    - mmCIF:_diffrn_detector.distance
     rank: 1000
     domain_of:
     - DataCollectionStrategy
@@ -407,7 +477,9 @@ attributes:
   beam_center_x_px:
     name: beam_center_x_px
     description: Beam center X coordinate in pixels
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_diffrn_detector.beam_center_x
     rank: 1000
     domain_of:
     - DataCollectionStrategy
@@ -416,19 +488,49 @@ attributes:
   beam_center_y_px:
     name: beam_center_y_px
     description: Beam center Y coordinate in pixels
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_diffrn_detector.beam_center_y
     rank: 1000
     domain_of:
     - DataCollectionStrategy
     range: QuantityValue
     inlined: true
+  beam_center_pixels:
+    name: beam_center_pixels
+    description: Combined beam center pixel coordinates as reported by systems such
+      as NSLS-II AMX. Use beam_center_x_px and beam_center_y_px when coordinates are
+      represented as separate strategy values.
+    from_schema: http://w3id.org/lambda/
+    aliases:
+    - beam_center
+    domain_of:
+    - ExperimentRun
+    - DataCollectionStrategy
+    range: BeamCenterPixels
+    inlined: true
   beam_size_um:
     name: beam_size_um
     description: Beam size, typically specified in micrometers. Data providers may
       specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
+    - DataCollectionStrategy
+    range: QuantityValue
+    inlined: true
+  energy:
+    name: energy
+    description: X-ray beam energy for this data collection strategy. Data providers
+      may specify eV, keV, or another appropriate energy unit in the QuantityValue.
+    from_schema: http://w3id.org/lambda/
+    aliases:
+    - beam_energy
+    exact_mappings:
+    - nsls2:Energy
+    domain_of:
+    - SANSSource
+    - ExperimentRun
     - DataCollectionStrategy
     range: QuantityValue
     inlined: true
@@ -436,7 +538,9 @@ attributes:
     name: flux_photons_per_s
     description: Photon flux, typically specified in photons per second. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_diffrn_source.pdbx_flux
     rank: 1000
     domain_of:
     - DataCollectionStrategy
@@ -446,7 +550,9 @@ attributes:
     name: transmission_percent
     description: Beam transmission, typically specified as a percentage (0-100). Data
       providers may specify as decimal fraction by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    aliases:
+    - attenuation
     rank: 1000
     domain_of:
     - DataCollectionStrategy
@@ -455,15 +561,17 @@ attributes:
   attenuator:
     name: attenuator
     description: Attenuator setting used
-    from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
+    from_schema: http://w3id.org/lambda/
     domain_of:
+    - SANSConfiguration
     - DataCollectionStrategy
   temperature_k:
     name: temperature_k
     description: Data collection temperature, typically specified in Kelvin. Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_diffrn.ambient_temp
     rank: 1000
     domain_of:
     - DataCollectionStrategy
@@ -473,9 +581,35 @@ attributes:
     name: oscillation_per_image_deg
     description: Oscillation angle per image, typically specified in degrees. Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    aliases:
+    - oscillation_width
+    exact_mappings:
+    - mmCIF:_diffrn_scan.angle_increment
     rank: 1000
     domain_of:
+    - DataCollectionStrategy
+    range: QuantityValue
+    inlined: true
+  sweep_start:
+    name: sweep_start
+    description: Starting angle of an X-ray oscillation sweep, typically specified
+      in degrees.
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_diffrn_scan_axis.angle_start
+    domain_of:
+    - ExperimentRun
+    - DataCollectionStrategy
+    range: QuantityValue
+    inlined: true
+  sweep_end:
+    name: sweep_end
+    description: Ending angle of an X-ray oscillation sweep, typically specified in
+      degrees.
+    from_schema: http://w3id.org/lambda/
+    domain_of:
+    - ExperimentRun
     - DataCollectionStrategy
     range: QuantityValue
     inlined: true
@@ -483,16 +617,33 @@ attributes:
     name: total_rotation_deg
     description: Total rotation range, typically specified in degrees. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_diffrn_scan_axis.angle_range
     rank: 1000
     domain_of:
+    - DataCollectionStrategy
+    range: QuantityValue
+    inlined: true
+  exposure_time:
+    name: exposure_time
+    description: Exposure time per image, typically specified in seconds. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - nsls2:Exposure_time
+    - ispyb:DataCollection.exposureTime
+    domain_of:
+    - ExperimentRun
+    - Image
+    - ExperimentalConditions
     - DataCollectionStrategy
     range: QuantityValue
     inlined: true
   strategy_notes:
     name: strategy_notes
     description: Notes about data collection strategy
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - DataCollectionStrategy
@@ -506,13 +657,13 @@ attributes:
 ```yaml
 name: DataCollectionStrategy
 description: Strategy for data collection
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: AttributeGroup
 attributes:
   collection_mode:
     name: collection_mode
     description: Mode of data collection
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: collection_mode
     owner: DataCollectionStrategy
@@ -522,7 +673,7 @@ attributes:
   total_frames:
     name: total_frames
     description: Total number of frames/images
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: total_frames
     owner: DataCollectionStrategy
@@ -534,7 +685,7 @@ attributes:
     name: frame_rate
     description: Frame rate, typically specified in frames per second. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: frame_rate
     owner: DataCollectionStrategy
@@ -547,7 +698,7 @@ attributes:
     description: Total electron dose for cryo-EM, typically specified in electrons
       per Angstrom squared (e⁻/Å²). Data providers may specify alternative units by
       including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: total_dose
     owner: DataCollectionStrategy
     domain_of:
@@ -560,7 +711,7 @@ attributes:
     description: Dose per frame, typically specified in electrons per Angstrom squared
       (e⁻/Å²). Data providers may specify alternative units by including the unit
       in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: dose_per_frame
     owner: DataCollectionStrategy
     domain_of:
@@ -572,7 +723,11 @@ attributes:
     name: wavelength_a
     description: X-ray wavelength, typically specified in Angstroms. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    aliases:
+    - wavelength
+    exact_mappings:
+    - mmCIF:_diffrn_radiation_wavelength.wavelength
     rank: 1000
     alias: wavelength_a
     owner: DataCollectionStrategy
@@ -586,7 +741,7 @@ attributes:
     comments:
     - 'For cryo-EM: counting, integrating, or super_resolution'
     - Detector technology, manufacturer, and model are specified in the Instrument
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: detector_mode
     owner: DataCollectionStrategy
     domain_of:
@@ -602,7 +757,9 @@ attributes:
     - 'For cryo-EM: depends on magnification (Å/pixel)'
     - 'For X-ray: typically mm/pixel or µm/pixel'
     - Physical pixel size is hardware spec stored in Instrument
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_image_recording.calibrated_pixel_size
     rank: 1000
     alias: pixel_size_calibrated
     owner: DataCollectionStrategy
@@ -614,7 +771,11 @@ attributes:
     name: detector_distance_mm
     description: Detector distance, typically specified in millimeters. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    aliases:
+    - detector_distance
+    exact_mappings:
+    - mmCIF:_diffrn_detector.distance
     rank: 1000
     alias: detector_distance_mm
     owner: DataCollectionStrategy
@@ -625,7 +786,9 @@ attributes:
   beam_center_x_px:
     name: beam_center_x_px
     description: Beam center X coordinate in pixels
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_diffrn_detector.beam_center_x
     rank: 1000
     alias: beam_center_x_px
     owner: DataCollectionStrategy
@@ -636,7 +799,9 @@ attributes:
   beam_center_y_px:
     name: beam_center_y_px
     description: Beam center Y coordinate in pixels
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_diffrn_detector.beam_center_y
     rank: 1000
     alias: beam_center_y_px
     owner: DataCollectionStrategy
@@ -644,11 +809,26 @@ attributes:
     - DataCollectionStrategy
     range: QuantityValue
     inlined: true
+  beam_center_pixels:
+    name: beam_center_pixels
+    description: Combined beam center pixel coordinates as reported by systems such
+      as NSLS-II AMX. Use beam_center_x_px and beam_center_y_px when coordinates are
+      represented as separate strategy values.
+    from_schema: http://w3id.org/lambda/
+    aliases:
+    - beam_center
+    alias: beam_center_pixels
+    owner: DataCollectionStrategy
+    domain_of:
+    - ExperimentRun
+    - DataCollectionStrategy
+    range: BeamCenterPixels
+    inlined: true
   beam_size_um:
     name: beam_size_um
     description: Beam size, typically specified in micrometers. Data providers may
       specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: beam_size_um
     owner: DataCollectionStrategy
@@ -656,11 +836,30 @@ attributes:
     - DataCollectionStrategy
     range: QuantityValue
     inlined: true
+  energy:
+    name: energy
+    description: X-ray beam energy for this data collection strategy. Data providers
+      may specify eV, keV, or another appropriate energy unit in the QuantityValue.
+    from_schema: http://w3id.org/lambda/
+    aliases:
+    - beam_energy
+    exact_mappings:
+    - nsls2:Energy
+    alias: energy
+    owner: DataCollectionStrategy
+    domain_of:
+    - SANSSource
+    - ExperimentRun
+    - DataCollectionStrategy
+    range: QuantityValue
+    inlined: true
   flux_photons_per_s:
     name: flux_photons_per_s
     description: Photon flux, typically specified in photons per second. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_diffrn_source.pdbx_flux
     rank: 1000
     alias: flux_photons_per_s
     owner: DataCollectionStrategy
@@ -672,7 +871,9 @@ attributes:
     name: transmission_percent
     description: Beam transmission, typically specified as a percentage (0-100). Data
       providers may specify as decimal fraction by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    aliases:
+    - attenuation
     rank: 1000
     alias: transmission_percent
     owner: DataCollectionStrategy
@@ -683,18 +884,20 @@ attributes:
   attenuator:
     name: attenuator
     description: Attenuator setting used
-    from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
+    from_schema: http://w3id.org/lambda/
     alias: attenuator
     owner: DataCollectionStrategy
     domain_of:
+    - SANSConfiguration
     - DataCollectionStrategy
     range: string
   temperature_k:
     name: temperature_k
     description: Data collection temperature, typically specified in Kelvin. Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_diffrn.ambient_temp
     rank: 1000
     alias: temperature_k
     owner: DataCollectionStrategy
@@ -706,7 +909,11 @@ attributes:
     name: oscillation_per_image_deg
     description: Oscillation angle per image, typically specified in degrees. Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    aliases:
+    - oscillation_width
+    exact_mappings:
+    - mmCIF:_diffrn_scan.angle_increment
     rank: 1000
     alias: oscillation_per_image_deg
     owner: DataCollectionStrategy
@@ -714,11 +921,39 @@ attributes:
     - DataCollectionStrategy
     range: QuantityValue
     inlined: true
+  sweep_start:
+    name: sweep_start
+    description: Starting angle of an X-ray oscillation sweep, typically specified
+      in degrees.
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_diffrn_scan_axis.angle_start
+    alias: sweep_start
+    owner: DataCollectionStrategy
+    domain_of:
+    - ExperimentRun
+    - DataCollectionStrategy
+    range: QuantityValue
+    inlined: true
+  sweep_end:
+    name: sweep_end
+    description: Ending angle of an X-ray oscillation sweep, typically specified in
+      degrees.
+    from_schema: http://w3id.org/lambda/
+    alias: sweep_end
+    owner: DataCollectionStrategy
+    domain_of:
+    - ExperimentRun
+    - DataCollectionStrategy
+    range: QuantityValue
+    inlined: true
   total_rotation_deg:
     name: total_rotation_deg
     description: Total rotation range, typically specified in degrees. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_diffrn_scan_axis.angle_range
     rank: 1000
     alias: total_rotation_deg
     owner: DataCollectionStrategy
@@ -726,10 +961,27 @@ attributes:
     - DataCollectionStrategy
     range: QuantityValue
     inlined: true
+  exposure_time:
+    name: exposure_time
+    description: Exposure time per image, typically specified in seconds. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - nsls2:Exposure_time
+    - ispyb:DataCollection.exposureTime
+    alias: exposure_time
+    owner: DataCollectionStrategy
+    domain_of:
+    - ExperimentRun
+    - Image
+    - ExperimentalConditions
+    - DataCollectionStrategy
+    range: QuantityValue
+    inlined: true
   strategy_notes:
     name: strategy_notes
     description: Notes about data collection strategy
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: strategy_notes
     owner: DataCollectionStrategy
@@ -738,7 +990,7 @@ attributes:
     range: string
   description:
     name: description
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: description
     owner: DataCollectionStrategy
     domain_of:

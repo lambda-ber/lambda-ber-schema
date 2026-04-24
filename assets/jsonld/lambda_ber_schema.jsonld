@@ -8579,9 +8579,33 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "experimentRun__detector",
+      "description": "Run-specific detector identifier or detector component used for data collection. Use this when a beamline/instrument can operate with multiple or swappable detectors and the detector identity is specific to this ExperimentRun.",
+      "comments": [
+        "This is optional and distinct from Instrument-level detector model/manufacturer metadata.",
+        "Use ExperimentInstrumentAssociation with role=detector when the detector is modeled as a separate Instrument record."
+      ],
+      "from_schema": "http://w3id.org/lambda/",
+      "aliases": [
+        "detector_id",
+        "detector_name"
+      ],
+      "slot_uri": "http://w3id.org/lambda/detector",
+      "alias": "detector",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "experimentRun__wavelength",
       "description": "X-ray wavelength, typically specified in Angstroms (\u00c5). Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
+      "aliases": [
+        "wavelength_a"
+      ],
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Wavelength",
         "https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#_diffrn_radiation_wavelength.wavelength",
@@ -8599,9 +8623,34 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "experimentRun__energy",
+      "description": "X-ray beam energy for this run. Data providers may specify eV, keV, or another appropriate energy unit in the QuantityValue.",
+      "from_schema": "http://w3id.org/lambda/",
+      "aliases": [
+        "beam_energy"
+      ],
+      "exact_mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Energy",
+        "https://ispyb.github.io/ISPyB/DataCollection.energy"
+      ],
+      "slot_uri": "http://w3id.org/lambda/energy",
+      "alias": "energy",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "experimentRun__oscillation_angle",
       "description": "Oscillation angle per image, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
+      "aliases": [
+        "oscillation_width",
+        "oscillation_per_image_deg"
+      ],
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Angle_increment",
         "https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#_diffrn_scan_axis.angle_increment",
@@ -8629,6 +8678,38 @@
       ],
       "slot_uri": "http://w3id.org/lambda/start_angle",
       "alias": "start_angle",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__sweep_start",
+      "description": "Starting angle of an X-ray oscillation sweep, typically specified in degrees. For multi-sweep collections, use the value for this run or acquisition segment.",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#_diffrn_scan_axis.angle_start",
+        "https://ispyb.github.io/ISPyB/DataCollection.axisStart"
+      ],
+      "slot_uri": "http://w3id.org/lambda/sweep_start",
+      "alias": "sweep_start",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__sweep_end",
+      "description": "Ending angle of an X-ray oscillation sweep, typically specified in degrees.",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/sweep_end",
+      "alias": "sweep_end",
       "owner": "ExperimentRun",
       "domain_of": [
         "ExperimentRun"
@@ -8692,9 +8773,29 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "experimentRun__beam_center_pixels",
+      "description": "Combined beam center pixel coordinates as reported by systems such as NSLS-II AMX. Use beam_center_x and beam_center_y when coordinates are represented as separate run-level values.",
+      "from_schema": "http://w3id.org/lambda/",
+      "aliases": [
+        "beam_center"
+      ],
+      "slot_uri": "http://w3id.org/lambda/beam_center_pixels",
+      "alias": "beam_center_pixels",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "BeamCenterPixels",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "experimentRun__detector_distance",
       "description": "Distance from sample to detector, typically specified in millimeters (mm). Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
+      "aliases": [
+        "detector_distance_mm"
+      ],
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Detector_distance",
         "https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#_diffrn_measurement.sample_detector_distance",
@@ -8796,6 +8897,10 @@
         "Percentage of full beam intensity used"
       ],
       "from_schema": "http://w3id.org/lambda/",
+      "aliases": [
+        "attenuation",
+        "transmission_percent"
+      ],
       "exact_mappings": [
         "https://ispyb.github.io/ISPyB/DataCollection.transmission"
       ],
@@ -8924,6 +9029,7 @@
       "description": "Exposure time per image, typically specified in seconds (s). Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
       "exact_mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Exposure_time",
         "https://ispyb.github.io/ISPyB/DataCollection.exposureTime"
       ],
       "slot_uri": "http://w3id.org/lambda/exposure_time",
@@ -12324,6 +12430,9 @@
       "name": "dataCollectionStrategy__wavelength_a",
       "description": "X-ray wavelength, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
+      "aliases": [
+        "wavelength"
+      ],
       "exact_mappings": [
         "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_radiation_wavelength.wavelength"
       ],
@@ -12380,6 +12489,9 @@
       "name": "dataCollectionStrategy__detector_distance_mm",
       "description": "Detector distance, typically specified in millimeters. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
+      "aliases": [
+        "detector_distance"
+      ],
       "exact_mappings": [
         "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_detector.distance"
       ],
@@ -12428,11 +12540,48 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "dataCollectionStrategy__beam_center_pixels",
+      "description": "Combined beam center pixel coordinates as reported by systems such as NSLS-II AMX. Use beam_center_x_px and beam_center_y_px when coordinates are represented as separate strategy values.",
+      "from_schema": "http://w3id.org/lambda/",
+      "aliases": [
+        "beam_center"
+      ],
+      "slot_uri": "http://w3id.org/lambda/beam_center_pixels",
+      "alias": "beam_center_pixels",
+      "owner": "DataCollectionStrategy",
+      "domain_of": [
+        "DataCollectionStrategy"
+      ],
+      "range": "BeamCenterPixels",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "dataCollectionStrategy__beam_size_um",
       "description": "Beam size, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
       "slot_uri": "http://w3id.org/lambda/beam_size_um",
       "alias": "beam_size_um",
+      "owner": "DataCollectionStrategy",
+      "domain_of": [
+        "DataCollectionStrategy"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataCollectionStrategy__energy",
+      "description": "X-ray beam energy for this data collection strategy. Data providers may specify eV, keV, or another appropriate energy unit in the QuantityValue.",
+      "from_schema": "http://w3id.org/lambda/",
+      "aliases": [
+        "beam_energy"
+      ],
+      "exact_mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Energy"
+      ],
+      "slot_uri": "http://w3id.org/lambda/energy",
+      "alias": "energy",
       "owner": "DataCollectionStrategy",
       "domain_of": [
         "DataCollectionStrategy"
@@ -12462,6 +12611,9 @@
       "name": "dataCollectionStrategy__transmission_percent",
       "description": "Beam transmission, typically specified as a percentage (0-100). Data providers may specify as decimal fraction by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
+      "aliases": [
+        "attenuation"
+      ],
       "slot_uri": "http://w3id.org/lambda/transmission_percent",
       "alias": "transmission_percent",
       "owner": "DataCollectionStrategy",
@@ -12506,11 +12658,45 @@
       "name": "dataCollectionStrategy__oscillation_per_image_deg",
       "description": "Oscillation angle per image, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
+      "aliases": [
+        "oscillation_width"
+      ],
       "exact_mappings": [
         "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_scan.angle_increment"
       ],
       "slot_uri": "http://w3id.org/lambda/oscillation_per_image_deg",
       "alias": "oscillation_per_image_deg",
+      "owner": "DataCollectionStrategy",
+      "domain_of": [
+        "DataCollectionStrategy"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataCollectionStrategy__sweep_start",
+      "description": "Starting angle of an X-ray oscillation sweep, typically specified in degrees.",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_scan_axis.angle_start"
+      ],
+      "slot_uri": "http://w3id.org/lambda/sweep_start",
+      "alias": "sweep_start",
+      "owner": "DataCollectionStrategy",
+      "domain_of": [
+        "DataCollectionStrategy"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataCollectionStrategy__sweep_end",
+      "description": "Ending angle of an X-ray oscillation sweep, typically specified in degrees.",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/sweep_end",
+      "alias": "sweep_end",
       "owner": "DataCollectionStrategy",
       "domain_of": [
         "DataCollectionStrategy"
@@ -12537,6 +12723,24 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "dataCollectionStrategy__exposure_time",
+      "description": "Exposure time per image, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Exposure_time",
+        "https://ispyb.github.io/ISPyB/DataCollection.exposureTime"
+      ],
+      "slot_uri": "http://w3id.org/lambda/exposure_time",
+      "alias": "exposure_time",
+      "owner": "DataCollectionStrategy",
+      "domain_of": [
+        "DataCollectionStrategy"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "dataCollectionStrategy__strategy_notes",
       "description": "Notes about data collection strategy",
       "from_schema": "http://w3id.org/lambda/",
@@ -12547,6 +12751,54 @@
         "DataCollectionStrategy"
       ],
       "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "beamCenterPixels__xbeam",
+      "description": "Beam center X coordinate in pixels",
+      "from_schema": "http://w3id.org/lambda/",
+      "aliases": [
+        "x",
+        "beam_center_x_px"
+      ],
+      "exact_mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Beam_xy_x",
+        "https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#_diffrn_detector.beam_center_x",
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_detector.beam_center_x",
+        "https://ispyb.github.io/ISPyB/DataCollection.xBeam"
+      ],
+      "slot_uri": "http://w3id.org/lambda/xbeam",
+      "alias": "xbeam",
+      "owner": "BeamCenterPixels",
+      "domain_of": [
+        "BeamCenterPixels"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "beamCenterPixels__ybeam",
+      "description": "Beam center Y coordinate in pixels",
+      "from_schema": "http://w3id.org/lambda/",
+      "aliases": [
+        "y",
+        "beam_center_y_px"
+      ],
+      "exact_mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Beam_xy_y",
+        "https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#_diffrn_detector.beam_center_y",
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_detector.beam_center_y",
+        "https://ispyb.github.io/ISPyB/DataCollection.yBeam"
+      ],
+      "slot_uri": "http://w3id.org/lambda/ybeam",
+      "alias": "ybeam",
+      "owner": "BeamCenterPixels",
+      "domain_of": [
+        "BeamCenterPixels"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -17780,12 +18032,17 @@
         "experimentRun__holes_per_group",
         "experimentRun__acquisition_software",
         "experimentRun__acquisition_software_version",
+        "experimentRun__detector",
         "experimentRun__wavelength",
+        "experimentRun__energy",
         "experimentRun__oscillation_angle",
         "experimentRun__start_angle",
+        "experimentRun__sweep_start",
+        "experimentRun__sweep_end",
         "experimentRun__number_of_images",
         "experimentRun__beam_center_x",
         "experimentRun__beam_center_y",
+        "experimentRun__beam_center_pixels",
         "experimentRun__detector_distance",
         "experimentRun__pixel_size_x",
         "experimentRun__pixel_size_y",
@@ -18033,8 +18290,25 @@
           "@type": "SlotDefinition"
         },
         {
+          "name": "detector",
+          "description": "Run-specific detector identifier or detector component used for data collection. Use this when a beamline/instrument can operate with multiple or swappable detectors and the detector identity is specific to this ExperimentRun.",
+          "comments": [
+            "This is optional and distinct from Instrument-level detector model/manufacturer metadata.",
+            "Use ExperimentInstrumentAssociation with role=detector when the detector is modeled as a separate Instrument record."
+          ],
+          "aliases": [
+            "detector_id",
+            "detector_name"
+          ],
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
           "name": "wavelength",
           "description": "X-ray wavelength, typically specified in Angstroms (\u00c5). Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "aliases": [
+            "wavelength_a"
+          ],
           "exact_mappings": [
             "nsls2:Wavelength",
             "imgCIF:_diffrn_radiation_wavelength.wavelength",
@@ -18046,8 +18320,26 @@
           "@type": "SlotDefinition"
         },
         {
+          "name": "energy",
+          "description": "X-ray beam energy for this run. Data providers may specify eV, keV, or another appropriate energy unit in the QuantityValue.",
+          "aliases": [
+            "beam_energy"
+          ],
+          "exact_mappings": [
+            "nsls2:Energy",
+            "ispyb:DataCollection.energy"
+          ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
           "name": "oscillation_angle",
           "description": "Oscillation angle per image, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "aliases": [
+            "oscillation_width",
+            "oscillation_per_image_deg"
+          ],
           "exact_mappings": [
             "nsls2:Angle_increment",
             "imgCIF:_diffrn_scan_axis.angle_increment",
@@ -18066,6 +18358,24 @@
             "imgCIF:_diffrn_scan_axis.angle_start",
             "ispyb:DataCollection.axisStart"
           ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "sweep_start",
+          "description": "Starting angle of an X-ray oscillation sweep, typically specified in degrees. For multi-sweep collections, use the value for this run or acquisition segment.",
+          "exact_mappings": [
+            "imgCIF:_diffrn_scan_axis.angle_start",
+            "ispyb:DataCollection.axisStart"
+          ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "sweep_end",
+          "description": "Ending angle of an X-ray oscillation sweep, typically specified in degrees.",
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -18104,8 +18414,21 @@
           "@type": "SlotDefinition"
         },
         {
+          "name": "beam_center_pixels",
+          "description": "Combined beam center pixel coordinates as reported by systems such as NSLS-II AMX. Use beam_center_x and beam_center_y when coordinates are represented as separate run-level values.",
+          "aliases": [
+            "beam_center"
+          ],
+          "range": "BeamCenterPixels",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
           "name": "detector_distance",
           "description": "Distance from sample to detector, typically specified in millimeters (mm). Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "aliases": [
+            "detector_distance_mm"
+          ],
           "exact_mappings": [
             "nsls2:Detector_distance",
             "imgCIF:_diffrn_measurement.sample_detector_distance",
@@ -18171,6 +18494,10 @@
           "description": "X-ray beam transmission as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.",
           "comments": [
             "Percentage of full beam intensity used"
+          ],
+          "aliases": [
+            "attenuation",
+            "transmission_percent"
           ],
           "exact_mappings": [
             "ispyb:DataCollection.transmission"
@@ -18251,6 +18578,7 @@
           "name": "exposure_time",
           "description": "Exposure time per image, typically specified in seconds (s). Data providers may specify alternative units by including the unit in the QuantityValue.",
           "exact_mappings": [
+            "nsls2:Exposure_time",
             "ispyb:DataCollection.exposureTime"
           ],
           "range": "QuantityValue",
@@ -20567,13 +20895,18 @@
         "dataCollectionStrategy__detector_distance_mm",
         "dataCollectionStrategy__beam_center_x_px",
         "dataCollectionStrategy__beam_center_y_px",
+        "dataCollectionStrategy__beam_center_pixels",
         "dataCollectionStrategy__beam_size_um",
+        "dataCollectionStrategy__energy",
         "dataCollectionStrategy__flux_photons_per_s",
         "dataCollectionStrategy__transmission_percent",
         "dataCollectionStrategy__attenuator",
         "dataCollectionStrategy__temperature_k",
         "dataCollectionStrategy__oscillation_per_image_deg",
+        "dataCollectionStrategy__sweep_start",
+        "dataCollectionStrategy__sweep_end",
         "dataCollectionStrategy__total_rotation_deg",
+        "dataCollectionStrategy__exposure_time",
         "dataCollectionStrategy__strategy_notes"
       ],
       "slot_usage": {},
@@ -20615,6 +20948,9 @@
         {
           "name": "wavelength_a",
           "description": "X-ray wavelength, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "aliases": [
+            "wavelength"
+          ],
           "exact_mappings": [
             "mmCIF:_diffrn_radiation_wavelength.wavelength"
           ],
@@ -20650,6 +20986,9 @@
         {
           "name": "detector_distance_mm",
           "description": "Detector distance, typically specified in millimeters. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "aliases": [
+            "detector_distance"
+          ],
           "exact_mappings": [
             "mmCIF:_diffrn_detector.distance"
           ],
@@ -20678,8 +21017,31 @@
           "@type": "SlotDefinition"
         },
         {
+          "name": "beam_center_pixels",
+          "description": "Combined beam center pixel coordinates as reported by systems such as NSLS-II AMX. Use beam_center_x_px and beam_center_y_px when coordinates are represented as separate strategy values.",
+          "aliases": [
+            "beam_center"
+          ],
+          "range": "BeamCenterPixels",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
           "name": "beam_size_um",
           "description": "Beam size, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "energy",
+          "description": "X-ray beam energy for this data collection strategy. Data providers may specify eV, keV, or another appropriate energy unit in the QuantityValue.",
+          "aliases": [
+            "beam_energy"
+          ],
+          "exact_mappings": [
+            "nsls2:Energy"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -20697,6 +21059,9 @@
         {
           "name": "transmission_percent",
           "description": "Beam transmission, typically specified as a percentage (0-100). Data providers may specify as decimal fraction by including the unit in the QuantityValue.",
+          "aliases": [
+            "attenuation"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -20719,9 +21084,29 @@
         {
           "name": "oscillation_per_image_deg",
           "description": "Oscillation angle per image, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "aliases": [
+            "oscillation_width"
+          ],
           "exact_mappings": [
             "mmCIF:_diffrn_scan.angle_increment"
           ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "sweep_start",
+          "description": "Starting angle of an X-ray oscillation sweep, typically specified in degrees.",
+          "exact_mappings": [
+            "mmCIF:_diffrn_scan_axis.angle_start"
+          ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "sweep_end",
+          "description": "Ending angle of an X-ray oscillation sweep, typically specified in degrees.",
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -20737,12 +21122,74 @@
           "@type": "SlotDefinition"
         },
         {
+          "name": "exposure_time",
+          "description": "Exposure time per image, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "exact_mappings": [
+            "nsls2:Exposure_time",
+            "ispyb:DataCollection.exposureTime"
+          ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
           "name": "strategy_notes",
           "description": "Notes about data collection strategy",
           "@type": "SlotDefinition"
         }
       ],
       "class_uri": "http://w3id.org/lambda/DataCollectionStrategy",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "BeamCenterPixels",
+      "definition_uri": "http://w3id.org/lambda/BeamCenterPixels",
+      "description": "Combined beam center coordinates in detector pixel units",
+      "from_schema": "http://w3id.org/lambda/",
+      "is_a": "AttributeGroup",
+      "slots": [
+        "attributeGroup__description",
+        "beamCenterPixels__xbeam",
+        "beamCenterPixels__ybeam"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "xbeam",
+          "description": "Beam center X coordinate in pixels",
+          "aliases": [
+            "x",
+            "beam_center_x_px"
+          ],
+          "exact_mappings": [
+            "nsls2:Beam_xy_x",
+            "imgCIF:_diffrn_detector.beam_center_x",
+            "mmCIF:_diffrn_detector.beam_center_x",
+            "ispyb:DataCollection.xBeam"
+          ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "ybeam",
+          "description": "Beam center Y coordinate in pixels",
+          "aliases": [
+            "y",
+            "beam_center_y_px"
+          ],
+          "exact_mappings": [
+            "nsls2:Beam_xy_y",
+            "imgCIF:_diffrn_detector.beam_center_y",
+            "mmCIF:_diffrn_detector.beam_center_y",
+            "ispyb:DataCollection.yBeam"
+          ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "http://w3id.org/lambda/BeamCenterPixels",
       "@type": "ClassDefinition"
     },
     {
@@ -23071,9 +23518,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda_ber_schema.yaml",
-  "source_file_date": "2026-04-24T13:43:13",
-  "source_file_size": 177640,
-  "generation_date": "2026-04-24T14:02:29",
+  "source_file_date": "2026-04-24T14:25:49",
+  "source_file_size": 182225,
+  "generation_date": "2026-04-24T14:37:26",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda_ber_schema.context.jsonld",

@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:quality_metrics](https://w3id.org/lambda-ber-schema/quality_metrics)
+URI: [lambda:quality_metrics](http://w3id.org/lambda/quality_metrics)
 Alias: quality_metrics
 
 <!-- no inheritance hierarchy -->
@@ -17,8 +17,8 @@ Alias: quality_metrics
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentRun](ExperimentRun.md) | An experimental data collection session |  no  |
 | [Sample](Sample.md) | A biological sample used in structural biology experiments |  no  |
+| [ExperimentRun](ExperimentRun.md) | An experimental data collection session |  no  |
 
 
 
@@ -44,8 +44,8 @@ Alias: quality_metrics
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:quality_metrics |
-| native | lambdaber:quality_metrics |
+| self | lambda:quality_metrics |
+| native | lambda:quality_metrics |
 
 
 

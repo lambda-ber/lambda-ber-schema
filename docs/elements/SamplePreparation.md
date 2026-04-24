@@ -9,7 +9,7 @@ _A process that prepares a sample for imaging_
 
 
 
-URI: [lambdaber:SamplePreparation](https://w3id.org/lambda-ber-schema/SamplePreparation)
+URI: [lambda:SamplePreparation](http://w3id.org/lambda/SamplePreparation)
 
 
 
@@ -319,7 +319,7 @@ URI: [lambdaber:SamplePreparation](https://w3id.org/lambda-ber-schema/SamplePrep
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -328,8 +328,8 @@ URI: [lambdaber:SamplePreparation](https://w3id.org/lambda-ber-schema/SamplePrep
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:SamplePreparation |
-| native | lambdaber:SamplePreparation |
+| self | lambda:SamplePreparation |
+| native | lambda:SamplePreparation |
 
 
 
@@ -346,13 +346,13 @@ URI: [lambdaber:SamplePreparation](https://w3id.org/lambda-ber-schema/SamplePrep
 ```yaml
 name: SamplePreparation
 description: A process that prepares a sample for imaging
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: NamedThing
 attributes:
   preparation_type:
     name: preparation_type
     description: Type of sample preparation
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SamplePreparation
@@ -361,7 +361,7 @@ attributes:
   sample_id:
     name: sample_id
     description: Reference to the sample being prepared
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SamplePreparation
@@ -372,7 +372,7 @@ attributes:
   preparation_date:
     name: preparation_date
     description: Date of sample preparation
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SamplePreparation
@@ -380,7 +380,7 @@ attributes:
     name: operator_id
     description: Identifier or name of the person who performed the sample preparation
       (e.g., 'jsmith', 'John Smith', or personnel ID)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SamplePreparation
@@ -389,14 +389,14 @@ attributes:
   protocol_description:
     name: protocol_description
     description: Detailed protocol description
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SamplePreparation
   expression_system:
     name: expression_system
     description: Expression system used for recombinant protein production
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - Sample
     - SamplePreparation
@@ -404,7 +404,7 @@ attributes:
   host_strain_or_cell_line:
     name: host_strain_or_cell_line
     description: Specific strain or cell line used (e.g., BL21(DE3), Sf9, HEK293F)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SamplePreparation
@@ -412,7 +412,7 @@ attributes:
     name: culture_volume_l
     description: Culture volume, typically specified in liters (L). Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SamplePreparation
@@ -421,14 +421,14 @@ attributes:
   medium:
     name: medium
     description: Growth medium used
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SamplePreparation
   antibiotic_selection:
     name: antibiotic_selection
     description: Antibiotic or selection agent used
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SamplePreparation
@@ -437,7 +437,7 @@ attributes:
     description: Growth temperature, typically specified in degrees Celsius. Data
       providers may specify alternative units (e.g., Kelvin) by including the unit
       in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SamplePreparation
@@ -446,14 +446,14 @@ attributes:
   induction_agent:
     name: induction_agent
     description: Agent used to induce expression (e.g., IPTG, tetracycline)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SamplePreparation
   inducer_concentration:
     name: inducer_concentration
     description: Concentration of induction agent
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SamplePreparation
@@ -461,7 +461,7 @@ attributes:
     name: induction_temperature_c
     description: Temperature during induction, typically specified in degrees Celsius.
       Data providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SamplePreparation
@@ -472,7 +472,7 @@ attributes:
     description: Duration of induction, typically specified in hours. Data providers
       may specify alternative units (e.g., minutes, seconds) by including the unit
       in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SamplePreparation
@@ -482,7 +482,7 @@ attributes:
     name: od600_at_induction
     description: Optical density at 600nm when induction was started. Data providers
       may include unit information in the QuantityValue if needed.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SamplePreparation
@@ -491,28 +491,28 @@ attributes:
   harvest_timepoint:
     name: harvest_timepoint
     description: Time point when cells were harvested
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SamplePreparation
   lysis_method:
     name: lysis_method
     description: Method used for cell lysis
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SamplePreparation
   protease_inhibitors:
     name: protease_inhibitors
     description: Protease inhibitors added
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SamplePreparation
   purification_steps:
     name: purification_steps
     description: Ordered list of purification steps performed
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SamplePreparation
@@ -521,42 +521,42 @@ attributes:
   affinity_type:
     name: affinity_type
     description: Type of affinity chromatography
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SamplePreparation
   affinity_column:
     name: affinity_column
     description: Affinity column specifications
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SamplePreparation
   lysis_buffer:
     name: lysis_buffer
     description: Buffer composition for lysis
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SamplePreparation
   wash_buffer:
     name: wash_buffer
     description: Buffer composition for washing
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SamplePreparation
   elution_buffer:
     name: elution_buffer
     description: Buffer composition for elution
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SamplePreparation
   tag_removal:
     name: tag_removal
     description: Whether and how affinity tag was removed
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SamplePreparation
@@ -564,21 +564,21 @@ attributes:
   protease:
     name: protease
     description: Protease used for tag cleavage
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SamplePreparation
   protease_ratio:
     name: protease_ratio
     description: Ratio of protease to protein
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SamplePreparation
   cleavage_time_h:
     name: cleavage_time_h
     description: Duration of protease cleavage in hours
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SamplePreparation
@@ -587,7 +587,7 @@ attributes:
   cleavage_temperature_c:
     name: cleavage_temperature_c
     description: Temperature during cleavage in Celsius
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SamplePreparation
@@ -596,56 +596,56 @@ attributes:
   second_affinity_reverse:
     name: second_affinity_reverse
     description: Second affinity or reverse affinity step
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SamplePreparation
   iex_column:
     name: iex_column
     description: Ion-exchange column used
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SamplePreparation
   hic_column:
     name: hic_column
     description: Hydrophobic interaction column used
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SamplePreparation
   sec_column:
     name: sec_column
     description: Size-exclusion column used
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SamplePreparation
   sec_buffer:
     name: sec_buffer
     description: Buffer for size-exclusion chromatography
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SamplePreparation
   concentration_method:
     name: concentration_method
     description: Method used to concentrate protein
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SamplePreparation
   final_buffer:
     name: final_buffer
     description: Final buffer composition after purification
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SamplePreparation
   final_concentration_mg_per_ml:
     name: final_concentration_mg_per_ml
     description: Final protein concentration in mg/mL
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SamplePreparation
@@ -654,7 +654,7 @@ attributes:
   yield_mg:
     name: yield_mg
     description: Total yield in milligrams
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SamplePreparation
@@ -663,7 +663,7 @@ attributes:
   purity_by_sds_page_percent:
     name: purity_by_sds_page_percent
     description: Purity percentage by SDS-PAGE
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SamplePreparation
@@ -672,14 +672,14 @@ attributes:
   aggregation_assessment:
     name: aggregation_assessment
     description: Assessment of protein aggregation state
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SamplePreparation
   aliquoting:
     name: aliquoting
     description: How the protein was aliquoted for storage
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SamplePreparation
@@ -693,13 +693,13 @@ attributes:
 ```yaml
 name: SamplePreparation
 description: A process that prepares a sample for imaging
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: NamedThing
 attributes:
   preparation_type:
     name: preparation_type
     description: Type of sample preparation
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: preparation_type
     owner: SamplePreparation
@@ -710,7 +710,7 @@ attributes:
   sample_id:
     name: sample_id
     description: Reference to the sample being prepared
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: sample_id
     owner: SamplePreparation
@@ -723,7 +723,7 @@ attributes:
   preparation_date:
     name: preparation_date
     description: Date of sample preparation
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: preparation_date
     owner: SamplePreparation
@@ -734,7 +734,7 @@ attributes:
     name: operator_id
     description: Identifier or name of the person who performed the sample preparation
       (e.g., 'jsmith', 'John Smith', or personnel ID)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: operator_id
     owner: SamplePreparation
@@ -745,7 +745,7 @@ attributes:
   protocol_description:
     name: protocol_description
     description: Detailed protocol description
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: protocol_description
     owner: SamplePreparation
@@ -755,7 +755,7 @@ attributes:
   expression_system:
     name: expression_system
     description: Expression system used for recombinant protein production
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: expression_system
     owner: SamplePreparation
     domain_of:
@@ -765,7 +765,7 @@ attributes:
   host_strain_or_cell_line:
     name: host_strain_or_cell_line
     description: Specific strain or cell line used (e.g., BL21(DE3), Sf9, HEK293F)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: host_strain_or_cell_line
     owner: SamplePreparation
@@ -776,7 +776,7 @@ attributes:
     name: culture_volume_l
     description: Culture volume, typically specified in liters (L). Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: culture_volume_l
     owner: SamplePreparation
@@ -787,7 +787,7 @@ attributes:
   medium:
     name: medium
     description: Growth medium used
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: medium
     owner: SamplePreparation
@@ -797,7 +797,7 @@ attributes:
   antibiotic_selection:
     name: antibiotic_selection
     description: Antibiotic or selection agent used
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: antibiotic_selection
     owner: SamplePreparation
@@ -809,7 +809,7 @@ attributes:
     description: Growth temperature, typically specified in degrees Celsius. Data
       providers may specify alternative units (e.g., Kelvin) by including the unit
       in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: growth_temperature_c
     owner: SamplePreparation
@@ -820,7 +820,7 @@ attributes:
   induction_agent:
     name: induction_agent
     description: Agent used to induce expression (e.g., IPTG, tetracycline)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: induction_agent
     owner: SamplePreparation
@@ -830,7 +830,7 @@ attributes:
   inducer_concentration:
     name: inducer_concentration
     description: Concentration of induction agent
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: inducer_concentration
     owner: SamplePreparation
@@ -841,7 +841,7 @@ attributes:
     name: induction_temperature_c
     description: Temperature during induction, typically specified in degrees Celsius.
       Data providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: induction_temperature_c
     owner: SamplePreparation
@@ -854,7 +854,7 @@ attributes:
     description: Duration of induction, typically specified in hours. Data providers
       may specify alternative units (e.g., minutes, seconds) by including the unit
       in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: induction_time_h
     owner: SamplePreparation
@@ -866,7 +866,7 @@ attributes:
     name: od600_at_induction
     description: Optical density at 600nm when induction was started. Data providers
       may include unit information in the QuantityValue if needed.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: od600_at_induction
     owner: SamplePreparation
@@ -877,7 +877,7 @@ attributes:
   harvest_timepoint:
     name: harvest_timepoint
     description: Time point when cells were harvested
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: harvest_timepoint
     owner: SamplePreparation
@@ -887,7 +887,7 @@ attributes:
   lysis_method:
     name: lysis_method
     description: Method used for cell lysis
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: lysis_method
     owner: SamplePreparation
@@ -897,7 +897,7 @@ attributes:
   protease_inhibitors:
     name: protease_inhibitors
     description: Protease inhibitors added
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: protease_inhibitors
     owner: SamplePreparation
@@ -907,7 +907,7 @@ attributes:
   purification_steps:
     name: purification_steps
     description: Ordered list of purification steps performed
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: purification_steps
     owner: SamplePreparation
@@ -918,7 +918,7 @@ attributes:
   affinity_type:
     name: affinity_type
     description: Type of affinity chromatography
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: affinity_type
     owner: SamplePreparation
@@ -928,7 +928,7 @@ attributes:
   affinity_column:
     name: affinity_column
     description: Affinity column specifications
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: affinity_column
     owner: SamplePreparation
@@ -938,7 +938,7 @@ attributes:
   lysis_buffer:
     name: lysis_buffer
     description: Buffer composition for lysis
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: lysis_buffer
     owner: SamplePreparation
@@ -948,7 +948,7 @@ attributes:
   wash_buffer:
     name: wash_buffer
     description: Buffer composition for washing
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: wash_buffer
     owner: SamplePreparation
@@ -958,7 +958,7 @@ attributes:
   elution_buffer:
     name: elution_buffer
     description: Buffer composition for elution
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: elution_buffer
     owner: SamplePreparation
@@ -968,7 +968,7 @@ attributes:
   tag_removal:
     name: tag_removal
     description: Whether and how affinity tag was removed
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: tag_removal
     owner: SamplePreparation
@@ -978,7 +978,7 @@ attributes:
   protease:
     name: protease
     description: Protease used for tag cleavage
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: protease
     owner: SamplePreparation
@@ -988,7 +988,7 @@ attributes:
   protease_ratio:
     name: protease_ratio
     description: Ratio of protease to protein
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: protease_ratio
     owner: SamplePreparation
@@ -998,7 +998,7 @@ attributes:
   cleavage_time_h:
     name: cleavage_time_h
     description: Duration of protease cleavage in hours
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: cleavage_time_h
     owner: SamplePreparation
@@ -1009,7 +1009,7 @@ attributes:
   cleavage_temperature_c:
     name: cleavage_temperature_c
     description: Temperature during cleavage in Celsius
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: cleavage_temperature_c
     owner: SamplePreparation
@@ -1020,7 +1020,7 @@ attributes:
   second_affinity_reverse:
     name: second_affinity_reverse
     description: Second affinity or reverse affinity step
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: second_affinity_reverse
     owner: SamplePreparation
@@ -1030,7 +1030,7 @@ attributes:
   iex_column:
     name: iex_column
     description: Ion-exchange column used
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: iex_column
     owner: SamplePreparation
@@ -1040,7 +1040,7 @@ attributes:
   hic_column:
     name: hic_column
     description: Hydrophobic interaction column used
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: hic_column
     owner: SamplePreparation
@@ -1050,7 +1050,7 @@ attributes:
   sec_column:
     name: sec_column
     description: Size-exclusion column used
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: sec_column
     owner: SamplePreparation
@@ -1060,7 +1060,7 @@ attributes:
   sec_buffer:
     name: sec_buffer
     description: Buffer for size-exclusion chromatography
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: sec_buffer
     owner: SamplePreparation
@@ -1070,7 +1070,7 @@ attributes:
   concentration_method:
     name: concentration_method
     description: Method used to concentrate protein
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: concentration_method
     owner: SamplePreparation
@@ -1080,7 +1080,7 @@ attributes:
   final_buffer:
     name: final_buffer
     description: Final buffer composition after purification
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: final_buffer
     owner: SamplePreparation
@@ -1090,7 +1090,7 @@ attributes:
   final_concentration_mg_per_ml:
     name: final_concentration_mg_per_ml
     description: Final protein concentration in mg/mL
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: final_concentration_mg_per_ml
     owner: SamplePreparation
@@ -1101,7 +1101,7 @@ attributes:
   yield_mg:
     name: yield_mg
     description: Total yield in milligrams
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: yield_mg
     owner: SamplePreparation
@@ -1112,7 +1112,7 @@ attributes:
   purity_by_sds_page_percent:
     name: purity_by_sds_page_percent
     description: Purity percentage by SDS-PAGE
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: purity_by_sds_page_percent
     owner: SamplePreparation
@@ -1123,7 +1123,7 @@ attributes:
   aggregation_assessment:
     name: aggregation_assessment
     description: Assessment of protein aggregation state
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: aggregation_assessment
     owner: SamplePreparation
@@ -1133,7 +1133,7 @@ attributes:
   aliquoting:
     name: aliquoting
     description: How the protein was aliquoted for storage
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: aliquoting
     owner: SamplePreparation
@@ -1145,7 +1145,7 @@ attributes:
     description: Globally unique identifier as an IRI or CURIE for machine processing
       and external references. Used for linking data across systems and semantic web
       integration.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     identifier: true
     alias: id
@@ -1158,7 +1158,7 @@ attributes:
   title:
     name: title
     description: A human-readable name or title for this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     slot_uri: dcterms:title
     alias: title
@@ -1169,7 +1169,7 @@ attributes:
   description:
     name: description
     description: A detailed textual description of this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: description
     owner: SamplePreparation
