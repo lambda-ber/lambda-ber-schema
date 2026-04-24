@@ -7,6 +7,9 @@
 # Note: markdown docs are generated via gen-doc to docs/elements/ (in Makefile gendoc target)
 excludes:
   - markdown
+  # ShEx generation currently fails under Python 3.14 due to a pyjsg/ShExJSG
+  # compatibility issue during gen-project initialization.
+  - shex
 
 # Alternatively only specify the generators to run
 # (comment out the above "excludes" section)
