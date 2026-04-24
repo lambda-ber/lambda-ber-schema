@@ -9,7 +9,7 @@ _Growth temperature, typically specified in degrees Celsius. Data providers may 
 
 
 
-URI: [lambdaber:growth_temperature_c](https://w3id.org/lambda-ber-schema/growth_temperature_c)
+URI: [lambda:growth_temperature_c](http://w3id.org/lambda/growth_temperature_c)
 Alias: growth_temperature_c
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: growth_temperature_c
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: growth_temperature_c
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:growth_temperature_c |
-| native | lambdaber:growth_temperature_c |
+| self | lambda:growth_temperature_c |
+| native | lambda:growth_temperature_c |
 
 
 
@@ -68,7 +68,7 @@ Alias: growth_temperature_c
 name: growth_temperature_c
 description: Growth temperature, typically specified in degrees Celsius. Data providers
   may specify alternative units (e.g., Kelvin) by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: growth_temperature_c
 owner: SamplePreparation

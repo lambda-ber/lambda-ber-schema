@@ -9,7 +9,7 @@ _Accelerating voltage value used during CTF estimation, typically specified in k
 
 
 
-URI: [lambdaber:voltage_used_in_estimation](https://w3id.org/lambda-ber-schema/voltage_used_in_estimation)
+URI: [lambda:voltage_used_in_estimation](http://w3id.org/lambda/voltage_used_in_estimation)
 Alias: voltage_used_in_estimation
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: voltage_used_in_estimation
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: voltage_used_in_estimation
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:voltage_used_in_estimation |
-| native | lambdaber:voltage_used_in_estimation |
+| self | lambda:voltage_used_in_estimation |
+| native | lambda:voltage_used_in_estimation |
 
 
 
@@ -69,7 +69,7 @@ name: voltage_used_in_estimation
 description: Accelerating voltage value used during CTF estimation, typically specified
   in kilovolts (kV); may differ from instrument specification. Data providers may
   specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: voltage_used_in_estimation
 owner: CTFEstimationParameters

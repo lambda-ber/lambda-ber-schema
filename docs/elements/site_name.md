@@ -9,7 +9,7 @@ _Common name for this site_
 
 
 
-URI: [lambdaber:site_name](https://w3id.org/lambda-ber-schema/site_name)
+URI: [lambda:site_name](http://w3id.org/lambda/site_name)
 Alias: site_name
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: site_name
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: site_name
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:site_name |
-| native | lambdaber:site_name |
+| self | lambda:site_name |
+| native | lambda:site_name |
 
 
 
@@ -67,7 +67,7 @@ Alias: site_name
 ```yaml
 name: site_name
 description: Common name for this site
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: site_name
 owner: FunctionalSite

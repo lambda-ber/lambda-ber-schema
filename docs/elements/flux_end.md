@@ -9,7 +9,7 @@ _Photon flux at end of data collection, typically specified in photons per secon
 
 
 
-URI: [lambdaber:flux_end](https://w3id.org/lambda-ber-schema/flux_end)
+URI: [lambda:flux_end](http://w3id.org/lambda/flux_end)
 Alias: flux_end
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: flux_end
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: flux_end
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:flux_end |
-| native | lambdaber:flux_end |
+| self | lambda:flux_end |
+| native | lambda:flux_end |
 | exact | ispyb:DataCollection.flux_end |
 
 
@@ -70,7 +70,7 @@ name: flux_end
 description: Photon flux at end of data collection, typically specified in photons
   per second. Data providers may specify alternative units by including the unit in
   the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 exact_mappings:
 - ispyb:DataCollection.flux_end
 rank: 1000

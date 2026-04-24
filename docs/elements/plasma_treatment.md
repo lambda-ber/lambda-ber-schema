@@ -9,7 +9,7 @@ _Plasma treatment details_
 
 
 
-URI: [lambdaber:plasma_treatment](https://w3id.org/lambda-ber-schema/plasma_treatment)
+URI: [lambda:plasma_treatment](http://w3id.org/lambda/plasma_treatment)
 Alias: plasma_treatment
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: plasma_treatment
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: plasma_treatment
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:plasma_treatment |
-| native | lambdaber:plasma_treatment |
+| self | lambda:plasma_treatment |
+| native | lambda:plasma_treatment |
 
 
 
@@ -67,7 +67,7 @@ Alias: plasma_treatment
 ```yaml
 name: plasma_treatment
 description: Plasma treatment details
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: plasma_treatment
 owner: CryoEMPreparation

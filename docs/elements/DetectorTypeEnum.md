@@ -7,7 +7,7 @@ _DEPRECATED: Use DetectorTechnologyEnum instead. Legacy enum mixing technologies
 
 
 
-URI: [lambdaber:DetectorTypeEnum](https://w3id.org/lambda-ber-schema/DetectorTypeEnum)
+URI: [lambda:DetectorTypeEnum](http://w3id.org/lambda/DetectorTypeEnum)
 
 ## Permissible Values
 
@@ -40,7 +40,7 @@ URI: [lambdaber:DetectorTypeEnum](https://w3id.org/lambda-ber-schema/DetectorTyp
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -56,7 +56,7 @@ description: 'DEPRECATED: Use DetectorTechnologyEnum instead. Legacy enum mixing
   and brands.'
 deprecated: Use DetectorTechnologyEnum for detector technology, and separate manufacturer/model
   fields
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   direct_electron:

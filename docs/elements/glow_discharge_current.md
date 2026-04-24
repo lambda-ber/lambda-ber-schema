@@ -9,7 +9,7 @@ _Glow discharge current, typically specified in milliamperes. Data providers may
 
 
 
-URI: [lambdaber:glow_discharge_current](https://w3id.org/lambda-ber-schema/glow_discharge_current)
+URI: [lambda:glow_discharge_current](http://w3id.org/lambda/glow_discharge_current)
 Alias: glow_discharge_current
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: glow_discharge_current
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: glow_discharge_current
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:glow_discharge_current |
-| native | lambdaber:glow_discharge_current |
+| self | lambda:glow_discharge_current |
+| native | lambda:glow_discharge_current |
 
 
 
@@ -68,7 +68,7 @@ Alias: glow_discharge_current
 name: glow_discharge_current
 description: Glow discharge current, typically specified in milliamperes. Data providers
   may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: glow_discharge_current
 owner: CryoEMPreparation

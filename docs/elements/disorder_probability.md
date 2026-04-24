@@ -9,7 +9,7 @@ _Probability of disorder (range: 0-1)_
 
 
 
-URI: [lambdaber:disorder_probability](https://w3id.org/lambda-ber-schema/disorder_probability)
+URI: [lambda:disorder_probability](http://w3id.org/lambda/disorder_probability)
 Alias: disorder_probability
 
 <!-- no inheritance hierarchy -->
@@ -50,7 +50,7 @@ Alias: disorder_probability
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -59,8 +59,8 @@ Alias: disorder_probability
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:disorder_probability |
-| native | lambdaber:disorder_probability |
+| self | lambda:disorder_probability |
+| native | lambda:disorder_probability |
 
 
 
@@ -71,7 +71,7 @@ Alias: disorder_probability
 ```yaml
 name: disorder_probability
 description: 'Probability of disorder (range: 0-1)'
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: disorder_probability
 owner: StructuralFeature

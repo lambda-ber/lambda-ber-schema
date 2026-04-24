@@ -9,7 +9,7 @@ _Links between experiments and instruments (M:N)_
 
 
 
-URI: [lambdaber:experiment_instrument_associations](https://w3id.org/lambda-ber-schema/experiment_instrument_associations)
+URI: [lambda:experiment_instrument_associations](http://w3id.org/lambda/experiment_instrument_associations)
 Alias: experiment_instrument_associations
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: experiment_instrument_associations
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: experiment_instrument_associations
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:experiment_instrument_associations |
-| native | lambdaber:experiment_instrument_associations |
+| self | lambda:experiment_instrument_associations |
+| native | lambda:experiment_instrument_associations |
 
 
 
@@ -69,7 +69,7 @@ Alias: experiment_instrument_associations
 ```yaml
 name: experiment_instrument_associations
 description: Links between experiments and instruments (M:N)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: experiment_instrument_associations
 owner: Dataset

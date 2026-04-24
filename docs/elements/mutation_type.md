@@ -9,7 +9,7 @@ _Type of mutation_
 
 
 
-URI: [lambdaber:mutation_type](https://w3id.org/lambda-ber-schema/mutation_type)
+URI: [lambda:mutation_type](http://w3id.org/lambda/mutation_type)
 Alias: mutation_type
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: mutation_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: mutation_type
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:mutation_type |
-| native | lambdaber:mutation_type |
+| self | lambda:mutation_type |
+| native | lambda:mutation_type |
 
 
 
@@ -67,7 +67,7 @@ Alias: mutation_type
 ```yaml
 name: mutation_type
 description: Type of mutation
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: mutation_type
 owner: MutationEffect

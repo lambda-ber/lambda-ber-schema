@@ -9,7 +9,7 @@ _Affinity tag (e.g., His6, GST, MBP)_
 
 
 
-URI: [nsls2:Tag](https://github.com/NSLS2/BER-LAMBDA/Tag)
+URI: [lambda:tag](http://w3id.org/lambda/tag)
 Alias: tag
 
 <!-- no inheritance hierarchy -->
@@ -36,10 +36,6 @@ Alias: tag
 
 
 
-## Comments
-
-* Maps to NSLS2 spreadsheet: Tag
-
 ## Identifier and Mapping Information
 
 
@@ -50,7 +46,7 @@ Alias: tag
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -59,8 +55,9 @@ Alias: tag
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | nsls2:Tag |
-| native | lambdaber:tag |
+| self | lambda:tag |
+| native | lambda:tag |
+| exact | nsls2:Tag |
 
 
 
@@ -71,11 +68,10 @@ Alias: tag
 ```yaml
 name: tag
 description: Affinity tag (e.g., His6, GST, MBP)
-comments:
-- 'Maps to NSLS2 spreadsheet: Tag'
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- nsls2:Tag
 rank: 1000
-slot_uri: nsls2:Tag
 alias: tag
 owner: Sample
 domain_of:

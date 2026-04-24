@@ -9,7 +9,7 @@ _Nominal defocus value, typically specified in micrometers. Data providers may s
 
 
 
-URI: [lambdaber:nominal_defocus](https://w3id.org/lambda-ber-schema/nominal_defocus)
+URI: [lambda:nominal_defocus](http://w3id.org/lambda/nominal_defocus)
 Alias: nominal_defocus
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: nominal_defocus
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: nominal_defocus
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:nominal_defocus |
-| native | lambdaber:nominal_defocus |
+| self | lambda:nominal_defocus |
+| native | lambda:nominal_defocus |
 
 
 
@@ -68,7 +68,7 @@ Alias: nominal_defocus
 name: nominal_defocus
 description: Nominal defocus value, typically specified in micrometers. Data providers
   may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: nominal_defocus
 owner: Movie

@@ -258,6 +258,42 @@
             "title": "Attribute",
             "type": "object"
         },
+        "BeamCenterPixels": {
+            "additionalProperties": false,
+            "description": "Combined beam center coordinates in detector pixel units",
+            "properties": {
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "xbeam": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Beam center X coordinate in pixels"
+                },
+                "ybeam": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Beam center Y coordinate in pixels"
+                }
+            },
+            "title": "BeamCenterPixels",
+            "type": "object"
+        },
         "BeamlineEnum": {
             "description": "Specific beamline instances at DOE and other major structural biology facilities",
             "enum": [
@@ -1650,6 +1686,17 @@
                         "null"
                     ]
                 },
+                "beam_center_pixels": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/BeamCenterPixels"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Combined beam center pixel coordinates as reported by systems such as NSLS-II AMX. Use beam_center_x_px and beam_center_y_px when coordinates are represented as separate strategy values."
+                },
                 "beam_center_x_px": {
                     "anyOf": [
                         {
@@ -1719,6 +1766,28 @@
                     ],
                     "description": "Dose per frame, typically specified in electrons per Angstrom squared (e\u207b/\u00c5\u00b2). Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
+                "energy": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "X-ray beam energy for this data collection strategy. Data providers may specify eV, keV, or another appropriate energy unit in the QuantityValue."
+                },
+                "exposure_time": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Exposure time per image, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue."
+                },
                 "flux_photons_per_s": {
                     "anyOf": [
                         {
@@ -1769,6 +1838,28 @@
                         "string",
                         "null"
                     ]
+                },
+                "sweep_end": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Ending angle of an X-ray oscillation sweep, typically specified in degrees."
+                },
+                "sweep_start": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Starting angle of an X-ray oscillation sweep, typically specified in degrees."
                 },
                 "temperature_k": {
                     "anyOf": [
@@ -2545,6 +2636,17 @@
                         "null"
                     ]
                 },
+                "beam_center_pixels": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/BeamCenterPixels"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Combined beam center pixel coordinates as reported by systems such as NSLS-II AMX. Use beam_center_x and beam_center_y when coordinates are represented as separate run-level values."
+                },
                 "beam_center_x": {
                     "anyOf": [
                         {
@@ -2673,6 +2775,13 @@
                         "null"
                     ]
                 },
+                "detector": {
+                    "description": "Run-specific detector identifier or detector component used for data collection. Use this when a beamline/instrument can operate with multiple or swappable detectors and the detector identity is specific to this ExperimentRun.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "detector_distance": {
                     "anyOf": [
                         {
@@ -2701,6 +2810,17 @@
                         "string",
                         "null"
                     ]
+                },
+                "energy": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "X-ray beam energy for this run. Data providers may specify eV, keV, or another appropriate energy unit in the QuantityValue."
                 },
                 "experiment_code": {
                     "description": "Human-friendly laboratory or facility identifier for the experiment (e.g., 'SIBYLS-2024-02-01-hetBGL', 'CRYOEM-RUN-240815-001'). Used for local tracking and cross-referencing within laboratory systems.",
@@ -2987,6 +3107,28 @@
                         "string",
                         "null"
                     ]
+                },
+                "sweep_end": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Ending angle of an X-ray oscillation sweep, typically specified in degrees."
+                },
+                "sweep_start": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Starting angle of an X-ray oscillation sweep, typically specified in degrees. For multi-sweep collections, use the value for this run or acquisition segment."
                 },
                 "synchrotron_mode": {
                     "description": "Synchrotron storage ring fill mode",

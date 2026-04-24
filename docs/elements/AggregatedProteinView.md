@@ -9,7 +9,7 @@ _Aggregated view of all structural and functional data for a protein_
 
 
 
-URI: [lambdaber:AggregatedProteinView](https://w3id.org/lambda-ber-schema/AggregatedProteinView)
+URI: [lambda:AggregatedProteinView](http://w3id.org/lambda/AggregatedProteinView)
 
 
 
@@ -203,7 +203,7 @@ URI: [lambdaber:AggregatedProteinView](https://w3id.org/lambda-ber-schema/Aggreg
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -212,8 +212,8 @@ URI: [lambdaber:AggregatedProteinView](https://w3id.org/lambda-ber-schema/Aggreg
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:AggregatedProteinView |
-| native | lambdaber:AggregatedProteinView |
+| self | lambda:AggregatedProteinView |
+| native | lambda:AggregatedProteinView |
 
 
 
@@ -230,13 +230,13 @@ URI: [lambdaber:AggregatedProteinView](https://w3id.org/lambda-ber-schema/Aggreg
 ```yaml
 name: AggregatedProteinView
 description: Aggregated view of all structural and functional data for a protein
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: NamedThing
 attributes:
   uniprot_id:
     name: uniprot_id
     description: UniProt accession
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     domain_of:
     - ProteinConstruct
     - AggregatedProteinView
@@ -244,7 +244,7 @@ attributes:
   protein_name:
     name: protein_name
     description: Protein name
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     domain_of:
     - Sample
     - AggregatedProteinView
@@ -252,14 +252,14 @@ attributes:
   organism:
     name: organism
     description: Source organism
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     domain_of:
     - Sample
     - AggregatedProteinView
   organism_id:
     name: organism_id
     description: NCBI taxonomy ID
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - AggregatedProteinView
@@ -267,7 +267,7 @@ attributes:
   pdb_entries:
     name: pdb_entries
     description: All PDB entries for this protein
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     domain_of:
     - ConformationalState
     - AggregatedProteinView
@@ -275,7 +275,7 @@ attributes:
   functional_sites:
     name: functional_sites
     description: All functional site annotations
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     domain_of:
     - Sample
     - AggregatedProteinView
@@ -286,7 +286,7 @@ attributes:
   structural_features:
     name: structural_features
     description: All structural feature annotations
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     domain_of:
     - Sample
     - AggregatedProteinView
@@ -297,7 +297,7 @@ attributes:
   protein_interactions:
     name: protein_interactions
     description: All protein-protein interactions
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     domain_of:
     - Sample
     - AggregatedProteinView
@@ -308,7 +308,7 @@ attributes:
   ligand_interactions:
     name: ligand_interactions
     description: All ligand interactions
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     domain_of:
     - Sample
     - FunctionalSite
@@ -320,7 +320,7 @@ attributes:
   mutations:
     name: mutations
     description: All mutation annotations
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     domain_of:
     - Sample
     - AggregatedProteinView
@@ -331,7 +331,7 @@ attributes:
   ptms:
     name: ptms
     description: All post-translational modifications
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - AggregatedProteinView
@@ -342,7 +342,7 @@ attributes:
   biophysical_properties:
     name: biophysical_properties
     description: All biophysical properties
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     domain_of:
     - Sample
     - AggregatedProteinView
@@ -353,7 +353,7 @@ attributes:
   conformational_ensemble:
     name: conformational_ensemble
     description: Conformational ensemble data
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     domain_of:
     - Sample
     - AggregatedProteinView
@@ -362,7 +362,7 @@ attributes:
   evolutionary_conservation:
     name: evolutionary_conservation
     description: Conservation analysis
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     domain_of:
     - Sample
     - AggregatedProteinView
@@ -371,7 +371,7 @@ attributes:
   cross_references:
     name: cross_references
     description: Database cross-references
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - AggregatedProteinView
@@ -389,13 +389,13 @@ attributes:
 ```yaml
 name: AggregatedProteinView
 description: Aggregated view of all structural and functional data for a protein
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: NamedThing
 attributes:
   uniprot_id:
     name: uniprot_id
     description: UniProt accession
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     alias: uniprot_id
     owner: AggregatedProteinView
     domain_of:
@@ -406,7 +406,7 @@ attributes:
   protein_name:
     name: protein_name
     description: Protein name
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     alias: protein_name
     owner: AggregatedProteinView
     domain_of:
@@ -417,7 +417,7 @@ attributes:
   organism:
     name: organism
     description: Source organism
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     alias: organism
     owner: AggregatedProteinView
     domain_of:
@@ -427,7 +427,7 @@ attributes:
   organism_id:
     name: organism_id
     description: NCBI taxonomy ID
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: organism_id
     owner: AggregatedProteinView
@@ -437,7 +437,7 @@ attributes:
   pdb_entries:
     name: pdb_entries
     description: All PDB entries for this protein
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     alias: pdb_entries
     owner: AggregatedProteinView
     domain_of:
@@ -448,7 +448,7 @@ attributes:
   functional_sites:
     name: functional_sites
     description: All functional site annotations
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     alias: functional_sites
     owner: AggregatedProteinView
     domain_of:
@@ -461,7 +461,7 @@ attributes:
   structural_features:
     name: structural_features
     description: All structural feature annotations
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     alias: structural_features
     owner: AggregatedProteinView
     domain_of:
@@ -474,7 +474,7 @@ attributes:
   protein_interactions:
     name: protein_interactions
     description: All protein-protein interactions
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     alias: protein_interactions
     owner: AggregatedProteinView
     domain_of:
@@ -487,7 +487,7 @@ attributes:
   ligand_interactions:
     name: ligand_interactions
     description: All ligand interactions
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     alias: ligand_interactions
     owner: AggregatedProteinView
     domain_of:
@@ -501,7 +501,7 @@ attributes:
   mutations:
     name: mutations
     description: All mutation annotations
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     alias: mutations
     owner: AggregatedProteinView
     domain_of:
@@ -514,7 +514,7 @@ attributes:
   ptms:
     name: ptms
     description: All post-translational modifications
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: ptms
     owner: AggregatedProteinView
@@ -527,7 +527,7 @@ attributes:
   biophysical_properties:
     name: biophysical_properties
     description: All biophysical properties
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     alias: biophysical_properties
     owner: AggregatedProteinView
     domain_of:
@@ -540,7 +540,7 @@ attributes:
   conformational_ensemble:
     name: conformational_ensemble
     description: Conformational ensemble data
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     alias: conformational_ensemble
     owner: AggregatedProteinView
     domain_of:
@@ -551,7 +551,7 @@ attributes:
   evolutionary_conservation:
     name: evolutionary_conservation
     description: Conservation analysis
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     alias: evolutionary_conservation
     owner: AggregatedProteinView
     domain_of:
@@ -562,7 +562,7 @@ attributes:
   cross_references:
     name: cross_references
     description: Database cross-references
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: cross_references
     owner: AggregatedProteinView
@@ -577,7 +577,7 @@ attributes:
     description: Globally unique identifier as an IRI or CURIE for machine processing
       and external references. Used for linking data across systems and semantic web
       integration.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     identifier: true
     alias: id
@@ -590,7 +590,7 @@ attributes:
   title:
     name: title
     description: A human-readable name or title for this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     slot_uri: dcterms:title
     alias: title
@@ -601,7 +601,7 @@ attributes:
   description:
     name: description
     description: A detailed textual description of this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: description
     owner: AggregatedProteinView

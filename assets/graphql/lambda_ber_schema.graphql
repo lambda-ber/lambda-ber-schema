@@ -812,6 +812,13 @@ interface AttributeValue
     rawValue: String
   }
 
+type BeamCenterPixels
+  {
+    description: String
+    xbeam: QuantityValue
+    ybeam: QuantityValue
+  }
+
 type BeamlineInstrument
   {
     id: Uriorcurie!
@@ -1015,13 +1022,18 @@ type DataCollectionStrategy
     detectorDistanceMm: QuantityValue
     beamCenterXPx: QuantityValue
     beamCenterYPx: QuantityValue
+    beamCenterPixels: BeamCenterPixels
     beamSizeUm: QuantityValue
+    energy: QuantityValue
     fluxPhotonsPerS: QuantityValue
     transmissionPercent: QuantityValue
     attenuator: String
     temperatureK: QuantityValue
     oscillationPerImageDeg: QuantityValue
+    sweepStart: QuantityValue
+    sweepEnd: QuantityValue
     totalRotationDeg: QuantityValue
+    exposureTime: QuantityValue
     strategyNotes: String
   }
 
@@ -1152,12 +1164,17 @@ type ExperimentRun
     holesPerGroup: QuantityValue
     acquisitionSoftware: String
     acquisitionSoftwareVersion: String
+    detector: String
     wavelength: QuantityValue
+    energy: QuantityValue
     oscillationAngle: QuantityValue
     startAngle: QuantityValue
+    sweepStart: QuantityValue
+    sweepEnd: QuantityValue
     numberOfImages: QuantityValue
     beamCenterX: QuantityValue
     beamCenterY: QuantityValue
+    beamCenterPixels: BeamCenterPixels
     detectorDistance: QuantityValue
     pixelSizeX: QuantityValue
     pixelSizeY: QuantityValue

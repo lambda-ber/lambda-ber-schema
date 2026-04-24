@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:clashscore](https://w3id.org/lambda-ber-schema/clashscore)
+URI: [lambda:clashscore](http://w3id.org/lambda/clashscore)
 Alias: clashscore
 
 <!-- no inheritance hierarchy -->
@@ -44,8 +44,8 @@ Alias: clashscore
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:clashscore |
-| native | lambdaber:clashscore |
+| self | lambda:clashscore |
+| native | lambda:clashscore |
 
 
 

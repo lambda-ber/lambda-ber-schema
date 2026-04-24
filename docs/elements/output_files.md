@@ -9,7 +9,7 @@ _Output files generated_
 
 
 
-URI: [lambdaber:output_files](https://w3id.org/lambda-ber-schema/output_files)
+URI: [lambda:output_files](http://w3id.org/lambda/output_files)
 Alias: output_files
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: output_files
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: output_files
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:output_files |
-| native | lambdaber:output_files |
+| self | lambda:output_files |
+| native | lambda:output_files |
 
 
 
@@ -69,7 +69,7 @@ Alias: output_files
 ```yaml
 name: output_files
 description: Output files generated
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: output_files
 owner: WorkflowRun

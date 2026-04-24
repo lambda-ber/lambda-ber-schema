@@ -9,7 +9,7 @@ _Second affinity or reverse affinity step_
 
 
 
-URI: [lambdaber:second_affinity_reverse](https://w3id.org/lambda-ber-schema/second_affinity_reverse)
+URI: [lambda:second_affinity_reverse](http://w3id.org/lambda/second_affinity_reverse)
 Alias: second_affinity_reverse
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: second_affinity_reverse
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: second_affinity_reverse
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:second_affinity_reverse |
-| native | lambdaber:second_affinity_reverse |
+| self | lambda:second_affinity_reverse |
+| native | lambda:second_affinity_reverse |
 
 
 
@@ -67,7 +67,7 @@ Alias: second_affinity_reverse
 ```yaml
 name: second_affinity_reverse
 description: Second affinity or reverse affinity step
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: second_affinity_reverse
 owner: SamplePreparation

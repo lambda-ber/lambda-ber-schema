@@ -9,7 +9,7 @@ _Identified molecular signatures or peaks_
 
 
 
-URI: [lambdaber:molecular_signatures](https://w3id.org/lambda-ber-schema/molecular_signatures)
+URI: [lambda:molecular_signatures](http://w3id.org/lambda/molecular_signatures)
 Alias: molecular_signatures
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: molecular_signatures
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: molecular_signatures
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:molecular_signatures |
-| native | lambdaber:molecular_signatures |
+| self | lambda:molecular_signatures |
+| native | lambda:molecular_signatures |
 
 
 
@@ -69,7 +69,7 @@ Alias: molecular_signatures
 ```yaml
 name: molecular_signatures
 description: Identified molecular signatures or peaks
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: molecular_signatures
 owner: FTIRImage

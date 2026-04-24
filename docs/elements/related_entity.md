@@ -9,7 +9,7 @@ _ID of the entity that owns this file_
 
 
 
-URI: [lambdaber:related_entity](https://w3id.org/lambda-ber-schema/related_entity)
+URI: [lambda:related_entity](http://w3id.org/lambda/related_entity)
 Alias: related_entity
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: related_entity
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: related_entity
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:related_entity |
-| native | lambdaber:related_entity |
+| self | lambda:related_entity |
+| native | lambda:related_entity |
 
 
 
@@ -67,7 +67,7 @@ Alias: related_entity
 ```yaml
 name: related_entity
 description: ID of the entity that owns this file
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: related_entity
 owner: DataFile

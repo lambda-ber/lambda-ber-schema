@@ -9,7 +9,7 @@ _Completeness in highest resolution shell, typically specified as a percentage (
 
 
 
-URI: [lambdaber:completeness_high_res_shell_percent](https://w3id.org/lambda-ber-schema/completeness_high_res_shell_percent)
+URI: [lambda:completeness_high_res_shell_percent](http://w3id.org/lambda/completeness_high_res_shell_percent)
 Alias: completeness_high_res_shell_percent
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: completeness_high_res_shell_percent
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: completeness_high_res_shell_percent
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:completeness_high_res_shell_percent |
-| native | lambdaber:completeness_high_res_shell_percent |
+| self | lambda:completeness_high_res_shell_percent |
+| native | lambda:completeness_high_res_shell_percent |
 
 
 
@@ -69,7 +69,7 @@ name: completeness_high_res_shell_percent
 description: Completeness in highest resolution shell, typically specified as a percentage
   (0-100). Data providers may specify as decimal fraction by including the unit in
   the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: completeness_high_res_shell_percent
 owner: QualityMetrics

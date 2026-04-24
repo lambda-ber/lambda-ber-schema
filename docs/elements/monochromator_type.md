@@ -9,7 +9,7 @@ _Type of monochromator_
 
 
 
-URI: [lambdaber:monochromator_type](https://w3id.org/lambda-ber-schema/monochromator_type)
+URI: [lambda:monochromator_type](http://w3id.org/lambda/monochromator_type)
 Alias: monochromator_type
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: monochromator_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: monochromator_type
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:monochromator_type |
-| native | lambdaber:monochromator_type |
+| self | lambda:monochromator_type |
+| native | lambda:monochromator_type |
+| exact | mmCIF:_diffrn_source.monochromator |
 
 
 
@@ -67,7 +68,9 @@ Alias: monochromator_type
 ```yaml
 name: monochromator_type
 description: Type of monochromator
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_diffrn_source.monochromator
 rank: 1000
 alias: monochromator_type
 owner: XRayInstrument

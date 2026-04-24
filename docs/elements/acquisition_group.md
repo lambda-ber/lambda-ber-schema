@@ -9,7 +9,7 @@ _Acquisition group identifier (e.g., template or area)_
 
 
 
-URI: [lambdaber:acquisition_group](https://w3id.org/lambda-ber-schema/acquisition_group)
+URI: [lambda:acquisition_group](http://w3id.org/lambda/acquisition_group)
 Alias: acquisition_group
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: acquisition_group
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: acquisition_group
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:acquisition_group |
-| native | lambdaber:acquisition_group |
+| self | lambda:acquisition_group |
+| native | lambda:acquisition_group |
 
 
 
@@ -67,7 +67,7 @@ Alias: acquisition_group
 ```yaml
 name: acquisition_group
 description: Acquisition group identifier (e.g., template or area)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: acquisition_group
 owner: Movie

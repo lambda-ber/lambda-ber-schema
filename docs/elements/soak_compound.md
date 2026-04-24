@@ -9,7 +9,7 @@ _Compound used for soaking (ligand, heavy atom)_
 
 
 
-URI: [lambdaber:soak_compound](https://w3id.org/lambda-ber-schema/soak_compound)
+URI: [lambda:soak_compound](http://w3id.org/lambda/soak_compound)
 Alias: soak_compound
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: soak_compound
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: soak_compound
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:soak_compound |
-| native | lambdaber:soak_compound |
+| self | lambda:soak_compound |
+| native | lambda:soak_compound |
 
 
 
@@ -67,7 +67,7 @@ Alias: soak_compound
 ```yaml
 name: soak_compound
 description: Compound used for soaking (ligand, heavy atom)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: soak_compound
 owner: XRayPreparation

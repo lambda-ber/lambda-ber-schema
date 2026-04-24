@@ -9,7 +9,7 @@ _GPU hours used, measured in hours. Data providers may specify alternative time 
 
 
 
-URI: [lambdaber:gpu_hours](https://w3id.org/lambda-ber-schema/gpu_hours)
+URI: [lambda:gpu_hours](http://w3id.org/lambda/gpu_hours)
 Alias: gpu_hours
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: gpu_hours
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: gpu_hours
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:gpu_hours |
-| native | lambdaber:gpu_hours |
+| self | lambda:gpu_hours |
+| native | lambda:gpu_hours |
 
 
 
@@ -68,7 +68,7 @@ Alias: gpu_hours
 name: gpu_hours
 description: GPU hours used, measured in hours. Data providers may specify alternative
   time units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: gpu_hours
 owner: ComputeResources

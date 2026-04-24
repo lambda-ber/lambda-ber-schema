@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:detector_manufacturer](https://w3id.org/lambda-ber-schema/detector_manufacturer)
+URI: [lambda:detector_manufacturer](http://w3id.org/lambda/detector_manufacturer)
 Alias: detector_manufacturer
 
 <!-- no inheritance hierarchy -->
@@ -17,8 +17,8 @@ Alias: detector_manufacturer
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [CryoEMInstrument](CryoEMInstrument.md) | Cryo-EM microscope specifications |  no  |
 | [XRayInstrument](XRayInstrument.md) | X-ray diffractometer or synchrotron beamline specifications |  no  |
+| [CryoEMInstrument](CryoEMInstrument.md) | Cryo-EM microscope specifications |  no  |
 
 
 
@@ -44,8 +44,8 @@ Alias: detector_manufacturer
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:detector_manufacturer |
-| native | lambdaber:detector_manufacturer |
+| self | lambda:detector_manufacturer |
+| native | lambda:detector_manufacturer |
 
 
 

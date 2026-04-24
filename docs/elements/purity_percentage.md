@@ -9,7 +9,7 @@ _Sample purity, typically specified as a percentage (range: 0-100). Data provide
 
 
 
-URI: [lambdaber:purity_percentage](https://w3id.org/lambda-ber-schema/purity_percentage)
+URI: [lambda:purity_percentage](http://w3id.org/lambda/purity_percentage)
 Alias: purity_percentage
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: purity_percentage
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: purity_percentage
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:purity_percentage |
-| native | lambdaber:purity_percentage |
+| self | lambda:purity_percentage |
+| native | lambda:purity_percentage |
 
 
 
@@ -68,7 +68,7 @@ Alias: purity_percentage
 name: purity_percentage
 description: 'Sample purity, typically specified as a percentage (range: 0-100). Data
   providers may specify as decimal fraction by including the unit in the QuantityValue.'
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: purity_percentage
 owner: Sample

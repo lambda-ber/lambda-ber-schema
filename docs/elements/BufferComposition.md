@@ -9,7 +9,7 @@ _Buffer composition for sample storage_
 
 
 
-URI: [lambdaber:BufferComposition](https://w3id.org/lambda-ber-schema/BufferComposition)
+URI: [lambda:BufferComposition](http://w3id.org/lambda/BufferComposition)
 
 
 
@@ -88,7 +88,7 @@ URI: [lambdaber:BufferComposition](https://w3id.org/lambda-ber-schema/BufferComp
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -97,8 +97,8 @@ URI: [lambdaber:BufferComposition](https://w3id.org/lambda-ber-schema/BufferComp
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:BufferComposition |
-| native | lambdaber:BufferComposition |
+| self | lambda:BufferComposition |
+| native | lambda:BufferComposition |
 
 
 
@@ -115,13 +115,13 @@ URI: [lambdaber:BufferComposition](https://w3id.org/lambda-ber-schema/BufferComp
 ```yaml
 name: BufferComposition
 description: Buffer composition for sample storage
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: AttributeGroup
 attributes:
   ph:
     name: ph
     description: 'pH of the buffer (range: 0-14)'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - BufferComposition
@@ -131,7 +131,7 @@ attributes:
   components:
     name: components
     description: Buffer components and their concentrations
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - BufferComposition
@@ -140,7 +140,7 @@ attributes:
   additives:
     name: additives
     description: Additional additives in the buffer
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - BufferComposition
@@ -157,13 +157,13 @@ attributes:
 ```yaml
 name: BufferComposition
 description: Buffer composition for sample storage
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: AttributeGroup
 attributes:
   ph:
     name: ph
     description: 'pH of the buffer (range: 0-14)'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: ph
     owner: BufferComposition
@@ -175,7 +175,7 @@ attributes:
   components:
     name: components
     description: Buffer components and their concentrations
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: components
     owner: BufferComposition
@@ -186,7 +186,7 @@ attributes:
   additives:
     name: additives
     description: Additional additives in the buffer
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: additives
     owner: BufferComposition
@@ -197,7 +197,7 @@ attributes:
     multivalued: true
   description:
     name: description
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: description
     owner: BufferComposition
     domain_of:

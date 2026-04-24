@@ -9,7 +9,7 @@ _Concentration of induction agent_
 
 
 
-URI: [lambdaber:inducer_concentration](https://w3id.org/lambda-ber-schema/inducer_concentration)
+URI: [lambda:inducer_concentration](http://w3id.org/lambda/inducer_concentration)
 Alias: inducer_concentration
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: inducer_concentration
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: inducer_concentration
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:inducer_concentration |
-| native | lambdaber:inducer_concentration |
+| self | lambda:inducer_concentration |
+| native | lambda:inducer_concentration |
 
 
 
@@ -67,7 +67,7 @@ Alias: inducer_concentration
 ```yaml
 name: inducer_concentration
 description: Concentration of induction agent
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: inducer_concentration
 owner: SamplePreparation

@@ -9,7 +9,7 @@ _Specific preparation used for this sample in this experiment_
 
 
 
-URI: [lambdaber:preparation_id](https://w3id.org/lambda-ber-schema/preparation_id)
+URI: [lambda:preparation_id](http://w3id.org/lambda/preparation_id)
 Alias: preparation_id
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: preparation_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: preparation_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:preparation_id |
-| native | lambdaber:preparation_id |
+| self | lambda:preparation_id |
+| native | lambda:preparation_id |
 
 
 
@@ -67,7 +67,7 @@ Alias: preparation_id
 ```yaml
 name: preparation_id
 description: Specific preparation used for this sample in this experiment
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: preparation_id
 owner: ExperimentSampleAssociation

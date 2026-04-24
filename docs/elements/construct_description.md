@@ -9,7 +9,7 @@ _Human-readable description of the construct_
 
 
 
-URI: [lambdaber:construct_description](https://w3id.org/lambda-ber-schema/construct_description)
+URI: [lambda:construct_description](http://w3id.org/lambda/construct_description)
 Alias: construct_description
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: construct_description
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: construct_description
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:construct_description |
-| native | lambdaber:construct_description |
+| self | lambda:construct_description |
+| native | lambda:construct_description |
 
 
 
@@ -67,7 +67,7 @@ Alias: construct_description
 ```yaml
 name: construct_description
 description: Human-readable description of the construct
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: construct_description
 owner: ProteinConstruct

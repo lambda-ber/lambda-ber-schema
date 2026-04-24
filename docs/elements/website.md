@@ -9,7 +9,7 @@ _Beamline website URL_
 
 
 
-URI: [lambdaber:website](https://w3id.org/lambda-ber-schema/website)
+URI: [lambda:website](http://w3id.org/lambda/website)
 Alias: website
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: website
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: website
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:website |
-| native | lambdaber:website |
+| self | lambda:website |
+| native | lambda:website |
 
 
 
@@ -67,7 +67,7 @@ Alias: website
 ```yaml
 name: website
 description: Beamline website URL
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: website
 owner: BeamlineInstrument

@@ -7,7 +7,7 @@ _Specific beamline instances at DOE and other major structural biology facilitie
 
 
 
-URI: [lambdaber:BeamlineEnum](https://w3id.org/lambda-ber-schema/BeamlineEnum)
+URI: [lambda:BeamlineEnum](http://w3id.org/lambda/BeamlineEnum)
 
 ## Permissible Values
 
@@ -67,7 +67,7 @@ URI: [lambdaber:BeamlineEnum](https://w3id.org/lambda-ber-schema/BeamlineEnum)
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -85,7 +85,7 @@ comments:
 - Each beamline is annotated with its parent facility from FacilityEnum
 - Focus on beamlines used for structural biology (MX, SAXS/WAXS, neutron scattering)
 - Beamline IDs follow facility-specific conventions
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   ALS_SIBYLS:

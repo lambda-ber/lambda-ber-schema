@@ -9,7 +9,7 @@ _Dose rate in e-/pixel/s or e-/Angstrom^2/s_
 
 
 
-URI: [lambdaber:dose_rate](https://w3id.org/lambda-ber-schema/dose_rate)
+URI: [lambda:dose_rate](http://w3id.org/lambda/dose_rate)
 Alias: dose_rate
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: dose_rate
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: dose_rate
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:dose_rate |
-| native | lambdaber:dose_rate |
+| self | lambda:dose_rate |
+| native | lambda:dose_rate |
 
 
 
@@ -67,7 +67,7 @@ Alias: dose_rate
 ```yaml
 name: dose_rate
 description: Dose rate in e-/pixel/s or e-/Angstrom^2/s
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: dose_rate
 owner: ExperimentRun

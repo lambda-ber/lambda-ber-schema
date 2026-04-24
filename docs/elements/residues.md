@@ -9,7 +9,7 @@ _List of residues forming the functional site. Each should be specified as a str
 
 
 
-URI: [lambdaber:residues](https://w3id.org/lambda-ber-schema/residues)
+URI: [lambda:residues](http://w3id.org/lambda/residues)
 Alias: residues
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: residues
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: residues
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:residues |
-| native | lambdaber:residues |
+| self | lambda:residues |
+| native | lambda:residues |
 
 
 
@@ -70,7 +70,7 @@ Alias: residues
 name: residues
 description: List of residues forming the functional site. Each should be specified
   as a string (e.g., "45", "120A").
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: residues
 owner: FunctionalSite

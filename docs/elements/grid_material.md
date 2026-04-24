@@ -9,7 +9,7 @@ _Grid material_
 
 
 
-URI: [lambdaber:grid_material](https://w3id.org/lambda-ber-schema/grid_material)
+URI: [lambda:grid_material](http://w3id.org/lambda/grid_material)
 Alias: grid_material
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: grid_material
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: grid_material
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:grid_material |
-| native | lambdaber:grid_material |
+| self | lambda:grid_material |
+| native | lambda:grid_material |
+| exact | mmCIF:_em_sample_support.grid_material |
 
 
 
@@ -67,7 +68,9 @@ Alias: grid_material
 ```yaml
 name: grid_material
 description: Grid material
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_em_sample_support.grid_material
 rank: 1000
 alias: grid_material
 owner: CryoEMPreparation

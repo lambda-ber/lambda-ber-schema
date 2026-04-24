@@ -7,7 +7,7 @@ _Data collection modes_
 
 
 
-URI: [lambdaber:CollectionModeEnum](https://w3id.org/lambda-ber-schema/CollectionModeEnum)
+URI: [lambda:CollectionModeEnum](http://w3id.org/lambda/CollectionModeEnum)
 
 ## Permissible Values
 
@@ -45,7 +45,7 @@ URI: [lambdaber:CollectionModeEnum](https://w3id.org/lambda-ber-schema/Collectio
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -58,7 +58,7 @@ URI: [lambdaber:CollectionModeEnum](https://w3id.org/lambda-ber-schema/Collectio
 ```yaml
 name: CollectionModeEnum
 description: Data collection modes
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   counting:

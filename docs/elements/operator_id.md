@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:operator_id](https://w3id.org/lambda-ber-schema/operator_id)
+URI: [lambda:operator_id](http://w3id.org/lambda/operator_id)
 Alias: operator_id
 
 <!-- no inheritance hierarchy -->
@@ -17,8 +17,8 @@ Alias: operator_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentRun](ExperimentRun.md) | An experimental data collection session |  no  |
 | [SamplePreparation](SamplePreparation.md) | A process that prepares a sample for imaging |  no  |
+| [ExperimentRun](ExperimentRun.md) | An experimental data collection session |  no  |
 
 
 
@@ -44,8 +44,8 @@ Alias: operator_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:operator_id |
-| native | lambdaber:operator_id |
+| self | lambda:operator_id |
+| native | lambda:operator_id |
 
 
 

@@ -9,7 +9,7 @@ _Method used for conservation analysis_
 
 
 
-URI: [lambdaber:conservation_method](https://w3id.org/lambda-ber-schema/conservation_method)
+URI: [lambda:conservation_method](http://w3id.org/lambda/conservation_method)
 Alias: conservation_method
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: conservation_method
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: conservation_method
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:conservation_method |
-| native | lambdaber:conservation_method |
+| self | lambda:conservation_method |
+| native | lambda:conservation_method |
 
 
 
@@ -67,7 +67,7 @@ Alias: conservation_method
 ```yaml
 name: conservation_method
 description: Method used for conservation analysis
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: conservation_method
 owner: EvolutionaryConservation

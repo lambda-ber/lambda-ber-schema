@@ -9,7 +9,7 @@ _Common name of the ligand_
 
 
 
-URI: [lambdaber:ligand_name](https://w3id.org/lambda-ber-schema/ligand_name)
+URI: [lambda:ligand_name](http://w3id.org/lambda/ligand_name)
 Alias: ligand_name
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: ligand_name
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: ligand_name
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:ligand_name |
-| native | lambdaber:ligand_name |
+| self | lambda:ligand_name |
+| native | lambda:ligand_name |
 
 
 
@@ -69,7 +69,7 @@ Alias: ligand_name
 ```yaml
 name: ligand_name
 description: Common name of the ligand
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: ligand_name
 owner: LigandInteraction

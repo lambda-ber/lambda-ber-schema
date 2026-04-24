@@ -9,7 +9,7 @@ _Storage URI (S3, Globus, etc.)_
 
 
 
-URI: [lambdaber:storage_uri](https://w3id.org/lambda-ber-schema/storage_uri)
+URI: [lambda:storage_uri](http://w3id.org/lambda/storage_uri)
 Alias: storage_uri
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: storage_uri
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: storage_uri
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:storage_uri |
-| native | lambdaber:storage_uri |
+| self | lambda:storage_uri |
+| native | lambda:storage_uri |
 
 
 
@@ -67,7 +67,7 @@ Alias: storage_uri
 ```yaml
 name: storage_uri
 description: Storage URI (S3, Globus, etc.)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: storage_uri
 owner: DataFile

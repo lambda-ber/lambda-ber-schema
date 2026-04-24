@@ -9,7 +9,7 @@ _SMILES representation of the ligand_
 
 
 
-URI: [lambdaber:ligand_smiles](https://w3id.org/lambda-ber-schema/ligand_smiles)
+URI: [lambda:ligand_smiles](http://w3id.org/lambda/ligand_smiles)
 Alias: ligand_smiles
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: ligand_smiles
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: ligand_smiles
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:ligand_smiles |
-| native | lambdaber:ligand_smiles |
+| self | lambda:ligand_smiles |
+| native | lambda:ligand_smiles |
 
 
 
@@ -67,7 +67,7 @@ Alias: ligand_smiles
 ```yaml
 name: ligand_smiles
 description: SMILES representation of the ligand
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: ligand_smiles
 owner: LigandInteraction

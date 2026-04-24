@@ -47,7 +47,7 @@ URI: [linkml:Any](https://w3id.org/linkml/Any)
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,7 +57,7 @@ URI: [linkml:Any](https://w3id.org/linkml/Any)
 | Mapping Type | Mapped Value |
 | ---  | ---  |
 | self | linkml:Any |
-| native | lambdaber:Any |
+| native | lambda:Any |
 
 
 
@@ -73,7 +73,7 @@ URI: [linkml:Any](https://w3id.org/linkml/Any)
 <details>
 ```yaml
 name: Any
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 class_uri: linkml:Any
 
 ```
@@ -84,7 +84,7 @@ class_uri: linkml:Any
 <details>
 ```yaml
 name: Any
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 class_uri: linkml:Any
 
 ```

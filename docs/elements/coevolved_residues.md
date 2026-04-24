@@ -9,7 +9,7 @@ _Pairs of coevolved residues_
 
 
 
-URI: [lambdaber:coevolved_residues](https://w3id.org/lambda-ber-schema/coevolved_residues)
+URI: [lambda:coevolved_residues](http://w3id.org/lambda/coevolved_residues)
 Alias: coevolved_residues
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: coevolved_residues
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: coevolved_residues
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:coevolved_residues |
-| native | lambdaber:coevolved_residues |
+| self | lambda:coevolved_residues |
+| native | lambda:coevolved_residues |
 
 
 
@@ -69,7 +69,7 @@ Alias: coevolved_residues
 ```yaml
 name: coevolved_residues
 description: Pairs of coevolved residues
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: coevolved_residues
 owner: EvolutionaryConservation

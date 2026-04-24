@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:seed_stock_dilution](https://w3id.org/lambda-ber-schema/seed_stock_dilution)
+URI: [lambda:seed_stock_dilution](http://w3id.org/lambda/seed_stock_dilution)
 Alias: seed_stock_dilution
 
 <!-- no inheritance hierarchy -->
@@ -44,8 +44,8 @@ Alias: seed_stock_dilution
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:seed_stock_dilution |
-| native | lambdaber:seed_stock_dilution |
+| self | lambda:seed_stock_dilution |
+| native | lambda:seed_stock_dilution |
 
 
 

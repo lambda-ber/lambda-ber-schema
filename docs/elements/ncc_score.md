@@ -9,7 +9,7 @@ _Normalized cross-correlation score threshold_
 
 
 
-URI: [lambdaber:ncc_score](https://w3id.org/lambda-ber-schema/ncc_score)
+URI: [lambda:ncc_score](http://w3id.org/lambda/ncc_score)
 Alias: ncc_score
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: ncc_score
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: ncc_score
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:ncc_score |
-| native | lambdaber:ncc_score |
+| self | lambda:ncc_score |
+| native | lambda:ncc_score |
 
 
 
@@ -67,7 +67,7 @@ Alias: ncc_score
 ```yaml
 name: ncc_score
 description: Normalized cross-correlation score threshold
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: ncc_score
 owner: ParticlePickingParameters

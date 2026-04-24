@@ -9,7 +9,7 @@ _Protocol for buffer matching_
 
 
 
-URI: [lambdaber:buffer_matching_protocol](https://w3id.org/lambda-ber-schema/buffer_matching_protocol)
+URI: [lambda:buffer_matching_protocol](http://w3id.org/lambda/buffer_matching_protocol)
 Alias: buffer_matching_protocol
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: buffer_matching_protocol
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: buffer_matching_protocol
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:buffer_matching_protocol |
-| native | lambdaber:buffer_matching_protocol |
+| self | lambda:buffer_matching_protocol |
+| native | lambda:buffer_matching_protocol |
 
 
 
@@ -67,7 +67,7 @@ Alias: buffer_matching_protocol
 ```yaml
 name: buffer_matching_protocol
 description: Protocol for buffer matching
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: buffer_matching_protocol
 owner: SAXSPreparation

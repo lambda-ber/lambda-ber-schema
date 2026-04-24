@@ -9,7 +9,7 @@ _Type of output from the workflow_
 
 
 
-URI: [lambdaber:output_type](https://w3id.org/lambda-ber-schema/output_type)
+URI: [lambda:output_type](http://w3id.org/lambda/output_type)
 Alias: output_type
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: output_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: output_type
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:output_type |
-| native | lambdaber:output_type |
+| self | lambda:output_type |
+| native | lambda:output_type |
 
 
 
@@ -67,7 +67,7 @@ Alias: output_type
 ```yaml
 name: output_type
 description: Type of output from the workflow
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: output_type
 owner: WorkflowOutputAssociation

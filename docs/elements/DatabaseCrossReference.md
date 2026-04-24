@@ -9,7 +9,7 @@ _Cross-references to external databases_
 
 
 
-URI: [lambdaber:DatabaseCrossReference](https://w3id.org/lambda-ber-schema/DatabaseCrossReference)
+URI: [lambda:DatabaseCrossReference](http://w3id.org/lambda/DatabaseCrossReference)
 
 
 
@@ -91,7 +91,7 @@ URI: [lambdaber:DatabaseCrossReference](https://w3id.org/lambda-ber-schema/Datab
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -100,8 +100,8 @@ URI: [lambdaber:DatabaseCrossReference](https://w3id.org/lambda-ber-schema/Datab
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:DatabaseCrossReference |
-| native | lambdaber:DatabaseCrossReference |
+| self | lambda:DatabaseCrossReference |
+| native | lambda:DatabaseCrossReference |
 
 
 
@@ -118,13 +118,13 @@ URI: [lambdaber:DatabaseCrossReference](https://w3id.org/lambda-ber-schema/Datab
 ```yaml
 name: DatabaseCrossReference
 description: Cross-references to external databases
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: AttributeGroup
 attributes:
   database_name:
     name: database_name
     description: Name of the external database
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - DatabaseCrossReference
@@ -133,7 +133,7 @@ attributes:
   database_id:
     name: database_id
     description: Identifier in the external database
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - DatabaseCrossReference
@@ -141,7 +141,7 @@ attributes:
   database_url:
     name: database_url
     description: URL to the database entry
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - DatabaseCrossReference
@@ -149,7 +149,7 @@ attributes:
   last_updated:
     name: last_updated
     description: Date of last update
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - DatabaseCrossReference
@@ -164,13 +164,13 @@ attributes:
 ```yaml
 name: DatabaseCrossReference
 description: Cross-references to external databases
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: AttributeGroup
 attributes:
   database_name:
     name: database_name
     description: Name of the external database
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: database_name
     owner: DatabaseCrossReference
@@ -181,7 +181,7 @@ attributes:
   database_id:
     name: database_id
     description: Identifier in the external database
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: database_id
     owner: DatabaseCrossReference
@@ -192,7 +192,7 @@ attributes:
   database_url:
     name: database_url
     description: URL to the database entry
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: database_url
     owner: DatabaseCrossReference
@@ -202,7 +202,7 @@ attributes:
   last_updated:
     name: last_updated
     description: Date of last update
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: last_updated
     owner: DatabaseCrossReference
@@ -211,7 +211,7 @@ attributes:
     range: string
   description:
     name: description
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: description
     owner: DatabaseCrossReference
     domain_of:

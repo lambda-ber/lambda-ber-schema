@@ -9,7 +9,7 @@ _Rpim - precision-indicating merging R-factor_
 
 
 
-URI: [lambdaber:r_pim](https://w3id.org/lambda-ber-schema/r_pim)
+URI: [lambda:r_pim](http://w3id.org/lambda/r_pim)
 Alias: r_pim
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: r_pim
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: r_pim
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:r_pim |
-| native | lambdaber:r_pim |
+| self | lambda:r_pim |
+| native | lambda:r_pim |
+| exact | mmCIF:_reflns.pdbx_Rpim_I_all |
 
 
 
@@ -67,7 +68,9 @@ Alias: r_pim
 ```yaml
 name: r_pim
 description: Rpim - precision-indicating merging R-factor
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_reflns.pdbx_Rpim_I_all
 rank: 1000
 alias: r_pim
 owner: QualityMetrics

@@ -7,7 +7,7 @@ _Crystallographic and non-crystallographic symmetry groups for cryo-EM_
 
 
 
-URI: [lambdaber:SymmetryEnum](https://w3id.org/lambda-ber-schema/SymmetryEnum)
+URI: [lambda:SymmetryEnum](http://w3id.org/lambda/SymmetryEnum)
 
 ## Permissible Values
 
@@ -59,7 +59,7 @@ URI: [lambdaber:SymmetryEnum](https://w3id.org/lambda-ber-schema/SymmetryEnum)
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -72,7 +72,7 @@ URI: [lambdaber:SymmetryEnum](https://w3id.org/lambda-ber-schema/SymmetryEnum)
 ```yaml
 name: SymmetryEnum
 description: Crystallographic and non-crystallographic symmetry groups for cryo-EM
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   C1:

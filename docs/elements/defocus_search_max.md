@@ -9,7 +9,7 @@ _Maximum defocus search range, typically specified in micrometers. Data provider
 
 
 
-URI: [lambdaber:defocus_search_max](https://w3id.org/lambda-ber-schema/defocus_search_max)
+URI: [lambda:defocus_search_max](http://w3id.org/lambda/defocus_search_max)
 Alias: defocus_search_max
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: defocus_search_max
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: defocus_search_max
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:defocus_search_max |
-| native | lambdaber:defocus_search_max |
+| self | lambda:defocus_search_max |
+| native | lambda:defocus_search_max |
 
 
 
@@ -68,7 +68,7 @@ Alias: defocus_search_max
 name: defocus_search_max
 description: Maximum defocus search range, typically specified in micrometers. Data
   providers may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: defocus_search_max
 owner: CTFEstimationParameters

@@ -9,7 +9,7 @@ _Name of the fluorescence channel (e.g., DAPI, GFP, RFP)_
 
 
 
-URI: [lambdaber:channel_name](https://w3id.org/lambda-ber-schema/channel_name)
+URI: [lambda:channel_name](http://w3id.org/lambda/channel_name)
 Alias: channel_name
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: channel_name
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: channel_name
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:channel_name |
-| native | lambdaber:channel_name |
+| self | lambda:channel_name |
+| native | lambda:channel_name |
 
 
 
@@ -67,7 +67,7 @@ Alias: channel_name
 ```yaml
 name: channel_name
 description: Name of the fluorescence channel (e.g., DAPI, GFP, RFP)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: channel_name
 owner: FluorescenceImage

@@ -9,7 +9,7 @@ _Indexing module used (e.g., MOSFLM, XDS)_
 
 
 
-URI: [lambdaber:indexer_module](https://w3id.org/lambda-ber-schema/indexer_module)
+URI: [lambda:indexer_module](http://w3id.org/lambda/indexer_module)
 Alias: indexer_module
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: indexer_module
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: indexer_module
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:indexer_module |
-| native | lambdaber:indexer_module |
+| self | lambda:indexer_module |
+| native | lambda:indexer_module |
 
 
 
@@ -67,7 +67,7 @@ Alias: indexer_module
 ```yaml
 name: indexer_module
 description: Indexing module used (e.g., MOSFLM, XDS)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: indexer_module
 owner: WorkflowRun

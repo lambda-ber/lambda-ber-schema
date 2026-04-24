@@ -9,7 +9,7 @@ _Date of sample preparation_
 
 
 
-URI: [lambdaber:preparation_date](https://w3id.org/lambda-ber-schema/preparation_date)
+URI: [lambda:preparation_date](http://w3id.org/lambda/preparation_date)
 Alias: preparation_date
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: preparation_date
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: preparation_date
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:preparation_date |
-| native | lambdaber:preparation_date |
+| self | lambda:preparation_date |
+| native | lambda:preparation_date |
 
 
 
@@ -67,7 +67,7 @@ Alias: preparation_date
 ```yaml
 name: preparation_date
 description: Date of sample preparation
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: preparation_date
 owner: SamplePreparation

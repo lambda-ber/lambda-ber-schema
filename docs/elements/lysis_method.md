@@ -9,7 +9,7 @@ _Method used for cell lysis_
 
 
 
-URI: [lambdaber:lysis_method](https://w3id.org/lambda-ber-schema/lysis_method)
+URI: [lambda:lysis_method](http://w3id.org/lambda/lysis_method)
 Alias: lysis_method
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: lysis_method
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: lysis_method
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:lysis_method |
-| native | lambdaber:lysis_method |
+| self | lambda:lysis_method |
+| native | lambda:lysis_method |
 
 
 
@@ -67,7 +67,7 @@ Alias: lysis_method
 ```yaml
 name: lysis_method
 description: Method used for cell lysis
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: lysis_method
 owner: SamplePreparation

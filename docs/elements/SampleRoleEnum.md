@@ -7,7 +7,7 @@ _Role of a sample in a study_
 
 
 
-URI: [lambdaber:SampleRoleEnum](https://w3id.org/lambda-ber-schema/SampleRoleEnum)
+URI: [lambda:SampleRoleEnum](http://w3id.org/lambda/SampleRoleEnum)
 
 ## Permissible Values
 
@@ -41,7 +41,7 @@ URI: [lambdaber:SampleRoleEnum](https://w3id.org/lambda-ber-schema/SampleRoleEnu
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -54,7 +54,7 @@ URI: [lambdaber:SampleRoleEnum](https://w3id.org/lambda-ber-schema/SampleRoleEnu
 ```yaml
 name: SampleRoleEnum
 description: Role of a sample in a study
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   target:

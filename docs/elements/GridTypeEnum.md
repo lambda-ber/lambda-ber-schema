@@ -7,7 +7,7 @@ _Types of EM grids_
 
 
 
-URI: [lambdaber:GridTypeEnum](https://w3id.org/lambda-ber-schema/GridTypeEnum)
+URI: [lambda:GridTypeEnum](http://w3id.org/lambda/GridTypeEnum)
 
 ## Permissible Values
 
@@ -42,7 +42,7 @@ URI: [lambdaber:GridTypeEnum](https://w3id.org/lambda-ber-schema/GridTypeEnum)
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,7 +55,7 @@ URI: [lambdaber:GridTypeEnum](https://w3id.org/lambda-ber-schema/GridTypeEnum)
 ```yaml
 name: GridTypeEnum
 description: Types of EM grids
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   c_flat:

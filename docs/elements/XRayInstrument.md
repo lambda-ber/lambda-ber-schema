@@ -9,7 +9,7 @@ _X-ray diffractometer or synchrotron beamline specifications_
 
 
 
-URI: [lambdaber:XRayInstrument](https://w3id.org/lambda-ber-schema/XRayInstrument)
+URI: [lambda:XRayInstrument](http://w3id.org/lambda/XRayInstrument)
 
 
 
@@ -222,7 +222,7 @@ URI: [lambdaber:XRayInstrument](https://w3id.org/lambda-ber-schema/XRayInstrumen
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -231,8 +231,8 @@ URI: [lambdaber:XRayInstrument](https://w3id.org/lambda-ber-schema/XRayInstrumen
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:XRayInstrument |
-| native | lambdaber:XRayInstrument |
+| self | lambda:XRayInstrument |
+| native | lambda:XRayInstrument |
 
 
 
@@ -249,16 +249,19 @@ URI: [lambdaber:XRayInstrument](https://w3id.org/lambda-ber-schema/XRayInstrumen
 ```yaml
 name: XRayInstrument
 description: X-ray diffractometer or synchrotron beamline specifications
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: Instrument
 attributes:
   source_type:
     name: source_type
     description: Type of X-ray source
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_diffrn_source.source
     rank: 1000
     domain_of:
     - XRayInstrument
+    - SANSSource
     - BeamlineInstrument
     - XRFImage
     range: XRaySourceTypeEnum
@@ -267,11 +270,11 @@ attributes:
     description: Generic detector technology type
     comments:
     - Use this for technology classification (e.g., hybrid_photon_counting, ccd)
-    - 'Maps to CBF: Detector (may contain model name)'
-    - 'Maps to PDB: _diffrn_detector.type'
     - See detector_manufacturer and detector_model for specific equipment details
-    from_schema: https://w3id.org/lambda-ber-schema/
-    slot_uri: nsls2:Detector
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - nsls2:Detector
+    - mmCIF:_diffrn_detector.type
     domain_of:
     - CryoEMInstrument
     - XRayInstrument
@@ -282,7 +285,9 @@ attributes:
     description: Detector manufacturer (e.g., Dectris, Bruker, Rigaku, Rayonix)
     comments:
     - 'Examples: Dectris, Bruker, Rigaku, Rayonix, ADSC, MAR Research'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_diffrn_detector.detector
     domain_of:
     - CryoEMInstrument
     - XRayInstrument
@@ -292,7 +297,9 @@ attributes:
     description: Detector model (e.g., EIGER2 X 16M, PILATUS3 X 6M, PHOTON III)
     comments:
     - 'Examples: EIGER2 X 16M, PILATUS3 X 6M, PHOTON III, HyPix-6000HE'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_diffrn_detector.pdbx_detector_model
     domain_of:
     - CryoEMInstrument
     - XRayInstrument
@@ -301,7 +308,7 @@ attributes:
   energy_min:
     name: energy_min
     description: Minimum X-ray energy in keV
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - XRayInstrument
@@ -311,7 +318,7 @@ attributes:
   energy_max:
     name: energy_max
     description: Maximum X-ray energy in keV
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - XRayInstrument
@@ -321,7 +328,7 @@ attributes:
   beam_size_min:
     name: beam_size_min
     description: Minimum beam size in micrometers
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - XRayInstrument
@@ -330,7 +337,7 @@ attributes:
   beam_size_max:
     name: beam_size_max
     description: Maximum beam size in micrometers
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - XRayInstrument
@@ -339,7 +346,9 @@ attributes:
   flux_density:
     name: flux_density
     description: Photon flux density in photons/s/mm²
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_diffrn_source.pdbx_flux
     rank: 1000
     domain_of:
     - XRayInstrument
@@ -348,21 +357,25 @@ attributes:
   monochromator_type:
     name: monochromator_type
     description: Type of monochromator
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_diffrn_source.monochromator
     rank: 1000
     domain_of:
     - XRayInstrument
   goniometer_type:
     name: goniometer_type
     description: Type of goniometer
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_diffrn_measurement.device
     rank: 1000
     domain_of:
     - XRayInstrument
   crystal_cooling_capability:
     name: crystal_cooling_capability
     description: Crystal cooling system available
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - XRayInstrument
@@ -377,18 +390,21 @@ attributes:
 ```yaml
 name: XRayInstrument
 description: X-ray diffractometer or synchrotron beamline specifications
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: Instrument
 attributes:
   source_type:
     name: source_type
     description: Type of X-ray source
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_diffrn_source.source
     rank: 1000
     alias: source_type
     owner: XRayInstrument
     domain_of:
     - XRayInstrument
+    - SANSSource
     - BeamlineInstrument
     - XRFImage
     range: XRaySourceTypeEnum
@@ -397,11 +413,11 @@ attributes:
     description: Generic detector technology type
     comments:
     - Use this for technology classification (e.g., hybrid_photon_counting, ccd)
-    - 'Maps to CBF: Detector (may contain model name)'
-    - 'Maps to PDB: _diffrn_detector.type'
     - See detector_manufacturer and detector_model for specific equipment details
-    from_schema: https://w3id.org/lambda-ber-schema/
-    slot_uri: nsls2:Detector
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - nsls2:Detector
+    - mmCIF:_diffrn_detector.type
     alias: detector_technology
     owner: XRayInstrument
     domain_of:
@@ -414,7 +430,9 @@ attributes:
     description: Detector manufacturer (e.g., Dectris, Bruker, Rigaku, Rayonix)
     comments:
     - 'Examples: Dectris, Bruker, Rigaku, Rayonix, ADSC, MAR Research'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_diffrn_detector.detector
     alias: detector_manufacturer
     owner: XRayInstrument
     domain_of:
@@ -426,7 +444,9 @@ attributes:
     description: Detector model (e.g., EIGER2 X 16M, PILATUS3 X 6M, PHOTON III)
     comments:
     - 'Examples: EIGER2 X 16M, PILATUS3 X 6M, PHOTON III, HyPix-6000HE'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_diffrn_detector.pdbx_detector_model
     alias: detector_model
     owner: XRayInstrument
     domain_of:
@@ -437,7 +457,7 @@ attributes:
   energy_min:
     name: energy_min
     description: Minimum X-ray energy in keV
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: energy_min
     owner: XRayInstrument
@@ -449,7 +469,7 @@ attributes:
   energy_max:
     name: energy_max
     description: Maximum X-ray energy in keV
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: energy_max
     owner: XRayInstrument
@@ -461,7 +481,7 @@ attributes:
   beam_size_min:
     name: beam_size_min
     description: Minimum beam size in micrometers
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: beam_size_min
     owner: XRayInstrument
@@ -472,7 +492,7 @@ attributes:
   beam_size_max:
     name: beam_size_max
     description: Maximum beam size in micrometers
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: beam_size_max
     owner: XRayInstrument
@@ -483,7 +503,9 @@ attributes:
   flux_density:
     name: flux_density
     description: Photon flux density in photons/s/mm²
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_diffrn_source.pdbx_flux
     rank: 1000
     alias: flux_density
     owner: XRayInstrument
@@ -494,7 +516,9 @@ attributes:
   monochromator_type:
     name: monochromator_type
     description: Type of monochromator
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_diffrn_source.monochromator
     rank: 1000
     alias: monochromator_type
     owner: XRayInstrument
@@ -504,7 +528,9 @@ attributes:
   goniometer_type:
     name: goniometer_type
     description: Type of goniometer
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_diffrn_measurement.device
     rank: 1000
     alias: goniometer_type
     owner: XRayInstrument
@@ -514,7 +540,7 @@ attributes:
   crystal_cooling_capability:
     name: crystal_cooling_capability
     description: Crystal cooling system available
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: crystal_cooling_capability
     owner: XRayInstrument
@@ -526,7 +552,7 @@ attributes:
     description: Human-friendly facility or laboratory identifier for the instrument
       (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local
       reference and equipment tracking.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: instrument_code
     owner: XRayInstrument
@@ -540,7 +566,7 @@ attributes:
     comments:
     - Use SYNCHROTRON_BEAMLINE for synchrotron beamlines
     - Use ELECTRON_MICROSCOPE for cryo-EM instruments
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: instrument_category
     owner: XRayInstrument
@@ -553,7 +579,7 @@ attributes:
     comments:
     - Select from the standardized list of major synchrotron facilities
     - Leave empty for laboratory-based instruments
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: facility_name
     owner: XRayInstrument
@@ -566,7 +592,7 @@ attributes:
     comments:
     - Persistent identifier for the facility organization
     - 'Example: https://ror.org/02jbv0t02 (Lawrence Berkeley National Laboratory)'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: facility_ror
     owner: XRayInstrument
@@ -580,9 +606,10 @@ attributes:
     comments:
     - Use facility-specific naming convention
     - 'Examples: ''12.3.1'' (ALS), ''17-ID-1'' (NSLS-II), ''I04'' (Diamond)'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_diffrn_source.pdbx_synchrotron_beamline
     rank: 1000
-    slot_uri: mmCIF:_diffrn_source.pdbx_synchrotron_beamline
     alias: beamline_id
     owner: XRayInstrument
     domain_of:
@@ -591,7 +618,7 @@ attributes:
   manufacturer:
     name: manufacturer
     description: Instrument manufacturer
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: manufacturer
     owner: XRayInstrument
@@ -601,7 +628,7 @@ attributes:
   model:
     name: model
     description: Instrument model
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: model
     owner: XRayInstrument
@@ -611,7 +638,7 @@ attributes:
   installation_date:
     name: installation_date
     description: Date of instrument installation
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: installation_date
     owner: XRayInstrument
@@ -621,7 +648,7 @@ attributes:
   current_status:
     name: current_status
     description: Current operational status
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: current_status
     owner: XRayInstrument
@@ -633,7 +660,7 @@ attributes:
     description: Globally unique identifier as an IRI or CURIE for machine processing
       and external references. Used for linking data across systems and semantic web
       integration.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     identifier: true
     alias: id
@@ -646,7 +673,7 @@ attributes:
   title:
     name: title
     description: A human-readable name or title for this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     slot_uri: dcterms:title
     alias: title
@@ -657,7 +684,7 @@ attributes:
   description:
     name: description
     description: A detailed textual description of this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: description
     owner: XRayInstrument

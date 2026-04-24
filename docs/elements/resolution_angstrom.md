@@ -9,7 +9,7 @@ _Resolution values in Angstroms_
 
 
 
-URI: [lambdaber:resolution_angstrom](https://w3id.org/lambda-ber-schema/resolution_angstrom)
+URI: [lambda:resolution_angstrom](http://w3id.org/lambda/resolution_angstrom)
 Alias: resolution_angstrom
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: resolution_angstrom
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: resolution_angstrom
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:resolution_angstrom |
-| native | lambdaber:resolution_angstrom |
+| self | lambda:resolution_angstrom |
+| native | lambda:resolution_angstrom |
 
 
 
@@ -67,7 +67,7 @@ Alias: resolution_angstrom
 ```yaml
 name: resolution_angstrom
 description: Resolution values in Angstroms
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: resolution_angstrom
 owner: FSCCurve

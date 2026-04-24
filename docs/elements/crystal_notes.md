@@ -9,7 +9,7 @@ _Additional notes about crystal quality and handling_
 
 
 
-URI: [lambdaber:crystal_notes](https://w3id.org/lambda-ber-schema/crystal_notes)
+URI: [lambda:crystal_notes](http://w3id.org/lambda/crystal_notes)
 Alias: crystal_notes
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: crystal_notes
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: crystal_notes
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:crystal_notes |
-| native | lambdaber:crystal_notes |
+| self | lambda:crystal_notes |
+| native | lambda:crystal_notes |
 
 
 
@@ -67,7 +67,7 @@ Alias: crystal_notes
 ```yaml
 name: crystal_notes
 description: Additional notes about crystal quality and handling
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: crystal_notes
 owner: XRayPreparation

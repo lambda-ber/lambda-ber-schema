@@ -7,7 +7,7 @@ _Conformational states_
 
 
 
-URI: [lambdaber:ConformationalStateEnum](https://w3id.org/lambda-ber-schema/ConformationalStateEnum)
+URI: [lambda:ConformationalStateEnum](http://w3id.org/lambda/ConformationalStateEnum)
 
 ## Permissible Values
 
@@ -50,7 +50,7 @@ URI: [lambdaber:ConformationalStateEnum](https://w3id.org/lambda-ber-schema/Conf
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -63,7 +63,7 @@ URI: [lambdaber:ConformationalStateEnum](https://w3id.org/lambda-ber-schema/Conf
 ```yaml
 name: ConformationalStateEnum
 description: Conformational states
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   open:

@@ -9,7 +9,7 @@ _M:N link between WorkflowRun and source ExperimentRuns_
 
 
 
-URI: [lambdaber:WorkflowExperimentAssociation](https://w3id.org/lambda-ber-schema/WorkflowExperimentAssociation)
+URI: [lambda:WorkflowExperimentAssociation](http://w3id.org/lambda/WorkflowExperimentAssociation)
 
 
 
@@ -83,7 +83,7 @@ URI: [lambdaber:WorkflowExperimentAssociation](https://w3id.org/lambda-ber-schem
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -92,8 +92,8 @@ URI: [lambdaber:WorkflowExperimentAssociation](https://w3id.org/lambda-ber-schem
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:WorkflowExperimentAssociation |
-| native | lambdaber:WorkflowExperimentAssociation |
+| self | lambda:WorkflowExperimentAssociation |
+| native | lambda:WorkflowExperimentAssociation |
 
 
 
@@ -110,12 +110,12 @@ URI: [lambdaber:WorkflowExperimentAssociation](https://w3id.org/lambda-ber-schem
 ```yaml
 name: WorkflowExperimentAssociation
 description: M:N link between WorkflowRun and source ExperimentRuns
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 attributes:
   workflow_id:
     name: workflow_id
     description: Reference to the workflow run
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - StudyWorkflowAssociation
     - WorkflowExperimentAssociation
@@ -126,7 +126,7 @@ attributes:
   experiment_id:
     name: experiment_id
     description: Reference to the source experiment run
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - StudyExperimentAssociation
     - ExperimentSampleAssociation
@@ -144,12 +144,12 @@ attributes:
 ```yaml
 name: WorkflowExperimentAssociation
 description: M:N link between WorkflowRun and source ExperimentRuns
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 attributes:
   workflow_id:
     name: workflow_id
     description: Reference to the workflow run
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: workflow_id
     owner: WorkflowExperimentAssociation
     domain_of:
@@ -162,7 +162,7 @@ attributes:
   experiment_id:
     name: experiment_id
     description: Reference to the source experiment run
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: experiment_id
     owner: WorkflowExperimentAssociation
     domain_of:

@@ -9,7 +9,7 @@ _Blotting force setting_
 
 
 
-URI: [lambdaber:blot_force](https://w3id.org/lambda-ber-schema/blot_force)
+URI: [lambda:blot_force](http://w3id.org/lambda/blot_force)
 Alias: blot_force
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: blot_force
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: blot_force
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:blot_force |
-| native | lambdaber:blot_force |
+| self | lambda:blot_force |
+| native | lambda:blot_force |
 
 
 
@@ -67,7 +67,7 @@ Alias: blot_force
 ```yaml
 name: blot_force
 description: Blotting force setting
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: blot_force
 owner: CryoEMPreparation

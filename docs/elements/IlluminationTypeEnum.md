@@ -7,7 +7,7 @@ _Types of illumination for optical microscopy_
 
 
 
-URI: [lambdaber:IlluminationTypeEnum](https://w3id.org/lambda-ber-schema/IlluminationTypeEnum)
+URI: [lambda:IlluminationTypeEnum](http://w3id.org/lambda/IlluminationTypeEnum)
 
 ## Permissible Values
 
@@ -45,7 +45,7 @@ URI: [lambdaber:IlluminationTypeEnum](https://w3id.org/lambda-ber-schema/Illumin
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -58,7 +58,7 @@ URI: [lambdaber:IlluminationTypeEnum](https://w3id.org/lambda-ber-schema/Illumin
 ```yaml
 name: IlluminationTypeEnum
 description: Types of illumination for optical microscopy
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   brightfield:

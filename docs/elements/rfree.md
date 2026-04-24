@@ -9,7 +9,7 @@ _R-free (test set)_
 
 
 
-URI: [lambdaber:rfree](https://w3id.org/lambda-ber-schema/rfree)
+URI: [lambda:rfree](http://w3id.org/lambda/rfree)
 Alias: rfree
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: rfree
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: rfree
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:rfree |
-| native | lambdaber:rfree |
+| self | lambda:rfree |
+| native | lambda:rfree |
+| exact | mmCIF:_refine.ls_R_factor_R_free |
 
 
 
@@ -67,7 +68,9 @@ Alias: rfree
 ```yaml
 name: rfree
 description: R-free (test set)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_refine.ls_R_factor_R_free
 rank: 1000
 alias: rfree
 owner: WorkflowRun

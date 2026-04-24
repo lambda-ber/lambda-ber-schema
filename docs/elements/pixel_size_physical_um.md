@@ -9,7 +9,7 @@ _Physical pixel size of the detector in micrometers_
 
 
 
-URI: [lambdaber:pixel_size_physical_um](https://w3id.org/lambda-ber-schema/pixel_size_physical_um)
+URI: [lambda:pixel_size_physical_um](http://w3id.org/lambda/pixel_size_physical_um)
 Alias: pixel_size_physical_um
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: pixel_size_physical_um
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: pixel_size_physical_um
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:pixel_size_physical_um |
-| native | lambdaber:pixel_size_physical_um |
+| self | lambda:pixel_size_physical_um |
+| native | lambda:pixel_size_physical_um |
 
 
 
@@ -67,7 +67,7 @@ Alias: pixel_size_physical_um
 ```yaml
 name: pixel_size_physical_um
 description: Physical pixel size of the detector in micrometers
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: pixel_size_physical_um
 owner: CryoEMInstrument

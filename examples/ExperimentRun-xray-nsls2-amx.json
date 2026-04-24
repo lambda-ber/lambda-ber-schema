@@ -69,7 +69,7 @@
       "unit": "degrees",
       "numeric_value": 1.0
     },
-    "strategy_notes": "Detector model from source metadata: Eiger9. Sweep start/end from source metadata: 0.01 to 1.01 degrees. Original attenuation reported as fraction 0.1 (mapped here to transmission_percent=10.0).\n"
+    "strategy_notes": "Original attenuation reported as fraction 0.1 (mapped here to transmission_percent=10.0).\n"
   },
   "quality_metrics": {
     "resolution": {
@@ -88,5 +88,44 @@
   },
   "raw_data_location": "/nsls2/data/amx/proposals/commissioning/pass-317839/317839-20250909-startup/mx317839-1/Lyso_manual_01_011/6/JJ_test_01_12",
   "processing_status": "collected",
+  "detector": "Eiger9",
+  "wavelength": {
+    "unit": "Angstroms",
+    "numeric_value": 0.919723
+  },
+  "energy": {
+    "unit": "eV",
+    "numeric_value": 13480.6
+  },
+  "oscillation_angle": {
+    "unit": "degrees",
+    "numeric_value": 0.1
+  },
+  "sweep_start": {
+    "unit": "degrees",
+    "numeric_value": 0.01
+  },
+  "sweep_end": {
+    "unit": "degrees",
+    "numeric_value": 1.01
+  },
+  "beam_center_pixels": {
+    "xbeam": {
+      "unit": "pixels",
+      "numeric_value": 1569.0
+    },
+    "ybeam": {
+      "unit": "pixels",
+      "numeric_value": 1542.02
+    }
+  },
+  "detector_distance": {
+    "unit": "millimeters",
+    "numeric_value": 300.0
+  },
+  "exposure_time": {
+    "unit": "seconds",
+    "numeric_value": 0.01
+  },
   "@type": "ExperimentRun"
 }

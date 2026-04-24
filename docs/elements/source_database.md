@@ -9,7 +9,7 @@ _Source database or resource that provided this annotation_
 
 
 
-URI: [lambdaber:source_database](https://w3id.org/lambda-ber-schema/source_database)
+URI: [lambda:source_database](http://w3id.org/lambda/source_database)
 Alias: source_database
 
 <!-- no inheritance hierarchy -->
@@ -22,13 +22,13 @@ Alias: source_database
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ProteinAnnotation](ProteinAnnotation.md) | Base class for all protein-related functional and structural annotations |  no  |
-| [MutationEffect](MutationEffect.md) | Effects of mutations and variants on protein structure and function |  no  |
-| [ProteinProteinInteraction](ProteinProteinInteraction.md) | Protein-protein interactions and interfaces |  no  |
-| [StructuralFeature](StructuralFeature.md) | Structural features and properties of protein regions |  no  |
 | [FunctionalSite](FunctionalSite.md) | Functional sites including catalytic, binding, and regulatory sites |  no  |
-| [PostTranslationalModification](PostTranslationalModification.md) | Post-translational modifications observed or predicted |  no  |
+| [StructuralFeature](StructuralFeature.md) | Structural features and properties of protein regions |  no  |
+| [ProteinAnnotation](ProteinAnnotation.md) | Base class for all protein-related functional and structural annotations |  no  |
+| [ProteinProteinInteraction](ProteinProteinInteraction.md) | Protein-protein interactions and interfaces |  no  |
 | [EvolutionaryConservation](EvolutionaryConservation.md) | Evolutionary conservation information |  no  |
+| [PostTranslationalModification](PostTranslationalModification.md) | Post-translational modifications observed or predicted |  no  |
+| [MutationEffect](MutationEffect.md) | Effects of mutations and variants on protein structure and function |  no  |
 
 
 
@@ -52,7 +52,7 @@ Alias: source_database
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -61,8 +61,8 @@ Alias: source_database
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:source_database |
-| native | lambdaber:source_database |
+| self | lambda:source_database |
+| native | lambda:source_database |
 
 
 
@@ -73,7 +73,7 @@ Alias: source_database
 ```yaml
 name: source_database
 description: Source database or resource that provided this annotation
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: source_database
 owner: ProteinAnnotation

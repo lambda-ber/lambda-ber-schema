@@ -9,7 +9,7 @@ _Taxonomic range of conservation_
 
 
 
-URI: [lambdaber:taxonomic_range](https://w3id.org/lambda-ber-schema/taxonomic_range)
+URI: [lambda:taxonomic_range](http://w3id.org/lambda/taxonomic_range)
 Alias: taxonomic_range
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: taxonomic_range
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: taxonomic_range
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:taxonomic_range |
-| native | lambdaber:taxonomic_range |
+| self | lambda:taxonomic_range |
+| native | lambda:taxonomic_range |
 
 
 
@@ -67,7 +67,7 @@ Alias: taxonomic_range
 ```yaml
 name: taxonomic_range
 description: Taxonomic range of conservation
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: taxonomic_range
 owner: EvolutionaryConservation

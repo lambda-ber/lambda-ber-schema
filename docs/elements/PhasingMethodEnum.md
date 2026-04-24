@@ -7,7 +7,7 @@ _Methods for phase determination in X-ray crystallography_
 
 
 
-URI: [lambdaber:PhasingMethodEnum](https://w3id.org/lambda-ber-schema/PhasingMethodEnum)
+URI: [lambda:PhasingMethodEnum](http://w3id.org/lambda/PhasingMethodEnum)
 
 ## Permissible Values
 
@@ -45,7 +45,7 @@ URI: [lambdaber:PhasingMethodEnum](https://w3id.org/lambda-ber-schema/PhasingMet
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -58,7 +58,7 @@ URI: [lambdaber:PhasingMethodEnum](https://w3id.org/lambda-ber-schema/PhasingMet
 ```yaml
 name: PhasingMethodEnum
 description: Methods for phase determination in X-ray crystallography
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   molecular_replacement:

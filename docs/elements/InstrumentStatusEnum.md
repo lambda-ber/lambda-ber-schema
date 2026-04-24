@@ -7,7 +7,7 @@ _Operational status of instruments_
 
 
 
-URI: [lambdaber:InstrumentStatusEnum](https://w3id.org/lambda-ber-schema/InstrumentStatusEnum)
+URI: [lambda:InstrumentStatusEnum](http://w3id.org/lambda/InstrumentStatusEnum)
 
 ## Permissible Values
 
@@ -41,7 +41,7 @@ URI: [lambdaber:InstrumentStatusEnum](https://w3id.org/lambda-ber-schema/Instrum
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -54,7 +54,7 @@ URI: [lambdaber:InstrumentStatusEnum](https://w3id.org/lambda-ber-schema/Instrum
 ```yaml
 name: InstrumentStatusEnum
 description: Operational status of instruments
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   operational:

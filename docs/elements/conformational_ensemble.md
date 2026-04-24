@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:conformational_ensemble](https://w3id.org/lambda-ber-schema/conformational_ensemble)
+URI: [lambda:conformational_ensemble](http://w3id.org/lambda/conformational_ensemble)
 Alias: conformational_ensemble
 
 <!-- no inheritance hierarchy -->
@@ -17,8 +17,8 @@ Alias: conformational_ensemble
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AggregatedProteinView](AggregatedProteinView.md) | Aggregated view of all structural and functional data for a protein |  no  |
 | [Sample](Sample.md) | A biological sample used in structural biology experiments |  no  |
+| [AggregatedProteinView](AggregatedProteinView.md) | Aggregated view of all structural and functional data for a protein |  no  |
 
 
 
@@ -44,8 +44,8 @@ Alias: conformational_ensemble
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:conformational_ensemble |
-| native | lambdaber:conformational_ensemble |
+| self | lambda:conformational_ensemble |
+| native | lambda:conformational_ensemble |
 
 
 

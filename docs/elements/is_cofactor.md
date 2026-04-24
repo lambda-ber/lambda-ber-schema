@@ -9,7 +9,7 @@ _Whether the ligand is a cofactor_
 
 
 
-URI: [lambdaber:is_cofactor](https://w3id.org/lambda-ber-schema/is_cofactor)
+URI: [lambda:is_cofactor](http://w3id.org/lambda/is_cofactor)
 Alias: is_cofactor
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: is_cofactor
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: is_cofactor
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:is_cofactor |
-| native | lambdaber:is_cofactor |
+| self | lambda:is_cofactor |
+| native | lambda:is_cofactor |
 
 
 
@@ -67,7 +67,7 @@ Alias: is_cofactor
 ```yaml
 name: is_cofactor
 description: Whether the ligand is a cofactor
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: is_cofactor
 owner: LigandInteraction

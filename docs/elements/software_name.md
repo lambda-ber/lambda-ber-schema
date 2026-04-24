@@ -9,7 +9,7 @@ _Software used for processing_
 
 
 
-URI: [lambdaber:software_name](https://w3id.org/lambda-ber-schema/software_name)
+URI: [lambda:software_name](http://w3id.org/lambda/software_name)
 Alias: software_name
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: software_name
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: software_name
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:software_name |
-| native | lambdaber:software_name |
+| self | lambda:software_name |
+| native | lambda:software_name |
 
 
 
@@ -69,7 +69,7 @@ Alias: software_name
 ```yaml
 name: software_name
 description: Software used for processing
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: software_name
 owner: WorkflowRun

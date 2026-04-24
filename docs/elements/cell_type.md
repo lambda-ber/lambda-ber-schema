@@ -9,7 +9,7 @@ _Cell type if applicable (e.g., CL:0000057 for fibroblast)_
 
 
 
-URI: [lambdaber:cell_type](https://w3id.org/lambda-ber-schema/cell_type)
+URI: [lambda:cell_type](http://w3id.org/lambda/cell_type)
 Alias: cell_type
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: cell_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: cell_type
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:cell_type |
-| native | lambdaber:cell_type |
+| self | lambda:cell_type |
+| native | lambda:cell_type |
 
 
 
@@ -67,7 +67,7 @@ Alias: cell_type
 ```yaml
 name: cell_type
 description: Cell type if applicable (e.g., CL:0000057 for fibroblast)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: cell_type
 owner: Sample

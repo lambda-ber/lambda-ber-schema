@@ -9,7 +9,7 @@ _Calculated binding energy (kcal/mol)_
 
 
 
-URI: [lambdaber:binding_energy](https://w3id.org/lambda-ber-schema/binding_energy)
+URI: [lambda:binding_energy](http://w3id.org/lambda/binding_energy)
 Alias: binding_energy
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: binding_energy
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: binding_energy
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:binding_energy |
-| native | lambdaber:binding_energy |
+| self | lambda:binding_energy |
+| native | lambda:binding_energy |
 
 
 
@@ -67,7 +67,7 @@ Alias: binding_energy
 ```yaml
 name: binding_energy
 description: Calculated binding energy (kcal/mol)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: binding_energy
 owner: ProteinProteinInteraction

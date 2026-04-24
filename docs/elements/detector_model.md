@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:detector_model](https://w3id.org/lambda-ber-schema/detector_model)
+URI: [lambda:detector_model](http://w3id.org/lambda/detector_model)
 Alias: detector_model
 
 <!-- no inheritance hierarchy -->
@@ -17,9 +17,9 @@ Alias: detector_model
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [CryoEMInstrument](CryoEMInstrument.md) | Cryo-EM microscope specifications |  no  |
-| [XRayInstrument](XRayInstrument.md) | X-ray diffractometer or synchrotron beamline specifications |  no  |
 | [XRFImage](XRFImage.md) | X-ray fluorescence (XRF) image showing elemental distribution |  no  |
+| [XRayInstrument](XRayInstrument.md) | X-ray diffractometer or synchrotron beamline specifications |  no  |
+| [CryoEMInstrument](CryoEMInstrument.md) | Cryo-EM microscope specifications |  no  |
 
 
 
@@ -45,8 +45,8 @@ Alias: detector_model
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:detector_model |
-| native | lambdaber:detector_model |
+| self | lambda:detector_model |
+| native | lambda:detector_model |
 
 
 

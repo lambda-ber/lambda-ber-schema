@@ -9,7 +9,7 @@ _Environmental and experimental conditions_
 
 
 
-URI: [lambdaber:experimental_conditions](https://w3id.org/lambda-ber-schema/experimental_conditions)
+URI: [lambda:experimental_conditions](http://w3id.org/lambda/experimental_conditions)
 Alias: experimental_conditions
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: experimental_conditions
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: experimental_conditions
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:experimental_conditions |
-| native | lambdaber:experimental_conditions |
+| self | lambda:experimental_conditions |
+| native | lambda:experimental_conditions |
 
 
 
@@ -67,7 +67,7 @@ Alias: experimental_conditions
 ```yaml
 name: experimental_conditions
 description: Environmental and experimental conditions
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: experimental_conditions
 owner: ExperimentRun

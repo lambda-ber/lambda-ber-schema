@@ -9,7 +9,7 @@ _Amplitude contrast value_
 
 
 
-URI: [lambdaber:amplitude_contrast](https://w3id.org/lambda-ber-schema/amplitude_contrast)
+URI: [lambda:amplitude_contrast](http://w3id.org/lambda/amplitude_contrast)
 Alias: amplitude_contrast
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: amplitude_contrast
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: amplitude_contrast
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:amplitude_contrast |
-| native | lambdaber:amplitude_contrast |
+| self | lambda:amplitude_contrast |
+| native | lambda:amplitude_contrast |
 
 
 
@@ -67,7 +67,7 @@ Alias: amplitude_contrast
 ```yaml
 name: amplitude_contrast
 description: Amplitude contrast value
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: amplitude_contrast
 owner: CTFEstimationParameters

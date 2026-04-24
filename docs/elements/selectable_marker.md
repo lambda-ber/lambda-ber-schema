@@ -9,7 +9,7 @@ _Antibiotic resistance or other selectable marker_
 
 
 
-URI: [lambdaber:selectable_marker](https://w3id.org/lambda-ber-schema/selectable_marker)
+URI: [lambda:selectable_marker](http://w3id.org/lambda/selectable_marker)
 Alias: selectable_marker
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: selectable_marker
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: selectable_marker
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:selectable_marker |
-| native | lambdaber:selectable_marker |
+| self | lambda:selectable_marker |
+| native | lambda:selectable_marker |
 
 
 
@@ -67,7 +67,7 @@ Alias: selectable_marker
 ```yaml
 name: selectable_marker
 description: Antibiotic resistance or other selectable marker
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: selectable_marker
 owner: ProteinConstruct

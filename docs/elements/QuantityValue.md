@@ -108,6 +108,28 @@ URI: [nmdc:QuantityValue](https://w3id.org/nmdc/QuantityValue)
 | [XRayInstrument](XRayInstrument.md) | [beam_size_min](beam_size_min.md) | range | [QuantityValue](QuantityValue.md) |
 | [XRayInstrument](XRayInstrument.md) | [beam_size_max](beam_size_max.md) | range | [QuantityValue](QuantityValue.md) |
 | [XRayInstrument](XRayInstrument.md) | [flux_density](flux_density.md) | range | [QuantityValue](QuantityValue.md) |
+| [SANSDetector](SANSDetector.md) | [pixel_size_x](pixel_size_x.md) | range | [QuantityValue](QuantityValue.md) |
+| [SANSDetector](SANSDetector.md) | [pixel_size_y](pixel_size_y.md) | range | [QuantityValue](QuantityValue.md) |
+| [SANSDetector](SANSDetector.md) | [sample_detector_distance](sample_detector_distance.md) | range | [QuantityValue](QuantityValue.md) |
+| [SANSDetector](SANSDetector.md) | [rotation_angle](rotation_angle.md) | range | [QuantityValue](QuantityValue.md) |
+| [SANSDetector](SANSDetector.md) | [beam_trap_position_x](beam_trap_position_x.md) | range | [QuantityValue](QuantityValue.md) |
+| [SANSDetector](SANSDetector.md) | [beam_trap_position_y](beam_trap_position_y.md) | range | [QuantityValue](QuantityValue.md) |
+| [SANSSource](SANSSource.md) | [wavelength](wavelength.md) | range | [QuantityValue](QuantityValue.md) |
+| [SANSSource](SANSSource.md) | [wavelength_spread](wavelength_spread.md) | range | [QuantityValue](QuantityValue.md) |
+| [SANSSource](SANSSource.md) | [energy](energy.md) | range | [QuantityValue](QuantityValue.md) |
+| [SANSSource](SANSSource.md) | [flux](flux.md) | range | [QuantityValue](QuantityValue.md) |
+| [SANSConfiguration](SANSConfiguration.md) | [q_min](q_min.md) | range | [QuantityValue](QuantityValue.md) |
+| [SANSConfiguration](SANSConfiguration.md) | [q_max](q_max.md) | range | [QuantityValue](QuantityValue.md) |
+| [SANSConfiguration](SANSConfiguration.md) | [source_aperature_diameter](source_aperature_diameter.md) | range | [QuantityValue](QuantityValue.md) |
+| [SANSConfiguration](SANSConfiguration.md) | [sample_aperature_diameter](sample_aperature_diameter.md) | range | [QuantityValue](QuantityValue.md) |
+| [SANSConfiguration](SANSConfiguration.md) | [siwindow_to_main_distance](siwindow_to_main_distance.md) | range | [QuantityValue](QuantityValue.md) |
+| [SANSConfiguration](SANSConfiguration.md) | [sample_ap_to_si_distance](sample_ap_to_si_distance.md) | range | [QuantityValue](QuantityValue.md) |
+| [SANSConfiguration](SANSConfiguration.md) | [sample_ap_to_main_distance](sample_ap_to_main_distance.md) | range | [QuantityValue](QuantityValue.md) |
+| [SANSConfiguration](SANSConfiguration.md) | [sample_ap_to_sample_distance](sample_ap_to_sample_distance.md) | range | [QuantityValue](QuantityValue.md) |
+| [SANSConfiguration](SANSConfiguration.md) | [source_ap_to_siwindow_distance](source_ap_to_siwindow_distance.md) | range | [QuantityValue](QuantityValue.md) |
+| [SANSConfiguration](SANSConfiguration.md) | [source_ap_to_sample_ap_distance](source_ap_to_sample_ap_distance.md) | range | [QuantityValue](QuantityValue.md) |
+| [SANSInstrument](SANSInstrument.md) | [q_range_min](q_range_min.md) | range | [QuantityValue](QuantityValue.md) |
+| [SANSInstrument](SANSInstrument.md) | [q_range_max](q_range_max.md) | range | [QuantityValue](QuantityValue.md) |
 | [SAXSInstrument](SAXSInstrument.md) | [q_range_min](q_range_min.md) | range | [QuantityValue](QuantityValue.md) |
 | [SAXSInstrument](SAXSInstrument.md) | [q_range_max](q_range_max.md) | range | [QuantityValue](QuantityValue.md) |
 | [SAXSInstrument](SAXSInstrument.md) | [detector_distance_min](detector_distance_min.md) | range | [QuantityValue](QuantityValue.md) |
@@ -136,8 +158,11 @@ URI: [nmdc:QuantityValue](https://w3id.org/nmdc/QuantityValue)
 | [ExperimentRun](ExperimentRun.md) | [shots_per_hole](shots_per_hole.md) | range | [QuantityValue](QuantityValue.md) |
 | [ExperimentRun](ExperimentRun.md) | [holes_per_group](holes_per_group.md) | range | [QuantityValue](QuantityValue.md) |
 | [ExperimentRun](ExperimentRun.md) | [wavelength](wavelength.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [energy](energy.md) | range | [QuantityValue](QuantityValue.md) |
 | [ExperimentRun](ExperimentRun.md) | [oscillation_angle](oscillation_angle.md) | range | [QuantityValue](QuantityValue.md) |
 | [ExperimentRun](ExperimentRun.md) | [start_angle](start_angle.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [sweep_start](sweep_start.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [sweep_end](sweep_end.md) | range | [QuantityValue](QuantityValue.md) |
 | [ExperimentRun](ExperimentRun.md) | [number_of_images](number_of_images.md) | range | [QuantityValue](QuantityValue.md) |
 | [ExperimentRun](ExperimentRun.md) | [beam_center_x](beam_center_x.md) | range | [QuantityValue](QuantityValue.md) |
 | [ExperimentRun](ExperimentRun.md) | [beam_center_y](beam_center_y.md) | range | [QuantityValue](QuantityValue.md) |
@@ -324,11 +349,17 @@ URI: [nmdc:QuantityValue](https://w3id.org/nmdc/QuantityValue)
 | [DataCollectionStrategy](DataCollectionStrategy.md) | [beam_center_x_px](beam_center_x_px.md) | range | [QuantityValue](QuantityValue.md) |
 | [DataCollectionStrategy](DataCollectionStrategy.md) | [beam_center_y_px](beam_center_y_px.md) | range | [QuantityValue](QuantityValue.md) |
 | [DataCollectionStrategy](DataCollectionStrategy.md) | [beam_size_um](beam_size_um.md) | range | [QuantityValue](QuantityValue.md) |
+| [DataCollectionStrategy](DataCollectionStrategy.md) | [energy](energy.md) | range | [QuantityValue](QuantityValue.md) |
 | [DataCollectionStrategy](DataCollectionStrategy.md) | [flux_photons_per_s](flux_photons_per_s.md) | range | [QuantityValue](QuantityValue.md) |
 | [DataCollectionStrategy](DataCollectionStrategy.md) | [transmission_percent](transmission_percent.md) | range | [QuantityValue](QuantityValue.md) |
 | [DataCollectionStrategy](DataCollectionStrategy.md) | [temperature_k](temperature_k.md) | range | [QuantityValue](QuantityValue.md) |
 | [DataCollectionStrategy](DataCollectionStrategy.md) | [oscillation_per_image_deg](oscillation_per_image_deg.md) | range | [QuantityValue](QuantityValue.md) |
+| [DataCollectionStrategy](DataCollectionStrategy.md) | [sweep_start](sweep_start.md) | range | [QuantityValue](QuantityValue.md) |
+| [DataCollectionStrategy](DataCollectionStrategy.md) | [sweep_end](sweep_end.md) | range | [QuantityValue](QuantityValue.md) |
 | [DataCollectionStrategy](DataCollectionStrategy.md) | [total_rotation_deg](total_rotation_deg.md) | range | [QuantityValue](QuantityValue.md) |
+| [DataCollectionStrategy](DataCollectionStrategy.md) | [exposure_time](exposure_time.md) | range | [QuantityValue](QuantityValue.md) |
+| [BeamCenterPixels](BeamCenterPixels.md) | [xbeam](xbeam.md) | range | [QuantityValue](QuantityValue.md) |
+| [BeamCenterPixels](BeamCenterPixels.md) | [ybeam](ybeam.md) | range | [QuantityValue](QuantityValue.md) |
 | [QualityMetrics](QualityMetrics.md) | [resolution](resolution.md) | range | [QuantityValue](QuantityValue.md) |
 | [QualityMetrics](QualityMetrics.md) | [resolution_high_shell_a](resolution_high_shell_a.md) | range | [QuantityValue](QuantityValue.md) |
 | [QualityMetrics](QualityMetrics.md) | [resolution_low_a](resolution_low_a.md) | range | [QuantityValue](QuantityValue.md) |
@@ -406,7 +437,7 @@ URI: [nmdc:QuantityValue](https://w3id.org/nmdc/QuantityValue)
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -416,7 +447,7 @@ URI: [nmdc:QuantityValue](https://w3id.org/nmdc/QuantityValue)
 | Mapping Type | Mapped Value |
 | ---  | ---  |
 | self | nmdc:QuantityValue |
-| native | lambdaber:QuantityValue |
+| native | lambda:QuantityValue |
 | undefined | schema:QuantityValue |
 
 
@@ -437,7 +468,7 @@ description: A simple quantity value, representing a measurement with a numeric 
   and unit. This allows data providers to specify measurements in their preferred
   unit while enabling standardized interpretation. For example, a pixel size could
   be specified as 1.5 micrometers or 15 Angstroms, with the unit clearly specified.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 mappings:
 - schema:QuantityValue
 is_a: AttributeValue
@@ -479,7 +510,7 @@ description: A simple quantity value, representing a measurement with a numeric 
   and unit. This allows data providers to specify measurements in their preferred
   unit while enabling standardized interpretation. For example, a pixel size could
   be specified as 1.5 micrometers or 15 Angstroms, with the unit clearly specified.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 mappings:
 - schema:QuantityValue
 is_a: AttributeValue
@@ -506,7 +537,7 @@ attributes:
     name: maximum_numeric_value
     description: The maximum value part, expressed as a number, of the quantity value
       when the value covers a range.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     mappings:
     - nmdc:maximum_numeric_value
     rank: 1000
@@ -520,7 +551,7 @@ attributes:
     name: minimum_numeric_value
     description: The minimum value part, expressed as a number, of the quantity value
       when the value covers a range.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     mappings:
     - nmdc:minimum_numeric_value
     rank: 1000
@@ -534,7 +565,7 @@ attributes:
     name: numeric_value
     description: The numerical value of the quantity. May be null if the value is
       unknown or not measured.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     mappings:
     - nmdc:numeric_value
     - qud:quantityValue
@@ -550,7 +581,7 @@ attributes:
     name: unit
     description: The unit of measurement (e.g., "Angstroms", "micrometers", "kilodaltons").
       Should match the UCUM standard notation or Unit Ontology.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     aliases:
     - scale
     mappings:
@@ -570,7 +601,7 @@ attributes:
     name: unit_cv_id
     description: The unit of the quantity, expressed as a CURIE from the Unit Ontology
       (e.g., UO:0000016 for micrometer).
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: unit_cv_id
     owner: QuantityValue
@@ -580,7 +611,7 @@ attributes:
   attribute:
     name: attribute
     description: The attribute being represented.
-    from_schema: https://w3id.org/lambda-ber-schema/types
+    from_schema: http://w3id.org/lambda/types
     alias: attribute
     owner: QuantityValue
     domain_of:
@@ -593,7 +624,7 @@ attributes:
     examples:
     - value: 1.5 micrometers
     - value: 50 Angstroms
-    from_schema: https://w3id.org/lambda-ber-schema/types
+    from_schema: http://w3id.org/lambda/types
     alias: raw_value
     owner: QuantityValue
     domain_of:

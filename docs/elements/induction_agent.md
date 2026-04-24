@@ -9,7 +9,7 @@ _Agent used to induce expression (e.g., IPTG, tetracycline)_
 
 
 
-URI: [lambdaber:induction_agent](https://w3id.org/lambda-ber-schema/induction_agent)
+URI: [lambda:induction_agent](http://w3id.org/lambda/induction_agent)
 Alias: induction_agent
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: induction_agent
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: induction_agent
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:induction_agent |
-| native | lambdaber:induction_agent |
+| self | lambda:induction_agent |
+| native | lambda:induction_agent |
 
 
 
@@ -67,7 +67,7 @@ Alias: induction_agent
 ```yaml
 name: induction_agent
 description: Agent used to induce expression (e.g., IPTG, tetracycline)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: induction_agent
 owner: SamplePreparation

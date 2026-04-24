@@ -9,7 +9,7 @@ _Root container holding flat entity collections and association tables. Follows 
 
 
 
-URI: [lambdaber:Dataset](https://w3id.org/lambda-ber-schema/Dataset)
+URI: [lambda:Dataset](http://w3id.org/lambda/Dataset)
 
 
 
@@ -275,7 +275,7 @@ URI: [lambdaber:Dataset](https://w3id.org/lambda-ber-schema/Dataset)
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -284,8 +284,8 @@ URI: [lambdaber:Dataset](https://w3id.org/lambda-ber-schema/Dataset)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:Dataset |
-| native | lambdaber:Dataset |
+| self | lambda:Dataset |
+| native | lambda:Dataset |
 
 
 
@@ -303,13 +303,13 @@ URI: [lambdaber:Dataset](https://w3id.org/lambda-ber-schema/Dataset)
 name: Dataset
 description: Root container holding flat entity collections and association tables.
   Follows relational database design patterns for structural biology data.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: NamedThing
 attributes:
   keywords:
     name: keywords
     description: Keywords or tags describing the dataset for search and categorization
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Dataset
@@ -319,7 +319,7 @@ attributes:
   studies:
     name: studies
     description: All studies in this dataset
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Dataset
@@ -330,7 +330,7 @@ attributes:
   instruments:
     name: instruments
     description: All instruments used across studies
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Dataset
@@ -341,7 +341,7 @@ attributes:
   protein_constructs:
     name: protein_constructs
     description: All protein constructs
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Dataset
@@ -352,7 +352,7 @@ attributes:
   samples:
     name: samples
     description: All samples across all studies
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Dataset
@@ -363,7 +363,7 @@ attributes:
   sample_preparations:
     name: sample_preparations
     description: All sample preparations
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Dataset
@@ -374,7 +374,7 @@ attributes:
   experiment_runs:
     name: experiment_runs
     description: All experiment runs (data collection sessions)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Dataset
@@ -385,7 +385,7 @@ attributes:
   workflow_runs:
     name: workflow_runs
     description: All workflow runs (computational processing)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Dataset
@@ -396,7 +396,7 @@ attributes:
   data_files:
     name: data_files
     description: All data files
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Dataset
@@ -407,7 +407,7 @@ attributes:
   images:
     name: images
     description: All images
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Dataset
@@ -418,7 +418,7 @@ attributes:
   study_sample_associations:
     name: study_sample_associations
     description: Links between studies and samples (M:N)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Dataset
@@ -429,7 +429,7 @@ attributes:
   study_experiment_associations:
     name: study_experiment_associations
     description: Links between studies and experiments (M:N)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Dataset
@@ -440,7 +440,7 @@ attributes:
   study_workflow_associations:
     name: study_workflow_associations
     description: Links between studies and workflows (M:N)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Dataset
@@ -451,7 +451,7 @@ attributes:
   experiment_sample_associations:
     name: experiment_sample_associations
     description: Links between experiments and samples (M:N with role)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Dataset
@@ -462,7 +462,7 @@ attributes:
   experiment_instrument_associations:
     name: experiment_instrument_associations
     description: Links between experiments and instruments (M:N)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Dataset
@@ -473,7 +473,7 @@ attributes:
   workflow_experiment_associations:
     name: workflow_experiment_associations
     description: Links between workflows and source experiments (M:N)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Dataset
@@ -484,7 +484,7 @@ attributes:
   workflow_input_associations:
     name: workflow_input_associations
     description: Links between workflows and input files
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Dataset
@@ -495,7 +495,7 @@ attributes:
   workflow_output_associations:
     name: workflow_output_associations
     description: Links between workflows and output files
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Dataset
@@ -515,13 +515,13 @@ tree_root: true
 name: Dataset
 description: Root container holding flat entity collections and association tables.
   Follows relational database design patterns for structural biology data.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: NamedThing
 attributes:
   keywords:
     name: keywords
     description: Keywords or tags describing the dataset for search and categorization
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: keywords
     owner: Dataset
@@ -533,7 +533,7 @@ attributes:
   studies:
     name: studies
     description: All studies in this dataset
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: studies
     owner: Dataset
@@ -546,7 +546,7 @@ attributes:
   instruments:
     name: instruments
     description: All instruments used across studies
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: instruments
     owner: Dataset
@@ -559,7 +559,7 @@ attributes:
   protein_constructs:
     name: protein_constructs
     description: All protein constructs
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: protein_constructs
     owner: Dataset
@@ -572,7 +572,7 @@ attributes:
   samples:
     name: samples
     description: All samples across all studies
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: samples
     owner: Dataset
@@ -585,7 +585,7 @@ attributes:
   sample_preparations:
     name: sample_preparations
     description: All sample preparations
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: sample_preparations
     owner: Dataset
@@ -598,7 +598,7 @@ attributes:
   experiment_runs:
     name: experiment_runs
     description: All experiment runs (data collection sessions)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: experiment_runs
     owner: Dataset
@@ -611,7 +611,7 @@ attributes:
   workflow_runs:
     name: workflow_runs
     description: All workflow runs (computational processing)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: workflow_runs
     owner: Dataset
@@ -624,7 +624,7 @@ attributes:
   data_files:
     name: data_files
     description: All data files
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: data_files
     owner: Dataset
@@ -637,7 +637,7 @@ attributes:
   images:
     name: images
     description: All images
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: images
     owner: Dataset
@@ -650,7 +650,7 @@ attributes:
   study_sample_associations:
     name: study_sample_associations
     description: Links between studies and samples (M:N)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: study_sample_associations
     owner: Dataset
@@ -663,7 +663,7 @@ attributes:
   study_experiment_associations:
     name: study_experiment_associations
     description: Links between studies and experiments (M:N)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: study_experiment_associations
     owner: Dataset
@@ -676,7 +676,7 @@ attributes:
   study_workflow_associations:
     name: study_workflow_associations
     description: Links between studies and workflows (M:N)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: study_workflow_associations
     owner: Dataset
@@ -689,7 +689,7 @@ attributes:
   experiment_sample_associations:
     name: experiment_sample_associations
     description: Links between experiments and samples (M:N with role)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: experiment_sample_associations
     owner: Dataset
@@ -702,7 +702,7 @@ attributes:
   experiment_instrument_associations:
     name: experiment_instrument_associations
     description: Links between experiments and instruments (M:N)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: experiment_instrument_associations
     owner: Dataset
@@ -715,7 +715,7 @@ attributes:
   workflow_experiment_associations:
     name: workflow_experiment_associations
     description: Links between workflows and source experiments (M:N)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: workflow_experiment_associations
     owner: Dataset
@@ -728,7 +728,7 @@ attributes:
   workflow_input_associations:
     name: workflow_input_associations
     description: Links between workflows and input files
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: workflow_input_associations
     owner: Dataset
@@ -741,7 +741,7 @@ attributes:
   workflow_output_associations:
     name: workflow_output_associations
     description: Links between workflows and output files
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: workflow_output_associations
     owner: Dataset
@@ -756,7 +756,7 @@ attributes:
     description: Globally unique identifier as an IRI or CURIE for machine processing
       and external references. Used for linking data across systems and semantic web
       integration.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     identifier: true
     alias: id
@@ -769,7 +769,7 @@ attributes:
   title:
     name: title
     description: A human-readable name or title for this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     slot_uri: dcterms:title
     alias: title
@@ -780,7 +780,7 @@ attributes:
   description:
     name: description
     description: A detailed textual description of this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: description
     owner: Dataset

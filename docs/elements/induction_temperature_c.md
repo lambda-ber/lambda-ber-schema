@@ -9,7 +9,7 @@ _Temperature during induction, typically specified in degrees Celsius. Data prov
 
 
 
-URI: [lambdaber:induction_temperature_c](https://w3id.org/lambda-ber-schema/induction_temperature_c)
+URI: [lambda:induction_temperature_c](http://w3id.org/lambda/induction_temperature_c)
 Alias: induction_temperature_c
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: induction_temperature_c
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: induction_temperature_c
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:induction_temperature_c |
-| native | lambdaber:induction_temperature_c |
+| self | lambda:induction_temperature_c |
+| native | lambda:induction_temperature_c |
 
 
 
@@ -68,7 +68,7 @@ Alias: induction_temperature_c
 name: induction_temperature_c
 description: Temperature during induction, typically specified in degrees Celsius.
   Data providers may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: induction_temperature_c
 owner: SamplePreparation

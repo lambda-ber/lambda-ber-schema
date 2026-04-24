@@ -9,7 +9,7 @@ _Type of EM grid used_
 
 
 
-URI: [lambdaber:grid_type](https://w3id.org/lambda-ber-schema/grid_type)
+URI: [lambda:grid_type](http://w3id.org/lambda/grid_type)
 Alias: grid_type
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: grid_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: grid_type
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:grid_type |
-| native | lambdaber:grid_type |
+| self | lambda:grid_type |
+| native | lambda:grid_type |
+| exact | mmCIF:_em_sample_support.grid_type |
 
 
 
@@ -67,7 +68,9 @@ Alias: grid_type
 ```yaml
 name: grid_type
 description: Type of EM grid used
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_em_sample_support.grid_type
 rank: 1000
 alias: grid_type
 owner: CryoEMPreparation

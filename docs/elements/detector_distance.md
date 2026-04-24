@@ -9,7 +9,7 @@ _Distance from sample to detector, typically specified in millimeters (mm). Data
 
 
 
-URI: [lambdaber:detector_distance](https://w3id.org/lambda-ber-schema/detector_distance)
+URI: [lambda:detector_distance](http://w3id.org/lambda/detector_distance)
 Alias: detector_distance
 
 <!-- no inheritance hierarchy -->
@@ -35,6 +35,11 @@ Alias: detector_distance
 
 
 
+## Aliases
+
+
+* detector_distance_mm
+
 
 ## Identifier and Mapping Information
 
@@ -46,7 +51,7 @@ Alias: detector_distance
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +60,8 @@ Alias: detector_distance
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:detector_distance |
-| native | lambdaber:detector_distance |
+| self | lambda:detector_distance |
+| native | lambda:detector_distance |
 | exact | nsls2:Detector_distance, imgCIF:_diffrn_measurement.sample_detector_distance, mmCIF:_diffrn_detector.distance, ispyb:DataCollection.detectorDistance |
 
 
@@ -70,7 +75,9 @@ name: detector_distance
 description: Distance from sample to detector, typically specified in millimeters
   (mm). Data providers may specify alternative units by including the unit in the
   QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+aliases:
+- detector_distance_mm
 exact_mappings:
 - nsls2:Detector_distance
 - imgCIF:_diffrn_measurement.sample_detector_distance

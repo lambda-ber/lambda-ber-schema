@@ -7,7 +7,7 @@ _External database names_
 
 
 
-URI: [lambdaber:DatabaseNameEnum](https://w3id.org/lambda-ber-schema/DatabaseNameEnum)
+URI: [lambda:DatabaseNameEnum](http://w3id.org/lambda/DatabaseNameEnum)
 
 ## Permissible Values
 
@@ -57,7 +57,7 @@ URI: [lambdaber:DatabaseNameEnum](https://w3id.org/lambda-ber-schema/DatabaseNam
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -70,7 +70,7 @@ URI: [lambdaber:DatabaseNameEnum](https://w3id.org/lambda-ber-schema/DatabaseNam
 ```yaml
 name: DatabaseNameEnum
 description: External database names
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   uniprot:

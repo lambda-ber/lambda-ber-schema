@@ -9,7 +9,7 @@ _Start and end positions of insert in vector_
 
 
 
-URI: [lambdaber:insert_boundaries](https://w3id.org/lambda-ber-schema/insert_boundaries)
+URI: [lambda:insert_boundaries](http://w3id.org/lambda/insert_boundaries)
 Alias: insert_boundaries
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: insert_boundaries
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: insert_boundaries
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:insert_boundaries |
-| native | lambdaber:insert_boundaries |
+| self | lambda:insert_boundaries |
+| native | lambda:insert_boundaries |
 
 
 
@@ -67,7 +67,7 @@ Alias: insert_boundaries
 ```yaml
 name: insert_boundaries
 description: Start and end positions of insert in vector
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: insert_boundaries
 owner: ProteinConstruct

@@ -9,7 +9,7 @@ _Coma aberration in nanometers_
 
 
 
-URI: [lambdaber:coma](https://w3id.org/lambda-ber-schema/coma)
+URI: [lambda:coma](http://w3id.org/lambda/coma)
 Alias: coma
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: coma
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: coma
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:coma |
-| native | lambdaber:coma |
+| self | lambda:coma |
+| native | lambda:coma |
 
 
 
@@ -67,7 +67,7 @@ Alias: coma
 ```yaml
 name: coma
 description: Coma aberration in nanometers
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: coma
 owner: ExperimentRun

@@ -9,7 +9,7 @@ _Enzyme responsible for modification_
 
 
 
-URI: [lambdaber:enzyme](https://w3id.org/lambda-ber-schema/enzyme)
+URI: [lambda:enzyme](http://w3id.org/lambda/enzyme)
 Alias: enzyme
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: enzyme
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: enzyme
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:enzyme |
-| native | lambdaber:enzyme |
+| self | lambda:enzyme |
+| native | lambda:enzyme |
 
 
 
@@ -67,7 +67,7 @@ Alias: enzyme
 ```yaml
 name: enzyme
 description: Enzyme responsible for modification
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: enzyme
 owner: PostTranslationalModification

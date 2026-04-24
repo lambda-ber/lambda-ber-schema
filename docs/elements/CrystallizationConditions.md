@@ -9,7 +9,7 @@ _Crystal growth conditions for X-ray crystallography (NSLS2 Crystallization mapp
 
 
 
-URI: [lambdaber:CrystallizationConditions](https://w3id.org/lambda-ber-schema/CrystallizationConditions)
+URI: [lambda:CrystallizationConditions](http://w3id.org/lambda/CrystallizationConditions)
 
 
 
@@ -153,7 +153,7 @@ URI: [lambdaber:CrystallizationConditions](https://w3id.org/lambda-ber-schema/Cr
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -162,8 +162,8 @@ URI: [lambdaber:CrystallizationConditions](https://w3id.org/lambda-ber-schema/Cr
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:CrystallizationConditions |
-| native | lambdaber:CrystallizationConditions |
+| self | lambda:CrystallizationConditions |
+| native | lambda:CrystallizationConditions |
 
 
 
@@ -181,17 +181,17 @@ URI: [lambdaber:CrystallizationConditions](https://w3id.org/lambda-ber-schema/Cr
 name: CrystallizationConditions
 description: Crystal growth conditions for X-ray crystallography (NSLS2 Crystallization
   mapping)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: AttributeGroup
 attributes:
   method:
     name: method
     description: Crystallization method used
-    comments:
-    - 'Maps to NSLS2 spreadsheet: Method'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - nsls2:Method
+    - mmCIF:_exptl_crystal_grow.method
     rank: 1000
-    slot_uri: nsls2:Method
     domain_of:
     - CrystallizationConditions
     range: CrystallizationMethodEnum
@@ -199,11 +199,11 @@ attributes:
     name: crystallization_conditions
     description: Complete description of crystallization conditions including precipitant,
       pH, salts
-    comments:
-    - 'Maps to NSLS2 spreadsheet: Conditions'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - nsls2:Conditions
+    - mmCIF:_exptl_crystal_grow.pdbx_details
     rank: 1000
-    slot_uri: nsls2:Conditions
     domain_of:
     - CrystallizationConditions
     - XRayPreparation
@@ -212,11 +212,10 @@ attributes:
     name: drop_volume
     description: Total drop volume, typically specified in nanoliters. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    comments:
-    - 'Maps to NSLS2 spreadsheet: Drop_Volume'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - nsls2:Drop_Volume
     rank: 1000
-    slot_uri: nsls2:Drop_Volume
     domain_of:
     - CrystallizationConditions
     range: QuantityValue
@@ -224,7 +223,7 @@ attributes:
   protein_concentration:
     name: protein_concentration
     description: Protein concentration for crystallization in mg/mL
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - CrystallizationConditions
@@ -233,11 +232,10 @@ attributes:
   crystal_size_um:
     name: crystal_size_um
     description: Crystal dimensions in micrometers (length x width x height)
-    comments:
-    - 'Maps to NSLS2 spreadsheet: Crystal_Size'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - nsls2:Crystal_Size
     rank: 1000
-    slot_uri: nsls2:Crystal_Size
     domain_of:
     - CrystallizationConditions
     - XRayPreparation
@@ -245,29 +243,27 @@ attributes:
   cryo_protectant:
     name: cryo_protectant
     description: Cryoprotectant used for crystal cooling
-    comments:
-    - 'Maps to NSLS2 spreadsheet: Cryo_Protectant'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - nsls2:Cryo_Protectant
     rank: 1000
-    slot_uri: nsls2:Cryo_Protectant
     domain_of:
     - CrystallizationConditions
     range: string
   crystal_id:
     name: crystal_id
     description: Identifier for the specific crystal used
-    comments:
-    - 'Maps to NSLS2 spreadsheet: Crystal_ID'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - nsls2:Crystal_ID
     rank: 1000
-    slot_uri: nsls2:Crystal_ID
     domain_of:
     - CrystallizationConditions
     range: string
   screen_name:
     name: screen_name
     description: Name of crystallization screen used
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - CrystallizationConditions
@@ -276,7 +272,7 @@ attributes:
     name: temperature_c
     description: Crystallization temperature, typically specified in degrees Celsius.
       Data providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - CrystallizationConditions
@@ -286,7 +282,7 @@ attributes:
   drop_ratio_protein_to_reservoir:
     name: drop_ratio_protein_to_reservoir
     description: Ratio of protein to reservoir solution in drop (e.g., 1:1, 2:1)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - CrystallizationConditions
@@ -295,7 +291,7 @@ attributes:
     name: reservoir_volume_ul
     description: Reservoir volume, typically specified in microliters. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - CrystallizationConditions
@@ -305,7 +301,7 @@ attributes:
   seeding_type:
     name: seeding_type
     description: Type of seeding used (micro, macro, streak)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - CrystallizationConditions
@@ -313,7 +309,7 @@ attributes:
   seed_stock_dilution:
     name: seed_stock_dilution
     description: Dilution factor for seed stock
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - CrystallizationConditions
@@ -329,17 +325,17 @@ attributes:
 name: CrystallizationConditions
 description: Crystal growth conditions for X-ray crystallography (NSLS2 Crystallization
   mapping)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: AttributeGroup
 attributes:
   method:
     name: method
     description: Crystallization method used
-    comments:
-    - 'Maps to NSLS2 spreadsheet: Method'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - nsls2:Method
+    - mmCIF:_exptl_crystal_grow.method
     rank: 1000
-    slot_uri: nsls2:Method
     alias: method
     owner: CrystallizationConditions
     domain_of:
@@ -349,11 +345,11 @@ attributes:
     name: crystallization_conditions
     description: Complete description of crystallization conditions including precipitant,
       pH, salts
-    comments:
-    - 'Maps to NSLS2 spreadsheet: Conditions'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - nsls2:Conditions
+    - mmCIF:_exptl_crystal_grow.pdbx_details
     rank: 1000
-    slot_uri: nsls2:Conditions
     alias: crystallization_conditions
     owner: CrystallizationConditions
     domain_of:
@@ -364,11 +360,10 @@ attributes:
     name: drop_volume
     description: Total drop volume, typically specified in nanoliters. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    comments:
-    - 'Maps to NSLS2 spreadsheet: Drop_Volume'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - nsls2:Drop_Volume
     rank: 1000
-    slot_uri: nsls2:Drop_Volume
     alias: drop_volume
     owner: CrystallizationConditions
     domain_of:
@@ -378,7 +373,7 @@ attributes:
   protein_concentration:
     name: protein_concentration
     description: Protein concentration for crystallization in mg/mL
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: protein_concentration
     owner: CrystallizationConditions
@@ -389,11 +384,10 @@ attributes:
   crystal_size_um:
     name: crystal_size_um
     description: Crystal dimensions in micrometers (length x width x height)
-    comments:
-    - 'Maps to NSLS2 spreadsheet: Crystal_Size'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - nsls2:Crystal_Size
     rank: 1000
-    slot_uri: nsls2:Crystal_Size
     alias: crystal_size_um
     owner: CrystallizationConditions
     domain_of:
@@ -403,11 +397,10 @@ attributes:
   cryo_protectant:
     name: cryo_protectant
     description: Cryoprotectant used for crystal cooling
-    comments:
-    - 'Maps to NSLS2 spreadsheet: Cryo_Protectant'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - nsls2:Cryo_Protectant
     rank: 1000
-    slot_uri: nsls2:Cryo_Protectant
     alias: cryo_protectant
     owner: CrystallizationConditions
     domain_of:
@@ -416,11 +409,10 @@ attributes:
   crystal_id:
     name: crystal_id
     description: Identifier for the specific crystal used
-    comments:
-    - 'Maps to NSLS2 spreadsheet: Crystal_ID'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - nsls2:Crystal_ID
     rank: 1000
-    slot_uri: nsls2:Crystal_ID
     alias: crystal_id
     owner: CrystallizationConditions
     domain_of:
@@ -429,7 +421,7 @@ attributes:
   screen_name:
     name: screen_name
     description: Name of crystallization screen used
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: screen_name
     owner: CrystallizationConditions
@@ -441,7 +433,7 @@ attributes:
     name: temperature_c
     description: Crystallization temperature, typically specified in degrees Celsius.
       Data providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: temperature_c
     owner: CrystallizationConditions
@@ -453,7 +445,7 @@ attributes:
   drop_ratio_protein_to_reservoir:
     name: drop_ratio_protein_to_reservoir
     description: Ratio of protein to reservoir solution in drop (e.g., 1:1, 2:1)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: drop_ratio_protein_to_reservoir
     owner: CrystallizationConditions
@@ -465,7 +457,7 @@ attributes:
     name: reservoir_volume_ul
     description: Reservoir volume, typically specified in microliters. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: reservoir_volume_ul
     owner: CrystallizationConditions
@@ -477,7 +469,7 @@ attributes:
   seeding_type:
     name: seeding_type
     description: Type of seeding used (micro, macro, streak)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: seeding_type
     owner: CrystallizationConditions
@@ -488,7 +480,7 @@ attributes:
   seed_stock_dilution:
     name: seed_stock_dilution
     description: Dilution factor for seed stock
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: seed_stock_dilution
     owner: CrystallizationConditions
@@ -498,7 +490,7 @@ attributes:
     range: string
   description:
     name: description
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: description
     owner: CrystallizationConditions
     domain_of:

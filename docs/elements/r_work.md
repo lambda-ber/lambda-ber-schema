@@ -9,7 +9,7 @@ _Refinement R-factor (working set)_
 
 
 
-URI: [lambdaber:r_work](https://w3id.org/lambda-ber-schema/r_work)
+URI: [lambda:r_work](http://w3id.org/lambda/r_work)
 Alias: r_work
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: r_work
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: r_work
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:r_work |
-| native | lambdaber:r_work |
+| self | lambda:r_work |
+| native | lambda:r_work |
+| exact | mmCIF:_refine.ls_R_factor_R_work |
 
 
 
@@ -67,7 +68,9 @@ Alias: r_work
 ```yaml
 name: r_work
 description: Refinement R-factor (working set)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_refine.ls_R_factor_R_work
 rank: 1000
 alias: r_work
 owner: QualityMetrics

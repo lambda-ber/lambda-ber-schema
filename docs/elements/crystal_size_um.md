@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:crystal_size_um](https://w3id.org/lambda-ber-schema/crystal_size_um)
+URI: [lambda:crystal_size_um](http://w3id.org/lambda/crystal_size_um)
 Alias: crystal_size_um
 
 <!-- no inheritance hierarchy -->
@@ -44,8 +44,8 @@ Alias: crystal_size_um
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:crystal_size_um |
-| native | lambdaber:crystal_size_um |
+| self | lambda:crystal_size_um |
+| native | lambda:crystal_size_um |
 
 
 

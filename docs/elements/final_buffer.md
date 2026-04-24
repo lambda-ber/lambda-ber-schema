@@ -9,7 +9,7 @@ _Final buffer composition after purification_
 
 
 
-URI: [lambdaber:final_buffer](https://w3id.org/lambda-ber-schema/final_buffer)
+URI: [lambda:final_buffer](http://w3id.org/lambda/final_buffer)
 Alias: final_buffer
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: final_buffer
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: final_buffer
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:final_buffer |
-| native | lambdaber:final_buffer |
+| self | lambda:final_buffer |
+| native | lambda:final_buffer |
 
 
 
@@ -67,7 +67,7 @@ Alias: final_buffer
 ```yaml
 name: final_buffer
 description: Final buffer composition after purification
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: final_buffer
 owner: SamplePreparation

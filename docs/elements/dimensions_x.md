@@ -9,7 +9,7 @@ _Image width, typically specified in pixels. Data providers may specify alternat
 
 
 
-URI: [lambdaber:dimensions_x](https://w3id.org/lambda-ber-schema/dimensions_x)
+URI: [lambda:dimensions_x](http://w3id.org/lambda/dimensions_x)
 Alias: dimensions_x
 
 <!-- no inheritance hierarchy -->
@@ -22,15 +22,15 @@ Alias: dimensions_x
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OpticalImage](OpticalImage.md) | Visible light optical microscopy or photography image |  no  |
+| [Image3D](Image3D.md) | A 3D volume or tomogram |  no  |
 | [Image2D](Image2D.md) | A 2D image (micrograph, diffraction pattern) |  no  |
 | [XRFImage](XRFImage.md) | X-ray fluorescence (XRF) image showing elemental distribution |  no  |
-| [Image3D](Image3D.md) | A 3D volume or tomogram |  no  |
 | [Micrograph](Micrograph.md) | Motion-corrected micrograph derived from movie |  no  |
+| [Image](Image.md) | An image file from structural biology experiments |  no  |
 | [FTIRImage](FTIRImage.md) | Fourier Transform Infrared (FTIR) spectroscopy image capturing molecular comp... |  no  |
+| [OpticalImage](OpticalImage.md) | Visible light optical microscopy or photography image |  no  |
 | [Movie](Movie.md) | Raw cryo-EM movie with frame-by-frame metadata for motion correction |  no  |
 | [FluorescenceImage](FluorescenceImage.md) | Fluorescence microscopy image capturing specific molecular targets through fl... |  no  |
-| [Image](Image.md) | An image file from structural biology experiments |  no  |
 
 
 
@@ -54,7 +54,7 @@ Alias: dimensions_x
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -63,8 +63,8 @@ Alias: dimensions_x
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:dimensions_x |
-| native | lambdaber:dimensions_x |
+| self | lambda:dimensions_x |
+| native | lambda:dimensions_x |
 
 
 
@@ -76,7 +76,7 @@ Alias: dimensions_x
 name: dimensions_x
 description: Image width, typically specified in pixels. Data providers may specify
   alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: dimensions_x
 owner: Image

@@ -9,7 +9,7 @@ _Clinical significance_
 
 
 
-URI: [lambdaber:clinical_significance](https://w3id.org/lambda-ber-schema/clinical_significance)
+URI: [lambda:clinical_significance](http://w3id.org/lambda/clinical_significance)
 Alias: clinical_significance
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: clinical_significance
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: clinical_significance
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:clinical_significance |
-| native | lambdaber:clinical_significance |
+| self | lambda:clinical_significance |
+| native | lambda:clinical_significance |
 
 
 
@@ -67,7 +67,7 @@ Alias: clinical_significance
 ```yaml
 name: clinical_significance
 description: Clinical significance
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: clinical_significance
 owner: MutationEffect

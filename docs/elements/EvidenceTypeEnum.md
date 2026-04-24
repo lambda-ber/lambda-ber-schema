@@ -7,7 +7,7 @@ _Types of evidence_
 
 
 
-URI: [lambdaber:EvidenceTypeEnum](https://w3id.org/lambda-ber-schema/EvidenceTypeEnum)
+URI: [lambda:EvidenceTypeEnum](http://w3id.org/lambda/EvidenceTypeEnum)
 
 ## Permissible Values
 
@@ -43,7 +43,7 @@ URI: [lambdaber:EvidenceTypeEnum](https://w3id.org/lambda-ber-schema/EvidenceTyp
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -56,7 +56,7 @@ URI: [lambdaber:EvidenceTypeEnum](https://w3id.org/lambda-ber-schema/EvidenceTyp
 ```yaml
 name: EvidenceTypeEnum
 description: Types of evidence
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   experimental:

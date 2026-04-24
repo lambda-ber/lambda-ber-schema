@@ -9,7 +9,7 @@ _Highly variable residues_
 
 
 
-URI: [lambdaber:variable_residues](https://w3id.org/lambda-ber-schema/variable_residues)
+URI: [lambda:variable_residues](http://w3id.org/lambda/variable_residues)
 Alias: variable_residues
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: variable_residues
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: variable_residues
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:variable_residues |
-| native | lambdaber:variable_residues |
+| self | lambda:variable_residues |
+| native | lambda:variable_residues |
 
 
 
@@ -69,7 +69,7 @@ Alias: variable_residues
 ```yaml
 name: variable_residues
 description: Highly variable residues
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: variable_residues
 owner: EvolutionaryConservation

@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:temperature](https://w3id.org/lambda-ber-schema/temperature)
+URI: [lambda:temperature](http://w3id.org/lambda/temperature)
 Alias: temperature
 
 <!-- no inheritance hierarchy -->
@@ -17,9 +17,9 @@ Alias: temperature
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [StorageConditions](StorageConditions.md) | Storage conditions for samples |  no  |
 | [ExperimentalConditions](ExperimentalConditions.md) | Environmental and experimental conditions |  no  |
 | [MeasurementConditions](MeasurementConditions.md) | Conditions under which biophysical measurements were made |  no  |
-| [StorageConditions](StorageConditions.md) | Storage conditions for samples |  no  |
 
 
 
@@ -45,8 +45,8 @@ Alias: temperature
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:temperature |
-| native | lambdaber:temperature |
+| self | lambda:temperature |
+| native | lambda:temperature |
 
 
 

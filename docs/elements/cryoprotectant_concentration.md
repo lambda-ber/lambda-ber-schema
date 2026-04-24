@@ -9,7 +9,7 @@ _Cryoprotectant concentration, typically specified as a percentage. Data provide
 
 
 
-URI: [lambdaber:cryoprotectant_concentration](https://w3id.org/lambda-ber-schema/cryoprotectant_concentration)
+URI: [lambda:cryoprotectant_concentration](http://w3id.org/lambda/cryoprotectant_concentration)
 Alias: cryoprotectant_concentration
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: cryoprotectant_concentration
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: cryoprotectant_concentration
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:cryoprotectant_concentration |
-| native | lambdaber:cryoprotectant_concentration |
+| self | lambda:cryoprotectant_concentration |
+| native | lambda:cryoprotectant_concentration |
 
 
 
@@ -68,7 +68,7 @@ Alias: cryoprotectant_concentration
 name: cryoprotectant_concentration
 description: Cryoprotectant concentration, typically specified as a percentage. Data
   providers may specify as decimal fraction by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: cryoprotectant_concentration
 owner: XRayPreparation

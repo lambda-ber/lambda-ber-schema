@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:sample_changer_capacity](https://w3id.org/lambda-ber-schema/sample_changer_capacity)
+URI: [lambda:sample_changer_capacity](http://w3id.org/lambda/sample_changer_capacity)
 Alias: sample_changer_capacity
 
 <!-- no inheritance hierarchy -->
@@ -44,8 +44,8 @@ Alias: sample_changer_capacity
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:sample_changer_capacity |
-| native | lambdaber:sample_changer_capacity |
+| self | lambda:sample_changer_capacity |
+| native | lambda:sample_changer_capacity |
 
 
 

@@ -9,7 +9,7 @@ _All sample preparations_
 
 
 
-URI: [lambdaber:sample_preparations](https://w3id.org/lambda-ber-schema/sample_preparations)
+URI: [lambda:sample_preparations](http://w3id.org/lambda/sample_preparations)
 Alias: sample_preparations
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: sample_preparations
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: sample_preparations
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:sample_preparations |
-| native | lambdaber:sample_preparations |
+| self | lambda:sample_preparations |
+| native | lambda:sample_preparations |
 
 
 
@@ -69,7 +69,7 @@ Alias: sample_preparations
 ```yaml
 name: sample_preparations
 description: All sample preparations
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: sample_preparations
 owner: Dataset

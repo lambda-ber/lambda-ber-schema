@@ -9,7 +9,7 @@ _Domain database assignment (CATH, SCOP, Pfam)_
 
 
 
-URI: [lambdaber:domain_assignment](https://w3id.org/lambda-ber-schema/domain_assignment)
+URI: [lambda:domain_assignment](http://w3id.org/lambda/domain_assignment)
 Alias: domain_assignment
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: domain_assignment
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: domain_assignment
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:domain_assignment |
-| native | lambdaber:domain_assignment |
+| self | lambda:domain_assignment |
+| native | lambda:domain_assignment |
 
 
 
@@ -67,7 +67,7 @@ Alias: domain_assignment
 ```yaml
 name: domain_assignment
 description: Domain database assignment (CATH, SCOP, Pfam)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: domain_assignment
 owner: StructuralFeature

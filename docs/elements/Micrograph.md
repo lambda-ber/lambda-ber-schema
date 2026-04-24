@@ -9,7 +9,7 @@ _Motion-corrected micrograph derived from movie_
 
 
 
-URI: [lambdaber:Micrograph](https://w3id.org/lambda-ber-schema/Micrograph)
+URI: [lambda:Micrograph](http://w3id.org/lambda/Micrograph)
 
 
 
@@ -223,7 +223,7 @@ URI: [lambdaber:Micrograph](https://w3id.org/lambda-ber-schema/Micrograph)
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -232,8 +232,8 @@ URI: [lambdaber:Micrograph](https://w3id.org/lambda-ber-schema/Micrograph)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:Micrograph |
-| native | lambdaber:Micrograph |
+| self | lambda:Micrograph |
+| native | lambda:Micrograph |
 
 
 
@@ -250,13 +250,13 @@ URI: [lambdaber:Micrograph](https://w3id.org/lambda-ber-schema/Micrograph)
 ```yaml
 name: Micrograph
 description: Motion-corrected micrograph derived from movie
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: Image2D
 attributes:
   dose:
     name: dose
     description: Total electron dose in e-/Angstrom^2
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - Image
     - Micrograph
@@ -265,7 +265,7 @@ attributes:
   origin_movie_id:
     name: origin_movie_id
     description: Reference to original movie file
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Micrograph
@@ -274,7 +274,7 @@ attributes:
     name: defocus_u
     description: Defocus U, typically specified in micrometers. Data providers may
       specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Micrograph
@@ -284,7 +284,7 @@ attributes:
     name: defocus_v
     description: Defocus V, typically specified in micrometers. Data providers may
       specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Micrograph
@@ -294,7 +294,7 @@ attributes:
     name: astigmatism_angle
     description: Astigmatism angle, typically specified in degrees. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Micrograph
@@ -304,7 +304,7 @@ attributes:
     name: resolution_fit_limit
     description: Resolution fit limit, typically specified in Angstroms. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Micrograph
@@ -313,7 +313,7 @@ attributes:
   ctf_quality_score:
     name: ctf_quality_score
     description: CTF estimation quality score
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Micrograph
@@ -329,13 +329,13 @@ attributes:
 ```yaml
 name: Micrograph
 description: Motion-corrected micrograph derived from movie
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: Image2D
 attributes:
   dose:
     name: dose
     description: Total electron dose in e-/Angstrom^2
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: dose
     owner: Micrograph
     domain_of:
@@ -346,7 +346,7 @@ attributes:
   origin_movie_id:
     name: origin_movie_id
     description: Reference to original movie file
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: origin_movie_id
     owner: Micrograph
@@ -357,7 +357,7 @@ attributes:
     name: defocus_u
     description: Defocus U, typically specified in micrometers. Data providers may
       specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: defocus_u
     owner: Micrograph
@@ -369,7 +369,7 @@ attributes:
     name: defocus_v
     description: Defocus V, typically specified in micrometers. Data providers may
       specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: defocus_v
     owner: Micrograph
@@ -381,7 +381,7 @@ attributes:
     name: astigmatism_angle
     description: Astigmatism angle, typically specified in degrees. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: astigmatism_angle
     owner: Micrograph
@@ -393,7 +393,7 @@ attributes:
     name: resolution_fit_limit
     description: Resolution fit limit, typically specified in Angstroms. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: resolution_fit_limit
     owner: Micrograph
@@ -404,7 +404,7 @@ attributes:
   ctf_quality_score:
     name: ctf_quality_score
     description: CTF estimation quality score
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: ctf_quality_score
     owner: Micrograph
@@ -416,7 +416,7 @@ attributes:
     name: defocus
     description: Defocus value, typically specified in micrometers. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: defocus
     owner: Micrograph
@@ -428,7 +428,7 @@ attributes:
     name: astigmatism
     description: Astigmatism value, typically specified in Angstroms. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: astigmatism
     owner: Micrograph
@@ -439,7 +439,7 @@ attributes:
   file_name:
     name: file_name
     description: Image file name
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: file_name
     owner: Micrograph
     domain_of:
@@ -450,7 +450,7 @@ attributes:
   acquisition_date:
     name: acquisition_date
     description: Date image was acquired
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: acquisition_date
     owner: Micrograph
@@ -461,7 +461,7 @@ attributes:
     name: pixel_size
     description: Pixel size, typically specified in Angstroms. Data providers may
       specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: pixel_size
     owner: Micrograph
@@ -474,7 +474,7 @@ attributes:
     name: dimensions_x
     description: Image width, typically specified in pixels. Data providers may specify
       alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: dimensions_x
     owner: Micrograph
@@ -486,7 +486,7 @@ attributes:
     name: dimensions_y
     description: Image height, typically specified in pixels. Data providers may specify
       alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: dimensions_y
     owner: Micrograph
@@ -498,13 +498,14 @@ attributes:
     name: exposure_time
     description: Exposure time, typically specified in seconds. Data providers may
       specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: exposure_time
     owner: Micrograph
     domain_of:
     - ExperimentRun
     - Image
     - ExperimentalConditions
+    - DataCollectionStrategy
     range: QuantityValue
     inlined: true
   id:
@@ -512,7 +513,7 @@ attributes:
     description: Globally unique identifier as an IRI or CURIE for machine processing
       and external references. Used for linking data across systems and semantic web
       integration.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     identifier: true
     alias: id
@@ -525,7 +526,7 @@ attributes:
   title:
     name: title
     description: A human-readable name or title for this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     slot_uri: dcterms:title
     alias: title
@@ -536,7 +537,7 @@ attributes:
   description:
     name: description
     description: A detailed textual description of this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: description
     owner: Micrograph

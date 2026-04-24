@@ -9,7 +9,7 @@ _The ontology or controlled vocabulary this term comes from (e.g., GO, SO, UBERO
 
 
 
-URI: [lambdaber:ontology](https://w3id.org/lambda-ber-schema/ontology)
+URI: [lambda:ontology](http://w3id.org/lambda/ontology)
 Alias: ontology
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: ontology
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: ontology
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:ontology |
-| native | lambdaber:ontology |
+| self | lambda:ontology |
+| native | lambda:ontology |
 
 
 
@@ -68,7 +68,7 @@ Alias: ontology
 name: ontology
 description: The ontology or controlled vocabulary this term comes from (e.g., GO,
   SO, UBERON)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: ontology
 owner: OntologyTerm

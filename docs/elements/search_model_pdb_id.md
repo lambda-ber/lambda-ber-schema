@@ -9,7 +9,7 @@ _PDB ID of search model for molecular replacement_
 
 
 
-URI: [lambdaber:search_model_pdb_id](https://w3id.org/lambda-ber-schema/search_model_pdb_id)
+URI: [lambda:search_model_pdb_id](http://w3id.org/lambda/search_model_pdb_id)
 Alias: search_model_pdb_id
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: search_model_pdb_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: search_model_pdb_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:search_model_pdb_id |
-| native | lambdaber:search_model_pdb_id |
+| self | lambda:search_model_pdb_id |
+| native | lambda:search_model_pdb_id |
 
 
 
@@ -67,7 +67,7 @@ Alias: search_model_pdb_id
 ```yaml
 name: search_model_pdb_id
 description: PDB ID of search model for molecular replacement
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: search_model_pdb_id
 owner: WorkflowRun

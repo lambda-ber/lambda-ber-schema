@@ -9,7 +9,7 @@ _Location of raw data files_
 
 
 
-URI: [lambdaber:raw_data_location](https://w3id.org/lambda-ber-schema/raw_data_location)
+URI: [lambda:raw_data_location](http://w3id.org/lambda/raw_data_location)
 Alias: raw_data_location
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: raw_data_location
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: raw_data_location
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:raw_data_location |
-| native | lambdaber:raw_data_location |
+| self | lambda:raw_data_location |
+| native | lambda:raw_data_location |
 
 
 
@@ -67,7 +67,7 @@ Alias: raw_data_location
 ```yaml
 name: raw_data_location
 description: Location of raw data files
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: raw_data_location
 owner: ExperimentRun

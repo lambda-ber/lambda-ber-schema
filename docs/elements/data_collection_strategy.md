@@ -9,7 +9,7 @@ _Strategy for data collection_
 
 
 
-URI: [lambdaber:data_collection_strategy](https://w3id.org/lambda-ber-schema/data_collection_strategy)
+URI: [lambda:data_collection_strategy](http://w3id.org/lambda/data_collection_strategy)
 Alias: data_collection_strategy
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: data_collection_strategy
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: data_collection_strategy
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:data_collection_strategy |
-| native | lambdaber:data_collection_strategy |
+| self | lambda:data_collection_strategy |
+| native | lambda:data_collection_strategy |
 
 
 
@@ -67,7 +67,7 @@ Alias: data_collection_strategy
 ```yaml
 name: data_collection_strategy
 description: Strategy for data collection
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: data_collection_strategy
 owner: ExperimentRun

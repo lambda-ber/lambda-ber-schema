@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:reservoir_volume_ul](https://w3id.org/lambda-ber-schema/reservoir_volume_ul)
+URI: [lambda:reservoir_volume_ul](http://w3id.org/lambda/reservoir_volume_ul)
 Alias: reservoir_volume_ul
 
 <!-- no inheritance hierarchy -->
@@ -44,8 +44,8 @@ Alias: reservoir_volume_ul
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:reservoir_volume_ul |
-| native | lambdaber:reservoir_volume_ul |
+| self | lambda:reservoir_volume_ul |
+| native | lambda:reservoir_volume_ul |
 
 
 

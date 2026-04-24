@@ -9,7 +9,7 @@ _Target defocus value in micrometers_
 
 
 
-URI: [lambdaber:defocus_target](https://w3id.org/lambda-ber-schema/defocus_target)
+URI: [lambda:defocus_target](http://w3id.org/lambda/defocus_target)
 Alias: defocus_target
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: defocus_target
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: defocus_target
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:defocus_target |
-| native | lambdaber:defocus_target |
+| self | lambda:defocus_target |
+| native | lambda:defocus_target |
 
 
 
@@ -67,7 +67,7 @@ Alias: defocus_target
 ```yaml
 name: defocus_target
 description: Target defocus value in micrometers
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: defocus_target
 owner: ExperimentRun

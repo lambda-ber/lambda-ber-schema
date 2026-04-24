@@ -9,7 +9,7 @@ _Base class for all protein-related functional and structural annotations_
 
 
 
-URI: [lambdaber:ProteinAnnotation](https://w3id.org/lambda-ber-schema/ProteinAnnotation)
+URI: [lambda:ProteinAnnotation](http://w3id.org/lambda/ProteinAnnotation)
 
 
 
@@ -137,7 +137,7 @@ URI: [lambdaber:ProteinAnnotation](https://w3id.org/lambda-ber-schema/ProteinAnn
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -146,8 +146,8 @@ URI: [lambdaber:ProteinAnnotation](https://w3id.org/lambda-ber-schema/ProteinAnn
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:ProteinAnnotation |
-| native | lambdaber:ProteinAnnotation |
+| self | lambda:ProteinAnnotation |
+| native | lambda:ProteinAnnotation |
 
 
 
@@ -164,13 +164,13 @@ URI: [lambdaber:ProteinAnnotation](https://w3id.org/lambda-ber-schema/ProteinAnn
 ```yaml
 name: ProteinAnnotation
 description: Base class for all protein-related functional and structural annotations
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: NamedThing
 attributes:
   protein_id:
     name: protein_id
     description: UniProt accession number
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - ProteinAnnotation
@@ -180,7 +180,7 @@ attributes:
   pdb_entry:
     name: pdb_entry
     description: PDB identifier
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - ProteinAnnotation
@@ -188,7 +188,7 @@ attributes:
   chain_id:
     name: chain_id
     description: Chain identifier in the PDB structure
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - ProteinAnnotation
@@ -196,7 +196,7 @@ attributes:
   residue_range:
     name: residue_range
     description: Range of residues (e.g., '1-100', '25,27,30-35')
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - ProteinAnnotation
@@ -204,7 +204,7 @@ attributes:
   confidence_score:
     name: confidence_score
     description: 'Confidence score for the annotation (range: 0-1)'
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - ProteinAnnotation
@@ -214,7 +214,7 @@ attributes:
   evidence_type:
     name: evidence_type
     description: Type of evidence supporting this annotation
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - ProteinAnnotation
@@ -222,7 +222,7 @@ attributes:
   evidence_code:
     name: evidence_code
     description: Evidence and Conclusion Ontology (ECO) code
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - ProteinAnnotation
@@ -230,7 +230,7 @@ attributes:
   source_database:
     name: source_database
     description: Source database or resource that provided this annotation
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - ProteinAnnotation
@@ -238,7 +238,7 @@ attributes:
   annotation_method:
     name: annotation_method
     description: Computational or experimental method used
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - ProteinAnnotation
@@ -246,7 +246,7 @@ attributes:
     name: publication_ids
     description: IDs of one or more publications supporting this annotation. Use PubMed
       IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - ProteinAnnotation
@@ -262,13 +262,13 @@ attributes:
 ```yaml
 name: ProteinAnnotation
 description: Base class for all protein-related functional and structural annotations
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: NamedThing
 attributes:
   protein_id:
     name: protein_id
     description: UniProt accession number
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: protein_id
     owner: ProteinAnnotation
@@ -281,7 +281,7 @@ attributes:
   pdb_entry:
     name: pdb_entry
     description: PDB identifier
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: pdb_entry
     owner: ProteinAnnotation
@@ -292,7 +292,7 @@ attributes:
   chain_id:
     name: chain_id
     description: Chain identifier in the PDB structure
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: chain_id
     owner: ProteinAnnotation
@@ -303,7 +303,7 @@ attributes:
   residue_range:
     name: residue_range
     description: Range of residues (e.g., '1-100', '25,27,30-35')
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: residue_range
     owner: ProteinAnnotation
@@ -314,7 +314,7 @@ attributes:
   confidence_score:
     name: confidence_score
     description: 'Confidence score for the annotation (range: 0-1)'
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: confidence_score
     owner: ProteinAnnotation
@@ -326,7 +326,7 @@ attributes:
   evidence_type:
     name: evidence_type
     description: Type of evidence supporting this annotation
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: evidence_type
     owner: ProteinAnnotation
@@ -336,7 +336,7 @@ attributes:
   evidence_code:
     name: evidence_code
     description: Evidence and Conclusion Ontology (ECO) code
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: evidence_code
     owner: ProteinAnnotation
@@ -346,7 +346,7 @@ attributes:
   source_database:
     name: source_database
     description: Source database or resource that provided this annotation
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: source_database
     owner: ProteinAnnotation
@@ -356,7 +356,7 @@ attributes:
   annotation_method:
     name: annotation_method
     description: Computational or experimental method used
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: annotation_method
     owner: ProteinAnnotation
@@ -367,7 +367,7 @@ attributes:
     name: publication_ids
     description: IDs of one or more publications supporting this annotation. Use PubMed
       IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: publication_ids
     owner: ProteinAnnotation
@@ -381,7 +381,7 @@ attributes:
     description: Globally unique identifier as an IRI or CURIE for machine processing
       and external references. Used for linking data across systems and semantic web
       integration.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     identifier: true
     alias: id
@@ -394,7 +394,7 @@ attributes:
   title:
     name: title
     description: A human-readable name or title for this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     slot_uri: dcterms:title
     alias: title
@@ -405,7 +405,7 @@ attributes:
   description:
     name: description
     description: A detailed textual description of this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: description
     owner: ProteinAnnotation

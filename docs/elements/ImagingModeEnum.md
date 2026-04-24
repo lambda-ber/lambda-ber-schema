@@ -7,7 +7,7 @@ _Imaging modes for electron microscopy_
 
 
 
-URI: [lambdaber:ImagingModeEnum](https://w3id.org/lambda-ber-schema/ImagingModeEnum)
+URI: [lambda:ImagingModeEnum](http://w3id.org/lambda/ImagingModeEnum)
 
 ## Permissible Values
 
@@ -40,7 +40,7 @@ URI: [lambdaber:ImagingModeEnum](https://w3id.org/lambda-ber-schema/ImagingModeE
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -53,7 +53,7 @@ URI: [lambdaber:ImagingModeEnum](https://w3id.org/lambda-ber-schema/ImagingModeE
 ```yaml
 name: ImagingModeEnum
 description: Imaging modes for electron microscopy
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   EFTEM:

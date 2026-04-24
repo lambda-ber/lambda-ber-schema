@@ -9,7 +9,7 @@ _Energy filter slit width in eV_
 
 
 
-URI: [lambdaber:energy_filter_slit_width](https://w3id.org/lambda-ber-schema/energy_filter_slit_width)
+URI: [lambda:energy_filter_slit_width](http://w3id.org/lambda/energy_filter_slit_width)
 Alias: energy_filter_slit_width
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: energy_filter_slit_width
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: energy_filter_slit_width
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:energy_filter_slit_width |
-| native | lambdaber:energy_filter_slit_width |
+| self | lambda:energy_filter_slit_width |
+| native | lambda:energy_filter_slit_width |
+| exact | mmCIF:_em_imaging.energy_filter_slit_width |
 
 
 
@@ -67,7 +68,9 @@ Alias: energy_filter_slit_width
 ```yaml
 name: energy_filter_slit_width
 description: Energy filter slit width in eV
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_em_imaging.energy_filter_slit_width
 rank: 1000
 alias: energy_filter_slit_width
 owner: CryoEMInstrument

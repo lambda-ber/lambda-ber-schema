@@ -9,7 +9,7 @@ _Total drop volume, typically specified in nanoliters. Data providers may specif
 
 
 
-URI: [nsls2:Drop_Volume](https://github.com/NSLS2/BER-LAMBDA/Drop_Volume)
+URI: [lambda:drop_volume](http://w3id.org/lambda/drop_volume)
 Alias: drop_volume
 
 <!-- no inheritance hierarchy -->
@@ -36,10 +36,6 @@ Alias: drop_volume
 
 
 
-## Comments
-
-* Maps to NSLS2 spreadsheet: Drop_Volume
-
 ## Identifier and Mapping Information
 
 
@@ -50,7 +46,7 @@ Alias: drop_volume
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -59,8 +55,9 @@ Alias: drop_volume
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | nsls2:Drop_Volume |
-| native | lambdaber:drop_volume |
+| self | lambda:drop_volume |
+| native | lambda:drop_volume |
+| exact | nsls2:Drop_Volume |
 
 
 
@@ -72,11 +69,10 @@ Alias: drop_volume
 name: drop_volume
 description: Total drop volume, typically specified in nanoliters. Data providers
   may specify alternative units by including the unit in the QuantityValue.
-comments:
-- 'Maps to NSLS2 spreadsheet: Drop_Volume'
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- nsls2:Drop_Volume
 rank: 1000
-slot_uri: nsls2:Drop_Volume
 alias: drop_volume
 owner: CrystallizationConditions
 domain_of:

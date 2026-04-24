@@ -9,7 +9,7 @@ _Photon flux, typically specified in photons per second. Data providers may spec
 
 
 
-URI: [lambdaber:flux_photons_per_s](https://w3id.org/lambda-ber-schema/flux_photons_per_s)
+URI: [lambda:flux_photons_per_s](http://w3id.org/lambda/flux_photons_per_s)
 Alias: flux_photons_per_s
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: flux_photons_per_s
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: flux_photons_per_s
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:flux_photons_per_s |
-| native | lambdaber:flux_photons_per_s |
+| self | lambda:flux_photons_per_s |
+| native | lambda:flux_photons_per_s |
+| exact | mmCIF:_diffrn_source.pdbx_flux |
 
 
 
@@ -68,7 +69,9 @@ Alias: flux_photons_per_s
 name: flux_photons_per_s
 description: Photon flux, typically specified in photons per second. Data providers
   may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_diffrn_source.pdbx_flux
 rank: 1000
 alias: flux_photons_per_s
 owner: DataCollectionStrategy

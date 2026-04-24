@@ -9,7 +9,7 @@ _A logical grouping of related experiments investigating a research question. In
 
 
 
-URI: [lambdaber:Study](https://w3id.org/lambda-ber-schema/Study)
+URI: [lambda:Study](http://w3id.org/lambda/Study)
 
 
 
@@ -81,7 +81,7 @@ URI: [lambdaber:Study](https://w3id.org/lambda-ber-schema/Study)
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -90,8 +90,8 @@ URI: [lambdaber:Study](https://w3id.org/lambda-ber-schema/Study)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:Study |
-| native | lambdaber:Study |
+| self | lambda:Study |
+| native | lambda:Study |
 
 
 
@@ -110,13 +110,13 @@ name: Study
 description: A logical grouping of related experiments investigating a research question.
   In the relational model, Study is lightweight - all relationships are via association
   tables.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: NamedThing
 attributes:
   keywords:
     name: keywords
     description: Keywords or tags describing the study for search and categorization
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - Dataset
     - Study
@@ -134,13 +134,13 @@ name: Study
 description: A logical grouping of related experiments investigating a research question.
   In the relational model, Study is lightweight - all relationships are via association
   tables.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: NamedThing
 attributes:
   keywords:
     name: keywords
     description: Keywords or tags describing the study for search and categorization
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: keywords
     owner: Study
     domain_of:
@@ -153,7 +153,7 @@ attributes:
     description: Globally unique identifier as an IRI or CURIE for machine processing
       and external references. Used for linking data across systems and semantic web
       integration.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     identifier: true
     alias: id
@@ -166,7 +166,7 @@ attributes:
   title:
     name: title
     description: A human-readable name or title for this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     slot_uri: dcterms:title
     alias: title
@@ -177,7 +177,7 @@ attributes:
   description:
     name: description
     description: A detailed textual description of this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: description
     owner: Study

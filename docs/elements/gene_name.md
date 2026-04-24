@@ -9,7 +9,7 @@ _Gene name_
 
 
 
-URI: [lambdaber:gene_name](https://w3id.org/lambda-ber-schema/gene_name)
+URI: [lambda:gene_name](http://w3id.org/lambda/gene_name)
 Alias: gene_name
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: gene_name
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: gene_name
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:gene_name |
-| native | lambdaber:gene_name |
+| self | lambda:gene_name |
+| native | lambda:gene_name |
 
 
 
@@ -67,7 +67,7 @@ Alias: gene_name
 ```yaml
 name: gene_name
 description: Gene name
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: gene_name
 owner: ProteinConstruct

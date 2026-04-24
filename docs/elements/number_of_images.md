@@ -9,7 +9,7 @@ _Total number of diffraction images collected_
 
 
 
-URI: [lambdaber:number_of_images](https://w3id.org/lambda-ber-schema/number_of_images)
+URI: [lambda:number_of_images](http://w3id.org/lambda/number_of_images)
 Alias: number_of_images
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: number_of_images
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: number_of_images
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:number_of_images |
-| native | lambdaber:number_of_images |
+| self | lambda:number_of_images |
+| native | lambda:number_of_images |
 
 
 
@@ -67,7 +67,7 @@ Alias: number_of_images
 ```yaml
 name: number_of_images
 description: Total number of diffraction images collected
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: number_of_images
 owner: ExperimentRun

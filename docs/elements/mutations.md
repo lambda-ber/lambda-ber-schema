@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:mutations](https://w3id.org/lambda-ber-schema/mutations)
+URI: [lambda:mutations](http://w3id.org/lambda/mutations)
 Alias: mutations
 
 <!-- no inheritance hierarchy -->
@@ -17,8 +17,8 @@ Alias: mutations
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AggregatedProteinView](AggregatedProteinView.md) | Aggregated view of all structural and functional data for a protein |  no  |
 | [Sample](Sample.md) | A biological sample used in structural biology experiments |  no  |
+| [AggregatedProteinView](AggregatedProteinView.md) | Aggregated view of all structural and functional data for a protein |  no  |
 
 
 
@@ -44,8 +44,8 @@ Alias: mutations
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:mutations |
-| native | lambdaber:mutations |
+| self | lambda:mutations |
+| native | lambda:mutations |
 
 
 

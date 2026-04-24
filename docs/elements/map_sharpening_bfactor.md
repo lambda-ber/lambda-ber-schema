@@ -9,7 +9,7 @@ _B-factor used for map sharpening, typically specified in Angstroms squared (Å�
 
 
 
-URI: [lambdaber:map_sharpening_bfactor](https://w3id.org/lambda-ber-schema/map_sharpening_bfactor)
+URI: [lambda:map_sharpening_bfactor](http://w3id.org/lambda/map_sharpening_bfactor)
 Alias: map_sharpening_bfactor
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: map_sharpening_bfactor
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: map_sharpening_bfactor
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:map_sharpening_bfactor |
-| native | lambdaber:map_sharpening_bfactor |
+| self | lambda:map_sharpening_bfactor |
+| native | lambda:map_sharpening_bfactor |
 
 
 
@@ -69,7 +69,7 @@ name: map_sharpening_bfactor
 description: B-factor used for map sharpening, typically specified in Angstroms squared
   (Å²). Data providers may specify alternative units by including the unit in the
   QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: map_sharpening_bfactor
 owner: RefinementParameters

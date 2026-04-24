@@ -9,7 +9,7 @@ _Whether anomalous signal was used_
 
 
 
-URI: [lambdaber:anomalous_used](https://w3id.org/lambda-ber-schema/anomalous_used)
+URI: [lambda:anomalous_used](http://w3id.org/lambda/anomalous_used)
 Alias: anomalous_used
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: anomalous_used
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: anomalous_used
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:anomalous_used |
-| native | lambdaber:anomalous_used |
+| self | lambda:anomalous_used |
+| native | lambda:anomalous_used |
 
 
 
@@ -67,7 +67,7 @@ Alias: anomalous_used
 ```yaml
 name: anomalous_used
 description: Whether anomalous signal was used
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: anomalous_used
 owner: QualityMetrics

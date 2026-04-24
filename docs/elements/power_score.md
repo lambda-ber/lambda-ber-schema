@@ -9,7 +9,7 @@ _Power score threshold_
 
 
 
-URI: [lambdaber:power_score](https://w3id.org/lambda-ber-schema/power_score)
+URI: [lambda:power_score](http://w3id.org/lambda/power_score)
 Alias: power_score
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: power_score
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: power_score
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:power_score |
-| native | lambdaber:power_score |
+| self | lambda:power_score |
+| native | lambda:power_score |
 
 
 
@@ -67,7 +67,7 @@ Alias: power_score
 ```yaml
 name: power_score
 description: Power score threshold
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: power_score
 owner: ParticlePickingParameters

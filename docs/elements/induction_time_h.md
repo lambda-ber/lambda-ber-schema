@@ -9,7 +9,7 @@ _Duration of induction, typically specified in hours. Data providers may specify
 
 
 
-URI: [lambdaber:induction_time_h](https://w3id.org/lambda-ber-schema/induction_time_h)
+URI: [lambda:induction_time_h](http://w3id.org/lambda/induction_time_h)
 Alias: induction_time_h
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: induction_time_h
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: induction_time_h
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:induction_time_h |
-| native | lambdaber:induction_time_h |
+| self | lambda:induction_time_h |
+| native | lambda:induction_time_h |
 
 
 
@@ -69,7 +69,7 @@ name: induction_time_h
 description: Duration of induction, typically specified in hours. Data providers may
   specify alternative units (e.g., minutes, seconds) by including the unit in the
   QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: induction_time_h
 owner: SamplePreparation

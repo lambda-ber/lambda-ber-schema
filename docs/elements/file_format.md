@@ -9,7 +9,7 @@ _File format_
 
 
 
-URI: [lambdaber:file_format](https://w3id.org/lambda-ber-schema/file_format)
+URI: [lambda:file_format](http://w3id.org/lambda/file_format)
 Alias: file_format
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: file_format
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: file_format
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:file_format |
-| native | lambdaber:file_format |
+| self | lambda:file_format |
+| native | lambda:file_format |
 
 
 
@@ -69,7 +69,7 @@ Alias: file_format
 ```yaml
 name: file_format
 description: File format
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: file_format
 owner: DataFile

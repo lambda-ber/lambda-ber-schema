@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:box_size](https://w3id.org/lambda-ber-schema/box_size)
+URI: [lambda:box_size](http://w3id.org/lambda/box_size)
 Alias: box_size
 
 <!-- no inheritance hierarchy -->
@@ -17,8 +17,8 @@ Alias: box_size
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [RefinementParameters](RefinementParameters.md) | Parameters specific to 3D refinement workflows |  no  |
 | [ParticlePickingParameters](ParticlePickingParameters.md) | Parameters specific to particle picking workflows |  no  |
+| [RefinementParameters](RefinementParameters.md) | Parameters specific to 3D refinement workflows |  no  |
 
 
 
@@ -44,8 +44,8 @@ Alias: box_size
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:box_size |
-| native | lambdaber:box_size |
+| self | lambda:box_size |
+| native | lambda:box_size |
 
 
 

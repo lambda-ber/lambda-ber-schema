@@ -9,7 +9,7 @@ _Total number of observations (before merging)_
 
 
 
-URI: [lambdaber:n_total_observations](https://w3id.org/lambda-ber-schema/n_total_observations)
+URI: [lambda:n_total_observations](http://w3id.org/lambda/n_total_observations)
 Alias: n_total_observations
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: n_total_observations
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: n_total_observations
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:n_total_observations |
-| native | lambdaber:n_total_observations |
+| self | lambda:n_total_observations |
+| native | lambda:n_total_observations |
+| exact | mmCIF:_reflns.number_all |
 
 
 
@@ -67,7 +68,9 @@ Alias: n_total_observations
 ```yaml
 name: n_total_observations
 description: Total number of observations (before merging)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_reflns.number_all
 rank: 1000
 alias: n_total_observations
 owner: WorkflowRun

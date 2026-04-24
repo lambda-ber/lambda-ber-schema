@@ -9,7 +9,7 @@ _Conditions for crystal soaking_
 
 
 
-URI: [lambdaber:soak_conditions](https://w3id.org/lambda-ber-schema/soak_conditions)
+URI: [lambda:soak_conditions](http://w3id.org/lambda/soak_conditions)
 Alias: soak_conditions
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: soak_conditions
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: soak_conditions
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:soak_conditions |
-| native | lambdaber:soak_conditions |
+| self | lambda:soak_conditions |
+| native | lambda:soak_conditions |
 
 
 
@@ -67,7 +67,7 @@ Alias: soak_conditions
 ```yaml
 name: soak_conditions
 description: Conditions for crystal soaking
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: soak_conditions
 owner: XRayPreparation

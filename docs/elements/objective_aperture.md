@@ -9,7 +9,7 @@ _Objective aperture size in micrometers_
 
 
 
-URI: [lambdaber:objective_aperture](https://w3id.org/lambda-ber-schema/objective_aperture)
+URI: [lambda:objective_aperture](http://w3id.org/lambda/objective_aperture)
 Alias: objective_aperture
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: objective_aperture
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: objective_aperture
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:objective_aperture |
-| native | lambdaber:objective_aperture |
+| self | lambda:objective_aperture |
+| native | lambda:objective_aperture |
 
 
 
@@ -67,7 +67,7 @@ Alias: objective_aperture
 ```yaml
 name: objective_aperture
 description: Objective aperture size in micrometers
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: objective_aperture
 owner: CryoEMInstrument

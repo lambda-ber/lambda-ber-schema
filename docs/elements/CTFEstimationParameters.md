@@ -9,7 +9,7 @@ _Parameters specific to CTF estimation workflows_
 
 
 
-URI: [lambdaber:CTFEstimationParameters](https://w3id.org/lambda-ber-schema/CTFEstimationParameters)
+URI: [lambda:CTFEstimationParameters](http://w3id.org/lambda/CTFEstimationParameters)
 
 
 
@@ -141,7 +141,7 @@ URI: [lambdaber:CTFEstimationParameters](https://w3id.org/lambda-ber-schema/CTFE
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -150,8 +150,8 @@ URI: [lambdaber:CTFEstimationParameters](https://w3id.org/lambda-ber-schema/CTFE
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:CTFEstimationParameters |
-| native | lambdaber:CTFEstimationParameters |
+| self | lambda:CTFEstimationParameters |
+| native | lambda:CTFEstimationParameters |
 
 
 
@@ -168,14 +168,14 @@ URI: [lambdaber:CTFEstimationParameters](https://w3id.org/lambda-ber-schema/CTFE
 ```yaml
 name: CTFEstimationParameters
 description: Parameters specific to CTF estimation workflows
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: AttributeGroup
 attributes:
   defocus_search_min:
     name: defocus_search_min
     description: Minimum defocus search range, typically specified in micrometers.
       Data providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - CTFEstimationParameters
@@ -185,7 +185,7 @@ attributes:
     name: defocus_search_max
     description: Maximum defocus search range, typically specified in micrometers.
       Data providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - CTFEstimationParameters
@@ -195,7 +195,7 @@ attributes:
     name: defocus_step
     description: Defocus search step, typically specified in micrometers. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - CTFEstimationParameters
@@ -204,7 +204,7 @@ attributes:
   amplitude_contrast:
     name: amplitude_contrast
     description: Amplitude contrast value
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - CTFEstimationParameters
@@ -215,7 +215,7 @@ attributes:
     description: Spherical aberration (Cs) value used during CTF estimation, typically
       specified in millimeters; may differ from instrument specification. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - CTFEstimationParameters
@@ -226,7 +226,7 @@ attributes:
     description: Accelerating voltage value used during CTF estimation, typically
       specified in kilovolts (kV); may differ from instrument specification. Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - CTFEstimationParameters
@@ -242,14 +242,14 @@ attributes:
 ```yaml
 name: CTFEstimationParameters
 description: Parameters specific to CTF estimation workflows
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: AttributeGroup
 attributes:
   defocus_search_min:
     name: defocus_search_min
     description: Minimum defocus search range, typically specified in micrometers.
       Data providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: defocus_search_min
     owner: CTFEstimationParameters
@@ -261,7 +261,7 @@ attributes:
     name: defocus_search_max
     description: Maximum defocus search range, typically specified in micrometers.
       Data providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: defocus_search_max
     owner: CTFEstimationParameters
@@ -273,7 +273,7 @@ attributes:
     name: defocus_step
     description: Defocus search step, typically specified in micrometers. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: defocus_step
     owner: CTFEstimationParameters
@@ -284,7 +284,7 @@ attributes:
   amplitude_contrast:
     name: amplitude_contrast
     description: Amplitude contrast value
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: amplitude_contrast
     owner: CTFEstimationParameters
@@ -297,7 +297,7 @@ attributes:
     description: Spherical aberration (Cs) value used during CTF estimation, typically
       specified in millimeters; may differ from instrument specification. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: cs_used_in_estimation
     owner: CTFEstimationParameters
@@ -310,7 +310,7 @@ attributes:
     description: Accelerating voltage value used during CTF estimation, typically
       specified in kilovolts (kV); may differ from instrument specification. Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: voltage_used_in_estimation
     owner: CTFEstimationParameters
@@ -320,7 +320,7 @@ attributes:
     inlined: true
   description:
     name: description
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: description
     owner: CTFEstimationParameters
     domain_of:

@@ -7,7 +7,7 @@ _Experimental methods for structure determination_
 
 
 
-URI: [lambdaber:ExperimentalMethodEnum](https://w3id.org/lambda-ber-schema/ExperimentalMethodEnum)
+URI: [lambda:ExperimentalMethodEnum](http://w3id.org/lambda/ExperimentalMethodEnum)
 
 ## Permissible Values
 
@@ -41,7 +41,7 @@ URI: [lambdaber:ExperimentalMethodEnum](https://w3id.org/lambda-ber-schema/Exper
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -54,7 +54,7 @@ URI: [lambdaber:ExperimentalMethodEnum](https://w3id.org/lambda-ber-schema/Exper
 ```yaml
 name: ExperimentalMethodEnum
 description: Experimental methods for structure determination
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   x_ray_diffraction:

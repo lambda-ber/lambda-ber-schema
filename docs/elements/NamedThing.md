@@ -11,7 +11,7 @@ _A named thing_
 * __NOTE__: this is an abstract class and should not be instantiated directly
 
 
-URI: [lambdaber:NamedThing](https://w3id.org/lambda-ber-schema/NamedThing)
+URI: [lambda:NamedThing](http://w3id.org/lambda/NamedThing)
 
 
 
@@ -112,7 +112,7 @@ URI: [lambdaber:NamedThing](https://w3id.org/lambda-ber-schema/NamedThing)
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -121,8 +121,8 @@ URI: [lambdaber:NamedThing](https://w3id.org/lambda-ber-schema/NamedThing)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:NamedThing |
-| native | lambdaber:NamedThing |
+| self | lambda:NamedThing |
+| native | lambda:NamedThing |
 
 
 
@@ -139,7 +139,7 @@ URI: [lambdaber:NamedThing](https://w3id.org/lambda-ber-schema/NamedThing)
 ```yaml
 name: NamedThing
 description: A named thing
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 abstract: true
 attributes:
   id:
@@ -147,7 +147,7 @@ attributes:
     description: Globally unique identifier as an IRI or CURIE for machine processing
       and external references. Used for linking data across systems and semantic web
       integration.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     identifier: true
     domain_of:
@@ -158,7 +158,7 @@ attributes:
   title:
     name: title
     description: A human-readable name or title for this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     slot_uri: dcterms:title
     domain_of:
@@ -166,7 +166,7 @@ attributes:
   description:
     name: description
     description: A detailed textual description of this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - NamedThing
@@ -182,7 +182,7 @@ attributes:
 ```yaml
 name: NamedThing
 description: A named thing
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 abstract: true
 attributes:
   id:
@@ -190,7 +190,7 @@ attributes:
     description: Globally unique identifier as an IRI or CURIE for machine processing
       and external references. Used for linking data across systems and semantic web
       integration.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     identifier: true
     alias: id
@@ -202,7 +202,7 @@ attributes:
   title:
     name: title
     description: A human-readable name or title for this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     slot_uri: dcterms:title
     alias: title
@@ -213,7 +213,7 @@ attributes:
   description:
     name: description
     description: A detailed textual description of this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: description
     owner: NamedThing

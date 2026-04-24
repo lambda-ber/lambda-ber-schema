@@ -30,6 +30,13 @@ message Attribute
   string id = 0
   string label = 0
  }
+// Combined beam center coordinates in detector pixel units
+message BeamCenterPixels
+ {
+  string description = 0
+  quantityValue xbeam = 0
+  quantityValue ybeam = 0
+ }
 // Multi-technique synchrotron beamline that supports multiple experimental methods
 message BeamlineInstrument
  {
@@ -234,13 +241,18 @@ message DataCollectionStrategy
   quantityValue detectorDistanceMm = 0
   quantityValue beamCenterXPx = 0
   quantityValue beamCenterYPx = 0
+  beamCenterPixels beamCenterPixels = 0
   quantityValue beamSizeUm = 0
+  quantityValue energy = 0
   quantityValue fluxPhotonsPerS = 0
   quantityValue transmissionPercent = 0
   string attenuator = 0
   quantityValue temperatureK = 0
   quantityValue oscillationPerImageDeg = 0
+  quantityValue sweepStart = 0
+  quantityValue sweepEnd = 0
   quantityValue totalRotationDeg = 0
+  quantityValue exposureTime = 0
   string strategyNotes = 0
  }
 // A data file generated or used in the study
@@ -371,12 +383,17 @@ message ExperimentRun
   quantityValue holesPerGroup = 0
   string acquisitionSoftware = 0
   string acquisitionSoftwareVersion = 0
+  string detector = 0
   quantityValue wavelength = 0
+  quantityValue energy = 0
   quantityValue oscillationAngle = 0
   quantityValue startAngle = 0
+  quantityValue sweepStart = 0
+  quantityValue sweepEnd = 0
   quantityValue numberOfImages = 0
   quantityValue beamCenterX = 0
   quantityValue beamCenterY = 0
+  beamCenterPixels beamCenterPixels = 0
   quantityValue detectorDistance = 0
   quantityValue pixelSizeX = 0
   quantityValue pixelSizeY = 0

@@ -9,7 +9,7 @@ _Workflow completion time_
 
 
 
-URI: [lambdaber:completed_at](https://w3id.org/lambda-ber-schema/completed_at)
+URI: [lambda:completed_at](http://w3id.org/lambda/completed_at)
 Alias: completed_at
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: completed_at
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: completed_at
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:completed_at |
-| native | lambdaber:completed_at |
+| self | lambda:completed_at |
+| native | lambda:completed_at |
 
 
 
@@ -67,7 +67,7 @@ Alias: completed_at
 ```yaml
 name: completed_at
 description: Workflow completion time
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: completed_at
 owner: WorkflowRun

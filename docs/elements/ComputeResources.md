@@ -9,7 +9,7 @@ _Computational resources used_
 
 
 
-URI: [lambdaber:ComputeResources](https://w3id.org/lambda-ber-schema/ComputeResources)
+URI: [lambda:ComputeResources](http://w3id.org/lambda/ComputeResources)
 
 
 
@@ -117,7 +117,7 @@ URI: [lambdaber:ComputeResources](https://w3id.org/lambda-ber-schema/ComputeReso
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -126,8 +126,8 @@ URI: [lambdaber:ComputeResources](https://w3id.org/lambda-ber-schema/ComputeReso
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:ComputeResources |
-| native | lambdaber:ComputeResources |
+| self | lambda:ComputeResources |
+| native | lambda:ComputeResources |
 
 
 
@@ -144,14 +144,14 @@ URI: [lambdaber:ComputeResources](https://w3id.org/lambda-ber-schema/ComputeReso
 ```yaml
 name: ComputeResources
 description: Computational resources used
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: AttributeGroup
 attributes:
   cpu_hours:
     name: cpu_hours
     description: CPU hours used, measured in hours. Data providers may specify alternative
       time units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ComputeResources
@@ -161,7 +161,7 @@ attributes:
     name: gpu_hours
     description: GPU hours used, measured in hours. Data providers may specify alternative
       time units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ComputeResources
@@ -171,7 +171,7 @@ attributes:
     name: memory_gb
     description: Maximum memory used, typically specified in gigabytes (GB). Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ComputeResources
@@ -181,7 +181,7 @@ attributes:
     name: storage_gb
     description: Storage used, typically specified in gigabytes (GB). Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ComputeResources
@@ -197,14 +197,14 @@ attributes:
 ```yaml
 name: ComputeResources
 description: Computational resources used
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: AttributeGroup
 attributes:
   cpu_hours:
     name: cpu_hours
     description: CPU hours used, measured in hours. Data providers may specify alternative
       time units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: cpu_hours
     owner: ComputeResources
@@ -216,7 +216,7 @@ attributes:
     name: gpu_hours
     description: GPU hours used, measured in hours. Data providers may specify alternative
       time units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: gpu_hours
     owner: ComputeResources
@@ -228,7 +228,7 @@ attributes:
     name: memory_gb
     description: Maximum memory used, typically specified in gigabytes (GB). Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: memory_gb
     owner: ComputeResources
@@ -240,7 +240,7 @@ attributes:
     name: storage_gb
     description: Storage used, typically specified in gigabytes (GB). Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: storage_gb
     owner: ComputeResources
@@ -250,7 +250,7 @@ attributes:
     inlined: true
   description:
     name: description
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: description
     owner: ComputeResources
     domain_of:

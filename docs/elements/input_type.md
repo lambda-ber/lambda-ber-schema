@@ -9,7 +9,7 @@ _Type of input for the workflow_
 
 
 
-URI: [lambdaber:input_type](https://w3id.org/lambda-ber-schema/input_type)
+URI: [lambda:input_type](http://w3id.org/lambda/input_type)
 Alias: input_type
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: input_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: input_type
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:input_type |
-| native | lambdaber:input_type |
+| self | lambda:input_type |
+| native | lambda:input_type |
 
 
 
@@ -67,7 +67,7 @@ Alias: input_type
 ```yaml
 name: input_type
 description: Type of input for the workflow
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: input_type
 owner: WorkflowInputAssociation

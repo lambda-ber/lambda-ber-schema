@@ -9,7 +9,7 @@ _The minimum value part, expressed as a number, of the quantity value when the v
 
 
 
-URI: [lambdaber:minimum_numeric_value](https://w3id.org/lambda-ber-schema/minimum_numeric_value)
+URI: [lambda:minimum_numeric_value](http://w3id.org/lambda/minimum_numeric_value)
 Alias: minimum_numeric_value
 
 
@@ -51,7 +51,7 @@ Alias: minimum_numeric_value
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -60,8 +60,8 @@ Alias: minimum_numeric_value
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:minimum_numeric_value |
-| native | lambdaber:minimum_numeric_value |
+| self | lambda:minimum_numeric_value |
+| native | lambda:minimum_numeric_value |
 | undefined | nmdc:minimum_numeric_value |
 
 
@@ -74,7 +74,7 @@ Alias: minimum_numeric_value
 name: minimum_numeric_value
 description: The minimum value part, expressed as a number, of the quantity value
   when the value covers a range.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 mappings:
 - nmdc:minimum_numeric_value
 rank: 1000

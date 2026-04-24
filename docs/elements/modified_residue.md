@@ -9,7 +9,7 @@ _Residue that is modified_
 
 
 
-URI: [lambdaber:modified_residue](https://w3id.org/lambda-ber-schema/modified_residue)
+URI: [lambda:modified_residue](http://w3id.org/lambda/modified_residue)
 Alias: modified_residue
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: modified_residue
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: modified_residue
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:modified_residue |
-| native | lambdaber:modified_residue |
+| self | lambda:modified_residue |
+| native | lambda:modified_residue |
 
 
 
@@ -69,7 +69,7 @@ Alias: modified_residue
 ```yaml
 name: modified_residue
 description: Residue that is modified
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: modified_residue
 owner: PostTranslationalModification

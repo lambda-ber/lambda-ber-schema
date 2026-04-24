@@ -9,7 +9,7 @@ _Highly conserved residues_
 
 
 
-URI: [lambdaber:conserved_residues](https://w3id.org/lambda-ber-schema/conserved_residues)
+URI: [lambda:conserved_residues](http://w3id.org/lambda/conserved_residues)
 Alias: conserved_residues
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: conserved_residues
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: conserved_residues
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:conserved_residues |
-| native | lambdaber:conserved_residues |
+| self | lambda:conserved_residues |
+| native | lambda:conserved_residues |
 
 
 
@@ -69,7 +69,7 @@ Alias: conserved_residues
 ```yaml
 name: conserved_residues
 description: Highly conserved residues
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: conserved_residues
 owner: EvolutionaryConservation

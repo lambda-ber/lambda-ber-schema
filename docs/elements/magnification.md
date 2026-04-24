@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:magnification](https://w3id.org/lambda-ber-schema/magnification)
+URI: [lambda:magnification](http://w3id.org/lambda/magnification)
 Alias: magnification
 
 <!-- no inheritance hierarchy -->
@@ -17,8 +17,8 @@ Alias: magnification
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentRun](ExperimentRun.md) | An experimental data collection session |  no  |
 | [OpticalImage](OpticalImage.md) | Visible light optical microscopy or photography image |  no  |
+| [ExperimentRun](ExperimentRun.md) | An experimental data collection session |  no  |
 
 
 
@@ -44,8 +44,8 @@ Alias: magnification
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:magnification |
-| native | lambdaber:magnification |
+| self | lambda:magnification |
+| native | lambda:magnification |
 
 
 

@@ -9,7 +9,7 @@ _Patch size for local motion correction_
 
 
 
-URI: [lambdaber:patch_size](https://w3id.org/lambda-ber-schema/patch_size)
+URI: [lambda:patch_size](http://w3id.org/lambda/patch_size)
 Alias: patch_size
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: patch_size
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: patch_size
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:patch_size |
-| native | lambdaber:patch_size |
+| self | lambda:patch_size |
+| native | lambda:patch_size |
 
 
 
@@ -67,7 +67,7 @@ Alias: patch_size
 ```yaml
 name: patch_size
 description: Patch size for local motion correction
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: patch_size
 owner: MotionCorrectionParameters

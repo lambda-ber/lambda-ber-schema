@@ -7,7 +7,7 @@ _Type of input for a workflow_
 
 
 
-URI: [lambdaber:InputTypeEnum](https://w3id.org/lambda-ber-schema/InputTypeEnum)
+URI: [lambda:InputTypeEnum](http://w3id.org/lambda/InputTypeEnum)
 
 ## Permissible Values
 
@@ -41,7 +41,7 @@ URI: [lambdaber:InputTypeEnum](https://w3id.org/lambda-ber-schema/InputTypeEnum)
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -54,7 +54,7 @@ URI: [lambdaber:InputTypeEnum](https://w3id.org/lambda-ber-schema/InputTypeEnum)
 ```yaml
 name: InputTypeEnum
 description: Type of input for a workflow
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   raw_data:

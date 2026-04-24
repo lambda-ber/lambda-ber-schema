@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:experiment_id](https://w3id.org/lambda-ber-schema/experiment_id)
+URI: [lambda:experiment_id](http://w3id.org/lambda/experiment_id)
 Alias: experiment_id
 
 <!-- no inheritance hierarchy -->
@@ -17,9 +17,9 @@ Alias: experiment_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [WorkflowExperimentAssociation](WorkflowExperimentAssociation.md) | M:N link between WorkflowRun and source ExperimentRuns |  no  |
-| [ExperimentSampleAssociation](ExperimentSampleAssociation.md) | M:N link between ExperimentRun and Sample with role metadata |  no  |
 | [ExperimentInstrumentAssociation](ExperimentInstrumentAssociation.md) | M:N link between ExperimentRun and Instrument |  no  |
+| [ExperimentSampleAssociation](ExperimentSampleAssociation.md) | M:N link between ExperimentRun and Sample with role metadata |  no  |
+| [WorkflowExperimentAssociation](WorkflowExperimentAssociation.md) | M:N link between WorkflowRun and source ExperimentRuns |  no  |
 | [StudyExperimentAssociation](StudyExperimentAssociation.md) | M:N link between Study and ExperimentRun |  no  |
 
 
@@ -46,8 +46,8 @@ Alias: experiment_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:experiment_id |
-| native | lambdaber:experiment_id |
+| self | lambda:experiment_id |
+| native | lambda:experiment_id |
 
 
 

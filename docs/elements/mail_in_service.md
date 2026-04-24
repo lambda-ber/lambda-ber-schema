@@ -9,7 +9,7 @@ _Whether mail-in sample service is available_
 
 
 
-URI: [lambdaber:mail_in_service](https://w3id.org/lambda-ber-schema/mail_in_service)
+URI: [lambda:mail_in_service](http://w3id.org/lambda/mail_in_service)
 Alias: mail_in_service
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: mail_in_service
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: mail_in_service
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:mail_in_service |
-| native | lambdaber:mail_in_service |
+| self | lambda:mail_in_service |
+| native | lambda:mail_in_service |
 
 
 
@@ -67,7 +67,7 @@ Alias: mail_in_service
 ```yaml
 name: mail_in_service
 description: Whether mail-in sample service is available
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: mail_in_service
 owner: BeamlineInstrument

@@ -9,7 +9,7 @@ _Percentage of residues in favored Ramachandran regions_
 
 
 
-URI: [lambdaber:ramachandran_favored_percent](https://w3id.org/lambda-ber-schema/ramachandran_favored_percent)
+URI: [lambda:ramachandran_favored_percent](http://w3id.org/lambda/ramachandran_favored_percent)
 Alias: ramachandran_favored_percent
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: ramachandran_favored_percent
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: ramachandran_favored_percent
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:ramachandran_favored_percent |
-| native | lambdaber:ramachandran_favored_percent |
+| self | lambda:ramachandran_favored_percent |
+| native | lambda:ramachandran_favored_percent |
+| exact | mmCIF:_pdbx_struct_quality.ramachandran_favored |
 
 
 
@@ -67,7 +68,9 @@ Alias: ramachandran_favored_percent
 ```yaml
 name: ramachandran_favored_percent
 description: Percentage of residues in favored Ramachandran regions
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_pdbx_struct_quality.ramachandran_favored
 rank: 1000
 alias: ramachandran_favored_percent
 owner: QualityMetrics

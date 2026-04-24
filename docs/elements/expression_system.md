@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:expression_system](https://w3id.org/lambda-ber-schema/expression_system)
+URI: [lambda:expression_system](http://w3id.org/lambda/expression_system)
 Alias: expression_system
 
 <!-- no inheritance hierarchy -->
@@ -44,8 +44,8 @@ Alias: expression_system
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:expression_system |
-| native | lambdaber:expression_system |
+| self | lambda:expression_system |
+| native | lambda:expression_system |
 
 
 

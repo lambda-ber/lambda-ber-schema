@@ -9,7 +9,7 @@ _Whether the ligand has drug-like properties_
 
 
 
-URI: [lambdaber:is_drug_like](https://w3id.org/lambda-ber-schema/is_drug_like)
+URI: [lambda:is_drug_like](http://w3id.org/lambda/is_drug_like)
 Alias: is_drug_like
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: is_drug_like
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: is_drug_like
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:is_drug_like |
-| native | lambdaber:is_drug_like |
+| self | lambda:is_drug_like |
+| native | lambda:is_drug_like |
 
 
 
@@ -67,7 +67,7 @@ Alias: is_drug_like
 ```yaml
 name: is_drug_like
 description: Whether the ligand has drug-like properties
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: is_drug_like
 owner: LigandInteraction

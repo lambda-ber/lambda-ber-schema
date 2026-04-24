@@ -9,7 +9,7 @@ _Signal peptide sequence if present_
 
 
 
-URI: [lambdaber:signal_peptide](https://w3id.org/lambda-ber-schema/signal_peptide)
+URI: [lambda:signal_peptide](http://w3id.org/lambda/signal_peptide)
 Alias: signal_peptide
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: signal_peptide
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: signal_peptide
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:signal_peptide |
-| native | lambdaber:signal_peptide |
+| self | lambda:signal_peptide |
+| native | lambda:signal_peptide |
 
 
 
@@ -67,7 +67,7 @@ Alias: signal_peptide
 ```yaml
 name: signal_peptide
 description: Signal peptide sequence if present
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: signal_peptide
 owner: ProteinConstruct

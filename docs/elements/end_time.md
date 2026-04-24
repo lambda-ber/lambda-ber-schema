@@ -9,7 +9,7 @@ _Data collection end timestamp_
 
 
 
-URI: [lambdaber:end_time](https://w3id.org/lambda-ber-schema/end_time)
+URI: [lambda:end_time](http://w3id.org/lambda/end_time)
 Alias: end_time
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: end_time
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: end_time
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:end_time |
-| native | lambdaber:end_time |
+| self | lambda:end_time |
+| native | lambda:end_time |
 | exact | ispyb:DataCollection.endTime |
 
 
@@ -68,7 +68,7 @@ Alias: end_time
 ```yaml
 name: end_time
 description: Data collection end timestamp
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 exact_mappings:
 - ispyb:DataCollection.endTime
 rank: 1000

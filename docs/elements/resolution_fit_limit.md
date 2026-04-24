@@ -9,7 +9,7 @@ _Resolution fit limit, typically specified in Angstroms. Data providers may spec
 
 
 
-URI: [lambdaber:resolution_fit_limit](https://w3id.org/lambda-ber-schema/resolution_fit_limit)
+URI: [lambda:resolution_fit_limit](http://w3id.org/lambda/resolution_fit_limit)
 Alias: resolution_fit_limit
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: resolution_fit_limit
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: resolution_fit_limit
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:resolution_fit_limit |
-| native | lambdaber:resolution_fit_limit |
+| self | lambda:resolution_fit_limit |
+| native | lambda:resolution_fit_limit |
 
 
 
@@ -68,7 +68,7 @@ Alias: resolution_fit_limit
 name: resolution_fit_limit
 description: Resolution fit limit, typically specified in Angstroms. Data providers
   may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: resolution_fit_limit
 owner: Micrograph

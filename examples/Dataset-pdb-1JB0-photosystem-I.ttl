@@ -5,7 +5,6 @@
 @prefix lambdaber: <http://w3id.org/lambda/> .
 @prefix nmdc: <https://w3id.org/nmdc/> .
 @prefix ns1: <http://w3id.org/lambda/functional_annotation/> .
-@prefix nsls2: <https://github.com/NSLS2/BER-LAMBDA/> .
 @prefix pdb: <https://www.rcsb.org/structure/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -19,40 +18,40 @@ pdb:1JB0 a lambdaber:Dataset ;
     lambdaber:experiment_runs <https://www.rcsb.org/structure/1JB0/experiment> ;
     lambdaber:experiment_sample_associations [ a lambdaber:ExperimentSampleAssociation ;
             lambdaber:experiment_id <https://www.rcsb.org/structure/1JB0/experiment> ;
-            lambdaber:sample_id <https://www.rcsb.org/structure/1JB0/sample/1> ],
-        [ a lambdaber:ExperimentSampleAssociation ;
-            lambdaber:experiment_id <https://www.rcsb.org/structure/1JB0/experiment> ;
-            lambdaber:sample_id <https://www.rcsb.org/structure/1JB0/sample/5> ],
-        [ a lambdaber:ExperimentSampleAssociation ;
-            lambdaber:experiment_id <https://www.rcsb.org/structure/1JB0/experiment> ;
-            lambdaber:sample_id <https://www.rcsb.org/structure/1JB0/sample/6> ],
-        [ a lambdaber:ExperimentSampleAssociation ;
-            lambdaber:experiment_id <https://www.rcsb.org/structure/1JB0/experiment> ;
-            lambdaber:sample_id <https://www.rcsb.org/structure/1JB0/sample/8> ],
-        [ a lambdaber:ExperimentSampleAssociation ;
-            lambdaber:experiment_id <https://www.rcsb.org/structure/1JB0/experiment> ;
-            lambdaber:sample_id <https://www.rcsb.org/structure/1JB0/sample/11> ],
-        [ a lambdaber:ExperimentSampleAssociation ;
-            lambdaber:experiment_id <https://www.rcsb.org/structure/1JB0/experiment> ;
-            lambdaber:sample_id <https://www.rcsb.org/structure/1JB0/sample/4> ],
-        [ a lambdaber:ExperimentSampleAssociation ;
-            lambdaber:experiment_id <https://www.rcsb.org/structure/1JB0/experiment> ;
-            lambdaber:sample_id <https://www.rcsb.org/structure/1JB0/sample/3> ],
-        [ a lambdaber:ExperimentSampleAssociation ;
-            lambdaber:experiment_id <https://www.rcsb.org/structure/1JB0/experiment> ;
-            lambdaber:sample_id <https://www.rcsb.org/structure/1JB0/sample/2> ],
-        [ a lambdaber:ExperimentSampleAssociation ;
-            lambdaber:experiment_id <https://www.rcsb.org/structure/1JB0/experiment> ;
-            lambdaber:sample_id <https://www.rcsb.org/structure/1JB0/sample/12> ],
+            lambdaber:sample_id <https://www.rcsb.org/structure/1JB0/sample/10> ],
         [ a lambdaber:ExperimentSampleAssociation ;
             lambdaber:experiment_id <https://www.rcsb.org/structure/1JB0/experiment> ;
             lambdaber:sample_id <https://www.rcsb.org/structure/1JB0/sample/7> ],
         [ a lambdaber:ExperimentSampleAssociation ;
             lambdaber:experiment_id <https://www.rcsb.org/structure/1JB0/experiment> ;
-            lambdaber:sample_id <https://www.rcsb.org/structure/1JB0/sample/10> ],
+            lambdaber:sample_id <https://www.rcsb.org/structure/1JB0/sample/4> ],
         [ a lambdaber:ExperimentSampleAssociation ;
             lambdaber:experiment_id <https://www.rcsb.org/structure/1JB0/experiment> ;
-            lambdaber:sample_id <https://www.rcsb.org/structure/1JB0/sample/9> ] ;
+            lambdaber:sample_id <https://www.rcsb.org/structure/1JB0/sample/8> ],
+        [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id <https://www.rcsb.org/structure/1JB0/experiment> ;
+            lambdaber:sample_id <https://www.rcsb.org/structure/1JB0/sample/1> ],
+        [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id <https://www.rcsb.org/structure/1JB0/experiment> ;
+            lambdaber:sample_id <https://www.rcsb.org/structure/1JB0/sample/9> ],
+        [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id <https://www.rcsb.org/structure/1JB0/experiment> ;
+            lambdaber:sample_id <https://www.rcsb.org/structure/1JB0/sample/5> ],
+        [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id <https://www.rcsb.org/structure/1JB0/experiment> ;
+            lambdaber:sample_id <https://www.rcsb.org/structure/1JB0/sample/12> ],
+        [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id <https://www.rcsb.org/structure/1JB0/experiment> ;
+            lambdaber:sample_id <https://www.rcsb.org/structure/1JB0/sample/6> ],
+        [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id <https://www.rcsb.org/structure/1JB0/experiment> ;
+            lambdaber:sample_id <https://www.rcsb.org/structure/1JB0/sample/2> ],
+        [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id <https://www.rcsb.org/structure/1JB0/experiment> ;
+            lambdaber:sample_id <https://www.rcsb.org/structure/1JB0/sample/3> ],
+        [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id <https://www.rcsb.org/structure/1JB0/experiment> ;
+            lambdaber:sample_id <https://www.rcsb.org/structure/1JB0/sample/11> ] ;
     lambdaber:instruments <https://www.rcsb.org/structure/instrument/ESRF-ID2> ;
     lambdaber:samples <https://www.rcsb.org/structure/1JB0/sample/1>,
         <https://www.rcsb.org/structure/1JB0/sample/10>,
@@ -71,19 +70,13 @@ pdb:1JB0 a lambdaber:Dataset ;
             lambdaber:experiment_id <https://www.rcsb.org/structure/1JB0/experiment> ;
             lambdaber:study_id <https://www.rcsb.org/structure/1JB0/study> ] ;
     lambdaber:study_sample_associations [ a lambdaber:StudySampleAssociation ;
+            lambdaber:sample_id <https://www.rcsb.org/structure/1JB0/sample/12> ;
+            lambdaber:study_id <https://www.rcsb.org/structure/1JB0/study> ],
+        [ a lambdaber:StudySampleAssociation ;
+            lambdaber:sample_id <https://www.rcsb.org/structure/1JB0/sample/8> ;
+            lambdaber:study_id <https://www.rcsb.org/structure/1JB0/study> ],
+        [ a lambdaber:StudySampleAssociation ;
             lambdaber:sample_id <https://www.rcsb.org/structure/1JB0/sample/9> ;
-            lambdaber:study_id <https://www.rcsb.org/structure/1JB0/study> ],
-        [ a lambdaber:StudySampleAssociation ;
-            lambdaber:sample_id <https://www.rcsb.org/structure/1JB0/sample/7> ;
-            lambdaber:study_id <https://www.rcsb.org/structure/1JB0/study> ],
-        [ a lambdaber:StudySampleAssociation ;
-            lambdaber:sample_id <https://www.rcsb.org/structure/1JB0/sample/5> ;
-            lambdaber:study_id <https://www.rcsb.org/structure/1JB0/study> ],
-        [ a lambdaber:StudySampleAssociation ;
-            lambdaber:sample_id <https://www.rcsb.org/structure/1JB0/sample/10> ;
-            lambdaber:study_id <https://www.rcsb.org/structure/1JB0/study> ],
-        [ a lambdaber:StudySampleAssociation ;
-            lambdaber:sample_id <https://www.rcsb.org/structure/1JB0/sample/1> ;
             lambdaber:study_id <https://www.rcsb.org/structure/1JB0/study> ],
         [ a lambdaber:StudySampleAssociation ;
             lambdaber:sample_id <https://www.rcsb.org/structure/1JB0/sample/2> ;
@@ -92,19 +85,25 @@ pdb:1JB0 a lambdaber:Dataset ;
             lambdaber:sample_id <https://www.rcsb.org/structure/1JB0/sample/6> ;
             lambdaber:study_id <https://www.rcsb.org/structure/1JB0/study> ],
         [ a lambdaber:StudySampleAssociation ;
-            lambdaber:sample_id <https://www.rcsb.org/structure/1JB0/sample/4> ;
+            lambdaber:sample_id <https://www.rcsb.org/structure/1JB0/sample/3> ;
             lambdaber:study_id <https://www.rcsb.org/structure/1JB0/study> ],
         [ a lambdaber:StudySampleAssociation ;
-            lambdaber:sample_id <https://www.rcsb.org/structure/1JB0/sample/3> ;
+            lambdaber:sample_id <https://www.rcsb.org/structure/1JB0/sample/10> ;
+            lambdaber:study_id <https://www.rcsb.org/structure/1JB0/study> ],
+        [ a lambdaber:StudySampleAssociation ;
+            lambdaber:sample_id <https://www.rcsb.org/structure/1JB0/sample/1> ;
+            lambdaber:study_id <https://www.rcsb.org/structure/1JB0/study> ],
+        [ a lambdaber:StudySampleAssociation ;
+            lambdaber:sample_id <https://www.rcsb.org/structure/1JB0/sample/5> ;
+            lambdaber:study_id <https://www.rcsb.org/structure/1JB0/study> ],
+        [ a lambdaber:StudySampleAssociation ;
+            lambdaber:sample_id <https://www.rcsb.org/structure/1JB0/sample/7> ;
             lambdaber:study_id <https://www.rcsb.org/structure/1JB0/study> ],
         [ a lambdaber:StudySampleAssociation ;
             lambdaber:sample_id <https://www.rcsb.org/structure/1JB0/sample/11> ;
             lambdaber:study_id <https://www.rcsb.org/structure/1JB0/study> ],
         [ a lambdaber:StudySampleAssociation ;
-            lambdaber:sample_id <https://www.rcsb.org/structure/1JB0/sample/12> ;
-            lambdaber:study_id <https://www.rcsb.org/structure/1JB0/study> ],
-        [ a lambdaber:StudySampleAssociation ;
-            lambdaber:sample_id <https://www.rcsb.org/structure/1JB0/sample/8> ;
+            lambdaber:sample_id <https://www.rcsb.org/structure/1JB0/sample/4> ;
             lambdaber:study_id <https://www.rcsb.org/structure/1JB0/study> ] ;
     lambdaber:workflow_experiment_associations [ a lambdaber:WorkflowExperimentAssociation ;
             lambdaber:experiment_id <https://www.rcsb.org/structure/1JB0/experiment> ;
@@ -146,9 +145,9 @@ pdb:1JB0 a lambdaber:Dataset ;
             lambdaber:numeric_value "83.27"^^xsd:float ;
             lambdaber:unit "kDa" ] ;
     lambdaber:organism NCBITaxon:32046 ;
+    lambdaber:protein_name "PHOTOSYSTEM I P700 CHLOROPHYLL A APOPROTEIN A1" ;
     lambdaber:sample_code "PDB-1JB0-1" ;
-    lambdaber:sample_type "protein" ;
-    nsls2:Protein_Name "PHOTOSYSTEM I P700 CHLOROPHYLL A APOPROTEIN A1" .
+    lambdaber:sample_type "protein" .
 
 <https://www.rcsb.org/structure/1JB0/sample/10> a lambdaber:Sample ;
     dcterms:title "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT XI" ;
@@ -161,9 +160,9 @@ pdb:1JB0 a lambdaber:Dataset ;
             lambdaber:numeric_value "16.16"^^xsd:float ;
             lambdaber:unit "kDa" ] ;
     lambdaber:organism NCBITaxon:32046 ;
+    lambdaber:protein_name "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT XI" ;
     lambdaber:sample_code "PDB-1JB0-10" ;
-    lambdaber:sample_type "protein" ;
-    nsls2:Protein_Name "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT XI" .
+    lambdaber:sample_type "protein" .
 
 <https://www.rcsb.org/structure/1JB0/sample/11> a lambdaber:Sample ;
     dcterms:title "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT XII" ;
@@ -176,9 +175,9 @@ pdb:1JB0 a lambdaber:Dataset ;
             lambdaber:numeric_value "3.43"^^xsd:float ;
             lambdaber:unit "kDa" ] ;
     lambdaber:organism NCBITaxon:32046 ;
+    lambdaber:protein_name "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT XII" ;
     lambdaber:sample_code "PDB-1JB0-11" ;
-    lambdaber:sample_type "protein" ;
-    nsls2:Protein_Name "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT XII" .
+    lambdaber:sample_type "protein" .
 
 <https://www.rcsb.org/structure/1JB0/sample/12> a lambdaber:Sample ;
     dcterms:title "PHOTOSYSTEM I SUBUNIT PSAX" ;
@@ -191,9 +190,9 @@ pdb:1JB0 a lambdaber:Dataset ;
             lambdaber:numeric_value "3.85"^^xsd:float ;
             lambdaber:unit "kDa" ] ;
     lambdaber:organism NCBITaxon:32046 ;
+    lambdaber:protein_name "PHOTOSYSTEM I SUBUNIT PSAX" ;
     lambdaber:sample_code "PDB-1JB0-12" ;
-    lambdaber:sample_type "protein" ;
-    nsls2:Protein_Name "PHOTOSYSTEM I SUBUNIT PSAX" .
+    lambdaber:sample_type "protein" .
 
 <https://www.rcsb.org/structure/1JB0/sample/2> a lambdaber:Sample ;
     dcterms:title "PHOTOSYSTEM I P700 CHLOROPHYLL A APOPROTEIN A2" ;
@@ -206,9 +205,9 @@ pdb:1JB0 a lambdaber:Dataset ;
             lambdaber:numeric_value "82.99"^^xsd:float ;
             lambdaber:unit "kDa" ] ;
     lambdaber:organism NCBITaxon:32046 ;
+    lambdaber:protein_name "PHOTOSYSTEM I P700 CHLOROPHYLL A APOPROTEIN A2" ;
     lambdaber:sample_code "PDB-1JB0-2" ;
-    lambdaber:sample_type "protein" ;
-    nsls2:Protein_Name "PHOTOSYSTEM I P700 CHLOROPHYLL A APOPROTEIN A2" .
+    lambdaber:sample_type "protein" .
 
 <https://www.rcsb.org/structure/1JB0/sample/3> a lambdaber:Sample ;
     dcterms:title "PHOTOSYSTEM I IRON-SULFUR CENTER" ;
@@ -221,9 +220,9 @@ pdb:1JB0 a lambdaber:Dataset ;
             lambdaber:numeric_value "8.68"^^xsd:float ;
             lambdaber:unit "kDa" ] ;
     lambdaber:organism NCBITaxon:32046 ;
+    lambdaber:protein_name "PHOTOSYSTEM I IRON-SULFUR CENTER" ;
     lambdaber:sample_code "PDB-1JB0-3" ;
-    lambdaber:sample_type "protein" ;
-    nsls2:Protein_Name "PHOTOSYSTEM I IRON-SULFUR CENTER" .
+    lambdaber:sample_type "protein" .
 
 <https://www.rcsb.org/structure/1JB0/sample/4> a lambdaber:Sample ;
     dcterms:title "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT II" ;
@@ -236,9 +235,9 @@ pdb:1JB0 a lambdaber:Dataset ;
             lambdaber:numeric_value "15.26"^^xsd:float ;
             lambdaber:unit "kDa" ] ;
     lambdaber:organism NCBITaxon:32046 ;
+    lambdaber:protein_name "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT II" ;
     lambdaber:sample_code "PDB-1JB0-4" ;
-    lambdaber:sample_type "protein" ;
-    nsls2:Protein_Name "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT II" .
+    lambdaber:sample_type "protein" .
 
 <https://www.rcsb.org/structure/1JB0/sample/5> a lambdaber:Sample ;
     dcterms:title "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT IV" ;
@@ -251,9 +250,9 @@ pdb:1JB0 a lambdaber:Dataset ;
             lambdaber:numeric_value "8.27"^^xsd:float ;
             lambdaber:unit "kDa" ] ;
     lambdaber:organism NCBITaxon:32046 ;
+    lambdaber:protein_name "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT IV" ;
     lambdaber:sample_code "PDB-1JB0-5" ;
-    lambdaber:sample_type "protein" ;
-    nsls2:Protein_Name "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT IV" .
+    lambdaber:sample_type "protein" .
 
 <https://www.rcsb.org/structure/1JB0/sample/6> a lambdaber:Sample ;
     dcterms:title "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT III" ;
@@ -266,9 +265,9 @@ pdb:1JB0 a lambdaber:Dataset ;
             lambdaber:numeric_value "17.72"^^xsd:float ;
             lambdaber:unit "kDa" ] ;
     lambdaber:organism NCBITaxon:32046 ;
+    lambdaber:protein_name "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT III" ;
     lambdaber:sample_code "PDB-1JB0-6" ;
-    lambdaber:sample_type "protein" ;
-    nsls2:Protein_Name "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT III" .
+    lambdaber:sample_type "protein" .
 
 <https://www.rcsb.org/structure/1JB0/sample/7> a lambdaber:Sample ;
     dcterms:title "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT VIII" ;
@@ -281,9 +280,9 @@ pdb:1JB0 a lambdaber:Dataset ;
             lambdaber:numeric_value "4.3"^^xsd:float ;
             lambdaber:unit "kDa" ] ;
     lambdaber:organism NCBITaxon:32046 ;
+    lambdaber:protein_name "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT VIII" ;
     lambdaber:sample_code "PDB-1JB0-7" ;
-    lambdaber:sample_type "protein" ;
-    nsls2:Protein_Name "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT VIII" .
+    lambdaber:sample_type "protein" .
 
 <https://www.rcsb.org/structure/1JB0/sample/8> a lambdaber:Sample ;
     dcterms:title "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT IX" ;
@@ -296,9 +295,9 @@ pdb:1JB0 a lambdaber:Dataset ;
             lambdaber:numeric_value "4.77"^^xsd:float ;
             lambdaber:unit "kDa" ] ;
     lambdaber:organism NCBITaxon:32046 ;
+    lambdaber:protein_name "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT IX" ;
     lambdaber:sample_code "PDB-1JB0-8" ;
-    lambdaber:sample_type "protein" ;
-    nsls2:Protein_Name "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT IX" .
+    lambdaber:sample_type "protein" .
 
 <https://www.rcsb.org/structure/1JB0/sample/9> a lambdaber:Sample ;
     dcterms:title "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT X" ;
@@ -311,9 +310,9 @@ pdb:1JB0 a lambdaber:Dataset ;
             lambdaber:numeric_value "8.48"^^xsd:float ;
             lambdaber:unit "kDa" ] ;
     lambdaber:organism NCBITaxon:32046 ;
+    lambdaber:protein_name "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT X" ;
     lambdaber:sample_code "PDB-1JB0-9" ;
-    lambdaber:sample_type "protein" ;
-    nsls2:Protein_Name "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT X" .
+    lambdaber:sample_type "protein" .
 
 <https://www.rcsb.org/structure/1JB0/study> a lambdaber:Study ;
     dcterms:title "Crystal Structure of Photosystem I: a Photosynthetic Reaction Center and Core Antenna System from Cyanobacteria" .

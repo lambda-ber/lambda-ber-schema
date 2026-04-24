@@ -3,13 +3,8 @@
 # Slot: wavelength 
 
 
-_X-ray wavelength, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue._
 
-
-
-
-
-URI: [lambdaber:wavelength](https://w3id.org/lambda-ber-schema/wavelength)
+URI: [lambda:wavelength](http://w3id.org/lambda/wavelength)
 Alias: wavelength
 
 <!-- no inheritance hierarchy -->
@@ -22,6 +17,7 @@ Alias: wavelength
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [SANSSource](SANSSource.md) | Beam source parameters for a SANS instrument |  no  |
 | [ExperimentRun](ExperimentRun.md) | An experimental data collection session |  no  |
 
 
@@ -31,7 +27,7 @@ Alias: wavelength
 
 ## Properties
 
-* Range: [QuantityValue](QuantityValue.md)
+* Range: [String](String.md)
 
 
 
@@ -43,21 +39,13 @@ Alias: wavelength
 
 
 
-### Schema Source
-
-
-* from schema: https://w3id.org/lambda-ber-schema/
-
-
-
 
 ## Mappings
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:wavelength |
-| native | lambdaber:wavelength |
-| exact | nsls2:Wavelength, imgCIF:_diffrn_radiation_wavelength.wavelength, mmCIF:_diffrn_radiation_wavelength.wavelength, ispyb:DataCollection.wavelength |
+| self | lambda:wavelength |
+| native | lambda:wavelength |
 
 
 
@@ -67,21 +55,11 @@ Alias: wavelength
 <details>
 ```yaml
 name: wavelength
-description: X-ray wavelength, typically specified in Angstroms (Å). Data providers
-  may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
-exact_mappings:
-- nsls2:Wavelength
-- imgCIF:_diffrn_radiation_wavelength.wavelength
-- mmCIF:_diffrn_radiation_wavelength.wavelength
-- ispyb:DataCollection.wavelength
-rank: 1000
 alias: wavelength
-owner: ExperimentRun
 domain_of:
+- SANSSource
 - ExperimentRun
-range: QuantityValue
-inlined: true
+range: string
 
 ```
 </details>

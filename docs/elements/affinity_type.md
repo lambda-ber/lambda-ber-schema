@@ -9,7 +9,7 @@ _Type of affinity chromatography_
 
 
 
-URI: [lambdaber:affinity_type](https://w3id.org/lambda-ber-schema/affinity_type)
+URI: [lambda:affinity_type](http://w3id.org/lambda/affinity_type)
 Alias: affinity_type
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: affinity_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: affinity_type
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:affinity_type |
-| native | lambdaber:affinity_type |
+| self | lambda:affinity_type |
+| native | lambda:affinity_type |
 
 
 
@@ -67,7 +67,7 @@ Alias: affinity_type
 ```yaml
 name: affinity_type
 description: Type of affinity chromatography
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: affinity_type
 owner: SamplePreparation

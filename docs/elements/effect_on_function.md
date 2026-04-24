@@ -9,7 +9,7 @@ _Effect on protein function_
 
 
 
-URI: [lambdaber:effect_on_function](https://w3id.org/lambda-ber-schema/effect_on_function)
+URI: [lambda:effect_on_function](http://w3id.org/lambda/effect_on_function)
 Alias: effect_on_function
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: effect_on_function
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: effect_on_function
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:effect_on_function |
-| native | lambdaber:effect_on_function |
+| self | lambda:effect_on_function |
+| native | lambda:effect_on_function |
 
 
 
@@ -67,7 +67,7 @@ Alias: effect_on_function
 ```yaml
 name: effect_on_function
 description: Effect on protein function
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: effect_on_function
 owner: MutationEffect

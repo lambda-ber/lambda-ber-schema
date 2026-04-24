@@ -9,7 +9,7 @@ _Picking threshold_
 
 
 
-URI: [lambdaber:threshold](https://w3id.org/lambda-ber-schema/threshold)
+URI: [lambda:threshold](http://w3id.org/lambda/threshold)
 Alias: threshold
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: threshold
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: threshold
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:threshold |
-| native | lambdaber:threshold |
+| self | lambda:threshold |
+| native | lambda:threshold |
 
 
 
@@ -67,7 +67,7 @@ Alias: threshold
 ```yaml
 name: threshold
 description: Picking threshold
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: threshold
 owner: ParticlePickingParameters

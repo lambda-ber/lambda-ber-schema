@@ -9,7 +9,7 @@ _Blotter height setting. Data providers may include unit information in the Quan
 
 
 
-URI: [lambdaber:blotter_height](https://w3id.org/lambda-ber-schema/blotter_height)
+URI: [lambda:blotter_height](http://w3id.org/lambda/blotter_height)
 Alias: blotter_height
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: blotter_height
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: blotter_height
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:blotter_height |
-| native | lambdaber:blotter_height |
+| self | lambda:blotter_height |
+| native | lambda:blotter_height |
 
 
 
@@ -68,7 +68,7 @@ Alias: blotter_height
 name: blotter_height
 description: Blotter height setting. Data providers may include unit information in
   the QuantityValue if needed.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: blotter_height
 owner: CryoEMPreparation

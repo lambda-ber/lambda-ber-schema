@@ -9,7 +9,7 @@ _Phasing method used for X-ray crystallography structure determination_
 
 
 
-URI: [lambdaber:phasing_method](https://w3id.org/lambda-ber-schema/phasing_method)
+URI: [lambda:phasing_method](http://w3id.org/lambda/phasing_method)
 Alias: phasing_method
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: phasing_method
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: phasing_method
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:phasing_method |
-| native | lambdaber:phasing_method |
+| self | lambda:phasing_method |
+| native | lambda:phasing_method |
 
 
 
@@ -67,7 +67,7 @@ Alias: phasing_method
 ```yaml
 name: phasing_method
 description: Phasing method used for X-ray crystallography structure determination
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: phasing_method
 owner: WorkflowRun

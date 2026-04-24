@@ -9,7 +9,7 @@ _Beamline identifier (e.g., FMX, AMX, 12.3.1)_
 
 
 
-URI: [lambdaber:beamline](https://w3id.org/lambda-ber-schema/beamline)
+URI: [lambda:beamline](http://w3id.org/lambda/beamline)
 Alias: beamline
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: beamline
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: beamline
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:beamline |
-| native | lambdaber:beamline |
+| self | lambda:beamline |
+| native | lambda:beamline |
 | exact | nsls2:Beamline, mmCIF:_diffrn_source.pdbx_synchrotron_beamline, ispyb:BLSession.beamLineName |
 
 
@@ -68,7 +68,7 @@ Alias: beamline
 ```yaml
 name: beamline
 description: Beamline identifier (e.g., FMX, AMX, 12.3.1)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 exact_mappings:
 - nsls2:Beamline
 - mmCIF:_diffrn_source.pdbx_synchrotron_beamline

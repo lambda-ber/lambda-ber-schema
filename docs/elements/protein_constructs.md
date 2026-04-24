@@ -9,7 +9,7 @@ _All protein constructs_
 
 
 
-URI: [lambdaber:protein_constructs](https://w3id.org/lambda-ber-schema/protein_constructs)
+URI: [lambda:protein_constructs](http://w3id.org/lambda/protein_constructs)
 Alias: protein_constructs
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: protein_constructs
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: protein_constructs
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:protein_constructs |
-| native | lambdaber:protein_constructs |
+| self | lambda:protein_constructs |
+| native | lambda:protein_constructs |
 
 
 
@@ -69,7 +69,7 @@ Alias: protein_constructs
 ```yaml
 name: protein_constructs
 description: All protein constructs
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: protein_constructs
 owner: Dataset

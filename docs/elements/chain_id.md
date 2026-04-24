@@ -9,7 +9,7 @@ _Chain identifier in the PDB structure_
 
 
 
-URI: [lambdaber:chain_id](https://w3id.org/lambda-ber-schema/chain_id)
+URI: [lambda:chain_id](http://w3id.org/lambda/chain_id)
 Alias: chain_id
 
 <!-- no inheritance hierarchy -->
@@ -22,13 +22,13 @@ Alias: chain_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ProteinAnnotation](ProteinAnnotation.md) | Base class for all protein-related functional and structural annotations |  no  |
-| [MutationEffect](MutationEffect.md) | Effects of mutations and variants on protein structure and function |  no  |
-| [ProteinProteinInteraction](ProteinProteinInteraction.md) | Protein-protein interactions and interfaces |  no  |
-| [StructuralFeature](StructuralFeature.md) | Structural features and properties of protein regions |  no  |
 | [FunctionalSite](FunctionalSite.md) | Functional sites including catalytic, binding, and regulatory sites |  no  |
-| [PostTranslationalModification](PostTranslationalModification.md) | Post-translational modifications observed or predicted |  no  |
+| [StructuralFeature](StructuralFeature.md) | Structural features and properties of protein regions |  no  |
+| [ProteinAnnotation](ProteinAnnotation.md) | Base class for all protein-related functional and structural annotations |  no  |
+| [ProteinProteinInteraction](ProteinProteinInteraction.md) | Protein-protein interactions and interfaces |  no  |
 | [EvolutionaryConservation](EvolutionaryConservation.md) | Evolutionary conservation information |  no  |
+| [PostTranslationalModification](PostTranslationalModification.md) | Post-translational modifications observed or predicted |  no  |
+| [MutationEffect](MutationEffect.md) | Effects of mutations and variants on protein structure and function |  no  |
 
 
 
@@ -54,7 +54,7 @@ Alias: chain_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -63,8 +63,8 @@ Alias: chain_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:chain_id |
-| native | lambdaber:chain_id |
+| self | lambda:chain_id |
+| native | lambda:chain_id |
 
 
 
@@ -75,7 +75,7 @@ Alias: chain_id
 ```yaml
 name: chain_id
 description: Chain identifier in the PDB structure
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: chain_id
 owner: ProteinAnnotation

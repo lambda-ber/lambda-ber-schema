@@ -9,7 +9,7 @@ _Detailed protocol description_
 
 
 
-URI: [lambdaber:protocol_description](https://w3id.org/lambda-ber-schema/protocol_description)
+URI: [lambda:protocol_description](http://w3id.org/lambda/protocol_description)
 Alias: protocol_description
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: protocol_description
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: protocol_description
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:protocol_description |
-| native | lambdaber:protocol_description |
+| self | lambda:protocol_description |
+| native | lambda:protocol_description |
 
 
 
@@ -67,7 +67,7 @@ Alias: protocol_description
 ```yaml
 name: protocol_description
 description: Detailed protocol description
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: protocol_description
 owner: SamplePreparation

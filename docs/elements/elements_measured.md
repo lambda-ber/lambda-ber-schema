@@ -9,7 +9,7 @@ _Elements detected and measured_
 
 
 
-URI: [lambdaber:elements_measured](https://w3id.org/lambda-ber-schema/elements_measured)
+URI: [lambda:elements_measured](http://w3id.org/lambda/elements_measured)
 Alias: elements_measured
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: elements_measured
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: elements_measured
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:elements_measured |
-| native | lambdaber:elements_measured |
+| self | lambda:elements_measured |
+| native | lambda:elements_measured |
 
 
 
@@ -69,7 +69,7 @@ Alias: elements_measured
 ```yaml
 name: elements_measured
 description: Elements detected and measured
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: elements_measured
 owner: XRFImage

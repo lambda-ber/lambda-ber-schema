@@ -11,7 +11,7 @@ _A grouping of related data attributes that form a logical unit_
 * __NOTE__: this is an abstract class and should not be instantiated directly
 
 
-URI: [lambdaber:AttributeGroup](https://w3id.org/lambda-ber-schema/AttributeGroup)
+URI: [lambda:AttributeGroup](http://w3id.org/lambda/AttributeGroup)
 
 
 
@@ -21,6 +21,12 @@ URI: [lambdaber:AttributeGroup](https://w3id.org/lambda-ber-schema/AttributeGrou
  classDiagram
     class AttributeGroup
     click AttributeGroup href "../AttributeGroup/"
+      AttributeGroup <|-- SANSDetector
+        click SANSDetector href "../SANSDetector/"
+      AttributeGroup <|-- SANSSource
+        click SANSSource href "../SANSSource/"
+      AttributeGroup <|-- SANSConfiguration
+        click SANSConfiguration href "../SANSConfiguration/"
       AttributeGroup <|-- ImageFeature
         click ImageFeature href "../ImageFeature/"
       AttributeGroup <|-- MolecularComposition
@@ -37,6 +43,8 @@ URI: [lambdaber:AttributeGroup](https://w3id.org/lambda-ber-schema/AttributeGrou
         click ExperimentalConditions href "../ExperimentalConditions/"
       AttributeGroup <|-- DataCollectionStrategy
         click DataCollectionStrategy href "../DataCollectionStrategy/"
+      AttributeGroup <|-- BeamCenterPixels
+        click BeamCenterPixels href "../BeamCenterPixels/"
       AttributeGroup <|-- QualityMetrics
         click QualityMetrics href "../QualityMetrics/"
       AttributeGroup <|-- ComputeResources
@@ -71,6 +79,9 @@ URI: [lambdaber:AttributeGroup](https://w3id.org/lambda-ber-schema/AttributeGrou
 
 ## Inheritance
 * **AttributeGroup**
+    * [SANSDetector](SANSDetector.md)
+    * [SANSSource](SANSSource.md)
+    * [SANSConfiguration](SANSConfiguration.md)
     * [ImageFeature](ImageFeature.md)
     * [MolecularComposition](MolecularComposition.md)
     * [BufferComposition](BufferComposition.md)
@@ -79,6 +90,7 @@ URI: [lambdaber:AttributeGroup](https://w3id.org/lambda-ber-schema/AttributeGrou
     * [CrystallizationConditions](CrystallizationConditions.md)
     * [ExperimentalConditions](ExperimentalConditions.md)
     * [DataCollectionStrategy](DataCollectionStrategy.md)
+    * [BeamCenterPixels](BeamCenterPixels.md)
     * [QualityMetrics](QualityMetrics.md)
     * [ComputeResources](ComputeResources.md)
     * [MotionCorrectionParameters](MotionCorrectionParameters.md)
@@ -118,7 +130,7 @@ URI: [lambdaber:AttributeGroup](https://w3id.org/lambda-ber-schema/AttributeGrou
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -127,8 +139,8 @@ URI: [lambdaber:AttributeGroup](https://w3id.org/lambda-ber-schema/AttributeGrou
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:AttributeGroup |
-| native | lambdaber:AttributeGroup |
+| self | lambda:AttributeGroup |
+| native | lambda:AttributeGroup |
 
 
 
@@ -145,12 +157,12 @@ URI: [lambdaber:AttributeGroup](https://w3id.org/lambda-ber-schema/AttributeGrou
 ```yaml
 name: AttributeGroup
 description: A grouping of related data attributes that form a logical unit
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 abstract: true
 attributes:
   description:
     name: description
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - NamedThing
     - AttributeGroup
@@ -165,12 +177,12 @@ attributes:
 ```yaml
 name: AttributeGroup
 description: A grouping of related data attributes that form a logical unit
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 abstract: true
 attributes:
   description:
     name: description
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: description
     owner: AttributeGroup
     domain_of:

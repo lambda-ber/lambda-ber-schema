@@ -9,7 +9,7 @@ _Crystal mounting method_
 
 
 
-URI: [nsls2:Mount_Type](https://github.com/NSLS2/BER-LAMBDA/Mount_Type)
+URI: [lambda:mounting_method](http://w3id.org/lambda/mounting_method)
 Alias: mounting_method
 
 <!-- no inheritance hierarchy -->
@@ -36,10 +36,6 @@ Alias: mounting_method
 
 
 
-## Comments
-
-* Maps to NSLS2 spreadsheet: Mount_Type
-
 ## Identifier and Mapping Information
 
 
@@ -50,7 +46,7 @@ Alias: mounting_method
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -59,8 +55,9 @@ Alias: mounting_method
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | nsls2:Mount_Type |
-| native | lambdaber:mounting_method |
+| self | lambda:mounting_method |
+| native | lambda:mounting_method |
+| exact | nsls2:Mount_Type |
 
 
 
@@ -71,11 +68,10 @@ Alias: mounting_method
 ```yaml
 name: mounting_method
 description: Crystal mounting method
-comments:
-- 'Maps to NSLS2 spreadsheet: Mount_Type'
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- nsls2:Mount_Type
 rank: 1000
-slot_uri: nsls2:Mount_Type
 alias: mounting_method
 owner: XRayPreparation
 domain_of:

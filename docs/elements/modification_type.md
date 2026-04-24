@@ -9,7 +9,7 @@ _Type of PTM_
 
 
 
-URI: [lambdaber:modification_type](https://w3id.org/lambda-ber-schema/modification_type)
+URI: [lambda:modification_type](http://w3id.org/lambda/modification_type)
 Alias: modification_type
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: modification_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: modification_type
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:modification_type |
-| native | lambdaber:modification_type |
+| self | lambda:modification_type |
+| native | lambda:modification_type |
 
 
 
@@ -69,7 +69,7 @@ Alias: modification_type
 ```yaml
 name: modification_type
 description: Type of PTM
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: modification_type
 owner: PostTranslationalModification

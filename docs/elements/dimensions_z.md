@@ -9,7 +9,7 @@ _Image depth, typically specified in pixels or slices. Data providers may specif
 
 
 
-URI: [lambdaber:dimensions_z](https://w3id.org/lambda-ber-schema/dimensions_z)
+URI: [lambda:dimensions_z](http://w3id.org/lambda/dimensions_z)
 Alias: dimensions_z
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: dimensions_z
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: dimensions_z
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:dimensions_z |
-| native | lambdaber:dimensions_z |
+| self | lambda:dimensions_z |
+| native | lambda:dimensions_z |
 
 
 
@@ -68,7 +68,7 @@ Alias: dimensions_z
 name: dimensions_z
 description: Image depth, typically specified in pixels or slices. Data providers
   may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: dimensions_z
 owner: Image3D

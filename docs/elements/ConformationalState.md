@@ -9,7 +9,7 @@ _Individual conformational state_
 
 
 
-URI: [lambdaber:ConformationalState](https://w3id.org/lambda-ber-schema/ConformationalState)
+URI: [lambda:ConformationalState](http://w3id.org/lambda/ConformationalState)
 
 
 
@@ -90,7 +90,7 @@ URI: [lambdaber:ConformationalState](https://w3id.org/lambda-ber-schema/Conforma
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -99,8 +99,8 @@ URI: [lambdaber:ConformationalState](https://w3id.org/lambda-ber-schema/Conforma
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:ConformationalState |
-| native | lambdaber:ConformationalState |
+| self | lambda:ConformationalState |
+| native | lambda:ConformationalState |
 
 
 
@@ -117,13 +117,13 @@ URI: [lambdaber:ConformationalState](https://w3id.org/lambda-ber-schema/Conforma
 ```yaml
 name: ConformationalState
 description: Individual conformational state
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: AttributeGroup
 attributes:
   state_id:
     name: state_id
     description: Identifier for this state
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - ConformationalState
@@ -131,14 +131,14 @@ attributes:
   state_name:
     name: state_name
     description: Descriptive name (e.g., 'open', 'closed')
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - ConformationalState
   pdb_entries:
     name: pdb_entries
     description: PDB entries representing this state
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - ConformationalState
@@ -147,7 +147,7 @@ attributes:
   population:
     name: population
     description: 'Relative population of this state (range: 0-1)'
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - ConformationalState
@@ -157,7 +157,7 @@ attributes:
   free_energy:
     name: free_energy
     description: Relative free energy (kcal/mol)
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - ConformationalState
@@ -167,7 +167,7 @@ attributes:
   rmsd_from_reference:
     name: rmsd_from_reference
     description: RMSD from reference structure
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - ConformationalState
@@ -177,7 +177,7 @@ attributes:
   characteristic_features:
     name: characteristic_features
     description: Key features of this conformation
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - ConformationalState
@@ -192,13 +192,13 @@ attributes:
 ```yaml
 name: ConformationalState
 description: Individual conformational state
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: AttributeGroup
 attributes:
   state_id:
     name: state_id
     description: Identifier for this state
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: state_id
     owner: ConformationalState
@@ -209,7 +209,7 @@ attributes:
   state_name:
     name: state_name
     description: Descriptive name (e.g., 'open', 'closed')
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: state_name
     owner: ConformationalState
@@ -219,7 +219,7 @@ attributes:
   pdb_entries:
     name: pdb_entries
     description: PDB entries representing this state
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: pdb_entries
     owner: ConformationalState
@@ -231,7 +231,7 @@ attributes:
   population:
     name: population
     description: 'Relative population of this state (range: 0-1)'
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: population
     owner: ConformationalState
@@ -243,7 +243,7 @@ attributes:
   free_energy:
     name: free_energy
     description: Relative free energy (kcal/mol)
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: free_energy
     owner: ConformationalState
@@ -255,7 +255,7 @@ attributes:
   rmsd_from_reference:
     name: rmsd_from_reference
     description: RMSD from reference structure
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: rmsd_from_reference
     owner: ConformationalState
@@ -267,7 +267,7 @@ attributes:
   characteristic_features:
     name: characteristic_features
     description: Key features of this conformation
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: characteristic_features
     owner: ConformationalState
@@ -277,7 +277,7 @@ attributes:
     multivalued: true
   description:
     name: description
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: description
     owner: ConformationalState
     domain_of:

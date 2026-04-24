@@ -9,7 +9,7 @@ _Vertical slit gap aperture, typically specified in micrometers (µm). Data prov
 
 
 
-URI: [lambdaber:slit_gap_vertical](https://w3id.org/lambda-ber-schema/slit_gap_vertical)
+URI: [lambda:slit_gap_vertical](http://w3id.org/lambda/slit_gap_vertical)
 Alias: slit_gap_vertical
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: slit_gap_vertical
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: slit_gap_vertical
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:slit_gap_vertical |
-| native | lambdaber:slit_gap_vertical |
+| self | lambda:slit_gap_vertical |
+| native | lambda:slit_gap_vertical |
 | exact | ispyb:DataCollection.slitGapVertical |
 
 
@@ -69,7 +69,7 @@ Alias: slit_gap_vertical
 name: slit_gap_vertical
 description: Vertical slit gap aperture, typically specified in micrometers (µm).
   Data providers may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 exact_mappings:
 - ispyb:DataCollection.slitGapVertical
 rank: 1000

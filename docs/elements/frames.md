@@ -9,7 +9,7 @@ _Number of frames in the movie_
 
 
 
-URI: [lambdaber:frames](https://w3id.org/lambda-ber-schema/frames)
+URI: [lambda:frames](http://w3id.org/lambda/frames)
 Alias: frames
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: frames
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: frames
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:frames |
-| native | lambdaber:frames |
+| self | lambda:frames |
+| native | lambda:frames |
 
 
 
@@ -67,7 +67,7 @@ Alias: frames
 ```yaml
 name: frames
 description: Number of frames in the movie
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: frames
 owner: Movie

@@ -9,7 +9,7 @@ _Evidence for this interaction_
 
 
 
-URI: [lambdaber:interaction_evidence](https://w3id.org/lambda-ber-schema/interaction_evidence)
+URI: [lambda:interaction_evidence](http://w3id.org/lambda/interaction_evidence)
 Alias: interaction_evidence
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: interaction_evidence
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: interaction_evidence
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:interaction_evidence |
-| native | lambdaber:interaction_evidence |
+| self | lambda:interaction_evidence |
+| native | lambda:interaction_evidence |
 
 
 
@@ -69,7 +69,7 @@ Alias: interaction_evidence
 ```yaml
 name: interaction_evidence
 description: Evidence for this interaction
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: interaction_evidence
 owner: ProteinProteinInteraction

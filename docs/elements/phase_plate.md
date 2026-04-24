@@ -9,7 +9,7 @@ _Phase plate available_
 
 
 
-URI: [lambdaber:phase_plate](https://w3id.org/lambda-ber-schema/phase_plate)
+URI: [lambda:phase_plate](http://w3id.org/lambda/phase_plate)
 Alias: phase_plate
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: phase_plate
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: phase_plate
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:phase_plate |
-| native | lambdaber:phase_plate |
+| self | lambda:phase_plate |
+| native | lambda:phase_plate |
 
 
 
@@ -67,7 +67,7 @@ Alias: phase_plate
 ```yaml
 name: phase_plate
 description: Phase plate available
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: phase_plate
 owner: CryoEMInstrument

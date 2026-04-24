@@ -9,7 +9,7 @@ _Maximum detector distance in mm_
 
 
 
-URI: [lambdaber:detector_distance_max](https://w3id.org/lambda-ber-schema/detector_distance_max)
+URI: [lambda:detector_distance_max](http://w3id.org/lambda/detector_distance_max)
 Alias: detector_distance_max
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: detector_distance_max
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: detector_distance_max
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:detector_distance_max |
-| native | lambdaber:detector_distance_max |
+| self | lambda:detector_distance_max |
+| native | lambda:detector_distance_max |
 
 
 
@@ -67,7 +67,7 @@ Alias: detector_distance_max
 ```yaml
 name: detector_distance_max
 description: Maximum detector distance in mm
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: detector_distance_max
 owner: SAXSInstrument

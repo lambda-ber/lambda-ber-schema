@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:beam_energy](https://w3id.org/lambda-ber-schema/beam_energy)
+URI: [lambda:beam_energy](http://w3id.org/lambda/beam_energy)
 Alias: beam_energy
 
 <!-- no inheritance hierarchy -->
@@ -44,8 +44,8 @@ Alias: beam_energy
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:beam_energy |
-| native | lambdaber:beam_energy |
+| self | lambda:beam_energy |
+| native | lambda:beam_energy |
 
 
 

@@ -9,7 +9,7 @@ _Glow discharge atmosphere (air, amylamine)_
 
 
 
-URI: [lambdaber:glow_discharge_atmosphere](https://w3id.org/lambda-ber-schema/glow_discharge_atmosphere)
+URI: [lambda:glow_discharge_atmosphere](http://w3id.org/lambda/glow_discharge_atmosphere)
 Alias: glow_discharge_atmosphere
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: glow_discharge_atmosphere
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: glow_discharge_atmosphere
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:glow_discharge_atmosphere |
-| native | lambdaber:glow_discharge_atmosphere |
+| self | lambda:glow_discharge_atmosphere |
+| native | lambda:glow_discharge_atmosphere |
+| exact | mmCIF:_em_sample_support.pretreatment_atmosphere |
 
 
 
@@ -67,7 +68,9 @@ Alias: glow_discharge_atmosphere
 ```yaml
 name: glow_discharge_atmosphere
 description: Glow discharge atmosphere (air, amylamine)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_em_sample_support.pretreatment_atmosphere
 rank: 1000
 alias: glow_discharge_atmosphere
 owner: CryoEMPreparation

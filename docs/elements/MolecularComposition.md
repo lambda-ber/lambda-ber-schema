@@ -9,7 +9,7 @@ _Molecular composition of a sample_
 
 
 
-URI: [lambdaber:MolecularComposition](https://w3id.org/lambda-ber-schema/MolecularComposition)
+URI: [lambda:MolecularComposition](http://w3id.org/lambda/MolecularComposition)
 
 
 
@@ -78,7 +78,7 @@ URI: [lambdaber:MolecularComposition](https://w3id.org/lambda-ber-schema/Molecul
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -87,8 +87,8 @@ URI: [lambdaber:MolecularComposition](https://w3id.org/lambda-ber-schema/Molecul
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:MolecularComposition |
-| native | lambdaber:MolecularComposition |
+| self | lambda:MolecularComposition |
+| native | lambda:MolecularComposition |
 
 
 
@@ -105,13 +105,13 @@ URI: [lambdaber:MolecularComposition](https://w3id.org/lambda-ber-schema/Molecul
 ```yaml
 name: MolecularComposition
 description: Molecular composition of a sample
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: AttributeGroup
 attributes:
   sequences:
     name: sequences
     description: Amino acid or nucleotide sequences
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - MolecularComposition
@@ -120,7 +120,7 @@ attributes:
   modifications:
     name: modifications
     description: Post-translational modifications or chemical modifications
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - MolecularComposition
@@ -129,7 +129,7 @@ attributes:
   ligands:
     name: ligands
     description: Bound ligands or cofactors
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - MolecularComposition
@@ -145,13 +145,13 @@ attributes:
 ```yaml
 name: MolecularComposition
 description: Molecular composition of a sample
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: AttributeGroup
 attributes:
   sequences:
     name: sequences
     description: Amino acid or nucleotide sequences
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: sequences
     owner: MolecularComposition
@@ -162,7 +162,7 @@ attributes:
   modifications:
     name: modifications
     description: Post-translational modifications or chemical modifications
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: modifications
     owner: MolecularComposition
@@ -173,7 +173,7 @@ attributes:
   ligands:
     name: ligands
     description: Bound ligands or cofactors
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: ligands
     owner: MolecularComposition
@@ -183,7 +183,7 @@ attributes:
     multivalued: true
   description:
     name: description
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: description
     owner: MolecularComposition
     domain_of:

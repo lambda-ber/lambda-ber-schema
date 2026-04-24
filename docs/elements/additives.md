@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:additives](https://w3id.org/lambda-ber-schema/additives)
+URI: [lambda:additives](http://w3id.org/lambda/additives)
 Alias: additives
 
 <!-- no inheritance hierarchy -->
@@ -17,8 +17,8 @@ Alias: additives
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [XRayPreparation](XRayPreparation.md) | X-ray crystallography specific preparation |  no  |
 | [BufferComposition](BufferComposition.md) | Buffer composition for sample storage |  no  |
+| [XRayPreparation](XRayPreparation.md) | X-ray crystallography specific preparation |  no  |
 
 
 
@@ -44,8 +44,8 @@ Alias: additives
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:additives |
-| native | lambdaber:additives |
+| self | lambda:additives |
+| native | lambda:additives |
 
 
 

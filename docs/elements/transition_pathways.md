@@ -9,7 +9,7 @@ _Description of transition pathways between states_
 
 
 
-URI: [lambdaber:transition_pathways](https://w3id.org/lambda-ber-schema/transition_pathways)
+URI: [lambda:transition_pathways](http://w3id.org/lambda/transition_pathways)
 Alias: transition_pathways
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: transition_pathways
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: transition_pathways
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:transition_pathways |
-| native | lambdaber:transition_pathways |
+| self | lambda:transition_pathways |
+| native | lambda:transition_pathways |
 
 
 
@@ -67,7 +67,7 @@ Alias: transition_pathways
 ```yaml
 name: transition_pathways
 description: Description of transition pathways between states
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: transition_pathways
 owner: ConformationalEnsemble

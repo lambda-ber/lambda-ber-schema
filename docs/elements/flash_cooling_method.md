@@ -9,7 +9,7 @@ _Flash cooling protocol_
 
 
 
-URI: [lambdaber:flash_cooling_method](https://w3id.org/lambda-ber-schema/flash_cooling_method)
+URI: [lambda:flash_cooling_method](http://w3id.org/lambda/flash_cooling_method)
 Alias: flash_cooling_method
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: flash_cooling_method
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: flash_cooling_method
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:flash_cooling_method |
-| native | lambdaber:flash_cooling_method |
+| self | lambda:flash_cooling_method |
+| native | lambda:flash_cooling_method |
 
 
 
@@ -67,7 +67,7 @@ Alias: flash_cooling_method
 ```yaml
 name: flash_cooling_method
 description: Flash cooling protocol
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: flash_cooling_method
 owner: XRayPreparation

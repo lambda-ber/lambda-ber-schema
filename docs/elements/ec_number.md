@@ -9,7 +9,7 @@ _Enzyme Commission number for catalytic sites_
 
 
 
-URI: [lambdaber:ec_number](https://w3id.org/lambda-ber-schema/ec_number)
+URI: [lambda:ec_number](http://w3id.org/lambda/ec_number)
 Alias: ec_number
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: ec_number
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: ec_number
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:ec_number |
-| native | lambdaber:ec_number |
+| self | lambda:ec_number |
+| native | lambda:ec_number |
 
 
 
@@ -69,7 +69,7 @@ Alias: ec_number
 ```yaml
 name: ec_number
 description: Enzyme Commission number for catalytic sites
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: ec_number
 owner: FunctionalSite

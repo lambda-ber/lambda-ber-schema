@@ -9,7 +9,7 @@ _Storage used, typically specified in gigabytes (GB). Data providers may specify
 
 
 
-URI: [lambdaber:storage_gb](https://w3id.org/lambda-ber-schema/storage_gb)
+URI: [lambda:storage_gb](http://w3id.org/lambda/storage_gb)
 Alias: storage_gb
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: storage_gb
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: storage_gb
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:storage_gb |
-| native | lambdaber:storage_gb |
+| self | lambda:storage_gb |
+| native | lambda:storage_gb |
 
 
 
@@ -68,7 +68,7 @@ Alias: storage_gb
 name: storage_gb
 description: Storage used, typically specified in gigabytes (GB). Data providers may
   specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: storage_gb
 owner: ComputeResources

@@ -9,7 +9,7 @@ _Buffer composition for washing_
 
 
 
-URI: [lambdaber:wash_buffer](https://w3id.org/lambda-ber-schema/wash_buffer)
+URI: [lambda:wash_buffer](http://w3id.org/lambda/wash_buffer)
 Alias: wash_buffer
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: wash_buffer
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: wash_buffer
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:wash_buffer |
-| native | lambdaber:wash_buffer |
+| self | lambda:wash_buffer |
+| native | lambda:wash_buffer |
 
 
 
@@ -67,7 +67,7 @@ Alias: wash_buffer
 ```yaml
 name: wash_buffer
 description: Buffer composition for washing
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: wash_buffer
 owner: SamplePreparation

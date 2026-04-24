@@ -9,7 +9,7 @@ _A 3D volume or tomogram_
 
 
 
-URI: [lambdaber:Image3D](https://w3id.org/lambda-ber-schema/Image3D)
+URI: [lambda:Image3D](http://w3id.org/lambda/Image3D)
 
 
 
@@ -162,7 +162,7 @@ URI: [lambdaber:Image3D](https://w3id.org/lambda-ber-schema/Image3D)
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -171,8 +171,8 @@ URI: [lambdaber:Image3D](https://w3id.org/lambda-ber-schema/Image3D)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:Image3D |
-| native | lambdaber:Image3D |
+| self | lambda:Image3D |
+| native | lambda:Image3D |
 
 
 
@@ -189,14 +189,14 @@ URI: [lambdaber:Image3D](https://w3id.org/lambda-ber-schema/Image3D)
 ```yaml
 name: Image3D
 description: A 3D volume or tomogram
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: Image
 attributes:
   dimensions_z:
     name: dimensions_z
     description: Image depth, typically specified in pixels or slices. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Image3D
@@ -206,7 +206,7 @@ attributes:
     name: voxel_size
     description: Voxel size, typically specified in Angstroms. Data providers may
       specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Image3D
@@ -215,7 +215,7 @@ attributes:
   reconstruction_method:
     name: reconstruction_method
     description: Method used for 3D reconstruction
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Image3D
@@ -229,14 +229,14 @@ attributes:
 ```yaml
 name: Image3D
 description: A 3D volume or tomogram
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: Image
 attributes:
   dimensions_z:
     name: dimensions_z
     description: Image depth, typically specified in pixels or slices. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: dimensions_z
     owner: Image3D
@@ -248,7 +248,7 @@ attributes:
     name: voxel_size
     description: Voxel size, typically specified in Angstroms. Data providers may
       specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: voxel_size
     owner: Image3D
@@ -259,7 +259,7 @@ attributes:
   reconstruction_method:
     name: reconstruction_method
     description: Method used for 3D reconstruction
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: reconstruction_method
     owner: Image3D
@@ -269,7 +269,7 @@ attributes:
   file_name:
     name: file_name
     description: Image file name
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: file_name
     owner: Image3D
     domain_of:
@@ -280,7 +280,7 @@ attributes:
   acquisition_date:
     name: acquisition_date
     description: Date image was acquired
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: acquisition_date
     owner: Image3D
@@ -291,7 +291,7 @@ attributes:
     name: pixel_size
     description: Pixel size, typically specified in Angstroms. Data providers may
       specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: pixel_size
     owner: Image3D
@@ -304,7 +304,7 @@ attributes:
     name: dimensions_x
     description: Image width, typically specified in pixels. Data providers may specify
       alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: dimensions_x
     owner: Image3D
@@ -316,7 +316,7 @@ attributes:
     name: dimensions_y
     description: Image height, typically specified in pixels. Data providers may specify
       alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: dimensions_y
     owner: Image3D
@@ -328,19 +328,20 @@ attributes:
     name: exposure_time
     description: Exposure time, typically specified in seconds. Data providers may
       specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: exposure_time
     owner: Image3D
     domain_of:
     - ExperimentRun
     - Image
     - ExperimentalConditions
+    - DataCollectionStrategy
     range: QuantityValue
     inlined: true
   dose:
     name: dose
     description: Electron dose in e-/Å²
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: dose
     owner: Image3D
@@ -354,7 +355,7 @@ attributes:
     description: Globally unique identifier as an IRI or CURIE for machine processing
       and external references. Used for linking data across systems and semantic web
       integration.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     identifier: true
     alias: id
@@ -367,7 +368,7 @@ attributes:
   title:
     name: title
     description: A human-readable name or title for this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     slot_uri: dcterms:title
     alias: title
@@ -378,7 +379,7 @@ attributes:
   description:
     name: description
     description: A detailed textual description of this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: description
     owner: Image3D

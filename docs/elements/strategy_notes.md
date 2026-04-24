@@ -9,7 +9,7 @@ _Notes about data collection strategy_
 
 
 
-URI: [lambdaber:strategy_notes](https://w3id.org/lambda-ber-schema/strategy_notes)
+URI: [lambda:strategy_notes](http://w3id.org/lambda/strategy_notes)
 Alias: strategy_notes
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: strategy_notes
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: strategy_notes
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:strategy_notes |
-| native | lambdaber:strategy_notes |
+| self | lambda:strategy_notes |
+| native | lambda:strategy_notes |
 
 
 
@@ -67,7 +67,7 @@ Alias: strategy_notes
 ```yaml
 name: strategy_notes
 description: Notes about data collection strategy
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: strategy_notes
 owner: DataCollectionStrategy

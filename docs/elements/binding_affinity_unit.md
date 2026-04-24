@@ -9,7 +9,7 @@ _Unit of binding affinity_
 
 
 
-URI: [lambdaber:binding_affinity_unit](https://w3id.org/lambda-ber-schema/binding_affinity_unit)
+URI: [lambda:binding_affinity_unit](http://w3id.org/lambda/binding_affinity_unit)
 Alias: binding_affinity_unit
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: binding_affinity_unit
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: binding_affinity_unit
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:binding_affinity_unit |
-| native | lambdaber:binding_affinity_unit |
+| self | lambda:binding_affinity_unit |
+| native | lambda:binding_affinity_unit |
 
 
 
@@ -67,7 +67,7 @@ Alias: binding_affinity_unit
 ```yaml
 name: binding_affinity_unit
 description: Unit of binding affinity
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: binding_affinity_unit
 owner: LigandInteraction

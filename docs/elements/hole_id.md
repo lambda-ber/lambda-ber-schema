@@ -9,7 +9,7 @@ _Hole identifier within grid square_
 
 
 
-URI: [lambdaber:hole_id](https://w3id.org/lambda-ber-schema/hole_id)
+URI: [lambda:hole_id](http://w3id.org/lambda/hole_id)
 Alias: hole_id
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: hole_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: hole_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:hole_id |
-| native | lambdaber:hole_id |
+| self | lambda:hole_id |
+| native | lambda:hole_id |
 
 
 
@@ -67,7 +67,7 @@ Alias: hole_id
 ```yaml
 name: hole_id
 description: Hole identifier within grid square
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: hole_id
 owner: Movie

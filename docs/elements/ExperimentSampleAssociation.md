@@ -9,7 +9,7 @@ _M:N link between ExperimentRun and Sample with role metadata_
 
 
 
-URI: [lambdaber:ExperimentSampleAssociation](https://w3id.org/lambda-ber-schema/ExperimentSampleAssociation)
+URI: [lambda:ExperimentSampleAssociation](http://w3id.org/lambda/ExperimentSampleAssociation)
 
 
 
@@ -107,7 +107,7 @@ URI: [lambdaber:ExperimentSampleAssociation](https://w3id.org/lambda-ber-schema/
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -116,8 +116,8 @@ URI: [lambdaber:ExperimentSampleAssociation](https://w3id.org/lambda-ber-schema/
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:ExperimentSampleAssociation |
-| native | lambdaber:ExperimentSampleAssociation |
+| self | lambda:ExperimentSampleAssociation |
+| native | lambda:ExperimentSampleAssociation |
 
 
 
@@ -134,12 +134,12 @@ URI: [lambdaber:ExperimentSampleAssociation](https://w3id.org/lambda-ber-schema/
 ```yaml
 name: ExperimentSampleAssociation
 description: M:N link between ExperimentRun and Sample with role metadata
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 attributes:
   experiment_id:
     name: experiment_id
     description: Reference to the experiment run
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - StudyExperimentAssociation
     - ExperimentSampleAssociation
@@ -150,7 +150,7 @@ attributes:
   sample_id:
     name: sample_id
     description: Reference to the sample
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - SamplePreparation
     - StudySampleAssociation
@@ -160,7 +160,7 @@ attributes:
   role:
     name: role
     description: Role of sample in experiment
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - StudySampleAssociation
     - ExperimentSampleAssociation
@@ -169,7 +169,7 @@ attributes:
   preparation_id:
     name: preparation_id
     description: Specific preparation used for this sample in this experiment
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ExperimentSampleAssociation
@@ -184,12 +184,12 @@ attributes:
 ```yaml
 name: ExperimentSampleAssociation
 description: M:N link between ExperimentRun and Sample with role metadata
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 attributes:
   experiment_id:
     name: experiment_id
     description: Reference to the experiment run
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: experiment_id
     owner: ExperimentSampleAssociation
     domain_of:
@@ -202,7 +202,7 @@ attributes:
   sample_id:
     name: sample_id
     description: Reference to the sample
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: sample_id
     owner: ExperimentSampleAssociation
     domain_of:
@@ -214,7 +214,7 @@ attributes:
   role:
     name: role
     description: Role of sample in experiment
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: role
     owner: ExperimentSampleAssociation
     domain_of:
@@ -225,7 +225,7 @@ attributes:
   preparation_id:
     name: preparation_id
     description: Specific preparation used for this sample in this experiment
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: preparation_id
     owner: ExperimentSampleAssociation

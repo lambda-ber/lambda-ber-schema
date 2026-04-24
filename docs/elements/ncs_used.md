@@ -9,7 +9,7 @@ _Whether Non-Crystallographic Symmetry restraints were used_
 
 
 
-URI: [lambdaber:ncs_used](https://w3id.org/lambda-ber-schema/ncs_used)
+URI: [lambda:ncs_used](http://w3id.org/lambda/ncs_used)
 Alias: ncs_used
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: ncs_used
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: ncs_used
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:ncs_used |
-| native | lambdaber:ncs_used |
+| self | lambda:ncs_used |
+| native | lambda:ncs_used |
 
 
 
@@ -67,7 +67,7 @@ Alias: ncs_used
 ```yaml
 name: ncs_used
 description: Whether Non-Crystallographic Symmetry restraints were used
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: ncs_used
 owner: WorkflowRun

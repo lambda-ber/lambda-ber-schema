@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:file_id](https://w3id.org/lambda-ber-schema/file_id)
+URI: [lambda:file_id](http://w3id.org/lambda/file_id)
 Alias: file_id
 
 <!-- no inheritance hierarchy -->
@@ -17,8 +17,8 @@ Alias: file_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [WorkflowOutputAssociation](WorkflowOutputAssociation.md) | Links output DataFiles to WorkflowRun |  no  |
 | [WorkflowInputAssociation](WorkflowInputAssociation.md) | Links input DataFiles to WorkflowRun |  no  |
+| [WorkflowOutputAssociation](WorkflowOutputAssociation.md) | Links output DataFiles to WorkflowRun |  no  |
 
 
 
@@ -44,8 +44,8 @@ Alias: file_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:file_id |
-| native | lambdaber:file_id |
+| self | lambda:file_id |
+| native | lambda:file_id |
 
 
 

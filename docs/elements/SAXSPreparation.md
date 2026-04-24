@@ -9,7 +9,7 @@ _SAXS/WAXS specific preparation_
 
 
 
-URI: [lambdaber:SAXSPreparation](https://w3id.org/lambda-ber-schema/SAXSPreparation)
+URI: [lambda:SAXSPreparation](http://w3id.org/lambda/SAXSPreparation)
 
 
 
@@ -96,7 +96,7 @@ URI: [lambdaber:SAXSPreparation](https://w3id.org/lambda-ber-schema/SAXSPreparat
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -105,8 +105,8 @@ URI: [lambdaber:SAXSPreparation](https://w3id.org/lambda-ber-schema/SAXSPreparat
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:SAXSPreparation |
-| native | lambdaber:SAXSPreparation |
+| self | lambda:SAXSPreparation |
+| native | lambda:SAXSPreparation |
 
 
 
@@ -123,13 +123,13 @@ URI: [lambdaber:SAXSPreparation](https://w3id.org/lambda-ber-schema/SAXSPreparat
 ```yaml
 name: SAXSPreparation
 description: SAXS/WAXS specific preparation
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: TechniqueSpecificPreparation
 attributes:
   concentration_series:
     name: concentration_series
     description: Concentration values for series measurements
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SAXSPreparation
@@ -138,14 +138,14 @@ attributes:
   buffer_matching_protocol:
     name: buffer_matching_protocol
     description: Protocol for buffer matching
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SAXSPreparation
   sample_cell_type:
     name: sample_cell_type
     description: Type of sample cell used
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SAXSPreparation
@@ -153,7 +153,7 @@ attributes:
     name: cell_path_length
     description: Path length, typically specified in millimeters (mm). Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SAXSPreparation
@@ -162,7 +162,7 @@ attributes:
   temperature_control:
     name: temperature_control
     description: Temperature control settings
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SAXSPreparation
@@ -176,13 +176,13 @@ attributes:
 ```yaml
 name: SAXSPreparation
 description: SAXS/WAXS specific preparation
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: TechniqueSpecificPreparation
 attributes:
   concentration_series:
     name: concentration_series
     description: Concentration values for series measurements
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: concentration_series
     owner: SAXSPreparation
@@ -193,7 +193,7 @@ attributes:
   buffer_matching_protocol:
     name: buffer_matching_protocol
     description: Protocol for buffer matching
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: buffer_matching_protocol
     owner: SAXSPreparation
@@ -203,7 +203,7 @@ attributes:
   sample_cell_type:
     name: sample_cell_type
     description: Type of sample cell used
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: sample_cell_type
     owner: SAXSPreparation
@@ -214,7 +214,7 @@ attributes:
     name: cell_path_length
     description: Path length, typically specified in millimeters (mm). Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: cell_path_length
     owner: SAXSPreparation
@@ -225,7 +225,7 @@ attributes:
   temperature_control:
     name: temperature_control
     description: Temperature control settings
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: temperature_control
     owner: SAXSPreparation
@@ -234,7 +234,7 @@ attributes:
     range: string
   description:
     name: description
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: description
     owner: SAXSPreparation
     domain_of:

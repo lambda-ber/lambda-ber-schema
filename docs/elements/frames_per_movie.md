@@ -9,7 +9,7 @@ _Number of frames per movie_
 
 
 
-URI: [lambdaber:frames_per_movie](https://w3id.org/lambda-ber-schema/frames_per_movie)
+URI: [lambda:frames_per_movie](http://w3id.org/lambda/frames_per_movie)
 Alias: frames_per_movie
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: frames_per_movie
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: frames_per_movie
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:frames_per_movie |
-| native | lambdaber:frames_per_movie |
+| self | lambda:frames_per_movie |
+| native | lambda:frames_per_movie |
+| exact | mmCIF:_em_image_recording.num_frames_per_image |
 
 
 
@@ -67,7 +68,9 @@ Alias: frames_per_movie
 ```yaml
 name: frames_per_movie
 description: Number of frames per movie
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_em_image_recording.num_frames_per_image
 rank: 1000
 alias: frames_per_movie
 owner: ExperimentRun

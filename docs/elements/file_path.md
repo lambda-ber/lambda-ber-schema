@@ -9,7 +9,7 @@ _Path to the file_
 
 
 
-URI: [lambdaber:file_path](https://w3id.org/lambda-ber-schema/file_path)
+URI: [lambda:file_path](http://w3id.org/lambda/file_path)
 Alias: file_path
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: file_path
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: file_path
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:file_path |
-| native | lambdaber:file_path |
+| self | lambda:file_path |
+| native | lambda:file_path |
 
 
 
@@ -67,7 +67,7 @@ Alias: file_path
 ```yaml
 name: file_path
 description: Path to the file
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: file_path
 owner: DataFile

@@ -9,7 +9,7 @@ _Method used for background correction_
 
 
 
-URI: [lambdaber:background_correction](https://w3id.org/lambda-ber-schema/background_correction)
+URI: [lambda:background_correction](http://w3id.org/lambda/background_correction)
 Alias: background_correction
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: background_correction
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: background_correction
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:background_correction |
-| native | lambdaber:background_correction |
+| self | lambda:background_correction |
+| native | lambda:background_correction |
 
 
 
@@ -67,7 +67,7 @@ Alias: background_correction
 ```yaml
 name: background_correction
 description: Method used for background correction
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: background_correction
 owner: FTIRImage

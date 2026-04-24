@@ -9,7 +9,7 @@ _Buffer components and their concentrations_
 
 
 
-URI: [lambdaber:components](https://w3id.org/lambda-ber-schema/components)
+URI: [lambda:components](http://w3id.org/lambda/components)
 Alias: components
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: components
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: components
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:components |
-| native | lambdaber:components |
+| self | lambda:components |
+| native | lambda:components |
 
 
 
@@ -69,7 +69,7 @@ Alias: components
 ```yaml
 name: components
 description: Buffer components and their concentrations
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: components
 owner: BufferComposition

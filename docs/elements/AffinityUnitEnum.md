@@ -7,7 +7,7 @@ _Units for affinity measurements_
 
 
 
-URI: [lambdaber:AffinityUnitEnum](https://w3id.org/lambda-ber-schema/AffinityUnitEnum)
+URI: [lambda:AffinityUnitEnum](http://w3id.org/lambda/AffinityUnitEnum)
 
 ## Permissible Values
 
@@ -42,7 +42,7 @@ URI: [lambdaber:AffinityUnitEnum](https://w3id.org/lambda-ber-schema/AffinityUni
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,7 +55,7 @@ URI: [lambdaber:AffinityUnitEnum](https://w3id.org/lambda-ber-schema/AffinityUni
 ```yaml
 name: AffinityUnitEnum
 description: Units for affinity measurements
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   molar:

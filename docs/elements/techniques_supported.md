@@ -9,7 +9,7 @@ _Experimental techniques available at this beamline_
 
 
 
-URI: [lambdaber:techniques_supported](https://w3id.org/lambda-ber-schema/techniques_supported)
+URI: [lambda:techniques_supported](http://w3id.org/lambda/techniques_supported)
 Alias: techniques_supported
 
 <!-- no inheritance hierarchy -->
@@ -55,7 +55,7 @@ Alias: techniques_supported
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -64,8 +64,8 @@ Alias: techniques_supported
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:techniques_supported |
-| native | lambdaber:techniques_supported |
+| self | lambda:techniques_supported |
+| native | lambda:techniques_supported |
 
 
 
@@ -79,7 +79,7 @@ description: Experimental techniques available at this beamline
 comments:
 - List all techniques this beamline supports
 - 'Example: [saxs, xray_crystallography] for SIBYLS'
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: techniques_supported
 owner: BeamlineInstrument

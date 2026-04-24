@@ -9,7 +9,7 @@ _Whether this represents a biological assembly_
 
 
 
-URI: [lambdaber:biological_assembly](https://w3id.org/lambda-ber-schema/biological_assembly)
+URI: [lambda:biological_assembly](http://w3id.org/lambda/biological_assembly)
 Alias: biological_assembly
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: biological_assembly
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: biological_assembly
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:biological_assembly |
-| native | lambdaber:biological_assembly |
+| self | lambda:biological_assembly |
+| native | lambda:biological_assembly |
 
 
 
@@ -67,7 +67,7 @@ Alias: biological_assembly
 ```yaml
 name: biological_assembly
 description: Whether this represents a biological assembly
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: biological_assembly
 owner: ProteinProteinInteraction

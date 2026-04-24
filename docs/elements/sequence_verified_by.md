@@ -9,7 +9,7 @@ _Method or person who verified the sequence_
 
 
 
-URI: [lambdaber:sequence_verified_by](https://w3id.org/lambda-ber-schema/sequence_verified_by)
+URI: [lambda:sequence_verified_by](http://w3id.org/lambda/sequence_verified_by)
 Alias: sequence_verified_by
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: sequence_verified_by
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: sequence_verified_by
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:sequence_verified_by |
-| native | lambdaber:sequence_verified_by |
+| self | lambda:sequence_verified_by |
+| native | lambda:sequence_verified_by |
 
 
 
@@ -67,7 +67,7 @@ Alias: sequence_verified_by
 ```yaml
 name: sequence_verified_by
 description: Method or person who verified the sequence
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: sequence_verified_by
 owner: ProteinConstruct

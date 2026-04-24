@@ -9,7 +9,7 @@ _Calibrated pixel size for this experiment, typically specified in Angstroms (Å
 
 
 
-URI: [lambdaber:pixel_size_calibrated](https://w3id.org/lambda-ber-schema/pixel_size_calibrated)
+URI: [lambda:pixel_size_calibrated](http://w3id.org/lambda/pixel_size_calibrated)
 Alias: pixel_size_calibrated
 
 <!-- no inheritance hierarchy -->
@@ -52,7 +52,7 @@ Alias: pixel_size_calibrated
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -61,8 +61,9 @@ Alias: pixel_size_calibrated
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:pixel_size_calibrated |
-| native | lambdaber:pixel_size_calibrated |
+| self | lambda:pixel_size_calibrated |
+| native | lambda:pixel_size_calibrated |
+| exact | mmCIF:_em_image_recording.calibrated_pixel_size |
 
 
 
@@ -79,7 +80,9 @@ comments:
 - 'For cryo-EM: depends on magnification (Å/pixel)'
 - 'For X-ray: typically mm/pixel or µm/pixel'
 - Physical pixel size is hardware spec stored in Instrument
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_em_image_recording.calibrated_pixel_size
 rank: 1000
 alias: pixel_size_calibrated
 owner: DataCollectionStrategy

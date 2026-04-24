@@ -9,7 +9,7 @@ _Effect on protein stability_
 
 
 
-URI: [lambdaber:effect_on_stability](https://w3id.org/lambda-ber-schema/effect_on_stability)
+URI: [lambda:effect_on_stability](http://w3id.org/lambda/effect_on_stability)
 Alias: effect_on_stability
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: effect_on_stability
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: effect_on_stability
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:effect_on_stability |
-| native | lambdaber:effect_on_stability |
+| self | lambda:effect_on_stability |
+| native | lambda:effect_on_stability |
 
 
 
@@ -67,7 +67,7 @@ Alias: effect_on_stability
 ```yaml
 name: effect_on_stability
 description: Effect on protein stability
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: effect_on_stability
 owner: MutationEffect

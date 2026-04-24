@@ -9,7 +9,7 @@ _Promoter used for expression_
 
 
 
-URI: [lambdaber:promoter](https://w3id.org/lambda-ber-schema/promoter)
+URI: [lambda:promoter](http://w3id.org/lambda/promoter)
 Alias: promoter
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: promoter
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: promoter
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:promoter |
-| native | lambdaber:promoter |
+| self | lambda:promoter |
+| native | lambda:promoter |
 
 
 
@@ -67,7 +67,7 @@ Alias: promoter
 ```yaml
 name: promoter
 description: Promoter used for expression
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: promoter
 owner: ProteinConstruct

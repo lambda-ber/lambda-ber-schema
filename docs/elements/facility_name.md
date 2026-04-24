@@ -9,7 +9,7 @@ _Name of the research facility where the instrument is located_
 
 
 
-URI: [lambdaber:facility_name](https://w3id.org/lambda-ber-schema/facility_name)
+URI: [lambda:facility_name](http://w3id.org/lambda/facility_name)
 Alias: facility_name
 
 <!-- no inheritance hierarchy -->
@@ -22,11 +22,12 @@ Alias: facility_name
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Instrument](Instrument.md) | An instrument used to collect data |  no  |
 | [XRayInstrument](XRayInstrument.md) | X-ray diffractometer or synchrotron beamline specifications |  no  |
 | [SAXSInstrument](SAXSInstrument.md) | SAXS/WAXS instrument specifications |  no  |
 | [CryoEMInstrument](CryoEMInstrument.md) | Cryo-EM microscope specifications |  no  |
+| [SANSInstrument](SANSInstrument.md) | Small-angle neutron scattering (SANS) instrument specifications |  no  |
 | [BeamlineInstrument](BeamlineInstrument.md) | Multi-technique synchrotron beamline that supports multiple experimental meth... |  no  |
+| [Instrument](Instrument.md) | An instrument used to collect data |  no  |
 
 
 
@@ -55,7 +56,7 @@ Alias: facility_name
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -64,8 +65,8 @@ Alias: facility_name
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:facility_name |
-| native | lambdaber:facility_name |
+| self | lambda:facility_name |
+| native | lambda:facility_name |
 
 
 
@@ -79,7 +80,7 @@ description: Name of the research facility where the instrument is located
 comments:
 - Select from the standardized list of major synchrotron facilities
 - Leave empty for laboratory-based instruments
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: facility_name
 owner: Instrument

@@ -9,7 +9,7 @@ _Type of sample preparation_
 
 
 
-URI: [lambdaber:preparation_type](https://w3id.org/lambda-ber-schema/preparation_type)
+URI: [lambda:preparation_type](http://w3id.org/lambda/preparation_type)
 Alias: preparation_type
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: preparation_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: preparation_type
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:preparation_type |
-| native | lambdaber:preparation_type |
+| self | lambda:preparation_type |
+| native | lambda:preparation_type |
 
 
 
@@ -69,7 +69,7 @@ Alias: preparation_type
 ```yaml
 name: preparation_type
 description: Type of sample preparation
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: preparation_type
 owner: SamplePreparation

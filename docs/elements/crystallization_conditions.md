@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:crystallization_conditions](https://w3id.org/lambda-ber-schema/crystallization_conditions)
+URI: [lambda:crystallization_conditions](http://w3id.org/lambda/crystallization_conditions)
 Alias: crystallization_conditions
 
 <!-- no inheritance hierarchy -->
@@ -44,8 +44,8 @@ Alias: crystallization_conditions
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:crystallization_conditions |
-| native | lambdaber:crystallization_conditions |
+| self | lambda:crystallization_conditions |
+| native | lambda:crystallization_conditions |
 
 
 

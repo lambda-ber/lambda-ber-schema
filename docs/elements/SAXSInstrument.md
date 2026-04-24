@@ -9,7 +9,7 @@ _SAXS/WAXS instrument specifications_
 
 
 
-URI: [lambdaber:SAXSInstrument](https://w3id.org/lambda-ber-schema/SAXSInstrument)
+URI: [lambda:SAXSInstrument](http://w3id.org/lambda/SAXSInstrument)
 
 
 
@@ -186,7 +186,7 @@ URI: [lambdaber:SAXSInstrument](https://w3id.org/lambda-ber-schema/SAXSInstrumen
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -195,8 +195,8 @@ URI: [lambdaber:SAXSInstrument](https://w3id.org/lambda-ber-schema/SAXSInstrumen
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:SAXSInstrument |
-| native | lambdaber:SAXSInstrument |
+| self | lambda:SAXSInstrument |
+| native | lambda:SAXSInstrument |
 
 
 
@@ -213,15 +213,15 @@ URI: [lambdaber:SAXSInstrument](https://w3id.org/lambda-ber-schema/SAXSInstrumen
 ```yaml
 name: SAXSInstrument
 description: SAXS/WAXS instrument specifications
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: Instrument
 attributes:
   q_range_min:
     name: q_range_min
     description: Minimum q value in inverse Angstroms
-    from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
+    from_schema: http://w3id.org/lambda/
     domain_of:
+    - SANSInstrument
     - SAXSInstrument
     - BeamlineInstrument
     range: QuantityValue
@@ -229,9 +229,9 @@ attributes:
   q_range_max:
     name: q_range_max
     description: Maximum q value in inverse Angstroms
-    from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
+    from_schema: http://w3id.org/lambda/
     domain_of:
+    - SANSInstrument
     - SAXSInstrument
     - BeamlineInstrument
     range: QuantityValue
@@ -239,7 +239,7 @@ attributes:
   detector_distance_min:
     name: detector_distance_min
     description: Minimum detector distance in mm
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SAXSInstrument
@@ -248,7 +248,7 @@ attributes:
   detector_distance_max:
     name: detector_distance_max
     description: Maximum detector distance in mm
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SAXSInstrument
@@ -257,7 +257,7 @@ attributes:
   sample_changer_capacity:
     name: sample_changer_capacity
     description: Number of samples in automatic sample changer
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SAXSInstrument
@@ -267,7 +267,7 @@ attributes:
   temperature_control_range:
     name: temperature_control_range
     description: Temperature control range in Celsius
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - SAXSInstrument
@@ -281,17 +281,17 @@ attributes:
 ```yaml
 name: SAXSInstrument
 description: SAXS/WAXS instrument specifications
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: Instrument
 attributes:
   q_range_min:
     name: q_range_min
     description: Minimum q value in inverse Angstroms
-    from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
+    from_schema: http://w3id.org/lambda/
     alias: q_range_min
     owner: SAXSInstrument
     domain_of:
+    - SANSInstrument
     - SAXSInstrument
     - BeamlineInstrument
     range: QuantityValue
@@ -299,11 +299,11 @@ attributes:
   q_range_max:
     name: q_range_max
     description: Maximum q value in inverse Angstroms
-    from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
+    from_schema: http://w3id.org/lambda/
     alias: q_range_max
     owner: SAXSInstrument
     domain_of:
+    - SANSInstrument
     - SAXSInstrument
     - BeamlineInstrument
     range: QuantityValue
@@ -311,7 +311,7 @@ attributes:
   detector_distance_min:
     name: detector_distance_min
     description: Minimum detector distance in mm
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: detector_distance_min
     owner: SAXSInstrument
@@ -322,7 +322,7 @@ attributes:
   detector_distance_max:
     name: detector_distance_max
     description: Maximum detector distance in mm
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: detector_distance_max
     owner: SAXSInstrument
@@ -333,7 +333,7 @@ attributes:
   sample_changer_capacity:
     name: sample_changer_capacity
     description: Number of samples in automatic sample changer
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: sample_changer_capacity
     owner: SAXSInstrument
@@ -345,7 +345,7 @@ attributes:
   temperature_control_range:
     name: temperature_control_range
     description: Temperature control range in Celsius
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: temperature_control_range
     owner: SAXSInstrument
@@ -357,7 +357,7 @@ attributes:
     description: Human-friendly facility or laboratory identifier for the instrument
       (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local
       reference and equipment tracking.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: instrument_code
     owner: SAXSInstrument
@@ -371,7 +371,7 @@ attributes:
     comments:
     - Use SYNCHROTRON_BEAMLINE for synchrotron beamlines
     - Use ELECTRON_MICROSCOPE for cryo-EM instruments
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: instrument_category
     owner: SAXSInstrument
@@ -384,7 +384,7 @@ attributes:
     comments:
     - Select from the standardized list of major synchrotron facilities
     - Leave empty for laboratory-based instruments
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: facility_name
     owner: SAXSInstrument
@@ -397,7 +397,7 @@ attributes:
     comments:
     - Persistent identifier for the facility organization
     - 'Example: https://ror.org/02jbv0t02 (Lawrence Berkeley National Laboratory)'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: facility_ror
     owner: SAXSInstrument
@@ -411,9 +411,10 @@ attributes:
     comments:
     - Use facility-specific naming convention
     - 'Examples: ''12.3.1'' (ALS), ''17-ID-1'' (NSLS-II), ''I04'' (Diamond)'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_diffrn_source.pdbx_synchrotron_beamline
     rank: 1000
-    slot_uri: mmCIF:_diffrn_source.pdbx_synchrotron_beamline
     alias: beamline_id
     owner: SAXSInstrument
     domain_of:
@@ -422,7 +423,7 @@ attributes:
   manufacturer:
     name: manufacturer
     description: Instrument manufacturer
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: manufacturer
     owner: SAXSInstrument
@@ -432,7 +433,7 @@ attributes:
   model:
     name: model
     description: Instrument model
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: model
     owner: SAXSInstrument
@@ -442,7 +443,7 @@ attributes:
   installation_date:
     name: installation_date
     description: Date of instrument installation
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: installation_date
     owner: SAXSInstrument
@@ -452,7 +453,7 @@ attributes:
   current_status:
     name: current_status
     description: Current operational status
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: current_status
     owner: SAXSInstrument
@@ -464,7 +465,7 @@ attributes:
     description: Globally unique identifier as an IRI or CURIE for machine processing
       and external references. Used for linking data across systems and semantic web
       integration.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     identifier: true
     alias: id
@@ -477,7 +478,7 @@ attributes:
   title:
     name: title
     description: A human-readable name or title for this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     slot_uri: dcterms:title
     alias: title
@@ -488,7 +489,7 @@ attributes:
   description:
     name: description
     description: A detailed textual description of this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: description
     owner: SAXSInstrument

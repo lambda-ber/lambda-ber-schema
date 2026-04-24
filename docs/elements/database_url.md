@@ -9,7 +9,7 @@ _URL to the database entry_
 
 
 
-URI: [lambdaber:database_url](https://w3id.org/lambda-ber-schema/database_url)
+URI: [lambda:database_url](http://w3id.org/lambda/database_url)
 Alias: database_url
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: database_url
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: database_url
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:database_url |
-| native | lambdaber:database_url |
+| self | lambda:database_url |
+| native | lambda:database_url |
 
 
 
@@ -67,7 +67,7 @@ Alias: database_url
 ```yaml
 name: database_url
 description: URL to the database entry
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: database_url
 owner: DatabaseCrossReference

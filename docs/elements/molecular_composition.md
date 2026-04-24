@@ -9,7 +9,7 @@ _Description of molecular composition including sequences, modifications, ligand
 
 
 
-URI: [lambdaber:molecular_composition](https://w3id.org/lambda-ber-schema/molecular_composition)
+URI: [lambda:molecular_composition](http://w3id.org/lambda/molecular_composition)
 Alias: molecular_composition
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: molecular_composition
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: molecular_composition
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:molecular_composition |
-| native | lambdaber:molecular_composition |
+| self | lambda:molecular_composition |
+| native | lambda:molecular_composition |
 
 
 
@@ -68,7 +68,7 @@ Alias: molecular_composition
 name: molecular_composition
 description: Description of molecular composition including sequences, modifications,
   ligands
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: molecular_composition
 owner: Sample

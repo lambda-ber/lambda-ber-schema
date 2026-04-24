@@ -9,7 +9,7 @@ _Humidity, typically specified as a percentage (0-100). Data providers may speci
 
 
 
-URI: [lambdaber:humidity](https://w3id.org/lambda-ber-schema/humidity)
+URI: [lambda:humidity](http://w3id.org/lambda/humidity)
 Alias: humidity
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: humidity
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: humidity
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:humidity |
-| native | lambdaber:humidity |
+| self | lambda:humidity |
+| native | lambda:humidity |
 
 
 
@@ -68,7 +68,7 @@ Alias: humidity
 name: humidity
 description: Humidity, typically specified as a percentage (0-100). Data providers
   may specify as a decimal fraction or percentage by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: humidity
 owner: ExperimentalConditions

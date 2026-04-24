@@ -7,7 +7,7 @@ _Types of binding affinity measurements_
 
 
 
-URI: [lambdaber:BindingAffinityTypeEnum](https://w3id.org/lambda-ber-schema/BindingAffinityTypeEnum)
+URI: [lambda:BindingAffinityTypeEnum](http://w3id.org/lambda/BindingAffinityTypeEnum)
 
 ## Permissible Values
 
@@ -43,7 +43,7 @@ URI: [lambdaber:BindingAffinityTypeEnum](https://w3id.org/lambda-ber-schema/Bind
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -56,7 +56,7 @@ URI: [lambdaber:BindingAffinityTypeEnum](https://w3id.org/lambda-ber-schema/Bind
 ```yaml
 name: BindingAffinityTypeEnum
 description: Types of binding affinity measurements
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   kd:

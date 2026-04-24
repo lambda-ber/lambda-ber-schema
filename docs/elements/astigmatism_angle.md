@@ -9,7 +9,7 @@ _Astigmatism angle, typically specified in degrees. Data providers may specify a
 
 
 
-URI: [lambdaber:astigmatism_angle](https://w3id.org/lambda-ber-schema/astigmatism_angle)
+URI: [lambda:astigmatism_angle](http://w3id.org/lambda/astigmatism_angle)
 Alias: astigmatism_angle
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: astigmatism_angle
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: astigmatism_angle
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:astigmatism_angle |
-| native | lambdaber:astigmatism_angle |
+| self | lambda:astigmatism_angle |
+| native | lambda:astigmatism_angle |
 
 
 
@@ -68,7 +68,7 @@ Alias: astigmatism_angle
 name: astigmatism_angle
 description: Astigmatism angle, typically specified in degrees. Data providers may
   specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: astigmatism_angle
 owner: Micrograph

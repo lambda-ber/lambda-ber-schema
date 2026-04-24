@@ -9,7 +9,7 @@ _Date image was acquired_
 
 
 
-URI: [lambdaber:acquisition_date](https://w3id.org/lambda-ber-schema/acquisition_date)
+URI: [lambda:acquisition_date](http://w3id.org/lambda/acquisition_date)
 Alias: acquisition_date
 
 <!-- no inheritance hierarchy -->
@@ -22,15 +22,15 @@ Alias: acquisition_date
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OpticalImage](OpticalImage.md) | Visible light optical microscopy or photography image |  no  |
+| [Image3D](Image3D.md) | A 3D volume or tomogram |  no  |
 | [Image2D](Image2D.md) | A 2D image (micrograph, diffraction pattern) |  no  |
 | [XRFImage](XRFImage.md) | X-ray fluorescence (XRF) image showing elemental distribution |  no  |
-| [Image3D](Image3D.md) | A 3D volume or tomogram |  no  |
 | [Micrograph](Micrograph.md) | Motion-corrected micrograph derived from movie |  no  |
+| [Image](Image.md) | An image file from structural biology experiments |  no  |
 | [FTIRImage](FTIRImage.md) | Fourier Transform Infrared (FTIR) spectroscopy image capturing molecular comp... |  no  |
+| [OpticalImage](OpticalImage.md) | Visible light optical microscopy or photography image |  no  |
 | [Movie](Movie.md) | Raw cryo-EM movie with frame-by-frame metadata for motion correction |  no  |
 | [FluorescenceImage](FluorescenceImage.md) | Fluorescence microscopy image capturing specific molecular targets through fl... |  no  |
-| [Image](Image.md) | An image file from structural biology experiments |  no  |
 
 
 
@@ -54,7 +54,7 @@ Alias: acquisition_date
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -63,8 +63,8 @@ Alias: acquisition_date
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:acquisition_date |
-| native | lambdaber:acquisition_date |
+| self | lambda:acquisition_date |
+| native | lambda:acquisition_date |
 
 
 
@@ -75,7 +75,7 @@ Alias: acquisition_date
 ```yaml
 name: acquisition_date
 description: Date image was acquired
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: acquisition_date
 owner: Image

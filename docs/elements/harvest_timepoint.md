@@ -9,7 +9,7 @@ _Time point when cells were harvested_
 
 
 
-URI: [lambdaber:harvest_timepoint](https://w3id.org/lambda-ber-schema/harvest_timepoint)
+URI: [lambda:harvest_timepoint](http://w3id.org/lambda/harvest_timepoint)
 Alias: harvest_timepoint
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: harvest_timepoint
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: harvest_timepoint
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:harvest_timepoint |
-| native | lambdaber:harvest_timepoint |
+| self | lambda:harvest_timepoint |
+| native | lambda:harvest_timepoint |
 
 
 
@@ -67,7 +67,7 @@ Alias: harvest_timepoint
 ```yaml
 name: harvest_timepoint
 description: Time point when cells were harvested
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: harvest_timepoint
 owner: SamplePreparation

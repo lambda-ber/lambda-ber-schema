@@ -9,7 +9,7 @@ _Path to validation report_
 
 
 
-URI: [lambdaber:validation_report_path](https://w3id.org/lambda-ber-schema/validation_report_path)
+URI: [lambda:validation_report_path](http://w3id.org/lambda/validation_report_path)
 Alias: validation_report_path
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: validation_report_path
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: validation_report_path
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:validation_report_path |
-| native | lambdaber:validation_report_path |
+| self | lambda:validation_report_path |
+| native | lambda:validation_report_path |
 
 
 
@@ -67,7 +67,7 @@ Alias: validation_report_path
 ```yaml
 name: validation_report_path
 description: Path to validation report
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: validation_report_path
 owner: WorkflowRun

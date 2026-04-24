@@ -9,7 +9,7 @@ _Mean anomalous difference signal_
 
 
 
-URI: [lambdaber:sig_anomalous](https://w3id.org/lambda-ber-schema/sig_anomalous)
+URI: [lambda:sig_anomalous](http://w3id.org/lambda/sig_anomalous)
 Alias: sig_anomalous
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: sig_anomalous
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: sig_anomalous
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:sig_anomalous |
-| native | lambdaber:sig_anomalous |
+| self | lambda:sig_anomalous |
+| native | lambda:sig_anomalous |
 
 
 
@@ -67,7 +67,7 @@ Alias: sig_anomalous
 ```yaml
 name: sig_anomalous
 description: Mean anomalous difference signal
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: sig_anomalous
 owner: WorkflowRun

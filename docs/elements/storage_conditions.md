@@ -9,7 +9,7 @@ _Storage conditions for the sample_
 
 
 
-URI: [lambdaber:storage_conditions](https://w3id.org/lambda-ber-schema/storage_conditions)
+URI: [lambda:storage_conditions](http://w3id.org/lambda/storage_conditions)
 Alias: storage_conditions
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: storage_conditions
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: storage_conditions
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:storage_conditions |
-| native | lambdaber:storage_conditions |
+| self | lambda:storage_conditions |
+| native | lambda:storage_conditions |
 
 
 
@@ -67,7 +67,7 @@ Alias: storage_conditions
 ```yaml
 name: storage_conditions
 description: Storage conditions for the sample
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: storage_conditions
 owner: Sample

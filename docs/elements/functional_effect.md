@@ -9,7 +9,7 @@ _Known functional effect of this PTM_
 
 
 
-URI: [lambdaber:functional_effect](https://w3id.org/lambda-ber-schema/functional_effect)
+URI: [lambda:functional_effect](http://w3id.org/lambda/functional_effect)
 Alias: functional_effect
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: functional_effect
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: functional_effect
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:functional_effect |
-| native | lambdaber:functional_effect |
+| self | lambda:functional_effect |
+| native | lambda:functional_effect |
 
 
 
@@ -67,7 +67,7 @@ Alias: functional_effect
 ```yaml
 name: functional_effect
 description: Known functional effect of this PTM
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: functional_effect
 owner: PostTranslationalModification

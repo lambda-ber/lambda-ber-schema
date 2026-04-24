@@ -9,7 +9,7 @@ _Visible light optical microscopy or photography image_
 
 
 
-URI: [lambdaber:OpticalImage](https://w3id.org/lambda-ber-schema/OpticalImage)
+URI: [lambda:OpticalImage](http://w3id.org/lambda/OpticalImage)
 
 
 
@@ -205,7 +205,7 @@ URI: [lambdaber:OpticalImage](https://w3id.org/lambda-ber-schema/OpticalImage)
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -214,8 +214,8 @@ URI: [lambdaber:OpticalImage](https://w3id.org/lambda-ber-schema/OpticalImage)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:OpticalImage |
-| native | lambdaber:OpticalImage |
+| self | lambda:OpticalImage |
+| native | lambda:OpticalImage |
 
 
 
@@ -232,13 +232,13 @@ URI: [lambdaber:OpticalImage](https://w3id.org/lambda-ber-schema/OpticalImage)
 ```yaml
 name: OpticalImage
 description: Visible light optical microscopy or photography image
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: Image2D
 attributes:
   illumination_type:
     name: illumination_type
     description: Type of illumination (brightfield, darkfield, phase contrast, DIC)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - OpticalImage
@@ -247,7 +247,7 @@ attributes:
     name: magnification
     description: Optical magnification factor. Data providers may specify the unit
       (e.g., times, X) in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - ExperimentRun
     - OpticalImage
@@ -257,7 +257,7 @@ attributes:
     name: numerical_aperture
     description: Numerical aperture of the objective lens. Data providers may include
       unit information in the QuantityValue if needed.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - OpticalImage
@@ -266,7 +266,7 @@ attributes:
   color_channels:
     name: color_channels
     description: Color channels present (e.g., RGB, grayscale)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - OpticalImage
@@ -275,7 +275,7 @@ attributes:
   white_balance:
     name: white_balance
     description: White balance settings
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - OpticalImage
@@ -283,7 +283,7 @@ attributes:
   contrast_method:
     name: contrast_method
     description: Contrast enhancement method used
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - OpticalImage
@@ -298,13 +298,13 @@ attributes:
 ```yaml
 name: OpticalImage
 description: Visible light optical microscopy or photography image
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: Image2D
 attributes:
   illumination_type:
     name: illumination_type
     description: Type of illumination (brightfield, darkfield, phase contrast, DIC)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: illumination_type
     owner: OpticalImage
@@ -315,7 +315,7 @@ attributes:
     name: magnification
     description: Optical magnification factor. Data providers may specify the unit
       (e.g., times, X) in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: magnification
     owner: OpticalImage
     domain_of:
@@ -327,7 +327,7 @@ attributes:
     name: numerical_aperture
     description: Numerical aperture of the objective lens. Data providers may include
       unit information in the QuantityValue if needed.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: numerical_aperture
     owner: OpticalImage
@@ -338,7 +338,7 @@ attributes:
   color_channels:
     name: color_channels
     description: Color channels present (e.g., RGB, grayscale)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: color_channels
     owner: OpticalImage
@@ -349,7 +349,7 @@ attributes:
   white_balance:
     name: white_balance
     description: White balance settings
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: white_balance
     owner: OpticalImage
@@ -359,7 +359,7 @@ attributes:
   contrast_method:
     name: contrast_method
     description: Contrast enhancement method used
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: contrast_method
     owner: OpticalImage
@@ -370,7 +370,7 @@ attributes:
     name: defocus
     description: Defocus value, typically specified in micrometers. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: defocus
     owner: OpticalImage
@@ -382,7 +382,7 @@ attributes:
     name: astigmatism
     description: Astigmatism value, typically specified in Angstroms. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: astigmatism
     owner: OpticalImage
@@ -393,7 +393,7 @@ attributes:
   file_name:
     name: file_name
     description: Image file name
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: file_name
     owner: OpticalImage
     domain_of:
@@ -404,7 +404,7 @@ attributes:
   acquisition_date:
     name: acquisition_date
     description: Date image was acquired
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: acquisition_date
     owner: OpticalImage
@@ -415,7 +415,7 @@ attributes:
     name: pixel_size
     description: Pixel size, typically specified in Angstroms. Data providers may
       specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: pixel_size
     owner: OpticalImage
@@ -428,7 +428,7 @@ attributes:
     name: dimensions_x
     description: Image width, typically specified in pixels. Data providers may specify
       alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: dimensions_x
     owner: OpticalImage
@@ -440,7 +440,7 @@ attributes:
     name: dimensions_y
     description: Image height, typically specified in pixels. Data providers may specify
       alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: dimensions_y
     owner: OpticalImage
@@ -452,19 +452,20 @@ attributes:
     name: exposure_time
     description: Exposure time, typically specified in seconds. Data providers may
       specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: exposure_time
     owner: OpticalImage
     domain_of:
     - ExperimentRun
     - Image
     - ExperimentalConditions
+    - DataCollectionStrategy
     range: QuantityValue
     inlined: true
   dose:
     name: dose
     description: Electron dose in e-/Å²
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: dose
     owner: OpticalImage
@@ -478,7 +479,7 @@ attributes:
     description: Globally unique identifier as an IRI or CURIE for machine processing
       and external references. Used for linking data across systems and semantic web
       integration.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     identifier: true
     alias: id
@@ -491,7 +492,7 @@ attributes:
   title:
     name: title
     description: A human-readable name or title for this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     slot_uri: dcterms:title
     alias: title
@@ -502,7 +503,7 @@ attributes:
   description:
     name: description
     description: A detailed textual description of this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: description
     owner: OpticalImage

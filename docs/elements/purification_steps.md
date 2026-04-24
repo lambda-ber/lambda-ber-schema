@@ -9,7 +9,7 @@ _Ordered list of purification steps performed_
 
 
 
-URI: [lambdaber:purification_steps](https://w3id.org/lambda-ber-schema/purification_steps)
+URI: [lambda:purification_steps](http://w3id.org/lambda/purification_steps)
 Alias: purification_steps
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: purification_steps
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: purification_steps
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:purification_steps |
-| native | lambdaber:purification_steps |
+| self | lambda:purification_steps |
+| native | lambda:purification_steps |
 
 
 
@@ -69,7 +69,7 @@ Alias: purification_steps
 ```yaml
 name: purification_steps
 description: Ordered list of purification steps performed
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: purification_steps
 owner: SamplePreparation

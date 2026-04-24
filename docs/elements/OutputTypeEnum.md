@@ -7,7 +7,7 @@ _Types of outputs from computational workflows_
 
 
 
-URI: [lambdaber:OutputTypeEnum](https://w3id.org/lambda-ber-schema/OutputTypeEnum)
+URI: [lambda:OutputTypeEnum](http://w3id.org/lambda/OutputTypeEnum)
 
 ## Permissible Values
 
@@ -46,7 +46,7 @@ URI: [lambdaber:OutputTypeEnum](https://w3id.org/lambda-ber-schema/OutputTypeEnu
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -59,7 +59,7 @@ URI: [lambdaber:OutputTypeEnum](https://w3id.org/lambda-ber-schema/OutputTypeEnu
 ```yaml
 name: OutputTypeEnum
 description: Types of outputs from computational workflows
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   map:

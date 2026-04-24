@@ -9,7 +9,7 @@ _Cryo-EM specific sample preparation_
 
 
 
-URI: [lambdaber:CryoEMPreparation](https://w3id.org/lambda-ber-schema/CryoEMPreparation)
+URI: [lambda:CryoEMPreparation](http://w3id.org/lambda/CryoEMPreparation)
 
 
 
@@ -282,7 +282,7 @@ URI: [lambdaber:CryoEMPreparation](https://w3id.org/lambda-ber-schema/CryoEMPrep
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -291,8 +291,8 @@ URI: [lambdaber:CryoEMPreparation](https://w3id.org/lambda-ber-schema/CryoEMPrep
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:CryoEMPreparation |
-| native | lambdaber:CryoEMPreparation |
+| self | lambda:CryoEMPreparation |
+| native | lambda:CryoEMPreparation |
 
 
 
@@ -309,13 +309,15 @@ URI: [lambdaber:CryoEMPreparation](https://w3id.org/lambda-ber-schema/CryoEMPrep
 ```yaml
 name: CryoEMPreparation
 description: Cryo-EM specific sample preparation
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: TechniqueSpecificPreparation
 attributes:
   grid_type:
     name: grid_type
     description: Type of EM grid used
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_sample_support.grid_type
     rank: 1000
     domain_of:
     - CryoEMPreparation
@@ -323,7 +325,9 @@ attributes:
   support_film:
     name: support_film
     description: Support film type
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_sample_support.grid_support_film
     rank: 1000
     domain_of:
     - CryoEMPreparation
@@ -332,7 +336,7 @@ attributes:
     name: hole_size
     description: 'Hole size, typically specified in micrometers (range: 0.5-5.0).
       Data providers may specify alternative units by including the unit in the QuantityValue.'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - CryoEMPreparation
@@ -341,7 +345,9 @@ attributes:
   vitrification_method:
     name: vitrification_method
     description: Method used for vitrification
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_vitrification.method
     rank: 1000
     domain_of:
     - CryoEMPreparation
@@ -350,7 +356,9 @@ attributes:
     name: blot_time
     description: 'Blotting time, typically specified in seconds (range: 0.5-10.0).
       Data providers may specify alternative units by including the unit in the QuantityValue.'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_vitrification.time_resolved_state
     rank: 1000
     domain_of:
     - CryoEMPreparation
@@ -359,7 +367,7 @@ attributes:
   blot_force:
     name: blot_force
     description: Blotting force setting
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - CryoEMPreparation
@@ -370,7 +378,9 @@ attributes:
     description: 'Chamber humidity during vitrification (range: 0-100), typically
       specified as a percentage. Data providers may specify as decimal fraction by
       including the unit in the QuantityValue.'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_vitrification.chamber_humidity
     rank: 1000
     domain_of:
     - CryoEMPreparation
@@ -380,7 +390,9 @@ attributes:
     name: chamber_temperature
     description: Chamber temperature, typically specified in degrees Celsius. Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_vitrification.chamber_temperature
     rank: 1000
     domain_of:
     - CryoEMPreparation
@@ -389,7 +401,9 @@ attributes:
   grid_material:
     name: grid_material
     description: Grid material
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_sample_support.grid_material
     rank: 1000
     domain_of:
     - CryoEMPreparation
@@ -397,7 +411,9 @@ attributes:
   glow_discharge_applied:
     name: glow_discharge_applied
     description: Whether glow discharge treatment was applied
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_sample_support.pretreatment_type
     rank: 1000
     domain_of:
     - CryoEMPreparation
@@ -406,7 +422,9 @@ attributes:
     name: glow_discharge_time
     description: Glow discharge time, typically specified in seconds. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_sample_support.pretreatment_time
     rank: 1000
     domain_of:
     - CryoEMPreparation
@@ -416,7 +434,7 @@ attributes:
     name: glow_discharge_current
     description: Glow discharge current, typically specified in milliamperes. Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - CryoEMPreparation
@@ -425,7 +443,9 @@ attributes:
   glow_discharge_atmosphere:
     name: glow_discharge_atmosphere
     description: Glow discharge atmosphere (air, amylamine)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_sample_support.pretreatment_atmosphere
     rank: 1000
     domain_of:
     - CryoEMPreparation
@@ -434,7 +454,9 @@ attributes:
     name: glow_discharge_pressure
     description: Glow discharge pressure, typically specified in millibars. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_sample_support.pretreatment_pressure
     rank: 1000
     domain_of:
     - CryoEMPreparation
@@ -443,7 +465,9 @@ attributes:
   vitrification_instrument:
     name: vitrification_instrument
     description: Vitrification instrument used (e.g., Vitrobot)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_vitrification.instrument
     rank: 1000
     domain_of:
     - CryoEMPreparation
@@ -451,7 +475,7 @@ attributes:
   blot_number:
     name: blot_number
     description: Number of blots applied
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - CryoEMPreparation
@@ -461,7 +485,7 @@ attributes:
     name: wait_time
     description: Wait time before blotting, typically specified in seconds. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - CryoEMPreparation
@@ -471,7 +495,7 @@ attributes:
     name: blotter_height
     description: Blotter height setting. Data providers may include unit information
       in the QuantityValue if needed.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - CryoEMPreparation
@@ -481,7 +505,7 @@ attributes:
     name: blotter_setting
     description: Blotter setting value. Data providers may include unit information
       in the QuantityValue if needed.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - CryoEMPreparation
@@ -491,7 +515,7 @@ attributes:
     name: sample_applied_volume
     description: Volume of sample applied, typically specified in microliters. Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - CryoEMPreparation
@@ -501,7 +525,9 @@ attributes:
     name: ethane_temperature
     description: Ethane temperature, typically specified in degrees Celsius. Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_vitrification.cryogen_name
     rank: 1000
     domain_of:
     - CryoEMPreparation
@@ -510,7 +536,7 @@ attributes:
   plasma_treatment:
     name: plasma_treatment
     description: Plasma treatment details
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - CryoEMPreparation
@@ -524,13 +550,15 @@ attributes:
 ```yaml
 name: CryoEMPreparation
 description: Cryo-EM specific sample preparation
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: TechniqueSpecificPreparation
 attributes:
   grid_type:
     name: grid_type
     description: Type of EM grid used
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_sample_support.grid_type
     rank: 1000
     alias: grid_type
     owner: CryoEMPreparation
@@ -540,7 +568,9 @@ attributes:
   support_film:
     name: support_film
     description: Support film type
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_sample_support.grid_support_film
     rank: 1000
     alias: support_film
     owner: CryoEMPreparation
@@ -551,7 +581,7 @@ attributes:
     name: hole_size
     description: 'Hole size, typically specified in micrometers (range: 0.5-5.0).
       Data providers may specify alternative units by including the unit in the QuantityValue.'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: hole_size
     owner: CryoEMPreparation
@@ -562,7 +592,9 @@ attributes:
   vitrification_method:
     name: vitrification_method
     description: Method used for vitrification
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_vitrification.method
     rank: 1000
     alias: vitrification_method
     owner: CryoEMPreparation
@@ -573,7 +605,9 @@ attributes:
     name: blot_time
     description: 'Blotting time, typically specified in seconds (range: 0.5-10.0).
       Data providers may specify alternative units by including the unit in the QuantityValue.'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_vitrification.time_resolved_state
     rank: 1000
     alias: blot_time
     owner: CryoEMPreparation
@@ -584,7 +618,7 @@ attributes:
   blot_force:
     name: blot_force
     description: Blotting force setting
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: blot_force
     owner: CryoEMPreparation
@@ -597,7 +631,9 @@ attributes:
     description: 'Chamber humidity during vitrification (range: 0-100), typically
       specified as a percentage. Data providers may specify as decimal fraction by
       including the unit in the QuantityValue.'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_vitrification.chamber_humidity
     rank: 1000
     alias: humidity_percentage
     owner: CryoEMPreparation
@@ -609,7 +645,9 @@ attributes:
     name: chamber_temperature
     description: Chamber temperature, typically specified in degrees Celsius. Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_vitrification.chamber_temperature
     rank: 1000
     alias: chamber_temperature
     owner: CryoEMPreparation
@@ -620,7 +658,9 @@ attributes:
   grid_material:
     name: grid_material
     description: Grid material
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_sample_support.grid_material
     rank: 1000
     alias: grid_material
     owner: CryoEMPreparation
@@ -630,7 +670,9 @@ attributes:
   glow_discharge_applied:
     name: glow_discharge_applied
     description: Whether glow discharge treatment was applied
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_sample_support.pretreatment_type
     rank: 1000
     alias: glow_discharge_applied
     owner: CryoEMPreparation
@@ -641,7 +683,9 @@ attributes:
     name: glow_discharge_time
     description: Glow discharge time, typically specified in seconds. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_sample_support.pretreatment_time
     rank: 1000
     alias: glow_discharge_time
     owner: CryoEMPreparation
@@ -653,7 +697,7 @@ attributes:
     name: glow_discharge_current
     description: Glow discharge current, typically specified in milliamperes. Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: glow_discharge_current
     owner: CryoEMPreparation
@@ -664,7 +708,9 @@ attributes:
   glow_discharge_atmosphere:
     name: glow_discharge_atmosphere
     description: Glow discharge atmosphere (air, amylamine)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_sample_support.pretreatment_atmosphere
     rank: 1000
     alias: glow_discharge_atmosphere
     owner: CryoEMPreparation
@@ -675,7 +721,9 @@ attributes:
     name: glow_discharge_pressure
     description: Glow discharge pressure, typically specified in millibars. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_sample_support.pretreatment_pressure
     rank: 1000
     alias: glow_discharge_pressure
     owner: CryoEMPreparation
@@ -686,7 +734,9 @@ attributes:
   vitrification_instrument:
     name: vitrification_instrument
     description: Vitrification instrument used (e.g., Vitrobot)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_vitrification.instrument
     rank: 1000
     alias: vitrification_instrument
     owner: CryoEMPreparation
@@ -696,7 +746,7 @@ attributes:
   blot_number:
     name: blot_number
     description: Number of blots applied
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: blot_number
     owner: CryoEMPreparation
@@ -708,7 +758,7 @@ attributes:
     name: wait_time
     description: Wait time before blotting, typically specified in seconds. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: wait_time
     owner: CryoEMPreparation
@@ -720,7 +770,7 @@ attributes:
     name: blotter_height
     description: Blotter height setting. Data providers may include unit information
       in the QuantityValue if needed.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: blotter_height
     owner: CryoEMPreparation
@@ -732,7 +782,7 @@ attributes:
     name: blotter_setting
     description: Blotter setting value. Data providers may include unit information
       in the QuantityValue if needed.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: blotter_setting
     owner: CryoEMPreparation
@@ -744,7 +794,7 @@ attributes:
     name: sample_applied_volume
     description: Volume of sample applied, typically specified in microliters. Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: sample_applied_volume
     owner: CryoEMPreparation
@@ -756,7 +806,9 @@ attributes:
     name: ethane_temperature
     description: Ethane temperature, typically specified in degrees Celsius. Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_vitrification.cryogen_name
     rank: 1000
     alias: ethane_temperature
     owner: CryoEMPreparation
@@ -767,7 +819,7 @@ attributes:
   plasma_treatment:
     name: plasma_treatment
     description: Plasma treatment details
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: plasma_treatment
     owner: CryoEMPreparation
@@ -776,7 +828,7 @@ attributes:
     range: string
   description:
     name: description
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: description
     owner: CryoEMPreparation
     domain_of:

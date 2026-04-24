@@ -9,7 +9,7 @@ _Average B-factor in Angstroms squared_
 
 
 
-URI: [lambdaber:average_b_factor_a2](https://w3id.org/lambda-ber-schema/average_b_factor_a2)
+URI: [lambda:average_b_factor_a2](http://w3id.org/lambda/average_b_factor_a2)
 Alias: average_b_factor_a2
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: average_b_factor_a2
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: average_b_factor_a2
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:average_b_factor_a2 |
-| native | lambdaber:average_b_factor_a2 |
+| self | lambda:average_b_factor_a2 |
+| native | lambda:average_b_factor_a2 |
+| exact | mmCIF:_refine.B_iso_mean |
 
 
 
@@ -67,7 +68,9 @@ Alias: average_b_factor_a2
 ```yaml
 name: average_b_factor_a2
 description: Average B-factor in Angstroms squared
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_refine.B_iso_mean
 rank: 1000
 alias: average_b_factor_a2
 owner: QualityMetrics

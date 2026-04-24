@@ -9,7 +9,7 @@ _NCBI taxonomy ID_
 
 
 
-URI: [lambdaber:organism_id](https://w3id.org/lambda-ber-schema/organism_id)
+URI: [lambda:organism_id](http://w3id.org/lambda/organism_id)
 Alias: organism_id
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: organism_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: organism_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:organism_id |
-| native | lambdaber:organism_id |
+| self | lambda:organism_id |
+| native | lambda:organism_id |
 
 
 
@@ -67,7 +67,7 @@ Alias: organism_id
 ```yaml
 name: organism_id
 description: NCBI taxonomy ID
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: organism_id
 owner: AggregatedProteinView

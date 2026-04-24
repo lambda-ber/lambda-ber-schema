@@ -9,7 +9,7 @@ _Binning factor applied during motion correction. This must be a positive float 
 
 
 
-URI: [lambdaber:binning](https://w3id.org/lambda-ber-schema/binning)
+URI: [lambda:binning](http://w3id.org/lambda/binning)
 Alias: binning
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: binning
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: binning
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:binning |
-| native | lambdaber:binning |
+| self | lambda:binning |
+| native | lambda:binning |
 
 
 
@@ -68,7 +68,7 @@ Alias: binning
 name: binning
 description: Binning factor applied during motion correction. This must be a positive
   float value (e.g., 1, 1.5, 2, 3).
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: binning
 owner: MotionCorrectionParameters

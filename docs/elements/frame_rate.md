@@ -9,7 +9,7 @@ _Frame rate, typically specified in frames per second. Data providers may specif
 
 
 
-URI: [lambdaber:frame_rate](https://w3id.org/lambda-ber-schema/frame_rate)
+URI: [lambda:frame_rate](http://w3id.org/lambda/frame_rate)
 Alias: frame_rate
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: frame_rate
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: frame_rate
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:frame_rate |
-| native | lambdaber:frame_rate |
+| self | lambda:frame_rate |
+| native | lambda:frame_rate |
 
 
 
@@ -68,7 +68,7 @@ Alias: frame_rate
 name: frame_rate
 description: Frame rate, typically specified in frames per second. Data providers
   may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: frame_rate
 owner: DataCollectionStrategy

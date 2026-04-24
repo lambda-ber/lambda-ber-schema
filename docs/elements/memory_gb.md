@@ -9,7 +9,7 @@ _Maximum memory used, typically specified in gigabytes (GB). Data providers may 
 
 
 
-URI: [lambdaber:memory_gb](https://w3id.org/lambda-ber-schema/memory_gb)
+URI: [lambda:memory_gb](http://w3id.org/lambda/memory_gb)
 Alias: memory_gb
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: memory_gb
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: memory_gb
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:memory_gb |
-| native | lambdaber:memory_gb |
+| self | lambda:memory_gb |
+| native | lambda:memory_gb |
 
 
 
@@ -68,7 +68,7 @@ Alias: memory_gb
 name: memory_gb
 description: Maximum memory used, typically specified in gigabytes (GB). Data providers
   may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: memory_gb
 owner: ComputeResources

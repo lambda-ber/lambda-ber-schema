@@ -9,7 +9,7 @@ _Total drop volume, typically specified in nanoliters. Data providers may specif
 
 
 
-URI: [lambdaber:drop_volume_nl](https://w3id.org/lambda-ber-schema/drop_volume_nl)
+URI: [lambda:drop_volume_nl](http://w3id.org/lambda/drop_volume_nl)
 Alias: drop_volume_nl
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: drop_volume_nl
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: drop_volume_nl
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:drop_volume_nl |
-| native | lambdaber:drop_volume_nl |
+| self | lambda:drop_volume_nl |
+| native | lambda:drop_volume_nl |
 
 
 
@@ -68,7 +68,7 @@ Alias: drop_volume_nl
 name: drop_volume_nl
 description: Total drop volume, typically specified in nanoliters. Data providers
   may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: drop_volume_nl
 owner: XRayPreparation

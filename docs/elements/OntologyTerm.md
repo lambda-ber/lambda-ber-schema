@@ -9,7 +9,7 @@ _A term from a controlled vocabulary or ontology_
 
 
 
-URI: [lambdaber:OntologyTerm](https://w3id.org/lambda-ber-schema/OntologyTerm)
+URI: [lambda:OntologyTerm](http://w3id.org/lambda/OntologyTerm)
 
 
 
@@ -100,7 +100,7 @@ URI: [lambdaber:OntologyTerm](https://w3id.org/lambda-ber-schema/OntologyTerm)
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -109,8 +109,8 @@ URI: [lambdaber:OntologyTerm](https://w3id.org/lambda-ber-schema/OntologyTerm)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:OntologyTerm |
-| native | lambdaber:OntologyTerm |
+| self | lambda:OntologyTerm |
+| native | lambda:OntologyTerm |
 
 
 
@@ -127,13 +127,13 @@ URI: [lambdaber:OntologyTerm](https://w3id.org/lambda-ber-schema/OntologyTerm)
 ```yaml
 name: OntologyTerm
 description: A term from a controlled vocabulary or ontology
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: NamedThing
 attributes:
   terms:
     name: terms
     description: Collection of ontology terms
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - ImageFeature
     - OntologyTerm
@@ -144,7 +144,7 @@ attributes:
   label:
     name: label
     description: The human-readable label or name of the ontology term
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - OntologyTerm
@@ -153,7 +153,7 @@ attributes:
   definition:
     name: definition
     description: The formal definition or meaning of the ontology term
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - OntologyTerm
@@ -162,7 +162,7 @@ attributes:
     name: ontology
     description: The ontology or controlled vocabulary this term comes from (e.g.,
       GO, SO, UBERON)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - OntologyTerm
@@ -177,13 +177,13 @@ attributes:
 ```yaml
 name: OntologyTerm
 description: A term from a controlled vocabulary or ontology
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: NamedThing
 attributes:
   terms:
     name: terms
     description: Collection of ontology terms
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: terms
     owner: OntologyTerm
     domain_of:
@@ -196,7 +196,7 @@ attributes:
   label:
     name: label
     description: The human-readable label or name of the ontology term
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: label
     owner: OntologyTerm
@@ -207,7 +207,7 @@ attributes:
   definition:
     name: definition
     description: The formal definition or meaning of the ontology term
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: definition
     owner: OntologyTerm
@@ -218,7 +218,7 @@ attributes:
     name: ontology
     description: The ontology or controlled vocabulary this term comes from (e.g.,
       GO, SO, UBERON)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: ontology
     owner: OntologyTerm
@@ -230,7 +230,7 @@ attributes:
     description: Globally unique identifier as an IRI or CURIE for machine processing
       and external references. Used for linking data across systems and semantic web
       integration.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     identifier: true
     alias: id
@@ -243,7 +243,7 @@ attributes:
   title:
     name: title
     description: A human-readable name or title for this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     slot_uri: dcterms:title
     alias: title
@@ -254,7 +254,7 @@ attributes:
   description:
     name: description
     description: A detailed textual description of this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: description
     owner: OntologyTerm

@@ -9,7 +9,7 @@ _Rmerge - merge R-factor_
 
 
 
-URI: [lambdaber:rmerge](https://w3id.org/lambda-ber-schema/rmerge)
+URI: [lambda:rmerge](http://w3id.org/lambda/rmerge)
 Alias: rmerge
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: rmerge
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: rmerge
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:rmerge |
-| native | lambdaber:rmerge |
+| self | lambda:rmerge |
+| native | lambda:rmerge |
 
 
 
@@ -67,7 +67,7 @@ Alias: rmerge
 ```yaml
 name: rmerge
 description: Rmerge - merge R-factor
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: rmerge
 owner: WorkflowRun

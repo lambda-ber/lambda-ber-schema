@@ -7,7 +7,7 @@ _Methods for protein crystallization_
 
 
 
-URI: [lambdaber:CrystallizationMethodEnum](https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum)
+URI: [lambda:CrystallizationMethodEnum](http://w3id.org/lambda/CrystallizationMethodEnum)
 
 ## Permissible Values
 
@@ -45,7 +45,7 @@ URI: [lambdaber:CrystallizationMethodEnum](https://w3id.org/lambda-ber-schema/Cr
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -58,7 +58,7 @@ URI: [lambdaber:CrystallizationMethodEnum](https://w3id.org/lambda-ber-schema/Cr
 ```yaml
 name: CrystallizationMethodEnum
 description: Methods for protein crystallization
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   vapor_diffusion_hanging:

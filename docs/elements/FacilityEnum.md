@@ -7,7 +7,7 @@ _Major synchrotron and structural biology research facilities worldwide_
 
 
 
-URI: [lambdaber:FacilityEnum](https://w3id.org/lambda-ber-schema/FacilityEnum)
+URI: [lambda:FacilityEnum](http://w3id.org/lambda/FacilityEnum)
 
 ## Permissible Values
 
@@ -57,7 +57,7 @@ URI: [lambdaber:FacilityEnum](https://w3id.org/lambda-ber-schema/FacilityEnum)
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -74,7 +74,7 @@ comments:
 - This enum provides standardized identifiers for major facilities with rich metadata
 - ROR (Research Organization Registry) IDs provide persistent organizational identifiers
 - Not currently bound to any slots - available for future use
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   NSLS_II:

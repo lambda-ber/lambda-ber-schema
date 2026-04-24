@@ -9,7 +9,7 @@ _Radius of gyration, typically specified in Angstroms. Data providers may specif
 
 
 
-URI: [lambdaber:rg](https://w3id.org/lambda-ber-schema/rg)
+URI: [lambda:rg](http://w3id.org/lambda/rg)
 Alias: rg
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: rg
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: rg
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:rg |
-| native | lambdaber:rg |
+| self | lambda:rg |
+| native | lambda:rg |
 
 
 
@@ -68,7 +68,7 @@ Alias: rg
 name: rg
 description: Radius of gyration, typically specified in Angstroms. Data providers
   may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: rg
 owner: QualityMetrics

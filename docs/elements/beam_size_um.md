@@ -9,7 +9,7 @@ _Beam size, typically specified in micrometers. Data providers may specify alter
 
 
 
-URI: [lambdaber:beam_size_um](https://w3id.org/lambda-ber-schema/beam_size_um)
+URI: [lambda:beam_size_um](http://w3id.org/lambda/beam_size_um)
 Alias: beam_size_um
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: beam_size_um
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: beam_size_um
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:beam_size_um |
-| native | lambdaber:beam_size_um |
+| self | lambda:beam_size_um |
+| native | lambda:beam_size_um |
 
 
 
@@ -68,7 +68,7 @@ Alias: beam_size_um
 name: beam_size_um
 description: Beam size, typically specified in micrometers. Data providers may specify
   alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: beam_size_um
 owner: DataCollectionStrategy

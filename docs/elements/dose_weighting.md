@@ -9,7 +9,7 @@ _Whether dose weighting was applied_
 
 
 
-URI: [lambdaber:dose_weighting](https://w3id.org/lambda-ber-schema/dose_weighting)
+URI: [lambda:dose_weighting](http://w3id.org/lambda/dose_weighting)
 Alias: dose_weighting
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: dose_weighting
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: dose_weighting
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:dose_weighting |
-| native | lambdaber:dose_weighting |
+| self | lambda:dose_weighting |
+| native | lambda:dose_weighting |
 
 
 
@@ -67,7 +67,7 @@ Alias: dose_weighting
 ```yaml
 name: dose_weighting
 description: Whether dose weighting was applied
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: dose_weighting
 owner: MotionCorrectionParameters

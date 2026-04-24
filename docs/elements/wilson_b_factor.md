@@ -9,7 +9,7 @@ _Wilson B-factor, typically specified in Angstroms squared (Ų). Data providers 
 
 
 
-URI: [lambdaber:wilson_b_factor](https://w3id.org/lambda-ber-schema/wilson_b_factor)
+URI: [lambda:wilson_b_factor](http://w3id.org/lambda/wilson_b_factor)
 Alias: wilson_b_factor
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: wilson_b_factor
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: wilson_b_factor
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:wilson_b_factor |
-| native | lambdaber:wilson_b_factor |
+| self | lambda:wilson_b_factor |
+| native | lambda:wilson_b_factor |
 | exact | nsls2:Wilson_B, mmCIF:_reflns.B_iso_Wilson_estimate |
 
 
@@ -69,7 +69,7 @@ Alias: wilson_b_factor
 name: wilson_b_factor
 description: Wilson B-factor, typically specified in Angstroms squared (Ų). Data providers
   may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 exact_mappings:
 - nsls2:Wilson_B
 - mmCIF:_reflns.B_iso_Wilson_estimate

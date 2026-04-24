@@ -9,7 +9,7 @@ _M:N link between ExperimentRun and Instrument_
 
 
 
-URI: [lambdaber:ExperimentInstrumentAssociation](https://w3id.org/lambda-ber-schema/ExperimentInstrumentAssociation)
+URI: [lambda:ExperimentInstrumentAssociation](http://w3id.org/lambda/ExperimentInstrumentAssociation)
 
 
 
@@ -95,7 +95,7 @@ URI: [lambdaber:ExperimentInstrumentAssociation](https://w3id.org/lambda-ber-sch
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -104,8 +104,8 @@ URI: [lambdaber:ExperimentInstrumentAssociation](https://w3id.org/lambda-ber-sch
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:ExperimentInstrumentAssociation |
-| native | lambdaber:ExperimentInstrumentAssociation |
+| self | lambda:ExperimentInstrumentAssociation |
+| native | lambda:ExperimentInstrumentAssociation |
 
 
 
@@ -122,12 +122,12 @@ URI: [lambdaber:ExperimentInstrumentAssociation](https://w3id.org/lambda-ber-sch
 ```yaml
 name: ExperimentInstrumentAssociation
 description: M:N link between ExperimentRun and Instrument
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 attributes:
   experiment_id:
     name: experiment_id
     description: Reference to the experiment run
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - StudyExperimentAssociation
     - ExperimentSampleAssociation
@@ -138,7 +138,7 @@ attributes:
   instrument_id:
     name: instrument_id
     description: Reference to the instrument
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ExperimentInstrumentAssociation
@@ -147,7 +147,7 @@ attributes:
   role:
     name: role
     description: Role of instrument in experiment
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - StudySampleAssociation
     - ExperimentSampleAssociation
@@ -163,12 +163,12 @@ attributes:
 ```yaml
 name: ExperimentInstrumentAssociation
 description: M:N link between ExperimentRun and Instrument
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 attributes:
   experiment_id:
     name: experiment_id
     description: Reference to the experiment run
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: experiment_id
     owner: ExperimentInstrumentAssociation
     domain_of:
@@ -181,7 +181,7 @@ attributes:
   instrument_id:
     name: instrument_id
     description: Reference to the instrument
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: instrument_id
     owner: ExperimentInstrumentAssociation
@@ -192,7 +192,7 @@ attributes:
   role:
     name: role
     description: Role of instrument in experiment
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: role
     owner: ExperimentInstrumentAssociation
     domain_of:

@@ -9,7 +9,7 @@ _Method used for crystallization_
 
 
 
-URI: [lambdaber:crystallization_method](https://w3id.org/lambda-ber-schema/crystallization_method)
+URI: [lambda:crystallization_method](http://w3id.org/lambda/crystallization_method)
 Alias: crystallization_method
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: crystallization_method
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: crystallization_method
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:crystallization_method |
-| native | lambdaber:crystallization_method |
+| self | lambda:crystallization_method |
+| native | lambda:crystallization_method |
+| exact | mmCIF:_exptl_crystal_grow.method |
 
 
 
@@ -67,7 +68,9 @@ Alias: crystallization_method
 ```yaml
 name: crystallization_method
 description: Method used for crystallization
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_exptl_crystal_grow.method
 rank: 1000
 alias: crystallization_method
 owner: XRayPreparation

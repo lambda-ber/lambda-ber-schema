@@ -9,7 +9,7 @@ _Method used for vitrification_
 
 
 
-URI: [lambdaber:vitrification_method](https://w3id.org/lambda-ber-schema/vitrification_method)
+URI: [lambda:vitrification_method](http://w3id.org/lambda/vitrification_method)
 Alias: vitrification_method
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: vitrification_method
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: vitrification_method
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:vitrification_method |
-| native | lambdaber:vitrification_method |
+| self | lambda:vitrification_method |
+| native | lambda:vitrification_method |
+| exact | mmCIF:_em_vitrification.method |
 
 
 
@@ -67,7 +68,9 @@ Alias: vitrification_method
 ```yaml
 name: vitrification_method
 description: Method used for vitrification
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_em_vitrification.method
 rank: 1000
 alias: vitrification_method
 owner: CryoEMPreparation

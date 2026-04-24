@@ -9,7 +9,7 @@ _PDB identifier_
 
 
 
-URI: [lambdaber:pdb_entry](https://w3id.org/lambda-ber-schema/pdb_entry)
+URI: [lambda:pdb_entry](http://w3id.org/lambda/pdb_entry)
 Alias: pdb_entry
 
 <!-- no inheritance hierarchy -->
@@ -22,13 +22,13 @@ Alias: pdb_entry
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ProteinAnnotation](ProteinAnnotation.md) | Base class for all protein-related functional and structural annotations |  no  |
-| [MutationEffect](MutationEffect.md) | Effects of mutations and variants on protein structure and function |  no  |
-| [ProteinProteinInteraction](ProteinProteinInteraction.md) | Protein-protein interactions and interfaces |  no  |
-| [StructuralFeature](StructuralFeature.md) | Structural features and properties of protein regions |  no  |
 | [FunctionalSite](FunctionalSite.md) | Functional sites including catalytic, binding, and regulatory sites |  no  |
-| [PostTranslationalModification](PostTranslationalModification.md) | Post-translational modifications observed or predicted |  no  |
+| [StructuralFeature](StructuralFeature.md) | Structural features and properties of protein regions |  no  |
+| [ProteinAnnotation](ProteinAnnotation.md) | Base class for all protein-related functional and structural annotations |  no  |
+| [ProteinProteinInteraction](ProteinProteinInteraction.md) | Protein-protein interactions and interfaces |  no  |
 | [EvolutionaryConservation](EvolutionaryConservation.md) | Evolutionary conservation information |  no  |
+| [PostTranslationalModification](PostTranslationalModification.md) | Post-translational modifications observed or predicted |  no  |
+| [MutationEffect](MutationEffect.md) | Effects of mutations and variants on protein structure and function |  no  |
 
 
 
@@ -54,7 +54,7 @@ Alias: pdb_entry
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -63,8 +63,8 @@ Alias: pdb_entry
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:pdb_entry |
-| native | lambdaber:pdb_entry |
+| self | lambda:pdb_entry |
+| native | lambda:pdb_entry |
 
 
 
@@ -75,7 +75,7 @@ Alias: pdb_entry
 ```yaml
 name: pdb_entry
 description: PDB identifier
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: pdb_entry
 owner: ProteinAnnotation

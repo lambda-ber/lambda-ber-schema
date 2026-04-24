@@ -9,7 +9,7 @@ _Name of the external database_
 
 
 
-URI: [lambdaber:database_name](https://w3id.org/lambda-ber-schema/database_name)
+URI: [lambda:database_name](http://w3id.org/lambda/database_name)
 Alias: database_name
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: database_name
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: database_name
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:database_name |
-| native | lambdaber:database_name |
+| self | lambda:database_name |
+| native | lambda:database_name |
 
 
 
@@ -69,7 +69,7 @@ Alias: database_name
 ```yaml
 name: database_name
 description: Name of the external database
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: database_name
 owner: DatabaseCrossReference

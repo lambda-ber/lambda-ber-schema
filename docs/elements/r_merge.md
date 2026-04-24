@@ -9,7 +9,7 @@ _Rmerge - merge R-factor_
 
 
 
-URI: [lambdaber:r_merge](https://w3id.org/lambda-ber-schema/r_merge)
+URI: [lambda:r_merge](http://w3id.org/lambda/r_merge)
 Alias: r_merge
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: r_merge
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: r_merge
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:r_merge |
-| native | lambdaber:r_merge |
+| self | lambda:r_merge |
+| native | lambda:r_merge |
+| exact | mmCIF:_reflns.pdbx_Rmerge_I_obs |
 
 
 
@@ -67,7 +68,9 @@ Alias: r_merge
 ```yaml
 name: r_merge
 description: Rmerge - merge R-factor
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_reflns.pdbx_Rmerge_I_obs
 rank: 1000
 alias: r_merge
 owner: QualityMetrics

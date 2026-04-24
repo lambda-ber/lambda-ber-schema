@@ -9,7 +9,7 @@ _Key features of this conformation_
 
 
 
-URI: [lambdaber:characteristic_features](https://w3id.org/lambda-ber-schema/characteristic_features)
+URI: [lambda:characteristic_features](http://w3id.org/lambda/characteristic_features)
 Alias: characteristic_features
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: characteristic_features
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: characteristic_features
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:characteristic_features |
-| native | lambdaber:characteristic_features |
+| self | lambda:characteristic_features |
+| native | lambda:characteristic_features |
 
 
 
@@ -69,7 +69,7 @@ Alias: characteristic_features
 ```yaml
 name: characteristic_features
 description: Key features of this conformation
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: characteristic_features
 owner: ConformationalState

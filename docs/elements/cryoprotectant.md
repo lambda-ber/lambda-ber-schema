@@ -9,7 +9,7 @@ _Cryoprotectant used_
 
 
 
-URI: [lambdaber:cryoprotectant](https://w3id.org/lambda-ber-schema/cryoprotectant)
+URI: [lambda:cryoprotectant](http://w3id.org/lambda/cryoprotectant)
 Alias: cryoprotectant
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: cryoprotectant
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: cryoprotectant
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:cryoprotectant |
-| native | lambdaber:cryoprotectant |
+| self | lambda:cryoprotectant |
+| native | lambda:cryoprotectant |
 
 
 
@@ -67,7 +67,7 @@ Alias: cryoprotectant
 ```yaml
 name: cryoprotectant
 description: Cryoprotectant used
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: cryoprotectant
 owner: XRayPreparation

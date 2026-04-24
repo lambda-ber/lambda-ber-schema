@@ -9,7 +9,7 @@ _Total drift, typically specified in Angstroms. Data providers may specify alter
 
 
 
-URI: [lambdaber:drift_total](https://w3id.org/lambda-ber-schema/drift_total)
+URI: [lambda:drift_total](http://w3id.org/lambda/drift_total)
 Alias: drift_total
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: drift_total
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: drift_total
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:drift_total |
-| native | lambdaber:drift_total |
+| self | lambda:drift_total |
+| native | lambda:drift_total |
 
 
 
@@ -68,7 +68,7 @@ Alias: drift_total
 name: drift_total
 description: Total drift, typically specified in Angstroms. Data providers may specify
   alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: drift_total
 owner: MotionCorrectionParameters

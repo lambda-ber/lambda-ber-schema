@@ -9,7 +9,7 @@ _Molecular weight, typically specified in kilodaltons (kDa). Data providers may 
 
 
 
-URI: [lambdaber:molecular_weight](https://w3id.org/lambda-ber-schema/molecular_weight)
+URI: [lambda:molecular_weight](http://w3id.org/lambda/molecular_weight)
 Alias: molecular_weight
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: molecular_weight
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: molecular_weight
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:molecular_weight |
-| native | lambdaber:molecular_weight |
+| self | lambda:molecular_weight |
+| native | lambda:molecular_weight |
+| exact | mmCIF:_entity.formula_weight |
 
 
 
@@ -69,7 +70,9 @@ name: molecular_weight
 description: Molecular weight, typically specified in kilodaltons (kDa). Data providers
   may specify alternative units (e.g., Daltons, g/mol) by including the unit in the
   QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_entity.formula_weight
 rank: 1000
 alias: molecular_weight
 owner: Sample

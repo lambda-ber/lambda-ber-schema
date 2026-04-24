@@ -9,7 +9,7 @@ _Laboratory Information Management System used at this beamline_
 
 
 
-URI: [lambdaber:lims_system](https://w3id.org/lambda-ber-schema/lims_system)
+URI: [lambda:lims_system](http://w3id.org/lambda/lims_system)
 Alias: lims_system
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: lims_system
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: lims_system
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:lims_system |
-| native | lambdaber:lims_system |
+| self | lambda:lims_system |
+| native | lambda:lims_system |
 
 
 
@@ -67,7 +67,7 @@ Alias: lims_system
 ```yaml
 name: lims_system
 description: Laboratory Information Management System used at this beamline
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: lims_system
 owner: BeamlineInstrument

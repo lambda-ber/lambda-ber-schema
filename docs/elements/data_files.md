@@ -9,7 +9,7 @@ _All data files_
 
 
 
-URI: [lambdaber:data_files](https://w3id.org/lambda-ber-schema/data_files)
+URI: [lambda:data_files](http://w3id.org/lambda/data_files)
 Alias: data_files
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: data_files
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: data_files
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:data_files |
-| native | lambdaber:data_files |
+| self | lambda:data_files |
+| native | lambda:data_files |
 
 
 
@@ -69,7 +69,7 @@ Alias: data_files
 ```yaml
 name: data_files
 description: All data files
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: data_files
 owner: Dataset

@@ -9,7 +9,7 @@ _Acquisition software used (e.g., SerialEM, EPU, Leginon)_
 
 
 
-URI: [lambdaber:acquisition_software](https://w3id.org/lambda-ber-schema/acquisition_software)
+URI: [lambda:acquisition_software](http://w3id.org/lambda/acquisition_software)
 Alias: acquisition_software
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: acquisition_software
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: acquisition_software
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:acquisition_software |
-| native | lambdaber:acquisition_software |
+| self | lambda:acquisition_software |
+| native | lambda:acquisition_software |
 
 
 
@@ -67,7 +67,7 @@ Alias: acquisition_software
 ```yaml
 name: acquisition_software
 description: Acquisition software used (e.g., SerialEM, EPU, Leginon)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: acquisition_software
 owner: ExperimentRun

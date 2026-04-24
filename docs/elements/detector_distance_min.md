@@ -9,7 +9,7 @@ _Minimum detector distance in mm_
 
 
 
-URI: [lambdaber:detector_distance_min](https://w3id.org/lambda-ber-schema/detector_distance_min)
+URI: [lambda:detector_distance_min](http://w3id.org/lambda/detector_distance_min)
 Alias: detector_distance_min
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: detector_distance_min
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: detector_distance_min
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:detector_distance_min |
-| native | lambdaber:detector_distance_min |
+| self | lambda:detector_distance_min |
+| native | lambda:detector_distance_min |
 
 
 
@@ -67,7 +67,7 @@ Alias: detector_distance_min
 ```yaml
 name: detector_distance_min
 description: Minimum detector distance in mm
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: detector_distance_min
 owner: SAXSInstrument

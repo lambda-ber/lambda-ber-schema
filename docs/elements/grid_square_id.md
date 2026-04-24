@@ -9,7 +9,7 @@ _Grid square identifier_
 
 
 
-URI: [lambdaber:grid_square_id](https://w3id.org/lambda-ber-schema/grid_square_id)
+URI: [lambda:grid_square_id](http://w3id.org/lambda/grid_square_id)
 Alias: grid_square_id
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: grid_square_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: grid_square_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:grid_square_id |
-| native | lambdaber:grid_square_id |
+| self | lambda:grid_square_id |
+| native | lambda:grid_square_id |
 
 
 
@@ -67,7 +67,7 @@ Alias: grid_square_id
 ```yaml
 name: grid_square_id
 description: Grid square identifier
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: grid_square_id
 owner: Movie

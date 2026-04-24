@@ -9,7 +9,7 @@ _Beam shift X in microradians_
 
 
 
-URI: [lambdaber:beam_shift_x](https://w3id.org/lambda-ber-schema/beam_shift_x)
+URI: [lambda:beam_shift_x](http://w3id.org/lambda/beam_shift_x)
 Alias: beam_shift_x
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: beam_shift_x
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: beam_shift_x
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:beam_shift_x |
-| native | lambdaber:beam_shift_x |
+| self | lambda:beam_shift_x |
+| native | lambda:beam_shift_x |
 
 
 
@@ -67,7 +67,7 @@ Alias: beam_shift_x
 ```yaml
 name: beam_shift_x
 description: Beam shift X in microradians
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: beam_shift_x
 owner: Movie

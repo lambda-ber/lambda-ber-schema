@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:flux](https://w3id.org/lambda-ber-schema/flux)
+URI: [lambda:flux](http://w3id.org/lambda/flux)
 Alias: flux
 
 <!-- no inheritance hierarchy -->
@@ -17,8 +17,9 @@ Alias: flux
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentRun](ExperimentRun.md) | An experimental data collection session |  no  |
 | [XRFImage](XRFImage.md) | X-ray fluorescence (XRF) image showing elemental distribution |  no  |
+| [SANSSource](SANSSource.md) | Beam source parameters for a SANS instrument |  no  |
+| [ExperimentRun](ExperimentRun.md) | An experimental data collection session |  no  |
 
 
 
@@ -44,8 +45,8 @@ Alias: flux
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:flux |
-| native | lambdaber:flux |
+| self | lambda:flux |
+| native | lambda:flux |
 
 
 
@@ -57,6 +58,7 @@ Alias: flux
 name: flux
 alias: flux
 domain_of:
+- SANSSource
 - ExperimentRun
 - XRFImage
 range: string

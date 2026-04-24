@@ -9,7 +9,7 @@ _Instrument manufacturer_
 
 
 
-URI: [lambdaber:manufacturer](https://w3id.org/lambda-ber-schema/manufacturer)
+URI: [lambda:manufacturer](http://w3id.org/lambda/manufacturer)
 Alias: manufacturer
 
 <!-- no inheritance hierarchy -->
@@ -22,11 +22,12 @@ Alias: manufacturer
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Instrument](Instrument.md) | An instrument used to collect data |  no  |
 | [XRayInstrument](XRayInstrument.md) | X-ray diffractometer or synchrotron beamline specifications |  no  |
 | [SAXSInstrument](SAXSInstrument.md) | SAXS/WAXS instrument specifications |  no  |
 | [CryoEMInstrument](CryoEMInstrument.md) | Cryo-EM microscope specifications |  no  |
+| [SANSInstrument](SANSInstrument.md) | Small-angle neutron scattering (SANS) instrument specifications |  no  |
 | [BeamlineInstrument](BeamlineInstrument.md) | Multi-technique synchrotron beamline that supports multiple experimental meth... |  no  |
+| [Instrument](Instrument.md) | An instrument used to collect data |  no  |
 
 
 
@@ -50,7 +51,7 @@ Alias: manufacturer
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -59,8 +60,8 @@ Alias: manufacturer
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:manufacturer |
-| native | lambdaber:manufacturer |
+| self | lambda:manufacturer |
+| native | lambda:manufacturer |
 
 
 
@@ -71,7 +72,7 @@ Alias: manufacturer
 ```yaml
 name: manufacturer
 description: Instrument manufacturer
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: manufacturer
 owner: Instrument

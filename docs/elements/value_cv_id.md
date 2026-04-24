@@ -9,7 +9,7 @@ _For values that are in a controlled vocabulary (CV), this attribute should capt
 
 
 
-URI: [lambdaber:value_cv_id](https://w3id.org/lambda-ber-schema/value_cv_id)
+URI: [lambda:value_cv_id](http://w3id.org/lambda/value_cv_id)
 Alias: value_cv_id
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: value_cv_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: value_cv_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:value_cv_id |
-| native | lambdaber:value_cv_id |
+| self | lambda:value_cv_id |
+| native | lambda:value_cv_id |
 
 
 
@@ -68,7 +68,7 @@ Alias: value_cv_id
 name: value_cv_id
 description: For values that are in a controlled vocabulary (CV), this attribute should
   capture the controlled vocabulary ID for the value.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: value_cv_id
 domain_of:

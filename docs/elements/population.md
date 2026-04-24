@@ -9,7 +9,7 @@ _Relative population of this state (range: 0-1)_
 
 
 
-URI: [lambdaber:population](https://w3id.org/lambda-ber-schema/population)
+URI: [lambda:population](http://w3id.org/lambda/population)
 Alias: population
 
 <!-- no inheritance hierarchy -->
@@ -50,7 +50,7 @@ Alias: population
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -59,8 +59,8 @@ Alias: population
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:population |
-| native | lambdaber:population |
+| self | lambda:population |
+| native | lambda:population |
 
 
 
@@ -71,7 +71,7 @@ Alias: population
 ```yaml
 name: population
 description: 'Relative population of this state (range: 0-1)'
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: population
 owner: ConformationalState

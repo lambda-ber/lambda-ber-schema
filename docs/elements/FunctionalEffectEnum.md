@@ -7,7 +7,7 @@ _Effect on protein function_
 
 
 
-URI: [lambdaber:FunctionalEffectEnum](https://w3id.org/lambda-ber-schema/FunctionalEffectEnum)
+URI: [lambda:FunctionalEffectEnum](http://w3id.org/lambda/FunctionalEffectEnum)
 
 ## Permissible Values
 
@@ -43,7 +43,7 @@ URI: [lambdaber:FunctionalEffectEnum](https://w3id.org/lambda-ber-schema/Functio
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -56,7 +56,7 @@ URI: [lambdaber:FunctionalEffectEnum](https://w3id.org/lambda-ber-schema/Functio
 ```yaml
 name: FunctionalEffectEnum
 description: Effect on protein function
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   loss_of_function:

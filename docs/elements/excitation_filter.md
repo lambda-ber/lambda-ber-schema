@@ -9,7 +9,7 @@ _Specifications of the excitation filter_
 
 
 
-URI: [lambdaber:excitation_filter](https://w3id.org/lambda-ber-schema/excitation_filter)
+URI: [lambda:excitation_filter](http://w3id.org/lambda/excitation_filter)
 Alias: excitation_filter
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: excitation_filter
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: excitation_filter
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:excitation_filter |
-| native | lambdaber:excitation_filter |
+| self | lambda:excitation_filter |
+| native | lambda:excitation_filter |
 
 
 
@@ -67,7 +67,7 @@ Alias: excitation_filter
 ```yaml
 name: excitation_filter
 description: Specifications of the excitation filter
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: excitation_filter
 owner: FluorescenceImage

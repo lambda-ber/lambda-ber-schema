@@ -3,13 +3,8 @@
 # Slot: attenuator 
 
 
-_Attenuator setting used_
 
-
-
-
-
-URI: [lambdaber:attenuator](https://w3id.org/lambda-ber-schema/attenuator)
+URI: [lambda:attenuator](http://w3id.org/lambda/attenuator)
 Alias: attenuator
 
 <!-- no inheritance hierarchy -->
@@ -22,6 +17,7 @@ Alias: attenuator
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [SANSConfiguration](SANSConfiguration.md) | Experimental configuration for a SANS instrument |  no  |
 | [DataCollectionStrategy](DataCollectionStrategy.md) | Strategy for data collection |  no  |
 
 
@@ -43,20 +39,13 @@ Alias: attenuator
 
 
 
-### Schema Source
-
-
-* from schema: https://w3id.org/lambda-ber-schema/
-
-
-
 
 ## Mappings
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:attenuator |
-| native | lambdaber:attenuator |
+| self | lambda:attenuator |
+| native | lambda:attenuator |
 
 
 
@@ -66,12 +55,9 @@ Alias: attenuator
 <details>
 ```yaml
 name: attenuator
-description: Attenuator setting used
-from_schema: https://w3id.org/lambda-ber-schema/
-rank: 1000
 alias: attenuator
-owner: DataCollectionStrategy
 domain_of:
+- SANSConfiguration
 - DataCollectionStrategy
 range: string
 

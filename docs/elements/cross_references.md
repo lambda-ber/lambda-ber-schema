@@ -9,7 +9,7 @@ _Database cross-references_
 
 
 
-URI: [lambdaber:cross_references](https://w3id.org/lambda-ber-schema/cross_references)
+URI: [lambda:cross_references](http://w3id.org/lambda/cross_references)
 Alias: cross_references
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: cross_references
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: cross_references
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:cross_references |
-| native | lambdaber:cross_references |
+| self | lambda:cross_references |
+| native | lambda:cross_references |
 
 
 
@@ -69,7 +69,7 @@ Alias: cross_references
 ```yaml
 name: cross_references
 description: Database cross-references
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: cross_references
 owner: AggregatedProteinView

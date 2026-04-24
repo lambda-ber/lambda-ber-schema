@@ -9,7 +9,7 @@ _Spherical aberration (Cs) value used during CTF estimation, typically specified
 
 
 
-URI: [lambdaber:cs_used_in_estimation](https://w3id.org/lambda-ber-schema/cs_used_in_estimation)
+URI: [lambda:cs_used_in_estimation](http://w3id.org/lambda/cs_used_in_estimation)
 Alias: cs_used_in_estimation
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: cs_used_in_estimation
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: cs_used_in_estimation
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:cs_used_in_estimation |
-| native | lambdaber:cs_used_in_estimation |
+| self | lambda:cs_used_in_estimation |
+| native | lambda:cs_used_in_estimation |
 
 
 
@@ -69,7 +69,7 @@ name: cs_used_in_estimation
 description: Spherical aberration (Cs) value used during CTF estimation, typically
   specified in millimeters; may differ from instrument specification. Data providers
   may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: cs_used_in_estimation
 owner: CTFEstimationParameters

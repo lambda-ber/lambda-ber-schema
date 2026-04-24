@@ -9,7 +9,7 @@ _Post-translational modifications or chemical modifications_
 
 
 
-URI: [lambdaber:modifications](https://w3id.org/lambda-ber-schema/modifications)
+URI: [lambda:modifications](http://w3id.org/lambda/modifications)
 Alias: modifications
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: modifications
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: modifications
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:modifications |
-| native | lambdaber:modifications |
+| self | lambda:modifications |
+| native | lambda:modifications |
 
 
 
@@ -69,7 +69,7 @@ Alias: modifications
 ```yaml
 name: modifications
 description: Post-translational modifications or chemical modifications
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: modifications
 owner: MolecularComposition

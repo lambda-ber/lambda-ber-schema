@@ -9,7 +9,7 @@ _Chemical group added (e.g., 'phosphate', 'methyl')_
 
 
 
-URI: [lambdaber:modification_group](https://w3id.org/lambda-ber-schema/modification_group)
+URI: [lambda:modification_group](http://w3id.org/lambda/modification_group)
 Alias: modification_group
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: modification_group
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: modification_group
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:modification_group |
-| native | lambdaber:modification_group |
+| self | lambda:modification_group |
+| native | lambda:modification_group |
 
 
 
@@ -67,7 +67,7 @@ Alias: modification_group
 ```yaml
 name: modification_group
 description: Chemical group added (e.g., 'phosphate', 'methyl')
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: modification_group
 owner: PostTranslationalModification

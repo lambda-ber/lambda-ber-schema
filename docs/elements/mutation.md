@@ -9,7 +9,7 @@ _Mutation in standard notation (e.g., 'A123V')_
 
 
 
-URI: [lambdaber:mutation](https://w3id.org/lambda-ber-schema/mutation)
+URI: [lambda:mutation](http://w3id.org/lambda/mutation)
 Alias: mutation
 
 <!-- no inheritance hierarchy -->
@@ -50,7 +50,7 @@ Alias: mutation
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -59,8 +59,8 @@ Alias: mutation
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:mutation |
-| native | lambdaber:mutation |
+| self | lambda:mutation |
+| native | lambda:mutation |
 
 
 
@@ -71,7 +71,7 @@ Alias: mutation
 ```yaml
 name: mutation
 description: Mutation in standard notation (e.g., 'A123V')
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: mutation
 owner: MutationEffect

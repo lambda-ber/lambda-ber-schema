@@ -31,7 +31,7 @@ URI: [xsd:time](http://www.w3.org/2001/XMLSchema#time)
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -41,7 +41,7 @@ URI: [xsd:time](http://www.w3.org/2001/XMLSchema#time)
 | Mapping Type | Mapped Value |
 | ---  | ---  |
 | self | xsd:time |
-| native | lambdaber:time |
+| native | lambda:time |
 | exact | schema:Time |
 
 

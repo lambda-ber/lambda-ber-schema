@@ -9,7 +9,7 @@ _Whether gold-standard refinement was used_
 
 
 
-URI: [lambdaber:gold_standard](https://w3id.org/lambda-ber-schema/gold_standard)
+URI: [lambda:gold_standard](http://w3id.org/lambda/gold_standard)
 Alias: gold_standard
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: gold_standard
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: gold_standard
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:gold_standard |
-| native | lambdaber:gold_standard |
+| self | lambda:gold_standard |
+| native | lambda:gold_standard |
 
 
 
@@ -67,7 +67,7 @@ Alias: gold_standard
 ```yaml
 name: gold_standard
 description: Whether gold-standard refinement was used
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: gold_standard
 owner: RefinementParameters

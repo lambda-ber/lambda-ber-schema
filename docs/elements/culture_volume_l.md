@@ -9,7 +9,7 @@ _Culture volume, typically specified in liters (L). Data providers may specify a
 
 
 
-URI: [lambdaber:culture_volume_l](https://w3id.org/lambda-ber-schema/culture_volume_l)
+URI: [lambda:culture_volume_l](http://w3id.org/lambda/culture_volume_l)
 Alias: culture_volume_l
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: culture_volume_l
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: culture_volume_l
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:culture_volume_l |
-| native | lambdaber:culture_volume_l |
+| self | lambda:culture_volume_l |
+| native | lambda:culture_volume_l |
 
 
 
@@ -68,7 +68,7 @@ Alias: culture_volume_l
 name: culture_volume_l
 description: Culture volume, typically specified in liters (L). Data providers may
   specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: culture_volume_l
 owner: SamplePreparation

@@ -9,7 +9,7 @@ _Rpim - precision-indicating merging R-factor_
 
 
 
-URI: [lambdaber:rpim](https://w3id.org/lambda-ber-schema/rpim)
+URI: [lambda:rpim](http://w3id.org/lambda/rpim)
 Alias: rpim
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: rpim
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: rpim
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:rpim |
-| native | lambdaber:rpim |
+| self | lambda:rpim |
+| native | lambda:rpim |
 
 
 
@@ -67,7 +67,7 @@ Alias: rpim
 ```yaml
 name: rpim
 description: Rpim - precision-indicating merging R-factor
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: rpim
 owner: WorkflowRun

@@ -9,7 +9,7 @@ _Enzyme that removes modification_
 
 
 
-URI: [lambdaber:removal_enzyme](https://w3id.org/lambda-ber-schema/removal_enzyme)
+URI: [lambda:removal_enzyme](http://w3id.org/lambda/removal_enzyme)
 Alias: removal_enzyme
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: removal_enzyme
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: removal_enzyme
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:removal_enzyme |
-| native | lambdaber:removal_enzyme |
+| self | lambda:removal_enzyme |
+| native | lambda:removal_enzyme |
 
 
 
@@ -67,7 +67,7 @@ Alias: removal_enzyme
 ```yaml
 name: removal_enzyme
 description: Enzyme that removes modification
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: removal_enzyme
 owner: PostTranslationalModification

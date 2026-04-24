@@ -9,7 +9,7 @@ _Stage tilt angle in degrees_
 
 
 
-URI: [lambdaber:stage_tilt](https://w3id.org/lambda-ber-schema/stage_tilt)
+URI: [lambda:stage_tilt](http://w3id.org/lambda/stage_tilt)
 Alias: stage_tilt
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: stage_tilt
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: stage_tilt
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:stage_tilt |
-| native | lambdaber:stage_tilt |
+| self | lambda:stage_tilt |
+| native | lambda:stage_tilt |
 
 
 
@@ -67,7 +67,7 @@ Alias: stage_tilt
 ```yaml
 name: stage_tilt
 description: Stage tilt angle in degrees
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: stage_tilt
 owner: ExperimentRun

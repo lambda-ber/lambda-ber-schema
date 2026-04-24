@@ -9,7 +9,7 @@ _The attribute being represented._
 
 
 
-URI: [lambdaber:attribute](https://w3id.org/lambda-ber-schema/attribute)
+URI: [lambda:attribute](http://w3id.org/lambda/attribute)
 Alias: attribute
 
 <!-- no inheritance hierarchy -->
@@ -22,10 +22,10 @@ Alias: attribute
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AttributeValue](AttributeValue.md) | The value for any attribute of an entity |  no  |
-| [TextValue](TextValue.md) | A value described using a text string, optionally with a controlled vocabular... |  no  |
-| [DateTimeValue](DateTimeValue.md) | A date or date and time value |  no  |
 | [QuantityValue](QuantityValue.md) | A simple quantity value, representing a measurement with a numeric value and ... |  no  |
+| [TextValue](TextValue.md) | A value described using a text string, optionally with a controlled vocabular... |  no  |
+| [AttributeValue](AttributeValue.md) | The value for any attribute of an entity |  no  |
+| [DateTimeValue](DateTimeValue.md) | A date or date and time value |  no  |
 
 
 
@@ -51,7 +51,7 @@ Alias: attribute
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -60,8 +60,8 @@ Alias: attribute
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:attribute |
-| native | lambdaber:attribute |
+| self | lambda:attribute |
+| native | lambda:attribute |
 
 
 
@@ -72,7 +72,7 @@ Alias: attribute
 ```yaml
 name: attribute
 description: The attribute being represented.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: attribute
 domain_of:

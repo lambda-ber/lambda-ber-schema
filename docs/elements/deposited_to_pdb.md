@@ -9,7 +9,7 @@ _Whether structure was deposited to PDB_
 
 
 
-URI: [lambdaber:deposited_to_pdb](https://w3id.org/lambda-ber-schema/deposited_to_pdb)
+URI: [lambda:deposited_to_pdb](http://w3id.org/lambda/deposited_to_pdb)
 Alias: deposited_to_pdb
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: deposited_to_pdb
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: deposited_to_pdb
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:deposited_to_pdb |
-| native | lambdaber:deposited_to_pdb |
+| self | lambda:deposited_to_pdb |
+| native | lambda:deposited_to_pdb |
 
 
 
@@ -67,7 +67,7 @@ Alias: deposited_to_pdb
 ```yaml
 name: deposited_to_pdb
 description: Whether structure was deposited to PDB
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: deposited_to_pdb
 owner: WorkflowRun

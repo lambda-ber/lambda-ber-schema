@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:terms](https://w3id.org/lambda-ber-schema/terms)
+URI: [lambda:terms](http://w3id.org/lambda/terms)
 Alias: terms
 
 <!-- no inheritance hierarchy -->
@@ -17,8 +17,8 @@ Alias: terms
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OntologyTerm](OntologyTerm.md) | A term from a controlled vocabulary or ontology |  no  |
 | [ImageFeature](ImageFeature.md) | Semantic annotations describing features identified in images using controlle... |  no  |
+| [OntologyTerm](OntologyTerm.md) | A term from a controlled vocabulary or ontology |  no  |
 
 
 
@@ -44,8 +44,8 @@ Alias: terms
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:terms |
-| native | lambdaber:terms |
+| self | lambda:terms |
+| native | lambda:terms |
 
 
 

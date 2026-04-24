@@ -9,7 +9,7 @@ _Exposure time per frame in milliseconds_
 
 
 
-URI: [lambdaber:exposure_time_per_frame](https://w3id.org/lambda-ber-schema/exposure_time_per_frame)
+URI: [lambda:exposure_time_per_frame](http://w3id.org/lambda/exposure_time_per_frame)
 Alias: exposure_time_per_frame
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: exposure_time_per_frame
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: exposure_time_per_frame
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:exposure_time_per_frame |
-| native | lambdaber:exposure_time_per_frame |
+| self | lambda:exposure_time_per_frame |
+| native | lambda:exposure_time_per_frame |
+| exact | mmCIF:_em_image_recording.average_exposure_time |
 
 
 
@@ -67,7 +68,9 @@ Alias: exposure_time_per_frame
 ```yaml
 name: exposure_time_per_frame
 description: Exposure time per frame in milliseconds
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_em_image_recording.average_exposure_time
 rank: 1000
 alias: exposure_time_per_frame
 owner: ExperimentRun

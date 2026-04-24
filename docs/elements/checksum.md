@@ -9,7 +9,7 @@ _SHA-256 checksum for data integrity_
 
 
 
-URI: [lambdaber:checksum](https://w3id.org/lambda-ber-schema/checksum)
+URI: [lambda:checksum](http://w3id.org/lambda/checksum)
 Alias: checksum
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: checksum
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: checksum
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:checksum |
-| native | lambdaber:checksum |
+| self | lambda:checksum |
+| native | lambda:checksum |
 
 
 
@@ -67,7 +67,7 @@ Alias: checksum
 ```yaml
 name: checksum
 description: SHA-256 checksum for data integrity
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: checksum
 owner: DataFile

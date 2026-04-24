@@ -9,7 +9,7 @@ _Percentage of Ramachandran outliers (0-100). Data providers may specify as a de
 
 
 
-URI: [lambdaber:ramachandran_outliers](https://w3id.org/lambda-ber-schema/ramachandran_outliers)
+URI: [lambda:ramachandran_outliers](http://w3id.org/lambda/ramachandran_outliers)
 Alias: ramachandran_outliers
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: ramachandran_outliers
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,9 +55,9 @@ Alias: ramachandran_outliers
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:ramachandran_outliers |
-| native | lambdaber:ramachandran_outliers |
-| exact | nsls2:Ramachandran_Outliers, mmCIF:_refine.pdbx_overall_ESU_R_Free |
+| self | lambda:ramachandran_outliers |
+| native | lambda:ramachandran_outliers |
+| exact | nsls2:Ramachandran_Outliers, mmCIF:_pdbx_struct_quality.ramachandran_outliers |
 
 
 
@@ -69,10 +69,10 @@ Alias: ramachandran_outliers
 name: ramachandran_outliers
 description: Percentage of Ramachandran outliers (0-100). Data providers may specify
   as a decimal fraction or percentage by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 exact_mappings:
 - nsls2:Ramachandran_Outliers
-- mmCIF:_refine.pdbx_overall_ESU_R_Free
+- mmCIF:_pdbx_struct_quality.ramachandran_outliers
 rank: 1000
 alias: ramachandran_outliers
 owner: WorkflowRun

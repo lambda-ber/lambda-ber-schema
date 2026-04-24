@@ -9,7 +9,7 @@ _Role in regulation_
 
 
 
-URI: [lambdaber:regulatory_role](https://w3id.org/lambda-ber-schema/regulatory_role)
+URI: [lambda:regulatory_role](http://w3id.org/lambda/regulatory_role)
 Alias: regulatory_role
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: regulatory_role
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: regulatory_role
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:regulatory_role |
-| native | lambdaber:regulatory_role |
+| self | lambda:regulatory_role |
+| native | lambda:regulatory_role |
 
 
 
@@ -67,7 +67,7 @@ Alias: regulatory_role
 ```yaml
 name: regulatory_role
 description: Role in regulation
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: regulatory_role
 owner: PostTranslationalModification

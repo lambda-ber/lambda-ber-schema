@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:resolution](https://w3id.org/lambda-ber-schema/resolution)
+URI: [lambda:resolution](http://w3id.org/lambda/resolution)
 Alias: resolution
 
 <!-- no inheritance hierarchy -->
@@ -17,8 +17,8 @@ Alias: resolution
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentRun](ExperimentRun.md) | An experimental data collection session |  no  |
 | [QualityMetrics](QualityMetrics.md) | Quality metrics for experiments |  no  |
+| [ExperimentRun](ExperimentRun.md) | An experimental data collection session |  no  |
 
 
 
@@ -44,8 +44,8 @@ Alias: resolution
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:resolution |
-| native | lambdaber:resolution |
+| self | lambda:resolution |
+| native | lambda:resolution |
 
 
 

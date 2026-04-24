@@ -9,7 +9,7 @@ _Identifier for the specific crystal used_
 
 
 
-URI: [nsls2:Crystal_ID](https://github.com/NSLS2/BER-LAMBDA/Crystal_ID)
+URI: [lambda:crystal_id](http://w3id.org/lambda/crystal_id)
 Alias: crystal_id
 
 <!-- no inheritance hierarchy -->
@@ -36,10 +36,6 @@ Alias: crystal_id
 
 
 
-## Comments
-
-* Maps to NSLS2 spreadsheet: Crystal_ID
-
 ## Identifier and Mapping Information
 
 
@@ -50,7 +46,7 @@ Alias: crystal_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -59,8 +55,9 @@ Alias: crystal_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | nsls2:Crystal_ID |
-| native | lambdaber:crystal_id |
+| self | lambda:crystal_id |
+| native | lambda:crystal_id |
+| exact | nsls2:Crystal_ID |
 
 
 
@@ -71,11 +68,10 @@ Alias: crystal_id
 ```yaml
 name: crystal_id
 description: Identifier for the specific crystal used
-comments:
-- 'Maps to NSLS2 spreadsheet: Crystal_ID'
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- nsls2:Crystal_ID
 rank: 1000
-slot_uri: nsls2:Crystal_ID
 alias: crystal_id
 owner: CrystallizationConditions
 domain_of:

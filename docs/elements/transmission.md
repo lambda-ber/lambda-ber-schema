@@ -9,7 +9,7 @@ _X-ray beam transmission as a percentage (0-100). Data providers may specify as 
 
 
 
-URI: [lambdaber:transmission](https://w3id.org/lambda-ber-schema/transmission)
+URI: [lambda:transmission](http://w3id.org/lambda/transmission)
 Alias: transmission
 
 <!-- no inheritance hierarchy -->
@@ -35,6 +35,12 @@ Alias: transmission
 
 
 
+## Aliases
+
+
+* attenuation
+* transmission_percent
+
 
 ## Comments
 
@@ -50,7 +56,7 @@ Alias: transmission
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -59,8 +65,8 @@ Alias: transmission
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:transmission |
-| native | lambdaber:transmission |
+| self | lambda:transmission |
+| native | lambda:transmission |
 | exact | ispyb:DataCollection.transmission |
 
 
@@ -75,7 +81,10 @@ description: X-ray beam transmission as a percentage (0-100). Data providers may
   as a decimal fraction or percentage by including the unit in the QuantityValue.
 comments:
 - Percentage of full beam intensity used
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+aliases:
+- attenuation
+- transmission_percent
 exact_mappings:
 - ispyb:DataCollection.transmission
 rank: 1000

@@ -9,7 +9,7 @@ _Mathematical function used for apodization_
 
 
 
-URI: [lambdaber:apodization_function](https://w3id.org/lambda-ber-schema/apodization_function)
+URI: [lambda:apodization_function](http://w3id.org/lambda/apodization_function)
 Alias: apodization_function
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: apodization_function
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: apodization_function
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:apodization_function |
-| native | lambdaber:apodization_function |
+| self | lambda:apodization_function |
+| native | lambda:apodization_function |
 
 
 
@@ -67,7 +67,7 @@ Alias: apodization_function
 ```yaml
 name: apodization_function
 description: Mathematical function used for apodization
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: apodization_function
 owner: FTIRImage

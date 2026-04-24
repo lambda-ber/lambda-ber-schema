@@ -7,7 +7,7 @@ _Effect on protein stability_
 
 
 
-URI: [lambdaber:StabilityEffectEnum](https://w3id.org/lambda-ber-schema/StabilityEffectEnum)
+URI: [lambda:StabilityEffectEnum](http://w3id.org/lambda/StabilityEffectEnum)
 
 ## Permissible Values
 
@@ -42,7 +42,7 @@ URI: [lambdaber:StabilityEffectEnum](https://w3id.org/lambda-ber-schema/Stabilit
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,7 +55,7 @@ URI: [lambdaber:StabilityEffectEnum](https://w3id.org/lambda-ber-schema/Stabilit
 ```yaml
 name: StabilityEffectEnum
 description: Effect on protein stability
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   stabilizing:

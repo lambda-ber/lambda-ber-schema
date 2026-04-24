@@ -7,7 +7,7 @@ _Clinical significance of variants_
 
 
 
-URI: [lambdaber:ClinicalSignificanceEnum](https://w3id.org/lambda-ber-schema/ClinicalSignificanceEnum)
+URI: [lambda:ClinicalSignificanceEnum](http://w3id.org/lambda/ClinicalSignificanceEnum)
 
 ## Permissible Values
 
@@ -42,7 +42,7 @@ URI: [lambdaber:ClinicalSignificanceEnum](https://w3id.org/lambda-ber-schema/Cli
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,7 +55,7 @@ URI: [lambdaber:ClinicalSignificanceEnum](https://w3id.org/lambda-ber-schema/Cli
 ```yaml
 name: ClinicalSignificanceEnum
 description: Clinical significance of variants
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   pathogenic:

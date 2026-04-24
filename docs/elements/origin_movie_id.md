@@ -9,7 +9,7 @@ _Reference to original movie file_
 
 
 
-URI: [lambdaber:origin_movie_id](https://w3id.org/lambda-ber-schema/origin_movie_id)
+URI: [lambda:origin_movie_id](http://w3id.org/lambda/origin_movie_id)
 Alias: origin_movie_id
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: origin_movie_id
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: origin_movie_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:origin_movie_id |
-| native | lambdaber:origin_movie_id |
+| self | lambda:origin_movie_id |
+| native | lambda:origin_movie_id |
 
 
 
@@ -67,7 +67,7 @@ Alias: origin_movie_id
 ```yaml
 name: origin_movie_id
 description: Reference to original movie file
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: origin_movie_id
 owner: Micrograph

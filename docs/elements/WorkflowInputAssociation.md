@@ -9,7 +9,7 @@ _Links input DataFiles to WorkflowRun_
 
 
 
-URI: [lambdaber:WorkflowInputAssociation](https://w3id.org/lambda-ber-schema/WorkflowInputAssociation)
+URI: [lambda:WorkflowInputAssociation](http://w3id.org/lambda/WorkflowInputAssociation)
 
 
 
@@ -95,7 +95,7 @@ URI: [lambdaber:WorkflowInputAssociation](https://w3id.org/lambda-ber-schema/Wor
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -104,8 +104,8 @@ URI: [lambdaber:WorkflowInputAssociation](https://w3id.org/lambda-ber-schema/Wor
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:WorkflowInputAssociation |
-| native | lambdaber:WorkflowInputAssociation |
+| self | lambda:WorkflowInputAssociation |
+| native | lambda:WorkflowInputAssociation |
 
 
 
@@ -122,12 +122,12 @@ URI: [lambdaber:WorkflowInputAssociation](https://w3id.org/lambda-ber-schema/Wor
 ```yaml
 name: WorkflowInputAssociation
 description: Links input DataFiles to WorkflowRun
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 attributes:
   workflow_id:
     name: workflow_id
     description: Reference to the workflow run
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - StudyWorkflowAssociation
     - WorkflowExperimentAssociation
@@ -138,7 +138,7 @@ attributes:
   file_id:
     name: file_id
     description: Reference to the input data file
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowInputAssociation
@@ -148,7 +148,7 @@ attributes:
   input_type:
     name: input_type
     description: Type of input for the workflow
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowInputAssociation
@@ -163,12 +163,12 @@ attributes:
 ```yaml
 name: WorkflowInputAssociation
 description: Links input DataFiles to WorkflowRun
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 attributes:
   workflow_id:
     name: workflow_id
     description: Reference to the workflow run
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: workflow_id
     owner: WorkflowInputAssociation
     domain_of:
@@ -181,7 +181,7 @@ attributes:
   file_id:
     name: file_id
     description: Reference to the input data file
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: file_id
     owner: WorkflowInputAssociation
@@ -193,7 +193,7 @@ attributes:
   input_type:
     name: input_type
     description: Type of input for the workflow
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: input_type
     owner: WorkflowInputAssociation

@@ -9,7 +9,7 @@ _A computational processing workflow execution_
 
 
 
-URI: [lambdaber:WorkflowRun](https://w3id.org/lambda-ber-schema/WorkflowRun)
+URI: [lambda:WorkflowRun](http://w3id.org/lambda/WorkflowRun)
 
 
 
@@ -661,7 +661,7 @@ URI: [lambdaber:WorkflowRun](https://w3id.org/lambda-ber-schema/WorkflowRun)
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -670,8 +670,8 @@ URI: [lambdaber:WorkflowRun](https://w3id.org/lambda-ber-schema/WorkflowRun)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:WorkflowRun |
-| native | lambdaber:WorkflowRun |
+| self | lambda:WorkflowRun |
+| native | lambda:WorkflowRun |
 
 
 
@@ -688,7 +688,7 @@ URI: [lambdaber:WorkflowRun](https://w3id.org/lambda-ber-schema/WorkflowRun)
 ```yaml
 name: WorkflowRun
 description: A computational processing workflow execution
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: NamedThing
 attributes:
   workflow_code:
@@ -696,7 +696,7 @@ attributes:
     description: Human-friendly identifier for the computational workflow run (e.g.,
       'MOTION-CORR-RUN-001', 'RELION-REFINE-240815'). Used for tracking processing
       pipelines and computational provenance.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -704,7 +704,7 @@ attributes:
   workflow_type:
     name: workflow_type
     description: Type of processing workflow
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -713,7 +713,7 @@ attributes:
   processing_level:
     name: processing_level
     description: Processing level (0=raw, 1=corrected, 2=derived, 3=model)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -722,7 +722,7 @@ attributes:
   software_name:
     name: software_name
     description: Software used for processing
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -730,63 +730,63 @@ attributes:
   software_version:
     name: software_version
     description: Software version
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowRun
   additional_software:
     name: additional_software
     description: Additional software used in pipeline
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowRun
   processing_parameters:
     name: processing_parameters
     description: Parameters used in processing
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowRun
   parameters_file_path:
     name: parameters_file_path
     description: Path to parameters file or text of key parameters
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowRun
   indexer_module:
     name: indexer_module
     description: Indexing module used (e.g., MOSFLM, XDS)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowRun
   integrator_module:
     name: integrator_module
     description: Integration module used
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowRun
   scaler_module:
     name: scaler_module
     description: Scaling module used (e.g., AIMLESS, SCALA)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowRun
   outlier_rejection_method:
     name: outlier_rejection_method
     description: Method for rejecting outlier reflections
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowRun
   phasing_method:
     name: phasing_method
     description: Phasing method used for X-ray crystallography structure determination
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -794,14 +794,14 @@ attributes:
   search_model_pdb_id:
     name: search_model_pdb_id
     description: PDB ID of search model for molecular replacement
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowRun
   tls_used:
     name: tls_used
     description: Whether TLS (Translation/Libration/Screw) refinement was used
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -809,7 +809,7 @@ attributes:
   ncs_used:
     name: ncs_used
     description: Whether Non-Crystallographic Symmetry restraints were used
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -817,21 +817,21 @@ attributes:
   restraints_other:
     name: restraints_other
     description: Other restraints applied during refinement
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowRun
   ligands_cofactors:
     name: ligands_cofactors
     description: Ligands or cofactors modeled in the structure
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowRun
   number_of_waters:
     name: number_of_waters
     description: Number of water molecules modeled
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -840,7 +840,7 @@ attributes:
   refinement_resolution_a:
     name: refinement_resolution_a
     description: Resolution cutoff used for refinement in Angstroms
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -849,7 +849,7 @@ attributes:
   deposited_to_pdb:
     name: deposited_to_pdb
     description: Whether structure was deposited to PDB
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -857,21 +857,21 @@ attributes:
   pdb_id:
     name: pdb_id
     description: PDB accession code if deposited
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowRun
   validation_report_path:
     name: validation_report_path
     description: Path to validation report
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowRun
   space_group:
     name: space_group
     description: Crystallographic space group
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:Space_Group
     - mmCIF:_symmetry.space_group_name_H-M
@@ -885,7 +885,7 @@ attributes:
     name: unit_cell_a
     description: Unit cell parameter a, typically specified in Angstroms (Å). Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:Unit_Cell_a
     - mmCIF:_cell.length_a
@@ -899,7 +899,7 @@ attributes:
     name: unit_cell_b
     description: Unit cell parameter b, typically specified in Angstroms (Å). Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:Unit_Cell_b
     - mmCIF:_cell.length_b
@@ -913,7 +913,7 @@ attributes:
     name: unit_cell_c
     description: Unit cell parameter c, typically specified in Angstroms (Å). Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:Unit_Cell_c
     - mmCIF:_cell.length_c
@@ -927,7 +927,7 @@ attributes:
     name: unit_cell_alpha
     description: Unit cell angle alpha, typically specified in degrees. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:Unit_Cell_alpha
     - mmCIF:_cell.angle_alpha
@@ -941,7 +941,7 @@ attributes:
     name: unit_cell_beta
     description: Unit cell angle beta, typically specified in degrees. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:Unit_Cell_beta
     - mmCIF:_cell.angle_beta
@@ -955,7 +955,7 @@ attributes:
     name: unit_cell_gamma
     description: Unit cell angle gamma, typically specified in degrees. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:Unit_Cell_gamma
     - mmCIF:_cell.angle_gamma
@@ -969,7 +969,7 @@ attributes:
     name: resolution_high
     description: High resolution limit, typically specified in Angstroms (Å). Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:Resolution_High_A
     - mmCIF:_reflns.d_resolution_high
@@ -983,7 +983,7 @@ attributes:
     name: resolution_low
     description: Low resolution limit, typically specified in Angstroms (Å). Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:Resolution_Low_A
     - mmCIF:_reflns.d_resolution_low
@@ -996,7 +996,7 @@ attributes:
   rmerge:
     name: rmerge
     description: Rmerge - merge R-factor
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -1005,7 +1005,7 @@ attributes:
   rpim:
     name: rpim
     description: Rpim - precision-indicating merging R-factor
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -1014,7 +1014,7 @@ attributes:
   cc_half:
     name: cc_half
     description: Half-set correlation coefficient CC(1/2)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -1025,7 +1025,7 @@ attributes:
     name: completeness_percent
     description: Data completeness as a percentage (0-100). Data providers may specify
       as a decimal fraction or percentage by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:Completeness
     - mmCIF:_reflns.percent_possible_obs
@@ -1038,7 +1038,7 @@ attributes:
   i_over_sigma:
     name: i_over_sigma
     description: Mean I/sigma(I) - signal to noise ratio
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -1048,7 +1048,7 @@ attributes:
     name: wilson_b_factor
     description: Wilson B-factor, typically specified in Angstroms squared (Ų). Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:Wilson_B
     - mmCIF:_reflns.B_iso_Wilson_estimate
@@ -1060,7 +1060,7 @@ attributes:
   multiplicity:
     name: multiplicity
     description: Data multiplicity (redundancy)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -1074,7 +1074,7 @@ attributes:
       QuantityValue.
     comments:
     - Completeness of Bijvoet pairs
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - ispyb:AutoProcScalingStatistics.anomalousCompleteness
     rank: 1000
@@ -1085,7 +1085,7 @@ attributes:
   anomalous_multiplicity:
     name: anomalous_multiplicity
     description: Multiplicity of anomalous data
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -1094,7 +1094,7 @@ attributes:
   cc_anomalous:
     name: cc_anomalous
     description: Anomalous correlation coefficient
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -1103,7 +1103,7 @@ attributes:
   r_anomalous:
     name: r_anomalous
     description: Anomalous R-factor
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -1112,7 +1112,7 @@ attributes:
   sig_anomalous:
     name: sig_anomalous
     description: Mean anomalous difference signal
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -1121,7 +1121,9 @@ attributes:
   n_total_observations:
     name: n_total_observations
     description: Total number of observations (before merging)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_reflns.number_all
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -1130,7 +1132,9 @@ attributes:
   n_total_unique:
     name: n_total_unique
     description: Total number of unique reflections
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_reflns.number_obs
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -1139,7 +1143,7 @@ attributes:
   ispyb_auto_proc_program_id:
     name: ispyb_auto_proc_program_id
     description: ISPyB AutoProcProgram.autoProcProgramId
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -1148,7 +1152,7 @@ attributes:
   ispyb_auto_proc_scaling_id:
     name: ispyb_auto_proc_scaling_id
     description: ISPyB AutoProcScaling.autoProcScalingId
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -1157,7 +1161,9 @@ attributes:
   rwork:
     name: rwork
     description: Refinement R-factor (working set)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_refine.ls_R_factor_R_work
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -1166,7 +1172,9 @@ attributes:
   rfree:
     name: rfree
     description: R-free (test set)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_refine.ls_R_factor_R_free
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -1176,10 +1184,10 @@ attributes:
     name: rmsd_bonds
     description: RMSD from ideal bond lengths, typically specified in Angstroms (Å).
       Data providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:RMSD_bonds
-    - mmCIF:_refine.ls_d_res_high
+    - mmCIF:_refine.pdbx_ls_sigma_F
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -1189,10 +1197,10 @@ attributes:
     name: rmsd_angles
     description: RMSD from ideal bond angles, typically specified in degrees. Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:RMSD_angles
-    - mmCIF:_refine.ls_d_res_low
+    - mmCIF:_refine.pdbx_ls_sigma_I
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -1203,10 +1211,10 @@ attributes:
     description: Percentage of residues in favored Ramachandran regions (0-100). Data
       providers may specify as a decimal fraction or percentage by including the unit
       in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:Ramachandran_Favored
-    - mmCIF:_refine.pdbx_overall_ESU_R
+    - mmCIF:_pdbx_struct_quality.ramachandran_favored
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -1216,10 +1224,10 @@ attributes:
     name: ramachandran_outliers
     description: Percentage of Ramachandran outliers (0-100). Data providers may specify
       as a decimal fraction or percentage by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:Ramachandran_Outliers
-    - mmCIF:_refine.pdbx_overall_ESU_R_Free
+    - mmCIF:_pdbx_struct_quality.ramachandran_outliers
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -1228,7 +1236,7 @@ attributes:
   clashscore:
     name: clashscore
     description: MolProbity clashscore
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -1238,14 +1246,14 @@ attributes:
   processing_notes:
     name: processing_notes
     description: Additional notes about processing
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowRun
   compute_resources:
     name: compute_resources
     description: Computational resources used
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -1253,7 +1261,7 @@ attributes:
   started_at:
     name: started_at
     description: Workflow start time
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -1261,7 +1269,7 @@ attributes:
   completed_at:
     name: completed_at
     description: Workflow completion time
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -1269,7 +1277,7 @@ attributes:
   motion_correction_params:
     name: motion_correction_params
     description: Motion correction specific parameters
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -1277,7 +1285,7 @@ attributes:
   ctf_estimation_params:
     name: ctf_estimation_params
     description: CTF estimation specific parameters
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -1285,7 +1293,7 @@ attributes:
   particle_picking_params:
     name: particle_picking_params
     description: Particle picking specific parameters
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -1293,7 +1301,7 @@ attributes:
   refinement_params:
     name: refinement_params
     description: 3D refinement specific parameters
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -1301,7 +1309,7 @@ attributes:
   fsc_curve:
     name: fsc_curve
     description: Fourier Shell Correlation curve data
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -1309,7 +1317,7 @@ attributes:
   output_files:
     name: output_files
     description: Output files generated
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -1325,7 +1333,7 @@ attributes:
 ```yaml
 name: WorkflowRun
 description: A computational processing workflow execution
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: NamedThing
 attributes:
   workflow_code:
@@ -1333,7 +1341,7 @@ attributes:
     description: Human-friendly identifier for the computational workflow run (e.g.,
       'MOTION-CORR-RUN-001', 'RELION-REFINE-240815'). Used for tracking processing
       pipelines and computational provenance.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: workflow_code
     owner: WorkflowRun
@@ -1344,7 +1352,7 @@ attributes:
   workflow_type:
     name: workflow_type
     description: Type of processing workflow
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: workflow_type
     owner: WorkflowRun
@@ -1355,7 +1363,7 @@ attributes:
   processing_level:
     name: processing_level
     description: Processing level (0=raw, 1=corrected, 2=derived, 3=model)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: processing_level
     owner: WorkflowRun
@@ -1366,7 +1374,7 @@ attributes:
   software_name:
     name: software_name
     description: Software used for processing
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: software_name
     owner: WorkflowRun
@@ -1377,7 +1385,7 @@ attributes:
   software_version:
     name: software_version
     description: Software version
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: software_version
     owner: WorkflowRun
@@ -1387,7 +1395,7 @@ attributes:
   additional_software:
     name: additional_software
     description: Additional software used in pipeline
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: additional_software
     owner: WorkflowRun
@@ -1397,7 +1405,7 @@ attributes:
   processing_parameters:
     name: processing_parameters
     description: Parameters used in processing
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: processing_parameters
     owner: WorkflowRun
@@ -1407,7 +1415,7 @@ attributes:
   parameters_file_path:
     name: parameters_file_path
     description: Path to parameters file or text of key parameters
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: parameters_file_path
     owner: WorkflowRun
@@ -1417,7 +1425,7 @@ attributes:
   indexer_module:
     name: indexer_module
     description: Indexing module used (e.g., MOSFLM, XDS)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: indexer_module
     owner: WorkflowRun
@@ -1427,7 +1435,7 @@ attributes:
   integrator_module:
     name: integrator_module
     description: Integration module used
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: integrator_module
     owner: WorkflowRun
@@ -1437,7 +1445,7 @@ attributes:
   scaler_module:
     name: scaler_module
     description: Scaling module used (e.g., AIMLESS, SCALA)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: scaler_module
     owner: WorkflowRun
@@ -1447,7 +1455,7 @@ attributes:
   outlier_rejection_method:
     name: outlier_rejection_method
     description: Method for rejecting outlier reflections
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: outlier_rejection_method
     owner: WorkflowRun
@@ -1457,7 +1465,7 @@ attributes:
   phasing_method:
     name: phasing_method
     description: Phasing method used for X-ray crystallography structure determination
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: phasing_method
     owner: WorkflowRun
@@ -1467,7 +1475,7 @@ attributes:
   search_model_pdb_id:
     name: search_model_pdb_id
     description: PDB ID of search model for molecular replacement
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: search_model_pdb_id
     owner: WorkflowRun
@@ -1477,7 +1485,7 @@ attributes:
   tls_used:
     name: tls_used
     description: Whether TLS (Translation/Libration/Screw) refinement was used
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: tls_used
     owner: WorkflowRun
@@ -1487,7 +1495,7 @@ attributes:
   ncs_used:
     name: ncs_used
     description: Whether Non-Crystallographic Symmetry restraints were used
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: ncs_used
     owner: WorkflowRun
@@ -1497,7 +1505,7 @@ attributes:
   restraints_other:
     name: restraints_other
     description: Other restraints applied during refinement
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: restraints_other
     owner: WorkflowRun
@@ -1507,7 +1515,7 @@ attributes:
   ligands_cofactors:
     name: ligands_cofactors
     description: Ligands or cofactors modeled in the structure
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: ligands_cofactors
     owner: WorkflowRun
@@ -1517,7 +1525,7 @@ attributes:
   number_of_waters:
     name: number_of_waters
     description: Number of water molecules modeled
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: number_of_waters
     owner: WorkflowRun
@@ -1528,7 +1536,7 @@ attributes:
   refinement_resolution_a:
     name: refinement_resolution_a
     description: Resolution cutoff used for refinement in Angstroms
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: refinement_resolution_a
     owner: WorkflowRun
@@ -1539,7 +1547,7 @@ attributes:
   deposited_to_pdb:
     name: deposited_to_pdb
     description: Whether structure was deposited to PDB
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: deposited_to_pdb
     owner: WorkflowRun
@@ -1549,7 +1557,7 @@ attributes:
   pdb_id:
     name: pdb_id
     description: PDB accession code if deposited
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: pdb_id
     owner: WorkflowRun
@@ -1559,7 +1567,7 @@ attributes:
   validation_report_path:
     name: validation_report_path
     description: Path to validation report
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: validation_report_path
     owner: WorkflowRun
@@ -1569,7 +1577,7 @@ attributes:
   space_group:
     name: space_group
     description: Crystallographic space group
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:Space_Group
     - mmCIF:_symmetry.space_group_name_H-M
@@ -1585,7 +1593,7 @@ attributes:
     name: unit_cell_a
     description: Unit cell parameter a, typically specified in Angstroms (Å). Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:Unit_Cell_a
     - mmCIF:_cell.length_a
@@ -1601,7 +1609,7 @@ attributes:
     name: unit_cell_b
     description: Unit cell parameter b, typically specified in Angstroms (Å). Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:Unit_Cell_b
     - mmCIF:_cell.length_b
@@ -1617,7 +1625,7 @@ attributes:
     name: unit_cell_c
     description: Unit cell parameter c, typically specified in Angstroms (Å). Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:Unit_Cell_c
     - mmCIF:_cell.length_c
@@ -1633,7 +1641,7 @@ attributes:
     name: unit_cell_alpha
     description: Unit cell angle alpha, typically specified in degrees. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:Unit_Cell_alpha
     - mmCIF:_cell.angle_alpha
@@ -1649,7 +1657,7 @@ attributes:
     name: unit_cell_beta
     description: Unit cell angle beta, typically specified in degrees. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:Unit_Cell_beta
     - mmCIF:_cell.angle_beta
@@ -1665,7 +1673,7 @@ attributes:
     name: unit_cell_gamma
     description: Unit cell angle gamma, typically specified in degrees. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:Unit_Cell_gamma
     - mmCIF:_cell.angle_gamma
@@ -1681,7 +1689,7 @@ attributes:
     name: resolution_high
     description: High resolution limit, typically specified in Angstroms (Å). Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:Resolution_High_A
     - mmCIF:_reflns.d_resolution_high
@@ -1697,7 +1705,7 @@ attributes:
     name: resolution_low
     description: Low resolution limit, typically specified in Angstroms (Å). Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:Resolution_Low_A
     - mmCIF:_reflns.d_resolution_low
@@ -1712,7 +1720,7 @@ attributes:
   rmerge:
     name: rmerge
     description: Rmerge - merge R-factor
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: rmerge
     owner: WorkflowRun
@@ -1723,7 +1731,7 @@ attributes:
   rpim:
     name: rpim
     description: Rpim - precision-indicating merging R-factor
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: rpim
     owner: WorkflowRun
@@ -1734,7 +1742,7 @@ attributes:
   cc_half:
     name: cc_half
     description: Half-set correlation coefficient CC(1/2)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: cc_half
     owner: WorkflowRun
@@ -1747,7 +1755,7 @@ attributes:
     name: completeness_percent
     description: Data completeness as a percentage (0-100). Data providers may specify
       as a decimal fraction or percentage by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:Completeness
     - mmCIF:_reflns.percent_possible_obs
@@ -1762,7 +1770,7 @@ attributes:
   i_over_sigma:
     name: i_over_sigma
     description: Mean I/sigma(I) - signal to noise ratio
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: i_over_sigma
     owner: WorkflowRun
@@ -1774,7 +1782,7 @@ attributes:
     name: wilson_b_factor
     description: Wilson B-factor, typically specified in Angstroms squared (Ų). Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:Wilson_B
     - mmCIF:_reflns.B_iso_Wilson_estimate
@@ -1788,7 +1796,7 @@ attributes:
   multiplicity:
     name: multiplicity
     description: Data multiplicity (redundancy)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: multiplicity
     owner: WorkflowRun
@@ -1804,7 +1812,7 @@ attributes:
       QuantityValue.
     comments:
     - Completeness of Bijvoet pairs
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - ispyb:AutoProcScalingStatistics.anomalousCompleteness
     rank: 1000
@@ -1817,7 +1825,7 @@ attributes:
   anomalous_multiplicity:
     name: anomalous_multiplicity
     description: Multiplicity of anomalous data
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: anomalous_multiplicity
     owner: WorkflowRun
@@ -1828,7 +1836,7 @@ attributes:
   cc_anomalous:
     name: cc_anomalous
     description: Anomalous correlation coefficient
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: cc_anomalous
     owner: WorkflowRun
@@ -1839,7 +1847,7 @@ attributes:
   r_anomalous:
     name: r_anomalous
     description: Anomalous R-factor
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: r_anomalous
     owner: WorkflowRun
@@ -1850,7 +1858,7 @@ attributes:
   sig_anomalous:
     name: sig_anomalous
     description: Mean anomalous difference signal
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: sig_anomalous
     owner: WorkflowRun
@@ -1861,7 +1869,9 @@ attributes:
   n_total_observations:
     name: n_total_observations
     description: Total number of observations (before merging)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_reflns.number_all
     rank: 1000
     alias: n_total_observations
     owner: WorkflowRun
@@ -1872,7 +1882,9 @@ attributes:
   n_total_unique:
     name: n_total_unique
     description: Total number of unique reflections
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_reflns.number_obs
     rank: 1000
     alias: n_total_unique
     owner: WorkflowRun
@@ -1883,7 +1895,7 @@ attributes:
   ispyb_auto_proc_program_id:
     name: ispyb_auto_proc_program_id
     description: ISPyB AutoProcProgram.autoProcProgramId
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: ispyb_auto_proc_program_id
     owner: WorkflowRun
@@ -1894,7 +1906,7 @@ attributes:
   ispyb_auto_proc_scaling_id:
     name: ispyb_auto_proc_scaling_id
     description: ISPyB AutoProcScaling.autoProcScalingId
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: ispyb_auto_proc_scaling_id
     owner: WorkflowRun
@@ -1905,7 +1917,9 @@ attributes:
   rwork:
     name: rwork
     description: Refinement R-factor (working set)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_refine.ls_R_factor_R_work
     rank: 1000
     alias: rwork
     owner: WorkflowRun
@@ -1916,7 +1930,9 @@ attributes:
   rfree:
     name: rfree
     description: R-free (test set)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_refine.ls_R_factor_R_free
     rank: 1000
     alias: rfree
     owner: WorkflowRun
@@ -1928,10 +1944,10 @@ attributes:
     name: rmsd_bonds
     description: RMSD from ideal bond lengths, typically specified in Angstroms (Å).
       Data providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:RMSD_bonds
-    - mmCIF:_refine.ls_d_res_high
+    - mmCIF:_refine.pdbx_ls_sigma_F
     rank: 1000
     alias: rmsd_bonds
     owner: WorkflowRun
@@ -1943,10 +1959,10 @@ attributes:
     name: rmsd_angles
     description: RMSD from ideal bond angles, typically specified in degrees. Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:RMSD_angles
-    - mmCIF:_refine.ls_d_res_low
+    - mmCIF:_refine.pdbx_ls_sigma_I
     rank: 1000
     alias: rmsd_angles
     owner: WorkflowRun
@@ -1959,10 +1975,10 @@ attributes:
     description: Percentage of residues in favored Ramachandran regions (0-100). Data
       providers may specify as a decimal fraction or percentage by including the unit
       in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:Ramachandran_Favored
-    - mmCIF:_refine.pdbx_overall_ESU_R
+    - mmCIF:_pdbx_struct_quality.ramachandran_favored
     rank: 1000
     alias: ramachandran_favored
     owner: WorkflowRun
@@ -1974,10 +1990,10 @@ attributes:
     name: ramachandran_outliers
     description: Percentage of Ramachandran outliers (0-100). Data providers may specify
       as a decimal fraction or percentage by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:Ramachandran_Outliers
-    - mmCIF:_refine.pdbx_overall_ESU_R_Free
+    - mmCIF:_pdbx_struct_quality.ramachandran_outliers
     rank: 1000
     alias: ramachandran_outliers
     owner: WorkflowRun
@@ -1988,7 +2004,7 @@ attributes:
   clashscore:
     name: clashscore
     description: MolProbity clashscore
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: clashscore
     owner: WorkflowRun
@@ -2000,7 +2016,7 @@ attributes:
   processing_notes:
     name: processing_notes
     description: Additional notes about processing
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: processing_notes
     owner: WorkflowRun
@@ -2010,7 +2026,7 @@ attributes:
   compute_resources:
     name: compute_resources
     description: Computational resources used
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: compute_resources
     owner: WorkflowRun
@@ -2020,7 +2036,7 @@ attributes:
   started_at:
     name: started_at
     description: Workflow start time
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: started_at
     owner: WorkflowRun
@@ -2030,7 +2046,7 @@ attributes:
   completed_at:
     name: completed_at
     description: Workflow completion time
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: completed_at
     owner: WorkflowRun
@@ -2040,7 +2056,7 @@ attributes:
   motion_correction_params:
     name: motion_correction_params
     description: Motion correction specific parameters
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: motion_correction_params
     owner: WorkflowRun
@@ -2050,7 +2066,7 @@ attributes:
   ctf_estimation_params:
     name: ctf_estimation_params
     description: CTF estimation specific parameters
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: ctf_estimation_params
     owner: WorkflowRun
@@ -2060,7 +2076,7 @@ attributes:
   particle_picking_params:
     name: particle_picking_params
     description: Particle picking specific parameters
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: particle_picking_params
     owner: WorkflowRun
@@ -2070,7 +2086,7 @@ attributes:
   refinement_params:
     name: refinement_params
     description: 3D refinement specific parameters
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: refinement_params
     owner: WorkflowRun
@@ -2080,7 +2096,7 @@ attributes:
   fsc_curve:
     name: fsc_curve
     description: Fourier Shell Correlation curve data
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: fsc_curve
     owner: WorkflowRun
@@ -2090,7 +2106,7 @@ attributes:
   output_files:
     name: output_files
     description: Output files generated
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: output_files
     owner: WorkflowRun
@@ -2103,7 +2119,7 @@ attributes:
     description: Globally unique identifier as an IRI or CURIE for machine processing
       and external references. Used for linking data across systems and semantic web
       integration.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     identifier: true
     alias: id
@@ -2116,7 +2132,7 @@ attributes:
   title:
     name: title
     description: A human-readable name or title for this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     slot_uri: dcterms:title
     alias: title
@@ -2127,7 +2143,7 @@ attributes:
   description:
     name: description
     description: A detailed textual description of this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: description
     owner: WorkflowRun

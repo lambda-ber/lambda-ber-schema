@@ -9,7 +9,7 @@ _Name or type of fluorophore used_
 
 
 
-URI: [lambdaber:fluorophore](https://w3id.org/lambda-ber-schema/fluorophore)
+URI: [lambda:fluorophore](http://w3id.org/lambda/fluorophore)
 Alias: fluorophore
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: fluorophore
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: fluorophore
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:fluorophore |
-| native | lambdaber:fluorophore |
+| self | lambda:fluorophore |
+| native | lambda:fluorophore |
 
 
 
@@ -67,7 +67,7 @@ Alias: fluorophore
 ```yaml
 name: fluorophore
 description: Name or type of fluorophore used
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: fluorophore
 owner: FluorescenceImage

@@ -9,7 +9,7 @@ _Type of biophysical property_
 
 
 
-URI: [lambdaber:property_type](https://w3id.org/lambda-ber-schema/property_type)
+URI: [lambda:property_type](http://w3id.org/lambda/property_type)
 Alias: property_type
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: property_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: property_type
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:property_type |
-| native | lambdaber:property_type |
+| self | lambda:property_type |
+| native | lambda:property_type |
 
 
 
@@ -69,7 +69,7 @@ Alias: property_type
 ```yaml
 name: property_type
 description: Type of biophysical property
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: property_type
 owner: BiophysicalProperty

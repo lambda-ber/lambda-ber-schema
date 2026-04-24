@@ -9,7 +9,7 @@ _Date when sample was added to study_
 
 
 
-URI: [lambdaber:date_added](https://w3id.org/lambda-ber-schema/date_added)
+URI: [lambda:date_added](http://w3id.org/lambda/date_added)
 Alias: date_added
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: date_added
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: date_added
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:date_added |
-| native | lambdaber:date_added |
+| self | lambda:date_added |
+| native | lambda:date_added |
 
 
 
@@ -67,7 +67,7 @@ Alias: date_added
 ```yaml
 name: date_added
 description: Date when sample was added to study
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: date_added
 owner: StudySampleAssociation

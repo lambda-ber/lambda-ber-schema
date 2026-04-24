@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:biophysical_properties](https://w3id.org/lambda-ber-schema/biophysical_properties)
+URI: [lambda:biophysical_properties](http://w3id.org/lambda/biophysical_properties)
 Alias: biophysical_properties
 
 <!-- no inheritance hierarchy -->
@@ -17,8 +17,8 @@ Alias: biophysical_properties
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AggregatedProteinView](AggregatedProteinView.md) | Aggregated view of all structural and functional data for a protein |  no  |
 | [Sample](Sample.md) | A biological sample used in structural biology experiments |  no  |
+| [AggregatedProteinView](AggregatedProteinView.md) | Aggregated view of all structural and functional data for a protein |  no  |
 
 
 
@@ -44,8 +44,8 @@ Alias: biophysical_properties
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:biophysical_properties |
-| native | lambdaber:biophysical_properties |
+| self | lambda:biophysical_properties |
+| native | lambda:biophysical_properties |
 
 
 

@@ -9,7 +9,7 @@ _Structural features and properties of protein regions_
 
 
 
-URI: [lambdaber:StructuralFeature](https://w3id.org/lambda-ber-schema/StructuralFeature)
+URI: [lambda:StructuralFeature](http://w3id.org/lambda/StructuralFeature)
 
 
 
@@ -179,7 +179,7 @@ URI: [lambdaber:StructuralFeature](https://w3id.org/lambda-ber-schema/Structural
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -188,8 +188,8 @@ URI: [lambdaber:StructuralFeature](https://w3id.org/lambda-ber-schema/Structural
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:StructuralFeature |
-| native | lambdaber:StructuralFeature |
+| self | lambda:StructuralFeature |
+| native | lambda:StructuralFeature |
 
 
 
@@ -206,13 +206,13 @@ URI: [lambdaber:StructuralFeature](https://w3id.org/lambda-ber-schema/Structural
 ```yaml
 name: StructuralFeature
 description: Structural features and properties of protein regions
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: ProteinAnnotation
 attributes:
   feature_type:
     name: feature_type
     description: Type of structural feature
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - StructuralFeature
@@ -221,7 +221,7 @@ attributes:
   secondary_structure:
     name: secondary_structure
     description: Secondary structure assignment
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - StructuralFeature
@@ -229,7 +229,7 @@ attributes:
   solvent_accessibility:
     name: solvent_accessibility
     description: 'Relative solvent accessible surface area (range: 0-1)'
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - StructuralFeature
@@ -239,7 +239,7 @@ attributes:
   backbone_flexibility:
     name: backbone_flexibility
     description: B-factor or flexibility measure
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - StructuralFeature
@@ -247,7 +247,7 @@ attributes:
   disorder_probability:
     name: disorder_probability
     description: 'Probability of disorder (range: 0-1)'
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - StructuralFeature
@@ -257,7 +257,7 @@ attributes:
   conformational_state:
     name: conformational_state
     description: Conformational state descriptor
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - StructuralFeature
@@ -265,21 +265,21 @@ attributes:
   structural_motif:
     name: structural_motif
     description: Known structural motif
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - StructuralFeature
   domain_assignment:
     name: domain_assignment
     description: Domain database assignment (CATH, SCOP, Pfam)
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - StructuralFeature
   domain_id:
     name: domain_id
     description: Domain identifier from domain database
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - StructuralFeature
@@ -293,13 +293,13 @@ attributes:
 ```yaml
 name: StructuralFeature
 description: Structural features and properties of protein regions
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: ProteinAnnotation
 attributes:
   feature_type:
     name: feature_type
     description: Type of structural feature
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: feature_type
     owner: StructuralFeature
@@ -310,7 +310,7 @@ attributes:
   secondary_structure:
     name: secondary_structure
     description: Secondary structure assignment
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: secondary_structure
     owner: StructuralFeature
@@ -320,7 +320,7 @@ attributes:
   solvent_accessibility:
     name: solvent_accessibility
     description: 'Relative solvent accessible surface area (range: 0-1)'
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: solvent_accessibility
     owner: StructuralFeature
@@ -332,7 +332,7 @@ attributes:
   backbone_flexibility:
     name: backbone_flexibility
     description: B-factor or flexibility measure
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: backbone_flexibility
     owner: StructuralFeature
@@ -342,7 +342,7 @@ attributes:
   disorder_probability:
     name: disorder_probability
     description: 'Probability of disorder (range: 0-1)'
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: disorder_probability
     owner: StructuralFeature
@@ -354,7 +354,7 @@ attributes:
   conformational_state:
     name: conformational_state
     description: Conformational state descriptor
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: conformational_state
     owner: StructuralFeature
@@ -364,7 +364,7 @@ attributes:
   structural_motif:
     name: structural_motif
     description: Known structural motif
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: structural_motif
     owner: StructuralFeature
@@ -374,7 +374,7 @@ attributes:
   domain_assignment:
     name: domain_assignment
     description: Domain database assignment (CATH, SCOP, Pfam)
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: domain_assignment
     owner: StructuralFeature
@@ -384,7 +384,7 @@ attributes:
   domain_id:
     name: domain_id
     description: Domain identifier from domain database
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: domain_id
     owner: StructuralFeature
@@ -394,7 +394,7 @@ attributes:
   protein_id:
     name: protein_id
     description: UniProt accession number
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: protein_id
     owner: StructuralFeature
@@ -407,7 +407,7 @@ attributes:
   pdb_entry:
     name: pdb_entry
     description: PDB identifier
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: pdb_entry
     owner: StructuralFeature
@@ -418,7 +418,7 @@ attributes:
   chain_id:
     name: chain_id
     description: Chain identifier in the PDB structure
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: chain_id
     owner: StructuralFeature
@@ -429,7 +429,7 @@ attributes:
   residue_range:
     name: residue_range
     description: Range of residues (e.g., '1-100', '25,27,30-35')
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: residue_range
     owner: StructuralFeature
@@ -440,7 +440,7 @@ attributes:
   confidence_score:
     name: confidence_score
     description: 'Confidence score for the annotation (range: 0-1)'
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: confidence_score
     owner: StructuralFeature
@@ -452,7 +452,7 @@ attributes:
   evidence_type:
     name: evidence_type
     description: Type of evidence supporting this annotation
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: evidence_type
     owner: StructuralFeature
@@ -462,7 +462,7 @@ attributes:
   evidence_code:
     name: evidence_code
     description: Evidence and Conclusion Ontology (ECO) code
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: evidence_code
     owner: StructuralFeature
@@ -472,7 +472,7 @@ attributes:
   source_database:
     name: source_database
     description: Source database or resource that provided this annotation
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: source_database
     owner: StructuralFeature
@@ -482,7 +482,7 @@ attributes:
   annotation_method:
     name: annotation_method
     description: Computational or experimental method used
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: annotation_method
     owner: StructuralFeature
@@ -493,7 +493,7 @@ attributes:
     name: publication_ids
     description: IDs of one or more publications supporting this annotation. Use PubMed
       IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: publication_ids
     owner: StructuralFeature
@@ -507,7 +507,7 @@ attributes:
     description: Globally unique identifier as an IRI or CURIE for machine processing
       and external references. Used for linking data across systems and semantic web
       integration.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     identifier: true
     alias: id
@@ -520,7 +520,7 @@ attributes:
   title:
     name: title
     description: A human-readable name or title for this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     slot_uri: dcterms:title
     alias: title
@@ -531,7 +531,7 @@ attributes:
   description:
     name: description
     description: A detailed textual description of this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: description
     owner: StructuralFeature

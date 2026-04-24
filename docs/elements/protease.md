@@ -9,7 +9,7 @@ _Protease used for tag cleavage_
 
 
 
-URI: [lambdaber:protease](https://w3id.org/lambda-ber-schema/protease)
+URI: [lambda:protease](http://w3id.org/lambda/protease)
 Alias: protease
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: protease
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: protease
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:protease |
-| native | lambdaber:protease |
+| self | lambda:protease |
+| native | lambda:protease |
 
 
 
@@ -67,7 +67,7 @@ Alias: protease
 ```yaml
 name: protease
 description: Protease used for tag cleavage
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: protease
 owner: SamplePreparation

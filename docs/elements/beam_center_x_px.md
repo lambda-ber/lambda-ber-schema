@@ -9,7 +9,7 @@ _Beam center X coordinate in pixels_
 
 
 
-URI: [lambdaber:beam_center_x_px](https://w3id.org/lambda-ber-schema/beam_center_x_px)
+URI: [lambda:beam_center_x_px](http://w3id.org/lambda/beam_center_x_px)
 Alias: beam_center_x_px
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: beam_center_x_px
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: beam_center_x_px
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:beam_center_x_px |
-| native | lambdaber:beam_center_x_px |
+| self | lambda:beam_center_x_px |
+| native | lambda:beam_center_x_px |
+| exact | mmCIF:_diffrn_detector.beam_center_x |
 
 
 
@@ -67,7 +68,9 @@ Alias: beam_center_x_px
 ```yaml
 name: beam_center_x_px
 description: Beam center X coordinate in pixels
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_diffrn_detector.beam_center_x
 rank: 1000
 alias: beam_center_x_px
 owner: DataCollectionStrategy

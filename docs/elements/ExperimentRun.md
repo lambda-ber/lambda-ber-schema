@@ -9,7 +9,7 @@ _An experimental data collection session_
 
 
 
-URI: [lambdaber:ExperimentRun](https://w3id.org/lambda-ber-schema/ExperimentRun)
+URI: [lambda:ExperimentRun](http://w3id.org/lambda/ExperimentRun)
 
 
 
@@ -38,6 +38,17 @@ URI: [lambdaber:ExperimentRun](https://w3id.org/lambda-ber-schema/ExperimentRun)
 
         
       ExperimentRun : autoloader_slot
+        
+      ExperimentRun : beam_center_pixels
+        
+          
+    
+        
+        
+        ExperimentRun --> "0..1" BeamCenterPixels : beam_center_pixels
+        click BeamCenterPixels href "../BeamCenterPixels/"
+    
+
         
       ExperimentRun : beam_center_x
         
@@ -164,6 +175,8 @@ URI: [lambdaber:ExperimentRun](https://w3id.org/lambda-ber-schema/ExperimentRun)
         
       ExperimentRun : description
         
+      ExperimentRun : detector
+        
       ExperimentRun : detector_distance
         
           
@@ -187,6 +200,17 @@ URI: [lambdaber:ExperimentRun](https://w3id.org/lambda-ber-schema/ExperimentRun)
 
         
       ExperimentRun : end_time
+        
+      ExperimentRun : energy
+        
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : energy
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       ExperimentRun : experiment_code
         
@@ -464,6 +488,28 @@ URI: [lambdaber:ExperimentRun](https://w3id.org/lambda-ber-schema/ExperimentRun)
         
       ExperimentRun : start_time
         
+      ExperimentRun : sweep_end
+        
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : sweep_end
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
+      ExperimentRun : sweep_start
+        
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : sweep_start
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       ExperimentRun : synchrotron_mode
         
       ExperimentRun : technique
@@ -593,12 +639,17 @@ URI: [lambdaber:ExperimentRun](https://w3id.org/lambda-ber-schema/ExperimentRun)
 | [holes_per_group](holes_per_group.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Number of holes per group | direct |
 | [acquisition_software](acquisition_software.md) | 0..1 <br/> [String](String.md) | Acquisition software used (e | direct |
 | [acquisition_software_version](acquisition_software_version.md) | 0..1 <br/> [String](String.md) | Version of acquisition software | direct |
+| [detector](detector.md) | 0..1 <br/> [String](String.md) | Run-specific detector identifier or detector component used for data collecti... | direct |
 | [wavelength](wavelength.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | X-ray wavelength, typically specified in Angstroms (Å) | direct |
+| [energy](energy.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | X-ray beam energy for this run | direct |
 | [oscillation_angle](oscillation_angle.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Oscillation angle per image, typically specified in degrees | direct |
 | [start_angle](start_angle.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Starting rotation angle, typically specified in degrees | direct |
+| [sweep_start](sweep_start.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Starting angle of an X-ray oscillation sweep, typically specified in degrees | direct |
+| [sweep_end](sweep_end.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Ending angle of an X-ray oscillation sweep, typically specified in degrees | direct |
 | [number_of_images](number_of_images.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Total number of diffraction images collected | direct |
 | [beam_center_x](beam_center_x.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Beam center X coordinate, typically specified in pixels ([px]) | direct |
 | [beam_center_y](beam_center_y.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Beam center Y coordinate, typically specified in pixels ([px]) | direct |
+| [beam_center_pixels](beam_center_pixels.md) | 0..1 <br/> [BeamCenterPixels](BeamCenterPixels.md) | Combined beam center pixel coordinates as reported by systems such as NSLS-II... | direct |
 | [detector_distance](detector_distance.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Distance from sample to detector, typically specified in millimeters (mm) | direct |
 | [pixel_size_x](pixel_size_x.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Pixel size X dimension, typically specified in micrometers (µm) | direct |
 | [pixel_size_y](pixel_size_y.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Pixel size Y dimension, typically specified in micrometers (µm) | direct |
@@ -652,7 +703,7 @@ URI: [lambdaber:ExperimentRun](https://w3id.org/lambda-ber-schema/ExperimentRun)
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -661,8 +712,8 @@ URI: [lambdaber:ExperimentRun](https://w3id.org/lambda-ber-schema/ExperimentRun)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:ExperimentRun |
-| native | lambdaber:ExperimentRun |
+| self | lambda:ExperimentRun |
+| native | lambda:ExperimentRun |
 
 
 
@@ -679,7 +730,7 @@ URI: [lambdaber:ExperimentRun](https://w3id.org/lambda-ber-schema/ExperimentRun)
 ```yaml
 name: ExperimentRun
 description: An experimental data collection session
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: NamedThing
 attributes:
   experiment_code:
@@ -687,7 +738,7 @@ attributes:
     description: Human-friendly laboratory or facility identifier for the experiment
       (e.g., 'SIBYLS-2024-02-01-hetBGL', 'CRYOEM-RUN-240815-001'). Used for local
       tracking and cross-referencing within laboratory systems.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ExperimentRun
@@ -695,7 +746,7 @@ attributes:
   experiment_date:
     name: experiment_date
     description: Date of the experiment
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ExperimentRun
@@ -704,7 +755,7 @@ attributes:
     name: operator_id
     description: Identifier or name of the person who performed the experiment data
       collection (e.g., 'jsmith', 'John Smith', or personnel ID)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - SamplePreparation
     - ExperimentRun
@@ -712,9 +763,9 @@ attributes:
   technique:
     name: technique
     description: Technique used for data collection
-    from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
+    from_schema: http://w3id.org/lambda/
     domain_of:
+    - SANSInstrument
     - ExperimentRun
     range: TechniqueEnum
     required: true
@@ -722,7 +773,7 @@ attributes:
     name: experimental_method
     description: Specific experimental method for structure determination (particularly
       for diffraction techniques)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ExperimentRun
@@ -731,7 +782,7 @@ attributes:
   experimental_conditions:
     name: experimental_conditions
     description: Environmental and experimental conditions
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ExperimentRun
@@ -739,7 +790,7 @@ attributes:
   data_collection_strategy:
     name: data_collection_strategy
     description: Strategy for data collection
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ExperimentRun
@@ -747,7 +798,7 @@ attributes:
   quality_metrics:
     name: quality_metrics
     description: Quality metrics for the experiment
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - Sample
     - ExperimentRun
@@ -755,14 +806,14 @@ attributes:
   raw_data_location:
     name: raw_data_location
     description: Location of raw data files
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ExperimentRun
   processing_status:
     name: processing_status
     description: Current processing status
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ExperimentRun
@@ -770,7 +821,7 @@ attributes:
   daq_system:
     name: daq_system
     description: Data acquisition system used to collect this experiment
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - BeamlineInstrument
     - ExperimentRun
@@ -778,7 +829,9 @@ attributes:
   magnification:
     name: magnification
     description: Magnification used during data collection
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_imaging.nominal_magnification
     rank: 1000
     domain_of:
     - ExperimentRun
@@ -788,7 +841,9 @@ attributes:
   calibrated_pixel_size:
     name: calibrated_pixel_size
     description: Calibrated pixel size in Angstroms per pixel
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_image_recording.calibrated_pixel_size
     rank: 1000
     domain_of:
     - ExperimentRun
@@ -798,7 +853,7 @@ attributes:
     name: camera_binning
     description: Camera binning factor. This must be a positive float value (e.g.,
       1, 1.5, 2, 3).
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ExperimentRun
@@ -807,7 +862,9 @@ attributes:
   exposure_time_per_frame:
     name: exposure_time_per_frame
     description: Exposure time per frame in milliseconds
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_image_recording.average_exposure_time
     rank: 1000
     domain_of:
     - ExperimentRun
@@ -816,7 +873,9 @@ attributes:
   frames_per_movie:
     name: frames_per_movie
     description: Number of frames per movie
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_image_recording.num_frames_per_image
     rank: 1000
     domain_of:
     - ExperimentRun
@@ -825,7 +884,7 @@ attributes:
   total_exposure_time:
     name: total_exposure_time
     description: Total exposure time in milliseconds
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ExperimentRun
@@ -834,7 +893,9 @@ attributes:
   total_dose:
     name: total_dose
     description: Total electron dose in e-/Angstrom^2
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_image_recording.avg_electron_dose_per_image
     rank: 1000
     domain_of:
     - ExperimentRun
@@ -844,7 +905,7 @@ attributes:
   dose_rate:
     name: dose_rate
     description: Dose rate in e-/pixel/s or e-/Angstrom^2/s
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ExperimentRun
@@ -853,7 +914,7 @@ attributes:
   defocus_target:
     name: defocus_target
     description: Target defocus value in micrometers
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ExperimentRun
@@ -862,7 +923,9 @@ attributes:
   defocus_range_min:
     name: defocus_range_min
     description: Minimum defocus range in micrometers
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_imaging.nominal_defocus_min
     rank: 1000
     domain_of:
     - ExperimentRun
@@ -871,7 +934,9 @@ attributes:
   defocus_range_max:
     name: defocus_range_max
     description: Maximum defocus range in micrometers
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_imaging.nominal_defocus_max
     rank: 1000
     domain_of:
     - ExperimentRun
@@ -880,7 +945,7 @@ attributes:
   defocus_range_increment:
     name: defocus_range_increment
     description: Defocus range increment in micrometers
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ExperimentRun
@@ -889,7 +954,7 @@ attributes:
   astigmatism_target:
     name: astigmatism_target
     description: Target astigmatism in Angstroms
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ExperimentRun
@@ -898,7 +963,7 @@ attributes:
   coma:
     name: coma
     description: Coma aberration in nanometers
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ExperimentRun
@@ -907,7 +972,7 @@ attributes:
   stage_tilt:
     name: stage_tilt
     description: Stage tilt angle in degrees
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ExperimentRun
@@ -916,7 +981,7 @@ attributes:
   autoloader_slot:
     name: autoloader_slot
     description: Autoloader slot identifier
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ExperimentRun
@@ -924,7 +989,7 @@ attributes:
   shots_per_hole:
     name: shots_per_hole
     description: Number of shots taken per hole
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ExperimentRun
@@ -934,7 +999,7 @@ attributes:
     name: holes_per_group
     description: Number of holes per group. Data providers may include unit information
       in the QuantityValue if needed.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ExperimentRun
@@ -943,7 +1008,7 @@ attributes:
   acquisition_software:
     name: acquisition_software
     description: Acquisition software used (e.g., SerialEM, EPU, Leginon)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ExperimentRun
@@ -951,7 +1016,25 @@ attributes:
   acquisition_software_version:
     name: acquisition_software_version
     description: Version of acquisition software
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    range: string
+  detector:
+    name: detector
+    description: Run-specific detector identifier or detector component used for data
+      collection. Use this when a beamline/instrument can operate with multiple or
+      swappable detectors and the detector identity is specific to this ExperimentRun.
+    comments:
+    - This is optional and distinct from Instrument-level detector model/manufacturer
+      metadata.
+    - Use ExperimentInstrumentAssociation with role=detector when the detector is
+      modeled as a separate Instrument record.
+    from_schema: http://w3id.org/lambda/
+    aliases:
+    - detector_id
+    - detector_name
     rank: 1000
     domain_of:
     - ExperimentRun
@@ -960,22 +1043,43 @@ attributes:
     name: wavelength
     description: X-ray wavelength, typically specified in Angstroms (Å). Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    aliases:
+    - wavelength_a
     exact_mappings:
     - nsls2:Wavelength
     - imgCIF:_diffrn_radiation_wavelength.wavelength
     - mmCIF:_diffrn_radiation_wavelength.wavelength
     - ispyb:DataCollection.wavelength
-    rank: 1000
     domain_of:
+    - SANSSource
     - ExperimentRun
+    range: QuantityValue
+    inlined: true
+  energy:
+    name: energy
+    description: X-ray beam energy for this run. Data providers may specify eV, keV,
+      or another appropriate energy unit in the QuantityValue.
+    from_schema: http://w3id.org/lambda/
+    aliases:
+    - beam_energy
+    exact_mappings:
+    - nsls2:Energy
+    - ispyb:DataCollection.energy
+    domain_of:
+    - SANSSource
+    - ExperimentRun
+    - DataCollectionStrategy
     range: QuantityValue
     inlined: true
   oscillation_angle:
     name: oscillation_angle
     description: Oscillation angle per image, typically specified in degrees. Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    aliases:
+    - oscillation_width
+    - oscillation_per_image_deg
     exact_mappings:
     - nsls2:Angle_increment
     - imgCIF:_diffrn_scan_axis.angle_increment
@@ -990,7 +1094,7 @@ attributes:
     name: start_angle
     description: Starting rotation angle, typically specified in degrees. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:Start_angle
     - imgCIF:_diffrn_scan_axis.angle_start
@@ -1000,10 +1104,36 @@ attributes:
     - ExperimentRun
     range: QuantityValue
     inlined: true
+  sweep_start:
+    name: sweep_start
+    description: Starting angle of an X-ray oscillation sweep, typically specified
+      in degrees. For multi-sweep collections, use the value for this run or acquisition
+      segment.
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - imgCIF:_diffrn_scan_axis.angle_start
+    - ispyb:DataCollection.axisStart
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    - DataCollectionStrategy
+    range: QuantityValue
+    inlined: true
+  sweep_end:
+    name: sweep_end
+    description: Ending angle of an X-ray oscillation sweep, typically specified in
+      degrees.
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    - DataCollectionStrategy
+    range: QuantityValue
+    inlined: true
   number_of_images:
     name: number_of_images
     description: Total number of diffraction images collected
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ExperimentRun
@@ -1013,7 +1143,7 @@ attributes:
     name: beam_center_x
     description: Beam center X coordinate, typically specified in pixels ([px]). Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:Beam_xy_x
     - imgCIF:_diffrn_detector.beam_centre_x
@@ -1028,7 +1158,7 @@ attributes:
     name: beam_center_y
     description: Beam center Y coordinate, typically specified in pixels ([px]). Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:Beam_xy_y
     - imgCIF:_diffrn_detector.beam_centre_y
@@ -1039,12 +1169,28 @@ attributes:
     - ExperimentRun
     range: QuantityValue
     inlined: true
+  beam_center_pixels:
+    name: beam_center_pixels
+    description: Combined beam center pixel coordinates as reported by systems such
+      as NSLS-II AMX. Use beam_center_x and beam_center_y when coordinates are represented
+      as separate run-level values.
+    from_schema: http://w3id.org/lambda/
+    aliases:
+    - beam_center
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    - DataCollectionStrategy
+    range: BeamCenterPixels
+    inlined: true
   detector_distance:
     name: detector_distance
     description: Distance from sample to detector, typically specified in millimeters
       (mm). Data providers may specify alternative units by including the unit in
       the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    aliases:
+    - detector_distance_mm
     exact_mappings:
     - nsls2:Detector_distance
     - imgCIF:_diffrn_measurement.sample_detector_distance
@@ -1062,12 +1208,12 @@ attributes:
       the unit in the QuantityValue.
     comments:
     - 'imgCIF: _array_element_size.size[1]'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:Pixel_size_x
     - imgCIF:_array_element_size.size
-    rank: 1000
     domain_of:
+    - SANSDetector
     - ExperimentRun
     range: QuantityValue
     inlined: true
@@ -1078,12 +1224,12 @@ attributes:
       the unit in the QuantityValue.
     comments:
     - 'imgCIF: _array_element_size.size[2]'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:Pixel_size_y
     - imgCIF:_array_element_size.size
-    rank: 1000
     domain_of:
+    - SANSDetector
     - ExperimentRun
     range: QuantityValue
     inlined: true
@@ -1091,7 +1237,7 @@ attributes:
     name: total_rotation
     description: Total rotation range collected, typically specified in degrees. Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:Total_rotation_deg
     - imgCIF:_diffrn_scan_axis.angle_range
@@ -1103,7 +1249,7 @@ attributes:
   beamline:
     name: beamline
     description: Beamline identifier (e.g., FMX, AMX, 12.3.1)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:Beamline
     - mmCIF:_diffrn_source.pdbx_synchrotron_beamline
@@ -1118,7 +1264,10 @@ attributes:
       specify as a decimal fraction or percentage by including the unit in the QuantityValue.
     comments:
     - Percentage of full beam intensity used
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    aliases:
+    - attenuation
+    - transmission_percent
     exact_mappings:
     - ispyb:DataCollection.transmission
     rank: 1000
@@ -1133,11 +1282,11 @@ attributes:
       the QuantityValue.
     comments:
     - Measured or calculated photon flux
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - ispyb:DataCollection.flux
-    rank: 1000
     domain_of:
+    - SANSSource
     - ExperimentRun
     - XRFImage
     range: QuantityValue
@@ -1147,7 +1296,7 @@ attributes:
     description: Photon flux at end of data collection, typically specified in photons
       per second. Data providers may specify alternative units by including the unit
       in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - ispyb:DataCollection.flux_end
     rank: 1000
@@ -1160,7 +1309,7 @@ attributes:
     description: Horizontal slit gap aperture, typically specified in micrometers
       (µm). Data providers may specify alternative units by including the unit in
       the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - ispyb:DataCollection.slitGapHorizontal
     rank: 1000
@@ -1172,7 +1321,7 @@ attributes:
     name: slit_gap_vertical
     description: Vertical slit gap aperture, typically specified in micrometers (µm).
       Data providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - ispyb:DataCollection.slitGapVertical
     rank: 1000
@@ -1187,7 +1336,7 @@ attributes:
       Primary undulator gap for beamlines with insertion devices.
     comments:
     - Primary undulator gap for beamlines with insertion devices
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - ispyb:DataCollection.undulatorGap1
     rank: 1000
@@ -1200,7 +1349,7 @@ attributes:
     description: Synchrotron storage ring fill mode
     comments:
     - e.g., 'Top-up', 'Decay', 'Hybrid'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - ispyb:DataCollection.synchrotronMode
     rank: 1000
@@ -1211,20 +1360,22 @@ attributes:
     name: exposure_time
     description: Exposure time per image, typically specified in seconds (s). Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
+    - nsls2:Exposure_time
     - ispyb:DataCollection.exposureTime
     rank: 1000
     domain_of:
     - ExperimentRun
     - Image
     - ExperimentalConditions
+    - DataCollectionStrategy
     range: QuantityValue
     inlined: true
   start_time:
     name: start_time
     description: Data collection start timestamp
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - ispyb:DataCollection.startTime
     rank: 1000
@@ -1234,7 +1385,7 @@ attributes:
   end_time:
     name: end_time
     description: Data collection end timestamp
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - ispyb:DataCollection.endTime
     rank: 1000
@@ -1246,7 +1397,7 @@ attributes:
     description: Resolution at edge of detector, typically specified in Angstroms
       (Å). Data providers may specify alternative units by including the unit in the
       QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - ispyb:DataCollection.resolution
     rank: 1000
@@ -1260,7 +1411,7 @@ attributes:
     description: Resolution at corner of detector, typically specified in Angstroms
       (Å). Data providers may specify alternative units by including the unit in the
       QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - ispyb:DataCollection.resolutionAtCorner
     rank: 1000
@@ -1271,7 +1422,7 @@ attributes:
   ispyb_data_collection_id:
     name: ispyb_data_collection_id
     description: ISPyB DataCollection.dataCollectionId for traceability
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ExperimentRun
@@ -1280,7 +1431,7 @@ attributes:
   ispyb_session_id:
     name: ispyb_session_id
     description: ISPyB BLSession.sessionId
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ExperimentRun
@@ -1296,7 +1447,7 @@ attributes:
 ```yaml
 name: ExperimentRun
 description: An experimental data collection session
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: NamedThing
 attributes:
   experiment_code:
@@ -1304,7 +1455,7 @@ attributes:
     description: Human-friendly laboratory or facility identifier for the experiment
       (e.g., 'SIBYLS-2024-02-01-hetBGL', 'CRYOEM-RUN-240815-001'). Used for local
       tracking and cross-referencing within laboratory systems.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: experiment_code
     owner: ExperimentRun
@@ -1315,7 +1466,7 @@ attributes:
   experiment_date:
     name: experiment_date
     description: Date of the experiment
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: experiment_date
     owner: ExperimentRun
@@ -1326,7 +1477,7 @@ attributes:
     name: operator_id
     description: Identifier or name of the person who performed the experiment data
       collection (e.g., 'jsmith', 'John Smith', or personnel ID)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: operator_id
     owner: ExperimentRun
     domain_of:
@@ -1336,11 +1487,11 @@ attributes:
   technique:
     name: technique
     description: Technique used for data collection
-    from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
+    from_schema: http://w3id.org/lambda/
     alias: technique
     owner: ExperimentRun
     domain_of:
+    - SANSInstrument
     - ExperimentRun
     range: TechniqueEnum
     required: true
@@ -1348,7 +1499,7 @@ attributes:
     name: experimental_method
     description: Specific experimental method for structure determination (particularly
       for diffraction techniques)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: experimental_method
     owner: ExperimentRun
@@ -1359,7 +1510,7 @@ attributes:
   experimental_conditions:
     name: experimental_conditions
     description: Environmental and experimental conditions
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: experimental_conditions
     owner: ExperimentRun
@@ -1369,7 +1520,7 @@ attributes:
   data_collection_strategy:
     name: data_collection_strategy
     description: Strategy for data collection
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: data_collection_strategy
     owner: ExperimentRun
@@ -1379,7 +1530,7 @@ attributes:
   quality_metrics:
     name: quality_metrics
     description: Quality metrics for the experiment
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: quality_metrics
     owner: ExperimentRun
     domain_of:
@@ -1389,7 +1540,7 @@ attributes:
   raw_data_location:
     name: raw_data_location
     description: Location of raw data files
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: raw_data_location
     owner: ExperimentRun
@@ -1399,7 +1550,7 @@ attributes:
   processing_status:
     name: processing_status
     description: Current processing status
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: processing_status
     owner: ExperimentRun
@@ -1409,7 +1560,7 @@ attributes:
   daq_system:
     name: daq_system
     description: Data acquisition system used to collect this experiment
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: daq_system
     owner: ExperimentRun
     domain_of:
@@ -1419,7 +1570,9 @@ attributes:
   magnification:
     name: magnification
     description: Magnification used during data collection
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_imaging.nominal_magnification
     rank: 1000
     alias: magnification
     owner: ExperimentRun
@@ -1431,7 +1584,9 @@ attributes:
   calibrated_pixel_size:
     name: calibrated_pixel_size
     description: Calibrated pixel size in Angstroms per pixel
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_image_recording.calibrated_pixel_size
     rank: 1000
     alias: calibrated_pixel_size
     owner: ExperimentRun
@@ -1443,7 +1598,7 @@ attributes:
     name: camera_binning
     description: Camera binning factor. This must be a positive float value (e.g.,
       1, 1.5, 2, 3).
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: camera_binning
     owner: ExperimentRun
@@ -1454,7 +1609,9 @@ attributes:
   exposure_time_per_frame:
     name: exposure_time_per_frame
     description: Exposure time per frame in milliseconds
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_image_recording.average_exposure_time
     rank: 1000
     alias: exposure_time_per_frame
     owner: ExperimentRun
@@ -1465,7 +1622,9 @@ attributes:
   frames_per_movie:
     name: frames_per_movie
     description: Number of frames per movie
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_image_recording.num_frames_per_image
     rank: 1000
     alias: frames_per_movie
     owner: ExperimentRun
@@ -1476,7 +1635,7 @@ attributes:
   total_exposure_time:
     name: total_exposure_time
     description: Total exposure time in milliseconds
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: total_exposure_time
     owner: ExperimentRun
@@ -1487,7 +1646,9 @@ attributes:
   total_dose:
     name: total_dose
     description: Total electron dose in e-/Angstrom^2
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_image_recording.avg_electron_dose_per_image
     rank: 1000
     alias: total_dose
     owner: ExperimentRun
@@ -1499,7 +1660,7 @@ attributes:
   dose_rate:
     name: dose_rate
     description: Dose rate in e-/pixel/s or e-/Angstrom^2/s
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: dose_rate
     owner: ExperimentRun
@@ -1510,7 +1671,7 @@ attributes:
   defocus_target:
     name: defocus_target
     description: Target defocus value in micrometers
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: defocus_target
     owner: ExperimentRun
@@ -1521,7 +1682,9 @@ attributes:
   defocus_range_min:
     name: defocus_range_min
     description: Minimum defocus range in micrometers
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_imaging.nominal_defocus_min
     rank: 1000
     alias: defocus_range_min
     owner: ExperimentRun
@@ -1532,7 +1695,9 @@ attributes:
   defocus_range_max:
     name: defocus_range_max
     description: Maximum defocus range in micrometers
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_imaging.nominal_defocus_max
     rank: 1000
     alias: defocus_range_max
     owner: ExperimentRun
@@ -1543,7 +1708,7 @@ attributes:
   defocus_range_increment:
     name: defocus_range_increment
     description: Defocus range increment in micrometers
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: defocus_range_increment
     owner: ExperimentRun
@@ -1554,7 +1719,7 @@ attributes:
   astigmatism_target:
     name: astigmatism_target
     description: Target astigmatism in Angstroms
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: astigmatism_target
     owner: ExperimentRun
@@ -1565,7 +1730,7 @@ attributes:
   coma:
     name: coma
     description: Coma aberration in nanometers
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: coma
     owner: ExperimentRun
@@ -1576,7 +1741,7 @@ attributes:
   stage_tilt:
     name: stage_tilt
     description: Stage tilt angle in degrees
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: stage_tilt
     owner: ExperimentRun
@@ -1587,7 +1752,7 @@ attributes:
   autoloader_slot:
     name: autoloader_slot
     description: Autoloader slot identifier
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: autoloader_slot
     owner: ExperimentRun
@@ -1597,7 +1762,7 @@ attributes:
   shots_per_hole:
     name: shots_per_hole
     description: Number of shots taken per hole
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: shots_per_hole
     owner: ExperimentRun
@@ -1609,7 +1774,7 @@ attributes:
     name: holes_per_group
     description: Number of holes per group. Data providers may include unit information
       in the QuantityValue if needed.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: holes_per_group
     owner: ExperimentRun
@@ -1620,7 +1785,7 @@ attributes:
   acquisition_software:
     name: acquisition_software
     description: Acquisition software used (e.g., SerialEM, EPU, Leginon)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: acquisition_software
     owner: ExperimentRun
@@ -1630,9 +1795,29 @@ attributes:
   acquisition_software_version:
     name: acquisition_software_version
     description: Version of acquisition software
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: acquisition_software_version
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: string
+  detector:
+    name: detector
+    description: Run-specific detector identifier or detector component used for data
+      collection. Use this when a beamline/instrument can operate with multiple or
+      swappable detectors and the detector identity is specific to this ExperimentRun.
+    comments:
+    - This is optional and distinct from Instrument-level detector model/manufacturer
+      metadata.
+    - Use ExperimentInstrumentAssociation with role=detector when the detector is
+      modeled as a separate Instrument record.
+    from_schema: http://w3id.org/lambda/
+    aliases:
+    - detector_id
+    - detector_name
+    rank: 1000
+    alias: detector
     owner: ExperimentRun
     domain_of:
     - ExperimentRun
@@ -1641,24 +1826,47 @@ attributes:
     name: wavelength
     description: X-ray wavelength, typically specified in Angstroms (Å). Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    aliases:
+    - wavelength_a
     exact_mappings:
     - nsls2:Wavelength
     - imgCIF:_diffrn_radiation_wavelength.wavelength
     - mmCIF:_diffrn_radiation_wavelength.wavelength
     - ispyb:DataCollection.wavelength
-    rank: 1000
     alias: wavelength
     owner: ExperimentRun
     domain_of:
+    - SANSSource
     - ExperimentRun
+    range: QuantityValue
+    inlined: true
+  energy:
+    name: energy
+    description: X-ray beam energy for this run. Data providers may specify eV, keV,
+      or another appropriate energy unit in the QuantityValue.
+    from_schema: http://w3id.org/lambda/
+    aliases:
+    - beam_energy
+    exact_mappings:
+    - nsls2:Energy
+    - ispyb:DataCollection.energy
+    alias: energy
+    owner: ExperimentRun
+    domain_of:
+    - SANSSource
+    - ExperimentRun
+    - DataCollectionStrategy
     range: QuantityValue
     inlined: true
   oscillation_angle:
     name: oscillation_angle
     description: Oscillation angle per image, typically specified in degrees. Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    aliases:
+    - oscillation_width
+    - oscillation_per_image_deg
     exact_mappings:
     - nsls2:Angle_increment
     - imgCIF:_diffrn_scan_axis.angle_increment
@@ -1675,7 +1883,7 @@ attributes:
     name: start_angle
     description: Starting rotation angle, typically specified in degrees. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:Start_angle
     - imgCIF:_diffrn_scan_axis.angle_start
@@ -1687,10 +1895,40 @@ attributes:
     - ExperimentRun
     range: QuantityValue
     inlined: true
+  sweep_start:
+    name: sweep_start
+    description: Starting angle of an X-ray oscillation sweep, typically specified
+      in degrees. For multi-sweep collections, use the value for this run or acquisition
+      segment.
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - imgCIF:_diffrn_scan_axis.angle_start
+    - ispyb:DataCollection.axisStart
+    rank: 1000
+    alias: sweep_start
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    - DataCollectionStrategy
+    range: QuantityValue
+    inlined: true
+  sweep_end:
+    name: sweep_end
+    description: Ending angle of an X-ray oscillation sweep, typically specified in
+      degrees.
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    alias: sweep_end
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    - DataCollectionStrategy
+    range: QuantityValue
+    inlined: true
   number_of_images:
     name: number_of_images
     description: Total number of diffraction images collected
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: number_of_images
     owner: ExperimentRun
@@ -1702,7 +1940,7 @@ attributes:
     name: beam_center_x
     description: Beam center X coordinate, typically specified in pixels ([px]). Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:Beam_xy_x
     - imgCIF:_diffrn_detector.beam_centre_x
@@ -1719,7 +1957,7 @@ attributes:
     name: beam_center_y
     description: Beam center Y coordinate, typically specified in pixels ([px]). Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:Beam_xy_y
     - imgCIF:_diffrn_detector.beam_centre_y
@@ -1732,12 +1970,30 @@ attributes:
     - ExperimentRun
     range: QuantityValue
     inlined: true
+  beam_center_pixels:
+    name: beam_center_pixels
+    description: Combined beam center pixel coordinates as reported by systems such
+      as NSLS-II AMX. Use beam_center_x and beam_center_y when coordinates are represented
+      as separate run-level values.
+    from_schema: http://w3id.org/lambda/
+    aliases:
+    - beam_center
+    rank: 1000
+    alias: beam_center_pixels
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    - DataCollectionStrategy
+    range: BeamCenterPixels
+    inlined: true
   detector_distance:
     name: detector_distance
     description: Distance from sample to detector, typically specified in millimeters
       (mm). Data providers may specify alternative units by including the unit in
       the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    aliases:
+    - detector_distance_mm
     exact_mappings:
     - nsls2:Detector_distance
     - imgCIF:_diffrn_measurement.sample_detector_distance
@@ -1757,14 +2013,14 @@ attributes:
       the unit in the QuantityValue.
     comments:
     - 'imgCIF: _array_element_size.size[1]'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:Pixel_size_x
     - imgCIF:_array_element_size.size
-    rank: 1000
     alias: pixel_size_x
     owner: ExperimentRun
     domain_of:
+    - SANSDetector
     - ExperimentRun
     range: QuantityValue
     inlined: true
@@ -1775,14 +2031,14 @@ attributes:
       the unit in the QuantityValue.
     comments:
     - 'imgCIF: _array_element_size.size[2]'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:Pixel_size_y
     - imgCIF:_array_element_size.size
-    rank: 1000
     alias: pixel_size_y
     owner: ExperimentRun
     domain_of:
+    - SANSDetector
     - ExperimentRun
     range: QuantityValue
     inlined: true
@@ -1790,7 +2046,7 @@ attributes:
     name: total_rotation
     description: Total rotation range collected, typically specified in degrees. Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:Total_rotation_deg
     - imgCIF:_diffrn_scan_axis.angle_range
@@ -1804,7 +2060,7 @@ attributes:
   beamline:
     name: beamline
     description: Beamline identifier (e.g., FMX, AMX, 12.3.1)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:Beamline
     - mmCIF:_diffrn_source.pdbx_synchrotron_beamline
@@ -1821,7 +2077,10 @@ attributes:
       specify as a decimal fraction or percentage by including the unit in the QuantityValue.
     comments:
     - Percentage of full beam intensity used
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    aliases:
+    - attenuation
+    - transmission_percent
     exact_mappings:
     - ispyb:DataCollection.transmission
     rank: 1000
@@ -1838,13 +2097,13 @@ attributes:
       the QuantityValue.
     comments:
     - Measured or calculated photon flux
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - ispyb:DataCollection.flux
-    rank: 1000
     alias: flux
     owner: ExperimentRun
     domain_of:
+    - SANSSource
     - ExperimentRun
     - XRFImage
     range: QuantityValue
@@ -1854,7 +2113,7 @@ attributes:
     description: Photon flux at end of data collection, typically specified in photons
       per second. Data providers may specify alternative units by including the unit
       in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - ispyb:DataCollection.flux_end
     rank: 1000
@@ -1869,7 +2128,7 @@ attributes:
     description: Horizontal slit gap aperture, typically specified in micrometers
       (µm). Data providers may specify alternative units by including the unit in
       the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - ispyb:DataCollection.slitGapHorizontal
     rank: 1000
@@ -1883,7 +2142,7 @@ attributes:
     name: slit_gap_vertical
     description: Vertical slit gap aperture, typically specified in micrometers (µm).
       Data providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - ispyb:DataCollection.slitGapVertical
     rank: 1000
@@ -1900,7 +2159,7 @@ attributes:
       Primary undulator gap for beamlines with insertion devices.
     comments:
     - Primary undulator gap for beamlines with insertion devices
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - ispyb:DataCollection.undulatorGap1
     rank: 1000
@@ -1915,7 +2174,7 @@ attributes:
     description: Synchrotron storage ring fill mode
     comments:
     - e.g., 'Top-up', 'Decay', 'Hybrid'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - ispyb:DataCollection.synchrotronMode
     rank: 1000
@@ -1928,8 +2187,9 @@ attributes:
     name: exposure_time
     description: Exposure time per image, typically specified in seconds (s). Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
+    - nsls2:Exposure_time
     - ispyb:DataCollection.exposureTime
     rank: 1000
     alias: exposure_time
@@ -1938,12 +2198,13 @@ attributes:
     - ExperimentRun
     - Image
     - ExperimentalConditions
+    - DataCollectionStrategy
     range: QuantityValue
     inlined: true
   start_time:
     name: start_time
     description: Data collection start timestamp
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - ispyb:DataCollection.startTime
     rank: 1000
@@ -1955,7 +2216,7 @@ attributes:
   end_time:
     name: end_time
     description: Data collection end timestamp
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - ispyb:DataCollection.endTime
     rank: 1000
@@ -1969,7 +2230,7 @@ attributes:
     description: Resolution at edge of detector, typically specified in Angstroms
       (Å). Data providers may specify alternative units by including the unit in the
       QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - ispyb:DataCollection.resolution
     rank: 1000
@@ -1985,7 +2246,7 @@ attributes:
     description: Resolution at corner of detector, typically specified in Angstroms
       (Å). Data providers may specify alternative units by including the unit in the
       QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     exact_mappings:
     - ispyb:DataCollection.resolutionAtCorner
     rank: 1000
@@ -1998,7 +2259,7 @@ attributes:
   ispyb_data_collection_id:
     name: ispyb_data_collection_id
     description: ISPyB DataCollection.dataCollectionId for traceability
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: ispyb_data_collection_id
     owner: ExperimentRun
@@ -2009,7 +2270,7 @@ attributes:
   ispyb_session_id:
     name: ispyb_session_id
     description: ISPyB BLSession.sessionId
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: ispyb_session_id
     owner: ExperimentRun
@@ -2022,7 +2283,7 @@ attributes:
     description: Globally unique identifier as an IRI or CURIE for machine processing
       and external references. Used for linking data across systems and semantic web
       integration.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     identifier: true
     alias: id
@@ -2035,7 +2296,7 @@ attributes:
   title:
     name: title
     description: A human-readable name or title for this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     slot_uri: dcterms:title
     alias: title
@@ -2046,7 +2307,7 @@ attributes:
   description:
     name: description
     description: A detailed textual description of this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: description
     owner: ExperimentRun

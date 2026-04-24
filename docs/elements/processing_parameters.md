@@ -9,7 +9,7 @@ _Parameters used in processing_
 
 
 
-URI: [lambdaber:processing_parameters](https://w3id.org/lambda-ber-schema/processing_parameters)
+URI: [lambda:processing_parameters](http://w3id.org/lambda/processing_parameters)
 Alias: processing_parameters
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: processing_parameters
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: processing_parameters
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:processing_parameters |
-| native | lambdaber:processing_parameters |
+| self | lambda:processing_parameters |
+| native | lambda:processing_parameters |
 
 
 
@@ -67,7 +67,7 @@ Alias: processing_parameters
 ```yaml
 name: processing_parameters
 description: Parameters used in processing
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: processing_parameters
 owner: WorkflowRun

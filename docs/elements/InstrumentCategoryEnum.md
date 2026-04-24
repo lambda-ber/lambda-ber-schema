@@ -7,7 +7,7 @@ _Categories of instruments based on their nature and location_
 
 
 
-URI: [lambdaber:InstrumentCategoryEnum](https://w3id.org/lambda-ber-schema/InstrumentCategoryEnum)
+URI: [lambda:InstrumentCategoryEnum](http://w3id.org/lambda/InstrumentCategoryEnum)
 
 ## Permissible Values
 
@@ -48,7 +48,7 @@ URI: [lambdaber:InstrumentCategoryEnum](https://w3id.org/lambda-ber-schema/Instr
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -63,7 +63,7 @@ name: InstrumentCategoryEnum
 description: Categories of instruments based on their nature and location
 comments:
 - Use to distinguish synchrotron beamlines from laboratory equipment
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   SYNCHROTRON_BEAMLINE:

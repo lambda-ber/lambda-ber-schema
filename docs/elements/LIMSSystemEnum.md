@@ -7,7 +7,7 @@ _Laboratory Information Management Systems (LIMS) used at structural biology fac
 
 
 
-URI: [lambdaber:LIMSSystemEnum](https://w3id.org/lambda-ber-schema/LIMSSystemEnum)
+URI: [lambda:LIMSSystemEnum](http://w3id.org/lambda/LIMSSystemEnum)
 
 ## Permissible Values
 
@@ -43,7 +43,7 @@ URI: [lambdaber:LIMSSystemEnum](https://w3id.org/lambda-ber-schema/LIMSSystemEnu
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -58,7 +58,7 @@ name: LIMSSystemEnum
 description: Laboratory Information Management Systems (LIMS) used at structural biology
   facilities to manage samples, experiments, and data workflows. These systems track
   samples from shipment through data collection and processing.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
   ispyb:

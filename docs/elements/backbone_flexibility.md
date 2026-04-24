@@ -9,7 +9,7 @@ _B-factor or flexibility measure_
 
 
 
-URI: [lambdaber:backbone_flexibility](https://w3id.org/lambda-ber-schema/backbone_flexibility)
+URI: [lambda:backbone_flexibility](http://w3id.org/lambda/backbone_flexibility)
 Alias: backbone_flexibility
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: backbone_flexibility
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: backbone_flexibility
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:backbone_flexibility |
-| native | lambdaber:backbone_flexibility |
+| self | lambda:backbone_flexibility |
+| native | lambda:backbone_flexibility |
 
 
 
@@ -67,7 +67,7 @@ Alias: backbone_flexibility
 ```yaml
 name: backbone_flexibility
 description: B-factor or flexibility measure
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: backbone_flexibility
 owner: StructuralFeature

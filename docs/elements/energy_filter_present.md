@@ -9,7 +9,7 @@ _Whether energy filter is present_
 
 
 
-URI: [lambdaber:energy_filter_present](https://w3id.org/lambda-ber-schema/energy_filter_present)
+URI: [lambda:energy_filter_present](http://w3id.org/lambda/energy_filter_present)
 Alias: energy_filter_present
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: energy_filter_present
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: energy_filter_present
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:energy_filter_present |
-| native | lambdaber:energy_filter_present |
+| self | lambda:energy_filter_present |
+| native | lambda:energy_filter_present |
 
 
 
@@ -67,7 +67,7 @@ Alias: energy_filter_present
 ```yaml
 name: energy_filter_present
 description: Whether energy filter is present
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: energy_filter_present
 owner: CryoEMInstrument

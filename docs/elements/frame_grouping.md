@@ -9,7 +9,7 @@ _Number of frames grouped together_
 
 
 
-URI: [lambdaber:frame_grouping](https://w3id.org/lambda-ber-schema/frame_grouping)
+URI: [lambda:frame_grouping](http://w3id.org/lambda/frame_grouping)
 Alias: frame_grouping
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: frame_grouping
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: frame_grouping
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:frame_grouping |
-| native | lambdaber:frame_grouping |
+| self | lambda:frame_grouping |
+| native | lambda:frame_grouping |
 
 
 
@@ -67,7 +67,7 @@ Alias: frame_grouping
 ```yaml
 name: frame_grouping
 description: Number of frames grouped together
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: frame_grouping
 owner: MotionCorrectionParameters

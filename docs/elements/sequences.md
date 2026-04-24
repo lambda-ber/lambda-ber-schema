@@ -9,7 +9,7 @@ _Amino acid or nucleotide sequences_
 
 
 
-URI: [lambdaber:sequences](https://w3id.org/lambda-ber-schema/sequences)
+URI: [lambda:sequences](http://w3id.org/lambda/sequences)
 Alias: sequences
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: sequences
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: sequences
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:sequences |
-| native | lambdaber:sequences |
+| self | lambda:sequences |
+| native | lambda:sequences |
 
 
 
@@ -69,7 +69,7 @@ Alias: sequences
 ```yaml
 name: sequences
 description: Amino acid or nucleotide sequences
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: sequences
 owner: MolecularComposition

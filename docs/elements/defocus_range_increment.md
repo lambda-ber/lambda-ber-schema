@@ -9,7 +9,7 @@ _Defocus range increment in micrometers_
 
 
 
-URI: [lambdaber:defocus_range_increment](https://w3id.org/lambda-ber-schema/defocus_range_increment)
+URI: [lambda:defocus_range_increment](http://w3id.org/lambda/defocus_range_increment)
 Alias: defocus_range_increment
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: defocus_range_increment
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: defocus_range_increment
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:defocus_range_increment |
-| native | lambdaber:defocus_range_increment |
+| self | lambda:defocus_range_increment |
+| native | lambda:defocus_range_increment |
 
 
 
@@ -67,7 +67,7 @@ Alias: defocus_range_increment
 ```yaml
 name: defocus_range_increment
 description: Defocus range increment in micrometers
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: defocus_range_increment
 owner: ExperimentRun

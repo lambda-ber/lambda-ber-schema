@@ -9,7 +9,7 @@ _NCBI Taxonomy ID for source organism_
 
 
 
-URI: [lambdaber:ncbi_taxid](https://w3id.org/lambda-ber-schema/ncbi_taxid)
+URI: [lambda:ncbi_taxid](http://w3id.org/lambda/ncbi_taxid)
 Alias: ncbi_taxid
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: ncbi_taxid
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: ncbi_taxid
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:ncbi_taxid |
-| native | lambdaber:ncbi_taxid |
+| self | lambda:ncbi_taxid |
+| native | lambda:ncbi_taxid |
 
 
 
@@ -67,7 +67,7 @@ Alias: ncbi_taxid
 ```yaml
 name: ncbi_taxid
 description: NCBI Taxonomy ID for source organism
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: ncbi_taxid
 owner: ProteinConstruct

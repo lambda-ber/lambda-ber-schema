@@ -9,7 +9,7 @@ _Description of initial crystallization hit condition_
 
 
 
-URI: [lambdaber:initial_hit_condition](https://w3id.org/lambda-ber-schema/initial_hit_condition)
+URI: [lambda:initial_hit_condition](http://w3id.org/lambda/initial_hit_condition)
 Alias: initial_hit_condition
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: initial_hit_condition
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: initial_hit_condition
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:initial_hit_condition |
-| native | lambdaber:initial_hit_condition |
+| self | lambda:initial_hit_condition |
+| native | lambda:initial_hit_condition |
 
 
 
@@ -67,7 +67,7 @@ Alias: initial_hit_condition
 ```yaml
 name: initial_hit_condition
 description: Description of initial crystallization hit condition
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: initial_hit_condition
 owner: XRayPreparation

@@ -9,7 +9,7 @@ _Starting rotation angle, typically specified in degrees. Data providers may spe
 
 
 
-URI: [lambdaber:start_angle](https://w3id.org/lambda-ber-schema/start_angle)
+URI: [lambda:start_angle](http://w3id.org/lambda/start_angle)
 Alias: start_angle
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: start_angle
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: start_angle
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:start_angle |
-| native | lambdaber:start_angle |
+| self | lambda:start_angle |
+| native | lambda:start_angle |
 | exact | nsls2:Start_angle, imgCIF:_diffrn_scan_axis.angle_start, ispyb:DataCollection.axisStart |
 
 
@@ -69,7 +69,7 @@ Alias: start_angle
 name: start_angle
 description: Starting rotation angle, typically specified in degrees. Data providers
   may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 exact_mappings:
 - nsls2:Start_angle
 - imgCIF:_diffrn_scan_axis.angle_start

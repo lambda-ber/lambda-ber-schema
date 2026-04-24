@@ -9,7 +9,7 @@ _Parameters specific to 3D refinement workflows_
 
 
 
-URI: [lambdaber:RefinementParameters](https://w3id.org/lambda-ber-schema/RefinementParameters)
+URI: [lambda:RefinementParameters](http://w3id.org/lambda/RefinementParameters)
 
 
 
@@ -147,7 +147,7 @@ URI: [lambdaber:RefinementParameters](https://w3id.org/lambda-ber-schema/Refinem
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -156,8 +156,8 @@ URI: [lambdaber:RefinementParameters](https://w3id.org/lambda-ber-schema/Refinem
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:RefinementParameters |
-| native | lambdaber:RefinementParameters |
+| self | lambda:RefinementParameters |
+| native | lambda:RefinementParameters |
 
 
 
@@ -174,13 +174,15 @@ URI: [lambdaber:RefinementParameters](https://w3id.org/lambda-ber-schema/Refinem
 ```yaml
 name: RefinementParameters
 description: Parameters specific to 3D refinement workflows
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: AttributeGroup
 attributes:
   symmetry:
     name: symmetry
     description: Symmetry applied (C1, Cn, Dn, T, O, I)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_3d_reconstruction.symmetry_type
     rank: 1000
     domain_of:
     - RefinementParameters
@@ -189,7 +191,7 @@ attributes:
     name: pixel_size
     description: Pixel size, typically specified in Angstroms per pixel. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - Image
     - RefinementParameters
@@ -198,7 +200,7 @@ attributes:
   box_size:
     name: box_size
     description: Box size in pixels
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - ParticlePickingParameters
     - RefinementParameters
@@ -207,7 +209,7 @@ attributes:
   gold_standard:
     name: gold_standard
     description: Whether gold-standard refinement was used
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - RefinementParameters
@@ -215,7 +217,7 @@ attributes:
   split_strategy:
     name: split_strategy
     description: Strategy for data splitting
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - RefinementParameters
@@ -224,7 +226,9 @@ attributes:
     name: resolution_0_143
     description: Resolution at FSC=0.143, typically specified in Angstroms. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_3d_reconstruction.resolution
     rank: 1000
     domain_of:
     - RefinementParameters
@@ -234,7 +238,7 @@ attributes:
     name: resolution_0_5
     description: Resolution at FSC=0.5, typically specified in Angstroms. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - RefinementParameters
@@ -245,7 +249,7 @@ attributes:
     description: B-factor used for map sharpening, typically specified in Angstroms
       squared (Å²). Data providers may specify alternative units by including the
       unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - RefinementParameters
@@ -261,13 +265,15 @@ attributes:
 ```yaml
 name: RefinementParameters
 description: Parameters specific to 3D refinement workflows
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: AttributeGroup
 attributes:
   symmetry:
     name: symmetry
     description: Symmetry applied (C1, Cn, Dn, T, O, I)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_3d_reconstruction.symmetry_type
     rank: 1000
     alias: symmetry
     owner: RefinementParameters
@@ -278,7 +284,7 @@ attributes:
     name: pixel_size
     description: Pixel size, typically specified in Angstroms per pixel. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: pixel_size
     owner: RefinementParameters
     domain_of:
@@ -289,7 +295,7 @@ attributes:
   box_size:
     name: box_size
     description: Box size in pixels
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: box_size
     owner: RefinementParameters
     domain_of:
@@ -300,7 +306,7 @@ attributes:
   gold_standard:
     name: gold_standard
     description: Whether gold-standard refinement was used
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: gold_standard
     owner: RefinementParameters
@@ -310,7 +316,7 @@ attributes:
   split_strategy:
     name: split_strategy
     description: Strategy for data splitting
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: split_strategy
     owner: RefinementParameters
@@ -321,7 +327,9 @@ attributes:
     name: resolution_0_143
     description: Resolution at FSC=0.143, typically specified in Angstroms. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_3d_reconstruction.resolution
     rank: 1000
     alias: resolution_0_143
     owner: RefinementParameters
@@ -333,7 +341,7 @@ attributes:
     name: resolution_0_5
     description: Resolution at FSC=0.5, typically specified in Angstroms. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: resolution_0_5
     owner: RefinementParameters
@@ -346,7 +354,7 @@ attributes:
     description: B-factor used for map sharpening, typically specified in Angstroms
       squared (Å²). Data providers may specify alternative units by including the
       unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: map_sharpening_bfactor
     owner: RefinementParameters
@@ -356,7 +364,7 @@ attributes:
     inlined: true
   description:
     name: description
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: description
     owner: RefinementParameters
     domain_of:

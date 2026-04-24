@@ -9,7 +9,7 @@ _Glow discharge pressure, typically specified in millibars. Data providers may s
 
 
 
-URI: [lambdaber:glow_discharge_pressure](https://w3id.org/lambda-ber-schema/glow_discharge_pressure)
+URI: [lambda:glow_discharge_pressure](http://w3id.org/lambda/glow_discharge_pressure)
 Alias: glow_discharge_pressure
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: glow_discharge_pressure
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: glow_discharge_pressure
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:glow_discharge_pressure |
-| native | lambdaber:glow_discharge_pressure |
+| self | lambda:glow_discharge_pressure |
+| native | lambda:glow_discharge_pressure |
+| exact | mmCIF:_em_sample_support.pretreatment_pressure |
 
 
 
@@ -68,7 +69,9 @@ Alias: glow_discharge_pressure
 name: glow_discharge_pressure
 description: Glow discharge pressure, typically specified in millibars. Data providers
   may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_em_sample_support.pretreatment_pressure
 rank: 1000
 alias: glow_discharge_pressure
 owner: CryoEMPreparation

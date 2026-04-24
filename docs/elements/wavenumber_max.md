@@ -9,7 +9,7 @@ _Maximum wavenumber, typically specified in inverse centimeters (cm⁻¹). Data 
 
 
 
-URI: [lambdaber:wavenumber_max](https://w3id.org/lambda-ber-schema/wavenumber_max)
+URI: [lambda:wavenumber_max](http://w3id.org/lambda/wavenumber_max)
 Alias: wavenumber_max
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: wavenumber_max
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: wavenumber_max
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:wavenumber_max |
-| native | lambdaber:wavenumber_max |
+| self | lambda:wavenumber_max |
+| native | lambda:wavenumber_max |
 
 
 
@@ -68,7 +68,7 @@ Alias: wavenumber_max
 name: wavenumber_max
 description: Maximum wavenumber, typically specified in inverse centimeters (cm⁻¹).
   Data providers may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: wavenumber_max
 owner: FTIRImage

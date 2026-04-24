@@ -9,7 +9,7 @@ _Overall MolProbity score_
 
 
 
-URI: [lambdaber:molprobity_score](https://w3id.org/lambda-ber-schema/molprobity_score)
+URI: [lambda:molprobity_score](http://w3id.org/lambda/molprobity_score)
 Alias: molprobity_score
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: molprobity_score
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: molprobity_score
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:molprobity_score |
-| native | lambdaber:molprobity_score |
+| self | lambda:molprobity_score |
+| native | lambda:molprobity_score |
 
 
 
@@ -67,7 +67,7 @@ Alias: molprobity_score
 ```yaml
 name: molprobity_score
 description: Overall MolProbity score
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: molprobity_score
 owner: QualityMetrics

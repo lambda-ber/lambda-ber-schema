@@ -9,7 +9,7 @@ _Completeness of anomalous data as a percentage (0-100). Data providers may spec
 
 
 
-URI: [lambdaber:anomalous_completeness](https://w3id.org/lambda-ber-schema/anomalous_completeness)
+URI: [lambda:anomalous_completeness](http://w3id.org/lambda/anomalous_completeness)
 Alias: anomalous_completeness
 
 <!-- no inheritance hierarchy -->
@@ -50,7 +50,7 @@ Alias: anomalous_completeness
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -59,8 +59,8 @@ Alias: anomalous_completeness
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:anomalous_completeness |
-| native | lambdaber:anomalous_completeness |
+| self | lambda:anomalous_completeness |
+| native | lambda:anomalous_completeness |
 | exact | ispyb:AutoProcScalingStatistics.anomalousCompleteness |
 
 
@@ -75,7 +75,7 @@ description: Completeness of anomalous data as a percentage (0-100). Data provid
   may specify as a decimal fraction or percentage by including the unit in the QuantityValue.
 comments:
 - Completeness of Bijvoet pairs
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 exact_mappings:
 - ispyb:AutoProcScalingStatistics.anomalousCompleteness
 rank: 1000

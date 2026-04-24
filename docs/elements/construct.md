@@ -9,7 +9,7 @@ _Construct description (e.g., domain boundaries, truncations)_
 
 
 
-URI: [nsls2:Construct](https://github.com/NSLS2/BER-LAMBDA/Construct)
+URI: [lambda:construct](http://w3id.org/lambda/construct)
 Alias: construct
 
 <!-- no inheritance hierarchy -->
@@ -36,10 +36,6 @@ Alias: construct
 
 
 
-## Comments
-
-* Maps to NSLS2 spreadsheet: Construct
-
 ## Identifier and Mapping Information
 
 
@@ -50,7 +46,7 @@ Alias: construct
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -59,8 +55,9 @@ Alias: construct
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | nsls2:Construct |
-| native | lambdaber:construct |
+| self | lambda:construct |
+| native | lambda:construct |
+| exact | nsls2:Construct |
 
 
 
@@ -71,11 +68,10 @@ Alias: construct
 ```yaml
 name: construct
 description: Construct description (e.g., domain boundaries, truncations)
-comments:
-- 'Maps to NSLS2 spreadsheet: Construct'
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- nsls2:Construct
 rank: 1000
-slot_uri: nsls2:Construct
 alias: construct
 owner: Sample
 domain_of:

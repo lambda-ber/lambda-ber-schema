@@ -9,7 +9,7 @@ _Protein-protein interactions and interfaces_
 
 
 
-URI: [lambdaber:ProteinProteinInteraction](https://w3id.org/lambda-ber-schema/ProteinProteinInteraction)
+URI: [lambda:ProteinProteinInteraction](http://w3id.org/lambda/ProteinProteinInteraction)
 
 
 
@@ -173,7 +173,7 @@ URI: [lambdaber:ProteinProteinInteraction](https://w3id.org/lambda-ber-schema/Pr
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -182,8 +182,8 @@ URI: [lambdaber:ProteinProteinInteraction](https://w3id.org/lambda-ber-schema/Pr
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:ProteinProteinInteraction |
-| native | lambdaber:ProteinProteinInteraction |
+| self | lambda:ProteinProteinInteraction |
+| native | lambda:ProteinProteinInteraction |
 
 
 
@@ -200,13 +200,13 @@ URI: [lambdaber:ProteinProteinInteraction](https://w3id.org/lambda-ber-schema/Pr
 ```yaml
 name: ProteinProteinInteraction
 description: Protein-protein interactions and interfaces
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: ProteinAnnotation
 attributes:
   partner_protein_id:
     name: partner_protein_id
     description: UniProt ID of interacting partner
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - ProteinProteinInteraction
@@ -214,14 +214,14 @@ attributes:
   partner_chain_id:
     name: partner_chain_id
     description: Chain ID of interacting partner
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - ProteinProteinInteraction
   interface_residues:
     name: interface_residues
     description: Residues at the interaction interface
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - ProteinProteinInteraction
@@ -229,7 +229,7 @@ attributes:
   partner_interface_residues:
     name: partner_interface_residues
     description: Partner residues at the interaction interface
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - ProteinProteinInteraction
@@ -237,7 +237,7 @@ attributes:
   interface_area:
     name: interface_area
     description: Buried surface area at interface (Ų)
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - ProteinProteinInteraction
@@ -247,7 +247,7 @@ attributes:
   binding_energy:
     name: binding_energy
     description: Calculated binding energy (kcal/mol)
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - ProteinProteinInteraction
@@ -257,7 +257,7 @@ attributes:
   dissociation_constant:
     name: dissociation_constant
     description: Experimental Kd if available
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - ProteinProteinInteraction
@@ -265,7 +265,7 @@ attributes:
   complex_stability:
     name: complex_stability
     description: Stability assessment of the complex
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - ProteinProteinInteraction
@@ -273,7 +273,7 @@ attributes:
   biological_assembly:
     name: biological_assembly
     description: Whether this represents a biological assembly
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - ProteinProteinInteraction
@@ -281,7 +281,7 @@ attributes:
   interaction_evidence:
     name: interaction_evidence
     description: Evidence for this interaction
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - ProteinProteinInteraction
@@ -297,13 +297,13 @@ attributes:
 ```yaml
 name: ProteinProteinInteraction
 description: Protein-protein interactions and interfaces
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: ProteinAnnotation
 attributes:
   partner_protein_id:
     name: partner_protein_id
     description: UniProt ID of interacting partner
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: partner_protein_id
     owner: ProteinProteinInteraction
@@ -314,7 +314,7 @@ attributes:
   partner_chain_id:
     name: partner_chain_id
     description: Chain ID of interacting partner
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: partner_chain_id
     owner: ProteinProteinInteraction
@@ -324,7 +324,7 @@ attributes:
   interface_residues:
     name: interface_residues
     description: Residues at the interaction interface
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: interface_residues
     owner: ProteinProteinInteraction
@@ -335,7 +335,7 @@ attributes:
   partner_interface_residues:
     name: partner_interface_residues
     description: Partner residues at the interaction interface
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: partner_interface_residues
     owner: ProteinProteinInteraction
@@ -346,7 +346,7 @@ attributes:
   interface_area:
     name: interface_area
     description: Buried surface area at interface (Ų)
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: interface_area
     owner: ProteinProteinInteraction
@@ -358,7 +358,7 @@ attributes:
   binding_energy:
     name: binding_energy
     description: Calculated binding energy (kcal/mol)
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: binding_energy
     owner: ProteinProteinInteraction
@@ -370,7 +370,7 @@ attributes:
   dissociation_constant:
     name: dissociation_constant
     description: Experimental Kd if available
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: dissociation_constant
     owner: ProteinProteinInteraction
@@ -380,7 +380,7 @@ attributes:
   complex_stability:
     name: complex_stability
     description: Stability assessment of the complex
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: complex_stability
     owner: ProteinProteinInteraction
@@ -390,7 +390,7 @@ attributes:
   biological_assembly:
     name: biological_assembly
     description: Whether this represents a biological assembly
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: biological_assembly
     owner: ProteinProteinInteraction
@@ -400,7 +400,7 @@ attributes:
   interaction_evidence:
     name: interaction_evidence
     description: Evidence for this interaction
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: interaction_evidence
     owner: ProteinProteinInteraction
@@ -411,7 +411,7 @@ attributes:
   protein_id:
     name: protein_id
     description: UniProt accession number
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: protein_id
     owner: ProteinProteinInteraction
@@ -424,7 +424,7 @@ attributes:
   pdb_entry:
     name: pdb_entry
     description: PDB identifier
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: pdb_entry
     owner: ProteinProteinInteraction
@@ -435,7 +435,7 @@ attributes:
   chain_id:
     name: chain_id
     description: Chain identifier in the PDB structure
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: chain_id
     owner: ProteinProteinInteraction
@@ -446,7 +446,7 @@ attributes:
   residue_range:
     name: residue_range
     description: Range of residues (e.g., '1-100', '25,27,30-35')
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: residue_range
     owner: ProteinProteinInteraction
@@ -457,7 +457,7 @@ attributes:
   confidence_score:
     name: confidence_score
     description: 'Confidence score for the annotation (range: 0-1)'
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: confidence_score
     owner: ProteinProteinInteraction
@@ -469,7 +469,7 @@ attributes:
   evidence_type:
     name: evidence_type
     description: Type of evidence supporting this annotation
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: evidence_type
     owner: ProteinProteinInteraction
@@ -479,7 +479,7 @@ attributes:
   evidence_code:
     name: evidence_code
     description: Evidence and Conclusion Ontology (ECO) code
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: evidence_code
     owner: ProteinProteinInteraction
@@ -489,7 +489,7 @@ attributes:
   source_database:
     name: source_database
     description: Source database or resource that provided this annotation
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: source_database
     owner: ProteinProteinInteraction
@@ -499,7 +499,7 @@ attributes:
   annotation_method:
     name: annotation_method
     description: Computational or experimental method used
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: annotation_method
     owner: ProteinProteinInteraction
@@ -510,7 +510,7 @@ attributes:
     name: publication_ids
     description: IDs of one or more publications supporting this annotation. Use PubMed
       IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: publication_ids
     owner: ProteinProteinInteraction
@@ -524,7 +524,7 @@ attributes:
     description: Globally unique identifier as an IRI or CURIE for machine processing
       and external references. Used for linking data across systems and semantic web
       integration.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     identifier: true
     alias: id
@@ -537,7 +537,7 @@ attributes:
   title:
     name: title
     description: A human-readable name or title for this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     slot_uri: dcterms:title
     alias: title
@@ -548,7 +548,7 @@ attributes:
   description:
     name: description
     description: A detailed textual description of this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: description
     owner: ProteinProteinInteraction

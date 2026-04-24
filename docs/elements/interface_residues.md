@@ -9,7 +9,7 @@ _Residues at the interaction interface_
 
 
 
-URI: [lambdaber:interface_residues](https://w3id.org/lambda-ber-schema/interface_residues)
+URI: [lambda:interface_residues](http://w3id.org/lambda/interface_residues)
 Alias: interface_residues
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: interface_residues
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: interface_residues
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:interface_residues |
-| native | lambdaber:interface_residues |
+| self | lambda:interface_residues |
+| native | lambda:interface_residues |
 
 
 
@@ -69,7 +69,7 @@ Alias: interface_residues
 ```yaml
 name: interface_residues
 description: Residues at the interaction interface
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: interface_residues
 owner: ProteinProteinInteraction

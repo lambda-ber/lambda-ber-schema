@@ -9,7 +9,7 @@ _Conditions under which measurement was made. If multiple sets of conditions wer
 
 
 
-URI: [lambdaber:measurement_conditions](https://w3id.org/lambda-ber-schema/measurement_conditions)
+URI: [lambda:measurement_conditions](http://w3id.org/lambda/measurement_conditions)
 Alias: measurement_conditions
 
 <!-- no inheritance hierarchy -->
@@ -48,7 +48,7 @@ Alias: measurement_conditions
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -57,8 +57,8 @@ Alias: measurement_conditions
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:measurement_conditions |
-| native | lambdaber:measurement_conditions |
+| self | lambda:measurement_conditions |
+| native | lambda:measurement_conditions |
 
 
 
@@ -72,7 +72,7 @@ description: Conditions under which measurement was made. If multiple sets of co
   were used, this will represent that the same values were obtained under different
   conditions. If values differ under different conditions, separate BiophysicalProperty
   instances should be created.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: measurement_conditions
 owner: BiophysicalProperty

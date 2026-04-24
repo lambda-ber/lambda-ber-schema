@@ -9,7 +9,7 @@ _The formal definition or meaning of the ontology term_
 
 
 
-URI: [lambdaber:definition](https://w3id.org/lambda-ber-schema/definition)
+URI: [lambda:definition](http://w3id.org/lambda/definition)
 Alias: definition
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: definition
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: definition
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:definition |
-| native | lambdaber:definition |
+| self | lambda:definition |
+| native | lambda:definition |
 
 
 
@@ -67,7 +67,7 @@ Alias: definition
 ```yaml
 name: definition
 description: The formal definition or meaning of the ontology term
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: definition
 owner: OntologyTerm

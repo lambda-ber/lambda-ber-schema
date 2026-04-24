@@ -9,7 +9,7 @@ _Integration module used_
 
 
 
-URI: [lambdaber:integrator_module](https://w3id.org/lambda-ber-schema/integrator_module)
+URI: [lambda:integrator_module](http://w3id.org/lambda/integrator_module)
 Alias: integrator_module
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: integrator_module
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: integrator_module
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:integrator_module |
-| native | lambdaber:integrator_module |
+| self | lambda:integrator_module |
+| native | lambda:integrator_module |
 
 
 
@@ -67,7 +67,7 @@ Alias: integrator_module
 ```yaml
 name: integrator_module
 description: Integration module used
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: integrator_module
 owner: WorkflowRun

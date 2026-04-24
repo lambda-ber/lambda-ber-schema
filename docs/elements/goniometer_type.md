@@ -9,7 +9,7 @@ _Type of goniometer_
 
 
 
-URI: [lambdaber:goniometer_type](https://w3id.org/lambda-ber-schema/goniometer_type)
+URI: [lambda:goniometer_type](http://w3id.org/lambda/goniometer_type)
 Alias: goniometer_type
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: goniometer_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: goniometer_type
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:goniometer_type |
-| native | lambdaber:goniometer_type |
+| self | lambda:goniometer_type |
+| native | lambda:goniometer_type |
+| exact | mmCIF:_diffrn_measurement.device |
 
 
 
@@ -67,7 +68,9 @@ Alias: goniometer_type
 ```yaml
 name: goniometer_type
 description: Type of goniometer
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_diffrn_measurement.device
 rank: 1000
 alias: goniometer_type
 owner: XRayInstrument

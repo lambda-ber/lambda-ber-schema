@@ -9,7 +9,7 @@ _Description of functional importance_
 
 
 
-URI: [lambdaber:functional_importance](https://w3id.org/lambda-ber-schema/functional_importance)
+URI: [lambda:functional_importance](http://w3id.org/lambda/functional_importance)
 Alias: functional_importance
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: functional_importance
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: functional_importance
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:functional_importance |
-| native | lambdaber:functional_importance |
+| self | lambda:functional_importance |
+| native | lambda:functional_importance |
 
 
 
@@ -67,7 +67,7 @@ Alias: functional_importance
 ```yaml
 name: functional_importance
 description: Description of functional importance
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: functional_importance
 owner: FunctionalSite

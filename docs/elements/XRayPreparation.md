@@ -9,7 +9,7 @@ _X-ray crystallography specific preparation_
 
 
 
-URI: [lambdaber:XRayPreparation](https://w3id.org/lambda-ber-schema/XRayPreparation)
+URI: [lambda:XRayPreparation](http://w3id.org/lambda/XRayPreparation)
 
 
 
@@ -219,7 +219,7 @@ URI: [lambdaber:XRayPreparation](https://w3id.org/lambda-ber-schema/XRayPreparat
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -228,8 +228,8 @@ URI: [lambdaber:XRayPreparation](https://w3id.org/lambda-ber-schema/XRayPreparat
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:XRayPreparation |
-| native | lambdaber:XRayPreparation |
+| self | lambda:XRayPreparation |
+| native | lambda:XRayPreparation |
 
 
 
@@ -246,13 +246,13 @@ URI: [lambdaber:XRayPreparation](https://w3id.org/lambda-ber-schema/XRayPreparat
 ```yaml
 name: XRayPreparation
 description: X-ray crystallography specific preparation
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: TechniqueSpecificPreparation
 attributes:
   protein_concentration_mg_per_ml:
     name: protein_concentration_mg_per_ml
     description: Protein concentration for crystallization in mg/mL
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - XRayPreparation
@@ -261,21 +261,23 @@ attributes:
   protein_buffer:
     name: protein_buffer
     description: Buffer composition for protein solution
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - XRayPreparation
   additives:
     name: additives
     description: Additives mixed with protein before crystallization
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - BufferComposition
     - XRayPreparation
   crystallization_method:
     name: crystallization_method
     description: Method used for crystallization
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_exptl_crystal_grow.method
     rank: 1000
     domain_of:
     - XRayPreparation
@@ -283,7 +285,7 @@ attributes:
   crystallization_conditions:
     name: crystallization_conditions
     description: Detailed crystallization conditions
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - CrystallizationConditions
     - XRayPreparation
@@ -291,7 +293,7 @@ attributes:
   screen_name:
     name: screen_name
     description: Name of crystallization screen used
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - CrystallizationConditions
     - XRayPreparation
@@ -299,7 +301,9 @@ attributes:
     name: temperature_c
     description: Crystallization temperature, typically specified in degrees Celsius.
       Data providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_exptl_crystal_grow.temp
     domain_of:
     - CrystallizationConditions
     - XRayPreparation
@@ -308,7 +312,7 @@ attributes:
   drop_ratio_protein_to_reservoir:
     name: drop_ratio_protein_to_reservoir
     description: Ratio of protein to reservoir solution in drop (e.g., 1:1, 2:1)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - CrystallizationConditions
     - XRayPreparation
@@ -316,7 +320,7 @@ attributes:
     name: drop_volume_nl
     description: Total drop volume, typically specified in nanoliters. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - XRayPreparation
@@ -326,7 +330,7 @@ attributes:
     name: reservoir_volume_ul
     description: Reservoir volume, typically specified in microliters. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - CrystallizationConditions
     - XRayPreparation
@@ -335,49 +339,49 @@ attributes:
   seeding_type:
     name: seeding_type
     description: Type of seeding used (micro, macro, streak)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - CrystallizationConditions
     - XRayPreparation
   seed_stock_dilution:
     name: seed_stock_dilution
     description: Dilution factor for seed stock
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - CrystallizationConditions
     - XRayPreparation
   initial_hit_condition:
     name: initial_hit_condition
     description: Description of initial crystallization hit condition
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - XRayPreparation
   optimization_strategy:
     name: optimization_strategy
     description: Strategy used to optimize crystals
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - XRayPreparation
   optimized_condition:
     name: optimized_condition
     description: Final optimized crystallization condition
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - XRayPreparation
   crystal_size_um:
     name: crystal_size_um
     description: Crystal dimensions in micrometers
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - CrystallizationConditions
     - XRayPreparation
   cryoprotectant:
     name: cryoprotectant
     description: Cryoprotectant used
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - XRayPreparation
@@ -387,7 +391,7 @@ attributes:
     description: Cryoprotectant concentration, typically specified as a percentage.
       Data providers may specify as decimal fraction by including the unit in the
       QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - XRayPreparation
@@ -396,38 +400,37 @@ attributes:
   soak_compound:
     name: soak_compound
     description: Compound used for soaking (ligand, heavy atom)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - XRayPreparation
   soak_conditions:
     name: soak_conditions
     description: Conditions for crystal soaking
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - XRayPreparation
   mounting_method:
     name: mounting_method
     description: Crystal mounting method
-    comments:
-    - 'Maps to NSLS2 spreadsheet: Mount_Type'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - nsls2:Mount_Type
     rank: 1000
-    slot_uri: nsls2:Mount_Type
     domain_of:
     - XRayPreparation
   flash_cooling_method:
     name: flash_cooling_method
     description: Flash cooling protocol
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - XRayPreparation
   crystal_notes:
     name: crystal_notes
     description: Additional notes about crystal quality and handling
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - XRayPreparation
@@ -435,11 +438,10 @@ attributes:
     name: loop_size
     description: Loop size, typically specified in micrometers. Data providers may
       specify alternative units by including the unit in the QuantityValue.
-    comments:
-    - 'Maps to NSLS2 spreadsheet: Loop_Size'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - nsls2:Loop_Size
     rank: 1000
-    slot_uri: nsls2:Loop_Size
     domain_of:
     - XRayPreparation
     range: QuantityValue
@@ -448,11 +450,10 @@ attributes:
     name: mounting_temperature
     description: Temperature during mounting, typically specified in Kelvin. Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    comments:
-    - 'Maps to NSLS2 spreadsheet: Temperature'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - nsls2:Temperature
     rank: 1000
-    slot_uri: nsls2:Temperature
     domain_of:
     - XRayPreparation
     range: QuantityValue
@@ -467,13 +468,13 @@ attributes:
 ```yaml
 name: XRayPreparation
 description: X-ray crystallography specific preparation
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: TechniqueSpecificPreparation
 attributes:
   protein_concentration_mg_per_ml:
     name: protein_concentration_mg_per_ml
     description: Protein concentration for crystallization in mg/mL
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: protein_concentration_mg_per_ml
     owner: XRayPreparation
@@ -484,7 +485,7 @@ attributes:
   protein_buffer:
     name: protein_buffer
     description: Buffer composition for protein solution
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: protein_buffer
     owner: XRayPreparation
@@ -494,7 +495,7 @@ attributes:
   additives:
     name: additives
     description: Additives mixed with protein before crystallization
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: additives
     owner: XRayPreparation
     domain_of:
@@ -504,7 +505,9 @@ attributes:
   crystallization_method:
     name: crystallization_method
     description: Method used for crystallization
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_exptl_crystal_grow.method
     rank: 1000
     alias: crystallization_method
     owner: XRayPreparation
@@ -514,7 +517,7 @@ attributes:
   crystallization_conditions:
     name: crystallization_conditions
     description: Detailed crystallization conditions
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: crystallization_conditions
     owner: XRayPreparation
     domain_of:
@@ -524,7 +527,7 @@ attributes:
   screen_name:
     name: screen_name
     description: Name of crystallization screen used
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: screen_name
     owner: XRayPreparation
     domain_of:
@@ -535,7 +538,9 @@ attributes:
     name: temperature_c
     description: Crystallization temperature, typically specified in degrees Celsius.
       Data providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_exptl_crystal_grow.temp
     alias: temperature_c
     owner: XRayPreparation
     domain_of:
@@ -546,7 +551,7 @@ attributes:
   drop_ratio_protein_to_reservoir:
     name: drop_ratio_protein_to_reservoir
     description: Ratio of protein to reservoir solution in drop (e.g., 1:1, 2:1)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: drop_ratio_protein_to_reservoir
     owner: XRayPreparation
     domain_of:
@@ -557,7 +562,7 @@ attributes:
     name: drop_volume_nl
     description: Total drop volume, typically specified in nanoliters. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: drop_volume_nl
     owner: XRayPreparation
@@ -569,7 +574,7 @@ attributes:
     name: reservoir_volume_ul
     description: Reservoir volume, typically specified in microliters. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: reservoir_volume_ul
     owner: XRayPreparation
     domain_of:
@@ -580,7 +585,7 @@ attributes:
   seeding_type:
     name: seeding_type
     description: Type of seeding used (micro, macro, streak)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: seeding_type
     owner: XRayPreparation
     domain_of:
@@ -590,7 +595,7 @@ attributes:
   seed_stock_dilution:
     name: seed_stock_dilution
     description: Dilution factor for seed stock
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: seed_stock_dilution
     owner: XRayPreparation
     domain_of:
@@ -600,7 +605,7 @@ attributes:
   initial_hit_condition:
     name: initial_hit_condition
     description: Description of initial crystallization hit condition
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: initial_hit_condition
     owner: XRayPreparation
@@ -610,7 +615,7 @@ attributes:
   optimization_strategy:
     name: optimization_strategy
     description: Strategy used to optimize crystals
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: optimization_strategy
     owner: XRayPreparation
@@ -620,7 +625,7 @@ attributes:
   optimized_condition:
     name: optimized_condition
     description: Final optimized crystallization condition
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: optimized_condition
     owner: XRayPreparation
@@ -630,7 +635,7 @@ attributes:
   crystal_size_um:
     name: crystal_size_um
     description: Crystal dimensions in micrometers
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: crystal_size_um
     owner: XRayPreparation
     domain_of:
@@ -640,7 +645,7 @@ attributes:
   cryoprotectant:
     name: cryoprotectant
     description: Cryoprotectant used
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: cryoprotectant
     owner: XRayPreparation
@@ -652,7 +657,7 @@ attributes:
     description: Cryoprotectant concentration, typically specified as a percentage.
       Data providers may specify as decimal fraction by including the unit in the
       QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: cryoprotectant_concentration
     owner: XRayPreparation
@@ -663,7 +668,7 @@ attributes:
   soak_compound:
     name: soak_compound
     description: Compound used for soaking (ligand, heavy atom)
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: soak_compound
     owner: XRayPreparation
@@ -673,7 +678,7 @@ attributes:
   soak_conditions:
     name: soak_conditions
     description: Conditions for crystal soaking
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: soak_conditions
     owner: XRayPreparation
@@ -683,11 +688,10 @@ attributes:
   mounting_method:
     name: mounting_method
     description: Crystal mounting method
-    comments:
-    - 'Maps to NSLS2 spreadsheet: Mount_Type'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - nsls2:Mount_Type
     rank: 1000
-    slot_uri: nsls2:Mount_Type
     alias: mounting_method
     owner: XRayPreparation
     domain_of:
@@ -696,7 +700,7 @@ attributes:
   flash_cooling_method:
     name: flash_cooling_method
     description: Flash cooling protocol
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: flash_cooling_method
     owner: XRayPreparation
@@ -706,7 +710,7 @@ attributes:
   crystal_notes:
     name: crystal_notes
     description: Additional notes about crystal quality and handling
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: crystal_notes
     owner: XRayPreparation
@@ -717,11 +721,10 @@ attributes:
     name: loop_size
     description: Loop size, typically specified in micrometers. Data providers may
       specify alternative units by including the unit in the QuantityValue.
-    comments:
-    - 'Maps to NSLS2 spreadsheet: Loop_Size'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - nsls2:Loop_Size
     rank: 1000
-    slot_uri: nsls2:Loop_Size
     alias: loop_size
     owner: XRayPreparation
     domain_of:
@@ -732,11 +735,10 @@ attributes:
     name: mounting_temperature
     description: Temperature during mounting, typically specified in Kelvin. Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    comments:
-    - 'Maps to NSLS2 spreadsheet: Temperature'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - nsls2:Temperature
     rank: 1000
-    slot_uri: nsls2:Temperature
     alias: mounting_temperature
     owner: XRayPreparation
     domain_of:
@@ -745,7 +747,7 @@ attributes:
     inlined: true
   description:
     name: description
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: description
     owner: XRayPreparation
     domain_of:

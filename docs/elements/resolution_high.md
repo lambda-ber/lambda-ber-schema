@@ -9,7 +9,7 @@ _High resolution limit, typically specified in Angstroms (Å). Data providers ma
 
 
 
-URI: [lambdaber:resolution_high](https://w3id.org/lambda-ber-schema/resolution_high)
+URI: [lambda:resolution_high](http://w3id.org/lambda/resolution_high)
 Alias: resolution_high
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: resolution_high
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: resolution_high
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:resolution_high |
-| native | lambdaber:resolution_high |
+| self | lambda:resolution_high |
+| native | lambda:resolution_high |
 | exact | nsls2:Resolution_High_A, mmCIF:_reflns.d_resolution_high, ispyb:AutoProcScalingStatistics.resolutionLimitHigh |
 
 
@@ -69,7 +69,7 @@ Alias: resolution_high
 name: resolution_high
 description: High resolution limit, typically specified in Angstroms (Å). Data providers
   may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 exact_mappings:
 - nsls2:Resolution_High_A
 - mmCIF:_reflns.d_resolution_high

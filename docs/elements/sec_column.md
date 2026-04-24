@@ -9,7 +9,7 @@ _Size-exclusion column used_
 
 
 
-URI: [lambdaber:sec_column](https://w3id.org/lambda-ber-schema/sec_column)
+URI: [lambda:sec_column](http://w3id.org/lambda/sec_column)
 Alias: sec_column
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: sec_column
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: sec_column
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:sec_column |
-| native | lambdaber:sec_column |
+| self | lambda:sec_column |
+| native | lambda:sec_column |
 
 
 
@@ -67,7 +67,7 @@ Alias: sec_column
 ```yaml
 name: sec_column
 description: Size-exclusion column used
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: sec_column
 owner: SamplePreparation

@@ -4,7 +4,7 @@
 
 
 
-URI: [lambdaber:q_range_max](https://w3id.org/lambda-ber-schema/q_range_max)
+URI: [lambda:q_range_max](http://w3id.org/lambda/q_range_max)
 Alias: q_range_max
 
 <!-- no inheritance hierarchy -->
@@ -18,6 +18,7 @@ Alias: q_range_max
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [SAXSInstrument](SAXSInstrument.md) | SAXS/WAXS instrument specifications |  no  |
+| [SANSInstrument](SANSInstrument.md) | Small-angle neutron scattering (SANS) instrument specifications |  no  |
 | [BeamlineInstrument](BeamlineInstrument.md) | Multi-technique synchrotron beamline that supports multiple experimental meth... |  no  |
 
 
@@ -44,8 +45,8 @@ Alias: q_range_max
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:q_range_max |
-| native | lambdaber:q_range_max |
+| self | lambda:q_range_max |
+| native | lambda:q_range_max |
 
 
 
@@ -57,6 +58,7 @@ Alias: q_range_max
 name: q_range_max
 alias: q_range_max
 domain_of:
+- SANSInstrument
 - SAXSInstrument
 - BeamlineInstrument
 range: string

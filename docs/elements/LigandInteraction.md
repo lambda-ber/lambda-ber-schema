@@ -9,7 +9,7 @@ _Small molecule/ligand interactions with proteins_
 
 
 
-URI: [lambdaber:LigandInteraction](https://w3id.org/lambda-ber-schema/LigandInteraction)
+URI: [lambda:LigandInteraction](http://w3id.org/lambda/LigandInteraction)
 
 
 
@@ -134,7 +134,7 @@ URI: [lambdaber:LigandInteraction](https://w3id.org/lambda-ber-schema/LigandInte
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -143,8 +143,8 @@ URI: [lambdaber:LigandInteraction](https://w3id.org/lambda-ber-schema/LigandInte
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:LigandInteraction |
-| native | lambdaber:LigandInteraction |
+| self | lambda:LigandInteraction |
+| native | lambda:LigandInteraction |
 
 
 
@@ -161,13 +161,13 @@ URI: [lambdaber:LigandInteraction](https://w3id.org/lambda-ber-schema/LigandInte
 ```yaml
 name: LigandInteraction
 description: Small molecule/ligand interactions with proteins
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: AttributeGroup
 attributes:
   ligand_id:
     name: ligand_id
     description: Ligand identifier (ChEMBL, ChEBI, PubChem)
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - LigandInteraction
@@ -176,7 +176,7 @@ attributes:
   ligand_name:
     name: ligand_name
     description: Common name of the ligand
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - LigandInteraction
@@ -184,7 +184,7 @@ attributes:
   ligand_smiles:
     name: ligand_smiles
     description: SMILES representation of the ligand
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - LigandInteraction
@@ -192,7 +192,7 @@ attributes:
   binding_affinity:
     name: binding_affinity
     description: Binding affinity value
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - LigandInteraction
@@ -200,7 +200,7 @@ attributes:
   binding_affinity_type:
     name: binding_affinity_type
     description: Type of binding measurement (Kd, Ki, IC50)
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - LigandInteraction
@@ -208,7 +208,7 @@ attributes:
   binding_affinity_unit:
     name: binding_affinity_unit
     description: Unit of binding affinity
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - LigandInteraction
@@ -216,7 +216,7 @@ attributes:
   interaction_type:
     name: interaction_type
     description: Type of interaction
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - LigandInteraction
@@ -224,7 +224,7 @@ attributes:
   binding_site_residues:
     name: binding_site_residues
     description: Residues involved in ligand binding
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - LigandInteraction
@@ -232,7 +232,7 @@ attributes:
   is_cofactor:
     name: is_cofactor
     description: Whether the ligand is a cofactor
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - LigandInteraction
@@ -240,7 +240,7 @@ attributes:
   is_drug_like:
     name: is_drug_like
     description: Whether the ligand has drug-like properties
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - LigandInteraction
@@ -248,7 +248,7 @@ attributes:
   druggability_score:
     name: druggability_score
     description: 'Druggability score of the binding site (range: 0-1)'
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - LigandInteraction
@@ -258,7 +258,7 @@ attributes:
   interaction_distance:
     name: interaction_distance
     description: Distance criteria for interaction (Angstroms)
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - LigandInteraction
@@ -275,13 +275,13 @@ attributes:
 ```yaml
 name: LigandInteraction
 description: Small molecule/ligand interactions with proteins
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: AttributeGroup
 attributes:
   ligand_id:
     name: ligand_id
     description: Ligand identifier (ChEMBL, ChEBI, PubChem)
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: ligand_id
     owner: LigandInteraction
@@ -292,7 +292,7 @@ attributes:
   ligand_name:
     name: ligand_name
     description: Common name of the ligand
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: ligand_name
     owner: LigandInteraction
@@ -303,7 +303,7 @@ attributes:
   ligand_smiles:
     name: ligand_smiles
     description: SMILES representation of the ligand
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: ligand_smiles
     owner: LigandInteraction
@@ -313,7 +313,7 @@ attributes:
   binding_affinity:
     name: binding_affinity
     description: Binding affinity value
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: binding_affinity
     owner: LigandInteraction
@@ -323,7 +323,7 @@ attributes:
   binding_affinity_type:
     name: binding_affinity_type
     description: Type of binding measurement (Kd, Ki, IC50)
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: binding_affinity_type
     owner: LigandInteraction
@@ -333,7 +333,7 @@ attributes:
   binding_affinity_unit:
     name: binding_affinity_unit
     description: Unit of binding affinity
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: binding_affinity_unit
     owner: LigandInteraction
@@ -343,7 +343,7 @@ attributes:
   interaction_type:
     name: interaction_type
     description: Type of interaction
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: interaction_type
     owner: LigandInteraction
@@ -353,7 +353,7 @@ attributes:
   binding_site_residues:
     name: binding_site_residues
     description: Residues involved in ligand binding
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: binding_site_residues
     owner: LigandInteraction
@@ -364,7 +364,7 @@ attributes:
   is_cofactor:
     name: is_cofactor
     description: Whether the ligand is a cofactor
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: is_cofactor
     owner: LigandInteraction
@@ -374,7 +374,7 @@ attributes:
   is_drug_like:
     name: is_drug_like
     description: Whether the ligand has drug-like properties
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: is_drug_like
     owner: LigandInteraction
@@ -384,7 +384,7 @@ attributes:
   druggability_score:
     name: druggability_score
     description: 'Druggability score of the binding site (range: 0-1)'
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: druggability_score
     owner: LigandInteraction
@@ -396,7 +396,7 @@ attributes:
   interaction_distance:
     name: interaction_distance
     description: Distance criteria for interaction (Angstroms)
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: interaction_distance
     owner: LigandInteraction
@@ -407,7 +407,7 @@ attributes:
       ucum_code: Angstrom
   description:
     name: description
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: description
     owner: LigandInteraction
     domain_of:

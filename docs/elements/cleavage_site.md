@@ -9,7 +9,7 @@ _Protease cleavage site sequence_
 
 
 
-URI: [lambdaber:cleavage_site](https://w3id.org/lambda-ber-schema/cleavage_site)
+URI: [lambda:cleavage_site](http://w3id.org/lambda/cleavage_site)
 Alias: cleavage_site
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: cleavage_site
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: cleavage_site
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:cleavage_site |
-| native | lambdaber:cleavage_site |
+| self | lambda:cleavage_site |
+| native | lambda:cleavage_site |
 
 
 
@@ -67,7 +67,7 @@ Alias: cleavage_site
 ```yaml
 name: cleavage_site
 description: Protease cleavage site sequence
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: cleavage_site
 owner: ProteinConstruct

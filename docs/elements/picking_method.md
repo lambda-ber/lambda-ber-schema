@@ -9,7 +9,7 @@ _Method used (manual, template_matching, deep_learning, LoG, Topaz, other)_
 
 
 
-URI: [lambdaber:picking_method](https://w3id.org/lambda-ber-schema/picking_method)
+URI: [lambda:picking_method](http://w3id.org/lambda/picking_method)
 Alias: picking_method
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: picking_method
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: picking_method
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:picking_method |
-| native | lambdaber:picking_method |
+| self | lambda:picking_method |
+| native | lambda:picking_method |
 
 
 
@@ -67,7 +67,7 @@ Alias: picking_method
 ```yaml
 name: picking_method
 description: Method used (manual, template_matching, deep_learning, LoG, Topaz, other)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: picking_method
 owner: ParticlePickingParameters

@@ -9,7 +9,7 @@ _Total rotation range collected, typically specified in degrees. Data providers 
 
 
 
-URI: [lambdaber:total_rotation](https://w3id.org/lambda-ber-schema/total_rotation)
+URI: [lambda:total_rotation](http://w3id.org/lambda/total_rotation)
 Alias: total_rotation
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: total_rotation
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: total_rotation
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:total_rotation |
-| native | lambdaber:total_rotation |
+| self | lambda:total_rotation |
+| native | lambda:total_rotation |
 | exact | nsls2:Total_rotation_deg, imgCIF:_diffrn_scan_axis.angle_range |
 
 
@@ -69,7 +69,7 @@ Alias: total_rotation
 name: total_rotation
 description: Total rotation range collected, typically specified in degrees. Data
   providers may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 exact_mappings:
 - nsls2:Total_rotation_deg
 - imgCIF:_diffrn_scan_axis.angle_range

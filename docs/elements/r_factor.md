@@ -9,7 +9,7 @@ _R-factor for crystallography (deprecated, use r_work)_
 
 
 
-URI: [lambdaber:r_factor](https://w3id.org/lambda-ber-schema/r_factor)
+URI: [lambda:r_factor](http://w3id.org/lambda/r_factor)
 Alias: r_factor
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: r_factor
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: r_factor
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:r_factor |
-| native | lambdaber:r_factor |
+| self | lambda:r_factor |
+| native | lambda:r_factor |
 
 
 
@@ -67,7 +67,7 @@ Alias: r_factor
 ```yaml
 name: r_factor
 description: R-factor for crystallography (deprecated, use r_work)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: r_factor
 owner: QualityMetrics

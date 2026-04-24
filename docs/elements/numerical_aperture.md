@@ -9,7 +9,7 @@ _Numerical aperture of the objective lens. Data providers may include unit infor
 
 
 
-URI: [lambdaber:numerical_aperture](https://w3id.org/lambda-ber-schema/numerical_aperture)
+URI: [lambda:numerical_aperture](http://w3id.org/lambda/numerical_aperture)
 Alias: numerical_aperture
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: numerical_aperture
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: numerical_aperture
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:numerical_aperture |
-| native | lambdaber:numerical_aperture |
+| self | lambda:numerical_aperture |
+| native | lambda:numerical_aperture |
 
 
 
@@ -68,7 +68,7 @@ Alias: numerical_aperture
 name: numerical_aperture
 description: Numerical aperture of the objective lens. Data providers may include
   unit information in the QuantityValue if needed.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: numerical_aperture
 owner: OpticalImage

@@ -9,7 +9,7 @@ _Defocus U, typically specified in micrometers. Data providers may specify alter
 
 
 
-URI: [lambdaber:defocus_u](https://w3id.org/lambda-ber-schema/defocus_u)
+URI: [lambda:defocus_u](http://w3id.org/lambda/defocus_u)
 Alias: defocus_u
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: defocus_u
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: defocus_u
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:defocus_u |
-| native | lambdaber:defocus_u |
+| self | lambda:defocus_u |
+| native | lambda:defocus_u |
 
 
 
@@ -68,7 +68,7 @@ Alias: defocus_u
 name: defocus_u
 description: Defocus U, typically specified in micrometers. Data providers may specify
   alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: defocus_u
 owner: Micrograph

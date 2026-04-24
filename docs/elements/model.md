@@ -9,7 +9,7 @@ _Instrument model_
 
 
 
-URI: [lambdaber:model](https://w3id.org/lambda-ber-schema/model)
+URI: [lambda:model](http://w3id.org/lambda/model)
 Alias: model
 
 <!-- no inheritance hierarchy -->
@@ -22,11 +22,12 @@ Alias: model
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Instrument](Instrument.md) | An instrument used to collect data |  no  |
 | [XRayInstrument](XRayInstrument.md) | X-ray diffractometer or synchrotron beamline specifications |  no  |
 | [SAXSInstrument](SAXSInstrument.md) | SAXS/WAXS instrument specifications |  no  |
 | [CryoEMInstrument](CryoEMInstrument.md) | Cryo-EM microscope specifications |  no  |
+| [SANSInstrument](SANSInstrument.md) | Small-angle neutron scattering (SANS) instrument specifications |  no  |
 | [BeamlineInstrument](BeamlineInstrument.md) | Multi-technique synchrotron beamline that supports multiple experimental meth... |  no  |
+| [Instrument](Instrument.md) | An instrument used to collect data |  no  |
 
 
 
@@ -50,7 +51,7 @@ Alias: model
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -59,8 +60,8 @@ Alias: model
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:model |
-| native | lambdaber:model |
+| self | lambda:model |
+| native | lambda:model |
 
 
 
@@ -71,7 +72,7 @@ Alias: model
 ```yaml
 name: model
 description: Instrument model
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: model
 owner: Instrument

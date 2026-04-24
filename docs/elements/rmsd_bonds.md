@@ -9,7 +9,7 @@ _RMSD from ideal bond lengths, typically specified in Angstroms (Å). Data provi
 
 
 
-URI: [lambdaber:rmsd_bonds](https://w3id.org/lambda-ber-schema/rmsd_bonds)
+URI: [lambda:rmsd_bonds](http://w3id.org/lambda/rmsd_bonds)
 Alias: rmsd_bonds
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: rmsd_bonds
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,9 +55,9 @@ Alias: rmsd_bonds
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:rmsd_bonds |
-| native | lambdaber:rmsd_bonds |
-| exact | nsls2:RMSD_bonds, mmCIF:_refine.ls_d_res_high |
+| self | lambda:rmsd_bonds |
+| native | lambda:rmsd_bonds |
+| exact | nsls2:RMSD_bonds, mmCIF:_refine.pdbx_ls_sigma_F |
 
 
 
@@ -69,10 +69,10 @@ Alias: rmsd_bonds
 name: rmsd_bonds
 description: RMSD from ideal bond lengths, typically specified in Angstroms (Å). Data
   providers may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 exact_mappings:
 - nsls2:RMSD_bonds
-- mmCIF:_refine.ls_d_res_high
+- mmCIF:_refine.pdbx_ls_sigma_F
 rank: 1000
 alias: rmsd_bonds
 owner: WorkflowRun

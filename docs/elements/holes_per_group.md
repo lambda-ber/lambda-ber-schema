@@ -9,7 +9,7 @@ _Number of holes per group. Data providers may include unit information in the Q
 
 
 
-URI: [lambdaber:holes_per_group](https://w3id.org/lambda-ber-schema/holes_per_group)
+URI: [lambda:holes_per_group](http://w3id.org/lambda/holes_per_group)
 Alias: holes_per_group
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: holes_per_group
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: holes_per_group
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:holes_per_group |
-| native | lambdaber:holes_per_group |
+| self | lambda:holes_per_group |
+| native | lambda:holes_per_group |
 
 
 
@@ -68,7 +68,7 @@ Alias: holes_per_group
 name: holes_per_group
 description: Number of holes per group. Data providers may include unit information
   in the QuantityValue if needed.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: holes_per_group
 owner: ExperimentRun

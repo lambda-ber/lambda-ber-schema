@@ -9,7 +9,7 @@ _Calibrated pixel size in Angstroms per pixel_
 
 
 
-URI: [lambdaber:calibrated_pixel_size](https://w3id.org/lambda-ber-schema/calibrated_pixel_size)
+URI: [lambda:calibrated_pixel_size](http://w3id.org/lambda/calibrated_pixel_size)
 Alias: calibrated_pixel_size
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: calibrated_pixel_size
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,9 @@ Alias: calibrated_pixel_size
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:calibrated_pixel_size |
-| native | lambdaber:calibrated_pixel_size |
+| self | lambda:calibrated_pixel_size |
+| native | lambda:calibrated_pixel_size |
+| exact | mmCIF:_em_image_recording.calibrated_pixel_size |
 
 
 
@@ -67,7 +68,9 @@ Alias: calibrated_pixel_size
 ```yaml
 name: calibrated_pixel_size
 description: Calibrated pixel size in Angstroms per pixel
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_em_image_recording.calibrated_pixel_size
 rank: 1000
 alias: calibrated_pixel_size
 owner: ExperimentRun

@@ -2,7 +2,7 @@
 #mapping_set_id: http://w3id.org/lambda/
 #mapping_tool: https://w3id.org/linkml/
 #creator_id: linkml_user
-#mapping_date: 2026-03-12
+#mapping_date: 2026-04-24
 #curie_map: 
 # lambda: http://w3id.org/lambda/
 # lambdaber: http://w3id.org/lambda/
@@ -93,6 +93,14 @@ lambda:TechniqueEnum#neutron_crystallography	neutron_crystallography	skos:exactM
 lambda:TechniqueEnum#fiber_diffraction	fiber_diffraction	skos:exactMatch		CHMO:0000156		skos:exactMatch	http://w3id.org/lambda/						TechniqueEnum			
 lambda:TechniqueEnum#time_resolved_crystallography	time_resolved_crystallography	skos:exactMatch		CHMO:0000156		skos:exactMatch	http://w3id.org/lambda/						TechniqueEnum			
 lambda:TechniqueEnum#xray_tomography	xray_tomography	skos:exactMatch		CHMO:0002743		skos:exactMatch	http://w3id.org/lambda/						TechniqueEnum			
+lambda:xbeam	beamCenterPixels__xbeam	skos:exactMatch		nsls2:Beam_xy_x		skos:exactMatch	http://w3id.org/lambda/									
+lambda:xbeam	beamCenterPixels__xbeam	skos:exactMatch		imgCIF:_diffrn_detector.beam_center_x		skos:exactMatch	http://w3id.org/lambda/									
+lambda:xbeam	beamCenterPixels__xbeam	skos:exactMatch		mmCIF:_diffrn_detector.beam_center_x		skos:exactMatch	http://w3id.org/lambda/									
+lambda:xbeam	beamCenterPixels__xbeam	skos:exactMatch		ispyb:DataCollection.xBeam		skos:exactMatch	http://w3id.org/lambda/									
+lambda:ybeam	beamCenterPixels__ybeam	skos:exactMatch		nsls2:Beam_xy_y		skos:exactMatch	http://w3id.org/lambda/									
+lambda:ybeam	beamCenterPixels__ybeam	skos:exactMatch		imgCIF:_diffrn_detector.beam_center_y		skos:exactMatch	http://w3id.org/lambda/									
+lambda:ybeam	beamCenterPixels__ybeam	skos:exactMatch		mmCIF:_diffrn_detector.beam_center_y		skos:exactMatch	http://w3id.org/lambda/									
+lambda:ybeam	beamCenterPixels__ybeam	skos:exactMatch		ispyb:DataCollection.yBeam		skos:exactMatch	http://w3id.org/lambda/									
 lambda:accelerating_voltage	cryoEMInstrument__accelerating_voltage	skos:exactMatch		mmCIF:_em_imaging.accelerating_voltage		skos:exactMatch	http://w3id.org/lambda/									
 lambda:c2_aperture	cryoEMInstrument__c2_aperture	skos:exactMatch		mmCIF:_em_imaging.c2_aperture_diameter		skos:exactMatch	http://w3id.org/lambda/									
 lambda:cs	cryoEMInstrument__cs	skos:exactMatch		mmCIF:_em_imaging.nominal_cs		skos:exactMatch	http://w3id.org/lambda/									
@@ -127,9 +135,13 @@ lambda:method	crystallizationConditions__method	skos:exactMatch		mmCIF:_exptl_cr
 lambda:beam_center_x_px	dataCollectionStrategy__beam_center_x_px	skos:exactMatch		mmCIF:_diffrn_detector.beam_center_x		skos:exactMatch	http://w3id.org/lambda/									
 lambda:beam_center_y_px	dataCollectionStrategy__beam_center_y_px	skos:exactMatch		mmCIF:_diffrn_detector.beam_center_y		skos:exactMatch	http://w3id.org/lambda/									
 lambda:detector_distance_mm	dataCollectionStrategy__detector_distance_mm	skos:exactMatch		mmCIF:_diffrn_detector.distance		skos:exactMatch	http://w3id.org/lambda/									
+lambda:energy	dataCollectionStrategy__energy	skos:exactMatch		nsls2:Energy		skos:exactMatch	http://w3id.org/lambda/									
+lambda:exposure_time	dataCollectionStrategy__exposure_time	skos:exactMatch		nsls2:Exposure_time		skos:exactMatch	http://w3id.org/lambda/									
+lambda:exposure_time	dataCollectionStrategy__exposure_time	skos:exactMatch		ispyb:DataCollection.exposureTime		skos:exactMatch	http://w3id.org/lambda/									
 lambda:flux_photons_per_s	dataCollectionStrategy__flux_photons_per_s	skos:exactMatch		mmCIF:_diffrn_source.pdbx_flux		skos:exactMatch	http://w3id.org/lambda/									
 lambda:oscillation_per_image_deg	dataCollectionStrategy__oscillation_per_image_deg	skos:exactMatch		mmCIF:_diffrn_scan.angle_increment		skos:exactMatch	http://w3id.org/lambda/									
 lambda:pixel_size_calibrated	dataCollectionStrategy__pixel_size_calibrated	skos:exactMatch		mmCIF:_em_image_recording.calibrated_pixel_size		skos:exactMatch	http://w3id.org/lambda/									
+lambda:sweep_start	dataCollectionStrategy__sweep_start	skos:exactMatch		mmCIF:_diffrn_scan_axis.angle_start		skos:exactMatch	http://w3id.org/lambda/									
 lambda:temperature_k	dataCollectionStrategy__temperature_k	skos:exactMatch		mmCIF:_diffrn.ambient_temp		skos:exactMatch	http://w3id.org/lambda/									
 lambda:total_rotation_deg	dataCollectionStrategy__total_rotation_deg	skos:exactMatch		mmCIF:_diffrn_scan_axis.angle_range		skos:exactMatch	http://w3id.org/lambda/									
 lambda:wavelength_a	dataCollectionStrategy__wavelength_a	skos:exactMatch		mmCIF:_diffrn_radiation_wavelength.wavelength		skos:exactMatch	http://w3id.org/lambda/									
@@ -152,6 +164,9 @@ lambda:detector_distance	experimentRun__detector_distance	skos:exactMatch		imgCI
 lambda:detector_distance	experimentRun__detector_distance	skos:exactMatch		mmCIF:_diffrn_detector.distance		skos:exactMatch	http://w3id.org/lambda/									
 lambda:detector_distance	experimentRun__detector_distance	skos:exactMatch		ispyb:DataCollection.detectorDistance		skos:exactMatch	http://w3id.org/lambda/									
 lambda:end_time	experimentRun__end_time	skos:exactMatch		ispyb:DataCollection.endTime		skos:exactMatch	http://w3id.org/lambda/									
+lambda:energy	experimentRun__energy	skos:exactMatch		nsls2:Energy		skos:exactMatch	http://w3id.org/lambda/									
+lambda:energy	experimentRun__energy	skos:exactMatch		ispyb:DataCollection.energy		skos:exactMatch	http://w3id.org/lambda/									
+lambda:exposure_time	experimentRun__exposure_time	skos:exactMatch		nsls2:Exposure_time		skos:exactMatch	http://w3id.org/lambda/									
 lambda:exposure_time	experimentRun__exposure_time	skos:exactMatch		ispyb:DataCollection.exposureTime		skos:exactMatch	http://w3id.org/lambda/									
 lambda:exposure_time_per_frame	experimentRun__exposure_time_per_frame	skos:exactMatch		mmCIF:_em_image_recording.average_exposure_time		skos:exactMatch	http://w3id.org/lambda/									
 lambda:flux	experimentRun__flux	skos:exactMatch		ispyb:DataCollection.flux		skos:exactMatch	http://w3id.org/lambda/									
@@ -174,6 +189,8 @@ lambda:start_angle	experimentRun__start_angle	skos:exactMatch		nsls2:Start_angle
 lambda:start_angle	experimentRun__start_angle	skos:exactMatch		imgCIF:_diffrn_scan_axis.angle_start		skos:exactMatch	http://w3id.org/lambda/									
 lambda:start_angle	experimentRun__start_angle	skos:exactMatch		ispyb:DataCollection.axisStart		skos:exactMatch	http://w3id.org/lambda/									
 lambda:start_time	experimentRun__start_time	skos:exactMatch		ispyb:DataCollection.startTime		skos:exactMatch	http://w3id.org/lambda/									
+lambda:sweep_start	experimentRun__sweep_start	skos:exactMatch		imgCIF:_diffrn_scan_axis.angle_start		skos:exactMatch	http://w3id.org/lambda/									
+lambda:sweep_start	experimentRun__sweep_start	skos:exactMatch		ispyb:DataCollection.axisStart		skos:exactMatch	http://w3id.org/lambda/									
 lambda:synchrotron_mode	experimentRun__synchrotron_mode	skos:exactMatch		ispyb:DataCollection.synchrotronMode		skos:exactMatch	http://w3id.org/lambda/									
 lambda:total_dose	experimentRun__total_dose	skos:exactMatch		mmCIF:_em_image_recording.avg_electron_dose_per_image		skos:exactMatch	http://w3id.org/lambda/									
 lambda:total_rotation	experimentRun__total_rotation	skos:exactMatch		nsls2:Total_rotation_deg		skos:exactMatch	http://w3id.org/lambda/									

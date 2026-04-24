@@ -9,7 +9,7 @@ _Total yield in milligrams_
 
 
 
-URI: [lambdaber:yield_mg](https://w3id.org/lambda-ber-schema/yield_mg)
+URI: [lambda:yield_mg](http://w3id.org/lambda/yield_mg)
 Alias: yield_mg
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: yield_mg
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: yield_mg
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:yield_mg |
-| native | lambdaber:yield_mg |
+| self | lambda:yield_mg |
+| native | lambda:yield_mg |
 
 
 
@@ -67,7 +67,7 @@ Alias: yield_mg
 ```yaml
 name: yield_mg
 description: Total yield in milligrams
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: yield_mg
 owner: SamplePreparation

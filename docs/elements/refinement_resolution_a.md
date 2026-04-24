@@ -9,7 +9,7 @@ _Resolution cutoff used for refinement in Angstroms_
 
 
 
-URI: [lambdaber:refinement_resolution_a](https://w3id.org/lambda-ber-schema/refinement_resolution_a)
+URI: [lambda:refinement_resolution_a](http://w3id.org/lambda/refinement_resolution_a)
 Alias: refinement_resolution_a
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: refinement_resolution_a
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: refinement_resolution_a
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:refinement_resolution_a |
-| native | lambdaber:refinement_resolution_a |
+| self | lambda:refinement_resolution_a |
+| native | lambda:refinement_resolution_a |
 
 
 
@@ -67,7 +67,7 @@ Alias: refinement_resolution_a
 ```yaml
 name: refinement_resolution_a
 description: Resolution cutoff used for refinement in Angstroms
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: refinement_resolution_a
 owner: WorkflowRun

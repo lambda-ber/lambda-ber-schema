@@ -9,7 +9,7 @@ _Hole size, typically specified in micrometers (range: 0.5-5.0). Data providers 
 
 
 
-URI: [lambdaber:hole_size](https://w3id.org/lambda-ber-schema/hole_size)
+URI: [lambda:hole_size](http://w3id.org/lambda/hole_size)
 Alias: hole_size
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: hole_size
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: hole_size
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:hole_size |
-| native | lambdaber:hole_size |
+| self | lambda:hole_size |
+| native | lambda:hole_size |
 
 
 
@@ -68,7 +68,7 @@ Alias: hole_size
 name: hole_size
 description: 'Hole size, typically specified in micrometers (range: 0.5-5.0). Data
   providers may specify alternative units by including the unit in the QuantityValue.'
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: hole_size
 owner: CryoEMPreparation

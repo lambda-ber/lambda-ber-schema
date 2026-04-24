@@ -9,7 +9,7 @@ _Resolution at FSC=0.5, typically specified in Angstroms. Data providers may spe
 
 
 
-URI: [lambdaber:resolution_0_5](https://w3id.org/lambda-ber-schema/resolution_0_5)
+URI: [lambda:resolution_0_5](http://w3id.org/lambda/resolution_0_5)
 Alias: resolution_0_5
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: resolution_0_5
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: resolution_0_5
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:resolution_0_5 |
-| native | lambdaber:resolution_0_5 |
+| self | lambda:resolution_0_5 |
+| native | lambda:resolution_0_5 |
 
 
 
@@ -68,7 +68,7 @@ Alias: resolution_0_5
 name: resolution_0_5
 description: Resolution at FSC=0.5, typically specified in Angstroms. Data providers
   may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: resolution_0_5
 owner: RefinementParameters

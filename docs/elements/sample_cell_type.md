@@ -9,7 +9,7 @@ _Type of sample cell used_
 
 
 
-URI: [lambdaber:sample_cell_type](https://w3id.org/lambda-ber-schema/sample_cell_type)
+URI: [lambda:sample_cell_type](http://w3id.org/lambda/sample_cell_type)
 Alias: sample_cell_type
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: sample_cell_type
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: sample_cell_type
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:sample_cell_type |
-| native | lambdaber:sample_cell_type |
+| self | lambda:sample_cell_type |
+| native | lambda:sample_cell_type |
 
 
 
@@ -67,7 +67,7 @@ Alias: sample_cell_type
 ```yaml
 name: sample_cell_type
 description: Type of sample cell used
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: sample_cell_type
 owner: SAXSPreparation

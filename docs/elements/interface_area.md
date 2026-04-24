@@ -9,7 +9,7 @@ _Buried surface area at interface (Ų)_
 
 
 
-URI: [lambdaber:interface_area](https://w3id.org/lambda-ber-schema/interface_area)
+URI: [lambda:interface_area](http://w3id.org/lambda/interface_area)
 Alias: interface_area
 
 <!-- no inheritance hierarchy -->
@@ -46,7 +46,7 @@ Alias: interface_area
 ### Schema Source
 
 
-* from schema: https://w3id.org/lambda-ber-schema/
+* from schema: http://w3id.org/lambda/
 
 
 
@@ -55,8 +55,8 @@ Alias: interface_area
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | lambdaber:interface_area |
-| native | lambdaber:interface_area |
+| self | lambda:interface_area |
+| native | lambda:interface_area |
 
 
 
@@ -67,7 +67,7 @@ Alias: interface_area
 ```yaml
 name: interface_area
 description: Buried surface area at interface (Ų)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: interface_area
 owner: ProteinProteinInteraction
