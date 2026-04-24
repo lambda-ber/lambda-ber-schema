@@ -3,7 +3,7 @@
 
 Evolutionary conservation score (range: 0-1)
 
-URI: [lambdaber:functionalSite__conservation_score](https://w3id.org/lambda-ber-schema/functionalSite__conservation_score)
+URI: [lambda:functionalSite__conservation_score](http://w3id.org/lambda/functionalSite__conservation_score)
 
 
 ## Domain and Range

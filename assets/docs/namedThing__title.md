@@ -3,7 +3,7 @@
 
 A human-readable name or title for this entity
 
-URI: [lambdaber:namedThing__title](https://w3id.org/lambda-ber-schema/namedThing__title)
+URI: [lambda:namedThing__title](http://w3id.org/lambda/namedThing__title)
 
 
 ## Domain and Range

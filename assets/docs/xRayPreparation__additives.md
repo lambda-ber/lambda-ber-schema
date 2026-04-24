@@ -3,7 +3,7 @@
 
 Additives mixed with protein before crystallization
 
-URI: [lambdaber:xRayPreparation__additives](https://w3id.org/lambda-ber-schema/xRayPreparation__additives)
+URI: [lambda:xRayPreparation__additives](http://w3id.org/lambda/xRayPreparation__additives)
 
 
 ## Domain and Range

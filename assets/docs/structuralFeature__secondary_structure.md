@@ -3,7 +3,7 @@
 
 Secondary structure assignment
 
-URI: [lambdaber:structuralFeature__secondary_structure](https://w3id.org/lambda-ber-schema/structuralFeature__secondary_structure)
+URI: [lambda:structuralFeature__secondary_structure](http://w3id.org/lambda/structuralFeature__secondary_structure)
 
 
 ## Domain and Range

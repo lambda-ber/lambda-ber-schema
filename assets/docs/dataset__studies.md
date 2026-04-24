@@ -1,9 +1,9 @@
 
 # Slot: studies
 
-Individual research studies contained in this dataset
+All studies in this dataset
 
-URI: [lambdaber:dataset__studies](https://w3id.org/lambda-ber-schema/dataset__studies)
+URI: [lambda:dataset__studies](http://w3id.org/lambda/dataset__studies)
 
 
 ## Domain and Range

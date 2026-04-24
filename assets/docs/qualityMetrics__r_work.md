@@ -3,7 +3,7 @@
 
 Refinement R-factor (working set)
 
-URI: [lambdaber:qualityMetrics__r_work](https://w3id.org/lambda-ber-schema/qualityMetrics__r_work)
+URI: [lambda:qualityMetrics__r_work](http://w3id.org/lambda/qualityMetrics__r_work)
 
 
 ## Domain and Range

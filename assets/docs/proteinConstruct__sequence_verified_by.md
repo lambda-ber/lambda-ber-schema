@@ -3,7 +3,7 @@
 
 Method or person who verified the sequence
 
-URI: [lambdaber:proteinConstruct__sequence_verified_by](https://w3id.org/lambda-ber-schema/proteinConstruct__sequence_verified_by)
+URI: [lambda:proteinConstruct__sequence_verified_by](http://w3id.org/lambda/proteinConstruct__sequence_verified_by)
 
 
 ## Domain and Range

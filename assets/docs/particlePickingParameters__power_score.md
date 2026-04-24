@@ -3,7 +3,7 @@
 
 Power score threshold
 
-URI: [lambdaber:particlePickingParameters__power_score](https://w3id.org/lambda-ber-schema/particlePickingParameters__power_score)
+URI: [lambda:particlePickingParameters__power_score](http://w3id.org/lambda/particlePickingParameters__power_score)
 
 
 ## Domain and Range

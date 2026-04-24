@@ -3,7 +3,7 @@
 
 Beam center X coordinate in pixels
 
-URI: [lambdaber:dataCollectionStrategy__beam_center_x_px](https://w3id.org/lambda-ber-schema/dataCollectionStrategy__beam_center_x_px)
+URI: [lambda:dataCollectionStrategy__beam_center_x_px](http://w3id.org/lambda/dataCollectionStrategy__beam_center_x_px)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Data multiplicity (redundancy)
 
-URI: [lambdaber:workflowRun__multiplicity](https://w3id.org/lambda-ber-schema/workflowRun__multiplicity)
+URI: [lambda:workflowRun__multiplicity](http://w3id.org/lambda/workflowRun__multiplicity)
 
 
 ## Domain and Range

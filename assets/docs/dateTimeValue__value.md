@@ -3,7 +3,7 @@
 
 The date or date/time value, expressed in ISO 8601-compatible form. Dates should be expressed as YYYY-MM-DD; times should be expressed as HH:MM:SS with optional milliseconds and an indication of the timezone.
 
-URI: [lambdaber:dateTimeValue__value](https://w3id.org/lambda-ber-schema/dateTimeValue__value)
+URI: [lambda:dateTimeValue__value](http://w3id.org/lambda/dateTimeValue__value)
 
 
 ## Domain and Range

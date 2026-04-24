@@ -1,4 +1,4 @@
-id: https://w3id.org/lambda-ber-schema/functional_annotation
+id: http://w3id.org/lambda/functional_annotation
 name: functional_annotation
 description: |
   Extension to lambda-ber-schema for comprehensive functional and structural annotations.
@@ -6,6 +6,8 @@ description: |
   biophysical properties, evolutionary conservation, and mutation effects derived from various
   knowledge bases including PDBe-KB and other structural annotation resources.
 prefixes:
+  lambda: http://w3id.org/lambda/
+  lambdaber: http://w3id.org/lambda/
   linkml: https://w3id.org/linkml/
   pdbe: https://www.ebi.ac.uk/pdbe/
   uniprot: http://purl.uniprot.org/uniprot/

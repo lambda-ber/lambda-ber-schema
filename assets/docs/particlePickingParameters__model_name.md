@@ -3,7 +3,7 @@
 
 Name or identifier of the deep learning model (e.g., 'resnet16', 'resnet8', 'cryolo_general'). Use this for standard pretrained models. Either model_name or model_file_path should be provided when using deep learning methods.
 
-URI: [lambdaber:particlePickingParameters__model_name](https://w3id.org/lambda-ber-schema/particlePickingParameters__model_name)
+URI: [lambda:particlePickingParameters__model_name](http://w3id.org/lambda/particlePickingParameters__model_name)
 
 
 ## Domain and Range

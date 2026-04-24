@@ -3,7 +3,7 @@
 
 Known structural motif
 
-URI: [lambdaber:structuralFeature__structural_motif](https://w3id.org/lambda-ber-schema/structuralFeature__structural_motif)
+URI: [lambda:structuralFeature__structural_motif](http://w3id.org/lambda/structuralFeature__structural_motif)
 
 
 ## Domain and Range

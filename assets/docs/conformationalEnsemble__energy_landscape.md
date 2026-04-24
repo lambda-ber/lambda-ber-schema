@@ -3,7 +3,7 @@
 
 Description of the energy landscape
 
-URI: [lambdaber:conformationalEnsemble__energy_landscape](https://w3id.org/lambda-ber-schema/conformationalEnsemble__energy_landscape)
+URI: [lambda:conformationalEnsemble__energy_landscape](http://w3id.org/lambda/conformationalEnsemble__energy_landscape)
 
 
 ## Domain and Range

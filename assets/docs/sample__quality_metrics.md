@@ -3,7 +3,7 @@
 
 Quality control metrics for the sample
 
-URI: [lambdaber:sample__quality_metrics](https://w3id.org/lambda-ber-schema/sample__quality_metrics)
+URI: [lambda:sample__quality_metrics](http://w3id.org/lambda/sample__quality_metrics)
 
 
 ## Domain and Range

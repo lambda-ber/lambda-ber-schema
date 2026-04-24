@@ -3,7 +3,7 @@
 
 Completeness of anomalous data as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.
 
-URI: [lambdaber:workflowRun__anomalous_completeness](https://w3id.org/lambda-ber-schema/workflowRun__anomalous_completeness)
+URI: [lambda:workflowRun__anomalous_completeness](http://w3id.org/lambda/workflowRun__anomalous_completeness)
 
 
 ## Domain and Range

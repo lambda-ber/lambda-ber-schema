@@ -3,7 +3,7 @@
 
 Buffer components and their concentrations
 
-URI: [lambdaber:bufferComposition__components](https://w3id.org/lambda-ber-schema/bufferComposition__components)
+URI: [lambda:bufferComposition__components](http://w3id.org/lambda/bufferComposition__components)
 
 
 ## Domain and Range

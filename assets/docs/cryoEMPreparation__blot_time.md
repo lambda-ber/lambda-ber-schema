@@ -3,7 +3,7 @@
 
 Blotting time, typically specified in seconds (range: 0.5-10.0). Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:cryoEMPreparation__blot_time](https://w3id.org/lambda-ber-schema/cryoEMPreparation__blot_time)
+URI: [lambda:cryoEMPreparation__blot_time](http://w3id.org/lambda/cryoEMPreparation__blot_time)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Strategy for data collection
 
-URI: [lambdaber:experimentRun__data_collection_strategy](https://w3id.org/lambda-ber-schema/experimentRun__data_collection_strategy)
+URI: [lambda:experimentRun__data_collection_strategy](http://w3id.org/lambda/experimentRun__data_collection_strategy)
 
 
 ## Domain and Range

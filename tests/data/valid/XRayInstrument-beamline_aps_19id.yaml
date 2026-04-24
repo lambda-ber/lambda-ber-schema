@@ -1,0 +1,35 @@
+id: lambdaber:beamline_aps_19id
+beam_size_max:
+  unit: micrometers
+  numeric_value: 50.0
+beam_size_min:
+  unit: micrometers
+  numeric_value: 10.0
+beamline_id: 19-ID
+crystal_cooling_capability: true
+current_status: offline
+description: Structural Biology Center insertion device beamline for macromolecular
+  crystallography
+detector_manufacturer: Dectris
+detector_model: PILATUS3 X 6M
+detector_technology: hybrid_photon_counting
+energy_max:
+  unit: kiloelectronvolts
+  numeric_value: 18.5
+energy_min:
+  unit: kiloelectronvolts
+  numeric_value: 6.0
+facility_name: APS
+facility_ror: https://ror.org/04qxsr837
+flux_density:
+  unit: photons per second per square millimeter
+  numeric_value: 10000000000000.0
+goniometer_type: SBC 19-ID
+installation_date: '1997-01-01'
+instrument_category: SYNCHROTRON_BEAMLINE
+instrument_code: SBC 19-ID
+manufacturer: Argonne National Laboratory
+model: APS Beamline 19-ID
+monochromator_type: Si(111) double crystal
+source_type: synchrotron
+title: APS Beamline 19-ID (SBC)

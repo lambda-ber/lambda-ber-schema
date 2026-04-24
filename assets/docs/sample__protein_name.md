@@ -3,7 +3,7 @@
 
 Name of the protein
 
-URI: [lambdaber:sample__protein_name](https://w3id.org/lambda-ber-schema/sample__protein_name)
+URI: [lambda:sample__protein_name](http://w3id.org/lambda/sample__protein_name)
 
 
 ## Domain and Range

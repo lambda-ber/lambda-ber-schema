@@ -3,7 +3,7 @@
 
 Enzyme that removes modification
 
-URI: [lambdaber:postTranslationalModification__removal_enzyme](https://w3id.org/lambda-ber-schema/postTranslationalModification__removal_enzyme)
+URI: [lambda:postTranslationalModification__removal_enzyme](http://w3id.org/lambda/postTranslationalModification__removal_enzyme)
 
 
 ## Domain and Range

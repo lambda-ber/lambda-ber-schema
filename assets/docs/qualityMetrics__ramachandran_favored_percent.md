@@ -3,7 +3,7 @@
 
 Percentage of residues in favored Ramachandran regions
 
-URI: [lambdaber:qualityMetrics__ramachandran_favored_percent](https://w3id.org/lambda-ber-schema/qualityMetrics__ramachandran_favored_percent)
+URI: [lambda:qualityMetrics__ramachandran_favored_percent](http://w3id.org/lambda/qualityMetrics__ramachandran_favored_percent)
 
 
 ## Domain and Range

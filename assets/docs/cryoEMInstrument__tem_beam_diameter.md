@@ -3,7 +3,7 @@
 
 TEM beam diameter in micrometers
 
-URI: [lambdaber:cryoEMInstrument__tem_beam_diameter](https://w3id.org/lambda-ber-schema/cryoEMInstrument__tem_beam_diameter)
+URI: [lambda:cryoEMInstrument__tem_beam_diameter](http://w3id.org/lambda/cryoEMInstrument__tem_beam_diameter)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Current processing status
 
-URI: [lambdaber:experimentRun__processing_status](https://w3id.org/lambda-ber-schema/experimentRun__processing_status)
+URI: [lambda:experimentRun__processing_status](http://w3id.org/lambda/experimentRun__processing_status)
 
 
 ## Domain and Range

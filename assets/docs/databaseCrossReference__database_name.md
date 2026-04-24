@@ -3,7 +3,7 @@
 
 Name of the external database
 
-URI: [lambdaber:databaseCrossReference__database_name](https://w3id.org/lambda-ber-schema/databaseCrossReference__database_name)
+URI: [lambda:databaseCrossReference__database_name](http://w3id.org/lambda/databaseCrossReference__database_name)
 
 
 ## Domain and Range

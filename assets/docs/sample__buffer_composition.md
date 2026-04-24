@@ -3,7 +3,7 @@
 
 Buffer composition including pH, salts, additives
 
-URI: [lambdaber:sample__buffer_composition](https://w3id.org/lambda-ber-schema/sample__buffer_composition)
+URI: [lambda:sample__buffer_composition](http://w3id.org/lambda/sample__buffer_composition)
 
 
 ## Domain and Range

@@ -2270,6 +2270,10 @@ class FileFormatEnum(str, Enum):
     """
     ZIP compressed archive
     """
+    tar = "tar"
+    """
+    TAR archive format
+    """
     mrcs = "mrcs"
     """
     MRC stack format for particle stacks
@@ -3886,6 +3890,7 @@ class Sample(NamedThing):
          'comments': ['Maps to NSLS2 spreadsheet: Ligand'],
          'domain_of': ['Sample'],
          'slot_uri': 'nsls2:Ligand'} })
+    oligomeric_state: Optional[str] = Field(default=None, description="""Oligomeric state of the sample (e.g., monomer, dimer, tetramer, hexamer)""", json_schema_extra = { "linkml_meta": {'alias': 'oligomeric_state', 'domain_of': ['Sample']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
     description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
@@ -5576,4 +5581,3 @@ ExperimentInstrumentAssociation.model_rebuild()
 WorkflowExperimentAssociation.model_rebuild()
 WorkflowInputAssociation.model_rebuild()
 WorkflowOutputAssociation.model_rebuild()
-

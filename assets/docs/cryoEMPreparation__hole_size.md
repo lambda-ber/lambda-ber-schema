@@ -3,7 +3,7 @@
 
 Hole size, typically specified in micrometers (range: 0.5-5.0). Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:cryoEMPreparation__hole_size](https://w3id.org/lambda-ber-schema/cryoEMPreparation__hole_size)
+URI: [lambda:cryoEMPreparation__hole_size](http://w3id.org/lambda/cryoEMPreparation__hole_size)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Range of residues (e.g., '1-100', '25,27,30-35')
 
-URI: [lambdaber:proteinAnnotation__residue_range](https://w3id.org/lambda-ber-schema/proteinAnnotation__residue_range)
+URI: [lambda:proteinAnnotation__residue_range](http://w3id.org/lambda/proteinAnnotation__residue_range)
 
 
 ## Domain and Range

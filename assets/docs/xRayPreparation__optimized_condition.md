@@ -3,7 +3,7 @@
 
 Final optimized crystallization condition
 
-URI: [lambdaber:xRayPreparation__optimized_condition](https://w3id.org/lambda-ber-schema/xRayPreparation__optimized_condition)
+URI: [lambda:xRayPreparation__optimized_condition](http://w3id.org/lambda/xRayPreparation__optimized_condition)
 
 
 ## Domain and Range

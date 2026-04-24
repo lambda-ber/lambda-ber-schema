@@ -3,7 +3,7 @@
 
 Beamline identifier at synchrotron/neutron facility
 
-URI: [lambdaber:instrument__beamline_id](https://w3id.org/lambda-ber-schema/instrument__beamline_id)
+URI: [lambda:instrument__beamline_id](http://w3id.org/lambda/instrument__beamline_id)
 
 
 ## Domain and Range

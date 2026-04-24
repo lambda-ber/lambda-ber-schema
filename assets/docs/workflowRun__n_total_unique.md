@@ -3,7 +3,7 @@
 
 Total number of unique reflections
 
-URI: [lambdaber:workflowRun__n_total_unique](https://w3id.org/lambda-ber-schema/workflowRun__n_total_unique)
+URI: [lambda:workflowRun__n_total_unique](http://w3id.org/lambda/workflowRun__n_total_unique)
 
 
 ## Domain and Range

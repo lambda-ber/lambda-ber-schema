@@ -3,7 +3,7 @@
 
 Reference to the sample being prepared
 
-URI: [lambdaber:samplePreparation__sample_id](https://w3id.org/lambda-ber-schema/samplePreparation__sample_id)
+URI: [lambda:samplePreparation__sample_id](http://w3id.org/lambda/samplePreparation__sample_id)
 
 
 ## Domain and Range

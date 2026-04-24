@@ -3,7 +3,7 @@
 
 Radius of gyration, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:qualityMetrics__rg](https://w3id.org/lambda-ber-schema/qualityMetrics__rg)
+URI: [lambda:qualityMetrics__rg](http://w3id.org/lambda/qualityMetrics__rg)
 
 
 ## Domain and Range

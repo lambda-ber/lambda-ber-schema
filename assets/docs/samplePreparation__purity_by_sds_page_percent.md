@@ -3,7 +3,7 @@
 
 Purity percentage by SDS-PAGE
 
-URI: [lambdaber:samplePreparation__purity_by_sds_page_percent](https://w3id.org/lambda-ber-schema/samplePreparation__purity_by_sds_page_percent)
+URI: [lambda:samplePreparation__purity_by_sds_page_percent](http://w3id.org/lambda/samplePreparation__purity_by_sds_page_percent)
 
 
 ## Domain and Range

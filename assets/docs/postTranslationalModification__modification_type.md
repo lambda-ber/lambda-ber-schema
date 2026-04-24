@@ -3,7 +3,7 @@
 
 Type of PTM
 
-URI: [lambdaber:postTranslationalModification__modification_type](https://w3id.org/lambda-ber-schema/postTranslationalModification__modification_type)
+URI: [lambda:postTranslationalModification__modification_type](http://w3id.org/lambda/postTranslationalModification__modification_type)
 
 
 ## Domain and Range

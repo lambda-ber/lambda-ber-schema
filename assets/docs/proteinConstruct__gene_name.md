@@ -3,7 +3,7 @@
 
 Gene name
 
-URI: [lambdaber:proteinConstruct__gene_name](https://w3id.org/lambda-ber-schema/proteinConstruct__gene_name)
+URI: [lambda:proteinConstruct__gene_name](http://w3id.org/lambda/proteinConstruct__gene_name)
 
 
 ## Domain and Range

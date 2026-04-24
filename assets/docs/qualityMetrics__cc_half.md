@@ -3,7 +3,7 @@
 
 Half-set correlation coefficient CC(1/2)
 
-URI: [lambdaber:qualityMetrics__cc_half](https://w3id.org/lambda-ber-schema/qualityMetrics__cc_half)
+URI: [lambda:qualityMetrics__cc_half](http://w3id.org/lambda/qualityMetrics__cc_half)
 
 
 ## Domain and Range

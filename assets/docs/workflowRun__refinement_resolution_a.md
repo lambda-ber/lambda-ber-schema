@@ -3,7 +3,7 @@
 
 Resolution cutoff used for refinement in Angstroms
 
-URI: [lambdaber:workflowRun__refinement_resolution_a](https://w3id.org/lambda-ber-schema/workflowRun__refinement_resolution_a)
+URI: [lambda:workflowRun__refinement_resolution_a](http://w3id.org/lambda/workflowRun__refinement_resolution_a)
 
 
 ## Domain and Range

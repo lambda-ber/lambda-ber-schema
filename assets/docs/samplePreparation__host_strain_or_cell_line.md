@@ -3,7 +3,7 @@
 
 Specific strain or cell line used (e.g., BL21(DE3), Sf9, HEK293F)
 
-URI: [lambdaber:samplePreparation__host_strain_or_cell_line](https://w3id.org/lambda-ber-schema/samplePreparation__host_strain_or_cell_line)
+URI: [lambda:samplePreparation__host_strain_or_cell_line](http://w3id.org/lambda/samplePreparation__host_strain_or_cell_line)
 
 
 ## Domain and Range

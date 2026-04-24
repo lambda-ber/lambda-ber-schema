@@ -3,7 +3,7 @@
 
 Type of X-ray source
 
-URI: [lambdaber:xRayInstrument__source_type](https://w3id.org/lambda-ber-schema/xRayInstrument__source_type)
+URI: [lambda:xRayInstrument__source_type](http://w3id.org/lambda/xRayInstrument__source_type)
 
 
 ## Domain and Range

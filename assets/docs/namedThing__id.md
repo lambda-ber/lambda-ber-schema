@@ -3,7 +3,7 @@
 
 Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 
-URI: [lambdaber:namedThing__id](https://w3id.org/lambda-ber-schema/namedThing__id)
+URI: [lambda:namedThing__id](http://w3id.org/lambda/namedThing__id)
 
 
 ## Domain and Range

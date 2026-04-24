@@ -3,7 +3,7 @@
 
 Residue that is modified
 
-URI: [lambdaber:postTranslationalModification__modified_residue](https://w3id.org/lambda-ber-schema/postTranslationalModification__modified_residue)
+URI: [lambda:postTranslationalModification__modified_residue](http://w3id.org/lambda/postTranslationalModification__modified_residue)
 
 
 ## Domain and Range

@@ -1,5 +1,5 @@
 @base <http://example.org/> .
-@prefix ns1: <https://w3id.org/lambda-ber-schema/functional_annotation/> .
+@prefix ns1: <http://w3id.org/lambda/functional_annotation/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 [] a ns1:LigandInteraction ;

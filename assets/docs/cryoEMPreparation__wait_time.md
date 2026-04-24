@@ -3,7 +3,7 @@
 
 Wait time before blotting, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:cryoEMPreparation__wait_time](https://w3id.org/lambda-ber-schema/cryoEMPreparation__wait_time)
+URI: [lambda:cryoEMPreparation__wait_time](http://w3id.org/lambda/cryoEMPreparation__wait_time)
 
 
 ## Domain and Range

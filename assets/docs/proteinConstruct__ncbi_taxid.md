@@ -3,7 +3,7 @@
 
 NCBI Taxonomy ID for source organism
 
-URI: [lambdaber:proteinConstruct__ncbi_taxid](https://w3id.org/lambda-ber-schema/proteinConstruct__ncbi_taxid)
+URI: [lambda:proteinConstruct__ncbi_taxid](http://w3id.org/lambda/proteinConstruct__ncbi_taxid)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Effect on protein function
 
-URI: [lambdaber:mutationEffect__effect_on_function](https://w3id.org/lambda-ber-schema/mutationEffect__effect_on_function)
+URI: [lambda:mutationEffect__effect_on_function](http://w3id.org/lambda/mutationEffect__effect_on_function)
 
 
 ## Domain and Range

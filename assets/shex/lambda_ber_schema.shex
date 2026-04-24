@@ -1,6 +1,6 @@
 # metamodel_version: 1.7.0
 # version: 0.1.2.post32.dev0+2ad9ef5
-BASE <https://w3id.org/lambda-ber-schema/>
+BASE <http://w3id.org/lambda/>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
@@ -51,38 +51,38 @@ linkml:Sparqlpath xsd:string
 
 <DecimalDegree> xsd:decimal
 
-<https://w3id.org/lambda-ber-schema/functional_annotation/SmilesString> xsd:string
+<http://w3id.org/lambda/functional_annotation/SmilesString> xsd:string
 
-<https://w3id.org/lambda-ber-schema/functional_annotation/AggregatedProteinView> CLOSED {
-    (  $<https://w3id.org/lambda-ber-schema/functional_annotation/AggregatedProteinView_tes> (  &<NamedThing_tes> ;
+<http://w3id.org/lambda/functional_annotation/AggregatedProteinView> CLOSED {
+    (  $<http://w3id.org/lambda/functional_annotation/AggregatedProteinView_tes> (  &<NamedThing_tes> ;
           rdf:type [ <NamedThing> ] ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/uniprot_id> @linkml:String ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/protein_name> @linkml:String ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/organism> @linkml:String ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/organism_id> @linkml:Integer ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/pdb_entries> @linkml:String * ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/functional_sites>
-          @<https://w3id.org/lambda-ber-schema/functional_annotation/FunctionalSite> * ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/structural_features>
-          @<https://w3id.org/lambda-ber-schema/functional_annotation/StructuralFeature> * ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/protein_interactions>
-          @<https://w3id.org/lambda-ber-schema/functional_annotation/ProteinProteinInteraction> * ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/ligand_interactions>
-          @<https://w3id.org/lambda-ber-schema/functional_annotation/LigandInteraction> * ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/mutations>
-          @<https://w3id.org/lambda-ber-schema/functional_annotation/MutationEffect> * ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/ptms>
-          @<https://w3id.org/lambda-ber-schema/functional_annotation/PostTranslationalModification> * ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/biophysical_properties>
-          @<https://w3id.org/lambda-ber-schema/functional_annotation/BiophysicalProperty> * ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/conformational_ensemble>
-          @<https://w3id.org/lambda-ber-schema/functional_annotation/ConformationalEnsemble> ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/evolutionary_conservation>
-          @<https://w3id.org/lambda-ber-schema/functional_annotation/EvolutionaryConservation> ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/cross_references>
-          @<https://w3id.org/lambda-ber-schema/functional_annotation/DatabaseCrossReference> *
+          <http://w3id.org/lambda/functional_annotation/uniprot_id> @linkml:String ;
+          <http://w3id.org/lambda/functional_annotation/protein_name> @linkml:String ;
+          <http://w3id.org/lambda/functional_annotation/organism> @linkml:String ? ;
+          <http://w3id.org/lambda/functional_annotation/organism_id> @linkml:Integer ? ;
+          <http://w3id.org/lambda/functional_annotation/pdb_entries> @linkml:String * ;
+          <http://w3id.org/lambda/functional_annotation/functional_sites>
+          @<http://w3id.org/lambda/functional_annotation/FunctionalSite> * ;
+          <http://w3id.org/lambda/functional_annotation/structural_features>
+          @<http://w3id.org/lambda/functional_annotation/StructuralFeature> * ;
+          <http://w3id.org/lambda/functional_annotation/protein_interactions>
+          @<http://w3id.org/lambda/functional_annotation/ProteinProteinInteraction> * ;
+          <http://w3id.org/lambda/functional_annotation/ligand_interactions>
+          @<http://w3id.org/lambda/functional_annotation/LigandInteraction> * ;
+          <http://w3id.org/lambda/functional_annotation/mutations> @<http://w3id.org/lambda/functional_annotation/MutationEffect> *
+          ;
+          <http://w3id.org/lambda/functional_annotation/ptms>
+          @<http://w3id.org/lambda/functional_annotation/PostTranslationalModification> * ;
+          <http://w3id.org/lambda/functional_annotation/biophysical_properties>
+          @<http://w3id.org/lambda/functional_annotation/BiophysicalProperty> * ;
+          <http://w3id.org/lambda/functional_annotation/conformational_ensemble>
+          @<http://w3id.org/lambda/functional_annotation/ConformationalEnsemble> ? ;
+          <http://w3id.org/lambda/functional_annotation/evolutionary_conservation>
+          @<http://w3id.org/lambda/functional_annotation/EvolutionaryConservation> ? ;
+          <http://w3id.org/lambda/functional_annotation/cross_references>
+          @<http://w3id.org/lambda/functional_annotation/DatabaseCrossReference> *
        ) ;
-       rdf:type [ <https://w3id.org/lambda-ber-schema/functional_annotation/AggregatedProteinView> ]
+       rdf:type [ <http://w3id.org/lambda/functional_annotation/AggregatedProteinView> ]
     )
 }
 
@@ -101,14 +101,13 @@ linkml:Sparqlpath xsd:string
 }
 
 <AttributeGroup>  (
-    @<https://w3id.org/lambda-ber-schema/functional_annotation/BiophysicalProperty> OR @<BufferComposition> OR
-    @<CTFEstimationParameters> OR @<ComputeResources> OR
-    @<https://w3id.org/lambda-ber-schema/functional_annotation/ConformationalState> OR @<CrystallizationConditions> OR
-    @<DataCollectionStrategy> OR @<https://w3id.org/lambda-ber-schema/functional_annotation/DatabaseCrossReference> OR
+    @<http://w3id.org/lambda/functional_annotation/BiophysicalProperty> OR @<BufferComposition> OR @<CTFEstimationParameters> OR
+    @<ComputeResources> OR @<http://w3id.org/lambda/functional_annotation/ConformationalState> OR @<CrystallizationConditions> OR
+    @<DataCollectionStrategy> OR @<http://w3id.org/lambda/functional_annotation/DatabaseCrossReference> OR
     @<ExperimentalConditions> OR @<FSCCurve> OR @<ImageFeature> OR
-    @<https://w3id.org/lambda-ber-schema/functional_annotation/LigandInteraction> OR @<MolecularComposition> OR
-    @<MotionCorrectionParameters> OR @<ParticlePickingParameters> OR @<QualityMetrics> OR @<RefinementParameters> OR
-    @<StorageConditions> OR @<TechniqueSpecificPreparation>
+    @<http://w3id.org/lambda/functional_annotation/LigandInteraction> OR @<MolecularComposition> OR @<MotionCorrectionParameters>
+    OR @<ParticlePickingParameters> OR @<QualityMetrics> OR @<RefinementParameters> OR @<StorageConditions> OR
+    @<TechniqueSpecificPreparation>
 )
 
 <AttributeGroup_struct> {
@@ -137,13 +136,12 @@ linkml:Sparqlpath xsd:string
              <http://purl.obolibrary.org/obo/CHMO_0000184> <http://purl.obolibrary.org/obo/CHMO_0002413>
              <http://purl.obolibrary.org/obo/CHMO_0000068> <http://purl.obolibrary.org/obo/CHMO_0000470>
              <http://purl.obolibrary.org/obo/CHMO_0000298> <http://purl.obolibrary.org/obo/CHMO_0000305>
-             <http://purl.obolibrary.org/obo/CHMO_0000300> <https://w3id.org/lambda-ber-schema/TechniqueEnum#xmcd>
+             <http://purl.obolibrary.org/obo/CHMO_0000300> <http://w3id.org/lambda/TechniqueEnum#xmcd>
              <http://purl.obolibrary.org/obo/CHMO_0000182> <http://purl.obolibrary.org/obo/CHMO_0000156>
              <http://purl.obolibrary.org/obo/CHMO_0000156> <http://purl.obolibrary.org/obo/CHMO_0002743> ] + ;
-          <source_type> [ <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#synchrotron>
-             <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#rotating_anode>
-             <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#microfocus>
-             <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#metal_jet> ] ? ;
+          <source_type> [ <http://w3id.org/lambda/XRaySourceTypeEnum#synchrotron>
+             <http://w3id.org/lambda/XRaySourceTypeEnum#rotating_anode> <http://w3id.org/lambda/XRaySourceTypeEnum#microfocus>
+             <http://w3id.org/lambda/XRaySourceTypeEnum#metal_jet> ] ? ;
           <energy_min> @<QuantityValue> ? ;
           <energy_max> @<QuantityValue> ? ;
           <q_range_min> @<QuantityValue> ? ;
@@ -151,62 +149,56 @@ linkml:Sparqlpath xsd:string
           <sample_changer_capacity> @<QuantityValue> ? ;
           <mail_in_service> @linkml:Boolean ? ;
           <website> @linkml:Uri ? ;
-          <lims_system> [ <https://w3id.org/lambda-ber-schema/LIMSSystemEnum#ispyb>
-             <https://w3id.org/lambda-ber-schema/LIMSSystemEnum#ispyb_diamond>
-             <https://w3id.org/lambda-ber-schema/LIMSSystemEnum#icat> <https://w3id.org/lambda-ber-schema/LIMSSystemEnum#mxlive>
-             <https://w3id.org/lambda-ber-schema/LIMSSystemEnum#mxcube_lims>
-             <https://w3id.org/lambda-ber-schema/LIMSSystemEnum#user_office> ] ? ;
-          <daq_system> [ <https://w3id.org/lambda-ber-schema/DataAcquisitionSystemEnum#bluesky>
-             <https://w3id.org/lambda-ber-schema/DataAcquisitionSystemEnum#spec>
-             <https://w3id.org/lambda-ber-schema/DataAcquisitionSystemEnum#sardana>
-             <https://w3id.org/lambda-ber-schema/DataAcquisitionSystemEnum#gda>
-             <https://w3id.org/lambda-ber-schema/DataAcquisitionSystemEnum#mxcube_daq>
-             <https://w3id.org/lambda-ber-schema/DataAcquisitionSystemEnum#blu_ice>
-             <https://w3id.org/lambda-ber-schema/DataAcquisitionSystemEnum#jblue_ice> ] ? ;
-          <control_system> [ <https://w3id.org/lambda-ber-schema/ControlSystemEnum#epics>
-             <https://w3id.org/lambda-ber-schema/ControlSystemEnum#tango>
-             <https://w3id.org/lambda-ber-schema/ControlSystemEnum#labview>
-             <https://w3id.org/lambda-ber-schema/ControlSystemEnum#opi> ] ?
+          <lims_system> [ <http://w3id.org/lambda/LIMSSystemEnum#ispyb> <http://w3id.org/lambda/LIMSSystemEnum#ispyb_diamond>
+             <http://w3id.org/lambda/LIMSSystemEnum#icat> <http://w3id.org/lambda/LIMSSystemEnum#mxlive>
+             <http://w3id.org/lambda/LIMSSystemEnum#mxcube_lims> <http://w3id.org/lambda/LIMSSystemEnum#user_office> ] ? ;
+          <daq_system> [ <http://w3id.org/lambda/DataAcquisitionSystemEnum#bluesky>
+             <http://w3id.org/lambda/DataAcquisitionSystemEnum#spec> <http://w3id.org/lambda/DataAcquisitionSystemEnum#sardana>
+             <http://w3id.org/lambda/DataAcquisitionSystemEnum#gda> <http://w3id.org/lambda/DataAcquisitionSystemEnum#mxcube_daq>
+             <http://w3id.org/lambda/DataAcquisitionSystemEnum#blu_ice>
+             <http://w3id.org/lambda/DataAcquisitionSystemEnum#jblue_ice> ] ? ;
+          <control_system> [ <http://w3id.org/lambda/ControlSystemEnum#epics> <http://w3id.org/lambda/ControlSystemEnum#tango>
+             <http://w3id.org/lambda/ControlSystemEnum#labview> <http://w3id.org/lambda/ControlSystemEnum#opi> ] ?
        ) ;
        rdf:type [ <BeamlineInstrument> ]
     )
 }
 
-<https://w3id.org/lambda-ber-schema/functional_annotation/BiophysicalProperty> CLOSED {
-    (  $<https://w3id.org/lambda-ber-schema/functional_annotation/BiophysicalProperty_tes> (  &<AttributeGroup_tes> ;
+<http://w3id.org/lambda/functional_annotation/BiophysicalProperty> CLOSED {
+    (  $<http://w3id.org/lambda/functional_annotation/BiophysicalProperty_tes> (  &<AttributeGroup_tes> ;
           rdf:type [ <AttributeGroup> ] ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/property_type> [
-             <https://w3id.org/lambda-ber-schema/functional_annotation/BiophysicalPropertyEnum#melting_temperature>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/BiophysicalPropertyEnum#stability>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/BiophysicalPropertyEnum#folding_rate>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/BiophysicalPropertyEnum#unfolding_rate>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/BiophysicalPropertyEnum#aggregation_propensity>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/BiophysicalPropertyEnum#solubility>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/BiophysicalPropertyEnum#hydrophobicity>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/BiophysicalPropertyEnum#isoelectric_point>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/BiophysicalPropertyEnum#extinction_coefficient>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/BiophysicalPropertyEnum#molecular_weight>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/BiophysicalPropertyEnum#diffusion_coefficient>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/BiophysicalPropertyEnum#sedimentation_coefficient>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/BiophysicalPropertyEnum#radius_of_gyration>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/BiophysicalPropertyEnum#hydrodynamic_radius> ] ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/value> @linkml:Float ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/unit> @linkml:String ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/error> @linkml:Float ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/measurement_conditions>
-          @<https://w3id.org/lambda-ber-schema/functional_annotation/MeasurementConditions> * ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/experimental_method> [
-             <https://w3id.org/lambda-ber-schema/functional_annotation/BiophysicalMethodEnum#differential_scanning_calorimetry>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/BiophysicalMethodEnum#isothermal_titration_calorimetry>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/BiophysicalMethodEnum#circular_dichroism>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/BiophysicalMethodEnum#fluorescence_spectroscopy>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/BiophysicalMethodEnum#surface_plasmon_resonance>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/BiophysicalMethodEnum#dynamic_light_scattering>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/BiophysicalMethodEnum#analytical_ultracentrifugation>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/BiophysicalMethodEnum#nuclear_magnetic_resonance>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/BiophysicalMethodEnum#mass_spectrometry> ] ?
+          <http://w3id.org/lambda/functional_annotation/property_type> [
+             <http://w3id.org/lambda/functional_annotation/BiophysicalPropertyEnum#melting_temperature>
+             <http://w3id.org/lambda/functional_annotation/BiophysicalPropertyEnum#stability>
+             <http://w3id.org/lambda/functional_annotation/BiophysicalPropertyEnum#folding_rate>
+             <http://w3id.org/lambda/functional_annotation/BiophysicalPropertyEnum#unfolding_rate>
+             <http://w3id.org/lambda/functional_annotation/BiophysicalPropertyEnum#aggregation_propensity>
+             <http://w3id.org/lambda/functional_annotation/BiophysicalPropertyEnum#solubility>
+             <http://w3id.org/lambda/functional_annotation/BiophysicalPropertyEnum#hydrophobicity>
+             <http://w3id.org/lambda/functional_annotation/BiophysicalPropertyEnum#isoelectric_point>
+             <http://w3id.org/lambda/functional_annotation/BiophysicalPropertyEnum#extinction_coefficient>
+             <http://w3id.org/lambda/functional_annotation/BiophysicalPropertyEnum#molecular_weight>
+             <http://w3id.org/lambda/functional_annotation/BiophysicalPropertyEnum#diffusion_coefficient>
+             <http://w3id.org/lambda/functional_annotation/BiophysicalPropertyEnum#sedimentation_coefficient>
+             <http://w3id.org/lambda/functional_annotation/BiophysicalPropertyEnum#radius_of_gyration>
+             <http://w3id.org/lambda/functional_annotation/BiophysicalPropertyEnum#hydrodynamic_radius> ] ;
+          <http://w3id.org/lambda/functional_annotation/value> @linkml:Float ;
+          <http://w3id.org/lambda/functional_annotation/unit> @linkml:String ;
+          <http://w3id.org/lambda/functional_annotation/error> @linkml:Float ? ;
+          <http://w3id.org/lambda/functional_annotation/measurement_conditions>
+          @<http://w3id.org/lambda/functional_annotation/MeasurementConditions> * ;
+          <http://w3id.org/lambda/functional_annotation/experimental_method> [
+             <http://w3id.org/lambda/functional_annotation/BiophysicalMethodEnum#differential_scanning_calorimetry>
+             <http://w3id.org/lambda/functional_annotation/BiophysicalMethodEnum#isothermal_titration_calorimetry>
+             <http://w3id.org/lambda/functional_annotation/BiophysicalMethodEnum#circular_dichroism>
+             <http://w3id.org/lambda/functional_annotation/BiophysicalMethodEnum#fluorescence_spectroscopy>
+             <http://w3id.org/lambda/functional_annotation/BiophysicalMethodEnum#surface_plasmon_resonance>
+             <http://w3id.org/lambda/functional_annotation/BiophysicalMethodEnum#dynamic_light_scattering>
+             <http://w3id.org/lambda/functional_annotation/BiophysicalMethodEnum#analytical_ultracentrifugation>
+             <http://w3id.org/lambda/functional_annotation/BiophysicalMethodEnum#nuclear_magnetic_resonance>
+             <http://w3id.org/lambda/functional_annotation/BiophysicalMethodEnum#mass_spectrometry> ] ?
        ) ;
-       rdf:type [ <https://w3id.org/lambda-ber-schema/functional_annotation/BiophysicalProperty> ] ?
+       rdf:type [ <http://w3id.org/lambda/functional_annotation/BiophysicalProperty> ] ?
     )
 }
 
@@ -233,34 +225,34 @@ linkml:Sparqlpath xsd:string
     )
 }
 
-<https://w3id.org/lambda-ber-schema/functional_annotation/ConformationalEnsemble> CLOSED {
-    (  $<https://w3id.org/lambda-ber-schema/functional_annotation/ConformationalEnsemble_tes> (  &<NamedThing_tes> ;
+<http://w3id.org/lambda/functional_annotation/ConformationalEnsemble> CLOSED {
+    (  $<http://w3id.org/lambda/functional_annotation/ConformationalEnsemble_tes> (  &<NamedThing_tes> ;
           rdf:type [ <NamedThing> ] ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/protein_id> @linkml:String ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/conformational_states>
-          @<https://w3id.org/lambda-ber-schema/functional_annotation/ConformationalState> * ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/clustering_method> @linkml:String ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/rmsd_threshold> @linkml:Float ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/transition_pathways> @linkml:String ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/energy_landscape> @linkml:String ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/principal_motions> @linkml:String *
+          <http://w3id.org/lambda/functional_annotation/protein_id> @linkml:String ;
+          <http://w3id.org/lambda/functional_annotation/conformational_states>
+          @<http://w3id.org/lambda/functional_annotation/ConformationalState> * ;
+          <http://w3id.org/lambda/functional_annotation/clustering_method> @linkml:String ? ;
+          <http://w3id.org/lambda/functional_annotation/rmsd_threshold> @linkml:Float ? ;
+          <http://w3id.org/lambda/functional_annotation/transition_pathways> @linkml:String ? ;
+          <http://w3id.org/lambda/functional_annotation/energy_landscape> @linkml:String ? ;
+          <http://w3id.org/lambda/functional_annotation/principal_motions> @linkml:String *
        ) ;
-       rdf:type [ <https://w3id.org/lambda-ber-schema/functional_annotation/ConformationalEnsemble> ]
+       rdf:type [ <http://w3id.org/lambda/functional_annotation/ConformationalEnsemble> ]
     )
 }
 
-<https://w3id.org/lambda-ber-schema/functional_annotation/ConformationalState> CLOSED {
-    (  $<https://w3id.org/lambda-ber-schema/functional_annotation/ConformationalState_tes> (  &<AttributeGroup_tes> ;
+<http://w3id.org/lambda/functional_annotation/ConformationalState> CLOSED {
+    (  $<http://w3id.org/lambda/functional_annotation/ConformationalState_tes> (  &<AttributeGroup_tes> ;
           rdf:type [ <AttributeGroup> ] ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/state_id> @linkml:String ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/state_name> @linkml:String ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/pdb_entries> @linkml:String * ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/population> @linkml:Float ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/free_energy> @linkml:Float ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/rmsd_from_reference> @linkml:Float ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/characteristic_features> @linkml:String *
+          <http://w3id.org/lambda/functional_annotation/state_id> @linkml:String ;
+          <http://w3id.org/lambda/functional_annotation/state_name> @linkml:String ? ;
+          <http://w3id.org/lambda/functional_annotation/pdb_entries> @linkml:String * ;
+          <http://w3id.org/lambda/functional_annotation/population> @linkml:Float ? ;
+          <http://w3id.org/lambda/functional_annotation/free_energy> @linkml:Float ? ;
+          <http://w3id.org/lambda/functional_annotation/rmsd_from_reference> @linkml:Float ? ;
+          <http://w3id.org/lambda/functional_annotation/characteristic_features> @linkml:String *
        ) ;
-       rdf:type [ <https://w3id.org/lambda-ber-schema/functional_annotation/ConformationalState> ] ?
+       rdf:type [ <http://w3id.org/lambda/functional_annotation/ConformationalState> ] ?
     )
 }
 
@@ -270,20 +262,18 @@ linkml:Sparqlpath xsd:string
           <accelerating_voltage> @<QuantityValue> ? ;
           <cs_corrector> @linkml:Boolean ? ;
           <phase_plate> @linkml:Boolean ? ;
-          <detector_technology> [ <https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum#direct_electron_detector>
-             <https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum#ccd>
-             <https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum#cmos>
-             <https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum#hybrid_photon_counting>
-             <https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum#scintillator_coupled>
-             <https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum#imaging_plate>
-             <https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum#film> ] ? ;
+          <detector_technology> [ <http://w3id.org/lambda/DetectorTechnologyEnum#direct_electron_detector>
+             <http://w3id.org/lambda/DetectorTechnologyEnum#ccd> <http://w3id.org/lambda/DetectorTechnologyEnum#cmos>
+             <http://w3id.org/lambda/DetectorTechnologyEnum#hybrid_photon_counting>
+             <http://w3id.org/lambda/DetectorTechnologyEnum#scintillator_coupled>
+             <http://w3id.org/lambda/DetectorTechnologyEnum#imaging_plate> <http://w3id.org/lambda/DetectorTechnologyEnum#film> ] ?
+          ;
           <detector_manufacturer> @linkml:String ? ;
           <detector_model> @linkml:String ? ;
-          <detector_mode> [ <https://w3id.org/lambda-ber-schema/DetectorModeEnum#counting>
-             <https://w3id.org/lambda-ber-schema/DetectorModeEnum#integrating>
-             <https://w3id.org/lambda-ber-schema/DetectorModeEnum#super_resolution>
-             <https://w3id.org/lambda-ber-schema/DetectorModeEnum#linear>
-             <https://w3id.org/lambda-ber-schema/DetectorModeEnum#correlated_double_sampling> ] ? ;
+          <detector_mode> [ <http://w3id.org/lambda/DetectorModeEnum#counting>
+             <http://w3id.org/lambda/DetectorModeEnum#integrating> <http://w3id.org/lambda/DetectorModeEnum#super_resolution>
+             <http://w3id.org/lambda/DetectorModeEnum#linear> <http://w3id.org/lambda/DetectorModeEnum#correlated_double_sampling>
+             ] ? ;
           <detector_position> @linkml:String ? ;
           <detector_dimensions> @linkml:String ? ;
           <pixel_size_physical_um> @<QuantityValue> ? ;
@@ -301,9 +291,8 @@ linkml:Sparqlpath xsd:string
           <microscope_software_version> @linkml:String ? ;
           <spotsize> @<QuantityValue> ? ;
           <gunlens> @<QuantityValue> ? ;
-          <imaging_mode> [ <https://w3id.org/lambda-ber-schema/ImagingModeEnum#EFTEM>
-             <https://w3id.org/lambda-ber-schema/ImagingModeEnum#TEM> <https://w3id.org/lambda-ber-schema/ImagingModeEnum#STEM> ] ?
-          ;
+          <imaging_mode> [ <http://w3id.org/lambda/ImagingModeEnum#EFTEM> <http://w3id.org/lambda/ImagingModeEnum#TEM>
+             <http://w3id.org/lambda/ImagingModeEnum#STEM> ] ? ;
           <tem_beam_diameter> @<QuantityValue> ?
        ) ;
        rdf:type [ <CryoEMInstrument> ]
@@ -313,24 +302,20 @@ linkml:Sparqlpath xsd:string
 <CryoEMPreparation> CLOSED {
     (  $<CryoEMPreparation_tes> (  &<TechniqueSpecificPreparation_tes> ;
           rdf:type [ <TechniqueSpecificPreparation> ] ? ;
-          <grid_type> [ <https://w3id.org/lambda-ber-schema/GridTypeEnum#c_flat>
-             <https://w3id.org/lambda-ber-schema/GridTypeEnum#quantifoil>
-             <https://w3id.org/lambda-ber-schema/GridTypeEnum#lacey_carbon>
-             <https://w3id.org/lambda-ber-schema/GridTypeEnum#ultrathin_carbon>
-             <https://w3id.org/lambda-ber-schema/GridTypeEnum#gold> ] ? ;
+          <grid_type> [ <http://w3id.org/lambda/GridTypeEnum#c_flat> <http://w3id.org/lambda/GridTypeEnum#quantifoil>
+             <http://w3id.org/lambda/GridTypeEnum#lacey_carbon> <http://w3id.org/lambda/GridTypeEnum#ultrathin_carbon>
+             <http://w3id.org/lambda/GridTypeEnum#gold> ] ? ;
           <support_film> @linkml:String ? ;
           <hole_size> @<QuantityValue> ? ;
-          <vitrification_method> [ <https://w3id.org/lambda-ber-schema/VitrificationMethodEnum#plunge_freezing>
-             <https://w3id.org/lambda-ber-schema/VitrificationMethodEnum#high_pressure_freezing>
-             <https://w3id.org/lambda-ber-schema/VitrificationMethodEnum#slam_freezing> ] ? ;
+          <vitrification_method> [ <http://w3id.org/lambda/VitrificationMethodEnum#plunge_freezing>
+             <http://w3id.org/lambda/VitrificationMethodEnum#high_pressure_freezing>
+             <http://w3id.org/lambda/VitrificationMethodEnum#slam_freezing> ] ? ;
           <blot_time> @<QuantityValue> ? ;
           <blot_force> @<QuantityValue> ? ;
           <humidity_percentage> @<QuantityValue> ? ;
           <chamber_temperature> @<QuantityValue> ? ;
-          <grid_material> [ <https://w3id.org/lambda-ber-schema/GridMaterialEnum#carbon>
-             <https://w3id.org/lambda-ber-schema/GridMaterialEnum#gold>
-             <https://w3id.org/lambda-ber-schema/GridMaterialEnum#graphene>
-             <https://w3id.org/lambda-ber-schema/GridMaterialEnum#silicon_nitride> ] ? ;
+          <grid_material> [ <http://w3id.org/lambda/GridMaterialEnum#carbon> <http://w3id.org/lambda/GridMaterialEnum#gold>
+             <http://w3id.org/lambda/GridMaterialEnum#graphene> <http://w3id.org/lambda/GridMaterialEnum#silicon_nitride> ] ? ;
           <glow_discharge_applied> @linkml:Boolean ? ;
           <glow_discharge_time> @<QuantityValue> ? ;
           <glow_discharge_current> @<QuantityValue> ? ;
@@ -352,13 +337,11 @@ linkml:Sparqlpath xsd:string
 <CrystallizationConditions> CLOSED {
     (  $<CrystallizationConditions_tes> (  &<AttributeGroup_tes> ;
           rdf:type [ <AttributeGroup> ] ? ;
-          nsls2:Method [ <https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#vapor_diffusion_hanging>
-             <https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#vapor_diffusion_sitting>
-             <https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#batch>
-             <https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#microbatch>
-             <https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#lcp>
-             <https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#dialysis>
-             <https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#free_interface_diffusion> ] ? ;
+          nsls2:Method [ <http://w3id.org/lambda/CrystallizationMethodEnum#vapor_diffusion_hanging>
+             <http://w3id.org/lambda/CrystallizationMethodEnum#vapor_diffusion_sitting>
+             <http://w3id.org/lambda/CrystallizationMethodEnum#batch> <http://w3id.org/lambda/CrystallizationMethodEnum#microbatch>
+             <http://w3id.org/lambda/CrystallizationMethodEnum#lcp> <http://w3id.org/lambda/CrystallizationMethodEnum#dialysis>
+             <http://w3id.org/lambda/CrystallizationMethodEnum#free_interface_diffusion> ] ? ;
           nsls2:Conditions @linkml:String ? ;
           nsls2:Drop_Volume @<QuantityValue> ? ;
           <protein_concentration> @<QuantityValue> ? ;
@@ -390,59 +373,55 @@ linkml:Sparqlpath xsd:string
     )
 }
 
-<https://w3id.org/lambda-ber-schema/functional_annotation/DatabaseCrossReference> CLOSED {
-    (  $<https://w3id.org/lambda-ber-schema/functional_annotation/DatabaseCrossReference_tes> (  &<AttributeGroup_tes> ;
+<http://w3id.org/lambda/functional_annotation/DatabaseCrossReference> CLOSED {
+    (  $<http://w3id.org/lambda/functional_annotation/DatabaseCrossReference_tes> (  &<AttributeGroup_tes> ;
           rdf:type [ <AttributeGroup> ] ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/database_name> [
-             <https://w3id.org/lambda-ber-schema/functional_annotation/DatabaseNameEnum#uniprot>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/DatabaseNameEnum#pdb>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/DatabaseNameEnum#pfam>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/DatabaseNameEnum#cath>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/DatabaseNameEnum#scop>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/DatabaseNameEnum#interpro>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/DatabaseNameEnum#chembl>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/DatabaseNameEnum#chebi>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/DatabaseNameEnum#pubchem>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/DatabaseNameEnum#drugbank>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/DatabaseNameEnum#omim>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/DatabaseNameEnum#clinvar>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/DatabaseNameEnum#cosmic>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/DatabaseNameEnum#gnomad>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/DatabaseNameEnum#intact>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/DatabaseNameEnum#string>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/DatabaseNameEnum#biogrid>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/DatabaseNameEnum#reactome>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/DatabaseNameEnum#kegg>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/DatabaseNameEnum#go> ] ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/database_id> @linkml:String ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/database_url> @linkml:Uri ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/last_updated> @linkml:String ?
+          <http://w3id.org/lambda/functional_annotation/database_name> [
+             <http://w3id.org/lambda/functional_annotation/DatabaseNameEnum#uniprot>
+             <http://w3id.org/lambda/functional_annotation/DatabaseNameEnum#pdb>
+             <http://w3id.org/lambda/functional_annotation/DatabaseNameEnum#pfam>
+             <http://w3id.org/lambda/functional_annotation/DatabaseNameEnum#cath>
+             <http://w3id.org/lambda/functional_annotation/DatabaseNameEnum#scop>
+             <http://w3id.org/lambda/functional_annotation/DatabaseNameEnum#interpro>
+             <http://w3id.org/lambda/functional_annotation/DatabaseNameEnum#chembl>
+             <http://w3id.org/lambda/functional_annotation/DatabaseNameEnum#chebi>
+             <http://w3id.org/lambda/functional_annotation/DatabaseNameEnum#pubchem>
+             <http://w3id.org/lambda/functional_annotation/DatabaseNameEnum#drugbank>
+             <http://w3id.org/lambda/functional_annotation/DatabaseNameEnum#omim>
+             <http://w3id.org/lambda/functional_annotation/DatabaseNameEnum#clinvar>
+             <http://w3id.org/lambda/functional_annotation/DatabaseNameEnum#cosmic>
+             <http://w3id.org/lambda/functional_annotation/DatabaseNameEnum#gnomad>
+             <http://w3id.org/lambda/functional_annotation/DatabaseNameEnum#intact>
+             <http://w3id.org/lambda/functional_annotation/DatabaseNameEnum#string>
+             <http://w3id.org/lambda/functional_annotation/DatabaseNameEnum#biogrid>
+             <http://w3id.org/lambda/functional_annotation/DatabaseNameEnum#reactome>
+             <http://w3id.org/lambda/functional_annotation/DatabaseNameEnum#kegg>
+             <http://w3id.org/lambda/functional_annotation/DatabaseNameEnum#go> ] ;
+          <http://w3id.org/lambda/functional_annotation/database_id> @linkml:String ;
+          <http://w3id.org/lambda/functional_annotation/database_url> @linkml:Uri ? ;
+          <http://w3id.org/lambda/functional_annotation/last_updated> @linkml:String ?
        ) ;
-       rdf:type [ <https://w3id.org/lambda-ber-schema/functional_annotation/DatabaseCrossReference> ] ?
+       rdf:type [ <http://w3id.org/lambda/functional_annotation/DatabaseCrossReference> ] ?
     )
 }
 
 <DataCollectionStrategy> CLOSED {
     (  $<DataCollectionStrategy_tes> (  &<AttributeGroup_tes> ;
           rdf:type [ <AttributeGroup> ] ? ;
-          <collection_mode> [ <https://w3id.org/lambda-ber-schema/CollectionModeEnum#counting>
-             <https://w3id.org/lambda-ber-schema/CollectionModeEnum#super_resolution>
-             <https://w3id.org/lambda-ber-schema/CollectionModeEnum#continuous>
-             <https://w3id.org/lambda-ber-schema/CollectionModeEnum#oscillation>
-             <https://w3id.org/lambda-ber-schema/CollectionModeEnum#still>
-             <https://w3id.org/lambda-ber-schema/CollectionModeEnum#batch>
-             <https://w3id.org/lambda-ber-schema/CollectionModeEnum#sec_saxs>
-             <https://w3id.org/lambda-ber-schema/CollectionModeEnum#single_particle> ] ? ;
+          <collection_mode> [ <http://w3id.org/lambda/CollectionModeEnum#counting>
+             <http://w3id.org/lambda/CollectionModeEnum#super_resolution> <http://w3id.org/lambda/CollectionModeEnum#continuous>
+             <http://w3id.org/lambda/CollectionModeEnum#oscillation> <http://w3id.org/lambda/CollectionModeEnum#still>
+             <http://w3id.org/lambda/CollectionModeEnum#batch> <http://w3id.org/lambda/CollectionModeEnum#sec_saxs>
+             <http://w3id.org/lambda/CollectionModeEnum#single_particle> ] ? ;
           <total_frames> @<QuantityValue> ? ;
           <frame_rate> @<QuantityValue> ? ;
           <total_dose> @<QuantityValue> ? ;
           <dose_per_frame> @<QuantityValue> ? ;
           <wavelength_a> @<QuantityValue> ? ;
-          <detector_mode> [ <https://w3id.org/lambda-ber-schema/DetectorModeEnum#counting>
-             <https://w3id.org/lambda-ber-schema/DetectorModeEnum#integrating>
-             <https://w3id.org/lambda-ber-schema/DetectorModeEnum#super_resolution>
-             <https://w3id.org/lambda-ber-schema/DetectorModeEnum#linear>
-             <https://w3id.org/lambda-ber-schema/DetectorModeEnum#correlated_double_sampling> ] ? ;
+          <detector_mode> [ <http://w3id.org/lambda/DetectorModeEnum#counting>
+             <http://w3id.org/lambda/DetectorModeEnum#integrating> <http://w3id.org/lambda/DetectorModeEnum#super_resolution>
+             <http://w3id.org/lambda/DetectorModeEnum#linear> <http://w3id.org/lambda/DetectorModeEnum#correlated_double_sampling>
+             ] ? ;
           <pixel_size_calibrated> @<QuantityValue> ? ;
           <detector_distance_mm> @<QuantityValue> ? ;
           <beam_center_x_px> @<QuantityValue> ? ;
@@ -465,35 +444,29 @@ linkml:Sparqlpath xsd:string
           rdf:type [ <NamedThing> ] ? ;
           <file_name> @linkml:String ;
           <file_path> @linkml:String ? ;
-          <file_format> [ <https://w3id.org/lambda-ber-schema/FileFormatEnum#mrc>
-             <https://w3id.org/lambda-ber-schema/FileFormatEnum#tiff> <https://w3id.org/lambda-ber-schema/FileFormatEnum#hdf5>
-             <https://w3id.org/lambda-ber-schema/FileFormatEnum#star> <https://w3id.org/lambda-ber-schema/FileFormatEnum#pdb>
-             <https://w3id.org/lambda-ber-schema/FileFormatEnum#mmcif> <https://w3id.org/lambda-ber-schema/FileFormatEnum#mtz>
-             <https://w3id.org/lambda-ber-schema/FileFormatEnum#cbf> <https://w3id.org/lambda-ber-schema/FileFormatEnum#cbf_zst>
-             <https://w3id.org/lambda-ber-schema/FileFormatEnum#img> <https://w3id.org/lambda-ber-schema/FileFormatEnum#h5>
-             <https://w3id.org/lambda-ber-schema/FileFormatEnum#ascii>
-             <https://w3id.org/lambda-ber-schema/FileFormatEnum#thermo_raw> <https://w3id.org/lambda-ber-schema/FileFormatEnum#zip>
-             <https://w3id.org/lambda-ber-schema/FileFormatEnum#mrcs> <https://w3id.org/lambda-ber-schema/FileFormatEnum#eer>
-             <https://w3id.org/lambda-ber-schema/FileFormatEnum#cs> <https://w3id.org/lambda-ber-schema/FileFormatEnum#json>
-             <https://w3id.org/lambda-ber-schema/FileFormatEnum#csv> <https://w3id.org/lambda-ber-schema/FileFormatEnum#ccp4>
-             <https://w3id.org/lambda-ber-schema/FileFormatEnum#gz> ] ;
+          <file_format> [ <http://w3id.org/lambda/FileFormatEnum#mrc> <http://w3id.org/lambda/FileFormatEnum#tiff>
+             <http://w3id.org/lambda/FileFormatEnum#hdf5> <http://w3id.org/lambda/FileFormatEnum#star>
+             <http://w3id.org/lambda/FileFormatEnum#pdb> <http://w3id.org/lambda/FileFormatEnum#mmcif>
+             <http://w3id.org/lambda/FileFormatEnum#mtz> <http://w3id.org/lambda/FileFormatEnum#cbf>
+             <http://w3id.org/lambda/FileFormatEnum#cbf_zst> <http://w3id.org/lambda/FileFormatEnum#img>
+             <http://w3id.org/lambda/FileFormatEnum#h5> <http://w3id.org/lambda/FileFormatEnum#ascii>
+             <http://w3id.org/lambda/FileFormatEnum#thermo_raw> <http://w3id.org/lambda/FileFormatEnum#zip>
+             <http://w3id.org/lambda/FileFormatEnum#tar> <http://w3id.org/lambda/FileFormatEnum#mrcs>
+             <http://w3id.org/lambda/FileFormatEnum#eer> <http://w3id.org/lambda/FileFormatEnum#cs>
+             <http://w3id.org/lambda/FileFormatEnum#json> <http://w3id.org/lambda/FileFormatEnum#csv>
+             <http://w3id.org/lambda/FileFormatEnum#ccp4> <http://w3id.org/lambda/FileFormatEnum#gz> ] ;
           <file_size_bytes> @<QuantityValue> ? ;
           <checksum> @linkml:String ? ;
           <creation_date> @linkml:String ? ;
-          <data_type> [ <https://w3id.org/lambda-ber-schema/DataTypeEnum#micrograph>
-             <https://w3id.org/lambda-ber-schema/DataTypeEnum#diffraction>
-             <https://w3id.org/lambda-ber-schema/DataTypeEnum#scattering>
-             <https://w3id.org/lambda-ber-schema/DataTypeEnum#particles> <https://w3id.org/lambda-ber-schema/DataTypeEnum#volume>
-             <https://w3id.org/lambda-ber-schema/DataTypeEnum#model> <https://w3id.org/lambda-ber-schema/DataTypeEnum#metadata>
-             <https://w3id.org/lambda-ber-schema/DataTypeEnum#raw_data>
-             <https://w3id.org/lambda-ber-schema/DataTypeEnum#processed_data>
-             <https://w3id.org/lambda-ber-schema/DataTypeEnum#movie>
-             <https://w3id.org/lambda-ber-schema/DataTypeEnum#motion_corrected>
-             <https://w3id.org/lambda-ber-schema/DataTypeEnum#ctf_estimation>
-             <https://w3id.org/lambda-ber-schema/DataTypeEnum#particle_coordinates>
-             <https://w3id.org/lambda-ber-schema/DataTypeEnum#class_averages>
-             <https://w3id.org/lambda-ber-schema/DataTypeEnum#fsc_curve> <https://w3id.org/lambda-ber-schema/DataTypeEnum#map_half>
-             <https://w3id.org/lambda-ber-schema/DataTypeEnum#validation_report> ] ? ;
+          <data_type> [ <http://w3id.org/lambda/DataTypeEnum#micrograph> <http://w3id.org/lambda/DataTypeEnum#diffraction>
+             <http://w3id.org/lambda/DataTypeEnum#scattering> <http://w3id.org/lambda/DataTypeEnum#particles>
+             <http://w3id.org/lambda/DataTypeEnum#volume> <http://w3id.org/lambda/DataTypeEnum#model>
+             <http://w3id.org/lambda/DataTypeEnum#metadata> <http://w3id.org/lambda/DataTypeEnum#raw_data>
+             <http://w3id.org/lambda/DataTypeEnum#processed_data> <http://w3id.org/lambda/DataTypeEnum#movie>
+             <http://w3id.org/lambda/DataTypeEnum#motion_corrected> <http://w3id.org/lambda/DataTypeEnum#ctf_estimation>
+             <http://w3id.org/lambda/DataTypeEnum#particle_coordinates> <http://w3id.org/lambda/DataTypeEnum#class_averages>
+             <http://w3id.org/lambda/DataTypeEnum#fsc_curve> <http://w3id.org/lambda/DataTypeEnum#map_half>
+             <http://w3id.org/lambda/DataTypeEnum#validation_report> ] ? ;
           <storage_uri> @linkml:String ? ;
           <related_entity> @linkml:String ? ;
           <file_role> @linkml:String ?
@@ -537,19 +510,19 @@ linkml:Sparqlpath xsd:string
     )
 }
 
-<https://w3id.org/lambda-ber-schema/functional_annotation/EvolutionaryConservation> CLOSED {
-    (  $<https://w3id.org/lambda-ber-schema/functional_annotation/EvolutionaryConservation_tes> ( 
-          &<https://w3id.org/lambda-ber-schema/functional_annotation/ProteinAnnotation_tes> ;
-          rdf:type [ <https://w3id.org/lambda-ber-schema/functional_annotation/ProteinAnnotation> ] ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/conservation_score> @linkml:Float ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/conserved_residues> @linkml:String * ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/variable_residues> @linkml:String * ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/conservation_method> @linkml:String ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/alignment_depth> @linkml:Integer ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/taxonomic_range> @linkml:String ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/coevolved_residues> @linkml:String *
+<http://w3id.org/lambda/functional_annotation/EvolutionaryConservation> CLOSED {
+    (  $<http://w3id.org/lambda/functional_annotation/EvolutionaryConservation_tes> ( 
+          &<http://w3id.org/lambda/functional_annotation/ProteinAnnotation_tes> ;
+          rdf:type [ <http://w3id.org/lambda/functional_annotation/ProteinAnnotation> ] ? ;
+          <http://w3id.org/lambda/functional_annotation/conservation_score> @linkml:Float ? ;
+          <http://w3id.org/lambda/functional_annotation/conserved_residues> @linkml:String * ;
+          <http://w3id.org/lambda/functional_annotation/variable_residues> @linkml:String * ;
+          <http://w3id.org/lambda/functional_annotation/conservation_method> @linkml:String ? ;
+          <http://w3id.org/lambda/functional_annotation/alignment_depth> @linkml:Integer ? ;
+          <http://w3id.org/lambda/functional_annotation/taxonomic_range> @linkml:String ? ;
+          <http://w3id.org/lambda/functional_annotation/coevolved_residues> @linkml:String *
        ) ;
-       rdf:type [ <https://w3id.org/lambda-ber-schema/functional_annotation/EvolutionaryConservation> ]
+       rdf:type [ <http://w3id.org/lambda/functional_annotation/EvolutionaryConservation> ]
     )
 }
 
@@ -570,9 +543,8 @@ linkml:Sparqlpath xsd:string
 <ExperimentInstrumentAssociation> CLOSED {
     (  $<ExperimentInstrumentAssociation_tes> (  <experiment_id> @<ExperimentRun> ;
           <instrument_id> @<Instrument> ;
-          <role> [ <https://w3id.org/lambda-ber-schema/InstrumentRoleEnum#primary>
-             <https://w3id.org/lambda-ber-schema/InstrumentRoleEnum#detector>
-             <https://w3id.org/lambda-ber-schema/InstrumentRoleEnum#sample_handler> ] ?
+          <role> [ <http://w3id.org/lambda/InstrumentRoleEnum#primary> <http://w3id.org/lambda/InstrumentRoleEnum#detector>
+             <http://w3id.org/lambda/InstrumentRoleEnum#sample_handler> ] ?
        ) ;
        rdf:type [ <ExperimentInstrumentAssociation> ] ?
     )
@@ -589,30 +561,26 @@ linkml:Sparqlpath xsd:string
              <http://purl.obolibrary.org/obo/CHMO_0000184> <http://purl.obolibrary.org/obo/CHMO_0002413>
              <http://purl.obolibrary.org/obo/CHMO_0000068> <http://purl.obolibrary.org/obo/CHMO_0000470>
              <http://purl.obolibrary.org/obo/CHMO_0000298> <http://purl.obolibrary.org/obo/CHMO_0000305>
-             <http://purl.obolibrary.org/obo/CHMO_0000300> <https://w3id.org/lambda-ber-schema/TechniqueEnum#xmcd>
+             <http://purl.obolibrary.org/obo/CHMO_0000300> <http://w3id.org/lambda/TechniqueEnum#xmcd>
              <http://purl.obolibrary.org/obo/CHMO_0000182> <http://purl.obolibrary.org/obo/CHMO_0000156>
              <http://purl.obolibrary.org/obo/CHMO_0000156> <http://purl.obolibrary.org/obo/CHMO_0002743> ] ;
           <experimental_method> [ <http://purl.obolibrary.org/obo/CHMO_0000156>
-             <https://w3id.org/lambda-ber-schema/ExperimentalMethodEnum#neutron_diffraction>
-             <https://w3id.org/lambda-ber-schema/ExperimentalMethodEnum#electron_diffraction>
-             <https://w3id.org/lambda-ber-schema/ExperimentalMethodEnum#fiber_diffraction> ] ? ;
+             <http://w3id.org/lambda/ExperimentalMethodEnum#neutron_diffraction>
+             <http://w3id.org/lambda/ExperimentalMethodEnum#electron_diffraction>
+             <http://w3id.org/lambda/ExperimentalMethodEnum#fiber_diffraction> ] ? ;
           <experimental_conditions> @<ExperimentalConditions> ? ;
           <data_collection_strategy> @<DataCollectionStrategy> ? ;
           <quality_metrics> @<QualityMetrics> ? ;
           <raw_data_location> @linkml:String ? ;
-          <processing_status> [ <https://w3id.org/lambda-ber-schema/ProcessingStatusEnum#collected>
-             <https://w3id.org/lambda-ber-schema/ProcessingStatusEnum#raw>
-             <https://w3id.org/lambda-ber-schema/ProcessingStatusEnum#preprocessing>
-             <https://w3id.org/lambda-ber-schema/ProcessingStatusEnum#processing>
-             <https://w3id.org/lambda-ber-schema/ProcessingStatusEnum#completed>
-             <https://w3id.org/lambda-ber-schema/ProcessingStatusEnum#failed> ] ? ;
-          <daq_system> [ <https://w3id.org/lambda-ber-schema/DataAcquisitionSystemEnum#bluesky>
-             <https://w3id.org/lambda-ber-schema/DataAcquisitionSystemEnum#spec>
-             <https://w3id.org/lambda-ber-schema/DataAcquisitionSystemEnum#sardana>
-             <https://w3id.org/lambda-ber-schema/DataAcquisitionSystemEnum#gda>
-             <https://w3id.org/lambda-ber-schema/DataAcquisitionSystemEnum#mxcube_daq>
-             <https://w3id.org/lambda-ber-schema/DataAcquisitionSystemEnum#blu_ice>
-             <https://w3id.org/lambda-ber-schema/DataAcquisitionSystemEnum#jblue_ice> ] ? ;
+          <processing_status> [ <http://w3id.org/lambda/ProcessingStatusEnum#collected>
+             <http://w3id.org/lambda/ProcessingStatusEnum#raw> <http://w3id.org/lambda/ProcessingStatusEnum#preprocessing>
+             <http://w3id.org/lambda/ProcessingStatusEnum#processing> <http://w3id.org/lambda/ProcessingStatusEnum#completed>
+             <http://w3id.org/lambda/ProcessingStatusEnum#failed> ] ? ;
+          <daq_system> [ <http://w3id.org/lambda/DataAcquisitionSystemEnum#bluesky>
+             <http://w3id.org/lambda/DataAcquisitionSystemEnum#spec> <http://w3id.org/lambda/DataAcquisitionSystemEnum#sardana>
+             <http://w3id.org/lambda/DataAcquisitionSystemEnum#gda> <http://w3id.org/lambda/DataAcquisitionSystemEnum#mxcube_daq>
+             <http://w3id.org/lambda/DataAcquisitionSystemEnum#blu_ice>
+             <http://w3id.org/lambda/DataAcquisitionSystemEnum#jblue_ice> ] ? ;
           <magnification> @<QuantityValue> ? ;
           <calibrated_pixel_size> @<QuantityValue> ? ;
           <camera_binning> @<QuantityValue> ? ;
@@ -666,10 +634,10 @@ linkml:Sparqlpath xsd:string
 <ExperimentSampleAssociation> CLOSED {
     (  $<ExperimentSampleAssociation_tes> (  <experiment_id> @<ExperimentRun> ;
           <sample_id> @<Sample> ;
-          <role> [ <https://w3id.org/lambda-ber-schema/ExperimentSampleRoleEnum#target>
-             <https://w3id.org/lambda-ber-schema/ExperimentSampleRoleEnum#buffer_blank>
-             <https://w3id.org/lambda-ber-schema/ExperimentSampleRoleEnum#standard>
-             <https://w3id.org/lambda-ber-schema/ExperimentSampleRoleEnum#size_marker> ] ? ;
+          <role> [ <http://w3id.org/lambda/ExperimentSampleRoleEnum#target>
+             <http://w3id.org/lambda/ExperimentSampleRoleEnum#buffer_blank>
+             <http://w3id.org/lambda/ExperimentSampleRoleEnum#standard>
+             <http://w3id.org/lambda/ExperimentSampleRoleEnum#size_marker> ] ? ;
           <preparation_id> @<SamplePreparation> ?
        ) ;
        rdf:type [ <ExperimentSampleAssociation> ] ?
@@ -718,40 +686,40 @@ linkml:Sparqlpath xsd:string
     )
 }
 
-<https://w3id.org/lambda-ber-schema/functional_annotation/FunctionalSite> CLOSED {
-    (  $<https://w3id.org/lambda-ber-schema/functional_annotation/FunctionalSite_tes> ( 
-          &<https://w3id.org/lambda-ber-schema/functional_annotation/ProteinAnnotation_tes> ;
-          rdf:type [ <https://w3id.org/lambda-ber-schema/functional_annotation/ProteinAnnotation> ] ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/site_type> [
-             <https://w3id.org/lambda-ber-schema/functional_annotation/FunctionalSiteTypeEnum#active_site>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/FunctionalSiteTypeEnum#catalytic_site>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/FunctionalSiteTypeEnum#binding_site>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/FunctionalSiteTypeEnum#allosteric_site>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/FunctionalSiteTypeEnum#substrate_binding>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/FunctionalSiteTypeEnum#cofactor_binding>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/FunctionalSiteTypeEnum#inhibitor_binding>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/FunctionalSiteTypeEnum#metal_binding>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/FunctionalSiteTypeEnum#nucleotide_binding>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/FunctionalSiteTypeEnum#phosphorylation_site>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/FunctionalSiteTypeEnum#glycosylation_site>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/FunctionalSiteTypeEnum#ubiquitination_site>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/FunctionalSiteTypeEnum#sumoylation_site>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/FunctionalSiteTypeEnum#acetylation_site>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/FunctionalSiteTypeEnum#methylation_site>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/FunctionalSiteTypeEnum#protein_binding>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/FunctionalSiteTypeEnum#dna_binding>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/FunctionalSiteTypeEnum#rna_binding>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/FunctionalSiteTypeEnum#lipid_binding> ] ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/site_name> @linkml:String ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/residues> @linkml:String * ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/ligand_interactions>
-          @<https://w3id.org/lambda-ber-schema/functional_annotation/LigandInteraction> * ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/conservation_score> @linkml:Float ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/functional_importance> @linkml:String ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/go_terms> @linkml:Uriorcurie * ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/ec_number> @linkml:String ?
+<http://w3id.org/lambda/functional_annotation/FunctionalSite> CLOSED {
+    (  $<http://w3id.org/lambda/functional_annotation/FunctionalSite_tes> ( 
+          &<http://w3id.org/lambda/functional_annotation/ProteinAnnotation_tes> ;
+          rdf:type [ <http://w3id.org/lambda/functional_annotation/ProteinAnnotation> ] ? ;
+          <http://w3id.org/lambda/functional_annotation/site_type> [
+             <http://w3id.org/lambda/functional_annotation/FunctionalSiteTypeEnum#active_site>
+             <http://w3id.org/lambda/functional_annotation/FunctionalSiteTypeEnum#catalytic_site>
+             <http://w3id.org/lambda/functional_annotation/FunctionalSiteTypeEnum#binding_site>
+             <http://w3id.org/lambda/functional_annotation/FunctionalSiteTypeEnum#allosteric_site>
+             <http://w3id.org/lambda/functional_annotation/FunctionalSiteTypeEnum#substrate_binding>
+             <http://w3id.org/lambda/functional_annotation/FunctionalSiteTypeEnum#cofactor_binding>
+             <http://w3id.org/lambda/functional_annotation/FunctionalSiteTypeEnum#inhibitor_binding>
+             <http://w3id.org/lambda/functional_annotation/FunctionalSiteTypeEnum#metal_binding>
+             <http://w3id.org/lambda/functional_annotation/FunctionalSiteTypeEnum#nucleotide_binding>
+             <http://w3id.org/lambda/functional_annotation/FunctionalSiteTypeEnum#phosphorylation_site>
+             <http://w3id.org/lambda/functional_annotation/FunctionalSiteTypeEnum#glycosylation_site>
+             <http://w3id.org/lambda/functional_annotation/FunctionalSiteTypeEnum#ubiquitination_site>
+             <http://w3id.org/lambda/functional_annotation/FunctionalSiteTypeEnum#sumoylation_site>
+             <http://w3id.org/lambda/functional_annotation/FunctionalSiteTypeEnum#acetylation_site>
+             <http://w3id.org/lambda/functional_annotation/FunctionalSiteTypeEnum#methylation_site>
+             <http://w3id.org/lambda/functional_annotation/FunctionalSiteTypeEnum#protein_binding>
+             <http://w3id.org/lambda/functional_annotation/FunctionalSiteTypeEnum#dna_binding>
+             <http://w3id.org/lambda/functional_annotation/FunctionalSiteTypeEnum#rna_binding>
+             <http://w3id.org/lambda/functional_annotation/FunctionalSiteTypeEnum#lipid_binding> ] ;
+          <http://w3id.org/lambda/functional_annotation/site_name> @linkml:String ? ;
+          <http://w3id.org/lambda/functional_annotation/residues> @linkml:String * ;
+          <http://w3id.org/lambda/functional_annotation/ligand_interactions>
+          @<http://w3id.org/lambda/functional_annotation/LigandInteraction> * ;
+          <http://w3id.org/lambda/functional_annotation/conservation_score> @linkml:Float ? ;
+          <http://w3id.org/lambda/functional_annotation/functional_importance> @linkml:String ? ;
+          <http://w3id.org/lambda/functional_annotation/go_terms> @linkml:Uriorcurie * ;
+          <http://w3id.org/lambda/functional_annotation/ec_number> @linkml:String ?
        ) ;
-       rdf:type [ <https://w3id.org/lambda-ber-schema/functional_annotation/FunctionalSite> ]
+       rdf:type [ <http://w3id.org/lambda/functional_annotation/FunctionalSite> ]
     )
 }
 
@@ -810,12 +778,12 @@ linkml:Sparqlpath xsd:string
              rdf:type [ <NamedThing> ] ? ;
              <instrument_code> @linkml:String ;
              <instrument_category> [ <http://purl.obolibrary.org/obo/CHMO_0001084>
-                <https://w3id.org/lambda-ber-schema/InstrumentCategoryEnum#NEUTRON_BEAMLINE>
-                <https://w3id.org/lambda-ber-schema/InstrumentCategoryEnum#XFEL_BEAMLINE>
-                <https://w3id.org/lambda-ber-schema/InstrumentCategoryEnum#ELECTRON_MICROSCOPE>
-                <https://w3id.org/lambda-ber-schema/InstrumentCategoryEnum#BENCHTOP_XRAY>
-                <https://w3id.org/lambda-ber-schema/InstrumentCategoryEnum#OPTICAL_MICROSCOPE>
-                <https://w3id.org/lambda-ber-schema/InstrumentCategoryEnum#SPECTROMETER> ] ? ;
+                <http://w3id.org/lambda/InstrumentCategoryEnum#NEUTRON_BEAMLINE>
+                <http://w3id.org/lambda/InstrumentCategoryEnum#XFEL_BEAMLINE>
+                <http://w3id.org/lambda/InstrumentCategoryEnum#ELECTRON_MICROSCOPE>
+                <http://w3id.org/lambda/InstrumentCategoryEnum#BENCHTOP_XRAY>
+                <http://w3id.org/lambda/InstrumentCategoryEnum#OPTICAL_MICROSCOPE>
+                <http://w3id.org/lambda/InstrumentCategoryEnum#SPECTROMETER> ] ? ;
              <facility_name> [ ROR:01q47ea17 ROR:02jbv0t02 ROR:05gzmn429 ROR:02550n020 ROR:05etxs293 ROR:01g5y5k24 ROR:05gvnxz63
                 ROR:01xjv7358 ROR:01js2sh04 ROR:01ydb3330 ROR:03vk18a84 ROR:05h992307 ROR:01qz5mb56 ROR:01qz5mb56 ] ? ;
              <facility_ror> @linkml:Uriorcurie ? ;
@@ -823,67 +791,66 @@ linkml:Sparqlpath xsd:string
              <manufacturer> @linkml:String ? ;
              <model> @linkml:String ? ;
              <installation_date> @linkml:String ? ;
-             <current_status> [ <https://w3id.org/lambda-ber-schema/InstrumentStatusEnum#operational>
-                <https://w3id.org/lambda-ber-schema/InstrumentStatusEnum#maintenance>
-                <https://w3id.org/lambda-ber-schema/InstrumentStatusEnum#offline>
-                <https://w3id.org/lambda-ber-schema/InstrumentStatusEnum#commissioning> ] ?
+             <current_status> [ <http://w3id.org/lambda/InstrumentStatusEnum#operational>
+                <http://w3id.org/lambda/InstrumentStatusEnum#maintenance> <http://w3id.org/lambda/InstrumentStatusEnum#offline>
+                <http://w3id.org/lambda/InstrumentStatusEnum#commissioning> ] ?
           ) ;
           rdf:type [ <Instrument> ]
        )
     } OR @<BeamlineInstrument> OR @<CryoEMInstrument> OR @<SAXSInstrument> OR @<XRayInstrument>
 )
 
-<https://w3id.org/lambda-ber-schema/functional_annotation/LigandInteraction> CLOSED {
-    (  $<https://w3id.org/lambda-ber-schema/functional_annotation/LigandInteraction_tes> (  &<AttributeGroup_tes> ;
+<http://w3id.org/lambda/functional_annotation/LigandInteraction> CLOSED {
+    (  $<http://w3id.org/lambda/functional_annotation/LigandInteraction_tes> (  &<AttributeGroup_tes> ;
           rdf:type [ <AttributeGroup> ] ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/ligand_id> @linkml:Uriorcurie ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/ligand_name> @linkml:String ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/ligand_smiles>
-          @<https://w3id.org/lambda-ber-schema/functional_annotation/SmilesString> ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/binding_affinity> @linkml:Float ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/binding_affinity_type> [
-             <https://w3id.org/lambda-ber-schema/functional_annotation/BindingAffinityTypeEnum#kd>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/BindingAffinityTypeEnum#ki>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/BindingAffinityTypeEnum#ic50>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/BindingAffinityTypeEnum#ec50>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/BindingAffinityTypeEnum#ka>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/BindingAffinityTypeEnum#km> ] ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/binding_affinity_unit> [
-             <https://w3id.org/lambda-ber-schema/functional_annotation/AffinityUnitEnum#molar>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/AffinityUnitEnum#millimolar>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/AffinityUnitEnum#micromolar>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/AffinityUnitEnum#nanomolar>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/AffinityUnitEnum#picomolar> ] ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/interaction_type> [
-             <https://w3id.org/lambda-ber-schema/functional_annotation/InteractionTypeEnum#covalent>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/InteractionTypeEnum#hydrogen_bond>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/InteractionTypeEnum#ionic>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/InteractionTypeEnum#van_der_waals>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/InteractionTypeEnum#hydrophobic>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/InteractionTypeEnum#aromatic>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/InteractionTypeEnum#pi_stacking>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/InteractionTypeEnum#cation_pi>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/InteractionTypeEnum#metal_coordination>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/InteractionTypeEnum#disulfide> ] ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/binding_site_residues> @linkml:String * ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/is_cofactor> @linkml:Boolean ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/is_drug_like> @linkml:Boolean ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/druggability_score> @linkml:Float ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/interaction_distance> @linkml:Float ?
+          <http://w3id.org/lambda/functional_annotation/ligand_id> @linkml:Uriorcurie ;
+          <http://w3id.org/lambda/functional_annotation/ligand_name> @linkml:String ;
+          <http://w3id.org/lambda/functional_annotation/ligand_smiles> @<http://w3id.org/lambda/functional_annotation/SmilesString>
+          ? ;
+          <http://w3id.org/lambda/functional_annotation/binding_affinity> @linkml:Float ? ;
+          <http://w3id.org/lambda/functional_annotation/binding_affinity_type> [
+             <http://w3id.org/lambda/functional_annotation/BindingAffinityTypeEnum#kd>
+             <http://w3id.org/lambda/functional_annotation/BindingAffinityTypeEnum#ki>
+             <http://w3id.org/lambda/functional_annotation/BindingAffinityTypeEnum#ic50>
+             <http://w3id.org/lambda/functional_annotation/BindingAffinityTypeEnum#ec50>
+             <http://w3id.org/lambda/functional_annotation/BindingAffinityTypeEnum#ka>
+             <http://w3id.org/lambda/functional_annotation/BindingAffinityTypeEnum#km> ] ? ;
+          <http://w3id.org/lambda/functional_annotation/binding_affinity_unit> [
+             <http://w3id.org/lambda/functional_annotation/AffinityUnitEnum#molar>
+             <http://w3id.org/lambda/functional_annotation/AffinityUnitEnum#millimolar>
+             <http://w3id.org/lambda/functional_annotation/AffinityUnitEnum#micromolar>
+             <http://w3id.org/lambda/functional_annotation/AffinityUnitEnum#nanomolar>
+             <http://w3id.org/lambda/functional_annotation/AffinityUnitEnum#picomolar> ] ? ;
+          <http://w3id.org/lambda/functional_annotation/interaction_type> [
+             <http://w3id.org/lambda/functional_annotation/InteractionTypeEnum#covalent>
+             <http://w3id.org/lambda/functional_annotation/InteractionTypeEnum#hydrogen_bond>
+             <http://w3id.org/lambda/functional_annotation/InteractionTypeEnum#ionic>
+             <http://w3id.org/lambda/functional_annotation/InteractionTypeEnum#van_der_waals>
+             <http://w3id.org/lambda/functional_annotation/InteractionTypeEnum#hydrophobic>
+             <http://w3id.org/lambda/functional_annotation/InteractionTypeEnum#aromatic>
+             <http://w3id.org/lambda/functional_annotation/InteractionTypeEnum#pi_stacking>
+             <http://w3id.org/lambda/functional_annotation/InteractionTypeEnum#cation_pi>
+             <http://w3id.org/lambda/functional_annotation/InteractionTypeEnum#metal_coordination>
+             <http://w3id.org/lambda/functional_annotation/InteractionTypeEnum#disulfide> ] ? ;
+          <http://w3id.org/lambda/functional_annotation/binding_site_residues> @linkml:String * ;
+          <http://w3id.org/lambda/functional_annotation/is_cofactor> @linkml:Boolean ? ;
+          <http://w3id.org/lambda/functional_annotation/is_drug_like> @linkml:Boolean ? ;
+          <http://w3id.org/lambda/functional_annotation/druggability_score> @linkml:Float ? ;
+          <http://w3id.org/lambda/functional_annotation/interaction_distance> @linkml:Float ?
        ) ;
-       rdf:type [ <https://w3id.org/lambda-ber-schema/functional_annotation/LigandInteraction> ] ?
+       rdf:type [ <http://w3id.org/lambda/functional_annotation/LigandInteraction> ] ?
     )
 }
 
-<https://w3id.org/lambda-ber-schema/functional_annotation/MeasurementConditions> CLOSED {
-    (  $<https://w3id.org/lambda-ber-schema/functional_annotation/MeasurementConditions_tes> (  &<NamedThing_tes> ;
+<http://w3id.org/lambda/functional_annotation/MeasurementConditions> CLOSED {
+    (  $<http://w3id.org/lambda/functional_annotation/MeasurementConditions_tes> (  &<NamedThing_tes> ;
           rdf:type [ <NamedThing> ] ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/buffer_composition> @<BufferComposition> ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/ph> @<QuantityValue> ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/ionic_strength> @<QuantityValue> ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/temperature> @<QuantityValue> ?
+          <http://w3id.org/lambda/functional_annotation/buffer_composition> @<BufferComposition> ? ;
+          <http://w3id.org/lambda/functional_annotation/ph> @<QuantityValue> ? ;
+          <http://w3id.org/lambda/functional_annotation/ionic_strength> @<QuantityValue> ? ;
+          <http://w3id.org/lambda/functional_annotation/temperature> @<QuantityValue> ?
        ) ;
-       rdf:type [ <https://w3id.org/lambda-ber-schema/functional_annotation/MeasurementConditions> ]
+       rdf:type [ <http://w3id.org/lambda/functional_annotation/MeasurementConditions> ]
     )
 }
 
@@ -952,55 +919,54 @@ linkml:Sparqlpath xsd:string
     )
 }
 
-<https://w3id.org/lambda-ber-schema/functional_annotation/MutationEffect> CLOSED {
-    (  $<https://w3id.org/lambda-ber-schema/functional_annotation/MutationEffect_tes> ( 
-          &<https://w3id.org/lambda-ber-schema/functional_annotation/ProteinAnnotation_tes> ;
-          rdf:type [ <https://w3id.org/lambda-ber-schema/functional_annotation/ProteinAnnotation> ] ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/mutation> @linkml:String ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/mutation_type> [
-             <https://w3id.org/lambda-ber-schema/functional_annotation/MutationTypeEnum#missense>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/MutationTypeEnum#nonsense>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/MutationTypeEnum#frameshift>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/MutationTypeEnum#deletion>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/MutationTypeEnum#insertion>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/MutationTypeEnum#duplication>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/MutationTypeEnum#substitution> ] ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/effect_on_stability> [
-             <https://w3id.org/lambda-ber-schema/functional_annotation/StabilityEffectEnum#stabilizing>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/StabilityEffectEnum#destabilizing>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/StabilityEffectEnum#neutral>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/StabilityEffectEnum#highly_stabilizing>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/StabilityEffectEnum#highly_destabilizing> ] ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/delta_delta_g> @linkml:Float ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/effect_on_function> [
-             <https://w3id.org/lambda-ber-schema/functional_annotation/FunctionalEffectEnum#loss_of_function>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/FunctionalEffectEnum#gain_of_function>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/FunctionalEffectEnum#altered_function>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/FunctionalEffectEnum#no_effect>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/FunctionalEffectEnum#partial_loss>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/FunctionalEffectEnum#enhanced_function> ] ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/functional_impact_description> @linkml:String ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/disease_association> @linkml:String ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/omim_id> @linkml:String ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/clinical_significance> [
-             <https://w3id.org/lambda-ber-schema/functional_annotation/ClinicalSignificanceEnum#pathogenic>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/ClinicalSignificanceEnum#likely_pathogenic>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/ClinicalSignificanceEnum#benign>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/ClinicalSignificanceEnum#likely_benign>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/ClinicalSignificanceEnum#uncertain_significance> ] ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/allele_frequency> @linkml:Float ?
+<http://w3id.org/lambda/functional_annotation/MutationEffect> CLOSED {
+    (  $<http://w3id.org/lambda/functional_annotation/MutationEffect_tes> ( 
+          &<http://w3id.org/lambda/functional_annotation/ProteinAnnotation_tes> ;
+          rdf:type [ <http://w3id.org/lambda/functional_annotation/ProteinAnnotation> ] ? ;
+          <http://w3id.org/lambda/functional_annotation/mutation> @linkml:String ;
+          <http://w3id.org/lambda/functional_annotation/mutation_type> [
+             <http://w3id.org/lambda/functional_annotation/MutationTypeEnum#missense>
+             <http://w3id.org/lambda/functional_annotation/MutationTypeEnum#nonsense>
+             <http://w3id.org/lambda/functional_annotation/MutationTypeEnum#frameshift>
+             <http://w3id.org/lambda/functional_annotation/MutationTypeEnum#deletion>
+             <http://w3id.org/lambda/functional_annotation/MutationTypeEnum#insertion>
+             <http://w3id.org/lambda/functional_annotation/MutationTypeEnum#duplication>
+             <http://w3id.org/lambda/functional_annotation/MutationTypeEnum#substitution> ] ? ;
+          <http://w3id.org/lambda/functional_annotation/effect_on_stability> [
+             <http://w3id.org/lambda/functional_annotation/StabilityEffectEnum#stabilizing>
+             <http://w3id.org/lambda/functional_annotation/StabilityEffectEnum#destabilizing>
+             <http://w3id.org/lambda/functional_annotation/StabilityEffectEnum#neutral>
+             <http://w3id.org/lambda/functional_annotation/StabilityEffectEnum#highly_stabilizing>
+             <http://w3id.org/lambda/functional_annotation/StabilityEffectEnum#highly_destabilizing> ] ? ;
+          <http://w3id.org/lambda/functional_annotation/delta_delta_g> @linkml:Float ? ;
+          <http://w3id.org/lambda/functional_annotation/effect_on_function> [
+             <http://w3id.org/lambda/functional_annotation/FunctionalEffectEnum#loss_of_function>
+             <http://w3id.org/lambda/functional_annotation/FunctionalEffectEnum#gain_of_function>
+             <http://w3id.org/lambda/functional_annotation/FunctionalEffectEnum#altered_function>
+             <http://w3id.org/lambda/functional_annotation/FunctionalEffectEnum#no_effect>
+             <http://w3id.org/lambda/functional_annotation/FunctionalEffectEnum#partial_loss>
+             <http://w3id.org/lambda/functional_annotation/FunctionalEffectEnum#enhanced_function> ] ? ;
+          <http://w3id.org/lambda/functional_annotation/functional_impact_description> @linkml:String ? ;
+          <http://w3id.org/lambda/functional_annotation/disease_association> @linkml:String ? ;
+          <http://w3id.org/lambda/functional_annotation/omim_id> @linkml:String ? ;
+          <http://w3id.org/lambda/functional_annotation/clinical_significance> [
+             <http://w3id.org/lambda/functional_annotation/ClinicalSignificanceEnum#pathogenic>
+             <http://w3id.org/lambda/functional_annotation/ClinicalSignificanceEnum#likely_pathogenic>
+             <http://w3id.org/lambda/functional_annotation/ClinicalSignificanceEnum#benign>
+             <http://w3id.org/lambda/functional_annotation/ClinicalSignificanceEnum#likely_benign>
+             <http://w3id.org/lambda/functional_annotation/ClinicalSignificanceEnum#uncertain_significance> ] ? ;
+          <http://w3id.org/lambda/functional_annotation/allele_frequency> @linkml:Float ?
        ) ;
-       rdf:type [ <https://w3id.org/lambda-ber-schema/functional_annotation/MutationEffect> ]
+       rdf:type [ <http://w3id.org/lambda/functional_annotation/MutationEffect> ]
     )
 }
 
 <NamedThing>  (
-    @<https://w3id.org/lambda-ber-schema/functional_annotation/AggregatedProteinView> OR
-    @<https://w3id.org/lambda-ber-schema/functional_annotation/ConformationalEnsemble> OR @<DataFile> OR @<Dataset> OR
-    @<ExperimentRun> OR @<Image> OR @<Instrument> OR
-    @<https://w3id.org/lambda-ber-schema/functional_annotation/MeasurementConditions> OR @<OntologyTerm> OR
-    @<https://w3id.org/lambda-ber-schema/functional_annotation/ProteinAnnotation> OR @<ProteinConstruct> OR @<Sample> OR
-    @<SamplePreparation> OR @<Study> OR @<WorkflowRun>
+    @<http://w3id.org/lambda/functional_annotation/AggregatedProteinView> OR
+    @<http://w3id.org/lambda/functional_annotation/ConformationalEnsemble> OR @<DataFile> OR @<Dataset> OR @<ExperimentRun> OR
+    @<Image> OR @<Instrument> OR @<http://w3id.org/lambda/functional_annotation/MeasurementConditions> OR @<OntologyTerm> OR
+    @<http://w3id.org/lambda/functional_annotation/ProteinAnnotation> OR @<ProteinConstruct> OR @<Sample> OR @<SamplePreparation>
+    OR @<Study> OR @<WorkflowRun>
 )
 
 <NamedThing_struct> {
@@ -1026,14 +992,11 @@ linkml:Sparqlpath xsd:string
 <OpticalImage> CLOSED {
     (  $<OpticalImage_tes> (  &<Image2D_tes> ;
           rdf:type [ <Image2D> ] ? ;
-          <illumination_type> [ <https://w3id.org/lambda-ber-schema/IlluminationTypeEnum#brightfield>
-             <https://w3id.org/lambda-ber-schema/IlluminationTypeEnum#darkfield>
-             <https://w3id.org/lambda-ber-schema/IlluminationTypeEnum#phase_contrast>
-             <https://w3id.org/lambda-ber-schema/IlluminationTypeEnum#dic>
-             <https://w3id.org/lambda-ber-schema/IlluminationTypeEnum#fluorescence>
-             <https://w3id.org/lambda-ber-schema/IlluminationTypeEnum#confocal>
-             <https://w3id.org/lambda-ber-schema/IlluminationTypeEnum#polarized>
-             <https://w3id.org/lambda-ber-schema/IlluminationTypeEnum#oblique> ] ? ;
+          <illumination_type> [ <http://w3id.org/lambda/IlluminationTypeEnum#brightfield>
+             <http://w3id.org/lambda/IlluminationTypeEnum#darkfield> <http://w3id.org/lambda/IlluminationTypeEnum#phase_contrast>
+             <http://w3id.org/lambda/IlluminationTypeEnum#dic> <http://w3id.org/lambda/IlluminationTypeEnum#fluorescence>
+             <http://w3id.org/lambda/IlluminationTypeEnum#confocal> <http://w3id.org/lambda/IlluminationTypeEnum#polarized>
+             <http://w3id.org/lambda/IlluminationTypeEnum#oblique> ] ? ;
           <magnification> @<QuantityValue> ? ;
           <numerical_aperture> @<QuantityValue> ? ;
           <color_channels> @linkml:String * ;
@@ -1060,111 +1023,110 @@ linkml:Sparqlpath xsd:string
     )
 }
 
-<https://w3id.org/lambda-ber-schema/functional_annotation/PostTranslationalModification> CLOSED {
-    (  $<https://w3id.org/lambda-ber-schema/functional_annotation/PostTranslationalModification_tes> ( 
-          &<https://w3id.org/lambda-ber-schema/functional_annotation/ProteinAnnotation_tes> ;
-          rdf:type [ <https://w3id.org/lambda-ber-schema/functional_annotation/ProteinAnnotation> ] ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/modification_type> [
-             <http://purl.obolibrary.org/obo/GO_0006473> <http://purl.obolibrary.org/obo/GO_0043543>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/PTMTypeEnum#adp_ribosylation>
+<http://w3id.org/lambda/functional_annotation/PostTranslationalModification> CLOSED {
+    (  $<http://w3id.org/lambda/functional_annotation/PostTranslationalModification_tes> ( 
+          &<http://w3id.org/lambda/functional_annotation/ProteinAnnotation_tes> ;
+          rdf:type [ <http://w3id.org/lambda/functional_annotation/ProteinAnnotation> ] ? ;
+          <http://w3id.org/lambda/functional_annotation/modification_type> [ <http://purl.obolibrary.org/obo/GO_0006473>
+             <http://purl.obolibrary.org/obo/GO_0043543>
+             <http://w3id.org/lambda/functional_annotation/PTMTypeEnum#adp_ribosylation>
              <http://purl.obolibrary.org/obo/GO_0008213> <http://purl.obolibrary.org/obo/GO_0016598>
              <http://purl.obolibrary.org/obo/GO_0046944> <http://purl.obolibrary.org/obo/GO_0018214>
              <http://purl.obolibrary.org/obo/GO_0035601> <http://purl.obolibrary.org/obo/GO_0008214>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/PTMTypeEnum#deamidation>
-             <http://purl.obolibrary.org/obo/GO_0018277> <http://purl.obolibrary.org/obo/GO_0080058>
-             <http://purl.obolibrary.org/obo/GO_0036525> <http://purl.obolibrary.org/obo/GO_0006517>
-             <http://purl.obolibrary.org/obo/GO_0006470> <http://purl.obolibrary.org/obo/GO_0017013>
-             <http://purl.obolibrary.org/obo/GO_0010731>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/PTMTypeEnum#glycosylation>
-             <http://purl.obolibrary.org/obo/GO_0018126> <http://purl.obolibrary.org/obo/GO_0006497>
-             <http://purl.obolibrary.org/obo/GO_0006479> <http://purl.obolibrary.org/obo/GO_0018377>
-             <http://purl.obolibrary.org/obo/GO_0017014> <http://purl.obolibrary.org/obo/GO_0018158>
-             <http://purl.obolibrary.org/obo/GO_0018345> <http://purl.obolibrary.org/obo/GO_0018193>
-             <http://purl.obolibrary.org/obo/GO_0006468> <http://purl.obolibrary.org/obo/GO_0043687>
-             <http://purl.obolibrary.org/obo/GO_0018342> <http://purl.obolibrary.org/obo/GO_0006508>
-             <http://purl.obolibrary.org/obo/GO_0006477> <http://purl.obolibrary.org/obo/GO_0044524>
-             <http://purl.obolibrary.org/obo/GO_0016925> <http://purl.obolibrary.org/obo/GO_0016567> ] ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/modified_residue> @linkml:String ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/modification_group> @linkml:String ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/mass_shift> @linkml:Float ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/functional_effect> @linkml:String ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/regulatory_role> @linkml:String ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/enzyme> @linkml:String ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/removal_enzyme> @linkml:String ?
+             <http://w3id.org/lambda/functional_annotation/PTMTypeEnum#deamidation> <http://purl.obolibrary.org/obo/GO_0018277>
+             <http://purl.obolibrary.org/obo/GO_0080058> <http://purl.obolibrary.org/obo/GO_0036525>
+             <http://purl.obolibrary.org/obo/GO_0006517> <http://purl.obolibrary.org/obo/GO_0006470>
+             <http://purl.obolibrary.org/obo/GO_0017013> <http://purl.obolibrary.org/obo/GO_0010731>
+             <http://w3id.org/lambda/functional_annotation/PTMTypeEnum#glycosylation> <http://purl.obolibrary.org/obo/GO_0018126>
+             <http://purl.obolibrary.org/obo/GO_0006497> <http://purl.obolibrary.org/obo/GO_0006479>
+             <http://purl.obolibrary.org/obo/GO_0018377> <http://purl.obolibrary.org/obo/GO_0017014>
+             <http://purl.obolibrary.org/obo/GO_0018158> <http://purl.obolibrary.org/obo/GO_0018345>
+             <http://purl.obolibrary.org/obo/GO_0018193> <http://purl.obolibrary.org/obo/GO_0006468>
+             <http://purl.obolibrary.org/obo/GO_0043687> <http://purl.obolibrary.org/obo/GO_0018342>
+             <http://purl.obolibrary.org/obo/GO_0006508> <http://purl.obolibrary.org/obo/GO_0006477>
+             <http://purl.obolibrary.org/obo/GO_0044524> <http://purl.obolibrary.org/obo/GO_0016925>
+             <http://purl.obolibrary.org/obo/GO_0016567> ] ;
+          <http://w3id.org/lambda/functional_annotation/modified_residue> @linkml:String ;
+          <http://w3id.org/lambda/functional_annotation/modification_group> @linkml:String ? ;
+          <http://w3id.org/lambda/functional_annotation/mass_shift> @linkml:Float ? ;
+          <http://w3id.org/lambda/functional_annotation/functional_effect> @linkml:String ? ;
+          <http://w3id.org/lambda/functional_annotation/regulatory_role> @linkml:String ? ;
+          <http://w3id.org/lambda/functional_annotation/enzyme> @linkml:String ? ;
+          <http://w3id.org/lambda/functional_annotation/removal_enzyme> @linkml:String ?
        ) ;
-       rdf:type [ <https://w3id.org/lambda-ber-schema/functional_annotation/PostTranslationalModification> ]
+       rdf:type [ <http://w3id.org/lambda/functional_annotation/PostTranslationalModification> ]
     )
 }
 
-<https://w3id.org/lambda-ber-schema/functional_annotation/ProteinAnnotation>  (
+<http://w3id.org/lambda/functional_annotation/ProteinAnnotation>  (
     CLOSED {
-       (  $<https://w3id.org/lambda-ber-schema/functional_annotation/ProteinAnnotation_tes> (  &<NamedThing_tes> ;
+       (  $<http://w3id.org/lambda/functional_annotation/ProteinAnnotation_tes> (  &<NamedThing_tes> ;
              rdf:type [ <NamedThing> ] ? ;
-             <https://w3id.org/lambda-ber-schema/functional_annotation/protein_id> @linkml:String ;
-             <https://w3id.org/lambda-ber-schema/functional_annotation/pdb_entry> @linkml:String ? ;
-             <https://w3id.org/lambda-ber-schema/functional_annotation/chain_id> @linkml:String ? ;
-             <https://w3id.org/lambda-ber-schema/functional_annotation/residue_range> @linkml:String ? ;
-             <https://w3id.org/lambda-ber-schema/functional_annotation/confidence_score> @linkml:Float ? ;
-             <https://w3id.org/lambda-ber-schema/functional_annotation/evidence_type> [
-                <https://w3id.org/lambda-ber-schema/functional_annotation/EvidenceTypeEnum#experimental>
-                <https://w3id.org/lambda-ber-schema/functional_annotation/EvidenceTypeEnum#predicted>
-                <https://w3id.org/lambda-ber-schema/functional_annotation/EvidenceTypeEnum#inferred>
-                <https://w3id.org/lambda-ber-schema/functional_annotation/EvidenceTypeEnum#literature>
-                <https://w3id.org/lambda-ber-schema/functional_annotation/EvidenceTypeEnum#author_statement>
-                <https://w3id.org/lambda-ber-schema/functional_annotation/EvidenceTypeEnum#curator_inference> ] ? ;
-             <https://w3id.org/lambda-ber-schema/functional_annotation/evidence_code> @linkml:Uriorcurie ? ;
-             <https://w3id.org/lambda-ber-schema/functional_annotation/source_database> [
-                <https://w3id.org/lambda-ber-schema/functional_annotation/AnnotationSourceEnum#pdbe>
-                <https://w3id.org/lambda-ber-schema/functional_annotation/AnnotationSourceEnum#pdbe_kb>
-                <https://w3id.org/lambda-ber-schema/functional_annotation/AnnotationSourceEnum#uniprot>
-                <https://w3id.org/lambda-ber-schema/functional_annotation/AnnotationSourceEnum#pfam>
-                <https://w3id.org/lambda-ber-schema/functional_annotation/AnnotationSourceEnum#cath>
-                <https://w3id.org/lambda-ber-schema/functional_annotation/AnnotationSourceEnum#scop>
-                <https://w3id.org/lambda-ber-schema/functional_annotation/AnnotationSourceEnum#interpro>
-                <https://w3id.org/lambda-ber-schema/functional_annotation/AnnotationSourceEnum#channelsdb>
-                <https://w3id.org/lambda-ber-schema/functional_annotation/AnnotationSourceEnum#dynamine>
-                <https://w3id.org/lambda-ber-schema/functional_annotation/AnnotationSourceEnum#foldx>
-                <https://w3id.org/lambda-ber-schema/functional_annotation/AnnotationSourceEnum#p2rank>
-                <https://w3id.org/lambda-ber-schema/functional_annotation/AnnotationSourceEnum#3dligandsite>
-                <https://w3id.org/lambda-ber-schema/functional_annotation/AnnotationSourceEnum#arpeggio>
-                <https://w3id.org/lambda-ber-schema/functional_annotation/AnnotationSourceEnum#covalentizer>
-                <https://w3id.org/lambda-ber-schema/functional_annotation/AnnotationSourceEnum#depth>
-                <https://w3id.org/lambda-ber-schema/functional_annotation/AnnotationSourceEnum#elmpdb>
-                <https://w3id.org/lambda-ber-schema/functional_annotation/AnnotationSourceEnum#frustration>
-                <https://w3id.org/lambda-ber-schema/functional_annotation/AnnotationSourceEnum#kincore>
-                <https://w3id.org/lambda-ber-schema/functional_annotation/AnnotationSourceEnum#membranome>
-                <https://w3id.org/lambda-ber-schema/functional_annotation/AnnotationSourceEnum#missense3d>
-                <https://w3id.org/lambda-ber-schema/functional_annotation/AnnotationSourceEnum#mobi>
-                <https://w3id.org/lambda-ber-schema/functional_annotation/AnnotationSourceEnum#nucleos>
-                <https://w3id.org/lambda-ber-schema/functional_annotation/AnnotationSourceEnum#14_3_3_pred>
-                <https://w3id.org/lambda-ber-schema/functional_annotation/AnnotationSourceEnum#akid>
-                <https://w3id.org/lambda-ber-schema/functional_annotation/AnnotationSourceEnum#camkinet>
-                <https://w3id.org/lambda-ber-schema/functional_annotation/AnnotationSourceEnum#cansar>
-                <https://w3id.org/lambda-ber-schema/functional_annotation/AnnotationSourceEnum#credo>
-                <https://w3id.org/lambda-ber-schema/functional_annotation/AnnotationSourceEnum#klifs>
-                <https://w3id.org/lambda-ber-schema/functional_annotation/AnnotationSourceEnum#m_csm>
-                <https://w3id.org/lambda-ber-schema/functional_annotation/AnnotationSourceEnum#moondb>
-                <https://w3id.org/lambda-ber-schema/functional_annotation/AnnotationSourceEnum#pocketome>
-                <https://w3id.org/lambda-ber-schema/functional_annotation/AnnotationSourceEnum#propka>
-                <https://w3id.org/lambda-ber-schema/functional_annotation/AnnotationSourceEnum#proteins_api>
-                <https://w3id.org/lambda-ber-schema/functional_annotation/AnnotationSourceEnum#validation>
-                <https://w3id.org/lambda-ber-schema/functional_annotation/AnnotationSourceEnum#alphafold>
-                <https://w3id.org/lambda-ber-schema/functional_annotation/AnnotationSourceEnum#modbase>
-                <https://w3id.org/lambda-ber-schema/functional_annotation/AnnotationSourceEnum#swiss_model>
-                <https://w3id.org/lambda-ber-schema/functional_annotation/AnnotationSourceEnum#intact>
-                <https://w3id.org/lambda-ber-schema/functional_annotation/AnnotationSourceEnum#cosmic>
-                <https://w3id.org/lambda-ber-schema/functional_annotation/AnnotationSourceEnum#clinvar> ] ? ;
-             <https://w3id.org/lambda-ber-schema/functional_annotation/annotation_method> @linkml:String ? ;
-             <https://w3id.org/lambda-ber-schema/functional_annotation/publication_ids> @linkml:String *
+             <http://w3id.org/lambda/functional_annotation/protein_id> @linkml:String ;
+             <http://w3id.org/lambda/functional_annotation/pdb_entry> @linkml:String ? ;
+             <http://w3id.org/lambda/functional_annotation/chain_id> @linkml:String ? ;
+             <http://w3id.org/lambda/functional_annotation/residue_range> @linkml:String ? ;
+             <http://w3id.org/lambda/functional_annotation/confidence_score> @linkml:Float ? ;
+             <http://w3id.org/lambda/functional_annotation/evidence_type> [
+                <http://w3id.org/lambda/functional_annotation/EvidenceTypeEnum#experimental>
+                <http://w3id.org/lambda/functional_annotation/EvidenceTypeEnum#predicted>
+                <http://w3id.org/lambda/functional_annotation/EvidenceTypeEnum#inferred>
+                <http://w3id.org/lambda/functional_annotation/EvidenceTypeEnum#literature>
+                <http://w3id.org/lambda/functional_annotation/EvidenceTypeEnum#author_statement>
+                <http://w3id.org/lambda/functional_annotation/EvidenceTypeEnum#curator_inference> ] ? ;
+             <http://w3id.org/lambda/functional_annotation/evidence_code> @linkml:Uriorcurie ? ;
+             <http://w3id.org/lambda/functional_annotation/source_database> [
+                <http://w3id.org/lambda/functional_annotation/AnnotationSourceEnum#pdbe>
+                <http://w3id.org/lambda/functional_annotation/AnnotationSourceEnum#pdbe_kb>
+                <http://w3id.org/lambda/functional_annotation/AnnotationSourceEnum#uniprot>
+                <http://w3id.org/lambda/functional_annotation/AnnotationSourceEnum#pfam>
+                <http://w3id.org/lambda/functional_annotation/AnnotationSourceEnum#cath>
+                <http://w3id.org/lambda/functional_annotation/AnnotationSourceEnum#scop>
+                <http://w3id.org/lambda/functional_annotation/AnnotationSourceEnum#interpro>
+                <http://w3id.org/lambda/functional_annotation/AnnotationSourceEnum#channelsdb>
+                <http://w3id.org/lambda/functional_annotation/AnnotationSourceEnum#dynamine>
+                <http://w3id.org/lambda/functional_annotation/AnnotationSourceEnum#foldx>
+                <http://w3id.org/lambda/functional_annotation/AnnotationSourceEnum#p2rank>
+                <http://w3id.org/lambda/functional_annotation/AnnotationSourceEnum#3dligandsite>
+                <http://w3id.org/lambda/functional_annotation/AnnotationSourceEnum#arpeggio>
+                <http://w3id.org/lambda/functional_annotation/AnnotationSourceEnum#covalentizer>
+                <http://w3id.org/lambda/functional_annotation/AnnotationSourceEnum#depth>
+                <http://w3id.org/lambda/functional_annotation/AnnotationSourceEnum#elmpdb>
+                <http://w3id.org/lambda/functional_annotation/AnnotationSourceEnum#frustration>
+                <http://w3id.org/lambda/functional_annotation/AnnotationSourceEnum#kincore>
+                <http://w3id.org/lambda/functional_annotation/AnnotationSourceEnum#membranome>
+                <http://w3id.org/lambda/functional_annotation/AnnotationSourceEnum#missense3d>
+                <http://w3id.org/lambda/functional_annotation/AnnotationSourceEnum#mobi>
+                <http://w3id.org/lambda/functional_annotation/AnnotationSourceEnum#nucleos>
+                <http://w3id.org/lambda/functional_annotation/AnnotationSourceEnum#14_3_3_pred>
+                <http://w3id.org/lambda/functional_annotation/AnnotationSourceEnum#akid>
+                <http://w3id.org/lambda/functional_annotation/AnnotationSourceEnum#camkinet>
+                <http://w3id.org/lambda/functional_annotation/AnnotationSourceEnum#cansar>
+                <http://w3id.org/lambda/functional_annotation/AnnotationSourceEnum#credo>
+                <http://w3id.org/lambda/functional_annotation/AnnotationSourceEnum#klifs>
+                <http://w3id.org/lambda/functional_annotation/AnnotationSourceEnum#m_csm>
+                <http://w3id.org/lambda/functional_annotation/AnnotationSourceEnum#moondb>
+                <http://w3id.org/lambda/functional_annotation/AnnotationSourceEnum#pocketome>
+                <http://w3id.org/lambda/functional_annotation/AnnotationSourceEnum#propka>
+                <http://w3id.org/lambda/functional_annotation/AnnotationSourceEnum#proteins_api>
+                <http://w3id.org/lambda/functional_annotation/AnnotationSourceEnum#validation>
+                <http://w3id.org/lambda/functional_annotation/AnnotationSourceEnum#alphafold>
+                <http://w3id.org/lambda/functional_annotation/AnnotationSourceEnum#modbase>
+                <http://w3id.org/lambda/functional_annotation/AnnotationSourceEnum#swiss_model>
+                <http://w3id.org/lambda/functional_annotation/AnnotationSourceEnum#intact>
+                <http://w3id.org/lambda/functional_annotation/AnnotationSourceEnum#cosmic>
+                <http://w3id.org/lambda/functional_annotation/AnnotationSourceEnum#clinvar> ] ? ;
+             <http://w3id.org/lambda/functional_annotation/annotation_method> @linkml:String ? ;
+             <http://w3id.org/lambda/functional_annotation/publication_ids> @linkml:String *
           ) ;
-          rdf:type [ <https://w3id.org/lambda-ber-schema/functional_annotation/ProteinAnnotation> ]
+          rdf:type [ <http://w3id.org/lambda/functional_annotation/ProteinAnnotation> ]
        )
-    } OR @<https://w3id.org/lambda-ber-schema/functional_annotation/EvolutionaryConservation> OR
-    @<https://w3id.org/lambda-ber-schema/functional_annotation/FunctionalSite> OR
-    @<https://w3id.org/lambda-ber-schema/functional_annotation/MutationEffect> OR
-    @<https://w3id.org/lambda-ber-schema/functional_annotation/PostTranslationalModification> OR
-    @<https://w3id.org/lambda-ber-schema/functional_annotation/ProteinProteinInteraction> OR
-    @<https://w3id.org/lambda-ber-schema/functional_annotation/StructuralFeature>
+    } OR @<http://w3id.org/lambda/functional_annotation/EvolutionaryConservation> OR
+    @<http://w3id.org/lambda/functional_annotation/FunctionalSite> OR
+    @<http://w3id.org/lambda/functional_annotation/MutationEffect> OR
+    @<http://w3id.org/lambda/functional_annotation/PostTranslationalModification> OR
+    @<http://w3id.org/lambda/functional_annotation/ProteinProteinInteraction> OR
+    @<http://w3id.org/lambda/functional_annotation/StructuralFeature>
 )
 
 <ProteinConstruct> CLOSED {
@@ -1196,36 +1158,36 @@ linkml:Sparqlpath xsd:string
     )
 }
 
-<https://w3id.org/lambda-ber-schema/functional_annotation/ProteinProteinInteraction> CLOSED {
-    (  $<https://w3id.org/lambda-ber-schema/functional_annotation/ProteinProteinInteraction_tes> ( 
-          &<https://w3id.org/lambda-ber-schema/functional_annotation/ProteinAnnotation_tes> ;
-          rdf:type [ <https://w3id.org/lambda-ber-schema/functional_annotation/ProteinAnnotation> ] ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/partner_protein_id> @linkml:String ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/partner_chain_id> @linkml:String ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/interface_residues> @linkml:String * ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/partner_interface_residues> @linkml:String * ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/interface_area> @linkml:Float ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/binding_energy> @linkml:Float ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/dissociation_constant> @linkml:Float ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/complex_stability> [
-             <https://w3id.org/lambda-ber-schema/functional_annotation/ComplexStabilityEnum#stable>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/ComplexStabilityEnum#transient>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/ComplexStabilityEnum#weak>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/ComplexStabilityEnum#strong>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/ComplexStabilityEnum#obligate>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/ComplexStabilityEnum#non_obligate> ] ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/biological_assembly> @linkml:Boolean ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/interaction_evidence> [
-             <https://w3id.org/lambda-ber-schema/functional_annotation/InteractionEvidenceEnum#experimental>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/InteractionEvidenceEnum#predicted>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/InteractionEvidenceEnum#homology>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/InteractionEvidenceEnum#coexpression>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/InteractionEvidenceEnum#colocalization>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/InteractionEvidenceEnum#genetic>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/InteractionEvidenceEnum#physical>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/InteractionEvidenceEnum#functional> ] *
+<http://w3id.org/lambda/functional_annotation/ProteinProteinInteraction> CLOSED {
+    (  $<http://w3id.org/lambda/functional_annotation/ProteinProteinInteraction_tes> ( 
+          &<http://w3id.org/lambda/functional_annotation/ProteinAnnotation_tes> ;
+          rdf:type [ <http://w3id.org/lambda/functional_annotation/ProteinAnnotation> ] ? ;
+          <http://w3id.org/lambda/functional_annotation/partner_protein_id> @linkml:String ;
+          <http://w3id.org/lambda/functional_annotation/partner_chain_id> @linkml:String ? ;
+          <http://w3id.org/lambda/functional_annotation/interface_residues> @linkml:String * ;
+          <http://w3id.org/lambda/functional_annotation/partner_interface_residues> @linkml:String * ;
+          <http://w3id.org/lambda/functional_annotation/interface_area> @linkml:Float ? ;
+          <http://w3id.org/lambda/functional_annotation/binding_energy> @linkml:Float ? ;
+          <http://w3id.org/lambda/functional_annotation/dissociation_constant> @linkml:Float ? ;
+          <http://w3id.org/lambda/functional_annotation/complex_stability> [
+             <http://w3id.org/lambda/functional_annotation/ComplexStabilityEnum#stable>
+             <http://w3id.org/lambda/functional_annotation/ComplexStabilityEnum#transient>
+             <http://w3id.org/lambda/functional_annotation/ComplexStabilityEnum#weak>
+             <http://w3id.org/lambda/functional_annotation/ComplexStabilityEnum#strong>
+             <http://w3id.org/lambda/functional_annotation/ComplexStabilityEnum#obligate>
+             <http://w3id.org/lambda/functional_annotation/ComplexStabilityEnum#non_obligate> ] ? ;
+          <http://w3id.org/lambda/functional_annotation/biological_assembly> @linkml:Boolean ? ;
+          <http://w3id.org/lambda/functional_annotation/interaction_evidence> [
+             <http://w3id.org/lambda/functional_annotation/InteractionEvidenceEnum#experimental>
+             <http://w3id.org/lambda/functional_annotation/InteractionEvidenceEnum#predicted>
+             <http://w3id.org/lambda/functional_annotation/InteractionEvidenceEnum#homology>
+             <http://w3id.org/lambda/functional_annotation/InteractionEvidenceEnum#coexpression>
+             <http://w3id.org/lambda/functional_annotation/InteractionEvidenceEnum#colocalization>
+             <http://w3id.org/lambda/functional_annotation/InteractionEvidenceEnum#genetic>
+             <http://w3id.org/lambda/functional_annotation/InteractionEvidenceEnum#physical>
+             <http://w3id.org/lambda/functional_annotation/InteractionEvidenceEnum#functional> ] *
        ) ;
-       rdf:type [ <https://w3id.org/lambda-ber-schema/functional_annotation/ProteinProteinInteraction> ]
+       rdf:type [ <http://w3id.org/lambda/functional_annotation/ProteinProteinInteraction> ]
     )
 }
 
@@ -1286,17 +1248,17 @@ linkml:Sparqlpath xsd:string
 <RefinementParameters> CLOSED {
     (  $<RefinementParameters_tes> (  &<AttributeGroup_tes> ;
           rdf:type [ <AttributeGroup> ] ? ;
-          <symmetry> [ <https://w3id.org/lambda-ber-schema/SymmetryEnum#C1> <https://w3id.org/lambda-ber-schema/SymmetryEnum#C2>
-             <https://w3id.org/lambda-ber-schema/SymmetryEnum#C3> <https://w3id.org/lambda-ber-schema/SymmetryEnum#C4>
-             <https://w3id.org/lambda-ber-schema/SymmetryEnum#C5> <https://w3id.org/lambda-ber-schema/SymmetryEnum#C6>
-             <https://w3id.org/lambda-ber-schema/SymmetryEnum#C7> <https://w3id.org/lambda-ber-schema/SymmetryEnum#C8>
-             <https://w3id.org/lambda-ber-schema/SymmetryEnum#C9> <https://w3id.org/lambda-ber-schema/SymmetryEnum#C10>
-             <https://w3id.org/lambda-ber-schema/SymmetryEnum#D2> <https://w3id.org/lambda-ber-schema/SymmetryEnum#D3>
-             <https://w3id.org/lambda-ber-schema/SymmetryEnum#D4> <https://w3id.org/lambda-ber-schema/SymmetryEnum#D5>
-             <https://w3id.org/lambda-ber-schema/SymmetryEnum#D6> <https://w3id.org/lambda-ber-schema/SymmetryEnum#D7>
-             <https://w3id.org/lambda-ber-schema/SymmetryEnum#D8> <https://w3id.org/lambda-ber-schema/SymmetryEnum#D9>
-             <https://w3id.org/lambda-ber-schema/SymmetryEnum#D10> <https://w3id.org/lambda-ber-schema/SymmetryEnum#T>
-             <https://w3id.org/lambda-ber-schema/SymmetryEnum#O> <https://w3id.org/lambda-ber-schema/SymmetryEnum#I> ] ? ;
+          <symmetry> [ <http://w3id.org/lambda/SymmetryEnum#C1> <http://w3id.org/lambda/SymmetryEnum#C2>
+             <http://w3id.org/lambda/SymmetryEnum#C3> <http://w3id.org/lambda/SymmetryEnum#C4>
+             <http://w3id.org/lambda/SymmetryEnum#C5> <http://w3id.org/lambda/SymmetryEnum#C6>
+             <http://w3id.org/lambda/SymmetryEnum#C7> <http://w3id.org/lambda/SymmetryEnum#C8>
+             <http://w3id.org/lambda/SymmetryEnum#C9> <http://w3id.org/lambda/SymmetryEnum#C10>
+             <http://w3id.org/lambda/SymmetryEnum#D2> <http://w3id.org/lambda/SymmetryEnum#D3>
+             <http://w3id.org/lambda/SymmetryEnum#D4> <http://w3id.org/lambda/SymmetryEnum#D5>
+             <http://w3id.org/lambda/SymmetryEnum#D6> <http://w3id.org/lambda/SymmetryEnum#D7>
+             <http://w3id.org/lambda/SymmetryEnum#D8> <http://w3id.org/lambda/SymmetryEnum#D9>
+             <http://w3id.org/lambda/SymmetryEnum#D10> <http://w3id.org/lambda/SymmetryEnum#T>
+             <http://w3id.org/lambda/SymmetryEnum#O> <http://w3id.org/lambda/SymmetryEnum#I> ] ? ;
           <pixel_size> @<QuantityValue> ? ;
           <box_size> @<QuantityValue> ? ;
           <gold_standard> @linkml:Boolean ? ;
@@ -1313,12 +1275,9 @@ linkml:Sparqlpath xsd:string
     (  $<Sample_tes> (  &<NamedThing_tes> ;
           rdf:type [ <NamedThing> ] ? ;
           <sample_code> @linkml:String ;
-          <sample_type> [ <https://w3id.org/lambda-ber-schema/SampleTypeEnum#protein>
-             <https://w3id.org/lambda-ber-schema/SampleTypeEnum#nucleic_acid>
-             <https://w3id.org/lambda-ber-schema/SampleTypeEnum#complex>
-             <https://w3id.org/lambda-ber-schema/SampleTypeEnum#membrane_protein>
-             <https://w3id.org/lambda-ber-schema/SampleTypeEnum#virus>
-             <https://w3id.org/lambda-ber-schema/SampleTypeEnum#organelle> ] ;
+          <sample_type> [ <http://w3id.org/lambda/SampleTypeEnum#protein> <http://w3id.org/lambda/SampleTypeEnum#nucleic_acid>
+             <http://w3id.org/lambda/SampleTypeEnum#complex> <http://w3id.org/lambda/SampleTypeEnum#membrane_protein>
+             <http://w3id.org/lambda/SampleTypeEnum#virus> <http://w3id.org/lambda/SampleTypeEnum#organelle> ] ;
           <molecular_composition> @<MolecularComposition> ? ;
           <molecular_weight> @<QuantityValue> ? ;
           <concentration> @<QuantityValue> ? ;
@@ -1331,22 +1290,23 @@ linkml:Sparqlpath xsd:string
           <parent_sample_id> @<Sample> ? ;
           <purity_percentage> @<QuantityValue> ? ;
           <quality_metrics> @linkml:String ? ;
-          <functional_sites> @<https://w3id.org/lambda-ber-schema/functional_annotation/FunctionalSite> * ;
-          <structural_features> @<https://w3id.org/lambda-ber-schema/functional_annotation/StructuralFeature> * ;
-          <protein_interactions> @<https://w3id.org/lambda-ber-schema/functional_annotation/ProteinProteinInteraction> * ;
-          <ligand_interactions> @<https://w3id.org/lambda-ber-schema/functional_annotation/LigandInteraction> * ;
-          <mutation_effects> @<https://w3id.org/lambda-ber-schema/functional_annotation/MutationEffect> * ;
-          <ptm_annotations> @<https://w3id.org/lambda-ber-schema/functional_annotation/PostTranslationalModification> * ;
-          <biophysical_properties> @<https://w3id.org/lambda-ber-schema/functional_annotation/BiophysicalProperty> * ;
-          <evolutionary_conservation> @<https://w3id.org/lambda-ber-schema/functional_annotation/EvolutionaryConservation> ? ;
-          <conformational_ensemble> @<https://w3id.org/lambda-ber-schema/functional_annotation/ConformationalEnsemble> ? ;
-          <database_cross_references> @<https://w3id.org/lambda-ber-schema/functional_annotation/DatabaseCrossReference> * ;
+          <functional_sites> @<http://w3id.org/lambda/functional_annotation/FunctionalSite> * ;
+          <structural_features> @<http://w3id.org/lambda/functional_annotation/StructuralFeature> * ;
+          <protein_interactions> @<http://w3id.org/lambda/functional_annotation/ProteinProteinInteraction> * ;
+          <ligand_interactions> @<http://w3id.org/lambda/functional_annotation/LigandInteraction> * ;
+          <mutation_effects> @<http://w3id.org/lambda/functional_annotation/MutationEffect> * ;
+          <ptm_annotations> @<http://w3id.org/lambda/functional_annotation/PostTranslationalModification> * ;
+          <biophysical_properties> @<http://w3id.org/lambda/functional_annotation/BiophysicalProperty> * ;
+          <evolutionary_conservation> @<http://w3id.org/lambda/functional_annotation/EvolutionaryConservation> ? ;
+          <conformational_ensemble> @<http://w3id.org/lambda/functional_annotation/ConformationalEnsemble> ? ;
+          <database_cross_references> @<http://w3id.org/lambda/functional_annotation/DatabaseCrossReference> * ;
           nsls2:Protein_Name @linkml:String ? ;
           nsls2:Construct @linkml:String ? ;
           nsls2:Tag @linkml:String ? ;
           nsls2:Mutations @linkml:String ? ;
           nsls2:Expression_System @linkml:String ? ;
-          nsls2:Ligand @linkml:String ?
+          nsls2:Ligand @linkml:String ? ;
+          <oligomeric_state> @linkml:String ?
        ) ;
        rdf:type [ <Sample> ]
     )
@@ -1355,22 +1315,18 @@ linkml:Sparqlpath xsd:string
 <SamplePreparation> CLOSED {
     (  $<SamplePreparation_tes> (  &<NamedThing_tes> ;
           rdf:type [ <NamedThing> ] ? ;
-          <preparation_type> [ <https://w3id.org/lambda-ber-schema/PreparationTypeEnum#cryo_em>
-             <https://w3id.org/lambda-ber-schema/PreparationTypeEnum#xray_crystallography>
-             <https://w3id.org/lambda-ber-schema/PreparationTypeEnum#saxs>
-             <https://w3id.org/lambda-ber-schema/PreparationTypeEnum#sans>
-             <https://w3id.org/lambda-ber-schema/PreparationTypeEnum#protein_expression>
-             <https://w3id.org/lambda-ber-schema/PreparationTypeEnum#protein_purification>
-             <https://w3id.org/lambda-ber-schema/PreparationTypeEnum#negative_stain> ] ;
+          <preparation_type> [ <http://w3id.org/lambda/PreparationTypeEnum#cryo_em>
+             <http://w3id.org/lambda/PreparationTypeEnum#xray_crystallography> <http://w3id.org/lambda/PreparationTypeEnum#saxs>
+             <http://w3id.org/lambda/PreparationTypeEnum#sans> <http://w3id.org/lambda/PreparationTypeEnum#protein_expression>
+             <http://w3id.org/lambda/PreparationTypeEnum#protein_purification>
+             <http://w3id.org/lambda/PreparationTypeEnum#negative_stain> ] ;
           <sample_id> @linkml:String ;
           <preparation_date> @linkml:String ? ;
           <operator_id> @linkml:String ? ;
           <protocol_description> @linkml:String ? ;
-          <expression_system> [ <https://w3id.org/lambda-ber-schema/ExpressionSystemEnum#bacteria>
-             <https://w3id.org/lambda-ber-schema/ExpressionSystemEnum#yeast>
-             <https://w3id.org/lambda-ber-schema/ExpressionSystemEnum#insect>
-             <https://w3id.org/lambda-ber-schema/ExpressionSystemEnum#mammalian>
-             <https://w3id.org/lambda-ber-schema/ExpressionSystemEnum#cell_free> ] ? ;
+          <expression_system> [ <http://w3id.org/lambda/ExpressionSystemEnum#bacteria>
+             <http://w3id.org/lambda/ExpressionSystemEnum#yeast> <http://w3id.org/lambda/ExpressionSystemEnum#insect>
+             <http://w3id.org/lambda/ExpressionSystemEnum#mammalian> <http://w3id.org/lambda/ExpressionSystemEnum#cell_free> ] ? ;
           <host_strain_or_cell_line> @linkml:String ? ;
           <culture_volume_l> @<QuantityValue> ? ;
           <medium> @linkml:String ? ;
@@ -1384,16 +1340,14 @@ linkml:Sparqlpath xsd:string
           <harvest_timepoint> @linkml:String ? ;
           <lysis_method> @linkml:String ? ;
           <protease_inhibitors> @linkml:String ? ;
-          <purification_steps> [ <https://w3id.org/lambda-ber-schema/PurificationStepEnum#affinity_ni_nta>
-             <https://w3id.org/lambda-ber-schema/PurificationStepEnum#affinity_co_nta>
-             <https://w3id.org/lambda-ber-schema/PurificationStepEnum#affinity_strep>
-             <https://w3id.org/lambda-ber-schema/PurificationStepEnum#affinity_mbp>
-             <https://w3id.org/lambda-ber-schema/PurificationStepEnum#affinity_gst>
-             <https://w3id.org/lambda-ber-schema/PurificationStepEnum#tag_cleavage>
-             <https://w3id.org/lambda-ber-schema/PurificationStepEnum#ion_exchange>
-             <https://w3id.org/lambda-ber-schema/PurificationStepEnum#hydrophobic_interaction>
-             <https://w3id.org/lambda-ber-schema/PurificationStepEnum#size_exclusion>
-             <https://w3id.org/lambda-ber-schema/PurificationStepEnum#dialysis> ] * ;
+          <purification_steps> [ <http://w3id.org/lambda/PurificationStepEnum#affinity_ni_nta>
+             <http://w3id.org/lambda/PurificationStepEnum#affinity_co_nta>
+             <http://w3id.org/lambda/PurificationStepEnum#affinity_strep>
+             <http://w3id.org/lambda/PurificationStepEnum#affinity_mbp> <http://w3id.org/lambda/PurificationStepEnum#affinity_gst>
+             <http://w3id.org/lambda/PurificationStepEnum#tag_cleavage> <http://w3id.org/lambda/PurificationStepEnum#ion_exchange>
+             <http://w3id.org/lambda/PurificationStepEnum#hydrophobic_interaction>
+             <http://w3id.org/lambda/PurificationStepEnum#size_exclusion> <http://w3id.org/lambda/PurificationStepEnum#dialysis> ]
+          * ;
           <affinity_type> @linkml:String ? ;
           <affinity_column> @linkml:String ? ;
           <lysis_buffer> @linkml:String ? ;
@@ -1459,62 +1413,62 @@ linkml:Sparqlpath xsd:string
     )
 }
 
-<https://w3id.org/lambda-ber-schema/functional_annotation/StructuralFeature> CLOSED {
-    (  $<https://w3id.org/lambda-ber-schema/functional_annotation/StructuralFeature_tes> ( 
-          &<https://w3id.org/lambda-ber-schema/functional_annotation/ProteinAnnotation_tes> ;
-          rdf:type [ <https://w3id.org/lambda-ber-schema/functional_annotation/ProteinAnnotation> ] ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/feature_type> [
-             <https://w3id.org/lambda-ber-schema/functional_annotation/StructuralFeatureTypeEnum#alpha_helix>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/StructuralFeatureTypeEnum#beta_sheet>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/StructuralFeatureTypeEnum#beta_strand>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/StructuralFeatureTypeEnum#turn>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/StructuralFeatureTypeEnum#coil>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/StructuralFeatureTypeEnum#disordered_region>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/StructuralFeatureTypeEnum#transmembrane_helix>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/StructuralFeatureTypeEnum#signal_peptide>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/StructuralFeatureTypeEnum#transit_peptide>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/StructuralFeatureTypeEnum#domain>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/StructuralFeatureTypeEnum#repeat>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/StructuralFeatureTypeEnum#zinc_finger>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/StructuralFeatureTypeEnum#zinc_binding>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/StructuralFeatureTypeEnum#coiled_coil>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/StructuralFeatureTypeEnum#motif>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/StructuralFeatureTypeEnum#cavity>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/StructuralFeatureTypeEnum#channel>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/StructuralFeatureTypeEnum#pore>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/StructuralFeatureTypeEnum#hinge>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/StructuralFeatureTypeEnum#linker> ] ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/secondary_structure> [
-             <https://w3id.org/lambda-ber-schema/functional_annotation/SecondaryStructureEnum#helix>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/SecondaryStructureEnum#sheet>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/SecondaryStructureEnum#turn>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/SecondaryStructureEnum#coil>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/SecondaryStructureEnum#helix_310>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/SecondaryStructureEnum#helix_pi>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/SecondaryStructureEnum#bend>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/SecondaryStructureEnum#bridge> ] ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/solvent_accessibility> @linkml:Float ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/backbone_flexibility> @linkml:Float ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/disorder_probability> @linkml:Float ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/conformational_state> [
-             <https://w3id.org/lambda-ber-schema/functional_annotation/ConformationalStateEnum#open>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/ConformationalStateEnum#closed>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/ConformationalStateEnum#intermediate>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/ConformationalStateEnum#active>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/ConformationalStateEnum#inactive>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/ConformationalStateEnum#apo>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/ConformationalStateEnum#holo>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/ConformationalStateEnum#substrate_bound>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/ConformationalStateEnum#product_bound>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/ConformationalStateEnum#inhibitor_bound>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/ConformationalStateEnum#partially_open>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/ConformationalStateEnum#partially_closed>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/ConformationalStateEnum#disordered> ] ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/structural_motif> @linkml:String ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/domain_assignment> @linkml:String ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/domain_id> @linkml:String ?
+<http://w3id.org/lambda/functional_annotation/StructuralFeature> CLOSED {
+    (  $<http://w3id.org/lambda/functional_annotation/StructuralFeature_tes> ( 
+          &<http://w3id.org/lambda/functional_annotation/ProteinAnnotation_tes> ;
+          rdf:type [ <http://w3id.org/lambda/functional_annotation/ProteinAnnotation> ] ? ;
+          <http://w3id.org/lambda/functional_annotation/feature_type> [
+             <http://w3id.org/lambda/functional_annotation/StructuralFeatureTypeEnum#alpha_helix>
+             <http://w3id.org/lambda/functional_annotation/StructuralFeatureTypeEnum#beta_sheet>
+             <http://w3id.org/lambda/functional_annotation/StructuralFeatureTypeEnum#beta_strand>
+             <http://w3id.org/lambda/functional_annotation/StructuralFeatureTypeEnum#turn>
+             <http://w3id.org/lambda/functional_annotation/StructuralFeatureTypeEnum#coil>
+             <http://w3id.org/lambda/functional_annotation/StructuralFeatureTypeEnum#disordered_region>
+             <http://w3id.org/lambda/functional_annotation/StructuralFeatureTypeEnum#transmembrane_helix>
+             <http://w3id.org/lambda/functional_annotation/StructuralFeatureTypeEnum#signal_peptide>
+             <http://w3id.org/lambda/functional_annotation/StructuralFeatureTypeEnum#transit_peptide>
+             <http://w3id.org/lambda/functional_annotation/StructuralFeatureTypeEnum#domain>
+             <http://w3id.org/lambda/functional_annotation/StructuralFeatureTypeEnum#repeat>
+             <http://w3id.org/lambda/functional_annotation/StructuralFeatureTypeEnum#zinc_finger>
+             <http://w3id.org/lambda/functional_annotation/StructuralFeatureTypeEnum#zinc_binding>
+             <http://w3id.org/lambda/functional_annotation/StructuralFeatureTypeEnum#coiled_coil>
+             <http://w3id.org/lambda/functional_annotation/StructuralFeatureTypeEnum#motif>
+             <http://w3id.org/lambda/functional_annotation/StructuralFeatureTypeEnum#cavity>
+             <http://w3id.org/lambda/functional_annotation/StructuralFeatureTypeEnum#channel>
+             <http://w3id.org/lambda/functional_annotation/StructuralFeatureTypeEnum#pore>
+             <http://w3id.org/lambda/functional_annotation/StructuralFeatureTypeEnum#hinge>
+             <http://w3id.org/lambda/functional_annotation/StructuralFeatureTypeEnum#linker> ] ;
+          <http://w3id.org/lambda/functional_annotation/secondary_structure> [
+             <http://w3id.org/lambda/functional_annotation/SecondaryStructureEnum#helix>
+             <http://w3id.org/lambda/functional_annotation/SecondaryStructureEnum#sheet>
+             <http://w3id.org/lambda/functional_annotation/SecondaryStructureEnum#turn>
+             <http://w3id.org/lambda/functional_annotation/SecondaryStructureEnum#coil>
+             <http://w3id.org/lambda/functional_annotation/SecondaryStructureEnum#helix_310>
+             <http://w3id.org/lambda/functional_annotation/SecondaryStructureEnum#helix_pi>
+             <http://w3id.org/lambda/functional_annotation/SecondaryStructureEnum#bend>
+             <http://w3id.org/lambda/functional_annotation/SecondaryStructureEnum#bridge> ] ? ;
+          <http://w3id.org/lambda/functional_annotation/solvent_accessibility> @linkml:Float ? ;
+          <http://w3id.org/lambda/functional_annotation/backbone_flexibility> @linkml:Float ? ;
+          <http://w3id.org/lambda/functional_annotation/disorder_probability> @linkml:Float ? ;
+          <http://w3id.org/lambda/functional_annotation/conformational_state> [
+             <http://w3id.org/lambda/functional_annotation/ConformationalStateEnum#open>
+             <http://w3id.org/lambda/functional_annotation/ConformationalStateEnum#closed>
+             <http://w3id.org/lambda/functional_annotation/ConformationalStateEnum#intermediate>
+             <http://w3id.org/lambda/functional_annotation/ConformationalStateEnum#active>
+             <http://w3id.org/lambda/functional_annotation/ConformationalStateEnum#inactive>
+             <http://w3id.org/lambda/functional_annotation/ConformationalStateEnum#apo>
+             <http://w3id.org/lambda/functional_annotation/ConformationalStateEnum#holo>
+             <http://w3id.org/lambda/functional_annotation/ConformationalStateEnum#substrate_bound>
+             <http://w3id.org/lambda/functional_annotation/ConformationalStateEnum#product_bound>
+             <http://w3id.org/lambda/functional_annotation/ConformationalStateEnum#inhibitor_bound>
+             <http://w3id.org/lambda/functional_annotation/ConformationalStateEnum#partially_open>
+             <http://w3id.org/lambda/functional_annotation/ConformationalStateEnum#partially_closed>
+             <http://w3id.org/lambda/functional_annotation/ConformationalStateEnum#disordered> ] ? ;
+          <http://w3id.org/lambda/functional_annotation/structural_motif> @linkml:String ? ;
+          <http://w3id.org/lambda/functional_annotation/domain_assignment> @linkml:String ? ;
+          <http://w3id.org/lambda/functional_annotation/domain_id> @linkml:String ?
        ) ;
-       rdf:type [ <https://w3id.org/lambda-ber-schema/functional_annotation/StructuralFeature> ]
+       rdf:type [ <http://w3id.org/lambda/functional_annotation/StructuralFeature> ]
     )
 }
 
@@ -1538,10 +1492,8 @@ linkml:Sparqlpath xsd:string
 <StudySampleAssociation> CLOSED {
     (  $<StudySampleAssociation_tes> (  <study_id> @<Study> ;
           <sample_id> @<Sample> ;
-          <role> [ <https://w3id.org/lambda-ber-schema/SampleRoleEnum#target>
-             <https://w3id.org/lambda-ber-schema/SampleRoleEnum#control>
-             <https://w3id.org/lambda-ber-schema/SampleRoleEnum#reference>
-             <https://w3id.org/lambda-ber-schema/SampleRoleEnum#blank> ] ? ;
+          <role> [ <http://w3id.org/lambda/SampleRoleEnum#target> <http://w3id.org/lambda/SampleRoleEnum#control>
+             <http://w3id.org/lambda/SampleRoleEnum#reference> <http://w3id.org/lambda/SampleRoleEnum#blank> ] ? ;
           <date_added> @linkml:Date ?
        ) ;
        rdf:type [ <StudySampleAssociation> ] ?
@@ -1589,10 +1541,8 @@ linkml:Sparqlpath xsd:string
 <WorkflowInputAssociation> CLOSED {
     (  $<WorkflowInputAssociation_tes> (  <workflow_id> @<WorkflowRun> ;
           <file_id> @<DataFile> ;
-          <input_type> [ <https://w3id.org/lambda-ber-schema/InputTypeEnum#raw_data>
-             <https://w3id.org/lambda-ber-schema/InputTypeEnum#reference>
-             <https://w3id.org/lambda-ber-schema/InputTypeEnum#parameters> <https://w3id.org/lambda-ber-schema/InputTypeEnum#mask>
-             ] ?
+          <input_type> [ <http://w3id.org/lambda/InputTypeEnum#raw_data> <http://w3id.org/lambda/InputTypeEnum#reference>
+             <http://w3id.org/lambda/InputTypeEnum#parameters> <http://w3id.org/lambda/InputTypeEnum#mask> ] ?
        ) ;
        rdf:type [ <WorkflowInputAssociation> ] ?
     )
@@ -1601,15 +1551,11 @@ linkml:Sparqlpath xsd:string
 <WorkflowOutputAssociation> CLOSED {
     (  $<WorkflowOutputAssociation_tes> (  <workflow_id> @<WorkflowRun> ;
           <file_id> @<DataFile> ;
-          <output_type> [ <https://w3id.org/lambda-ber-schema/OutputTypeEnum#map>
-             <https://w3id.org/lambda-ber-schema/OutputTypeEnum#model>
-             <https://w3id.org/lambda-ber-schema/OutputTypeEnum#particles>
-             <https://w3id.org/lambda-ber-schema/OutputTypeEnum#micrographs>
-             <https://w3id.org/lambda-ber-schema/OutputTypeEnum#ctf_estimates>
-             <https://w3id.org/lambda-ber-schema/OutputTypeEnum#metadata>
-             <https://w3id.org/lambda-ber-schema/OutputTypeEnum#statistics>
-             <https://w3id.org/lambda-ber-schema/OutputTypeEnum#processed_data>
-             <https://w3id.org/lambda-ber-schema/OutputTypeEnum#log> ] ?
+          <output_type> [ <http://w3id.org/lambda/OutputTypeEnum#map> <http://w3id.org/lambda/OutputTypeEnum#model>
+             <http://w3id.org/lambda/OutputTypeEnum#particles> <http://w3id.org/lambda/OutputTypeEnum#micrographs>
+             <http://w3id.org/lambda/OutputTypeEnum#ctf_estimates> <http://w3id.org/lambda/OutputTypeEnum#metadata>
+             <http://w3id.org/lambda/OutputTypeEnum#statistics> <http://w3id.org/lambda/OutputTypeEnum#processed_data>
+             <http://w3id.org/lambda/OutputTypeEnum#log> ] ?
        ) ;
        rdf:type [ <WorkflowOutputAssociation> ] ?
     )
@@ -1619,28 +1565,20 @@ linkml:Sparqlpath xsd:string
     (  $<WorkflowRun_tes> (  &<NamedThing_tes> ;
           rdf:type [ <NamedThing> ] ? ;
           <workflow_code> @linkml:String ;
-          <workflow_type> [ <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#motion_correction>
-             <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#ctf_estimation>
-             <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#particle_picking>
-             <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#classification_2d>
-             <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#classification_3d>
-             <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#refinement>
-             <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#model_building>
-             <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#phasing>
-             <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#integration>
-             <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#scaling>
-             <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#saxs_analysis>
-             <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#xas_normalization>
-             <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#xanes_analysis>
-             <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#exafs_analysis>
-             <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#em_2d_classification>
-             <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#mass_spec_deconvolution>
-             <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#particle_extraction>
-             <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#ab_initio>
-             <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#postprocessing>
-             <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#map_validation>
-             <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#model_refinement>
-             <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#model_validation> ] ;
+          <workflow_type> [ <http://w3id.org/lambda/WorkflowTypeEnum#motion_correction>
+             <http://w3id.org/lambda/WorkflowTypeEnum#ctf_estimation> <http://w3id.org/lambda/WorkflowTypeEnum#particle_picking>
+             <http://w3id.org/lambda/WorkflowTypeEnum#classification_2d>
+             <http://w3id.org/lambda/WorkflowTypeEnum#classification_3d> <http://w3id.org/lambda/WorkflowTypeEnum#refinement>
+             <http://w3id.org/lambda/WorkflowTypeEnum#model_building> <http://w3id.org/lambda/WorkflowTypeEnum#phasing>
+             <http://w3id.org/lambda/WorkflowTypeEnum#integration> <http://w3id.org/lambda/WorkflowTypeEnum#scaling>
+             <http://w3id.org/lambda/WorkflowTypeEnum#saxs_analysis> <http://w3id.org/lambda/WorkflowTypeEnum#xas_normalization>
+             <http://w3id.org/lambda/WorkflowTypeEnum#xanes_analysis> <http://w3id.org/lambda/WorkflowTypeEnum#exafs_analysis>
+             <http://w3id.org/lambda/WorkflowTypeEnum#em_2d_classification>
+             <http://w3id.org/lambda/WorkflowTypeEnum#mass_spec_deconvolution>
+             <http://w3id.org/lambda/WorkflowTypeEnum#particle_extraction> <http://w3id.org/lambda/WorkflowTypeEnum#ab_initio>
+             <http://w3id.org/lambda/WorkflowTypeEnum#postprocessing> <http://w3id.org/lambda/WorkflowTypeEnum#map_validation>
+             <http://w3id.org/lambda/WorkflowTypeEnum#model_refinement> <http://w3id.org/lambda/WorkflowTypeEnum#model_validation>
+             ] ;
           <processing_level> @<QuantityValue> ? ;
           <software_name> @linkml:String ;
           <software_version> @linkml:String ? ;
@@ -1651,12 +1589,11 @@ linkml:Sparqlpath xsd:string
           <integrator_module> @linkml:String ? ;
           <scaler_module> @linkml:String ? ;
           <outlier_rejection_method> @linkml:String ? ;
-          <phasing_method> [ <https://w3id.org/lambda-ber-schema/PhasingMethodEnum#molecular_replacement>
-             <https://w3id.org/lambda-ber-schema/PhasingMethodEnum#sad> <https://w3id.org/lambda-ber-schema/PhasingMethodEnum#mad>
-             <https://w3id.org/lambda-ber-schema/PhasingMethodEnum#sir> <https://w3id.org/lambda-ber-schema/PhasingMethodEnum#mir>
-             <https://w3id.org/lambda-ber-schema/PhasingMethodEnum#siras>
-             <https://w3id.org/lambda-ber-schema/PhasingMethodEnum#miras>
-             <https://w3id.org/lambda-ber-schema/PhasingMethodEnum#fragile_mr> ] ? ;
+          <phasing_method> [ <http://w3id.org/lambda/PhasingMethodEnum#molecular_replacement>
+             <http://w3id.org/lambda/PhasingMethodEnum#sad> <http://w3id.org/lambda/PhasingMethodEnum#mad>
+             <http://w3id.org/lambda/PhasingMethodEnum#sir> <http://w3id.org/lambda/PhasingMethodEnum#mir>
+             <http://w3id.org/lambda/PhasingMethodEnum#siras> <http://w3id.org/lambda/PhasingMethodEnum#miras>
+             <http://w3id.org/lambda/PhasingMethodEnum#fragile_mr> ] ? ;
           <search_model_pdb_id> @linkml:String ? ;
           <tls_used> @linkml:Boolean ? ;
           <ncs_used> @linkml:Boolean ? ;
@@ -1717,17 +1654,15 @@ linkml:Sparqlpath xsd:string
 <XRayInstrument> CLOSED {
     (  $<XRayInstrument_tes> (  &<Instrument_tes> ;
           rdf:type [ <Instrument> ] ? ;
-          <source_type> [ <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#synchrotron>
-             <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#rotating_anode>
-             <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#microfocus>
-             <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#metal_jet> ] ? ;
-          nsls2:Detector [ <https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum#direct_electron_detector>
-             <https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum#ccd>
-             <https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum#cmos>
-             <https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum#hybrid_photon_counting>
-             <https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum#scintillator_coupled>
-             <https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum#imaging_plate>
-             <https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum#film> ] ? ;
+          <source_type> [ <http://w3id.org/lambda/XRaySourceTypeEnum#synchrotron>
+             <http://w3id.org/lambda/XRaySourceTypeEnum#rotating_anode> <http://w3id.org/lambda/XRaySourceTypeEnum#microfocus>
+             <http://w3id.org/lambda/XRaySourceTypeEnum#metal_jet> ] ? ;
+          nsls2:Detector [ <http://w3id.org/lambda/DetectorTechnologyEnum#direct_electron_detector>
+             <http://w3id.org/lambda/DetectorTechnologyEnum#ccd> <http://w3id.org/lambda/DetectorTechnologyEnum#cmos>
+             <http://w3id.org/lambda/DetectorTechnologyEnum#hybrid_photon_counting>
+             <http://w3id.org/lambda/DetectorTechnologyEnum#scintillator_coupled>
+             <http://w3id.org/lambda/DetectorTechnologyEnum#imaging_plate> <http://w3id.org/lambda/DetectorTechnologyEnum#film> ] ?
+          ;
           <detector_manufacturer> @linkml:String ? ;
           <detector_model> @linkml:String ? ;
           <energy_min> @<QuantityValue> ? ;
@@ -1749,13 +1684,11 @@ linkml:Sparqlpath xsd:string
           <protein_concentration_mg_per_ml> @<QuantityValue> ? ;
           <protein_buffer> @linkml:String ? ;
           <additives> @linkml:String ? ;
-          <crystallization_method> [ <https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#vapor_diffusion_hanging>
-             <https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#vapor_diffusion_sitting>
-             <https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#batch>
-             <https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#microbatch>
-             <https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#lcp>
-             <https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#dialysis>
-             <https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#free_interface_diffusion> ] ? ;
+          <crystallization_method> [ <http://w3id.org/lambda/CrystallizationMethodEnum#vapor_diffusion_hanging>
+             <http://w3id.org/lambda/CrystallizationMethodEnum#vapor_diffusion_sitting>
+             <http://w3id.org/lambda/CrystallizationMethodEnum#batch> <http://w3id.org/lambda/CrystallizationMethodEnum#microbatch>
+             <http://w3id.org/lambda/CrystallizationMethodEnum#lcp> <http://w3id.org/lambda/CrystallizationMethodEnum#dialysis>
+             <http://w3id.org/lambda/CrystallizationMethodEnum#free_interface_diffusion> ] ? ;
           <crystallization_conditions> @<CrystallizationConditions> ? ;
           <screen_name> @linkml:String ? ;
           <temperature_c> @<QuantityValue> ? ;
@@ -1789,17 +1722,15 @@ linkml:Sparqlpath xsd:string
           <beam_size> @<QuantityValue> ? ;
           <dwell_time> @<QuantityValue> ? ;
           <elements_measured> @linkml:String * ;
-          <source_type> [ <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#synchrotron>
-             <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#rotating_anode>
-             <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#microfocus>
-             <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#metal_jet> ] ? ;
-          <detector_technology> [ <https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum#direct_electron_detector>
-             <https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum#ccd>
-             <https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum#cmos>
-             <https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum#hybrid_photon_counting>
-             <https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum#scintillator_coupled>
-             <https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum#imaging_plate>
-             <https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum#film> ] ? ;
+          <source_type> [ <http://w3id.org/lambda/XRaySourceTypeEnum#synchrotron>
+             <http://w3id.org/lambda/XRaySourceTypeEnum#rotating_anode> <http://w3id.org/lambda/XRaySourceTypeEnum#microfocus>
+             <http://w3id.org/lambda/XRaySourceTypeEnum#metal_jet> ] ? ;
+          <detector_technology> [ <http://w3id.org/lambda/DetectorTechnologyEnum#direct_electron_detector>
+             <http://w3id.org/lambda/DetectorTechnologyEnum#ccd> <http://w3id.org/lambda/DetectorTechnologyEnum#cmos>
+             <http://w3id.org/lambda/DetectorTechnologyEnum#hybrid_photon_counting>
+             <http://w3id.org/lambda/DetectorTechnologyEnum#scintillator_coupled>
+             <http://w3id.org/lambda/DetectorTechnologyEnum#imaging_plate> <http://w3id.org/lambda/DetectorTechnologyEnum#film> ] ?
+          ;
           <detector_model> @linkml:String ? ;
           <flux> @<QuantityValue> ? ;
           <calibration_standard> @linkml:String ?

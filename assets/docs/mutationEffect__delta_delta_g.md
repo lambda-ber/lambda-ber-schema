@@ -3,7 +3,7 @@
 
 Change in folding free energy (kcal/mol)
 
-URI: [lambdaber:mutationEffect__delta_delta_g](https://w3id.org/lambda-ber-schema/mutationEffect__delta_delta_g)
+URI: [lambda:mutationEffect__delta_delta_g](http://w3id.org/lambda/mutationEffect__delta_delta_g)
 
 
 ## Domain and Range

@@ -1,0 +1,837 @@
+{
+  "id": "emsl:transaction_3736677",
+  "title": "Single particle cryo-EM analysis of human PARP enzymes: mechanisms of regulation and inhibition - T-A-apo_5_021226_data",
+  "description": "EMSL transaction 3736677 for sample 'T-A-apo_5_021226_data'",
+  "keywords": [
+    "EMSL",
+    "pncc.short_sample_name"
+  ],
+  "studies": [
+    {
+      "id": "emsl:project_160724",
+      "title": "Single particle cryo-EM analysis of human PARP enzymes: mechanisms of regulation and inhibition",
+      "description": "Human PARP enzymes are a diverse class of medically relevant proteins that regulate multiple aspects of biology. The major catalytic activity of PARP enzymes is the production of ADP-ribose modifications on biomolecules such as proteins, nucleic acids, and metabolites. Human PARP enzymes are diverse and regulate distinct and varied biological pathways, many of which are deregulated in common diseases. PARP enzymes that are implicated in deregulated biological pathways have offered an avenue for therapeutic intervention, with the “druggable” PARP active site targeted in several diseases, most notably cancer, inflammation, and neurodegenerative disorders. The proposed work will provide important knowledge regarding the structure and regulation of human PARP enzymes and associated partner proteins.",
+      "keywords": [
+        "EMSL",
+        "General Access"
+      ]
+    }
+  ],
+  "instruments": [
+    {
+      "id": "emsl:resource_34290",
+      "title": "PNCC Krios 1 (34290)",
+      "description": "EMSL/1095 | 24/7",
+      "instrument_code": "EMSL-PNCC_Krios_1-34290",
+      "instrument_category": "ELECTRON_MICROSCOPE",
+      "facility_name": "EMSL",
+      "facility_ror": "https://ror.org/05h992307",
+      "model": "PNCC Krios 1",
+      "current_status": "offline"
+    }
+  ],
+  "samples": [
+    {
+      "id": "emsl:sample_T_A_apo_5_021226_data_3736677",
+      "title": "T-A-apo_5_021226_data",
+      "description": "Source key: pncc.short_sample_name",
+      "sample_code": "T-A-apo_5_021226_data",
+      "sample_type": "protein"
+    }
+  ],
+  "experiment_runs": [
+    {
+      "id": "emsl:transaction_3736677",
+      "experiment_code": "EMSL-TX-3736677",
+      "technique": "cryo_em",
+      "experiment_date": "2026-02-15T15:46:44",
+      "operator_id": "48279",
+      "raw_data_location": "160724/T-A-apo_5_021226_data/epu_session",
+      "processing_status": "collected",
+      "acquisition_software": "EPU"
+    }
+  ],
+  "data_files": [
+    {
+      "id": "emsl:file_64895567",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.1.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.1.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 146741698560.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895568",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.10.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.10.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 155176284160.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895569",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.11.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.11.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 155056148480.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895570",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.12.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.12.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 147156224000.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895571",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.13.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.13.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 148740689920.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895572",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.14.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.14.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 149748316160.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895573",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.15.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.15.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 150555361280.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895574",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.16.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.16.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 150845624320.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895575",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.17.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.17.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 150984325120.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895576",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.18.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.18.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 151177533440.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895577",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.19.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.19.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 136003614720.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895578",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.2.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.2.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 148818964480.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895579",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.20.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.20.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 140634613760.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895580",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.21.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.21.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 141941248000.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895581",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.22.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.22.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 142439987200.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895582",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.23.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.23.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 143014635520.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895583",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.24.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.24.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 144682004480.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895584",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.25.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.25.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 138154280960.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895585",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.26.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.26.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 144583168000.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895586",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.27.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.27.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 145921187840.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895587",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.28.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.28.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 146532126720.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895588",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.29.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.29.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 148300912640.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895589",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.3.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.3.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 149564928000.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895590",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.30.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.30.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 148391761920.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895591",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.31.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.31.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 134078371840.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895592",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.32.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.32.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 137417052160.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895593",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.33.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.33.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 139259801600.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895594",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.34.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.34.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 141191567360.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895595",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.35.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.35.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 142410291200.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895596",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.36.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.36.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 137741905920.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895597",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.37.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.37.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 138478561280.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895598",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.38.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.38.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 139353815040.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895599",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.39.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.39.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 137919057920.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895600",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.4.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.4.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 150326261760.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895601",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.40.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.40.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 139881041920.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895602",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.41.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.41.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 135387504640.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895603",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.42.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.42.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 141631836160.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895604",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.43.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.43.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 141861836800.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895605",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.44.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.44.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 143120271360.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895606",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.45.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.45.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 144105410560.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895607",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.46.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.46.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 145824081920.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895608",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.47.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.47.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 139625738240.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895609",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.48.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.48.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 144310323200.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895610",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.49.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.49.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 146257213440.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895611",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.5.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.5.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 150977945600.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895612",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.50.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.50.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 147302492160.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895613",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.51.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.51.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 148951777280.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895614",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.52.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.52.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 144009134080.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895615",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.53.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.53.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 151833866240.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895616",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.54.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.54.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 7499038720.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895617",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.6.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.6.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 146226288640.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895618",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.7.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.7.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 154242959360.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895619",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.8.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.8.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 154221363200.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    },
+    {
+      "id": "emsl:file_64895620",
+      "file_name": "87ffc243efcf23cc97850c900d93d62a25087827.data.9.tar",
+      "file_format": "tar",
+      "file_path": "160724/T-A-apo_5_021226_data/epu_session/87ffc243efcf23cc97850c900d93d62a25087827.data.9.tar",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 154490071040.0
+      },
+      "creation_date": "2026-02-15T15:46:44",
+      "data_type": "raw_data",
+      "related_entity": "emsl:transaction_3736677",
+      "file_role": "raw"
+    }
+  ],
+  "study_sample_associations": [
+    {
+      "study_id": "emsl:project_160724",
+      "sample_id": "emsl:sample_T_A_apo_5_021226_data_3736677"
+    }
+  ],
+  "study_experiment_associations": [
+    {
+      "study_id": "emsl:project_160724",
+      "experiment_id": "emsl:transaction_3736677"
+    }
+  ],
+  "experiment_sample_associations": [
+    {
+      "experiment_id": "emsl:transaction_3736677",
+      "sample_id": "emsl:sample_T_A_apo_5_021226_data_3736677"
+    }
+  ],
+  "experiment_instrument_associations": [
+    {
+      "experiment_id": "emsl:transaction_3736677",
+      "instrument_id": "emsl:resource_34290"
+    }
+  ],
+  "@type": "Dataset"
+}

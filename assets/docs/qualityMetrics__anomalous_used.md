@@ -3,7 +3,7 @@
 
 Whether anomalous signal was used
 
-URI: [lambdaber:qualityMetrics__anomalous_used](https://w3id.org/lambda-ber-schema/qualityMetrics__anomalous_used)
+URI: [lambda:qualityMetrics__anomalous_used](http://w3id.org/lambda/qualityMetrics__anomalous_used)
 
 
 ## Domain and Range

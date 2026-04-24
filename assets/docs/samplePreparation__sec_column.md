@@ -3,7 +3,7 @@
 
 Size-exclusion column used
 
-URI: [lambdaber:samplePreparation__sec_column](https://w3id.org/lambda-ber-schema/samplePreparation__sec_column)
+URI: [lambda:samplePreparation__sec_column](http://w3id.org/lambda/samplePreparation__sec_column)
 
 
 ## Domain and Range

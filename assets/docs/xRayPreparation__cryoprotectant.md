@@ -3,7 +3,7 @@
 
 Cryoprotectant used
 
-URI: [lambdaber:xRayPreparation__cryoprotectant](https://w3id.org/lambda-ber-schema/xRayPreparation__cryoprotectant)
+URI: [lambda:xRayPreparation__cryoprotectant](http://w3id.org/lambda/xRayPreparation__cryoprotectant)
 
 
 ## Domain and Range

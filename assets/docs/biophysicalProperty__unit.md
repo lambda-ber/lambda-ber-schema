@@ -3,7 +3,7 @@
 
 Unit of measurement
 
-URI: [lambdaber:biophysicalProperty__unit](https://w3id.org/lambda-ber-schema/biophysicalProperty__unit)
+URI: [lambda:biophysicalProperty__unit](http://w3id.org/lambda/biophysicalProperty__unit)
 
 
 ## Domain and Range

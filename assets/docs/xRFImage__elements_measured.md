@@ -3,7 +3,7 @@
 
 Elements detected and measured
 
-URI: [lambdaber:xRFImage__elements_measured](https://w3id.org/lambda-ber-schema/xRFImage__elements_measured)
+URI: [lambda:xRFImage__elements_measured](http://w3id.org/lambda/xRFImage__elements_measured)
 
 
 ## Domain and Range

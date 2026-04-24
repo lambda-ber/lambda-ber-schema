@@ -3,7 +3,7 @@
 
 UniProt ID of interacting partner
 
-URI: [lambdaber:proteinProteinInteraction__partner_protein_id](https://w3id.org/lambda-ber-schema/proteinProteinInteraction__partner_protein_id)
+URI: [lambda:proteinProteinInteraction__partner_protein_id](http://w3id.org/lambda/proteinProteinInteraction__partner_protein_id)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Method used for conservation analysis
 
-URI: [lambdaber:evolutionaryConservation__conservation_method](https://w3id.org/lambda-ber-schema/evolutionaryConservation__conservation_method)
+URI: [lambda:evolutionaryConservation__conservation_method](http://w3id.org/lambda/evolutionaryConservation__conservation_method)
 
 
 ## Domain and Range

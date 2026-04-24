@@ -3,7 +3,7 @@
 
 Computational or experimental method used
 
-URI: [lambdaber:proteinAnnotation__annotation_method](https://w3id.org/lambda-ber-schema/proteinAnnotation__annotation_method)
+URI: [lambda:proteinAnnotation__annotation_method](http://w3id.org/lambda/proteinAnnotation__annotation_method)
 
 
 ## Domain and Range

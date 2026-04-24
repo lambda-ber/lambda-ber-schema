@@ -3,7 +3,7 @@
 
 Ligands or cofactors modeled in the structure
 
-URI: [lambdaber:workflowRun__ligands_cofactors](https://w3id.org/lambda-ber-schema/workflowRun__ligands_cofactors)
+URI: [lambda:workflowRun__ligands_cofactors](http://w3id.org/lambda/workflowRun__ligands_cofactors)
 
 
 ## Domain and Range

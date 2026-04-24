@@ -3,7 +3,7 @@
 
 SMILES representation of the ligand
 
-URI: [lambdaber:ligandInteraction__ligand_smiles](https://w3id.org/lambda-ber-schema/ligandInteraction__ligand_smiles)
+URI: [lambda:ligandInteraction__ligand_smiles](http://w3id.org/lambda/ligandInteraction__ligand_smiles)
 
 
 ## Domain and Range

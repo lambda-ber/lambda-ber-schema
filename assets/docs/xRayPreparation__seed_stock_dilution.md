@@ -3,7 +3,7 @@
 
 Dilution factor for seed stock
 
-URI: [lambdaber:xRayPreparation__seed_stock_dilution](https://w3id.org/lambda-ber-schema/xRayPreparation__seed_stock_dilution)
+URI: [lambda:xRayPreparation__seed_stock_dilution](http://w3id.org/lambda/xRayPreparation__seed_stock_dilution)
 
 
 ## Domain and Range

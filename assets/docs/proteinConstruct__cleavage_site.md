@@ -3,7 +3,7 @@
 
 Protease cleavage site sequence
 
-URI: [lambdaber:proteinConstruct__cleavage_site](https://w3id.org/lambda-ber-schema/proteinConstruct__cleavage_site)
+URI: [lambda:proteinConstruct__cleavage_site](http://w3id.org/lambda/proteinConstruct__cleavage_site)
 
 
 ## Domain and Range

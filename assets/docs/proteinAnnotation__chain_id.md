@@ -3,7 +3,7 @@
 
 Chain identifier in the PDB structure
 
-URI: [lambdaber:proteinAnnotation__chain_id](https://w3id.org/lambda-ber-schema/proteinAnnotation__chain_id)
+URI: [lambda:proteinAnnotation__chain_id](http://w3id.org/lambda/proteinAnnotation__chain_id)
 
 
 ## Domain and Range

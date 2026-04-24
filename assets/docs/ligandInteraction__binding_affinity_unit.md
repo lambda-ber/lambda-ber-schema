@@ -3,7 +3,7 @@
 
 Unit of binding affinity
 
-URI: [lambdaber:ligandInteraction__binding_affinity_unit](https://w3id.org/lambda-ber-schema/ligandInteraction__binding_affinity_unit)
+URI: [lambda:ligandInteraction__binding_affinity_unit](http://w3id.org/lambda/ligandInteraction__binding_affinity_unit)
 
 
 ## Domain and Range

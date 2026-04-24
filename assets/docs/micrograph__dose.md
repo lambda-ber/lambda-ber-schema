@@ -3,7 +3,7 @@
 
 Total electron dose in e-/Angstrom^2
 
-URI: [lambdaber:micrograph__dose](https://w3id.org/lambda-ber-schema/micrograph__dose)
+URI: [lambda:micrograph__dose](http://w3id.org/lambda/micrograph__dose)
 
 
 ## Domain and Range

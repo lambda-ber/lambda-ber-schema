@@ -1,5 +1,5 @@
 @base <http://example.org/> .
-@prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix lambdaber: <http://w3id.org/lambda/> .
 
 <https://example.org/kibler2024/prep/purification> a lambdaber:SamplePreparation ;
     lambdaber:preparation_date "2024-01-16" ;

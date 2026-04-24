@@ -3,7 +3,7 @@
 
 Enzyme responsible for modification
 
-URI: [lambdaber:postTranslationalModification__enzyme](https://w3id.org/lambda-ber-schema/postTranslationalModification__enzyme)
+URI: [lambda:postTranslationalModification__enzyme](http://w3id.org/lambda/postTranslationalModification__enzyme)
 
 
 ## Domain and Range

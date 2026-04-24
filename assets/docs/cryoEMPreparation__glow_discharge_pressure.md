@@ -3,7 +3,7 @@
 
 Glow discharge pressure, typically specified in millibars. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:cryoEMPreparation__glow_discharge_pressure](https://w3id.org/lambda-ber-schema/cryoEMPreparation__glow_discharge_pressure)
+URI: [lambda:cryoEMPreparation__glow_discharge_pressure](http://w3id.org/lambda/cryoEMPreparation__glow_discharge_pressure)
 
 
 ## Domain and Range

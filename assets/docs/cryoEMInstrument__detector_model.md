@@ -3,7 +3,7 @@
 
 Detector model (e.g., K3, Falcon 4i, DE-64)
 
-URI: [lambdaber:cryoEMInstrument__detector_model](https://w3id.org/lambda-ber-schema/cryoEMInstrument__detector_model)
+URI: [lambda:cryoEMInstrument__detector_model](http://w3id.org/lambda/cryoEMInstrument__detector_model)
 
 
 ## Domain and Range

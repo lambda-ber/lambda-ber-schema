@@ -51,6 +51,84 @@ class_mappings:
     lambda_ber_class: WorkflowRun
     notes: "Scaling statistics embedded in WorkflowRun"
 
+  # BioSAXS - Macromolecules and Assemblies
+  - ispyb_table: Macromolecule
+    lambda_ber_class: MolecularComposition
+    notes: "SAXS macromolecule metadata (name, sequence, MW)"
+
+  - ispyb_table: Assembly
+    lambda_ber_class: Sample
+    notes: "Multi-component assembly maps to Sample with oligomeric_state"
+
+  - ispyb_table: Stoichiometry
+    lambda_ber_class: Sample
+    notes: "Assembly stoichiometry encoded in Sample.oligomeric_state"
+
+  # BioSAXS - Buffers
+  - ispyb_table: Buffer
+    lambda_ber_class: BufferComposition
+    notes: "SAXS buffer composition"
+
+  - ispyb_table: Additive
+    lambda_ber_class: BufferComposition
+    notes: "Buffer additives map to BufferComposition.additives list"
+
+  # BioSAXS - Experiment and Data Collections
+  - ispyb_table: Experiment
+    lambda_ber_class: ExperimentRun
+    notes: "SAXS experiment session"
+
+  - ispyb_table: SaxsDataCollection
+    lambda_ber_class: ExperimentRun
+    notes: "SAXS data collection maps to ExperimentRun with technique=saxs"
+
+  - ispyb_table: Specimen
+    lambda_ber_class: Sample
+    notes: "Specimen at point of measurement (concentration, volume)"
+
+  - ispyb_table: Measurement
+    lambda_ber_class: ExperimentRun
+    notes: "Individual SAXS measurement (buffer-sample-buffer triplet)"
+
+  # BioSAXS - Primary Data Processing
+  - ispyb_table: Subtraction
+    lambda_ber_class: WorkflowRun
+    notes: "Buffer subtraction step; workflow_type=saxs_analysis"
+
+  - ispyb_table: Merge
+    lambda_ber_class: WorkflowRun
+    notes: "Frame merging step; workflow_type=saxs_analysis"
+
+  - ispyb_table: Run
+    lambda_ber_class: ExperimentRun
+    notes: "SAXS run containing multiple frames"
+
+  - ispyb_table: Frame
+    lambda_ber_class: DataFile
+    notes: "Individual SAXS frame as a data file"
+
+  # BioSAXS - Ab Initio Modeling
+  - ispyb_table: AbInitioModel
+    lambda_ber_class: WorkflowRun
+    notes: "Ab initio shape reconstruction; workflow_type=saxs_analysis"
+
+  - ispyb_table: Model
+    lambda_ber_class: DataFile
+    notes: "Model output file (e.g., .pdb from DAMMIF/DAMMIN)"
+
+  # BioSAXS - Sample Plates (logistics)
+  - ispyb_table: SamplePlate
+    lambda_ber_class: null
+    notes: "No equivalent yet - logistics/container tracking (TODO)"
+
+  - ispyb_table: SamplePlatePosition
+    lambda_ber_class: null
+    notes: "No equivalent yet - well position on plate (TODO)"
+
+  - ispyb_table: StockSolution
+    lambda_ber_class: SamplePreparation
+    notes: "Partial mapping - stock solution prep details"
+
 # Field-level mappings for DataCollection -> ExperimentRun
 field_mappings:
 
@@ -216,6 +294,140 @@ field_mappings:
       lambda_ber: n_total_unique
       transform: null
 
+  # ===== BioSAXS Field Mappings =====
+
+  Macromolecule_to_MolecularComposition:
+    - ispyb: sequence
+      lambda_ber: sequences
+      transform: string_to_list
+      notes: "Single sequence string to multivalued list"
+
+    - ispyb: molecularMass
+      lambda_ber: null
+      transform: null
+      notes: "Maps to Sample.molecular_weight (parent level, not MolecularComposition)"
+
+  Buffer_to_BufferComposition:
+    - ispyb: name
+      lambda_ber: null
+      transform: null
+      notes: "No direct name field on BufferComposition"
+
+    - ispyb: pH
+      lambda_ber: ph
+      transform: float_to_quantity_value
+      notes: "Buffer pH"
+
+    - ispyb: composition
+      lambda_ber: components
+      transform: string_to_list
+      notes: "Comma-separated components to list"
+
+  Additive_to_BufferComposition:
+    - ispyb: name
+      lambda_ber: additives
+      transform: string_to_list
+      notes: "Additive name appended to additives list"
+
+    - ispyb: quantity
+      lambda_ber: null
+      transform: null
+      notes: "Additive concentration - no structured equivalent yet"
+
+  Specimen_to_Sample:
+    - ispyb: concentration
+      lambda_ber: concentration
+      transform: float_to_quantity_value
+      notes: "Sample concentration in mg/mL"
+
+    - ispyb: volume
+      lambda_ber: null
+      transform: null
+      notes: "Sample volume - no direct slot (TODO)"
+
+  SaxsDataCollection_to_ExperimentRun:
+    - ispyb: dataCollectionId
+      lambda_ber: ispyb_data_collection_id
+      transform: null
+      notes: "Cross-reference to ISPyB SAXS data collection"
+
+    - ispyb: exposureTime
+      lambda_ber: exposure_time
+      transform: null
+      notes: "Exposure time per frame in seconds"
+
+    - ispyb: numberOfFrames
+      lambda_ber: number_of_images
+      transform: null
+      notes: "Number of SAXS frames maps to number_of_images"
+
+  Subtraction_to_WorkflowRun:
+    - ispyb: subtractionId
+      lambda_ber: null
+      transform: null
+      notes: "ISPyB subtraction ID - no cross-ref slot yet"
+
+    - ispyb: rg
+      lambda_ber: null
+      transform: null
+      notes: "Radius of gyration from Guinier - no slot yet (TODO: SAXS metrics)"
+
+    - ispyb: rgStdev
+      lambda_ber: null
+      transform: null
+      notes: "Rg standard deviation"
+
+    - ispyb: I0
+      lambda_ber: null
+      transform: null
+      notes: "Forward scattering intensity I(0)"
+
+    - ispyb: I0Stdev
+      lambda_ber: null
+      transform: null
+      notes: "I(0) standard deviation"
+
+    - ispyb: dmax
+      lambda_ber: null
+      transform: null
+      notes: "Maximum particle dimension from P(r)"
+
+    - ispyb: total
+      lambda_ber: null
+      transform: null
+      notes: "Total scattered intensity"
+
+    - ispyb: volume
+      lambda_ber: null
+      transform: null
+      notes: "Porod volume estimate"
+
+    - ispyb: quality
+      lambda_ber: null
+      transform: null
+      notes: "Data quality indicator"
+
+  AbInitioModel_to_WorkflowRun:
+    - ispyb: averagedModelId
+      lambda_ber: null
+      transform: null
+      notes: "Reference to averaged model (Model table)"
+
+    - ispyb: rapidShapeDeterminationModelId
+      lambda_ber: null
+      transform: null
+      notes: "Reference to rapid shape model (Model table)"
+
+    - ispyb: shapeDeterminationModelId
+      lambda_ber: null
+      transform: null
+      notes: "Reference to full shape model (Model table)"
+
+    - ispyb: numberOfModels
+      lambda_ber: null
+      transform: null
+      notes: "Number of models generated"
+
   BLSession_to_Study:
     - ispyb: sessionId
       lambda_ber: ispyb_session_id
@@ -239,6 +451,7 @@ field_mappings:
 
 # Unmapped ISPyB tables (to be addressed)
 unmapped_tables:
+  # MX logistics
   - Shipping
   - Dewar
   - Container
@@ -248,10 +461,50 @@ unmapped_tables:
   - PhasingStep
   - PhasingAnalysis
   - ModelBuilding
-  notes: "These require new lambda-ber-schema classes or extensions"
+  # BioSAXS logistics/linking
+  - SamplePlate
+  - SamplePlatePosition
+  - PlateGroup
+  - PlateType
+  - StockSolution
+  - InstructionSet
+  - Instruction
+  # BioSAXS linking tables
+  - AssemblyHasMacromolecule
+  - MacromoleculeRegion
+  - AssemblyRegion
+  - BufferHasAdditive
+  - MeasurementToDataCollection
+  - SubtractionToAbInitioModel
+  - ModelList
+  - ModelToList
+  - FrameList
+  - FrameToList
+  - FrameSet
+  notes: "MX logistics and BioSAXS linking tables require new classes or extensions"
+
+# BioSAXS field mapping gaps (require schema additions)
+biosaxs_schema_gaps:
+  - description: "SAXS-derived structural parameters (Rg, I0, Dmax, Porod volume)"
+    ispyb_table: Subtraction
+    proposal: "Add SAXS metrics to WorkflowRun or create SAXSAnalysisResult class"
+  - description: "Sample volume at point of measurement"
+    ispyb_table: Specimen
+    proposal: "Add volume slot to Sample"
+  - description: "Concentration series as structured data"
+    ispyb_table: SaxsDataCollection
+    proposal: "SAXSPreparation.concentration_series already exists but is single-valued"
 
 # Transforms
 transforms:
   datetime_to_string:
     description: "Convert MySQL DATETIME to ISO8601 string"
     python: "lambda x: x.isoformat() if x else None"
+
+  string_to_list:
+    description: "Wrap a single string value in a list"
+    python: "lambda x: [x] if x else []"
+
+  float_to_quantity_value:
+    description: "Convert a float to a QuantityValue dict"
+    python: "lambda x: {'numeric_value': x} if x is not None else None"

@@ -3,7 +3,7 @@
 
 Type of sample cell used
 
-URI: [lambdaber:sAXSPreparation__sample_cell_type](https://w3id.org/lambda-ber-schema/sAXSPreparation__sample_cell_type)
+URI: [lambda:sAXSPreparation__sample_cell_type](http://w3id.org/lambda/sAXSPreparation__sample_cell_type)
 
 
 ## Domain and Range

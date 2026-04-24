@@ -3,7 +3,7 @@
 
 Whether gold-standard refinement was used
 
-URI: [lambdaber:refinementParameters__gold_standard](https://w3id.org/lambda-ber-schema/refinementParameters__gold_standard)
+URI: [lambda:refinementParameters__gold_standard](http://w3id.org/lambda/refinementParameters__gold_standard)
 
 
 ## Domain and Range

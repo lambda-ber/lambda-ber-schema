@@ -1,88 +1,28 @@
 
+# Slot: minimum_numeric_value
 
-# Slot: minimum_numeric_value 
+The minimum value part, expressed as a number, of the quantity value when the value covers a range.
 
-
-_The minimum value part, expressed as a number, of the quantity value when the value covers a range._
-
-
+URI: [lambda:minimum_numeric_value](http://w3id.org/lambda/minimum_numeric_value)
 
 
+## Domain and Range
 
-URI: [lambdaber:minimum_numeric_value](https://w3id.org/lambda-ber-schema/minimum_numeric_value)
-Alias: minimum_numeric_value
+None &#8594;  <sub>0..1</sub> [Float](types/Float.md)
 
+## Parents
 
-## Inheritance
+ *  is_a: [numeric_value](numeric_value.md)
 
-* [numeric_value](numeric_value.md)
-    * **minimum_numeric_value**
-
-
+## Children
 
 
+## Used by
 
+ * [QuantityValue](QuantityValue.md)
 
-## Applicable Classes
+## Other properties
 
-| Name | Description | Modifies Slot |
+|  |  |  |
 | --- | --- | --- |
-| [QuantityValue](QuantityValue.md) | A simple quantity value, representing a measurement with a numeric value and ... |  no  |
-
-
-
-
-
-
-## Properties
-
-* Range: [Float](Float.md)
-
-
-
-
-## Identifier and Mapping Information
-
-
-
-
-
-
-### Schema Source
-
-
-* from schema: https://w3id.org/lambda-ber-schema/
-
-
-
-
-## Mappings
-
-| Mapping Type | Mapped Value |
-| ---  | ---  |
-| self | lambdaber:minimum_numeric_value |
-| native | lambdaber:minimum_numeric_value |
-| undefined | nmdc:minimum_numeric_value |
-
-
-
-
-## LinkML Source
-
-<details>
-```yaml
-name: minimum_numeric_value
-description: The minimum value part, expressed as a number, of the quantity value
-  when the value covers a range.
-from_schema: https://w3id.org/lambda-ber-schema/
-mappings:
-- nmdc:minimum_numeric_value
-rank: 1000
-is_a: numeric_value
-alias: minimum_numeric_value
-domain_of:
-- QuantityValue
-range: float
-
-```
-</details>
+| **Mappings:** | | nmdc:minimum_numeric_value |

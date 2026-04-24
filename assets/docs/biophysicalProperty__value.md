@@ -3,7 +3,7 @@
 
 Numerical value of the property
 
-URI: [lambdaber:biophysicalProperty__value](https://w3id.org/lambda-ber-schema/biophysicalProperty__value)
+URI: [lambda:biophysicalProperty__value](http://w3id.org/lambda/biophysicalProperty__value)
 
 
 ## Domain and Range

@@ -1,0 +1,92 @@
+{
+  "id": "a0d36563-c8d5-4731-8213-5bbd9546dc37",
+  "title": "Lysozyme crystal X-ray diffraction (AMX, NSLS-II)",
+  "description": "Standard Zebra plan data collection for lysozyme at NSLS-II AMX (proposal 317839, visit mx317839-1). Directory: /nsls2/data/amx/proposals/commissioning/pass-317839/317839-20250909-startup/mx317839-1/Lyso_manual_01_011/6/JJ_test_01_12\n",
+  "experiment_code": "NSLS2-AMX-317839-mx317839-1-run6",
+  "technique": "xray_crystallography",
+  "experiment_date": "2025-09-09T08:59:56.658171",
+  "operator_id": "dkreitler",
+  "experimental_conditions": {
+    "temperature": {
+      "unit": "degrees Celsius"
+    },
+    "humidity": {
+      "unit": "percent"
+    },
+    "pressure": {
+      "unit": "kilopascals"
+    },
+    "beam_energy": {
+      "unit": "eV",
+      "numeric_value": 13480.6
+    },
+    "exposure_time": {
+      "unit": "seconds",
+      "numeric_value": 0.01
+    }
+  },
+  "data_collection_strategy": {
+    "collection_mode": "oscillation",
+    "total_frames": {
+      "unit": "frames",
+      "numeric_value": 11.0
+    },
+    "frame_rate": {
+      "unit": "frames per second",
+      "numeric_value": 100.0
+    },
+    "total_dose": {
+      "unit": "electrons per Angstrom squared"
+    },
+    "dose_per_frame": {
+      "unit": "electrons per Angstrom squared"
+    },
+    "wavelength_a": {
+      "unit": "Angstroms",
+      "numeric_value": 0.919723
+    },
+    "detector_distance_mm": {
+      "unit": "millimeters",
+      "numeric_value": 300.0
+    },
+    "beam_center_x_px": {
+      "unit": "pixels",
+      "numeric_value": 1569.0
+    },
+    "beam_center_y_px": {
+      "unit": "pixels",
+      "numeric_value": 1542.02
+    },
+    "transmission_percent": {
+      "unit": "percent",
+      "numeric_value": 10.0
+    },
+    "oscillation_per_image_deg": {
+      "unit": "degrees",
+      "numeric_value": 0.1
+    },
+    "total_rotation_deg": {
+      "unit": "degrees",
+      "numeric_value": 1.0
+    },
+    "strategy_notes": "Detector model from source metadata: Eiger9. Sweep start/end from source metadata: 0.01 to 1.01 degrees. Original attenuation reported as fraction 0.1 (mapped here to transmission_percent=10.0).\n"
+  },
+  "quality_metrics": {
+    "resolution": {
+      "unit": "Angstroms",
+      "numeric_value": 2.51
+    },
+    "completeness": {
+      "unit": "percent"
+    },
+    "signal_to_noise": {
+      "unit": "signal to noise ratio"
+    },
+    "r_factor": {
+      "unit": "R-factor"
+    }
+  },
+  "raw_data_location": "/nsls2/data/amx/proposals/commissioning/pass-317839/317839-20250909-startup/mx317839-1/Lyso_manual_01_011/6/JJ_test_01_12",
+  "processing_status": "collected",
+  "@type": "ExperimentRun"
+}

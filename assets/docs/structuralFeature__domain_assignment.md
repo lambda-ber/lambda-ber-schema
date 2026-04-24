@@ -3,7 +3,7 @@
 
 Domain database assignment (CATH, SCOP, Pfam)
 
-URI: [lambdaber:structuralFeature__domain_assignment](https://w3id.org/lambda-ber-schema/structuralFeature__domain_assignment)
+URI: [lambda:structuralFeature__domain_assignment](http://w3id.org/lambda/structuralFeature__domain_assignment)
 
 
 ## Domain and Range

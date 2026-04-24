@@ -3,7 +3,7 @@
 
 Data collection start timestamp
 
-URI: [lambdaber:experimentRun__start_time](https://w3id.org/lambda-ber-schema/experimentRun__start_time)
+URI: [lambda:experimentRun__start_time](http://w3id.org/lambda/experimentRun__start_time)
 
 
 ## Domain and Range

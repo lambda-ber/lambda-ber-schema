@@ -3,7 +3,7 @@
 
 Minimum wavenumber, typically specified in inverse centimeters (cm⁻¹). Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:fTIRImage__wavenumber_min](https://w3id.org/lambda-ber-schema/fTIRImage__wavenumber_min)
+URI: [lambda:fTIRImage__wavenumber_min](http://w3id.org/lambda/fTIRImage__wavenumber_min)
 
 
 ## Domain and Range

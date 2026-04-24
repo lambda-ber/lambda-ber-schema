@@ -3,7 +3,7 @@
 
 File size in bytes
 
-URI: [lambdaber:dataFile__file_size_bytes](https://w3id.org/lambda-ber-schema/dataFile__file_size_bytes)
+URI: [lambda:dataFile__file_size_bytes](http://w3id.org/lambda/dataFile__file_size_bytes)
 
 
 ## Domain and Range

@@ -16,6 +16,7 @@ import logging
 
 from lambda_ber_schema.loaders import (
     BatchLoader,
+    EMSLLoader,
     PDBLoader,
     ResponseCache,
     SASBDBLoader,
@@ -53,25 +54,47 @@ def _serialize_dataset(dataset, format: str) -> str:
 
 def _load_with_error_handling(loader, identifier: str):
     """Load a dataset with friendly error messages and exit codes."""
+    return _run_with_error_handling(
+        lambda: loader.load(identifier),
+        http_error_message=lambda status_msg: (
+            f"Error: failed to fetch {identifier} from {loader.source_name}{status_msg}"
+        ),
+        value_error_message=lambda _exc: (
+            f"Error: {identifier} not found or invalid for {loader.source_name}"
+        ),
+        unexpected_error_message=lambda _exc: (
+            f"Error: unexpected failure loading {identifier} from {loader.source_name}"
+        ),
+    )
+
+
+def _run_with_error_handling(
+    action,
+    *,
+    http_error_message,
+    value_error_message,
+    unexpected_error_message,
+):
+    """Run an action with consistent CLI error handling and exit codes."""
     try:
-        return loader.load(identifier)
+        return action()
     except requests.HTTPError as exc:
         status = getattr(exc.response, "status_code", None)
         status_msg = f" (HTTP {status})" if status is not None else ""
         typer.echo(
-            f"Error: failed to fetch {identifier} from {loader.source_name}{status_msg}",
+            http_error_message(status_msg),
             err=True,
         )
         raise typer.Exit(1) from exc
     except ValueError as exc:
         typer.echo(
-            f"Error: {identifier} not found or invalid for {loader.source_name}",
+            value_error_message(exc),
             err=True,
         )
         raise typer.Exit(2) from exc
     except Exception as exc:
         typer.echo(
-            f"Error: unexpected failure loading {identifier} from {loader.source_name}",
+            unexpected_error_message(exc),
             err=True,
         )
         raise typer.Exit(1) from exc
@@ -265,11 +288,173 @@ def etl_pdb(
         typer.echo(output_str)
 
 
+@etl_app.command("emsl")
+def etl_emsl(
+    sample: Annotated[
+        str,
+        typer.Option(
+            "--sample",
+            "-s",
+            help="Sample query text for EMSL transaction search (e.g., apo)",
+        ),
+    ],
+    output: Annotated[
+        Path | None,
+        typer.Option("--output", "-o",
+                     help="Output file path (stdout if not specified)"),
+    ] = None,
+    format: Annotated[
+        str,
+        typer.Option("--format", "-f", help="Output format: yaml or json"),
+    ] = "yaml",
+    cache: Annotated[
+        bool,
+        typer.Option("--cache/--no-cache",
+                     help="Enable/disable response caching"),
+    ] = False,
+    cache_dir: Annotated[
+        Path | None,
+        typer.Option("--cache-dir", help="Cache directory (default: .cache)"),
+    ] = None,
+    transaction_id: Annotated[
+        int | None,
+        typer.Option(
+            "--transaction-id",
+            "-t",
+            help="Optional transaction ID to select from search results",
+        ),
+    ] = None,
+    search_mode: Annotated[
+        str,
+        typer.Option(
+            "--search-mode",
+            help="Search mode: like, regex, or fuzzy",
+        ),
+    ] = "like",
+    key_filter: Annotated[
+        str | None,
+        typer.Option(
+            "--key-filter",
+            help="Optional sample-key filter (e.g., pncc, short_sample_name)",
+        ),
+    ] = "pncc",
+    exact_match: Annotated[
+        bool,
+        typer.Option(
+            "--exact-match/--partial-match",
+            help="Require exact sample match",
+        ),
+    ] = False,
+    similarity_threshold: Annotated[
+        float | None,
+        typer.Option(
+            "--similarity-threshold",
+            help="Fuzzy matching threshold (0.0-1.0, fuzzy mode only)",
+        ),
+    ] = None,
+    limit: Annotated[
+        int,
+        typer.Option(
+            "--limit",
+            "-n",
+            help="Maximum transactions to consider in sample search",
+        ),
+    ] = 20,
+    extract_epu: Annotated[
+        bool,
+        typer.Option(
+            "--extract-epu/--no-extract-epu",
+            help=(
+                "Extract EPU session metadata from the transaction tar archive. "
+                "Requires EMSL_JWT env var (JWT bearer token). "
+                "When set, acquisition parameters (magnification, dose, pixel size, etc.) "
+                "are added to the ExperimentRun in the output."
+            ),
+        ),
+    ] = False,
+    token: Annotated[
+        str | None,
+        typer.Option(
+            "--token",
+            help="EMSL JWT bearer token (overrides EMSL_JWT env var)",
+            envvar="EMSL_JWT",
+            show_default=False,
+        ),
+    ] = None,
+    epu_timeout: Annotated[
+        float,
+        typer.Option(
+            "--epu-timeout",
+            help="Seconds to wait for the EMSL download cart to become ready before giving up.",
+        ),
+    ] = 1800.0,
+) -> None:
+    """
+    Load data from the EMSL public API using sample-search transactions.
+
+    Examples:
+
+        lambda-ber-schema etl emsl --sample apo
+
+        lambda-ber-schema etl emsl --sample apo --transaction-id 3736677
+
+        lambda-ber-schema etl emsl --sample apo --extract-epu --format json
+
+        lambda-ber-schema etl emsl --sample apo --format json --cache
+    """
+    response_cache = ResponseCache(
+        cache_dir=cache_dir or Path(".cache"),
+        enabled=cache,
+    )
+    jwt = token if extract_epu else None
+    loader = EMSLLoader(cache=response_cache, jwt_token=jwt, epu_timeout=epu_timeout)
+
+    if extract_epu and not jwt:
+        typer.echo(
+            "Warning: --extract-epu requested but no JWT token found. "
+            "Set EMSL_JWT or use --token. EPU metadata will be skipped.",
+            err=True,
+        )
+
+    typer.echo(f"Loading EMSL sample query: {sample}", err=True)
+    result = _run_with_error_handling(
+        lambda: loader.load_by_sample(
+            sample_name=sample,
+            transaction_id=transaction_id,
+            search_mode=search_mode,
+            key_filter=key_filter,
+            exact_match=exact_match,
+            similarity_threshold=similarity_threshold,
+            limit=limit,
+        ),
+        http_error_message=lambda status_msg: (
+            f"Error: failed to fetch EMSL data for sample '{sample}'{status_msg}"
+        ),
+        value_error_message=lambda exc: f"Error: {exc}",
+        unexpected_error_message=lambda _exc: (
+            f"Error: unexpected failure loading EMSL sample '{sample}'"
+        ),
+    )
+
+    if result.warnings:
+        for warning in result.warnings:
+            typer.echo(f"Warning: {warning}", err=True)
+
+    output_str = _serialize_dataset(result.dataset, format)
+
+    if output:
+        output.write_text(output_str)
+        typer.echo(f"Wrote output to: {output}", err=True)
+    else:
+        typer.echo(output_str)
+
+
 @etl_app.command("list")
 def etl_list(
     source: Annotated[
         str,
-        typer.Argument(help="Data source: pdb, sasbdb, simplescattering"),
+        typer.Argument(
+            help="Data source: pdb, sasbdb, simplescattering, emsl"),
     ],
     molecular_type: Annotated[
         str | None,
@@ -280,6 +465,10 @@ def etl_list(
         str | None,
         typer.Option(
             "--method", "-m", help="Experimental method filter (pdb only: X-RAY, EM, NMR)"),
+    ] = None,
+    sample: Annotated[
+        str | None,
+        typer.Option("--sample", "-s", help="Sample query (emsl only)"),
     ] = None,
     limit: Annotated[
         int,
@@ -299,6 +488,8 @@ def etl_list(
         lambda-ber-schema etl list simplescattering --limit 5
 
         lambda-ber-schema etl list pdb --method X-RAY --limit 10
+
+        lambda-ber-schema etl list emsl --sample apo --limit 10
     """
     source_lower = source.lower()
 
@@ -312,9 +503,27 @@ def etl_list(
     elif source_lower == "pdb":
         loader = PDBLoader()
         entries = loader.list_entries(experimental_method=method, limit=limit)
+    elif source_lower == "emsl":
+        if not sample:
+            typer.echo(
+                "Error: --sample is required when listing EMSL entries",
+                err=True,
+            )
+            raise typer.Exit(1)
+        loader = EMSLLoader()
+        entries = _run_with_error_handling(
+            lambda: loader.list_entries(sample_name=sample, limit=limit),
+            http_error_message=lambda status_msg: (
+                f"Error: failed to fetch EMSL entries for sample '{sample}'{status_msg}"
+            ),
+            value_error_message=lambda exc: f"Error: {exc}",
+            unexpected_error_message=lambda _exc: (
+                f"Error: unexpected failure listing EMSL entries for sample '{sample}'"
+            ),
+        )
     else:
         typer.echo(
-            f"Unknown source: {source}. Available: pdb, sasbdb, simplescattering", err=True)
+            f"Unknown source: {source}. Available: pdb, sasbdb, simplescattering, emsl", err=True)
         raise typer.Exit(1)
 
     typer.echo(f"Found {len(entries)} entries:")

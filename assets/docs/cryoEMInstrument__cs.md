@@ -3,7 +3,7 @@
 
 Spherical aberration (Cs) in millimeters
 
-URI: [lambdaber:cryoEMInstrument__cs](https://w3id.org/lambda-ber-schema/cryoEMInstrument__cs)
+URI: [lambda:cryoEMInstrument__cs](http://w3id.org/lambda/cryoEMInstrument__cs)
 
 
 ## Domain and Range

@@ -361,6 +361,7 @@ enum FileFormatEnum
     ascii
     thermo_raw
     zip
+    tar
     mrcs
     eer
     cs
@@ -1708,6 +1709,7 @@ type Sample
     mutations: String
     expressionSystem: String
     ligand: String
+    oligomericState: String
   }
 
 type SamplePreparation

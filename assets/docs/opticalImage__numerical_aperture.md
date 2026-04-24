@@ -3,7 +3,7 @@
 
 Numerical aperture of the objective lens. Data providers may include unit information in the QuantityValue if needed.
 
-URI: [lambdaber:opticalImage__numerical_aperture](https://w3id.org/lambda-ber-schema/opticalImage__numerical_aperture)
+URI: [lambda:opticalImage__numerical_aperture](http://w3id.org/lambda/opticalImage__numerical_aperture)
 
 
 ## Domain and Range

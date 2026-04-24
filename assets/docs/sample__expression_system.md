@@ -3,7 +3,7 @@
 
 Expression system used
 
-URI: [lambdaber:sample__expression_system](https://w3id.org/lambda-ber-schema/sample__expression_system)
+URI: [lambda:sample__expression_system](http://w3id.org/lambda/sample__expression_system)
 
 
 ## Domain and Range

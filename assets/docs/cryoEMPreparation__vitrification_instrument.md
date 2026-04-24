@@ -3,7 +3,7 @@
 
 Vitrification instrument used (e.g., Vitrobot)
 
-URI: [lambdaber:cryoEMPreparation__vitrification_instrument](https://w3id.org/lambda-ber-schema/cryoEMPreparation__vitrification_instrument)
+URI: [lambda:cryoEMPreparation__vitrification_instrument](http://w3id.org/lambda/cryoEMPreparation__vitrification_instrument)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Physical position of detector in microscope (e.g., post-GIF, pre-column)
 
-URI: [lambdaber:cryoEMInstrument__detector_position](https://w3id.org/lambda-ber-schema/cryoEMInstrument__detector_position)
+URI: [lambda:cryoEMInstrument__detector_position](http://w3id.org/lambda/cryoEMInstrument__detector_position)
 
 
 ## Domain and Range

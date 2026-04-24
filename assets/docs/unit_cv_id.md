@@ -1,79 +1,21 @@
 
+# Slot: unit_cv_id
 
-# Slot: unit_cv_id 
+The unit of the quantity, expressed as a CURIE from the Unit Ontology (e.g., UO:0000016 for micrometer).
 
-
-_The unit of the quantity, expressed as a CURIE from the Unit Ontology (e.g., UO:0000016 for micrometer)._
-
-
+URI: [lambda:unit_cv_id](http://w3id.org/lambda/unit_cv_id)
 
 
+## Domain and Range
 
-URI: [lambdaber:unit_cv_id](https://w3id.org/lambda-ber-schema/unit_cv_id)
-Alias: unit_cv_id
+None &#8594;  <sub>0..1</sub> [Curie](types/Curie.md)
 
-<!-- no inheritance hierarchy -->
-
-
+## Parents
 
 
-
-## Applicable Classes
-
-| Name | Description | Modifies Slot |
-| --- | --- | --- |
-| [QuantityValue](QuantityValue.md) | A simple quantity value, representing a measurement with a numeric value and ... |  no  |
+## Children
 
 
+## Used by
 
-
-
-
-## Properties
-
-* Range: [Curie](Curie.md)
-
-
-
-
-## Identifier and Mapping Information
-
-
-
-
-
-
-### Schema Source
-
-
-* from schema: https://w3id.org/lambda-ber-schema/
-
-
-
-
-## Mappings
-
-| Mapping Type | Mapped Value |
-| ---  | ---  |
-| self | lambdaber:unit_cv_id |
-| native | lambdaber:unit_cv_id |
-
-
-
-
-## LinkML Source
-
-<details>
-```yaml
-name: unit_cv_id
-description: The unit of the quantity, expressed as a CURIE from the Unit Ontology
-  (e.g., UO:0000016 for micrometer).
-from_schema: https://w3id.org/lambda-ber-schema/
-rank: 1000
-alias: unit_cv_id
-domain_of:
-- QuantityValue
-range: curie
-
-```
-</details>
+ * [QuantityValue](QuantityValue.md)

@@ -3,7 +3,7 @@
 
 Unbinned pixel size, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:movie__pixel_size_unbinned](https://w3id.org/lambda-ber-schema/movie__pixel_size_unbinned)
+URI: [lambda:movie__pixel_size_unbinned](http://w3id.org/lambda/movie__pixel_size_unbinned)
 
 
 ## Domain and Range

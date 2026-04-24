@@ -3,7 +3,7 @@
 
 Buffer composition for lysis
 
-URI: [lambdaber:samplePreparation__lysis_buffer](https://w3id.org/lambda-ber-schema/samplePreparation__lysis_buffer)
+URI: [lambda:samplePreparation__lysis_buffer](http://w3id.org/lambda/samplePreparation__lysis_buffer)
 
 
 ## Domain and Range

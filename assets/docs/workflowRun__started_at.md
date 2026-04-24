@@ -3,7 +3,7 @@
 
 Workflow start time
 
-URI: [lambdaber:workflowRun__started_at](https://w3id.org/lambda-ber-schema/workflowRun__started_at)
+URI: [lambda:workflowRun__started_at](http://w3id.org/lambda/workflowRun__started_at)
 
 
 ## Domain and Range

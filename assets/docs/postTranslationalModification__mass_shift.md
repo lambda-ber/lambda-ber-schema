@@ -3,7 +3,7 @@
 
 Mass change due to modification (Da)
 
-URI: [lambdaber:postTranslationalModification__mass_shift](https://w3id.org/lambda-ber-schema/postTranslationalModification__mass_shift)
+URI: [lambda:postTranslationalModification__mass_shift](http://w3id.org/lambda/postTranslationalModification__mass_shift)
 
 
 ## Domain and Range

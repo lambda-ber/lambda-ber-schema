@@ -3,7 +3,7 @@
 
 Partner residues at the interaction interface
 
-URI: [lambdaber:proteinProteinInteraction__partner_interface_residues](https://w3id.org/lambda-ber-schema/proteinProteinInteraction__partner_interface_residues)
+URI: [lambda:proteinProteinInteraction__partner_interface_residues](http://w3id.org/lambda/proteinProteinInteraction__partner_interface_residues)
 
 
 ## Domain and Range

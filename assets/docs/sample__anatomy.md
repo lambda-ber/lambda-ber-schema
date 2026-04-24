@@ -3,7 +3,7 @@
 
 Anatomical part or tissue (e.g., UBERON:0008945 for leaf)
 
-URI: [lambdaber:sample__anatomy](https://w3id.org/lambda-ber-schema/sample__anatomy)
+URI: [lambda:sample__anatomy](http://w3id.org/lambda/sample__anatomy)
 
 
 ## Domain and Range

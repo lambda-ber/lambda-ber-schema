@@ -3,7 +3,7 @@
 
 Length of the protein sequence in amino acids
 
-URI: [lambdaber:proteinConstruct__sequence_length_aa](https://w3id.org/lambda-ber-schema/proteinConstruct__sequence_length_aa)
+URI: [lambda:proteinConstruct__sequence_length_aa](http://w3id.org/lambda/proteinConstruct__sequence_length_aa)
 
 
 ## Domain and Range

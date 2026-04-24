@@ -3,7 +3,7 @@
 
 Atmosphere composition
 
-URI: [lambdaber:experimentalConditions__atmosphere](https://w3id.org/lambda-ber-schema/experimentalConditions__atmosphere)
+URI: [lambda:experimentalConditions__atmosphere](http://w3id.org/lambda/experimentalConditions__atmosphere)
 
 
 ## Domain and Range

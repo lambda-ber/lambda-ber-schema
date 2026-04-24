@@ -3,7 +3,7 @@
 
 Computational resources used
 
-URI: [lambdaber:workflowRun__compute_resources](https://w3id.org/lambda-ber-schema/workflowRun__compute_resources)
+URI: [lambda:workflowRun__compute_resources](http://w3id.org/lambda/workflowRun__compute_resources)
 
 
 ## Domain and Range

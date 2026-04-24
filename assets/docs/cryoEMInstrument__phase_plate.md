@@ -3,7 +3,7 @@
 
 Phase plate available
 
-URI: [lambdaber:cryoEMInstrument__phase_plate](https://w3id.org/lambda-ber-schema/cryoEMInstrument__phase_plate)
+URI: [lambda:cryoEMInstrument__phase_plate](http://w3id.org/lambda/cryoEMInstrument__phase_plate)
 
 
 ## Domain and Range

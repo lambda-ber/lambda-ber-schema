@@ -3,7 +3,7 @@
 
 Gun lens setting
 
-URI: [lambdaber:cryoEMInstrument__gunlens](https://w3id.org/lambda-ber-schema/cryoEMInstrument__gunlens)
+URI: [lambda:cryoEMInstrument__gunlens](http://w3id.org/lambda/cryoEMInstrument__gunlens)
 
 
 ## Domain and Range

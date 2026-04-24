@@ -3,7 +3,7 @@
 
 Category distinguishing beamlines from laboratory equipment
 
-URI: [lambdaber:instrument__instrument_category](https://w3id.org/lambda-ber-schema/instrument__instrument_category)
+URI: [lambda:instrument__instrument_category](http://w3id.org/lambda/instrument__instrument_category)
 
 
 ## Domain and Range

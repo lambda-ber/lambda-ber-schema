@@ -3,7 +3,7 @@
 
 Stage Z position, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:movie__stage_position_z](https://w3id.org/lambda-ber-schema/movie__stage_position_z)
+URI: [lambda:movie__stage_position_z](http://w3id.org/lambda/movie__stage_position_z)
 
 
 ## Domain and Range

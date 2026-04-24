@@ -3,7 +3,7 @@
 
 Conditions for crystal soaking
 
-URI: [lambdaber:xRayPreparation__soak_conditions](https://w3id.org/lambda-ber-schema/xRayPreparation__soak_conditions)
+URI: [lambda:xRayPreparation__soak_conditions](http://w3id.org/lambda/xRayPreparation__soak_conditions)
 
 
 ## Domain and Range

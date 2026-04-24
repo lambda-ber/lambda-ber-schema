@@ -3,7 +3,7 @@
 
 Measured or predicted biophysical properties
 
-URI: [lambdaber:sample__biophysical_properties](https://w3id.org/lambda-ber-schema/sample__biophysical_properties)
+URI: [lambda:sample__biophysical_properties](http://w3id.org/lambda/sample__biophysical_properties)
 
 
 ## Domain and Range

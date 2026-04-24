@@ -3,7 +3,7 @@
 
 Maximum memory used, typically specified in gigabytes (GB). Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:computeResources__memory_gb](https://w3id.org/lambda-ber-schema/computeResources__memory_gb)
+URI: [lambda:computeResources__memory_gb](http://w3id.org/lambda/computeResources__memory_gb)
 
 
 ## Domain and Range

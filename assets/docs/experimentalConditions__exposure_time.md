@@ -3,7 +3,7 @@
 
 Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:experimentalConditions__exposure_time](https://w3id.org/lambda-ber-schema/experimentalConditions__exposure_time)
+URI: [lambda:experimentalConditions__exposure_time](http://w3id.org/lambda/experimentalConditions__exposure_time)
 
 
 ## Domain and Range

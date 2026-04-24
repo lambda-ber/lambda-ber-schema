@@ -3,7 +3,7 @@
 
 Buffer composition for washing
 
-URI: [lambdaber:samplePreparation__wash_buffer](https://w3id.org/lambda-ber-schema/samplePreparation__wash_buffer)
+URI: [lambda:samplePreparation__wash_buffer](http://w3id.org/lambda/samplePreparation__wash_buffer)
 
 
 ## Domain and Range

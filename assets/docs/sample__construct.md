@@ -3,7 +3,7 @@
 
 Construct description (e.g., domain boundaries, truncations)
 
-URI: [lambdaber:sample__construct](https://w3id.org/lambda-ber-schema/sample__construct)
+URI: [lambda:sample__construct](http://w3id.org/lambda/sample__construct)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Target defocus value in micrometers
 
-URI: [lambdaber:experimentRun__defocus_target](https://w3id.org/lambda-ber-schema/experimentRun__defocus_target)
+URI: [lambda:experimentRun__defocus_target](http://w3id.org/lambda/experimentRun__defocus_target)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Total number of observations (before merging)
 
-URI: [lambdaber:workflowRun__n_total_observations](https://w3id.org/lambda-ber-schema/workflowRun__n_total_observations)
+URI: [lambda:workflowRun__n_total_observations](http://w3id.org/lambda/workflowRun__n_total_observations)
 
 
 ## Domain and Range

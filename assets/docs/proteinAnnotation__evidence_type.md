@@ -3,7 +3,7 @@
 
 Type of evidence supporting this annotation
 
-URI: [lambdaber:proteinAnnotation__evidence_type](https://w3id.org/lambda-ber-schema/proteinAnnotation__evidence_type)
+URI: [lambda:proteinAnnotation__evidence_type](http://w3id.org/lambda/proteinAnnotation__evidence_type)
 
 
 ## Domain and Range

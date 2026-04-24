@@ -3,7 +3,7 @@
 
 B-factor or flexibility measure
 
-URI: [lambdaber:structuralFeature__backbone_flexibility](https://w3id.org/lambda-ber-schema/structuralFeature__backbone_flexibility)
+URI: [lambda:structuralFeature__backbone_flexibility](http://w3id.org/lambda/structuralFeature__backbone_flexibility)
 
 
 ## Domain and Range

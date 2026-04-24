@@ -3,7 +3,7 @@
 
 Reference to original movie file
 
-URI: [lambdaber:micrograph__origin_movie_id](https://w3id.org/lambda-ber-schema/micrograph__origin_movie_id)
+URI: [lambda:micrograph__origin_movie_id](http://w3id.org/lambda/micrograph__origin_movie_id)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Method used for 3D reconstruction
 
-URI: [lambdaber:image3D__reconstruction_method](https://w3id.org/lambda-ber-schema/image3D__reconstruction_method)
+URI: [lambda:image3D__reconstruction_method](http://w3id.org/lambda/image3D__reconstruction_method)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Laser power, typically specified in milliwatts. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:fluorescenceImage__laser_power](https://w3id.org/lambda-ber-schema/fluorescenceImage__laser_power)
+URI: [lambda:fluorescenceImage__laser_power](http://w3id.org/lambda/fluorescenceImage__laser_power)
 
 
 ## Domain and Range

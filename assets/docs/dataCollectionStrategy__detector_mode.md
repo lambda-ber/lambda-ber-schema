@@ -3,7 +3,7 @@
 
 Detector operating mode used during this experiment
 
-URI: [lambdaber:dataCollectionStrategy__detector_mode](https://w3id.org/lambda-ber-schema/dataCollectionStrategy__detector_mode)
+URI: [lambda:dataCollectionStrategy__detector_mode](http://w3id.org/lambda/dataCollectionStrategy__detector_mode)
 
 
 ## Domain and Range

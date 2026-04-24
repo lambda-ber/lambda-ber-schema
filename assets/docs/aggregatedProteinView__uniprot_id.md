@@ -3,7 +3,7 @@
 
 UniProt accession
 
-URI: [lambdaber:aggregatedProteinView__uniprot_id](https://w3id.org/lambda-ber-schema/aggregatedProteinView__uniprot_id)
+URI: [lambda:aggregatedProteinView__uniprot_id](http://w3id.org/lambda/aggregatedProteinView__uniprot_id)
 
 
 ## Domain and Range

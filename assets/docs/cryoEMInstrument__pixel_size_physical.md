@@ -3,7 +3,7 @@
 
 Physical pixel size in micrometers
 
-URI: [lambdaber:cryoEMInstrument__pixel_size_physical](https://w3id.org/lambda-ber-schema/cryoEMInstrument__pixel_size_physical)
+URI: [lambda:cryoEMInstrument__pixel_size_physical](http://w3id.org/lambda/cryoEMInstrument__pixel_size_physical)
 
 
 ## Domain and Range

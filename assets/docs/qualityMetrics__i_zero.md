@@ -3,7 +3,7 @@
 
 Forward scattering intensity I(0)
 
-URI: [lambdaber:qualityMetrics__i_zero](https://w3id.org/lambda-ber-schema/qualityMetrics__i_zero)
+URI: [lambda:qualityMetrics__i_zero](http://w3id.org/lambda/qualityMetrics__i_zero)
 
 
 ## Domain and Range

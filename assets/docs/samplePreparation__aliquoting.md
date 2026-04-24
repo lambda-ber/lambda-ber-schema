@@ -3,7 +3,7 @@
 
 How the protein was aliquoted for storage
 
-URI: [lambdaber:samplePreparation__aliquoting](https://w3id.org/lambda-ber-schema/samplePreparation__aliquoting)
+URI: [lambda:samplePreparation__aliquoting](http://w3id.org/lambda/samplePreparation__aliquoting)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Conformational states and dynamics
 
-URI: [lambdaber:sample__conformational_ensemble](https://w3id.org/lambda-ber-schema/sample__conformational_ensemble)
+URI: [lambda:sample__conformational_ensemble](http://w3id.org/lambda/sample__conformational_ensemble)
 
 
 ## Domain and Range

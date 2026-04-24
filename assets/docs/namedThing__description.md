@@ -3,7 +3,7 @@
 
 A detailed textual description of this entity
 
-URI: [lambdaber:namedThing__description](https://w3id.org/lambda-ber-schema/namedThing__description)
+URI: [lambda:namedThing__description](http://w3id.org/lambda/namedThing__description)
 
 
 ## Domain and Range

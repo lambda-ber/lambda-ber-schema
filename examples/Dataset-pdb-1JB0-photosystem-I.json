@@ -19,14 +19,14 @@
     {
       "id": "pdb:1JB0/sample/1",
       "title": "PHOTOSYSTEM I P700 CHLOROPHYLL A APOPROTEIN A1",
-      "description": "Sequence length: 755",
+      "description": "Organism: Synechococcus elongatus; Sequence length: 755",
       "sample_code": "PDB-1JB0-1",
       "sample_type": "protein",
       "molecular_weight": {
         "unit": "kDa",
         "numeric_value": 83.27
       },
-      "organism": "ncbitaxon:32046",
+      "organism": "NCBITaxon:32046",
       "database_cross_references": [
         {
           "database_name": "uniprot",
@@ -39,14 +39,14 @@
     {
       "id": "pdb:1JB0/sample/2",
       "title": "PHOTOSYSTEM I P700 CHLOROPHYLL A APOPROTEIN A2",
-      "description": "Sequence length: 740",
+      "description": "Organism: Synechococcus elongatus; Sequence length: 740",
       "sample_code": "PDB-1JB0-2",
       "sample_type": "protein",
       "molecular_weight": {
         "unit": "kDa",
         "numeric_value": 82.99
       },
-      "organism": "ncbitaxon:32046",
+      "organism": "NCBITaxon:32046",
       "database_cross_references": [
         {
           "database_name": "uniprot",
@@ -59,14 +59,14 @@
     {
       "id": "pdb:1JB0/sample/3",
       "title": "PHOTOSYSTEM I IRON-SULFUR CENTER",
-      "description": "Sequence length: 80",
+      "description": "Organism: Synechococcus elongatus; Sequence length: 80",
       "sample_code": "PDB-1JB0-3",
       "sample_type": "protein",
       "molecular_weight": {
         "unit": "kDa",
         "numeric_value": 8.68
       },
-      "organism": "ncbitaxon:32046",
+      "organism": "NCBITaxon:32046",
       "database_cross_references": [
         {
           "database_name": "uniprot",
@@ -79,14 +79,14 @@
     {
       "id": "pdb:1JB0/sample/4",
       "title": "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT II",
-      "description": "Sequence length: 138",
+      "description": "Organism: Synechococcus elongatus; Sequence length: 138",
       "sample_code": "PDB-1JB0-4",
       "sample_type": "protein",
       "molecular_weight": {
         "unit": "kDa",
         "numeric_value": 15.26
       },
-      "organism": "ncbitaxon:32046",
+      "organism": "NCBITaxon:32046",
       "database_cross_references": [
         {
           "database_name": "uniprot",
@@ -99,14 +99,14 @@
     {
       "id": "pdb:1JB0/sample/5",
       "title": "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT IV",
-      "description": "Sequence length: 75",
+      "description": "Organism: Synechococcus elongatus; Sequence length: 75",
       "sample_code": "PDB-1JB0-5",
       "sample_type": "protein",
       "molecular_weight": {
         "unit": "kDa",
         "numeric_value": 8.27
       },
-      "organism": "ncbitaxon:32046",
+      "organism": "NCBITaxon:32046",
       "database_cross_references": [
         {
           "database_name": "uniprot",
@@ -119,14 +119,14 @@
     {
       "id": "pdb:1JB0/sample/6",
       "title": "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT III",
-      "description": "Sequence length: 164",
+      "description": "Organism: Synechococcus elongatus; Sequence length: 164",
       "sample_code": "PDB-1JB0-6",
       "sample_type": "protein",
       "molecular_weight": {
         "unit": "kDa",
         "numeric_value": 17.72
       },
-      "organism": "ncbitaxon:32046",
+      "organism": "NCBITaxon:32046",
       "database_cross_references": [
         {
           "database_name": "uniprot",
@@ -139,14 +139,14 @@
     {
       "id": "pdb:1JB0/sample/7",
       "title": "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT VIII",
-      "description": "Sequence length: 38",
+      "description": "Organism: Synechococcus elongatus; Sequence length: 38",
       "sample_code": "PDB-1JB0-7",
       "sample_type": "protein",
       "molecular_weight": {
         "unit": "kDa",
         "numeric_value": 4.3
       },
-      "organism": "ncbitaxon:32046",
+      "organism": "NCBITaxon:32046",
       "database_cross_references": [
         {
           "database_name": "uniprot",
@@ -159,14 +159,14 @@
     {
       "id": "pdb:1JB0/sample/8",
       "title": "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT IX",
-      "description": "Sequence length: 41",
+      "description": "Organism: Synechococcus elongatus; Sequence length: 41",
       "sample_code": "PDB-1JB0-8",
       "sample_type": "protein",
       "molecular_weight": {
         "unit": "kDa",
         "numeric_value": 4.77
       },
-      "organism": "ncbitaxon:32046",
+      "organism": "NCBITaxon:32046",
       "database_cross_references": [
         {
           "database_name": "uniprot",
@@ -179,14 +179,14 @@
     {
       "id": "pdb:1JB0/sample/9",
       "title": "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT X",
-      "description": "Sequence length: 83",
+      "description": "Organism: Synechococcus elongatus; Sequence length: 83",
       "sample_code": "PDB-1JB0-9",
       "sample_type": "protein",
       "molecular_weight": {
         "unit": "kDa",
         "numeric_value": 8.48
       },
-      "organism": "ncbitaxon:32046",
+      "organism": "NCBITaxon:32046",
       "database_cross_references": [
         {
           "database_name": "uniprot",
@@ -199,14 +199,14 @@
     {
       "id": "pdb:1JB0/sample/10",
       "title": "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT XI",
-      "description": "Sequence length: 154",
+      "description": "Organism: Synechococcus elongatus; Sequence length: 154",
       "sample_code": "PDB-1JB0-10",
       "sample_type": "protein",
       "molecular_weight": {
         "unit": "kDa",
         "numeric_value": 16.16
       },
-      "organism": "ncbitaxon:32046",
+      "organism": "NCBITaxon:32046",
       "database_cross_references": [
         {
           "database_name": "uniprot",
@@ -219,14 +219,14 @@
     {
       "id": "pdb:1JB0/sample/11",
       "title": "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT XII",
-      "description": "Sequence length: 31",
+      "description": "Organism: Synechococcus elongatus; Sequence length: 31",
       "sample_code": "PDB-1JB0-11",
       "sample_type": "protein",
       "molecular_weight": {
         "unit": "kDa",
         "numeric_value": 3.43
       },
-      "organism": "ncbitaxon:32046",
+      "organism": "NCBITaxon:32046",
       "database_cross_references": [
         {
           "database_name": "uniprot",
@@ -239,14 +239,14 @@
     {
       "id": "pdb:1JB0/sample/12",
       "title": "PHOTOSYSTEM I SUBUNIT PSAX",
-      "description": "Sequence length: 35",
+      "description": "Organism: Synechococcus elongatus; Sequence length: 35",
       "sample_code": "PDB-1JB0-12",
       "sample_type": "protein",
       "molecular_weight": {
         "unit": "kDa",
         "numeric_value": 3.85
       },
-      "organism": "ncbitaxon:32046",
+      "organism": "NCBITaxon:32046",
       "database_cross_references": [
         {
           "database_name": "uniprot",

@@ -3,7 +3,7 @@
 
 Software used for processing
 
-URI: [lambdaber:workflowRun__software_name](https://w3id.org/lambda-ber-schema/workflowRun__software_name)
+URI: [lambda:workflowRun__software_name](http://w3id.org/lambda/workflowRun__software_name)
 
 
 ## Domain and Range

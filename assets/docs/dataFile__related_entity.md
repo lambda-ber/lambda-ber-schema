@@ -3,7 +3,7 @@
 
 ID of the entity that owns this file
 
-URI: [lambdaber:dataFile__related_entity](https://w3id.org/lambda-ber-schema/dataFile__related_entity)
+URI: [lambda:dataFile__related_entity](http://w3id.org/lambda/dataFile__related_entity)
 
 
 ## Domain and Range

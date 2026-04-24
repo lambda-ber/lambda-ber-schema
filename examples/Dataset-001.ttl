@@ -1,7 +1,7 @@
 @base <http://example.org/> .
 @prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix lambdaber: <http://w3id.org/lambda/> .
 
 lambdaber:ds001 a lambdaber:Dataset ;
     dcterms:title "Test Dataset" ;

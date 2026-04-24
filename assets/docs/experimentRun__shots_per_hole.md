@@ -3,7 +3,7 @@
 
 Number of shots taken per hole
 
-URI: [lambdaber:experimentRun__shots_per_hole](https://w3id.org/lambda-ber-schema/experimentRun__shots_per_hole)
+URI: [lambda:experimentRun__shots_per_hole](http://w3id.org/lambda/experimentRun__shots_per_hole)
 
 
 ## Domain and Range

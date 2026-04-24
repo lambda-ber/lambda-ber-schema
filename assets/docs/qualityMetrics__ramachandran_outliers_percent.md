@@ -3,7 +3,7 @@
 
 Percentage of Ramachandran outliers
 
-URI: [lambdaber:qualityMetrics__ramachandran_outliers_percent](https://w3id.org/lambda-ber-schema/qualityMetrics__ramachandran_outliers_percent)
+URI: [lambda:qualityMetrics__ramachandran_outliers_percent](http://w3id.org/lambda/qualityMetrics__ramachandran_outliers_percent)
 
 
 ## Domain and Range

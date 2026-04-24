@@ -3,7 +3,7 @@
 
 Name of the fluorescence channel (e.g., DAPI, GFP, RFP)
 
-URI: [lambdaber:fluorescenceImage__channel_name](https://w3id.org/lambda-ber-schema/fluorescenceImage__channel_name)
+URI: [lambda:fluorescenceImage__channel_name](http://w3id.org/lambda/fluorescenceImage__channel_name)
 
 
 ## Domain and Range

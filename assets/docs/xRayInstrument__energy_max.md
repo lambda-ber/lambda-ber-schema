@@ -3,7 +3,7 @@
 
 Maximum X-ray energy in keV
 
-URI: [lambdaber:xRayInstrument__energy_max](https://w3id.org/lambda-ber-schema/xRayInstrument__energy_max)
+URI: [lambda:xRayInstrument__energy_max](http://w3id.org/lambda/xRayInstrument__energy_max)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Temperature during measurement, typically specified in Kelvin. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:measurementConditions__temperature](https://w3id.org/lambda-ber-schema/measurementConditions__temperature)
+URI: [lambda:measurementConditions__temperature](http://w3id.org/lambda/measurementConditions__temperature)
 
 
 ## Domain and Range

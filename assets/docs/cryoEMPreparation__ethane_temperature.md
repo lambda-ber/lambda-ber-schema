@@ -3,7 +3,7 @@
 
 Ethane temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:cryoEMPreparation__ethane_temperature](https://w3id.org/lambda-ber-schema/cryoEMPreparation__ethane_temperature)
+URI: [lambda:cryoEMPreparation__ethane_temperature](http://w3id.org/lambda/cryoEMPreparation__ethane_temperature)
 
 
 ## Domain and Range

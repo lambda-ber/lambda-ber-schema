@@ -3,7 +3,7 @@
 
 Path to parameters file or text of key parameters
 
-URI: [lambdaber:workflowRun__parameters_file_path](https://w3id.org/lambda-ber-schema/workflowRun__parameters_file_path)
+URI: [lambda:workflowRun__parameters_file_path](http://w3id.org/lambda/workflowRun__parameters_file_path)
 
 
 ## Domain and Range

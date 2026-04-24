@@ -3,7 +3,7 @@
 
 Structural feature annotations
 
-URI: [lambdaber:sample__structural_features](https://w3id.org/lambda-ber-schema/sample__structural_features)
+URI: [lambda:sample__structural_features](http://w3id.org/lambda/sample__structural_features)
 
 
 ## Domain and Range

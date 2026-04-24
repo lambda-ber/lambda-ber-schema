@@ -3,7 +3,7 @@
 
 Protocol for buffer matching
 
-URI: [lambdaber:sAXSPreparation__buffer_matching_protocol](https://w3id.org/lambda-ber-schema/sAXSPreparation__buffer_matching_protocol)
+URI: [lambda:sAXSPreparation__buffer_matching_protocol](http://w3id.org/lambda/sAXSPreparation__buffer_matching_protocol)
 
 
 ## Domain and Range

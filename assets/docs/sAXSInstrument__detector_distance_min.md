@@ -3,7 +3,7 @@
 
 Minimum detector distance in mm
 
-URI: [lambdaber:sAXSInstrument__detector_distance_min](https://w3id.org/lambda-ber-schema/sAXSInstrument__detector_distance_min)
+URI: [lambda:sAXSInstrument__detector_distance_min](http://w3id.org/lambda/sAXSInstrument__detector_distance_min)
 
 
 ## Domain and Range

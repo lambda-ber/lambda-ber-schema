@@ -3,7 +3,7 @@
 
 Text string to describe the attribute. Where available, please use OBO Foundry ontologies or other controlled vocabularies for labelling attributes; the label should be the term name from the ontology.
 
-URI: [lambdaber:attribute__label](https://w3id.org/lambda-ber-schema/attribute__label)
+URI: [lambda:attribute__label](http://w3id.org/lambda/attribute__label)
 
 
 ## Domain and Range

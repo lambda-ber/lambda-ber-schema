@@ -3,7 +3,7 @@
 
 Location of raw data files
 
-URI: [lambdaber:experimentRun__raw_data_location](https://w3id.org/lambda-ber-schema/experimentRun__raw_data_location)
+URI: [lambda:experimentRun__raw_data_location](http://w3id.org/lambda/experimentRun__raw_data_location)
 
 
 ## Domain and Range

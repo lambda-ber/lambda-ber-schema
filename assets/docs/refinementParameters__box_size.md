@@ -3,7 +3,7 @@
 
 Box size in pixels
 
-URI: [lambdaber:refinementParameters__box_size](https://w3id.org/lambda-ber-schema/refinementParameters__box_size)
+URI: [lambda:refinementParameters__box_size](http://w3id.org/lambda/refinementParameters__box_size)
 
 
 ## Domain and Range

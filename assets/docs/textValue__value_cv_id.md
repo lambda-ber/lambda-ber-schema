@@ -3,7 +3,7 @@
 
 For values in a controlled vocabulary, the CV ID for the value.
 
-URI: [lambdaber:textValue__value_cv_id](https://w3id.org/lambda-ber-schema/textValue__value_cv_id)
+URI: [lambda:textValue__value_cv_id](http://w3id.org/lambda/textValue__value_cv_id)
 
 
 ## Domain and Range

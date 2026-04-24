@@ -1,134 +1,30 @@
 
+# Class: TechniqueSpecificPreparation
 
-# Class: TechniqueSpecificPreparation 
+Base class for technique-specific preparation details
 
-
-_Base class for technique-specific preparation details_
-
-
+URI: [lambda:TechniqueSpecificPreparation](http://w3id.org/lambda/TechniqueSpecificPreparation)
 
 
-* __NOTE__: this is an abstract class and should not be instantiated directly
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[XRayPreparation],[TechniqueSpecificPreparation&#124;description(i):string%20%3F]^-[XRayPreparation],[TechniqueSpecificPreparation]^-[SAXSPreparation],[TechniqueSpecificPreparation]^-[CryoEMPreparation],[AttributeGroup]^-[TechniqueSpecificPreparation],[SAXSPreparation],[CryoEMPreparation],[AttributeGroup])](https://yuml.me/diagram/nofunky;dir:TB/class/[XRayPreparation],[TechniqueSpecificPreparation&#124;description(i):string%20%3F]^-[XRayPreparation],[TechniqueSpecificPreparation]^-[SAXSPreparation],[TechniqueSpecificPreparation]^-[CryoEMPreparation],[AttributeGroup]^-[TechniqueSpecificPreparation],[SAXSPreparation],[CryoEMPreparation],[AttributeGroup])
+
+## Parents
+
+ *  is_a: [AttributeGroup](AttributeGroup.md) - A grouping of related data attributes that form a logical unit
+
+## Children
+
+ * [CryoEMPreparation](CryoEMPreparation.md) - Cryo-EM specific sample preparation
+ * [SAXSPreparation](SAXSPreparation.md) - SAXS/WAXS specific preparation
+ * [XRayPreparation](XRayPreparation.md) - X-ray crystallography specific preparation
+
+## Referenced by Class
 
 
-URI: [lambdaber:TechniqueSpecificPreparation](https://w3id.org/lambda-ber-schema/TechniqueSpecificPreparation)
+## Attributes
 
 
+### Inherited from AttributeGroup:
 
-
-
-```mermaid
- classDiagram
-    class TechniqueSpecificPreparation
-    click TechniqueSpecificPreparation href "../TechniqueSpecificPreparation/"
-      AttributeGroup <|-- TechniqueSpecificPreparation
-        click AttributeGroup href "../AttributeGroup/"
-      
-
-      TechniqueSpecificPreparation <|-- CryoEMPreparation
-        click CryoEMPreparation href "../CryoEMPreparation/"
-      TechniqueSpecificPreparation <|-- XRayPreparation
-        click XRayPreparation href "../XRayPreparation/"
-      TechniqueSpecificPreparation <|-- SAXSPreparation
-        click SAXSPreparation href "../SAXSPreparation/"
-      
-
-      TechniqueSpecificPreparation : description
-        
-      
-```
-
-
-
-
-
-## Inheritance
-* [AttributeGroup](AttributeGroup.md)
-    * **TechniqueSpecificPreparation**
-        * [CryoEMPreparation](CryoEMPreparation.md)
-        * [XRayPreparation](XRayPreparation.md)
-        * [SAXSPreparation](SAXSPreparation.md)
-
-
-
-## Slots
-
-| Name | Cardinality and Range | Description | Inheritance |
-| ---  | --- | --- | --- |
-| [description](description.md) | 0..1 <br/> [String](String.md) |  | [AttributeGroup](AttributeGroup.md) |
-
-
-
-
-
-
-
-
-
-
-## Identifier and Mapping Information
-
-
-
-
-
-
-### Schema Source
-
-
-* from schema: https://w3id.org/lambda-ber-schema/
-
-
-
-
-## Mappings
-
-| Mapping Type | Mapped Value |
-| ---  | ---  |
-| self | lambdaber:TechniqueSpecificPreparation |
-| native | lambdaber:TechniqueSpecificPreparation |
-
-
-
-
-
-
-## LinkML Source
-
-<!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
-
-### Direct
-
-<details>
-```yaml
-name: TechniqueSpecificPreparation
-description: Base class for technique-specific preparation details
-from_schema: https://w3id.org/lambda-ber-schema/
-is_a: AttributeGroup
-abstract: true
-
-```
-</details>
-
-### Induced
-
-<details>
-```yaml
-name: TechniqueSpecificPreparation
-description: Base class for technique-specific preparation details
-from_schema: https://w3id.org/lambda-ber-schema/
-is_a: AttributeGroup
-abstract: true
-attributes:
-  description:
-    name: description
-    from_schema: https://w3id.org/lambda-ber-schema/
-    alias: description
-    owner: TechniqueSpecificPreparation
-    domain_of:
-    - NamedThing
-    - AttributeGroup
-    range: string
-
-```
-</details>
+ * [➞description](attributeGroup__description.md)  <sub>0..1</sub>
+     * Range: [String](types/String.md)

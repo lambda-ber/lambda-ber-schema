@@ -3,7 +3,7 @@
 
 Dose rate in e-/pixel/s or e-/Angstrom^2/s
 
-URI: [lambdaber:experimentRun__dose_rate](https://w3id.org/lambda-ber-schema/experimentRun__dose_rate)
+URI: [lambda:experimentRun__dose_rate](http://w3id.org/lambda/experimentRun__dose_rate)
 
 
 ## Domain and Range

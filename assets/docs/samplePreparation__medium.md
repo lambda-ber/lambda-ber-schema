@@ -3,7 +3,7 @@
 
 Growth medium used
 
-URI: [lambdaber:samplePreparation__medium](https://w3id.org/lambda-ber-schema/samplePreparation__medium)
+URI: [lambda:samplePreparation__medium](http://w3id.org/lambda/samplePreparation__medium)
 
 
 ## Domain and Range

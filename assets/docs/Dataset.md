@@ -1,250 +1,85 @@
 
+# Class: Dataset
 
-# Class: Dataset 
+Root container holding flat entity collections and association tables. Follows relational database design patterns for structural biology data.
 
-
-_A collection of studies_
-
-
+URI: [lambda:Dataset](http://w3id.org/lambda/Dataset)
 
 
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[WorkflowRun],[WorkflowOutputAssociation],[WorkflowInputAssociation],[WorkflowExperimentAssociation],[StudyWorkflowAssociation],[StudySampleAssociation],[StudyExperimentAssociation],[Study],[SamplePreparation],[Sample],[ProteinConstruct],[NamedThing],[Instrument],[Image],[ExperimentSampleAssociation],[ExperimentRun],[ExperimentInstrumentAssociation],[WorkflowOutputAssociation]<workflow_output_associations%200..*-++[Dataset&#124;keywords:string%20*;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[WorkflowInputAssociation]<workflow_input_associations%200..*-++[Dataset],[WorkflowExperimentAssociation]<workflow_experiment_associations%200..*-++[Dataset],[ExperimentInstrumentAssociation]<experiment_instrument_associations%200..*-++[Dataset],[ExperimentSampleAssociation]<experiment_sample_associations%200..*-++[Dataset],[StudyWorkflowAssociation]<study_workflow_associations%200..*-++[Dataset],[StudyExperimentAssociation]<study_experiment_associations%200..*-++[Dataset],[StudySampleAssociation]<study_sample_associations%200..*-++[Dataset],[Image]<images%200..*-++[Dataset],[DataFile]<data_files%200..*-++[Dataset],[WorkflowRun]<workflow_runs%200..*-++[Dataset],[ExperimentRun]<experiment_runs%200..*-++[Dataset],[SamplePreparation]<sample_preparations%200..*-++[Dataset],[Sample]<samples%200..*-++[Dataset],[ProteinConstruct]<protein_constructs%200..*-++[Dataset],[Instrument]<instruments%200..*-++[Dataset],[Study]<studies%200..*-++[Dataset],[NamedThing]^-[Dataset],[DataFile])](https://yuml.me/diagram/nofunky;dir:TB/class/[WorkflowRun],[WorkflowOutputAssociation],[WorkflowInputAssociation],[WorkflowExperimentAssociation],[StudyWorkflowAssociation],[StudySampleAssociation],[StudyExperimentAssociation],[Study],[SamplePreparation],[Sample],[ProteinConstruct],[NamedThing],[Instrument],[Image],[ExperimentSampleAssociation],[ExperimentRun],[ExperimentInstrumentAssociation],[WorkflowOutputAssociation]<workflow_output_associations%200..*-++[Dataset&#124;keywords:string%20*;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[WorkflowInputAssociation]<workflow_input_associations%200..*-++[Dataset],[WorkflowExperimentAssociation]<workflow_experiment_associations%200..*-++[Dataset],[ExperimentInstrumentAssociation]<experiment_instrument_associations%200..*-++[Dataset],[ExperimentSampleAssociation]<experiment_sample_associations%200..*-++[Dataset],[StudyWorkflowAssociation]<study_workflow_associations%200..*-++[Dataset],[StudyExperimentAssociation]<study_experiment_associations%200..*-++[Dataset],[StudySampleAssociation]<study_sample_associations%200..*-++[Dataset],[Image]<images%200..*-++[Dataset],[DataFile]<data_files%200..*-++[Dataset],[WorkflowRun]<workflow_runs%200..*-++[Dataset],[ExperimentRun]<experiment_runs%200..*-++[Dataset],[SamplePreparation]<sample_preparations%200..*-++[Dataset],[Sample]<samples%200..*-++[Dataset],[ProteinConstruct]<protein_constructs%200..*-++[Dataset],[Instrument]<instruments%200..*-++[Dataset],[Study]<studies%200..*-++[Dataset],[NamedThing]^-[Dataset],[DataFile])
 
-URI: [lambdaber:Dataset](https://w3id.org/lambda-ber-schema/Dataset)
+## Parents
 
+ *  is_a: [NamedThing](NamedThing.md) - A named thing
 
-
-
-
-```mermaid
- classDiagram
-    class Dataset
-    click Dataset href "../Dataset/"
-      NamedThing <|-- Dataset
-        click NamedThing href "../NamedThing/"
-      
-      Dataset : description
-        
-      Dataset : id
-        
-      Dataset : instruments
-        
-          
-    
-        
-        
-        Dataset --> "*" Instrument : instruments
-        click Instrument href "../Instrument/"
-    
-
-        
-      Dataset : keywords
-        
-      Dataset : studies
-        
-          
-    
-        
-        
-        Dataset --> "*" Study : studies
-        click Study href "../Study/"
-    
-
-        
-      Dataset : title
-        
-      
-```
+## Attributes
 
 
+### Own
 
+ * [➞keywords](dataset__keywords.md)  <sub>0..\*</sub>
+     * Description: Keywords or tags describing the dataset for search and categorization
+     * Range: [String](types/String.md)
+ * [➞studies](dataset__studies.md)  <sub>0..\*</sub>
+     * Description: All studies in this dataset
+     * Range: [Study](Study.md)
+ * [➞instruments](dataset__instruments.md)  <sub>0..\*</sub>
+     * Description: All instruments used across studies
+     * Range: [Instrument](Instrument.md)
+ * [➞protein_constructs](dataset__protein_constructs.md)  <sub>0..\*</sub>
+     * Description: All protein constructs
+     * Range: [ProteinConstruct](ProteinConstruct.md)
+ * [➞samples](dataset__samples.md)  <sub>0..\*</sub>
+     * Description: All samples across all studies
+     * Range: [Sample](Sample.md)
+ * [➞sample_preparations](dataset__sample_preparations.md)  <sub>0..\*</sub>
+     * Description: All sample preparations
+     * Range: [SamplePreparation](SamplePreparation.md)
+ * [➞experiment_runs](dataset__experiment_runs.md)  <sub>0..\*</sub>
+     * Description: All experiment runs (data collection sessions)
+     * Range: [ExperimentRun](ExperimentRun.md)
+ * [➞workflow_runs](dataset__workflow_runs.md)  <sub>0..\*</sub>
+     * Description: All workflow runs (computational processing)
+     * Range: [WorkflowRun](WorkflowRun.md)
+ * [➞data_files](dataset__data_files.md)  <sub>0..\*</sub>
+     * Description: All data files
+     * Range: [DataFile](DataFile.md)
+ * [➞images](dataset__images.md)  <sub>0..\*</sub>
+     * Description: All images
+     * Range: [Image](Image.md)
+ * [➞study_sample_associations](dataset__study_sample_associations.md)  <sub>0..\*</sub>
+     * Description: Links between studies and samples (M:N)
+     * Range: [StudySampleAssociation](StudySampleAssociation.md)
+ * [➞study_experiment_associations](dataset__study_experiment_associations.md)  <sub>0..\*</sub>
+     * Description: Links between studies and experiments (M:N)
+     * Range: [StudyExperimentAssociation](StudyExperimentAssociation.md)
+ * [➞study_workflow_associations](dataset__study_workflow_associations.md)  <sub>0..\*</sub>
+     * Description: Links between studies and workflows (M:N)
+     * Range: [StudyWorkflowAssociation](StudyWorkflowAssociation.md)
+ * [➞experiment_sample_associations](dataset__experiment_sample_associations.md)  <sub>0..\*</sub>
+     * Description: Links between experiments and samples (M:N with role)
+     * Range: [ExperimentSampleAssociation](ExperimentSampleAssociation.md)
+ * [➞experiment_instrument_associations](dataset__experiment_instrument_associations.md)  <sub>0..\*</sub>
+     * Description: Links between experiments and instruments (M:N)
+     * Range: [ExperimentInstrumentAssociation](ExperimentInstrumentAssociation.md)
+ * [➞workflow_experiment_associations](dataset__workflow_experiment_associations.md)  <sub>0..\*</sub>
+     * Description: Links between workflows and source experiments (M:N)
+     * Range: [WorkflowExperimentAssociation](WorkflowExperimentAssociation.md)
+ * [➞workflow_input_associations](dataset__workflow_input_associations.md)  <sub>0..\*</sub>
+     * Description: Links between workflows and input files
+     * Range: [WorkflowInputAssociation](WorkflowInputAssociation.md)
+ * [➞workflow_output_associations](dataset__workflow_output_associations.md)  <sub>0..\*</sub>
+     * Description: Links between workflows and output files
+     * Range: [WorkflowOutputAssociation](WorkflowOutputAssociation.md)
 
+### Inherited from NamedThing:
 
-## Inheritance
-* [NamedThing](NamedThing.md)
-    * **Dataset**
-
-
-
-## Slots
-
-| Name | Cardinality and Range | Description | Inheritance |
-| ---  | --- | --- | --- |
-| [keywords](keywords.md) | * <br/> [String](String.md) | Keywords or tags describing the dataset for search and categorization | direct |
-| [instruments](instruments.md) | * <br/> [Instrument](Instrument.md) | Instruments used across all studies in this dataset | direct |
-| [studies](studies.md) | * <br/> [Study](Study.md) | Individual research studies contained in this dataset | direct |
-| [id](id.md) | 1 <br/> [Uriorcurie](Uriorcurie.md) | Globally unique identifier as an IRI or CURIE for machine processing and exte... | [NamedThing](NamedThing.md) |
-| [title](title.md) | 0..1 <br/> [String](String.md) | A human-readable name or title for this entity | [NamedThing](NamedThing.md) |
-| [description](description.md) | 0..1 <br/> [String](String.md) | A detailed textual description of this entity | [NamedThing](NamedThing.md) |
-
-
-
-
-
-
-
-
-
-
-## Identifier and Mapping Information
-
-
-
-
-
-
-### Schema Source
-
-
-* from schema: https://w3id.org/lambda-ber-schema/
-
-
-
-
-## Mappings
-
-| Mapping Type | Mapped Value |
-| ---  | ---  |
-| self | lambdaber:Dataset |
-| native | lambdaber:Dataset |
-
-
-
-
-
-
-## LinkML Source
-
-<!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
-
-### Direct
-
-<details>
-```yaml
-name: Dataset
-description: A collection of studies
-from_schema: https://w3id.org/lambda-ber-schema/
-is_a: NamedThing
-attributes:
-  keywords:
-    name: keywords
-    description: Keywords or tags describing the dataset for search and categorization
-    from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
-    domain_of:
-    - Dataset
-    range: string
-    multivalued: true
-  instruments:
-    name: instruments
-    description: Instruments used across all studies in this dataset
-    from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
-    domain_of:
-    - Dataset
-    range: Instrument
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-  studies:
-    name: studies
-    description: Individual research studies contained in this dataset
-    from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
-    domain_of:
-    - Dataset
-    range: Study
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-tree_root: true
-
-```
-</details>
-
-### Induced
-
-<details>
-```yaml
-name: Dataset
-description: A collection of studies
-from_schema: https://w3id.org/lambda-ber-schema/
-is_a: NamedThing
-attributes:
-  keywords:
-    name: keywords
-    description: Keywords or tags describing the dataset for search and categorization
-    from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
-    alias: keywords
-    owner: Dataset
-    domain_of:
-    - Dataset
-    range: string
-    multivalued: true
-  instruments:
-    name: instruments
-    description: Instruments used across all studies in this dataset
-    from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
-    alias: instruments
-    owner: Dataset
-    domain_of:
-    - Dataset
-    range: Instrument
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-  studies:
-    name: studies
-    description: Individual research studies contained in this dataset
-    from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
-    alias: studies
-    owner: Dataset
-    domain_of:
-    - Dataset
-    range: Study
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-  id:
-    name: id
-    description: Globally unique identifier as an IRI or CURIE for machine processing
-      and external references. Used for linking data across systems and semantic web
-      integration.
-    from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
-    identifier: true
-    alias: id
-    owner: Dataset
-    domain_of:
-    - NamedThing
-    - Attribute
-    range: uriorcurie
-    required: true
-  title:
-    name: title
-    description: A human-readable name or title for this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
-    slot_uri: dcterms:title
-    alias: title
-    owner: Dataset
-    domain_of:
-    - NamedThing
-    range: string
-  description:
-    name: description
-    description: A detailed textual description of this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
-    alias: description
-    owner: Dataset
-    domain_of:
-    - NamedThing
-    - AttributeGroup
-    range: string
-tree_root: true
-
-```
-</details>
+ * [➞id](namedThing__id.md)  <sub>1..1</sub>
+     * Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
+     * Range: [Uriorcurie](types/Uriorcurie.md)
+ * [➞title](namedThing__title.md)  <sub>0..1</sub>
+     * Description: A human-readable name or title for this entity
+     * Range: [String](types/String.md)
+ * [➞description](namedThing__description.md)  <sub>0..1</sub>
+     * Description: A detailed textual description of this entity
+     * Range: [String](types/String.md)

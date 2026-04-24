@@ -3,7 +3,7 @@
 
 Normalized cross-correlation score threshold
 
-URI: [lambdaber:particlePickingParameters__ncc_score](https://w3id.org/lambda-ber-schema/particlePickingParameters__ncc_score)
+URI: [lambda:particlePickingParameters__ncc_score](http://w3id.org/lambda/particlePickingParameters__ncc_score)
 
 
 ## Domain and Range

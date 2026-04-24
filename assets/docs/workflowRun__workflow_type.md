@@ -3,7 +3,7 @@
 
 Type of processing workflow
 
-URI: [lambdaber:workflowRun__workflow_type](https://w3id.org/lambda-ber-schema/workflowRun__workflow_type)
+URI: [lambda:workflowRun__workflow_type](http://w3id.org/lambda/workflowRun__workflow_type)
 
 
 ## Domain and Range

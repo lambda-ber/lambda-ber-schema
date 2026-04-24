@@ -3,7 +3,7 @@
 
 Other restraints applied during refinement
 
-URI: [lambdaber:workflowRun__restraints_other](https://w3id.org/lambda-ber-schema/workflowRun__restraints_other)
+URI: [lambda:workflowRun__restraints_other](http://w3id.org/lambda/workflowRun__restraints_other)
 
 
 ## Domain and Range

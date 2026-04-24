@@ -3,7 +3,7 @@
 
 Quantum yield of the fluorophore
 
-URI: [lambdaber:fluorescenceImage__quantum_yield](https://w3id.org/lambda-ber-schema/fluorescenceImage__quantum_yield)
+URI: [lambda:fluorescenceImage__quantum_yield](http://w3id.org/lambda/fluorescenceImage__quantum_yield)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Half-set correlation coefficient CC(1/2)
 
-URI: [lambdaber:workflowRun__cc_half](https://w3id.org/lambda-ber-schema/workflowRun__cc_half)
+URI: [lambda:workflowRun__cc_half](http://w3id.org/lambda/workflowRun__cc_half)
 
 
 ## Domain and Range

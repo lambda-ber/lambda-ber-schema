@@ -3,7 +3,7 @@
 
 Electron dose in e-/Å²
 
-URI: [lambdaber:image__dose](https://w3id.org/lambda-ber-schema/image__dose)
+URI: [lambda:image__dose](http://w3id.org/lambda/image__dose)
 
 
 ## Domain and Range

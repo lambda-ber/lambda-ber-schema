@@ -3,7 +3,7 @@
 
 Glow discharge current, typically specified in milliamperes. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:cryoEMPreparation__glow_discharge_current](https://w3id.org/lambda-ber-schema/cryoEMPreparation__glow_discharge_current)
+URI: [lambda:cryoEMPreparation__glow_discharge_current](http://w3id.org/lambda/cryoEMPreparation__glow_discharge_current)
 
 
 ## Domain and Range

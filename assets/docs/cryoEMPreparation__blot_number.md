@@ -3,7 +3,7 @@
 
 Number of blots applied
 
-URI: [lambdaber:cryoEMPreparation__blot_number](https://w3id.org/lambda-ber-schema/cryoEMPreparation__blot_number)
+URI: [lambda:cryoEMPreparation__blot_number](http://w3id.org/lambda/cryoEMPreparation__blot_number)
 
 
 ## Domain and Range

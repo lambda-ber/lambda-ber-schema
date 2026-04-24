@@ -1,0 +1,86 @@
+@base <http://example.org/> .
+@prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
+@prefix ROR: <https://ror.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix emsl: <https://api.emsl.pnnl.gov/external/> .
+@prefix lambdaber: <http://w3id.org/lambda/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+emsl:file_64890312 a lambdaber:DataFile ;
+    lambdaber:creation_date "2026-02-14T12:46:03" ;
+    lambdaber:data_type "raw_data" ;
+    lambdaber:file_format "tar" ;
+    lambdaber:file_name "96e1d0c67d8c3b48d87d6bad8863cd89f809454e.data.1.tar" ;
+    lambdaber:file_path "160707/Yo1-apo/data/96e1d0c67d8c3b48d87d6bad8863cd89f809454e.data.1.tar" ;
+    lambdaber:file_role "raw" ;
+    lambdaber:file_size_bytes [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "289454080.0"^^xsd:float ;
+            lambdaber:unit "bytes" ] ;
+    lambdaber:related_entity "emsl:transaction_3736315" .
+
+emsl:file_64890313 a lambdaber:DataFile ;
+    lambdaber:creation_date "2026-02-14T12:46:03" ;
+    lambdaber:data_type "raw_data" ;
+    lambdaber:file_format "tar" ;
+    lambdaber:file_name "96e1d0c67d8c3b48d87d6bad8863cd89f809454e.data.2.tar" ;
+    lambdaber:file_path "160707/Yo1-apo/data/96e1d0c67d8c3b48d87d6bad8863cd89f809454e.data.2.tar" ;
+    lambdaber:file_role "raw" ;
+    lambdaber:file_size_bytes [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "125858058240.0"^^xsd:float ;
+            lambdaber:unit "bytes" ] ;
+    lambdaber:related_entity "emsl:transaction_3736315" .
+
+emsl:resource_34251 a lambdaber:Instrument ;
+    dcterms:title "PNCC Arctica Cryo-EM (34251)" ;
+    lambdaber:current_status "offline" ;
+    lambdaber:description "EMSL/1095 | 24/7" ;
+    lambdaber:facility_name ROR:05h992307 ;
+    lambdaber:facility_ror "https://ror.org/05h992307"^^xsd:anyURI ;
+    lambdaber:instrument_category "ELECTRON_MICROSCOPE" ;
+    lambdaber:instrument_code "EMSL-PNCC_Arctica-34251" ;
+    lambdaber:model "PNCC Arctica" .
+
+emsl:project_160707 a lambdaber:Study ;
+    dcterms:title "Understanding the multi-drug resistance mechanisms in fungal pathogen" ;
+    lambdaber:description "Fungal diseases claim over 1.5 million lives annually and affect more than a billion people worldwide, presenting a significant challenge due to increasing drug resistance. A primary mechanism underlying this resistance is drug efflux, mediated by the overexpression of ATP-binding cassette and major facilitator superfamily transporters. In this proposal, we aim to determine the structures of drug transporters in Candida species, human fungal pathogens, to gain molecular insights into substrate recognition and the various steps of the transport cycle. We have successfully expressed and purified the transporters of interest. Following optimization, we obtained high-resolution cryo-EM structures in the apo state for two of these transporters. Through this proposal, we seek support to collect cryo-EM data to resolve the structures of these transporters in complex with various substrates and antifungal drugs, and in different functional states throughout the transport cycle." ;
+    lambdaber:keywords "EMSL",
+        "General Access" .
+
+emsl:sample_Yo1_apo_3736315 a lambdaber:Sample ;
+    dcterms:title "Yo1-apo" ;
+    lambdaber:description "Source key: pncc.short_sample_name" ;
+    lambdaber:sample_code "Yo1-apo" ;
+    lambdaber:sample_type "protein" .
+
+emsl:transaction_3736315 a lambdaber:Dataset,
+        lambdaber:ExperimentRun ;
+    dcterms:title "Understanding the multi-drug resistance mechanisms in fungal pathogen - Yo1-apo" ;
+    lambdaber:data_files emsl:file_64890312,
+        emsl:file_64890313 ;
+    lambdaber:description "EMSL transaction 3736315 for sample 'Yo1-apo'" ;
+    lambdaber:experiment_code "EMSL-TX-3736315" ;
+    lambdaber:experiment_date "2026-02-14T12:46:03" ;
+    lambdaber:experiment_instrument_associations [ a lambdaber:ExperimentInstrumentAssociation ;
+            lambdaber:experiment_id emsl:transaction_3736315 ;
+            lambdaber:instrument_id emsl:resource_34251 ] ;
+    lambdaber:experiment_runs emsl:transaction_3736315 ;
+    lambdaber:experiment_sample_associations [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id emsl:transaction_3736315 ;
+            lambdaber:sample_id emsl:sample_Yo1_apo_3736315 ] ;
+    lambdaber:instruments emsl:resource_34251 ;
+    lambdaber:keywords "EMSL",
+        "pncc.short_sample_name" ;
+    lambdaber:operator_id "48279" ;
+    lambdaber:processing_status "collected" ;
+    lambdaber:raw_data_location "160707/Yo1-apo/data" ;
+    lambdaber:samples emsl:sample_Yo1_apo_3736315 ;
+    lambdaber:studies emsl:project_160707 ;
+    lambdaber:study_experiment_associations [ a lambdaber:StudyExperimentAssociation ;
+            lambdaber:experiment_id emsl:transaction_3736315 ;
+            lambdaber:study_id emsl:project_160707 ] ;
+    lambdaber:study_sample_associations [ a lambdaber:StudySampleAssociation ;
+            lambdaber:sample_id emsl:sample_Yo1_apo_3736315 ;
+            lambdaber:study_id emsl:project_160707 ] ;
+    lambdaber:technique CHMO:0002413 .
+

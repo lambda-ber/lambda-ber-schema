@@ -3,7 +3,7 @@
 
 Date of sample preparation
 
-URI: [lambdaber:samplePreparation__preparation_date](https://w3id.org/lambda-ber-schema/samplePreparation__preparation_date)
+URI: [lambda:samplePreparation__preparation_date](http://w3id.org/lambda/samplePreparation__preparation_date)
 
 
 ## Domain and Range

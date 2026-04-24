@@ -3,7 +3,7 @@
 
 Supported or default detector operating mode
 
-URI: [lambdaber:cryoEMInstrument__detector_mode](https://w3id.org/lambda-ber-schema/cryoEMInstrument__detector_mode)
+URI: [lambda:cryoEMInstrument__detector_mode](http://w3id.org/lambda/cryoEMInstrument__detector_mode)
 
 
 ## Domain and Range

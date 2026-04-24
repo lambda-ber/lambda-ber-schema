@@ -3,7 +3,7 @@
 
 Type of data in the file
 
-URI: [lambdaber:dataFile__data_type](https://w3id.org/lambda-ber-schema/dataFile__data_type)
+URI: [lambda:dataFile__data_type](http://w3id.org/lambda/dataFile__data_type)
 
 
 ## Domain and Range

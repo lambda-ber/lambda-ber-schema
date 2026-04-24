@@ -3,7 +3,7 @@
 
 Common name for this site
 
-URI: [lambdaber:functionalSite__site_name](https://w3id.org/lambda-ber-schema/functionalSite__site_name)
+URI: [lambda:functionalSite__site_name](http://w3id.org/lambda/functionalSite__site_name)
 
 
 ## Domain and Range

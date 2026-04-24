@@ -3,7 +3,7 @@
 
 Anomalous signal strength
 
-URI: [lambdaber:qualityMetrics__anom_sig_ano](https://w3id.org/lambda-ber-schema/qualityMetrics__anom_sig_ano)
+URI: [lambda:qualityMetrics__anom_sig_ano](http://w3id.org/lambda/qualityMetrics__anom_sig_ano)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Total drop volume, typically specified in nanoliters. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:crystallizationConditions__drop_volume](https://w3id.org/lambda-ber-schema/crystallizationConditions__drop_volume)
+URI: [lambda:crystallizationConditions__drop_volume](http://w3id.org/lambda/crystallizationConditions__drop_volume)
 
 
 ## Domain and Range

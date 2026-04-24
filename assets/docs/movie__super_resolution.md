@@ -3,7 +3,7 @@
 
 Whether super-resolution mode was used
 
-URI: [lambdaber:movie__super_resolution](https://w3id.org/lambda-ber-schema/movie__super_resolution)
+URI: [lambda:movie__super_resolution](http://w3id.org/lambda/movie__super_resolution)
 
 
 ## Domain and Range

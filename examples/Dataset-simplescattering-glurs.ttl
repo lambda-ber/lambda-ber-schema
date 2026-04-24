@@ -2,7 +2,7 @@
 @prefix @base: <http://example.org/> .
 @prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix lambdaber: <http://w3id.org/lambda/> .
 @prefix nmdc: <https://w3id.org/nmdc/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -57,18 +57,18 @@ Data collected at SIBYLS beamline BL12.3.1 at Advanced Light Source.
             lambdaber:workflow_id <https://simplescattering.com/workflow/mals-processing> ] ;
     lambdaber:workflow_experiment_associations [ a lambdaber:WorkflowExperimentAssociation ;
             lambdaber:experiment_id <https://simplescattering.com/experiment/glurs-sec-saxs> ;
-            lambdaber:workflow_id <https://simplescattering.com/workflow/saxs-processing> ],
+            lambdaber:workflow_id <https://simplescattering.com/workflow/mals-processing> ],
         [ a lambdaber:WorkflowExperimentAssociation ;
             lambdaber:experiment_id <https://simplescattering.com/experiment/glurs-sec-saxs> ;
-            lambdaber:workflow_id <https://simplescattering.com/workflow/mals-processing> ] ;
+            lambdaber:workflow_id <https://simplescattering.com/workflow/saxs-processing> ] ;
     lambdaber:workflow_output_associations [ a lambdaber:WorkflowOutputAssociation ;
             lambdaber:file_id <https://simplescattering.com/file/glurs-averaged> ;
             lambdaber:output_type "processed_data" ;
-            lambdaber:workflow_id <https://simplescattering.com/workflow/saxs-processing> ],
+            lambdaber:workflow_id <https://simplescattering.com/workflow/mals-processing> ],
         [ a lambdaber:WorkflowOutputAssociation ;
             lambdaber:file_id <https://simplescattering.com/file/glurs-averaged> ;
             lambdaber:output_type "processed_data" ;
-            lambdaber:workflow_id <https://simplescattering.com/workflow/mals-processing> ] ;
+            lambdaber:workflow_id <https://simplescattering.com/workflow/saxs-processing> ] ;
     lambdaber:workflow_runs <https://simplescattering.com/workflow/mals-processing>,
         <https://simplescattering.com/workflow/saxs-processing> .
 

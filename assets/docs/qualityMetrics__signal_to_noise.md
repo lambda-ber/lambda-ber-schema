@@ -3,7 +3,7 @@
 
 Signal to noise ratio
 
-URI: [lambdaber:qualityMetrics__signal_to_noise](https://w3id.org/lambda-ber-schema/qualityMetrics__signal_to_noise)
+URI: [lambda:qualityMetrics__signal_to_noise](http://w3id.org/lambda/qualityMetrics__signal_to_noise)
 
 
 ## Domain and Range

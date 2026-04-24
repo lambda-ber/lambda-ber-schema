@@ -3,7 +3,7 @@
 
 Maximum q value in inverse Angstroms
 
-URI: [lambdaber:sAXSInstrument__q_range_max](https://w3id.org/lambda-ber-schema/sAXSInstrument__q_range_max)
+URI: [lambda:sAXSInstrument__q_range_max](http://w3id.org/lambda/sAXSInstrument__q_range_max)
 
 
 ## Domain and Range

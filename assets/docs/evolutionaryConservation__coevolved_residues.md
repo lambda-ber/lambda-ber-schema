@@ -3,7 +3,7 @@
 
 Pairs of coevolved residues
 
-URI: [lambdaber:evolutionaryConservation__coevolved_residues](https://w3id.org/lambda-ber-schema/evolutionaryConservation__coevolved_residues)
+URI: [lambda:evolutionaryConservation__coevolved_residues](http://w3id.org/lambda/evolutionaryConservation__coevolved_residues)
 
 
 ## Domain and Range

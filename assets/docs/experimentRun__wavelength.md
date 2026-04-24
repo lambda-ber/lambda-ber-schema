@@ -3,7 +3,7 @@
 
 X-ray wavelength, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:experimentRun__wavelength](https://w3id.org/lambda-ber-schema/experimentRun__wavelength)
+URI: [lambda:experimentRun__wavelength](http://w3id.org/lambda/experimentRun__wavelength)
 
 
 ## Domain and Range

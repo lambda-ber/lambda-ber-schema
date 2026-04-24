@@ -3,7 +3,7 @@
 
 Oscillation angle per image, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:dataCollectionStrategy__oscillation_per_image_deg](https://w3id.org/lambda-ber-schema/dataCollectionStrategy__oscillation_per_image_deg)
+URI: [lambda:dataCollectionStrategy__oscillation_per_image_deg](http://w3id.org/lambda/dataCollectionStrategy__oscillation_per_image_deg)
 
 
 ## Domain and Range

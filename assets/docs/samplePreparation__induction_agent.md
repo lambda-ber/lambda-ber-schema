@@ -3,7 +3,7 @@
 
 Agent used to induce expression (e.g., IPTG, tetracycline)
 
-URI: [lambdaber:samplePreparation__induction_agent](https://w3id.org/lambda-ber-schema/samplePreparation__induction_agent)
+URI: [lambda:samplePreparation__induction_agent](http://w3id.org/lambda/samplePreparation__induction_agent)
 
 
 ## Domain and Range

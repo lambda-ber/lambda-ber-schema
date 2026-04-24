@@ -3,7 +3,7 @@
 
 Instrument manufacturer
 
-URI: [lambdaber:instrument__manufacturer](https://w3id.org/lambda-ber-schema/instrument__manufacturer)
+URI: [lambda:instrument__manufacturer](http://w3id.org/lambda/instrument__manufacturer)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Maximum beam size in micrometers
 
-URI: [lambdaber:xRayInstrument__beam_size_max](https://w3id.org/lambda-ber-schema/xRayInstrument__beam_size_max)
+URI: [lambda:xRayInstrument__beam_size_max](http://w3id.org/lambda/xRayInstrument__beam_size_max)
 
 
 ## Domain and Range

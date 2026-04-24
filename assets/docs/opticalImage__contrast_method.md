@@ -3,7 +3,7 @@
 
 Contrast enhancement method used
 
-URI: [lambdaber:opticalImage__contrast_method](https://w3id.org/lambda-ber-schema/opticalImage__contrast_method)
+URI: [lambda:opticalImage__contrast_method](http://w3id.org/lambda/opticalImage__contrast_method)
 
 
 ## Domain and Range

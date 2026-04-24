@@ -3,7 +3,7 @@
 
 Autoloader slot identifier
 
-URI: [lambdaber:experimentRun__autoloader_slot](https://w3id.org/lambda-ber-schema/experimentRun__autoloader_slot)
+URI: [lambda:experimentRun__autoloader_slot](http://w3id.org/lambda/experimentRun__autoloader_slot)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Mean anomalous difference signal
 
-URI: [lambdaber:workflowRun__sig_anomalous](https://w3id.org/lambda-ber-schema/workflowRun__sig_anomalous)
+URI: [lambda:workflowRun__sig_anomalous](http://w3id.org/lambda/workflowRun__sig_anomalous)
 
 
 ## Domain and Range

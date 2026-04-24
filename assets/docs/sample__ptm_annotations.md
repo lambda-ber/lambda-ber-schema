@@ -3,7 +3,7 @@
 
 Post-translational modification annotations
 
-URI: [lambdaber:sample__ptm_annotations](https://w3id.org/lambda-ber-schema/sample__ptm_annotations)
+URI: [lambda:sample__ptm_annotations](http://w3id.org/lambda/sample__ptm_annotations)
 
 
 ## Domain and Range

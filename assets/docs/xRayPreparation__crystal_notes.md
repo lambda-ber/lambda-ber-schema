@@ -3,7 +3,7 @@
 
 Additional notes about crystal quality and handling
 
-URI: [lambdaber:xRayPreparation__crystal_notes](https://w3id.org/lambda-ber-schema/xRayPreparation__crystal_notes)
+URI: [lambda:xRayPreparation__crystal_notes](http://w3id.org/lambda/xRayPreparation__crystal_notes)
 
 
 ## Domain and Range

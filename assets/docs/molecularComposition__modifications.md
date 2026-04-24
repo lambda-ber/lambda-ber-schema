@@ -3,7 +3,7 @@
 
 Post-translational modifications or chemical modifications
 
-URI: [lambdaber:molecularComposition__modifications](https://w3id.org/lambda-ber-schema/molecularComposition__modifications)
+URI: [lambda:molecularComposition__modifications](http://w3id.org/lambda/molecularComposition__modifications)
 
 
 ## Domain and Range

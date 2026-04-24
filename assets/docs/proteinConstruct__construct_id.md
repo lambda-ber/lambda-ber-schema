@@ -3,7 +3,7 @@
 
 Unique identifier for this construct
 
-URI: [lambdaber:proteinConstruct__construct_id](https://w3id.org/lambda-ber-schema/proteinConstruct__construct_id)
+URI: [lambda:proteinConstruct__construct_id](http://w3id.org/lambda/proteinConstruct__construct_id)
 
 
 ## Domain and Range

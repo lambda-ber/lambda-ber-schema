@@ -3,7 +3,7 @@
 
 R-factor for crystallography (deprecated, use r_work)
 
-URI: [lambdaber:qualityMetrics__r_factor](https://w3id.org/lambda-ber-schema/qualityMetrics__r_factor)
+URI: [lambda:qualityMetrics__r_factor](http://w3id.org/lambda/qualityMetrics__r_factor)
 
 
 ## Domain and Range

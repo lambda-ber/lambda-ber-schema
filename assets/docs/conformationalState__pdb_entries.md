@@ -3,7 +3,7 @@
 
 PDB entries representing this state
 
-URI: [lambdaber:conformationalState__pdb_entries](https://w3id.org/lambda-ber-schema/conformationalState__pdb_entries)
+URI: [lambda:conformationalState__pdb_entries](http://w3id.org/lambda/conformationalState__pdb_entries)
 
 
 ## Domain and Range

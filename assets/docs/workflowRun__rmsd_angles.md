@@ -3,7 +3,7 @@
 
 RMSD from ideal bond angles, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:workflowRun__rmsd_angles](https://w3id.org/lambda-ber-schema/workflowRun__rmsd_angles)
+URI: [lambda:workflowRun__rmsd_angles](http://w3id.org/lambda/workflowRun__rmsd_angles)
 
 
 ## Domain and Range

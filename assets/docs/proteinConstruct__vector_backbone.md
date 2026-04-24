@@ -3,7 +3,7 @@
 
 Base plasmid backbone used
 
-URI: [lambdaber:proteinConstruct__vector_backbone](https://w3id.org/lambda-ber-schema/proteinConstruct__vector_backbone)
+URI: [lambda:proteinConstruct__vector_backbone](http://w3id.org/lambda/proteinConstruct__vector_backbone)
 
 
 ## Domain and Range

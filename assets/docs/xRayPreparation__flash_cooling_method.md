@@ -3,7 +3,7 @@
 
 Flash cooling protocol
 
-URI: [lambdaber:xRayPreparation__flash_cooling_method](https://w3id.org/lambda-ber-schema/xRayPreparation__flash_cooling_method)
+URI: [lambda:xRayPreparation__flash_cooling_method](http://w3id.org/lambda/xRayPreparation__flash_cooling_method)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Amplitude contrast value
 
-URI: [lambdaber:cTFEstimationParameters__amplitude_contrast](https://w3id.org/lambda-ber-schema/cTFEstimationParameters__amplitude_contrast)
+URI: [lambda:cTFEstimationParameters__amplitude_contrast](http://w3id.org/lambda/cTFEstimationParameters__amplitude_contrast)
 
 
 ## Domain and Range

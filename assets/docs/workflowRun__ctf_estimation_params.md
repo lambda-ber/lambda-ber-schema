@@ -3,7 +3,7 @@
 
 CTF estimation specific parameters
 
-URI: [lambdaber:workflowRun__ctf_estimation_params](https://w3id.org/lambda-ber-schema/workflowRun__ctf_estimation_params)
+URI: [lambda:workflowRun__ctf_estimation_params](http://w3id.org/lambda/workflowRun__ctf_estimation_params)
 
 
 ## Domain and Range

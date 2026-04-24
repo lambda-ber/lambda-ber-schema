@@ -3,7 +3,7 @@
 
 Effects of mutations present in the sample
 
-URI: [lambdaber:sample__mutation_effects](https://w3id.org/lambda-ber-schema/sample__mutation_effects)
+URI: [lambda:sample__mutation_effects](http://w3id.org/lambda/sample__mutation_effects)
 
 
 ## Domain and Range

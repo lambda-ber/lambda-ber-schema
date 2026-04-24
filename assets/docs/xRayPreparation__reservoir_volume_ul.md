@@ -3,7 +3,7 @@
 
 Reservoir volume, typically specified in microliters. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:xRayPreparation__reservoir_volume_ul](https://w3id.org/lambda-ber-schema/xRayPreparation__reservoir_volume_ul)
+URI: [lambda:xRayPreparation__reservoir_volume_ul](http://w3id.org/lambda/xRayPreparation__reservoir_volume_ul)
 
 
 ## Domain and Range

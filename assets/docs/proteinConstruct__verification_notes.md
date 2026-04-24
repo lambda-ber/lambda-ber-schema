@@ -3,7 +3,7 @@
 
 Notes from sequence verification
 
-URI: [lambdaber:proteinConstruct__verification_notes](https://w3id.org/lambda-ber-schema/proteinConstruct__verification_notes)
+URI: [lambda:proteinConstruct__verification_notes](http://w3id.org/lambda/proteinConstruct__verification_notes)
 
 
 ## Domain and Range

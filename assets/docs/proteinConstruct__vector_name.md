@@ -3,7 +3,7 @@
 
 Complete vector name
 
-URI: [lambdaber:proteinConstruct__vector_name](https://w3id.org/lambda-ber-schema/proteinConstruct__vector_name)
+URI: [lambda:proteinConstruct__vector_name](http://w3id.org/lambda/proteinConstruct__vector_name)
 
 
 ## Domain and Range

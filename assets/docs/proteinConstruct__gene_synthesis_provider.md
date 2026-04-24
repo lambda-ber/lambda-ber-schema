@@ -3,7 +3,7 @@
 
 Company or facility that synthesized the gene
 
-URI: [lambdaber:proteinConstruct__gene_synthesis_provider](https://w3id.org/lambda-ber-schema/proteinConstruct__gene_synthesis_provider)
+URI: [lambda:proteinConstruct__gene_synthesis_provider](http://w3id.org/lambda/proteinConstruct__gene_synthesis_provider)
 
 
 ## Domain and Range

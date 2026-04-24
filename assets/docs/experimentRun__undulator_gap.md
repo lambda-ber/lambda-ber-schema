@@ -3,7 +3,7 @@
 
 Undulator gap setting, typically specified in millimeters (mm). Data providers may specify alternative units by including the unit in the QuantityValue. Primary undulator gap for beamlines with insertion devices.
 
-URI: [lambdaber:experimentRun__undulator_gap](https://w3id.org/lambda-ber-schema/experimentRun__undulator_gap)
+URI: [lambda:experimentRun__undulator_gap](http://w3id.org/lambda/experimentRun__undulator_gap)
 
 
 ## Domain and Range

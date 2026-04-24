@@ -3,7 +3,7 @@
 
 Description of transition pathways between states
 
-URI: [lambdaber:conformationalEnsemble__transition_pathways](https://w3id.org/lambda-ber-schema/conformationalEnsemble__transition_pathways)
+URI: [lambda:conformationalEnsemble__transition_pathways](http://w3id.org/lambda/conformationalEnsemble__transition_pathways)
 
 
 ## Domain and Range

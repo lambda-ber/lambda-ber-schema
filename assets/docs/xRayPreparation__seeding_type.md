@@ -3,7 +3,7 @@
 
 Type of seeding used (micro, macro, streak)
 
-URI: [lambdaber:xRayPreparation__seeding_type](https://w3id.org/lambda-ber-schema/xRayPreparation__seeding_type)
+URI: [lambda:xRayPreparation__seeding_type](http://w3id.org/lambda/xRayPreparation__seeding_type)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Beam size, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:dataCollectionStrategy__beam_size_um](https://w3id.org/lambda-ber-schema/dataCollectionStrategy__beam_size_um)
+URI: [lambda:dataCollectionStrategy__beam_size_um](http://w3id.org/lambda/dataCollectionStrategy__beam_size_um)
 
 
 ## Domain and Range

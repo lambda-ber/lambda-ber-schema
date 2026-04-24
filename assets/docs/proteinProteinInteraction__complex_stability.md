@@ -3,7 +3,7 @@
 
 Stability assessment of the complex
 
-URI: [lambdaber:proteinProteinInteraction__complex_stability](https://w3id.org/lambda-ber-schema/proteinProteinInteraction__complex_stability)
+URI: [lambda:proteinProteinInteraction__complex_stability](http://w3id.org/lambda/proteinProteinInteraction__complex_stability)
 
 
 ## Domain and Range

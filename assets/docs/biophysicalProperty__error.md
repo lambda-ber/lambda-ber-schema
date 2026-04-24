@@ -3,7 +3,7 @@
 
 Experimental error or uncertainty
 
-URI: [lambdaber:biophysicalProperty__error](https://w3id.org/lambda-ber-schema/biophysicalProperty__error)
+URI: [lambda:biophysicalProperty__error](http://w3id.org/lambda/biophysicalProperty__error)
 
 
 ## Domain and Range

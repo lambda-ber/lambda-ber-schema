@@ -3,7 +3,7 @@
 
 Temperature control settings
 
-URI: [lambdaber:sAXSPreparation__temperature_control](https://w3id.org/lambda-ber-schema/sAXSPreparation__temperature_control)
+URI: [lambda:sAXSPreparation__temperature_control](http://w3id.org/lambda/sAXSPreparation__temperature_control)
 
 
 ## Domain and Range

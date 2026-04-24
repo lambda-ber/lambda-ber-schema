@@ -1,0 +1,74 @@
+@base <http://example.org/> .
+@prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
+@prefix ROR: <https://ror.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix emsl: <https://api.emsl.pnnl.gov/external/> .
+@prefix lambdaber: <http://w3id.org/lambda/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+emsl:file_64894458 a lambdaber:DataFile ;
+    lambdaber:creation_date "2026-02-15T08:51:33" ;
+    lambdaber:data_type "raw_data" ;
+    lambdaber:file_format "tar" ;
+    lambdaber:file_name "f25e429f1800b17dd780275af5b61b1c5e68e9c7.data.1.tar" ;
+    lambdaber:file_path "160724/T-A-apo_5_021226_atlas/epu_session/f25e429f1800b17dd780275af5b61b1c5e68e9c7.data.1.tar" ;
+    lambdaber:file_role "raw" ;
+    lambdaber:file_size_bytes [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "365936640.0"^^xsd:float ;
+            lambdaber:unit "bytes" ] ;
+    lambdaber:related_entity "emsl:transaction_3736600" .
+
+emsl:resource_34290 a lambdaber:Instrument ;
+    dcterms:title "PNCC Krios 1 (34290)" ;
+    lambdaber:current_status "offline" ;
+    lambdaber:description "EMSL/1095 | 24/7" ;
+    lambdaber:facility_name ROR:05h992307 ;
+    lambdaber:facility_ror "https://ror.org/05h992307"^^xsd:anyURI ;
+    lambdaber:instrument_category "ELECTRON_MICROSCOPE" ;
+    lambdaber:instrument_code "EMSL-PNCC_Krios_1-34290" ;
+    lambdaber:model "PNCC Krios 1" .
+
+emsl:project_160724 a lambdaber:Study ;
+    dcterms:title "Single particle cryo-EM analysis of human PARP enzymes: mechanisms of regulation and inhibition" ;
+    lambdaber:description "Human PARP enzymes are a diverse class of medically relevant proteins that regulate multiple aspects of biology. The major catalytic activity of PARP enzymes is the production of ADP-ribose modifications on biomolecules such as proteins, nucleic acids, and metabolites. Human PARP enzymes are diverse and regulate distinct and varied biological pathways, many of which are deregulated in common diseases. PARP enzymes that are implicated in deregulated biological pathways have offered an avenue for therapeutic intervention, with the “druggable” PARP active site targeted in several diseases, most notably cancer, inflammation, and neurodegenerative disorders. The proposed work will provide important knowledge regarding the structure and regulation of human PARP enzymes and associated partner proteins." ;
+    lambdaber:keywords "EMSL",
+        "General Access" .
+
+emsl:sample_T_A_apo_5_021226_atlas_3736600 a lambdaber:Sample ;
+    dcterms:title "T-A-apo_5_021226_atlas" ;
+    lambdaber:description "Source key: pncc.short_sample_name" ;
+    lambdaber:sample_code "T-A-apo_5_021226_atlas" ;
+    lambdaber:sample_type "protein" .
+
+emsl:transaction_3736600 a lambdaber:Dataset,
+        lambdaber:ExperimentRun ;
+    dcterms:title "Single particle cryo-EM analysis of human PARP enzymes: mechanisms of regulation and inhibition - T-A-apo_5_021226_atlas" ;
+    lambdaber:acquisition_software "EPU" ;
+    lambdaber:data_files emsl:file_64894458 ;
+    lambdaber:description "EMSL transaction 3736600 for sample 'T-A-apo_5_021226_atlas'" ;
+    lambdaber:experiment_code "EMSL-TX-3736600" ;
+    lambdaber:experiment_date "2026-02-15T08:51:33" ;
+    lambdaber:experiment_instrument_associations [ a lambdaber:ExperimentInstrumentAssociation ;
+            lambdaber:experiment_id emsl:transaction_3736600 ;
+            lambdaber:instrument_id emsl:resource_34290 ] ;
+    lambdaber:experiment_runs emsl:transaction_3736600 ;
+    lambdaber:experiment_sample_associations [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id emsl:transaction_3736600 ;
+            lambdaber:sample_id emsl:sample_T_A_apo_5_021226_atlas_3736600 ] ;
+    lambdaber:instruments emsl:resource_34290 ;
+    lambdaber:keywords "EMSL",
+        "pncc.short_sample_name" ;
+    lambdaber:operator_id "48279" ;
+    lambdaber:processing_status "collected" ;
+    lambdaber:raw_data_location "160724/T-A-apo_5_021226_atlas/epu_session" ;
+    lambdaber:samples emsl:sample_T_A_apo_5_021226_atlas_3736600 ;
+    lambdaber:studies emsl:project_160724 ;
+    lambdaber:study_experiment_associations [ a lambdaber:StudyExperimentAssociation ;
+            lambdaber:experiment_id emsl:transaction_3736600 ;
+            lambdaber:study_id emsl:project_160724 ] ;
+    lambdaber:study_sample_associations [ a lambdaber:StudySampleAssociation ;
+            lambdaber:sample_id emsl:sample_T_A_apo_5_021226_atlas_3736600 ;
+            lambdaber:study_id emsl:project_160724 ] ;
+    lambdaber:technique CHMO:0002413 .
+

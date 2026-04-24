@@ -3,7 +3,7 @@
 
 Type of biological sample
 
-URI: [lambdaber:sample__sample_type](https://w3id.org/lambda-ber-schema/sample__sample_type)
+URI: [lambda:sample__sample_type](http://w3id.org/lambda/sample__sample_type)
 
 
 ## Domain and Range

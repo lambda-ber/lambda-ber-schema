@@ -3,7 +3,7 @@
 
 Temperature control range in Celsius
 
-URI: [lambdaber:sAXSInstrument__temperature_control_range](https://w3id.org/lambda-ber-schema/sAXSInstrument__temperature_control_range)
+URI: [lambda:sAXSInstrument__temperature_control_range](http://w3id.org/lambda/sAXSInstrument__temperature_control_range)
 
 
 ## Domain and Range

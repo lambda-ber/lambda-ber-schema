@@ -3,7 +3,7 @@
 
 Conservation analysis
 
-URI: [lambdaber:aggregatedProteinView__evolutionary_conservation](https://w3id.org/lambda-ber-schema/aggregatedProteinView__evolutionary_conservation)
+URI: [lambda:aggregatedProteinView__evolutionary_conservation](http://w3id.org/lambda/aggregatedProteinView__evolutionary_conservation)
 
 
 ## Domain and Range

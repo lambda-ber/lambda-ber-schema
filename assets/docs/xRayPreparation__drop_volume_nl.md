@@ -3,7 +3,7 @@
 
 Total drop volume, typically specified in nanoliters. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:xRayPreparation__drop_volume_nl](https://w3id.org/lambda-ber-schema/xRayPreparation__drop_volume_nl)
+URI: [lambda:xRayPreparation__drop_volume_nl](http://w3id.org/lambda/xRayPreparation__drop_volume_nl)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Cryoprotectant used for crystal cooling
 
-URI: [lambdaber:crystallizationConditions__cryo_protectant](https://w3id.org/lambda-ber-schema/crystallizationConditions__cryo_protectant)
+URI: [lambda:crystallizationConditions__cryo_protectant](http://w3id.org/lambda/crystallizationConditions__cryo_protectant)
 
 
 ## Domain and Range

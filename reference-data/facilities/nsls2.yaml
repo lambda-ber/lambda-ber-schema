@@ -11,19 +11,58 @@
 # These can be used as templates or imported into datasets.
 
 beamlines:
-  # FMX - Frontier Macromolecular Crystallography
+  # FMX - Frontier Microfocusing Macromolecular Crystallography
   - id: lambdaber:beamline_nsls2_fmx
     title: "FMX Beamline 17-ID-2"
-    description: "Frontier Macromolecular Crystallography beamline at NSLS-II for challenging crystallography problems"
+    description: "Frontier Microfocusing Macromolecular Crystallography beamline at NSLS-II for microcrystals and challenging crystallography problems"
     instrument_code: "NSLS2-17-ID-2-FMX"
     instrument_category: SYNCHROTRON_BEAMLINE
     facility_name: NSLS_II
     facility_ror: "https://ror.org/01q47ea17"
     beamline_id: "17-ID-2"
     source_type: synchrotron
+    current_status: operational
+
+    # Scientific scope / techniques
+    techniques_supported:
+      - macromolecular_crystallography
+      - microcrystallography
+      - serial_crystallography
+      - raster_scanning
+      - in_situ_diffraction
+
+    # Beam characteristics
     energy_min: 5.0
     energy_max: 30.0
-    current_status: operational
+    beam_size_min:
+      numeric_value: 1.0
+      unit: micrometers
+    beam_size_max:
+      numeric_value: 10.0
+      unit: micrometers
+    flux_at_1A:
+      numeric_value: 3.5e12
+      unit: photons_per_second
+
+    # Detector / endstation (reference)
+    detector:
+      manufacturer: "DECTRIS"
+      model: "EIGER X 16M"
+      detector_type: pixel_array_detector
+
+    # Operations / access
+    access_modes:
+      - onsite
+      - remote
+      - fully_automated
+    mail_in_service: true
+    automated_sample_exchange: true
+    in_situ_supported: true
+    automated_data_processing: true
+
+    notes:
+      - "Variable microfocus beam (microns) and high flux for small/weak crystals"
+      - "Supports room-temperature collection and ultra-fast raster/serial workflows"
 
   # AMX - Automated Macromolecular Crystallography
   - id: lambdaber:beamline_nsls2_amx
@@ -35,23 +74,108 @@ beamlines:
     facility_ror: "https://ror.org/01q47ea17"
     beamline_id: "17-ID-1"
     source_type: synchrotron
+    current_status: operational
+
+    # Scientific scope / techniques
+    techniques_supported:
+      - macromolecular_crystallography
+      - high_throughput_crystallography
+      - raster_scanning
+      - in_situ_diffraction
+      - fragment_screening
+
+    # Beam characteristics
     energy_min: 5.0
     energy_max: 18.0
+    beam_size:
+      horizontal:
+        numeric_value: 5.0
+        unit: micrometers
+      vertical:
+        numeric_value: 7.0
+        unit: micrometers
+    flux:
+      numeric_value: 5.0e12
+      unit: photons_per_second
+
+    # Detector / endstation (high-level reference data)
+    detector:
+      manufacturer: "Dectris"
+      model: "Eiger X 9M"
+      detector_type: pixel_array_detector
+      max_frame_rate:
+        numeric_value: 200
+        unit: hertz
+
+    # Automation / sample handling
+    access_modes:
+      - onsite
+      - remote
+      - fully_automated
     mail_in_service: true
-    current_status: operational
+    automated_sample_exchange: true
+    sample_changer_capacity:
+      numeric_value: 384
+      unit: samples
+    puck_standard:
+      - uni_puck
+    sample_environments:
+      - cryogenic
+      - room_temperature
+
+    notes:
+      - "Designed for automation/high throughput with robotic sample exchange"
+      - "Supports in-situ data collection on compact mini-plates (beamline-specific formats)"
 
   # LiX - Life Science X-ray Scattering (SAXS/WAXS)
   - id: lambdaber:beamline_nsls2_lix
     title: "LiX Beamline 16-ID"
-    description: "Life Science X-ray Scattering beamline for SAXS/WAXS and solution scattering"
+    description: "Life Science X-ray Scattering beamline for SAXS/WAXS, biomolecular solution scattering, and microbeam scanning/mapping"
     instrument_code: "NSLS2-16-ID-LiX"
     instrument_category: SYNCHROTRON_BEAMLINE
     facility_name: NSLS_II
     facility_ror: "https://ror.org/01q47ea17"
     beamline_id: "16-ID"
+    source_type: synchrotron
+    current_status: operational
+
+    # Scientific scope / techniques
     techniques_supported:
       - saxs
       - waxs
-    source_type: synchrotron
+      - biomolecular_solution_scattering
+      - scanning_mapping
+
+    # Beam / measurement characteristics (solution scattering configuration)
+    energy_min: 2.0
+    energy_max: 20.0
+    typical_wavelength_solution_saxs:
+      numeric_value: 0.08
+      unit: nanometers
+    typical_beam_size_solution_saxs:
+      numeric_value: 0.2
+      unit: millimeters
+    q_range_solution_saxs_waxs:
+      q_min:
+        numeric_value: 0.006
+        unit: "1/Angstrom"
+      q_max:
+        numeric_value: 3.2
+        unit: "1/Angstrom"
+
+    # Detector (per your note)
+    detector:
+      manufacturer: "DECTRIS"
+      model: "PILATUS4"
+      detector_type: photon_counting_hybrid_pixel_detector
+
+    # Operations / throughput
+    access_modes:
+      - onsite
+      - remote
+      - mail_in
     mail_in_service: true
-    current_status: operational
+
+    notes:
+      - "Routine simultaneous SAXS/WAXS solution scattering; supports multiple sample configurations (static, fixed cell, SEC-MALS)"
+      - "Uses automated liquid handling and robotics for high-throughput operation"

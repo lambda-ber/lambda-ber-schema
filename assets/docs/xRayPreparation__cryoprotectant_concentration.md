@@ -3,7 +3,7 @@
 
 Cryoprotectant concentration, typically specified as a percentage. Data providers may specify as decimal fraction by including the unit in the QuantityValue.
 
-URI: [lambdaber:xRayPreparation__cryoprotectant_concentration](https://w3id.org/lambda-ber-schema/xRayPreparation__cryoprotectant_concentration)
+URI: [lambda:xRayPreparation__cryoprotectant_concentration](http://w3id.org/lambda/xRayPreparation__cryoprotectant_concentration)
 
 
 ## Domain and Range

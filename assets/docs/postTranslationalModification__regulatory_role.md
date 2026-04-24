@@ -3,7 +3,7 @@
 
 Role in regulation
 
-URI: [lambdaber:postTranslationalModification__regulatory_role](https://w3id.org/lambda-ber-schema/postTranslationalModification__regulatory_role)
+URI: [lambda:postTranslationalModification__regulatory_role](http://w3id.org/lambda/postTranslationalModification__regulatory_role)
 
 
 ## Domain and Range

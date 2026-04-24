@@ -3,7 +3,7 @@
 
 Number of water molecules modeled
 
-URI: [lambdaber:workflowRun__number_of_waters](https://w3id.org/lambda-ber-schema/workflowRun__number_of_waters)
+URI: [lambda:workflowRun__number_of_waters](http://w3id.org/lambda/workflowRun__number_of_waters)
 
 
 ## Domain and Range

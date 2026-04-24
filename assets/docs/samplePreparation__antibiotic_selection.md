@@ -3,7 +3,7 @@
 
 Antibiotic or selection agent used
 
-URI: [lambdaber:samplePreparation__antibiotic_selection](https://w3id.org/lambda-ber-schema/samplePreparation__antibiotic_selection)
+URI: [lambda:samplePreparation__antibiotic_selection](http://w3id.org/lambda/samplePreparation__antibiotic_selection)
 
 
 ## Domain and Range

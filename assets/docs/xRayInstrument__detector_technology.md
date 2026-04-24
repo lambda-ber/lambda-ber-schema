@@ -3,7 +3,7 @@
 
 Generic detector technology type
 
-URI: [lambdaber:xRayInstrument__detector_technology](https://w3id.org/lambda-ber-schema/xRayInstrument__detector_technology)
+URI: [lambda:xRayInstrument__detector_technology](http://w3id.org/lambda/xRayInstrument__detector_technology)
 
 
 ## Domain and Range
