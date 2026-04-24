@@ -1186,19 +1186,42 @@ classes:
         description: "Version of acquisition software"
         range: string
       # X-ray crystallography specific fields (NSLS2 Data_Collection mapping)
+      detector:
+        description: "Run-specific detector identifier or detector component used for data collection. Use this when a beamline/instrument can operate with multiple or swappable detectors and the detector identity is specific to this ExperimentRun."
+        range: string
+        aliases:
+          - detector_id
+          - detector_name
+        comments:
+          - "This is optional and distinct from Instrument-level detector model/manufacturer metadata."
+          - "Use ExperimentInstrumentAssociation with role=detector when the detector is modeled as a separate Instrument record."
       wavelength:
         description: "X-ray wavelength, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
+        aliases:
+          - wavelength_a
         exact_mappings:
           - "nsls2:Wavelength"
           - "imgCIF:_diffrn_radiation_wavelength.wavelength"
           - "mmCIF:_diffrn_radiation_wavelength.wavelength"
           - "ispyb:DataCollection.wavelength"
+      energy:
+        description: "X-ray beam energy for this run. Data providers may specify eV, keV, or another appropriate energy unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
+        aliases:
+          - beam_energy
+        exact_mappings:
+          - "nsls2:Energy"
+          - "ispyb:DataCollection.energy"
       oscillation_angle:
         description: "Oscillation angle per image, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
+        aliases:
+          - oscillation_width
+          - oscillation_per_image_deg
         exact_mappings:
           - "nsls2:Angle_increment"
           - "imgCIF:_diffrn_scan_axis.angle_increment"
@@ -1212,6 +1235,17 @@ classes:
           - "nsls2:Start_angle"
           - "imgCIF:_diffrn_scan_axis.angle_start"
           - "ispyb:DataCollection.axisStart"
+      sweep_start:
+        description: "Starting angle of an X-ray oscillation sweep, typically specified in degrees. For multi-sweep collections, use the value for this run or acquisition segment."
+        range: QuantityValue
+        inlined: true
+        exact_mappings:
+          - "imgCIF:_diffrn_scan_axis.angle_start"
+          - "ispyb:DataCollection.axisStart"
+      sweep_end:
+        description: "Ending angle of an X-ray oscillation sweep, typically specified in degrees."
+        range: QuantityValue
+        inlined: true
       number_of_images:
         description: "Total number of diffraction images collected"
         range: QuantityValue
@@ -1234,10 +1268,18 @@ classes:
           - "imgCIF:_diffrn_detector.beam_centre_y"
           - "mmCIF:_diffrn_detector.beam_center_y"
           - "ispyb:DataCollection.yBeam"
+      beam_center_pixels:
+        description: "Combined beam center pixel coordinates as reported by systems such as NSLS-II AMX. Use beam_center_x and beam_center_y when coordinates are represented as separate run-level values."
+        range: BeamCenterPixels
+        inlined: true
+        aliases:
+          - beam_center
       detector_distance:
         description: "Distance from sample to detector, typically specified in millimeters (mm). Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
+        aliases:
+          - detector_distance_mm
         exact_mappings:
           - "nsls2:Detector_distance"
           - "imgCIF:_diffrn_measurement.sample_detector_distance"
@@ -1280,6 +1322,9 @@ classes:
         description: "X-ray beam transmission as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
+        aliases:
+          - attenuation
+          - transmission_percent
         exact_mappings:
           - "ispyb:DataCollection.transmission"
         comments:
@@ -1330,6 +1375,7 @@ classes:
         range: QuantityValue
         inlined: true
         exact_mappings:
+          - "nsls2:Exposure_time"
           - "ispyb:DataCollection.exposureTime"
       start_time:
         description: "Data collection start timestamp"
@@ -2389,6 +2435,8 @@ classes:
         description: "X-ray wavelength, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
+        aliases:
+          - wavelength
         exact_mappings:
           - mmCIF:_diffrn_radiation_wavelength.wavelength
       detector_mode:
@@ -2411,6 +2459,8 @@ classes:
         description: "Detector distance, typically specified in millimeters. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
+        aliases:
+          - detector_distance
         exact_mappings:
           - mmCIF:_diffrn_detector.distance
       beam_center_x_px:
@@ -2425,10 +2475,24 @@ classes:
         inlined: true
         exact_mappings:
           - mmCIF:_diffrn_detector.beam_center_y
+      beam_center_pixels:
+        description: "Combined beam center pixel coordinates as reported by systems such as NSLS-II AMX. Use beam_center_x_px and beam_center_y_px when coordinates are represented as separate strategy values."
+        range: BeamCenterPixels
+        inlined: true
+        aliases:
+          - beam_center
       beam_size_um:
         description: "Beam size, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
+      energy:
+        description: "X-ray beam energy for this data collection strategy. Data providers may specify eV, keV, or another appropriate energy unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
+        aliases:
+          - beam_energy
+        exact_mappings:
+          - nsls2:Energy
       flux_photons_per_s:
         description: "Photon flux, typically specified in photons per second. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
@@ -2439,6 +2503,8 @@ classes:
         description: "Beam transmission, typically specified as a percentage (0-100). Data providers may specify as decimal fraction by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
+        aliases:
+          - attenuation
       attenuator:
         description: "Attenuator setting used"
       temperature_k:
@@ -2451,16 +2517,64 @@ classes:
         description: "Oscillation angle per image, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
+        aliases:
+          - oscillation_width
         exact_mappings:
           - mmCIF:_diffrn_scan.angle_increment
+      sweep_start:
+        description: "Starting angle of an X-ray oscillation sweep, typically specified in degrees."
+        range: QuantityValue
+        inlined: true
+        exact_mappings:
+          - mmCIF:_diffrn_scan_axis.angle_start
+      sweep_end:
+        description: "Ending angle of an X-ray oscillation sweep, typically specified in degrees."
+        range: QuantityValue
+        inlined: true
       total_rotation_deg:
         description: "Total rotation range, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
         exact_mappings:
           - mmCIF:_diffrn_scan_axis.angle_range
+      exposure_time:
+        description: "Exposure time per image, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
+        exact_mappings:
+          - nsls2:Exposure_time
+          - ispyb:DataCollection.exposureTime
       strategy_notes:
         description: "Notes about data collection strategy"
+
+  BeamCenterPixels:
+    is_a: AttributeGroup
+    description: "Combined beam center coordinates in detector pixel units"
+    attributes:
+      xbeam:
+        description: "Beam center X coordinate in pixels"
+        range: QuantityValue
+        inlined: true
+        aliases:
+          - x
+          - beam_center_x_px
+        exact_mappings:
+          - "nsls2:Beam_xy_x"
+          - "imgCIF:_diffrn_detector.beam_center_x"
+          - "mmCIF:_diffrn_detector.beam_center_x"
+          - "ispyb:DataCollection.xBeam"
+      ybeam:
+        description: "Beam center Y coordinate in pixels"
+        range: QuantityValue
+        inlined: true
+        aliases:
+          - y
+          - beam_center_y_px
+        exact_mappings:
+          - "nsls2:Beam_xy_y"
+          - "imgCIF:_diffrn_detector.beam_center_y"
+          - "mmCIF:_diffrn_detector.beam_center_y"
+          - "ispyb:DataCollection.yBeam"
 
   QualityMetrics:
     is_a: AttributeGroup
