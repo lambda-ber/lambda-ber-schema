@@ -1,0 +1,94 @@
+id: lambdaber:dataset_biosans_sample_xylanase
+title: Bio-SANS Xylanase Sample Example
+description: Valid Bio-SANS sample dataset derived from the schema template fields
+keywords:
+- Bio-SANS
+- xylanase
+- D2O
+studies:
+- id: lambdaber:study_biosans_sample_xylanase
+  title: Xylanase Bio-SANS sample preparation
+  description: Xylanase protein solution prepared in deuterated solvent for Bio-SANS
+samples:
+- id: lambdaber:sample_xylanase_d2o_nacl
+  title: Xylanase in D2O with NaCl
+  description: Xylanase protein in fully deuterated solvent with 150 mM NaCl
+  sample_code: XYLANASE-D2O-NACL
+  sample_type: protein
+  cell_type: quartz_cuvette
+  preparation_method: Xylanase prepared in 100% D2O solvent with 150 mM NaCl
+  molecular_composition:
+    sequences:
+    - AADVDKFLGNIYSPSQVENFEYYWNCVTPENAGKWGSVEGTRDQMNWSSLDAAYALARDNGFCFNFHVLLWGAQQPAWISELSPEEQLEEIQEWFQAVAERYSFTASPFDVVQVVNEPLHQPPDGQEGRANYIEALGGAGETGWDWVITAFELARQIFPEGTRLMINDYGILSSLETAQQYLELIQLLKERNLIDVIGVQGHAFSTRSGAPIQEVLDLLATTGLPIQVTEMDIDGNPNQSPFVTREQSEQNQLRDMQRIFPTVWYHPAVEGVTFWGWRPGLWRNDYEAYLVYSNGAERPAMVWLREFMEAYRESYLSANEPEGTLPEELSVVSWPNPSRGQVRFRYALPFEAEVRLQVFDVLGREVMTLASGRHRAGVYEVAFDGRHLPSGLYLYRLEANGRVRSGRLVLMR
+    ligands:
+    - Sodium chloride
+    description: Xylanase in D2O buffer with NaCl
+  molecular_weight:
+    numeric_value: 46982.0
+    unit: Da
+  concentration:
+    numeric_value: 10.0
+    unit: mg/mL
+  buffer_composition:
+    ph:
+      numeric_value: 7.0
+      unit: pH
+    additives:
+    - NaCl 150 mM
+    description: 100% D2O with 150 mM NaCl
+  storage_conditions:
+    temperature:
+      numeric_value: 4.0
+      unit: Celsius
+    description: Stored at 4 degrees Celsius before measurement
+instruments:
+- id: lambdaber:instrument_biosans_hfir_cg3
+  title: Biological Small Angle Neutron Scattering (Bio-SANS) Instrument at HFIR
+  instrument_code: HFIR-CG3
+  instrument_category: NEUTRON_BEAMLINE
+  facility_name: HFIR
+  facility_ror: https://ror.org/02xn1ny06
+  beamline_id: CG-3
+  manufacturer: Oak Ridge National Laboratory
+  model: Bio-SANS
+  installation_date: '2007-05-01'
+  current_status: operational
+experiment_runs:
+- id: lambdaber:experiment_biosans_sample_xylanase
+  title: Xylanase Bio-SANS measurement
+  experiment_code: HFIR-CG3-260101
+  experiment_date: '2026-02-10T10:00:00'
+  technique: sans
+  raw_data_location: /data/IPTS-26000/CG3/260101.nxs.hdf5
+  wavelength:
+    numeric_value: 6.023
+    unit: Angstroms
+  exposure_time:
+    numeric_value: 3600.0
+    unit: seconds
+workflow_runs:
+- id: lambdaber:workflow_biosans_sample_xylanase
+  title: drtSANS reduction for xylanase
+  workflow_code: drtsans-260101
+  workflow_type: saxs_analysis
+  software_name: drtSANS
+  software_version: '2026-02-10'
+  processing_parameters: '{"instrument_name": "Bio-SANS", "ipts_number": "IPTS-26000", "sample": {"run_number": "260101", "thickness": 1.0}, "configuration": {"q_min": 0.003, "q_max": 0.5, "wavelength": 6.0}}'
+study_sample_associations:
+- study_id: lambdaber:study_biosans_sample_xylanase
+  sample_id: lambdaber:sample_xylanase_d2o_nacl
+study_experiment_associations:
+- study_id: lambdaber:study_biosans_sample_xylanase
+  experiment_id: lambdaber:experiment_biosans_sample_xylanase
+study_workflow_associations:
+- study_id: lambdaber:study_biosans_sample_xylanase
+  workflow_id: lambdaber:workflow_biosans_sample_xylanase
+experiment_sample_associations:
+- experiment_id: lambdaber:experiment_biosans_sample_xylanase
+  sample_id: lambdaber:sample_xylanase_d2o_nacl
+experiment_instrument_associations:
+- experiment_id: lambdaber:experiment_biosans_sample_xylanase
+  instrument_id: lambdaber:instrument_biosans_hfir_cg3
+workflow_experiment_associations:
+- workflow_id: lambdaber:workflow_biosans_sample_xylanase
+  experiment_id: lambdaber:experiment_biosans_sample_xylanase
