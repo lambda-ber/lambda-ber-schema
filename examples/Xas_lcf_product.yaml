@@ -1,0 +1,497 @@
+id: https://w3id.org/MONet/analysis-api-schema/xas-lcf
+name: xas-lcf
+title: XAS Linear Combination Fitting (LCF) Analysis for MONet Analysis API
+description: |
+  Linear Combination Fitting (LCF) analysis results for XAS spectra processed
+  with the Athena software package (part of Demeter/IFEFFIT).
+
+  LCF fits a linear combination of reference standard spectra to a measured
+  sample spectrum to determine the relative abundances of chemical species
+  (e.g. Fe(II) vs Fe(III) oxidation state fractions).
+
+  Data source: Athena .lcf output files stored in UUID/analysis/ directories.
+  Oracle backing tables: LAM_XAS_LCF, LAM_XAS_LCF_STDS,
+                         LAM_XAS_LCF_PROPS, LAM_XAS_LCF_DROWS.
+
+  Subtypes:
+    XANES LCF -- fits normalised mu(E) vs energy (eV); yields oxidation state fractions
+    EXAFS LCF -- fits chi(k) vs k (A^-1); yields structural/bonding environment fractions
+
+  Inheritance hierarchy:
+
+    workflowExecutionActivity (abstract)
+      +-- XASLCFWorkflowExecutionActivity
+            Represents one Athena LCF fitting run for one measurement/sweep group.
+            One UUID can have multiple LCF runs (primary + '2nd' variant, or
+            multiple EXAFS fit iterations) with different standards sets.
+
+    dataProduct (abstract)
+      +-- processedData
+            +-- XASLCFProduct
+                  Summary product carrying the fit quality metrics and
+                  linking back to the LCF workflow execution activity.
+
+  Helper classes (child-table rows):
+    XASLCFStandard          -- reference standard used in fit  (LAM_XAS_LCF_STDS)
+    XASLCFSpeciesProportion -- species fraction result         (LAM_XAS_LCF_PROPS)
+    XASLCFDataRow           -- per-point fit curve data        (LAM_XAS_LCF_DROWS)
+
+  Data flow:
+    XASMeasurementProduct (one or more sweeps averaged to normalised .nor file)
+      -> XASLCFWorkflowExecutionActivity
+          type: 'xas_lcf_xanes' or 'xas_lcf_exafs'
+          software: Athena (Demeter/IFEFFIT)
+          raw_data_id -> representative XASMeasurementProduct (first sweep)
+          Nested: standards[], species_proportions[], data_rows[]
+      -> XASLCFProduct
+          summary_metrics: {"r_factor":0.001, "fe3_proportion":0.44, "fe2_proportion":0.56}
+          s3_key: "xas/{uuid}/analysis/{filename}-{code}-XANES.lcf"
+
+  Filename convention (decoded by parse_lcf_filename in lcf_parsing.py):
+    {xas_filename}-{code}-XANES.lcf          -- primary XANES fit
+    {xas_filename}-{run}-{code}-XANES.lcf    -- secondary analysis variant (e.g. -2nd-)
+    {xas_filename}-EXAFS-fit{N}.lcf          -- EXAFS fit iteration N
+    {xas_filename}.lcf                        -- plain XANES (no Athena code)
+
+  Integration notes:
+    - XASLCFWorkflowExecutionActivity -> paste into analysis_api_schema.yaml classes section
+    - XASLCFProduct                   -> paste into products.yaml classes section
+    - Helper classes                  -> paste into products.yaml or xas_types.yaml
+    - New enum values                 -> add to enums.yaml as noted below
+
+license: MIT
+
+prefixes:
+  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  linkml: https://w3id.org/linkml/
+default_prefix: analysis_api_schema
+
+imports:
+  - linkml:types
+  - analysis_api_schema
+  - enums
+  - xas_product    # reuses xas_product slots: row_num, pv, signal_name, etc.
+
+
+# =============================================================================
+# SLOTS -- LCF-specific
+# =============================================================================
+
+slots:
+
+  # --- LCF file identity ---
+  xas_filename:
+    description: |-
+      Measurement filename stem linking this LCF result to the source XAS data
+      (e.g. '1002_11_61090_3_135K'). Matches LAM_XAS_MEAS.source_file stem.
+    range: string
+
+  lcf_type:
+    description: LCF analysis subtype -- XANES (normalised mu(E)) or EXAFS (chi(k))
+    range: xaslcftype
+
+  run_label:
+    description: |-
+      Analysis run variant label extracted from filename.
+      Empty string (NULL) = primary/first analysis run.
+      '2nd', '3rd', etc. = alternative fits using different standards sets.
+    range: string
+
+  fit_label:
+    description: |-
+      Iteration label for EXAFS fits extracted from filename.
+      Empty for XANES. 'fit1', 'fit2', 'fit3' for successive EXAFS attempts.
+    range: string
+
+  analysis_code:
+    description: |-
+      Athena internal code from the .lcf filename (e.g. '0g5b').
+      Encodes the sweep group selection and normalisation parameters used.
+    range: string
+
+  sample_nor_file:
+    description: |-
+      Normalised spectrum filename as recorded in the LCF header
+      (e.g. '1002_11_61090_3_135K-0g5b.nor'). References the Athena project file.
+    range: string
+
+  # --- Fit configuration ---
+  fit_range_min:
+    description: Lower bound of fit range (eV for XANES, A^-1 for EXAFS)
+    range: float
+
+  fit_range_max:
+    description: Upper bound of fit range (eV for XANES, A^-1 for EXAFS)
+    range: float
+
+  fit_range_unit:
+    description: Unit of fit range -- 'eV' for XANES, 'A^-1' for EXAFS
+    range: string
+
+  n_data_points:
+    description: Number of data points included in the fit
+    range: integer
+
+  n_variables:
+    description: Number of free variables in the fit
+    range: integer
+
+  n_standards:
+    description: Number of reference standards used in the linear combination
+    range: integer
+
+  weights_sum_to_1:
+    description: Whether component weights were constrained to sum to 1.0 (Y/N)
+    range: string
+
+  weights_bounded:
+    description: Whether component weights were bounded between 0 and 1 (Y/N)
+    range: string
+
+  e0_shift_used:
+    description: Whether an overall E0 energy shift was applied (Y/N)
+    range: string
+
+  noise_added:
+    description: Statistical noise added to data before fitting (0 if none)
+    range: float
+
+  # --- Fit quality statistics ---
+  r_factor:
+    description: |-
+      R-factor goodness-of-fit statistic.
+      R = sum(|data - fit|^2) / sum(|data|^2); lower is better.
+    range: float
+
+  chi_square:
+    description: Chi-square statistic from the LCF fit
+    range: float
+
+  reduced_chi_square:
+    description: |-
+      Reduced chi-square (chi-square / degrees of freedom).
+      Accounts for the number of data points and free variables.
+    range: float
+
+  weights_sum:
+    description: Actual sum of fitted component weights (should be ~1.000 if constrained)
+    range: float
+
+  # --- Standards child slots ---
+  std_index:
+    description: 1-based index of the reference standard in the fit
+    range: integer
+
+  std_name:
+    description: |-
+      Reference standard name as written in the Athena project
+      (e.g. 'Fe(II) in FeS', 'Fe(III) in Ferrihydrite', 'Fe(II/III) in IMt-2')
+    range: string
+
+  weight:
+    description: Fitted weight (fraction) for this standard component
+    range: float
+
+  # --- Species proportion child slots ---
+  species_name:
+    description: |-
+      Chemical species or oxidation state name from the LCF report section
+      (e.g. 'Fe(II)', 'Fe(III)').
+      Generalised to support any element/species in future datasets.
+    range: string
+
+  proportion:
+    description: Species proportion in sample (fraction 0-1)
+    range: float
+
+  uncertainty:
+    description: Uncertainty (+/-) on the species proportion (fraction)
+    range: float
+
+  # --- Data row child slots ---
+  x_val:
+    description: Positioner value at this data point (energy in eV for XANES, k in A^-1 for EXAFS)
+    range: float
+
+  data_val:
+    description: Measured normalised spectrum value at this point
+    range: float
+
+  fit_val:
+    description: LCF fitted curve value at this point
+    range: float
+
+  residual:
+    description: Fit residual at this point (data_val - fit_val)
+    range: float
+
+
+# =============================================================================
+# HELPER CLASSES (child-table rows)
+# =============================================================================
+
+classes:
+
+  # ---------------------------------------------------------------------------
+  # XASLCFStandard -- one reference standard per LCF fit (LAM_XAS_LCF_STDS)
+  # ---------------------------------------------------------------------------
+  XASLCFStandard:
+    description: |-
+      One reference standard (spectral component) used in an LCF fit.
+      The fitted weight represents this standard's fractional contribution
+      to the measured sample spectrum.
+      Corresponds to one row in LAM_XAS_LCF_STDS.
+    attributes:
+      std_index:
+        range: integer
+        description: 1-based standard index
+        required: true
+      std_name:
+        range: string
+        description: Standard name (e.g. 'Fe(II) in FeS', 'Fe(III) in Ferrihydrite')
+        required: true
+      weight:
+        range: float
+        description: Fitted weight fraction (0-1; all weights sum to ~1.000)
+
+
+  # ---------------------------------------------------------------------------
+  # XASLCFSpeciesProportion -- species fraction from XANES report (LAM_XAS_LCF_PROPS)
+  # ---------------------------------------------------------------------------
+  XASLCFSpeciesProportion:
+    description: |-
+      Derived species proportion reported in the LC XANES analysis section.
+      For Fe XAS these are typically Fe(II) and Fe(III) proportions; the
+      generalised design supports any element or oxidation state.
+
+      Proportions are derived by summing weights of standards associated with
+      each oxidation state, as reported by Athena:
+        'Fe(III) proportion in sample: 0.44 (+/-0.05)'
+
+      Corresponds to one row in LAM_XAS_LCF_PROPS.
+    attributes:
+      species_name:
+        range: string
+        description: Species or oxidation state (e.g. 'Fe(II)', 'Fe(III)')
+        required: true
+      proportion:
+        range: float
+        description: Fraction of the species in the sample (0-1)
+        required: true
+      uncertainty:
+        range: float
+        description: Absolute uncertainty (+/-) on the proportion
+
+
+  # ---------------------------------------------------------------------------
+  # XASLCFDataRow -- one data point from the LCF fit curve (LAM_XAS_LCF_DROWS)
+  # ---------------------------------------------------------------------------
+  XASLCFDataRow:
+    description: |-
+      One point from the LCF fit output, enabling reconstruction and plotting
+      of the measured spectrum, fitted curve, and residual without accessing
+      the raw .lcf file.
+      Corresponds to one row in LAM_XAS_LCF_DROWS.
+    attributes:
+      row_num:
+        range: integer
+        description: 1-based row index
+        required: true
+      x_val:
+        range: float
+        description: Energy (eV) for XANES, k (A^-1) for EXAFS
+        required: true
+      data_val:
+        range: float
+        description: Measured normalised spectrum
+      fit_val:
+        range: float
+        description: LCF fitted curve value
+      residual:
+        range: float
+        description: data_val - fit_val
+
+
+# =============================================================================
+# CLASSES -- workflowExecutionActivity subclass
+# -> PASTE INTO analysis_api_schema.yaml classes section
+# =============================================================================
+
+  # ---------------------------------------------------------------------------
+  # XASLCFWorkflowExecutionActivity -- Athena LCF fitting run
+  # ---------------------------------------------------------------------------
+  XASLCFWorkflowExecutionActivity:
+    is_a: workflowExecutionActivity
+    description: |-
+      Athena Linear Combination Fitting (LCF) workflow execution for one XAS spectrum.
+
+      One instance represents a single LCF fit run in Athena. A single measurement
+      session (UUID) may produce multiple LCF activities:
+        - Primary run (run_label = NULL): default standards set
+        - '2nd' run (run_label = '2nd'): alternative standards set or fit range
+        - EXAFS iterations (fit_label = 'fit1', 'fit2', ...): successive EXAFS attempts
+
+      The raw_data_id (inherited) points to the representative XASMeasurementProduct
+      (first sweep, .0001) for the measurement session being analysed.
+
+      Software: Athena v0.9.x (part of Demeter, wrapping IFEFFIT/FEFFIT)
+
+      Workflow pattern:
+        XASMeasurementProduct (sweeps averaged to normalised .nor in Athena)
+          -> XASLCFWorkflowExecutionActivity
+              type: 'xas_lcf_xanes' or 'xas_lcf_exafs'
+              git_url: Athena version / project file path
+          -> XASLCFProduct (LCF result summary)
+
+      Required enum additions to enums.yaml:
+        workflowtype:
+          xas_lcf_xanes: Athena XANES linear combination fitting
+          xas_lcf_exafs: Athena EXAFS linear combination fitting
+    attributes:
+      id:
+        identifier: true
+        range: workflowExecutionActivity
+        required: true
+      # raw_data_id (inherited) -> first-sweep XASMeasurementProduct
+    slots:
+      # LCF file identity
+      - xas_filename
+      - lcf_type
+      - run_label
+      - fit_label
+      - analysis_code
+      - sample_nor_file
+      # Fit configuration
+      - fit_range_min
+      - fit_range_max
+      - fit_range_unit
+      - n_data_points
+      - n_variables
+      - n_standards
+      - weights_sum_to_1
+      - weights_bounded
+      - e0_shift_used
+      - noise_added
+      # Fit quality
+      - r_factor
+      - chi_square
+      - reduced_chi_square
+      - weights_sum
+    attributes:
+      id:
+        identifier: true
+        range: workflowExecutionActivity
+        required: true
+      standards:
+        range: XASLCFStandard
+        multivalued: true
+        inlined_as_list: true
+        description: Reference standards used in the linear combination fit
+      species_proportions:
+        range: XASLCFSpeciesProportion
+        multivalued: true
+        inlined_as_list: true
+        description: Derived species proportion results (XANES only)
+      data_rows:
+        range: XASLCFDataRow
+        multivalued: true
+        inlined_as_list: true
+        description: Per-point fit curve data for plotting
+
+
+# =============================================================================
+# CLASSES -- dataProduct subclass
+# -> PASTE INTO products.yaml classes section
+# =============================================================================
+
+  # ---------------------------------------------------------------------------
+  # XASLCFProduct -- LCF analysis result summary
+  # ---------------------------------------------------------------------------
+  XASLCFProduct:
+    is_a: processedData
+    description: |-
+      XAS Linear Combination Fitting (LCF) analysis result data product.
+      One instance per .lcf file, representing the fit outcome for a single
+      Athena LCF run on one normalised XAS spectrum.
+
+      Relationship to core tables:
+        - id: FK -> processedData.id (1:1 linkage per .lcf file)
+        - processedData.type = 'XASLCFProduct'
+        - processedData.workflow_id -> XASLCFWorkflowExecutionActivity
+        - processedData.s3_key = 'xas/{uuid}/analysis/{lcf_filename}.lcf'
+        - processedData.summary_metrics = {
+              "lcf_type": "XANES",
+              "r_factor": 0.000975,
+              "fe3_proportion": 0.44,
+              "fe2_proportion": 0.56,
+              "n_standards": 3
+          }
+
+      Key derived outputs (also in XASLCFWorkflowExecutionActivity):
+        - r_factor: fit quality (lower = better)
+        - species_proportions[]: Fe(II)/Fe(III) fractions with uncertainties
+        - standards[]: reference spectra and their fitted weights
+
+      Required enum additions to enums.yaml:
+        product:
+          XASLCFProduct: XAS LCF analysis result (.lcf file)
+    slots:
+      - measure_type
+    attributes:
+      id:
+        identifier: true
+        range: processedData
+        required: true
+      source_file:
+        range: string
+        description: Full path to the .lcf file on disk
+      xas_filename:
+        range: string
+        description: Measurement stem linking to source XAS data
+      lcf_type:
+        range: xaslcftype
+        description: XANES or EXAFS
+      run_label:
+        range: string
+        description: Run variant label (NULL = primary, '2nd' = secondary)
+      fit_label:
+        range: string
+        description: EXAFS iteration label (NULL for XANES, 'fit1'/'fit2' for EXAFS)
+      r_factor:
+        range: float
+        description: Fit quality R-factor
+
+
+# =============================================================================
+# ENUM ADDITIONS REQUIRED
+# =============================================================================
+
+enums:
+
+  xaslcftype:
+    description: LCF analysis subtype
+    permissible_values:
+      XANES:
+        description: Normalised mu(E) vs energy fit -- yields oxidation state fractions
+      EXAFS:
+        description: chi(k) vs k fit -- yields structural/bonding environment fractions
+
+# Add to workflowtype (or equivalent) enum in enums.yaml:
+#   workflowtype:
+#     permissible_values:
+#       xas_lcf_xanes:
+#         description: Athena XANES linear combination fitting workflow
+#       xas_lcf_exafs:
+#         description: Athena EXAFS linear combination fitting workflow
+
+# Add to product enum in enums.yaml:
+#   product:
+#     permissible_values:
+#       XASLCFProduct:
+#         description: XAS LCF analysis result (one per .lcf file)
+
+# Add to routemethod enum in enums.yaml (if LCF is treated as an analysis route):
+#   routemethod:
+#     permissible_values:
+#       xas_lcf:
+#         description: XAS Linear Combination Fitting analysis (Athena)
