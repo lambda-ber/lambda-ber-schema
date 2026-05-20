@@ -2,7 +2,7 @@
 #mapping_set_id: http://w3id.org/lambda/
 #mapping_tool: https://w3id.org/linkml/
 #creator_id: linkml_user
-#mapping_date: 2026-04-24
+#mapping_date: 2026-05-19
 #curie_map: 
 # lambda: http://w3id.org/lambda/
 # lambdaber: http://w3id.org/lambda/
@@ -20,6 +20,7 @@
 # nsls2: https://github.com/NSLS2/BER-LAMBDA/
 # imgCIF: https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#
 # mmCIF: http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/
+# IHMCIF: https://mmcif.wwpdb.org/dictionaries/mmcif_ihm_ext.dic/Items/
 # ROR: https://ror.org/
 # wikidata: http://www.wikidata.org/entity/
 # CHMO: http://purl.obolibrary.org/obo/CHMO_
@@ -145,6 +146,14 @@ lambda:sweep_start	dataCollectionStrategy__sweep_start	skos:exactMatch		mmCIF:_d
 lambda:temperature_k	dataCollectionStrategy__temperature_k	skos:exactMatch		mmCIF:_diffrn.ambient_temp		skos:exactMatch	http://w3id.org/lambda/									
 lambda:total_rotation_deg	dataCollectionStrategy__total_rotation_deg	skos:exactMatch		mmCIF:_diffrn_scan_axis.angle_range		skos:exactMatch	http://w3id.org/lambda/									
 lambda:wavelength_a	dataCollectionStrategy__wavelength_a	skos:exactMatch		mmCIF:_diffrn_radiation_wavelength.wavelength		skos:exactMatch	http://w3id.org/lambda/									
+lambda:data_type	dataFile__data_type	skos:closeMatch		IHMCIF:_ihm_dataset_list.data_type		skos:closeMatch	http://w3id.org/lambda/									
+lambda:file_format	dataFile__file_format	skos:closeMatch		IHMCIF:_ihm_external_files.file_format		skos:closeMatch	http://w3id.org/lambda/									
+lambda:file_path	dataFile__file_path	skos:closeMatch		IHMCIF:_ihm_external_files.file_path		skos:closeMatch	http://w3id.org/lambda/									
+lambda:file_role	dataFile__file_role	skos:relatedMatch		IHMCIF:_ihm_external_files.content_type		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:file_size_bytes	dataFile__file_size_bytes	skos:closeMatch		IHMCIF:_ihm_external_files.file_size_bytes		skos:closeMatch	http://w3id.org/lambda/									
+lambda:related_entity	dataFile__related_entity	skos:relatedMatch		IHMCIF:_ihm_dataset_list.id		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:storage_uri	dataFile__storage_uri	skos:relatedMatch		IHMCIF:_ihm_external_reference_info.associated_url		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:storage_uri	dataFile__storage_uri	skos:relatedMatch		IHMCIF:_ihm_external_files.file_path		skos:relatedMatch	http://w3id.org/lambda/									
 lambda:beam_center_x	experimentRun__beam_center_x	skos:exactMatch		nsls2:Beam_xy_x		skos:exactMatch	http://w3id.org/lambda/									
 lambda:beam_center_x	experimentRun__beam_center_x	skos:exactMatch		imgCIF:_diffrn_detector.beam_centre_x		skos:exactMatch	http://w3id.org/lambda/									
 lambda:beam_center_x	experimentRun__beam_center_x	skos:exactMatch		mmCIF:_diffrn_detector.beam_center_x		skos:exactMatch	http://w3id.org/lambda/									
@@ -192,6 +201,7 @@ lambda:start_time	experimentRun__start_time	skos:exactMatch		ispyb:DataCollectio
 lambda:sweep_start	experimentRun__sweep_start	skos:exactMatch		imgCIF:_diffrn_scan_axis.angle_start		skos:exactMatch	http://w3id.org/lambda/									
 lambda:sweep_start	experimentRun__sweep_start	skos:exactMatch		ispyb:DataCollection.axisStart		skos:exactMatch	http://w3id.org/lambda/									
 lambda:synchrotron_mode	experimentRun__synchrotron_mode	skos:exactMatch		ispyb:DataCollection.synchrotronMode		skos:exactMatch	http://w3id.org/lambda/									
+lambda:technique	experimentRun__technique	skos:relatedMatch		IHMCIF:_ihm_dataset_list.data_type		skos:relatedMatch	http://w3id.org/lambda/									
 lambda:total_dose	experimentRun__total_dose	skos:exactMatch		mmCIF:_em_image_recording.avg_electron_dose_per_image		skos:exactMatch	http://w3id.org/lambda/									
 lambda:total_rotation	experimentRun__total_rotation	skos:exactMatch		nsls2:Total_rotation_deg		skos:exactMatch	http://w3id.org/lambda/									
 lambda:total_rotation	experimentRun__total_rotation	skos:exactMatch		imgCIF:_diffrn_scan_axis.angle_range		skos:exactMatch	http://w3id.org/lambda/									
@@ -213,6 +223,7 @@ lambda:r_pim	qualityMetrics__r_pim	skos:exactMatch		mmCIF:_reflns.pdbx_Rpim_I_al
 lambda:r_work	qualityMetrics__r_work	skos:exactMatch		mmCIF:_refine.ls_R_factor_R_work		skos:exactMatch	http://w3id.org/lambda/									
 lambda:ramachandran_favored_percent	qualityMetrics__ramachandran_favored_percent	skos:exactMatch		mmCIF:_pdbx_struct_quality.ramachandran_favored		skos:exactMatch	http://w3id.org/lambda/									
 lambda:ramachandran_outliers_percent	qualityMetrics__ramachandran_outliers_percent	skos:exactMatch		mmCIF:_pdbx_struct_quality.ramachandran_outliers		skos:exactMatch	http://w3id.org/lambda/									
+lambda:rg	qualityMetrics__rg	skos:closeMatch		IHMCIF:_ihm_sas_restraint.radius_of_gyration		skos:closeMatch	http://w3id.org/lambda/									
 lambda:space_group	qualityMetrics__space_group	skos:exactMatch		mmCIF:_symmetry.space_group_name_H-M		skos:exactMatch	http://w3id.org/lambda/									
 lambda:unit_cell_a	qualityMetrics__unit_cell_a	skos:exactMatch		mmCIF:_cell.length_a		skos:exactMatch	http://w3id.org/lambda/									
 lambda:unit_cell_alpha	qualityMetrics__unit_cell_alpha	skos:exactMatch		mmCIF:_cell.angle_alpha		skos:exactMatch	http://w3id.org/lambda/									
@@ -236,6 +247,9 @@ lambda:completeness_percent	workflowRun__completeness_percent	skos:exactMatch		m
 lambda:completeness_percent	workflowRun__completeness_percent	skos:exactMatch		ispyb:AutoProcScalingStatistics.completeness		skos:exactMatch	http://w3id.org/lambda/									
 lambda:n_total_observations	workflowRun__n_total_observations	skos:exactMatch		mmCIF:_reflns.number_all		skos:exactMatch	http://w3id.org/lambda/									
 lambda:n_total_unique	workflowRun__n_total_unique	skos:exactMatch		mmCIF:_reflns.number_obs		skos:exactMatch	http://w3id.org/lambda/									
+lambda:parameters_file_path	workflowRun__parameters_file_path	skos:relatedMatch		IHMCIF:_ihm_modeling_protocol_details.script_file_id		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:parameters_file_path	workflowRun__parameters_file_path	skos:relatedMatch		IHMCIF:_ihm_external_files.file_path		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:processing_parameters	workflowRun__processing_parameters	skos:relatedMatch		IHMCIF:_ihm_modeling_protocol_details.description		skos:relatedMatch	http://w3id.org/lambda/									
 lambda:ramachandran_favored	workflowRun__ramachandran_favored	skos:exactMatch		nsls2:Ramachandran_Favored		skos:exactMatch	http://w3id.org/lambda/									
 lambda:ramachandran_favored	workflowRun__ramachandran_favored	skos:exactMatch		mmCIF:_pdbx_struct_quality.ramachandran_favored		skos:exactMatch	http://w3id.org/lambda/									
 lambda:ramachandran_outliers	workflowRun__ramachandran_outliers	skos:exactMatch		nsls2:Ramachandran_Outliers		skos:exactMatch	http://w3id.org/lambda/									
@@ -252,6 +266,7 @@ lambda:rmsd_angles	workflowRun__rmsd_angles	skos:exactMatch		mmCIF:_refine.pdbx_
 lambda:rmsd_bonds	workflowRun__rmsd_bonds	skos:exactMatch		nsls2:RMSD_bonds		skos:exactMatch	http://w3id.org/lambda/									
 lambda:rmsd_bonds	workflowRun__rmsd_bonds	skos:exactMatch		mmCIF:_refine.pdbx_ls_sigma_F		skos:exactMatch	http://w3id.org/lambda/									
 lambda:rwork	workflowRun__rwork	skos:exactMatch		mmCIF:_refine.ls_R_factor_R_work		skos:exactMatch	http://w3id.org/lambda/									
+lambda:software_name	workflowRun__software_name	skos:relatedMatch		IHMCIF:_ihm_modeling_protocol_details.software_id		skos:relatedMatch	http://w3id.org/lambda/									
 lambda:space_group	workflowRun__space_group	skos:exactMatch		nsls2:Space_Group		skos:exactMatch	http://w3id.org/lambda/									
 lambda:space_group	workflowRun__space_group	skos:exactMatch		mmCIF:_symmetry.space_group_name_H-M		skos:exactMatch	http://w3id.org/lambda/									
 lambda:space_group	workflowRun__space_group	skos:exactMatch		ispyb:AutoProcScaling.spaceGroup		skos:exactMatch	http://w3id.org/lambda/									
@@ -269,6 +284,7 @@ lambda:unit_cell_gamma	workflowRun__unit_cell_gamma	skos:exactMatch		nsls2:Unit_
 lambda:unit_cell_gamma	workflowRun__unit_cell_gamma	skos:exactMatch		mmCIF:_cell.angle_gamma		skos:exactMatch	http://w3id.org/lambda/									
 lambda:wilson_b_factor	workflowRun__wilson_b_factor	skos:exactMatch		nsls2:Wilson_B		skos:exactMatch	http://w3id.org/lambda/									
 lambda:wilson_b_factor	workflowRun__wilson_b_factor	skos:exactMatch		mmCIF:_reflns.B_iso_Wilson_estimate		skos:exactMatch	http://w3id.org/lambda/									
+lambda:workflow_type	workflowRun__workflow_type	skos:relatedMatch		IHMCIF:_ihm_modeling_protocol_details.step_method		skos:relatedMatch	http://w3id.org/lambda/									
 lambda:detector_manufacturer	xRayInstrument__detector_manufacturer	skos:exactMatch		mmCIF:_diffrn_detector.detector		skos:exactMatch	http://w3id.org/lambda/									
 lambda:detector_model	xRayInstrument__detector_model	skos:exactMatch		mmCIF:_diffrn_detector.pdbx_detector_model		skos:exactMatch	http://w3id.org/lambda/									
 lambda:detector_technology	xRayInstrument__detector_technology	skos:exactMatch		nsls2:Detector		skos:exactMatch	http://w3id.org/lambda/									
@@ -282,3 +298,36 @@ lambda:loop_size	xRayPreparation__loop_size	skos:exactMatch		nsls2:Loop_Size		sk
 lambda:mounting_method	xRayPreparation__mounting_method	skos:exactMatch		nsls2:Mount_Type		skos:exactMatch	http://w3id.org/lambda/									
 lambda:mounting_temperature	xRayPreparation__mounting_temperature	skos:exactMatch		nsls2:Temperature		skos:exactMatch	http://w3id.org/lambda/									
 lambda:temperature_c	xRayPreparation__temperature_c	skos:exactMatch		mmCIF:_exptl_crystal_grow.temp		skos:exactMatch	http://w3id.org/lambda/									
+lambda:DataFile	DataFile	skos:relatedMatch		IHMCIF:_ihm_dataset_list		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:DataFile	DataFile	skos:relatedMatch		IHMCIF:_ihm_dataset_external_reference		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:DataFile	DataFile	skos:closeMatch		IHMCIF:_ihm_external_files		skos:closeMatch	http://w3id.org/lambda/									
+lambda:Dataset	Dataset	skos:relatedMatch		IHMCIF:_ihm_entry_collection		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:Dataset	Dataset	skos:relatedMatch		IHMCIF:_ihm_dataset_group		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:ExperimentRun	ExperimentRun	skos:relatedMatch		IHMCIF:_ihm_dataset_list		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:ExperimentRun	ExperimentRun	skos:relatedMatch		IHMCIF:_ihm_dataset_group		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:Image3D	Image3D	skos:relatedMatch		IHMCIF:_ihm_3dem_restraint		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:Image3D	Image3D	skos:relatedMatch		IHMCIF:_ihm_localization_density_files		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:MolecularComposition	MolecularComposition	skos:relatedMatch		IHMCIF:_ihm_entity_poly_segment		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:MolecularComposition	MolecularComposition	skos:relatedMatch		IHMCIF:_ihm_struct_assembly_details		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:QualityMetrics	QualityMetrics	skos:relatedMatch		IHMCIF:_ihm_ensemble_info		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:QualityMetrics	QualityMetrics	skos:relatedMatch		IHMCIF:_ihm_sas_restraint		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:QualityMetrics	QualityMetrics	skos:relatedMatch		IHMCIF:_ihm_3dem_restraint		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:RefinementParameters	RefinementParameters	skos:relatedMatch		IHMCIF:_ihm_model_representation		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:RefinementParameters	RefinementParameters	skos:relatedMatch		IHMCIF:_ihm_model_representation_details		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:RefinementParameters	RefinementParameters	skos:relatedMatch		IHMCIF:_ihm_model_list		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:RefinementParameters	RefinementParameters	skos:relatedMatch		IHMCIF:_ihm_ensemble_info		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:Sample	Sample	skos:relatedMatch		IHMCIF:_ihm_struct_assembly		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:Sample	Sample	skos:relatedMatch		IHMCIF:_ihm_struct_assembly_details		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:Sample	Sample	skos:relatedMatch		IHMCIF:_ihm_entity_poly_segment		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:SAXSPreparation	SAXSPreparation	skos:relatedMatch		IHMCIF:_ihm_sas_restraint		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:Study	Study	skos:relatedMatch		IHMCIF:_ihm_entry_collection		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:Study	Study	skos:relatedMatch		IHMCIF:_ihm_entry_collection_mapping		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:WorkflowExperimentAssociation	WorkflowExperimentAssociation	skos:relatedMatch		IHMCIF:_ihm_modeling_protocol_details		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:WorkflowInputAssociation	WorkflowInputAssociation	skos:relatedMatch		IHMCIF:_ihm_dataset_group_link		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:WorkflowInputAssociation	WorkflowInputAssociation	skos:relatedMatch		IHMCIF:_ihm_dataset_list		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:WorkflowOutputAssociation	WorkflowOutputAssociation	skos:relatedMatch		IHMCIF:_ihm_model_group_link		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:WorkflowOutputAssociation	WorkflowOutputAssociation	skos:relatedMatch		IHMCIF:_ihm_model_list		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:WorkflowOutputAssociation	WorkflowOutputAssociation	skos:relatedMatch		IHMCIF:_ihm_ensemble_info		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:WorkflowRun	WorkflowRun	skos:relatedMatch		IHMCIF:_ihm_modeling_post_process		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:WorkflowRun	WorkflowRun	skos:closeMatch		IHMCIF:_ihm_modeling_protocol		skos:closeMatch	http://w3id.org/lambda/									
+lambda:WorkflowRun	WorkflowRun	skos:closeMatch		IHMCIF:_ihm_modeling_protocol_details		skos:closeMatch	http://w3id.org/lambda/									

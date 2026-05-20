@@ -18,6 +18,12 @@ Comprehensive comparison with mmCIF (macromolecular Crystallographic Information
 - Workflow integration strategies
 - Recommendations for using both standards together
 
+### [IHMCIF Alignment](ihmcif-alignment.md)
+Focused alignment with the IHMCIF/PDB-IHM extension for integrative and hybrid structural models. This document covers:
+- Why Lambda should align to IHMCIF rather than import it
+- Conservative mapping strategy for existing Lambda concepts
+- Gaps to track for future PDB-IHM export support
+
 ### [EMDB Alignment](emdb.md)
 Analysis of integration with the Electron Microscopy Data Bank for 3D reconstructions. This document explores:
 - Mapping between EMDB XML schema and lambda-ber-schema
@@ -59,6 +65,7 @@ All analyzed standards are complementary to lambda-ber-schema rather than compet
 
 - **NeXus** excels at facility-level raw data capture with HDF5 storage
 - **mmCIF** is the definitive standard for atomic structure representation and PDB deposition
+- **IHMCIF** captures deposition-grade integrative and hybrid model semantics that Lambda should map to, not absorb wholesale
 - **OneDep** is the wwPDB deposition portal where metadata from lambda-ber-schema ultimately feeds
 - **EMDB** provides the archive for 3D EM reconstructions with comprehensive validation
 - **EMPIAR** manages petabyte-scale raw microscopy data with expanding modality support

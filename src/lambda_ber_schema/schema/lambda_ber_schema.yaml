@@ -124,6 +124,7 @@ prefixes:
   nsls2: https://github.com/NSLS2/BER-LAMBDA/
   imgCIF: https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#
   mmCIF: http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/
+  IHMCIF: https://mmcif.wwpdb.org/dictionaries/mmcif_ihm_ext.dic/Items/
   ROR: https://ror.org/
   wikidata: http://www.wikidata.org/entity/
   CHMO: http://purl.obolibrary.org/obo/CHMO_
@@ -176,6 +177,9 @@ classes:
     description: >-
       Root container holding flat entity collections and association tables.
       Follows relational database design patterns for structural biology data.
+    related_mappings:
+      - IHMCIF:_ihm_entry_collection
+      - IHMCIF:_ihm_dataset_group
     attributes:
       keywords:
         description: "Keywords or tags describing the dataset for search and categorization"
@@ -276,6 +280,9 @@ classes:
     description: >-
       A logical grouping of related experiments investigating a research question.
       In the relational model, Study is lightweight - all relationships are via association tables.
+    related_mappings:
+      - IHMCIF:_ihm_entry_collection
+      - IHMCIF:_ihm_entry_collection_mapping
     attributes:
       keywords:
         description: "Keywords or tags describing the study for search and categorization"
@@ -286,6 +293,10 @@ classes:
   Sample:
     is_a: NamedThing
     description: "A biological sample used in structural biology experiments"
+    related_mappings:
+      - IHMCIF:_ihm_struct_assembly
+      - IHMCIF:_ihm_struct_assembly_details
+      - IHMCIF:_ihm_entity_poly_segment
     attributes:
       sample_code:
         description: "Human-friendly laboratory identifier or facility code for the sample (e.g., 'ALS-12.3.1-SAMPLE-001', 'LAB-PROT-2024-01'). Used for local reference and tracking within laboratory workflows."
@@ -1058,6 +1069,9 @@ classes:
   ExperimentRun:
     is_a: NamedThing
     description: "An experimental data collection session"
+    related_mappings:
+      - IHMCIF:_ihm_dataset_list
+      - IHMCIF:_ihm_dataset_group
     attributes:
       experiment_code:
         description: "Human-friendly laboratory or facility identifier for the experiment (e.g., 'SIBYLS-2024-02-01-hetBGL', 'CRYOEM-RUN-240815-001'). Used for local tracking and cross-referencing within laboratory systems."
@@ -1073,6 +1087,8 @@ classes:
         description: "Technique used for data collection"
         range: TechniqueEnum
         required: true
+        related_mappings:
+          - IHMCIF:_ihm_dataset_list.data_type
       experimental_method:
         description: "Specific experimental method for structure determination (particularly for diffraction techniques)"
         range: ExperimentalMethodEnum
@@ -1412,6 +1428,11 @@ classes:
   WorkflowRun:
     is_a: NamedThing
     description: "A computational processing workflow execution"
+    close_mappings:
+      - IHMCIF:_ihm_modeling_protocol
+      - IHMCIF:_ihm_modeling_protocol_details
+    related_mappings:
+      - IHMCIF:_ihm_modeling_post_process
     attributes:
       workflow_code:
         description: "Human-friendly identifier for the computational workflow run (e.g., 'MOTION-CORR-RUN-001', 'RELION-REFINE-240815'). Used for tracking processing pipelines and computational provenance."
@@ -1420,6 +1441,8 @@ classes:
         description: "Type of processing workflow"
         range: WorkflowTypeEnum
         required: true
+        related_mappings:
+          - IHMCIF:_ihm_modeling_protocol_details.step_method
       # Relationships removed - use WorkflowExperimentAssociation
       processing_level:
         description: "Processing level (0=raw, 1=corrected, 2=derived, 3=model)"
@@ -1428,14 +1451,21 @@ classes:
       software_name:
         description: "Software used for processing"
         required: true
+        related_mappings:
+          - IHMCIF:_ihm_modeling_protocol_details.software_id
       software_version:
         description: "Software version"
       additional_software:
         description: "Additional software used in pipeline"
       processing_parameters:
         description: "Parameters used in processing"
+        related_mappings:
+          - IHMCIF:_ihm_modeling_protocol_details.description
       parameters_file_path:
         description: "Path to parameters file or text of key parameters"
+        related_mappings:
+          - IHMCIF:_ihm_modeling_protocol_details.script_file_id
+          - IHMCIF:_ihm_external_files.file_path
       # Crystallographic processing modules
       indexer_module:
         description: "Indexing module used (e.g., MOSFLM, XDS)"
@@ -1704,20 +1734,31 @@ classes:
   DataFile:
     is_a: NamedThing
     description: "A data file generated or used in the study"
+    close_mappings:
+      - IHMCIF:_ihm_external_files
+    related_mappings:
+      - IHMCIF:_ihm_dataset_list
+      - IHMCIF:_ihm_dataset_external_reference
     attributes:
       file_name:
         description: "Name of the file"
         required: true
       file_path:
         description: "Path to the file"
+        close_mappings:
+          - IHMCIF:_ihm_external_files.file_path
       file_format:
         description: "File format"
         range: FileFormatEnum
         required: true
+        close_mappings:
+          - IHMCIF:_ihm_external_files.file_format
       file_size_bytes:
         description: "File size in bytes"
         range: QuantityValue
         inlined: true
+        close_mappings:
+          - IHMCIF:_ihm_external_files.file_size_bytes
       checksum:
         description: "SHA-256 checksum for data integrity"
       creation_date:
@@ -1726,16 +1767,25 @@ classes:
       data_type:
         description: "Type of data in the file"
         range: DataTypeEnum
+        close_mappings:
+          - IHMCIF:_ihm_dataset_list.data_type
       # Additional PNNL file metadata
       storage_uri:
         description: "Storage URI (S3, Globus, etc.)"
         range: string
+        related_mappings:
+          - IHMCIF:_ihm_external_reference_info.associated_url
+          - IHMCIF:_ihm_external_files.file_path
       related_entity:
         description: "ID of the entity that owns this file"
         range: string
+        related_mappings:
+          - IHMCIF:_ihm_dataset_list.id
       file_role:
         description: "Role of the file (raw, intermediate, final, diagnostic, metadata)"
         range: string
+        related_mappings:
+          - IHMCIF:_ihm_external_files.content_type
 
   Image:
     is_a: NamedThing
@@ -1784,6 +1834,9 @@ classes:
   Image3D:
     is_a: Image
     description: "A 3D volume or tomogram"
+    related_mappings:
+      - IHMCIF:_ihm_3dem_restraint
+      - IHMCIF:_ihm_localization_density_files
     attributes:
       dimensions_z:
         description: "Image depth, typically specified in pixels or slices. Data providers may specify alternative units by including the unit in the QuantityValue."
@@ -2054,6 +2107,9 @@ classes:
   MolecularComposition:
     is_a: AttributeGroup
     description: "Molecular composition of a sample"
+    related_mappings:
+      - IHMCIF:_ihm_entity_poly_segment
+      - IHMCIF:_ihm_struct_assembly_details
     attributes:
       sequences:
         description: "Amino acid or nucleotide sequences"
@@ -2364,6 +2420,8 @@ classes:
   SAXSPreparation:
     is_a: TechniqueSpecificPreparation
     description: "SAXS/WAXS specific preparation"
+    related_mappings:
+      - IHMCIF:_ihm_sas_restraint
     attributes:
       concentration_series:
         description: "Concentration values for series measurements"
@@ -2579,6 +2637,10 @@ classes:
   QualityMetrics:
     is_a: AttributeGroup
     description: "Quality metrics for experiments"
+    related_mappings:
+      - IHMCIF:_ihm_ensemble_info
+      - IHMCIF:_ihm_sas_restraint
+      - IHMCIF:_ihm_3dem_restraint
     attributes:
       # General metrics
       resolution:
@@ -2743,6 +2805,8 @@ classes:
         description: "Radius of gyration, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
+        close_mappings:
+          - IHMCIF:_ihm_sas_restraint.radius_of_gyration
       # Legacy/deprecated
       r_factor:
         description: "R-factor for crystallography (deprecated, use r_work)"
@@ -2871,6 +2935,11 @@ classes:
   RefinementParameters:
     is_a: AttributeGroup
     description: "Parameters specific to 3D refinement workflows"
+    related_mappings:
+      - IHMCIF:_ihm_model_representation
+      - IHMCIF:_ihm_model_representation_details
+      - IHMCIF:_ihm_model_list
+      - IHMCIF:_ihm_ensemble_info
     attributes:
       symmetry:
         description: "Symmetry applied (C1, Cn, Dn, T, O, I)"
@@ -3002,6 +3071,8 @@ classes:
 
   WorkflowExperimentAssociation:
     description: "M:N link between WorkflowRun and source ExperimentRuns"
+    related_mappings:
+      - IHMCIF:_ihm_modeling_protocol_details
     attributes:
       workflow_id:
         description: "Reference to the workflow run"
@@ -3014,6 +3085,9 @@ classes:
 
   WorkflowInputAssociation:
     description: "Links input DataFiles to WorkflowRun"
+    related_mappings:
+      - IHMCIF:_ihm_dataset_group_link
+      - IHMCIF:_ihm_dataset_list
     attributes:
       workflow_id:
         description: "Reference to the workflow run"
@@ -3029,6 +3103,10 @@ classes:
 
   WorkflowOutputAssociation:
     description: "Links output DataFiles to WorkflowRun"
+    related_mappings:
+      - IHMCIF:_ihm_model_group_link
+      - IHMCIF:_ihm_model_list
+      - IHMCIF:_ihm_ensemble_info
     attributes:
       workflow_id:
         description: "Reference to the workflow run"
