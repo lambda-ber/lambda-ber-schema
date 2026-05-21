@@ -13,6 +13,11 @@ from urllib.parse import urlparse
 import requests
 from bs4 import BeautifulSoup
 
+try:
+    import cloudscraper
+except ImportError:  # pragma: no cover - optional dependency for Cloudflare sites
+    cloudscraper = None
+
 from lambda_ber_schema.loaders.base import BaseLoader, LoaderResult
 from lambda_ber_schema.loaders.cache import ResponseCache
 from lambda_ber_schema.pydantic import (
@@ -54,6 +59,12 @@ class SimpleScatteringLoader(BaseLoader):
 
     source_name = "simplescattering"
     base_url = "https://www.simplescattering.com"
+
+    _CLOUDFLARE_MARKERS = (
+        "Just a moment...",
+        "cf-browser-verification",
+        "cloudflare",
+    )
 
     def __init__(self, cache: ResponseCache | None = None):
         """
@@ -173,8 +184,7 @@ class SimpleScatteringLoader(BaseLoader):
 
         def fetch() -> dict[str, Any]:
             url = f"{self.base_url}/open_datasets"
-            response = requests.get(url, timeout=30)
-            response.raise_for_status()
+            response = self._get_with_cloudflare_retry(url)
             return {"html": response.text}
 
         result = self.cache.get_or_fetch(cache_key, fetch)
@@ -185,7 +195,7 @@ class SimpleScatteringLoader(BaseLoader):
         codes = []
 
         for link in soup.find_all("a", href=True):
-            href = link["href"]
+            href = str(link["href"])
             match = re.match(r"/open_dataset/([a-z0-9]+)", href)
             if match:
                 codes.append(match.group(1))
@@ -204,12 +214,32 @@ class SimpleScatteringLoader(BaseLoader):
 
         def fetch() -> dict[str, Any]:
             url = f"{self.base_url}/open_dataset/{dataset_code}"
-            response = requests.get(url, timeout=30)
-            response.raise_for_status()
+            response = self._get_with_cloudflare_retry(url)
             return {"html": response.text}
 
         result = self.cache.get_or_fetch(cache_key, fetch)
         return result["html"]
+
+    def _get_with_cloudflare_retry(self, url: str) -> requests.Response:
+        """Fetch a page, retrying with cloudscraper when Cloudflare blocks requests."""
+        response = requests.get(url, timeout=30)
+        if self._is_cloudflare_block(response):
+            if cloudscraper is None:
+                response.raise_for_status()
+            assert cloudscraper is not None
+            scraper = cloudscraper.create_scraper()
+            response = scraper.get(url, timeout=30)
+
+        response.raise_for_status()
+        return response
+
+    def _is_cloudflare_block(self, response: requests.Response) -> bool:
+        """Return true when the response looks like a Cloudflare challenge page."""
+        if response.status_code != 403:
+            return False
+
+        body = response.text.lower()
+        return any(marker.lower() in body for marker in self._CLOUDFLARE_MARKERS)
 
     def _extract_metadata(
         self, soup: BeautifulSoup, warnings: list[str]
@@ -362,7 +392,7 @@ class SimpleScatteringLoader(BaseLoader):
 
         # Extract UniProt IDs from links
         for link in soup.find_all("a", href=True):
-            href = link["href"]
+            href = str(link["href"])
 
             # UniProt links
             if "uniprot.org" in href:
@@ -405,7 +435,7 @@ class SimpleScatteringLoader(BaseLoader):
 
         # Look for PDB IDs in data files (e.g., 8vc5.pdb)
         for link in soup.find_all("a", href=True):
-            href = link["href"]
+            href = str(link["href"])
             if href.endswith(".pdb"):
                 match = re.search(r"/([0-9][A-Za-z0-9]{3})\.pdb", href)
                 if match:
@@ -472,7 +502,7 @@ class SimpleScatteringLoader(BaseLoader):
                 )
             buffer_composition = BufferComposition(
                 ph=ph_value,
-                components=[metadata.get("buffer_text")]
+                components=[str(metadata["buffer_text"])]
                 if metadata.get("buffer_text")
                 else None,
             )
@@ -535,7 +565,7 @@ class SimpleScatteringLoader(BaseLoader):
 
         # Find download links (Rails Active Storage blobs)
         for link in soup.find_all("a", href=True):
-            href = link["href"]
+            href = str(link["href"])
             if "/rails/active_storage/" in href or href.endswith(
                 (".dat", ".zip", ".pdb", ".cif")
             ):
