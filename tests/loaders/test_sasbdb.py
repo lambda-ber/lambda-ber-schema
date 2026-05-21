@@ -140,6 +140,17 @@ class TestSASBDBLoader:
         assert intensities.file_name == "SASDA52.dat"
         assert intensities.file_format == "ascii"
 
+    def test_fit_data_files_preserve_source_extension(self, loader):
+        """Test fit DataFiles use the basename from the source URL."""
+        result = loader.load("SASDA52")
+        files = result.dataset.data_files
+
+        fit2 = next((f for f in files if f.id == "sasbdb:SASDA52/file/fit2"), None)
+
+        assert fit2 is not None
+        assert fit2.file_name == "SASDA52_fit2.fir"
+        assert fit2.file_path.endswith("SASDA52_fit2.fir")
+
     def test_association_tables_created(self, loader):
         """Test association tables link entities."""
         result = loader.load("SASDA52")
