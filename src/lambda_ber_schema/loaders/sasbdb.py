@@ -5,6 +5,7 @@ API Documentation: https://www.sasbdb.org/rest-api/docs/
 """
 
 from typing import Any
+from urllib.parse import urlparse
 
 import requests
 
@@ -476,12 +477,14 @@ class SASBDBLoader(BaseLoader):
         # Fit files
         for i, fit in enumerate(raw.get("fits", []), 1):
             if fit.get("fit_data"):
+                fit_url = fit["fit_data"]
+                fit_file_name = urlparse(fit_url).path.rsplit("/", 1)[-1]
                 files.append(
                     DataFile(
                         id=f"sasbdb:{entry_code}/file/fit{i}",
-                        file_name=f"{entry_code}_fit{i}.fit",
+                        file_name=fit_file_name,
                         file_format=FileFormatEnum.ascii,
-                        file_path=fit["fit_data"],
+                        file_path=fit_url,
                         description=f"Fit {i} data",
                     )
                 )
