@@ -3,6 +3,7 @@
 import builtins
 
 import pytest
+import requests
 
 from lambda_ber_schema.loaders.simplescattering import SimpleScatteringLoader
 from lambda_ber_schema.loaders.cache import ResponseCache
@@ -169,6 +170,39 @@ class TestSimpleScatteringLoader:
         assert first == ["abc123", "def456"]
         assert second == ["abc123", "def456"]
         assert get_mock.call_count == 1
+
+    def test_fetch_dataset_page_retries_cloudflare_block(self, mocker):
+        """Test Cloudflare 403 pages are retried with cloudscraper."""
+        blocked = mocker.Mock()
+        blocked.status_code = 403
+        blocked.text = "<html><title>Just a moment...</title><body>cloudflare</body></html>"
+        blocked.raise_for_status.side_effect = requests.HTTPError("blocked")
+
+        success = mocker.Mock()
+        success.status_code = 200
+        success.text = "<html>dataset</html>"
+        success.raise_for_status = mocker.Mock()
+
+        scraper = mocker.Mock()
+        scraper.get.return_value = success
+
+        get_mock = mocker.patch(
+            "lambda_ber_schema.loaders.simplescattering.requests.get",
+            return_value=blocked,
+        )
+        create_scraper = mocker.patch(
+            "lambda_ber_schema.loaders.simplescattering.cloudscraper.create_scraper",
+            return_value=scraper,
+        )
+
+        loader = SimpleScatteringLoader()
+
+        assert loader._fetch_dataset_page("xsbhevph") == "<html>dataset</html>"
+        assert get_mock.call_count == 1
+        create_scraper.assert_called_once()
+        scraper.get.assert_called_once_with(
+            "https://www.simplescattering.com/open_dataset/xsbhevph", timeout=30
+        )
 
     def test_extract_values_handles_malformed_number(self, mocker):
         """Test malformed numeric values add warnings instead of raising."""
