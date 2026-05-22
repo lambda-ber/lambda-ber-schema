@@ -807,6 +807,29 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="lambda-ro-crate-vision.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LAMBDA RO-Crate Vision
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -851,6 +874,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#lambda-ro-crate-visionhtml" class="md-nav__link">
+    <span class="md-ellipsis">
+      lambda-ro-crate-vision.html
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#9b7f-examplemd" class="md-nav__link">
     <span class="md-ellipsis">
       9B7F-example.md
@@ -875,9 +907,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#using-marp-recommended" class="md-nav__link">
+  <a href="#standalone-html" class="md-nav__link">
     <span class="md-ellipsis">
-      Using Marp (Recommended)
+      Standalone HTML
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-marp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using Marp
     </span>
   </a>
   
@@ -1004,8 +1045,26 @@
 
 
 <h1 id="presentation-slides">Presentation Slides</h1>
-<p>This directory contains presentation slides in Markdown format demonstrating lambda-ber-schema capabilities and use cases.</p>
+<p>This directory contains presentation slides and standalone HTML decks demonstrating lambda-ber-schema capabilities and use cases.</p>
 <h2 id="available-presentations">Available Presentations</h2>
+<h3 id="lambda-ro-crate-visionhtml">lambda-ro-crate-vision.html</h3>
+<p><strong>Title</strong>: LAMBDA RO-Crates: A Federation Contract for Structural Biology Data</p>
+<p><strong>Description</strong>: Vision deck outlining how LAMBDA can use RO-Crate as a cross-facility semantic contract while preserving facility storage autonomy. It frames <code>lambda-ber-schema</code> as a structured relational/domain projection, recommends a small technique-neutral LAMBDA Core profile, and proposes macromolecular crystallography (MX) as the first technique extension.</p>
+<p><strong>Primary Artifact</strong>: <a href="lambda-ro-crate-vision.html"><code>lambda-ro-crate-vision.html</code></a> is a hand-authored standalone HTML deck with inline SVG figures. Publish this file through MkDocs; any PDF/PPTX exports should be regenerated from the HTML deck if needed.</p>
+<p><strong>Topics Covered</strong>:
+- RO-Crate background and bioimaging precedent
+- RO-Crate as the canonical graph contract
+- LAMBDA Core, Federation Crate, and Canonical Projection layers
+- Relationship between RO-Crate and <code>lambda-ber-schema</code>
+- Concrete RO-Crate JSON-LD examples for MX data and workflow provenance
+- Schema-slot overlays showing how JSON-LD fields project to LinkML classes and slots
+- Sample metadata crates and sample-only metadata handoff
+- Profile strategy: core profile plus technique extensions where needed
+- MX profile as an initial pilot
+- Facility-to-BRIDGE/lakehouse ingest and retrieval use case
+- Workflow provenance, file integrity, validation, and projection targets</p>
+<p><strong>Target Audience</strong>: LAMBDA collaborators, facility data architects, beamline scientists, metadata modelers, and pipeline developers</p>
+<p><strong>Duration</strong>: ~40-50 minutes with discussion</p>
 <h3 id="9b7f-examplemd">9B7F-example.md</h3>
 <p><strong>Title</strong>: S-SAD Structure of Lysozyme: NSLS2-BER-LAMBDA Integration (PDB 9B7F)</p>
 <p><strong>Description</strong>: Comprehensive presentation demonstrating the complete crystallographic workflow for hen egg white lysozyme structure determination using sulfur-SAD phasing. Shows how lambda-ber-schema captures all metadata from crystallization through structure deposition.</p>
@@ -1019,7 +1078,12 @@
 <p><strong>Target Audience</strong>: Structural biologists, beamline scientists, database curators, computational scientists</p>
 <p><strong>Duration</strong>: ~45 minutes with Q&amp;A</p>
 <h2 id="viewing-the-slides">Viewing the Slides</h2>
-<h3 id="using-marp-recommended">Using Marp (Recommended)</h3>
+<h3 id="standalone-html">Standalone HTML</h3>
+<p>The RO-Crate vision deck is designed directly in HTML:</p>
+<pre><code class="language-bash">open lambda-ro-crate-vision.html
+</code></pre>
+<p>Use arrow keys, Page Up/Page Down, Home/End, or scrolling to navigate.</p>
+<h3 id="using-marp">Using Marp</h3>
 <p>Install <a href="https://github.com/marp-team/marp-cli">Marp CLI</a>:</p>
 <pre><code class="language-bash">npm install -g @marp-team/marp-cli
 </code></pre>
