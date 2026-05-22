@@ -43,5 +43,6 @@ nav:
   - Slides:
     - Overview: slides/overview.html
     - Technical Deep Dive: slides/technical-overview.html
+    - LAMBDA RO-Crate Vision: slides/lambda-ro-crate-vision.html
 site_url: https://lambda-ber.github.io/lambda-ber-schema
 repo_url: https://github.com/lambda-ber/lambda-ber-schema

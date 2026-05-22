@@ -1,8 +1,33 @@
 # Presentation Slides
 
-This directory contains presentation slides in Markdown format demonstrating lambda-ber-schema capabilities and use cases.
+This directory contains presentation slides and standalone HTML decks demonstrating lambda-ber-schema capabilities and use cases.
 
 ## Available Presentations
+
+### lambda-ro-crate-vision.html
+
+**Title**: LAMBDA RO-Crates: A Federation Contract for Structural Biology Data
+
+**Description**: Vision deck outlining how LAMBDA can use RO-Crate as a cross-facility semantic contract while preserving facility storage autonomy. It frames `lambda-ber-schema` as a structured relational/domain projection, recommends a small technique-neutral LAMBDA Core profile, and proposes macromolecular crystallography (MX) as the first technique extension.
+
+**Primary Artifact**: [`lambda-ro-crate-vision.html`](lambda-ro-crate-vision.html) is a hand-authored standalone HTML deck with inline SVG figures. Publish this file through MkDocs; any PDF/PPTX exports should be regenerated from the HTML deck if needed.
+
+**Topics Covered**:
+- RO-Crate background and bioimaging precedent
+- RO-Crate as the canonical graph contract
+- LAMBDA Core, Federation Crate, and Canonical Projection layers
+- Relationship between RO-Crate and `lambda-ber-schema`
+- Concrete RO-Crate JSON-LD examples for MX data and workflow provenance
+- Schema-slot overlays showing how JSON-LD fields project to LinkML classes and slots
+- Sample metadata crates and sample-only metadata handoff
+- Profile strategy: core profile plus technique extensions where needed
+- MX profile as an initial pilot
+- Facility-to-BRIDGE/lakehouse ingest and retrieval use case
+- Workflow provenance, file integrity, validation, and projection targets
+
+**Target Audience**: LAMBDA collaborators, facility data architects, beamline scientists, metadata modelers, and pipeline developers
+
+**Duration**: ~40-50 minutes with discussion
 
 ### 9B7F-example.md
 
@@ -24,7 +49,16 @@ This directory contains presentation slides in Markdown format demonstrating lam
 
 ## Viewing the Slides
 
-### Using Marp (Recommended)
+### Standalone HTML
+
+The RO-Crate vision deck is designed directly in HTML:
+```bash
+open lambda-ro-crate-vision.html
+```
+
+Use arrow keys, Page Up/Page Down, Home/End, or scrolling to navigate.
+
+### Using Marp
 
 Install [Marp CLI](https://github.com/marp-team/marp-cli):
 ```bash
