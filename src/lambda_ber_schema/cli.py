@@ -531,6 +531,91 @@ def etl_list(
         typer.echo(f"  {code}")
 
 
+@etl_app.command("dump-simplescattering")
+def etl_dump_simplescattering(
+    output_dir: Annotated[
+        Path,
+        typer.Option("--output-dir", "-o",
+                     help="Directory to save output files"),
+    ],
+    format: Annotated[
+        str,
+        typer.Option("--format", "-f", help="Output format: yaml or json"),
+    ] = "yaml",
+    limit: Annotated[
+        int | None,
+        typer.Option("--limit", "-n",
+                     help="Maximum entries to load (default: all)"),
+    ] = None,
+    rate: Annotated[
+        float,
+        typer.Option("--rate", "-r",
+                     help="Requests per second (default: 2.0)"),
+    ] = 2.0,
+    workers: Annotated[
+        int,
+        typer.Option("--workers", "-w",
+                     help="Concurrent workers (default: 1)"),
+    ] = 1,
+    retry_failed: Annotated[
+        bool,
+        typer.Option("--retry-failed", help="Retry previously failed entries"),
+    ] = False,
+) -> None:
+    """
+    Dump all Simple Scattering datasets to a directory.
+
+    Creates one file per dataset in the output directory. Supports resume -
+    if interrupted, run again to continue from where it left off.
+
+    Examples:
+
+        # Load all Simple Scattering datasets
+        lambda-ber-schema etl dump-simplescattering --output-dir ./simplescattering_dump
+
+        # Load first 50 datasets for testing
+        lambda-ber-schema etl dump-simplescattering --output-dir ./ss_test --limit 50
+
+        # Resume after interruption
+        lambda-ber-schema etl dump-simplescattering --output-dir ./simplescattering_dump
+
+        # Retry failed datasets
+        lambda-ber-schema etl dump-simplescattering --output-dir ./simplescattering_dump --retry-failed
+    """
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s [%(levelname)s] %(message)s",
+        handlers=[
+            logging.StreamHandler(),
+            logging.FileHandler(output_dir / "batch.log"),
+        ],
+    )
+
+    loader = SimpleScatteringLoader()
+    batch = BatchLoader(
+        loader=loader,
+        output_dir=output_dir,
+        requests_per_second=rate,
+        max_workers=workers,
+    )
+
+    if retry_failed:
+        typer.echo("Retrying failed entries...", err=True)
+        result = batch.retry_failed(format=format)
+        typer.echo(f"Retry complete: {result}", err=True)
+    else:
+        typer.echo(
+            f"Starting Simple Scattering dump to {output_dir}...", err=True)
+        typer.echo(f"Rate limit: {rate} req/sec, Workers: {workers}", err=True)
+        if limit:
+            typer.echo(f"Limit: {limit} entries", err=True)
+
+        result = batch.load_all(format=format, limit=limit)
+        typer.echo(f"Complete: {result}", err=True)
+
+
 @etl_app.command("dump-pdb")
 def etl_dump_pdb(
     output_dir: Annotated[
