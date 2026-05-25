@@ -328,7 +328,7 @@
 <span class="kw">FROM</span>   workflow_run w
 <span class="kw">JOIN</span>   workflow_output_assoc o <span class="kw">USING</span> (workflow_id)
 <span class="kw">JOIN</span>   data_file d             <span class="kw">ON</span> d.id = o.data_file_id
-<span class="kw">WHERE</span>  w.workflow_type = <span class="s">'integrative_modeling'</span>;</pre>
+<span class="kw">WHERE</span>  w.software_name = <span class="s">'IMP'</span>;</pre>
       </div>
     </div>
     <p style="margin-top:20px;color:var(--muted)">

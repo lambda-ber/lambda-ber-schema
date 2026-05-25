@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Use Case 01 · Federated Data Pull — LAMBDA-BER</title>
+<style>
+  :root{
+    --bg:#05080f; --bg2:#080d17; --panel:#0e1626; --panel-2:#13203a;
+    --line:#1f2e48; --ink:#e8eef9; --muted:#90a2c2; --faint:#5b6e93;
+    --wire:#4d8cf5; --pointer:#3fcbb0; --bytes:#5c6a85; --warn:#e0a13c;
+    --code-bg:#04070d; --radius:14px;
+    --mono:"SFMono-Regular",ui-monospace,"JetBrains Mono",Menlo,Consolas,monospace;
+    --sans:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  }
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;
+    background:radial-gradient(1100px 700px at 85% -10%,rgba(77,140,245,.16),transparent 58%),
+      radial-gradient(820px 520px at -8% 10%,rgba(63,203,176,.10),transparent 55%),
+      linear-gradient(180deg,var(--bg),var(--bg2));}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  a{color:var(--wire);text-decoration:none}a:hover{text-decoration:underline}
+  header.hero{padding:84px 0 56px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+  header.hero::before{content:"";position:absolute;inset:0;z-index:0;
+    background-image:linear-gradient(90deg,rgba(77,140,245,.05) 1px,transparent 1px);background-size:34px 34px;
+    mask-image:radial-gradient(ellipse 75% 80% at 62% 0%,#000,transparent 76%);}
+  .hero .wrap{position:relative;z-index:1}
+  .kicker{display:inline-flex;align-items:center;gap:10px;font:600 12px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;
+    color:var(--wire);background:rgba(77,140,245,.08);border:1px solid rgba(77,140,245,.3);padding:8px 14px;border-radius:999px}
+  .kicker .num{color:var(--ink);opacity:.9}
+  h1{font-size:clamp(34px,5.4vw,58px);line-height:1.04;margin:22px 0 16px;letter-spacing:-.02em;font-weight:800}
+  h1 .grad{background:linear-gradient(100deg,var(--wire),var(--pointer));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lede{font-size:clamp(17px,2vw,20px);color:var(--muted);max-width:64ch;margin:0}
+  .meta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+  .chip{font:500 13px var(--mono);color:var(--muted);border:1px solid var(--line);background:var(--panel);padding:7px 12px;border-radius:8px}
+  .chip b{color:var(--ink);font-weight:600}
+  section{padding:56px 0;border-bottom:1px solid var(--line)}
+  .eyebrow{font:700 12px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--faint);margin:0 0 10px}
+  h2{font-size:clamp(24px,3vw,32px);margin:0 0 8px;letter-spacing:-.01em;font-weight:750}
+  h2 + p.sub{color:var(--muted);margin:0 0 28px;max-width:66ch}
+  p{margin:0 0 16px}
+  .diagram{background:var(--code-bg);border:1px solid var(--line);border-radius:var(--radius);padding:8px;overflow:hidden}
+  .diagram svg{display:block;width:100%;height:auto}
+  .filebar{font:600 12px var(--mono);color:var(--faint);padding:10px 16px;background:rgba(255,255,255,.02);border:1px solid var(--line);border-bottom:none;border-radius:var(--radius) var(--radius) 0 0;display:flex;align-items:center;gap:8px}
+  .filebar .glyph{color:var(--wire)}.filebar + pre{border-radius:0 0 var(--radius) var(--radius)}
+  pre{background:var(--code-bg);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;overflow-x:auto;font-family:var(--mono);font-size:13px;line-height:1.7;color:#cdd9ee;margin:0}
+  pre .c{color:#52628a}pre .k{color:var(--warn)}pre .s{color:var(--pointer)}pre .id{color:#a99cf2}pre .hl{color:var(--wire);font-weight:600}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+  .card .hd{padding:14px 18px;border-bottom:1px solid var(--line);font:700 13px var(--mono);color:var(--ink);display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.02)}
+  .dot{width:9px;height:9px;border-radius:50%;flex:0 0 auto}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  td,th{padding:10px 18px;text-align:left;border-bottom:1px solid rgba(31,46,72,.7)}
+  th{color:var(--faint);font:600 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase}
+  tr:last-child td{border-bottom:none}td code{color:var(--wire);font-family:var(--mono);font-size:12.5px}td .role{color:var(--muted)}
+  .term{background:var(--code-bg);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;font-family:var(--mono);font-size:13px}
+  .term .bar{display:flex;gap:7px;padding:12px 16px;border-bottom:1px solid var(--line);align-items:center}
+  .term .bar i{width:11px;height:11px;border-radius:50%;display:inline-block}
+  .term .bar i:nth-child(1){background:#e06c5a}.term .bar i:nth-child(2){background:#e0a13c}.term .bar i:nth-child(3){background:#3fcbb0}
+  .term .bar span{margin-left:10px;color:var(--faint);font-size:12px}
+  .term .body{padding:18px 20px;line-height:1.8}
+  .term .you{color:var(--pointer)}.term .act{color:var(--wire)}.term .out{color:var(--muted)}.term .ok{color:var(--pointer)}.term .dim{color:var(--faint)}
+  .payoff{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .pay{background:linear-gradient(180deg,var(--panel),var(--panel-2));border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+  .pay h3{margin:0 0 6px;font-size:16px;display:flex;align-items:center;gap:10px}.pay h3 .ic{font-family:var(--mono);color:var(--wire)}
+  .pay p{margin:0;color:var(--muted);font-size:14.5px}
+  .callout{border-left:3px solid var(--pointer);background:rgba(63,203,176,.07);padding:16px 20px;border-radius:0 var(--radius) var(--radius) 0;color:var(--muted)}.callout b{color:var(--ink)}
+  footer{padding:40px 0 70px;color:var(--faint);font-size:13px}.footer .wrap,footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+  @media(max-width:760px){.cols,.payoff{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+  <span class="kicker"><span class="num">01</span> · LAMBDA-BER Use Case</span>
+  <h1>Federated data pull:<br><span class="grad">register a beamtime without hauling it home</span></h1>
+  <p class="lede">
+    A shift at the beamline leaves terabytes of frames sitting on the facility's storage.
+    You don't want them on your laptop — you want them <em>known</em>: searchable, linked
+    to the sample and instrument, ready to act on. The agent pulls a LAMBDA-BER RO-Crate
+    over the lambda API and registers the run as rows in your local tables — pointers and
+    checksums, not bytes.
+  </p>
+  <div class="meta-row">
+    <span class="chip"><b>Move:</b> metadata, not data</span>
+    <span class="chip"><b>Pointer:</b> storage_uri + checksum</span>
+    <span class="chip"><b>Source:</b> any LAMBDA light source</span>
+    <span class="chip"><b>Result:</b> a queryable local catalog</span>
+  </div>
+</div></header>
+
+<section><div class="wrap">
+  <p class="eyebrow">The scenario</p>
+  <h2>The data is huge, remote, and yours to track</h2>
+  <p class="sub">
+    A SAXS session at SIBYLS or a cryo-EM collection on a Krios produces hundreds of
+    gigabytes to terabytes of raw frames. Copying everything to local disk is slow,
+    expensive, and usually pointless — you need most of it only when a processing step
+    actually reads it. What you need <em>immediately</em> is the record: what was run, on
+    what sample, with what instrument, and where the bytes live.
+  </p>
+  <div class="callout">
+    <b>The federation principle:</b> the facility stays the source of truth for raw data.
+    The agent ingests a lightweight crate that describes the run and points at the bytes by
+    <code>storage_uri</code>, verifying integrity with the <code>checksum</code>. Heavy
+    files are streamed later, on demand, only if a workflow needs them.
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <p class="eyebrow">How it works</p>
+  <h2>One pull, three things land locally</h2>
+  <p class="sub">
+    The crate the facility emits validates against the same schema you use everywhere
+    else, so ingest is a row-insert, not a parsing project. A single session populates the
+    instrument, the experiment, and the file index together.
+  </p>
+  <div class="diagram">
+    <svg viewBox="0 0 980 360" role="img" aria-label="A facility object store streams a metadata crate through the lambda API into local tables; raw bytes stay remote">
+      <defs>
+        <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5b6e93"/></marker>
+        <style>.lbl{font:600 13px var(--mono,monospace);fill:#e8eef9}.s1{font:500 11px var(--mono,monospace);fill:#90a2c2}.e1{stroke:#5b6e93;stroke-width:1.6;fill:none;marker-end:url(#a1)}</style>
+      </defs>
+      <!-- facility -->
+      <rect x="24" y="60" width="250" height="240" rx="12" fill="#0b1422" stroke="#5c6a85"/>
+      <text class="lbl" x="46" y="92">light source facility</text>
+      <text class="s1" x="46" y="114">SIBYLS · Krios · beamline</text>
+      <rect x="46" y="138" width="206" height="138" rx="8" fill="#0e1830" stroke="#1f2e48"/>
+      <text class="s1" x="64" y="166" fill="#7e8db0">object store</text>
+      <text class="lbl" x="64" y="196" fill="#8b97b5" style="font-size:22px">≈ TB</text>
+      <text class="s1" x="64" y="222">raw frames · movies</text>
+      <text class="s1" x="64" y="240">stays here</text>
+      <!-- lambda api -->
+      <rect x="372" y="120" width="150" height="120" rx="12" fill="#0a1b16" stroke="#3fcbb0" stroke-dasharray="5 4"/>
+      <text class="lbl" x="398" y="178" fill="#3fcbb0">lambda</text>
+      <text class="lbl" x="398" y="200" fill="#3fcbb0">API</text>
+      <text class="s1" x="392" y="224">crate fetch</text>
+      <path class="e1" d="M274,180 L372,180"/>
+      <text class="s1" x="286" y="168">metadata crate</text>
+      <text class="s1" x="286" y="208" fill="#7e8db0">(KB, not TB)</text>
+      <!-- local tables -->
+      <rect x="620" y="60" width="320" height="240" rx="12" fill="#0e1626" stroke="#4d8cf5"/>
+      <text class="lbl" x="644" y="92" fill="#9cc0ff">local metadata tables</text>
+      <rect x="644" y="112" width="272" height="38" rx="7" fill="#101d36" stroke="#1f2e48"/><text class="s1" x="662" y="136">Instrument · current_status</text>
+      <rect x="644" y="158" width="272" height="38" rx="7" fill="#101d36" stroke="#1f2e48"/><text class="s1" x="662" y="182">ExperimentRun · technique, metrics</text>
+      <rect x="644" y="204" width="272" height="38" rx="7" fill="#101d36" stroke="#1f2e48"/><text class="s1" x="662" y="228">DataFile · storage_uri + checksum</text>
+      <text class="s1" x="644" y="270" fill="#7e8db0">pointers resolve back to the facility ↩</text>
+      <path class="e1" d="M522,180 L620,180"/>
+      <path class="e1" d="M780,300 C780,330 360,330 200,300" stroke-dasharray="4 5"/>
+      <text class="s1" x="430" y="346" fill="#5b6e93">stream bytes on demand →</text>
+    </svg>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <p class="eyebrow">What gets registered</p>
+  <h2>A DataFile row is a pointer, not a payload</h2>
+  <p class="sub">
+    Each raw or derived file becomes a <code>DataFile</code> with enough to find it, verify
+    it, and reason about it — without a single byte leaving the facility.
+  </p>
+  <div class="filebar"><span class="glyph">▸</span> ingested rows (excerpt) — pointers + provenance, zero bytes copied</div>
+<pre><span class="k">data_files</span>:
+- <span class="k">file_name</span>: <span class="s">saxs_session_2024-05-16_buffer-subtracted.dat</span>
+  <span class="k">file_format</span>: <span class="s">hdf5</span>
+  <span class="k">data_type</span>: <span class="s">processed</span>
+  <span class="k">file_size_bytes</span>: 41229312
+  <span class="k">storage_uri</span>: <span class="hl">sibyls://als/12.3.1/2024-05-16/run047.h5</span>   <span class="c"># lives at the facility</span>
+  <span class="k">checksum</span>: <span class="s">sha256:9f2c…a71b</span>                          <span class="c"># integrity on fetch</span>
+  <span class="k">related_entity</span>: <span class="id">lambdaber:exp_chd1_saxs_001</span>
+
+<span class="k">experiment_runs</span>:
+- <span class="k">id</span>: <span class="id">lambdaber:exp_chd1_saxs_001</span>
+  <span class="k">experiment_code</span>: <span class="s">EXP-CHD1-SAXS-001</span>
+  <span class="k">technique</span>: <span class="s">saxs</span>
+  <span class="k">processing_status</span>: <span class="s">collected</span>          <span class="c"># raw on day one; updated as it advances</span></pre>
+  <div class="cols" style="margin-top:24px">
+    <div class="card"><div class="hd"><span class="dot" style="background:var(--wire)"></span> Lands on ingest</div>
+      <table>
+        <tr><th>Class</th><th>Carries</th></tr>
+        <tr><td><code>Instrument</code></td><td class="role">code, model, current_status</td></tr>
+        <tr><td><code>ExperimentRun</code></td><td class="role">technique, conditions, quality_metrics</td></tr>
+        <tr><td><code>DataFile</code></td><td class="role">storage_uri, checksum, size, role</td></tr>
+        <tr><td>assoc tables</td><td class="role">experiment↔instrument, experiment↔sample</td></tr>
+      </table>
+    </div>
+    <div class="card"><div class="hd"><span class="dot" style="background:var(--pointer)"></span> Stays remote</div>
+      <table>
+        <tr><th>Asset</th><th>Why</th></tr>
+        <tr><td class="role">raw movie stacks</td><td class="role">TB-scale, rarely re-read whole</td></tr>
+        <tr><td class="role">detector frames</td><td class="role">needed only by processing</td></tr>
+        <tr><td class="role">intermediate maps</td><td class="role">regenerable from inputs</td></tr>
+        <tr><td class="role">→ fetched by <code>storage_uri</code></td><td class="role">when a step demands it</td></tr>
+      </table>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <p class="eyebrow">The agent at work</p>
+  <h2>Ingest a session in one pass</h2>
+  <div class="term">
+    <div class="bar"><i></i><i></i><i></i><span>beril · claude-code · ~/lab-catalog</span></div>
+    <div class="body">
+<span class="you">&gt; pull yesterday's SIBYLS session into the catalog</span><br><br>
+<span class="act">⏺ list available crates</span> <span class="dim">(lambda API · facility=sibyls, date=2024-05-16)</span><br>
+<span class="ok">  → 1 session · EXP-CHD1-SAXS-001 · 47 runs · 612 GB raw (remote)</span><br><br>
+<span class="act">⏺ fetch metadata crate</span><br>
+<span class="out">  GET sibyls://als/12.3.1/2024-05-16/ro-crate-metadata.json  (318 KB)</span><br>
+<span class="ok">  ✓ validates against lambda_ber_schema</span><br><br>
+<span class="act">⏺ register rows</span> <span class="dim">(DuckDB)</span><br>
+<span class="out">  + 1 Instrument · + 1 ExperimentRun · + 49 DataFile (pointers)</span><br>
+<span class="out">  + experiment↔instrument, experiment↔sample associations</span><br>
+<span class="ok">  ✓ 612 GB now searchable · 0 bytes copied · checksums recorded</span><br><br>
+<span class="you">&gt; how much of my catalog is still un-processed?</span><br>
+<span class="act">⏺ query</span> <span class="dim">WHERE processing_status IN ('collected','raw')</span><br>
+<span class="ok">  → 1 run ready to hand to use case 03 (auto-orchestrate)</span>
+    </div>
+  </div>
+</div></section>
+
+<section style="border-bottom:none"><div class="wrap">
+  <p class="eyebrow">Payoff</p>
+  <h2>What pulling metadata-first buys</h2>
+  <div class="payoff">
+    <div class="pay"><h3><span class="ic">[ ⇣ ]</span> Seconds, not hours</h3><p>A session is catalogued the moment the shift ends — no overnight transfer before you can even see what you have.</p></div>
+    <div class="pay"><h3><span class="ic">[ ⛃ ]</span> No local data lake</h3><p>You track terabytes without storing them. Bytes stay at the facility and stream only when a step reads them.</p></div>
+    <div class="pay"><h3><span class="ic">[ ✓ ]</span> Integrity built in</h3><p>Every pointer carries a SHA-256, so any later fetch is verified against what was collected.</p></div>
+    <div class="pay"><h3><span class="ic">[ ↦ ]</span> Ready for everything else</h3><p>Once registered, a run feeds the query, processing, integration, and deposition use cases — same rows, no re-import.</p></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <span>LAMBDA-BER · Use Case 01 — Federated data pull</span>
+  <span>Feeds Use Cases 02 (query), 03 (process), 04 (integrate)</span>
+</div></footer>
+</body>
+</html>
