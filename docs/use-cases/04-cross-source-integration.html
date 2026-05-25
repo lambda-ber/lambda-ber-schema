@@ -206,10 +206,13 @@
     <span class="kicker"><span class="num">04</span> · LAMBDA-BER Use Case</span>
     <h1>Cross-source integration for<br><span class="grad">integrative structural biology</span></h1>
     <p class="lede">
-      One molecular complex. Three techniques. Three facilities. A Claude Code agent
-      pulls each result across the wire as an RO-Crate, lands the metadata in local
-      tables next to a PDB mirror, and assembles a single integrative-modeling bundle —
-      with LAMBDA-BER as the contract that makes the pieces fit.
+      Resolving how the CHD1 remodeler acts on a nucleosome takes more than any single
+      method can give: a cryo-EM map of the bound complex, a small-angle scattering
+      envelope for CHD1's flexible regions, and a crystallographic structure of the
+      nucleosome core. Each comes from a different instrument and facility, in its own
+      format. Here a Claude Code agent retrieves each result as an RO-Crate, reconciles
+      them in local tables, and stages one integrative-modeling bundle — with LAMBDA-BER
+      as the shared model that lets independent measurements join.
     </p>
     <div class="meta-row">
       <span class="chip"><b>Complex:</b> CHD1 · nucleosome remodeler</span>
@@ -330,7 +333,7 @@
         <rect class="node" x="588" y="232" width="200" height="86" fill="#16131f" stroke="#9a8cf0"/>
         <text class="lbl" x="610" y="266" fill="#cdbef7">PDB mirror</text>
         <text class="sub" x="610" y="288">reference structures</text>
-        <text class="sub" x="610" y="306">cross-reference / dock</text>
+        <text class="sub" x="610" y="306">compare · validate (optional)</text>
 
         <path class="edge" d="M488,210 C540,170 540,140 588,125"/>
         <path class="edge" d="M488,250 C540,262 540,270 588,275"/>
@@ -430,8 +433,8 @@
 <span class="out">  SELECT * FROM experiment_run JOIN experiment_sample USING(...)</span><br>
 <span class="out">  WHERE study_id = 'study_integrative_nucleosome'</span><br>
 <span class="ok">  → 3 runs: cryo_em (3.2 Å), saxs (30 Å), xray (1.9 Å) · 1 shared complex sample</span><br><br>
-<span class="act">⏺ resolve reference</span> <span class="dim">(PDB mirror)</span><br>
-<span class="ok">  → nucleosome core matches 1KX5 · using as rigid body</span><br><br>
+<span class="act">⏺ cross-reference</span> <span class="dim">(PDB mirror, optional)</span><br>
+<span class="ok">  → nucleosome core consistent with 1KX5 · histone identities confirmed</span><br><br>
 <span class="act">⏺ federated fetch</span> <span class="dim">(lambda API · only heavy inputs)</span><br>
 <span class="out">  GET sibyls://saxs/exp_chd1_saxs_001 → chd1.dat  (I(q), P(r))</span><br>
 <span class="out">  GET krios://maps/exp_complex_cryoem_001 → complex_half{1,2}.map</span><br>
