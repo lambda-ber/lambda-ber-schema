@@ -453,10 +453,13 @@
 <section>
   <div class="wrap">
     <p class="eyebrow">Where Phenix plugs in</p>
-    <h2>The crate is Phenix-ready by construction</h2>
+    <h2>From crate to Phenix inputs</h2>
     <p class="sub">
-      Because experiment technique, resolution, and file roles are typed in the metadata,
-      the agent can dispatch the right Phenix tool per input without guessing.
+      Phenix tools don't read RO-Crates — they read MTZs, maps, and models. The crate's
+      job is upstream of that: because every file is typed by technique, resolution, and
+      role, the agent knows which files each step actually needs, fetches only those
+      across the federation, converts them to the expected formats, and dispatches the
+      right Phenix tool.
     </p>
     <div class="map-grid">
       <div class="card">
