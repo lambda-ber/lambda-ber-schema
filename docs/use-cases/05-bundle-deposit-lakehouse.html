@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Use Case 05 · Bundle, Deposit &amp; Query — LAMBDA-BER</title>
+<style>
+  :root{
+    --bg:#070d14;
+    --bg2:#0b121b;
+    --panel:#101a26;
+    --panel-2:#15212f;
+    --line:#223142;
+    --ink:#e9f2f8;
+    --muted:#8da3b6;
+    --faint:#5c7186;
+    --crate:#e8b24a;     /* bundle / crate     */
+    --lake:#3fc4c9;      /* lakehouse / query  */
+    --deposit:#7fd6a0;   /* public deposit     */
+    --archive:#9c8cf2;   /* archive / version  */
+    --code-bg:#060a10;
+    --radius:14px;
+    --mono:"SFMono-Regular",ui-monospace,"JetBrains Mono",Menlo,Consolas,monospace;
+    --sans:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;font-family:var(--sans);color:var(--ink);line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    background:
+      radial-gradient(1100px 680px at 88% -10%, rgba(63,196,201,.13), transparent 58%),
+      radial-gradient(820px 540px at -8% 8%, rgba(232,178,74,.10), transparent 55%),
+      linear-gradient(180deg,var(--bg),var(--bg2));
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  a{color:var(--lake);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  /* hero */
+  header.hero{padding:84px 0 56px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+  header.hero::before{
+    content:"";position:absolute;inset:0;z-index:0;
+    background-image:repeating-linear-gradient(180deg,rgba(255,255,255,.028) 0 1px,transparent 1px 64px);
+    mask-image:radial-gradient(ellipse 80% 80% at 60% 0%,#000,transparent 78%);
+  }
+  .hero .wrap{position:relative;z-index:1}
+  .kicker{
+    display:inline-flex;align-items:center;gap:10px;
+    font:600 12px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--crate);
+    background:rgba(232,178,74,.08);border:1px solid rgba(232,178,74,.28);
+    padding:8px 14px;border-radius:999px;
+  }
+  .kicker .num{color:var(--ink);opacity:.9}
+  h1{font-size:clamp(34px,5.4vw,58px);line-height:1.04;margin:22px 0 16px;letter-spacing:-.02em;font-weight:800}
+  h1 .grad{background:linear-gradient(100deg,var(--crate),var(--lake) 60%,var(--deposit));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lede{font-size:clamp(17px,2vw,20px);color:var(--muted);max-width:64ch;margin:0}
+  .meta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+  .chip{font:500 13px var(--mono);color:var(--muted);border:1px solid var(--line);background:var(--panel);padding:7px 12px;border-radius:8px}
+  .chip b{color:var(--ink);font-weight:600}
+
+  section{padding:56px 0;border-bottom:1px solid var(--line)}
+  .eyebrow{font:700 12px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--faint);margin:0 0 10px}
+  h2{font-size:clamp(24px,3vw,32px);margin:0 0 8px;letter-spacing:-.01em;font-weight:750}
+  h2 + p.sub{color:var(--muted);margin:0 0 28px;max-width:66ch}
+  p{margin:0 0 16px}
+
+  /* two destinations */
+  .dests{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .dest{background:linear-gradient(180deg,var(--panel),var(--panel-2));border:1px solid var(--line);border-radius:var(--radius);padding:24px;position:relative;overflow:hidden}
+  .dest::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent)}
+  .dest .tag{font:700 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+  .dest h3{margin:10px 0 6px;font-size:19px}
+  .dest p{color:var(--muted);font-size:14.5px;margin:0 0 12px}
+  .dest ul{margin:0;padding-left:18px;color:var(--muted);font-size:14px}
+  .dest li{margin:5px 0}
+  .dest li b{color:var(--ink);font-weight:600}
+  .dest--deposit{--accent:var(--deposit)}
+  .dest--lake{--accent:var(--lake)}
+
+  /* diagram */
+  .diagram{background:var(--code-bg);border:1px solid var(--line);border-radius:var(--radius);padding:8px;overflow:hidden}
+  .diagram svg{display:block;width:100%;height:auto}
+
+  /* file tree / code */
+  .filebar{font:600 12px var(--mono);color:var(--faint);padding:10px 16px;background:rgba(255,255,255,.02);border:1px solid var(--line);border-bottom:none;border-radius:var(--radius) var(--radius) 0 0;display:flex;align-items:center;gap:8px}
+  .filebar .glyph{color:var(--crate)}
+  .filebar + pre{border-radius:0 0 var(--radius) var(--radius)}
+  pre{background:var(--code-bg);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;overflow-x:auto;font-family:var(--mono);font-size:13px;line-height:1.7;color:#cdd9e1;margin:0}
+  pre .c{color:#566472}
+  pre .k{color:var(--crate)}
+  pre .s{color:var(--deposit)}
+  pre .id{color:var(--archive)}
+  pre .kw{color:var(--lake);font-weight:600}
+  pre .fn{color:var(--ink);font-weight:600}
+  pre .num{color:var(--crate)}
+
+  /* schema card */
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+  .card .hd{padding:14px 18px;border-bottom:1px solid var(--line);font:700 13px var(--mono);color:var(--ink);display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.02)}
+  .dot{width:9px;height:9px;border-radius:50%;flex:0 0 auto}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  td,th{padding:10px 18px;text-align:left;border-bottom:1px solid rgba(34,49,66,.7)}
+  th{color:var(--faint);font:600 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase}
+  tr:last-child td{border-bottom:none}
+  td code{color:var(--lake);font-family:var(--mono);font-size:12.5px}
+  td .role{color:var(--muted)}
+
+  /* terminal */
+  .term{background:var(--code-bg);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;font-family:var(--mono);font-size:13px}
+  .term .bar{display:flex;gap:7px;padding:12px 16px;border-bottom:1px solid var(--line);align-items:center}
+  .term .bar i{width:11px;height:11px;border-radius:50%;display:inline-block}
+  .term .bar i:nth-child(1){background:#e06c5a}.term .bar i:nth-child(2){background:#e8b24a}.term .bar i:nth-child(3){background:#7fd6a0}
+  .term .bar span{margin-left:10px;color:var(--faint);font-size:12px}
+  .term .body{padding:18px 20px;line-height:1.8}
+  .term .you{color:var(--deposit)}
+  .term .act{color:var(--lake)}
+  .term .out{color:var(--muted)}
+  .term .ok{color:var(--deposit)}
+  .term .dim{color:var(--faint)}
+
+  .payoff{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .pay{background:linear-gradient(180deg,var(--panel),var(--panel-2));border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+  .pay h3{margin:0 0 6px;font-size:16px;display:flex;align-items:center;gap:10px}
+  .pay h3 .ic{font-family:var(--mono);color:var(--lake)}
+  .pay p{margin:0;color:var(--muted);font-size:14.5px}
+
+  .callout{border-left:3px solid var(--crate);background:rgba(232,178,74,.07);padding:16px 20px;border-radius:0 var(--radius) var(--radius) 0;color:var(--muted)}
+  .callout b{color:var(--ink)}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+  footer{padding:40px 0 70px;color:var(--faint);font-size:13px}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+  @media(max-width:760px){.dests,.payoff,.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="kicker"><span class="num">05</span> · LAMBDA-BER Use Case</span>
+    <h1>Bundle, deposit &amp; query:<br><span class="grad">results crates into a lakehouse</span></h1>
+    <p class="lede">
+      The flip side of integration. Once the structures are solved and the model is
+      built, the work has to be packaged so others — and future you — can trust and reuse
+      it. A structural computational biologist, with an AI agent doing the assembly,
+      turns finished results into a self-describing LAMBDA-BER crate, deposits it to the
+      public archives, and lands its metadata in a lakehouse where every past study
+      becomes queryable.
+    </p>
+    <div class="meta-row">
+      <span class="chip"><b>Lifecycle:</b> produce → deposit → query</span>
+      <span class="chip"><b>Out:</b> RO-Crate + public deposition</span>
+      <span class="chip"><b>Store:</b> Iceberg / Delta lakehouse</span>
+      <span class="chip"><b>Data:</b> stays federated</span>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Crate-out</p>
+    <h2>Finished results become a self-describing bundle</h2>
+    <p class="sub">
+      Use case 04 pulled crates <em>in</em> to assemble inputs. This is the symmetric
+      step: the integrative model, its refined components, the maps, and the validation
+      reports get packaged back <em>out</em> as one RO-Crate. The crate carries a
+      LAMBDA-BER <code>Dataset</code> describing everything inside — so the bundle is not
+      a folder of mystery files, it is a typed, checksummed, schema-validatable record.
+    </p>
+    <div class="filebar"><span class="glyph">▸</span> chd1-ncp-integrative.crate/ &mdash; what the agent assembles</div>
+<pre><span class="fn">chd1-ncp-integrative.crate/</span>
+├── <span class="k">ro-crate-metadata.json</span>      <span class="c"># RO-Crate descriptor (the manifest)</span>
+├── <span class="k">dataset.yaml</span>                <span class="c"># LAMBDA-BER Dataset — validates against the schema</span>
+├── models/
+│   └── integrative_model.cif    <span class="c"># IMP output, the deliverable</span>
+├── maps/
+│   └── complex_sharpened.map    <span class="c"># cryo-EM, 3.2 Å</span>
+├── components/
+│   └── ncp_refined.cif          <span class="c"># phenix.refine output (X-ray)</span>
+├── saxs/
+│   └── chd1.dat                 <span class="c"># I(q), P(r)</span>
+└── reports/
+    ├── molprobity.json          <span class="c"># validation</span>
+    └── mtriage_fsc.json         <span class="c"># map resolution</span></pre>
+    <div class="callout" style="margin-top:24px">
+      <b>Why the schema matters here:</b> the same classes that described the
+      <em>inputs</em> describe the <em>outputs</em>. A reviewer, a collaborator, or an
+      agent six months from now reads <code>dataset.yaml</code> and knows exactly which
+      file is which, how it was produced, and what it was derived from — no tribal
+      knowledge required.
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Two destinations</p>
+    <h2>The same crate goes two places</h2>
+    <p class="sub">
+      A finished crate serves two very different audiences. Deposition is about
+      <em>publishing</em> a single result for the world; the lakehouse is about
+      <em>accumulating</em> many results for your own future questions. One bundle, both jobs.
+    </p>
+    <div class="dests">
+      <div class="dest dest--deposit">
+        <div class="tag">publish</div>
+        <h3>Deposit to the archives</h3>
+        <p>The crate is the staging ground for canonical submissions.</p>
+        <ul>
+          <li><b>PDB / PDB-Dev</b> — atomic &amp; integrative models</li>
+          <li><b>EMDB</b> — cryo-EM maps + half-maps + FSC</li>
+          <li><b>SASBDB</b> — SAXS curves, P(r), envelopes</li>
+          <li><b>Zenodo / institutional repo</b> — the whole crate, with a DOI</li>
+        </ul>
+      </div>
+      <div class="dest dest--lake">
+        <div class="tag">accumulate</div>
+        <h3>Land metadata in the lakehouse</h3>
+        <p>Normalized LAMBDA-BER rows, versioned, queryable across every study.</p>
+        <ul>
+          <li><b>Metadata → tables</b> — Sample, ExperimentRun, WorkflowRun, DataFile</li>
+          <li><b>Data files → pointers</b> — URIs + checksums, bytes stay federated</li>
+          <li><b>Iceberg / Delta</b> — time-travel, schema evolution</li>
+          <li><b>One model, many studies</b> — cross-facility analytics</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Architecture</p>
+    <h2>Strata: metadata in the warehouse, bytes in the lake</h2>
+    <p class="sub">
+      The lakehouse split is the whole point. Heavy data — maps, movies, MTZs — never
+      moves into a warehouse; it stays in object storage at the facility, referenced by
+      checksummed pointers. Only the LAMBDA-BER metadata is normalized into query tables.
+      You get warehouse-grade SQL over lake-scale data.
+    </p>
+    <div class="diagram">
+      <svg viewBox="0 0 980 430" role="img" aria-label="Results crates deposit to public archives and land metadata into a lakehouse over federated object storage">
+        <defs>
+          <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#5c7186"/>
+          </marker>
+          <style>
+            .lbl{font:600 13px var(--mono,monospace);fill:#e9f2f8}
+            .s2{font:500 11px var(--mono,monospace);fill:#8da3b6}
+            .e2{stroke:#5c7186;stroke-width:1.6;fill:none;marker-end:url(#a2)}
+          </style>
+        </defs>
+
+        <!-- crate -->
+        <rect x="24" y="160" width="190" height="100" rx="12" fill="#1c1708" stroke="#e8b24a"/>
+        <text class="lbl" x="46" y="200" fill="#e8b24a">results crate</text>
+        <text class="s2" x="46" y="222">Dataset + files</text>
+        <text class="s2" x="46" y="240">checksummed</text>
+
+        <!-- deposit -->
+        <rect x="330" y="40" width="250" height="92" rx="12" fill="#0e1f16" stroke="#7fd6a0"/>
+        <text class="lbl" x="352" y="72" fill="#7fd6a0">public archives</text>
+        <text class="s2" x="352" y="94">PDB · EMDB · SASBDB</text>
+        <text class="s2" x="352" y="112">Zenodo (DOI)</text>
+
+        <path class="e2" d="M214,185 C270,150 280,110 330,92"/>
+        <text class="s2" x="244" y="135">deposit</text>
+
+        <!-- lakehouse stack -->
+        <rect x="330" y="170" width="250" height="40" rx="8" fill="#0e2426" stroke="#3fc4c9"/>
+        <text class="lbl" x="352" y="195" fill="#3fc4c9">query layer</text>
+        <rect x="330" y="216" width="250" height="40" rx="8" fill="#101a26" stroke="#223142"/>
+        <text class="s2" x="352" y="241">metadata tables · Iceberg / Delta</text>
+        <rect x="330" y="262" width="250" height="40" rx="8" fill="#0c141d" stroke="#223142"/>
+        <text class="s2" x="352" y="287">pointers · URI + checksum</text>
+
+        <path class="e2" d="M214,235 C270,238 285,232 330,232"/>
+        <text class="s2" x="240" y="222">land metadata</text>
+
+        <!-- object storage -->
+        <rect x="330" y="340" width="610" height="62" rx="12" fill="#0a1018" stroke="#223142"/>
+        <text class="lbl" x="352" y="368">federated object storage</text>
+        <text class="s2" x="352" y="388">maps · movies · MTZ — at the facility, never copied in</text>
+
+        <path class="e2" d="M455,302 L455,340"/>
+        <text class="s2" x="466" y="326">resolve on demand</text>
+
+        <!-- query consumers -->
+        <rect x="690" y="160" width="250" height="100" rx="12" fill="#16131f" stroke="#9c8cf2"/>
+        <text class="lbl" x="712" y="196" fill="#cabef9">analytics &amp; ML</text>
+        <text class="s2" x="712" y="218">cross-study cohorts</text>
+        <text class="s2" x="712" y="236">training tables</text>
+        <text class="s2" x="712" y="254">QC dashboards</text>
+
+        <path class="e2" d="M580,190 L690,200"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">The query payoff</p>
+    <h2>Every past study, one SQL away</h2>
+    <p class="sub">
+      Because each crate lands the same LAMBDA-BER classes, the lakehouse holds a uniform
+      table across facilities and years. Questions that used to mean emailing three labs
+      become a single query over a flattened analytics view.
+    </p>
+    <div class="grid2">
+      <div>
+        <div class="filebar"><span class="glyph" style="color:var(--lake)">▸</span> "Sub-3 Å cryo-EM with a matching SAXS run"</div>
+<pre><span class="kw">SELECT</span> s.sample_code, em.resolution_ang, sx.rg_ang
+<span class="kw">FROM</span>   experiment_run em
+<span class="kw">JOIN</span>   experiment_sample_assoc a  <span class="kw">USING</span> (experiment_id)
+<span class="kw">JOIN</span>   sample s                    <span class="kw">ON</span> s.id = a.sample_id
+<span class="kw">JOIN</span>   experiment_run sx          <span class="kw">ON</span> sx.sample_id = s.id
+<span class="kw">WHERE</span>  em.technique = <span class="s">'cryo_em'</span>
+  <span class="kw">AND</span>  em.resolution_ang &lt;= <span class="num">3.0</span>
+  <span class="kw">AND</span>  sx.technique = <span class="s">'saxs'</span>;</pre>
+      </div>
+      <div>
+        <div class="filebar"><span class="glyph" style="color:var(--lake)">▸</span> "Re-runnable provenance for any deposited model"</div>
+<pre><span class="c">-- walk outputs back to the beamtime that produced them</span>
+<span class="kw">SELECT</span> w.workflow_code, w.software_name,
+       d.file_name, d.checksum
+<span class="kw">FROM</span>   workflow_run w
+<span class="kw">JOIN</span>   workflow_output_assoc o <span class="kw">USING</span> (workflow_id)
+<span class="kw">JOIN</span>   data_file d             <span class="kw">ON</span> d.id = o.data_file_id
+<span class="kw">WHERE</span>  w.software_name = <span class="s">'IMP'</span>;</pre>
+      </div>
+    </div>
+    <p style="margin-top:20px;color:var(--muted)">
+      The bytes referenced by <code>data_file.checksum</code> are still out in object
+      storage — the query returns the pointer, and the agent streams the file only if the
+      next step needs it. Same federation principle as use case 04, now running in reverse.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">What lands in the lakehouse</p>
+    <h2>The crate's metadata, normalized</h2>
+    <p class="sub">
+      Depositing is publishing one crate; the lakehouse ingest shreds that crate's
+      <code>dataset.yaml</code> into the relational tables it already maps to.
+    </p>
+    <div class="grid2">
+      <div class="card">
+        <div class="hd"><span class="dot" style="background:var(--crate)"></span> Entity tables</div>
+        <table>
+          <tr><th>Class</th><th>Rows from this crate</th></tr>
+          <tr><td><code>Sample</code></td><td class="role">complex + components</td></tr>
+          <tr><td><code>ExperimentRun</code></td><td class="role">cryo-EM, SAXS, X-ray</td></tr>
+          <tr><td><code>WorkflowRun</code></td><td class="role">refine, real_space, IMP</td></tr>
+          <tr><td><code>DataFile</code></td><td class="role">models, maps, reports + checksums</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <div class="hd"><span class="dot" style="background:var(--lake)"></span> The edges that make it queryable</div>
+        <table>
+          <tr><th>Association</th><th>Enables</th></tr>
+          <tr><td><code>workflow_output</code></td><td class="role">model → its provenance</td></tr>
+          <tr><td><code>workflow_input</code></td><td class="role">which files fed which job</td></tr>
+          <tr><td><code>experiment_sample</code></td><td class="role">join techniques on a sample</td></tr>
+          <tr><td><code>study_experiment</code></td><td class="role">group a whole project</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">The agent at work</p>
+    <h2>Package, deposit, ingest</h2>
+    <p class="sub">
+      One pass: the agent validates the crate against the schema, files the public
+      depositions, and ingests the metadata into the lakehouse — leaving the heavy data
+      where it sits.
+    </p>
+    <div class="term">
+      <div class="bar"><i></i><i></i><i></i><span>beril · claude-code · ~/chd1-nucleosome</span></div>
+      <div class="body">
+<span class="you">&gt; package the finished model and deposit it</span><br><br>
+<span class="act">⏺ build crate</span> → <span class="ok">chd1-ncp-integrative.crate/</span><br>
+<span class="out">  write dataset.yaml · 4 WorkflowRun, 6 DataFile, output associations wired</span><br>
+<span class="ok">  ✓ validates against lambda_ber_schema</span><br><br>
+<span class="act">⏺ deposit</span> <span class="dim">(public archives)</span><br>
+<span class="out">  EMDB  ← complex_sharpened.map + half-maps + FSC</span><br>
+<span class="out">  PDB-Dev ← integrative_model.cif (+ component models)</span><br>
+<span class="out">  SASBDB ← chd1.dat</span><br>
+<span class="ok">  → accessions stored back on the DataFile rows</span><br><br>
+<span class="act">⏺ ingest to lakehouse</span> <span class="dim">(Iceberg)</span><br>
+<span class="out">  shred dataset.yaml → 4 tables + 4 association tables</span><br>
+<span class="out">  data files registered as pointers (URI + checksum) — 0 bytes copied</span><br>
+<span class="ok">  ✓ snapshot v37 · now joinable with 212 prior studies</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="border-bottom:none">
+  <div class="wrap">
+    <p class="eyebrow">Payoff</p>
+    <h2>What bundling + lakehousing buys</h2>
+    <div class="payoff">
+      <div class="pay">
+        <h3><span class="ic">[ ✓ ]</span> Trustworthy deliverables</h3>
+        <p>A deposited crate is self-describing and checksummed — reviewers and reusers see exactly how each file was produced.</p>
+      </div>
+      <div class="pay">
+        <h3><span class="ic">[ ⛁ ]</span> Cross-study memory</h3>
+        <p>Every project you finish makes the next query richer. "Have we ever seen this complex by SAXS?" becomes answerable.</p>
+      </div>
+      <div class="pay">
+        <h3><span class="ic">[ ⇉ ]</span> Bytes stay put</h3>
+        <p>The warehouse holds metadata and pointers; terabytes of maps and movies never migrate. Lake-scale, warehouse-queryable.</p>
+      </div>
+      <div class="pay">
+        <h3><span class="ic">[ ↺ ]</span> Versioned &amp; re-runnable</h3>
+        <p>Iceberg/Delta snapshots plus typed provenance mean any past result can be traced, compared, or recomputed on demand.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>LAMBDA-BER · Use Case 05 — Bundle, deposit &amp; query</span>
+    <span>Companion to Use Case 04 (cross-source integration)</span>
+  </div>
+</footer>
+
+</body>
+</html>

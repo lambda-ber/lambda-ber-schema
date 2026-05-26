@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Use Case 03 · Auto-Orchestrate Processing — LAMBDA-BER</title>
+<style>
+  :root{
+    --bg:#0d0a07; --bg2:#14100b; --panel:#1d160f; --panel-2:#261c12;
+    --line:#3a2c1c; --ink:#f6efe6; --muted:#bda88f; --faint:#8a7458;
+    --amber:#f0962e; --steel:#7fa8c9; --em:#5ec79a; --xr:#d76a8a; --sx:#e3c14a;
+    --code-bg:#0a0805; --radius:14px;
+    --mono:"SFMono-Regular",ui-monospace,"JetBrains Mono",Menlo,Consolas,monospace;
+    --sans:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  }
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;
+    background:radial-gradient(1050px 680px at 85% -10%,rgba(240,150,46,.15),transparent 56%),
+      radial-gradient(820px 520px at -6% 12%,rgba(127,168,201,.10),transparent 55%),
+      linear-gradient(180deg,var(--bg),var(--bg2));}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  a{color:var(--amber);text-decoration:none}a:hover{text-decoration:underline}
+  header.hero{padding:84px 0 56px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+  header.hero::before{content:"";position:absolute;inset:0;z-index:0;
+    background-image:linear-gradient(rgba(240,150,46,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(240,150,46,.045) 1px,transparent 1px);
+    background-size:40px 40px;mask-image:radial-gradient(ellipse 75% 80% at 62% 0%,#000,transparent 76%);}
+  .hero .wrap{position:relative;z-index:1}
+  .kicker{display:inline-flex;align-items:center;gap:10px;font:600 12px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;
+    color:var(--amber);background:rgba(240,150,46,.08);border:1px solid rgba(240,150,46,.3);padding:8px 14px;border-radius:999px}
+  .kicker .num{color:var(--ink);opacity:.9}
+  h1{font-size:clamp(34px,5.4vw,58px);line-height:1.04;margin:22px 0 16px;letter-spacing:-.02em;font-weight:800}
+  h1 .grad{background:linear-gradient(100deg,var(--amber),var(--sx));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lede{font-size:clamp(17px,2vw,20px);color:var(--muted);max-width:64ch;margin:0}
+  .meta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+  .chip{font:500 13px var(--mono);color:var(--muted);border:1px solid var(--line);background:var(--panel);padding:7px 12px;border-radius:8px}
+  .chip b{color:var(--ink);font-weight:600}
+  section{padding:56px 0;border-bottom:1px solid var(--line)}
+  .eyebrow{font:700 12px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--faint);margin:0 0 10px}
+  h2{font-size:clamp(24px,3vw,32px);margin:0 0 8px;letter-spacing:-.01em;font-weight:750}
+  h2 + p.sub{color:var(--muted);margin:0 0 28px;max-width:66ch}
+  p{margin:0 0 16px}
+  .diagram{background:var(--code-bg);border:1px solid var(--line);border-radius:var(--radius);padding:8px;overflow:hidden}
+  .diagram svg{display:block;width:100%;height:auto}
+  .lanes{display:grid;grid-template-columns:1fr;gap:14px}
+  .lane{display:grid;grid-template-columns:170px 1fr;gap:0;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--panel)}
+  .lane .head{padding:18px;border-right:1px solid var(--line);background:rgba(255,255,255,.02)}
+  .lane .head .tech{font:700 12px var(--mono);letter-spacing:.08em;color:var(--accent)}
+  .lane .head .desc{font-size:12.5px;color:var(--faint);margin-top:4px}
+  .lane .steps{display:flex;align-items:center;flex-wrap:wrap;gap:8px;padding:18px}
+  .step{font:600 12px var(--mono);color:var(--ink);background:var(--panel-2);border:1px solid var(--line);border-radius:8px;padding:7px 11px;white-space:nowrap}
+  .step .tool{color:var(--faint);font-weight:500}
+  .arrow{color:var(--faint);font-family:var(--mono)}
+  .lane--em{--accent:var(--em)}.lane--xr{--accent:var(--xr)}.lane--sx{--accent:var(--sx)}
+  .lane--em .step{border-left:3px solid var(--em)}.lane--xr .step{border-left:3px solid var(--xr)}.lane--sx .step{border-left:3px solid var(--sx)}
+  .filebar{font:600 12px var(--mono);color:var(--faint);padding:10px 16px;background:rgba(255,255,255,.02);border:1px solid var(--line);border-bottom:none;border-radius:var(--radius) var(--radius) 0 0;display:flex;align-items:center;gap:8px}
+  .filebar .glyph{color:var(--amber)}.filebar + pre{border-radius:0 0 var(--radius) var(--radius)}
+  pre{background:var(--code-bg);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;overflow-x:auto;font-family:var(--mono);font-size:13px;line-height:1.7;color:#ddd2c2;margin:0}
+  pre .c{color:#6b5a44}pre .k{color:var(--sx)}pre .s{color:var(--em)}pre .id{color:var(--steel)}pre .hl{color:var(--amber);font-weight:600}
+  .term{background:var(--code-bg);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;font-family:var(--mono);font-size:13px}
+  .term .bar{display:flex;gap:7px;padding:12px 16px;border-bottom:1px solid var(--line);align-items:center}
+  .term .bar i{width:11px;height:11px;border-radius:50%;display:inline-block}
+  .term .bar i:nth-child(1){background:#e06c5a}.term .bar i:nth-child(2){background:#f0962e}.term .bar i:nth-child(3){background:#5ec79a}
+  .term .bar span{margin-left:10px;color:var(--faint);font-size:12px}
+  .term .body{padding:18px 20px;line-height:1.8}
+  .term .you{color:var(--em)}.term .act{color:var(--amber)}.term .out{color:var(--muted)}.term .ok{color:var(--em)}.term .dim{color:var(--faint)}
+  .payoff{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .pay{background:linear-gradient(180deg,var(--panel),var(--panel-2));border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+  .pay h3{margin:0 0 6px;font-size:16px;display:flex;align-items:center;gap:10px}.pay h3 .ic{font-family:var(--mono);color:var(--amber)}
+  .pay p{margin:0;color:var(--muted);font-size:14.5px}
+  .callout{border-left:3px solid var(--amber);background:rgba(240,150,46,.07);padding:16px 20px;border-radius:0 var(--radius) var(--radius) 0;color:var(--muted)}.callout b{color:var(--ink)}
+  footer{padding:40px 0 70px;color:var(--faint);font-size:13px}footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+  @media(max-width:760px){.payoff{grid-template-columns:1fr}.lane{grid-template-columns:1fr}.lane .head{border-right:none;border-bottom:1px solid var(--line)}}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+  <span class="kicker"><span class="num">03</span> · LAMBDA-BER Use Case</span>
+  <h1>Auto-orchestrate processing:<br><span class="grad">the technique picks the pipeline</span></h1>
+  <p class="lede">
+    A catalogued run knows what it is — cryo-EM, crystallography, SAXS — and the agent uses
+    that to dispatch the right processing pipeline without being told. It reads
+    <code>technique</code>, locates the inputs by their pointers, runs the appropriate
+    tools, and writes each step back as a typed <code>WorkflowRun</code>. Phenix is one
+    engine in the rack, not the whole rack.
+  </p>
+  <div class="meta-row">
+    <span class="chip"><b>Trigger:</b> processing_status = collected</span>
+    <span class="chip"><b>Route by:</b> technique</span>
+    <span class="chip"><b>Engines:</b> RELION · DIALS · ATSAS · Phenix</span>
+    <span class="chip"><b>Record:</b> a WorkflowRun per step</span>
+  </div>
+</div></header>
+
+<section><div class="wrap">
+  <p class="eyebrow">The idea</p>
+  <h2>Routing, not babysitting</h2>
+  <p class="sub">
+    Each technique has a well-trodden processing path, but they share almost no tools. A
+    cryo-EM movie needs motion correction and 3D classification; a diffraction dataset needs
+    indexing and scaling; a scattering curve needs buffer subtraction and a Guinier fit. The
+    agent reads the typed metadata and sends each run down the correct lane — and because the
+    <code>WorkflowTypeEnum</code> names these steps, the plan is legible before anything runs.
+  </p>
+  <div class="callout">
+    <b>Not a Phenix story.</b> Phenix does the crystallographic refinement and map-model
+    work, but the cryo-EM lane leans on RELION / cryoSPARC, the indexing on DIALS / XDS, and
+    the SAXS lane on ATSAS / RAW. The schema is the common ground that lets one agent drive
+    all of them.
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <p class="eyebrow">Technique-routed lanes</p>
+  <h2>One trigger, three pipelines</h2>
+  <p class="sub">
+    Every step maps to a <code>workflow_type</code> from the schema, so the pipeline is just
+    a sequence of typed <code>WorkflowRun</code> rows — auditable, resumable, and the same
+    shape regardless of which external tool did the work.
+  </p>
+  <div class="lanes">
+    <div class="lane lane--em">
+      <div class="head"><div class="tech">cryo_em</div><div class="desc">movies → map</div></div>
+      <div class="steps">
+        <span class="step">motion_correction <span class="tool">· MotionCor2</span></span><span class="arrow">→</span>
+        <span class="step">ctf_estimation <span class="tool">· CTFFIND</span></span><span class="arrow">→</span>
+        <span class="step">particle_picking <span class="tool">· RELION</span></span><span class="arrow">→</span>
+        <span class="step">classification_3d <span class="tool">· RELION/cryoSPARC</span></span><span class="arrow">→</span>
+        <span class="step">refinement <span class="tool">· RELION</span></span><span class="arrow">→</span>
+        <span class="step">model_building <span class="tool">· Phenix</span></span>
+      </div>
+    </div>
+    <div class="lane lane--xr">
+      <div class="head"><div class="tech">xray_crystallography</div><div class="desc">frames → model</div></div>
+      <div class="steps">
+        <span class="step">integration <span class="tool">· DIALS/XDS</span></span><span class="arrow">→</span>
+        <span class="step">scaling <span class="tool">· Aimless</span></span><span class="arrow">→</span>
+        <span class="step">phasing <span class="tool">· Phaser</span></span><span class="arrow">→</span>
+        <span class="step">model_refinement <span class="tool">· phenix.refine</span></span><span class="arrow">→</span>
+        <span class="step">model_validation <span class="tool">· MolProbity</span></span>
+      </div>
+    </div>
+    <div class="lane lane--sx">
+      <div class="head"><div class="tech">saxs</div><div class="desc">curves → envelope</div></div>
+      <div class="steps">
+        <span class="step">saxs_analysis <span class="tool">· RAW (subtract)</span></span><span class="arrow">→</span>
+        <span class="step">saxs_analysis <span class="tool">· Guinier/Rg</span></span><span class="arrow">→</span>
+        <span class="step">ab_initio <span class="tool">· DAMMIF (ATSAS)</span></span><span class="arrow">→</span>
+        <span class="step">model_validation <span class="tool">· SASBDB checks</span></span>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <p class="eyebrow">How the router decides</p>
+  <h2>Read the type, fetch the inputs, dispatch</h2>
+  <div class="diagram">
+    <svg viewBox="0 0 980 330" role="img" aria-label="A router reads each run's technique and dispatches it to the cryo-EM, X-ray, or SAXS pipeline">
+      <defs>
+        <marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8a7458"/></marker>
+        <style>.lbl{font:600 13px var(--mono,monospace);fill:#f6efe6}.s3{font:500 11px var(--mono,monospace);fill:#bda88f}.e3{stroke:#8a7458;stroke-width:1.6;fill:none;marker-end:url(#a3)}</style>
+      </defs>
+      <rect x="24" y="120" width="210" height="90" rx="12" fill="#1d160f" stroke="#f0962e"/>
+      <text class="lbl" x="46" y="152" fill="#f6b15c">collected runs</text>
+      <text class="s3" x="46" y="174">status = collected/raw</text>
+      <text class="s3" x="46" y="194">inputs by storage_uri</text>
+      <rect x="320" y="120" width="150" height="90" rx="12" fill="#1a1208" stroke="#f0962e" stroke-dasharray="5 4"/>
+      <text class="lbl" x="346" y="160" fill="#f6b15c">router</text>
+      <text class="s3" x="346" y="184">switch(technique)</text>
+      <path class="e3" d="M234,165 L320,165"/>
+      <rect x="560" y="40" width="390" height="60" rx="10" fill="#11201a" stroke="#5ec79a"/>
+      <text class="lbl" x="582" y="66" fill="#7fe0b0">cryo_em → RELION + Phenix</text>
+      <text class="s3" x="582" y="86">motion → ctf → pick → 3D → refine → build</text>
+      <rect x="560" y="135" width="390" height="60" rx="10" fill="#1f1318" stroke="#d76a8a"/>
+      <text class="lbl" x="582" y="161" fill="#e890a6">xray → DIALS + phenix.refine</text>
+      <text class="s3" x="582" y="181">integrate → scale → phase → refine → validate</text>
+      <rect x="560" y="230" width="390" height="60" rx="10" fill="#201c0d" stroke="#e3c14a"/>
+      <text class="lbl" x="582" y="256" fill="#ecd061">saxs → ATSAS / RAW</text>
+      <text class="s3" x="582" y="276">subtract → Guinier → ab initio → validate</text>
+      <path class="e3" d="M470,150 C520,110 525,90 560,75"/>
+      <path class="e3" d="M470,165 L560,165"/>
+      <path class="e3" d="M470,180 C520,225 525,245 560,260"/>
+    </svg>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <p class="eyebrow">The record it leaves</p>
+  <h2>Each step is a typed WorkflowRun</h2>
+  <p class="sub">
+    Whatever tool ran, the result is the same kind of row — capturing the type, the software,
+    the version, and the status. That uniformity is what lets the re-analysis use case (06)
+    later find and re-run exactly the right steps.
+  </p>
+  <div class="filebar"><span class="glyph">▸</span> a step the agent wrote back</div>
+<pre><span class="k">workflow_runs</span>:
+- <span class="k">id</span>: <span class="id">lambdaber:wf_ncp_refine_001</span>
+  <span class="k">workflow_code</span>: <span class="s">WF-NCP-REFINE-001</span>
+  <span class="k">workflow_type</span>: <span class="hl">model_refinement</span>        <span class="c"># from WorkflowTypeEnum</span>
+  <span class="k">software_name</span>: <span class="s">Phenix</span>
+  <span class="k">software_version</span>: <span class="s">1.21.1-5286</span>          <span class="c"># pinned — matters for use case 06</span>
+  <span class="k">processing_status</span>: <span class="s">completed</span>
+
+<span class="k">workflow_input_associations</span>:
+- <span class="k">workflow_id</span>: <span class="id">lambdaber:wf_ncp_refine_001</span>
+  <span class="k">data_file_id</span>: <span class="id">lambdaber:df_ncp_mtz</span>          <span class="c"># resolved via storage_uri at run time</span></pre>
+</div></section>
+
+<section><div class="wrap">
+  <p class="eyebrow">The agent at work</p>
+  <h2>Drain the queue of un-processed runs</h2>
+  <div class="term">
+    <div class="bar"><i></i><i></i><i></i><span>beril · claude-code · ~/lab-catalog</span></div>
+    <div class="body">
+<span class="you">&gt; process everything that's still raw</span><br><br>
+<span class="act">⏺ scan</span> <span class="dim">WHERE processing_status IN ('collected','raw')</span><br>
+<span class="ok">  → 3 runs · 1 cryo_em · 1 xray_crystallography · 1 saxs</span><br><br>
+<span class="act">⏺ route cryo_em</span> <span class="dim">(EXP-NCP-CRYOEM-001)</span><br>
+<span class="out">  fetch movies by storage_uri → MotionCor2 → CTFFIND → RELION 3D → refine</span><br>
+<span class="ok">  ✓ 2.5 Å map · 6 WorkflowRun rows written</span><br><br>
+<span class="act">⏺ route xray</span> <span class="dim">(EXP-NCP-XTAL-002)</span><br>
+<span class="out">  DIALS integrate → Aimless → Phaser → phenix.refine</span><br>
+<span class="ok">  ✓ R-free 0.214 · model + validation recorded</span><br><br>
+<span class="act">⏺ route saxs</span> <span class="dim">(EXP-CHD1-SAXS-001)</span><br>
+<span class="out">  RAW subtract → Guinier (Rg 38 Å) → DAMMIF envelope</span><br>
+<span class="ok">  ✓ done · all 3 runs now processing_status = completed</span>
+    </div>
+  </div>
+</div></section>
+
+<section style="border-bottom:none"><div class="wrap">
+  <p class="eyebrow">Payoff</p>
+  <h2>What auto-routing buys</h2>
+  <div class="payoff">
+    <div class="pay"><h3><span class="ic">[ ⋔ ]</span> Right tool, no prompting</h3><p>The technique field decides the pipeline, so a mixed queue of cryo-EM, X-ray, and SAXS runs all clears itself correctly.</p></div>
+    <div class="pay"><h3><span class="ic">[ ◫ ]</span> Tool-agnostic record</h3><p>RELION, DIALS, ATSAS, and Phenix all leave the same shape of WorkflowRun — one provenance model across every technique.</p></div>
+    <div class="pay"><h3><span class="ic">[ ▷ ]</span> Resumable &amp; legible</h3><p>Typed steps mean a half-finished pipeline can be inspected and resumed, not restarted from scratch.</p></div>
+    <div class="pay"><h3><span class="ic">[ ↻ ]</span> Sets up re-analysis</h3><p>Pinned software_version on each step is what lets use case 06 later target exactly what a new release affects.</p></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <span>LAMBDA-BER · Use Case 03 — Auto-orchestrate processing</span>
+  <span>Consumes Use Case 01 · feeds Use Cases 04, 05, 06</span>
+</div></footer>
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Use Case 02 · Ask Your Data — LAMBDA-BER</title>
+<style>
+  :root{
+    --bg:#080c08; --bg2:#0c120c; --panel:#121a13; --panel-2:#18241a;
+    --line:#26361f; --ink:#eef4e9; --muted:#9fb497; --faint:#6b8061;
+    --leaf:#5fc77a; --gold:#d9b24a; --pdb:#7fb0e8; --rust:#cf6f45;
+    --code-bg:#060a06; --radius:14px;
+    --mono:"SFMono-Regular",ui-monospace,"JetBrains Mono",Menlo,Consolas,monospace;
+    --sans:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  }
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;
+    background:radial-gradient(1050px 680px at 84% -10%,rgba(95,199,122,.13),transparent 58%),
+      radial-gradient(820px 520px at -6% 10%,rgba(217,178,74,.10),transparent 55%),
+      linear-gradient(180deg,var(--bg),var(--bg2));}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  a{color:var(--leaf);text-decoration:none}a:hover{text-decoration:underline}
+  header.hero{padding:84px 0 56px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+  header.hero::before{content:"";position:absolute;inset:0;z-index:0;
+    background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.025) 0 1px,transparent 1px 56px);
+    mask-image:radial-gradient(ellipse 75% 80% at 60% 0%,#000,transparent 76%);}
+  .hero .wrap{position:relative;z-index:1}
+  .kicker{display:inline-flex;align-items:center;gap:10px;font:600 12px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;
+    color:var(--leaf);background:rgba(95,199,122,.08);border:1px solid rgba(95,199,122,.3);padding:8px 14px;border-radius:999px}
+  .kicker .num{color:var(--ink);opacity:.9}
+  h1{font-size:clamp(34px,5.4vw,58px);line-height:1.04;margin:22px 0 16px;letter-spacing:-.02em;font-weight:800}
+  h1 .grad{background:linear-gradient(100deg,var(--leaf),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lede{font-size:clamp(17px,2vw,20px);color:var(--muted);max-width:64ch;margin:0}
+  .meta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+  .chip{font:500 13px var(--mono);color:var(--muted);border:1px solid var(--line);background:var(--panel);padding:7px 12px;border-radius:8px}
+  .chip b{color:var(--ink);font-weight:600}
+  section{padding:56px 0;border-bottom:1px solid var(--line)}
+  .eyebrow{font:700 12px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--faint);margin:0 0 10px}
+  h2{font-size:clamp(24px,3vw,32px);margin:0 0 8px;letter-spacing:-.01em;font-weight:750}
+  h2 + p.sub{color:var(--muted);margin:0 0 28px;max-width:66ch}
+  p{margin:0 0 16px}
+  .qa{display:grid;gap:16px}
+  .ask{background:linear-gradient(180deg,var(--panel),var(--panel-2));border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+  .ask .q{padding:16px 20px;font:600 16px var(--sans);color:var(--ink);border-bottom:1px solid var(--line);display:flex;gap:12px;align-items:flex-start}
+  .ask .q .badge{font:700 11px var(--mono);letter-spacing:.1em;color:var(--gold);background:rgba(217,178,74,.12);border:1px solid rgba(217,178,74,.3);border-radius:6px;padding:3px 8px;flex:0 0 auto;margin-top:2px}
+  .ask .sql{padding:14px 20px;font-family:var(--mono);font-size:12.5px;color:#bcd0b4;background:var(--code-bg);overflow-x:auto;line-height:1.65}
+  .ask .ans{padding:14px 20px;color:var(--muted);font-size:14.5px}
+  .ask .ans b{color:var(--leaf)}
+  .kw{color:var(--gold);font-weight:600}.fn{color:var(--ink)}.st{color:var(--leaf)}.cm{color:#5b7053}.pq{color:var(--pdb)}
+  .diagram{background:var(--code-bg);border:1px solid var(--line);border-radius:var(--radius);padding:8px;overflow:hidden}
+  .diagram svg{display:block;width:100%;height:auto}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+  .card .hd{padding:14px 18px;border-bottom:1px solid var(--line);font:700 13px var(--mono);color:var(--ink);display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.02)}
+  .dot{width:9px;height:9px;border-radius:50%;flex:0 0 auto}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  td,th{padding:10px 18px;text-align:left;border-bottom:1px solid rgba(38,54,31,.8)}
+  th{color:var(--faint);font:600 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase}
+  tr:last-child td{border-bottom:none}td code{color:var(--leaf);font-family:var(--mono);font-size:12.5px}td .role{color:var(--muted)}
+  .payoff{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .pay{background:linear-gradient(180deg,var(--panel),var(--panel-2));border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+  .pay h3{margin:0 0 6px;font-size:16px;display:flex;align-items:center;gap:10px}.pay h3 .ic{font-family:var(--mono);color:var(--gold)}
+  .pay p{margin:0;color:var(--muted);font-size:14.5px}
+  .callout{border-left:3px solid var(--pdb);background:rgba(127,176,232,.08);padding:16px 20px;border-radius:0 var(--radius) var(--radius) 0;color:var(--muted)}.callout b{color:var(--ink)}
+  footer{padding:40px 0 70px;color:var(--faint);font-size:13px}footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+  @media(max-width:760px){.cols,.payoff{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+  <span class="kicker"><span class="num">02</span> · LAMBDA-BER Use Case</span>
+  <h1>Ask your data:<br><span class="grad">your holdings, joined to the PDB</span></h1>
+  <p class="lede">
+    Once a lab's runs are catalogued (use case 01), the metadata becomes a database you can
+    interrogate in plain language. The agent turns a question into SQL over your local
+    tables, cross-references a PDB mirror, and answers in seconds — "which of my structures
+    are already public, and which are still novel?" — without anyone writing a join by hand.
+  </p>
+  <div class="meta-row">
+    <span class="chip"><b>Store:</b> local DuckDB / SQLite</span>
+    <span class="chip"><b>Reference:</b> PDB mirror</span>
+    <span class="chip"><b>Interface:</b> natural language → SQL</span>
+    <span class="chip"><b>Answers:</b> gaps, cohorts, dedup</span>
+  </div>
+</div></header>
+
+<section><div class="wrap">
+  <p class="eyebrow">Why the PDB join matters here</p>
+  <h2>Your data on one side, the world's on the other</h2>
+  <p class="sub">
+    A lab accumulates hundreds of samples and experiment runs. On its own that tells you
+    what you measured. Joined against a mirror of the PDB, it tells you something far more
+    useful: what's <em>novel</em>, what duplicates existing structures, where your
+    resolution beats the published entry, and which results you've never deposited.
+  </p>
+  <div class="callout">
+    <b>Unlike the integrative case (04), the PDB is load-bearing here.</b> The whole point
+    is the comparison: every local <code>Sample</code> / <code>ExperimentRun</code> is
+    matched against published entries by sequence, ligand, or organism — turning a private
+    catalog into a map of where your science sits relative to the field.
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <p class="eyebrow">Ask in plain language</p>
+  <h2>Three questions, three answers</h2>
+  <p class="sub">
+    The agent translates each question into SQL over the LAMBDA-BER tables (plus the PDB
+    mirror), runs it locally, and reports. The generated SQL is shown so the scientist can
+    audit and refine it — the natural language is a front-end, not a black box.
+  </p>
+  <div class="qa">
+    <div class="ask">
+      <div class="q"><span class="badge">Q1</span> "Which of my purified samples diffracted better than 2.5 Å but were never deposited?"</div>
+      <div class="sql"><span class="kw">SELECT</span> s.sample_code, e.experiment_code, e.resolution_ang
+<span class="kw">FROM</span>   sample s
+<span class="kw">JOIN</span>   experiment_sample_assoc a <span class="kw">USING</span> (sample_id)
+<span class="kw">JOIN</span>   experiment_run e          <span class="kw">ON</span> e.id = a.experiment_id
+<span class="kw">LEFT JOIN</span> <span class="pq">pdb.entry p</span>           <span class="kw">ON</span> p.sequence_md5 = s.sequence_md5   <span class="cm">-- PDB mirror</span>
+<span class="kw">WHERE</span>  e.technique = <span class="st">'xray_crystallography'</span>
+  <span class="kw">AND</span>  e.resolution_ang &lt; <span class="st">2.5</span>
+  <span class="kw">AND</span>  <span class="pq">p.pdb_id</span> <span class="kw">IS NULL</span>;          <span class="cm">-- no public match = undeposited</span></div>
+      <div class="ans"><b>4 samples.</b> Three are genuinely novel; one matches a deposited construct by sequence but at worse resolution than yours — a candidate to supersede.</div>
+    </div>
+    <div class="ask">
+      <div class="q"><span class="badge">Q2</span> "Have we ever collected SAXS on anything homologous to this kinase?"</div>
+      <div class="sql"><span class="kw">SELECT</span> s.sample_code, e.experiment_code, <span class="pq">p.pdb_id</span>
+<span class="kw">FROM</span>   <span class="pq">pdb.entry p</span>
+<span class="kw">JOIN</span>   sample s        <span class="kw">ON</span> s.organism = p.organism
+<span class="kw">JOIN</span>   experiment_sample_assoc a <span class="kw">USING</span> (sample_id)
+<span class="kw">JOIN</span>   experiment_run e <span class="kw">ON</span> e.id = a.experiment_id
+<span class="kw">WHERE</span>  <span class="pq">p.ec_number</span> <span class="kw">LIKE</span> <span class="st">'2.7.11.%'</span>      <span class="cm">-- protein kinases</span>
+  <span class="kw">AND</span>  e.technique = <span class="st">'saxs'</span>;</div>
+      <div class="ans"><b>2 runs</b> on a homologous kinase, both with usable Rg — a starting envelope you already own rather than new beamtime.</div>
+    </div>
+    <div class="ask">
+      <div class="q"><span class="badge">Q3</span> "Show me duplicate sample prep across studies so we stop re-purifying."</div>
+      <div class="sql"><span class="kw">SELECT</span> s.molecular_composition_hash,
+       count(*) <span class="kw">AS</span> n, array_agg(s.sample_code) <span class="kw">AS</span> samples
+<span class="kw">FROM</span>   sample s
+<span class="kw">GROUP BY</span> s.molecular_composition_hash
+<span class="kw">HAVING</span> count(*) &gt; <span class="st">1</span>;</div>
+      <div class="ans"><b>6 clusters.</b> The CHD1 construct was independently prepared in three studies — consolidate the protocol and the freezer stock.</div>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <p class="eyebrow">Architecture</p>
+  <h2>A reference DB sits beside your catalog</h2>
+  <div class="diagram">
+    <svg viewBox="0 0 980 320" role="img" aria-label="A natural-language question becomes SQL run over local LAMBDA-BER tables joined with a PDB mirror">
+      <defs>
+        <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b8061"/></marker>
+        <style>.lbl{font:600 13px var(--mono,monospace);fill:#eef4e9}.s2{font:500 11px var(--mono,monospace);fill:#9fb497}.e2{stroke:#6b8061;stroke-width:1.6;fill:none;marker-end:url(#a2)}</style>
+      </defs>
+      <rect x="24" y="120" width="180" height="80" rx="12" fill="#1a1207" stroke="#d9b24a"/>
+      <text class="lbl" x="44" y="152" fill="#e6c462">question</text>
+      <text class="s2" x="44" y="174">plain language</text>
+      <rect x="270" y="120" width="150" height="80" rx="12" fill="#11221a" stroke="#5fc77a"/>
+      <text class="lbl" x="294" y="152" fill="#7fe09a">agent</text>
+      <text class="s2" x="294" y="174">NL → SQL</text>
+      <path class="e2" d="M204,160 L270,160"/>
+      <!-- local -->
+      <rect x="500" y="40" width="430" height="100" rx="12" fill="#121a13" stroke="#5fc77a"/>
+      <text class="lbl" x="524" y="70" fill="#7fe09a">your LAMBDA-BER catalog</text>
+      <text class="s2" x="524" y="94">Sample · ExperimentRun · WorkflowRun · DataFile</text>
+      <text class="s2" x="524" y="114">+ association tables (local DuckDB)</text>
+      <!-- pdb -->
+      <rect x="500" y="180" width="430" height="100" rx="12" fill="#0f1822" stroke="#7fb0e8"/>
+      <text class="lbl" x="524" y="210" fill="#a6cbf3">PDB mirror</text>
+      <text class="s2" x="524" y="234">sequences · ligands · organism · resolution</text>
+      <text class="s2" x="524" y="254">EC numbers · accessions</text>
+      <path class="e2" d="M420,150 C460,120 470,100 500,90"/>
+      <path class="e2" d="M420,170 C460,210 470,220 500,230"/>
+      <text class="s2" x="436" y="120">SELECT</text>
+      <text class="s2" x="436" y="208">JOIN</text>
+    </svg>
+  </div>
+  <p style="margin-top:22px;color:var(--muted)">
+    The PDB mirror lives next to the catalog as just another set of tables, so a join is
+    local and fast. Keep it fresh with the project's ETL tooling; the agent never has to
+    leave the box to answer "is this novel?"
+  </p>
+</div></section>
+
+<section><div class="wrap">
+  <p class="eyebrow">What makes it answerable</p>
+  <h2>The schema is already query-shaped</h2>
+  <div class="cols">
+    <div class="card"><div class="hd"><span class="dot" style="background:var(--leaf)"></span> Local columns the questions hit</div>
+      <table>
+        <tr><th>From</th><th>Slot</th></tr>
+        <tr><td>Sample</td><td class="role"><code>organism</code>, <code>molecular_composition</code>, <code>purity_percentage</code></td></tr>
+        <tr><td>ExperimentRun</td><td class="role"><code>technique</code>, <code>quality_metrics.resolution</code></td></tr>
+        <tr><td>WorkflowRun</td><td class="role"><code>workflow_type</code>, <code>software_name</code></td></tr>
+        <tr><td>associations</td><td class="role">sample ↔ experiment ↔ study</td></tr>
+      </table>
+    </div>
+    <div class="card"><div class="hd"><span class="dot" style="background:var(--pdb)"></span> Bridges to the PDB</div>
+      <table>
+        <tr><th>Match on</th><th>Answers</th></tr>
+        <tr><td class="role">sequence</td><td class="role">novel vs. deposited</td></tr>
+        <tr><td class="role">ligand / cofactor</td><td class="role">complexes seen before</td></tr>
+        <tr><td class="role">organism / EC</td><td class="role">homolog coverage</td></tr>
+        <tr><td class="role">resolution</td><td class="role">do we beat the public entry?</td></tr>
+      </table>
+    </div>
+  </div>
+</div></section>
+
+<section style="border-bottom:none"><div class="wrap">
+  <p class="eyebrow">Payoff</p>
+  <h2>What asking-your-data buys</h2>
+  <div class="payoff">
+    <div class="pay"><h3><span class="ic">[ ? ]</span> No SQL tax</h3><p>A PI or bench scientist gets answers without a data engineer in the loop — and sees the generated query to keep it honest.</p></div>
+    <div class="pay"><h3><span class="ic">[ ⌘ ]</span> Novelty at a glance</h3><p>The PDB join turns "did anyone solve this?" from a literature search into a row count.</p></div>
+    <div class="pay"><h3><span class="ic">[ ⊟ ]</span> Stop redundant work</h3><p>Surfacing duplicate preps and unused beamtime saves reagents, freezer space, and shifts.</p></div>
+    <div class="pay"><h3><span class="ic">[ ↧ ]</span> Find your deposition gaps</h3><p>Instantly list high-quality results that were never made public — a to-do list for use case 05.</p></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <span>LAMBDA-BER · Use Case 02 — Ask your data</span>
+  <span>Builds on Use Case 01 · feeds Use Case 05 (deposit)</span>
+</div></footer>
+</body>
+</html>
