@@ -4,6 +4,29 @@ This directory contains raw or source data files used for testing and validation
 
 ## Files
 
+### beamline-snapshots/ (SSRL MX, BL12-2 / BL12-1 / BL9-2)
+
+**Source**: Real DCSS state snapshots captured during data collection at SSRL, converted to JSON by the [`dcss-dump-json`](https://github.com/) tool.
+
+**Format**: JSON (one file per DCSS snapshot, ~7,000–12,000 lines of structured device state)
+
+**Description**: Four PNNL collaborator samples on three SSRL macromolecular crystallography beamlines, used as fixtures for the SSRL MX loader (`src/lambda_ber_schema/loaders/ssrl_mx.py`). Each snapshot captures the full device state at the moment of data collection: beamline configuration, detector parameters, sample mount, run plans, robot state, cryojet, motors, etc.
+
+| File | Beamline | Sample | PDB |
+|------|----------|--------|-----|
+| `SA_x4_1_00001.json` | BL12-2 | SA_x4 (Ss_EXLX1 expansin) | [9MS5](https://www.rcsb.org/structure/9MS5) |
+| `A48Br_1_00001.json` | BL9-2 | A48Br (PWe1 phage endolysin) | [9MS6](https://www.rcsb.org/structure/9MS6) |
+| `A78_x107_1_00001.json` | BL12-2 | A78_x107 (PWe2 phage endolysin) | [9MS7](https://www.rcsb.org/structure/9MS7) |
+| `XA_x16_1_00001.json` | BL12-1 | XA_x16 (Xa_EXLX1 expansin) | [9MS4](https://www.rcsb.org/structure/9MS4) |
+
+**Contact**: Scott McPhillips (scottm@slac.stanford.edu) — SSRL SMB
+
+**Related Files**:
+- `tests/data/raw/beamline-snapshots/README.md` — conversion command and per-file details
+- `tests/loaders/fixtures/ssrl/sample_metadata.json` — sample/protein/study sidecar enrichment
+- `tests/loaders/fixtures/ssrl/processing_results.json` — autoproc/aimless processing statistics + output files
+- `tests/data/valid/Dataset-ssrl-mx-*.yaml` — worked lambda-ber-schema examples produced by the loader
+
 ### 9B7F.cif
 
 **Source**: NSLS2-BER-LAMBDA repository (`BNL/data/MX/Bin2Sum2Hcomp24_pdb/9B7F.cif`)
