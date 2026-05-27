@@ -5,6 +5,7 @@ Available loaders:
 - SASBDBLoader: Small Angle Scattering Biological Data Bank
 - SimpleScatteringLoader: Simple Scattering (SEC-SAXS from SIBYLS)
 - EMSLLoader: EMSL public API transactions and metadata
+- SSRLMXLoader: SSRL macromolecular crystallography (DCSS snapshots + sidecars)
 
 Example:
     >>> from lambda_ber_schema.loaders import SASBDBLoader
@@ -21,15 +22,17 @@ from lambda_ber_schema.loaders.emsl import EMSLLoader
 from lambda_ber_schema.loaders.pdb import PDBLoader
 from lambda_ber_schema.loaders.sasbdb import SASBDBLoader
 from lambda_ber_schema.loaders.simplescattering import SimpleScatteringLoader
+from lambda_ber_schema.loaders.ssrl_mx import SSRLMXLoader
 
 __all__ = [
     "BaseLoader",
     "BatchLoader",
     "BatchProgress",
-    "LoaderResult",
-    "ResponseCache",
     "EMSLLoader",
+    "LoaderResult",
     "PDBLoader",
+    "ResponseCache",
     "SASBDBLoader",
     "SimpleScatteringLoader",
+    "SSRLMXLoader",
 ]
