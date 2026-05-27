@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LAMBDA-BER Use Cases</title>
+<style>
+  :root {
+    --bg: #071016;
+    --bg-soft: #0d1820;
+    --panel: #111f29;
+    --panel-2: #152a35;
+    --ink: #edf5f2;
+    --muted: #a8bbb4;
+    --faint: #6f837d;
+    --line: #284038;
+    --teal: #4bd0b2;
+    --blue: #6aa7ff;
+    --gold: #efb84c;
+    --red: #e66e62;
+    --radius: 8px;
+    --mono: "SFMono-Regular", ui-monospace, "JetBrains Mono", Menlo, Consolas, monospace;
+    --sans: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: var(--sans);
+    color: var(--ink);
+    background:
+      radial-gradient(900px 560px at 15% -10%, rgba(75, 208, 178, .14), transparent 58%),
+      radial-gradient(840px 520px at 88% 5%, rgba(239, 184, 76, .10), transparent 52%),
+      linear-gradient(180deg, var(--bg), #081117 55%, #060b0f);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+  header.hero {
+    min-height: 76vh;
+    display: grid;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+  }
+  header.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+    background-size: 34px 34px;
+    mask-image: linear-gradient(180deg, #000, transparent 88%);
+  }
+  .hero .wrap { position: relative; z-index: 1; padding-top: 56px; padding-bottom: 64px; }
+  .kicker {
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
+    padding: 8px 13px;
+    border: 1px solid rgba(75, 208, 178, .36);
+    border-radius: 999px;
+    background: rgba(75, 208, 178, .08);
+    color: var(--teal);
+    font: 700 12px/1 var(--mono);
+    letter-spacing: .16em;
+    text-transform: uppercase;
+  }
+  h1 {
+    max-width: 980px;
+    margin: 22px 0 18px;
+    font-size: clamp(42px, 8vw, 92px);
+    line-height: .95;
+    font-weight: 850;
+  }
+  .grad {
+    color: transparent;
+    background: linear-gradient(100deg, var(--teal), var(--blue) 48%, var(--gold));
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+  .lede {
+    max-width: 760px;
+    margin: 0;
+    color: var(--muted);
+    font-size: clamp(18px, 2vw, 22px);
+  }
+  .hero-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 32px;
+  }
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 0 16px;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    background: rgba(17, 31, 41, .76);
+    color: var(--ink);
+    font-weight: 700;
+  }
+  .button.primary { background: var(--teal); color: #04100d; border-color: transparent; }
+
+  section { padding: 56px 0; border-bottom: 1px solid var(--line); }
+  .eyebrow {
+    margin: 0 0 10px;
+    color: var(--faint);
+    font: 800 12px/1 var(--mono);
+    letter-spacing: .16em;
+    text-transform: uppercase;
+  }
+  h2 {
+    margin: 0 0 12px;
+    font-size: clamp(28px, 4vw, 46px);
+    line-height: 1.05;
+  }
+  .sub { max-width: 760px; margin: 0; color: var(--muted); font-size: 18px; }
+
+  .thesis {
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    gap: 28px;
+    align-items: stretch;
+  }
+  .thesis-text {
+    padding: 28px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: rgba(17, 31, 41, .64);
+  }
+  .thesis-text p { margin: 0 0 16px; color: var(--muted); }
+  .thesis-text p:last-child { margin-bottom: 0; }
+  .diagram {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: linear-gradient(180deg, rgba(21,42,53,.84), rgba(8,17,23,.86));
+    min-height: 320px;
+    display: grid;
+    align-items: center;
+    padding: 16px;
+  }
+  svg { width: 100%; height: auto; display: block; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 30px;
+  }
+  .case-card {
+    min-height: 274px;
+    display: flex;
+    flex-direction: column;
+    padding: 22px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: rgba(17, 31, 41, .76);
+    box-shadow: 0 18px 50px rgba(0,0,0,.20);
+  }
+  .case-card:hover {
+    text-decoration: none;
+    border-color: rgba(75, 208, 178, .72);
+    transform: translateY(-2px);
+    transition: border-color .18s ease, transform .18s ease;
+  }
+  .num {
+    display: inline-flex;
+    width: 34px;
+    height: 34px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(75, 208, 178, .12);
+    color: var(--teal);
+    border: 1px solid rgba(75, 208, 178, .36);
+    font: 800 13px/1 var(--mono);
+  }
+  .case-card h3 {
+    margin: 18px 0 10px;
+    font-size: 21px;
+    line-height: 1.12;
+  }
+  .case-card p { margin: 0; color: var(--muted); font-size: 15px; }
+  .tags { display: flex; gap: 7px; flex-wrap: wrap; margin-top: auto; padding-top: 20px; }
+  .tag {
+    padding: 5px 8px;
+    border-radius: 6px;
+    background: rgba(255,255,255,.05);
+    color: var(--muted);
+    border: 1px solid rgba(255,255,255,.07);
+    font: 650 11px/1 var(--mono);
+  }
+
+  .path {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 30px;
+  }
+  .step {
+    position: relative;
+    padding: 18px;
+    min-height: 150px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: rgba(8, 17, 23, .62);
+  }
+  .step b { display: block; margin-bottom: 8px; }
+  .step p { margin: 0; color: var(--muted); font-size: 14px; }
+  .step::after {
+    content: ">";
+    position: absolute;
+    top: 18px;
+    right: -12px;
+    color: var(--gold);
+    font: 800 18px/1 var(--mono);
+  }
+  .step:last-child::after { display: none; }
+
+  .roles {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 30px;
+  }
+  .role {
+    padding: 22px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: rgba(21, 42, 53, .58);
+  }
+  .role h3 { margin: 0 0 10px; font-size: 18px; }
+  .role p { margin: 0; color: var(--muted); }
+
+  footer { padding: 38px 0 64px; color: var(--faint); font-size: 13px; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+  footer a { color: var(--muted); }
+
+  @media (max-width: 980px) {
+    .thesis, .grid, .roles { grid-template-columns: 1fr 1fr; }
+    .path { grid-template-columns: 1fr; }
+    .step::after { display: none; }
+  }
+  @media (max-width: 680px) {
+    header.hero { min-height: auto; }
+    .hero .wrap { padding-top: 44px; }
+    .thesis, .grid, .roles { grid-template-columns: 1fr; }
+    .case-card { min-height: 0; }
+  }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <span class="kicker">LAMBDA-BER use cases</span>
+    <h1>Six ways to make structural biology data <span class="grad">actionable across facilities</span></h1>
+    <p class="lede">
+      These scenarios show how LAMBDA-BER metadata, RO-Crate packaging, local query stores,
+      and agent-assisted workflows can turn facility outputs into reusable, federated
+      research objects without forcing every site into one storage system.
+    </p>
+    <div class="hero-actions">
+      <a class="button primary" href="#cases">Browse the use cases</a>
+      <a class="button" href="../slides/lambda-ro-crate-vision.html">Open the RO-Crate vision deck</a>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap thesis">
+    <div class="thesis-text">
+      <p class="eyebrow">The shared pattern</p>
+      <h2>Move meaning first. Move bytes only when needed.</h2>
+      <p>
+        The use cases are not six unrelated demos. They trace one practical architecture:
+        facilities expose typed metadata and stable file pointers; labs and compute
+        environments ingest those records into local tables; agents use the shared schema
+        to query, route processing, integrate results, package depositions, and decide what
+        deserves reanalysis.
+      </p>
+      <p>
+        RO-Crate gives the portable graph and bundle. LAMBDA-BER gives the structural biology
+        projection that is easy to validate, query, and join.
+      </p>
+    </div>
+    <div class="diagram" aria-label="A diagram showing facility crates flowing to local catalogs, processing, deposition, and reanalysis.">
+      <svg viewBox="0 0 720 420" role="img">
+        <defs>
+          <linearGradient id="wire" x1="0" x2="1">
+            <stop offset="0" stop-color="#4bd0b2"/>
+            <stop offset=".55" stop-color="#6aa7ff"/>
+            <stop offset="1" stop-color="#efb84c"/>
+          </linearGradient>
+          <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="4" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <rect x="24" y="34" width="176" height="96" rx="8" fill="#101f29" stroke="#284038"/>
+        <text x="112" y="70" text-anchor="middle" fill="#edf5f2" font-size="18" font-weight="700">Facility</text>
+        <text x="112" y="98" text-anchor="middle" fill="#a8bbb4" font-size="14">run metadata</text>
+
+        <rect x="272" y="34" width="176" height="96" rx="8" fill="#101f29" stroke="#284038"/>
+        <text x="360" y="70" text-anchor="middle" fill="#edf5f2" font-size="18" font-weight="700">RO-Crate</text>
+        <text x="360" y="98" text-anchor="middle" fill="#a8bbb4" font-size="14">portable graph</text>
+
+        <rect x="520" y="34" width="176" height="96" rx="8" fill="#101f29" stroke="#284038"/>
+        <text x="608" y="70" text-anchor="middle" fill="#edf5f2" font-size="18" font-weight="700">Local catalog</text>
+        <text x="608" y="98" text-anchor="middle" fill="#a8bbb4" font-size="14">queryable tables</text>
+
+        <rect x="104" y="250" width="176" height="96" rx="8" fill="#101f29" stroke="#284038"/>
+        <text x="192" y="286" text-anchor="middle" fill="#edf5f2" font-size="18" font-weight="700">Processing</text>
+        <text x="192" y="314" text-anchor="middle" fill="#a8bbb4" font-size="14">WorkflowRun trail</text>
+
+        <rect x="344" y="250" width="176" height="96" rx="8" fill="#101f29" stroke="#284038"/>
+        <text x="432" y="286" text-anchor="middle" fill="#edf5f2" font-size="18" font-weight="700">Deposit</text>
+        <text x="432" y="314" text-anchor="middle" fill="#a8bbb4" font-size="14">archives + lakehouse</text>
+
+        <path d="M202 82 H270" stroke="url(#wire)" stroke-width="5" fill="none" filter="url(#glow)"/>
+        <path d="M450 82 H518" stroke="url(#wire)" stroke-width="5" fill="none" filter="url(#glow)"/>
+        <path d="M608 132 C608 190 520 190 432 248" stroke="url(#wire)" stroke-width="5" fill="none" filter="url(#glow)"/>
+        <path d="M560 132 C480 190 280 170 192 248" stroke="url(#wire)" stroke-width="5" fill="none" filter="url(#glow)"/>
+        <path d="M282 300 H342" stroke="url(#wire)" stroke-width="5" fill="none" filter="url(#glow)"/>
+        <path d="M432 348 C432 390 112 390 112 132" stroke="#e66e62" stroke-width="3" fill="none" stroke-dasharray="8 8"/>
+
+        <circle cx="236" cy="82" r="7" fill="#4bd0b2"/>
+        <circle cx="484" cy="82" r="7" fill="#6aa7ff"/>
+        <circle cx="432" cy="248" r="7" fill="#efb84c"/>
+        <text x="112" y="384" text-anchor="middle" fill="#e66e62" font-size="13" font-family="monospace">reanalysis loop</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section id="cases">
+  <div class="wrap">
+    <p class="eyebrow">Use-case catalogue</p>
+    <h2>Start with the question you need answered</h2>
+    <p class="sub">Each page is a concrete workflow sketch: who is doing the work, what metadata crosses the boundary, what the agent does, and what durable record is left behind.</p>
+
+    <div class="grid">
+      <a class="case-card" href="01-federated-data-pull.html">
+        <span class="num">01</span>
+        <h3>Federated data pull</h3>
+        <p>Register beamtime from facility storage as searchable local records: file pointers, checksums, samples, instruments, and experiment runs.</p>
+        <div class="tags"><span class="tag">metadata pull</span><span class="tag">RO-Crate</span><span class="tag">local catalog</span></div>
+      </a>
+      <a class="case-card" href="02-ask-your-data.html">
+        <span class="num">02</span>
+        <h3>Ask your data</h3>
+        <p>Turn natural-language questions into joins across your local holdings and public structural biology references such as the PDB.</p>
+        <div class="tags"><span class="tag">SQL</span><span class="tag">PDB mirror</span><span class="tag">cohorts</span></div>
+      </a>
+      <a class="case-card" href="03-auto-orchestrate-processing.html">
+        <span class="num">03</span>
+        <h3>Auto-orchestrate processing</h3>
+        <p>Use typed technique metadata to route collected runs to the right processing engines and record each step as workflow provenance.</p>
+        <div class="tags"><span class="tag">technique routing</span><span class="tag">WorkflowRun</span><span class="tag">pipelines</span></div>
+      </a>
+      <a class="case-card" href="04-cross-source-integration.html">
+        <span class="num">04</span>
+        <h3>Cross-source integration</h3>
+        <p>Bring cryo-EM, SAXS, and X-ray results from different facilities into one integrative structural biology workspace.</p>
+        <div class="tags"><span class="tag">multi-modal</span><span class="tag">integration</span><span class="tag">CHD1</span></div>
+      </a>
+      <a class="case-card" href="05-bundle-deposit-lakehouse.html">
+        <span class="num">05</span>
+        <h3>Bundle, deposit, and query</h3>
+        <p>Package finished results as self-describing crates, deposit public artifacts, and land metadata in a lakehouse for reuse.</p>
+        <div class="tags"><span class="tag">deposit</span><span class="tag">lakehouse</span><span class="tag">reuse</span></div>
+      </a>
+      <a class="case-card" href="06-reanalysis-triggers.html">
+        <span class="num">06</span>
+        <h3>Reanalysis triggers</h3>
+        <p>Find exactly which old results are affected by a new tool, reference, or method, then rerun only the impacted records.</p>
+        <div class="tags"><span class="tag">software version</span><span class="tag">diffs</span><span class="tag">provenance</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">End-to-end path</p>
+    <h2>The architecture is visible in the workflow</h2>
+    <div class="path">
+      <div class="step"><b>1. Register</b><p>Pull a crate from a facility and record stable identifiers, sample metadata, and file locations.</p></div>
+      <div class="step"><b>2. Query</b><p>Project the graph into local tables so scientists and agents can ask operational questions.</p></div>
+      <div class="step"><b>3. Process</b><p>Route by technique and capture every computational step as explicit workflow provenance.</p></div>
+      <div class="step"><b>4. Integrate</b><p>Join outputs across techniques, facilities, archives, and local experiments.</p></div>
+      <div class="step"><b>5. Preserve</b><p>Deposit, index, and revisit results when upstream tools or references improve.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Who benefits</p>
+    <h2>Same metadata, different jobs</h2>
+    <div class="roles">
+      <div class="role">
+        <h3>Facility teams</h3>
+        <p>Expose enough structured context for outside users to find, validate, and act on data without copying whole storage systems.</p>
+      </div>
+      <div class="role">
+        <h3>Computational biologists</h3>
+        <p>Build local, queryable workspaces that preserve provenance while letting agents assemble the right files and workflows.</p>
+      </div>
+      <div class="role">
+        <h3>Data platforms</h3>
+        <p>Land interoperable metadata in BRIDGE, a lakehouse, or a repository while keeping raw data federated by design.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>LAMBDA-BER schema use cases</span>
+    <span><a href="../">Project docs</a> | <a href="../slides/lambda-ro-crate-vision.html">RO-Crate vision deck</a></span>
+  </div>
+</footer>
+</body>
+</html>
