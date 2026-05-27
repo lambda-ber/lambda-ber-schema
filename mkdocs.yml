@@ -38,6 +38,14 @@ nav:
     - Data Quality Challenges: background/data-quality-challenges.md
   - Examples:
     - Simple Scattering GluRS Dataset: examples/simplescattering-glurs-analysis.md
+  - Use Cases:
+    - Overview: use-cases/index.html
+    - Federated Data Pull: use-cases/01-federated-data-pull.html
+    - Ask Your Data: use-cases/02-ask-your-data.html
+    - Auto-Orchestrate Processing: use-cases/03-auto-orchestrate-processing.html
+    - Cross-Source Integration: use-cases/04-cross-source-integration.html
+    - Bundle, Deposit, and Query: use-cases/05-bundle-deposit-lakehouse.html
+    - Reanalysis Triggers: use-cases/06-reanalysis-triggers.html
   - Technical:
     - Mapping to OME: technical/ome-mapping.md
   - Slides:
