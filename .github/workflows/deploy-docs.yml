@@ -6,7 +6,10 @@ on:
     branches: [ main ]
 
     paths:
-    - 'docs/*/*.md'
+    - 'docs/**/*.md'
+    - 'docs/**/*.html'
+    - 'mkdocs.yml'
+    - '.github/workflows/deploy-docs.yml'
 
 jobs:
   build-docs:
