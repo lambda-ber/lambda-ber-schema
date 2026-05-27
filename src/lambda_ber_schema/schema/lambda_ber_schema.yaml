@@ -134,6 +134,7 @@ prefixes:
   PaNET: http://purl.org/pan-science/PaNET/PaNET
   UO: http://purl.obolibrary.org/obo/UO_
   emsl: https://api.emsl.pnnl.gov/external/
+  ssrl-mx: https://smb.slac.stanford.edu/dev/lims/lambda/
 
 imports:
   - linkml:types
