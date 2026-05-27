@@ -26,6 +26,7 @@
    "simplescattering": "https://www.simplescattering.com/open_dataset/",
    "sio": "http://semanticscience.org/resource/",
    "skos": "http://www.w3.org/2004/02/skos/core#",
+   "ssrl-mx": "https://smb.slac.stanford.edu/dev/lims/lambda/",
    "wikidata": "http://www.wikidata.org/entity/",
    "Any": {
       "@id": "linkml:Any"
