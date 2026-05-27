@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Use Case 04 · Cross-Source Integration — LAMBDA-BER</title>
+<style>
+  :root{
+    --bg:#0c1014;
+    --bg2:#11171d;
+    --panel:#161e26;
+    --panel-2:#1c2731;
+    --line:#2a3742;
+    --ink:#eaf1f6;
+    --muted:#94a6b3;
+    --faint:#647483;
+    --cryo:#5ec8d8;     /* cryo-EM */
+    --saxs:#e0a13c;     /* SAXS */
+    --xray:#c8607a;     /* X-ray */
+    --agent:#7ee0a8;    /* agent / lambda */
+    --pdb:#9a8cf0;      /* reference db */
+    --code-bg:#0a0e12;
+    --radius:14px;
+    --mono:"SFMono-Regular",ui-monospace,"JetBrains Mono",Menlo,Consolas,monospace;
+    --sans:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:var(--sans);
+    color:var(--ink);
+    background:
+      radial-gradient(1100px 700px at 82% -8%, rgba(94,200,216,.12), transparent 60%),
+      radial-gradient(900px 600px at -6% 12%, rgba(154,140,240,.10), transparent 55%),
+      linear-gradient(180deg,var(--bg),var(--bg2));
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  a{color:var(--cryo);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  /* ---- hero ---- */
+  header.hero{
+    padding:84px 0 56px;
+    border-bottom:1px solid var(--line);
+    position:relative;
+    overflow:hidden;
+  }
+  header.hero::before{
+    content:"";position:absolute;inset:0;z-index:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+    background-size:40px 40px;
+    mask-image:radial-gradient(ellipse 80% 70% at 60% 0%,#000,transparent 75%);
+  }
+  .hero .wrap{position:relative;z-index:1}
+  .kicker{
+    display:inline-flex;align-items:center;gap:10px;
+    font:600 12px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;
+    color:var(--agent);
+    background:rgba(126,224,168,.08);
+    border:1px solid rgba(126,224,168,.28);
+    padding:8px 14px;border-radius:999px;
+  }
+  .kicker .num{color:var(--ink);opacity:.9}
+  h1{
+    font-size:clamp(34px,5.4vw,58px);line-height:1.04;margin:22px 0 16px;
+    letter-spacing:-.02em;font-weight:800;
+  }
+  h1 .grad{
+    background:linear-gradient(100deg,var(--cryo),var(--saxs) 55%,var(--xray));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .lede{font-size:clamp(17px,2vw,20px);color:var(--muted);max-width:62ch;margin:0}
+  .meta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+  .chip{
+    font:500 13px var(--mono);color:var(--muted);
+    border:1px solid var(--line);background:var(--panel);
+    padding:7px 12px;border-radius:8px;
+  }
+  .chip b{color:var(--ink);font-weight:600}
+
+  /* ---- sections ---- */
+  section{padding:56px 0;border-bottom:1px solid var(--line)}
+  .eyebrow{
+    font:700 12px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;
+    color:var(--faint);margin:0 0 10px;
+  }
+  h2{font-size:clamp(24px,3vw,32px);margin:0 0 8px;letter-spacing:-.01em;font-weight:750}
+  h2 + p.sub{color:var(--muted);margin:0 0 28px;max-width:64ch}
+  p{margin:0 0 16px}
+
+  /* ---- source cards ---- */
+  .sources{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .src{
+    background:linear-gradient(180deg,var(--panel),var(--panel-2));
+    border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px;position:relative;overflow:hidden;
+  }
+  .src::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent)}
+  .src .tag{font:700 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+  .src h3{margin:10px 0 4px;font-size:18px}
+  .src .loc{color:var(--faint);font:500 13px var(--mono);margin-bottom:12px}
+  .src ul{margin:0;padding-left:18px;color:var(--muted);font-size:14px}
+  .src li{margin:4px 0}
+  .src--cryo{--accent:var(--cryo)}
+  .src--saxs{--accent:var(--saxs)}
+  .src--xray{--accent:var(--xray)}
+
+  /* ---- federation diagram ---- */
+  .diagram{
+    background:var(--code-bg);border:1px solid var(--line);
+    border-radius:var(--radius);padding:8px;overflow:hidden;
+  }
+  .diagram svg{display:block;width:100%;height:auto}
+
+  /* ---- schema mapping ---- */
+  .map-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+  .card{
+    background:var(--panel);border:1px solid var(--line);
+    border-radius:var(--radius);padding:0;overflow:hidden;
+  }
+  .card .hd{
+    padding:14px 18px;border-bottom:1px solid var(--line);
+    font:700 13px var(--mono);letter-spacing:.04em;color:var(--ink);
+    display:flex;align-items:center;gap:10px;
+    background:rgba(255,255,255,.02);
+  }
+  .dot{width:9px;height:9px;border-radius:50%;flex:0 0 auto}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  td,th{padding:10px 18px;text-align:left;border-bottom:1px solid rgba(42,55,66,.6)}
+  th{color:var(--faint);font:600 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase}
+  tr:last-child td{border-bottom:none}
+  td code{color:var(--cryo);font-family:var(--mono);font-size:12.5px}
+  td .role{color:var(--muted)}
+
+  /* ---- code blocks ---- */
+  pre{
+    background:var(--code-bg);border:1px solid var(--line);
+    border-radius:var(--radius);padding:20px 22px;overflow-x:auto;
+    font-family:var(--mono);font-size:13px;line-height:1.65;color:#cdd9e1;margin:0;
+  }
+  pre .c{color:#5d6b78}             /* comment   */
+  pre .k{color:var(--saxs)}          /* key       */
+  pre .s{color:var(--agent)}         /* string    */
+  pre .id{color:var(--pdb)}          /* id ref    */
+  pre .hl{color:var(--cryo);font-weight:600}
+  .filebar{
+    font:600 12px var(--mono);color:var(--faint);
+    padding:10px 16px;background:rgba(255,255,255,.02);
+    border:1px solid var(--line);border-bottom:none;border-radius:var(--radius) var(--radius) 0 0;
+    display:flex;align-items:center;gap:8px;
+  }
+  .filebar + pre{border-radius:0 0 var(--radius) var(--radius)}
+  .filebar .glyph{color:var(--saxs)}
+
+  /* ---- agent transcript ---- */
+  .term{
+    background:var(--code-bg);border:1px solid var(--line);border-radius:var(--radius);
+    overflow:hidden;font-family:var(--mono);font-size:13px;
+  }
+  .term .bar{display:flex;gap:7px;padding:12px 16px;border-bottom:1px solid var(--line);align-items:center}
+  .term .bar i{width:11px;height:11px;border-radius:50%;display:inline-block}
+  .term .bar i:nth-child(1){background:#e06c5a}
+  .term .bar i:nth-child(2){background:#e0a13c}
+  .term .bar i:nth-child(3){background:#7ee0a8}
+  .term .bar span{margin-left:10px;color:var(--faint);font-size:12px}
+  .term .body{padding:18px 20px;line-height:1.75}
+  .term .you{color:var(--agent)}
+  .term .act{color:var(--cryo)}
+  .term .out{color:var(--muted)}
+  .term .ok{color:var(--agent)}
+  .term .dim{color:var(--faint)}
+
+  /* ---- payoff ---- */
+  .payoff{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .pay{
+    background:linear-gradient(180deg,var(--panel),var(--panel-2));
+    border:1px solid var(--line);border-radius:var(--radius);padding:22px;
+  }
+  .pay h3{margin:0 0 6px;font-size:16px;display:flex;align-items:center;gap:10px}
+  .pay h3 .ic{font-family:var(--mono);color:var(--agent)}
+  .pay p{margin:0;color:var(--muted);font-size:14.5px}
+
+  .callout{
+    border-left:3px solid var(--pdb);background:rgba(154,140,240,.07);
+    padding:16px 20px;border-radius:0 var(--radius) var(--radius) 0;color:var(--muted);
+  }
+  .callout b{color:var(--ink)}
+
+  footer{padding:40px 0 70px;color:var(--faint);font-size:13px}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+  @media(max-width:760px){
+    .sources,.map-grid,.payoff{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="kicker"><span class="num">04</span> · LAMBDA-BER Use Case</span>
+    <h1>Cross-source integration for<br><span class="grad">integrative structural biology</span></h1>
+    <p class="lede">
+      Resolving how the CHD1 remodeler acts on a nucleosome takes more than any single
+      method can give: a cryo-EM map of the bound complex, a small-angle scattering
+      envelope for CHD1's flexible regions, and a crystallographic structure of the
+      nucleosome core. Each comes from a different instrument and facility, in its own
+      format. A structural computational biologist — increasingly with the assistance of
+      an AI agent — retrieves each result as an RO-Crate, reconciles them in local tables,
+      and stages one integrative-modeling bundle, with LAMBDA-BER as the shared model that
+      lets independent measurements join.
+    </p>
+    <div class="meta-row">
+      <span class="chip"><b>Complex:</b> CHD1 · nucleosome remodeler</span>
+      <span class="chip"><b>Techniques:</b> cryo-EM + SAXS + X-ray</span>
+      <span class="chip"><b>Env:</b> Beril compute + Claude Code agent</span>
+      <span class="chip"><b>Anchor:</b> Dataset-integrative.yaml</span>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">The scenario</p>
+    <h2>The same sample is measured in three different places</h2>
+    <p class="sub">
+      A chromatin-remodeling project studies how the CHD1 ATPase engages a reconstituted
+      nucleosome. No single technique answers the question, so the structure is attacked
+      from three directions — each producing data at a different light source or microscope,
+      in a different format, with provenance recorded a different way.
+    </p>
+    <div class="sources">
+      <div class="src src--cryo">
+        <div class="tag">cryo-EM</div>
+        <h3>CHD1–nucleosome complex</h3>
+        <div class="loc">Titan Krios G3i · 300 kV</div>
+        <ul>
+          <li>3.2 Å reconstruction (in&nbsp;progress)</li>
+          <li>Movies, motion-corrected micrographs, half-maps</li>
+          <li>Defines the bound-state architecture</li>
+        </ul>
+      </div>
+      <div class="src src--saxs">
+        <div class="tag">SAXS / WAXS</div>
+        <h3>CHD1 in solution</h3>
+        <div class="loc">SIBYLS 12.3.1 · ALS</div>
+        <ul>
+          <li>30 Å envelope, concentration series</li>
+          <li>I(q) curves, P(r), Rg / Dmax</li>
+          <li>Captures flexibility the map can't</li>
+        </ul>
+      </div>
+      <div class="src src--xray">
+        <div class="tag">X-ray crystallography</div>
+        <h3>Nucleosome core particle</h3>
+        <div class="loc">Macromolecular beamline</div>
+        <ul>
+          <li>High-resolution rigid reference</li>
+          <li>MTZ reflections → refined model</li>
+          <li>Docked into the cryo-EM density</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:28px">
+      Without a shared model, integrating these is a week of manual bookkeeping: chasing
+      down which sample prep fed which beamtime, reconciling buffer conditions, and hand-copying
+      resolution numbers into a modeling spreadsheet. LAMBDA-BER turns that into a query.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Federation</p>
+    <h2>How the agent pulls it together</h2>
+    <p class="sub">
+      Raw frames stay where they were collected. The agent fetches lightweight
+      LAMBDA-BER RO-Crates over the lambda API, registers their metadata locally,
+      cross-references a PDB mirror, and only streams heavy data (maps, MTZs, images)
+      on demand when a downstream tool needs it.
+    </p>
+    <div class="diagram">
+      <svg viewBox="0 0 980 470" role="img" aria-label="Federation flow from three light sources through the lambda API into local tables and an integrative RO-Crate">
+        <defs>
+          <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#647483"/>
+          </marker>
+          <style>
+            .lbl{font:600 13px var(--mono,monospace);fill:#eaf1f6}
+            .sub{font:500 11px var(--mono,monospace);fill:#94a6b3}
+            .edge{stroke:#647483;stroke-width:1.6;fill:none;marker-end:url(#arr)}
+            .node{rx:12;ry:12;stroke-width:1.5}
+          </style>
+        </defs>
+
+        <!-- sources -->
+        <g>
+          <rect class="node" x="20" y="40"  width="210" height="74" fill="#101a1d" stroke="#5ec8d8"/>
+          <text class="lbl"  x="40" y="70">cryo-EM facility</text>
+          <text class="sub"  x="40" y="92">Krios · RO-Crate</text>
+
+          <rect class="node" x="20" y="186" width="210" height="74" fill="#1a1610" stroke="#e0a13c"/>
+          <text class="lbl"  x="40" y="216">SIBYLS 12.3.1</text>
+          <text class="sub"  x="40" y="238">SAXS · RO-Crate</text>
+
+          <rect class="node" x="20" y="332" width="210" height="74" fill="#1a1216" stroke="#c8607a"/>
+          <text class="lbl"  x="40" y="362">X-ray beamline</text>
+          <text class="sub"  x="40" y="384">MTZ · RO-Crate</text>
+        </g>
+
+        <!-- lambda api -->
+        <rect class="node" x="338" y="160" width="150" height="150" fill="#101e17" stroke="#7ee0a8" stroke-dasharray="5 4"/>
+        <text class="lbl" x="364" y="228" fill="#7ee0a8">lambda</text>
+        <text class="lbl" x="364" y="250" fill="#7ee0a8">API</text>
+        <text class="sub" x="356" y="276">federated fetch</text>
+
+        <path class="edge" d="M230,77  C290,90 300,180 338,205"/>
+        <path class="edge" d="M230,223 C290,228 300,232 338,235"/>
+        <path class="edge" d="M230,369 C290,356 300,290 338,265"/>
+
+        <!-- local store -->
+        <rect class="node" x="588" y="60"  width="200" height="130" fill="#141b22" stroke="#2a3742"/>
+        <text class="lbl" x="610" y="92">Local metadata</text>
+        <text class="sub" x="610" y="114">Sample · ExperimentRun</text>
+        <text class="sub" x="610" y="132">WorkflowRun · DataFile</text>
+        <text class="sub" x="610" y="150">+ association tables</text>
+        <text class="sub" x="610" y="172" fill="#647483">DuckDB / SQLite</text>
+
+        <rect class="node" x="588" y="232" width="200" height="86" fill="#16131f" stroke="#9a8cf0"/>
+        <text class="lbl" x="610" y="266" fill="#cdbef7">PDB mirror</text>
+        <text class="sub" x="610" y="288">reference structures</text>
+        <text class="sub" x="610" y="306">compare · validate (optional)</text>
+
+        <path class="edge" d="M488,210 C540,170 540,140 588,125"/>
+        <path class="edge" d="M488,250 C540,262 540,270 588,275"/>
+
+        <!-- agent + output -->
+        <rect class="node" x="588" y="356" width="360" height="74" fill="#101e17" stroke="#7ee0a8"/>
+        <text class="lbl" x="610" y="386" fill="#7ee0a8">Integrative RO-Crate</text>
+        <text class="sub" x="610" y="408">one bundle → Phenix / IMP / HADDOCK</text>
+
+        <path class="edge" d="M688,190 C688,250 688,300 688,356"/>
+        <path class="edge" d="M688,318 C688,335 688,345 688,356"/>
+
+        <text class="sub" x="356" y="350" fill="#647483">Claude Code orchestrates ↑</text>
+      </svg>
+    </div>
+    <div class="callout" style="margin-top:24px">
+      <b>The trick:</b> the RO-Crate is the transport, LAMBDA-BER is the payload schema.
+      Each facility emits crates that validate against the same classes, so the agent never
+      writes per-source parsing glue — it merges rows.
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">The interchange layer</p>
+    <h2>One schema reconciles three vocabularies</h2>
+    <p class="sub">
+      The cryo-EM crate, the SAXS crate, and the X-ray crate each describe the project in
+      LAMBDA-BER terms. Because they share class definitions, the agent can join across them
+      on shared <code>Sample</code> and <code>Study</code> identifiers — that join is what
+      makes integration possible.
+    </p>
+    <div class="map-grid">
+      <div class="card">
+        <div class="hd"><span class="dot" style="background:var(--cryo)"></span> Entities the crates contribute</div>
+        <table>
+          <tr><th>Class</th><th>From</th></tr>
+          <tr><td><code>Sample</code> · CHD1–NCP complex</td><td class="role">all three</td></tr>
+          <tr><td><code>ExperimentRun</code> · cryo_em</td><td class="role">Krios crate</td></tr>
+          <tr><td><code>ExperimentRun</code> · saxs</td><td class="role">SIBYLS crate</td></tr>
+          <tr><td><code>ExperimentRun</code> · xray</td><td class="role">beamline crate</td></tr>
+          <tr><td><code>Instrument</code> ×3</td><td class="role">per source</td></tr>
+          <tr><td><code>DataFile</code> · maps, I(q), MTZ</td><td class="role">per source</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <div class="hd"><span class="dot" style="background:var(--saxs)"></span> Associations that bind them</div>
+        <table>
+          <tr><th>Association</th><th>Ties together</th></tr>
+          <tr><td><code>study_sample</code></td><td class="role">study ↔ each sample</td></tr>
+          <tr><td><code>study_experiment</code></td><td class="role">study ↔ all 3 runs</td></tr>
+          <tr><td><code>experiment_sample</code></td><td class="role">run ↔ sample (+ role)</td></tr>
+          <tr><td><code>experiment_instrument</code></td><td class="role">run ↔ instrument</td></tr>
+          <tr><td><code>workflow_input</code></td><td class="role">files → modeling job</td></tr>
+          <tr><td><code>workflow_output</code></td><td class="role">job → integrative model</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <p style="margin:30px 0 14px;color:var(--muted)">
+      The association tables are the seam. A single <code>Study</code> id collects three
+      independent <code>ExperimentRun</code>s collected months apart, on different continents:
+    </p>
+
+    <div class="filebar"><span class="glyph">▸</span> Dataset-integrative.yaml &mdash; the binding rows</div>
+    <pre><span class="c"># one study collects all three measurements of the project</span>
+<span class="k">study_experiment_associations</span>:
+- <span class="k">study_id</span>: <span class="id">lambdaber:study_integrative_nucleosome</span>
+  <span class="k">experiment_id</span>: <span class="id">lambdaber:exp_ncp_cryoem_001</span>      <span class="c"># cryo-EM @ Krios</span>
+- <span class="k">study_id</span>: <span class="id">lambdaber:study_integrative_nucleosome</span>
+  <span class="k">experiment_id</span>: <span class="id">lambdaber:exp_chd1_saxs_001</span>       <span class="c"># SAXS @ SIBYLS 12.3.1</span>
+- <span class="k">study_id</span>: <span class="id">lambdaber:study_integrative_nucleosome</span>
+  <span class="k">experiment_id</span>: <span class="id">lambdaber:exp_complex_cryoem_001</span>   <span class="c"># bound-state map</span>
+
+<span class="c"># each run points back to its sample, its prep, and its instrument</span>
+<span class="k">experiment_instrument_associations</span>:
+- <span class="k">experiment_id</span>: <span class="id">lambdaber:exp_chd1_saxs_001</span>
+  <span class="k">instrument_id</span>: <span class="id">lambdaber:instrument_sibyls_1231</span>
+  <span class="k">role</span>: <span class="s">primary</span></pre>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">The agent at work</p>
+    <h2>Claude Code assembles the integrative bundle</h2>
+    <p class="sub">
+      Running in the Beril compute environment, the agent reasons over the local tables,
+      pulls only what it needs across the federation, and stages a Phenix/IMP-ready crate.
+    </p>
+    <div class="term">
+      <div class="bar"><i></i><i></i><i></i><span>beril · claude-code · ~/chd1-nucleosome</span></div>
+      <div class="body">
+<span class="you">&gt; assemble an integrative-modeling bundle for the CHD1 nucleosome study</span><br><br>
+<span class="act">⏺ query local metadata</span><br>
+<span class="out">  SELECT * FROM experiment_run JOIN experiment_sample USING(...)</span><br>
+<span class="out">  WHERE study_id = 'study_integrative_nucleosome'</span><br>
+<span class="ok">  → 3 runs: cryo_em (3.2 Å), saxs (30 Å), xray (1.9 Å) · 1 shared complex sample</span><br><br>
+<span class="act">⏺ cross-reference</span> <span class="dim">(PDB mirror, optional)</span><br>
+<span class="ok">  → nucleosome core consistent with 1KX5 · histone identities confirmed</span><br><br>
+<span class="act">⏺ federated fetch</span> <span class="dim">(lambda API · only heavy inputs)</span><br>
+<span class="out">  GET sibyls://saxs/exp_chd1_saxs_001 → chd1.dat  (I(q), P(r))</span><br>
+<span class="out">  GET krios://maps/exp_complex_cryoem_001 → complex_half{1,2}.map</span><br>
+<span class="out">  GET xray://mtz/ncp → ncp_refine.mtz</span><br>
+<span class="ok">  → 3 DataFile rows registered with checksums (no raw frames copied)</span><br><br>
+<span class="act">⏺ write WorkflowRun + input associations</span><br>
+<span class="ok">  → workflow_integrative_imp_001 · 5 inputs wired via workflow_input_associations</span><br><br>
+<span class="act">⏺ stage RO-Crate</span> → <span class="ok">chd1-ncp-integrative.crate/</span> <span class="dim">(validates against lambda_ber_schema)</span><br>
+<span class="ok">  ✓ ready for phenix.dock_in_map + IMP · buffer/Rg/resolution carried in metadata</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Where Phenix plugs in</p>
+    <h2>From crate to Phenix inputs</h2>
+    <p class="sub">
+      Phenix tools don't read RO-Crates — they read MTZs, maps, and models. The crate's
+      job is upstream of that: because every file is typed by technique, resolution, and
+      role, the agent knows which files each step actually needs, fetches only those
+      across the federation, converts them to the expected formats, and dispatches the
+      right Phenix tool.
+    </p>
+    <div class="map-grid">
+      <div class="card">
+        <div class="hd"><span class="dot" style="background:var(--xray)"></span> X-ray reference → rigid body</div>
+        <table>
+          <tr><td><code>phenix.refine</code></td><td class="role">MTZ → refined NCP model</td></tr>
+          <tr><td><code>phenix.dock_in_map</code></td><td class="role">place NCP in cryo-EM density</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <div class="hd"><span class="dot" style="background:var(--cryo)"></span> Cryo-EM map → bound state</div>
+        <table>
+          <tr><td><code>phenix.mtriage</code></td><td class="role">FSC / local resolution from half-maps</td></tr>
+          <tr><td><code>phenix.real_space_refine</code></td><td class="role">fit complex into 3.2 Å map</td></tr>
+        </table>
+      </div>
+    </div>
+    <p style="margin-top:24px;color:var(--muted)">
+      SAXS envelopes (Rg, Dmax, P(r)) then enter integrative modeling (IMP/HADDOCK) as a
+      spatial restraint on CHD1's flexible regions — and every Phenix and IMP invocation is
+      written back as a <code>WorkflowRun</code>, so the provenance chain from raw beamtime
+      to final model never breaks.
+    </p>
+  </div>
+</section>
+
+<section style="border-bottom:none">
+  <div class="wrap">
+    <p class="eyebrow">Payoff</p>
+    <h2>What the standardization buys</h2>
+    <div class="payoff">
+      <div class="pay">
+        <h3><span class="ic">[ ↯ ]</span> No per-source glue</h3>
+        <p>Three facilities, one set of classes. The agent merges rows instead of writing a parser for every beamline's export.</p>
+      </div>
+      <div class="pay">
+        <h3><span class="ic">[ ⇄ ]</span> Data stays put</h3>
+        <p>Terabytes of frames remain at the source. Only metadata and the specific files a tool needs cross the wire.</p>
+      </div>
+      <div class="pay">
+        <h3><span class="ic">[ ⌖ ]</span> Joinable provenance</h3>
+        <p>A shared <code>Study</code>/<code>Sample</code> id makes "everything we measured on this complex" a single query against local tables.</p>
+      </div>
+      <div class="pay">
+        <h3><span class="ic">[ ✓ ]</span> Reproducible bundles</h3>
+        <p>The output is itself a validatable RO-Crate — checksummed inputs, typed workflows, ready to re-run or hand off.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>LAMBDA-BER · Use Case 04 — Cross-source integration</span>
+    <span>Anchored in <code style="font-family:var(--mono);color:var(--muted)">tests/data/valid/Dataset-integrative.yaml</code></span>
+  </div>
+</footer>
+
+</body>
+</html>

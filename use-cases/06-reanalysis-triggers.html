@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Use Case 06 · Re-Analysis Triggers — LAMBDA-BER</title>
+<style>
+  :root{
+    --bg:#0a0710; --bg2:#100b18; --panel:#181323; --panel-2:#1f1830;
+    --line:#2e2442; --ink:#f0eaf7; --muted:#aa9cc4; --faint:#73648f;
+    --violet:#9b7df0; --magenta:#d65a9a; --good:#5ec79a; --bad:#e0726a; --gold:#dcb24a;
+    --code-bg:#070510; --radius:14px;
+    --mono:"SFMono-Regular",ui-monospace,"JetBrains Mono",Menlo,Consolas,monospace;
+    --sans:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  }
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;
+    background:radial-gradient(1050px 680px at 85% -10%,rgba(155,125,240,.16),transparent 56%),
+      radial-gradient(820px 520px at -6% 12%,rgba(214,90,154,.11),transparent 55%),
+      linear-gradient(180deg,var(--bg),var(--bg2));}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  a{color:var(--violet);text-decoration:none}a:hover{text-decoration:underline}
+  header.hero{padding:84px 0 56px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+  header.hero::before{content:"";position:absolute;inset:0;z-index:0;
+    background-image:linear-gradient(90deg,rgba(155,125,240,.05) 1px,transparent 1px);background-size:60px 100%;
+    mask-image:radial-gradient(ellipse 75% 80% at 60% 0%,#000,transparent 76%);}
+  .hero .wrap{position:relative;z-index:1}
+  .kicker{display:inline-flex;align-items:center;gap:10px;font:600 12px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;
+    color:var(--violet);background:rgba(155,125,240,.08);border:1px solid rgba(155,125,240,.3);padding:8px 14px;border-radius:999px}
+  .kicker .num{color:var(--ink);opacity:.9}
+  h1{font-size:clamp(34px,5.4vw,58px);line-height:1.04;margin:22px 0 16px;letter-spacing:-.02em;font-weight:800}
+  h1 .grad{background:linear-gradient(100deg,var(--violet),var(--magenta));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lede{font-size:clamp(17px,2vw,20px);color:var(--muted);max-width:64ch;margin:0}
+  .meta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+  .chip{font:500 13px var(--mono);color:var(--muted);border:1px solid var(--line);background:var(--panel);padding:7px 12px;border-radius:8px}
+  .chip b{color:var(--ink);font-weight:600}
+  section{padding:56px 0;border-bottom:1px solid var(--line)}
+  .eyebrow{font:700 12px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--faint);margin:0 0 10px}
+  h2{font-size:clamp(24px,3vw,32px);margin:0 0 8px;letter-spacing:-.01em;font-weight:750}
+  h2 + p.sub{color:var(--muted);margin:0 0 28px;max-width:66ch}
+  p{margin:0 0 16px}
+  .triggers{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .trig{background:linear-gradient(180deg,var(--panel),var(--panel-2));border:1px solid var(--line);border-radius:var(--radius);padding:20px;position:relative;overflow:hidden}
+  .trig::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--violet)}
+  .trig .t{font:700 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--violet)}
+  .trig h3{margin:9px 0 5px;font-size:16px}
+  .trig p{margin:0;color:var(--muted);font-size:13.5px}
+  .diagram{background:var(--code-bg);border:1px solid var(--line);border-radius:var(--radius);padding:8px;overflow:hidden}
+  .diagram svg{display:block;width:100%;height:auto}
+  .filebar{font:600 12px var(--mono);color:var(--faint);padding:10px 16px;background:rgba(255,255,255,.02);border:1px solid var(--line);border-bottom:none;border-radius:var(--radius) var(--radius) 0 0;display:flex;align-items:center;gap:8px}
+  .filebar .glyph{color:var(--violet)}.filebar + pre{border-radius:0 0 var(--radius) var(--radius)}
+  pre{background:var(--code-bg);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;overflow-x:auto;font-family:var(--mono);font-size:13px;line-height:1.7;color:#d7cce8;margin:0}
+  pre .c{color:#5f527a}pre .k{color:var(--gold)}pre .s{color:var(--good)}pre .id{color:var(--magenta)}pre .kw{color:var(--violet);font-weight:600}pre .num{color:var(--gold)}
+  .diff{width:100%;border-collapse:collapse;font-size:13.5px;font-family:var(--mono);overflow:hidden;border:1px solid var(--line);border-radius:var(--radius)}
+  .diff th,.diff td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--line)}
+  .diff th{color:var(--faint);font:600 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;background:rgba(255,255,255,.02)}
+  .diff tr:last-child td{border-bottom:none}
+  .diff .up{color:var(--good)}.diff .down{color:var(--bad)}.diff .flat{color:var(--faint)}
+  .diff td.metric{color:var(--ink)}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+  .card .hd{padding:14px 18px;border-bottom:1px solid var(--line);font:700 13px var(--mono);color:var(--ink);display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.02)}
+  .term{background:var(--code-bg);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;font-family:var(--mono);font-size:13px}
+  .term .bar{display:flex;gap:7px;padding:12px 16px;border-bottom:1px solid var(--line);align-items:center}
+  .term .bar i{width:11px;height:11px;border-radius:50%;display:inline-block}
+  .term .bar i:nth-child(1){background:#e06c5a}.term .bar i:nth-child(2){background:#dcb24a}.term .bar i:nth-child(3){background:#9b7df0}
+  .term .bar span{margin-left:10px;color:var(--faint);font-size:12px}
+  .term .body{padding:18px 20px;line-height:1.8}
+  .term .you{color:var(--good)}.term .act{color:var(--violet)}.term .out{color:var(--muted)}.term .ok{color:var(--good)}.term .warn{color:var(--bad)}.term .dim{color:var(--faint)}
+  .payoff{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .pay{background:linear-gradient(180deg,var(--panel),var(--panel-2));border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+  .pay h3{margin:0 0 6px;font-size:16px;display:flex;align-items:center;gap:10px}.pay h3 .ic{font-family:var(--mono);color:var(--violet)}
+  .pay p{margin:0;color:var(--muted);font-size:14.5px}
+  .callout{border-left:3px solid var(--violet);background:rgba(155,125,240,.08);padding:16px 20px;border-radius:0 var(--radius) var(--radius) 0;color:var(--muted)}.callout b{color:var(--ink)}
+  footer{padding:40px 0 70px;color:var(--faint);font-size:13px}footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+  @media(max-width:760px){.triggers,.payoff{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+  <span class="kicker"><span class="num">06</span> · LAMBDA-BER Use Case</span>
+  <h1>Re-analysis triggers:<br><span class="grad">when the tools improve, the results catch up</span></h1>
+  <p class="lede">
+    Structure software never stops improving — a new reconstruction algorithm, a better CTF
+    model, an updated sequence database. Old data often holds more than it gave the first
+    time. Because every result records the exact software and inputs that produced it, the
+    agent can find precisely which past results a new release affects, re-run only those,
+    and report whether the numbers actually moved.
+  </p>
+  <div class="meta-row">
+    <span class="chip"><b>Trigger:</b> new version / reference</span>
+    <span class="chip"><b>Scope:</b> by software_version + type</span>
+    <span class="chip"><b>Action:</b> re-run affected only</span>
+    <span class="chip"><b>Output:</b> a metric diff</span>
+  </div>
+</div></header>
+
+<section><div class="wrap">
+  <p class="eyebrow">What sets it off</p>
+  <h2>Three kinds of trigger</h2>
+  <p class="sub">
+    A re-analysis sweep starts from a change in the world, not a calendar. The schema's
+    pinned <code>software_name</code> / <code>software_version</code> on each
+    <code>WorkflowRun</code> is what makes "which results are now stale?" a query rather
+    than a guess.
+  </p>
+  <div class="triggers">
+    <div class="trig"><div class="t">software</div><h3>New release</h3><p>RELION 5, a new cryoSPARC, or a Phenix point release with a better refinement target.</p></div>
+    <div class="trig"><div class="t">reference</div><h3>Updated database</h3><p>A refreshed sequence DB, a new ligand restraint library, or an improved reference model.</p></div>
+    <div class="trig"><div class="t">method</div><h3>Better algorithm</h3><p>Improved motion correction or CTF estimation that can squeeze more from existing raw frames.</p></div>
+  </div>
+  <div class="callout" style="margin-top:24px">
+    <b>Not Phenix-specific.</b> The same mechanism re-runs a RELION refinement, re-normalizes
+    an XAS scan, or re-fits a SAXS curve. What matters is that the workflow recorded its
+    version — the trigger is technique-agnostic.
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <p class="eyebrow">The sweep</p>
+  <h2>Find the affected set, re-run, diff</h2>
+  <div class="diagram">
+    <svg viewBox="0 0 980 300" role="img" aria-label="A new software version triggers a query for affected workflow runs, which are re-run and their metrics compared">
+      <defs>
+        <marker id="a6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#73648f"/></marker>
+        <style>.lbl{font:600 13px var(--mono,monospace);fill:#f0eaf7}.s6{font:500 11px var(--mono,monospace);fill:#aa9cc4}.e6{stroke:#73648f;stroke-width:1.6;fill:none;marker-end:url(#a6)}</style>
+      </defs>
+      <rect x="20" y="110" width="170" height="80" rx="12" fill="#1a1228" stroke="#9b7df0"/>
+      <text class="lbl" x="40" y="142" fill="#b39cf5">trigger</text>
+      <text class="s6" x="40" y="164">RELION 5 lands</text>
+      <rect x="240" y="100" width="190" height="100" rx="12" fill="#161322" stroke="#2e2442"/>
+      <text class="lbl" x="262" y="132">affected set</text>
+      <text class="s6" x="262" y="156">software_name='RELION'</text>
+      <text class="s6" x="262" y="176">AND version &lt; 5</text>
+      <path class="e6" d="M190,150 L240,150"/>
+      <rect x="480" y="100" width="170" height="100" rx="12" fill="#101e18" stroke="#5ec79a"/>
+      <text class="lbl" x="502" y="132" fill="#7fe0b0">re-run</text>
+      <text class="s6" x="502" y="156">same inputs</text>
+      <text class="s6" x="502" y="176">new version</text>
+      <path class="e6" d="M430,150 L480,150"/>
+      <text class="s6" x="436" y="138">N rows</text>
+      <rect x="700" y="100" width="250" height="100" rx="12" fill="#1c1322" stroke="#d65a9a"/>
+      <text class="lbl" x="722" y="132" fill="#e88ab8">metric diff</text>
+      <text class="s6" x="722" y="156">resolution · R-free · clashscore</text>
+      <text class="s6" x="722" y="176">improved? regressed? flat?</text>
+      <path class="e6" d="M650,150 L700,150"/>
+      <path class="e6" d="M785,200 C785,250 300,250 135,200" stroke-dasharray="4 5"/>
+      <text class="s6" x="380" y="266" fill="#73648f">write new WorkflowRun versions ↩ (old ones kept)</text>
+    </svg>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <p class="eyebrow">Scope the work</p>
+  <h2>Re-run only what the change touches</h2>
+  <p class="sub">
+    The expensive mistake is re-processing everything. The point of pinned versions is
+    surgical scope: a query returns exactly the runs a release can improve, and nothing else
+    is touched.
+  </p>
+  <div class="filebar"><span class="glyph">▸</span> the affected-set query</div>
+<pre><span class="c">-- which completed runs used a now-superseded RELION?</span>
+<span class="kw">SELECT</span> w.workflow_code, w.software_version, e.experiment_code
+<span class="kw">FROM</span>   workflow_run w
+<span class="kw">JOIN</span>   workflow_input_assoc i <span class="kw">USING</span> (workflow_id)
+<span class="kw">JOIN</span>   experiment_run e        <span class="kw">ON</span> e.id = i.experiment_id
+<span class="kw">WHERE</span>  w.software_name = <span class="s">'RELION'</span>
+  <span class="kw">AND</span>  w.workflow_type = <span class="s">'refinement'</span>
+  <span class="kw">AND</span>  w.software_version <span class="kw">LIKE</span> <span class="s">'3.%'</span>
+  <span class="kw">AND</span>  w.processing_status = <span class="s">'completed'</span>;
+<span class="c">-- → 18 runs. Re-run these 18, not the other 3,400.</span></pre>
+</div></section>
+
+<section><div class="wrap">
+  <p class="eyebrow">The result</p>
+  <h2>A diff that says whether it was worth it</h2>
+  <p class="sub">
+    Re-running produces <em>new</em> <code>WorkflowRun</code> rows beside the old ones — never
+    overwriting history. The agent reports the metric deltas so a scientist can accept the
+    improvements, investigate regressions, and ignore the unchanged.
+  </p>
+  <table class="diff">
+    <tr><th>Run</th><th>Metric</th><th>Was (v3)</th><th>Now (v5)</th><th>Δ</th></tr>
+    <tr><td class="metric">EXP-NCP-CRYOEM-001</td><td>resolution (Å)</td><td>3.4</td><td>3.0</td><td class="up">▲ 0.4 better</td></tr>
+    <tr><td class="metric">EXP-COMPLEX-001</td><td>map-model FSC</td><td>0.71</td><td>0.78</td><td class="up">▲ improved</td></tr>
+    <tr><td class="metric">EXP-APO-014</td><td>resolution (Å)</td><td>2.9</td><td>2.9</td><td class="flat">— flat</td></tr>
+    <tr><td class="metric">EXP-LIG-022</td><td>clashscore</td><td>4.1</td><td>5.8</td><td class="down">▼ regressed — flag</td></tr>
+  </table>
+  <p style="margin-top:20px;color:var(--muted)">
+    Pair this with the lakehouse (use case 05) and every sweep becomes a versioned snapshot:
+    you can always answer "what did this structure look like before the RELION 5 reprocessing?"
+  </p>
+</div></section>
+
+<section><div class="wrap">
+  <p class="eyebrow">The agent at work</p>
+  <h2>A release lands; the sweep runs itself</h2>
+  <div class="term">
+    <div class="bar"><i></i><i></i><i></i><span>beril · claude-code · ~/lab-catalog</span></div>
+    <div class="body">
+<span class="you">&gt; RELION 5 is out — what of ours could benefit?</span><br><br>
+<span class="act">⏺ scope</span> <span class="dim">software_name='RELION' AND version LIKE '3.%' AND type='refinement'</span><br>
+<span class="ok">  → 18 runs affected (of 3,418 total) · est. 14 GPU-hours</span><br><br>
+<span class="act">⏺ re-run</span> <span class="dim">(same inputs by storage_uri, RELION 5)</span><br>
+<span class="out">  18/18 complete · new WorkflowRun rows written · old versions retained</span><br><br>
+<span class="act">⏺ diff metrics</span><br>
+<span class="ok">  ▲ 11 improved (best: 3.4→3.0 Å)   — flat 6</span><br>
+<span class="warn">  ▼ 1 regressed (clashscore 4.1→5.8 on EXP-LIG-022) — flagged for review</span><br><br>
+<span class="act">⏺ summary</span><br>
+<span class="ok">  → 3 structures now cross the 3.0 Å deposition threshold (see use case 05)</span>
+    </div>
+  </div>
+</div></section>
+
+<section style="border-bottom:none"><div class="wrap">
+  <p class="eyebrow">Payoff</p>
+  <h2>What re-analysis triggers buy</h2>
+  <div class="payoff">
+    <div class="pay"><h3><span class="ic">[ ↻ ]</span> Old data, new value</h3><p>Raw collections keep paying off as methods improve — without anyone remembering to revisit them.</p></div>
+    <div class="pay"><h3><span class="ic">[ ⌖ ]</span> Surgical scope</h3><p>Pinned versions mean you re-run the 18 runs a release touches, not the 3,400 it doesn't.</p></div>
+    <div class="pay"><h3><span class="ic">[ ⚑ ]</span> Regressions surface</h3><p>A diff catches the rare case where "newer" is worse, before it quietly ships into a deposition.</p></div>
+    <div class="pay"><h3><span class="ic">[ ⏱ ]</span> History preserved</h3><p>New results sit beside old ones as versioned rows, so every past state stays reproducible.</p></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <span>LAMBDA-BER · Use Case 06 — Re-analysis triggers</span>
+  <span>Relies on Use Case 03's pinned versions · pairs with 05's snapshots</span>
+</div></footer>
+</body>
+</html>
