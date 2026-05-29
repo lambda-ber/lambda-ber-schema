@@ -409,6 +409,64 @@ class TestSSRLMXLoaderNoCollectingRuns:
         assert len(result.dataset.experiment_runs) == 0
 
 
+class TestSSRLMXLoaderMultiRunMetadata:
+    """Regression tests for snapshots with multiple collecting runs."""
+
+    def test_metadata_uuid_only_applies_to_matching_run(self, tmp_path: Path):
+        """A first-run metadata UUID must not overwrite later collecting runs."""
+        import json
+
+        snapshot = {
+            "beamlineID": {"value": "BL12-2", "_type": "string"},
+            "detectorType": {"value": "EIGER16M", "_type": "string"},
+            "crystalStatus": {"current_port": "SA_x1", "sampleID": 12345, "_type": "string"},
+            "run0": {
+                "status": "collecting",
+                "directory": "/data/run0",
+                "energy1_eV": 12000,
+                "distance_mm": 200,
+                "delta": 0.1,
+                "start_angle_deg": 0,
+                "start_frame": 1,
+                "end_frame": 10,
+                "file_root": "SA_x1",
+                "exposure_time_s": 0.1,
+            },
+            "run1": {
+                "status": "collecting",
+                "directory": "/data/run1",
+                "energy1_eV": 12000,
+                "distance_mm": 210,
+                "delta": 0.2,
+                "start_angle_deg": 10,
+                "start_frame": 11,
+                "end_frame": 20,
+                "file_root": "SA_x2",
+                "exposure_time_s": 0.2,
+            },
+        }
+        metadata = {
+            "/data/run0": {
+                "experiment_id": "11111111-1111-1111-1111-111111111111",
+                "resolution_angstrom": 1.5,
+            }
+        }
+
+        snapshot_path = tmp_path / "test_snapshot.json"
+        metadata_path = tmp_path / "sample_metadata.json"
+        snapshot_path.write_text(json.dumps(snapshot))
+        metadata_path.write_text(json.dumps(metadata))
+
+        loader = SSRLMXLoader(metadata_file=metadata_path)
+        result = loader.load(str(snapshot_path))
+
+        experiment_ids = [experiment.id for experiment in result.dataset.experiment_runs]
+        assert experiment_ids == [
+            "ssrl-mx:experiment/11111111-1111-1111-1111-111111111111",
+            "ssrl-mx:BL12-2/test_snapshot/run1",
+        ]
+
+
 class TestSSRLMXLoaderWithoutMetadata:
     """Test behavior when no sidecar metadata file exists."""
 

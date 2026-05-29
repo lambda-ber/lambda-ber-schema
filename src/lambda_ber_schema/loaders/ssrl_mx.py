@@ -222,11 +222,15 @@ class SSRLMXLoader(BaseLoader):
         # Create sample from crystalStatus, enriched with sidecar metadata
         sample = self._create_sample(raw, dataset_id, run_metadata, warnings)
 
-        # Enrich experiment runs with metadata (resolution, etc.)
-        if run_metadata:
-            experiments = self._enrich_experiments_with_metadata(
-                experiments, run_metadata, warnings
+        # Enrich experiment runs with per-run metadata when available.
+        experiments = [
+            self._enrich_experiment_with_metadata(
+                exp,
+                self._get_metadata_for_directory(exp.raw_data_location),
+                warnings,
             )
+            for exp in experiments
+        ]
 
         # Get processing results and create WorkflowRun + DataFile entities
         workflow_runs: list[WorkflowRun] = []
@@ -485,14 +489,15 @@ class SSRLMXLoader(BaseLoader):
             description="; ".join(description_parts) if description_parts else None,
         )
 
-    def _enrich_experiments_with_metadata(
+    def _enrich_experiment_with_metadata(
         self,
-        experiments: list[ExperimentRun],
-        metadata: dict[str, Any],
+        experiment: ExperimentRun,
+        metadata: dict[str, Any] | None,
         warnings: list[str],
-    ) -> list[ExperimentRun]:
-        """Enrich experiment runs with resolution and other metadata."""
-        enriched = []
+    ) -> ExperimentRun:
+        """Enrich a single experiment run with its matching sidecar metadata."""
+        if not metadata:
+            return experiment
 
         # If metadata supplies a stable experiment UUID, use it as the ExperimentRun.id
         # in CURIE form (ssrl-mx:experiment/<UUID>), matching how other loaders namespace
@@ -502,38 +507,30 @@ class SSRLMXLoader(BaseLoader):
             f"{self.source_name}:experiment/{experiment_uuid}" if experiment_uuid else None
         )
 
-        for exp in experiments:
-            # Add quality metrics with resolution
-            quality_metrics = None
-            if metadata.get("resolution_angstrom"):
-                quality_metrics = QualityMetrics(
-                    resolution=QuantityValue(
-                        numeric_value=metadata["resolution_angstrom"],
-                        unit="Angstroms",
-                    )
-                )
-
-            # Create new experiment with updated fields
-            # We need to copy all fields and add/update quality_metrics
-            enriched.append(
-                ExperimentRun(
-                    id=override_id or exp.id,
-                    experiment_code=exp.experiment_code,
-                    technique=exp.technique,
-                    wavelength=exp.wavelength,
-                    detector_distance=exp.detector_distance,
-                    oscillation_angle=exp.oscillation_angle,
-                    start_angle=exp.start_angle,
-                    number_of_images=exp.number_of_images,
-                    transmission=exp.transmission,
-                    raw_data_location=exp.raw_data_location,
-                    experimental_conditions=exp.experimental_conditions,
-                    quality_metrics=quality_metrics,
-                    description=exp.description,
+        quality_metrics = None
+        if metadata.get("resolution_angstrom"):
+            quality_metrics = QualityMetrics(
+                resolution=QuantityValue(
+                    numeric_value=metadata["resolution_angstrom"],
+                    unit="Angstroms",
                 )
             )
 
-        return enriched
+        return ExperimentRun(
+            id=override_id or experiment.id,
+            experiment_code=experiment.experiment_code,
+            technique=experiment.technique,
+            wavelength=experiment.wavelength,
+            detector_distance=experiment.detector_distance,
+            oscillation_angle=experiment.oscillation_angle,
+            start_angle=experiment.start_angle,
+            number_of_images=experiment.number_of_images,
+            transmission=experiment.transmission,
+            raw_data_location=experiment.raw_data_location,
+            experimental_conditions=experiment.experimental_conditions,
+            quality_metrics=quality_metrics,
+            description=experiment.description,
+        )
 
     def _create_experiment_runs(
         self,
