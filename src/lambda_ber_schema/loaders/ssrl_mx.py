@@ -236,9 +236,11 @@ class SSRLMXLoader(BaseLoader):
         workflow_runs: list[WorkflowRun] = []
         data_files: list[DataFile] = []
         workflow_output_associations: list[WorkflowOutputAssociation] = []
+        workflow_experiment_associations: list[WorkflowExperimentAssociation] = []
         processing_results = None
         if experiments:
-            first_run_dir = experiments[0].raw_data_location
+            first_experiment = experiments[0]
+            first_run_dir = first_experiment.raw_data_location
             processing_results = self._get_processing_for_directory(first_run_dir)
             if processing_results:
                 workflow_run = self._create_workflow_run(
@@ -264,6 +266,12 @@ class SSRLMXLoader(BaseLoader):
                         output_type=OutputTypeEnum.processed_data,
                     )
                     for df in files
+                )
+                workflow_experiment_associations.append(
+                    WorkflowExperimentAssociation(
+                        workflow_id=workflow_run.id,
+                        experiment_id=first_experiment.id,
+                    )
                 )
 
         # Create study: prefer UUID + title + keywords from sidecar metadata, else
@@ -303,12 +311,6 @@ class SSRLMXLoader(BaseLoader):
             StudyWorkflowAssociation(study_id=study.id, workflow_id=wf.id)
             for wf in workflow_runs
         ]
-        workflow_experiment_associations = [
-            WorkflowExperimentAssociation(workflow_id=wf.id, experiment_id=exp.id)
-            for wf in workflow_runs
-            for exp in experiments  # Link workflow to all experiments from this snapshot
-        ]
-
         # Create dataset with flat entity collections
         dataset = Dataset(
             id=dataset_id,

@@ -466,6 +466,59 @@ class TestSSRLMXLoaderMultiRunMetadata:
             "ssrl-mx:BL12-2/test_snapshot/run1",
         ]
 
+    def test_workflow_only_links_to_processed_run(self, tmp_path: Path):
+        """Processing from the first run must not be attached to every collecting run."""
+        import json
+
+        snapshot = {
+            "beamlineID": {"value": "BL12-2", "_type": "string"},
+            "detectorType": {"value": "EIGER16M", "_type": "string"},
+            "crystalStatus": {"current_port": "SA_x1", "sampleID": 12345, "_type": "string"},
+            "run0": {
+                "status": "collecting",
+                "directory": "/data/run0",
+                "energy1_eV": 12000,
+                "distance_mm": 200,
+                "delta": 0.1,
+                "start_angle_deg": 0,
+                "start_frame": 1,
+                "end_frame": 10,
+                "file_root": "SA_x1",
+                "exposure_time_s": 0.1,
+            },
+            "run1": {
+                "status": "collecting",
+                "directory": "/data/run1",
+                "energy1_eV": 12000,
+                "distance_mm": 210,
+                "delta": 0.2,
+                "start_angle_deg": 10,
+                "start_frame": 11,
+                "end_frame": 20,
+                "file_root": "SA_x2",
+                "exposure_time_s": 0.2,
+            },
+        }
+        processing = {
+            "/data/run0": {
+                "pipeline": "autoproc",
+                "output_files": [],
+            }
+        }
+
+        snapshot_path = tmp_path / "test_snapshot.json"
+        processing_path = tmp_path / "processing_results.json"
+        snapshot_path.write_text(json.dumps(snapshot))
+        processing_path.write_text(json.dumps(processing))
+
+        loader = SSRLMXLoader(processing_results_file=processing_path)
+        result = loader.load(str(snapshot_path))
+
+        associations = result.dataset.workflow_experiment_associations
+        assert associations is not None
+        assert len(associations) == 1
+        assert associations[0].experiment_id == "ssrl-mx:BL12-2/test_snapshot/run0"
+
 
 class TestSSRLMXLoaderWithoutMetadata:
     """Test behavior when no sidecar metadata file exists."""
