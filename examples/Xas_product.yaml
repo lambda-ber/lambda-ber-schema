@@ -1,0 +1,746 @@
+id: https://w3id.org/MONet/analysis-api-schema/xas
+name: xas
+title: XAS Measurement Data for MONet Analysis API
+description: |
+  X-ray Absorption Spectroscopy (XAS) measurement data from APS Beamline 20-BM.
+  Covers raw sweep files collected during a measurement session, together with
+  all instrument metadata parsed from the LabVIEW scan file headers.
+
+  Data source: LabVIEW 1-D scan files (.0001, .0002, ...) from Beamline 20 BM.
+  Oracle backing tables: LAM_XAS_MEAS, LAM_XAS_AMPS, LAM_XAS_MOTS,
+                         LAM_XAS_COLS, LAM_XAS_DROWS, LAM_XAS_ICS.
+
+  Inheritance hierarchy:
+
+    analysisActivity (abstract)
+      +-- XASAnalysisActivity
+            Represents one measurement session (UUID folder = all sweeps
+            for one sample/standard at one temperature).
+
+    dataProduct (abstract)
+      +-- processedData
+            +-- XASMeasurementProduct
+                  Represents one sweep file (.0001, .0002, ...).
+                  Carries scan-level metadata and nested child objects.
+
+  Helper classes (child-table rows):
+    XASAmplifier        -- amplifier sensitivity entry  (LAM_XAS_AMPS)
+    XASMotorPosition    -- motor position at scan start  (LAM_XAS_MOTS)
+    XASSignalColumn     -- detector signal name/PV pair  (LAM_XAS_COLS)
+    XASDataRow          -- single energy point value     (LAM_XAS_DROWS)
+    XASIonChamber       -- ion chamber gas component     (LAM_XAS_ICS)
+
+  Data flow:
+    processedSample (soil replicate / cryogenic sample)
+      -> XASAnalysisActivity
+          facility: APS, beamline: 20-BM
+          instrument_id -> Si(111) double-crystal monochromator
+          protocol_url -> beamline SOP
+      -> workflowExecutionActivity (type='xas_sweep_collection')
+          one per UUID/measurement session
+      -> XASMeasurementProduct (one row per sweep file)
+          s3_key: "xas/{uuid}/data/{filename}.0001"
+          summary_metrics: {"e0_ev":7112, "n_points":598, "sweep_number":1}
+          Nested: amplifiers[], motors[], signal_columns[], data_rows[], ion_chambers[]
+
+  Integration notes:
+    - XASAnalysisActivity    -> paste into analysis_api_schema.yaml classes section
+    - XASMeasurementProduct  -> paste into products.yaml classes section
+    - Helper classes         -> paste into products.yaml or a new xas_types.yaml
+    - New enum values        -> add to enums.yaml as noted below
+
+license: MIT
+
+prefixes:
+  analysis_api_schema: https://w3id.org/MONet/analysis-api-schema/
+  linkml: https://w3id.org/linkml/
+default_prefix: analysis_api_schema
+
+imports:
+  - linkml:types
+  - analysis_api_schema
+  - enums
+
+
+# =============================================================================
+# SLOTS
+# XAS-specific reusable slots.
+# Core slots (name, s3_key, acquisition_time, instrument_id, protocol_url,
+# analyte_id, version, etc.) are inherited via analysisActivity / dataProduct.
+# =============================================================================
+
+slots:
+
+  # --- Beamline / facility ---
+  facility:
+    description: Synchrotron facility name (e.g. APS, SSRL, NSLS-II)
+    range: string
+
+  beamline:
+    description: Beamline identifier (e.g. '20 BM', '20-ID')
+    range: string
+
+  ring_energy_gev:
+    description: Storage ring energy in GeV
+    range: float
+
+  ring_current_ma:
+    description: Storage ring current in mA at scan start
+    range: float
+
+  insertion_device:
+    description: Insertion device description (wiggler, undulator, bending magnet)
+    range: string
+
+  # --- Sample ---
+  element:
+    description: Target element (e.g. Fe, Mn, Cu)
+    range: string
+
+  edge:
+    description: Absorption edge measured (e.g. K, L1, L3)
+    range: string
+
+  reference_material:
+    description: Reference standard material name
+    range: string
+
+  sample_type:
+    description: Sample type descriptor (e.g. powder, solution, thin_film)
+    range: string
+
+  sample_format:
+    description: Physical sample format (e.g. pellet, paste)
+    range: string
+
+  sample_holder:
+    description: Holder/position identifier (e.g. '1002_1')
+    range: string
+
+  sample_temperature_k:
+    description: Sample temperature in Kelvin
+    range: float
+
+  sample_orientation_deg:
+    description: Sample orientation angle in degrees
+    range: float
+
+  sample_detector_distance_mm:
+    description: Sample-to-detector distance in mm
+    range: float
+
+  sample_doi:
+    description: DOI or persistent identifier for the sample
+    range: string
+
+  # --- Monochromator ---
+  crystal:
+    description: Monochromator crystal material (e.g. Si)
+    range: string
+
+  crystal_cut:
+    description: Crystal reflection (e.g. 111, 311)
+    range: string
+
+  crystal_detune_pct:
+    description: Crystal detuning percentage for harmonic rejection
+    range: float
+
+  mono_angle_deg:
+    description: Monochromator Bragg angle in degrees (Crystal_Phi)
+    range: float
+
+  mono_2nd_xtal_mm:
+    description: Second crystal gap position in mm (Crystal_Gap)
+    range: float
+
+  mono_energy_motor_ev:
+    description: Monochromator energy from motor encoder in eV
+    range: float
+
+  mono_energy_encoder_ev:
+    description: Monochromator energy from independent encoder in eV
+    range: float
+
+  # --- Mirrors ---
+  mirror_angle_mrad:
+    description: M0 mirror angle in mrad
+    range: float
+
+  m0_coating:
+    description: M0 mirror coating material (e.g. Rh, Pt)
+    range: string
+
+  m0_cutoff_kev:
+    description: M0 mirror X-ray cutoff energy in keV
+    range: float
+
+  m1_coating:
+    description: M1 mirror coating material
+    range: string
+
+  inhutch_mirror_coating:
+    description: In-hutch focusing mirror coating material
+    range: string
+
+  inhutch_mirror_cutoff_kev:
+    description: In-hutch mirror cutoff energy in keV
+    range: float
+
+  # --- Slits & optics ---
+  slit_size_h_um:
+    description: Horizontal slit size in microns
+    range: float
+
+  slit_size_v_um:
+    description: Vertical slit size in microns
+    range: float
+
+  slit_center_h:
+    description: Horizontal slit center position (mm)
+    range: float
+
+  slit_center_v:
+    description: Vertical slit center position (mm)
+    range: float
+
+  # --- Beam attenuation ---
+  beam_attenuation_um:
+    description: Attenuator thickness in microns
+    range: float
+
+  beam_attenuation_material:
+    description: Attenuator material (e.g. Al)
+    range: string
+
+  # --- Scan configuration ---
+  sweep_number:
+    description: 1-based sweep index within the measurement session
+    range: integer
+
+  scan_subtype:
+    description: Scan type -- 'energy' (XAS) or 'motor' (alignment)
+    range: xasscansubtype
+
+  positioner:
+    description: Primary positioner name (e.g. 'Mono Energy *')
+    range: string
+
+  e0_ev:
+    description: Absorption edge energy E0 in eV
+    range: float
+
+  n_points:
+    description: Number of scan points
+    range: integer
+
+  n_data_rows:
+    description: Number of data rows in the file
+    range: integer
+
+  x_first:
+    description: First positioner value in the scan (eV or mm)
+    range: float
+
+  x_last:
+    description: Last positioner value in the scan (eV or mm)
+    range: float
+
+  scan_bounds:
+    description: Scan boundary string as written in file header
+    range: string
+
+  scan_steps:
+    description: Step sizes string as written in file header
+    range: string
+
+  integration_times:
+    description: Integration times string as written in file header
+    range: string
+
+  kwgt:
+    description: k-weighting exponent used in EXAFS region
+    range: float
+
+  scan_time_sec:
+    description: Total scan duration in seconds
+    range: integer
+
+  scan_datetime:
+    description: Date and time at scan start
+    range: datetime
+
+  # --- FY detector ---
+  fy_electronics:
+    description: Fluorescence detector electronics model (e.g. XMAP12B)
+    range: string
+
+  fy_channel_num:
+    description: Number of active fluorescence detector channels
+    range: integer
+
+  fy_element:
+    description: Target element detected by fluorescence detector (e.g. Fe)
+    range: string
+
+  fy_transition:
+    description: X-ray transition detected (e.g. Ka, Kb)
+    range: string
+
+  user_comment:
+    description: Free-text user comment from scan header
+    range: string
+
+  # --- Amplifier child slots ---
+  amp_index:
+    description: 1-based amplifier index (aligns with Amplifier_Gain_N)
+    range: integer
+
+  signal_name:
+    description: Signal channel name (e.g. I0, It, Iref)
+    range: string
+
+  gain:
+    description: Amplifier gain value
+    range: float
+
+  gain_unit:
+    description: Gain unit as written in file (e.g. nA/V, pA/V)
+    range: string
+
+  voltage_start:
+    description: Analog input voltage at scan start (V)
+    range: float
+
+  voltage_end:
+    description: Analog input voltage at scan end (V)
+    range: float
+
+  # --- Motor position child slots ---
+  motor_index:
+    description: 1-based motor index (aligns with Motor_N_Pos)
+    range: integer
+
+  motor_name:
+    description: Motor name (e.g. Disp_V_polycold)
+    range: string
+
+  pv:
+    description: EPICS process variable name (e.g. 20bm:m28)
+    range: string
+
+  position:
+    description: Motor position value at scan start
+    range: float
+
+  # --- Signal column child slots ---
+  col_index:
+    description: 1-based column index (aligns with Analog_In_Signal_Type_N)
+    range: integer
+
+  col_name:
+    description: Detector column name (e.g. XMAP12B:FeKa_Sum)
+    range: string
+
+  # --- Data row child slots ---
+  row_num:
+    description: 1-based row index within the sweep file
+    range: integer
+
+  row_val:
+    description: Representative value at this scan point (e.g. FeKa_Sum count)
+    range: float
+
+  # --- Ion chamber child slots ---
+  chamber_index:
+    description: Ion chamber index (1=I0, 2=It, 3=Iref)
+    range: integer
+
+  gas_index:
+    description: 1-based gas component index within the chamber mixture
+    range: integer
+
+  gas_name:
+    description: Fill gas name (e.g. Nitrogen, Helium, Argon)
+    range: string
+
+  chamber_length_mm:
+    description: Physical ion chamber length in mm
+    range: float
+
+  pressure_bar:
+    description: Gas fill pressure in bar
+    range: float
+
+
+# =============================================================================
+# HELPER CLASSES (child-table rows)
+# =============================================================================
+
+classes:
+
+  # ---------------------------------------------------------------------------
+  # XASAmplifier -- one row per amplifier per sweep (LAM_XAS_AMPS)
+  # ---------------------------------------------------------------------------
+  XASAmplifier:
+    description: |-
+      Amplifier sensitivity entry for one signal channel in an XAS sweep.
+      Corresponds to one row in LAM_XAS_AMPS (Amplifier_Gain_N / Analog_In_Offset_N).
+    attributes:
+      amp_index:
+        range: integer
+        description: 1-based index matching Amplifier_Gain_N header field
+        required: true
+      signal_name:
+        range: string
+        description: Channel name (e.g. I0, It, Iref, Ipreslit)
+      gain:
+        range: float
+        description: Amplifier gain value (unit given by gain_unit)
+      gain_unit:
+        range: string
+        description: Unit as written in file -- nA/V or pA/V (reciprocal of standard V/A)
+      voltage_start:
+        range: float
+        description: Analog input offset at start of scan (V)
+      voltage_end:
+        range: float
+        description: Analog input offset at end of scan (V)
+
+
+  # ---------------------------------------------------------------------------
+  # XASMotorPosition -- one row per motor per sweep (LAM_XAS_MOTS)
+  # ---------------------------------------------------------------------------
+  XASMotorPosition:
+    description: |-
+      Motor position recorded at the start of an XAS sweep.
+      Corresponds to one row in LAM_XAS_MOTS (Motor_N_Pos header fields).
+    attributes:
+      motor_index:
+        range: integer
+        description: 1-based index matching Motor_N_Pos header field
+        required: true
+      motor_name:
+        range: string
+        description: Descriptive motor name (e.g. Disp_V_polycold)
+      pv:
+        range: string
+        description: EPICS PV for this motor (e.g. 20bm:m28)
+      position:
+        range: float
+        description: Motor position value at scan start
+
+
+  # ---------------------------------------------------------------------------
+  # XASSignalColumn -- one row per detector channel per sweep (LAM_XAS_COLS)
+  # ---------------------------------------------------------------------------
+  XASSignalColumn:
+    description: |-
+      Detector signal name / EPICS PV pair for one data column in an XAS sweep.
+      Corresponds to one row in LAM_XAS_COLS (Analog_In_Signal_Type_N).
+    attributes:
+      col_index:
+        range: integer
+        description: 1-based column index
+        required: true
+      col_name:
+        range: string
+        description: Signal/column name (e.g. XMAP12B:FeKa_Sum, I0)
+      pv:
+        range: string
+        description: EPICS PV for the signal source (nullable)
+
+
+  # ---------------------------------------------------------------------------
+  # XASDataRow -- one row per scan point per sweep (LAM_XAS_DROWS)
+  # ---------------------------------------------------------------------------
+  XASDataRow:
+    description: |-
+      One data point from an XAS sweep scan.
+      row_val holds the representative fluorescence or transmission value at
+      each energy step (e.g. FeKa_Sum count, or I0 if FY detector absent).
+      Corresponds to one row in LAM_XAS_DROWS.
+    attributes:
+      row_num:
+        range: integer
+        description: 1-based row index
+        required: true
+      row_val:
+        range: float
+        description: Representative measured value at this scan point
+
+
+  # ---------------------------------------------------------------------------
+  # XASIonChamber -- one row per gas component per sweep (LAM_XAS_ICS)
+  # ---------------------------------------------------------------------------
+  XASIonChamber:
+    description: |-
+      Ion chamber gas mixture component for one chamber in an XAS sweep.
+      Parsed from the user comment (e.g. 'i0 = 30%N2, 70%He. It and Iref = N2').
+      Corresponds to one row in LAM_XAS_ICS.
+    attributes:
+      chamber_index:
+        range: integer
+        description: Chamber index (1=I0, 2=It, 3=Iref)
+        required: true
+      gas_index:
+        range: integer
+        description: 1-based gas component index within the chamber mixture
+        required: true
+      gas_name:
+        range: string
+        description: Gas species (e.g. Nitrogen, Helium, Argon, Krypton)
+      chamber_length_mm:
+        range: float
+        description: Physical chamber length in mm (NULL if not recorded)
+      pressure_bar:
+        range: float
+        description: Fill pressure in bar (NULL if not recorded)
+
+
+# =============================================================================
+# CLASSES -- analysisActivity subclass
+# -> PASTE INTO analysis_api_schema.yaml classes section
+# =============================================================================
+
+  # ---------------------------------------------------------------------------
+  # XASAnalysisActivity -- APS Beamline 20-BM XAS measurement session
+  # ---------------------------------------------------------------------------
+  XASAnalysisActivity:
+    is_a: analysisActivity
+    description: |-
+      X-ray Absorption Spectroscopy (XAS) measurement session at APS Beamline 20-BM.
+
+      One activity instance represents the full measurement session for a single
+      sample or standard at a given temperature (one UUID folder containing all
+      sweeps). Instrument metadata common to all sweeps in the session is carried
+      here; sweep-level parameters live in XASMeasurementProduct.
+
+      Measurement modes:
+        - Fluorescence yield (FY) using XMAP12B 12-element Ge detector (typical)
+        - Transmission using ion chambers I0 / It / Iref
+
+      Workflow pattern:
+        processedSample (cryogenic soil replicate or standard)
+          -> XASAnalysisActivity
+              facility: APS, beamline: 20-BM
+              instrument_id -> Si(111) double-crystal monochromator
+              acquisition_time -> session start time
+          -> workflowExecutionActivity (type='xas_sweep_collection')
+          -> XASMeasurementProduct (one per sweep file)
+
+      Required enum additions to enums.yaml:
+        routemethod:
+          xas_analysis: X-ray Absorption Spectroscopy measurement
+    attributes:
+      id:
+        identifier: true
+        range: analysisActivity
+        required: true
+    slots:
+      # Beamline identity
+      - facility
+      - beamline
+      - ring_energy_gev
+      - ring_current_ma
+      - insertion_device
+      # Sample description
+      - element
+      - edge
+      - reference_material
+      - sample_type
+      - sample_format
+      - sample_holder
+      - sample_temperature_k
+      - sample_orientation_deg
+      - sample_detector_distance_mm
+      - sample_doi
+      # Monochromator
+      - crystal
+      - crystal_cut
+      - crystal_detune_pct
+      - mono_angle_deg
+      - mono_2nd_xtal_mm
+      - mono_energy_motor_ev
+      - mono_energy_encoder_ev
+      # Mirrors
+      - mirror_angle_mrad
+      - m0_coating
+      - m0_cutoff_kev
+      - m1_coating
+      - inhutch_mirror_coating
+      - inhutch_mirror_cutoff_kev
+      # Slits & optics
+      - slit_size_h_um
+      - slit_size_v_um
+      - slit_center_h
+      - slit_center_v
+      # Beam attenuation
+      - beam_attenuation_um
+      - beam_attenuation_material
+      # FY detector
+      - fy_electronics
+      - fy_channel_num
+      - fy_element
+      - fy_transition
+      # Free text
+      - user_comment
+
+
+# =============================================================================
+# CLASSES -- dataProduct subclass
+# -> PASTE INTO products.yaml classes section
+# =============================================================================
+
+  # ---------------------------------------------------------------------------
+  # XASMeasurementProduct -- one sweep file from an XAS session
+  # ---------------------------------------------------------------------------
+  XASMeasurementProduct:
+    is_a: processedData
+    description: |-
+      X-ray Absorption Spectroscopy (XAS) sweep data product.
+      One instance per sweep file (.0001, .0002, ...) within a measurement session.
+
+      Each sweep is a complete XAS spectrum collected over the defined energy range.
+      Multiple sweeps per session are averaged during LCF analysis to improve
+      signal-to-noise ratio.
+
+      Relationship to core tables:
+        - id: FK -> processedData.id (1:1 linkage per sweep)
+        - processedData.type = 'XASMeasurementProduct'
+        - processedData.s3_key = 'xas/{uuid}/data/{filename}.{sweep:04d}'
+        - processedData.summary_metrics = {"e0_ev":7112, "n_points":598,
+                                           "sweep_number":1, "r_factor_lcf":0.001}
+
+      Child objects (one-to-many, stored in separate Oracle tables):
+        amplifiers[]     -> LAM_XAS_AMPS  (amplifier gain & voltage per channel)
+        motors[]         -> LAM_XAS_MOTS  (motor positions at scan start)
+        signal_columns[] -> LAM_XAS_COLS  (detector signal name / PV pairs)
+        data_rows[]      -> LAM_XAS_DROWS (representative value per energy point)
+        ion_chambers[]   -> LAM_XAS_ICS   (ion chamber gas composition)
+
+      Required enum additions to enums.yaml:
+        product:
+          XASMeasurementProduct: XAS sweep spectrum data
+    slots:
+      - measure_type
+    attributes:
+      id:
+        identifier: true
+        range: processedData
+        required: true
+      # Sweep identity
+      sweep_number:
+        range: integer
+        description: 1-based sweep index within the measurement session
+      scan_datetime:
+        range: datetime
+        description: Date and time at scan start
+      scan_time_sec:
+        range: integer
+        description: Total scan duration in seconds
+      source_file:
+        range: string
+        description: Full path to the original sweep file on disk
+      # Scan configuration
+      scan_subtype:
+        range: xasscansubtype
+        description: Scan type -- 'energy' (full XAS) or 'motor' (alignment scan)
+      positioner:
+        range: string
+        description: Primary positioner name as in file header
+      e0_ev:
+        range: float
+        description: Absorption edge energy E0 in eV
+      n_points:
+        range: integer
+        description: Number of planned scan points
+      n_data_rows:
+        range: integer
+        description: Actual number of data rows recorded
+      x_first:
+        range: float
+        description: First positioner value (eV for energy scans, mm for motor scans)
+      x_last:
+        range: float
+        description: Last positioner value
+      scan_bounds:
+        range: string
+        description: Scan boundary string from file header
+      scan_steps:
+        range: string
+        description: Step sizes string from file header
+      integration_times:
+        range: string
+        description: Integration times string from file header
+      kwgt:
+        range: float
+        description: k-weighting exponent used in EXAFS region
+      # Child objects
+      amplifiers:
+        range: XASAmplifier
+        multivalued: true
+        inlined_as_list: true
+        description: Amplifier sensitivity entries (one per signal channel)
+      motors:
+        range: XASMotorPosition
+        multivalued: true
+        inlined_as_list: true
+        description: Motor positions recorded at scan start
+      signal_columns:
+        range: XASSignalColumn
+        multivalued: true
+        inlined_as_list: true
+        description: Detector signal name / EPICS PV pairs
+      data_rows:
+        range: XASDataRow
+        multivalued: true
+        inlined_as_list: true
+        description: Per-energy-point representative fluorescence or transmission values
+      ion_chambers:
+        range: XASIonChamber
+        multivalued: true
+        inlined_as_list: true
+        description: Ion chamber gas mixture components parsed from user comment
+
+
+# =============================================================================
+# ENUM ADDITIONS REQUIRED
+# -> ADD THESE VALUES TO enums.yaml
+# =============================================================================
+
+enums:
+
+  xasscansubtype:
+    description: XAS scan subtype detected from primary positioner column
+    permissible_values:
+      energy:
+        description: Energy scan -- primary positioner is Mono Energy (full XAS spectrum)
+      motor:
+        description: Motor scan -- primary positioner is a physical motor (alignment/diagnostic)
+      unknown:
+        description: Scan subtype could not be determined from file header
+
+# Add to routemethod enum (in enums.yaml):
+#   routemethod:
+#     permissible_values:
+#       xas_analysis:
+#         description: X-ray Absorption Spectroscopy measurement (APS 20-BM)
+
+# Add to product enum (in enums.yaml):
+#   product:
+#     permissible_values:
+#       XASMeasurementProduct:
+#         description: XAS sweep spectrum data product (one per sweep file)
+
+# Add instrument / beamline entries if not present (in enums.yaml):
+#   vendorenum:
+#     permissible_values:
+#       aps_anl:
+#         description: Advanced Photon Source, Argonne National Laboratory
+#   modelenum:
+#     permissible_values:
+#       aps_20bm:
+#         description: APS Beamline 20-BM (XAS/XANES/EXAFS)
+#       xmap12b:
+#         description: XIA XMAP 12-element Ge fluorescence detector
