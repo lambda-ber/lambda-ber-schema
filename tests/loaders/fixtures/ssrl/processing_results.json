@@ -1,0 +1,197 @@
+{
+  "/data/csmith/Collect/PNNL/SA/xtal4": {
+    "pipeline": "autoproc",
+    "pipeline_version": "1.0.5",
+    "processing_directory": "/data/csmith/Collect/PNNL/SA/xtal4/autoproc/SA_x4_1",
+    "space_group": "P 21 21 21",
+    "unit_cell": {
+      "a": 45.91,
+      "b": 60.79,
+      "c": 65.14,
+      "alpha": 90.0,
+      "beta": 90.0,
+      "gamma": 90.0
+    },
+    "resolution": {
+      "overall": [44.63, 1.45],
+      "inner": [44.63, 4.59],
+      "outer": [1.49, 1.45]
+    },
+    "rmerge": {
+      "overall": 0.063,
+      "inner": 0.036,
+      "outer": 0.804
+    },
+    "completeness": {
+      "overall": 99.8,
+      "inner": 99.7,
+      "outer": 98.9
+    },
+    "cc_half": {
+      "overall": 0.999,
+      "inner": 0.999,
+      "outer": 0.729
+    },
+    "mean_i_sigma": {
+      "overall": 14.9,
+      "inner": 46.5,
+      "outer": 1.7
+    },
+    "multiplicity": {
+      "overall": 6.7,
+      "inner": 6.4,
+      "outer": 5.7
+    },
+    "mosaicity": 0.04,
+    "n_reflections": {
+      "observed": 352419,
+      "unique": 52661
+    },
+    "indexer": "XDS",
+    "scaler": "AIMLESS",
+    "output_files": [
+      {
+        "file_name": "aimless.mtz",
+        "file_path": "/data/csmith/Collect/PNNL/SA/xtal4/autoproc/SA_x4_1/aimless.mtz",
+        "file_format": "mtz",
+        "file_size_bytes": 6293260,
+        "checksum": "82dbdc66990d4f384a4ee97214e6d1dbc2c65213e7d4b2f304b1ac9f21f69dd2",
+        "creation_date": "2024-11-21T17:12:04",
+        "data_type": "diffraction",
+        "file_role": "final"
+      }
+    ]
+  },
+  "/data/csmith/Collect/A48Br": {
+    "pipeline": "autoproc",
+    "processing_directory": "/data/csmith/Collect/A48Br/autoproc",
+    "space_group": "P 31 2 1",
+    "unit_cell": {
+      "a": 64.838,
+      "b": 64.838,
+      "c": 85.57,
+      "alpha": 90.0,
+      "beta": 90.0,
+      "gamma": 120.0
+    },
+    "resolution": {
+      "overall": [56.15, 2.02],
+      "inner": [56.15, 6.4],
+      "outer": [2.13, 2.02]
+    },
+    "rmerge": {
+      "overall": 0.128,
+      "inner": 0.034,
+      "outer": 8.975
+    },
+    "completeness": {
+      "overall": 100.0,
+      "inner": 100.0,
+      "outer": 100.0
+    },
+    "cc_half": {
+      "overall": 1.0,
+      "inner": 1.0,
+      "outer": 0.484
+    },
+    "mean_i_sigma": {
+      "overall": 21.6,
+      "inner": 80.4,
+      "outer": 0.6
+    },
+    "mosaicity": 0.23,
+    "n_reflections": {
+      "observed": 548350,
+      "unique": 14055
+    },
+    "indexer": "XDS",
+    "scaler": "AIMLESS",
+    "output_files": [
+      {
+        "file_name": "aimless.mtz",
+        "file_path": "/data/csmith/Collect/A48Br/autoproc/aimless.mtz",
+        "file_format": "mtz",
+        "file_size_bytes": 623140,
+        "checksum": "7c445e8a9a25715f894b959f44e69101321b2ddb06929819d8ba7de16f26d71f",
+        "creation_date": "2024-04-01T16:51:35",
+        "data_type": "diffraction",
+        "file_role": "final"
+      }
+    ]
+  },
+  "/data/csmith/Collect/PNNL/XA/xtal16": {
+    "pipeline": "autoproc",
+    "processing_directory": "/data/csmith/Collect/PNNL/XA/xtal16/autoproc2/XA_x16_1",
+    "space_group": "C 1 2 1",
+    "unit_cell": {
+      "a": 201.205,
+      "b": 47.884,
+      "c": 201.435,
+      "alpha": 90.0,
+      "beta": 90.165,
+      "gamma": 90.0
+    },
+    "resolution": {
+      "overall": [90.11, 2.3],
+      "inner": [90.11, 7.28],
+      "outer": [2.43, 2.3]
+    },
+    "rmerge": {
+      "overall": 0.159,
+      "inner": 0.066,
+      "outer": 1.278
+    },
+    "completeness": {
+      "overall": 99.2,
+      "inner": 97.0,
+      "outer": 99.4
+    },
+    "cc_half": {
+      "overall": 0.995,
+      "inner": 0.997,
+      "outer": 0.604
+    },
+    "mean_i_sigma": {
+      "overall": 7.2,
+      "inner": 15.3,
+      "outer": 1.8
+    },
+    "mosaicity": 0.22,
+    "n_reflections": {
+      "observed": 599685,
+      "unique": 85530
+    },
+    "indexer": "XDS",
+    "scaler": "AIMLESS",
+    "output_files": [
+      {
+        "file_name": "aimless.mtz",
+        "file_path": "/data/csmith/Collect/PNNL/XA/xtal16/autoproc2/XA_x16_1/aimless.mtz",
+        "file_format": "mtz",
+        "file_size_bytes": 3767880,
+        "checksum": "a38b1ec94286da401ec5b6f7289f82b60d25a9933da53d0c3499c8868f9fec9b",
+        "creation_date": "2023-09-05T21:52:42",
+        "data_type": "diffraction",
+        "file_role": "final"
+      }
+    ]
+  },
+  "/data/csmith/Collect/PNNL/A78": {
+    "pipeline": "xds+aimless (manual)",
+    "processing_directory": "/data/csmith/Collect/PNNL/A78/x107/xds/A78_x107_1_xds",
+    "indexer": "XDS",
+    "scaler": "AIMLESS",
+    "output_files": [
+      {
+        "file_name": "A78_x107_1_aimless.mtz",
+        "file_path": "/data/csmith/Collect/PNNL/A78/x107/xds/A78_x107_1_xds/A78_x107_1_aimless.mtz",
+        "file_format": "mtz",
+        "file_size_bytes": 2363540,
+        "checksum": "f0eb4b5c9ed7f4ba5462a90ac152519ac3af80802c06cf158d038324a8b715db",
+        "creation_date": "2024-03-27T17:06:09",
+        "data_type": "diffraction",
+        "file_role": "final"
+      }
+    ]
+  }
+}

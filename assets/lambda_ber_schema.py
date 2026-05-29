@@ -1,5 +1,5 @@
 # Auto generated from lambda_ber_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-04-24T14:37:33
+# Generation date: 2026-05-27T14:51:51
 # Schema: lambda-ber-schema
 #
 # id: http://w3id.org/lambda/
@@ -164,7 +164,7 @@ from linkml_runtime.linkml_model.types import Boolean, Curie, Date, Float, Integ
 from linkml_runtime.utils.metamodelcore import Bool, Curie, URI, URIorCURIE, XSDDate
 
 metamodel_version = "1.7.0"
-version = "0.1.2.post123.dev0+b316f8a"
+version = "0.1.2.post162.dev0+14d60a8b"
 
 # Namespaces
 CHMO = CurieNamespace('CHMO', 'http://purl.obolibrary.org/obo/CHMO_')
@@ -194,6 +194,7 @@ SCHEMA = CurieNamespace('schema', 'https://schema.org/')
 SIMPLESCATTERING = CurieNamespace('simplescattering', 'https://www.simplescattering.com/open_dataset/')
 SIO = CurieNamespace('sio', 'http://semanticscience.org/resource/')
 SKOS = CurieNamespace('skos', 'http://www.w3.org/2004/02/skos/core#')
+SSRL_MX = CurieNamespace('ssrl-mx', 'https://smb.slac.stanford.edu/dev/lims/lambda/')
 WIKIDATA = CurieNamespace('wikidata', 'http://www.wikidata.org/entity/')
 XSD = CurieNamespace('xsd', 'http://www.w3.org/2001/XMLSchema#')
 DEFAULT_ = LAMBDA
