@@ -31,7 +31,13 @@ import yaml
 LOG = logging.getLogger("ingest_to_lakehouse")
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-SUPPORTED_SOURCES = ("sasbdb", "simplescattering")
+SUPPORTED_SOURCES = ("sasbdb", "simplescattering", "ssrl-mx")
+
+# Normalize source names for use in S3 paths and SQL identifiers (hyphens
+# are invalid in Spark/Iceberg database names).
+SOURCE_TO_DATASET_NAME: dict[str, str] = {
+    "ssrl-mx": "ssrl_mx",
+}
 
 # Dataset-level slots that aggregate to one Parquet each (lambda_ber_schema.yaml:185-244).
 # Slot names whose silver-table name must differ from the bronze slot name.
@@ -98,6 +104,33 @@ def run_dump(source: str, dump_dir: Path, rate: float, workers: int,
                 f"{len(failed)} entries failed (e.g. {sample}); "
                 "rerun with --allow-failures to continue."
             )
+
+
+def run_dump_ssrl_mx(
+    snapshots_dir: Path,
+    dump_dir: Path,
+    limit: int | None,
+    metadata_file: Path | None,
+    processing_file: Path | None,
+) -> None:
+    """Invoke dump-ssrl-mx (filesystem-only, no rate limiting)."""
+    dump_dir.mkdir(parents=True, exist_ok=True)
+    cmd = [
+        "uv", "run", "lambda-ber-schema", "etl", "dump-ssrl-mx",
+        "--snapshots-dir", str(snapshots_dir),
+        "--output-dir", str(dump_dir),
+    ]
+    if metadata_file is not None:
+        cmd.extend(["--metadata", str(metadata_file)])
+    if processing_file is not None:
+        cmd.extend(["--processing", str(processing_file)])
+    if limit is not None:
+        cmd.extend(["--limit", str(limit)])
+
+    LOG.info("Running dump: %s", " ".join(cmd))
+    result = subprocess.run(cmd, cwd=REPO_ROOT, check=False)
+    if result.returncode != 0:
+        raise RuntimeError(f"dump-ssrl-mx exited with {result.returncode}")
 
 
 # ---------------------------------------------------------------------------
@@ -199,14 +232,15 @@ def build_ingest_config(
     staging_dir: Path,
     slots: list[str],
 ) -> dict:
-    bronze_base = f"s3a://{bucket}/tenant-general-warehouse/{tenant}/datasets/{source}/"
+    dataset_name = SOURCE_TO_DATASET_NAME.get(source, source)
+    bronze_base = f"s3a://{bucket}/tenant-general-warehouse/{tenant}/datasets/{dataset_name}/"
     return {
         "tenant": tenant,
-        "dataset": source,
+        "dataset": dataset_name,
         "paths": {
             "data_plane": f"s3a://{bucket}/tenant-general-warehouse/{tenant}/",
             "bronze_base": bronze_base,
-            "silver_base": f"s3a://{bucket}/tenant-sql-warehouse/{tenant}/{tenant}_{source}.db",
+            "silver_base": f"s3a://{bucket}/tenant-sql-warehouse/{tenant}/{tenant}_{dataset_name}.db",
         },
         "defaults": {"parquet": {"inferSchema": False}},
         "tables": [
@@ -251,7 +285,8 @@ def upload_files(
     slots: list[str],
     config_path: Path,
 ) -> None:
-    prefix = f"tenant-general-warehouse/{tenant}/datasets/{source}"
+    dataset_name = SOURCE_TO_DATASET_NAME.get(source, source)
+    prefix = f"tenant-general-warehouse/{tenant}/datasets/{dataset_name}"
     for slot in slots:
         local = staging_dir / f"{slot}.parquet"
         obj = f"{prefix}/{slot}.parquet"
@@ -283,6 +318,47 @@ def run_ingest(config_s3_path: str, minio_client) -> Any:
     )
 
 
+def run_direct_ingest(
+    config: dict,
+    staging_dir: Path,
+    slots: list[str],
+) -> dict[str, int]:
+    """Create tables directly via Spark SQL (Delta/Hive flow).
+
+    This bypasses data_lakehouse_ingest and works when the Iceberg catalog
+    flow is unavailable. Creates the namespace with the governance-aware
+    Delta/Hive flow, then reads each Parquet from the bronze S3 path and
+    writes it as a managed table.
+    """
+    from berdl_notebook_utils.spark.database import create_namespace_if_not_exists
+
+    spark = _build_spark_session()
+
+    tenant = config["tenant"]
+    dataset_name = config["dataset"]
+
+    ns = create_namespace_if_not_exists(
+        spark, namespace=dataset_name, tenant_name=tenant, iceberg=False,
+    )
+    LOG.info("Using namespace: %s", ns)
+    spark.sql(f"USE {ns}")
+
+    bronze_base = config["paths"]["bronze_base"]
+    results: dict[str, int] = {}
+    for slot in slots:
+        table_name = SLOT_TO_SILVER_NAME.get(slot, slot)
+        parquet_path = f"{bronze_base}{slot}.parquet"
+        LOG.info("Loading %s -> %s.%s", parquet_path, ns, table_name)
+        spark.sql(f"DROP TABLE IF EXISTS {ns}.{table_name}")
+        df = spark.read.parquet(parquet_path)
+        df.write.mode("overwrite").saveAsTable(f"{ns}.{table_name}")
+        count = spark.sql(f"SELECT COUNT(*) AS cnt FROM {ns}.{table_name}").collect()[0]["cnt"]
+        results[table_name] = count
+        LOG.info("  %s: %d rows", table_name, count)
+
+    return results
+
+
 def _build_spark_session():
     try:
         from berdl_notebook_utils.setup_spark_session import get_spark_session
@@ -298,22 +374,36 @@ def _build_spark_session():
 # ---------------------------------------------------------------------------
 
 def process_source(source: str, args: argparse.Namespace, minio_client) -> None:
-    dump_dir = args.dump_dir or (REPO_ROOT / "data" / f"{source}_dump")
-    staging_dir = args.staging_dir or (REPO_ROOT / "data" / f"{source}_parquet")
+    dataset_name = SOURCE_TO_DATASET_NAME.get(source, source)
+    dump_dir = args.dump_dir or (REPO_ROOT / "data" / f"{dataset_name}_dump")
+    staging_dir = args.staging_dir or (REPO_ROOT / "data" / f"{dataset_name}_parquet")
     dump_dir = Path(dump_dir)
     staging_dir = Path(staging_dir)
 
     LOG.info("=== %s: dump_dir=%s staging_dir=%s ===", source, dump_dir, staging_dir)
 
     if not args.skip_dump:
-        run_dump(
-            source=source,
-            dump_dir=dump_dir,
-            rate=args.rate,
-            workers=args.workers,
-            limit=args.limit,
-            allow_failures=args.allow_failures,
-        )
+        if source == "ssrl-mx":
+            if args.snapshots_dir is None:
+                raise RuntimeError(
+                    "--snapshots-dir is required for ssrl-mx source"
+                )
+            run_dump_ssrl_mx(
+                snapshots_dir=args.snapshots_dir,
+                dump_dir=dump_dir,
+                limit=args.limit,
+                metadata_file=args.metadata_file,
+                processing_file=args.processing_file,
+            )
+        else:
+            run_dump(
+                source=source,
+                dump_dir=dump_dir,
+                rate=args.rate,
+                workers=args.workers,
+                limit=args.limit,
+                allow_failures=args.allow_failures,
+            )
     else:
         LOG.info("Skipping dump phase for %s", source)
 
@@ -351,10 +441,14 @@ def process_source(source: str, args: argparse.Namespace, minio_client) -> None:
     else:
         LOG.info("Skipping upload phase for %s", source)
 
-    if args.run_ingest:
+    if args.direct_ingest:
+        LOG.info("Running direct ingest (Delta/Hive flow) for %s", source)
+        report = run_direct_ingest(config, staging_dir, slots)
+        LOG.info("Direct ingest complete: %s", report)
+    elif args.run_ingest:
         cfg_s3 = (
             f"s3a://{args.bucket}/tenant-general-warehouse/{args.tenant}"
-            f"/datasets/{source}/{config_path.name}"
+            f"/datasets/{dataset_name}/{config_path.name}"
         )
         LOG.info("Running data_lakehouse_ingest with config: %s", cfg_s3)
         report = run_ingest(cfg_s3, minio_client)
@@ -382,8 +476,16 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     p.add_argument("--skip-upload", action="store_true")
     p.add_argument("--run-ingest", action="store_true",
                    help="After upload, invoke data_lakehouse_ingest.ingest()")
+    p.add_argument("--direct-ingest", action="store_true",
+                   help="After upload, create tables directly via Spark SQL (Delta/Hive flow)")
     p.add_argument("--allow-failures", action="store_true",
                    help="Continue even if the dump phase reports failed entries")
+    p.add_argument("--snapshots-dir", type=Path, default=None,
+                   help="Directory with DCSS snapshot .json files (ssrl-mx only)")
+    p.add_argument("--metadata-file", type=Path, default=None,
+                   help="Sample metadata sidecar JSON (ssrl-mx only)")
+    p.add_argument("--processing-file", type=Path, default=None,
+                   help="Processing results sidecar JSON (ssrl-mx only)")
     p.add_argument("--log-level", default="INFO")
     return p.parse_args(argv)
 
@@ -404,6 +506,11 @@ def main(argv: list[str] | None = None) -> int:
         raise SystemExit(
             "--dump-dir / --staging-dir only make sense with a single --sources entry."
         )
+
+    if args.snapshots_dir and "ssrl-mx" not in sources:
+        raise SystemExit("--snapshots-dir is only valid with --sources=ssrl-mx")
+    if "ssrl-mx" in sources and not args.skip_dump and not args.snapshots_dir:
+        raise SystemExit("--snapshots-dir is required when dumping ssrl-mx")
 
     minio_client = None
     if not args.skip_upload or args.run_ingest:
