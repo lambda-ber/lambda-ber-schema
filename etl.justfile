@@ -276,6 +276,12 @@ sasbdb-realclean:
 
 # ============================================================================
 # SSRL MX (Macromolecular Crystallography) Ingestion
+#
+# Default paths point at the test fixtures. For production data, override:
+#   just ssrlmx_snapshots_dir=/path/to/snapshots \
+#        ssrlmx_metadata=/path/to/metadata.json \
+#        ssrlmx_processing=/path/to/processing.json \
+#        ssrlmx-ingest
 # ============================================================================
 
 # Dump all SSRL MX snapshots from the default test directory

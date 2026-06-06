@@ -113,7 +113,22 @@ def run_dump_ssrl_mx(
     metadata_file: Path | None,
     processing_file: Path | None,
 ) -> None:
-    """Invoke dump-ssrl-mx (filesystem-only, no rate limiting)."""
+    """Invoke dump-ssrl-mx (filesystem-only, no rate limiting).
+
+    Unlike the HTTP-based sources, SSRL MX is a pure filesystem ETL: the
+    CLI reads snapshot JSON files from ``snapshots_dir`` and writes converted
+    Dataset YAMLs to ``dump_dir``. No network, no rate limiting.
+    """
+    snapshots = sorted(snapshots_dir.glob("*.json"))
+    snapshot_count = len(snapshots)
+    if limit is not None:
+        snapshot_count = min(snapshot_count, limit)
+    LOG.info(
+        "SSRL MX dump: %d snapshot(s) from %s (metadata=%s, processing=%s)",
+        snapshot_count, snapshots_dir,
+        metadata_file or "none", processing_file or "none",
+    )
+
     dump_dir.mkdir(parents=True, exist_ok=True)
     cmd = [
         "uv", "run", "lambda-ber-schema", "etl", "dump-ssrl-mx",
@@ -131,6 +146,9 @@ def run_dump_ssrl_mx(
     result = subprocess.run(cmd, cwd=REPO_ROOT, check=False)
     if result.returncode != 0:
         raise RuntimeError(f"dump-ssrl-mx exited with {result.returncode}")
+
+    output_count = len(list(dump_dir.glob("*.yaml")))
+    LOG.info("Dump complete: %d YAML file(s) in %s", output_count, dump_dir)
 
 
 # ---------------------------------------------------------------------------
