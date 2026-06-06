@@ -8,6 +8,10 @@
 pdb_dump_dir := "data/pdb_dump"
 sasbdb_dump_dir := "data/sasbdb_dump"
 simplescattering_dump_dir := "data/simplescattering_dump"
+ssrlmx_dump_dir := "data/ssrl_mx_dump"
+ssrlmx_snapshots_dir := "tests/data/raw/beamline-snapshots"
+ssrlmx_metadata := "tests/loaders/fixtures/ssrl/sample_metadata.json"
+ssrlmx_processing := "tests/loaders/fixtures/ssrl/processing_results.json"
 
 # ============================================================================
 # PDB (Protein Data Bank) Ingestion
@@ -269,3 +273,71 @@ sasbdb-realclean:
     @echo ""
     @echo "To confirm, manually run:"
     @echo "  rm -rf {{sasbdb_dump_dir}} && mkdir -p {{sasbdb_dump_dir}}"
+
+# ============================================================================
+# SSRL MX (Macromolecular Crystallography) Ingestion
+#
+# Default paths point at the test fixtures. For production data, override:
+#   just ssrlmx_snapshots_dir=/path/to/snapshots \
+#        ssrlmx_metadata=/path/to/metadata.json \
+#        ssrlmx_processing=/path/to/processing.json \
+#        ssrlmx-ingest
+# ============================================================================
+
+# Dump all SSRL MX snapshots from the default test directory
+[group('etl')]
+ssrlmx-dump:
+    mkdir -p {{ssrlmx_dump_dir}}
+    uv run lambda-ber-schema etl dump-ssrl-mx \
+        --snapshots-dir {{ssrlmx_snapshots_dir}} \
+        --output-dir {{ssrlmx_dump_dir}} \
+        --metadata {{ssrlmx_metadata}} \
+        --processing {{ssrlmx_processing}}
+
+# Dump SSRL MX snapshots from a custom directory
+[group('etl')]
+ssrlmx-dump-custom snapshots_dir:
+    mkdir -p {{ssrlmx_dump_dir}}
+    uv run lambda-ber-schema etl dump-ssrl-mx \
+        --snapshots-dir {{snapshots_dir}} \
+        --output-dir {{ssrlmx_dump_dir}}
+
+# List available SSRL MX snapshots
+[group('etl')]
+ssrlmx-list:
+    uv run lambda-ber-schema etl list ssrl-mx --directory {{ssrlmx_snapshots_dir}}
+
+# Full SSRL MX ingest pipeline (dump + convert + upload + create tables)
+[group('etl')]
+ssrlmx-ingest:
+    python3 scripts/ingest_to_lakehouse.py \
+        --sources ssrl-mx \
+        --snapshots-dir {{ssrlmx_snapshots_dir}} \
+        --metadata-file {{ssrlmx_metadata}} \
+        --processing-file {{ssrlmx_processing}} \
+        --direct-ingest
+
+# SSRL MX pipeline without the ingest phase (dump + convert + upload only)
+[group('etl')]
+ssrlmx-upload:
+    python3 scripts/ingest_to_lakehouse.py \
+        --sources ssrl-mx \
+        --snapshots-dir {{ssrlmx_snapshots_dir}} \
+        --metadata-file {{ssrlmx_metadata}} \
+        --processing-file {{ssrlmx_processing}}
+
+# ============================================================================
+# SSRL MX Clean Targets
+# ============================================================================
+
+# Clean SSRL MX output files
+[group('etl-clean')]
+ssrlmx-clean:
+    @echo "Cleaning SSRL MX output files"
+    find {{ssrlmx_dump_dir}} -maxdepth 1 -name "*.yaml" -type f -delete 2>/dev/null || true
+
+# Delete everything in SSRL MX dump directory
+[group('etl-clean')]
+ssrlmx-realclean:
+    @echo "To confirm, manually run:"
+    @echo "  rm -rf {{ssrlmx_dump_dir}} && mkdir -p {{ssrlmx_dump_dir}}"
