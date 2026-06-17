@@ -64,7 +64,7 @@
       ],
       "name": "Xa_EXLX1 expansin (XA_x16, BL12-1)",
       "description": "Xa_EXLX1",
-      "datePublished": "2026-06-14",
+      "datePublished": "2026-06-17",
       "identifier": {
         "@type": "PropertyValue",
         "propertyID": "UUID",
@@ -92,7 +92,7 @@
           "@id": "#product-4d7d9700-94b2-44be-a540-494bbb6658a6"
         }
       ],
-      "collectionDate": "2023-09-05",
+      "collectionDate": "2023-09-01T22:09:11Z",
       "instrumentName": "BL12-1",
       "sampleName": "Xa_EXLX1",
       "author": [
@@ -101,6 +101,9 @@
         },
         {
           "@id": "https://orcid.org/0000-0002-3639-1061"
+        },
+        {
+          "@id": "https://orcid.org/0000-0002-1885-1511"
         }
       ],
       "keywords": [
@@ -116,12 +119,12 @@
       ],
       "lambda:proteinName": "Xa_EXLX1",
       "lambda:enzymeClass": "expansin",
-      "lambda:organism": "NCBITaxon:56458",
+      "lambda:organism": "Xanthomonas sacchari",
       "lambda:uniprotId": "A0AA46ST83",
       "lambda:pdbCode": "9MS4",
       "lambda:resolutionAngstrom": 2.3,
-      "lambda:generatedAt": "2026-06-14T23:02:28.353562+00:00",
-      "lambda:packageTier": "results"
+      "lambda:generatedAt": "2026-06-17T21:32:08.820196+00:00",
+      "lambda:packageTier": "processing"
     },
     {
       "@id": "https://orcid.org/0000-0002-6837-9817",
@@ -134,6 +137,12 @@
       "@type": "Person",
       "name": "Garry Buchko",
       "affiliation": "PNNL"
+    },
+    {
+      "@id": "https://orcid.org/0000-0002-1885-1511",
+      "@type": "Person",
+      "name": "Clyde Smith",
+      "affiliation": "Stanford University"
     },
     {
       "@id": "#facility",
@@ -198,8 +207,8 @@
       "name": "run_definition.json",
       "encodingFormat": "application/json",
       "mimeType": "application/json",
-      "contentSize": "193",
-      "sha256": "92a7217399b1ccf9163234e0509c2229c939ad2f25a18cd5e86b498774712e98",
+      "contentSize": "644",
+      "sha256": "4753eb1317bae0381e9605cdc66cc8b43c989a750cacc15bee501a45a090fc4d",
       "description": "Provenance record"
     },
     {
@@ -265,15 +274,31 @@
       ],
       "endTime": "2023-09-06T04:52:42Z",
       "runParameters": {
-        "wavelengthAngstrom": 0.9795,
-        "energyEv": 12658.4,
+        "runIndex": 1,
+        "fileRoot": "XA_x16",
+        "directory": "/data/csmith/Collect/PNNL/XA/xtal16",
+        "status": "collecting",
+        "energyEv": 12658,
+        "wavelengthAngstrom": 0.97949,
         "detectorDistanceMm": 350,
         "oscillationDeg": 0.2,
         "startAngleDeg": 90,
         "endAngleDeg": 450,
         "numberOfImages": 1800,
         "transmissionPercent": 77.88,
-        "exposureTimeS": 0.2
+        "exposureTimeS": 0.2,
+        "axisMotor": "Phi",
+        "beamWidthUm": 40,
+        "beamHeightUm": 25,
+        "beamStopMm": 45.02,
+        "wedgeSizeDeg": 9999999,
+        "detectorMode": 0,
+        "inverseBeam": false,
+        "collimatorWidthMm": 2,
+        "collimatorHeightMm": 2,
+        "collimatorIsMicro": false,
+        "strategyPhiDeg": 180,
+        "numEnergy": 1
       },
       "lambda:unitCell": {
         "a": 201.205,
@@ -300,12 +325,7 @@
       },
       "lambda:pdbCode": "9MS4",
       "lambda:resolutionAngstrom": 2.3,
-      "url": "https://www.rcsb.org/structure/9MS4",
-      "isBasedOn": [
-        {
-          "@id": "#product-4d7d9700-94b2-44be-a540-494bbb6658a6"
-        }
-      ]
+      "url": "https://www.rcsb.org/structure/9MS4"
     }
   ]
 }

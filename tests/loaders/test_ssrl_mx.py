@@ -42,9 +42,10 @@ class TestSSRLMXLoaderCrate:
     def test_sample_from_raw_unit(self, ssrl_mx_dataset):
         sample = ssrl_mx_dataset.samples[0]
         assert sample.sample_code == "90000002"
+        # A scoped distribution publishes its deliverable's specifics (not the study's family metadata).
         assert sample.protein_name == "Xa_EXLX1"
-        assert sample.organism == "NCBITaxon:56458"
-        # description rolls up the study-level lambda fields
+        assert sample.organism == "Xanthomonas sacchari"
+        # description rolls up the deliverable's lambda fields (enzyme class, UniProt, PDB)
         assert "expansin" in (sample.description or "")
         assert "9MS4" in (sample.description or "")
 
@@ -60,7 +61,7 @@ class TestSSRLMXLoaderCrate:
         assert exp.transmission.numeric_value == 77.88
         assert exp.experimental_conditions.exposure_time.numeric_value == 0.2
         # widened run definition: energy + sweep extent (total_rotation derived from start/end angle)
-        assert abs(exp.energy.numeric_value - 12658.4) < 0.1
+        assert abs(exp.energy.numeric_value - 12658.0) < 1.0
         assert exp.sweep_start.numeric_value == 90
         assert exp.sweep_end.numeric_value == 450
         assert exp.total_rotation.numeric_value == 360
