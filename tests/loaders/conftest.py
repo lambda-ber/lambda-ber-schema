@@ -37,41 +37,28 @@ def pdb_1hho_polymer_entities() -> list[dict]:
     return [entity1, entity2]
 
 
-_SSRL_MX_SNAPSHOT = (
-    Path(__file__).parent.parent / "data" / "raw" / "beamline-snapshots" / "SA_x4_1_00001.json"
-)
-_SSRL_MX_SIDECAR_DIR = FIXTURES_DIR / "ssrl"
+# A real published SSRL MX distribution package (LAMBDA RO-Crate), copied verbatim from a released
+# distribution (the PDB 9MS4 Xa_EXLX1 expansin deposition). It is a fully profile-conformant crate
+# (inline @context, official runParameters/instrumentName terms, approved facility/technique termCodes)
+# and is already free of internal filesystem paths. Slimmed to just ro-crate-metadata.json — the loader
+# reads only the crate (run definition, stats, and file refs are all embedded), not the tar/mtz/provenance.
+_SSRL_MX_PACKAGE = FIXTURES_DIR / "ssrl" / "package"
 
 
 @pytest.fixture
-def ssrl_mx_snapshot() -> dict:
-    """Load real SSRL MX snapshot (SA_x4 from BL12-2) as a dict."""
-    return json.loads(_SSRL_MX_SNAPSHOT.read_text())
+def ssrl_mx_package_path() -> Path:
+    """Path to the published SSRL MX distribution package (RO-Crate) fixture."""
+    return _SSRL_MX_PACKAGE
 
 
 @pytest.fixture
-def ssrl_mx_snapshot_path() -> Path:
-    """Return path to real SSRL MX snapshot (SA_x4 from BL12-2)."""
-    return _SSRL_MX_SNAPSHOT
-
-
-@pytest.fixture
-def ssrl_mx_sample_metadata_path() -> Path:
-    """Sidecar: sample metadata (UUIDs, protein names, study info)."""
-    return _SSRL_MX_SIDECAR_DIR / "sample_metadata.json"
-
-
-@pytest.fixture
-def ssrl_mx_processing_results_path() -> Path:
-    """Sidecar: autoproc/aimless processing results + output files."""
-    return _SSRL_MX_SIDECAR_DIR / "processing_results.json"
-
-
-@pytest.fixture
-def ssrl_mx_loader(ssrl_mx_sample_metadata_path, ssrl_mx_processing_results_path):
-    """A pre-wired SSRLMXLoader pointing at the committed test sidecars."""
+def ssrl_mx_loader():
+    """A crate-driven SSRLMXLoader."""
     from lambda_ber_schema.loaders import SSRLMXLoader
-    return SSRLMXLoader(
-        metadata_file=ssrl_mx_sample_metadata_path,
-        processing_results_file=ssrl_mx_processing_results_path,
-    )
+    return SSRLMXLoader()
+
+
+@pytest.fixture
+def ssrl_mx_dataset(ssrl_mx_loader, ssrl_mx_package_path):
+    """The Dataset produced by loading the package fixture."""
+    return ssrl_mx_loader.load(str(ssrl_mx_package_path)).dataset

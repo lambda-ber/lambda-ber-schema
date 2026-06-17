@@ -1,0 +1,311 @@
+{
+  "@context": [
+    "https://w3id.org/ro/crate/1.2/context",
+    {
+      "lambda": "https://w3id.org/lambda/terms/0.2/",
+      "Experiment": "lambda:Experiment",
+      "RawUnit": "lambda:RawUnit",
+      "DerivedProduct": "lambda:DerivedProduct",
+      "AuxiliaryMetadataItem": "lambda:AuxiliaryMetadataItem",
+      "facility": "lambda:facility",
+      "instrumentName": "lambda:instrumentName",
+      "sampleName": "lambda:sampleName",
+      "sampleComposition": "lambda:sampleComposition",
+      "sequence": "lambda:sequence",
+      "collectionDate": "lambda:collectionDate",
+      "rawUnitId": "lambda:rawUnitId",
+      "productId": "lambda:productId",
+      "workflowRunId": "lambda:workflowRunId",
+      "schemaId": "lambda:schemaId",
+      "sha256": "lambda:sha256",
+      "mimeType": "lambda:mimeType",
+      "allowEmpty": "lambda:allowEmpty",
+      "runParameters": "lambda:runParameters",
+      "translationSource": "lambda:translationSource",
+      "sourceLocator": "lambda:sourceLocator",
+      "canonicalPath": "lambda:canonicalPath",
+      "projectionClass": "lambda:projectionClass",
+      "facilityLocalId": "lambda:facilityLocalId",
+      "relatedExperiment": "lambda:relatedExperiment",
+      "proteinName": "lambda:proteinName",
+      "enzymeClass": "lambda:enzymeClass",
+      "organism": "lambda:organism",
+      "uniprotId": "lambda:uniprotId",
+      "pdbCode": "lambda:pdbCode",
+      "resolutionAngstrom": "lambda:resolutionAngstrom",
+      "spaceGroup": "lambda:spaceGroup",
+      "unitCell": "lambda:unitCell",
+      "completeness": "lambda:completeness",
+      "ccHalf": "lambda:ccHalf",
+      "meanISigma": "lambda:meanISigma",
+      "multiplicity": "lambda:multiplicity",
+      "mosaicity": "lambda:mosaicity",
+      "rawIncluded": "lambda:rawIncluded",
+      "generatedAt": "lambda:generatedAt",
+      "packageTier": "lambda:packageTier"
+    }
+  ],
+  "@graph": [
+    {
+      "@id": "ro-crate-metadata.json",
+      "@type": "CreativeWork",
+      "conformsTo": {
+        "@id": "https://w3id.org/ro/crate/1.2"
+      },
+      "about": {
+        "@id": "./"
+      }
+    },
+    {
+      "@id": "./",
+      "@type": [
+        "Dataset",
+        "lambda:Experiment"
+      ],
+      "name": "Xa_EXLX1 expansin (XA_x16, BL12-1)",
+      "description": "Xa_EXLX1",
+      "datePublished": "2026-06-14",
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "UUID",
+        "value": "4d7d9700-94b2-44be-a540-494bbb6658a6"
+      },
+      "facility": {
+        "@id": "#facility"
+      },
+      "measurementTechnique": {
+        "@id": "#technique"
+      },
+      "conformsTo": [
+        {
+          "@id": "https://w3id.org/lambda/profile/core/0.2"
+        },
+        {
+          "@id": "https://w3id.org/lambda/profile/federation/0.2"
+        }
+      ],
+      "hasPart": [
+        {
+          "@id": "#rawunit-90000002"
+        },
+        {
+          "@id": "#product-4d7d9700-94b2-44be-a540-494bbb6658a6"
+        }
+      ],
+      "collectionDate": "2023-09-05",
+      "instrumentName": "BL12-1",
+      "sampleName": "Xa_EXLX1",
+      "author": [
+        {
+          "@id": "https://orcid.org/0000-0002-6837-9817"
+        },
+        {
+          "@id": "https://orcid.org/0000-0002-3639-1061"
+        }
+      ],
+      "keywords": [
+        "bacterial expansin",
+        "carbohydrate-binding",
+        "cellulose-loosening",
+        "sugar binding protein"
+      ],
+      "citation": [
+        {
+          "@id": "https://www.rcsb.org/structure/9MS4"
+        }
+      ],
+      "lambda:proteinName": "Xa_EXLX1",
+      "lambda:enzymeClass": "expansin",
+      "lambda:organism": "NCBITaxon:56458",
+      "lambda:uniprotId": "A0AA46ST83",
+      "lambda:pdbCode": "9MS4",
+      "lambda:resolutionAngstrom": 2.3,
+      "lambda:generatedAt": "2026-06-14T23:02:28.353562+00:00",
+      "lambda:packageTier": "results"
+    },
+    {
+      "@id": "https://orcid.org/0000-0002-6837-9817",
+      "@type": "Person",
+      "name": "Emma Master",
+      "affiliation": "University of Toronto"
+    },
+    {
+      "@id": "https://orcid.org/0000-0002-3639-1061",
+      "@type": "Person",
+      "name": "Garry Buchko",
+      "affiliation": "PNNL"
+    },
+    {
+      "@id": "#facility",
+      "@type": "DefinedTerm",
+      "name": "Stanford Synchrotron Radiation Lightsource (SSRL), SLAC National Accelerator Laboratory",
+      "termCode": "SLAC",
+      "inDefinedTermSet": "https://w3id.org/lambda/terms/0.2/facilities"
+    },
+    {
+      "@id": "#technique",
+      "@type": "DefinedTerm",
+      "name": "Macromolecular X-ray crystallography",
+      "termCode": "RX",
+      "inDefinedTermSet": "https://w3id.org/lambda/terms/0.2/techniques"
+    },
+    {
+      "@id": "#rawunit-90000002",
+      "@type": [
+        "Dataset",
+        "lambda:RawUnit"
+      ],
+      "rawUnitId": "90000002",
+      "name": "Xa_EXLX1 crystal",
+      "description": "Raw diffraction unit for XA_x16_raw_frames",
+      "lambda:rawIncluded": false,
+      "hasPart": []
+    },
+    {
+      "@id": "mtz/XA_x16_autoproc.mtz",
+      "@type": "File",
+      "name": "XA_x16_autoproc.mtz",
+      "encodingFormat": "application/x-mtz",
+      "mimeType": "application/x-mtz",
+      "contentSize": "3767880",
+      "sha256": "a38b1ec94286da401ec5b6f7289f82b60d25a9933da53d0c3499c8868f9fec9b",
+      "additionalType": "merged-reflections",
+      "description": "Primary merged reflection data (MTZ)"
+    },
+    {
+      "@id": "beamline_state/XA_x16_autoproc.json",
+      "@type": "File",
+      "name": "XA_x16_autoproc.json",
+      "encodingFormat": "application/json",
+      "mimeType": "application/json",
+      "contentSize": "239359",
+      "sha256": "456dfe059a2122e0838173e6b21cddf11b7cd9c6187997e45b06fa407e395d3f",
+      "description": "Beamline-state snapshot"
+    },
+    {
+      "@id": "provenance/XA_x16_autoproc/notes.json",
+      "@type": "File",
+      "name": "notes.json",
+      "encodingFormat": "application/json",
+      "mimeType": "application/json",
+      "contentSize": "2",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "description": "Provenance record"
+    },
+    {
+      "@id": "provenance/XA_x16_autoproc/run_definition.json",
+      "@type": "File",
+      "name": "run_definition.json",
+      "encodingFormat": "application/json",
+      "mimeType": "application/json",
+      "contentSize": "193",
+      "sha256": "92a7217399b1ccf9163234e0509c2229c939ad2f25a18cd5e86b498774712e98",
+      "description": "Provenance record"
+    },
+    {
+      "@id": "provenance/XA_x16_autoproc/sample.json",
+      "@type": "File",
+      "name": "sample.json",
+      "encodingFormat": "application/json",
+      "mimeType": "application/json",
+      "contentSize": "487",
+      "sha256": "5191a8cf1051283ed0eef11f44d453d17da98e1d9797da24a2c203c34472a5f1",
+      "description": "Provenance record"
+    },
+    {
+      "@id": "#product-4d7d9700-94b2-44be-a540-494bbb6658a6",
+      "@type": [
+        "Dataset",
+        "lambda:DerivedProduct"
+      ],
+      "productId": "4d7d9700-94b2-44be-a540-494bbb6658a6",
+      "name": "XA_x16_autoproc processing result",
+      "description": "Merged/processed reflection data and provenance for this result.",
+      "hasPart": [
+        {
+          "@id": "mtz/XA_x16_autoproc.mtz"
+        },
+        {
+          "@id": "beamline_state/XA_x16_autoproc.json"
+        },
+        {
+          "@id": "provenance/XA_x16_autoproc/notes.json"
+        },
+        {
+          "@id": "provenance/XA_x16_autoproc/run_definition.json"
+        },
+        {
+          "@id": "provenance/XA_x16_autoproc/sample.json"
+        }
+      ]
+    },
+    {
+      "@id": "#software-1",
+      "@type": "SoftwareApplication",
+      "name": "processing",
+      "version": "0.7.13"
+    },
+    {
+      "@id": "urn:uuid:4d7d9700-94b2-44be-a540-494bbb6658a6",
+      "@type": "CreateAction",
+      "workflowRunId": "4d7d9700-94b2-44be-a540-494bbb6658a6",
+      "name": "Processing of XA_x16_autoproc",
+      "instrument": {
+        "@id": "#software-1"
+      },
+      "object": [
+        {
+          "@id": "#rawunit-90000002"
+        }
+      ],
+      "result": [
+        {
+          "@id": "#product-4d7d9700-94b2-44be-a540-494bbb6658a6"
+        }
+      ],
+      "endTime": "2023-09-06T04:52:42Z",
+      "runParameters": {
+        "wavelengthAngstrom": 0.9795,
+        "energyEv": 12658.4,
+        "detectorDistanceMm": 350,
+        "oscillationDeg": 0.2,
+        "startAngleDeg": 90,
+        "endAngleDeg": 450,
+        "numberOfImages": 1800,
+        "transmissionPercent": 77.88,
+        "exposureTimeS": 0.2
+      },
+      "lambda:unitCell": {
+        "a": 201.205,
+        "b": 47.884,
+        "c": 201.435,
+        "alpha": 90,
+        "beta": 90.165,
+        "gamma": 90
+      },
+      "lambda:spaceGroup": "C 1 2 1",
+      "lambda:resolutionAngstrom": 2.3,
+      "lambda:completeness": 99.2,
+      "lambda:ccHalf": 0.995,
+      "lambda:meanISigma": 7.2
+    },
+    {
+      "@id": "https://www.rcsb.org/structure/9MS4",
+      "@type": "CreativeWork",
+      "name": "Crystal structure of Xa_EXLX1",
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "PDB",
+        "value": "9MS4"
+      },
+      "lambda:pdbCode": "9MS4",
+      "lambda:resolutionAngstrom": 2.3,
+      "url": "https://www.rcsb.org/structure/9MS4",
+      "isBasedOn": [
+        {
+          "@id": "#product-4d7d9700-94b2-44be-a540-494bbb6658a6"
+        }
+      ]
+    }
+  ]
+}

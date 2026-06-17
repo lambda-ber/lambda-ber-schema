@@ -452,21 +452,12 @@ def etl_emsl(
 
 @etl_app.command("ssrl-mx")
 def etl_ssrl_mx(
-    snapshot: Annotated[
+    crate: Annotated[
         Path,
-        typer.Option("--snapshot", "-s",
-                     help="Path to DCSS snapshot JSON file (from dcss-dump-json)"),
+        typer.Option("--crate", "-c",
+                     help="Path to a published distribution package directory (or its "
+                          "ro-crate-metadata.json)"),
     ],
-    metadata: Annotated[
-        Path | None,
-        typer.Option("--metadata", "-m",
-                     help="Path to sample metadata sidecar JSON file"),
-    ] = None,
-    processing: Annotated[
-        Path | None,
-        typer.Option("--processing", "-p",
-                     help="Path to processing results sidecar JSON file"),
-    ] = None,
     output: Annotated[
         Path | None,
         typer.Option("--output", "-o",
@@ -478,32 +469,22 @@ def etl_ssrl_mx(
     ] = "yaml",
 ) -> None:
     """
-    Load data from SSRL MX beamline (DCSS snapshot + sidecars).
+    Load an SSRL MX published distribution package (LAMBDA RO-Crate) into a Dataset.
 
-    Only actively collecting runs (status="collecting") are included.
-
-    Supports sidecar files for enriching snapshots:
-    - Sample metadata (protein names, organism, UniProt/PDB references)
-    - Processing results (autoproc/aimless: space group, unit cell, statistics)
-
-    The beamline is read out of the snapshot's `beamlineID` field, so no
-    --beamline option is needed.
+    The loader maps the crate's semantic graph (Experiment / RawUnit / DerivedProduct / WorkflowRun /
+    SoftwareApplication + citations) into the lambda-ber schema. crystals-play performs all derivation
+    when it builds the package, so this is a pure crate -> schema mapper.
 
     Examples:
 
-        lambda-ber-schema etl ssrl-mx --snapshot snapshot.json
+        lambda-ber-schema etl ssrl-mx --crate /path/to/package
 
-        lambda-ber-schema etl ssrl-mx --snapshot snapshot.json --metadata custom_metadata.json
-
-        lambda-ber-schema etl ssrl-mx --snapshot snapshot.json --output data.yaml --format json
+        lambda-ber-schema etl ssrl-mx --crate /path/to/package/ro-crate-metadata.json -o data.yaml -f json
     """
-    loader = SSRLMXLoader(
-        metadata_file=metadata,
-        processing_results_file=processing,
-    )
+    loader = SSRLMXLoader()
 
-    typer.echo(f"Loading SSRL MX snapshot: {snapshot}", err=True)
-    result = _load_with_error_handling(loader, str(snapshot))
+    typer.echo(f"Loading SSRL MX package: {crate}", err=True)
+    result = _load_with_error_handling(loader, str(crate))
 
     if result.warnings:
         for warning in result.warnings:
@@ -542,7 +523,7 @@ def etl_list(
     directory: Annotated[
         Path | None,
         typer.Option("--directory", "-d",
-                     help="Directory to search for snapshots (ssrl-mx only)"),
+                     help="Directory of distribution packages to list (ssrl-mx only)"),
     ] = None,
     limit: Annotated[
         int,
@@ -565,7 +546,7 @@ def etl_list(
 
         lambda-ber-schema etl list emsl --sample apo --limit 10
 
-        lambda-ber-schema etl list ssrl-mx --directory /path/to/snapshots
+        lambda-ber-schema etl list ssrl-mx --directory /path/to/packages
     """
     source_lower = source.lower()
 
@@ -914,12 +895,13 @@ def version() -> None:
 
 @etl_app.command("dump-ssrl-mx")
 def etl_dump_ssrl_mx(
-    snapshots_dir: Annotated[
+    packages_dir: Annotated[
         Path,
         typer.Option(
-            "--snapshots-dir",
+            "--packages-dir",
             "-i",
-            help="Directory containing DCSS snapshot .json files",
+            help="Directory containing published distribution packages (each a dir with "
+                 "ro-crate-metadata.json)",
         ),
     ],
     output_dir: Annotated[
@@ -930,104 +912,74 @@ def etl_dump_ssrl_mx(
             help="Directory to save converted Dataset YAMLs/JSON",
         ),
     ],
-    metadata: Annotated[
-        Path | None,
-        typer.Option(
-            "--metadata",
-            "-m",
-            help="Sample-metadata sidecar JSON (protein names, study UUIDs, etc.)",
-        ),
-    ] = None,
-    processing: Annotated[
-        Path | None,
-        typer.Option(
-            "--processing",
-            "-p",
-            help="Processing-results sidecar JSON (autoproc statistics + output files)",
-        ),
-    ] = None,
     format: Annotated[
         str,
         typer.Option("--format", "-f", help="Output format: yaml or json"),
     ] = "yaml",
     limit: Annotated[
         int | None,
-        typer.Option("--limit", "-n", help="Maximum snapshots to convert"),
+        typer.Option("--limit", "-n", help="Maximum packages to convert"),
     ] = None,
     skip_existing: Annotated[
         bool,
         typer.Option(
             "--skip-existing/--overwrite",
-            help="Skip snapshots whose output already exists (acts as resume)",
+            help="Skip packages whose output already exists (acts as resume)",
         ),
     ] = True,
 ) -> None:
     """
-    Dump every DCSS snapshot under --snapshots-dir into a converted Dataset file.
+    Dump every distribution package under --packages-dir into a converted Dataset file.
 
-    Pure filesystem ETL (no HTTP), so BatchLoader's rate-limiting/concurrency
-    plumbing isn't useful here -- this is a simple sequential loop that re-runs
-    cheaply. Outputs are named ``Dataset-ssrl-mx-<snapshot-stem>.{yaml,json}``.
+    Pure filesystem ETL (no HTTP): a simple sequential loop that re-runs cheaply. Outputs are named
+    ``Dataset-ssrl-mx-<package-dir-name>.{yaml,json}``.
 
     Examples:
 
-        # Convert every snapshot in a directory
-        lambda-ber-schema etl dump-ssrl-mx \\
-            -i tests/data/raw/beamline-snapshots \\
-            -o ./ssrl_mx_dump
-
-        # With sidecars for sample + processing enrichment
-        lambda-ber-schema etl dump-ssrl-mx \\
-            -i tests/data/raw/beamline-snapshots \\
-            -o ./ssrl_mx_dump \\
-            -m tests/loaders/fixtures/ssrl/sample_metadata.json \\
-            -p tests/loaders/fixtures/ssrl/processing_results.json
+        # Convert every package in a directory
+        lambda-ber-schema etl dump-ssrl-mx -i /path/to/packages -o ./ssrl_mx_dump
 
         # Re-run from scratch (overwrite any existing output files)
-        lambda-ber-schema etl dump-ssrl-mx -i ./snapshots -o ./out --overwrite
+        lambda-ber-schema etl dump-ssrl-mx -i ./packages -o ./out --overwrite
     """
-    if not snapshots_dir.is_dir():
-        typer.echo(f"Error: --snapshots-dir not found: {snapshots_dir}", err=True)
+    if not packages_dir.is_dir():
+        typer.echo(f"Error: --packages-dir not found: {packages_dir}", err=True)
         raise typer.Exit(1)
 
-    snapshots = sorted(snapshots_dir.glob("*.json"))
+    loader = SSRLMXLoader()
+    packages = [Path(p) for p in loader.list_entries(packages_dir)]
     if limit is not None:
-        snapshots = snapshots[:limit]
+        packages = packages[:limit]
 
-    if not snapshots:
-        typer.echo(f"No *.json snapshots in {snapshots_dir}", err=True)
+    if not packages:
+        typer.echo(f"No distribution packages (ro-crate-metadata.json) under {packages_dir}", err=True)
         raise typer.Exit(1)
 
     output_dir.mkdir(parents=True, exist_ok=True)
     ext = "json" if format.lower() == "json" else "yaml"
 
-    loader = SSRLMXLoader(
-        metadata_file=metadata,
-        processing_results_file=processing,
-    )
-
     typer.echo(
-        f"Converting {len(snapshots)} snapshot(s) → {output_dir}",
+        f"Converting {len(packages)} package(s) → {output_dir}",
         err=True,
     )
 
     succeeded = 0
     skipped = 0
     failed = 0
-    for snap in snapshots:
-        out_path = output_dir / f"Dataset-ssrl-mx-{snap.stem}.{ext}"
+    for pkg in packages:
+        out_path = output_dir / f"Dataset-ssrl-mx-{pkg.name}.{ext}"
         if skip_existing and out_path.exists():
             skipped += 1
             continue
         try:
-            result = loader.load(str(snap))
+            result = loader.load(str(pkg))
             out_path.write_text(_serialize_dataset(result.dataset, format))
             succeeded += 1
             for w in result.warnings:
-                typer.echo(f"  {snap.name}: {w}", err=True)
+                typer.echo(f"  {pkg.name}: {w}", err=True)
         except Exception as exc:
             failed += 1
-            typer.echo(f"  {snap.name}: FAILED ({type(exc).__name__}: {exc})", err=True)
+            typer.echo(f"  {pkg.name}: FAILED ({type(exc).__name__}: {exc})", err=True)
 
     typer.echo(
         f"Complete: {succeeded} succeeded, {skipped} skipped, {failed} failed",

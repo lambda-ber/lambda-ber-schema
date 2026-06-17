@@ -4,28 +4,24 @@ This directory contains raw or source data files used for testing and validation
 
 ## Files
 
-### beamline-snapshots/ (SSRL MX, BL12-2 / BL12-1 / BL9-2)
+### SSRL MX distribution packages (LAMBDA RO-Crate)
 
-**Source**: Real DCSS state snapshots captured during data collection at SSRL, converted to JSON by the [`dcss-dump-json`](https://github.com/) tool.
+**Source**: Published distribution packages produced by crystals-play / iceflow `publish_assembly.py`. The
+SSRL MX loader (`src/lambda_ber_schema/loaders/ssrl_mx.py`) consumes a package's `ro-crate-metadata.json`
+(the single canonical on-disk metadata); crystals-play performs all derivation up front, so the loader is
+a pure crate → schema mapper. (Earlier the loader ingested raw DCSS snapshots + enrichment files; that
+path was retired.)
 
-**Format**: JSON (one file per DCSS snapshot, ~7,000–12,000 lines of structured device state)
-
-**Description**: Four PNNL collaborator samples on three SSRL macromolecular crystallography beamlines, used as fixtures for the SSRL MX loader (`src/lambda_ber_schema/loaders/ssrl_mx.py`). Each snapshot captures the full device state at the moment of data collection: beamline configuration, detector parameters, sample mount, run plans, robot state, cryojet, motors, etc.
-
-| File | Beamline | Sample | PDB |
-|------|----------|--------|-----|
-| `SA_x4_1_00001.json` | BL12-2 | SA_x4 (Ss_EXLX1 expansin) | [9MS5](https://www.rcsb.org/structure/9MS5) |
-| `A48Br_1_00001.json` | BL9-2 | A48Br (PWe1 phage endolysin) | [9MS6](https://www.rcsb.org/structure/9MS6) |
-| `A78_x107_1_00001.json` | BL12-2 | A78_x107 (PWe2 phage endolysin) | [9MS7](https://www.rcsb.org/structure/9MS7) |
-| `XA_x16_1_00001.json` | BL12-1 | XA_x16 (Xa_EXLX1 expansin) | [9MS4](https://www.rcsb.org/structure/9MS4) |
+**Fixture**: `tests/loaders/fixtures/ssrl/package/ro-crate-metadata.json` — a **real** released
+distribution's RO-Crate (the PDB 9MS4 Xa_EXLX1 expansin deposition), copied verbatim (a fully
+profile-conformant v0.2 crate; already free of internal filesystem paths). Slimmed to just the crate,
+since the loader reads only `ro-crate-metadata.json`.
 
 **Contact**: Scott McPhillips (scottm@slac.stanford.edu) — SSRL SMB
 
 **Related Files**:
-- `tests/data/raw/beamline-snapshots/README.md` — conversion command and per-file details
-- `tests/loaders/fixtures/ssrl/sample_metadata.json` — sample/protein/study sidecar enrichment
-- `tests/loaders/fixtures/ssrl/processing_results.json` — autoproc/aimless processing statistics + output files
-- `tests/data/valid/Dataset-ssrl-mx-*.yaml` — worked lambda-ber-schema examples produced by the loader
+- `tests/loaders/fixtures/ssrl/package/ro-crate-metadata.json` — the crate the loader reads
+- `tests/data/valid/Dataset-ssrl-mx-package.yaml` — worked lambda-ber-schema example produced by the loader
 
 ### 9B7F.cif
 
