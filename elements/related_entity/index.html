@@ -1197,6 +1197,10 @@ Alias: related_entity</p>
 <td>native</td>
 <td>lambda:related_entity</td>
 </tr>
+<tr>
+<td>related</td>
+<td>IHMCIF:_ihm_dataset_list.id</td>
+</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -1205,6 +1209,8 @@ Alias: related_entity</p>
 <pre><code class="language-yaml">name: related_entity
 description: ID of the entity that owns this file
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_dataset_list.id
 rank: 1000
 alias: related_entity
 owner: DataFile

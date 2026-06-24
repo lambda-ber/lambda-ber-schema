@@ -1197,6 +1197,10 @@ Alias: data_type</p>
 <td>native</td>
 <td>lambda:data_type</td>
 </tr>
+<tr>
+<td>close</td>
+<td>IHMCIF:_ihm_dataset_list.data_type</td>
+</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -1205,6 +1209,8 @@ Alias: data_type</p>
 <pre><code class="language-yaml">name: data_type
 description: Type of data in the file
 from_schema: http://w3id.org/lambda/
+close_mappings:
+- IHMCIF:_ihm_dataset_list.data_type
 rank: 1000
 alias: data_type
 owner: DataFile

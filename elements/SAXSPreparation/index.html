@@ -625,6 +625,10 @@
 <td>native</td>
 <td>lambda:SAXSPreparation</td>
 </tr>
+<tr>
+<td>related</td>
+<td>IHMCIF:_ihm_sas_restraint</td>
+</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -634,6 +638,8 @@
 <pre><code class="language-yaml">name: SAXSPreparation
 description: SAXS/WAXS specific preparation
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_sas_restraint
 is_a: TechniqueSpecificPreparation
 attributes:
   concentration_series:
@@ -684,6 +690,8 @@ attributes:
 <pre><code class="language-yaml">name: SAXSPreparation
 description: SAXS/WAXS specific preparation
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_sas_restraint
 is_a: TechniqueSpecificPreparation
 attributes:
   concentration_series:

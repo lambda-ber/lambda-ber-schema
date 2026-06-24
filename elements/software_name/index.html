@@ -1202,6 +1202,10 @@ Alias: software_name</p>
 <td>native</td>
 <td>lambda:software_name</td>
 </tr>
+<tr>
+<td>related</td>
+<td>IHMCIF:_ihm_modeling_protocol_details.software_id</td>
+</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -1210,6 +1214,8 @@ Alias: software_name</p>
 <pre><code class="language-yaml">name: software_name
 description: Software used for processing
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_modeling_protocol_details.software_id
 rank: 1000
 alias: software_name
 owner: WorkflowRun

@@ -708,6 +708,10 @@
 <td>native</td>
 <td>lambda:RefinementParameters</td>
 </tr>
+<tr>
+<td>related</td>
+<td>IHMCIF:_ihm_model_representation, IHMCIF:_ihm_model_representation_details, IHMCIF:_ihm_model_list, IHMCIF:_ihm_ensemble_info</td>
+</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -717,6 +721,11 @@
 <pre><code class="language-yaml">name: RefinementParameters
 description: Parameters specific to 3D refinement workflows
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_model_representation
+- IHMCIF:_ihm_model_representation_details
+- IHMCIF:_ihm_model_list
+- IHMCIF:_ihm_ensemble_info
 is_a: AttributeGroup
 attributes:
   symmetry:
@@ -805,6 +814,11 @@ attributes:
 <pre><code class="language-yaml">name: RefinementParameters
 description: Parameters specific to 3D refinement workflows
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_model_representation
+- IHMCIF:_ihm_model_representation_details
+- IHMCIF:_ihm_model_list
+- IHMCIF:_ihm_ensemble_info
 is_a: AttributeGroup
 attributes:
   symmetry:

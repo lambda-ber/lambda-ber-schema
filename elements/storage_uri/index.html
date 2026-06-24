@@ -1197,6 +1197,10 @@ Alias: storage_uri</p>
 <td>native</td>
 <td>lambda:storage_uri</td>
 </tr>
+<tr>
+<td>related</td>
+<td>IHMCIF:_ihm_external_reference_info.associated_url, IHMCIF:_ihm_external_files.file_path</td>
+</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -1205,6 +1209,9 @@ Alias: storage_uri</p>
 <pre><code class="language-yaml">name: storage_uri
 description: Storage URI (S3, Globus, etc.)
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_external_reference_info.associated_url
+- IHMCIF:_ihm_external_files.file_path
 rank: 1000
 alias: storage_uri
 owner: DataFile

@@ -726,6 +726,10 @@
 <td>native</td>
 <td>lambda:Image3D</td>
 </tr>
+<tr>
+<td>related</td>
+<td>IHMCIF:_ihm_3dem_restraint, IHMCIF:_ihm_localization_density_files</td>
+</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -735,6 +739,9 @@
 <pre><code class="language-yaml">name: Image3D
 description: A 3D volume or tomogram
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_3dem_restraint
+- IHMCIF:_ihm_localization_density_files
 is_a: Image
 attributes:
   dimensions_z:
@@ -772,6 +779,9 @@ attributes:
 <pre><code class="language-yaml">name: Image3D
 description: A 3D volume or tomogram
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_3dem_restraint
+- IHMCIF:_ihm_localization_density_files
 is_a: Image
 attributes:
   dimensions_z:

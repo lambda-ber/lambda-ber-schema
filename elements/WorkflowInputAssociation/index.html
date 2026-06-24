@@ -617,6 +617,10 @@
 <td>native</td>
 <td>lambda:WorkflowInputAssociation</td>
 </tr>
+<tr>
+<td>related</td>
+<td>IHMCIF:_ihm_dataset_group_link, IHMCIF:_ihm_dataset_list</td>
+</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -626,6 +630,9 @@
 <pre><code class="language-yaml">name: WorkflowInputAssociation
 description: Links input DataFiles to WorkflowRun
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_dataset_group_link
+- IHMCIF:_ihm_dataset_list
 attributes:
   workflow_id:
     name: workflow_id
@@ -664,6 +671,9 @@ attributes:
 <pre><code class="language-yaml">name: WorkflowInputAssociation
 description: Links input DataFiles to WorkflowRun
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_dataset_group_link
+- IHMCIF:_ihm_dataset_list
 attributes:
   workflow_id:
     name: workflow_id

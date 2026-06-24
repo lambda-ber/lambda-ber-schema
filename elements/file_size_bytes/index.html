@@ -1197,6 +1197,10 @@ Alias: file_size_bytes</p>
 <td>native</td>
 <td>lambda:file_size_bytes</td>
 </tr>
+<tr>
+<td>close</td>
+<td>IHMCIF:_ihm_external_files.file_size_bytes</td>
+</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -1205,6 +1209,8 @@ Alias: file_size_bytes</p>
 <pre><code class="language-yaml">name: file_size_bytes
 description: File size in bytes
 from_schema: http://w3id.org/lambda/
+close_mappings:
+- IHMCIF:_ihm_external_files.file_size_bytes
 rank: 1000
 alias: file_size_bytes
 owner: DataFile

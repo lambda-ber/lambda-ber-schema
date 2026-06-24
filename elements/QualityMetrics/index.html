@@ -1116,6 +1116,10 @@
 <td>native</td>
 <td>lambda:QualityMetrics</td>
 </tr>
+<tr>
+<td>related</td>
+<td>IHMCIF:_ihm_ensemble_info, IHMCIF:_ihm_sas_restraint, IHMCIF:_ihm_3dem_restraint</td>
+</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -1125,6 +1129,10 @@
 <pre><code class="language-yaml">name: QualityMetrics
 description: Quality metrics for experiments
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_ensemble_info
+- IHMCIF:_ihm_sas_restraint
+- IHMCIF:_ihm_3dem_restraint
 is_a: AttributeGroup
 attributes:
   resolution:
@@ -1449,6 +1457,8 @@ attributes:
     description: Radius of gyration, typically specified in Angstroms. Data providers
       may specify alternative units by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
+    close_mappings:
+    - IHMCIF:_ihm_sas_restraint.radius_of_gyration
     rank: 1000
     domain_of:
     - QualityMetrics
@@ -1471,6 +1481,10 @@ attributes:
 <pre><code class="language-yaml">name: QualityMetrics
 description: Quality metrics for experiments
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_ensemble_info
+- IHMCIF:_ihm_sas_restraint
+- IHMCIF:_ihm_3dem_restraint
 is_a: AttributeGroup
 attributes:
   resolution:
@@ -1856,6 +1870,8 @@ attributes:
     description: Radius of gyration, typically specified in Angstroms. Data providers
       may specify alternative units by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
+    close_mappings:
+    - IHMCIF:_ihm_sas_restraint.radius_of_gyration
     rank: 1000
     alias: rg
     owner: QualityMetrics

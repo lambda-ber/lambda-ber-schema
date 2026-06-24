@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://lambda-ber.github.io/lambda-ber-schema/elements/sample_id/">
+        <link rel="canonical" href="https://lambda-ber.github.io/lambda-ber-schema/background/ihmcif-alignment/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Slot: sample_id - lambda-ber-schema</title>
+        <title>lambda-ber-schema and IHMCIF Alignment - lambda-ber-schema</title>
       
     
     
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-sample_id" class="md-skip">
+        <a href="#lambda-ber-schema-and-ihmcif-alignment" class="md-skip">
           Skip to content
         </a>
       
@@ -106,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: sample_id
+              lambda-ber-schema and IHMCIF Alignment
             
           </span>
         </div>
@@ -274,7 +274,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+      <a href="../../elements/" class="md-nav__link">
         
   
   
@@ -334,7 +334,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../background/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -357,7 +357,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../background/nexus/" class="md-nav__link">
+      <a href="../nexus/" class="md-nav__link">
         
   
   
@@ -380,7 +380,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../background/mmcif/" class="md-nav__link">
+      <a href="../mmcif/" class="md-nav__link">
         
   
   
@@ -403,7 +403,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../background/empiar/" class="md-nav__link">
+      <a href="../empiar/" class="md-nav__link">
         
   
   
@@ -426,7 +426,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../background/emdb/" class="md-nav__link">
+      <a href="../emdb/" class="md-nav__link">
         
   
   
@@ -449,7 +449,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../background/dials/" class="md-nav__link">
+      <a href="../dials/" class="md-nav__link">
         
   
   
@@ -472,7 +472,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../background/sasdb/" class="md-nav__link">
+      <a href="../sasdb/" class="md-nav__link">
         
   
   
@@ -495,7 +495,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../background/rembi-alignment/" class="md-nav__link">
+      <a href="../rembi-alignment/" class="md-nav__link">
         
   
   
@@ -518,7 +518,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../background/lambda-ber-schema-data-lakehouse-strategy/" class="md-nav__link">
+      <a href="../lambda-ber-schema-data-lakehouse-strategy/" class="md-nav__link">
         
   
   
@@ -541,7 +541,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../background/ber-doe-facilities/" class="md-nav__link">
+      <a href="../ber-doe-facilities/" class="md-nav__link">
         
   
   
@@ -564,7 +564,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../background/data-quality-challenges/" class="md-nav__link">
+      <a href="../data-quality-challenges/" class="md-nav__link">
         
   
   
@@ -1070,45 +1070,72 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#applicable-classes" class="md-nav__link">
+  <a href="#summary" class="md-nav__link">
     <span class="md-ellipsis">
-      Applicable Classes
+      Summary
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#properties" class="md-nav__link">
+  <a href="#current-dictionary-scale" class="md-nav__link">
     <span class="md-ellipsis">
-      Properties
+      Current Dictionary Scale
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#identifier-and-mapping-information" class="md-nav__link">
+  <a href="#design-decision" class="md-nav__link">
     <span class="md-ellipsis">
-      Identifier and Mapping Information
+      Design Decision
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#mappings" class="md-nav__link">
+  <a href="#conceptual-alignment" class="md-nav__link">
     <span class="md-ellipsis">
-      Mappings
+      Conceptual Alignment
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#linkml-source" class="md-nav__link">
+  <a href="#schema-changes" class="md-nav__link">
     <span class="md-ellipsis">
-      LinkML Source
+      Schema Changes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gaps-worth-tracking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gaps Worth Tracking
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#export-implications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Export Implications
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
     </span>
   </a>
   
@@ -1133,76 +1160,143 @@
   
 
 
-<h1 id="slot-sample_id">Slot: sample_id</h1>
-<p>URI: <a href="http://w3id.org/lambda/sample_id">lambda:sample_id</a>
-Alias: sample_id</p>
-<!-- no inheritance hierarchy -->
-
-<h2 id="applicable-classes">Applicable Classes</h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Modifies Slot</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../StudySampleAssociation/">StudySampleAssociation</a></td>
-<td>M:N link between Study and Sample with role metadata</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../SamplePreparation/">SamplePreparation</a></td>
-<td>A process that prepares a sample for imaging</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ExperimentSampleAssociation/">ExperimentSampleAssociation</a></td>
-<td>M:N link between ExperimentRun and Sample with role metadata</td>
-<td>no</td>
-</tr>
-</tbody>
-</table>
-<h2 id="properties">Properties</h2>
+<h1 id="lambda-ber-schema-and-ihmcif-alignment">lambda-ber-schema and IHMCIF Alignment</h1>
+<h2 id="summary">Summary</h2>
+<p>lambda-ber-schema should align to IHMCIF, not import it as a native submodel.</p>
+<p>IHMCIF is the PDB-IHM extension of PDBx/mmCIF for archived integrative and hybrid structural models. It is strongest where the final scientific product is a deposited integrative model: model representations, structural assemblies, model groups, ensembles, spatial restraints, starting models, and multi-state schemes.</p>
+<p>lambda-ber-schema has a broader upstream scope. It tracks samples, preparations, instruments, experiment runs, workflow runs, raw and intermediate files, multimodal imaging, and facility or laboratory provenance. Many Lambda records may never become a PDB-IHM deposition.</p>
+<h2 id="current-dictionary-scale">Current Dictionary Scale</h2>
+<p>The IHMCIF extension dictionary inspected for this alignment was <code>mmcif_ihm_ext.dic</code> version <code>1.28</code>, last updated <code>2025-03-24</code>, from the wwPDB dictionary site:</p>
 <ul>
-<li>Range: <a href="../String/">String</a></li>
+<li>https://mmcif.wwpdb.org/dictionaries/mmcif_ihm.dic/Index/</li>
+<li>https://mmcif.wwpdb.org/dictionaries/ascii/mmcif_ihm_ext.dic</li>
 </ul>
-<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h2 id="mappings">Mappings</h2>
+<p>The extension dictionary contains roughly:</p>
+<ul>
+<li>83 active IHM categories</li>
+<li>622 IHM data items</li>
+<li>additional extension items on existing PDBx/mmCIF categories, such as <code>_atom_site.ihm_model_id</code></li>
+</ul>
+<p>That size is large enough that directly importing IHMCIF would reshape Lambda around an archive and deposition format. The better approach is to keep Lambda generic and add mappings where concepts correspond.</p>
+<h2 id="design-decision">Design Decision</h2>
+<p>Do not import IHMCIF categories as first-class Lambda tables by default.</p>
+<p>Instead:</p>
+<ul>
+<li>Keep Lambda concepts generic and workflow-centered.</li>
+<li>Use IHMCIF as an external mapping target.</li>
+<li>Prefer <code>close_mappings</code> and <code>related_mappings</code> over <code>exact_mappings</code> unless a slot has the same semantics as an IHMCIF item.</li>
+<li>Add new Lambda classes only when a concept is broadly useful outside PDB-IHM deposition.</li>
+</ul>
+<p>This keeps Lambda useful for local data management, multimodal BER experiments, and pre-deposition provenance while still allowing export to IHMCIF/PDB-IHM when appropriate.</p>
+<h2 id="conceptual-alignment">Conceptual Alignment</h2>
 <table>
 <thead>
 <tr>
-<th>Mapping Type</th>
-<th>Mapped Value</th>
+<th>IHMCIF area</th>
+<th>Lambda alignment</th>
+<th>Mapping strength</th>
+<th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>self</td>
-<td>lambda:sample_id</td>
+<td><code>_ihm_entry_collection</code>, <code>_ihm_dataset_group</code></td>
+<td><code>Dataset</code>, <code>Study</code></td>
+<td>Related</td>
+<td>Lambda groups all local research records; IHMCIF groups deposited entries or evidence datasets.</td>
 </tr>
 <tr>
-<td>native</td>
-<td>lambda:sample_id</td>
+<td><code>_ihm_dataset_list</code></td>
+<td><code>ExperimentRun</code>, <code>DataFile</code>, workflow input associations</td>
+<td>Related/close</td>
+<td>Lambda separates runs, files, and workflow links rather than using IHMCIF dataset records directly.</td>
+</tr>
+<tr>
+<td><code>_ihm_external_files</code>, <code>_ihm_external_reference_info</code></td>
+<td><code>DataFile</code></td>
+<td>Close</td>
+<td>Lambda file metadata is broader and can include local paths, storage URIs, checksums, and non-deposition files.</td>
+</tr>
+<tr>
+<td><code>_ihm_modeling_protocol</code>, <code>_ihm_modeling_protocol_details</code></td>
+<td><code>WorkflowRun</code></td>
+<td>Close</td>
+<td>Lambda workflow runs map well conceptually, but IHMCIF has deposition-specific protocol steps and references.</td>
+</tr>
+<tr>
+<td><code>_ihm_struct_assembly</code>, <code>_ihm_struct_assembly_details</code>, <code>_ihm_entity_poly_segment</code></td>
+<td><code>Sample</code>, <code>MolecularComposition</code></td>
+<td>Related</td>
+<td>Lambda samples are physical/biological inputs; IHMCIF assemblies are modeled structural components.</td>
+</tr>
+<tr>
+<td><code>_ihm_model_representation</code>, <code>_ihm_model_list</code>, <code>_ihm_model_group</code>, <code>_ihm_ensemble_info</code></td>
+<td><code>WorkflowRun</code>, <code>RefinementParameters</code>, <code>QualityMetrics</code>, <code>DataFile</code></td>
+<td>Related</td>
+<td>Lambda can point to model outputs, but does not currently encode IHMCIF's full representation and ensemble model.</td>
+</tr>
+<tr>
+<td><code>_ihm_3dem_restraint</code>, <code>_ihm_sas_restraint</code></td>
+<td><code>Image3D</code>, <code>SAXSPreparation</code>, <code>QualityMetrics</code>, <code>DataFile</code></td>
+<td>Related</td>
+<td>Lambda captures source experiments and files; IHMCIF captures how those data constrain a deposited model.</td>
+</tr>
+<tr>
+<td>Crosslink, HDX, EPR, geometric, predicted-contact, and probe restraints</td>
+<td>No direct generic class yet</td>
+<td>Gap</td>
+<td>A future generic <code>Evidence</code> or <code>Restraint</code> concept could align here without importing all IHMCIF categories.</td>
+</tr>
+<tr>
+<td>Multi-state schemes, ordered ensembles, kinetics</td>
+<td>Limited or absent</td>
+<td>Gap</td>
+<td>These should remain future work unless Lambda needs broad dynamic or multi-state modeling support.</td>
 </tr>
 </tbody>
 </table>
-<h2 id="linkml-source">LinkML Source</h2>
-<details>
-
-<pre><code class="language-yaml">name: sample_id
-alias: sample_id
-domain_of:
-- SamplePreparation
-- StudySampleAssociation
-- ExperimentSampleAssociation
-range: string
-
+<h2 id="schema-changes">Schema Changes</h2>
+<p>The schema now includes an <code>IHMCIF</code> prefix:</p>
+<pre><code class="language-yaml">IHMCIF: https://mmcif.wwpdb.org/dictionaries/mmcif_ihm_ext.dic/Items/
 </code></pre>
-
-</details>
+<p>Mappings were added only to existing Lambda concepts:</p>
+<ul>
+<li><code>Dataset</code> and <code>Study</code> relate to IHMCIF entry collections and dataset groups.</li>
+<li><code>Sample</code> and <code>MolecularComposition</code> relate to structural assemblies and polymer segments.</li>
+<li><code>ExperimentRun</code> relates to IHMCIF dataset records.</li>
+<li><code>WorkflowRun</code> closely maps to IHMCIF modeling protocol categories.</li>
+<li><code>DataFile</code> closely maps to IHMCIF external file records and relates to dataset references.</li>
+<li><code>Image3D</code>, <code>SAXSPreparation</code>, and <code>QualityMetrics</code> relate to 3DEM and SAS restraint categories.</li>
+<li>Workflow association tables relate to IHMCIF dataset and model group link categories.</li>
+</ul>
+<p>The mappings are intentionally conservative. Lambda should not claim <code>exact_mappings</code> for broad concepts that only partially overlap IHMCIF deposition categories.</p>
+<h2 id="gaps-worth-tracking">Gaps Worth Tracking</h2>
+<p>If PDB-IHM export becomes a requirement, the highest-value generic additions would be:</p>
+<ol>
+<li><code>ExternalDataset</code>: a dataset or evidence object distinct from a file.</li>
+<li><code>Evidence</code>: a generic record connecting an experiment, data file, measurement type, and interpretation.</li>
+<li><code>Restraint</code>: a generic modeling constraint with type, source data, target features, and confidence.</li>
+<li><code>ModelRepresentation</code>: a generic description of atomic, coarse-grained, mixed, or ensemble model outputs.</li>
+<li><code>ModelGroup</code> or <code>Ensemble</code>: a generic grouping of output models with representative or clustering metadata.</li>
+</ol>
+<p>These should be designed for Lambda first, then mapped to IHMCIF. They should not copy the full IHMCIF category tables unless deposition-grade PDB-IHM support becomes a core objective.</p>
+<h2 id="export-implications">Export Implications</h2>
+<p>A future Lambda-to-IHMCIF exporter should:</p>
+<ul>
+<li>use Lambda records as upstream provenance;</li>
+<li>use <code>DataFile</code> and workflow associations to populate IHMCIF datasets and external files;</li>
+<li>use <code>WorkflowRun</code> records to populate modeling protocol categories;</li>
+<li>map only explicit generic evidence/restraint/model representation records into IHMCIF restraints and model categories;</li>
+<li>use <code>python-ihm</code> or a comparable library rather than hand-writing CIF text.</li>
+</ul>
+<p>Without additional generic evidence and model-representation classes, Lambda can support partial IHMCIF metadata export, but not complete PDB-IHM deposition.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>PDB-IHM data system: https://data.pdb-ihm.org/</li>
+<li>IHMCIF dictionary index: https://mmcif.wwpdb.org/dictionaries/mmcif_ihm.dic/Index/</li>
+<li>IHMCIF extension dictionary: https://mmcif.wwpdb.org/dictionaries/ascii/mmcif_ihm_ext.dic</li>
+<li>IHMCIF GitHub repository: https://github.com/ihmwg/IHMCIF</li>
+</ul>
 
 
 

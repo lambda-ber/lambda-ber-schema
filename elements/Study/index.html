@@ -632,6 +632,10 @@
 <td>native</td>
 <td>lambda:Study</td>
 </tr>
+<tr>
+<td>related</td>
+<td>IHMCIF:_ihm_entry_collection, IHMCIF:_ihm_entry_collection_mapping</td>
+</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -643,6 +647,9 @@ description: A logical grouping of related experiments investigating a research 
   In the relational model, Study is lightweight - all relationships are via association
   tables.
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_entry_collection
+- IHMCIF:_ihm_entry_collection_mapping
 is_a: NamedThing
 attributes:
   keywords:
@@ -664,6 +671,9 @@ description: A logical grouping of related experiments investigating a research 
   In the relational model, Study is lightweight - all relationships are via association
   tables.
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_entry_collection
+- IHMCIF:_ihm_entry_collection_mapping
 is_a: NamedThing
 attributes:
   keywords:

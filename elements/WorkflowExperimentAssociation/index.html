@@ -600,6 +600,10 @@
 <td>native</td>
 <td>lambda:WorkflowExperimentAssociation</td>
 </tr>
+<tr>
+<td>related</td>
+<td>IHMCIF:_ihm_modeling_protocol_details</td>
+</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -609,6 +613,8 @@
 <pre><code class="language-yaml">name: WorkflowExperimentAssociation
 description: M:N link between WorkflowRun and source ExperimentRuns
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_modeling_protocol_details
 attributes:
   workflow_id:
     name: workflow_id
@@ -640,6 +646,8 @@ attributes:
 <pre><code class="language-yaml">name: WorkflowExperimentAssociation
 description: M:N link between WorkflowRun and source ExperimentRuns
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_modeling_protocol_details
 attributes:
   workflow_id:
     name: workflow_id

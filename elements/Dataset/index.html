@@ -877,6 +877,10 @@
 <td>native</td>
 <td>lambda:Dataset</td>
 </tr>
+<tr>
+<td>related</td>
+<td>IHMCIF:_ihm_entry_collection, IHMCIF:_ihm_dataset_group</td>
+</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -887,6 +891,9 @@
 description: Root container holding flat entity collections and association tables.
   Follows relational database design patterns for structural biology data.
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_entry_collection
+- IHMCIF:_ihm_dataset_group
 is_a: NamedThing
 attributes:
   keywords:
@@ -1096,6 +1103,9 @@ tree_root: true
 description: Root container holding flat entity collections and association tables.
   Follows relational database design patterns for structural biology data.
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_entry_collection
+- IHMCIF:_ihm_dataset_group
 is_a: NamedThing
 attributes:
   keywords:

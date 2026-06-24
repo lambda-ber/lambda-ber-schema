@@ -1202,6 +1202,10 @@ Alias: workflow_type</p>
 <td>native</td>
 <td>lambda:workflow_type</td>
 </tr>
+<tr>
+<td>related</td>
+<td>IHMCIF:_ihm_modeling_protocol_details.step_method</td>
+</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -1210,6 +1214,8 @@ Alias: workflow_type</p>
 <pre><code class="language-yaml">name: workflow_type
 description: Type of processing workflow
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_modeling_protocol_details.step_method
 rank: 1000
 alias: workflow_type
 owner: WorkflowRun

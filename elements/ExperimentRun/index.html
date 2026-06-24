@@ -1559,6 +1559,10 @@
 <td>native</td>
 <td>lambda:ExperimentRun</td>
 </tr>
+<tr>
+<td>related</td>
+<td>IHMCIF:_ihm_dataset_list, IHMCIF:_ihm_dataset_group</td>
+</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -1568,6 +1572,9 @@
 <pre><code class="language-yaml">name: ExperimentRun
 description: An experimental data collection session
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_dataset_list
+- IHMCIF:_ihm_dataset_group
 is_a: NamedThing
 attributes:
   experiment_code:
@@ -1601,6 +1608,8 @@ attributes:
     name: technique
     description: Technique used for data collection
     from_schema: http://w3id.org/lambda/
+    related_mappings:
+    - IHMCIF:_ihm_dataset_list.data_type
     domain_of:
     - SANSInstrument
     - ExperimentRun
@@ -2282,6 +2291,9 @@ attributes:
 <pre><code class="language-yaml">name: ExperimentRun
 description: An experimental data collection session
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_dataset_list
+- IHMCIF:_ihm_dataset_group
 is_a: NamedThing
 attributes:
   experiment_code:
@@ -2322,6 +2334,8 @@ attributes:
     name: technique
     description: Technique used for data collection
     from_schema: http://w3id.org/lambda/
+    related_mappings:
+    - IHMCIF:_ihm_dataset_list.data_type
     alias: technique
     owner: ExperimentRun
     domain_of:
