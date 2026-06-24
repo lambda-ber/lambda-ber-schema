@@ -24,9 +24,10 @@ flux_density:
   unit: photons per second per square millimeter
   numeric_value: 5000000000000.0
 goniometer_type: 21-ID-D
-installation_date: 20260-07-01
+installation_date: '2026-07-01'
 instrument_category: SYNCHROTRON_BEAMLINE
 instrument_code: APS-21-ID-D
+instrument_registry_id: APS_LSCAT_21IDD
 manufacturer: Argonne National Laboratory
 model: APS Beamline 21-ID-D (LS-CAT)
 monochromator_type: Si(111) double crystal

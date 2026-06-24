@@ -4,6 +4,7 @@ description: Macromolecular crystallography beamline at Stanford Synchrotron Rad
   Lightsource with microbeam capabilities and in-vacuum mini-gap undulator source
   optimized for MAD, SAD, and monochromatic data collection
 instrument_code: SSRL-BL12-2
+instrument_registry_id: SSRL_BL122
 instrument_category: SYNCHROTRON_BEAMLINE
 facility_name: SSRL
 facility_ror: https://ror.org/05gzmn429

@@ -1,7 +1,7 @@
  syntax="proto3";
  package
 // metamodel_version: 1.7.0
-// version: 0.1.2.post123.dev0+b316f8a
+// version: 0.1.2.post178.dev0+17a9409
 // Aggregated view of all structural and functional data for a protein
 message AggregatedProteinView
  {
@@ -44,6 +44,7 @@ message BeamlineInstrument
   string title = 0
   string description = 0
   string instrumentCode = 0
+  string instrumentRegistryId = 0
   instrumentCategoryEnum instrumentCategory = 0
   facilityEnum facilityName = 0
   uriorcurie facilityRor = 0
@@ -126,6 +127,7 @@ message CryoEMInstrument
   string title = 0
   string description = 0
   string instrumentCode = 0
+  string instrumentRegistryId = 0
   instrumentCategoryEnum instrumentCategory = 0
   facilityEnum facilityName = 0
   uriorcurie facilityRor = 0
@@ -398,7 +400,6 @@ message ExperimentRun
   quantityValue pixelSizeX = 0
   quantityValue pixelSizeY = 0
   quantityValue totalRotation = 0
-  string beamline = 0
   quantityValue transmission = 0
   quantityValue flux = 0
   quantityValue fluxEnd = 0
@@ -564,6 +565,7 @@ message Instrument
   string title = 0
   string description = 0
   string instrumentCode = 0
+  string instrumentRegistryId = 0
   instrumentCategoryEnum instrumentCategory = 0
   facilityEnum facilityName = 0
   uriorcurie facilityRor = 0
@@ -1032,6 +1034,7 @@ message SANSInstrument
   string title = 0
   string description = 0
   string instrumentCode = 0
+  string instrumentRegistryId = 0
   instrumentCategoryEnum instrumentCategory = 0
   facilityEnum facilityName = 0
   uriorcurie facilityRor = 0
@@ -1067,6 +1070,7 @@ message SAXSInstrument
   string title = 0
   string description = 0
   string instrumentCode = 0
+  string instrumentRegistryId = 0
   instrumentCategoryEnum instrumentCategory = 0
   facilityEnum facilityName = 0
   uriorcurie facilityRor = 0
@@ -1261,6 +1265,7 @@ message XRayInstrument
   string title = 0
   string description = 0
   string instrumentCode = 0
+  string instrumentRegistryId = 0
   instrumentCategoryEnum instrumentCategory = 0
   facilityEnum facilityName = 0
   uriorcurie facilityRor = 0

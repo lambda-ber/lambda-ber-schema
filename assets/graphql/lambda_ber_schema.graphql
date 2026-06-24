@@ -1,5 +1,5 @@
 # metamodel_version: 1.7.0
-# version: 0.1.2.post123.dev0+b316f8a
+# version: 0.1.2.post178.dev0+17a9409
 enum AffinityUnitEnum
   {
     molar
@@ -70,15 +70,20 @@ enum BeamlineEnum
     APS_GMCA_23IDB
     APS_GMCA_23IDD
     APS_LSCAT_21ID
+    APS_LSCAT_21IDD
+    APS_LSCAT_21IDF
+    APS_LSCAT_21IDG
     APS_NECAT_24IDC
     APS_NECAT_24IDE
     APS_SERCAT_22ID
     APS_SERCAT_22BM
     APS_SBCCAT_19ID
+    APS_SBCCAT_19BM
     APS_BIOCARS_14ID
     APS_BIOCAT_18ID
     APS_IMCACAT_17ID
     SSRL_BL92
+    SSRL_BL121
     SSRL_BL122
     SSRL_BL141
     SNS_MANDI
@@ -825,6 +830,7 @@ type BeamlineInstrument
     title: String
     description: String
     instrumentCode: String!
+    instrumentRegistryId: String
     instrumentCategory: InstrumentCategoryEnum
     facilityName: FacilityEnum
     facilityRor: Uriorcurie
@@ -907,6 +913,7 @@ type CryoEMInstrument
     title: String
     description: String
     instrumentCode: String!
+    instrumentRegistryId: String
     instrumentCategory: InstrumentCategoryEnum
     facilityName: FacilityEnum
     facilityRor: Uriorcurie
@@ -1179,7 +1186,6 @@ type ExperimentRun
     pixelSizeX: QuantityValue
     pixelSizeY: QuantityValue
     totalRotation: QuantityValue
-    beamline: String
     transmission: QuantityValue
     flux: QuantityValue
     fluxEnd: QuantityValue
@@ -1341,6 +1347,7 @@ type Instrument
     title: String
     description: String
     instrumentCode: String!
+    instrumentRegistryId: String
     instrumentCategory: InstrumentCategoryEnum
     facilityName: FacilityEnum
     facilityRor: Uriorcurie
@@ -1816,6 +1823,7 @@ type SANSInstrument
     title: String
     description: String
     instrumentCode: String!
+    instrumentRegistryId: String
     instrumentCategory: InstrumentCategoryEnum
     facilityName: FacilityEnum
     facilityRor: Uriorcurie
@@ -1851,6 +1859,7 @@ type SAXSInstrument
     title: String
     description: String
     instrumentCode: String!
+    instrumentRegistryId: String
     instrumentCategory: InstrumentCategoryEnum
     facilityName: FacilityEnum
     facilityRor: Uriorcurie
@@ -2050,6 +2059,7 @@ type XRayInstrument
     title: String
     description: String
     instrumentCode: String!
+    instrumentRegistryId: String
     instrumentCategory: InstrumentCategoryEnum
     facilityName: FacilityEnum
     facilityRor: Uriorcurie

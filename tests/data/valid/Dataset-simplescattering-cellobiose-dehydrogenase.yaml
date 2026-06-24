@@ -8,6 +8,7 @@ instruments:
   title: SIBYLS BL12.3.1
   description: SEC-SAXS beamline at Advanced Light Source, Berkeley Lab
   instrument_code: ALS-SIBYLS-BL12.3.1
+  instrument_registry_id: ALS_SIBYLS
   manufacturer: Lawrence Berkeley National Laboratory
 samples:
 - id: simplescattering:xs33026i/sample
@@ -40,7 +41,6 @@ experiment_runs:
   wavelength:
     numeric_value: 1.27
     unit: Angstroms
-  beamline: SIBYLS BL12.3.1
 data_files:
 - id: simplescattering:xs33026i/file/mtcdh_addition-of-divalent-cations_zip
   description: Data file from Simple Scattering dataset xs33026i

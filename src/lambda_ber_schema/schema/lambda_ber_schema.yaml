@@ -1,6 +1,6 @@
 id: http://w3id.org/lambda/
 name: lambda-ber-schema
-version: "0.1.2.post149.dev0+e1dc87e" # Managed by uv-dynamic-versioning
+version: "0.1.2.post178.dev0+17a9409" # Managed by uv-dynamic-versioning
 description: |
   lambda-ber-schema is a comprehensive schema for representing multimodal structural biology imaging data, 
   from atomic-resolution structures to tissue-level organization. It supports diverse experimental 
@@ -606,6 +606,15 @@ classes:
       instrument_code:
         description: "Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking."
         required: true
+      instrument_registry_id:
+        description: "Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced."
+        any_of:
+          - range: BeamlineEnum
+        comments:
+          - "Use this to link an instrument record to a known, validated registry entry, enabling schema-level validation against typos"
+          - "instrument_code is a free-text local label; instrument_registry_id is the schema-level controlled identity"
+          - "beamline_id captures the facility-local string ID (e.g., '19-ID'); instrument_registry_id captures the enum identity (e.g., APS_SBCCAT_19ID)"
+          - "Distinct from the instrument_id foreign-key slot used in association tables, which references an Instrument object"
       instrument_category:
         description: "Category distinguishing beamlines from laboratory equipment"
         range: InstrumentCategoryEnum
@@ -630,9 +639,12 @@ classes:
         range: string
         exact_mappings:
           - mmCIF:_diffrn_source.pdbx_synchrotron_beamline
+          - "nsls2:Beamline"
+          - "ispyb:BLSession.beamLineName"
         comments:
           - "Use facility-specific naming convention"
           - "Examples: '12.3.1' (ALS), '17-ID-1' (NSLS-II), 'I04' (Diamond)"
+          - "For a validated controlled-vocabulary identity, also set instrument_registry_id (e.g., APS_SBCCAT_19ID)"
       manufacturer:
         description: "Instrument manufacturer"
       model:
@@ -1327,13 +1339,6 @@ classes:
         exact_mappings:
           - "nsls2:Total_rotation_deg"
           - "imgCIF:_diffrn_scan_axis.angle_range"
-      beamline:
-        description: "Beamline identifier (e.g., FMX, AMX, 12.3.1)"
-        range: string
-        exact_mappings:
-          - "nsls2:Beamline"
-          - "mmCIF:_diffrn_source.pdbx_synchrotron_beamline"
-          - "ispyb:BLSession.beamLineName"
       # Additional ISPyB-compatible fields for X-ray data collection
       transmission:
         description: "X-ray beam transmission as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue."
@@ -3741,6 +3746,45 @@ enums:
         aliases:
           - LS-CAT
           - 21-ID
+      APS_LSCAT_21IDD:
+        title: "LS-CAT 21-ID-D"
+        description: "Life Sciences Collaborative Access Team - undulator station D for macromolecular crystallography"
+        annotations:
+          facility: FacilityEnum:APS
+          beamline_id: "21-ID-D"
+          techniques: TechniqueEnum:xray_crystallography
+          doe_beamline: "true"
+          website: "https://ls-cat.org/"
+        aliases:
+          - LS-CAT-D
+          - 21-ID-D
+          - APS 21-ID-D
+      APS_LSCAT_21IDF:
+        title: "LS-CAT 21-ID-F"
+        description: "Life Sciences Collaborative Access Team - undulator station F for macromolecular crystallography"
+        annotations:
+          facility: FacilityEnum:APS
+          beamline_id: "21-ID-F"
+          techniques: TechniqueEnum:xray_crystallography
+          doe_beamline: "true"
+          website: "https://ls-cat.org/"
+        aliases:
+          - LS-CAT-F
+          - 21-ID-F
+          - APS 21-ID-F
+      APS_LSCAT_21IDG:
+        title: "LS-CAT 21-ID-G"
+        description: "Life Sciences Collaborative Access Team - undulator station G for macromolecular crystallography"
+        annotations:
+          facility: FacilityEnum:APS
+          beamline_id: "21-ID-G"
+          techniques: TechniqueEnum:xray_crystallography
+          doe_beamline: "true"
+          website: "https://ls-cat.org/"
+        aliases:
+          - LS-CAT-G
+          - 21-ID-G
+          - APS 21-ID-G
       APS_NECAT_24IDC:
         title: "NE-CAT 24-ID-C"
         description: "Northeastern Collaborative Access Team - microfocus beamline"
@@ -3801,6 +3845,19 @@ enums:
         aliases:
           - SBC-CAT
           - 19-ID
+      APS_SBCCAT_19BM:
+        title: "SBC-CAT (19-BM)"
+        description: "Structural Biology Center Collaborative Access Team - bending magnet beamline for macromolecular crystallography"
+        annotations:
+          facility: FacilityEnum:APS
+          beamline_id: "19-BM"
+          techniques: TechniqueEnum:xray_crystallography
+          doe_beamline: "true"
+          website: "https://www.anl.gov/sbc"
+        aliases:
+          - SBC-CAT-BM
+          - 19-BM
+          - APS 19-BM
       APS_BIOCARS_14ID:
         title: "BioCARS (14-ID)"
         description: "Center for Advanced Radiation Sources - time-resolved crystallography"
@@ -3850,6 +3907,18 @@ enums:
         aliases:
           - BL9-2
           - SSRL 9-2
+      SSRL_BL121:
+        title: "SSRL BL12-1"
+        description: "Macromolecular crystallography beamline at Stanford Synchrotron Radiation Lightsource with full remote access for MAD, SAD, and monochromatic data collection"
+        annotations:
+          facility: FacilityEnum:SSRL
+          beamline_id: "12-1"
+          techniques: TechniqueEnum:xray_crystallography
+          doe_beamline: "true"
+          website: "https://www-ssrl.slac.stanford.edu/smb/"
+        aliases:
+          - BL12-1
+          - SSRL 12-1
       SSRL_BL122:
         title: "SSRL BL12-2"
         description: "Solution scattering beamline for SAXS/WAXS at Stanford Synchrotron Radiation Lightsource"
