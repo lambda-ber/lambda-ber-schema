@@ -43,8 +43,10 @@ jobs:
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
 
-          # Optional: Specify model (defaults to Claude Sonnet 4, uncomment for Claude Opus 4)
-          # model: "claude-opus-4-20250514"
+          # Pin an explicit current model. The action's built-in default
+          # (claude-sonnet-4-20250514) retired 2026-06-15 and now 404s.
+          # Bump to "claude-opus-4-8" for deeper reviews.
+          model: "claude-sonnet-4-6"
 
           # Direct prompt for automated review (no @claude mention needed)
           direct_prompt: |
