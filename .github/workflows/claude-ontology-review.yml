@@ -39,8 +39,9 @@ jobs:
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
 
-          # Optional: Specify model (commenting defaults to Claude Sonnet 4)
-          model: "claude-opus-4-1-20250805"
+          # Pin an explicit current model (claude-opus-4-1-20250805 is deprecated,
+          # retires 2026-08-05). Opus is used here for thorough ontology review.
+          model: "claude-opus-4-8"
 
           # Direct prompt for automated review (no @claude mention needed)
           direct_prompt: |
