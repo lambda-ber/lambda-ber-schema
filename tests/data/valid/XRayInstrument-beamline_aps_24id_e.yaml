@@ -27,6 +27,7 @@ goniometer_type: 24-ID-E
 installation_date: '2010-01-01'
 instrument_category: SYNCHROTRON_BEAMLINE
 instrument_code: APS-24-ID-E
+instrument_registry_id: APS_NECAT_24IDE
 manufacturer: Argonne National Laboratory
 model: APS Beamline 24-ID-E (NE-CAT)
 monochromator_type: Si(111) double crystal

@@ -27,6 +27,7 @@ goniometer_type: 23-ID-B
 installation_date: '2025-10-01'
 instrument_category: SYNCHROTRON_BEAMLINE
 instrument_code: APS-23-ID-B
+instrument_registry_id: APS_GMCA_23IDB
 manufacturer: Argonne National Laboratory
 model: APS Beamline 23-ID-B
 monochromator_type: DCM Si(111)

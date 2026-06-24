@@ -27,6 +27,7 @@ goniometer_type: 21-ID-G
 installation_date: '2026-07-01'
 instrument_category: SYNCHROTRON_BEAMLINE
 instrument_code: APS-21-ID-G
+instrument_registry_id: APS_LSCAT_21IDG
 manufacturer: Argonne National Laboratory
 model: APS Beamline 21-ID-G (LS-CAT)
 monochromator_type: Si(111) double crystal
