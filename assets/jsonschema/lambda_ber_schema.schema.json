@@ -312,15 +312,20 @@
                 "APS_GMCA_23IDB",
                 "APS_GMCA_23IDD",
                 "APS_LSCAT_21ID",
+                "APS_LSCAT_21IDD",
+                "APS_LSCAT_21IDF",
+                "APS_LSCAT_21IDG",
                 "APS_NECAT_24IDC",
                 "APS_NECAT_24IDE",
                 "APS_SERCAT_22ID",
                 "APS_SERCAT_22BM",
                 "APS_SBCCAT_19ID",
+                "APS_SBCCAT_19BM",
                 "APS_BIOCARS_14ID",
                 "APS_BIOCAT_18ID",
                 "APS_IMCACAT_17ID",
                 "SSRL_BL92",
+                "SSRL_BL121",
                 "SSRL_BL122",
                 "SSRL_BL141",
                 "SNS_MANDI",
@@ -412,6 +417,18 @@
                 },
                 "instrument_code": {
                     "description": "Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.",
+                    "type": "string"
+                },
+                "instrument_registry_id": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/BeamlineEnum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.",
                     "type": "string"
                 },
                 "lims_system": {
@@ -1200,6 +1217,18 @@
                 },
                 "instrument_code": {
                     "description": "Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.",
+                    "type": "string"
+                },
+                "instrument_registry_id": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/BeamlineEnum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.",
                     "type": "string"
                 },
                 "manufacturer": {
@@ -2668,13 +2697,6 @@
                         }
                     ],
                     "description": "Beam center Y coordinate, typically specified in pixels ([px]). Data providers may specify alternative units by including the unit in the QuantityValue."
-                },
-                "beamline": {
-                    "description": "Beamline identifier (e.g., FMX, AMX, 12.3.1)",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
                 },
                 "calibrated_pixel_size": {
                     "anyOf": [
@@ -4505,6 +4527,18 @@
                 },
                 "instrument_code": {
                     "description": "Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.",
+                    "type": "string"
+                },
+                "instrument_registry_id": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/BeamlineEnum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.",
                     "type": "string"
                 },
                 "manufacturer": {
@@ -7411,6 +7445,18 @@
                     "description": "Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.",
                     "type": "string"
                 },
+                "instrument_registry_id": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/BeamlineEnum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.",
+                    "type": "string"
+                },
                 "manufacturer": {
                     "description": "Instrument manufacturer",
                     "type": [
@@ -7629,6 +7675,18 @@
                 },
                 "instrument_code": {
                     "description": "Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.",
+                    "type": "string"
+                },
+                "instrument_registry_id": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/BeamlineEnum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.",
                     "type": "string"
                 },
                 "manufacturer": {
@@ -9973,6 +10031,18 @@
                     "description": "Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.",
                     "type": "string"
                 },
+                "instrument_registry_id": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/BeamlineEnum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.",
+                    "type": "string"
+                },
                 "manufacturer": {
                     "description": "Instrument manufacturer",
                     "type": [
@@ -10453,5 +10523,5 @@
     ],
     "title": "lambda-ber-schema",
     "type": "object",
-    "version": "0.1.2.post123.dev0+b316f8a"
+    "version": "0.1.2.post178.dev0+17a9409"
 }

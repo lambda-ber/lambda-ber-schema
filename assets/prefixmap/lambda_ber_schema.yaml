@@ -2,6 +2,7 @@
    "CHMO": "http://purl.obolibrary.org/obo/CHMO_",
    "CL": "http://purl.obolibrary.org/obo/CL_",
    "GO": "http://purl.obolibrary.org/obo/GO_",
+   "IHMCIF": "https://mmcif.wwpdb.org/dictionaries/mmcif_ihm_ext.dic/Items/",
    "NCBITaxon": "http://purl.obolibrary.org/obo/NCBITaxon_",
    "PaNET": "http://purl.org/pan-science/PaNET/PaNET",
    "ROR": "https://ror.org/",

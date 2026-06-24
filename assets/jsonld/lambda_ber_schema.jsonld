@@ -2,7 +2,7 @@
   "name": "lambda-ber-schema",
   "description": "lambda-ber-schema is a comprehensive schema for representing multimodal structural biology imaging data, \nfrom atomic-resolution structures to tissue-level organization. It supports diverse experimental \ntechniques including cryo-EM, X-ray crystallography, SAXS/SANS, fluorescence microscopy, and \nspectroscopic imaging.\n\n## Schema Organization\n\nThe schema follows a **relational design** with flat entity collections and explicit association\ntables for many-to-many relationships. This maps cleanly to SQL databases while supporting\nflexible data reuse across studies.\n\nThe top-level entity is a [Dataset](Dataset.md), which serves as a container for related research.\nA dataset might represent all data from a specific grant, collaboration, or publication.\n\n### Entity Tables\n\nAll entities are stored in flat collections at the Dataset level:\n\n**Biological Materials**\n- [Samples](Sample.md): The biological specimens being studied (proteins, nucleic acids, complexes,\n  cells, tissues). Each sample includes detailed molecular composition, buffer conditions, and\n  storage information. For example, a purified protein with its sequence, concentration, and buffer pH.\n\n- [Sample Preparations](SamplePreparation.md): How samples were prepared for specific techniques.\n  This includes cryo-EM grid preparation (vitrification parameters), crystallization conditions for\n  X-ray studies, or staining protocols for fluorescence microscopy.\n\n**Data Collection**\n- [Instruments](Instrument.md): The equipment used, from Titan Krios microscopes to synchrotron\n  beamlines. Each instrument type ([CryoEMInstrument](CryoEMInstrument.md),\n  [XRayInstrument](XRayInstrument.md), [SANSInstrument](SANSInstrument.md),\n  [SAXSInstrument](SAXSInstrument.md)) has specific parameters like accelerating voltage,\n  detector type, or beam energy.\n\n- [Experiment Runs](ExperimentRun.md): Individual data collection sessions. An experiment run\n  captures when, how, and under what conditions data was collected, including quality metrics\n  like resolution and completeness.\n\n**Data Processing**\n- [Workflow Runs](WorkflowRun.md): Computational processing steps applied to raw data. This includes\n  motion correction for cryo-EM movies, 3D reconstruction, model building, or phase determination\n  for crystallography. Each workflow tracks the software used, parameters, and computational resources.\n\n**Data Products**\n- [Data Files](DataFile.md): Any files generated or used, from raw data to final models. Each file\n  is tracked with checksums for data integrity and typed (micrograph, particles, volume, model).\n\n- [Images](Image.md): Specialized classes for different imaging modalities:\n  - [Image2D](Image2D.md): Micrographs, diffraction patterns\n  - [Image3D](Image3D.md): 3D reconstructions, tomograms\n  - [FTIRImage](FTIRImage.md): Molecular composition maps from infrared spectroscopy\n  - [FluorescenceImage](FluorescenceImage.md): Fluorophore-labeled cellular components\n  - [OpticalImage](OpticalImage.md): Brightfield/phase contrast microscopy\n  - [XRFImage](XRFImage.md): Elemental distribution maps\n\n**Logical Groupings**\n- [Studies](Study.md): Lightweight groupings representing focused investigations of specific\n  biological questions. For example, a study might investigate \"Heat stress response in Arabidopsis\"\n  or \"Structure of the human ribosome under different conditions.\"\n\n### Association Tables\n\nMany-to-many relationships are represented via explicit association tables, which can carry\nrelationship metadata (e.g., the role of a sample in an experiment):\n\n- **StudySampleAssociation**: Links samples to studies (with role: target, control, reference)\n- **StudyExperimentAssociation**: Links experiments to studies\n- **StudyWorkflowAssociation**: Links workflows to studies\n- **ExperimentSampleAssociation**: Links samples to experiments (with role and preparation used)\n- **ExperimentInstrumentAssociation**: Links instruments to experiments (with role: primary, detector)\n- **WorkflowExperimentAssociation**: Links source experiments to workflows\n- **WorkflowInputAssociation**: Links input files to workflows\n- **WorkflowOutputAssociation**: Links output files to workflows\n\nThis relational design enables:\n- **Sample reuse**: The same sample can be used in multiple studies and experiments\n- **Multi-instrument experiments**: An experiment can use multiple instruments with different roles\n- **Integrative workflows**: A workflow can combine data from multiple experiments\n\n## Example Usage\n\nA typical cryo-EM study of a protein complex would include:\n1. Sample records for the purified complex with molecular weight and buffer composition\n2. Grid preparation details with vitrification parameters\n3. Microscope specifications and data collection parameters\n4. Processing workflows from motion correction through 3D refinement\n5. Final reconstructed volumes and fitted atomic models\n\nA multimodal plant imaging study might combine:\n1. Whole plant optical imaging for morphology\n2. XRF imaging to map nutrient distribution\n3. FTIR spectroscopy to identify stress-related molecular changes\n4. Fluorescence microscopy to track specific protein responses\n5. Cryo-EM of isolated organelles for ultrastructural details\n\n## Key Features\n\n- **Relational design**: Flat entity tables with explicit association tables for M:N relationships\n- **SQL-friendly**: Maps directly to normalized database tables\n- **Technique-agnostic core**: The same schema handles data from any structural biology method\n- **Rich metadata**: Comprehensive tracking from sample to structure\n- **Workflow provenance**: Complete computational reproducibility\n- **Multimodal support**: Seamlessly integrate data across scales and techniques\n- **Standards-compliant**: Follows FAIR principles and integrates with existing ontologies\n",
   "id": "http://w3id.org/lambda/",
-  "version": "0.1.2.post162.dev0+14d60a8b",
+  "version": "0.1.2.post178.dev0+17a9409",
   "imports": [
     "linkml:types",
     "lambda_ber_types",
@@ -73,6 +73,10 @@
     {
       "prefix_prefix": "mmCIF",
       "prefix_reference": "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/"
+    },
+    {
+      "prefix_prefix": "IHMCIF",
+      "prefix_reference": "https://mmcif.wwpdb.org/dictionaries/mmcif_ihm_ext.dic/Items/"
     },
     {
       "prefix_prefix": "ROR",
@@ -1987,6 +1991,102 @@
           ]
         },
         {
+          "text": "APS_LSCAT_21IDD",
+          "description": "Life Sciences Collaborative Access Team - undulator station D for macromolecular crystallography",
+          "annotations": [
+            {
+              "tag": "facility",
+              "value": "FacilityEnum:APS"
+            },
+            {
+              "tag": "beamline_id",
+              "value": "21-ID-D"
+            },
+            {
+              "tag": "techniques",
+              "value": "TechniqueEnum:xray_crystallography"
+            },
+            {
+              "tag": "doe_beamline",
+              "value": "true"
+            },
+            {
+              "tag": "website",
+              "value": "https://ls-cat.org/"
+            }
+          ],
+          "title": "LS-CAT 21-ID-D",
+          "aliases": [
+            "LS-CAT-D",
+            "21-ID-D",
+            "APS 21-ID-D"
+          ]
+        },
+        {
+          "text": "APS_LSCAT_21IDF",
+          "description": "Life Sciences Collaborative Access Team - undulator station F for macromolecular crystallography",
+          "annotations": [
+            {
+              "tag": "facility",
+              "value": "FacilityEnum:APS"
+            },
+            {
+              "tag": "beamline_id",
+              "value": "21-ID-F"
+            },
+            {
+              "tag": "techniques",
+              "value": "TechniqueEnum:xray_crystallography"
+            },
+            {
+              "tag": "doe_beamline",
+              "value": "true"
+            },
+            {
+              "tag": "website",
+              "value": "https://ls-cat.org/"
+            }
+          ],
+          "title": "LS-CAT 21-ID-F",
+          "aliases": [
+            "LS-CAT-F",
+            "21-ID-F",
+            "APS 21-ID-F"
+          ]
+        },
+        {
+          "text": "APS_LSCAT_21IDG",
+          "description": "Life Sciences Collaborative Access Team - undulator station G for macromolecular crystallography",
+          "annotations": [
+            {
+              "tag": "facility",
+              "value": "FacilityEnum:APS"
+            },
+            {
+              "tag": "beamline_id",
+              "value": "21-ID-G"
+            },
+            {
+              "tag": "techniques",
+              "value": "TechniqueEnum:xray_crystallography"
+            },
+            {
+              "tag": "doe_beamline",
+              "value": "true"
+            },
+            {
+              "tag": "website",
+              "value": "https://ls-cat.org/"
+            }
+          ],
+          "title": "LS-CAT 21-ID-G",
+          "aliases": [
+            "LS-CAT-G",
+            "21-ID-G",
+            "APS 21-ID-G"
+          ]
+        },
+        {
           "text": "APS_NECAT_24IDC",
           "description": "Northeastern Collaborative Access Team - microfocus beamline",
           "annotations": [
@@ -2142,6 +2242,38 @@
           ]
         },
         {
+          "text": "APS_SBCCAT_19BM",
+          "description": "Structural Biology Center Collaborative Access Team - bending magnet beamline for macromolecular crystallography",
+          "annotations": [
+            {
+              "tag": "facility",
+              "value": "FacilityEnum:APS"
+            },
+            {
+              "tag": "beamline_id",
+              "value": "19-BM"
+            },
+            {
+              "tag": "techniques",
+              "value": "TechniqueEnum:xray_crystallography"
+            },
+            {
+              "tag": "doe_beamline",
+              "value": "true"
+            },
+            {
+              "tag": "website",
+              "value": "https://www.anl.gov/sbc"
+            }
+          ],
+          "title": "SBC-CAT (19-BM)",
+          "aliases": [
+            "SBC-CAT-BM",
+            "19-BM",
+            "APS 19-BM"
+          ]
+        },
+        {
           "text": "APS_BIOCARS_14ID",
           "description": "Center for Advanced Radiation Sources - time-resolved crystallography",
           "annotations": [
@@ -2259,6 +2391,37 @@
           "aliases": [
             "BL9-2",
             "SSRL 9-2"
+          ]
+        },
+        {
+          "text": "SSRL_BL121",
+          "description": "Macromolecular crystallography beamline at Stanford Synchrotron Radiation Lightsource with full remote access for MAD, SAD, and monochromatic data collection",
+          "annotations": [
+            {
+              "tag": "facility",
+              "value": "FacilityEnum:SSRL"
+            },
+            {
+              "tag": "beamline_id",
+              "value": "12-1"
+            },
+            {
+              "tag": "techniques",
+              "value": "TechniqueEnum:xray_crystallography"
+            },
+            {
+              "tag": "doe_beamline",
+              "value": "true"
+            },
+            {
+              "tag": "website",
+              "value": "https://www-ssrl.slac.stanford.edu/smb/"
+            }
+          ],
+          "title": "SSRL BL12-1",
+          "aliases": [
+            "BL12-1",
+            "SSRL 12-1"
           ]
         },
         {
@@ -6682,6 +6845,31 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "instrument__instrument_registry_id",
+      "description": "Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.",
+      "comments": [
+        "Use this to link an instrument record to a known, validated registry entry, enabling schema-level validation against typos",
+        "instrument_code is a free-text local label; instrument_registry_id is the schema-level controlled identity",
+        "beamline_id captures the facility-local string ID (e.g., '19-ID'); instrument_registry_id captures the enum identity (e.g., APS_SBCCAT_19ID)",
+        "Distinct from the instrument_id foreign-key slot used in association tables, which references an Instrument object"
+      ],
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/instrument_registry_id",
+      "alias": "instrument_registry_id",
+      "owner": "Instrument",
+      "domain_of": [
+        "Instrument"
+      ],
+      "range": "string",
+      "any_of": [
+        {
+          "range": "BeamlineEnum",
+          "@type": "AnonymousSlotExpression"
+        }
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "instrument__instrument_category",
       "description": "Category distinguishing beamlines from laboratory equipment",
       "comments": [
@@ -6738,11 +6926,14 @@
       "description": "Beamline identifier at synchrotron/neutron facility",
       "comments": [
         "Use facility-specific naming convention",
-        "Examples: '12.3.1' (ALS), '17-ID-1' (NSLS-II), 'I04' (Diamond)"
+        "Examples: '12.3.1' (ALS), '17-ID-1' (NSLS-II), 'I04' (Diamond)",
+        "For a validated controlled-vocabulary identity, also set instrument_registry_id (e.g., APS_SBCCAT_19ID)"
       ],
       "from_schema": "http://w3id.org/lambda/",
       "exact_mappings": [
-        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_source.pdbx_synchrotron_beamline"
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_source.pdbx_synchrotron_beamline",
+        "https://github.com/NSLS2/BER-LAMBDA/Beamline",
+        "https://ispyb.github.io/ISPyB/BLSession.beamLineName"
       ],
       "slot_uri": "http://w3id.org/lambda/beamline_id",
       "alias": "beamline_id",
@@ -8180,6 +8371,9 @@
       "name": "experimentRun__technique",
       "description": "Technique used for data collection",
       "from_schema": "http://w3id.org/lambda/",
+      "related_mappings": [
+        "https://mmcif.wwpdb.org/dictionaries/mmcif_ihm_ext.dic/Items/_ihm_dataset_list.data_type"
+      ],
       "slot_uri": "http://w3id.org/lambda/technique",
       "alias": "technique",
       "owner": "ExperimentRun",
@@ -8877,24 +9071,6 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "experimentRun__beamline",
-      "description": "Beamline identifier (e.g., FMX, AMX, 12.3.1)",
-      "from_schema": "http://w3id.org/lambda/",
-      "exact_mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/Beamline",
-        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_source.pdbx_synchrotron_beamline",
-        "https://ispyb.github.io/ISPyB/BLSession.beamLineName"
-      ],
-      "slot_uri": "http://w3id.org/lambda/beamline",
-      "alias": "beamline",
-      "owner": "ExperimentRun",
-      "domain_of": [
-        "ExperimentRun"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
       "name": "experimentRun__transmission",
       "description": "X-ray beam transmission as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.",
       "comments": [
@@ -9158,6 +9334,9 @@
       "name": "workflowRun__workflow_type",
       "description": "Type of processing workflow",
       "from_schema": "http://w3id.org/lambda/",
+      "related_mappings": [
+        "https://mmcif.wwpdb.org/dictionaries/mmcif_ihm_ext.dic/Items/_ihm_modeling_protocol_details.step_method"
+      ],
       "slot_uri": "http://w3id.org/lambda/workflow_type",
       "alias": "workflow_type",
       "owner": "WorkflowRun",
@@ -9186,6 +9365,9 @@
       "name": "workflowRun__software_name",
       "description": "Software used for processing",
       "from_schema": "http://w3id.org/lambda/",
+      "related_mappings": [
+        "https://mmcif.wwpdb.org/dictionaries/mmcif_ihm_ext.dic/Items/_ihm_modeling_protocol_details.software_id"
+      ],
       "slot_uri": "http://w3id.org/lambda/software_name",
       "alias": "software_name",
       "owner": "WorkflowRun",
@@ -9226,6 +9408,9 @@
       "name": "workflowRun__processing_parameters",
       "description": "Parameters used in processing",
       "from_schema": "http://w3id.org/lambda/",
+      "related_mappings": [
+        "https://mmcif.wwpdb.org/dictionaries/mmcif_ihm_ext.dic/Items/_ihm_modeling_protocol_details.description"
+      ],
       "slot_uri": "http://w3id.org/lambda/processing_parameters",
       "alias": "processing_parameters",
       "owner": "WorkflowRun",
@@ -9239,6 +9424,10 @@
       "name": "workflowRun__parameters_file_path",
       "description": "Path to parameters file or text of key parameters",
       "from_schema": "http://w3id.org/lambda/",
+      "related_mappings": [
+        "https://mmcif.wwpdb.org/dictionaries/mmcif_ihm_ext.dic/Items/_ihm_modeling_protocol_details.script_file_id",
+        "https://mmcif.wwpdb.org/dictionaries/mmcif_ihm_ext.dic/Items/_ihm_external_files.file_path"
+      ],
       "slot_uri": "http://w3id.org/lambda/parameters_file_path",
       "alias": "parameters_file_path",
       "owner": "WorkflowRun",
@@ -10129,6 +10318,9 @@
       "name": "dataFile__file_path",
       "description": "Path to the file",
       "from_schema": "http://w3id.org/lambda/",
+      "close_mappings": [
+        "https://mmcif.wwpdb.org/dictionaries/mmcif_ihm_ext.dic/Items/_ihm_external_files.file_path"
+      ],
       "slot_uri": "http://w3id.org/lambda/file_path",
       "alias": "file_path",
       "owner": "DataFile",
@@ -10142,6 +10334,9 @@
       "name": "dataFile__file_format",
       "description": "File format",
       "from_schema": "http://w3id.org/lambda/",
+      "close_mappings": [
+        "https://mmcif.wwpdb.org/dictionaries/mmcif_ihm_ext.dic/Items/_ihm_external_files.file_format"
+      ],
       "slot_uri": "http://w3id.org/lambda/file_format",
       "alias": "file_format",
       "owner": "DataFile",
@@ -10156,6 +10351,9 @@
       "name": "dataFile__file_size_bytes",
       "description": "File size in bytes",
       "from_schema": "http://w3id.org/lambda/",
+      "close_mappings": [
+        "https://mmcif.wwpdb.org/dictionaries/mmcif_ihm_ext.dic/Items/_ihm_external_files.file_size_bytes"
+      ],
       "slot_uri": "http://w3id.org/lambda/file_size_bytes",
       "alias": "file_size_bytes",
       "owner": "DataFile",
@@ -10196,6 +10394,9 @@
       "name": "dataFile__data_type",
       "description": "Type of data in the file",
       "from_schema": "http://w3id.org/lambda/",
+      "close_mappings": [
+        "https://mmcif.wwpdb.org/dictionaries/mmcif_ihm_ext.dic/Items/_ihm_dataset_list.data_type"
+      ],
       "slot_uri": "http://w3id.org/lambda/data_type",
       "alias": "data_type",
       "owner": "DataFile",
@@ -10209,6 +10410,10 @@
       "name": "dataFile__storage_uri",
       "description": "Storage URI (S3, Globus, etc.)",
       "from_schema": "http://w3id.org/lambda/",
+      "related_mappings": [
+        "https://mmcif.wwpdb.org/dictionaries/mmcif_ihm_ext.dic/Items/_ihm_external_reference_info.associated_url",
+        "https://mmcif.wwpdb.org/dictionaries/mmcif_ihm_ext.dic/Items/_ihm_external_files.file_path"
+      ],
       "slot_uri": "http://w3id.org/lambda/storage_uri",
       "alias": "storage_uri",
       "owner": "DataFile",
@@ -10222,6 +10427,9 @@
       "name": "dataFile__related_entity",
       "description": "ID of the entity that owns this file",
       "from_schema": "http://w3id.org/lambda/",
+      "related_mappings": [
+        "https://mmcif.wwpdb.org/dictionaries/mmcif_ihm_ext.dic/Items/_ihm_dataset_list.id"
+      ],
       "slot_uri": "http://w3id.org/lambda/related_entity",
       "alias": "related_entity",
       "owner": "DataFile",
@@ -10235,6 +10443,9 @@
       "name": "dataFile__file_role",
       "description": "Role of the file (raw, intermediate, final, diagnostic, metadata)",
       "from_schema": "http://w3id.org/lambda/",
+      "related_mappings": [
+        "https://mmcif.wwpdb.org/dictionaries/mmcif_ihm_ext.dic/Items/_ihm_external_files.content_type"
+      ],
       "slot_uri": "http://w3id.org/lambda/file_role",
       "alias": "file_role",
       "owner": "DataFile",
@@ -13284,6 +13495,9 @@
       "name": "qualityMetrics__rg",
       "description": "Radius of gyration, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
+      "close_mappings": [
+        "https://mmcif.wwpdb.org/dictionaries/mmcif_ihm_ext.dic/Items/_ihm_sas_restraint.radius_of_gyration"
+      ],
       "slot_uri": "http://w3id.org/lambda/rg",
       "alias": "rg",
       "owner": "QualityMetrics",
@@ -16027,6 +16241,10 @@
       "definition_uri": "http://w3id.org/lambda/Dataset",
       "description": "Root container holding flat entity collections and association tables. Follows relational database design patterns for structural biology data.",
       "from_schema": "http://w3id.org/lambda/",
+      "related_mappings": [
+        "IHMCIF:_ihm_entry_collection",
+        "IHMCIF:_ihm_dataset_group"
+      ],
       "is_a": "NamedThing",
       "slots": [
         "namedThing__id",
@@ -16206,6 +16424,10 @@
       "definition_uri": "http://w3id.org/lambda/Study",
       "description": "A logical grouping of related experiments investigating a research question. In the relational model, Study is lightweight - all relationships are via association tables.",
       "from_schema": "http://w3id.org/lambda/",
+      "related_mappings": [
+        "IHMCIF:_ihm_entry_collection",
+        "IHMCIF:_ihm_entry_collection_mapping"
+      ],
       "is_a": "NamedThing",
       "slots": [
         "namedThing__id",
@@ -16231,6 +16453,11 @@
       "definition_uri": "http://w3id.org/lambda/Sample",
       "description": "A biological sample used in structural biology experiments",
       "from_schema": "http://w3id.org/lambda/",
+      "related_mappings": [
+        "IHMCIF:_ihm_struct_assembly",
+        "IHMCIF:_ihm_struct_assembly_details",
+        "IHMCIF:_ihm_entity_poly_segment"
+      ],
       "is_a": "NamedThing",
       "slots": [
         "namedThing__id",
@@ -16956,6 +17183,7 @@
         "namedThing__title",
         "namedThing__description",
         "instrument__instrument_code",
+        "instrument__instrument_registry_id",
         "instrument__instrument_category",
         "instrument__facility_name",
         "instrument__facility_ror",
@@ -16971,6 +17199,23 @@
           "name": "instrument_code",
           "description": "Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.",
           "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "instrument_registry_id",
+          "description": "Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.",
+          "comments": [
+            "Use this to link an instrument record to a known, validated registry entry, enabling schema-level validation against typos",
+            "instrument_code is a free-text local label; instrument_registry_id is the schema-level controlled identity",
+            "beamline_id captures the facility-local string ID (e.g., '19-ID'); instrument_registry_id captures the enum identity (e.g., APS_SBCCAT_19ID)",
+            "Distinct from the instrument_id foreign-key slot used in association tables, which references an Instrument object"
+          ],
+          "any_of": [
+            {
+              "range": "BeamlineEnum",
+              "@type": "AnonymousSlotExpression"
+            }
+          ],
           "@type": "SlotDefinition"
         },
         {
@@ -17009,10 +17254,13 @@
           "description": "Beamline identifier at synchrotron/neutron facility",
           "comments": [
             "Use facility-specific naming convention",
-            "Examples: '12.3.1' (ALS), '17-ID-1' (NSLS-II), 'I04' (Diamond)"
+            "Examples: '12.3.1' (ALS), '17-ID-1' (NSLS-II), 'I04' (Diamond)",
+            "For a validated controlled-vocabulary identity, also set instrument_registry_id (e.g., APS_SBCCAT_19ID)"
           ],
           "exact_mappings": [
-            "mmCIF:_diffrn_source.pdbx_synchrotron_beamline"
+            "mmCIF:_diffrn_source.pdbx_synchrotron_beamline",
+            "nsls2:Beamline",
+            "ispyb:BLSession.beamLineName"
           ],
           "range": "string",
           "@type": "SlotDefinition"
@@ -17054,6 +17302,7 @@
         "namedThing__title",
         "namedThing__description",
         "instrument__instrument_code",
+        "instrument__instrument_registry_id",
         "instrument__instrument_category",
         "instrument__facility_name",
         "instrument__facility_ror",
@@ -17316,6 +17565,7 @@
         "namedThing__title",
         "namedThing__description",
         "instrument__instrument_code",
+        "instrument__instrument_registry_id",
         "instrument__instrument_category",
         "instrument__facility_name",
         "instrument__facility_ror",
@@ -17729,6 +17979,7 @@
         "namedThing__title",
         "namedThing__description",
         "instrument__instrument_code",
+        "instrument__instrument_registry_id",
         "instrument__instrument_category",
         "instrument__facility_name",
         "instrument__facility_ror",
@@ -17809,6 +18060,7 @@
         "namedThing__title",
         "namedThing__description",
         "instrument__instrument_code",
+        "instrument__instrument_registry_id",
         "instrument__instrument_category",
         "instrument__facility_name",
         "instrument__facility_ror",
@@ -17885,6 +18137,7 @@
         "namedThing__title",
         "namedThing__description",
         "instrument__instrument_code",
+        "instrument__instrument_registry_id",
         "instrument__instrument_category",
         "instrument__facility_name",
         "instrument__facility_ror",
@@ -18000,6 +18253,10 @@
       "definition_uri": "http://w3id.org/lambda/ExperimentRun",
       "description": "An experimental data collection session",
       "from_schema": "http://w3id.org/lambda/",
+      "related_mappings": [
+        "IHMCIF:_ihm_dataset_list",
+        "IHMCIF:_ihm_dataset_group"
+      ],
       "is_a": "NamedThing",
       "slots": [
         "namedThing__id",
@@ -18051,7 +18308,6 @@
         "experimentRun__pixel_size_x",
         "experimentRun__pixel_size_y",
         "experimentRun__total_rotation",
-        "experimentRun__beamline",
         "experimentRun__transmission",
         "experimentRun__flux",
         "experimentRun__flux_end",
@@ -18090,6 +18346,9 @@
         {
           "name": "technique",
           "description": "Technique used for data collection",
+          "related_mappings": [
+            "IHMCIF:_ihm_dataset_list.data_type"
+          ],
           "range": "TechniqueEnum",
           "required": true,
           "@type": "SlotDefinition"
@@ -18483,17 +18742,6 @@
           "@type": "SlotDefinition"
         },
         {
-          "name": "beamline",
-          "description": "Beamline identifier (e.g., FMX, AMX, 12.3.1)",
-          "exact_mappings": [
-            "nsls2:Beamline",
-            "mmCIF:_diffrn_source.pdbx_synchrotron_beamline",
-            "ispyb:BLSession.beamLineName"
-          ],
-          "range": "string",
-          "@type": "SlotDefinition"
-        },
-        {
           "name": "transmission",
           "description": "X-ray beam transmission as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.",
           "comments": [
@@ -18650,6 +18898,13 @@
       "definition_uri": "http://w3id.org/lambda/WorkflowRun",
       "description": "A computational processing workflow execution",
       "from_schema": "http://w3id.org/lambda/",
+      "close_mappings": [
+        "IHMCIF:_ihm_modeling_protocol",
+        "IHMCIF:_ihm_modeling_protocol_details"
+      ],
+      "related_mappings": [
+        "IHMCIF:_ihm_modeling_post_process"
+      ],
       "is_a": "NamedThing",
       "slots": [
         "namedThing__id",
@@ -18732,6 +18987,9 @@
         {
           "name": "workflow_type",
           "description": "Type of processing workflow",
+          "related_mappings": [
+            "IHMCIF:_ihm_modeling_protocol_details.step_method"
+          ],
           "range": "WorkflowTypeEnum",
           "required": true,
           "@type": "SlotDefinition"
@@ -18746,6 +19004,9 @@
         {
           "name": "software_name",
           "description": "Software used for processing",
+          "related_mappings": [
+            "IHMCIF:_ihm_modeling_protocol_details.software_id"
+          ],
           "required": true,
           "@type": "SlotDefinition"
         },
@@ -18762,11 +19023,18 @@
         {
           "name": "processing_parameters",
           "description": "Parameters used in processing",
+          "related_mappings": [
+            "IHMCIF:_ihm_modeling_protocol_details.description"
+          ],
           "@type": "SlotDefinition"
         },
         {
           "name": "parameters_file_path",
           "description": "Path to parameters file or text of key parameters",
+          "related_mappings": [
+            "IHMCIF:_ihm_modeling_protocol_details.script_file_id",
+            "IHMCIF:_ihm_external_files.file_path"
+          ],
           "@type": "SlotDefinition"
         },
         {
@@ -19226,6 +19494,13 @@
       "definition_uri": "http://w3id.org/lambda/DataFile",
       "description": "A data file generated or used in the study",
       "from_schema": "http://w3id.org/lambda/",
+      "close_mappings": [
+        "IHMCIF:_ihm_external_files"
+      ],
+      "related_mappings": [
+        "IHMCIF:_ihm_dataset_list",
+        "IHMCIF:_ihm_dataset_external_reference"
+      ],
       "is_a": "NamedThing",
       "slots": [
         "namedThing__id",
@@ -19253,11 +19528,17 @@
         {
           "name": "file_path",
           "description": "Path to the file",
+          "close_mappings": [
+            "IHMCIF:_ihm_external_files.file_path"
+          ],
           "@type": "SlotDefinition"
         },
         {
           "name": "file_format",
           "description": "File format",
+          "close_mappings": [
+            "IHMCIF:_ihm_external_files.file_format"
+          ],
           "range": "FileFormatEnum",
           "required": true,
           "@type": "SlotDefinition"
@@ -19265,6 +19546,9 @@
         {
           "name": "file_size_bytes",
           "description": "File size in bytes",
+          "close_mappings": [
+            "IHMCIF:_ihm_external_files.file_size_bytes"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -19283,24 +19567,37 @@
         {
           "name": "data_type",
           "description": "Type of data in the file",
+          "close_mappings": [
+            "IHMCIF:_ihm_dataset_list.data_type"
+          ],
           "range": "DataTypeEnum",
           "@type": "SlotDefinition"
         },
         {
           "name": "storage_uri",
           "description": "Storage URI (S3, Globus, etc.)",
+          "related_mappings": [
+            "IHMCIF:_ihm_external_reference_info.associated_url",
+            "IHMCIF:_ihm_external_files.file_path"
+          ],
           "range": "string",
           "@type": "SlotDefinition"
         },
         {
           "name": "related_entity",
           "description": "ID of the entity that owns this file",
+          "related_mappings": [
+            "IHMCIF:_ihm_dataset_list.id"
+          ],
           "range": "string",
           "@type": "SlotDefinition"
         },
         {
           "name": "file_role",
           "description": "Role of the file (raw, intermediate, final, diagnostic, metadata)",
+          "related_mappings": [
+            "IHMCIF:_ihm_external_files.content_type"
+          ],
           "range": "string",
           "@type": "SlotDefinition"
         }
@@ -19424,6 +19721,10 @@
       "definition_uri": "http://w3id.org/lambda/Image3D",
       "description": "A 3D volume or tomogram",
       "from_schema": "http://w3id.org/lambda/",
+      "related_mappings": [
+        "IHMCIF:_ihm_3dem_restraint",
+        "IHMCIF:_ihm_localization_density_files"
+      ],
       "is_a": "Image",
       "slots": [
         "namedThing__id",
@@ -20102,6 +20403,10 @@
       "definition_uri": "http://w3id.org/lambda/MolecularComposition",
       "description": "Molecular composition of a sample",
       "from_schema": "http://w3id.org/lambda/",
+      "related_mappings": [
+        "IHMCIF:_ihm_entity_poly_segment",
+        "IHMCIF:_ihm_struct_assembly_details"
+      ],
       "is_a": "AttributeGroup",
       "slots": [
         "attributeGroup__description",
@@ -20775,6 +21080,9 @@
       "definition_uri": "http://w3id.org/lambda/SAXSPreparation",
       "description": "SAXS/WAXS specific preparation",
       "from_schema": "http://w3id.org/lambda/",
+      "related_mappings": [
+        "IHMCIF:_ihm_sas_restraint"
+      ],
       "is_a": "TechniqueSpecificPreparation",
       "slots": [
         "attributeGroup__description",
@@ -21201,6 +21509,11 @@
       "definition_uri": "http://w3id.org/lambda/QualityMetrics",
       "description": "Quality metrics for experiments",
       "from_schema": "http://w3id.org/lambda/",
+      "related_mappings": [
+        "IHMCIF:_ihm_ensemble_info",
+        "IHMCIF:_ihm_sas_restraint",
+        "IHMCIF:_ihm_3dem_restraint"
+      ],
       "is_a": "AttributeGroup",
       "slots": [
         "attributeGroup__description",
@@ -21506,6 +21819,9 @@
         {
           "name": "rg",
           "description": "Radius of gyration, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "close_mappings": [
+            "IHMCIF:_ihm_sas_restraint.radius_of_gyration"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -21788,6 +22104,12 @@
       "definition_uri": "http://w3id.org/lambda/RefinementParameters",
       "description": "Parameters specific to 3D refinement workflows",
       "from_schema": "http://w3id.org/lambda/",
+      "related_mappings": [
+        "IHMCIF:_ihm_model_representation",
+        "IHMCIF:_ihm_model_representation_details",
+        "IHMCIF:_ihm_model_list",
+        "IHMCIF:_ihm_ensemble_info"
+      ],
       "is_a": "AttributeGroup",
       "slots": [
         "attributeGroup__description",
@@ -22081,6 +22403,9 @@
       "definition_uri": "http://w3id.org/lambda/WorkflowExperimentAssociation",
       "description": "M:N link between WorkflowRun and source ExperimentRuns",
       "from_schema": "http://w3id.org/lambda/",
+      "related_mappings": [
+        "IHMCIF:_ihm_modeling_protocol_details"
+      ],
       "slots": [
         "workflowExperimentAssociation__workflow_id",
         "workflowExperimentAssociation__experiment_id"
@@ -22110,6 +22435,10 @@
       "definition_uri": "http://w3id.org/lambda/WorkflowInputAssociation",
       "description": "Links input DataFiles to WorkflowRun",
       "from_schema": "http://w3id.org/lambda/",
+      "related_mappings": [
+        "IHMCIF:_ihm_dataset_group_link",
+        "IHMCIF:_ihm_dataset_list"
+      ],
       "slots": [
         "workflowInputAssociation__workflow_id",
         "workflowInputAssociation__file_id",
@@ -22146,6 +22475,11 @@
       "definition_uri": "http://w3id.org/lambda/WorkflowOutputAssociation",
       "description": "Links output DataFiles to WorkflowRun",
       "from_schema": "http://w3id.org/lambda/",
+      "related_mappings": [
+        "IHMCIF:_ihm_model_group_link",
+        "IHMCIF:_ihm_model_list",
+        "IHMCIF:_ihm_ensemble_info"
+      ],
       "slots": [
         "workflowOutputAssociation__workflow_id",
         "workflowOutputAssociation__file_id",
@@ -23522,9 +23856,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda_ber_schema.yaml",
-  "source_file_date": "2026-05-27T14:51:39",
-  "source_file_size": 182284,
-  "generation_date": "2026-05-27T14:51:43",
+  "source_file_date": "2026-06-24T16:53:25",
+  "source_file_size": 188403,
+  "generation_date": "2026-06-24T17:00:28",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda_ber_schema.context.jsonld",

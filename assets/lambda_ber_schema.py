@@ -1,5 +1,5 @@
 # Auto generated from lambda_ber_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-05-27T14:51:51
+# Generation date: 2026-06-24T17:00:36
 # Schema: lambda-ber-schema
 #
 # id: http://w3id.org/lambda/
@@ -164,12 +164,13 @@ from linkml_runtime.linkml_model.types import Boolean, Curie, Date, Float, Integ
 from linkml_runtime.utils.metamodelcore import Bool, Curie, URI, URIorCURIE, XSDDate
 
 metamodel_version = "1.7.0"
-version = "0.1.2.post162.dev0+14d60a8b"
+version = "0.1.2.post178.dev0+17a9409"
 
 # Namespaces
 CHMO = CurieNamespace('CHMO', 'http://purl.obolibrary.org/obo/CHMO_')
 CL = CurieNamespace('CL', 'http://purl.obolibrary.org/obo/CL_')
 GO = CurieNamespace('GO', 'http://purl.obolibrary.org/obo/GO_')
+IHMCIF = CurieNamespace('IHMCIF', 'https://mmcif.wwpdb.org/dictionaries/mmcif_ihm_ext.dic/Items/')
 NCBITAXON = CurieNamespace('NCBITaxon', 'http://purl.obolibrary.org/obo/NCBITaxon_')
 PANET = CurieNamespace('PaNET', 'http://purl.org/pan-science/PaNET/PaNET')
 ROR = CurieNamespace('ROR', 'https://ror.org/')
@@ -1003,6 +1004,7 @@ class Instrument(NamedThing):
 
     id: Union[str, InstrumentId] = None
     instrument_code: str = None
+    instrument_registry_id: Optional[str] = None
     instrument_category: Optional[Union[str, "InstrumentCategoryEnum"]] = None
     facility_name: Optional[Union[str, "FacilityEnum"]] = None
     facility_ror: Optional[Union[str, URIorCURIE]] = None
@@ -1022,6 +1024,9 @@ class Instrument(NamedThing):
             self.MissingRequiredField("instrument_code")
         if not isinstance(self.instrument_code, str):
             self.instrument_code = str(self.instrument_code)
+
+        if self.instrument_registry_id is not None and not isinstance(self.instrument_registry_id, str):
+            self.instrument_registry_id = str(self.instrument_registry_id)
 
         if self.instrument_category is not None and not isinstance(self.instrument_category, InstrumentCategoryEnum):
             self.instrument_category = InstrumentCategoryEnum(self.instrument_category)
@@ -1652,7 +1657,6 @@ class ExperimentRun(NamedThing):
     pixel_size_x: Optional[Union[dict, "QuantityValue"]] = None
     pixel_size_y: Optional[Union[dict, "QuantityValue"]] = None
     total_rotation: Optional[Union[dict, "QuantityValue"]] = None
-    beamline: Optional[str] = None
     transmission: Optional[Union[dict, "QuantityValue"]] = None
     flux: Optional[Union[dict, "QuantityValue"]] = None
     flux_end: Optional[Union[dict, "QuantityValue"]] = None
@@ -1815,9 +1819,6 @@ class ExperimentRun(NamedThing):
 
         if self.total_rotation is not None and not isinstance(self.total_rotation, QuantityValue):
             self.total_rotation = QuantityValue(**as_dict(self.total_rotation))
-
-        if self.beamline is not None and not isinstance(self.beamline, str):
-            self.beamline = str(self.beamline)
 
         if self.transmission is not None and not isinstance(self.transmission, QuantityValue):
             self.transmission = QuantityValue(**as_dict(self.transmission))
@@ -5452,6 +5453,18 @@ class BeamlineEnum(EnumDefinitionImpl):
         text="APS_LSCAT_21ID",
         title="LS-CAT (21-ID)",
         description="Life Sciences Collaborative Access Team beamline")
+    APS_LSCAT_21IDD = PermissibleValue(
+        text="APS_LSCAT_21IDD",
+        title="LS-CAT 21-ID-D",
+        description="""Life Sciences Collaborative Access Team - undulator station D for macromolecular crystallography""")
+    APS_LSCAT_21IDF = PermissibleValue(
+        text="APS_LSCAT_21IDF",
+        title="LS-CAT 21-ID-F",
+        description="""Life Sciences Collaborative Access Team - undulator station F for macromolecular crystallography""")
+    APS_LSCAT_21IDG = PermissibleValue(
+        text="APS_LSCAT_21IDG",
+        title="LS-CAT 21-ID-G",
+        description="""Life Sciences Collaborative Access Team - undulator station G for macromolecular crystallography""")
     APS_NECAT_24IDC = PermissibleValue(
         text="APS_NECAT_24IDC",
         title="NE-CAT 24-ID-C",
@@ -5472,6 +5485,10 @@ class BeamlineEnum(EnumDefinitionImpl):
         text="APS_SBCCAT_19ID",
         title="SBC-CAT (19-ID)",
         description="Structural Biology Center Collaborative Access Team beamline")
+    APS_SBCCAT_19BM = PermissibleValue(
+        text="APS_SBCCAT_19BM",
+        title="SBC-CAT (19-BM)",
+        description="""Structural Biology Center Collaborative Access Team - bending magnet beamline for macromolecular crystallography""")
     APS_BIOCARS_14ID = PermissibleValue(
         text="APS_BIOCARS_14ID",
         title="BioCARS (14-ID)",
@@ -5488,6 +5505,10 @@ class BeamlineEnum(EnumDefinitionImpl):
         text="SSRL_BL92",
         title="SSRL BL9-2",
         description="Macromolecular crystallography beamline at Stanford Synchrotron Radiation Lightsource")
+    SSRL_BL121 = PermissibleValue(
+        text="SSRL_BL121",
+        title="SSRL BL12-1",
+        description="""Macromolecular crystallography beamline at Stanford Synchrotron Radiation Lightsource with full remote access for MAD, SAD, and monochromatic data collection""")
     SSRL_BL122 = PermissibleValue(
         text="SSRL_BL122",
         title="SSRL BL12-2",
@@ -7713,6 +7734,9 @@ slots.samplePreparation__aliquoting = Slot(uri=LAMBDA.aliquoting, name="samplePr
 slots.instrument__instrument_code = Slot(uri=LAMBDA.instrument_code, name="instrument__instrument_code", curie=LAMBDA.curie('instrument_code'),
                    model_uri=LAMBDA.instrument__instrument_code, domain=None, range=str)
 
+slots.instrument__instrument_registry_id = Slot(uri=LAMBDA.instrument_registry_id, name="instrument__instrument_registry_id", curie=LAMBDA.curie('instrument_registry_id'),
+                   model_uri=LAMBDA.instrument__instrument_registry_id, domain=None, range=Optional[str])
+
 slots.instrument__instrument_category = Slot(uri=LAMBDA.instrument_category, name="instrument__instrument_category", curie=LAMBDA.curie('instrument_category'),
                    model_uri=LAMBDA.instrument__instrument_category, domain=None, range=Optional[Union[str, "InstrumentCategoryEnum"]])
 
@@ -8151,9 +8175,6 @@ slots.experimentRun__pixel_size_y = Slot(uri=LAMBDA.pixel_size_y, name="experime
 
 slots.experimentRun__total_rotation = Slot(uri=LAMBDA.total_rotation, name="experimentRun__total_rotation", curie=LAMBDA.curie('total_rotation'),
                    model_uri=LAMBDA.experimentRun__total_rotation, domain=None, range=Optional[Union[dict, QuantityValue]])
-
-slots.experimentRun__beamline = Slot(uri=LAMBDA.beamline, name="experimentRun__beamline", curie=LAMBDA.curie('beamline'),
-                   model_uri=LAMBDA.experimentRun__beamline, domain=None, range=Optional[str])
 
 slots.experimentRun__transmission = Slot(uri=LAMBDA.transmission, name="experimentRun__transmission", curie=LAMBDA.curie('transmission'),
                    model_uri=LAMBDA.experimentRun__transmission, domain=None, range=Optional[Union[dict, QuantityValue]])
