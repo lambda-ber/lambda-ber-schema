@@ -1,0 +1,51 @@
+# Validation fixture built from metadata_example.yaml parsed output.
+# Run with: uv run linkml-validate -s src/lambda_ber_schema/schema/lambda_ber_schema.yaml \
+#                tests/loaders/fixtures/emsl/metadata_example_dataset.yaml
+id: pnnl:session-10-03-25_C2
+title: "PNNL metadata_example.yaml — schema validation fixture"
+instruments:
+  - id: pnnl:instrument-34303
+    instrument_code: "34303"
+    accelerating_voltage:
+      numeric_value: 300
+      unit: kV
+    cs:
+      numeric_value: 2.7
+      unit: mm
+    detector_model: K3
+    pixel_size_physical_um:
+      numeric_value: 5.0
+      unit: µm
+    c2_aperture:
+      numeric_value: 50.0
+      unit: µm
+    spotsize:
+      numeric_value: 5.0
+      unit: ""
+    tem_beam_diameter:
+      numeric_value: 0.6
+      unit: µm
+    energy_filter_slit_width:
+      numeric_value: 20.0
+      unit: eV
+    phase_plate: false
+samples:
+  - id: pnnl:sample-my-sample-name
+    sample_code: "my sample name"
+    sample_type: protein
+experiment_runs:
+  - id: pnnl:run-10-03-25_C2
+    experiment_code: "10-03-25_C2"
+    technique: cryo_em
+    calibrated_pixel_size:
+      numeric_value: 0.34
+      unit: Å/pixel
+    total_dose:
+      numeric_value: 50.0
+      unit: e-/Å²
+    magnification:
+      numeric_value: 130000.0
+      unit: x
+    camera_binning:
+      numeric_value: 0.5
+      unit: ""
