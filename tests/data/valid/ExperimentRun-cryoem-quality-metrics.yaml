@@ -8,4 +8,4 @@ technique: cryo_em
 cryo_em_quality_metrics:
   ice_contamination: limited
   ice_quality: ideal
-  particle_concentration: ok
+  particle_concentration: optimal

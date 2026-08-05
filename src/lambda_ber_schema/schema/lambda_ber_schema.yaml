@@ -4747,7 +4747,7 @@ enums:
   ParticleConcentrationEnum:
     description: "Assessment of particle concentration on a cryo-EM grid"
     permissible_values:
-      ok:
+      optimal:
         description: "Particle concentration is suitable for data collection"
       too_low:
         description: "Particle concentration is too low for efficient data collection"
