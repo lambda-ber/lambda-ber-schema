@@ -1,0 +1,7 @@
+id: lambdaber:exp_microed_lysozyme_001
+title: MicroED data collection from lysozyme nanocrystals
+description: Micro-electron diffraction data collection for atomic structure determination
+experiment_code: PNNL-MICROED-LYS-2024-001
+experiment_date: '2024-07-10'
+operator_id: microed_specialist_001
+technique: microed

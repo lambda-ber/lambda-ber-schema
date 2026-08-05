@@ -1,6 +1,6 @@
 id: http://w3id.org/lambda/
 name: lambda-ber-schema
-version: "0.1.2.post178.dev0+17a9409" # Managed by uv-dynamic-versioning
+version: "0.0.0.post2.dev0+898dd4f" # Managed by uv-dynamic-versioning
 description: |
   lambda-ber-schema is a comprehensive schema for representing multimodal structural biology imaging data, 
   from atomic-resolution structures to tissue-level organization. It supports diverse experimental 
@@ -285,6 +285,9 @@ classes:
       - IHMCIF:_ihm_entry_collection
       - IHMCIF:_ihm_entry_collection_mapping
     attributes:
+      proposal_id:
+        description: "Facility proposal or project identifier associated with this study (e.g., a DOE or facility allocation ID)"
+        range: string
       keywords:
         description: "Keywords or tags describing the study for search and categorization"
         range: string
@@ -1114,6 +1117,10 @@ classes:
       quality_metrics:
         description: "Quality metrics for the experiment"
         range: QualityMetrics
+      cryo_em_quality_metrics:
+        description: "Cryo-EM specific quality assessments (ice contamination, ice quality, particle concentration)"
+        range: CryoEMQualityMetrics
+        inlined: true
       raw_data_location:
         description: "Location of raw data files"
       processing_status:
@@ -1152,7 +1159,7 @@ classes:
         exact_mappings:
           - mmCIF:_em_image_recording.num_frames_per_image
       total_exposure_time:
-        description: "Total exposure time in milliseconds"
+        description: "Total exposure time. Data providers may specify alternative units (e.g., seconds, milliseconds) by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
       total_dose:
@@ -2840,6 +2847,20 @@ classes:
         range: QuantityValue
         inlined: true
 
+  CryoEMQualityMetrics:
+    is_a: AttributeGroup
+    description: "Cryo-EM specific quality assessments recorded during or after data collection"
+    attributes:
+      ice_contamination:
+        description: "Assessment of ice contamination level on the cryo-EM grid"
+        range: IceContaminationEnum
+      ice_quality:
+        description: "Assessment of vitreous ice thickness/quality for data collection"
+        range: IceQualityEnum
+      particle_concentration:
+        description: "Assessment of particle concentration on the cryo-EM grid"
+        range: ParticleConcentrationEnum
+
   # Structured parameter classes for specific workflow types
   MotionCorrectionParameters:
     is_a: AttributeGroup
@@ -4186,6 +4207,11 @@ enums:
           - "Non-destructive 3D imaging technique"
           - "Includes micro-CT, nano-CT, and phase contrast tomography"
           - "Used for cellular imaging, materials science, and paleontology"
+      microed:
+        description: "Micro-electron diffraction for atomic-resolution structure determination from microcrystals"
+        comments:
+          - "Also known as MicroED or 3D electron diffraction (3DED)"
+          - "Uses electron beam on sub-micron crystals; processing_scheme=3 in PNNL metadata"
 
   ProcessingStatusEnum:
     description: "Processing status"
@@ -4697,3 +4723,33 @@ enums:
         description: "Processed or derived data files"
       log:
         description: "Processing log files"
+
+  IceContaminationEnum:
+    description: "Assessment of ice contamination level on a cryo-EM grid"
+    permissible_values:
+      none:
+        description: "No ice contamination observed"
+      limited:
+        description: "Limited ice contamination that does not significantly affect data quality"
+      severe:
+        description: "Severe ice contamination that significantly degrades data quality"
+
+  IceQualityEnum:
+    description: "Assessment of vitreous ice thickness/quality for cryo-EM data collection"
+    permissible_values:
+      ideal:
+        description: "Ice thickness is ideal for data collection"
+      too_thin:
+        description: "Ice is too thin, risk of air exposure or beam damage"
+      too_thick:
+        description: "Ice is too thick, reducing contrast and signal quality"
+
+  ParticleConcentrationEnum:
+    description: "Assessment of particle concentration on a cryo-EM grid"
+    permissible_values:
+      ok:
+        description: "Particle concentration is suitable for data collection"
+      too_low:
+        description: "Particle concentration is too low for efficient data collection"
+      too_high:
+        description: "Particle concentration is too high, causing overlapping particles"
