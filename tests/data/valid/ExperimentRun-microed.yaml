@@ -5,3 +5,10 @@ experiment_code: PNNL-MICROED-LYS-2024-001
 experiment_date: '2024-07-10'
 operator_id: microed_specialist_001
 technique: microed
+tilting_scheme: continuous
+rotation_rate:
+  numeric_value: 0.3
+  unit: degrees per second
+camera_length:
+  numeric_value: 920
+  unit: mm

@@ -1,6 +1,6 @@
 id: http://w3id.org/lambda/
 name: lambda-ber-schema
-version: "0.0.0.post2.dev0+898dd4f" # Managed by uv-dynamic-versioning
+version: "0.1.2.post178.dev0+17a9409" # Managed by uv-dynamic-versioning
 description: |
   lambda-ber-schema is a comprehensive schema for representing multimodal structural biology imaging data, 
   from atomic-resolution structures to tissue-level organization. It supports diverse experimental 
@@ -1202,6 +1202,29 @@ classes:
         inlined: true
       stage_tilt:
         description: "Stage tilt angle in degrees"
+        range: QuantityValue
+        inlined: true
+      tilting_scheme:
+        description: "Tilt scheme used during tomographic data collection"
+        range: TiltingSchemeEnum
+      tilt_angle_increment:
+        description: "Tilt angle increment between successive tilt steps. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
+      fiducial_size:
+        description: "Size of fiducial markers used for tomographic alignment. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
+      rotation_rate:
+        description: "Continuous rotation rate during data collection (e.g., for MicroED). Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
+      camera_length:
+        description: "Camera length for electron diffraction (e.g., MicroED). Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
+      frames_per_second:
+        description: "Frame acquisition rate. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
       autoloader_slot:
@@ -4753,3 +4776,15 @@ enums:
         description: "Particle concentration is too low for efficient data collection"
       too_high:
         description: "Particle concentration is too high, causing overlapping particles"
+
+  TiltingSchemeEnum:
+    description: "Tilt scheme used during tomographic or continuous-rotation data collection"
+    permissible_values:
+      none:
+        description: "No tilting performed (single exposure or non-tilt acquisition)"
+      dose_symmetric:
+        description: "Dose-symmetric tilt scheme alternating around zero tilt to minimize accumulated dose at low tilt angles"
+      linear:
+        description: "Linear tilt scheme collecting images in a single sweep from minimum to maximum tilt"
+      continuous:
+        description: "Continuous rotation data collection (e.g., used in MicroED/3DED)"
