@@ -471,6 +471,27 @@ class EMSLLoader(BaseLoader):
             result["stage_tilt"] = {"numeric_value": round(tilt, 2), "unit": "degrees"}
 
         # Tilt series geometry (tomography sessions)
+        scheme = self._text(root, ".//TiltingScheme", ".//TiltScheme", ".//TiltSeriesScheme")
+        if scheme:
+            scheme_map = {
+                "dosesymmetric": "dose_symmetric",
+                "dose_symmetric": "dose_symmetric",
+                "symmetric": "dose_symmetric",
+                "bidirectional": "dose_symmetric",
+                "linear": "linear",
+                "unidirectional": "linear",
+                "continuous": "continuous",
+                "none": "none",
+            }
+            mapped = scheme_map.get(scheme.strip().lower().replace(" ", "").replace("-", ""))
+            if mapped:
+                result["tilting_scheme"] = mapped
+        elif self._text(root, ".//DoseSymmetric") in ("true", "True", "1"):
+            result["tilting_scheme"] = "dose_symmetric"
+        # No geometric fallback: a tilt range and increment are equally
+        # consistent with a linear sweep and a dose-symmetric one, so guessing
+        # from them would invent a fact the session never recorded.
+
         tilt_start = self._float(
             root,
             ".//TiltAngleStart",
@@ -1062,6 +1083,7 @@ class EMSLLoader(BaseLoader):
             shots_per_hole=epu.get("shots_per_hole"),
             holes_per_group=epu.get("holes_per_group"),
             stage_tilt=epu.get("stage_tilt"),
+            tilting_scheme=epu.get("tilting_scheme"),
             tilt_angle_min=epu.get("tilt_angle_min"),
             tilt_angle_max=epu.get("tilt_angle_max"),
             tilt_angle_increment=epu.get("tilt_angle_increment"),

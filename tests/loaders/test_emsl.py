@@ -255,6 +255,30 @@ class TestEMSLLoader:
         assert parsed["tilt_axis_angle"]["numeric_value"] == 85.3
         assert parsed["number_of_tilt_images"]["numeric_value"] == 41
 
+    def test_parse_epu_session_xml_extracts_tilting_scheme(self):
+        """An explicit tilt scheme tag should map onto TiltingSchemeEnum."""
+        loader = EMSLLoader()
+        for tag_value, expected in (
+            ("DoseSymmetric", "dose_symmetric"),
+            ("dose-symmetric", "dose_symmetric"),
+            ("Unidirectional", "linear"),
+            ("continuous", "continuous"),
+        ):
+            xml = f"<SessionData><TiltScheme>{tag_value}</TiltScheme></SessionData>".encode()
+            assert loader._parse_epu_session_xml(xml)["tilting_scheme"] == expected, tag_value
+
+    def test_parse_epu_session_xml_does_not_guess_tilting_scheme(self):
+        """Tilt geometry alone must not be turned into a scheme the session never stated."""
+        loader = EMSLLoader()
+        xml = b"""<SessionData>
+          <StartTiltAngle>-60</StartTiltAngle>
+          <EndTiltAngle>60</EndTiltAngle>
+          <TiltAngleStep>3</TiltAngleStep>
+        </SessionData>"""
+        parsed = loader._parse_epu_session_xml(xml)
+        assert "tilt_angle_min" in parsed
+        assert "tilting_scheme" not in parsed
+
     def test_instrument_and_associations_created(self, loader):
         """Instrument should be resolved and linked to experiment."""
         result = loader.load("apo")
