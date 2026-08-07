@@ -1133,7 +1133,7 @@ classes:
         exact_mappings:
           - mmCIF:_em_imaging.nominal_magnification
       calibrated_pixel_size:
-        description: "Calibrated pixel size in Angstroms per pixel"
+        description: "Calibrated pixel size, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
         exact_mappings:
@@ -1143,7 +1143,7 @@ classes:
         range: QuantityValue
         inlined: true
       exposure_time_per_frame:
-        description: "Exposure time per frame in milliseconds"
+        description: "Exposure time per frame, typically specified in milliseconds. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
         exact_mappings:
@@ -1159,41 +1159,41 @@ classes:
         range: QuantityValue
         inlined: true
       total_dose:
-        description: "Total electron dose in e-/Angstrom^2"
+        description: "Total electron dose, typically specified in e-/Angstrom^2. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
         exact_mappings:
           - mmCIF:_em_image_recording.avg_electron_dose_per_image
       dose_rate:
-        description: "Dose rate in e-/pixel/s or e-/Angstrom^2/s"
+        description: "Dose rate, typically specified in e-/pixel/s or e-/Angstrom^2/s. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
       defocus_target:
-        description: "Target defocus value in micrometers"
+        description: "Target defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
       defocus_range_min:
-        description: "Minimum defocus range in micrometers"
+        description: "Minimum defocus range, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
         exact_mappings:
           - mmCIF:_em_imaging.nominal_defocus_min
       defocus_range_max:
-        description: "Maximum defocus range in micrometers"
+        description: "Maximum defocus range, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
         exact_mappings:
           - mmCIF:_em_imaging.nominal_defocus_max
       defocus_range_increment:
-        description: "Defocus range increment in micrometers"
+        description: "Defocus range increment, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
       astigmatism_target:
-        description: "Target astigmatism in Angstroms"
+        description: "Target astigmatism, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
       coma:
-        description: "Coma aberration in nanometers"
+        description: "Coma aberration, typically specified in nanometers. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
       stage_tilt:
