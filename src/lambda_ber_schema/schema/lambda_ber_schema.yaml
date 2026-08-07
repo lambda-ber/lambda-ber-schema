@@ -1117,10 +1117,6 @@ classes:
       quality_metrics:
         description: "Quality metrics for the experiment"
         range: QualityMetrics
-      cryo_em_quality_metrics:
-        description: "Cryo-EM specific quality assessments (ice contamination, ice quality, particle concentration)"
-        range: CryoEMQualityMetrics
-        inlined: true
       raw_data_location:
         description: "Location of raw data files"
       processing_status:
@@ -2887,6 +2883,11 @@ classes:
         inlined: true
         close_mappings:
           - IHMCIF:_ihm_sas_restraint.radius_of_gyration
+      # Cryo-EM grid assessment metrics
+      cryo_em:
+        description: "Cryo-EM specific quality assessments of the imaged grid (ice contamination, ice quality, particle concentration)"
+        range: CryoEMQualityMetrics
+        inlined: true
       # Legacy/deprecated
       r_factor:
         description: "R-factor for crystallography (deprecated, use r_work)"
