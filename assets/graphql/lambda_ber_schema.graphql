@@ -1721,7 +1721,7 @@ type QualityMetrics
     averageBFactorA2: QuantityValue
     iZero: QuantityValue
     rg: QuantityValue
-    cryoEm: CryoEMQualityMetrics
+    gridQuality: CryoEMQualityMetrics
     rFactor: QuantityValue
   }
 

@@ -17,16 +17,16 @@ Alias: file_name
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [FTIRImage](FTIRImage.md) | Fourier Transform Infrared (FTIR) spectroscopy image capturing molecular comp... |  no  |
-| [FluorescenceImage](FluorescenceImage.md) | Fluorescence microscopy image capturing specific molecular targets through fl... |  no  |
-| [Image](Image.md) | An image file from structural biology experiments |  no  |
-| [Micrograph](Micrograph.md) | Motion-corrected micrograph derived from movie |  no  |
-| [XRFImage](XRFImage.md) | X-ray fluorescence (XRF) image showing elemental distribution |  no  |
-| [Image2D](Image2D.md) | A 2D image (micrograph, diffraction pattern) |  no  |
 | [OpticalImage](OpticalImage.md) | Visible light optical microscopy or photography image |  no  |
-| [Image3D](Image3D.md) | A 3D volume or tomogram |  no  |
+| [XRFImage](XRFImage.md) | X-ray fluorescence (XRF) image showing elemental distribution |  no  |
 | [Movie](Movie.md) | Raw cryo-EM movie with frame-by-frame metadata for motion correction |  no  |
+| [FluorescenceImage](FluorescenceImage.md) | Fluorescence microscopy image capturing specific molecular targets through fl... |  no  |
+| [Micrograph](Micrograph.md) | Motion-corrected micrograph derived from movie |  no  |
 | [DataFile](DataFile.md) | A data file generated or used in the study |  no  |
+| [Image](Image.md) | An image file from structural biology experiments |  no  |
+| [FTIRImage](FTIRImage.md) | Fourier Transform Infrared (FTIR) spectroscopy image capturing molecular comp... |  no  |
+| [Image2D](Image2D.md) | A 2D image (micrograph, diffraction pattern) |  no  |
+| [Image3D](Image3D.md) | A 3D volume or tomogram |  no  |
 
 
 

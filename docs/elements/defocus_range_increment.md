@@ -3,7 +3,7 @@
 # Slot: defocus_range_increment 
 
 
-_Defocus range increment in micrometers_
+_Defocus range increment, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -66,7 +66,8 @@ Alias: defocus_range_increment
 <details>
 ```yaml
 name: defocus_range_increment
-description: Defocus range increment in micrometers
+description: Defocus range increment, typically specified in micrometers. Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: defocus_range_increment

@@ -902,7 +902,7 @@ message QualityMetrics
   quantityValue averageBFactorA2 = 0
   quantityValue iZero = 0
   quantityValue rg = 0
-  cryoEMQualityMetrics cryoEm = 0
+  cryoEMQualityMetrics gridQuality = 0
   quantityValue rFactor = 0
  }
 // A simple quantity value, representing a measurement with a numeric value and unit. This allows data providers to specify measurements in their preferred unit while enabling standardized interpretation. For example, a pixel size could be specified as 1.5 micrometers or 15 Angstroms, with the unit clearly specified.

@@ -17,8 +17,8 @@ Alias: buffer_composition
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Sample](Sample.md) | A biological sample used in structural biology experiments |  no  |
 | [MeasurementConditions](MeasurementConditions.md) | Conditions under which biophysical measurements were made |  no  |
+| [Sample](Sample.md) | A biological sample used in structural biology experiments |  no  |
 
 
 

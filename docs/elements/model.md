@@ -22,12 +22,12 @@ Alias: model
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [SAXSInstrument](SAXSInstrument.md) | SAXS/WAXS instrument specifications |  no  |
-| [XRayInstrument](XRayInstrument.md) | X-ray diffractometer or synchrotron beamline specifications |  no  |
-| [CryoEMInstrument](CryoEMInstrument.md) | Cryo-EM microscope specifications |  no  |
-| [SANSInstrument](SANSInstrument.md) | Small-angle neutron scattering (SANS) instrument specifications |  no  |
-| [BeamlineInstrument](BeamlineInstrument.md) | Multi-technique synchrotron beamline that supports multiple experimental meth... |  no  |
 | [Instrument](Instrument.md) | An instrument used to collect data |  no  |
+| [SANSInstrument](SANSInstrument.md) | Small-angle neutron scattering (SANS) instrument specifications |  no  |
+| [XRayInstrument](XRayInstrument.md) | X-ray diffractometer or synchrotron beamline specifications |  no  |
+| [BeamlineInstrument](BeamlineInstrument.md) | Multi-technique synchrotron beamline that supports multiple experimental meth... |  no  |
+| [SAXSInstrument](SAXSInstrument.md) | SAXS/WAXS instrument specifications |  no  |
+| [CryoEMInstrument](CryoEMInstrument.md) | Cryo-EM microscope specifications |  no  |
 
 
 

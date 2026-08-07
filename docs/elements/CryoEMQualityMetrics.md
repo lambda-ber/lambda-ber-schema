@@ -87,7 +87,7 @@ URI: [lambda:CryoEMQualityMetrics](http://w3id.org/lambda/CryoEMQualityMetrics)
 
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
-| [QualityMetrics](QualityMetrics.md) | [cryo_em](cryo_em.md) | range | [CryoEMQualityMetrics](CryoEMQualityMetrics.md) |
+| [QualityMetrics](QualityMetrics.md) | [grid_quality](grid_quality.md) | range | [CryoEMQualityMetrics](CryoEMQualityMetrics.md) |
 
 
 

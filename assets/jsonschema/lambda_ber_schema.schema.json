@@ -2682,7 +2682,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Target astigmatism in Angstroms"
+                    "description": "Target astigmatism, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "autoloader_slot": {
                     "description": "Autoloader slot identifier",
@@ -2733,7 +2733,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Calibrated pixel size in Angstroms per pixel"
+                    "description": "Calibrated pixel size, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "camera_binning": {
                     "anyOf": [
@@ -2766,7 +2766,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Coma aberration in nanometers"
+                    "description": "Coma aberration, typically specified in nanometers. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "daq_system": {
                     "$ref": "#/$defs/DataAcquisitionSystemEnum",
@@ -2792,7 +2792,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Defocus range increment in micrometers"
+                    "description": "Defocus range increment, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "defocus_range_max": {
                     "anyOf": [
@@ -2803,7 +2803,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Maximum defocus range in micrometers"
+                    "description": "Maximum defocus range, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "defocus_range_min": {
                     "anyOf": [
@@ -2814,7 +2814,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Minimum defocus range in micrometers"
+                    "description": "Minimum defocus range, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "defocus_target": {
                     "anyOf": [
@@ -2825,7 +2825,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Target defocus value in micrometers"
+                    "description": "Target defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "description": {
                     "description": "A detailed textual description of this entity",
@@ -2872,7 +2872,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Dose rate in e-/pixel/s or e-/Angstrom^2/s"
+                    "description": "Dose rate, typically specified in e-/pixel/s or e-/Angstrom^2/s. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "dual_tilt_axis_rotation": {
                     "anyOf": [
@@ -2949,7 +2949,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Exposure time per frame in milliseconds"
+                    "description": "Exposure time per frame, typically specified in milliseconds. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "fiducial_size": {
                     "anyOf": [
@@ -3330,7 +3330,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Total electron dose in e-/Angstrom^2"
+                    "description": "Total electron dose, typically specified in e-/Angstrom^2. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "total_exposure_time": {
                     "anyOf": [
@@ -6881,7 +6881,13 @@
                     ],
                     "description": "Completeness in highest resolution shell, typically specified as a percentage (0-100). Data providers may specify as decimal fraction by including the unit in the QuantityValue."
                 },
-                "cryo_em": {
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "grid_quality": {
                     "anyOf": [
                         {
                             "$ref": "#/$defs/CryoEMQualityMetrics"
@@ -6891,12 +6897,6 @@
                         }
                     ],
                     "description": "Cryo-EM specific quality assessments of the imaged grid (ice contamination, ice quality, particle concentration)"
-                },
-                "description": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
                 },
                 "i_zero": {
                     "anyOf": [

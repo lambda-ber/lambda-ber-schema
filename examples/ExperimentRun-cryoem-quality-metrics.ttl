@@ -12,7 +12,7 @@ lambdaber:exp_cryoem_parp_001 a lambdaber:ExperimentRun ;
     lambdaber:experiment_date "2024-06-01" ;
     lambdaber:operator_id "microscopist_001" ;
     lambdaber:quality_metrics [ a lambdaber:QualityMetrics ;
-            lambdaber:cryo_em [ a lambdaber:CryoEMQualityMetrics ;
+            lambdaber:grid_quality [ a lambdaber:CryoEMQualityMetrics ;
                     lambdaber:ice_contamination "limited" ;
                     lambdaber:ice_quality "ideal" ;
                     lambdaber:particle_concentration "optimal" ] ;

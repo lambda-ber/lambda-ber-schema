@@ -1,5 +1,5 @@
 # Auto generated from lambda_ber_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-08-07T15:47:52
+# Generation date: 2026-08-07T16:24:26
 # Schema: lambda-ber-schema
 #
 # id: http://w3id.org/lambda/
@@ -3467,7 +3467,7 @@ class QualityMetrics(AttributeGroup):
     average_b_factor_a2: Optional[Union[dict, "QuantityValue"]] = None
     i_zero: Optional[Union[dict, "QuantityValue"]] = None
     rg: Optional[Union[dict, "QuantityValue"]] = None
-    cryo_em: Optional[Union[dict, "CryoEMQualityMetrics"]] = None
+    grid_quality: Optional[Union[dict, "CryoEMQualityMetrics"]] = None
     r_factor: Optional[Union[dict, "QuantityValue"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -3564,8 +3564,8 @@ class QualityMetrics(AttributeGroup):
         if self.rg is not None and not isinstance(self.rg, QuantityValue):
             self.rg = QuantityValue(**as_dict(self.rg))
 
-        if self.cryo_em is not None and not isinstance(self.cryo_em, CryoEMQualityMetrics):
-            self.cryo_em = CryoEMQualityMetrics(**as_dict(self.cryo_em))
+        if self.grid_quality is not None and not isinstance(self.grid_quality, CryoEMQualityMetrics):
+            self.grid_quality = CryoEMQualityMetrics(**as_dict(self.grid_quality))
 
         if self.r_factor is not None and not isinstance(self.r_factor, QuantityValue):
             self.r_factor = QuantityValue(**as_dict(self.r_factor))
@@ -9270,8 +9270,8 @@ slots.qualityMetrics__i_zero = Slot(uri=LAMBDA.i_zero, name="qualityMetrics__i_z
 slots.qualityMetrics__rg = Slot(uri=LAMBDA.rg, name="qualityMetrics__rg", curie=LAMBDA.curie('rg'),
                    model_uri=LAMBDA.qualityMetrics__rg, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.qualityMetrics__cryo_em = Slot(uri=LAMBDA.cryo_em, name="qualityMetrics__cryo_em", curie=LAMBDA.curie('cryo_em'),
-                   model_uri=LAMBDA.qualityMetrics__cryo_em, domain=None, range=Optional[Union[dict, CryoEMQualityMetrics]])
+slots.qualityMetrics__grid_quality = Slot(uri=LAMBDA.grid_quality, name="qualityMetrics__grid_quality", curie=LAMBDA.curie('grid_quality'),
+                   model_uri=LAMBDA.qualityMetrics__grid_quality, domain=None, range=Optional[Union[dict, CryoEMQualityMetrics]])
 
 slots.qualityMetrics__r_factor = Slot(uri=LAMBDA.r_factor, name="qualityMetrics__r_factor", curie=LAMBDA.curie('r_factor'),
                    model_uri=LAMBDA.qualityMetrics__r_factor, domain=None, range=Optional[Union[dict, QuantityValue]])

@@ -750,19 +750,19 @@ URI: [lambda:ExperimentRun](http://w3id.org/lambda/ExperimentRun)
 | [processing_status](processing_status.md) | 0..1 <br/> [ProcessingStatusEnum](ProcessingStatusEnum.md) | Current processing status | direct |
 | [daq_system](daq_system.md) | 0..1 <br/> [DataAcquisitionSystemEnum](DataAcquisitionSystemEnum.md) | Data acquisition system used to collect this experiment | direct |
 | [magnification](magnification.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Magnification used during data collection | direct |
-| [calibrated_pixel_size](calibrated_pixel_size.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Calibrated pixel size in Angstroms per pixel | direct |
+| [calibrated_pixel_size](calibrated_pixel_size.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Calibrated pixel size, typically specified in Angstroms per pixel | direct |
 | [camera_binning](camera_binning.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Camera binning factor | direct |
-| [exposure_time_per_frame](exposure_time_per_frame.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Exposure time per frame in milliseconds | direct |
+| [exposure_time_per_frame](exposure_time_per_frame.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Exposure time per frame, typically specified in milliseconds | direct |
 | [frames_per_movie](frames_per_movie.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Number of frames per movie | direct |
 | [total_exposure_time](total_exposure_time.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Total exposure time | direct |
-| [total_dose](total_dose.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Total electron dose in e-/Angstrom^2 | direct |
-| [dose_rate](dose_rate.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Dose rate in e-/pixel/s or e-/Angstrom^2/s | direct |
-| [defocus_target](defocus_target.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Target defocus value in micrometers | direct |
-| [defocus_range_min](defocus_range_min.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Minimum defocus range in micrometers | direct |
-| [defocus_range_max](defocus_range_max.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Maximum defocus range in micrometers | direct |
-| [defocus_range_increment](defocus_range_increment.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Defocus range increment in micrometers | direct |
-| [astigmatism_target](astigmatism_target.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Target astigmatism in Angstroms | direct |
-| [coma](coma.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Coma aberration in nanometers | direct |
+| [total_dose](total_dose.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Total electron dose, typically specified in e-/Angstrom^2 | direct |
+| [dose_rate](dose_rate.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Dose rate, typically specified in e-/pixel/s or e-/Angstrom^2/s | direct |
+| [defocus_target](defocus_target.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Target defocus value, typically specified in micrometers | direct |
+| [defocus_range_min](defocus_range_min.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Minimum defocus range, typically specified in micrometers | direct |
+| [defocus_range_max](defocus_range_max.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Maximum defocus range, typically specified in micrometers | direct |
+| [defocus_range_increment](defocus_range_increment.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Defocus range increment, typically specified in micrometers | direct |
+| [astigmatism_target](astigmatism_target.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Target astigmatism, typically specified in Angstroms | direct |
+| [coma](coma.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Coma aberration, typically specified in nanometers | direct |
 | [stage_tilt](stage_tilt.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Fixed stage tilt angle for a single-orientation acquisition, typically specif... | direct |
 | [tilting_scheme](tilting_scheme.md) | 0..1 <br/> [TiltingSchemeEnum](TiltingSchemeEnum.md) | Tilt scheme used during tomographic data collection | direct |
 | [tilt_angle_min](tilt_angle_min.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Lowest (most negative) tilt angle in the tilt series, typically specified in ... | direct |
@@ -987,7 +987,8 @@ attributes:
     inlined: true
   calibrated_pixel_size:
     name: calibrated_pixel_size
-    description: Calibrated pixel size in Angstroms per pixel
+    description: Calibrated pixel size, typically specified in Angstroms per pixel.
+      Data providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
     exact_mappings:
     - mmCIF:_em_image_recording.calibrated_pixel_size
@@ -1008,7 +1009,8 @@ attributes:
     inlined: true
   exposure_time_per_frame:
     name: exposure_time_per_frame
-    description: Exposure time per frame in milliseconds
+    description: Exposure time per frame, typically specified in milliseconds. Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
     exact_mappings:
     - mmCIF:_em_image_recording.average_exposure_time
@@ -1040,7 +1042,8 @@ attributes:
     inlined: true
   total_dose:
     name: total_dose
-    description: Total electron dose in e-/Angstrom^2
+    description: Total electron dose, typically specified in e-/Angstrom^2. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
     exact_mappings:
     - mmCIF:_em_image_recording.avg_electron_dose_per_image
@@ -1052,7 +1055,8 @@ attributes:
     inlined: true
   dose_rate:
     name: dose_rate
-    description: Dose rate in e-/pixel/s or e-/Angstrom^2/s
+    description: Dose rate, typically specified in e-/pixel/s or e-/Angstrom^2/s.
+      Data providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
@@ -1061,7 +1065,8 @@ attributes:
     inlined: true
   defocus_target:
     name: defocus_target
-    description: Target defocus value in micrometers
+    description: Target defocus value, typically specified in micrometers. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
@@ -1070,7 +1075,8 @@ attributes:
     inlined: true
   defocus_range_min:
     name: defocus_range_min
-    description: Minimum defocus range in micrometers
+    description: Minimum defocus range, typically specified in micrometers. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
     exact_mappings:
     - mmCIF:_em_imaging.nominal_defocus_min
@@ -1081,7 +1087,8 @@ attributes:
     inlined: true
   defocus_range_max:
     name: defocus_range_max
-    description: Maximum defocus range in micrometers
+    description: Maximum defocus range, typically specified in micrometers. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
     exact_mappings:
     - mmCIF:_em_imaging.nominal_defocus_max
@@ -1092,7 +1099,8 @@ attributes:
     inlined: true
   defocus_range_increment:
     name: defocus_range_increment
-    description: Defocus range increment in micrometers
+    description: Defocus range increment, typically specified in micrometers. Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
@@ -1101,7 +1109,8 @@ attributes:
     inlined: true
   astigmatism_target:
     name: astigmatism_target
-    description: Target astigmatism in Angstroms
+    description: Target astigmatism, typically specified in Angstroms. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
@@ -1110,7 +1119,8 @@ attributes:
     inlined: true
   coma:
     name: coma
-    description: Coma aberration in nanometers
+    description: Coma aberration, typically specified in nanometers. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
@@ -1869,7 +1879,8 @@ attributes:
     inlined: true
   calibrated_pixel_size:
     name: calibrated_pixel_size
-    description: Calibrated pixel size in Angstroms per pixel
+    description: Calibrated pixel size, typically specified in Angstroms per pixel.
+      Data providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
     exact_mappings:
     - mmCIF:_em_image_recording.calibrated_pixel_size
@@ -1894,7 +1905,8 @@ attributes:
     inlined: true
   exposure_time_per_frame:
     name: exposure_time_per_frame
-    description: Exposure time per frame in milliseconds
+    description: Exposure time per frame, typically specified in milliseconds. Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
     exact_mappings:
     - mmCIF:_em_image_recording.average_exposure_time
@@ -1932,7 +1944,8 @@ attributes:
     inlined: true
   total_dose:
     name: total_dose
-    description: Total electron dose in e-/Angstrom^2
+    description: Total electron dose, typically specified in e-/Angstrom^2. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
     exact_mappings:
     - mmCIF:_em_image_recording.avg_electron_dose_per_image
@@ -1946,7 +1959,8 @@ attributes:
     inlined: true
   dose_rate:
     name: dose_rate
-    description: Dose rate in e-/pixel/s or e-/Angstrom^2/s
+    description: Dose rate, typically specified in e-/pixel/s or e-/Angstrom^2/s.
+      Data providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: dose_rate
@@ -1957,7 +1971,8 @@ attributes:
     inlined: true
   defocus_target:
     name: defocus_target
-    description: Target defocus value in micrometers
+    description: Target defocus value, typically specified in micrometers. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: defocus_target
@@ -1968,7 +1983,8 @@ attributes:
     inlined: true
   defocus_range_min:
     name: defocus_range_min
-    description: Minimum defocus range in micrometers
+    description: Minimum defocus range, typically specified in micrometers. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
     exact_mappings:
     - mmCIF:_em_imaging.nominal_defocus_min
@@ -1981,7 +1997,8 @@ attributes:
     inlined: true
   defocus_range_max:
     name: defocus_range_max
-    description: Maximum defocus range in micrometers
+    description: Maximum defocus range, typically specified in micrometers. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
     exact_mappings:
     - mmCIF:_em_imaging.nominal_defocus_max
@@ -1994,7 +2011,8 @@ attributes:
     inlined: true
   defocus_range_increment:
     name: defocus_range_increment
-    description: Defocus range increment in micrometers
+    description: Defocus range increment, typically specified in micrometers. Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: defocus_range_increment
@@ -2005,7 +2023,8 @@ attributes:
     inlined: true
   astigmatism_target:
     name: astigmatism_target
-    description: Target astigmatism in Angstroms
+    description: Target astigmatism, typically specified in Angstroms. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: astigmatism_target
@@ -2016,7 +2035,8 @@ attributes:
     inlined: true
   coma:
     name: coma
-    description: Coma aberration in nanometers
+    description: Coma aberration, typically specified in nanometers. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: coma

@@ -18,8 +18,8 @@ Alias: q_range_min
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [SAXSInstrument](SAXSInstrument.md) | SAXS/WAXS instrument specifications |  no  |
-| [SANSInstrument](SANSInstrument.md) | Small-angle neutron scattering (SANS) instrument specifications |  no  |
 | [BeamlineInstrument](BeamlineInstrument.md) | Multi-technique synchrotron beamline that supports multiple experimental meth... |  no  |
+| [SANSInstrument](SANSInstrument.md) | Small-angle neutron scattering (SANS) instrument specifications |  no  |
 
 
 

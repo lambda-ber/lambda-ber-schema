@@ -101,18 +101,18 @@ URI: [lambda:QualityMetrics](http://w3id.org/lambda/QualityMetrics)
     
 
         
-      QualityMetrics : cryo_em
+      QualityMetrics : description
+        
+      QualityMetrics : grid_quality
         
           
     
         
         
-        QualityMetrics --> "0..1" CryoEMQualityMetrics : cryo_em
+        QualityMetrics --> "0..1" CryoEMQualityMetrics : grid_quality
         click CryoEMQualityMetrics href "../CryoEMQualityMetrics/"
     
 
-        
-      QualityMetrics : description
         
       QualityMetrics : i_zero
         
@@ -417,7 +417,7 @@ URI: [lambda:QualityMetrics](http://w3id.org/lambda/QualityMetrics)
 | [average_b_factor_a2](average_b_factor_a2.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Average B-factor in Angstroms squared | direct |
 | [i_zero](i_zero.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Forward scattering intensity I(0) | direct |
 | [rg](rg.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Radius of gyration, typically specified in Angstroms | direct |
-| [cryo_em](cryo_em.md) | 0..1 <br/> [CryoEMQualityMetrics](CryoEMQualityMetrics.md) | Cryo-EM specific quality assessments of the imaged grid (ice contamination, i... | direct |
+| [grid_quality](grid_quality.md) | 0..1 <br/> [CryoEMQualityMetrics](CryoEMQualityMetrics.md) | Cryo-EM specific quality assessments of the imaged grid (ice contamination, i... | direct |
 | [r_factor](r_factor.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | R-factor for crystallography (deprecated, use r_work) | direct |
 | [description](description.md) | 0..1 <br/> [String](String.md) |  | [AttributeGroup](AttributeGroup.md) |
 
@@ -811,8 +811,8 @@ attributes:
     - QualityMetrics
     range: QuantityValue
     inlined: true
-  cryo_em:
-    name: cryo_em
+  grid_quality:
+    name: grid_quality
     description: Cryo-EM specific quality assessments of the imaged grid (ice contamination,
       ice quality, particle concentration)
     from_schema: http://w3id.org/lambda/
@@ -1239,13 +1239,13 @@ attributes:
     - QualityMetrics
     range: QuantityValue
     inlined: true
-  cryo_em:
-    name: cryo_em
+  grid_quality:
+    name: grid_quality
     description: Cryo-EM specific quality assessments of the imaged grid (ice contamination,
       ice quality, particle concentration)
     from_schema: http://w3id.org/lambda/
     rank: 1000
-    alias: cryo_em
+    alias: grid_quality
     owner: QualityMetrics
     domain_of:
     - QualityMetrics

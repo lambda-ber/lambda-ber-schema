@@ -180,7 +180,7 @@ permissible_values:
       from microcrystals
     comments:
     - Also known as MicroED or 3D electron diffraction (3DED)
-    - Uses electron beam on sub-micron crystals; processing_scheme=3 in PNNL metadata
+    - Uses an electron beam on sub-micron crystals
 
 ```
 </details>

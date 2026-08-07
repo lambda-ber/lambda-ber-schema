@@ -3,7 +3,7 @@
 # Slot: coma 
 
 
-_Coma aberration in nanometers_
+_Coma aberration, typically specified in nanometers. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -66,7 +66,8 @@ Alias: coma
 <details>
 ```yaml
 name: coma
-description: Coma aberration in nanometers
+description: Coma aberration, typically specified in nanometers. Data providers may
+  specify alternative units by including the unit in the QuantityValue.
 from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: coma

@@ -4695,31 +4695,31 @@ class ExperimentRun(NamedThing):
     magnification: Optional[QuantityValue] = Field(default=None, description="""Magnification used during data collection""", json_schema_extra = { "linkml_meta": {'alias': 'magnification',
          'domain_of': ['ExperimentRun', 'OpticalImage'],
          'exact_mappings': ['mmCIF:_em_imaging.nominal_magnification']} })
-    calibrated_pixel_size: Optional[QuantityValue] = Field(default=None, description="""Calibrated pixel size in Angstroms per pixel""", json_schema_extra = { "linkml_meta": {'alias': 'calibrated_pixel_size',
+    calibrated_pixel_size: Optional[QuantityValue] = Field(default=None, description="""Calibrated pixel size, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'calibrated_pixel_size',
          'domain_of': ['ExperimentRun'],
          'exact_mappings': ['mmCIF:_em_image_recording.calibrated_pixel_size']} })
     camera_binning: Optional[QuantityValue] = Field(default=None, description="""Camera binning factor. This must be a positive float value (e.g., 1, 1.5, 2, 3).""", json_schema_extra = { "linkml_meta": {'alias': 'camera_binning', 'domain_of': ['ExperimentRun']} })
-    exposure_time_per_frame: Optional[QuantityValue] = Field(default=None, description="""Exposure time per frame in milliseconds""", json_schema_extra = { "linkml_meta": {'alias': 'exposure_time_per_frame',
+    exposure_time_per_frame: Optional[QuantityValue] = Field(default=None, description="""Exposure time per frame, typically specified in milliseconds. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'exposure_time_per_frame',
          'domain_of': ['ExperimentRun'],
          'exact_mappings': ['mmCIF:_em_image_recording.average_exposure_time']} })
     frames_per_movie: Optional[QuantityValue] = Field(default=None, description="""Number of frames per movie""", json_schema_extra = { "linkml_meta": {'alias': 'frames_per_movie',
          'domain_of': ['ExperimentRun'],
          'exact_mappings': ['mmCIF:_em_image_recording.num_frames_per_image']} })
     total_exposure_time: Optional[QuantityValue] = Field(default=None, description="""Total exposure time. Data providers may specify alternative units (e.g., seconds, milliseconds) by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'total_exposure_time', 'domain_of': ['ExperimentRun']} })
-    total_dose: Optional[QuantityValue] = Field(default=None, description="""Total electron dose in e-/Angstrom^2""", json_schema_extra = { "linkml_meta": {'alias': 'total_dose',
+    total_dose: Optional[QuantityValue] = Field(default=None, description="""Total electron dose, typically specified in e-/Angstrom^2. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'total_dose',
          'domain_of': ['ExperimentRun', 'DataCollectionStrategy'],
          'exact_mappings': ['mmCIF:_em_image_recording.avg_electron_dose_per_image']} })
-    dose_rate: Optional[QuantityValue] = Field(default=None, description="""Dose rate in e-/pixel/s or e-/Angstrom^2/s""", json_schema_extra = { "linkml_meta": {'alias': 'dose_rate', 'domain_of': ['ExperimentRun']} })
-    defocus_target: Optional[QuantityValue] = Field(default=None, description="""Target defocus value in micrometers""", json_schema_extra = { "linkml_meta": {'alias': 'defocus_target', 'domain_of': ['ExperimentRun']} })
-    defocus_range_min: Optional[QuantityValue] = Field(default=None, description="""Minimum defocus range in micrometers""", json_schema_extra = { "linkml_meta": {'alias': 'defocus_range_min',
+    dose_rate: Optional[QuantityValue] = Field(default=None, description="""Dose rate, typically specified in e-/pixel/s or e-/Angstrom^2/s. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'dose_rate', 'domain_of': ['ExperimentRun']} })
+    defocus_target: Optional[QuantityValue] = Field(default=None, description="""Target defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'defocus_target', 'domain_of': ['ExperimentRun']} })
+    defocus_range_min: Optional[QuantityValue] = Field(default=None, description="""Minimum defocus range, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'defocus_range_min',
          'domain_of': ['ExperimentRun'],
          'exact_mappings': ['mmCIF:_em_imaging.nominal_defocus_min']} })
-    defocus_range_max: Optional[QuantityValue] = Field(default=None, description="""Maximum defocus range in micrometers""", json_schema_extra = { "linkml_meta": {'alias': 'defocus_range_max',
+    defocus_range_max: Optional[QuantityValue] = Field(default=None, description="""Maximum defocus range, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'defocus_range_max',
          'domain_of': ['ExperimentRun'],
          'exact_mappings': ['mmCIF:_em_imaging.nominal_defocus_max']} })
-    defocus_range_increment: Optional[QuantityValue] = Field(default=None, description="""Defocus range increment in micrometers""", json_schema_extra = { "linkml_meta": {'alias': 'defocus_range_increment', 'domain_of': ['ExperimentRun']} })
-    astigmatism_target: Optional[QuantityValue] = Field(default=None, description="""Target astigmatism in Angstroms""", json_schema_extra = { "linkml_meta": {'alias': 'astigmatism_target', 'domain_of': ['ExperimentRun']} })
-    coma: Optional[QuantityValue] = Field(default=None, description="""Coma aberration in nanometers""", json_schema_extra = { "linkml_meta": {'alias': 'coma', 'domain_of': ['ExperimentRun']} })
+    defocus_range_increment: Optional[QuantityValue] = Field(default=None, description="""Defocus range increment, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'defocus_range_increment', 'domain_of': ['ExperimentRun']} })
+    astigmatism_target: Optional[QuantityValue] = Field(default=None, description="""Target astigmatism, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'astigmatism_target', 'domain_of': ['ExperimentRun']} })
+    coma: Optional[QuantityValue] = Field(default=None, description="""Coma aberration, typically specified in nanometers. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'coma', 'domain_of': ['ExperimentRun']} })
     stage_tilt: Optional[QuantityValue] = Field(default=None, description="""Fixed stage tilt angle for a single-orientation acquisition, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'stage_tilt',
          'comments': ['For a tilt series, use tilt_angle_min, tilt_angle_max, and '
                       'tilt_angle_increment rather than this slot.'],
@@ -5782,7 +5782,7 @@ class QualityMetrics(AttributeGroup):
     rg: Optional[QuantityValue] = Field(default=None, description="""Radius of gyration, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'rg',
          'close_mappings': ['IHMCIF:_ihm_sas_restraint.radius_of_gyration'],
          'domain_of': ['QualityMetrics']} })
-    cryo_em: Optional[CryoEMQualityMetrics] = Field(default=None, description="""Cryo-EM specific quality assessments of the imaged grid (ice contamination, ice quality, particle concentration)""", json_schema_extra = { "linkml_meta": {'alias': 'cryo_em', 'domain_of': ['QualityMetrics']} })
+    grid_quality: Optional[CryoEMQualityMetrics] = Field(default=None, description="""Cryo-EM specific quality assessments of the imaged grid (ice contamination, ice quality, particle concentration)""", json_schema_extra = { "linkml_meta": {'alias': 'grid_quality', 'domain_of': ['QualityMetrics']} })
     r_factor: Optional[QuantityValue] = Field(default=None, description="""R-factor for crystallography (deprecated, use r_work)""", json_schema_extra = { "linkml_meta": {'alias': 'r_factor', 'domain_of': ['QualityMetrics']} })
     description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
 

@@ -226,7 +226,7 @@ Name: lambda-ber-schema
 | [apodization_function](apodization_function.md) | Mathematical function used for apodization |
 | [astigmatism](astigmatism.md) | Astigmatism value, typically specified in Angstroms |
 | [astigmatism_angle](astigmatism_angle.md) | Astigmatism angle, typically specified in degrees |
-| [astigmatism_target](astigmatism_target.md) | Target astigmatism in Angstroms |
+| [astigmatism_target](astigmatism_target.md) | Target astigmatism, typically specified in Angstroms |
 | [atmosphere](atmosphere.md) | Storage atmosphere conditions |
 | [attenuator](attenuator.md) | Attenuator setting |
 | [attribute](attribute.md) | The attribute being represented |
@@ -269,7 +269,7 @@ Name: lambda-ber-schema
 | [buffer_composition](buffer_composition.md) | Buffer composition including pH, salts, additives |
 | [buffer_matching_protocol](buffer_matching_protocol.md) | Protocol for buffer matching |
 | [c2_aperture](c2_aperture.md) | C2 aperture size in micrometers |
-| [calibrated_pixel_size](calibrated_pixel_size.md) | Calibrated pixel size in Angstroms per pixel |
+| [calibrated_pixel_size](calibrated_pixel_size.md) | Calibrated pixel size, typically specified in Angstroms per pixel |
 | [calibration_standard](calibration_standard.md) | Reference standard used for calibration |
 | [camera_binning](camera_binning.md) | Camera binning factor |
 | [camera_length](camera_length.md) | Camera length for electron diffraction (e |
@@ -293,7 +293,7 @@ Name: lambda-ber-schema
 | [coevolved_residues](coevolved_residues.md) | Pairs of coevolved residues |
 | [collection_mode](collection_mode.md) | Mode of data collection |
 | [color_channels](color_channels.md) | Color channels present (e |
-| [coma](coma.md) | Coma aberration in nanometers |
+| [coma](coma.md) | Coma aberration, typically specified in nanometers |
 | [completed_at](completed_at.md) | Workflow completion time |
 | [completeness](completeness.md) | Data completeness, typically specified as a percentage (0-100) |
 | [completeness_high_res_shell_percent](completeness_high_res_shell_percent.md) | Completeness in highest resolution shell, typically specified as a percentage... |
@@ -320,7 +320,6 @@ Name: lambda-ber-schema
 | [cpu_hours](cpu_hours.md) | CPU hours used, measured in hours |
 | [creation_date](creation_date.md) | File creation date |
 | [cross_references](cross_references.md) | Database cross-references |
-| [cryo_em](cryo_em.md) | Cryo-EM specific quality assessments of the imaged grid (ice contamination, i... |
 | [cryo_protectant](cryo_protectant.md) | Cryoprotectant used for crystal cooling |
 | [cryoprotectant](cryoprotectant.md) | Cryoprotectant used |
 | [cryoprotectant_concentration](cryoprotectant_concentration.md) | Cryoprotectant concentration, typically specified as a percentage |
@@ -348,13 +347,13 @@ Name: lambda-ber-schema
 | [date_added](date_added.md) | Date when sample was added to study |
 | [definition](definition.md) | The formal definition or meaning of the ontology term |
 | [defocus](defocus.md) | Defocus value, typically specified in micrometers |
-| [defocus_range_increment](defocus_range_increment.md) | Defocus range increment in micrometers |
-| [defocus_range_max](defocus_range_max.md) | Maximum defocus range in micrometers |
-| [defocus_range_min](defocus_range_min.md) | Minimum defocus range in micrometers |
+| [defocus_range_increment](defocus_range_increment.md) | Defocus range increment, typically specified in micrometers |
+| [defocus_range_max](defocus_range_max.md) | Maximum defocus range, typically specified in micrometers |
+| [defocus_range_min](defocus_range_min.md) | Minimum defocus range, typically specified in micrometers |
 | [defocus_search_max](defocus_search_max.md) | Maximum defocus search range, typically specified in micrometers |
 | [defocus_search_min](defocus_search_min.md) | Minimum defocus search range, typically specified in micrometers |
 | [defocus_step](defocus_step.md) | Defocus search step, typically specified in micrometers |
-| [defocus_target](defocus_target.md) | Target defocus value in micrometers |
+| [defocus_target](defocus_target.md) | Target defocus value, typically specified in micrometers |
 | [defocus_u](defocus_u.md) | Defocus U, typically specified in micrometers |
 | [defocus_v](defocus_v.md) | Defocus V, typically specified in micrometers |
 | [delta_delta_g](delta_delta_g.md) | Change in folding free energy (kcal/mol) |
@@ -386,7 +385,7 @@ Name: lambda-ber-schema
 | [dose](dose.md) | Electron dose in e-/Å² |
 | [dose_per_frame](dose_per_frame.md) | Electron dose per frame in e-/Angstrom^2 |
 | [dose_per_tilt](dose_per_tilt.md) | Electron dose applied at each tilt step, typically specified in e-/Angstrom^2 |
-| [dose_rate](dose_rate.md) | Dose rate in e-/pixel/s or e-/Angstrom^2/s |
+| [dose_rate](dose_rate.md) | Dose rate, typically specified in e-/pixel/s or e-/Angstrom^2/s |
 | [dose_weighting](dose_weighting.md) | Whether dose weighting was applied |
 | [drift_total](drift_total.md) | Total drift, typically specified in Angstroms |
 | [drop_ratio_protein_to_reservoir](drop_ratio_protein_to_reservoir.md) | Ratio of protein to reservoir solution in drop (e |
@@ -430,7 +429,7 @@ Name: lambda-ber-schema
 | [experimental_conditions](experimental_conditions.md) | Environmental and experimental conditions |
 | [experimental_method](experimental_method.md) | Specific experimental method for structure determination (particularly for di... |
 | [exposure_time](exposure_time.md) | Exposure time per image, typically specified in seconds (s) |
-| [exposure_time_per_frame](exposure_time_per_frame.md) | Exposure time per frame in milliseconds |
+| [exposure_time_per_frame](exposure_time_per_frame.md) | Exposure time per frame, typically specified in milliseconds |
 | [expression_system](expression_system.md) | Expression system used |
 | [facility_name](facility_name.md) | Name of the research facility where the instrument is located |
 | [facility_ror](facility_ror.md) | Research Organization Registry (ROR) identifier for the facility |
@@ -474,6 +473,7 @@ Name: lambda-ber-schema
 | [goniometer_type](goniometer_type.md) | Type of goniometer |
 | [gpu_hours](gpu_hours.md) | GPU hours used, measured in hours |
 | [grid_material](grid_material.md) | Grid material |
+| [grid_quality](grid_quality.md) | Cryo-EM specific quality assessments of the imaged grid (ice contamination, i... |
 | [grid_square_id](grid_square_id.md) | Grid square identifier |
 | [grid_type](grid_type.md) | Type of EM grid used |
 | [growth_temperature_c](growth_temperature_c.md) | Growth temperature, typically specified in degrees Celsius |
@@ -811,7 +811,7 @@ Name: lambda-ber-schema
 | [timestamp](timestamp.md) | Acquisition timestamp |
 | [title](title.md) | A human-readable name or title for this entity |
 | [tls_used](tls_used.md) | Whether TLS (Translation/Libration/Screw) refinement was used |
-| [total_dose](total_dose.md) | Total electron dose in e-/Angstrom^2 |
+| [total_dose](total_dose.md) | Total electron dose, typically specified in e-/Angstrom^2 |
 | [total_exposure_time](total_exposure_time.md) | Total exposure time |
 | [total_frames](total_frames.md) | Total number of frames/images |
 | [total_rotation](total_rotation.md) | Total rotation range collected, typically specified in degrees |

@@ -2949,7 +2949,7 @@
           "description": "Micro-electron diffraction for atomic-resolution structure determination from microcrystals",
           "comments": [
             "Also known as MicroED or 3D electron diffraction (3DED)",
-            "Uses electron beam on sub-micron crystals; processing_scheme=3 in PNNL metadata"
+            "Uses an electron beam on sub-micron crystals"
           ]
         }
       ]
@@ -8602,7 +8602,7 @@
     },
     {
       "name": "experimentRun__calibrated_pixel_size",
-      "description": "Calibrated pixel size in Angstroms per pixel",
+      "description": "Calibrated pixel size, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
       "exact_mappings": [
         "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_image_recording.calibrated_pixel_size"
@@ -8633,7 +8633,7 @@
     },
     {
       "name": "experimentRun__exposure_time_per_frame",
-      "description": "Exposure time per frame in milliseconds",
+      "description": "Exposure time per frame, typically specified in milliseconds. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
       "exact_mappings": [
         "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_image_recording.average_exposure_time"
@@ -8681,7 +8681,7 @@
     },
     {
       "name": "experimentRun__total_dose",
-      "description": "Total electron dose in e-/Angstrom^2",
+      "description": "Total electron dose, typically specified in e-/Angstrom^2. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
       "exact_mappings": [
         "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_image_recording.avg_electron_dose_per_image"
@@ -8698,7 +8698,7 @@
     },
     {
       "name": "experimentRun__dose_rate",
-      "description": "Dose rate in e-/pixel/s or e-/Angstrom^2/s",
+      "description": "Dose rate, typically specified in e-/pixel/s or e-/Angstrom^2/s. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
       "slot_uri": "http://w3id.org/lambda/dose_rate",
       "alias": "dose_rate",
@@ -8712,7 +8712,7 @@
     },
     {
       "name": "experimentRun__defocus_target",
-      "description": "Target defocus value in micrometers",
+      "description": "Target defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
       "slot_uri": "http://w3id.org/lambda/defocus_target",
       "alias": "defocus_target",
@@ -8726,7 +8726,7 @@
     },
     {
       "name": "experimentRun__defocus_range_min",
-      "description": "Minimum defocus range in micrometers",
+      "description": "Minimum defocus range, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
       "exact_mappings": [
         "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_imaging.nominal_defocus_min"
@@ -8743,7 +8743,7 @@
     },
     {
       "name": "experimentRun__defocus_range_max",
-      "description": "Maximum defocus range in micrometers",
+      "description": "Maximum defocus range, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
       "exact_mappings": [
         "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_imaging.nominal_defocus_max"
@@ -8760,7 +8760,7 @@
     },
     {
       "name": "experimentRun__defocus_range_increment",
-      "description": "Defocus range increment in micrometers",
+      "description": "Defocus range increment, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
       "slot_uri": "http://w3id.org/lambda/defocus_range_increment",
       "alias": "defocus_range_increment",
@@ -8774,7 +8774,7 @@
     },
     {
       "name": "experimentRun__astigmatism_target",
-      "description": "Target astigmatism in Angstroms",
+      "description": "Target astigmatism, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
       "slot_uri": "http://w3id.org/lambda/astigmatism_target",
       "alias": "astigmatism_target",
@@ -8788,7 +8788,7 @@
     },
     {
       "name": "experimentRun__coma",
-      "description": "Coma aberration in nanometers",
+      "description": "Coma aberration, typically specified in nanometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
       "slot_uri": "http://w3id.org/lambda/coma",
       "alias": "coma",
@@ -13810,11 +13810,11 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "qualityMetrics__cryo_em",
+      "name": "qualityMetrics__grid_quality",
       "description": "Cryo-EM specific quality assessments of the imaged grid (ice contamination, ice quality, particle concentration)",
       "from_schema": "http://w3id.org/lambda/",
-      "slot_uri": "http://w3id.org/lambda/cryo_em",
-      "alias": "cryo_em",
+      "slot_uri": "http://w3id.org/lambda/grid_quality",
+      "alias": "grid_quality",
       "owner": "QualityMetrics",
       "domain_of": [
         "QualityMetrics"
@@ -18779,7 +18779,7 @@
         },
         {
           "name": "calibrated_pixel_size",
-          "description": "Calibrated pixel size in Angstroms per pixel",
+          "description": "Calibrated pixel size, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue.",
           "exact_mappings": [
             "mmCIF:_em_image_recording.calibrated_pixel_size"
           ],
@@ -18796,7 +18796,7 @@
         },
         {
           "name": "exposure_time_per_frame",
-          "description": "Exposure time per frame in milliseconds",
+          "description": "Exposure time per frame, typically specified in milliseconds. Data providers may specify alternative units by including the unit in the QuantityValue.",
           "exact_mappings": [
             "mmCIF:_em_image_recording.average_exposure_time"
           ],
@@ -18823,7 +18823,7 @@
         },
         {
           "name": "total_dose",
-          "description": "Total electron dose in e-/Angstrom^2",
+          "description": "Total electron dose, typically specified in e-/Angstrom^2. Data providers may specify alternative units by including the unit in the QuantityValue.",
           "exact_mappings": [
             "mmCIF:_em_image_recording.avg_electron_dose_per_image"
           ],
@@ -18833,21 +18833,21 @@
         },
         {
           "name": "dose_rate",
-          "description": "Dose rate in e-/pixel/s or e-/Angstrom^2/s",
+          "description": "Dose rate, typically specified in e-/pixel/s or e-/Angstrom^2/s. Data providers may specify alternative units by including the unit in the QuantityValue.",
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "defocus_target",
-          "description": "Target defocus value in micrometers",
+          "description": "Target defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "defocus_range_min",
-          "description": "Minimum defocus range in micrometers",
+          "description": "Minimum defocus range, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
           "exact_mappings": [
             "mmCIF:_em_imaging.nominal_defocus_min"
           ],
@@ -18857,7 +18857,7 @@
         },
         {
           "name": "defocus_range_max",
-          "description": "Maximum defocus range in micrometers",
+          "description": "Maximum defocus range, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
           "exact_mappings": [
             "mmCIF:_em_imaging.nominal_defocus_max"
           ],
@@ -18867,21 +18867,21 @@
         },
         {
           "name": "defocus_range_increment",
-          "description": "Defocus range increment in micrometers",
+          "description": "Defocus range increment, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "astigmatism_target",
-          "description": "Target astigmatism in Angstroms",
+          "description": "Target astigmatism, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "coma",
-          "description": "Coma aberration in nanometers",
+          "description": "Coma aberration, typically specified in nanometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -22033,7 +22033,7 @@
         "qualityMetrics__average_b_factor_a2",
         "qualityMetrics__i_zero",
         "qualityMetrics__rg",
-        "qualityMetrics__cryo_em",
+        "qualityMetrics__grid_quality",
         "qualityMetrics__r_factor"
       ],
       "slot_usage": {},
@@ -22313,7 +22313,7 @@
           "@type": "SlotDefinition"
         },
         {
-          "name": "cryo_em",
+          "name": "grid_quality",
           "description": "Cryo-EM specific quality assessments of the imaged grid (ice contamination, ice quality, particle concentration)",
           "range": "CryoEMQualityMetrics",
           "inlined": true,
@@ -24385,9 +24385,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda_ber_schema.yaml",
-  "source_file_date": "2026-08-07T15:45:43",
-  "source_file_size": 195769,
-  "generation_date": "2026-08-07T15:47:45",
+  "source_file_date": "2026-08-07T16:23:54",
+  "source_file_size": 196849,
+  "generation_date": "2026-08-07T16:24:16",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda_ber_schema.context.jsonld",

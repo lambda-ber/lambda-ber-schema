@@ -17,8 +17,8 @@ Alias: dose_per_frame
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Movie](Movie.md) | Raw cryo-EM movie with frame-by-frame metadata for motion correction |  no  |
 | [DataCollectionStrategy](DataCollectionStrategy.md) | Strategy for data collection |  no  |
+| [Movie](Movie.md) | Raw cryo-EM movie with frame-by-frame metadata for motion correction |  no  |
 
 
 
