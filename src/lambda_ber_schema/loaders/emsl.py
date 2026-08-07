@@ -403,11 +403,21 @@ class EMSLLoader(BaseLoader):
             ".//totalDose",
         )
         if dose:
-            # If dose looks like per-frame dose (< 5), multiply by frames to get total.
-            if dose < 5 and "frames_per_movie" in result:
+            # The tags above are a mix: TotalExposureDose and TotalDose are
+            # whole-movie totals, DosePerFrame is per frame, and different EPU
+            # versions populate different ones. Magnitude is what separates
+            # them in practice -- single particle collection runs roughly
+            # 30-70 e-/A^2 over a movie, spread across ~40 frames, so a
+            # per-frame figure lands near 1 and a total never approaches it.
+            # 5 e-/A^2 sits in the empty gap between those populations.
+            #
+            # This is a heuristic, not a guarantee. A genuinely low-dose total
+            # would be scaled up wrongly here; prefer an explicit per-frame tag
+            # if a future EPU schema offers one.
+            PER_FRAME_DOSE_CEILING = 5
+            if dose < PER_FRAME_DOSE_CEILING and "frames_per_movie" in result:
                 dose_total = dose * result["frames_per_movie"]["numeric_value"]
                 result["total_dose"] = {"numeric_value": round(dose_total, 2), "unit": "e-/Å²"}
-                result["dose_per_frame"] = {"numeric_value": round(dose, 4), "unit": "e-/Å²/frame"}
             else:
                 result["total_dose"] = {"numeric_value": round(dose, 2), "unit": "e-/Å²"}
 
