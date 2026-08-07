@@ -465,10 +465,62 @@ class EMSLLoader(BaseLoader):
         if holes is not None:
             result["holes_per_group"] = {"numeric_value": int(holes), "unit": ""}
 
-        # Stage tilt
+        # Stage tilt (single-orientation acquisition)
         tilt = self._float(root, ".//StageTilt", ".//stageTilt", ".//TiltAngle")
         if tilt is not None:
             result["stage_tilt"] = {"numeric_value": round(tilt, 2), "unit": "degrees"}
+
+        # Tilt series geometry (tomography sessions)
+        tilt_start = self._float(
+            root,
+            ".//TiltAngleStart",
+            ".//StartTiltAngle",
+            ".//AlphaTiltStart",
+            ".//MinTiltAngle",
+        )
+        tilt_end = self._float(
+            root,
+            ".//TiltAngleEnd",
+            ".//EndTiltAngle",
+            ".//AlphaTiltEnd",
+            ".//MaxTiltAngle",
+        )
+        if tilt_start is not None and tilt_end is not None:
+            # EPU/tomo sessions may record the sweep in either direction.
+            tilt_start, tilt_end = sorted((tilt_start, tilt_end))
+        if tilt_start is not None:
+            result["tilt_angle_min"] = {"numeric_value": round(tilt_start, 2), "unit": "degrees"}
+        if tilt_end is not None:
+            result["tilt_angle_max"] = {"numeric_value": round(tilt_end, 2), "unit": "degrees"}
+
+        tilt_step = self._float(
+            root,
+            ".//TiltAngleIncrement",
+            ".//TiltAngleStep",
+            ".//AlphaTiltStep",
+            ".//TiltStep",
+        )
+        if tilt_step is not None:
+            result["tilt_angle_increment"] = {
+                "numeric_value": round(abs(tilt_step), 3),
+                "unit": "degrees",
+            }
+
+        tilt_axis = self._float(root, ".//TiltAxisAngle", ".//TiltAxisRotation")
+        if tilt_axis is not None:
+            result["tilt_axis_angle"] = {"numeric_value": round(tilt_axis, 2), "unit": "degrees"}
+
+        tilt_count = self._float(
+            root,
+            ".//NumberOfTiltImages",
+            ".//TiltImageCount",
+            ".//NumberOfTilts",
+        )
+        if tilt_count is not None:
+            result["number_of_tilt_images"] = {
+                "numeric_value": int(tilt_count),
+                "unit": "images",
+            }
 
         return result
 
@@ -963,6 +1015,8 @@ class EMSLLoader(BaseLoader):
             id=study_id,
             title=project_title,
             description=project.get("abstract") if project else None,
+            # EMSL's project number is the facility's proposal allocation ID.
+            proposal_id=project_id,
             keywords=[k for k in ["EMSL", project.get(
                 "project_type") if project else None] if k],
         )
@@ -1008,6 +1062,11 @@ class EMSLLoader(BaseLoader):
             shots_per_hole=epu.get("shots_per_hole"),
             holes_per_group=epu.get("holes_per_group"),
             stage_tilt=epu.get("stage_tilt"),
+            tilt_angle_min=epu.get("tilt_angle_min"),
+            tilt_angle_max=epu.get("tilt_angle_max"),
+            tilt_angle_increment=epu.get("tilt_angle_increment"),
+            tilt_axis_angle=epu.get("tilt_axis_angle"),
+            number_of_tilt_images=epu.get("number_of_tilt_images"),
         )
 
         instruments: list[Instrument] = []
@@ -1222,6 +1281,14 @@ class EMSLLoader(BaseLoader):
             return TechniqueEnum.saxs
         if any(token in text for token in ("xanes", "exafs", "xas")):
             return TechniqueEnum.xas
+        # Check MicroED before the general cryo-EM tokens, since MicroED runs
+        # happen on the same instruments and would otherwise be swallowed.
+        if any(re.search(pattern, text) for pattern in (
+            r"\bmicro[-\s]?ed\b",
+            r"\b3ded\b",
+            r"\belectron\s+diffraction\b",
+        )):
+            return TechniqueEnum.microed
         if any(token in text for token in ("krios", "arctica", "aquilos", "cryo", "pncc", "epu", "atlas")):
             return TechniqueEnum.cryo_em
 

@@ -6,6 +6,7 @@ keywords:
 - pncc.short_sample_name
 studies:
 - id: emsl:project_160707
+  proposal_id: '160707'
   title: Understanding the multi-drug resistance mechanisms in fungal pathogen
   description: Fungal diseases claim over 1.5 million lives annually and affect more
     than a billion people worldwide, presenting a significant challenge due to increasing
