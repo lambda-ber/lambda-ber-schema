@@ -1149,7 +1149,7 @@
 
 
 <h1 id="slot-exposure_time_per_frame">Slot: exposure_time_per_frame</h1>
-<p><em>Exposure time per frame in milliseconds</em></p>
+<p><em>Exposure time per frame, typically specified in milliseconds. Data providers may specify alternative units by including the unit in the QuantityValue.</em></p>
 <p>URI: <a href="http://w3id.org/lambda/exposure_time_per_frame">lambda:exposure_time_per_frame</a>
 Alias: exposure_time_per_frame</p>
 <!-- no inheritance hierarchy -->
@@ -1207,7 +1207,8 @@ Alias: exposure_time_per_frame</p>
 <details>
 
 <pre><code class="language-yaml">name: exposure_time_per_frame
-description: Exposure time per frame in milliseconds
+description: Exposure time per frame, typically specified in milliseconds. Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: http://w3id.org/lambda/
 exact_mappings:
 - mmCIF:_em_image_recording.average_exposure_time

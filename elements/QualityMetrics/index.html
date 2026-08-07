@@ -600,6 +600,17 @@
 
       QualityMetrics : description
 
+      QualityMetrics : grid_quality
+
+
+
+
+
+        QualityMetrics --&gt; "0..1" CryoEMQualityMetrics : grid_quality
+        click CryoEMQualityMetrics href "../CryoEMQualityMetrics/"
+
+
+
       QualityMetrics : i_zero
 
 
@@ -1062,6 +1073,12 @@
 <td>direct</td>
 </tr>
 <tr>
+<td><a href="../grid_quality/">grid_quality</a></td>
+<td>0..1 <br/> <a href="../CryoEMQualityMetrics/">CryoEMQualityMetrics</a></td>
+<td>Cryo-EM specific quality assessments of the imaged grid (ice contamination, i...</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../r_factor/">r_factor</a></td>
 <td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>R-factor for crystallography (deprecated, use r_work)</td>
@@ -1463,6 +1480,16 @@ attributes:
     domain_of:
     - QualityMetrics
     range: QuantityValue
+    inlined: true
+  grid_quality:
+    name: grid_quality
+    description: Cryo-EM specific quality assessments of the imaged grid (ice contamination,
+      ice quality, particle concentration)
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    domain_of:
+    - QualityMetrics
+    range: CryoEMQualityMetrics
     inlined: true
   r_factor:
     name: r_factor
@@ -1878,6 +1905,18 @@ attributes:
     domain_of:
     - QualityMetrics
     range: QuantityValue
+    inlined: true
+  grid_quality:
+    name: grid_quality
+    description: Cryo-EM specific quality assessments of the imaged grid (ice contamination,
+      ice quality, particle concentration)
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    alias: grid_quality
+    owner: QualityMetrics
+    domain_of:
+    - QualityMetrics
+    range: CryoEMQualityMetrics
     inlined: true
   r_factor:
     name: r_factor

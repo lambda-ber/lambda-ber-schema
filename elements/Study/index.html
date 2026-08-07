@@ -525,6 +525,8 @@
 
       Study : keywords
 
+      Study : proposal_id
+
       Study : title
 
 
@@ -547,6 +549,12 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><a href="../proposal_id/">proposal_id</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Facility proposal or project identifier associated with this study (e</td>
+<td>direct</td>
+</tr>
 <tr>
 <td><a href="../keywords/">keywords</a></td>
 <td>* <br/> <a href="../String/">String</a></td>
@@ -652,6 +660,15 @@ related_mappings:
 - IHMCIF:_ihm_entry_collection_mapping
 is_a: NamedThing
 attributes:
+  proposal_id:
+    name: proposal_id
+    description: Facility proposal or project identifier associated with this study
+      (e.g., a DOE or facility allocation ID)
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    domain_of:
+    - Study
+    range: string
   keywords:
     name: keywords
     description: Keywords or tags describing the study for search and categorization
@@ -676,6 +693,17 @@ related_mappings:
 - IHMCIF:_ihm_entry_collection_mapping
 is_a: NamedThing
 attributes:
+  proposal_id:
+    name: proposal_id
+    description: Facility proposal or project identifier associated with this study
+      (e.g., a DOE or facility allocation ID)
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    alias: proposal_id
+    owner: Study
+    domain_of:
+    - Study
+    range: string
   keywords:
     name: keywords
     description: Keywords or tags describing the study for search and categorization

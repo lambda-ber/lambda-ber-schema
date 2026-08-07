@@ -1463,6 +1463,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Individual conformational state</td>
 </tr>
 <tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="CryoEMQualityMetrics/">CryoEMQualityMetrics</a></td>
+<td>Cryo-EM specific quality assessments recorded during or after data collection</td>
+</tr>
+<tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="CrystallizationConditions/">CrystallizationConditions</a></td>
 <td>Crystal growth conditions for X-ray crystallography (NSLS2 Crystallization ma...</td>
 </tr>
@@ -1851,7 +1855,7 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 </tr>
 <tr>
 <td><a href="astigmatism_target/">astigmatism_target</a></td>
-<td>Target astigmatism in Angstroms</td>
+<td>Target astigmatism, typically specified in Angstroms</td>
 </tr>
 <tr>
 <td><a href="atmosphere/">atmosphere</a></td>
@@ -1946,10 +1950,6 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Type of beam trap (if any)</td>
 </tr>
 <tr>
-<td><a href="beamline/">beamline</a></td>
-<td>Beamline identifier (e</td>
-</tr>
-<tr>
 <td><a href="beamline_id/">beamline_id</a></td>
 <td>Beamline identifier at synchrotron/neutron facility</td>
 </tr>
@@ -2027,7 +2027,7 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 </tr>
 <tr>
 <td><a href="calibrated_pixel_size/">calibrated_pixel_size</a></td>
-<td>Calibrated pixel size in Angstroms per pixel</td>
+<td>Calibrated pixel size, typically specified in Angstroms per pixel</td>
 </tr>
 <tr>
 <td><a href="calibration_standard/">calibration_standard</a></td>
@@ -2036,6 +2036,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="camera_binning/">camera_binning</a></td>
 <td>Camera binning factor</td>
+</tr>
+<tr>
+<td><a href="camera_length/">camera_length</a></td>
+<td>Camera length for electron diffraction (e</td>
 </tr>
 <tr>
 <td><a href="cc_anomalous/">cc_anomalous</a></td>
@@ -2119,7 +2123,7 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 </tr>
 <tr>
 <td><a href="coma/">coma</a></td>
-<td>Coma aberration in nanometers</td>
+<td>Coma aberration, typically specified in nanometers</td>
 </tr>
 <tr>
 <td><a href="completed_at/">completed_at</a></td>
@@ -2335,15 +2339,15 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 </tr>
 <tr>
 <td><a href="defocus_range_increment/">defocus_range_increment</a></td>
-<td>Defocus range increment in micrometers</td>
+<td>Defocus range increment, typically specified in micrometers</td>
 </tr>
 <tr>
 <td><a href="defocus_range_max/">defocus_range_max</a></td>
-<td>Maximum defocus range in micrometers</td>
+<td>Maximum defocus range, typically specified in micrometers</td>
 </tr>
 <tr>
 <td><a href="defocus_range_min/">defocus_range_min</a></td>
-<td>Minimum defocus range in micrometers</td>
+<td>Minimum defocus range, typically specified in micrometers</td>
 </tr>
 <tr>
 <td><a href="defocus_search_max/">defocus_search_max</a></td>
@@ -2359,7 +2363,7 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 </tr>
 <tr>
 <td><a href="defocus_target/">defocus_target</a></td>
-<td>Target defocus value in micrometers</td>
+<td>Target defocus value, typically specified in micrometers</td>
 </tr>
 <tr>
 <td><a href="defocus_u/">defocus_u</a></td>
@@ -2482,8 +2486,12 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Electron dose per frame in e-/Angstrom^2</td>
 </tr>
 <tr>
+<td><a href="dose_per_tilt/">dose_per_tilt</a></td>
+<td>Electron dose applied at each tilt step, typically specified in e-/Angstrom^2</td>
+</tr>
+<tr>
 <td><a href="dose_rate/">dose_rate</a></td>
-<td>Dose rate in e-/pixel/s or e-/Angstrom^2/s</td>
+<td>Dose rate, typically specified in e-/pixel/s or e-/Angstrom^2/s</td>
 </tr>
 <tr>
 <td><a href="dose_weighting/">dose_weighting</a></td>
@@ -2508,6 +2516,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="druggability_score/">druggability_score</a></td>
 <td>Druggability score of the binding site (range: 0-1)</td>
+</tr>
+<tr>
+<td><a href="dual_tilt_axis_rotation/">dual_tilt_axis_rotation</a></td>
+<td>Rotation between the two tilt axes in a dual-axis tomography acquisition, typ...</td>
 </tr>
 <tr>
 <td><a href="duration/">duration</a></td>
@@ -2655,7 +2667,7 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 </tr>
 <tr>
 <td><a href="exposure_time_per_frame/">exposure_time_per_frame</a></td>
-<td>Exposure time per frame in milliseconds</td>
+<td>Exposure time per frame, typically specified in milliseconds</td>
 </tr>
 <tr>
 <td><a href="expression_system/">expression_system</a></td>
@@ -2672,6 +2684,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="feature_type/">feature_type</a></td>
 <td>Type of structural feature</td>
+</tr>
+<tr>
+<td><a href="fiducial_size/">fiducial_size</a></td>
+<td>Size of fiducial markers used for tomographic alignment</td>
 </tr>
 <tr>
 <td><a href="file_format/">file_format</a></td>
@@ -2744,6 +2760,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="frames_per_movie/">frames_per_movie</a></td>
 <td>Number of frames per movie</td>
+</tr>
+<tr>
+<td><a href="frames_per_second/">frames_per_second</a></td>
+<td>Frame acquisition rate</td>
 </tr>
 <tr>
 <td><a href="free_energy/">free_energy</a></td>
@@ -2822,6 +2842,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Grid material</td>
 </tr>
 <tr>
+<td><a href="grid_quality/">grid_quality</a></td>
+<td>Cryo-EM specific quality assessments of the imaged grid (ice contamination, i...</td>
+</tr>
+<tr>
 <td><a href="grid_square_id/">grid_square_id</a></td>
 <td>Grid square identifier</td>
 </tr>
@@ -2876,6 +2900,14 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="i_zero/">i_zero</a></td>
 <td>Forward scattering intensity I(0)</td>
+</tr>
+<tr>
+<td><a href="ice_contamination/">ice_contamination</a></td>
+<td>Assessment of ice contamination level on the cryo-EM grid</td>
+</tr>
+<tr>
+<td><a href="ice_quality/">ice_quality</a></td>
+<td>Assessment of vitreous ice thickness/quality for data collection</td>
 </tr>
 <tr>
 <td><a href="ice_thickness_estimate/">ice_thickness_estimate</a></td>
@@ -2948,6 +2980,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="instrument_id/">instrument_id</a></td>
 <td>Reference to the instrument</td>
+</tr>
+<tr>
+<td><a href="instrument_registry_id/">instrument_registry_id</a></td>
+<td>Controlled-vocabulary identifier linking this instrument to its canonical ent...</td>
 </tr>
 <tr>
 <td><a href="instruments/">instruments</a></td>
@@ -3242,6 +3278,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Number of scans averaged for the spectrum</td>
 </tr>
 <tr>
+<td><a href="number_of_tilt_images/">number_of_tilt_images</a></td>
+<td>Number of images collected in the tilt series</td>
+</tr>
+<tr>
 <td><a href="number_of_waters/">number_of_waters</a></td>
 <td>Number of water molecules modeled</td>
 </tr>
@@ -3328,6 +3368,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="parent_sample_id/">parent_sample_id</a></td>
 <td>Reference to parent sample for derivation tracking</td>
+</tr>
+<tr>
+<td><a href="particle_concentration/">particle_concentration</a></td>
+<td>Assessment of particle concentration on the cryo-EM grid</td>
 </tr>
 <tr>
 <td><a href="particle_picking_params/">particle_picking_params</a></td>
@@ -3472,6 +3516,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="property_type/">property_type</a></td>
 <td>Type of biophysical property</td>
+</tr>
+<tr>
+<td><a href="proposal_id/">proposal_id</a></td>
+<td>Facility proposal or project identifier associated with this study (e</td>
 </tr>
 <tr>
 <td><a href="protease/">protease</a></td>
@@ -3730,6 +3778,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Rotation angle of the detector</td>
 </tr>
 <tr>
+<td><a href="rotation_rate/">rotation_rate</a></td>
+<td>Continuous rotation rate during data collection (e</td>
+</tr>
+<tr>
 <td><a href="rpim/">rpim</a></td>
 <td>Rpim - precision-indicating merging R-factor</td>
 </tr>
@@ -3959,7 +4011,7 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 </tr>
 <tr>
 <td><a href="stage_tilt/">stage_tilt</a></td>
-<td>Stage tilt angle in degrees</td>
+<td>Fixed stage tilt angle for a single-orientation acquisition, typically specif...</td>
 </tr>
 <tr>
 <td><a href="start_angle/">start_angle</a></td>
@@ -4110,6 +4162,26 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Picking threshold</td>
 </tr>
 <tr>
+<td><a href="tilt_angle_increment/">tilt_angle_increment</a></td>
+<td>Tilt angle increment between successive tilt steps</td>
+</tr>
+<tr>
+<td><a href="tilt_angle_max/">tilt_angle_max</a></td>
+<td>Highest (most positive) tilt angle in the tilt series, typically specified in...</td>
+</tr>
+<tr>
+<td><a href="tilt_angle_min/">tilt_angle_min</a></td>
+<td>Lowest (most negative) tilt angle in the tilt series, typically specified in ...</td>
+</tr>
+<tr>
+<td><a href="tilt_axis_angle/">tilt_axis_angle</a></td>
+<td>In-plane azimuth of the tilt axis relative to the detector x-axis, typically ...</td>
+</tr>
+<tr>
+<td><a href="tilting_scheme/">tilting_scheme</a></td>
+<td>Tilt scheme used during tomographic data collection</td>
+</tr>
+<tr>
 <td><a href="timestamp/">timestamp</a></td>
 <td>Acquisition timestamp</td>
 </tr>
@@ -4123,11 +4195,11 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 </tr>
 <tr>
 <td><a href="total_dose/">total_dose</a></td>
-<td>Total electron dose in e-/Angstrom^2</td>
+<td>Total electron dose, typically specified in e-/Angstrom^2</td>
 </tr>
 <tr>
 <td><a href="total_exposure_time/">total_exposure_time</a></td>
-<td>Total exposure time in milliseconds</td>
+<td>Total exposure time</td>
 </tr>
 <tr>
 <td><a href="total_frames/">total_frames</a></td>
@@ -4453,6 +4525,14 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Types of EM grids</td>
 </tr>
 <tr>
+<td><a href="IceContaminationEnum/">IceContaminationEnum</a></td>
+<td>Assessment of ice contamination level on a cryo-EM grid</td>
+</tr>
+<tr>
+<td><a href="IceQualityEnum/">IceQualityEnum</a></td>
+<td>Assessment of vitreous ice thickness/quality for cryo-EM data collection</td>
+</tr>
+<tr>
 <td><a href="IlluminationTypeEnum/">IlluminationTypeEnum</a></td>
 <td>Types of illumination for optical microscopy</td>
 </tr>
@@ -4495,6 +4575,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="OutputTypeEnum/">OutputTypeEnum</a></td>
 <td>Types of outputs from computational workflows</td>
+</tr>
+<tr>
+<td><a href="ParticleConcentrationEnum/">ParticleConcentrationEnum</a></td>
+<td>Assessment of particle concentration on a cryo-EM grid</td>
 </tr>
 <tr>
 <td><a href="PhasingMethodEnum/">PhasingMethodEnum</a></td>
@@ -4543,6 +4627,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="TechniqueEnum/">TechniqueEnum</a></td>
 <td>Structural biology techniques</td>
+</tr>
+<tr>
+<td><a href="TiltingSchemeEnum/">TiltingSchemeEnum</a></td>
+<td>Tilt scheme used during tomographic or continuous-rotation data collection</td>
 </tr>
 <tr>
 <td><a href="VitrificationMethodEnum/">VitrificationMethodEnum</a></td>

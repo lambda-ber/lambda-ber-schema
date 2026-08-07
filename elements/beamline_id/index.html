@@ -1174,11 +1174,6 @@ Alias: beamline_id</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../XRayInstrument/">XRayInstrument</a></td>
-<td>X-ray diffractometer or synchrotron beamline specifications</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../BeamlineInstrument/">BeamlineInstrument</a></td>
 <td>Multi-technique synchrotron beamline that supports multiple experimental meth...</td>
 <td>no</td>
@@ -1194,13 +1189,18 @@ Alias: beamline_id</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../CryoEMInstrument/">CryoEMInstrument</a></td>
-<td>Cryo-EM microscope specifications</td>
+<td><a href="../XRayInstrument/">XRayInstrument</a></td>
+<td>X-ray diffractometer or synchrotron beamline specifications</td>
 <td>no</td>
 </tr>
 <tr>
 <td><a href="../Instrument/">Instrument</a></td>
 <td>An instrument used to collect data</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../CryoEMInstrument/">CryoEMInstrument</a></td>
+<td>Cryo-EM microscope specifications</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -1213,6 +1213,7 @@ Alias: beamline_id</p>
 <ul>
 <li>Use facility-specific naming convention</li>
 <li>Examples: '12.3.1' (ALS), '17-ID-1' (NSLS-II), 'I04' (Diamond)</li>
+<li>For a validated controlled-vocabulary identity, also set instrument_registry_id (e.g., APS_SBCCAT_19ID)</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -1238,7 +1239,7 @@ Alias: beamline_id</p>
 </tr>
 <tr>
 <td>exact</td>
-<td>mmCIF:_diffrn_source.pdbx_synchrotron_beamline</td>
+<td>mmCIF:_diffrn_source.pdbx_synchrotron_beamline, nsls2:Beamline, ispyb:BLSession.beamLineName</td>
 </tr>
 </tbody>
 </table>
@@ -1250,9 +1251,13 @@ description: Beamline identifier at synchrotron/neutron facility
 comments:
 - Use facility-specific naming convention
 - 'Examples: ''12.3.1'' (ALS), ''17-ID-1'' (NSLS-II), ''I04'' (Diamond)'
+- For a validated controlled-vocabulary identity, also set instrument_registry_id
+  (e.g., APS_SBCCAT_19ID)
 from_schema: http://w3id.org/lambda/
 exact_mappings:
 - mmCIF:_diffrn_source.pdbx_synchrotron_beamline
+- nsls2:Beamline
+- ispyb:BLSession.beamLineName
 rank: 1000
 alias: beamline_id
 owner: Instrument
