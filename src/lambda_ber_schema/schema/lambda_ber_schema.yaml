@@ -2884,7 +2884,7 @@ classes:
         close_mappings:
           - IHMCIF:_ihm_sas_restraint.radius_of_gyration
       # Cryo-EM grid assessment metrics
-      cryo_em:
+      grid_quality:
         description: "Cryo-EM specific quality assessments of the imaged grid (ice contamination, ice quality, particle concentration)"
         range: CryoEMQualityMetrics
         inlined: true

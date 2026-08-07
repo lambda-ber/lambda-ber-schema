@@ -9,7 +9,7 @@ quality_metrics:
   resolution:
     numeric_value: 3.1
     unit: Angstroms
-  cryo_em:
+  grid_quality:
     ice_contamination: limited
     ice_quality: ideal
     particle_concentration: optimal
