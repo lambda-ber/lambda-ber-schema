@@ -255,6 +255,34 @@ class TestEMSLLoader:
         assert parsed["tilt_axis_angle"]["numeric_value"] == 85.3
         assert parsed["number_of_tilt_images"]["numeric_value"] == 41
 
+    def test_infer_technique_warns_when_falling_back(self):
+        """The cryo_em default is a guess and should be reported as one."""
+        loader = EMSLLoader()
+        warnings: list[str] = []
+        technique = loader._infer_technique(
+            sample_key="example.key",
+            sample_value="emsl_sample",
+            resource=None,
+            files=[],
+            warnings=warnings,
+        )
+        assert technique == TechniqueEnum.cryo_em
+        assert len(warnings) == 1
+        assert "defaulting to cryo_em" in warnings[0]
+
+    def test_infer_technique_does_not_warn_on_a_real_match(self):
+        """A recognised technique is not a guess and should stay quiet."""
+        loader = EMSLLoader()
+        warnings: list[str] = []
+        loader._infer_technique(
+            sample_key="example.key",
+            sample_value="saxs run",
+            resource=None,
+            files=[],
+            warnings=warnings,
+        )
+        assert warnings == []
+
     def test_parse_epu_session_xml_extracts_tilting_scheme(self):
         """An explicit tilt scheme tag should map onto TiltingSchemeEnum."""
         loader = EMSLLoader()

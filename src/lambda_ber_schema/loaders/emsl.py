@@ -1051,7 +1051,7 @@ class EMSLLoader(BaseLoader):
         )
 
         technique = self._infer_technique(
-            sample_key, sample_value, resource, files)
+            sample_key, sample_value, resource, files, warnings)
 
         # Optional: enrich with EPU session metadata from tar archive (requires JWT).
         epu = self._build_epu_quantity_values(
@@ -1273,8 +1273,15 @@ class EMSLLoader(BaseLoader):
         sample_value: str,
         resource: dict[str, Any] | None,
         files: list[dict[str, Any]],
+        warnings: list[str] | None = None,
     ) -> TechniqueEnum:
-        """Infer TechniqueEnum from transaction metadata."""
+        """
+        Infer TechniqueEnum from transaction metadata.
+
+        When nothing in the metadata matches, falls back to cryo_em and
+        appends a note to ``warnings`` if one was supplied, so a guessed
+        technique is never mistaken for a recorded one.
+        """
         resource_name = ""
         if resource:
             resource_name = " ".join(
@@ -1316,7 +1323,14 @@ class EMSLLoader(BaseLoader):
         if any(token in text for token in ("krios", "arctica", "aquilos", "cryo", "pncc", "epu", "atlas")):
             return TechniqueEnum.cryo_em
 
-        # Most publicly visible sample-search transactions at EMSL are cryo-EM.
+        # Most publicly visible sample-search transactions at EMSL are cryo-EM,
+        # but EMSL also hosts SAXS, NMR and other modalities, so this default is
+        # a guess and is recorded as one.
+        if warnings is not None:
+            warnings.append(
+                f"Could not determine technique for sample '{sample_value}' "
+                f"(key '{sample_key}'); defaulting to cryo_em"
+            )
         return TechniqueEnum.cryo_em
 
     def _infer_instrument_category(self, resource_name: str) -> InstrumentCategoryEnum:
