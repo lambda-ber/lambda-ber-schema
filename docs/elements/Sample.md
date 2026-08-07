@@ -371,6 +371,7 @@ URI: [lambda:Sample](http://w3id.org/lambda/Sample)
 | ---  | ---  |
 | self | lambda:Sample |
 | native | lambda:Sample |
+| related | IHMCIF:_ihm_struct_assembly, IHMCIF:_ihm_struct_assembly_details, IHMCIF:_ihm_entity_poly_segment |
 
 
 
@@ -388,6 +389,10 @@ URI: [lambda:Sample](http://w3id.org/lambda/Sample)
 name: Sample
 description: A biological sample used in structural biology experiments
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_struct_assembly
+- IHMCIF:_ihm_struct_assembly_details
+- IHMCIF:_ihm_entity_poly_segment
 is_a: NamedThing
 attributes:
   sample_code:
@@ -715,6 +720,10 @@ attributes:
 name: Sample
 description: A biological sample used in structural biology experiments
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_struct_assembly
+- IHMCIF:_ihm_struct_assembly_details
+- IHMCIF:_ihm_entity_poly_segment
 is_a: NamedThing
 attributes:
   sample_code:

@@ -3,6 +3,7 @@
   "title": "APS Beamline 23-ID-B (GM/CA)",
   "description": "GM/CA canted-undulator beamline for macromolecular crystallography",
   "instrument_code": "APS-23-ID-B",
+  "instrument_registry_id": "APS_GMCA_23IDB",
   "instrument_category": "SYNCHROTRON_BEAMLINE",
   "facility_name": "APS",
   "facility_ror": "https://ror.org/04qxsr837",

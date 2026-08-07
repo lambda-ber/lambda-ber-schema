@@ -173,6 +173,7 @@ URI: [lambda:Image3D](http://w3id.org/lambda/Image3D)
 | ---  | ---  |
 | self | lambda:Image3D |
 | native | lambda:Image3D |
+| related | IHMCIF:_ihm_3dem_restraint, IHMCIF:_ihm_localization_density_files |
 
 
 
@@ -190,6 +191,9 @@ URI: [lambda:Image3D](http://w3id.org/lambda/Image3D)
 name: Image3D
 description: A 3D volume or tomogram
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_3dem_restraint
+- IHMCIF:_ihm_localization_density_files
 is_a: Image
 attributes:
   dimensions_z:
@@ -230,6 +234,9 @@ attributes:
 name: Image3D
 description: A 3D volume or tomogram
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_3dem_restraint
+- IHMCIF:_ihm_localization_density_files
 is_a: Image
 attributes:
   dimensions_z:

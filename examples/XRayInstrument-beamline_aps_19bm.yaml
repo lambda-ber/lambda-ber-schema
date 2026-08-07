@@ -3,6 +3,7 @@ title: APS Beamline 19-BM (SBC)
 description: Structural Biology Center bending magnet beamline for macromolecular
   crystallography
 instrument_code: SBC 19-BM
+instrument_registry_id: APS_SBCCAT_19BM
 instrument_category: SYNCHROTRON_BEAMLINE
 facility_name: APS
 facility_ror: https://ror.org/04qxsr837

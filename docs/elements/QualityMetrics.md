@@ -101,6 +101,17 @@ URI: [lambda:QualityMetrics](http://w3id.org/lambda/QualityMetrics)
     
 
         
+      QualityMetrics : cryo_em
+        
+          
+    
+        
+        
+        QualityMetrics --> "0..1" CryoEMQualityMetrics : cryo_em
+        click CryoEMQualityMetrics href "../CryoEMQualityMetrics/"
+    
+
+        
       QualityMetrics : description
         
       QualityMetrics : i_zero
@@ -406,6 +417,7 @@ URI: [lambda:QualityMetrics](http://w3id.org/lambda/QualityMetrics)
 | [average_b_factor_a2](average_b_factor_a2.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Average B-factor in Angstroms squared | direct |
 | [i_zero](i_zero.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Forward scattering intensity I(0) | direct |
 | [rg](rg.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Radius of gyration, typically specified in Angstroms | direct |
+| [cryo_em](cryo_em.md) | 0..1 <br/> [CryoEMQualityMetrics](CryoEMQualityMetrics.md) | Cryo-EM specific quality assessments of the imaged grid (ice contamination, i... | direct |
 | [r_factor](r_factor.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | R-factor for crystallography (deprecated, use r_work) | direct |
 | [description](description.md) | 0..1 <br/> [String](String.md) |  | [AttributeGroup](AttributeGroup.md) |
 
@@ -446,6 +458,7 @@ URI: [lambda:QualityMetrics](http://w3id.org/lambda/QualityMetrics)
 | ---  | ---  |
 | self | lambda:QualityMetrics |
 | native | lambda:QualityMetrics |
+| related | IHMCIF:_ihm_ensemble_info, IHMCIF:_ihm_sas_restraint, IHMCIF:_ihm_3dem_restraint |
 
 
 
@@ -463,6 +476,10 @@ URI: [lambda:QualityMetrics](http://w3id.org/lambda/QualityMetrics)
 name: QualityMetrics
 description: Quality metrics for experiments
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_ensemble_info
+- IHMCIF:_ihm_sas_restraint
+- IHMCIF:_ihm_3dem_restraint
 is_a: AttributeGroup
 attributes:
   resolution:
@@ -787,10 +804,22 @@ attributes:
     description: Radius of gyration, typically specified in Angstroms. Data providers
       may specify alternative units by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
+    close_mappings:
+    - IHMCIF:_ihm_sas_restraint.radius_of_gyration
     rank: 1000
     domain_of:
     - QualityMetrics
     range: QuantityValue
+    inlined: true
+  cryo_em:
+    name: cryo_em
+    description: Cryo-EM specific quality assessments of the imaged grid (ice contamination,
+      ice quality, particle concentration)
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    domain_of:
+    - QualityMetrics
+    range: CryoEMQualityMetrics
     inlined: true
   r_factor:
     name: r_factor
@@ -812,6 +841,10 @@ attributes:
 name: QualityMetrics
 description: Quality metrics for experiments
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_ensemble_info
+- IHMCIF:_ihm_sas_restraint
+- IHMCIF:_ihm_3dem_restraint
 is_a: AttributeGroup
 attributes:
   resolution:
@@ -1197,12 +1230,26 @@ attributes:
     description: Radius of gyration, typically specified in Angstroms. Data providers
       may specify alternative units by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
+    close_mappings:
+    - IHMCIF:_ihm_sas_restraint.radius_of_gyration
     rank: 1000
     alias: rg
     owner: QualityMetrics
     domain_of:
     - QualityMetrics
     range: QuantityValue
+    inlined: true
+  cryo_em:
+    name: cryo_em
+    description: Cryo-EM specific quality assessments of the imaged grid (ice contamination,
+      ice quality, particle concentration)
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    alias: cryo_em
+    owner: QualityMetrics
+    domain_of:
+    - QualityMetrics
+    range: CryoEMQualityMetrics
     inlined: true
   r_factor:
     name: r_factor

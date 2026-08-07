@@ -106,6 +106,7 @@ URI: [lambda:WorkflowInputAssociation](http://w3id.org/lambda/WorkflowInputAssoc
 | ---  | ---  |
 | self | lambda:WorkflowInputAssociation |
 | native | lambda:WorkflowInputAssociation |
+| related | IHMCIF:_ihm_dataset_group_link, IHMCIF:_ihm_dataset_list |
 
 
 
@@ -123,6 +124,9 @@ URI: [lambda:WorkflowInputAssociation](http://w3id.org/lambda/WorkflowInputAssoc
 name: WorkflowInputAssociation
 description: Links input DataFiles to WorkflowRun
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_dataset_group_link
+- IHMCIF:_ihm_dataset_list
 attributes:
   workflow_id:
     name: workflow_id
@@ -164,6 +168,9 @@ attributes:
 name: WorkflowInputAssociation
 description: Links input DataFiles to WorkflowRun
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_dataset_group_link
+- IHMCIF:_ihm_dataset_list
 attributes:
   workflow_id:
     name: workflow_id

@@ -27,7 +27,7 @@ from pydantic import (
 
 
 metamodel_version = "None"
-version = "0.1.2.post123.dev0+b316f8a"
+version = "0.1.2.post178.dev0+17a9409"
 
 
 class ConfiguredBaseModel(BaseModel):
@@ -232,6 +232,8 @@ linkml_meta = LinkMLMeta({'default_prefix': 'lambda',
                          'prefix_reference': 'http://purl.obolibrary.org/obo/CL_'},
                   'GO': {'prefix_prefix': 'GO',
                          'prefix_reference': 'http://purl.obolibrary.org/obo/GO_'},
+                  'IHMCIF': {'prefix_prefix': 'IHMCIF',
+                             'prefix_reference': 'https://mmcif.wwpdb.org/dictionaries/mmcif_ihm_ext.dic/Items/'},
                   'NCBITaxon': {'prefix_prefix': 'NCBITaxon',
                                 'prefix_reference': 'http://purl.obolibrary.org/obo/NCBITaxon_'},
                   'PaNET': {'prefix_prefix': 'PaNET',
@@ -276,6 +278,8 @@ linkml_meta = LinkMLMeta({'default_prefix': 'lambda',
                           'prefix_reference': 'http://semanticscience.org/resource/'},
                   'skos': {'prefix_prefix': 'skos',
                            'prefix_reference': 'http://www.w3.org/2004/02/skos/core#'},
+                  'ssrl-mx': {'prefix_prefix': 'ssrl-mx',
+                              'prefix_reference': 'https://smb.slac.stanford.edu/dev/lims/lambda/'},
                   'wikidata': {'prefix_prefix': 'wikidata',
                                'prefix_reference': 'http://www.wikidata.org/entity/'}},
      'source_file': 'src/lambda_ber_schema/schema/lambda_ber_schema.yaml'} )
@@ -1820,6 +1824,18 @@ class BeamlineEnum(str, Enum):
     """
     Life Sciences Collaborative Access Team beamline
     """
+    LS_CAT_21_ID_D = "APS_LSCAT_21IDD"
+    """
+    Life Sciences Collaborative Access Team - undulator station D for macromolecular crystallography
+    """
+    LS_CAT_21_ID_F = "APS_LSCAT_21IDF"
+    """
+    Life Sciences Collaborative Access Team - undulator station F for macromolecular crystallography
+    """
+    LS_CAT_21_ID_G = "APS_LSCAT_21IDG"
+    """
+    Life Sciences Collaborative Access Team - undulator station G for macromolecular crystallography
+    """
     NE_CAT_24_ID_C = "APS_NECAT_24IDC"
     """
     Northeastern Collaborative Access Team - microfocus beamline
@@ -1840,6 +1856,10 @@ class BeamlineEnum(str, Enum):
     """
     Structural Biology Center Collaborative Access Team beamline
     """
+    SBC_CAT_LEFT_PARENTHESIS19_BMRIGHT_PARENTHESIS = "APS_SBCCAT_19BM"
+    """
+    Structural Biology Center Collaborative Access Team - bending magnet beamline for macromolecular crystallography
+    """
     BioCARS_LEFT_PARENTHESIS14_IDRIGHT_PARENTHESIS = "APS_BIOCARS_14ID"
     """
     Center for Advanced Radiation Sources - time-resolved crystallography
@@ -1855,6 +1875,10 @@ class BeamlineEnum(str, Enum):
     SSRL_BL9_2 = "SSRL_BL92"
     """
     Macromolecular crystallography beamline at Stanford Synchrotron Radiation Lightsource
+    """
+    SSRL_BL12_1 = "SSRL_BL121"
+    """
+    Macromolecular crystallography beamline at Stanford Synchrotron Radiation Lightsource with full remote access for MAD, SAD, and monochromatic data collection
     """
     SSRL_BL12_2 = "SSRL_BL122"
     """
@@ -2091,6 +2115,10 @@ class TechniqueEnum(str, Enum):
     xray_tomography = "xray_tomography"
     """
     X-ray computed tomography (micro-CT) for 3D imaging
+    """
+    microed = "microed"
+    """
+    Micro-electron diffraction for atomic-resolution structure determination from microcrystals
     """
 
 
@@ -2803,6 +2831,82 @@ class OutputTypeEnum(str, Enum):
     log = "log"
     """
     Processing log files
+    """
+
+
+class IceContaminationEnum(str, Enum):
+    """
+    Assessment of ice contamination level on a cryo-EM grid
+    """
+    none = "none"
+    """
+    No ice contamination observed
+    """
+    limited = "limited"
+    """
+    Limited ice contamination that does not significantly affect data quality
+    """
+    severe = "severe"
+    """
+    Severe ice contamination that significantly degrades data quality
+    """
+
+
+class IceQualityEnum(str, Enum):
+    """
+    Assessment of vitreous ice thickness/quality for cryo-EM data collection
+    """
+    ideal = "ideal"
+    """
+    Ice thickness is ideal for data collection
+    """
+    too_thin = "too_thin"
+    """
+    Ice is too thin, risk of air exposure or beam damage
+    """
+    too_thick = "too_thick"
+    """
+    Ice is too thick, reducing contrast and signal quality
+    """
+
+
+class ParticleConcentrationEnum(str, Enum):
+    """
+    Assessment of particle concentration on a cryo-EM grid
+    """
+    optimal = "optimal"
+    """
+    Particle concentration is suitable for data collection
+    """
+    too_low = "too_low"
+    """
+    Particle concentration is too low for efficient data collection
+    """
+    too_high = "too_high"
+    """
+    Particle concentration is too high, causing overlapping particles
+    """
+
+
+class TiltingSchemeEnum(str, Enum):
+    """
+    Tilt scheme used during tomographic or continuous-rotation data collection
+    """
+    none = "none"
+    """
+    No tilting performed (single exposure or non-tilt acquisition)
+    """
+    dose_symmetric = "dose_symmetric"
+    """
+    Dose-symmetric tilt scheme alternating around zero tilt to minimize accumulated dose at low tilt angles
+    """
+    linear = "linear"
+    """
+    Linear tilt scheme collecting images in a single sweep from minimum to maximum tilt
+    """
+    continuous = "continuous"
+    """
+    Continuous rotation data collection (e.g., used in MicroED/3DED)
     """
 
 
@@ -3790,7 +3894,10 @@ class Dataset(NamedThing):
     """
     Root container holding flat entity collections and association tables. Follows relational database design patterns for structural biology data.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/', 'tree_root': True})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/',
+         'related_mappings': ['IHMCIF:_ihm_entry_collection',
+                              'IHMCIF:_ihm_dataset_group'],
+         'tree_root': True})
 
     keywords: Optional[list[str]] = Field(default=None, description="""Keywords or tags describing the dataset for search and categorization""", json_schema_extra = { "linkml_meta": {'alias': 'keywords', 'domain_of': ['Dataset', 'Study']} })
     studies: Optional[list[Study]] = Field(default=None, description="""All studies in this dataset""", json_schema_extra = { "linkml_meta": {'alias': 'studies', 'domain_of': ['Dataset']} })
@@ -3819,8 +3926,11 @@ class Study(NamedThing):
     """
     A logical grouping of related experiments investigating a research question. In the relational model, Study is lightweight - all relationships are via association tables.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/',
+         'related_mappings': ['IHMCIF:_ihm_entry_collection',
+                              'IHMCIF:_ihm_entry_collection_mapping']})
 
+    proposal_id: Optional[str] = Field(default=None, description="""Facility proposal or project identifier associated with this study (e.g., a DOE or facility allocation ID)""", json_schema_extra = { "linkml_meta": {'alias': 'proposal_id', 'domain_of': ['Study']} })
     keywords: Optional[list[str]] = Field(default=None, description="""Keywords or tags describing the study for search and categorization""", json_schema_extra = { "linkml_meta": {'alias': 'keywords', 'domain_of': ['Dataset', 'Study']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
@@ -3831,7 +3941,10 @@ class Sample(NamedThing):
     """
     A biological sample used in structural biology experiments
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/',
+         'related_mappings': ['IHMCIF:_ihm_struct_assembly',
+                              'IHMCIF:_ihm_struct_assembly_details',
+                              'IHMCIF:_ihm_entity_poly_segment']})
 
     sample_code: str = Field(default=..., description="""Human-friendly laboratory identifier or facility code for the sample (e.g., 'ALS-12.3.1-SAMPLE-001', 'LAB-PROT-2024-01'). Used for local reference and tracking within laboratory workflows.""", json_schema_extra = { "linkml_meta": {'alias': 'sample_code', 'domain_of': ['Sample']} })
     sample_type: SampleTypeEnum = Field(default=..., description="""Type of biological sample""", json_schema_extra = { "linkml_meta": {'alias': 'sample_type', 'domain_of': ['Sample']} })
@@ -3982,6 +4095,18 @@ class Instrument(NamedThing):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/'})
 
     instrument_code: str = Field(default=..., description="""Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_code', 'domain_of': ['Instrument']} })
+    instrument_registry_id: Optional[BeamlineEnum] = Field(default=None, description="""Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_registry_id',
+         'any_of': [{'range': 'BeamlineEnum'}],
+         'comments': ['Use this to link an instrument record to a known, validated '
+                      'registry entry, enabling schema-level validation against typos',
+                      'instrument_code is a free-text local label; '
+                      'instrument_registry_id is the schema-level controlled identity',
+                      'beamline_id captures the facility-local string ID (e.g., '
+                      "'19-ID'); instrument_registry_id captures the enum identity "
+                      '(e.g., APS_SBCCAT_19ID)',
+                      'Distinct from the instrument_id foreign-key slot used in '
+                      'association tables, which references an Instrument object'],
+         'domain_of': ['Instrument']} })
     instrument_category: Optional[InstrumentCategoryEnum] = Field(default=None, description="""Category distinguishing beamlines from laboratory equipment""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_category',
          'comments': ['Use SYNCHROTRON_BEAMLINE for synchrotron beamlines',
                       'Use ELECTRON_MICROSCOPE for cryo-EM instruments'],
@@ -3998,9 +4123,13 @@ class Instrument(NamedThing):
          'domain_of': ['Instrument']} })
     beamline_id: Optional[str] = Field(default=None, description="""Beamline identifier at synchrotron/neutron facility""", json_schema_extra = { "linkml_meta": {'alias': 'beamline_id',
          'comments': ['Use facility-specific naming convention',
-                      "Examples: '12.3.1' (ALS), '17-ID-1' (NSLS-II), 'I04' (Diamond)"],
+                      "Examples: '12.3.1' (ALS), '17-ID-1' (NSLS-II), 'I04' (Diamond)",
+                      'For a validated controlled-vocabulary identity, also set '
+                      'instrument_registry_id (e.g., APS_SBCCAT_19ID)'],
          'domain_of': ['Instrument'],
-         'exact_mappings': ['mmCIF:_diffrn_source.pdbx_synchrotron_beamline']} })
+         'exact_mappings': ['mmCIF:_diffrn_source.pdbx_synchrotron_beamline',
+                            'nsls2:Beamline',
+                            'ispyb:BLSession.beamLineName']} })
     manufacturer: Optional[str] = Field(default=None, description="""Instrument manufacturer""", json_schema_extra = { "linkml_meta": {'alias': 'manufacturer', 'domain_of': ['Instrument']} })
     model: Optional[str] = Field(default=None, description="""Instrument model""", json_schema_extra = { "linkml_meta": {'alias': 'model', 'domain_of': ['Instrument']} })
     installation_date: Optional[str] = Field(default=None, description="""Date of instrument installation""", json_schema_extra = { "linkml_meta": {'alias': 'installation_date', 'domain_of': ['Instrument']} })
@@ -4085,6 +4214,18 @@ class CryoEMInstrument(Instrument):
          'exact_mappings': ['mmCIF:_em_imaging.mode']} })
     tem_beam_diameter: Optional[QuantityValue] = Field(default=None, description="""TEM beam diameter in micrometers""", json_schema_extra = { "linkml_meta": {'alias': 'tem_beam_diameter', 'domain_of': ['CryoEMInstrument']} })
     instrument_code: str = Field(default=..., description="""Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_code', 'domain_of': ['Instrument']} })
+    instrument_registry_id: Optional[BeamlineEnum] = Field(default=None, description="""Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_registry_id',
+         'any_of': [{'range': 'BeamlineEnum'}],
+         'comments': ['Use this to link an instrument record to a known, validated '
+                      'registry entry, enabling schema-level validation against typos',
+                      'instrument_code is a free-text local label; '
+                      'instrument_registry_id is the schema-level controlled identity',
+                      'beamline_id captures the facility-local string ID (e.g., '
+                      "'19-ID'); instrument_registry_id captures the enum identity "
+                      '(e.g., APS_SBCCAT_19ID)',
+                      'Distinct from the instrument_id foreign-key slot used in '
+                      'association tables, which references an Instrument object'],
+         'domain_of': ['Instrument']} })
     instrument_category: Optional[InstrumentCategoryEnum] = Field(default=None, description="""Category distinguishing beamlines from laboratory equipment""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_category',
          'comments': ['Use SYNCHROTRON_BEAMLINE for synchrotron beamlines',
                       'Use ELECTRON_MICROSCOPE for cryo-EM instruments'],
@@ -4101,9 +4242,13 @@ class CryoEMInstrument(Instrument):
          'domain_of': ['Instrument']} })
     beamline_id: Optional[str] = Field(default=None, description="""Beamline identifier at synchrotron/neutron facility""", json_schema_extra = { "linkml_meta": {'alias': 'beamline_id',
          'comments': ['Use facility-specific naming convention',
-                      "Examples: '12.3.1' (ALS), '17-ID-1' (NSLS-II), 'I04' (Diamond)"],
+                      "Examples: '12.3.1' (ALS), '17-ID-1' (NSLS-II), 'I04' (Diamond)",
+                      'For a validated controlled-vocabulary identity, also set '
+                      'instrument_registry_id (e.g., APS_SBCCAT_19ID)'],
          'domain_of': ['Instrument'],
-         'exact_mappings': ['mmCIF:_diffrn_source.pdbx_synchrotron_beamline']} })
+         'exact_mappings': ['mmCIF:_diffrn_source.pdbx_synchrotron_beamline',
+                            'nsls2:Beamline',
+                            'ispyb:BLSession.beamLineName']} })
     manufacturer: Optional[str] = Field(default=None, description="""Instrument manufacturer""", json_schema_extra = { "linkml_meta": {'alias': 'manufacturer', 'domain_of': ['Instrument']} })
     model: Optional[str] = Field(default=None, description="""Instrument model""", json_schema_extra = { "linkml_meta": {'alias': 'model', 'domain_of': ['Instrument']} })
     installation_date: Optional[str] = Field(default=None, description="""Date of instrument installation""", json_schema_extra = { "linkml_meta": {'alias': 'installation_date', 'domain_of': ['Instrument']} })
@@ -4169,6 +4314,18 @@ class XRayInstrument(Instrument):
          'exact_mappings': ['mmCIF:_diffrn_measurement.device']} })
     crystal_cooling_capability: Optional[bool] = Field(default=None, description="""Crystal cooling system available""", json_schema_extra = { "linkml_meta": {'alias': 'crystal_cooling_capability', 'domain_of': ['XRayInstrument']} })
     instrument_code: str = Field(default=..., description="""Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_code', 'domain_of': ['Instrument']} })
+    instrument_registry_id: Optional[BeamlineEnum] = Field(default=None, description="""Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_registry_id',
+         'any_of': [{'range': 'BeamlineEnum'}],
+         'comments': ['Use this to link an instrument record to a known, validated '
+                      'registry entry, enabling schema-level validation against typos',
+                      'instrument_code is a free-text local label; '
+                      'instrument_registry_id is the schema-level controlled identity',
+                      'beamline_id captures the facility-local string ID (e.g., '
+                      "'19-ID'); instrument_registry_id captures the enum identity "
+                      '(e.g., APS_SBCCAT_19ID)',
+                      'Distinct from the instrument_id foreign-key slot used in '
+                      'association tables, which references an Instrument object'],
+         'domain_of': ['Instrument']} })
     instrument_category: Optional[InstrumentCategoryEnum] = Field(default=None, description="""Category distinguishing beamlines from laboratory equipment""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_category',
          'comments': ['Use SYNCHROTRON_BEAMLINE for synchrotron beamlines',
                       'Use ELECTRON_MICROSCOPE for cryo-EM instruments'],
@@ -4185,9 +4342,13 @@ class XRayInstrument(Instrument):
          'domain_of': ['Instrument']} })
     beamline_id: Optional[str] = Field(default=None, description="""Beamline identifier at synchrotron/neutron facility""", json_schema_extra = { "linkml_meta": {'alias': 'beamline_id',
          'comments': ['Use facility-specific naming convention',
-                      "Examples: '12.3.1' (ALS), '17-ID-1' (NSLS-II), 'I04' (Diamond)"],
+                      "Examples: '12.3.1' (ALS), '17-ID-1' (NSLS-II), 'I04' (Diamond)",
+                      'For a validated controlled-vocabulary identity, also set '
+                      'instrument_registry_id (e.g., APS_SBCCAT_19ID)'],
          'domain_of': ['Instrument'],
-         'exact_mappings': ['mmCIF:_diffrn_source.pdbx_synchrotron_beamline']} })
+         'exact_mappings': ['mmCIF:_diffrn_source.pdbx_synchrotron_beamline',
+                            'nsls2:Beamline',
+                            'ispyb:BLSession.beamLineName']} })
     manufacturer: Optional[str] = Field(default=None, description="""Instrument manufacturer""", json_schema_extra = { "linkml_meta": {'alias': 'manufacturer', 'domain_of': ['Instrument']} })
     model: Optional[str] = Field(default=None, description="""Instrument model""", json_schema_extra = { "linkml_meta": {'alias': 'model', 'domain_of': ['Instrument']} })
     installation_date: Optional[str] = Field(default=None, description="""Date of instrument installation""", json_schema_extra = { "linkml_meta": {'alias': 'installation_date', 'domain_of': ['Instrument']} })
@@ -4290,6 +4451,18 @@ class SANSInstrument(Instrument):
     configuration: Optional[SANSConfiguration] = Field(default=None, description="""Optical/mechanical configuration details""", json_schema_extra = { "linkml_meta": {'alias': 'configuration', 'domain_of': ['SANSInstrument']} })
     environment: Optional[str] = Field(default=None, description="""Textual description of environmental conditions""", json_schema_extra = { "linkml_meta": {'alias': 'environment', 'domain_of': ['SANSInstrument']} })
     instrument_code: str = Field(default=..., description="""Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_code', 'domain_of': ['Instrument']} })
+    instrument_registry_id: Optional[BeamlineEnum] = Field(default=None, description="""Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_registry_id',
+         'any_of': [{'range': 'BeamlineEnum'}],
+         'comments': ['Use this to link an instrument record to a known, validated '
+                      'registry entry, enabling schema-level validation against typos',
+                      'instrument_code is a free-text local label; '
+                      'instrument_registry_id is the schema-level controlled identity',
+                      'beamline_id captures the facility-local string ID (e.g., '
+                      "'19-ID'); instrument_registry_id captures the enum identity "
+                      '(e.g., APS_SBCCAT_19ID)',
+                      'Distinct from the instrument_id foreign-key slot used in '
+                      'association tables, which references an Instrument object'],
+         'domain_of': ['Instrument']} })
     instrument_category: Optional[InstrumentCategoryEnum] = Field(default=None, description="""Category distinguishing beamlines from laboratory equipment""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_category',
          'comments': ['Use SYNCHROTRON_BEAMLINE for synchrotron beamlines',
                       'Use ELECTRON_MICROSCOPE for cryo-EM instruments'],
@@ -4306,9 +4479,13 @@ class SANSInstrument(Instrument):
          'domain_of': ['Instrument']} })
     beamline_id: Optional[str] = Field(default=None, description="""Beamline identifier at synchrotron/neutron facility""", json_schema_extra = { "linkml_meta": {'alias': 'beamline_id',
          'comments': ['Use facility-specific naming convention',
-                      "Examples: '12.3.1' (ALS), '17-ID-1' (NSLS-II), 'I04' (Diamond)"],
+                      "Examples: '12.3.1' (ALS), '17-ID-1' (NSLS-II), 'I04' (Diamond)",
+                      'For a validated controlled-vocabulary identity, also set '
+                      'instrument_registry_id (e.g., APS_SBCCAT_19ID)'],
          'domain_of': ['Instrument'],
-         'exact_mappings': ['mmCIF:_diffrn_source.pdbx_synchrotron_beamline']} })
+         'exact_mappings': ['mmCIF:_diffrn_source.pdbx_synchrotron_beamline',
+                            'nsls2:Beamline',
+                            'ispyb:BLSession.beamLineName']} })
     manufacturer: Optional[str] = Field(default=None, description="""Instrument manufacturer""", json_schema_extra = { "linkml_meta": {'alias': 'manufacturer', 'domain_of': ['Instrument']} })
     model: Optional[str] = Field(default=None, description="""Instrument model""", json_schema_extra = { "linkml_meta": {'alias': 'model', 'domain_of': ['Instrument']} })
     installation_date: Optional[str] = Field(default=None, description="""Date of instrument installation""", json_schema_extra = { "linkml_meta": {'alias': 'installation_date', 'domain_of': ['Instrument']} })
@@ -4347,6 +4524,18 @@ class SAXSInstrument(Instrument):
          'domain_of': ['SAXSInstrument', 'BeamlineInstrument']} })
     temperature_control_range: Optional[str] = Field(default=None, description="""Temperature control range in Celsius""", json_schema_extra = { "linkml_meta": {'alias': 'temperature_control_range', 'domain_of': ['SAXSInstrument']} })
     instrument_code: str = Field(default=..., description="""Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_code', 'domain_of': ['Instrument']} })
+    instrument_registry_id: Optional[BeamlineEnum] = Field(default=None, description="""Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_registry_id',
+         'any_of': [{'range': 'BeamlineEnum'}],
+         'comments': ['Use this to link an instrument record to a known, validated '
+                      'registry entry, enabling schema-level validation against typos',
+                      'instrument_code is a free-text local label; '
+                      'instrument_registry_id is the schema-level controlled identity',
+                      'beamline_id captures the facility-local string ID (e.g., '
+                      "'19-ID'); instrument_registry_id captures the enum identity "
+                      '(e.g., APS_SBCCAT_19ID)',
+                      'Distinct from the instrument_id foreign-key slot used in '
+                      'association tables, which references an Instrument object'],
+         'domain_of': ['Instrument']} })
     instrument_category: Optional[InstrumentCategoryEnum] = Field(default=None, description="""Category distinguishing beamlines from laboratory equipment""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_category',
          'comments': ['Use SYNCHROTRON_BEAMLINE for synchrotron beamlines',
                       'Use ELECTRON_MICROSCOPE for cryo-EM instruments'],
@@ -4363,9 +4552,13 @@ class SAXSInstrument(Instrument):
          'domain_of': ['Instrument']} })
     beamline_id: Optional[str] = Field(default=None, description="""Beamline identifier at synchrotron/neutron facility""", json_schema_extra = { "linkml_meta": {'alias': 'beamline_id',
          'comments': ['Use facility-specific naming convention',
-                      "Examples: '12.3.1' (ALS), '17-ID-1' (NSLS-II), 'I04' (Diamond)"],
+                      "Examples: '12.3.1' (ALS), '17-ID-1' (NSLS-II), 'I04' (Diamond)",
+                      'For a validated controlled-vocabulary identity, also set '
+                      'instrument_registry_id (e.g., APS_SBCCAT_19ID)'],
          'domain_of': ['Instrument'],
-         'exact_mappings': ['mmCIF:_diffrn_source.pdbx_synchrotron_beamline']} })
+         'exact_mappings': ['mmCIF:_diffrn_source.pdbx_synchrotron_beamline',
+                            'nsls2:Beamline',
+                            'ispyb:BLSession.beamLineName']} })
     manufacturer: Optional[str] = Field(default=None, description="""Instrument manufacturer""", json_schema_extra = { "linkml_meta": {'alias': 'manufacturer', 'domain_of': ['Instrument']} })
     model: Optional[str] = Field(default=None, description="""Instrument model""", json_schema_extra = { "linkml_meta": {'alias': 'model', 'domain_of': ['Instrument']} })
     installation_date: Optional[str] = Field(default=None, description="""Date of instrument installation""", json_schema_extra = { "linkml_meta": {'alias': 'installation_date', 'domain_of': ['Instrument']} })
@@ -4421,6 +4614,18 @@ class BeamlineInstrument(Instrument):
     daq_system: Optional[DataAcquisitionSystemEnum] = Field(default=None, description="""Data acquisition system used for experiment orchestration""", json_schema_extra = { "linkml_meta": {'alias': 'daq_system', 'domain_of': ['BeamlineInstrument', 'ExperimentRun']} })
     control_system: Optional[ControlSystemEnum] = Field(default=None, description="""Low-level control system for device communication""", json_schema_extra = { "linkml_meta": {'alias': 'control_system', 'domain_of': ['BeamlineInstrument']} })
     instrument_code: str = Field(default=..., description="""Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_code', 'domain_of': ['Instrument']} })
+    instrument_registry_id: Optional[BeamlineEnum] = Field(default=None, description="""Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_registry_id',
+         'any_of': [{'range': 'BeamlineEnum'}],
+         'comments': ['Use this to link an instrument record to a known, validated '
+                      'registry entry, enabling schema-level validation against typos',
+                      'instrument_code is a free-text local label; '
+                      'instrument_registry_id is the schema-level controlled identity',
+                      'beamline_id captures the facility-local string ID (e.g., '
+                      "'19-ID'); instrument_registry_id captures the enum identity "
+                      '(e.g., APS_SBCCAT_19ID)',
+                      'Distinct from the instrument_id foreign-key slot used in '
+                      'association tables, which references an Instrument object'],
+         'domain_of': ['Instrument']} })
     instrument_category: Optional[InstrumentCategoryEnum] = Field(default=None, description="""Category distinguishing beamlines from laboratory equipment""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_category',
          'comments': ['Use SYNCHROTRON_BEAMLINE for synchrotron beamlines',
                       'Use ELECTRON_MICROSCOPE for cryo-EM instruments'],
@@ -4437,9 +4642,13 @@ class BeamlineInstrument(Instrument):
          'domain_of': ['Instrument']} })
     beamline_id: Optional[str] = Field(default=None, description="""Beamline identifier at synchrotron/neutron facility""", json_schema_extra = { "linkml_meta": {'alias': 'beamline_id',
          'comments': ['Use facility-specific naming convention',
-                      "Examples: '12.3.1' (ALS), '17-ID-1' (NSLS-II), 'I04' (Diamond)"],
+                      "Examples: '12.3.1' (ALS), '17-ID-1' (NSLS-II), 'I04' (Diamond)",
+                      'For a validated controlled-vocabulary identity, also set '
+                      'instrument_registry_id (e.g., APS_SBCCAT_19ID)'],
          'domain_of': ['Instrument'],
-         'exact_mappings': ['mmCIF:_diffrn_source.pdbx_synchrotron_beamline']} })
+         'exact_mappings': ['mmCIF:_diffrn_source.pdbx_synchrotron_beamline',
+                            'nsls2:Beamline',
+                            'ispyb:BLSession.beamLineName']} })
     manufacturer: Optional[str] = Field(default=None, description="""Instrument manufacturer""", json_schema_extra = { "linkml_meta": {'alias': 'manufacturer', 'domain_of': ['Instrument']} })
     model: Optional[str] = Field(default=None, description="""Instrument model""", json_schema_extra = { "linkml_meta": {'alias': 'model', 'domain_of': ['Instrument']} })
     installation_date: Optional[str] = Field(default=None, description="""Date of instrument installation""", json_schema_extra = { "linkml_meta": {'alias': 'installation_date', 'domain_of': ['Instrument']} })
@@ -4466,12 +4675,15 @@ class ExperimentRun(NamedThing):
     """
     An experimental data collection session
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/',
+         'related_mappings': ['IHMCIF:_ihm_dataset_list', 'IHMCIF:_ihm_dataset_group']})
 
     experiment_code: str = Field(default=..., description="""Human-friendly laboratory or facility identifier for the experiment (e.g., 'SIBYLS-2024-02-01-hetBGL', 'CRYOEM-RUN-240815-001'). Used for local tracking and cross-referencing within laboratory systems.""", json_schema_extra = { "linkml_meta": {'alias': 'experiment_code', 'domain_of': ['ExperimentRun']} })
     experiment_date: Optional[str] = Field(default=None, description="""Date of the experiment""", json_schema_extra = { "linkml_meta": {'alias': 'experiment_date', 'domain_of': ['ExperimentRun']} })
     operator_id: Optional[str] = Field(default=None, description="""Identifier or name of the person who performed the experiment data collection (e.g., 'jsmith', 'John Smith', or personnel ID)""", json_schema_extra = { "linkml_meta": {'alias': 'operator_id', 'domain_of': ['SamplePreparation', 'ExperimentRun']} })
-    technique: TechniqueEnum = Field(default=..., description="""Technique used for data collection""", json_schema_extra = { "linkml_meta": {'alias': 'technique', 'domain_of': ['SANSInstrument', 'ExperimentRun']} })
+    technique: TechniqueEnum = Field(default=..., description="""Technique used for data collection""", json_schema_extra = { "linkml_meta": {'alias': 'technique',
+         'domain_of': ['SANSInstrument', 'ExperimentRun'],
+         'related_mappings': ['IHMCIF:_ihm_dataset_list.data_type']} })
     experimental_method: Optional[ExperimentalMethodEnum] = Field(default=None, description="""Specific experimental method for structure determination (particularly for diffraction techniques)""", json_schema_extra = { "linkml_meta": {'alias': 'experimental_method',
          'domain_of': ['BiophysicalProperty', 'ExperimentRun']} })
     experimental_conditions: Optional[ExperimentalConditions] = Field(default=None, description="""Environmental and experimental conditions""", json_schema_extra = { "linkml_meta": {'alias': 'experimental_conditions', 'domain_of': ['ExperimentRun']} })
@@ -4493,7 +4705,7 @@ class ExperimentRun(NamedThing):
     frames_per_movie: Optional[QuantityValue] = Field(default=None, description="""Number of frames per movie""", json_schema_extra = { "linkml_meta": {'alias': 'frames_per_movie',
          'domain_of': ['ExperimentRun'],
          'exact_mappings': ['mmCIF:_em_image_recording.num_frames_per_image']} })
-    total_exposure_time: Optional[QuantityValue] = Field(default=None, description="""Total exposure time in milliseconds""", json_schema_extra = { "linkml_meta": {'alias': 'total_exposure_time', 'domain_of': ['ExperimentRun']} })
+    total_exposure_time: Optional[QuantityValue] = Field(default=None, description="""Total exposure time. Data providers may specify alternative units (e.g., seconds, milliseconds) by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'total_exposure_time', 'domain_of': ['ExperimentRun']} })
     total_dose: Optional[QuantityValue] = Field(default=None, description="""Total electron dose in e-/Angstrom^2""", json_schema_extra = { "linkml_meta": {'alias': 'total_dose',
          'domain_of': ['ExperimentRun', 'DataCollectionStrategy'],
          'exact_mappings': ['mmCIF:_em_image_recording.avg_electron_dose_per_image']} })
@@ -4508,7 +4720,45 @@ class ExperimentRun(NamedThing):
     defocus_range_increment: Optional[QuantityValue] = Field(default=None, description="""Defocus range increment in micrometers""", json_schema_extra = { "linkml_meta": {'alias': 'defocus_range_increment', 'domain_of': ['ExperimentRun']} })
     astigmatism_target: Optional[QuantityValue] = Field(default=None, description="""Target astigmatism in Angstroms""", json_schema_extra = { "linkml_meta": {'alias': 'astigmatism_target', 'domain_of': ['ExperimentRun']} })
     coma: Optional[QuantityValue] = Field(default=None, description="""Coma aberration in nanometers""", json_schema_extra = { "linkml_meta": {'alias': 'coma', 'domain_of': ['ExperimentRun']} })
-    stage_tilt: Optional[QuantityValue] = Field(default=None, description="""Stage tilt angle in degrees""", json_schema_extra = { "linkml_meta": {'alias': 'stage_tilt', 'domain_of': ['ExperimentRun']} })
+    stage_tilt: Optional[QuantityValue] = Field(default=None, description="""Fixed stage tilt angle for a single-orientation acquisition, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'stage_tilt',
+         'comments': ['For a tilt series, use tilt_angle_min, tilt_angle_max, and '
+                      'tilt_angle_increment rather than this slot.'],
+         'domain_of': ['ExperimentRun']} })
+    tilting_scheme: Optional[TiltingSchemeEnum] = Field(default=None, description="""Tilt scheme used during tomographic data collection""", json_schema_extra = { "linkml_meta": {'alias': 'tilting_scheme', 'domain_of': ['ExperimentRun']} })
+    tilt_angle_min: Optional[QuantityValue] = Field(default=None, description="""Lowest (most negative) tilt angle in the tilt series, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'tilt_angle_min',
+         'domain_of': ['ExperimentRun'],
+         'exact_mappings': ['mmCIF:_em_imaging.tilt_angle_min',
+                            'mmCIF:_em_tomography.axis1_min_angle']} })
+    tilt_angle_max: Optional[QuantityValue] = Field(default=None, description="""Highest (most positive) tilt angle in the tilt series, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'tilt_angle_max',
+         'domain_of': ['ExperimentRun'],
+         'exact_mappings': ['mmCIF:_em_imaging.tilt_angle_max',
+                            'mmCIF:_em_tomography.axis1_max_angle']} })
+    tilt_angle_increment: Optional[QuantityValue] = Field(default=None, description="""Tilt angle increment between successive tilt steps. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'tilt_angle_increment',
+         'domain_of': ['ExperimentRun'],
+         'exact_mappings': ['mmCIF:_em_tomography.axis1_angle_increment']} })
+    tilt_axis_angle: Optional[QuantityValue] = Field(default=None, description="""In-plane azimuth of the tilt axis relative to the detector x-axis, typically specified in degrees. Required for tilt series alignment and reconstruction.""", json_schema_extra = { "linkml_meta": {'alias': 'tilt_axis_angle', 'domain_of': ['ExperimentRun']} })
+    number_of_tilt_images: Optional[QuantityValue] = Field(default=None, description="""Number of images collected in the tilt series""", json_schema_extra = { "linkml_meta": {'alias': 'number_of_tilt_images',
+         'comments': ['For a symmetric series this is usually (tilt_angle_max - '
+                      'tilt_angle_min) / tilt_angle_increment + 1, but record the '
+                      'actual count since tilts are often skipped or discarded.'],
+         'domain_of': ['ExperimentRun']} })
+    dose_per_tilt: Optional[QuantityValue] = Field(default=None, description="""Electron dose applied at each tilt step, typically specified in e-/Angstrom^2. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'dose_per_tilt',
+         'close_mappings': ['mmCIF:_em_image_recording.avg_electron_dose_per_image'],
+         'comments': ['Use total_dose for the accumulated dose across the whole tilt '
+                      'series.'],
+         'domain_of': ['ExperimentRun']} })
+    dual_tilt_axis_rotation: Optional[QuantityValue] = Field(default=None, description="""Rotation between the two tilt axes in a dual-axis tomography acquisition, typically specified in degrees. Omit for the far more common single-axis case.""", json_schema_extra = { "linkml_meta": {'alias': 'dual_tilt_axis_rotation',
+         'domain_of': ['ExperimentRun'],
+         'exact_mappings': ['mmCIF:_em_tomography.dual_tilt_axis_rotation']} })
+    fiducial_size: Optional[QuantityValue] = Field(default=None, description="""Size of fiducial markers used for tomographic alignment. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'fiducial_size', 'domain_of': ['ExperimentRun']} })
+    rotation_rate: Optional[QuantityValue] = Field(default=None, description="""Continuous rotation rate during data collection (e.g., for MicroED). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'rotation_rate',
+         'comments': ['For the extent of a continuous-rotation sweep, use the '
+                      'rotation-method slots shared with the diffraction techniques: '
+                      'start_angle, sweep_start, sweep_end, total_rotation, and '
+                      'oscillation_angle.'],
+         'domain_of': ['ExperimentRun']} })
+    camera_length: Optional[QuantityValue] = Field(default=None, description="""Camera length for electron diffraction (e.g., MicroED). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'camera_length', 'domain_of': ['ExperimentRun']} })
+    frames_per_second: Optional[QuantityValue] = Field(default=None, description="""Frame acquisition rate. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'frames_per_second', 'domain_of': ['ExperimentRun']} })
     autoloader_slot: Optional[str] = Field(default=None, description="""Autoloader slot identifier""", json_schema_extra = { "linkml_meta": {'alias': 'autoloader_slot', 'domain_of': ['ExperimentRun']} })
     shots_per_hole: Optional[QuantityValue] = Field(default=None, description="""Number of shots taken per hole""", json_schema_extra = { "linkml_meta": {'alias': 'shots_per_hole', 'domain_of': ['ExperimentRun']} })
     holes_per_group: Optional[QuantityValue] = Field(default=None, description="""Number of holes per group. Data providers may include unit information in the QuantityValue if needed.""", json_schema_extra = { "linkml_meta": {'alias': 'holes_per_group', 'domain_of': ['ExperimentRun']} })
@@ -4584,11 +4834,6 @@ class ExperimentRun(NamedThing):
          'domain_of': ['ExperimentRun'],
          'exact_mappings': ['nsls2:Total_rotation_deg',
                             'imgCIF:_diffrn_scan_axis.angle_range']} })
-    beamline: Optional[str] = Field(default=None, description="""Beamline identifier (e.g., FMX, AMX, 12.3.1)""", json_schema_extra = { "linkml_meta": {'alias': 'beamline',
-         'domain_of': ['ExperimentRun'],
-         'exact_mappings': ['nsls2:Beamline',
-                            'mmCIF:_diffrn_source.pdbx_synchrotron_beamline',
-                            'ispyb:BLSession.beamLineName']} })
     transmission: Optional[QuantityValue] = Field(default=None, description="""X-ray beam transmission as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'transmission',
          'aliases': ['attenuation', 'transmission_percent'],
          'comments': ['Percentage of full beam intensity used'],
@@ -4644,16 +4889,28 @@ class WorkflowRun(NamedThing):
     """
     A computational processing workflow execution
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'close_mappings': ['IHMCIF:_ihm_modeling_protocol',
+                            'IHMCIF:_ihm_modeling_protocol_details'],
+         'from_schema': 'http://w3id.org/lambda/',
+         'related_mappings': ['IHMCIF:_ihm_modeling_post_process']})
 
     workflow_code: str = Field(default=..., description="""Human-friendly identifier for the computational workflow run (e.g., 'MOTION-CORR-RUN-001', 'RELION-REFINE-240815'). Used for tracking processing pipelines and computational provenance.""", json_schema_extra = { "linkml_meta": {'alias': 'workflow_code', 'domain_of': ['WorkflowRun']} })
-    workflow_type: WorkflowTypeEnum = Field(default=..., description="""Type of processing workflow""", json_schema_extra = { "linkml_meta": {'alias': 'workflow_type', 'domain_of': ['WorkflowRun']} })
+    workflow_type: WorkflowTypeEnum = Field(default=..., description="""Type of processing workflow""", json_schema_extra = { "linkml_meta": {'alias': 'workflow_type',
+         'domain_of': ['WorkflowRun'],
+         'related_mappings': ['IHMCIF:_ihm_modeling_protocol_details.step_method']} })
     processing_level: Optional[QuantityValue] = Field(default=None, description="""Processing level (0=raw, 1=corrected, 2=derived, 3=model)""", json_schema_extra = { "linkml_meta": {'alias': 'processing_level', 'domain_of': ['WorkflowRun']} })
-    software_name: str = Field(default=..., description="""Software used for processing""", json_schema_extra = { "linkml_meta": {'alias': 'software_name', 'domain_of': ['WorkflowRun']} })
+    software_name: str = Field(default=..., description="""Software used for processing""", json_schema_extra = { "linkml_meta": {'alias': 'software_name',
+         'domain_of': ['WorkflowRun'],
+         'related_mappings': ['IHMCIF:_ihm_modeling_protocol_details.software_id']} })
     software_version: Optional[str] = Field(default=None, description="""Software version""", json_schema_extra = { "linkml_meta": {'alias': 'software_version', 'domain_of': ['WorkflowRun']} })
     additional_software: Optional[str] = Field(default=None, description="""Additional software used in pipeline""", json_schema_extra = { "linkml_meta": {'alias': 'additional_software', 'domain_of': ['WorkflowRun']} })
-    processing_parameters: Optional[str] = Field(default=None, description="""Parameters used in processing""", json_schema_extra = { "linkml_meta": {'alias': 'processing_parameters', 'domain_of': ['WorkflowRun']} })
-    parameters_file_path: Optional[str] = Field(default=None, description="""Path to parameters file or text of key parameters""", json_schema_extra = { "linkml_meta": {'alias': 'parameters_file_path', 'domain_of': ['WorkflowRun']} })
+    processing_parameters: Optional[str] = Field(default=None, description="""Parameters used in processing""", json_schema_extra = { "linkml_meta": {'alias': 'processing_parameters',
+         'domain_of': ['WorkflowRun'],
+         'related_mappings': ['IHMCIF:_ihm_modeling_protocol_details.description']} })
+    parameters_file_path: Optional[str] = Field(default=None, description="""Path to parameters file or text of key parameters""", json_schema_extra = { "linkml_meta": {'alias': 'parameters_file_path',
+         'domain_of': ['WorkflowRun'],
+         'related_mappings': ['IHMCIF:_ihm_modeling_protocol_details.script_file_id',
+                              'IHMCIF:_ihm_external_files.file_path']} })
     indexer_module: Optional[str] = Field(default=None, description="""Indexing module used (e.g., MOSFLM, XDS)""", json_schema_extra = { "linkml_meta": {'alias': 'indexer_module', 'domain_of': ['WorkflowRun']} })
     integrator_module: Optional[str] = Field(default=None, description="""Integration module used""", json_schema_extra = { "linkml_meta": {'alias': 'integrator_module', 'domain_of': ['WorkflowRun']} })
     scaler_module: Optional[str] = Field(default=None, description="""Scaling module used (e.g., AIMLESS, SCALA)""", json_schema_extra = { "linkml_meta": {'alias': 'scaler_module', 'domain_of': ['WorkflowRun']} })
@@ -4771,18 +5028,36 @@ class DataFile(NamedThing):
     """
     A data file generated or used in the study
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'close_mappings': ['IHMCIF:_ihm_external_files'],
+         'from_schema': 'http://w3id.org/lambda/',
+         'related_mappings': ['IHMCIF:_ihm_dataset_list',
+                              'IHMCIF:_ihm_dataset_external_reference']})
 
     file_name: str = Field(default=..., description="""Name of the file""", json_schema_extra = { "linkml_meta": {'alias': 'file_name', 'domain_of': ['DataFile', 'Image']} })
-    file_path: Optional[str] = Field(default=None, description="""Path to the file""", json_schema_extra = { "linkml_meta": {'alias': 'file_path', 'domain_of': ['DataFile']} })
-    file_format: FileFormatEnum = Field(default=..., description="""File format""", json_schema_extra = { "linkml_meta": {'alias': 'file_format', 'domain_of': ['DataFile']} })
-    file_size_bytes: Optional[QuantityValue] = Field(default=None, description="""File size in bytes""", json_schema_extra = { "linkml_meta": {'alias': 'file_size_bytes', 'domain_of': ['DataFile']} })
+    file_path: Optional[str] = Field(default=None, description="""Path to the file""", json_schema_extra = { "linkml_meta": {'alias': 'file_path',
+         'close_mappings': ['IHMCIF:_ihm_external_files.file_path'],
+         'domain_of': ['DataFile']} })
+    file_format: FileFormatEnum = Field(default=..., description="""File format""", json_schema_extra = { "linkml_meta": {'alias': 'file_format',
+         'close_mappings': ['IHMCIF:_ihm_external_files.file_format'],
+         'domain_of': ['DataFile']} })
+    file_size_bytes: Optional[QuantityValue] = Field(default=None, description="""File size in bytes""", json_schema_extra = { "linkml_meta": {'alias': 'file_size_bytes',
+         'close_mappings': ['IHMCIF:_ihm_external_files.file_size_bytes'],
+         'domain_of': ['DataFile']} })
     checksum: Optional[str] = Field(default=None, description="""SHA-256 checksum for data integrity""", json_schema_extra = { "linkml_meta": {'alias': 'checksum', 'domain_of': ['DataFile']} })
     creation_date: Optional[str] = Field(default=None, description="""File creation date""", json_schema_extra = { "linkml_meta": {'alias': 'creation_date', 'domain_of': ['DataFile']} })
-    data_type: Optional[DataTypeEnum] = Field(default=None, description="""Type of data in the file""", json_schema_extra = { "linkml_meta": {'alias': 'data_type', 'domain_of': ['DataFile']} })
-    storage_uri: Optional[str] = Field(default=None, description="""Storage URI (S3, Globus, etc.)""", json_schema_extra = { "linkml_meta": {'alias': 'storage_uri', 'domain_of': ['DataFile']} })
-    related_entity: Optional[str] = Field(default=None, description="""ID of the entity that owns this file""", json_schema_extra = { "linkml_meta": {'alias': 'related_entity', 'domain_of': ['DataFile']} })
-    file_role: Optional[str] = Field(default=None, description="""Role of the file (raw, intermediate, final, diagnostic, metadata)""", json_schema_extra = { "linkml_meta": {'alias': 'file_role', 'domain_of': ['DataFile']} })
+    data_type: Optional[DataTypeEnum] = Field(default=None, description="""Type of data in the file""", json_schema_extra = { "linkml_meta": {'alias': 'data_type',
+         'close_mappings': ['IHMCIF:_ihm_dataset_list.data_type'],
+         'domain_of': ['DataFile']} })
+    storage_uri: Optional[str] = Field(default=None, description="""Storage URI (S3, Globus, etc.)""", json_schema_extra = { "linkml_meta": {'alias': 'storage_uri',
+         'domain_of': ['DataFile'],
+         'related_mappings': ['IHMCIF:_ihm_external_reference_info.associated_url',
+                              'IHMCIF:_ihm_external_files.file_path']} })
+    related_entity: Optional[str] = Field(default=None, description="""ID of the entity that owns this file""", json_schema_extra = { "linkml_meta": {'alias': 'related_entity',
+         'domain_of': ['DataFile'],
+         'related_mappings': ['IHMCIF:_ihm_dataset_list.id']} })
+    file_role: Optional[str] = Field(default=None, description="""Role of the file (raw, intermediate, final, diagnostic, metadata)""", json_schema_extra = { "linkml_meta": {'alias': 'file_role',
+         'domain_of': ['DataFile'],
+         'related_mappings': ['IHMCIF:_ihm_external_files.content_type']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
     description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
@@ -4838,7 +5113,9 @@ class Image3D(Image):
     """
     A 3D volume or tomogram
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/',
+         'related_mappings': ['IHMCIF:_ihm_3dem_restraint',
+                              'IHMCIF:_ihm_localization_density_files']})
 
     dimensions_z: Optional[QuantityValue] = Field(default=None, description="""Image depth, typically specified in pixels or slices. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'dimensions_z', 'domain_of': ['Image3D']} })
     voxel_size: Optional[QuantityValue] = Field(default=None, description="""Voxel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'voxel_size', 'domain_of': ['Image3D']} })
@@ -5090,7 +5367,9 @@ class MolecularComposition(AttributeGroup):
     """
     Molecular composition of a sample
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/',
+         'related_mappings': ['IHMCIF:_ihm_entity_poly_segment',
+                              'IHMCIF:_ihm_struct_assembly_details']})
 
     sequences: Optional[list[str]] = Field(default=None, description="""Amino acid or nucleotide sequences""", json_schema_extra = { "linkml_meta": {'alias': 'sequences', 'domain_of': ['MolecularComposition']} })
     modifications: Optional[list[str]] = Field(default=None, description="""Post-translational modifications or chemical modifications""", json_schema_extra = { "linkml_meta": {'alias': 'modifications', 'domain_of': ['MolecularComposition']} })
@@ -5288,7 +5567,8 @@ class SAXSPreparation(TechniqueSpecificPreparation):
     """
     SAXS/WAXS specific preparation
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/',
+         'related_mappings': ['IHMCIF:_ihm_sas_restraint']})
 
     concentration_series: Optional[QuantityValue] = Field(default=None, description="""Concentration values for series measurements""", json_schema_extra = { "linkml_meta": {'alias': 'concentration_series', 'domain_of': ['SAXSPreparation']} })
     buffer_matching_protocol: Optional[str] = Field(default=None, description="""Protocol for buffer matching""", json_schema_extra = { "linkml_meta": {'alias': 'buffer_matching_protocol', 'domain_of': ['SAXSPreparation']} })
@@ -5425,7 +5705,10 @@ class QualityMetrics(AttributeGroup):
     """
     Quality metrics for experiments
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/',
+         'related_mappings': ['IHMCIF:_ihm_ensemble_info',
+                              'IHMCIF:_ihm_sas_restraint',
+                              'IHMCIF:_ihm_3dem_restraint']})
 
     resolution: Optional[QuantityValue] = Field(default=None, description="""Resolution, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'resolution', 'domain_of': ['ExperimentRun', 'QualityMetrics']} })
     resolution_high_shell_a: Optional[QuantityValue] = Field(default=None, description="""High resolution shell limit, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'resolution_high_shell_a', 'domain_of': ['QualityMetrics']} })
@@ -5496,7 +5779,10 @@ class QualityMetrics(AttributeGroup):
          'domain_of': ['QualityMetrics'],
          'exact_mappings': ['mmCIF:_refine.B_iso_mean']} })
     i_zero: Optional[QuantityValue] = Field(default=None, description="""Forward scattering intensity I(0)""", json_schema_extra = { "linkml_meta": {'alias': 'i_zero', 'domain_of': ['QualityMetrics']} })
-    rg: Optional[QuantityValue] = Field(default=None, description="""Radius of gyration, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'rg', 'domain_of': ['QualityMetrics']} })
+    rg: Optional[QuantityValue] = Field(default=None, description="""Radius of gyration, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'rg',
+         'close_mappings': ['IHMCIF:_ihm_sas_restraint.radius_of_gyration'],
+         'domain_of': ['QualityMetrics']} })
+    cryo_em: Optional[CryoEMQualityMetrics] = Field(default=None, description="""Cryo-EM specific quality assessments of the imaged grid (ice contamination, ice quality, particle concentration)""", json_schema_extra = { "linkml_meta": {'alias': 'cryo_em', 'domain_of': ['QualityMetrics']} })
     r_factor: Optional[QuantityValue] = Field(default=None, description="""R-factor for crystallography (deprecated, use r_work)""", json_schema_extra = { "linkml_meta": {'alias': 'r_factor', 'domain_of': ['QualityMetrics']} })
     description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
 
@@ -5511,6 +5797,18 @@ class ComputeResources(AttributeGroup):
     gpu_hours: Optional[QuantityValue] = Field(default=None, description="""GPU hours used, measured in hours. Data providers may specify alternative time units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'gpu_hours', 'domain_of': ['ComputeResources']} })
     memory_gb: Optional[QuantityValue] = Field(default=None, description="""Maximum memory used, typically specified in gigabytes (GB). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'memory_gb', 'domain_of': ['ComputeResources']} })
     storage_gb: Optional[QuantityValue] = Field(default=None, description="""Storage used, typically specified in gigabytes (GB). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'storage_gb', 'domain_of': ['ComputeResources']} })
+    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+
+
+class CryoEMQualityMetrics(AttributeGroup):
+    """
+    Cryo-EM specific quality assessments recorded during or after data collection
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/'})
+
+    ice_contamination: Optional[IceContaminationEnum] = Field(default=None, description="""Assessment of ice contamination level on the cryo-EM grid""", json_schema_extra = { "linkml_meta": {'alias': 'ice_contamination', 'domain_of': ['CryoEMQualityMetrics']} })
+    ice_quality: Optional[IceQualityEnum] = Field(default=None, description="""Assessment of vitreous ice thickness/quality for data collection""", json_schema_extra = { "linkml_meta": {'alias': 'ice_quality', 'domain_of': ['CryoEMQualityMetrics']} })
+    particle_concentration: Optional[ParticleConcentrationEnum] = Field(default=None, description="""Assessment of particle concentration on the cryo-EM grid""", json_schema_extra = { "linkml_meta": {'alias': 'particle_concentration', 'domain_of': ['CryoEMQualityMetrics']} })
     description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
 
 
@@ -5569,7 +5867,11 @@ class RefinementParameters(AttributeGroup):
     """
     Parameters specific to 3D refinement workflows
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/',
+         'related_mappings': ['IHMCIF:_ihm_model_representation',
+                              'IHMCIF:_ihm_model_representation_details',
+                              'IHMCIF:_ihm_model_list',
+                              'IHMCIF:_ihm_ensemble_info']})
 
     symmetry: Optional[SymmetryEnum] = Field(default=None, description="""Symmetry applied (C1, Cn, Dn, T, O, I)""", json_schema_extra = { "linkml_meta": {'alias': 'symmetry',
          'domain_of': ['RefinementParameters'],
@@ -5701,7 +6003,8 @@ class WorkflowExperimentAssociation(ConfiguredBaseModel):
     """
     M:N link between WorkflowRun and source ExperimentRuns
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/',
+         'related_mappings': ['IHMCIF:_ihm_modeling_protocol_details']})
 
     workflow_id: str = Field(default=..., description="""Reference to the workflow run""", json_schema_extra = { "linkml_meta": {'alias': 'workflow_id',
          'domain_of': ['StudyWorkflowAssociation',
@@ -5719,7 +6022,9 @@ class WorkflowInputAssociation(ConfiguredBaseModel):
     """
     Links input DataFiles to WorkflowRun
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/',
+         'related_mappings': ['IHMCIF:_ihm_dataset_group_link',
+                              'IHMCIF:_ihm_dataset_list']})
 
     workflow_id: str = Field(default=..., description="""Reference to the workflow run""", json_schema_extra = { "linkml_meta": {'alias': 'workflow_id',
          'domain_of': ['StudyWorkflowAssociation',
@@ -5735,7 +6040,10 @@ class WorkflowOutputAssociation(ConfiguredBaseModel):
     """
     Links output DataFiles to WorkflowRun
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/',
+         'related_mappings': ['IHMCIF:_ihm_model_group_link',
+                              'IHMCIF:_ihm_model_list',
+                              'IHMCIF:_ihm_ensemble_info']})
 
     workflow_id: str = Field(default=..., description="""Reference to the workflow run""", json_schema_extra = { "linkml_meta": {'alias': 'workflow_id',
          'domain_of': ['StudyWorkflowAssociation',
@@ -5811,6 +6119,7 @@ DataCollectionStrategy.model_rebuild()
 BeamCenterPixels.model_rebuild()
 QualityMetrics.model_rebuild()
 ComputeResources.model_rebuild()
+CryoEMQualityMetrics.model_rebuild()
 MotionCorrectionParameters.model_rebuild()
 CTFEstimationParameters.model_rebuild()
 ParticlePickingParameters.model_rebuild()

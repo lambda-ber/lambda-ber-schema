@@ -49,6 +49,8 @@ URI: [lambda:AttributeGroup](http://w3id.org/lambda/AttributeGroup)
         click QualityMetrics href "../QualityMetrics/"
       AttributeGroup <|-- ComputeResources
         click ComputeResources href "../ComputeResources/"
+      AttributeGroup <|-- CryoEMQualityMetrics
+        click CryoEMQualityMetrics href "../CryoEMQualityMetrics/"
       AttributeGroup <|-- MotionCorrectionParameters
         click MotionCorrectionParameters href "../MotionCorrectionParameters/"
       AttributeGroup <|-- CTFEstimationParameters
@@ -93,6 +95,7 @@ URI: [lambda:AttributeGroup](http://w3id.org/lambda/AttributeGroup)
     * [BeamCenterPixels](BeamCenterPixels.md)
     * [QualityMetrics](QualityMetrics.md)
     * [ComputeResources](ComputeResources.md)
+    * [CryoEMQualityMetrics](CryoEMQualityMetrics.md)
     * [MotionCorrectionParameters](MotionCorrectionParameters.md)
     * [CTFEstimationParameters](CTFEstimationParameters.md)
     * [ParticlePickingParameters](ParticlePickingParameters.md)

@@ -72,6 +72,7 @@ simplescattering:xs33026i a lambdaber:Dataset ;
     dcterms:title "SIBYLS BL12.3.1" ;
     lambdaber:description "SEC-SAXS beamline at Advanced Light Source, Berkeley Lab" ;
     lambdaber:instrument_code "ALS-SIBYLS-BL12.3.1" ;
+    lambdaber:instrument_registry_id "ALS_SIBYLS" ;
     lambdaber:manufacturer "Lawrence Berkeley National Laboratory" .
 
 <https://www.simplescattering.com/open_dataset/xs33026i/sample> a lambdaber:Sample ;
@@ -93,7 +94,6 @@ simplescattering:xs33026i a lambdaber:Dataset ;
     dcterms:title "Cellobiose Dehydrogenase (addition of divalent cations)" .
 
 <https://www.simplescattering.com/open_dataset/xs33026i/experiment> a lambdaber:ExperimentRun ;
-    lambdaber:beamline "SIBYLS BL12.3.1" ;
     lambdaber:experiment_code "SS-XS33026I-EXP" ;
     lambdaber:technique CHMO:0000204 ;
     lambdaber:wavelength [ a nmdc:QuantityValue ;

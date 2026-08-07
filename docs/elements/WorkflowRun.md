@@ -672,6 +672,8 @@ URI: [lambda:WorkflowRun](http://w3id.org/lambda/WorkflowRun)
 | ---  | ---  |
 | self | lambda:WorkflowRun |
 | native | lambda:WorkflowRun |
+| related | IHMCIF:_ihm_modeling_post_process |
+| close | IHMCIF:_ihm_modeling_protocol, IHMCIF:_ihm_modeling_protocol_details |
 
 
 
@@ -689,6 +691,11 @@ URI: [lambda:WorkflowRun](http://w3id.org/lambda/WorkflowRun)
 name: WorkflowRun
 description: A computational processing workflow execution
 from_schema: http://w3id.org/lambda/
+close_mappings:
+- IHMCIF:_ihm_modeling_protocol
+- IHMCIF:_ihm_modeling_protocol_details
+related_mappings:
+- IHMCIF:_ihm_modeling_post_process
 is_a: NamedThing
 attributes:
   workflow_code:
@@ -705,6 +712,8 @@ attributes:
     name: workflow_type
     description: Type of processing workflow
     from_schema: http://w3id.org/lambda/
+    related_mappings:
+    - IHMCIF:_ihm_modeling_protocol_details.step_method
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -723,6 +732,8 @@ attributes:
     name: software_name
     description: Software used for processing
     from_schema: http://w3id.org/lambda/
+    related_mappings:
+    - IHMCIF:_ihm_modeling_protocol_details.software_id
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -745,6 +756,8 @@ attributes:
     name: processing_parameters
     description: Parameters used in processing
     from_schema: http://w3id.org/lambda/
+    related_mappings:
+    - IHMCIF:_ihm_modeling_protocol_details.description
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -752,6 +765,9 @@ attributes:
     name: parameters_file_path
     description: Path to parameters file or text of key parameters
     from_schema: http://w3id.org/lambda/
+    related_mappings:
+    - IHMCIF:_ihm_modeling_protocol_details.script_file_id
+    - IHMCIF:_ihm_external_files.file_path
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -1334,6 +1350,11 @@ attributes:
 name: WorkflowRun
 description: A computational processing workflow execution
 from_schema: http://w3id.org/lambda/
+close_mappings:
+- IHMCIF:_ihm_modeling_protocol
+- IHMCIF:_ihm_modeling_protocol_details
+related_mappings:
+- IHMCIF:_ihm_modeling_post_process
 is_a: NamedThing
 attributes:
   workflow_code:
@@ -1353,6 +1374,8 @@ attributes:
     name: workflow_type
     description: Type of processing workflow
     from_schema: http://w3id.org/lambda/
+    related_mappings:
+    - IHMCIF:_ihm_modeling_protocol_details.step_method
     rank: 1000
     alias: workflow_type
     owner: WorkflowRun
@@ -1375,6 +1398,8 @@ attributes:
     name: software_name
     description: Software used for processing
     from_schema: http://w3id.org/lambda/
+    related_mappings:
+    - IHMCIF:_ihm_modeling_protocol_details.software_id
     rank: 1000
     alias: software_name
     owner: WorkflowRun
@@ -1406,6 +1431,8 @@ attributes:
     name: processing_parameters
     description: Parameters used in processing
     from_schema: http://w3id.org/lambda/
+    related_mappings:
+    - IHMCIF:_ihm_modeling_protocol_details.description
     rank: 1000
     alias: processing_parameters
     owner: WorkflowRun
@@ -1416,6 +1443,9 @@ attributes:
     name: parameters_file_path
     description: Path to parameters file or text of key parameters
     from_schema: http://w3id.org/lambda/
+    related_mappings:
+    - IHMCIF:_ihm_modeling_protocol_details.script_file_id
+    - IHMCIF:_ihm_external_files.file_path
     rank: 1000
     alias: parameters_file_path
     owner: WorkflowRun

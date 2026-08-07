@@ -17,8 +17,8 @@ Alias: terms
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ImageFeature](ImageFeature.md) | Semantic annotations describing features identified in images using controlle... |  no  |
 | [OntologyTerm](OntologyTerm.md) | A term from a controlled vocabulary or ontology |  no  |
+| [ImageFeature](ImageFeature.md) | Semantic annotations describing features identified in images using controlle... |  no  |
 
 
 

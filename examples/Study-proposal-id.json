@@ -1,0 +1,12 @@
+{
+  "id": "lambdaber:study_pnnl_proposal_001",
+  "title": "Human PARP cryo-EM investigation",
+  "description": "Structural study of human PARP enzymes under PNNL proposal",
+  "proposal_id": "PNNL-EMSL-2024-160724",
+  "keywords": [
+    "cryo-EM",
+    "PARP",
+    "EMSL"
+  ],
+  "@type": "Study"
+}

@@ -1,0 +1,12 @@
+@base <http://example.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lambdaber: <http://w3id.org/lambda/> .
+
+lambdaber:study_pnnl_proposal_001 a lambdaber:Study ;
+    dcterms:title "Human PARP cryo-EM investigation" ;
+    lambdaber:description "Structural study of human PARP enzymes under PNNL proposal" ;
+    lambdaber:keywords "EMSL",
+        "PARP",
+        "cryo-EM" ;
+    lambdaber:proposal_id "PNNL-EMSL-2024-160724" .
+

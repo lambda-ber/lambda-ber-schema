@@ -36,6 +36,7 @@ lambdaber:beamline_aps_19id a lambdaber:XRayInstrument ;
     lambdaber:installation_date "1997-01-01" ;
     lambdaber:instrument_category CHMO:0001084 ;
     lambdaber:instrument_code "SBC 19-ID" ;
+    lambdaber:instrument_registry_id "APS_SBCCAT_19ID" ;
     lambdaber:manufacturer "Argonne National Laboratory" ;
     lambdaber:model "APS Beamline 19-ID" ;
     lambdaber:monochromator_type "Si(111) double crystal" ;

@@ -3,7 +3,7 @@
 # Slot: total_exposure_time 
 
 
-_Total exposure time in milliseconds_
+_Total exposure time. Data providers may specify alternative units (e.g., seconds, milliseconds) by including the unit in the QuantityValue._
 
 
 
@@ -66,7 +66,8 @@ Alias: total_exposure_time
 <details>
 ```yaml
 name: total_exposure_time
-description: Total exposure time in milliseconds
+description: Total exposure time. Data providers may specify alternative units (e.g.,
+  seconds, milliseconds) by including the unit in the QuantityValue.
 from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: total_exposure_time

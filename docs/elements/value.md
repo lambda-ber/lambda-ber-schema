@@ -23,8 +23,8 @@ Alias: value
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [BiophysicalProperty](BiophysicalProperty.md) | Measured or calculated biophysical properties |  no  |
-| [TextValue](TextValue.md) | A value described using a text string, optionally with a controlled vocabular... |  no  |
 | [DateTimeValue](DateTimeValue.md) | A date or date and time value |  no  |
+| [TextValue](TextValue.md) | A value described using a text string, optionally with a controlled vocabular... |  no  |
 
 
 

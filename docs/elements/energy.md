@@ -17,9 +17,9 @@ Alias: energy
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [ExperimentRun](ExperimentRun.md) | An experimental data collection session |  no  |
 | [DataCollectionStrategy](DataCollectionStrategy.md) | Strategy for data collection |  no  |
 | [SANSSource](SANSSource.md) | Beam source parameters for a SANS instrument |  no  |
-| [ExperimentRun](ExperimentRun.md) | An experimental data collection session |  no  |
 
 
 

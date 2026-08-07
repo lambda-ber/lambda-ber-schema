@@ -286,6 +286,7 @@ URI: [lambda:Dataset](http://w3id.org/lambda/Dataset)
 | ---  | ---  |
 | self | lambda:Dataset |
 | native | lambda:Dataset |
+| related | IHMCIF:_ihm_entry_collection, IHMCIF:_ihm_dataset_group |
 
 
 
@@ -304,6 +305,9 @@ name: Dataset
 description: Root container holding flat entity collections and association tables.
   Follows relational database design patterns for structural biology data.
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_entry_collection
+- IHMCIF:_ihm_dataset_group
 is_a: NamedThing
 attributes:
   keywords:
@@ -516,6 +520,9 @@ name: Dataset
 description: Root container holding flat entity collections and association tables.
   Follows relational database design patterns for structural biology data.
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_entry_collection
+- IHMCIF:_ihm_dataset_group
 is_a: NamedThing
 attributes:
   keywords:

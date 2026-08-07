@@ -57,6 +57,7 @@ Alias: file_path
 | ---  | ---  |
 | self | lambda:file_path |
 | native | lambda:file_path |
+| close | IHMCIF:_ihm_external_files.file_path |
 
 
 
@@ -68,6 +69,8 @@ Alias: file_path
 name: file_path
 description: Path to the file
 from_schema: http://w3id.org/lambda/
+close_mappings:
+- IHMCIF:_ihm_external_files.file_path
 rank: 1000
 alias: file_path
 owner: DataFile

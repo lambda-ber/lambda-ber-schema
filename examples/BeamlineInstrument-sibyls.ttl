@@ -18,6 +18,7 @@ lambdaber:instrument_sibyls_1231 a lambdaber:BeamlineInstrument ;
     lambdaber:installation_date "2008-09-01" ;
     lambdaber:instrument_category CHMO:0001084 ;
     lambdaber:instrument_code "ALS-12.3.1-SIBYLS" ;
+    lambdaber:instrument_registry_id "ALS_SIBYLS" ;
     lambdaber:mail_in_service true ;
     lambdaber:manufacturer "Lawrence Berkeley National Laboratory" ;
     lambdaber:model "SIBYLS Dual Endstation" ;

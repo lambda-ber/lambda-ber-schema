@@ -17,8 +17,8 @@ Alias: resolution
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [QualityMetrics](QualityMetrics.md) | Quality metrics for experiments |  no  |
 | [ExperimentRun](ExperimentRun.md) | An experimental data collection session |  no  |
+| [QualityMetrics](QualityMetrics.md) | Quality metrics for experiments |  no  |
 
 
 

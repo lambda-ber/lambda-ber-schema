@@ -36,6 +36,7 @@ lambdaber:instrument_ssrl_bl9_2 a lambdaber:XRayInstrument ;
     lambdaber:installation_date "1998-01-01" ;
     lambdaber:instrument_category CHMO:0001084 ;
     lambdaber:instrument_code "SSRL-BL9-2" ;
+    lambdaber:instrument_registry_id "SSRL_BL92" ;
     lambdaber:manufacturer "SLAC National Accelerator Laboratory" ;
     lambdaber:model "16-pole wiggler beamline" ;
     lambdaber:monochromator_type "Si(111) double crystal, liquid nitrogen cooled" ;

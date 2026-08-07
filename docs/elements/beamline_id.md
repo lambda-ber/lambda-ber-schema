@@ -22,8 +22,8 @@ Alias: beamline_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [XRayInstrument](XRayInstrument.md) | X-ray diffractometer or synchrotron beamline specifications |  no  |
 | [SAXSInstrument](SAXSInstrument.md) | SAXS/WAXS instrument specifications |  no  |
+| [XRayInstrument](XRayInstrument.md) | X-ray diffractometer or synchrotron beamline specifications |  no  |
 | [CryoEMInstrument](CryoEMInstrument.md) | Cryo-EM microscope specifications |  no  |
 | [SANSInstrument](SANSInstrument.md) | Small-angle neutron scattering (SANS) instrument specifications |  no  |
 | [BeamlineInstrument](BeamlineInstrument.md) | Multi-technique synchrotron beamline that supports multiple experimental meth... |  no  |
@@ -45,6 +45,7 @@ Alias: beamline_id
 
 * Use facility-specific naming convention
 * Examples: '12.3.1' (ALS), '17-ID-1' (NSLS-II), 'I04' (Diamond)
+* For a validated controlled-vocabulary identity, also set instrument_registry_id (e.g., APS_SBCCAT_19ID)
 
 ## Identifier and Mapping Information
 
@@ -67,7 +68,7 @@ Alias: beamline_id
 | ---  | ---  |
 | self | lambda:beamline_id |
 | native | lambda:beamline_id |
-| exact | mmCIF:_diffrn_source.pdbx_synchrotron_beamline |
+| exact | mmCIF:_diffrn_source.pdbx_synchrotron_beamline, nsls2:Beamline, ispyb:BLSession.beamLineName |
 
 
 
@@ -81,9 +82,13 @@ description: Beamline identifier at synchrotron/neutron facility
 comments:
 - Use facility-specific naming convention
 - 'Examples: ''12.3.1'' (ALS), ''17-ID-1'' (NSLS-II), ''I04'' (Diamond)'
+- For a validated controlled-vocabulary identity, also set instrument_registry_id
+  (e.g., APS_SBCCAT_19ID)
 from_schema: http://w3id.org/lambda/
 exact_mappings:
 - mmCIF:_diffrn_source.pdbx_synchrotron_beamline
+- nsls2:Beamline
+- ispyb:BLSession.beamLineName
 rank: 1000
 alias: beamline_id
 owner: Instrument

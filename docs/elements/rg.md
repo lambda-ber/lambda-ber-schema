@@ -57,6 +57,7 @@ Alias: rg
 | ---  | ---  |
 | self | lambda:rg |
 | native | lambda:rg |
+| close | IHMCIF:_ihm_sas_restraint.radius_of_gyration |
 
 
 
@@ -69,6 +70,8 @@ name: rg
 description: Radius of gyration, typically specified in Angstroms. Data providers
   may specify alternative units by including the unit in the QuantityValue.
 from_schema: http://w3id.org/lambda/
+close_mappings:
+- IHMCIF:_ihm_sas_restraint.radius_of_gyration
 rank: 1000
 alias: rg
 owner: QualityMetrics
