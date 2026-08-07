@@ -9,6 +9,18 @@ tilting_scheme: continuous
 rotation_rate:
   numeric_value: 0.3
   unit: degrees per second
+sweep_start:
+  numeric_value: -35
+  unit: degrees
+sweep_end:
+  numeric_value: 35
+  unit: degrees
+total_rotation:
+  numeric_value: 70
+  unit: degrees
+oscillation_angle:
+  numeric_value: 0.6
+  unit: degrees
 camera_length:
   numeric_value: 920
   unit: mm

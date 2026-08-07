@@ -6,9 +6,27 @@ experiment_date: '2024-07-15'
 operator_id: cryoet_specialist_001
 technique: cryo_et
 tilting_scheme: dose_symmetric
+tilt_angle_min:
+  numeric_value: -60
+  unit: degrees
+tilt_angle_max:
+  numeric_value: 60
+  unit: degrees
 tilt_angle_increment:
   numeric_value: 3
   unit: degrees
+tilt_axis_angle:
+  numeric_value: 85.3
+  unit: degrees
+number_of_tilt_images:
+  numeric_value: 41
+  unit: images
+dose_per_tilt:
+  numeric_value: 3.2
+  unit: e-/Angstrom^2
+total_dose:
+  numeric_value: 131.2
+  unit: e-/Angstrom^2
 fiducial_size:
   numeric_value: 100
   unit: Angstroms
