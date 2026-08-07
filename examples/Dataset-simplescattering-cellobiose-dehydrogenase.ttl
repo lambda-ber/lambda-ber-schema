@@ -70,6 +70,7 @@ simplescattering:xs33026i a lambdaber:Dataset ;
 
 <https://www.simplescattering.com/open_dataset/instrument/sibyls-bl12.3.1> a lambdaber:Instrument ;
     dcterms:title "SIBYLS BL12.3.1" ;
+    lambdaber:beamline_id "SIBYLS BL12.3.1" ;
     lambdaber:description "SEC-SAXS beamline at Advanced Light Source, Berkeley Lab" ;
     lambdaber:instrument_code "ALS-SIBYLS-BL12.3.1" ;
     lambdaber:instrument_registry_id "ALS_SIBYLS" ;
