@@ -2,7 +2,7 @@
 #mapping_set_id: http://w3id.org/lambda/
 #mapping_tool: https://w3id.org/linkml/
 #creator_id: linkml_user
-#mapping_date: 2026-05-19
+#mapping_date: 2026-08-07
 #curie_map: 
 # lambda: http://w3id.org/lambda/
 # lambdaber: http://w3id.org/lambda/
@@ -31,6 +31,7 @@
 # PaNET: http://purl.org/pan-science/PaNET/PaNET
 # UO: http://purl.obolibrary.org/obo/UO_
 # emsl: https://api.emsl.pnnl.gov/external/
+# ssrl-mx: https://smb.slac.stanford.edu/dev/lims/lambda/
 subject_id	subject_label	predicate_id	predicate_modifier	object_id	object_label	match_type	subject_source	object_source	mapping_tool	confidence	subject_match_field	object_match_field	subject_category	object_category	match_string	comment
 lambda:ExperimentalMethodEnum#x_ray_diffraction	x_ray_diffraction	skos:exactMatch		CHMO:0000156		skos:exactMatch	http://w3id.org/lambda/						ExperimentalMethodEnum			
 lambda:FacilityEnum#NSLS_II	NSLS_II	skos:exactMatch		ROR:01q47ea17		skos:exactMatch	http://w3id.org/lambda/						FacilityEnum			
@@ -162,9 +163,6 @@ lambda:beam_center_y	experimentRun__beam_center_y	skos:exactMatch		nsls2:Beam_xy
 lambda:beam_center_y	experimentRun__beam_center_y	skos:exactMatch		imgCIF:_diffrn_detector.beam_centre_y		skos:exactMatch	http://w3id.org/lambda/									
 lambda:beam_center_y	experimentRun__beam_center_y	skos:exactMatch		mmCIF:_diffrn_detector.beam_center_y		skos:exactMatch	http://w3id.org/lambda/									
 lambda:beam_center_y	experimentRun__beam_center_y	skos:exactMatch		ispyb:DataCollection.yBeam		skos:exactMatch	http://w3id.org/lambda/									
-lambda:beamline	experimentRun__beamline	skos:exactMatch		nsls2:Beamline		skos:exactMatch	http://w3id.org/lambda/									
-lambda:beamline	experimentRun__beamline	skos:exactMatch		mmCIF:_diffrn_source.pdbx_synchrotron_beamline		skos:exactMatch	http://w3id.org/lambda/									
-lambda:beamline	experimentRun__beamline	skos:exactMatch		ispyb:BLSession.beamLineName		skos:exactMatch	http://w3id.org/lambda/									
 lambda:calibrated_pixel_size	experimentRun__calibrated_pixel_size	skos:exactMatch		mmCIF:_em_image_recording.calibrated_pixel_size		skos:exactMatch	http://w3id.org/lambda/									
 lambda:defocus_range_max	experimentRun__defocus_range_max	skos:exactMatch		mmCIF:_em_imaging.nominal_defocus_max		skos:exactMatch	http://w3id.org/lambda/									
 lambda:defocus_range_min	experimentRun__defocus_range_min	skos:exactMatch		mmCIF:_em_imaging.nominal_defocus_min		skos:exactMatch	http://w3id.org/lambda/									
@@ -172,6 +170,8 @@ lambda:detector_distance	experimentRun__detector_distance	skos:exactMatch		nsls2
 lambda:detector_distance	experimentRun__detector_distance	skos:exactMatch		imgCIF:_diffrn_measurement.sample_detector_distance		skos:exactMatch	http://w3id.org/lambda/									
 lambda:detector_distance	experimentRun__detector_distance	skos:exactMatch		mmCIF:_diffrn_detector.distance		skos:exactMatch	http://w3id.org/lambda/									
 lambda:detector_distance	experimentRun__detector_distance	skos:exactMatch		ispyb:DataCollection.detectorDistance		skos:exactMatch	http://w3id.org/lambda/									
+lambda:dose_per_tilt	experimentRun__dose_per_tilt	skos:closeMatch		mmCIF:_em_image_recording.avg_electron_dose_per_image		skos:closeMatch	http://w3id.org/lambda/									
+lambda:dual_tilt_axis_rotation	experimentRun__dual_tilt_axis_rotation	skos:exactMatch		mmCIF:_em_tomography.dual_tilt_axis_rotation		skos:exactMatch	http://w3id.org/lambda/									
 lambda:end_time	experimentRun__end_time	skos:exactMatch		ispyb:DataCollection.endTime		skos:exactMatch	http://w3id.org/lambda/									
 lambda:energy	experimentRun__energy	skos:exactMatch		nsls2:Energy		skos:exactMatch	http://w3id.org/lambda/									
 lambda:energy	experimentRun__energy	skos:exactMatch		ispyb:DataCollection.energy		skos:exactMatch	http://w3id.org/lambda/									
@@ -202,6 +202,11 @@ lambda:sweep_start	experimentRun__sweep_start	skos:exactMatch		imgCIF:_diffrn_sc
 lambda:sweep_start	experimentRun__sweep_start	skos:exactMatch		ispyb:DataCollection.axisStart		skos:exactMatch	http://w3id.org/lambda/									
 lambda:synchrotron_mode	experimentRun__synchrotron_mode	skos:exactMatch		ispyb:DataCollection.synchrotronMode		skos:exactMatch	http://w3id.org/lambda/									
 lambda:technique	experimentRun__technique	skos:relatedMatch		IHMCIF:_ihm_dataset_list.data_type		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:tilt_angle_increment	experimentRun__tilt_angle_increment	skos:exactMatch		mmCIF:_em_tomography.axis1_angle_increment		skos:exactMatch	http://w3id.org/lambda/									
+lambda:tilt_angle_max	experimentRun__tilt_angle_max	skos:exactMatch		mmCIF:_em_imaging.tilt_angle_max		skos:exactMatch	http://w3id.org/lambda/									
+lambda:tilt_angle_max	experimentRun__tilt_angle_max	skos:exactMatch		mmCIF:_em_tomography.axis1_max_angle		skos:exactMatch	http://w3id.org/lambda/									
+lambda:tilt_angle_min	experimentRun__tilt_angle_min	skos:exactMatch		mmCIF:_em_imaging.tilt_angle_min		skos:exactMatch	http://w3id.org/lambda/									
+lambda:tilt_angle_min	experimentRun__tilt_angle_min	skos:exactMatch		mmCIF:_em_tomography.axis1_min_angle		skos:exactMatch	http://w3id.org/lambda/									
 lambda:total_dose	experimentRun__total_dose	skos:exactMatch		mmCIF:_em_image_recording.avg_electron_dose_per_image		skos:exactMatch	http://w3id.org/lambda/									
 lambda:total_rotation	experimentRun__total_rotation	skos:exactMatch		nsls2:Total_rotation_deg		skos:exactMatch	http://w3id.org/lambda/									
 lambda:total_rotation	experimentRun__total_rotation	skos:exactMatch		imgCIF:_diffrn_scan_axis.angle_range		skos:exactMatch	http://w3id.org/lambda/									
@@ -212,6 +217,8 @@ lambda:wavelength	experimentRun__wavelength	skos:exactMatch		imgCIF:_diffrn_radi
 lambda:wavelength	experimentRun__wavelength	skos:exactMatch		mmCIF:_diffrn_radiation_wavelength.wavelength		skos:exactMatch	http://w3id.org/lambda/									
 lambda:wavelength	experimentRun__wavelength	skos:exactMatch		ispyb:DataCollection.wavelength		skos:exactMatch	http://w3id.org/lambda/									
 lambda:beamline_id	instrument__beamline_id	skos:exactMatch		mmCIF:_diffrn_source.pdbx_synchrotron_beamline		skos:exactMatch	http://w3id.org/lambda/									
+lambda:beamline_id	instrument__beamline_id	skos:exactMatch		nsls2:Beamline		skos:exactMatch	http://w3id.org/lambda/									
+lambda:beamline_id	instrument__beamline_id	skos:exactMatch		ispyb:BLSession.beamLineName		skos:exactMatch	http://w3id.org/lambda/									
 lambda:anom_corr	qualityMetrics__anom_corr	skos:exactMatch		mmCIF:_reflns.pdbx_CC_half_anomalous		skos:exactMatch	http://w3id.org/lambda/									
 lambda:average_b_factor_a2	qualityMetrics__average_b_factor_a2	skos:exactMatch		mmCIF:_refine.B_iso_mean		skos:exactMatch	http://w3id.org/lambda/									
 lambda:cc_half	qualityMetrics__cc_half	skos:exactMatch		mmCIF:_reflns.pdbx_CC_half		skos:exactMatch	http://w3id.org/lambda/									

@@ -3,7 +3,7 @@
 # Slot: calibrated_pixel_size 
 
 
-_Calibrated pixel size in Angstroms per pixel_
+_Calibrated pixel size, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -67,7 +67,8 @@ Alias: calibrated_pixel_size
 <details>
 ```yaml
 name: calibrated_pixel_size
-description: Calibrated pixel size in Angstroms per pixel
+description: Calibrated pixel size, typically specified in Angstroms per pixel. Data
+  providers may specify alternative units by including the unit in the QuantityValue.
 from_schema: http://w3id.org/lambda/
 exact_mappings:
 - mmCIF:_em_image_recording.calibrated_pixel_size

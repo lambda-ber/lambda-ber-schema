@@ -29,6 +29,7 @@ URI: [lambda:TechniqueEnum](http://w3id.org/lambda/TechniqueEnum)
 | fiber_diffraction | CHMO:0000156 | Fiber diffraction for structural analysis of fibrous samples |
 | time_resolved_crystallography | CHMO:0000156 | Time-resolved macromolecular crystallography |
 | xray_tomography | CHMO:0002743 | X-ray computed tomography (micro-CT) for 3D imaging |
+| microed | None | Micro-electron diffraction for atomic-resolution structure determination from... |
 
 
 
@@ -173,6 +174,13 @@ permissible_values:
     - Used for cellular imaging, materials science, and paleontology
     exact_mappings:
     - PaNET:01154
+  microed:
+    text: microed
+    description: Micro-electron diffraction for atomic-resolution structure determination
+      from microcrystals
+    comments:
+    - Also known as MicroED or 3D electron diffraction (3DED)
+    - Uses an electron beam on sub-micron crystals
 
 ```
 </details>

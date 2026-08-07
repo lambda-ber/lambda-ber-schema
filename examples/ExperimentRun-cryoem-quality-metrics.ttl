@@ -1,0 +1,23 @@
+@base <http://example.org/> .
+@prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lambdaber: <http://w3id.org/lambda/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+lambdaber:exp_cryoem_parp_001 a lambdaber:ExperimentRun ;
+    dcterms:title "Cryo-EM data collection with quality assessments" ;
+    lambdaber:description "Single particle cryo-EM run with ice and particle quality assessments" ;
+    lambdaber:experiment_code "PNNL-CRYOEM-PARP-2024-001" ;
+    lambdaber:experiment_date "2024-06-01" ;
+    lambdaber:operator_id "microscopist_001" ;
+    lambdaber:quality_metrics [ a lambdaber:QualityMetrics ;
+            lambdaber:grid_quality [ a lambdaber:CryoEMQualityMetrics ;
+                    lambdaber:ice_contamination "limited" ;
+                    lambdaber:ice_quality "ideal" ;
+                    lambdaber:particle_concentration "optimal" ] ;
+            lambdaber:resolution [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "3.1"^^xsd:float ;
+                    lambdaber:unit "Angstroms" ] ] ;
+    lambdaber:technique CHMO:0002413 .
+

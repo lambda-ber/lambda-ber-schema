@@ -106,6 +106,7 @@ URI: [lambda:WorkflowOutputAssociation](http://w3id.org/lambda/WorkflowOutputAss
 | ---  | ---  |
 | self | lambda:WorkflowOutputAssociation |
 | native | lambda:WorkflowOutputAssociation |
+| related | IHMCIF:_ihm_model_group_link, IHMCIF:_ihm_model_list, IHMCIF:_ihm_ensemble_info |
 
 
 
@@ -123,6 +124,10 @@ URI: [lambda:WorkflowOutputAssociation](http://w3id.org/lambda/WorkflowOutputAss
 name: WorkflowOutputAssociation
 description: Links output DataFiles to WorkflowRun
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_model_group_link
+- IHMCIF:_ihm_model_list
+- IHMCIF:_ihm_ensemble_info
 attributes:
   workflow_id:
     name: workflow_id
@@ -163,6 +168,10 @@ attributes:
 name: WorkflowOutputAssociation
 description: Links output DataFiles to WorkflowRun
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_model_group_link
+- IHMCIF:_ihm_model_list
+- IHMCIF:_ihm_ensemble_info
 attributes:
   workflow_id:
     name: workflow_id

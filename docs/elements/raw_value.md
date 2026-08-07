@@ -24,8 +24,8 @@ Alias: raw_value
 | --- | --- | --- |
 | [QuantityValue](QuantityValue.md) | A simple quantity value, representing a measurement with a numeric value and ... |  yes  |
 | [TextValue](TextValue.md) | A value described using a text string, optionally with a controlled vocabular... |  no  |
-| [AttributeValue](AttributeValue.md) | The value for any attribute of an entity |  no  |
 | [DateTimeValue](DateTimeValue.md) | A date or date and time value |  no  |
+| [AttributeValue](AttributeValue.md) | The value for any attribute of an entity |  no  |
 
 
 

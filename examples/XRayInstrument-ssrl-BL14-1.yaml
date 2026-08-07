@@ -4,6 +4,7 @@ description: Macromolecular crystallography beamline at Stanford Synchrotron Rad
   Lightsource with Huber kappa diffractometer and Stanford Automated Mounting System
   (SAM) for MAD, SAD, and monochromatic data collection
 instrument_code: SSRL-BL14-1
+instrument_registry_id: SSRL_BL141
 instrument_category: SYNCHROTRON_BEAMLINE
 facility_name: SSRL
 facility_ror: https://ror.org/05gzmn429

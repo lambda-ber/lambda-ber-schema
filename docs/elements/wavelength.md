@@ -17,8 +17,8 @@ Alias: wavelength
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [SANSSource](SANSSource.md) | Beam source parameters for a SANS instrument |  no  |
 | [ExperimentRun](ExperimentRun.md) | An experimental data collection session |  no  |
+| [SANSSource](SANSSource.md) | Beam source parameters for a SANS instrument |  no  |
 
 
 

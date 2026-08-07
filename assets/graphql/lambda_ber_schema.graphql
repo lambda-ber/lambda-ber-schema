@@ -426,6 +426,20 @@ enum GridTypeEnum
     gold
   }
 
+enum IceContaminationEnum
+  {
+    none
+    limited
+    severe
+  }
+
+enum IceQualityEnum
+  {
+    ideal
+    too_thin
+    too_thick
+  }
+
 enum IlluminationTypeEnum
   {
     brightfield
@@ -537,6 +551,13 @@ enum OutputTypeEnum
     statistics
     processed_data
     log
+  }
+
+enum ParticleConcentrationEnum
+  {
+    optimal
+    too_low
+    too_high
   }
 
 enum PhasingMethodEnum
@@ -731,6 +752,15 @@ enum TechniqueEnum
     fiber_diffraction
     time_resolved_crystallography
     xray_tomography
+    microed
+  }
+
+enum TiltingSchemeEnum
+  {
+    none
+    dose_symmetric
+    linear
+    continuous
   }
 
 enum VitrificationMethodEnum
@@ -977,6 +1007,14 @@ type CryoEMPreparation
     plasmaTreatment: String
   }
 
+type CryoEMQualityMetrics
+  {
+    description: String
+    iceContamination: IceContaminationEnum
+    iceQuality: IceQualityEnum
+    particleConcentration: ParticleConcentrationEnum
+  }
+
 type CrystallizationConditions
   {
     description: String
@@ -1166,6 +1204,18 @@ type ExperimentRun
     astigmatismTarget: QuantityValue
     coma: QuantityValue
     stageTilt: QuantityValue
+    tiltingScheme: TiltingSchemeEnum
+    tiltAngleMin: QuantityValue
+    tiltAngleMax: QuantityValue
+    tiltAngleIncrement: QuantityValue
+    tiltAxisAngle: QuantityValue
+    numberOfTiltImages: QuantityValue
+    dosePerTilt: QuantityValue
+    dualTiltAxisRotation: QuantityValue
+    fiducialSize: QuantityValue
+    rotationRate: QuantityValue
+    cameraLength: QuantityValue
+    framesPerSecond: QuantityValue
     autoloaderSlot: String
     shotsPerHole: QuantityValue
     holesPerGroup: QuantityValue
@@ -1671,6 +1721,7 @@ type QualityMetrics
     averageBFactorA2: QuantityValue
     iZero: QuantityValue
     rg: QuantityValue
+    gridQuality: CryoEMQualityMetrics
     rFactor: QuantityValue
   }
 
@@ -1925,6 +1976,7 @@ type Study
     id: Uriorcurie!
     title: String
     description: String
+    proposalId: String
     keywords: [String]
   }
 

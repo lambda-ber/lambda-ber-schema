@@ -89,6 +89,7 @@ URI: [lambda:MolecularComposition](http://w3id.org/lambda/MolecularComposition)
 | ---  | ---  |
 | self | lambda:MolecularComposition |
 | native | lambda:MolecularComposition |
+| related | IHMCIF:_ihm_entity_poly_segment, IHMCIF:_ihm_struct_assembly_details |
 
 
 
@@ -106,6 +107,9 @@ URI: [lambda:MolecularComposition](http://w3id.org/lambda/MolecularComposition)
 name: MolecularComposition
 description: Molecular composition of a sample
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_entity_poly_segment
+- IHMCIF:_ihm_struct_assembly_details
 is_a: AttributeGroup
 attributes:
   sequences:
@@ -146,6 +150,9 @@ attributes:
 name: MolecularComposition
 description: Molecular composition of a sample
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_entity_poly_segment
+- IHMCIF:_ihm_struct_assembly_details
 is_a: AttributeGroup
 attributes:
   sequences:

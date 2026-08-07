@@ -155,6 +155,17 @@ URI: [nmdc:QuantityValue](https://w3id.org/nmdc/QuantityValue)
 | [ExperimentRun](ExperimentRun.md) | [astigmatism_target](astigmatism_target.md) | range | [QuantityValue](QuantityValue.md) |
 | [ExperimentRun](ExperimentRun.md) | [coma](coma.md) | range | [QuantityValue](QuantityValue.md) |
 | [ExperimentRun](ExperimentRun.md) | [stage_tilt](stage_tilt.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [tilt_angle_min](tilt_angle_min.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [tilt_angle_max](tilt_angle_max.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [tilt_angle_increment](tilt_angle_increment.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [tilt_axis_angle](tilt_axis_angle.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [number_of_tilt_images](number_of_tilt_images.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [dose_per_tilt](dose_per_tilt.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [dual_tilt_axis_rotation](dual_tilt_axis_rotation.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [fiducial_size](fiducial_size.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [rotation_rate](rotation_rate.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [camera_length](camera_length.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [frames_per_second](frames_per_second.md) | range | [QuantityValue](QuantityValue.md) |
 | [ExperimentRun](ExperimentRun.md) | [shots_per_hole](shots_per_hole.md) | range | [QuantityValue](QuantityValue.md) |
 | [ExperimentRun](ExperimentRun.md) | [holes_per_group](holes_per_group.md) | range | [QuantityValue](QuantityValue.md) |
 | [ExperimentRun](ExperimentRun.md) | [wavelength](wavelength.md) | range | [QuantityValue](QuantityValue.md) |

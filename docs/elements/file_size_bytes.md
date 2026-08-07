@@ -57,6 +57,7 @@ Alias: file_size_bytes
 | ---  | ---  |
 | self | lambda:file_size_bytes |
 | native | lambda:file_size_bytes |
+| close | IHMCIF:_ihm_external_files.file_size_bytes |
 
 
 
@@ -68,6 +69,8 @@ Alias: file_size_bytes
 name: file_size_bytes
 description: File size in bytes
 from_schema: http://w3id.org/lambda/
+close_mappings:
+- IHMCIF:_ihm_external_files.file_size_bytes
 rank: 1000
 alias: file_size_bytes
 owner: DataFile

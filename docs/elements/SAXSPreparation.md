@@ -107,6 +107,7 @@ URI: [lambda:SAXSPreparation](http://w3id.org/lambda/SAXSPreparation)
 | ---  | ---  |
 | self | lambda:SAXSPreparation |
 | native | lambda:SAXSPreparation |
+| related | IHMCIF:_ihm_sas_restraint |
 
 
 
@@ -124,6 +125,8 @@ URI: [lambda:SAXSPreparation](http://w3id.org/lambda/SAXSPreparation)
 name: SAXSPreparation
 description: SAXS/WAXS specific preparation
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_sas_restraint
 is_a: TechniqueSpecificPreparation
 attributes:
   concentration_series:
@@ -177,6 +180,8 @@ attributes:
 name: SAXSPreparation
 description: SAXS/WAXS specific preparation
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_sas_restraint
 is_a: TechniqueSpecificPreparation
 attributes:
   concentration_series:

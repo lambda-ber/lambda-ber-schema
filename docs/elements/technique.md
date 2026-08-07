@@ -17,8 +17,8 @@ Alias: technique
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [SANSInstrument](SANSInstrument.md) | Small-angle neutron scattering (SANS) instrument specifications |  no  |
 | [ExperimentRun](ExperimentRun.md) | An experimental data collection session |  no  |
+| [SANSInstrument](SANSInstrument.md) | Small-angle neutron scattering (SANS) instrument specifications |  no  |
 
 
 

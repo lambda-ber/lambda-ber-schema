@@ -1,5 +1,5 @@
 # Auto generated from lambda_ber_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-06-24T17:00:36
+# Generation date: 2026-08-07T16:24:26
 # Schema: lambda-ber-schema
 #
 # id: http://w3id.org/lambda/
@@ -521,6 +521,7 @@ class Study(NamedThing):
     class_model_uri: ClassVar[URIRef] = LAMBDA.Study
 
     id: Union[str, StudyId] = None
+    proposal_id: Optional[str] = None
     keywords: Optional[Union[str, list[str]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -528,6 +529,9 @@ class Study(NamedThing):
             self.MissingRequiredField("id")
         if not isinstance(self.id, StudyId):
             self.id = StudyId(self.id)
+
+        if self.proposal_id is not None and not isinstance(self.proposal_id, str):
+            self.proposal_id = str(self.proposal_id)
 
         if not isinstance(self.keywords, list):
             self.keywords = [self.keywords] if self.keywords is not None else []
@@ -1637,6 +1641,18 @@ class ExperimentRun(NamedThing):
     astigmatism_target: Optional[Union[dict, "QuantityValue"]] = None
     coma: Optional[Union[dict, "QuantityValue"]] = None
     stage_tilt: Optional[Union[dict, "QuantityValue"]] = None
+    tilting_scheme: Optional[Union[str, "TiltingSchemeEnum"]] = None
+    tilt_angle_min: Optional[Union[dict, "QuantityValue"]] = None
+    tilt_angle_max: Optional[Union[dict, "QuantityValue"]] = None
+    tilt_angle_increment: Optional[Union[dict, "QuantityValue"]] = None
+    tilt_axis_angle: Optional[Union[dict, "QuantityValue"]] = None
+    number_of_tilt_images: Optional[Union[dict, "QuantityValue"]] = None
+    dose_per_tilt: Optional[Union[dict, "QuantityValue"]] = None
+    dual_tilt_axis_rotation: Optional[Union[dict, "QuantityValue"]] = None
+    fiducial_size: Optional[Union[dict, "QuantityValue"]] = None
+    rotation_rate: Optional[Union[dict, "QuantityValue"]] = None
+    camera_length: Optional[Union[dict, "QuantityValue"]] = None
+    frames_per_second: Optional[Union[dict, "QuantityValue"]] = None
     autoloader_slot: Optional[str] = None
     shots_per_hole: Optional[Union[dict, "QuantityValue"]] = None
     holes_per_group: Optional[Union[dict, "QuantityValue"]] = None
@@ -1759,6 +1775,42 @@ class ExperimentRun(NamedThing):
 
         if self.stage_tilt is not None and not isinstance(self.stage_tilt, QuantityValue):
             self.stage_tilt = QuantityValue(**as_dict(self.stage_tilt))
+
+        if self.tilting_scheme is not None and not isinstance(self.tilting_scheme, TiltingSchemeEnum):
+            self.tilting_scheme = TiltingSchemeEnum(self.tilting_scheme)
+
+        if self.tilt_angle_min is not None and not isinstance(self.tilt_angle_min, QuantityValue):
+            self.tilt_angle_min = QuantityValue(**as_dict(self.tilt_angle_min))
+
+        if self.tilt_angle_max is not None and not isinstance(self.tilt_angle_max, QuantityValue):
+            self.tilt_angle_max = QuantityValue(**as_dict(self.tilt_angle_max))
+
+        if self.tilt_angle_increment is not None and not isinstance(self.tilt_angle_increment, QuantityValue):
+            self.tilt_angle_increment = QuantityValue(**as_dict(self.tilt_angle_increment))
+
+        if self.tilt_axis_angle is not None and not isinstance(self.tilt_axis_angle, QuantityValue):
+            self.tilt_axis_angle = QuantityValue(**as_dict(self.tilt_axis_angle))
+
+        if self.number_of_tilt_images is not None and not isinstance(self.number_of_tilt_images, QuantityValue):
+            self.number_of_tilt_images = QuantityValue(**as_dict(self.number_of_tilt_images))
+
+        if self.dose_per_tilt is not None and not isinstance(self.dose_per_tilt, QuantityValue):
+            self.dose_per_tilt = QuantityValue(**as_dict(self.dose_per_tilt))
+
+        if self.dual_tilt_axis_rotation is not None and not isinstance(self.dual_tilt_axis_rotation, QuantityValue):
+            self.dual_tilt_axis_rotation = QuantityValue(**as_dict(self.dual_tilt_axis_rotation))
+
+        if self.fiducial_size is not None and not isinstance(self.fiducial_size, QuantityValue):
+            self.fiducial_size = QuantityValue(**as_dict(self.fiducial_size))
+
+        if self.rotation_rate is not None and not isinstance(self.rotation_rate, QuantityValue):
+            self.rotation_rate = QuantityValue(**as_dict(self.rotation_rate))
+
+        if self.camera_length is not None and not isinstance(self.camera_length, QuantityValue):
+            self.camera_length = QuantityValue(**as_dict(self.camera_length))
+
+        if self.frames_per_second is not None and not isinstance(self.frames_per_second, QuantityValue):
+            self.frames_per_second = QuantityValue(**as_dict(self.frames_per_second))
 
         if self.autoloader_slot is not None and not isinstance(self.autoloader_slot, str):
             self.autoloader_slot = str(self.autoloader_slot)
@@ -3415,6 +3467,7 @@ class QualityMetrics(AttributeGroup):
     average_b_factor_a2: Optional[Union[dict, "QuantityValue"]] = None
     i_zero: Optional[Union[dict, "QuantityValue"]] = None
     rg: Optional[Union[dict, "QuantityValue"]] = None
+    grid_quality: Optional[Union[dict, "CryoEMQualityMetrics"]] = None
     r_factor: Optional[Union[dict, "QuantityValue"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -3511,6 +3564,9 @@ class QualityMetrics(AttributeGroup):
         if self.rg is not None and not isinstance(self.rg, QuantityValue):
             self.rg = QuantityValue(**as_dict(self.rg))
 
+        if self.grid_quality is not None and not isinstance(self.grid_quality, CryoEMQualityMetrics):
+            self.grid_quality = CryoEMQualityMetrics(**as_dict(self.grid_quality))
+
         if self.r_factor is not None and not isinstance(self.r_factor, QuantityValue):
             self.r_factor = QuantityValue(**as_dict(self.r_factor))
 
@@ -3546,6 +3602,35 @@ class ComputeResources(AttributeGroup):
 
         if self.storage_gb is not None and not isinstance(self.storage_gb, QuantityValue):
             self.storage_gb = QuantityValue(**as_dict(self.storage_gb))
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class CryoEMQualityMetrics(AttributeGroup):
+    """
+    Cryo-EM specific quality assessments recorded during or after data collection
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDA["CryoEMQualityMetrics"]
+    class_class_curie: ClassVar[str] = "lambda:CryoEMQualityMetrics"
+    class_name: ClassVar[str] = "CryoEMQualityMetrics"
+    class_model_uri: ClassVar[URIRef] = LAMBDA.CryoEMQualityMetrics
+
+    ice_contamination: Optional[Union[str, "IceContaminationEnum"]] = None
+    ice_quality: Optional[Union[str, "IceQualityEnum"]] = None
+    particle_concentration: Optional[Union[str, "ParticleConcentrationEnum"]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self.ice_contamination is not None and not isinstance(self.ice_contamination, IceContaminationEnum):
+            self.ice_contamination = IceContaminationEnum(self.ice_contamination)
+
+        if self.ice_quality is not None and not isinstance(self.ice_quality, IceQualityEnum):
+            self.ice_quality = IceQualityEnum(self.ice_quality)
+
+        if self.particle_concentration is not None and not isinstance(self.particle_concentration, ParticleConcentrationEnum):
+            self.particle_concentration = ParticleConcentrationEnum(self.particle_concentration)
 
         super().__post_init__(**kwargs)
 
@@ -5740,6 +5825,9 @@ class TechniqueEnum(EnumDefinitionImpl):
         text="xray_tomography",
         description="X-ray computed tomography (micro-CT) for 3D imaging",
         meaning=CHMO["0002743"])
+    microed = PermissibleValue(
+        text="microed",
+        description="Micro-electron diffraction for atomic-resolution structure determination from microcrystals")
 
     _defn = EnumDefinition(
         name="TechniqueEnum",
@@ -6398,6 +6486,85 @@ class OutputTypeEnum(EnumDefinitionImpl):
     _defn = EnumDefinition(
         name="OutputTypeEnum",
         description="Types of outputs from computational workflows",
+    )
+
+class IceContaminationEnum(EnumDefinitionImpl):
+    """
+    Assessment of ice contamination level on a cryo-EM grid
+    """
+    none = PermissibleValue(
+        text="none",
+        description="No ice contamination observed")
+    limited = PermissibleValue(
+        text="limited",
+        description="Limited ice contamination that does not significantly affect data quality")
+    severe = PermissibleValue(
+        text="severe",
+        description="Severe ice contamination that significantly degrades data quality")
+
+    _defn = EnumDefinition(
+        name="IceContaminationEnum",
+        description="Assessment of ice contamination level on a cryo-EM grid",
+    )
+
+class IceQualityEnum(EnumDefinitionImpl):
+    """
+    Assessment of vitreous ice thickness/quality for cryo-EM data collection
+    """
+    ideal = PermissibleValue(
+        text="ideal",
+        description="Ice thickness is ideal for data collection")
+    too_thin = PermissibleValue(
+        text="too_thin",
+        description="Ice is too thin, risk of air exposure or beam damage")
+    too_thick = PermissibleValue(
+        text="too_thick",
+        description="Ice is too thick, reducing contrast and signal quality")
+
+    _defn = EnumDefinition(
+        name="IceQualityEnum",
+        description="Assessment of vitreous ice thickness/quality for cryo-EM data collection",
+    )
+
+class ParticleConcentrationEnum(EnumDefinitionImpl):
+    """
+    Assessment of particle concentration on a cryo-EM grid
+    """
+    optimal = PermissibleValue(
+        text="optimal",
+        description="Particle concentration is suitable for data collection")
+    too_low = PermissibleValue(
+        text="too_low",
+        description="Particle concentration is too low for efficient data collection")
+    too_high = PermissibleValue(
+        text="too_high",
+        description="Particle concentration is too high, causing overlapping particles")
+
+    _defn = EnumDefinition(
+        name="ParticleConcentrationEnum",
+        description="Assessment of particle concentration on a cryo-EM grid",
+    )
+
+class TiltingSchemeEnum(EnumDefinitionImpl):
+    """
+    Tilt scheme used during tomographic or continuous-rotation data collection
+    """
+    none = PermissibleValue(
+        text="none",
+        description="No tilting performed (single exposure or non-tilt acquisition)")
+    dose_symmetric = PermissibleValue(
+        text="dose_symmetric",
+        description="""Dose-symmetric tilt scheme alternating around zero tilt to minimize accumulated dose at low tilt angles""")
+    linear = PermissibleValue(
+        text="linear",
+        description="Linear tilt scheme collecting images in a single sweep from minimum to maximum tilt")
+    continuous = PermissibleValue(
+        text="continuous",
+        description="Continuous rotation data collection (e.g., used in MicroED/3DED)")
+
+    _defn = EnumDefinition(
+        name="TiltingSchemeEnum",
+        description="Tilt scheme used during tomographic or continuous-rotation data collection",
     )
 
 class FunctionalSiteTypeEnum(EnumDefinitionImpl):
@@ -7446,6 +7613,9 @@ slots.dataset__workflow_input_associations = Slot(uri=LAMBDA.workflow_input_asso
 slots.dataset__workflow_output_associations = Slot(uri=LAMBDA.workflow_output_associations, name="dataset__workflow_output_associations", curie=LAMBDA.curie('workflow_output_associations'),
                    model_uri=LAMBDA.dataset__workflow_output_associations, domain=None, range=Optional[Union[Union[dict, WorkflowOutputAssociation], list[Union[dict, WorkflowOutputAssociation]]]])
 
+slots.study__proposal_id = Slot(uri=LAMBDA.proposal_id, name="study__proposal_id", curie=LAMBDA.curie('proposal_id'),
+                   model_uri=LAMBDA.study__proposal_id, domain=None, range=Optional[str])
+
 slots.study__keywords = Slot(uri=LAMBDA.keywords, name="study__keywords", curie=LAMBDA.curie('keywords'),
                    model_uri=LAMBDA.study__keywords, domain=None, range=Optional[Union[str, list[str]]])
 
@@ -8115,6 +8285,42 @@ slots.experimentRun__coma = Slot(uri=LAMBDA.coma, name="experimentRun__coma", cu
 
 slots.experimentRun__stage_tilt = Slot(uri=LAMBDA.stage_tilt, name="experimentRun__stage_tilt", curie=LAMBDA.curie('stage_tilt'),
                    model_uri=LAMBDA.experimentRun__stage_tilt, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.experimentRun__tilting_scheme = Slot(uri=LAMBDA.tilting_scheme, name="experimentRun__tilting_scheme", curie=LAMBDA.curie('tilting_scheme'),
+                   model_uri=LAMBDA.experimentRun__tilting_scheme, domain=None, range=Optional[Union[str, "TiltingSchemeEnum"]])
+
+slots.experimentRun__tilt_angle_min = Slot(uri=LAMBDA.tilt_angle_min, name="experimentRun__tilt_angle_min", curie=LAMBDA.curie('tilt_angle_min'),
+                   model_uri=LAMBDA.experimentRun__tilt_angle_min, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.experimentRun__tilt_angle_max = Slot(uri=LAMBDA.tilt_angle_max, name="experimentRun__tilt_angle_max", curie=LAMBDA.curie('tilt_angle_max'),
+                   model_uri=LAMBDA.experimentRun__tilt_angle_max, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.experimentRun__tilt_angle_increment = Slot(uri=LAMBDA.tilt_angle_increment, name="experimentRun__tilt_angle_increment", curie=LAMBDA.curie('tilt_angle_increment'),
+                   model_uri=LAMBDA.experimentRun__tilt_angle_increment, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.experimentRun__tilt_axis_angle = Slot(uri=LAMBDA.tilt_axis_angle, name="experimentRun__tilt_axis_angle", curie=LAMBDA.curie('tilt_axis_angle'),
+                   model_uri=LAMBDA.experimentRun__tilt_axis_angle, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.experimentRun__number_of_tilt_images = Slot(uri=LAMBDA.number_of_tilt_images, name="experimentRun__number_of_tilt_images", curie=LAMBDA.curie('number_of_tilt_images'),
+                   model_uri=LAMBDA.experimentRun__number_of_tilt_images, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.experimentRun__dose_per_tilt = Slot(uri=LAMBDA.dose_per_tilt, name="experimentRun__dose_per_tilt", curie=LAMBDA.curie('dose_per_tilt'),
+                   model_uri=LAMBDA.experimentRun__dose_per_tilt, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.experimentRun__dual_tilt_axis_rotation = Slot(uri=LAMBDA.dual_tilt_axis_rotation, name="experimentRun__dual_tilt_axis_rotation", curie=LAMBDA.curie('dual_tilt_axis_rotation'),
+                   model_uri=LAMBDA.experimentRun__dual_tilt_axis_rotation, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.experimentRun__fiducial_size = Slot(uri=LAMBDA.fiducial_size, name="experimentRun__fiducial_size", curie=LAMBDA.curie('fiducial_size'),
+                   model_uri=LAMBDA.experimentRun__fiducial_size, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.experimentRun__rotation_rate = Slot(uri=LAMBDA.rotation_rate, name="experimentRun__rotation_rate", curie=LAMBDA.curie('rotation_rate'),
+                   model_uri=LAMBDA.experimentRun__rotation_rate, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.experimentRun__camera_length = Slot(uri=LAMBDA.camera_length, name="experimentRun__camera_length", curie=LAMBDA.curie('camera_length'),
+                   model_uri=LAMBDA.experimentRun__camera_length, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.experimentRun__frames_per_second = Slot(uri=LAMBDA.frames_per_second, name="experimentRun__frames_per_second", curie=LAMBDA.curie('frames_per_second'),
+                   model_uri=LAMBDA.experimentRun__frames_per_second, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentRun__autoloader_slot = Slot(uri=LAMBDA.autoloader_slot, name="experimentRun__autoloader_slot", curie=LAMBDA.curie('autoloader_slot'),
                    model_uri=LAMBDA.experimentRun__autoloader_slot, domain=None, range=Optional[str])
@@ -9064,6 +9270,9 @@ slots.qualityMetrics__i_zero = Slot(uri=LAMBDA.i_zero, name="qualityMetrics__i_z
 slots.qualityMetrics__rg = Slot(uri=LAMBDA.rg, name="qualityMetrics__rg", curie=LAMBDA.curie('rg'),
                    model_uri=LAMBDA.qualityMetrics__rg, domain=None, range=Optional[Union[dict, QuantityValue]])
 
+slots.qualityMetrics__grid_quality = Slot(uri=LAMBDA.grid_quality, name="qualityMetrics__grid_quality", curie=LAMBDA.curie('grid_quality'),
+                   model_uri=LAMBDA.qualityMetrics__grid_quality, domain=None, range=Optional[Union[dict, CryoEMQualityMetrics]])
+
 slots.qualityMetrics__r_factor = Slot(uri=LAMBDA.r_factor, name="qualityMetrics__r_factor", curie=LAMBDA.curie('r_factor'),
                    model_uri=LAMBDA.qualityMetrics__r_factor, domain=None, range=Optional[Union[dict, QuantityValue]])
 
@@ -9078,6 +9287,15 @@ slots.computeResources__memory_gb = Slot(uri=LAMBDA.memory_gb, name="computeReso
 
 slots.computeResources__storage_gb = Slot(uri=LAMBDA.storage_gb, name="computeResources__storage_gb", curie=LAMBDA.curie('storage_gb'),
                    model_uri=LAMBDA.computeResources__storage_gb, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.cryoEMQualityMetrics__ice_contamination = Slot(uri=LAMBDA.ice_contamination, name="cryoEMQualityMetrics__ice_contamination", curie=LAMBDA.curie('ice_contamination'),
+                   model_uri=LAMBDA.cryoEMQualityMetrics__ice_contamination, domain=None, range=Optional[Union[str, "IceContaminationEnum"]])
+
+slots.cryoEMQualityMetrics__ice_quality = Slot(uri=LAMBDA.ice_quality, name="cryoEMQualityMetrics__ice_quality", curie=LAMBDA.curie('ice_quality'),
+                   model_uri=LAMBDA.cryoEMQualityMetrics__ice_quality, domain=None, range=Optional[Union[str, "IceQualityEnum"]])
+
+slots.cryoEMQualityMetrics__particle_concentration = Slot(uri=LAMBDA.particle_concentration, name="cryoEMQualityMetrics__particle_concentration", curie=LAMBDA.curie('particle_concentration'),
+                   model_uri=LAMBDA.cryoEMQualityMetrics__particle_concentration, domain=None, range=Optional[Union[str, "ParticleConcentrationEnum"]])
 
 slots.motionCorrectionParameters__patch_size = Slot(uri=LAMBDA.patch_size, name="motionCorrectionParameters__patch_size", curie=LAMBDA.curie('patch_size'),
                    model_uri=LAMBDA.motionCorrectionParameters__patch_size, domain=None, range=Optional[Union[dict, QuantityValue]])

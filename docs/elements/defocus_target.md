@@ -3,7 +3,7 @@
 # Slot: defocus_target 
 
 
-_Target defocus value in micrometers_
+_Target defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -66,7 +66,8 @@ Alias: defocus_target
 <details>
 ```yaml
 name: defocus_target
-description: Target defocus value in micrometers
+description: Target defocus value, typically specified in micrometers. Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: defocus_target

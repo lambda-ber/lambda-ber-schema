@@ -17,9 +17,9 @@ Alias: sample_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [SamplePreparation](SamplePreparation.md) | A process that prepares a sample for imaging |  no  |
 | [ExperimentSampleAssociation](ExperimentSampleAssociation.md) | M:N link between ExperimentRun and Sample with role metadata |  no  |
 | [StudySampleAssociation](StudySampleAssociation.md) | M:N link between Study and Sample with role metadata |  no  |
+| [SamplePreparation](SamplePreparation.md) | A process that prepares a sample for imaging |  no  |
 
 
 

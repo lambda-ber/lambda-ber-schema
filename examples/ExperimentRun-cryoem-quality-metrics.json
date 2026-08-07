@@ -1,0 +1,21 @@
+{
+  "id": "lambdaber:exp_cryoem_parp_001",
+  "title": "Cryo-EM data collection with quality assessments",
+  "description": "Single particle cryo-EM run with ice and particle quality assessments",
+  "experiment_code": "PNNL-CRYOEM-PARP-2024-001",
+  "technique": "cryo_em",
+  "experiment_date": "2024-06-01",
+  "operator_id": "microscopist_001",
+  "quality_metrics": {
+    "resolution": {
+      "unit": "Angstroms",
+      "numeric_value": 3.1
+    },
+    "grid_quality": {
+      "ice_contamination": "limited",
+      "ice_quality": "ideal",
+      "particle_concentration": "optimal"
+    }
+  },
+  "@type": "ExperimentRun"
+}

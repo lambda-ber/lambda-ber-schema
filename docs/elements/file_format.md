@@ -59,6 +59,7 @@ Alias: file_format
 | ---  | ---  |
 | self | lambda:file_format |
 | native | lambda:file_format |
+| close | IHMCIF:_ihm_external_files.file_format |
 
 
 
@@ -70,6 +71,8 @@ Alias: file_format
 name: file_format
 description: File format
 from_schema: http://w3id.org/lambda/
+close_mappings:
+- IHMCIF:_ihm_external_files.file_format
 rank: 1000
 alias: file_format
 owner: DataFile

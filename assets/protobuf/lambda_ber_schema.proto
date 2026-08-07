@@ -190,6 +190,14 @@ message CryoEMPreparation
   quantityValue ethaneTemperature = 0
   string plasmaTreatment = 0
  }
+// Cryo-EM specific quality assessments recorded during or after data collection
+message CryoEMQualityMetrics
+ {
+  string description = 0
+  iceContaminationEnum iceContamination = 0
+  iceQualityEnum iceQuality = 0
+  particleConcentrationEnum particleConcentration = 0
+ }
 // Crystal growth conditions for X-ray crystallography (NSLS2 Crystallization mapping)
 message CrystallizationConditions
  {
@@ -380,6 +388,18 @@ message ExperimentRun
   quantityValue astigmatismTarget = 0
   quantityValue coma = 0
   quantityValue stageTilt = 0
+  tiltingSchemeEnum tiltingScheme = 0
+  quantityValue tiltAngleMin = 0
+  quantityValue tiltAngleMax = 0
+  quantityValue tiltAngleIncrement = 0
+  quantityValue tiltAxisAngle = 0
+  quantityValue numberOfTiltImages = 0
+  quantityValue dosePerTilt = 0
+  quantityValue dualTiltAxisRotation = 0
+  quantityValue fiducialSize = 0
+  quantityValue rotationRate = 0
+  quantityValue cameraLength = 0
+  quantityValue framesPerSecond = 0
   string autoloaderSlot = 0
   quantityValue shotsPerHole = 0
   quantityValue holesPerGroup = 0
@@ -882,6 +902,7 @@ message QualityMetrics
   quantityValue averageBFactorA2 = 0
   quantityValue iZero = 0
   quantityValue rg = 0
+  cryoEMQualityMetrics gridQuality = 0
   quantityValue rFactor = 0
  }
 // A simple quantity value, representing a measurement with a numeric value and unit. This allows data providers to specify measurements in their preferred unit while enabling standardized interpretation. For example, a pixel size could be specified as 1.5 micrometers or 15 Angstroms, with the unit clearly specified.
@@ -1136,6 +1157,7 @@ message Study
   uriorcurie id = 0
   string title = 0
   string description = 0
+  string proposalId = 0
  repeated  string keywords = 0
  }
 // M:N link between Study and ExperimentRun

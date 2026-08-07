@@ -36,6 +36,7 @@ lambdaber:beamline_aps_24id_c a lambdaber:XRayInstrument ;
     lambdaber:installation_date "2010-01-01" ;
     lambdaber:instrument_category CHMO:0001084 ;
     lambdaber:instrument_code "APS-24-ID-C" ;
+    lambdaber:instrument_registry_id "APS_NECAT_24IDC" ;
     lambdaber:manufacturer "Argonne National Laboratory" ;
     lambdaber:model "APS Beamline 24-ID-C" ;
     lambdaber:monochromator_type "Si(111) double crystal" ;

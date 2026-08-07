@@ -7,6 +7,7 @@ keywords:
 - pncc.short_sample_name
 studies:
 - id: emsl:project_160724
+  proposal_id: '160724'
   title: 'Single particle cryo-EM analysis of human PARP enzymes: mechanisms of regulation
     and inhibition'
   description: "Human PARP enzymes are a diverse class of medically relevant proteins\

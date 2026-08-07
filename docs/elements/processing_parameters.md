@@ -57,6 +57,7 @@ Alias: processing_parameters
 | ---  | ---  |
 | self | lambda:processing_parameters |
 | native | lambda:processing_parameters |
+| related | IHMCIF:_ihm_modeling_protocol_details.description |
 
 
 
@@ -68,6 +69,8 @@ Alias: processing_parameters
 name: processing_parameters
 description: Parameters used in processing
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_modeling_protocol_details.description
 rank: 1000
 alias: processing_parameters
 owner: WorkflowRun

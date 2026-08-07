@@ -3,7 +3,7 @@
 # Slot: exposure_time_per_frame 
 
 
-_Exposure time per frame in milliseconds_
+_Exposure time per frame, typically specified in milliseconds. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -67,7 +67,8 @@ Alias: exposure_time_per_frame
 <details>
 ```yaml
 name: exposure_time_per_frame
-description: Exposure time per frame in milliseconds
+description: Exposure time per frame, typically specified in milliseconds. Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: http://w3id.org/lambda/
 exact_mappings:
 - mmCIF:_em_image_recording.average_exposure_time

@@ -28,6 +28,8 @@ URI: [lambda:Study](http://w3id.org/lambda/Study)
         
       Study : keywords
         
+      Study : proposal_id
+        
       Study : title
         
       
@@ -47,6 +49,7 @@ URI: [lambda:Study](http://w3id.org/lambda/Study)
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
+| [proposal_id](proposal_id.md) | 0..1 <br/> [String](String.md) | Facility proposal or project identifier associated with this study (e | direct |
 | [keywords](keywords.md) | * <br/> [String](String.md) | Keywords or tags describing the study for search and categorization | direct |
 | [id](id.md) | 1 <br/> [Uriorcurie](Uriorcurie.md) | Globally unique identifier as an IRI or CURIE for machine processing and exte... | [NamedThing](NamedThing.md) |
 | [title](title.md) | 0..1 <br/> [String](String.md) | A human-readable name or title for this entity | [NamedThing](NamedThing.md) |
@@ -92,6 +95,7 @@ URI: [lambda:Study](http://w3id.org/lambda/Study)
 | ---  | ---  |
 | self | lambda:Study |
 | native | lambda:Study |
+| related | IHMCIF:_ihm_entry_collection, IHMCIF:_ihm_entry_collection_mapping |
 
 
 
@@ -111,8 +115,20 @@ description: A logical grouping of related experiments investigating a research 
   In the relational model, Study is lightweight - all relationships are via association
   tables.
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_entry_collection
+- IHMCIF:_ihm_entry_collection_mapping
 is_a: NamedThing
 attributes:
+  proposal_id:
+    name: proposal_id
+    description: Facility proposal or project identifier associated with this study
+      (e.g., a DOE or facility allocation ID)
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    domain_of:
+    - Study
+    range: string
   keywords:
     name: keywords
     description: Keywords or tags describing the study for search and categorization
@@ -135,8 +151,22 @@ description: A logical grouping of related experiments investigating a research 
   In the relational model, Study is lightweight - all relationships are via association
   tables.
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_entry_collection
+- IHMCIF:_ihm_entry_collection_mapping
 is_a: NamedThing
 attributes:
+  proposal_id:
+    name: proposal_id
+    description: Facility proposal or project identifier associated with this study
+      (e.g., a DOE or facility allocation ID)
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    alias: proposal_id
+    owner: Study
+    domain_of:
+    - Study
+    range: string
   keywords:
     name: keywords
     description: Keywords or tags describing the study for search and categorization

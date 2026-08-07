@@ -57,6 +57,7 @@ Alias: storage_uri
 | ---  | ---  |
 | self | lambda:storage_uri |
 | native | lambda:storage_uri |
+| related | IHMCIF:_ihm_external_reference_info.associated_url, IHMCIF:_ihm_external_files.file_path |
 
 
 
@@ -68,6 +69,9 @@ Alias: storage_uri
 name: storage_uri
 description: Storage URI (S3, Globus, etc.)
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_external_reference_info.associated_url
+- IHMCIF:_ihm_external_files.file_path
 rank: 1000
 alias: storage_uri
 owner: DataFile

@@ -1,0 +1,120 @@
+@base <http://example.org/> .
+@prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
+@prefix NCBITaxon: <http://purl.obolibrary.org/obo/NCBITaxon_> .
+@prefix ROR: <https://ror.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lambdaber: <http://w3id.org/lambda/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://smb.slac.stanford.edu/dev/lims/lambda/BL12-2/A78_x107_1_00001> a lambdaber:Dataset ;
+    dcterms:title "SSRL MX: BL12-2/A78_x107_1_00001" ;
+    lambdaber:data_files <https://smb.slac.stanford.edu/dev/lims/lambda/BL12-2/A78_x107_1_00001/workflow/xds_aimless_manual/output/A78_x107_1_aimless.mtz> ;
+    lambdaber:experiment_instrument_associations [ a lambdaber:ExperimentInstrumentAssociation ;
+            lambdaber:experiment_id <https://smb.slac.stanford.edu/dev/lims/lambda/experiment/a1e0eb79-4b9c-48e9-b8b0-cda51f109647> ;
+            lambdaber:instrument_id <https://smb.slac.stanford.edu/dev/lims/lambda/instrument/BL12-2> ] ;
+    lambdaber:experiment_runs <https://smb.slac.stanford.edu/dev/lims/lambda/experiment/a1e0eb79-4b9c-48e9-b8b0-cda51f109647> ;
+    lambdaber:experiment_sample_associations [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id <https://smb.slac.stanford.edu/dev/lims/lambda/experiment/a1e0eb79-4b9c-48e9-b8b0-cda51f109647> ;
+            lambdaber:sample_id <https://smb.slac.stanford.edu/dev/lims/lambda/BL12-2/A78_x107_1_00001/sample> ] ;
+    lambdaber:instruments <https://smb.slac.stanford.edu/dev/lims/lambda/instrument/BL12-2> ;
+    lambdaber:samples <https://smb.slac.stanford.edu/dev/lims/lambda/BL12-2/A78_x107_1_00001/sample> ;
+    lambdaber:studies <https://smb.slac.stanford.edu/dev/lims/lambda/study/c6c1e631-8a5c-4f34-8b16-8c413042eece> ;
+    lambdaber:study_experiment_associations [ a lambdaber:StudyExperimentAssociation ;
+            lambdaber:experiment_id <https://smb.slac.stanford.edu/dev/lims/lambda/experiment/a1e0eb79-4b9c-48e9-b8b0-cda51f109647> ;
+            lambdaber:study_id <https://smb.slac.stanford.edu/dev/lims/lambda/study/c6c1e631-8a5c-4f34-8b16-8c413042eece> ] ;
+    lambdaber:study_sample_associations [ a lambdaber:StudySampleAssociation ;
+            lambdaber:sample_id <https://smb.slac.stanford.edu/dev/lims/lambda/BL12-2/A78_x107_1_00001/sample> ;
+            lambdaber:study_id <https://smb.slac.stanford.edu/dev/lims/lambda/study/c6c1e631-8a5c-4f34-8b16-8c413042eece> ] ;
+    lambdaber:study_workflow_associations [ a lambdaber:StudyWorkflowAssociation ;
+            lambdaber:study_id <https://smb.slac.stanford.edu/dev/lims/lambda/study/c6c1e631-8a5c-4f34-8b16-8c413042eece> ;
+            lambdaber:workflow_id <https://smb.slac.stanford.edu/dev/lims/lambda/BL12-2/A78_x107_1_00001/workflow/xds_aimless_manual> ] ;
+    lambdaber:workflow_experiment_associations [ a lambdaber:WorkflowExperimentAssociation ;
+            lambdaber:experiment_id <https://smb.slac.stanford.edu/dev/lims/lambda/experiment/a1e0eb79-4b9c-48e9-b8b0-cda51f109647> ;
+            lambdaber:workflow_id <https://smb.slac.stanford.edu/dev/lims/lambda/BL12-2/A78_x107_1_00001/workflow/xds_aimless_manual> ] ;
+    lambdaber:workflow_output_associations [ a lambdaber:WorkflowOutputAssociation ;
+            lambdaber:file_id <https://smb.slac.stanford.edu/dev/lims/lambda/BL12-2/A78_x107_1_00001/workflow/xds_aimless_manual/output/A78_x107_1_aimless.mtz> ;
+            lambdaber:output_type "processed_data" ;
+            lambdaber:workflow_id <https://smb.slac.stanford.edu/dev/lims/lambda/BL12-2/A78_x107_1_00001/workflow/xds_aimless_manual> ] ;
+    lambdaber:workflow_runs <https://smb.slac.stanford.edu/dev/lims/lambda/BL12-2/A78_x107_1_00001/workflow/xds_aimless_manual> .
+
+<https://smb.slac.stanford.edu/dev/lims/lambda/BL12-2/A78_x107_1_00001/workflow/xds_aimless_manual/output/A78_x107_1_aimless.mtz> a lambdaber:DataFile ;
+    dcterms:title "A78_x107_1_aimless.mtz" ;
+    lambdaber:checksum "f0eb4b5c9ed7f4ba5462a90ac152519ac3af80802c06cf158d038324a8b715db" ;
+    lambdaber:creation_date "2024-03-27T17:06:09" ;
+    lambdaber:data_type "diffraction" ;
+    lambdaber:file_format "mtz" ;
+    lambdaber:file_name "A78_x107_1_aimless.mtz" ;
+    lambdaber:file_path "/data/csmith/Collect/PNNL/A78/x107/xds/A78_x107_1_xds/A78_x107_1_aimless.mtz" ;
+    lambdaber:file_role "final" ;
+    lambdaber:file_size_bytes [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "2363540.0"^^xsd:float ;
+            lambdaber:unit "bytes" ] ;
+    lambdaber:storage_uri "https://smb.slac.stanford.edu/dev/lims/lambda/experiment/a1e0eb79-4b9c-48e9-b8b0-cda51f109647/bundle/A78_x107.tar" .
+
+<https://smb.slac.stanford.edu/dev/lims/lambda/instrument/BL12-2> a lambdaber:Instrument ;
+    dcterms:title "SSRL BL12-2" ;
+    lambdaber:beamline_id "BL12-2" ;
+    lambdaber:facility_name ROR:05gzmn429 ;
+    lambdaber:instrument_category CHMO:0001084 ;
+    lambdaber:instrument_code "BL12-2" .
+
+<https://smb.slac.stanford.edu/dev/lims/lambda/BL12-2/A78_x107_1_00001/sample> a lambdaber:Sample ;
+    dcterms:title "Crystal sample A78_x107 (PWe2)" ;
+    lambdaber:description "Organism: Pseudoduganella lurida; Enzyme class: endolysin; UniProt: A0A562R7W5; PDB: 9MS7; Sample ID: 5354744; Port: A78_x107" ;
+    lambdaber:organism NCBITaxon:1036180 ;
+    lambdaber:protein_name "PWe2" ;
+    lambdaber:sample_code "A78_x107" ;
+    lambdaber:sample_type "protein" .
+
+<https://smb.slac.stanford.edu/dev/lims/lambda/BL12-2/A78_x107_1_00001/workflow/xds_aimless_manual> a lambdaber:WorkflowRun ;
+    dcterms:title "XDS+AIMLESS (MANUAL) data processing" ;
+    lambdaber:description "Automated data processing with xds+aimless (manual)" ;
+    lambdaber:indexer_module "XDS" ;
+    lambdaber:processing_level [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "2.0"^^xsd:float ;
+            lambdaber:unit "level" ] ;
+    lambdaber:scaler_module "AIMLESS" ;
+    lambdaber:software_name "xds+aimless (manual)" ;
+    lambdaber:workflow_code "XDS_AIMLESS_MANUAL-scaling" ;
+    lambdaber:workflow_type "scaling" .
+
+<https://smb.slac.stanford.edu/dev/lims/lambda/study/c6c1e631-8a5c-4f34-8b16-8c413042eece> a lambdaber:Study ;
+    dcterms:title "Crystal structure of a putative phage endolysin identified from a metagenomic survey of Prosser, Washington soil (PWe2)" ;
+    lambdaber:keywords "carbohydrate-metabolizing",
+        "endolysin",
+        "hydrolase",
+        "soil phage enzyme" .
+
+<https://smb.slac.stanford.edu/dev/lims/lambda/experiment/a1e0eb79-4b9c-48e9-b8b0-cda51f109647> a lambdaber:ExperimentRun ;
+    lambdaber:description "Run 1: A78_x107 (100.0-460.0 deg)" ;
+    lambdaber:detector_distance [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "200.0"^^xsd:float ;
+            lambdaber:unit "mm" ] ;
+    lambdaber:experiment_code "DCSS-run1" ;
+    lambdaber:experimental_conditions [ a lambdaber:ExperimentalConditions ;
+            lambdaber:exposure_time [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "0.2"^^xsd:float ;
+                    lambdaber:unit "seconds" ] ] ;
+    lambdaber:number_of_images [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "1800.0"^^xsd:float ;
+            lambdaber:unit "images" ] ;
+    lambdaber:oscillation_angle [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "0.2"^^xsd:float ;
+            lambdaber:unit "degrees" ] ;
+    lambdaber:quality_metrics [ a lambdaber:QualityMetrics ;
+            lambdaber:resolution [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "1.5"^^xsd:float ;
+                    lambdaber:unit "Angstroms" ] ] ;
+    lambdaber:raw_data_location "/data/csmith/Collect/PNNL/A78" ;
+    lambdaber:start_angle [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "100.0"^^xsd:float ;
+            lambdaber:unit "degrees" ] ;
+    lambdaber:technique CHMO:0000156 ;
+    lambdaber:transmission [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "95.0"^^xsd:float ;
+            lambdaber:unit "percent" ] ;
+    lambdaber:wavelength [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "0.9794927318691736"^^xsd:float ;
+            lambdaber:unit "Angstroms" ] .
+

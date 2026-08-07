@@ -3,7 +3,7 @@
 # Slot: stage_tilt 
 
 
-_Stage tilt angle in degrees_
+_Fixed stage tilt angle for a single-orientation acquisition, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -36,6 +36,10 @@ Alias: stage_tilt
 
 
 
+## Comments
+
+* For a tilt series, use tilt_angle_min, tilt_angle_max, and tilt_angle_increment rather than this slot.
+
 ## Identifier and Mapping Information
 
 
@@ -66,7 +70,12 @@ Alias: stage_tilt
 <details>
 ```yaml
 name: stage_tilt
-description: Stage tilt angle in degrees
+description: Fixed stage tilt angle for a single-orientation acquisition, typically
+  specified in degrees. Data providers may specify alternative units by including
+  the unit in the QuantityValue.
+comments:
+- For a tilt series, use tilt_angle_min, tilt_angle_max, and tilt_angle_increment
+  rather than this slot.
 from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: stage_tilt

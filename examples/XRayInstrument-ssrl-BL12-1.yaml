@@ -4,6 +4,7 @@ description: Macromolecular crystallography beamline at Stanford Synchrotron Rad
   Lightsource operated by Scripps and Stanford PRT with full remote access capabilities
   for MAD, SAD, and monochromatic data collection
 instrument_code: SSRL-BL12-1
+instrument_registry_id: SSRL_BL121
 instrument_category: SYNCHROTRON_BEAMLINE
 facility_name: SSRL
 facility_ror: https://ror.org/05gzmn429

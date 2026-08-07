@@ -17,9 +17,9 @@ Alias: flux
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [ExperimentRun](ExperimentRun.md) | An experimental data collection session |  no  |
 | [XRFImage](XRFImage.md) | X-ray fluorescence (XRF) image showing elemental distribution |  no  |
 | [SANSSource](SANSSource.md) | Beam source parameters for a SANS instrument |  no  |
-| [ExperimentRun](ExperimentRun.md) | An experimental data collection session |  no  |
 
 
 

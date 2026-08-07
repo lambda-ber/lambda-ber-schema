@@ -10,6 +10,7 @@
 --     * Slot: title Description: A human-readable name or title for this entity
 --     * Slot: description Description: A detailed textual description of this entity
 -- # Class: Study Description: A logical grouping of related experiments investigating a research question. In the relational model, Study is lightweight - all relationships are via association tables.
+--     * Slot: proposal_id Description: Facility proposal or project identifier associated with this study (e.g., a DOE or facility allocation ID)
 --     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title Description: A human-readable name or title for this entity
 --     * Slot: description Description: A detailed textual description of this entity
@@ -308,6 +309,7 @@
 --     * Slot: raw_data_location Description: Location of raw data files
 --     * Slot: processing_status Description: Current processing status
 --     * Slot: daq_system Description: Data acquisition system used to collect this experiment
+--     * Slot: tilting_scheme Description: Tilt scheme used during tomographic data collection
 --     * Slot: autoloader_slot Description: Autoloader slot identifier
 --     * Slot: acquisition_software Description: Acquisition software used (e.g., SerialEM, EPU, Leginon)
 --     * Slot: acquisition_software_version Description: Version of acquisition software
@@ -323,20 +325,31 @@
 --     * Slot: data_collection_strategy_id Description: Strategy for data collection
 --     * Slot: quality_metrics_id Description: Quality metrics for the experiment
 --     * Slot: magnification_id Description: Magnification used during data collection
---     * Slot: calibrated_pixel_size_id Description: Calibrated pixel size in Angstroms per pixel
+--     * Slot: calibrated_pixel_size_id Description: Calibrated pixel size, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue.
 --     * Slot: camera_binning_id Description: Camera binning factor. This must be a positive float value (e.g., 1, 1.5, 2, 3).
---     * Slot: exposure_time_per_frame_id Description: Exposure time per frame in milliseconds
+--     * Slot: exposure_time_per_frame_id Description: Exposure time per frame, typically specified in milliseconds. Data providers may specify alternative units by including the unit in the QuantityValue.
 --     * Slot: frames_per_movie_id Description: Number of frames per movie
---     * Slot: total_exposure_time_id Description: Total exposure time in milliseconds
---     * Slot: total_dose_id Description: Total electron dose in e-/Angstrom^2
---     * Slot: dose_rate_id Description: Dose rate in e-/pixel/s or e-/Angstrom^2/s
---     * Slot: defocus_target_id Description: Target defocus value in micrometers
---     * Slot: defocus_range_min_id Description: Minimum defocus range in micrometers
---     * Slot: defocus_range_max_id Description: Maximum defocus range in micrometers
---     * Slot: defocus_range_increment_id Description: Defocus range increment in micrometers
---     * Slot: astigmatism_target_id Description: Target astigmatism in Angstroms
---     * Slot: coma_id Description: Coma aberration in nanometers
---     * Slot: stage_tilt_id Description: Stage tilt angle in degrees
+--     * Slot: total_exposure_time_id Description: Total exposure time. Data providers may specify alternative units (e.g., seconds, milliseconds) by including the unit in the QuantityValue.
+--     * Slot: total_dose_id Description: Total electron dose, typically specified in e-/Angstrom^2. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: dose_rate_id Description: Dose rate, typically specified in e-/pixel/s or e-/Angstrom^2/s. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: defocus_target_id Description: Target defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: defocus_range_min_id Description: Minimum defocus range, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: defocus_range_max_id Description: Maximum defocus range, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: defocus_range_increment_id Description: Defocus range increment, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: astigmatism_target_id Description: Target astigmatism, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: coma_id Description: Coma aberration, typically specified in nanometers. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: stage_tilt_id Description: Fixed stage tilt angle for a single-orientation acquisition, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: tilt_angle_min_id Description: Lowest (most negative) tilt angle in the tilt series, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: tilt_angle_max_id Description: Highest (most positive) tilt angle in the tilt series, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: tilt_angle_increment_id Description: Tilt angle increment between successive tilt steps. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: tilt_axis_angle_id Description: In-plane azimuth of the tilt axis relative to the detector x-axis, typically specified in degrees. Required for tilt series alignment and reconstruction.
+--     * Slot: number_of_tilt_images_id Description: Number of images collected in the tilt series
+--     * Slot: dose_per_tilt_id Description: Electron dose applied at each tilt step, typically specified in e-/Angstrom^2. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: dual_tilt_axis_rotation_id Description: Rotation between the two tilt axes in a dual-axis tomography acquisition, typically specified in degrees. Omit for the far more common single-axis case.
+--     * Slot: fiducial_size_id Description: Size of fiducial markers used for tomographic alignment. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: rotation_rate_id Description: Continuous rotation rate during data collection (e.g., for MicroED). Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: camera_length_id Description: Camera length for electron diffraction (e.g., MicroED). Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: frames_per_second_id Description: Frame acquisition rate. Data providers may specify alternative units by including the unit in the QuantityValue.
 --     * Slot: shots_per_hole_id Description: Number of shots taken per hole
 --     * Slot: holes_per_group_id Description: Number of holes per group. Data providers may include unit information in the QuantityValue if needed.
 --     * Slot: wavelength_id Description: X-ray wavelength, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue.
@@ -792,6 +805,7 @@
 --     * Slot: average_b_factor_a2_id Description: Average B-factor in Angstroms squared
 --     * Slot: i_zero_id Description: Forward scattering intensity I(0)
 --     * Slot: rg_id Description: Radius of gyration, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: grid_quality_id Description: Cryo-EM specific quality assessments of the imaged grid (ice contamination, ice quality, particle concentration)
 --     * Slot: r_factor_id Description: R-factor for crystallography (deprecated, use r_work)
 -- # Class: ComputeResources Description: Computational resources used
 --     * Slot: id
@@ -800,6 +814,12 @@
 --     * Slot: gpu_hours_id Description: GPU hours used, measured in hours. Data providers may specify alternative time units by including the unit in the QuantityValue.
 --     * Slot: memory_gb_id Description: Maximum memory used, typically specified in gigabytes (GB). Data providers may specify alternative units by including the unit in the QuantityValue.
 --     * Slot: storage_gb_id Description: Storage used, typically specified in gigabytes (GB). Data providers may specify alternative units by including the unit in the QuantityValue.
+-- # Class: CryoEMQualityMetrics Description: Cryo-EM specific quality assessments recorded during or after data collection
+--     * Slot: id
+--     * Slot: ice_contamination Description: Assessment of ice contamination level on the cryo-EM grid
+--     * Slot: ice_quality Description: Assessment of vitreous ice thickness/quality for data collection
+--     * Slot: particle_concentration Description: Assessment of particle concentration on the cryo-EM grid
+--     * Slot: description
 -- # Class: MotionCorrectionParameters Description: Parameters specific to motion correction workflows
 --     * Slot: id
 --     * Slot: dose_weighting Description: Whether dose weighting was applied
@@ -1273,6 +1293,14 @@ CREATE TABLE "TechniqueSpecificPreparation" (
 	description TEXT,
 	PRIMARY KEY (id)
 );CREATE INDEX "ix_TechniqueSpecificPreparation_id" ON "TechniqueSpecificPreparation" (id);
+CREATE TABLE "CryoEMQualityMetrics" (
+	id INTEGER NOT NULL,
+	ice_contamination VARCHAR(7),
+	ice_quality VARCHAR(9),
+	particle_concentration VARCHAR(8),
+	description TEXT,
+	PRIMARY KEY (id)
+);CREATE INDEX "ix_CryoEMQualityMetrics_id" ON "CryoEMQualityMetrics" (id);
 CREATE TABLE "Any" (
 	id INTEGER NOT NULL,
 	PRIMARY KEY (id)
@@ -1329,6 +1357,7 @@ CREATE TABLE "EvolutionaryConservation" (
 	PRIMARY KEY (id)
 );CREATE INDEX "ix_EvolutionaryConservation_id" ON "EvolutionaryConservation" (id);
 CREATE TABLE "Study" (
+	proposal_id TEXT,
 	id TEXT NOT NULL,
 	title TEXT,
 	description TEXT,
@@ -1440,7 +1469,7 @@ CREATE TABLE "MolecularComposition_sequences" (
 	sequences TEXT,
 	PRIMARY KEY ("MolecularComposition_id", sequences),
 	FOREIGN KEY("MolecularComposition_id") REFERENCES "MolecularComposition" (id)
-);CREATE INDEX "ix_MolecularComposition_sequences_MolecularComposition_id" ON "MolecularComposition_sequences" ("MolecularComposition_id");CREATE INDEX "ix_MolecularComposition_sequences_sequences" ON "MolecularComposition_sequences" (sequences);
+);CREATE INDEX "ix_MolecularComposition_sequences_sequences" ON "MolecularComposition_sequences" (sequences);CREATE INDEX "ix_MolecularComposition_sequences_MolecularComposition_id" ON "MolecularComposition_sequences" ("MolecularComposition_id");
 CREATE TABLE "MolecularComposition_modifications" (
 	"MolecularComposition_id" INTEGER,
 	modifications TEXT,
@@ -1464,13 +1493,13 @@ CREATE TABLE "ConformationalEnsemble_principal_motions" (
 	principal_motions TEXT,
 	PRIMARY KEY ("ConformationalEnsemble_id", principal_motions),
 	FOREIGN KEY("ConformationalEnsemble_id") REFERENCES "ConformationalEnsemble" (id)
-);CREATE INDEX "ix_ConformationalEnsemble_principal_motions_ConformationalEnsemble_id" ON "ConformationalEnsemble_principal_motions" ("ConformationalEnsemble_id");CREATE INDEX "ix_ConformationalEnsemble_principal_motions_principal_motions" ON "ConformationalEnsemble_principal_motions" (principal_motions);
+);CREATE INDEX "ix_ConformationalEnsemble_principal_motions_principal_motions" ON "ConformationalEnsemble_principal_motions" (principal_motions);CREATE INDEX "ix_ConformationalEnsemble_principal_motions_ConformationalEnsemble_id" ON "ConformationalEnsemble_principal_motions" ("ConformationalEnsemble_id");
 CREATE TABLE "EvolutionaryConservation_conserved_residues" (
 	"EvolutionaryConservation_id" TEXT,
 	conserved_residues TEXT,
 	PRIMARY KEY ("EvolutionaryConservation_id", conserved_residues),
 	FOREIGN KEY("EvolutionaryConservation_id") REFERENCES "EvolutionaryConservation" (id)
-);CREATE INDEX "ix_EvolutionaryConservation_conserved_residues_EvolutionaryConservation_id" ON "EvolutionaryConservation_conserved_residues" ("EvolutionaryConservation_id");CREATE INDEX "ix_EvolutionaryConservation_conserved_residues_conserved_residues" ON "EvolutionaryConservation_conserved_residues" (conserved_residues);
+);CREATE INDEX "ix_EvolutionaryConservation_conserved_residues_conserved_residues" ON "EvolutionaryConservation_conserved_residues" (conserved_residues);CREATE INDEX "ix_EvolutionaryConservation_conserved_residues_EvolutionaryConservation_id" ON "EvolutionaryConservation_conserved_residues" ("EvolutionaryConservation_id");
 CREATE TABLE "EvolutionaryConservation_variable_residues" (
 	"EvolutionaryConservation_id" TEXT,
 	variable_residues TEXT,
@@ -2207,6 +2236,7 @@ CREATE TABLE "QualityMetrics" (
 	average_b_factor_a2_id INTEGER,
 	i_zero_id INTEGER,
 	rg_id INTEGER,
+	grid_quality_id INTEGER,
 	r_factor_id INTEGER,
 	PRIMARY KEY (id),
 	FOREIGN KEY(resolution_id) REFERENCES "QuantityValue" (id),
@@ -2238,6 +2268,7 @@ CREATE TABLE "QualityMetrics" (
 	FOREIGN KEY(average_b_factor_a2_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(i_zero_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(rg_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(grid_quality_id) REFERENCES "CryoEMQualityMetrics" (id),
 	FOREIGN KEY(r_factor_id) REFERENCES "QuantityValue" (id)
 );CREATE INDEX "ix_QualityMetrics_id" ON "QualityMetrics" (id);
 CREATE TABLE "ComputeResources" (
@@ -2356,7 +2387,7 @@ CREATE TABLE "AggregatedProteinView_pdb_entries" (
 	pdb_entries TEXT,
 	PRIMARY KEY ("AggregatedProteinView_id", pdb_entries),
 	FOREIGN KEY("AggregatedProteinView_id") REFERENCES "AggregatedProteinView" (id)
-);CREATE INDEX "ix_AggregatedProteinView_pdb_entries_pdb_entries" ON "AggregatedProteinView_pdb_entries" (pdb_entries);CREATE INDEX "ix_AggregatedProteinView_pdb_entries_AggregatedProteinView_id" ON "AggregatedProteinView_pdb_entries" ("AggregatedProteinView_id");
+);CREATE INDEX "ix_AggregatedProteinView_pdb_entries_AggregatedProteinView_id" ON "AggregatedProteinView_pdb_entries" ("AggregatedProteinView_id");CREATE INDEX "ix_AggregatedProteinView_pdb_entries_pdb_entries" ON "AggregatedProteinView_pdb_entries" (pdb_entries);
 CREATE TABLE "Sample" (
 	sample_code TEXT NOT NULL,
 	sample_type VARCHAR(16) NOT NULL,
@@ -2636,7 +2667,7 @@ CREATE TABLE "BeamlineInstrument_techniques_supported" (
 	techniques_supported VARCHAR(29) NOT NULL,
 	PRIMARY KEY ("BeamlineInstrument_id", techniques_supported),
 	FOREIGN KEY("BeamlineInstrument_id") REFERENCES "BeamlineInstrument" (id)
-);CREATE INDEX "ix_BeamlineInstrument_techniques_supported_BeamlineInstrument_id" ON "BeamlineInstrument_techniques_supported" ("BeamlineInstrument_id");CREATE INDEX "ix_BeamlineInstrument_techniques_supported_techniques_supported" ON "BeamlineInstrument_techniques_supported" (techniques_supported);
+);CREATE INDEX "ix_BeamlineInstrument_techniques_supported_techniques_supported" ON "BeamlineInstrument_techniques_supported" (techniques_supported);CREATE INDEX "ix_BeamlineInstrument_techniques_supported_BeamlineInstrument_id" ON "BeamlineInstrument_techniques_supported" ("BeamlineInstrument_id");
 CREATE TABLE "FTIRImage_molecular_signatures" (
 	"FTIRImage_id" TEXT,
 	molecular_signatures TEXT,
@@ -2648,7 +2679,7 @@ CREATE TABLE "OpticalImage_color_channels" (
 	color_channels TEXT,
 	PRIMARY KEY ("OpticalImage_id", color_channels),
 	FOREIGN KEY("OpticalImage_id") REFERENCES "OpticalImage" (id)
-);CREATE INDEX "ix_OpticalImage_color_channels_OpticalImage_id" ON "OpticalImage_color_channels" ("OpticalImage_id");CREATE INDEX "ix_OpticalImage_color_channels_color_channels" ON "OpticalImage_color_channels" (color_channels);
+);CREATE INDEX "ix_OpticalImage_color_channels_color_channels" ON "OpticalImage_color_channels" (color_channels);CREATE INDEX "ix_OpticalImage_color_channels_OpticalImage_id" ON "OpticalImage_color_channels" ("OpticalImage_id");
 CREATE TABLE "XRFImage_elements_measured" (
 	"XRFImage_id" TEXT,
 	elements_measured TEXT,
@@ -2660,13 +2691,13 @@ CREATE TABLE "BufferComposition_components" (
 	components TEXT,
 	PRIMARY KEY ("BufferComposition_id", components),
 	FOREIGN KEY("BufferComposition_id") REFERENCES "BufferComposition" (id)
-);CREATE INDEX "ix_BufferComposition_components_components" ON "BufferComposition_components" (components);CREATE INDEX "ix_BufferComposition_components_BufferComposition_id" ON "BufferComposition_components" ("BufferComposition_id");
+);CREATE INDEX "ix_BufferComposition_components_BufferComposition_id" ON "BufferComposition_components" ("BufferComposition_id");CREATE INDEX "ix_BufferComposition_components_components" ON "BufferComposition_components" (components);
 CREATE TABLE "BufferComposition_additives" (
 	"BufferComposition_id" INTEGER,
 	additives TEXT,
 	PRIMARY KEY ("BufferComposition_id", additives),
 	FOREIGN KEY("BufferComposition_id") REFERENCES "BufferComposition" (id)
-);CREATE INDEX "ix_BufferComposition_additives_BufferComposition_id" ON "BufferComposition_additives" ("BufferComposition_id");CREATE INDEX "ix_BufferComposition_additives_additives" ON "BufferComposition_additives" (additives);
+);CREATE INDEX "ix_BufferComposition_additives_additives" ON "BufferComposition_additives" (additives);CREATE INDEX "ix_BufferComposition_additives_BufferComposition_id" ON "BufferComposition_additives" ("BufferComposition_id");
 CREATE TABLE "SANSDetector" (
 	id INTEGER NOT NULL,
 	detector_name TEXT,
@@ -2699,6 +2730,7 @@ CREATE TABLE "ExperimentRun" (
 	raw_data_location TEXT,
 	processing_status VARCHAR(13),
 	daq_system VARCHAR(10),
+	tilting_scheme VARCHAR(14),
 	autoloader_slot TEXT,
 	acquisition_software TEXT,
 	acquisition_software_version TEXT,
@@ -2728,6 +2760,17 @@ CREATE TABLE "ExperimentRun" (
 	astigmatism_target_id INTEGER,
 	coma_id INTEGER,
 	stage_tilt_id INTEGER,
+	tilt_angle_min_id INTEGER,
+	tilt_angle_max_id INTEGER,
+	tilt_angle_increment_id INTEGER,
+	tilt_axis_angle_id INTEGER,
+	number_of_tilt_images_id INTEGER,
+	dose_per_tilt_id INTEGER,
+	dual_tilt_axis_rotation_id INTEGER,
+	fiducial_size_id INTEGER,
+	rotation_rate_id INTEGER,
+	camera_length_id INTEGER,
+	frames_per_second_id INTEGER,
 	shots_per_hole_id INTEGER,
 	holes_per_group_id INTEGER,
 	wavelength_id INTEGER,
@@ -2775,6 +2818,17 @@ CREATE TABLE "ExperimentRun" (
 	FOREIGN KEY(astigmatism_target_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(coma_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(stage_tilt_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(tilt_angle_min_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(tilt_angle_max_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(tilt_angle_increment_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(tilt_axis_angle_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(number_of_tilt_images_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(dose_per_tilt_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(dual_tilt_axis_rotation_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(fiducial_size_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(rotation_rate_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(camera_length_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(frames_per_second_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(shots_per_hole_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(holes_per_group_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(wavelength_id) REFERENCES "QuantityValue" (id),
@@ -3014,7 +3068,7 @@ CREATE TABLE "WorkflowRun_output_files" (
 	PRIMARY KEY ("WorkflowRun_id", output_files_id),
 	FOREIGN KEY("WorkflowRun_id") REFERENCES "WorkflowRun" (id),
 	FOREIGN KEY(output_files_id) REFERENCES "DataFile" (id)
-);CREATE INDEX "ix_WorkflowRun_output_files_WorkflowRun_id" ON "WorkflowRun_output_files" ("WorkflowRun_id");CREATE INDEX "ix_WorkflowRun_output_files_output_files_id" ON "WorkflowRun_output_files" (output_files_id);
+);CREATE INDEX "ix_WorkflowRun_output_files_output_files_id" ON "WorkflowRun_output_files" (output_files_id);CREATE INDEX "ix_WorkflowRun_output_files_WorkflowRun_id" ON "WorkflowRun_output_files" ("WorkflowRun_id");
 CREATE TABLE "StudyExperimentAssociation" (
 	id INTEGER NOT NULL,
 	study_id TEXT NOT NULL,
@@ -3102,7 +3156,7 @@ CREATE TABLE "FunctionalSite_residues" (
 	residues TEXT,
 	PRIMARY KEY ("FunctionalSite_id", residues),
 	FOREIGN KEY("FunctionalSite_id") REFERENCES "FunctionalSite" (id)
-);CREATE INDEX "ix_FunctionalSite_residues_FunctionalSite_id" ON "FunctionalSite_residues" ("FunctionalSite_id");CREATE INDEX "ix_FunctionalSite_residues_residues" ON "FunctionalSite_residues" (residues);
+);CREATE INDEX "ix_FunctionalSite_residues_residues" ON "FunctionalSite_residues" (residues);CREATE INDEX "ix_FunctionalSite_residues_FunctionalSite_id" ON "FunctionalSite_residues" ("FunctionalSite_id");
 CREATE TABLE "FunctionalSite_go_terms" (
 	"FunctionalSite_id" TEXT,
 	go_terms TEXT,
@@ -3114,13 +3168,13 @@ CREATE TABLE "FunctionalSite_publication_ids" (
 	publication_ids TEXT,
 	PRIMARY KEY ("FunctionalSite_id", publication_ids),
 	FOREIGN KEY("FunctionalSite_id") REFERENCES "FunctionalSite" (id)
-);CREATE INDEX "ix_FunctionalSite_publication_ids_FunctionalSite_id" ON "FunctionalSite_publication_ids" ("FunctionalSite_id");CREATE INDEX "ix_FunctionalSite_publication_ids_publication_ids" ON "FunctionalSite_publication_ids" (publication_ids);
+);CREATE INDEX "ix_FunctionalSite_publication_ids_publication_ids" ON "FunctionalSite_publication_ids" (publication_ids);CREATE INDEX "ix_FunctionalSite_publication_ids_FunctionalSite_id" ON "FunctionalSite_publication_ids" ("FunctionalSite_id");
 CREATE TABLE "StructuralFeature_publication_ids" (
 	"StructuralFeature_id" TEXT,
 	publication_ids TEXT,
 	PRIMARY KEY ("StructuralFeature_id", publication_ids),
 	FOREIGN KEY("StructuralFeature_id") REFERENCES "StructuralFeature" (id)
-);CREATE INDEX "ix_StructuralFeature_publication_ids_StructuralFeature_id" ON "StructuralFeature_publication_ids" ("StructuralFeature_id");CREATE INDEX "ix_StructuralFeature_publication_ids_publication_ids" ON "StructuralFeature_publication_ids" (publication_ids);
+);CREATE INDEX "ix_StructuralFeature_publication_ids_publication_ids" ON "StructuralFeature_publication_ids" (publication_ids);CREATE INDEX "ix_StructuralFeature_publication_ids_StructuralFeature_id" ON "StructuralFeature_publication_ids" ("StructuralFeature_id");
 CREATE TABLE "ProteinProteinInteraction_interface_residues" (
 	"ProteinProteinInteraction_id" TEXT,
 	interface_residues TEXT,
@@ -3144,7 +3198,7 @@ CREATE TABLE "ProteinProteinInteraction_publication_ids" (
 	publication_ids TEXT,
 	PRIMARY KEY ("ProteinProteinInteraction_id", publication_ids),
 	FOREIGN KEY("ProteinProteinInteraction_id") REFERENCES "ProteinProteinInteraction" (id)
-);CREATE INDEX "ix_ProteinProteinInteraction_publication_ids_publication_ids" ON "ProteinProteinInteraction_publication_ids" (publication_ids);CREATE INDEX "ix_ProteinProteinInteraction_publication_ids_ProteinProteinInteraction_id" ON "ProteinProteinInteraction_publication_ids" ("ProteinProteinInteraction_id");
+);CREATE INDEX "ix_ProteinProteinInteraction_publication_ids_ProteinProteinInteraction_id" ON "ProteinProteinInteraction_publication_ids" ("ProteinProteinInteraction_id");CREATE INDEX "ix_ProteinProteinInteraction_publication_ids_publication_ids" ON "ProteinProteinInteraction_publication_ids" (publication_ids);
 CREATE TABLE "MutationEffect_publication_ids" (
 	"MutationEffect_id" TEXT,
 	publication_ids TEXT,
@@ -3156,10 +3210,10 @@ CREATE TABLE "PostTranslationalModification_publication_ids" (
 	publication_ids TEXT,
 	PRIMARY KEY ("PostTranslationalModification_id", publication_ids),
 	FOREIGN KEY("PostTranslationalModification_id") REFERENCES "PostTranslationalModification" (id)
-);CREATE INDEX "ix_PostTranslationalModification_publication_ids_PostTranslationalModification_id" ON "PostTranslationalModification_publication_ids" ("PostTranslationalModification_id");CREATE INDEX "ix_PostTranslationalModification_publication_ids_publication_ids" ON "PostTranslationalModification_publication_ids" (publication_ids);
+);CREATE INDEX "ix_PostTranslationalModification_publication_ids_publication_ids" ON "PostTranslationalModification_publication_ids" (publication_ids);CREATE INDEX "ix_PostTranslationalModification_publication_ids_PostTranslationalModification_id" ON "PostTranslationalModification_publication_ids" ("PostTranslationalModification_id");
 CREATE TABLE "LigandInteraction_binding_site_residues" (
 	"LigandInteraction_id" INTEGER,
 	binding_site_residues TEXT,
 	PRIMARY KEY ("LigandInteraction_id", binding_site_residues),
 	FOREIGN KEY("LigandInteraction_id") REFERENCES "LigandInteraction" (id)
-);CREATE INDEX "ix_LigandInteraction_binding_site_residues_binding_site_residues" ON "LigandInteraction_binding_site_residues" (binding_site_residues);CREATE INDEX "ix_LigandInteraction_binding_site_residues_LigandInteraction_id" ON "LigandInteraction_binding_site_residues" ("LigandInteraction_id");
+);CREATE INDEX "ix_LigandInteraction_binding_site_residues_LigandInteraction_id" ON "LigandInteraction_binding_site_residues" ("LigandInteraction_id");CREATE INDEX "ix_LigandInteraction_binding_site_residues_binding_site_residues" ON "LigandInteraction_binding_site_residues" (binding_site_residues);

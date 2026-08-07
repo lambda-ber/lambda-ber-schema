@@ -403,11 +403,21 @@ class EMSLLoader(BaseLoader):
             ".//totalDose",
         )
         if dose:
-            # If dose looks like per-frame dose (< 5), multiply by frames to get total.
-            if dose < 5 and "frames_per_movie" in result:
+            # The tags above are a mix: TotalExposureDose and TotalDose are
+            # whole-movie totals, DosePerFrame is per frame, and different EPU
+            # versions populate different ones. Magnitude is what separates
+            # them in practice -- single particle collection runs roughly
+            # 30-70 e-/A^2 over a movie, spread across ~40 frames, so a
+            # per-frame figure lands near 1 and a total never approaches it.
+            # 5 e-/A^2 sits in the empty gap between those populations.
+            #
+            # This is a heuristic, not a guarantee. A genuinely low-dose total
+            # would be scaled up wrongly here; prefer an explicit per-frame tag
+            # if a future EPU schema offers one.
+            PER_FRAME_DOSE_CEILING = 5
+            if dose < PER_FRAME_DOSE_CEILING and "frames_per_movie" in result:
                 dose_total = dose * result["frames_per_movie"]["numeric_value"]
                 result["total_dose"] = {"numeric_value": round(dose_total, 2), "unit": "e-/Å²"}
-                result["dose_per_frame"] = {"numeric_value": round(dose, 4), "unit": "e-/Å²/frame"}
             else:
                 result["total_dose"] = {"numeric_value": round(dose, 2), "unit": "e-/Å²"}
 
@@ -465,10 +475,83 @@ class EMSLLoader(BaseLoader):
         if holes is not None:
             result["holes_per_group"] = {"numeric_value": int(holes), "unit": ""}
 
-        # Stage tilt
+        # Stage tilt (single-orientation acquisition)
         tilt = self._float(root, ".//StageTilt", ".//stageTilt", ".//TiltAngle")
         if tilt is not None:
             result["stage_tilt"] = {"numeric_value": round(tilt, 2), "unit": "degrees"}
+
+        # Tilt series geometry (tomography sessions)
+        scheme = self._text(root, ".//TiltingScheme", ".//TiltScheme", ".//TiltSeriesScheme")
+        if scheme:
+            scheme_map = {
+                "dosesymmetric": "dose_symmetric",
+                "dose_symmetric": "dose_symmetric",
+                "symmetric": "dose_symmetric",
+                "bidirectional": "dose_symmetric",
+                "linear": "linear",
+                "unidirectional": "linear",
+                "continuous": "continuous",
+                "none": "none",
+            }
+            mapped = scheme_map.get(scheme.strip().lower().replace(" ", "").replace("-", ""))
+            if mapped:
+                result["tilting_scheme"] = mapped
+        elif self._text(root, ".//DoseSymmetric") in ("true", "True", "1"):
+            result["tilting_scheme"] = "dose_symmetric"
+        # No geometric fallback: a tilt range and increment are equally
+        # consistent with a linear sweep and a dose-symmetric one, so guessing
+        # from them would invent a fact the session never recorded.
+
+        tilt_start = self._float(
+            root,
+            ".//TiltAngleStart",
+            ".//StartTiltAngle",
+            ".//AlphaTiltStart",
+            ".//MinTiltAngle",
+        )
+        tilt_end = self._float(
+            root,
+            ".//TiltAngleEnd",
+            ".//EndTiltAngle",
+            ".//AlphaTiltEnd",
+            ".//MaxTiltAngle",
+        )
+        if tilt_start is not None and tilt_end is not None:
+            # EPU/tomo sessions may record the sweep in either direction.
+            tilt_start, tilt_end = sorted((tilt_start, tilt_end))
+        if tilt_start is not None:
+            result["tilt_angle_min"] = {"numeric_value": round(tilt_start, 2), "unit": "degrees"}
+        if tilt_end is not None:
+            result["tilt_angle_max"] = {"numeric_value": round(tilt_end, 2), "unit": "degrees"}
+
+        tilt_step = self._float(
+            root,
+            ".//TiltAngleIncrement",
+            ".//TiltAngleStep",
+            ".//AlphaTiltStep",
+            ".//TiltStep",
+        )
+        if tilt_step is not None:
+            result["tilt_angle_increment"] = {
+                "numeric_value": round(abs(tilt_step), 3),
+                "unit": "degrees",
+            }
+
+        tilt_axis = self._float(root, ".//TiltAxisAngle", ".//TiltAxisRotation")
+        if tilt_axis is not None:
+            result["tilt_axis_angle"] = {"numeric_value": round(tilt_axis, 2), "unit": "degrees"}
+
+        tilt_count = self._float(
+            root,
+            ".//NumberOfTiltImages",
+            ".//TiltImageCount",
+            ".//NumberOfTilts",
+        )
+        if tilt_count is not None:
+            result["number_of_tilt_images"] = {
+                "numeric_value": int(tilt_count),
+                "unit": "images",
+            }
 
         return result
 
@@ -963,6 +1046,8 @@ class EMSLLoader(BaseLoader):
             id=study_id,
             title=project_title,
             description=project.get("abstract") if project else None,
+            # EMSL's project number is the facility's proposal allocation ID.
+            proposal_id=project_id,
             keywords=[k for k in ["EMSL", project.get(
                 "project_type") if project else None] if k],
         )
@@ -976,7 +1061,7 @@ class EMSLLoader(BaseLoader):
         )
 
         technique = self._infer_technique(
-            sample_key, sample_value, resource, files)
+            sample_key, sample_value, resource, files, warnings)
 
         # Optional: enrich with EPU session metadata from tar archive (requires JWT).
         epu = self._build_epu_quantity_values(
@@ -1008,6 +1093,12 @@ class EMSLLoader(BaseLoader):
             shots_per_hole=epu.get("shots_per_hole"),
             holes_per_group=epu.get("holes_per_group"),
             stage_tilt=epu.get("stage_tilt"),
+            tilting_scheme=epu.get("tilting_scheme"),
+            tilt_angle_min=epu.get("tilt_angle_min"),
+            tilt_angle_max=epu.get("tilt_angle_max"),
+            tilt_angle_increment=epu.get("tilt_angle_increment"),
+            tilt_axis_angle=epu.get("tilt_axis_angle"),
+            number_of_tilt_images=epu.get("number_of_tilt_images"),
         )
 
         instruments: list[Instrument] = []
@@ -1192,8 +1283,15 @@ class EMSLLoader(BaseLoader):
         sample_value: str,
         resource: dict[str, Any] | None,
         files: list[dict[str, Any]],
+        warnings: list[str] | None = None,
     ) -> TechniqueEnum:
-        """Infer TechniqueEnum from transaction metadata."""
+        """
+        Infer TechniqueEnum from transaction metadata.
+
+        When nothing in the metadata matches, falls back to cryo_em and
+        appends a note to ``warnings`` if one was supplied, so a guessed
+        technique is never mistaken for a recorded one.
+        """
         resource_name = ""
         if resource:
             resource_name = " ".join(
@@ -1222,10 +1320,27 @@ class EMSLLoader(BaseLoader):
             return TechniqueEnum.saxs
         if any(token in text for token in ("xanes", "exafs", "xas")):
             return TechniqueEnum.xas
+        # Check MicroED before the general cryo-EM tokens, since MicroED runs
+        # happen on the same instruments and would otherwise be swallowed.
+        # PNNL's own metadata marks these with processing_scheme=3, which the
+        # public transaction records do not expose, so match on text instead.
+        if any(re.search(pattern, text) for pattern in (
+            r"\bmicro[-\s]?ed\b",
+            r"\b3ded\b",
+            r"\belectron\s+diffraction\b",
+        )):
+            return TechniqueEnum.microed
         if any(token in text for token in ("krios", "arctica", "aquilos", "cryo", "pncc", "epu", "atlas")):
             return TechniqueEnum.cryo_em
 
-        # Most publicly visible sample-search transactions at EMSL are cryo-EM.
+        # Most publicly visible sample-search transactions at EMSL are cryo-EM,
+        # but EMSL also hosts SAXS, NMR and other modalities, so this default is
+        # a guess and is recorded as one.
+        if warnings is not None:
+            warnings.append(
+                f"Could not determine technique for sample '{sample_value}' "
+                f"(key '{sample_key}'); defaulting to cryo_em"
+            )
         return TechniqueEnum.cryo_em
 
     def _infer_instrument_category(self, resource_name: str) -> InstrumentCategoryEnum:

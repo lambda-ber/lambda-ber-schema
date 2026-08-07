@@ -21,6 +21,7 @@ except ImportError:  # pragma: no cover - optional dependency for Cloudflare sit
 from lambda_ber_schema.loaders.base import BaseLoader, LoaderResult
 from lambda_ber_schema.loaders.cache import ResponseCache
 from lambda_ber_schema.pydantic import (
+    BeamlineEnum,
     BufferComposition,
     DatabaseCrossReference,
     DatabaseNameEnum,
@@ -461,6 +462,10 @@ class SimpleScatteringLoader(BaseLoader):
             id="simplescattering:instrument/sibyls-bl12.3.1",
             title="SIBYLS BL12.3.1",
             instrument_code="ALS-SIBYLS-BL12.3.1",
+            # By value, not member name: gen-pydantic derives member names from
+            # the enum's title, so BeamlineEnum's are unreadably mangled.
+            instrument_registry_id=BeamlineEnum("ALS_SIBYLS"),
+            beamline_id=beamline,
             description="SEC-SAXS beamline at Advanced Light Source, Berkeley Lab",
             manufacturer="Lawrence Berkeley National Laboratory",
         )
@@ -553,7 +558,6 @@ class SimpleScatteringLoader(BaseLoader):
             technique=technique,
             wavelength=wavelength,
             detector_distance=detector_distance,
-            beamline=metadata.get("beamline"),
         )
 
     def _create_data_files(
