@@ -1283,6 +1283,8 @@ class EMSLLoader(BaseLoader):
             return TechniqueEnum.xas
         # Check MicroED before the general cryo-EM tokens, since MicroED runs
         # happen on the same instruments and would otherwise be swallowed.
+        # PNNL's own metadata marks these with processing_scheme=3, which the
+        # public transaction records do not expose, so match on text instead.
         if any(re.search(pattern, text) for pattern in (
             r"\bmicro[-\s]?ed\b",
             r"\b3ded\b",
