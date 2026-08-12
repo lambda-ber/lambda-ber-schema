@@ -3,6 +3,7 @@ title: SIBYLS Beamline 12.3.1
 description: SIBYLS (Structurally Integrated BiologY for Life Sciences) beamline at
   ALS for SAXS, X-ray crystallography, and fiber diffraction
 instrument_code: ALS-12.3.1-SIBYLS
+instrument_registry_id: ALS_SIBYLS
 instrument_category: SYNCHROTRON_BEAMLINE
 facility_name: ALS
 facility_ror: https://ror.org/02jbv0t02

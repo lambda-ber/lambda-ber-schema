@@ -3,6 +3,7 @@ title: APS Beamline 19-ID (SBC)
 description: Structural Biology Center insertion device beamline for macromolecular
   crystallography
 instrument_code: SBC 19-ID
+instrument_registry_id: APS_SBCCAT_19ID
 instrument_category: SYNCHROTRON_BEAMLINE
 facility_name: APS
 facility_ror: https://ror.org/04qxsr837

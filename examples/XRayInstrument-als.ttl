@@ -33,6 +33,7 @@ lambdaber:instrument_als_831 a lambdaber:XRayInstrument ;
     lambdaber:installation_date "2000-06-01" ;
     lambdaber:instrument_category CHMO:0001084 ;
     lambdaber:instrument_code "ALS-8.3.1" ;
+    lambdaber:instrument_registry_id "ALS_BL831" ;
     lambdaber:manufacturer "Lawrence Berkeley National Laboratory" ;
     lambdaber:model "ALS Beamline 8.3.1" ;
     lambdaber:monochromator_type "Si(111) double crystal" ;

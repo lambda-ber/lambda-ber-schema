@@ -526,6 +526,31 @@ enum MutationTypeEnum
     substitution
   }
 
+enum OrganizationRoleEnum
+  {
+    host_institution
+    operating_institution
+    funder
+    collaborating_institution
+    depositor
+    primary_affiliation
+    secondary_affiliation
+    former_affiliation
+  }
+
+enum OrganizationTypeEnum
+  {
+    national_laboratory
+    university
+    research_institute
+    government_agency
+    funding_agency
+    company
+    hospital
+    consortium
+    other
+  }
+
 enum OutputTypeEnum
   {
     map
@@ -537,6 +562,20 @@ enum OutputTypeEnum
     statistics
     processed_data
     log
+  }
+
+enum PersonRoleEnum
+  {
+    principal_investigator
+    co_investigator
+    author
+    operator
+    local_contact
+    analyst
+    reviewer
+    data_curator
+    submitter
+    contact
   }
 
 enum PhasingMethodEnum
@@ -834,6 +873,7 @@ type BeamlineInstrument
     instrumentCategory: InstrumentCategoryEnum
     facilityName: FacilityEnum
     facilityRor: Uriorcurie
+    facilityOrganizationId: Organization
     beamlineId: String
     manufacturer: String
     model: String
@@ -917,6 +957,7 @@ type CryoEMInstrument
     instrumentCategory: InstrumentCategoryEnum
     facilityName: FacilityEnum
     facilityRor: Uriorcurie
+    facilityOrganizationId: Organization
     beamlineId: String
     manufacturer: String
     model: String
@@ -1068,6 +1109,8 @@ type Dataset
     description: String
     keywords: [String]
     studies: [Study]
+    persons: [Person]
+    organizations: [Organization]
     instruments: [Instrument]
     proteinConstructs: [ProteinConstruct]
     samples: [Sample]
@@ -1084,6 +1127,11 @@ type Dataset
     workflowExperimentAssociations: [WorkflowExperimentAssociation]
     workflowInputAssociations: [WorkflowInputAssociation]
     workflowOutputAssociations: [WorkflowOutputAssociation]
+    studyPersonAssociations: [StudyPersonAssociation]
+    experimentPersonAssociations: [ExperimentPersonAssociation]
+    workflowPersonAssociations: [WorkflowPersonAssociation]
+    studyOrganizationAssociations: [StudyOrganizationAssociation]
+    personOrganizationAssociations: [PersonOrganizationAssociation]
   }
 
 type DateTimeValue
@@ -1133,6 +1181,13 @@ type ExperimentInstrumentAssociation
     experimentId: ExperimentRun!
     instrumentId: Instrument!
     role: InstrumentRoleEnum
+  }
+
+type ExperimentPersonAssociation
+  {
+    experimentId: ExperimentRun!
+    personId: Person!
+    role: PersonRoleEnum
   }
 
 type ExperimentRun
@@ -1351,6 +1406,7 @@ type Instrument
     instrumentCategory: InstrumentCategoryEnum
     facilityName: FacilityEnum
     facilityRor: Uriorcurie
+    facilityOrganizationId: Organization
     beamlineId: String
     manufacturer: String
     model: String
@@ -1527,6 +1583,25 @@ type OpticalImage
     contrastMethod: String
   }
 
+type Organization
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    ror: Uriorcurie
+    acronym: String
+    organizationType: OrganizationTypeEnum
+    facilityCode: FacilityEnum
+    facilityType: FacilityTypeEnum
+    parentOrganizationId: Organization
+    location: String
+    country: String
+    website: Uriorcurie
+    wikidataId: String
+    isDoeFacility: Boolean
+    doeOffice: String
+  }
+
 type ParticlePickingParameters
   {
     description: String
@@ -1538,6 +1613,30 @@ type ParticlePickingParameters
     modelName: String
     modelFilePath: String
     modelSource: String
+  }
+
+type Person
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    orcid: Uriorcurie
+    fullName: String
+    givenName: String
+    familyName: String
+    email: String
+    affiliation: String
+    affiliationRor: Uriorcurie
+    personLocalId: String
+  }
+
+type PersonOrganizationAssociation
+  {
+    personId: Person!
+    organizationId: Organization!
+    role: OrganizationRoleEnum
+    startDate: String
+    endDate: String
   }
 
 type PostTranslationalModification
@@ -1827,6 +1926,7 @@ type SANSInstrument
     instrumentCategory: InstrumentCategoryEnum
     facilityName: FacilityEnum
     facilityRor: Uriorcurie
+    facilityOrganizationId: Organization
     beamlineId: String
     manufacturer: String
     model: String
@@ -1863,6 +1963,7 @@ type SAXSInstrument
     instrumentCategory: InstrumentCategoryEnum
     facilityName: FacilityEnum
     facilityRor: Uriorcurie
+    facilityOrganizationId: Organization
     beamlineId: String
     manufacturer: String
     model: String
@@ -1934,6 +2035,23 @@ type StudyExperimentAssociation
     experimentId: ExperimentRun!
   }
 
+type StudyOrganizationAssociation
+  {
+    studyId: Study!
+    organizationId: Organization!
+    role: OrganizationRoleEnum
+    awardNumber: String
+  }
+
+type StudyPersonAssociation
+  {
+    studyId: Study!
+    personId: Person!
+    role: PersonRoleEnum
+    authorPosition: Integer
+    corresponding: Boolean
+  }
+
 type StudySampleAssociation
   {
     studyId: Study!
@@ -1979,6 +2097,13 @@ type WorkflowOutputAssociation
     workflowId: WorkflowRun!
     fileId: DataFile!
     outputType: OutputTypeEnum
+  }
+
+type WorkflowPersonAssociation
+  {
+    workflowId: WorkflowRun!
+    personId: Person!
+    role: PersonRoleEnum
   }
 
 type WorkflowRun
@@ -2063,6 +2188,7 @@ type XRayInstrument
     instrumentCategory: InstrumentCategoryEnum
     facilityName: FacilityEnum
     facilityRor: Uriorcurie
+    facilityOrganizationId: Organization
     beamlineId: String
     manufacturer: String
     model: String

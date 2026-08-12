@@ -392,6 +392,13 @@
                     "$ref": "#/$defs/FacilityEnum",
                     "description": "Name of the research facility where the instrument is located"
                 },
+                "facility_organization_id": {
+                    "description": "The Organization that operates this instrument's facility. An instrument sits at exactly one facility, so this is a direct reference rather than an association table - the same shape as Sample.parent_sample_id.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "facility_ror": {
                     "description": "Research Organization Registry (ROR) identifier for the facility",
                     "pattern": "^https://ror\\.org/\\w+$",
@@ -1176,6 +1183,13 @@
                 "facility_name": {
                     "$ref": "#/$defs/FacilityEnum",
                     "description": "Name of the research facility where the instrument is located"
+                },
+                "facility_organization_id": {
+                    "description": "The Organization that operates this instrument's facility. An instrument sits at exactly one facility, so this is a direct reference rather than an association table - the same shape as Sample.parent_sample_id.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "facility_ror": {
                     "description": "Research Organization Registry (ROR) identifier for the facility",
@@ -2178,6 +2192,16 @@
                         "null"
                     ]
                 },
+                "experiment_person_associations": {
+                    "description": "Links between experiment runs and people (M:N with role)",
+                    "items": {
+                        "$ref": "#/$defs/ExperimentPersonAssociation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "experiment_runs": {
                     "description": "All experiment runs (data collection sessions)",
                     "items": {
@@ -2232,6 +2256,36 @@
                         "null"
                     ]
                 },
+                "organizations": {
+                    "description": "All organizations referenced anywhere in this dataset",
+                    "items": {
+                        "$ref": "#/$defs/Organization"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "person_organization_associations": {
+                    "description": "Links between people and organizations (M:N with role and dates)",
+                    "items": {
+                        "$ref": "#/$defs/PersonOrganizationAssociation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "persons": {
+                    "description": "All people referenced anywhere in this dataset",
+                    "items": {
+                        "$ref": "#/$defs/Person"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "protein_constructs": {
                     "description": "All protein constructs",
                     "items": {
@@ -2276,6 +2330,26 @@
                     "description": "Links between studies and experiments (M:N)",
                     "items": {
                         "$ref": "#/$defs/StudyExperimentAssociation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "study_organization_associations": {
+                    "description": "Links between studies and organizations (M:N with role, award number)",
+                    "items": {
+                        "$ref": "#/$defs/StudyOrganizationAssociation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "study_person_associations": {
+                    "description": "Links between studies and people (M:N with role) - where authorship lives",
+                    "items": {
+                        "$ref": "#/$defs/StudyPersonAssociation"
                     },
                     "type": [
                         "array",
@@ -2333,6 +2407,16 @@
                     "description": "Links between workflows and output files",
                     "items": {
                         "$ref": "#/$defs/WorkflowOutputAssociation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "workflow_person_associations": {
+                    "description": "Links between workflow runs and people (M:N with role)",
+                    "items": {
+                        "$ref": "#/$defs/WorkflowPersonAssociation"
                     },
                     "type": [
                         "array",
@@ -2627,6 +2711,30 @@
                 "instrument_id"
             ],
             "title": "ExperimentInstrumentAssociation",
+            "type": "object"
+        },
+        "ExperimentPersonAssociation": {
+            "additionalProperties": false,
+            "description": "M:N link between ExperimentRun and Person with role metadata - who actually collected the data, and who was the local contact.",
+            "properties": {
+                "experiment_id": {
+                    "description": "Reference to the experiment run",
+                    "type": "string"
+                },
+                "person_id": {
+                    "description": "Reference to the person",
+                    "type": "string"
+                },
+                "role": {
+                    "$ref": "#/$defs/PersonRoleEnum",
+                    "description": "Capacity in which the person is attached to the experiment run"
+                }
+            },
+            "required": [
+                "experiment_id",
+                "person_id"
+            ],
+            "title": "ExperimentPersonAssociation",
             "type": "object"
         },
         "ExperimentRun": {
@@ -4502,6 +4610,13 @@
                     "$ref": "#/$defs/FacilityEnum",
                     "description": "Name of the research facility where the instrument is located"
                 },
+                "facility_organization_id": {
+                    "description": "The Organization that operates this instrument's facility. An instrument sits at exactly one facility, so this is a direct reference rather than an association table - the same shape as Sample.parent_sample_id.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "facility_ror": {
                     "description": "Research Organization Registry (ROR) identifier for the facility",
                     "pattern": "^https://ror\\.org/\\w+$",
@@ -5800,6 +5915,142 @@
             "title": "OpticalImage",
             "type": "object"
         },
+        "Organization": {
+            "additionalProperties": false,
+            "description": "An institution, facility, laboratory or funding body - a national laboratory, a university, a light source, an agency that funded the work.\nThis is the structured home for organizational identity that the schema otherwise carries as unvalidated free text in three places: the annotations on FacilityEnum permissible values (`parent_organization`, `parent_ror`, `location`, `country`, `doe_office`, `website`, `wikidata_id`), Instrument's `facility_name` / `facility_ror` pair, and Person's `affiliation` / `affiliation_ror` pair. FacilityEnum remains the controlled vocabulary that says *which* facility something is; Organization is the record that says what that facility is, where, and who runs it - and lets a parent institution be stated once rather than restated by every entity that refers to it.",
+            "properties": {
+                "acronym": {
+                    "description": "Short name or acronym, e.g. 'LBNL', 'SSRL', 'PNNL'",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "country": {
+                    "description": "Country the organization is located in",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "A detailed textual description of this entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "doe_office": {
+                    "description": "Sponsoring DOE office, e.g. 'Office of Science'",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "facility_code": {
+                    "$ref": "#/$defs/FacilityEnum",
+                    "description": "The FacilityEnum term this organization corresponds to, where it is one of the facilities the schema already names. Ties the record to the search vocabulary."
+                },
+                "facility_type": {
+                    "$ref": "#/$defs/FacilityTypeEnum",
+                    "description": "For a research facility, the kind of facility it is"
+                },
+                "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+                    "type": "string"
+                },
+                "is_doe_facility": {
+                    "description": "Whether this is a US Department of Energy facility",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "location": {
+                    "description": "Free-text location, e.g. 'Berkeley, California, USA'",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "organization_type": {
+                    "$ref": "#/$defs/OrganizationTypeEnum",
+                    "description": "What kind of organization this is"
+                },
+                "parent_organization_id": {
+                    "description": "The organization this one belongs to - a light source's national laboratory, a department's university. Self-referential, as Sample.parent_sample_id is.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ror": {
+                    "description": "Research Organization Registry (ROR) identifier for the organization",
+                    "pattern": "^https://ror\\.org/\\w+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "description": "A human-readable name or title for this entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "website": {
+                    "description": "Organization or facility website",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "wikidata_id": {
+                    "description": "Wikidata entity identifier, where one exists",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "Organization",
+            "type": "object"
+        },
+        "OrganizationRoleEnum": {
+            "description": "Capacity in which an organization is attached to a study, or a person to an organization. One vocabulary rather than one per association, matching PersonRoleEnum: these are roles in a relationship, and the same organization is often attached in more than one way.",
+            "enum": [
+                "host_institution",
+                "operating_institution",
+                "funder",
+                "collaborating_institution",
+                "depositor",
+                "primary_affiliation",
+                "secondary_affiliation",
+                "former_affiliation"
+            ],
+            "title": "OrganizationRoleEnum",
+            "type": "string"
+        },
+        "OrganizationTypeEnum": {
+            "description": "Kind of organization. Distinct from FacilityTypeEnum, which says what kind of *facility* something is - the Advanced Light Source is a SYNCHROTRON facility and part of a national_laboratory, and both statements are worth keeping.",
+            "enum": [
+                "national_laboratory",
+                "university",
+                "research_institute",
+                "government_agency",
+                "funding_agency",
+                "company",
+                "hospital",
+                "consortium",
+                "other"
+            ],
+            "title": "OrganizationTypeEnum",
+            "type": "string"
+        },
         "OutputTypeEnum": {
             "description": "Types of outputs from computational workflows",
             "enum": [
@@ -5942,6 +6193,148 @@
             },
             "title": "ParticlePickingParameters",
             "type": "object"
+        },
+        "Person": {
+            "additionalProperties": false,
+            "description": "A person involved in producing, processing or publishing data - a principal investigator, beamline operator, data analyst or curator. In the relational model, Person is lightweight: which study, experiment or workflow a person is attached to, and in what capacity, is carried by the person association tables in Dataset, so one person record serves every role they hold across a dataset.",
+            "properties": {
+                "affiliation": {
+                    "description": "Institution the person is affiliated with",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "affiliation_ror": {
+                    "description": "Research Organization Registry (ROR) identifier for the affiliated institution",
+                    "pattern": "^https://ror\\.org/\\w+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "A detailed textual description of this entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "email": {
+                    "description": "Contact email address",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "family_name": {
+                    "description": "Family name, where the name has been parsed into parts",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "full_name": {
+                    "description": "Full display name of the person, as they write it",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "given_name": {
+                    "description": "Given (personal) name, where the name has been parsed into parts",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+                    "type": "string"
+                },
+                "orcid": {
+                    "description": "ORCID identifier for the person",
+                    "pattern": "^https://orcid\\.org/\\d{4}-\\d{4}-\\d{4}-\\d{3}[0-9X]$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "person_local_id": {
+                    "description": "Facility-local user or badge identifier, where one exists",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "description": "A human-readable name or title for this entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "Person",
+            "type": "object"
+        },
+        "PersonOrganizationAssociation": {
+            "additionalProperties": false,
+            "description": "M:N link between Person and Organization with role metadata. An association table rather than a slot on Person because people hold several affiliations at once and move between them, and a dataset's provenance may need to say which affiliation applied at the time.",
+            "properties": {
+                "end_date": {
+                    "description": "Date the affiliation ended, where known and ended",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "organization_id": {
+                    "description": "Reference to the organization",
+                    "type": "string"
+                },
+                "person_id": {
+                    "description": "Reference to the person",
+                    "type": "string"
+                },
+                "role": {
+                    "$ref": "#/$defs/OrganizationRoleEnum",
+                    "description": "Nature of the person's attachment to the organization"
+                },
+                "start_date": {
+                    "description": "Date the affiliation began, where known",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "person_id",
+                "organization_id"
+            ],
+            "title": "PersonOrganizationAssociation",
+            "type": "object"
+        },
+        "PersonRoleEnum": {
+            "description": "Capacity in which a person is attached to a study, experiment run or workflow run. One vocabulary rather than one per association, because these roles belong to the person's relationship to the work and travel across all three - a principal investigator who also collects the data holds two roles, not two differently-named ones.",
+            "enum": [
+                "principal_investigator",
+                "co_investigator",
+                "author",
+                "operator",
+                "local_contact",
+                "analyst",
+                "reviewer",
+                "data_curator",
+                "submitter",
+                "contact"
+            ],
+            "title": "PersonRoleEnum",
+            "type": "string"
         },
         "PhasingMethodEnum": {
             "description": "Methods for phase determination in X-ray crystallography",
@@ -7418,6 +7811,13 @@
                     "$ref": "#/$defs/FacilityEnum",
                     "description": "Name of the research facility where the instrument is located"
                 },
+                "facility_organization_id": {
+                    "description": "The Organization that operates this instrument's facility. An instrument sits at exactly one facility, so this is a direct reference rather than an association table - the same shape as Sample.parent_sample_id.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "facility_ror": {
                     "description": "Research Organization Registry (ROR) identifier for the facility",
                     "pattern": "^https://ror\\.org/\\w+$",
@@ -7649,6 +8049,13 @@
                 "facility_name": {
                     "$ref": "#/$defs/FacilityEnum",
                     "description": "Name of the research facility where the instrument is located"
+                },
+                "facility_organization_id": {
+                    "description": "The Organization that operates this instrument's facility. An instrument sits at exactly one facility, so this is a direct reference rather than an association table - the same shape as Sample.parent_sample_id.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "facility_ror": {
                     "description": "Research Organization Registry (ROR) identifier for the facility",
@@ -8808,6 +9215,75 @@
             "title": "StudyExperimentAssociation",
             "type": "object"
         },
+        "StudyOrganizationAssociation": {
+            "additionalProperties": false,
+            "description": "M:N link between Study and Organization with role metadata - the host institution, the collaborating institutions, and who funded the work.",
+            "properties": {
+                "award_number": {
+                    "description": "Grant or award number, where the organization is a funder. Distinct from Study.proposal_id, which is the facility's beamtime allocation rather than the funding that paid for the science.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "organization_id": {
+                    "description": "Reference to the organization",
+                    "type": "string"
+                },
+                "role": {
+                    "$ref": "#/$defs/OrganizationRoleEnum",
+                    "description": "Capacity in which the organization is attached to the study"
+                },
+                "study_id": {
+                    "description": "Reference to the study",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "study_id",
+                "organization_id"
+            ],
+            "title": "StudyOrganizationAssociation",
+            "type": "object"
+        },
+        "StudyPersonAssociation": {
+            "additionalProperties": false,
+            "description": "M:N link between Study and Person with role metadata. This is where authorship and responsibility for a body of work live - principal investigator, author, curator.",
+            "properties": {
+                "author_position": {
+                    "description": "Position in the author list, where authorship order is meaningful. 1 is first author. Absent when the source does not state an order; do not invent one.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "corresponding": {
+                    "description": "Whether this person is a corresponding author for the study",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "person_id": {
+                    "description": "Reference to the person",
+                    "type": "string"
+                },
+                "role": {
+                    "$ref": "#/$defs/PersonRoleEnum",
+                    "description": "Capacity in which the person is attached to the study"
+                },
+                "study_id": {
+                    "description": "Reference to the study",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "study_id",
+                "person_id"
+            ],
+            "title": "StudyPersonAssociation",
+            "type": "object"
+        },
         "StudySampleAssociation": {
             "additionalProperties": false,
             "description": "M:N link between Study and Sample with role metadata",
@@ -9028,6 +9504,30 @@
                 "file_id"
             ],
             "title": "WorkflowOutputAssociation",
+            "type": "object"
+        },
+        "WorkflowPersonAssociation": {
+            "additionalProperties": false,
+            "description": "M:N link between WorkflowRun and Person with role metadata - who ran the processing, and who made the judgement calls it required.",
+            "properties": {
+                "person_id": {
+                    "description": "Reference to the person",
+                    "type": "string"
+                },
+                "role": {
+                    "$ref": "#/$defs/PersonRoleEnum",
+                    "description": "Capacity in which the person is attached to the workflow run"
+                },
+                "workflow_id": {
+                    "description": "Reference to the workflow run",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "workflow_id",
+                "person_id"
+            ],
+            "title": "WorkflowPersonAssociation",
             "type": "object"
         },
         "WorkflowRun": {
@@ -9986,6 +10486,13 @@
                     "$ref": "#/$defs/FacilityEnum",
                     "description": "Name of the research facility where the instrument is located"
                 },
+                "facility_organization_id": {
+                    "description": "The Organization that operates this instrument's facility. An instrument sits at exactly one facility, so this is a direct reference rather than an association table - the same shape as Sample.parent_sample_id.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "facility_ror": {
                     "description": "Research Organization Registry (ROR) identifier for the facility",
                     "pattern": "^https://ror\\.org/\\w+$",
@@ -10346,6 +10853,16 @@
                 "null"
             ]
         },
+        "experiment_person_associations": {
+            "description": "Links between experiment runs and people (M:N with role)",
+            "items": {
+                "$ref": "#/$defs/ExperimentPersonAssociation"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
         "experiment_runs": {
             "description": "All experiment runs (data collection sessions)",
             "items": {
@@ -10400,6 +10917,36 @@
                 "null"
             ]
         },
+        "organizations": {
+            "description": "All organizations referenced anywhere in this dataset",
+            "items": {
+                "$ref": "#/$defs/Organization"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "person_organization_associations": {
+            "description": "Links between people and organizations (M:N with role and dates)",
+            "items": {
+                "$ref": "#/$defs/PersonOrganizationAssociation"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "persons": {
+            "description": "All people referenced anywhere in this dataset",
+            "items": {
+                "$ref": "#/$defs/Person"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
         "protein_constructs": {
             "description": "All protein constructs",
             "items": {
@@ -10444,6 +10991,26 @@
             "description": "Links between studies and experiments (M:N)",
             "items": {
                 "$ref": "#/$defs/StudyExperimentAssociation"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "study_organization_associations": {
+            "description": "Links between studies and organizations (M:N with role, award number)",
+            "items": {
+                "$ref": "#/$defs/StudyOrganizationAssociation"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "study_person_associations": {
+            "description": "Links between studies and people (M:N with role) - where authorship lives",
+            "items": {
+                "$ref": "#/$defs/StudyPersonAssociation"
             },
             "type": [
                 "array",
@@ -10501,6 +11068,16 @@
             "description": "Links between workflows and output files",
             "items": {
                 "$ref": "#/$defs/WorkflowOutputAssociation"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "workflow_person_associations": {
+            "description": "Links between workflow runs and people (M:N with role)",
+            "items": {
+                "$ref": "#/$defs/WorkflowPersonAssociation"
             },
             "type": [
                 "array",

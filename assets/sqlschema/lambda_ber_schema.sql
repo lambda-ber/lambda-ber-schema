@@ -14,6 +14,36 @@
 --     * Slot: title Description: A human-readable name or title for this entity
 --     * Slot: description Description: A detailed textual description of this entity
 --     * Slot: Dataset_id Description: Autocreated FK slot
+-- # Class: Person Description: A person involved in producing, processing or publishing data - a principal investigator, beamline operator, data analyst or curator. In the relational model, Person is lightweight: which study, experiment or workflow a person is attached to, and in what capacity, is carried by the person association tables in Dataset, so one person record serves every role they hold across a dataset.
+--     * Slot: orcid Description: ORCID identifier for the person
+--     * Slot: full_name Description: Full display name of the person, as they write it
+--     * Slot: given_name Description: Given (personal) name, where the name has been parsed into parts
+--     * Slot: family_name Description: Family name, where the name has been parsed into parts
+--     * Slot: email Description: Contact email address
+--     * Slot: affiliation Description: Institution the person is affiliated with
+--     * Slot: affiliation_ror Description: Research Organization Registry (ROR) identifier for the affiliated institution
+--     * Slot: person_local_id Description: Facility-local user or badge identifier, where one exists
+--     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
+--     * Slot: title Description: A human-readable name or title for this entity
+--     * Slot: description Description: A detailed textual description of this entity
+--     * Slot: Dataset_id Description: Autocreated FK slot
+-- # Class: Organization Description: An institution, facility, laboratory or funding body - a national laboratory, a university, a light source, an agency that funded the work.This is the structured home for organizational identity that the schema otherwise carries as unvalidated free text in three places: the annotations on FacilityEnum permissible values (`parent_organization`, `parent_ror`, `location`, `country`, `doe_office`, `website`, `wikidata_id`), Instrument's `facility_name` / `facility_ror` pair, and Person's `affiliation` / `affiliation_ror` pair. FacilityEnum remains the controlled vocabulary that says *which* facility something is; Organization is the record that says what that facility is, where, and who runs it - and lets a parent institution be stated once rather than restated by every entity that refers to it.
+--     * Slot: ror Description: Research Organization Registry (ROR) identifier for the organization
+--     * Slot: acronym Description: Short name or acronym, e.g. 'LBNL', 'SSRL', 'PNNL'
+--     * Slot: organization_type Description: What kind of organization this is
+--     * Slot: facility_code Description: The FacilityEnum term this organization corresponds to, where it is one of the facilities the schema already names. Ties the record to the search vocabulary.
+--     * Slot: facility_type Description: For a research facility, the kind of facility it is
+--     * Slot: parent_organization_id Description: The organization this one belongs to - a light source's national laboratory, a department's university. Self-referential, as Sample.parent_sample_id is.
+--     * Slot: location Description: Free-text location, e.g. 'Berkeley, California, USA'
+--     * Slot: country Description: Country the organization is located in
+--     * Slot: website Description: Organization or facility website
+--     * Slot: wikidata_id Description: Wikidata entity identifier, where one exists
+--     * Slot: is_doe_facility Description: Whether this is a US Department of Energy facility
+--     * Slot: doe_office Description: Sponsoring DOE office, e.g. 'Office of Science'
+--     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
+--     * Slot: title Description: A human-readable name or title for this entity
+--     * Slot: description Description: A detailed textual description of this entity
+--     * Slot: Dataset_id Description: Autocreated FK slot
 -- # Class: Sample Description: A biological sample used in structural biology experiments
 --     * Slot: sample_code Description: Human-friendly laboratory identifier or facility code for the sample (e.g., 'ALS-12.3.1-SAMPLE-001', 'LAB-PROT-2024-01'). Used for local reference and tracking within laboratory workflows.
 --     * Slot: sample_type Description: Type of biological sample
@@ -120,6 +150,7 @@
 --     * Slot: instrument_category Description: Category distinguishing beamlines from laboratory equipment
 --     * Slot: facility_name Description: Name of the research facility where the instrument is located
 --     * Slot: facility_ror Description: Research Organization Registry (ROR) identifier for the facility
+--     * Slot: facility_organization_id Description: The Organization that operates this instrument's facility. An instrument sits at exactly one facility, so this is a direct reference rather than an association table - the same shape as Sample.parent_sample_id.
 --     * Slot: beamline_id Description: Beamline identifier at synchrotron/neutron facility
 --     * Slot: manufacturer Description: Instrument manufacturer
 --     * Slot: model Description: Instrument model
@@ -150,6 +181,7 @@
 --     * Slot: instrument_category Description: Category distinguishing beamlines from laboratory equipment
 --     * Slot: facility_name Description: Name of the research facility where the instrument is located
 --     * Slot: facility_ror Description: Research Organization Registry (ROR) identifier for the facility
+--     * Slot: facility_organization_id Description: The Organization that operates this instrument's facility. An instrument sits at exactly one facility, so this is a direct reference rather than an association table - the same shape as Sample.parent_sample_id.
 --     * Slot: beamline_id Description: Beamline identifier at synchrotron/neutron facility
 --     * Slot: manufacturer Description: Instrument manufacturer
 --     * Slot: model Description: Instrument model
@@ -182,6 +214,7 @@
 --     * Slot: instrument_category Description: Category distinguishing beamlines from laboratory equipment
 --     * Slot: facility_name Description: Name of the research facility where the instrument is located
 --     * Slot: facility_ror Description: Research Organization Registry (ROR) identifier for the facility
+--     * Slot: facility_organization_id Description: The Organization that operates this instrument's facility. An instrument sits at exactly one facility, so this is a direct reference rather than an association table - the same shape as Sample.parent_sample_id.
 --     * Slot: beamline_id Description: Beamline identifier at synchrotron/neutron facility
 --     * Slot: manufacturer Description: Instrument manufacturer
 --     * Slot: model Description: Instrument model
@@ -242,6 +275,7 @@
 --     * Slot: instrument_category Description: Category distinguishing beamlines from laboratory equipment
 --     * Slot: facility_name Description: Name of the research facility where the instrument is located
 --     * Slot: facility_ror Description: Research Organization Registry (ROR) identifier for the facility
+--     * Slot: facility_organization_id Description: The Organization that operates this instrument's facility. An instrument sits at exactly one facility, so this is a direct reference rather than an association table - the same shape as Sample.parent_sample_id.
 --     * Slot: beamline_id Description: Beamline identifier at synchrotron/neutron facility
 --     * Slot: manufacturer Description: Instrument manufacturer
 --     * Slot: model Description: Instrument model
@@ -261,6 +295,7 @@
 --     * Slot: instrument_category Description: Category distinguishing beamlines from laboratory equipment
 --     * Slot: facility_name Description: Name of the research facility where the instrument is located
 --     * Slot: facility_ror Description: Research Organization Registry (ROR) identifier for the facility
+--     * Slot: facility_organization_id Description: The Organization that operates this instrument's facility. An instrument sits at exactly one facility, so this is a direct reference rather than an association table - the same shape as Sample.parent_sample_id.
 --     * Slot: beamline_id Description: Beamline identifier at synchrotron/neutron facility
 --     * Slot: manufacturer Description: Instrument manufacturer
 --     * Slot: model Description: Instrument model
@@ -286,6 +321,7 @@
 --     * Slot: instrument_category Description: Category distinguishing beamlines from laboratory equipment
 --     * Slot: facility_name Description: Name of the research facility where the instrument is located
 --     * Slot: facility_ror Description: Research Organization Registry (ROR) identifier for the facility
+--     * Slot: facility_organization_id Description: The Organization that operates this instrument's facility. An instrument sits at exactly one facility, so this is a direct reference rather than an association table - the same shape as Sample.parent_sample_id.
 --     * Slot: beamline_id Description: Beamline identifier at synchrotron/neutron facility
 --     * Slot: manufacturer Description: Instrument manufacturer
 --     * Slot: model Description: Instrument model
@@ -894,6 +930,41 @@
 --     * Slot: file_id Description: Reference to the output data file
 --     * Slot: output_type Description: Type of output from the workflow
 --     * Slot: Dataset_id Description: Autocreated FK slot
+-- # Class: StudyPersonAssociation Description: M:N link between Study and Person with role metadata. This is where authorship and responsibility for a body of work live - principal investigator, author, curator.
+--     * Slot: id
+--     * Slot: study_id Description: Reference to the study
+--     * Slot: person_id Description: Reference to the person
+--     * Slot: role Description: Capacity in which the person is attached to the study
+--     * Slot: author_position Description: Position in the author list, where authorship order is meaningful. 1 is first author. Absent when the source does not state an order; do not invent one.
+--     * Slot: corresponding Description: Whether this person is a corresponding author for the study
+--     * Slot: Dataset_id Description: Autocreated FK slot
+-- # Class: ExperimentPersonAssociation Description: M:N link between ExperimentRun and Person with role metadata - who actually collected the data, and who was the local contact.
+--     * Slot: id
+--     * Slot: experiment_id Description: Reference to the experiment run
+--     * Slot: person_id Description: Reference to the person
+--     * Slot: role Description: Capacity in which the person is attached to the experiment run
+--     * Slot: Dataset_id Description: Autocreated FK slot
+-- # Class: WorkflowPersonAssociation Description: M:N link between WorkflowRun and Person with role metadata - who ran the processing, and who made the judgement calls it required.
+--     * Slot: id
+--     * Slot: workflow_id Description: Reference to the workflow run
+--     * Slot: person_id Description: Reference to the person
+--     * Slot: role Description: Capacity in which the person is attached to the workflow run
+--     * Slot: Dataset_id Description: Autocreated FK slot
+-- # Class: StudyOrganizationAssociation Description: M:N link between Study and Organization with role metadata - the host institution, the collaborating institutions, and who funded the work.
+--     * Slot: id
+--     * Slot: study_id Description: Reference to the study
+--     * Slot: organization_id Description: Reference to the organization
+--     * Slot: role Description: Capacity in which the organization is attached to the study
+--     * Slot: award_number Description: Grant or award number, where the organization is a funder. Distinct from Study.proposal_id, which is the facility's beamtime allocation rather than the funding that paid for the science.
+--     * Slot: Dataset_id Description: Autocreated FK slot
+-- # Class: PersonOrganizationAssociation Description: M:N link between Person and Organization with role metadata. An association table rather than a slot on Person because people hold several affiliations at once and move between them, and a dataset's provenance may need to say which affiliation applied at the time.
+--     * Slot: id
+--     * Slot: person_id Description: Reference to the person
+--     * Slot: organization_id Description: Reference to the organization
+--     * Slot: role Description: Nature of the person's attachment to the organization
+--     * Slot: start_date Description: Date the affiliation began, where known
+--     * Slot: end_date Description: Date the affiliation ended, where known and ended
+--     * Slot: Dataset_id Description: Autocreated FK slot
 -- # Class: Any
 --     * Slot: id
 -- # Abstract Class: AttributeValue Description: The value for any attribute of an entity. This object can hold both the un-normalized atomic value and the structured value.
@@ -1336,24 +1407,43 @@ CREATE TABLE "Study" (
 	PRIMARY KEY (id),
 	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id)
 );CREATE INDEX "ix_Study_id" ON "Study" (id);
-CREATE TABLE "Instrument" (
-	instrument_code TEXT NOT NULL,
-	instrument_registry_id TEXT,
-	instrument_category VARCHAR(20),
-	facility_name VARCHAR(22),
-	facility_ror TEXT,
-	beamline_id TEXT,
-	manufacturer TEXT,
-	model TEXT,
-	installation_date TEXT,
-	current_status VARCHAR(13),
+CREATE TABLE "Person" (
+	orcid TEXT,
+	full_name TEXT,
+	given_name TEXT,
+	family_name TEXT,
+	email TEXT,
+	affiliation TEXT,
+	affiliation_ror TEXT,
+	person_local_id TEXT,
 	id TEXT NOT NULL,
 	title TEXT,
 	description TEXT,
 	"Dataset_id" TEXT,
 	PRIMARY KEY (id),
 	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id)
-);CREATE INDEX "ix_Instrument_id" ON "Instrument" (id);
+);CREATE INDEX "ix_Person_id" ON "Person" (id);
+CREATE TABLE "Organization" (
+	ror TEXT,
+	acronym TEXT,
+	organization_type VARCHAR(19),
+	facility_code VARCHAR(22),
+	facility_type VARCHAR(19),
+	parent_organization_id TEXT,
+	location TEXT,
+	country TEXT,
+	website TEXT,
+	wikidata_id TEXT,
+	is_doe_facility BOOLEAN,
+	doe_office TEXT,
+	id TEXT NOT NULL,
+	title TEXT,
+	description TEXT,
+	"Dataset_id" TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY(parent_organization_id) REFERENCES "Organization" (id),
+	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id)
+);CREATE INDEX "ix_Organization_id" ON "Organization" (id);
 CREATE TABLE "OntologyTerm" (
 	label TEXT,
 	definition TEXT,
@@ -1446,13 +1536,13 @@ CREATE TABLE "MolecularComposition_modifications" (
 	modifications TEXT,
 	PRIMARY KEY ("MolecularComposition_id", modifications),
 	FOREIGN KEY("MolecularComposition_id") REFERENCES "MolecularComposition" (id)
-);CREATE INDEX "ix_MolecularComposition_modifications_modifications" ON "MolecularComposition_modifications" (modifications);CREATE INDEX "ix_MolecularComposition_modifications_MolecularComposition_id" ON "MolecularComposition_modifications" ("MolecularComposition_id");
+);CREATE INDEX "ix_MolecularComposition_modifications_MolecularComposition_id" ON "MolecularComposition_modifications" ("MolecularComposition_id");CREATE INDEX "ix_MolecularComposition_modifications_modifications" ON "MolecularComposition_modifications" (modifications);
 CREATE TABLE "MolecularComposition_ligands" (
 	"MolecularComposition_id" INTEGER,
 	ligands TEXT,
 	PRIMARY KEY ("MolecularComposition_id", ligands),
 	FOREIGN KEY("MolecularComposition_id") REFERENCES "MolecularComposition" (id)
-);CREATE INDEX "ix_MolecularComposition_ligands_MolecularComposition_id" ON "MolecularComposition_ligands" ("MolecularComposition_id");CREATE INDEX "ix_MolecularComposition_ligands_ligands" ON "MolecularComposition_ligands" (ligands);
+);CREATE INDEX "ix_MolecularComposition_ligands_ligands" ON "MolecularComposition_ligands" (ligands);CREATE INDEX "ix_MolecularComposition_ligands_MolecularComposition_id" ON "MolecularComposition_ligands" ("MolecularComposition_id");
 CREATE TABLE "ProteinAnnotation_publication_ids" (
 	"ProteinAnnotation_id" TEXT,
 	publication_ids TEXT,
@@ -1482,7 +1572,7 @@ CREATE TABLE "EvolutionaryConservation_coevolved_residues" (
 	coevolved_residues TEXT,
 	PRIMARY KEY ("EvolutionaryConservation_id", coevolved_residues),
 	FOREIGN KEY("EvolutionaryConservation_id") REFERENCES "EvolutionaryConservation" (id)
-);CREATE INDEX "ix_EvolutionaryConservation_coevolved_residues_EvolutionaryConservation_id" ON "EvolutionaryConservation_coevolved_residues" ("EvolutionaryConservation_id");CREATE INDEX "ix_EvolutionaryConservation_coevolved_residues_coevolved_residues" ON "EvolutionaryConservation_coevolved_residues" (coevolved_residues);
+);CREATE INDEX "ix_EvolutionaryConservation_coevolved_residues_coevolved_residues" ON "EvolutionaryConservation_coevolved_residues" (coevolved_residues);CREATE INDEX "ix_EvolutionaryConservation_coevolved_residues_EvolutionaryConservation_id" ON "EvolutionaryConservation_coevolved_residues" ("EvolutionaryConservation_id");
 CREATE TABLE "EvolutionaryConservation_publication_ids" (
 	"EvolutionaryConservation_id" TEXT,
 	publication_ids TEXT,
@@ -1578,6 +1668,26 @@ CREATE TABLE "SamplePreparation" (
 	FOREIGN KEY(yield_mg_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(purity_by_sds_page_percent_id) REFERENCES "QuantityValue" (id)
 );CREATE INDEX "ix_SamplePreparation_id" ON "SamplePreparation" (id);
+CREATE TABLE "Instrument" (
+	instrument_code TEXT NOT NULL,
+	instrument_registry_id TEXT,
+	instrument_category VARCHAR(20),
+	facility_name VARCHAR(22),
+	facility_ror TEXT,
+	facility_organization_id TEXT,
+	beamline_id TEXT,
+	manufacturer TEXT,
+	model TEXT,
+	installation_date TEXT,
+	current_status VARCHAR(13),
+	id TEXT NOT NULL,
+	title TEXT,
+	description TEXT,
+	"Dataset_id" TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY(facility_organization_id) REFERENCES "Organization" (id),
+	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id)
+);CREATE INDEX "ix_Instrument_id" ON "Instrument" (id);
 CREATE TABLE "CryoEMInstrument" (
 	cs_corrector BOOLEAN,
 	phase_plate BOOLEAN,
@@ -1599,6 +1709,7 @@ CREATE TABLE "CryoEMInstrument" (
 	instrument_category VARCHAR(20),
 	facility_name VARCHAR(22),
 	facility_ror TEXT,
+	facility_organization_id TEXT,
 	beamline_id TEXT,
 	manufacturer TEXT,
 	model TEXT,
@@ -1619,6 +1730,7 @@ CREATE TABLE "CryoEMInstrument" (
 	gunlens_id INTEGER,
 	tem_beam_diameter_id INTEGER,
 	PRIMARY KEY (id),
+	FOREIGN KEY(facility_organization_id) REFERENCES "Organization" (id),
 	FOREIGN KEY(accelerating_voltage_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(pixel_size_physical_um_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(autoloader_capacity_id) REFERENCES "QuantityValue" (id),
@@ -1644,6 +1756,7 @@ CREATE TABLE "XRayInstrument" (
 	instrument_category VARCHAR(20),
 	facility_name VARCHAR(22),
 	facility_ror TEXT,
+	facility_organization_id TEXT,
 	beamline_id TEXT,
 	manufacturer TEXT,
 	model TEXT,
@@ -1658,6 +1771,7 @@ CREATE TABLE "XRayInstrument" (
 	beam_size_max_id INTEGER,
 	flux_density_id INTEGER,
 	PRIMARY KEY (id),
+	FOREIGN KEY(facility_organization_id) REFERENCES "Organization" (id),
 	FOREIGN KEY(energy_min_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(energy_max_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(beam_size_min_id) REFERENCES "QuantityValue" (id),
@@ -1714,6 +1828,7 @@ CREATE TABLE "SAXSInstrument" (
 	instrument_category VARCHAR(20),
 	facility_name VARCHAR(22),
 	facility_ror TEXT,
+	facility_organization_id TEXT,
 	beamline_id TEXT,
 	manufacturer TEXT,
 	model TEXT,
@@ -1728,6 +1843,7 @@ CREATE TABLE "SAXSInstrument" (
 	detector_distance_max_id INTEGER,
 	sample_changer_capacity_id INTEGER,
 	PRIMARY KEY (id),
+	FOREIGN KEY(facility_organization_id) REFERENCES "Organization" (id),
 	FOREIGN KEY(q_range_min_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(q_range_max_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(detector_distance_min_id) REFERENCES "QuantityValue" (id),
@@ -1746,6 +1862,7 @@ CREATE TABLE "BeamlineInstrument" (
 	instrument_category VARCHAR(20),
 	facility_name VARCHAR(22),
 	facility_ror TEXT,
+	facility_organization_id TEXT,
 	beamline_id TEXT,
 	manufacturer TEXT,
 	model TEXT,
@@ -1760,6 +1877,7 @@ CREATE TABLE "BeamlineInstrument" (
 	q_range_max_id INTEGER,
 	sample_changer_capacity_id INTEGER,
 	PRIMARY KEY (id),
+	FOREIGN KEY(facility_organization_id) REFERENCES "Organization" (id),
 	FOREIGN KEY(energy_min_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(energy_max_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(q_range_min_id) REFERENCES "QuantityValue" (id),
@@ -2333,30 +2451,68 @@ CREATE TABLE "FSCCurve" (
 	FOREIGN KEY(resolution_angstrom_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(fsc_value_id) REFERENCES "QuantityValue" (id)
 );CREATE INDEX "ix_FSCCurve_id" ON "FSCCurve" (id);
+CREATE TABLE "StudyPersonAssociation" (
+	id INTEGER NOT NULL,
+	study_id TEXT NOT NULL,
+	person_id TEXT NOT NULL,
+	role VARCHAR(22),
+	author_position INTEGER,
+	corresponding BOOLEAN,
+	"Dataset_id" TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY(study_id) REFERENCES "Study" (id),
+	FOREIGN KEY(person_id) REFERENCES "Person" (id),
+	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id)
+);CREATE INDEX "ix_StudyPersonAssociation_id" ON "StudyPersonAssociation" (id);
+CREATE TABLE "StudyOrganizationAssociation" (
+	id INTEGER NOT NULL,
+	study_id TEXT NOT NULL,
+	organization_id TEXT NOT NULL,
+	role VARCHAR(25),
+	award_number TEXT,
+	"Dataset_id" TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY(study_id) REFERENCES "Study" (id),
+	FOREIGN KEY(organization_id) REFERENCES "Organization" (id),
+	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id)
+);CREATE INDEX "ix_StudyOrganizationAssociation_id" ON "StudyOrganizationAssociation" (id);
+CREATE TABLE "PersonOrganizationAssociation" (
+	id INTEGER NOT NULL,
+	person_id TEXT NOT NULL,
+	organization_id TEXT NOT NULL,
+	role VARCHAR(25),
+	start_date TEXT,
+	end_date TEXT,
+	"Dataset_id" TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY(person_id) REFERENCES "Person" (id),
+	FOREIGN KEY(organization_id) REFERENCES "Organization" (id),
+	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id)
+);CREATE INDEX "ix_PersonOrganizationAssociation_id" ON "PersonOrganizationAssociation" (id);
 CREATE TABLE "Study_keywords" (
 	"Study_id" TEXT,
 	keywords TEXT,
 	PRIMARY KEY ("Study_id", keywords),
 	FOREIGN KEY("Study_id") REFERENCES "Study" (id)
-);CREATE INDEX "ix_Study_keywords_keywords" ON "Study_keywords" (keywords);CREATE INDEX "ix_Study_keywords_Study_id" ON "Study_keywords" ("Study_id");
+);CREATE INDEX "ix_Study_keywords_Study_id" ON "Study_keywords" ("Study_id");CREATE INDEX "ix_Study_keywords_keywords" ON "Study_keywords" (keywords);
 CREATE TABLE "ConformationalState_pdb_entries" (
 	"ConformationalState_id" INTEGER,
 	pdb_entries TEXT,
 	PRIMARY KEY ("ConformationalState_id", pdb_entries),
 	FOREIGN KEY("ConformationalState_id") REFERENCES "ConformationalState" (id)
-);CREATE INDEX "ix_ConformationalState_pdb_entries_ConformationalState_id" ON "ConformationalState_pdb_entries" ("ConformationalState_id");CREATE INDEX "ix_ConformationalState_pdb_entries_pdb_entries" ON "ConformationalState_pdb_entries" (pdb_entries);
+);CREATE INDEX "ix_ConformationalState_pdb_entries_pdb_entries" ON "ConformationalState_pdb_entries" (pdb_entries);CREATE INDEX "ix_ConformationalState_pdb_entries_ConformationalState_id" ON "ConformationalState_pdb_entries" ("ConformationalState_id");
 CREATE TABLE "ConformationalState_characteristic_features" (
 	"ConformationalState_id" INTEGER,
 	characteristic_features TEXT,
 	PRIMARY KEY ("ConformationalState_id", characteristic_features),
 	FOREIGN KEY("ConformationalState_id") REFERENCES "ConformationalState" (id)
-);CREATE INDEX "ix_ConformationalState_characteristic_features_ConformationalState_id" ON "ConformationalState_characteristic_features" ("ConformationalState_id");CREATE INDEX "ix_ConformationalState_characteristic_features_characteristic_features" ON "ConformationalState_characteristic_features" (characteristic_features);
+);CREATE INDEX "ix_ConformationalState_characteristic_features_characteristic_features" ON "ConformationalState_characteristic_features" (characteristic_features);CREATE INDEX "ix_ConformationalState_characteristic_features_ConformationalState_id" ON "ConformationalState_characteristic_features" ("ConformationalState_id");
 CREATE TABLE "AggregatedProteinView_pdb_entries" (
 	"AggregatedProteinView_id" TEXT,
 	pdb_entries TEXT,
 	PRIMARY KEY ("AggregatedProteinView_id", pdb_entries),
 	FOREIGN KEY("AggregatedProteinView_id") REFERENCES "AggregatedProteinView" (id)
-);CREATE INDEX "ix_AggregatedProteinView_pdb_entries_pdb_entries" ON "AggregatedProteinView_pdb_entries" (pdb_entries);CREATE INDEX "ix_AggregatedProteinView_pdb_entries_AggregatedProteinView_id" ON "AggregatedProteinView_pdb_entries" ("AggregatedProteinView_id");
+);CREATE INDEX "ix_AggregatedProteinView_pdb_entries_AggregatedProteinView_id" ON "AggregatedProteinView_pdb_entries" ("AggregatedProteinView_id");CREATE INDEX "ix_AggregatedProteinView_pdb_entries_pdb_entries" ON "AggregatedProteinView_pdb_entries" (pdb_entries);
 CREATE TABLE "Sample" (
 	sample_code TEXT NOT NULL,
 	sample_type VARCHAR(16) NOT NULL,
@@ -2408,6 +2564,7 @@ CREATE TABLE "SANSInstrument" (
 	instrument_category VARCHAR(20),
 	facility_name VARCHAR(22),
 	facility_ror TEXT,
+	facility_organization_id TEXT,
 	beamline_id TEXT,
 	manufacturer TEXT,
 	model TEXT,
@@ -2421,6 +2578,7 @@ CREATE TABLE "SANSInstrument" (
 	source_id INTEGER,
 	configuration_id INTEGER,
 	PRIMARY KEY (id),
+	FOREIGN KEY(facility_organization_id) REFERENCES "Organization" (id),
 	FOREIGN KEY(q_range_min_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(q_range_max_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(source_id) REFERENCES "SANSSource" (id),
@@ -2630,7 +2788,7 @@ CREATE TABLE "SamplePreparation_purification_steps" (
 	purification_steps VARCHAR(23),
 	PRIMARY KEY ("SamplePreparation_id", purification_steps),
 	FOREIGN KEY("SamplePreparation_id") REFERENCES "SamplePreparation" (id)
-);CREATE INDEX "ix_SamplePreparation_purification_steps_purification_steps" ON "SamplePreparation_purification_steps" (purification_steps);CREATE INDEX "ix_SamplePreparation_purification_steps_SamplePreparation_id" ON "SamplePreparation_purification_steps" ("SamplePreparation_id");
+);CREATE INDEX "ix_SamplePreparation_purification_steps_SamplePreparation_id" ON "SamplePreparation_purification_steps" ("SamplePreparation_id");CREATE INDEX "ix_SamplePreparation_purification_steps_purification_steps" ON "SamplePreparation_purification_steps" (purification_steps);
 CREATE TABLE "BeamlineInstrument_techniques_supported" (
 	"BeamlineInstrument_id" TEXT,
 	techniques_supported VARCHAR(29) NOT NULL,
@@ -2642,13 +2800,13 @@ CREATE TABLE "FTIRImage_molecular_signatures" (
 	molecular_signatures TEXT,
 	PRIMARY KEY ("FTIRImage_id", molecular_signatures),
 	FOREIGN KEY("FTIRImage_id") REFERENCES "FTIRImage" (id)
-);CREATE INDEX "ix_FTIRImage_molecular_signatures_molecular_signatures" ON "FTIRImage_molecular_signatures" (molecular_signatures);CREATE INDEX "ix_FTIRImage_molecular_signatures_FTIRImage_id" ON "FTIRImage_molecular_signatures" ("FTIRImage_id");
+);CREATE INDEX "ix_FTIRImage_molecular_signatures_FTIRImage_id" ON "FTIRImage_molecular_signatures" ("FTIRImage_id");CREATE INDEX "ix_FTIRImage_molecular_signatures_molecular_signatures" ON "FTIRImage_molecular_signatures" (molecular_signatures);
 CREATE TABLE "OpticalImage_color_channels" (
 	"OpticalImage_id" TEXT,
 	color_channels TEXT,
 	PRIMARY KEY ("OpticalImage_id", color_channels),
 	FOREIGN KEY("OpticalImage_id") REFERENCES "OpticalImage" (id)
-);CREATE INDEX "ix_OpticalImage_color_channels_OpticalImage_id" ON "OpticalImage_color_channels" ("OpticalImage_id");CREATE INDEX "ix_OpticalImage_color_channels_color_channels" ON "OpticalImage_color_channels" (color_channels);
+);CREATE INDEX "ix_OpticalImage_color_channels_color_channels" ON "OpticalImage_color_channels" (color_channels);CREATE INDEX "ix_OpticalImage_color_channels_OpticalImage_id" ON "OpticalImage_color_channels" ("OpticalImage_id");
 CREATE TABLE "XRFImage_elements_measured" (
 	"XRFImage_id" TEXT,
 	elements_measured TEXT,
@@ -2666,7 +2824,7 @@ CREATE TABLE "BufferComposition_additives" (
 	additives TEXT,
 	PRIMARY KEY ("BufferComposition_id", additives),
 	FOREIGN KEY("BufferComposition_id") REFERENCES "BufferComposition" (id)
-);CREATE INDEX "ix_BufferComposition_additives_BufferComposition_id" ON "BufferComposition_additives" ("BufferComposition_id");CREATE INDEX "ix_BufferComposition_additives_additives" ON "BufferComposition_additives" (additives);
+);CREATE INDEX "ix_BufferComposition_additives_additives" ON "BufferComposition_additives" (additives);CREATE INDEX "ix_BufferComposition_additives_BufferComposition_id" ON "BufferComposition_additives" ("BufferComposition_id");
 CREATE TABLE "SANSDetector" (
 	id INTEGER NOT NULL,
 	detector_name TEXT,
@@ -2847,6 +3005,17 @@ CREATE TABLE "WorkflowOutputAssociation" (
 	FOREIGN KEY(file_id) REFERENCES "DataFile" (id),
 	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id)
 );CREATE INDEX "ix_WorkflowOutputAssociation_id" ON "WorkflowOutputAssociation" (id);
+CREATE TABLE "WorkflowPersonAssociation" (
+	id INTEGER NOT NULL,
+	workflow_id TEXT NOT NULL,
+	person_id TEXT NOT NULL,
+	role VARCHAR(22),
+	"Dataset_id" TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY(workflow_id) REFERENCES "WorkflowRun" (id),
+	FOREIGN KEY(person_id) REFERENCES "Person" (id),
+	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id)
+);CREATE INDEX "ix_WorkflowPersonAssociation_id" ON "WorkflowPersonAssociation" (id);
 CREATE TABLE "FunctionalSite" (
 	site_type VARCHAR(20) NOT NULL,
 	site_name TEXT,
@@ -3059,6 +3228,17 @@ CREATE TABLE "WorkflowExperimentAssociation" (
 	FOREIGN KEY(experiment_id) REFERENCES "ExperimentRun" (id),
 	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id)
 );CREATE INDEX "ix_WorkflowExperimentAssociation_id" ON "WorkflowExperimentAssociation" (id);
+CREATE TABLE "ExperimentPersonAssociation" (
+	id INTEGER NOT NULL,
+	experiment_id TEXT NOT NULL,
+	person_id TEXT NOT NULL,
+	role VARCHAR(22),
+	"Dataset_id" TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY(experiment_id) REFERENCES "ExperimentRun" (id),
+	FOREIGN KEY(person_id) REFERENCES "Person" (id),
+	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id)
+);CREATE INDEX "ix_ExperimentPersonAssociation_id" ON "ExperimentPersonAssociation" (id);
 CREATE TABLE "LigandInteraction" (
 	id INTEGER NOT NULL,
 	ligand_id TEXT NOT NULL,
@@ -3102,13 +3282,13 @@ CREATE TABLE "FunctionalSite_residues" (
 	residues TEXT,
 	PRIMARY KEY ("FunctionalSite_id", residues),
 	FOREIGN KEY("FunctionalSite_id") REFERENCES "FunctionalSite" (id)
-);CREATE INDEX "ix_FunctionalSite_residues_FunctionalSite_id" ON "FunctionalSite_residues" ("FunctionalSite_id");CREATE INDEX "ix_FunctionalSite_residues_residues" ON "FunctionalSite_residues" (residues);
+);CREATE INDEX "ix_FunctionalSite_residues_residues" ON "FunctionalSite_residues" (residues);CREATE INDEX "ix_FunctionalSite_residues_FunctionalSite_id" ON "FunctionalSite_residues" ("FunctionalSite_id");
 CREATE TABLE "FunctionalSite_go_terms" (
 	"FunctionalSite_id" TEXT,
 	go_terms TEXT,
 	PRIMARY KEY ("FunctionalSite_id", go_terms),
 	FOREIGN KEY("FunctionalSite_id") REFERENCES "FunctionalSite" (id)
-);CREATE INDEX "ix_FunctionalSite_go_terms_go_terms" ON "FunctionalSite_go_terms" (go_terms);CREATE INDEX "ix_FunctionalSite_go_terms_FunctionalSite_id" ON "FunctionalSite_go_terms" ("FunctionalSite_id");
+);CREATE INDEX "ix_FunctionalSite_go_terms_FunctionalSite_id" ON "FunctionalSite_go_terms" ("FunctionalSite_id");CREATE INDEX "ix_FunctionalSite_go_terms_go_terms" ON "FunctionalSite_go_terms" (go_terms);
 CREATE TABLE "FunctionalSite_publication_ids" (
 	"FunctionalSite_id" TEXT,
 	publication_ids TEXT,
@@ -3156,7 +3336,7 @@ CREATE TABLE "PostTranslationalModification_publication_ids" (
 	publication_ids TEXT,
 	PRIMARY KEY ("PostTranslationalModification_id", publication_ids),
 	FOREIGN KEY("PostTranslationalModification_id") REFERENCES "PostTranslationalModification" (id)
-);CREATE INDEX "ix_PostTranslationalModification_publication_ids_PostTranslationalModification_id" ON "PostTranslationalModification_publication_ids" ("PostTranslationalModification_id");CREATE INDEX "ix_PostTranslationalModification_publication_ids_publication_ids" ON "PostTranslationalModification_publication_ids" (publication_ids);
+);CREATE INDEX "ix_PostTranslationalModification_publication_ids_publication_ids" ON "PostTranslationalModification_publication_ids" (publication_ids);CREATE INDEX "ix_PostTranslationalModification_publication_ids_PostTranslationalModification_id" ON "PostTranslationalModification_publication_ids" ("PostTranslationalModification_id");
 CREATE TABLE "LigandInteraction_binding_site_residues" (
 	"LigandInteraction_id" INTEGER,
 	binding_site_residues TEXT,

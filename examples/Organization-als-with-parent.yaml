@@ -1,0 +1,18 @@
+id: lambdaber:org_als
+title: Advanced Light Source
+description: 'Third-generation synchrotron light source. Demonstrates an Organization
+  record standing in for a FacilityEnum term: the enum says which facility this is,
+  the record says what it is, where, and who operates it. This is a standalone class
+  example, so parent_organization_id names a record that lives elsewhere; see Dataset-authorship.yaml
+  for the parent and child resolved in one dataset.'
+ror: https://ror.org/02jbv0t02
+acronym: ALS
+organization_type: national_laboratory
+facility_code: ALS
+facility_type: SYNCHROTRON
+parent_organization_id: lambdaber:org_lbnl
+location: Berkeley, California, USA
+country: USA
+website: https://als.lbl.gov/
+is_doe_facility: true
+doe_office: Office of Science

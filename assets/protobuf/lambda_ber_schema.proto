@@ -48,6 +48,7 @@ message BeamlineInstrument
   instrumentCategoryEnum instrumentCategory = 0
   facilityEnum facilityName = 0
   uriorcurie facilityRor = 0
+  organization facilityOrganizationId = 0
   string beamlineId = 0
   string manufacturer = 0
   string model = 0
@@ -131,6 +132,7 @@ message CryoEMInstrument
   instrumentCategoryEnum instrumentCategory = 0
   facilityEnum facilityName = 0
   uriorcurie facilityRor = 0
+  organization facilityOrganizationId = 0
   string beamlineId = 0
   string manufacturer = 0
   string model = 0
@@ -282,6 +284,8 @@ message Dataset
   string description = 0
  repeated  string keywords = 0
  repeated  study studies = 0
+ repeated  person persons = 0
+ repeated  organization organizations = 0
  repeated  instrument instruments = 0
  repeated  proteinConstruct proteinConstructs = 0
  repeated  sample samples = 0
@@ -298,6 +302,11 @@ message Dataset
  repeated  workflowExperimentAssociation workflowExperimentAssociations = 0
  repeated  workflowInputAssociation workflowInputAssociations = 0
  repeated  workflowOutputAssociation workflowOutputAssociations = 0
+ repeated  studyPersonAssociation studyPersonAssociations = 0
+ repeated  experimentPersonAssociation experimentPersonAssociations = 0
+ repeated  workflowPersonAssociation workflowPersonAssociations = 0
+ repeated  studyOrganizationAssociation studyOrganizationAssociations = 0
+ repeated  personOrganizationAssociation personOrganizationAssociations = 0
  }
 // A date or date and time value.
 message DateTimeValue
@@ -347,6 +356,13 @@ message ExperimentInstrumentAssociation
   experimentRun experimentId = 0
   instrument instrumentId = 0
   instrumentRoleEnum role = 0
+ }
+// M:N link between ExperimentRun and Person with role metadata - who actually collected the data, and who was the local contact.
+message ExperimentPersonAssociation
+ {
+  experimentRun experimentId = 0
+  person personId = 0
+  personRoleEnum role = 0
  }
 // An experimental data collection session
 message ExperimentRun
@@ -569,6 +585,7 @@ message Instrument
   instrumentCategoryEnum instrumentCategory = 0
   facilityEnum facilityName = 0
   uriorcurie facilityRor = 0
+  organization facilityOrganizationId = 0
   string beamlineId = 0
   string manufacturer = 0
   string model = 0
@@ -737,6 +754,26 @@ message OpticalImage
   string whiteBalance = 0
   string contrastMethod = 0
  }
+// An institution, facility, laboratory or funding body - a national laboratory, a university, a light source, an agency that funded the work.
+// This is the structured home for organizational identity that the schema otherwise carries as unvalidated free text in three places: the annotations on FacilityEnum permissible values (`parent_organization`, `parent_ror`, `location`, `country`, `doe_office`, `website`, `wikidata_id`), Instrument's `facility_name` / `facility_ror` pair, and Person's `affiliation` / `affiliation_ror` pair. FacilityEnum remains the controlled vocabulary that says *which* facility something is; Organization is the record that says what that facility is, where, and who runs it - and lets a parent institution be stated once rather than restated by every entity that refers to it.
+message Organization
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  uriorcurie ror = 0
+  string acronym = 0
+  organizationTypeEnum organizationType = 0
+  facilityEnum facilityCode = 0
+  facilityTypeEnum facilityType = 0
+  organization parentOrganizationId = 0
+  string location = 0
+  string country = 0
+  uriorcurie website = 0
+  string wikidataId = 0
+  boolean isDoeFacility = 0
+  string doeOffice = 0
+ }
 // Parameters specific to particle picking workflows
 message ParticlePickingParameters
  {
@@ -749,6 +786,30 @@ message ParticlePickingParameters
   string modelName = 0
   string modelFilePath = 0
   string modelSource = 0
+ }
+// A person involved in producing, processing or publishing data - a principal investigator, beamline operator, data analyst or curator. In the relational model, Person is lightweight: which study, experiment or workflow a person is attached to, and in what capacity, is carried by the person association tables in Dataset, so one person record serves every role they hold across a dataset.
+message Person
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  uriorcurie orcid = 0
+  string fullName = 0
+  string givenName = 0
+  string familyName = 0
+  string email = 0
+  string affiliation = 0
+  uriorcurie affiliationRor = 0
+  string personLocalId = 0
+ }
+// M:N link between Person and Organization with role metadata. An association table rather than a slot on Person because people hold several affiliations at once and move between them, and a dataset's provenance may need to say which affiliation applied at the time.
+message PersonOrganizationAssociation
+ {
+  person personId = 0
+  organization organizationId = 0
+  organizationRoleEnum role = 0
+  string startDate = 0
+  string endDate = 0
  }
 // Post-translational modifications observed or predicted
 message PostTranslationalModification
@@ -1038,6 +1099,7 @@ message SANSInstrument
   instrumentCategoryEnum instrumentCategory = 0
   facilityEnum facilityName = 0
   uriorcurie facilityRor = 0
+  organization facilityOrganizationId = 0
   string beamlineId = 0
   string manufacturer = 0
   string model = 0
@@ -1074,6 +1136,7 @@ message SAXSInstrument
   instrumentCategoryEnum instrumentCategory = 0
   facilityEnum facilityName = 0
   uriorcurie facilityRor = 0
+  organization facilityOrganizationId = 0
   string beamlineId = 0
   string manufacturer = 0
   string model = 0
@@ -1144,6 +1207,23 @@ message StudyExperimentAssociation
   study studyId = 0
   experimentRun experimentId = 0
  }
+// M:N link between Study and Organization with role metadata - the host institution, the collaborating institutions, and who funded the work.
+message StudyOrganizationAssociation
+ {
+  study studyId = 0
+  organization organizationId = 0
+  organizationRoleEnum role = 0
+  string awardNumber = 0
+ }
+// M:N link between Study and Person with role metadata. This is where authorship and responsibility for a body of work live - principal investigator, author, curator.
+message StudyPersonAssociation
+ {
+  study studyId = 0
+  person personId = 0
+  personRoleEnum role = 0
+  integer authorPosition = 0
+  boolean corresponding = 0
+ }
 // M:N link between Study and Sample with role metadata
 message StudySampleAssociation
  {
@@ -1185,6 +1265,13 @@ message WorkflowOutputAssociation
   workflowRun workflowId = 0
   dataFile fileId = 0
   outputTypeEnum outputType = 0
+ }
+// M:N link between WorkflowRun and Person with role metadata - who ran the processing, and who made the judgement calls it required.
+message WorkflowPersonAssociation
+ {
+  workflowRun workflowId = 0
+  person personId = 0
+  personRoleEnum role = 0
  }
 // A computational processing workflow execution
 message WorkflowRun
@@ -1269,6 +1356,7 @@ message XRayInstrument
   instrumentCategoryEnum instrumentCategory = 0
   facilityEnum facilityName = 0
   uriorcurie facilityRor = 0
+  organization facilityOrganizationId = 0
   string beamlineId = 0
   string manufacturer = 0
   string model = 0

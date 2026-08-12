@@ -36,6 +36,7 @@ lambdaber:beamline_aps_23id_d a lambdaber:XRayInstrument ;
     lambdaber:installation_date "2010-01-01" ;
     lambdaber:instrument_category CHMO:0001084 ;
     lambdaber:instrument_code "APS-23-ID-D" ;
+    lambdaber:instrument_registry_id "APS_GMCA_23IDD" ;
     lambdaber:manufacturer "Argonne National Laboratory" ;
     lambdaber:model "APS Beamline 23-ID-D" ;
     lambdaber:monochromator_type "Si(111) double crystal" ;

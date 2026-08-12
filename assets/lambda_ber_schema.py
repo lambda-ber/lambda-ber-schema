@@ -1,5 +1,5 @@
 # Auto generated from lambda_ber_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-06-24T17:00:36
+# Generation date: 2026-08-12T15:29:09
 # Schema: lambda-ber-schema
 #
 # id: http://w3id.org/lambda/
@@ -63,6 +63,17 @@
 #     biological questions. For example, a study might investigate "Heat stress response in Arabidopsis"
 #     or "Structure of the human ribosome under different conditions."
 #
+#   **People and organizations**
+#   - [Persons](Person.md): People involved in producing, processing or publishing the data - principal
+#     investigators, beamline operators, analysts, curators. Identified by ORCID where available. Which
+#     work a person is attached to, and in what capacity, is carried by the person association tables,
+#     so one record serves every role a person holds across the dataset.
+#
+#   - [Organizations](Organization.md): Institutions, facilities and funding bodies, identified by ROR.
+#     The structured home for organizational identity that would otherwise live as free text on
+#     instruments, on people, and in FacilityEnum's annotations - so a parent institution is stated
+#     once rather than restated by everything that refers to it.
+#
 #   ### Association Tables
 #
 #   Many-to-many relationships are represented via explicit association tables, which can carry
@@ -76,6 +87,11 @@
 #   - **WorkflowExperimentAssociation**: Links source experiments to workflows
 #   - **WorkflowInputAssociation**: Links input files to workflows
 #   - **WorkflowOutputAssociation**: Links output files to workflows
+#   - **StudyPersonAssociation**: Links people to studies (with role, author position, corresponding flag)
+#   - **ExperimentPersonAssociation**: Links people to experiment runs (with role: operator, local contact)
+#   - **WorkflowPersonAssociation**: Links people to workflow runs (with role: analyst, reviewer)
+#   - **StudyOrganizationAssociation**: Links organizations to studies (with role and award number)
+#   - **PersonOrganizationAssociation**: Links people to organizations (with role and affiliation dates)
 #
 #   This relational design enables:
 #   - **Sample reuse**: The same sample can be used in multiple studies and experiments
@@ -228,6 +244,14 @@ class DatasetId(NamedThingId):
 
 
 class StudyId(NamedThingId):
+    pass
+
+
+class PersonId(NamedThingId):
+    pass
+
+
+class OrganizationId(NamedThingId):
     pass
 
 
@@ -427,6 +451,8 @@ class Dataset(NamedThing):
     id: Union[str, DatasetId] = None
     keywords: Optional[Union[str, list[str]]] = empty_list()
     studies: Optional[Union[dict[Union[str, StudyId], Union[dict, "Study"]], list[Union[dict, "Study"]]]] = empty_dict()
+    persons: Optional[Union[dict[Union[str, PersonId], Union[dict, "Person"]], list[Union[dict, "Person"]]]] = empty_dict()
+    organizations: Optional[Union[dict[Union[str, OrganizationId], Union[dict, "Organization"]], list[Union[dict, "Organization"]]]] = empty_dict()
     instruments: Optional[Union[dict[Union[str, InstrumentId], Union[dict, "Instrument"]], list[Union[dict, "Instrument"]]]] = empty_dict()
     protein_constructs: Optional[Union[dict[Union[str, ProteinConstructId], Union[dict, "ProteinConstruct"]], list[Union[dict, "ProteinConstruct"]]]] = empty_dict()
     samples: Optional[Union[dict[Union[str, SampleId], Union[dict, "Sample"]], list[Union[dict, "Sample"]]]] = empty_dict()
@@ -443,6 +469,11 @@ class Dataset(NamedThing):
     workflow_experiment_associations: Optional[Union[Union[dict, "WorkflowExperimentAssociation"], list[Union[dict, "WorkflowExperimentAssociation"]]]] = empty_list()
     workflow_input_associations: Optional[Union[Union[dict, "WorkflowInputAssociation"], list[Union[dict, "WorkflowInputAssociation"]]]] = empty_list()
     workflow_output_associations: Optional[Union[Union[dict, "WorkflowOutputAssociation"], list[Union[dict, "WorkflowOutputAssociation"]]]] = empty_list()
+    study_person_associations: Optional[Union[Union[dict, "StudyPersonAssociation"], list[Union[dict, "StudyPersonAssociation"]]]] = empty_list()
+    experiment_person_associations: Optional[Union[Union[dict, "ExperimentPersonAssociation"], list[Union[dict, "ExperimentPersonAssociation"]]]] = empty_list()
+    workflow_person_associations: Optional[Union[Union[dict, "WorkflowPersonAssociation"], list[Union[dict, "WorkflowPersonAssociation"]]]] = empty_list()
+    study_organization_associations: Optional[Union[Union[dict, "StudyOrganizationAssociation"], list[Union[dict, "StudyOrganizationAssociation"]]]] = empty_list()
+    person_organization_associations: Optional[Union[Union[dict, "PersonOrganizationAssociation"], list[Union[dict, "PersonOrganizationAssociation"]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -455,6 +486,10 @@ class Dataset(NamedThing):
         self.keywords = [v if isinstance(v, str) else str(v) for v in self.keywords]
 
         self._normalize_inlined_as_list(slot_name="studies", slot_type=Study, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="persons", slot_type=Person, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="organizations", slot_type=Organization, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="instruments", slot_type=Instrument, key_name="id", keyed=True)
 
@@ -504,6 +539,26 @@ class Dataset(NamedThing):
             self.workflow_output_associations = [self.workflow_output_associations] if self.workflow_output_associations is not None else []
         self.workflow_output_associations = [v if isinstance(v, WorkflowOutputAssociation) else WorkflowOutputAssociation(**as_dict(v)) for v in self.workflow_output_associations]
 
+        if not isinstance(self.study_person_associations, list):
+            self.study_person_associations = [self.study_person_associations] if self.study_person_associations is not None else []
+        self.study_person_associations = [v if isinstance(v, StudyPersonAssociation) else StudyPersonAssociation(**as_dict(v)) for v in self.study_person_associations]
+
+        if not isinstance(self.experiment_person_associations, list):
+            self.experiment_person_associations = [self.experiment_person_associations] if self.experiment_person_associations is not None else []
+        self.experiment_person_associations = [v if isinstance(v, ExperimentPersonAssociation) else ExperimentPersonAssociation(**as_dict(v)) for v in self.experiment_person_associations]
+
+        if not isinstance(self.workflow_person_associations, list):
+            self.workflow_person_associations = [self.workflow_person_associations] if self.workflow_person_associations is not None else []
+        self.workflow_person_associations = [v if isinstance(v, WorkflowPersonAssociation) else WorkflowPersonAssociation(**as_dict(v)) for v in self.workflow_person_associations]
+
+        if not isinstance(self.study_organization_associations, list):
+            self.study_organization_associations = [self.study_organization_associations] if self.study_organization_associations is not None else []
+        self.study_organization_associations = [v if isinstance(v, StudyOrganizationAssociation) else StudyOrganizationAssociation(**as_dict(v)) for v in self.study_organization_associations]
+
+        if not isinstance(self.person_organization_associations, list):
+            self.person_organization_associations = [self.person_organization_associations] if self.person_organization_associations is not None else []
+        self.person_organization_associations = [v if isinstance(v, PersonOrganizationAssociation) else PersonOrganizationAssociation(**as_dict(v)) for v in self.person_organization_associations]
+
         super().__post_init__(**kwargs)
 
 
@@ -532,6 +587,142 @@ class Study(NamedThing):
         if not isinstance(self.keywords, list):
             self.keywords = [self.keywords] if self.keywords is not None else []
         self.keywords = [v if isinstance(v, str) else str(v) for v in self.keywords]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Person(NamedThing):
+    """
+    A person involved in producing, processing or publishing data - a principal investigator, beamline operator, data
+    analyst or curator. In the relational model, Person is lightweight: which study, experiment or workflow a person
+    is attached to, and in what capacity, is carried by the person association tables in Dataset, so one person record
+    serves every role they hold across a dataset.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDA["Person"]
+    class_class_curie: ClassVar[str] = "lambda:Person"
+    class_name: ClassVar[str] = "Person"
+    class_model_uri: ClassVar[URIRef] = LAMBDA.Person
+
+    id: Union[str, PersonId] = None
+    orcid: Optional[Union[str, URIorCURIE]] = None
+    full_name: Optional[str] = None
+    given_name: Optional[str] = None
+    family_name: Optional[str] = None
+    email: Optional[str] = None
+    affiliation: Optional[str] = None
+    affiliation_ror: Optional[Union[str, URIorCURIE]] = None
+    person_local_id: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, PersonId):
+            self.id = PersonId(self.id)
+
+        if self.orcid is not None and not isinstance(self.orcid, URIorCURIE):
+            self.orcid = URIorCURIE(self.orcid)
+
+        if self.full_name is not None and not isinstance(self.full_name, str):
+            self.full_name = str(self.full_name)
+
+        if self.given_name is not None and not isinstance(self.given_name, str):
+            self.given_name = str(self.given_name)
+
+        if self.family_name is not None and not isinstance(self.family_name, str):
+            self.family_name = str(self.family_name)
+
+        if self.email is not None and not isinstance(self.email, str):
+            self.email = str(self.email)
+
+        if self.affiliation is not None and not isinstance(self.affiliation, str):
+            self.affiliation = str(self.affiliation)
+
+        if self.affiliation_ror is not None and not isinstance(self.affiliation_ror, URIorCURIE):
+            self.affiliation_ror = URIorCURIE(self.affiliation_ror)
+
+        if self.person_local_id is not None and not isinstance(self.person_local_id, str):
+            self.person_local_id = str(self.person_local_id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Organization(NamedThing):
+    """
+    An institution, facility, laboratory or funding body - a national laboratory, a university, a light source, an
+    agency that funded the work.
+    This is the structured home for organizational identity that the schema otherwise carries as unvalidated free text
+    in three places: the annotations on FacilityEnum permissible values (`parent_organization`, `parent_ror`,
+    `location`, `country`, `doe_office`, `website`, `wikidata_id`), Instrument's `facility_name` / `facility_ror`
+    pair, and Person's `affiliation` / `affiliation_ror` pair. FacilityEnum remains the controlled vocabulary that
+    says *which* facility something is; Organization is the record that says what that facility is, where, and who
+    runs it - and lets a parent institution be stated once rather than restated by every entity that refers to it.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDA["Organization"]
+    class_class_curie: ClassVar[str] = "lambda:Organization"
+    class_name: ClassVar[str] = "Organization"
+    class_model_uri: ClassVar[URIRef] = LAMBDA.Organization
+
+    id: Union[str, OrganizationId] = None
+    ror: Optional[Union[str, URIorCURIE]] = None
+    acronym: Optional[str] = None
+    organization_type: Optional[Union[str, "OrganizationTypeEnum"]] = None
+    facility_code: Optional[Union[str, "FacilityEnum"]] = None
+    facility_type: Optional[Union[str, "FacilityTypeEnum"]] = None
+    parent_organization_id: Optional[Union[str, OrganizationId]] = None
+    location: Optional[str] = None
+    country: Optional[str] = None
+    website: Optional[Union[str, URIorCURIE]] = None
+    wikidata_id: Optional[str] = None
+    is_doe_facility: Optional[Union[bool, Bool]] = None
+    doe_office: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, OrganizationId):
+            self.id = OrganizationId(self.id)
+
+        if self.ror is not None and not isinstance(self.ror, URIorCURIE):
+            self.ror = URIorCURIE(self.ror)
+
+        if self.acronym is not None and not isinstance(self.acronym, str):
+            self.acronym = str(self.acronym)
+
+        if self.organization_type is not None and not isinstance(self.organization_type, OrganizationTypeEnum):
+            self.organization_type = OrganizationTypeEnum(self.organization_type)
+
+        if self.facility_code is not None and not isinstance(self.facility_code, FacilityEnum):
+            self.facility_code = FacilityEnum(self.facility_code)
+
+        if self.facility_type is not None and not isinstance(self.facility_type, FacilityTypeEnum):
+            self.facility_type = FacilityTypeEnum(self.facility_type)
+
+        if self.parent_organization_id is not None and not isinstance(self.parent_organization_id, OrganizationId):
+            self.parent_organization_id = OrganizationId(self.parent_organization_id)
+
+        if self.location is not None and not isinstance(self.location, str):
+            self.location = str(self.location)
+
+        if self.country is not None and not isinstance(self.country, str):
+            self.country = str(self.country)
+
+        if self.website is not None and not isinstance(self.website, URIorCURIE):
+            self.website = URIorCURIE(self.website)
+
+        if self.wikidata_id is not None and not isinstance(self.wikidata_id, str):
+            self.wikidata_id = str(self.wikidata_id)
+
+        if self.is_doe_facility is not None and not isinstance(self.is_doe_facility, Bool):
+            self.is_doe_facility = Bool(self.is_doe_facility)
+
+        if self.doe_office is not None and not isinstance(self.doe_office, str):
+            self.doe_office = str(self.doe_office)
 
         super().__post_init__(**kwargs)
 
@@ -1008,6 +1199,7 @@ class Instrument(NamedThing):
     instrument_category: Optional[Union[str, "InstrumentCategoryEnum"]] = None
     facility_name: Optional[Union[str, "FacilityEnum"]] = None
     facility_ror: Optional[Union[str, URIorCURIE]] = None
+    facility_organization_id: Optional[Union[str, OrganizationId]] = None
     beamline_id: Optional[str] = None
     manufacturer: Optional[str] = None
     model: Optional[str] = None
@@ -1036,6 +1228,9 @@ class Instrument(NamedThing):
 
         if self.facility_ror is not None and not isinstance(self.facility_ror, URIorCURIE):
             self.facility_ror = URIorCURIE(self.facility_ror)
+
+        if self.facility_organization_id is not None and not isinstance(self.facility_organization_id, OrganizationId):
+            self.facility_organization_id = OrganizationId(self.facility_organization_id)
 
         if self.beamline_id is not None and not isinstance(self.beamline_id, str):
             self.beamline_id = str(self.beamline_id)
@@ -4027,6 +4222,197 @@ class WorkflowOutputAssociation(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
+@dataclass(repr=False)
+class StudyPersonAssociation(YAMLRoot):
+    """
+    M:N link between Study and Person with role metadata. This is where authorship and responsibility for a body of
+    work live - principal investigator, author, curator.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDA["StudyPersonAssociation"]
+    class_class_curie: ClassVar[str] = "lambda:StudyPersonAssociation"
+    class_name: ClassVar[str] = "StudyPersonAssociation"
+    class_model_uri: ClassVar[URIRef] = LAMBDA.StudyPersonAssociation
+
+    study_id: Union[str, StudyId] = None
+    person_id: Union[str, PersonId] = None
+    role: Optional[Union[str, "PersonRoleEnum"]] = None
+    author_position: Optional[int] = None
+    corresponding: Optional[Union[bool, Bool]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.study_id):
+            self.MissingRequiredField("study_id")
+        if not isinstance(self.study_id, StudyId):
+            self.study_id = StudyId(self.study_id)
+
+        if self._is_empty(self.person_id):
+            self.MissingRequiredField("person_id")
+        if not isinstance(self.person_id, PersonId):
+            self.person_id = PersonId(self.person_id)
+
+        if self.role is not None and not isinstance(self.role, PersonRoleEnum):
+            self.role = PersonRoleEnum(self.role)
+
+        if self.author_position is not None and not isinstance(self.author_position, int):
+            self.author_position = int(self.author_position)
+
+        if self.corresponding is not None and not isinstance(self.corresponding, Bool):
+            self.corresponding = Bool(self.corresponding)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class ExperimentPersonAssociation(YAMLRoot):
+    """
+    M:N link between ExperimentRun and Person with role metadata - who actually collected the data, and who was the
+    local contact.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDA["ExperimentPersonAssociation"]
+    class_class_curie: ClassVar[str] = "lambda:ExperimentPersonAssociation"
+    class_name: ClassVar[str] = "ExperimentPersonAssociation"
+    class_model_uri: ClassVar[URIRef] = LAMBDA.ExperimentPersonAssociation
+
+    experiment_id: Union[str, ExperimentRunId] = None
+    person_id: Union[str, PersonId] = None
+    role: Optional[Union[str, "PersonRoleEnum"]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.experiment_id):
+            self.MissingRequiredField("experiment_id")
+        if not isinstance(self.experiment_id, ExperimentRunId):
+            self.experiment_id = ExperimentRunId(self.experiment_id)
+
+        if self._is_empty(self.person_id):
+            self.MissingRequiredField("person_id")
+        if not isinstance(self.person_id, PersonId):
+            self.person_id = PersonId(self.person_id)
+
+        if self.role is not None and not isinstance(self.role, PersonRoleEnum):
+            self.role = PersonRoleEnum(self.role)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class WorkflowPersonAssociation(YAMLRoot):
+    """
+    M:N link between WorkflowRun and Person with role metadata - who ran the processing, and who made the judgement
+    calls it required.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDA["WorkflowPersonAssociation"]
+    class_class_curie: ClassVar[str] = "lambda:WorkflowPersonAssociation"
+    class_name: ClassVar[str] = "WorkflowPersonAssociation"
+    class_model_uri: ClassVar[URIRef] = LAMBDA.WorkflowPersonAssociation
+
+    workflow_id: Union[str, WorkflowRunId] = None
+    person_id: Union[str, PersonId] = None
+    role: Optional[Union[str, "PersonRoleEnum"]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.workflow_id):
+            self.MissingRequiredField("workflow_id")
+        if not isinstance(self.workflow_id, WorkflowRunId):
+            self.workflow_id = WorkflowRunId(self.workflow_id)
+
+        if self._is_empty(self.person_id):
+            self.MissingRequiredField("person_id")
+        if not isinstance(self.person_id, PersonId):
+            self.person_id = PersonId(self.person_id)
+
+        if self.role is not None and not isinstance(self.role, PersonRoleEnum):
+            self.role = PersonRoleEnum(self.role)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class StudyOrganizationAssociation(YAMLRoot):
+    """
+    M:N link between Study and Organization with role metadata - the host institution, the collaborating institutions,
+    and who funded the work.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDA["StudyOrganizationAssociation"]
+    class_class_curie: ClassVar[str] = "lambda:StudyOrganizationAssociation"
+    class_name: ClassVar[str] = "StudyOrganizationAssociation"
+    class_model_uri: ClassVar[URIRef] = LAMBDA.StudyOrganizationAssociation
+
+    study_id: Union[str, StudyId] = None
+    organization_id: Union[str, OrganizationId] = None
+    role: Optional[Union[str, "OrganizationRoleEnum"]] = None
+    award_number: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.study_id):
+            self.MissingRequiredField("study_id")
+        if not isinstance(self.study_id, StudyId):
+            self.study_id = StudyId(self.study_id)
+
+        if self._is_empty(self.organization_id):
+            self.MissingRequiredField("organization_id")
+        if not isinstance(self.organization_id, OrganizationId):
+            self.organization_id = OrganizationId(self.organization_id)
+
+        if self.role is not None and not isinstance(self.role, OrganizationRoleEnum):
+            self.role = OrganizationRoleEnum(self.role)
+
+        if self.award_number is not None and not isinstance(self.award_number, str):
+            self.award_number = str(self.award_number)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class PersonOrganizationAssociation(YAMLRoot):
+    """
+    M:N link between Person and Organization with role metadata. An association table rather than a slot on Person
+    because people hold several affiliations at once and move between them, and a dataset's provenance may need to say
+    which affiliation applied at the time.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDA["PersonOrganizationAssociation"]
+    class_class_curie: ClassVar[str] = "lambda:PersonOrganizationAssociation"
+    class_name: ClassVar[str] = "PersonOrganizationAssociation"
+    class_model_uri: ClassVar[URIRef] = LAMBDA.PersonOrganizationAssociation
+
+    person_id: Union[str, PersonId] = None
+    organization_id: Union[str, OrganizationId] = None
+    role: Optional[Union[str, "OrganizationRoleEnum"]] = None
+    start_date: Optional[str] = None
+    end_date: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.person_id):
+            self.MissingRequiredField("person_id")
+        if not isinstance(self.person_id, PersonId):
+            self.person_id = PersonId(self.person_id)
+
+        if self._is_empty(self.organization_id):
+            self.MissingRequiredField("organization_id")
+        if not isinstance(self.organization_id, OrganizationId):
+            self.organization_id = OrganizationId(self.organization_id)
+
+        if self.role is not None and not isinstance(self.role, OrganizationRoleEnum):
+            self.role = OrganizationRoleEnum(self.role)
+
+        if self.start_date is not None and not isinstance(self.start_date, str):
+            self.start_date = str(self.start_date)
+
+        if self.end_date is not None and not isinstance(self.end_date, str):
+            self.end_date = str(self.end_date)
+
+        super().__post_init__(**kwargs)
+
+
 Any = Any
 
 @dataclass(repr=False)
@@ -6278,6 +6664,123 @@ class ControlSystemEnum(EnumDefinitionImpl):
         description="""Low-level control systems and middleware frameworks for device communication and hardware abstraction at experimental facilities. These provide the foundation layer that data acquisition systems build upon.""",
     )
 
+class PersonRoleEnum(EnumDefinitionImpl):
+    """
+    Capacity in which a person is attached to a study, experiment run or workflow run. One vocabulary rather than one
+    per association, because these roles belong to the person's relationship to the work and travel across all three -
+    a principal investigator who also collects the data holds two roles, not two differently-named ones.
+    """
+    principal_investigator = PermissibleValue(
+        text="principal_investigator",
+        description="Scientifically responsible for the work; the PI on the proposal")
+    co_investigator = PermissibleValue(
+        text="co_investigator",
+        description="Shares scientific responsibility with the principal investigator")
+    author = PermissibleValue(
+        text="author",
+        description="Credited author of the dataset or its associated publication")
+    operator = PermissibleValue(
+        text="operator",
+        description="Collected the data at the instrument")
+    local_contact = PermissibleValue(
+        text="local_contact",
+        description="Facility staff member supporting the collection session")
+    analyst = PermissibleValue(
+        text="analyst",
+        description="Performed the computational processing or analysis")
+    reviewer = PermissibleValue(
+        text="reviewer",
+        description="Reviewed or validated the data or its processing")
+    data_curator = PermissibleValue(
+        text="data_curator",
+        description="Prepared, described or deposited the data")
+    submitter = PermissibleValue(
+        text="submitter",
+        description="Submitted the data to a facility, archive or repository")
+    contact = PermissibleValue(
+        text="contact",
+        description="Point of contact for enquiries about the data")
+
+    _defn = EnumDefinition(
+        name="PersonRoleEnum",
+        description="""Capacity in which a person is attached to a study, experiment run or workflow run. One vocabulary rather than one per association, because these roles belong to the person's relationship to the work and travel across all three - a principal investigator who also collects the data holds two roles, not two differently-named ones.""",
+    )
+
+class OrganizationTypeEnum(EnumDefinitionImpl):
+    """
+    Kind of organization. Distinct from FacilityTypeEnum, which says what kind of *facility* something is - the
+    Advanced Light Source is a SYNCHROTRON facility and part of a national_laboratory, and both statements are worth
+    keeping.
+    """
+    national_laboratory = PermissibleValue(
+        text="national_laboratory",
+        description="National laboratory, e.g. a DOE national lab")
+    university = PermissibleValue(
+        text="university",
+        description="University or college")
+    research_institute = PermissibleValue(
+        text="research_institute",
+        description="Independent or institute-level research organization")
+    government_agency = PermissibleValue(
+        text="government_agency",
+        description="Government department or agency")
+    funding_agency = PermissibleValue(
+        text="funding_agency",
+        description="Body that funds research")
+    company = PermissibleValue(
+        text="company",
+        description="Commercial organization")
+    hospital = PermissibleValue(
+        text="hospital",
+        description="Hospital or clinical research centre")
+    consortium = PermissibleValue(
+        text="consortium",
+        description="Collaboration or consortium of member organizations")
+    other = PermissibleValue(
+        text="other",
+        description="Organization that fits none of the above")
+
+    _defn = EnumDefinition(
+        name="OrganizationTypeEnum",
+        description="""Kind of organization. Distinct from FacilityTypeEnum, which says what kind of *facility* something is - the Advanced Light Source is a SYNCHROTRON facility and part of a national_laboratory, and both statements are worth keeping.""",
+    )
+
+class OrganizationRoleEnum(EnumDefinitionImpl):
+    """
+    Capacity in which an organization is attached to a study, or a person to an organization. One vocabulary rather
+    than one per association, matching PersonRoleEnum: these are roles in a relationship, and the same organization is
+    often attached in more than one way.
+    """
+    host_institution = PermissibleValue(
+        text="host_institution",
+        description="Institution where the work was carried out")
+    operating_institution = PermissibleValue(
+        text="operating_institution",
+        description="Institution that operates the facility used")
+    funder = PermissibleValue(
+        text="funder",
+        description="Funded the work; pair with an award number on the association")
+    collaborating_institution = PermissibleValue(
+        text="collaborating_institution",
+        description="Contributed to the work without hosting it")
+    depositor = PermissibleValue(
+        text="depositor",
+        description="Deposited the data to an archive or repository")
+    primary_affiliation = PermissibleValue(
+        text="primary_affiliation",
+        description="A person's main institutional affiliation")
+    secondary_affiliation = PermissibleValue(
+        text="secondary_affiliation",
+        description="A further current affiliation held by a person")
+    former_affiliation = PermissibleValue(
+        text="former_affiliation",
+        description="An affiliation a person held previously")
+
+    _defn = EnumDefinition(
+        name="OrganizationRoleEnum",
+        description="""Capacity in which an organization is attached to a study, or a person to an organization. One vocabulary rather than one per association, matching PersonRoleEnum: these are roles in a relationship, and the same organization is often attached in more than one way.""",
+    )
+
 class SampleRoleEnum(EnumDefinitionImpl):
     """
     Role of a sample in a study
@@ -7398,6 +7901,12 @@ slots.dataset__keywords = Slot(uri=LAMBDA.keywords, name="dataset__keywords", cu
 slots.dataset__studies = Slot(uri=LAMBDA.studies, name="dataset__studies", curie=LAMBDA.curie('studies'),
                    model_uri=LAMBDA.dataset__studies, domain=None, range=Optional[Union[dict[Union[str, StudyId], Union[dict, Study]], list[Union[dict, Study]]]])
 
+slots.dataset__persons = Slot(uri=LAMBDA.persons, name="dataset__persons", curie=LAMBDA.curie('persons'),
+                   model_uri=LAMBDA.dataset__persons, domain=None, range=Optional[Union[dict[Union[str, PersonId], Union[dict, Person]], list[Union[dict, Person]]]])
+
+slots.dataset__organizations = Slot(uri=LAMBDA.organizations, name="dataset__organizations", curie=LAMBDA.curie('organizations'),
+                   model_uri=LAMBDA.dataset__organizations, domain=None, range=Optional[Union[dict[Union[str, OrganizationId], Union[dict, Organization]], list[Union[dict, Organization]]]])
+
 slots.dataset__instruments = Slot(uri=LAMBDA.instruments, name="dataset__instruments", curie=LAMBDA.curie('instruments'),
                    model_uri=LAMBDA.dataset__instruments, domain=None, range=Optional[Union[dict[Union[str, InstrumentId], Union[dict, Instrument]], list[Union[dict, Instrument]]]])
 
@@ -7446,8 +7955,86 @@ slots.dataset__workflow_input_associations = Slot(uri=LAMBDA.workflow_input_asso
 slots.dataset__workflow_output_associations = Slot(uri=LAMBDA.workflow_output_associations, name="dataset__workflow_output_associations", curie=LAMBDA.curie('workflow_output_associations'),
                    model_uri=LAMBDA.dataset__workflow_output_associations, domain=None, range=Optional[Union[Union[dict, WorkflowOutputAssociation], list[Union[dict, WorkflowOutputAssociation]]]])
 
+slots.dataset__study_person_associations = Slot(uri=LAMBDA.study_person_associations, name="dataset__study_person_associations", curie=LAMBDA.curie('study_person_associations'),
+                   model_uri=LAMBDA.dataset__study_person_associations, domain=None, range=Optional[Union[Union[dict, StudyPersonAssociation], list[Union[dict, StudyPersonAssociation]]]])
+
+slots.dataset__experiment_person_associations = Slot(uri=LAMBDA.experiment_person_associations, name="dataset__experiment_person_associations", curie=LAMBDA.curie('experiment_person_associations'),
+                   model_uri=LAMBDA.dataset__experiment_person_associations, domain=None, range=Optional[Union[Union[dict, ExperimentPersonAssociation], list[Union[dict, ExperimentPersonAssociation]]]])
+
+slots.dataset__workflow_person_associations = Slot(uri=LAMBDA.workflow_person_associations, name="dataset__workflow_person_associations", curie=LAMBDA.curie('workflow_person_associations'),
+                   model_uri=LAMBDA.dataset__workflow_person_associations, domain=None, range=Optional[Union[Union[dict, WorkflowPersonAssociation], list[Union[dict, WorkflowPersonAssociation]]]])
+
+slots.dataset__study_organization_associations = Slot(uri=LAMBDA.study_organization_associations, name="dataset__study_organization_associations", curie=LAMBDA.curie('study_organization_associations'),
+                   model_uri=LAMBDA.dataset__study_organization_associations, domain=None, range=Optional[Union[Union[dict, StudyOrganizationAssociation], list[Union[dict, StudyOrganizationAssociation]]]])
+
+slots.dataset__person_organization_associations = Slot(uri=LAMBDA.person_organization_associations, name="dataset__person_organization_associations", curie=LAMBDA.curie('person_organization_associations'),
+                   model_uri=LAMBDA.dataset__person_organization_associations, domain=None, range=Optional[Union[Union[dict, PersonOrganizationAssociation], list[Union[dict, PersonOrganizationAssociation]]]])
+
 slots.study__keywords = Slot(uri=LAMBDA.keywords, name="study__keywords", curie=LAMBDA.curie('keywords'),
                    model_uri=LAMBDA.study__keywords, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.person__orcid = Slot(uri=LAMBDA.orcid, name="person__orcid", curie=LAMBDA.curie('orcid'),
+                   model_uri=LAMBDA.person__orcid, domain=None, range=Optional[Union[str, URIorCURIE]],
+                   pattern=re.compile(r'^https://orcid\.org/\d{4}-\d{4}-\d{4}-\d{3}[0-9X]$'))
+
+slots.person__full_name = Slot(uri=LAMBDA.full_name, name="person__full_name", curie=LAMBDA.curie('full_name'),
+                   model_uri=LAMBDA.person__full_name, domain=None, range=Optional[str])
+
+slots.person__given_name = Slot(uri=LAMBDA.given_name, name="person__given_name", curie=LAMBDA.curie('given_name'),
+                   model_uri=LAMBDA.person__given_name, domain=None, range=Optional[str])
+
+slots.person__family_name = Slot(uri=LAMBDA.family_name, name="person__family_name", curie=LAMBDA.curie('family_name'),
+                   model_uri=LAMBDA.person__family_name, domain=None, range=Optional[str])
+
+slots.person__email = Slot(uri=LAMBDA.email, name="person__email", curie=LAMBDA.curie('email'),
+                   model_uri=LAMBDA.person__email, domain=None, range=Optional[str])
+
+slots.person__affiliation = Slot(uri=LAMBDA.affiliation, name="person__affiliation", curie=LAMBDA.curie('affiliation'),
+                   model_uri=LAMBDA.person__affiliation, domain=None, range=Optional[str])
+
+slots.person__affiliation_ror = Slot(uri=LAMBDA.affiliation_ror, name="person__affiliation_ror", curie=LAMBDA.curie('affiliation_ror'),
+                   model_uri=LAMBDA.person__affiliation_ror, domain=None, range=Optional[Union[str, URIorCURIE]],
+                   pattern=re.compile(r'^https://ror\.org/\w+$'))
+
+slots.person__person_local_id = Slot(uri=LAMBDA.person_local_id, name="person__person_local_id", curie=LAMBDA.curie('person_local_id'),
+                   model_uri=LAMBDA.person__person_local_id, domain=None, range=Optional[str])
+
+slots.organization__ror = Slot(uri=LAMBDA.ror, name="organization__ror", curie=LAMBDA.curie('ror'),
+                   model_uri=LAMBDA.organization__ror, domain=None, range=Optional[Union[str, URIorCURIE]],
+                   pattern=re.compile(r'^https://ror\.org/\w+$'))
+
+slots.organization__acronym = Slot(uri=LAMBDA.acronym, name="organization__acronym", curie=LAMBDA.curie('acronym'),
+                   model_uri=LAMBDA.organization__acronym, domain=None, range=Optional[str])
+
+slots.organization__organization_type = Slot(uri=LAMBDA.organization_type, name="organization__organization_type", curie=LAMBDA.curie('organization_type'),
+                   model_uri=LAMBDA.organization__organization_type, domain=None, range=Optional[Union[str, "OrganizationTypeEnum"]])
+
+slots.organization__facility_code = Slot(uri=LAMBDA.facility_code, name="organization__facility_code", curie=LAMBDA.curie('facility_code'),
+                   model_uri=LAMBDA.organization__facility_code, domain=None, range=Optional[Union[str, "FacilityEnum"]])
+
+slots.organization__facility_type = Slot(uri=LAMBDA.facility_type, name="organization__facility_type", curie=LAMBDA.curie('facility_type'),
+                   model_uri=LAMBDA.organization__facility_type, domain=None, range=Optional[Union[str, "FacilityTypeEnum"]])
+
+slots.organization__parent_organization_id = Slot(uri=LAMBDA.parent_organization_id, name="organization__parent_organization_id", curie=LAMBDA.curie('parent_organization_id'),
+                   model_uri=LAMBDA.organization__parent_organization_id, domain=None, range=Optional[Union[str, OrganizationId]])
+
+slots.organization__location = Slot(uri=LAMBDA.location, name="organization__location", curie=LAMBDA.curie('location'),
+                   model_uri=LAMBDA.organization__location, domain=None, range=Optional[str])
+
+slots.organization__country = Slot(uri=LAMBDA.country, name="organization__country", curie=LAMBDA.curie('country'),
+                   model_uri=LAMBDA.organization__country, domain=None, range=Optional[str])
+
+slots.organization__website = Slot(uri=LAMBDA.website, name="organization__website", curie=LAMBDA.curie('website'),
+                   model_uri=LAMBDA.organization__website, domain=None, range=Optional[Union[str, URIorCURIE]])
+
+slots.organization__wikidata_id = Slot(uri=LAMBDA.wikidata_id, name="organization__wikidata_id", curie=LAMBDA.curie('wikidata_id'),
+                   model_uri=LAMBDA.organization__wikidata_id, domain=None, range=Optional[str])
+
+slots.organization__is_doe_facility = Slot(uri=LAMBDA.is_doe_facility, name="organization__is_doe_facility", curie=LAMBDA.curie('is_doe_facility'),
+                   model_uri=LAMBDA.organization__is_doe_facility, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.organization__doe_office = Slot(uri=LAMBDA.doe_office, name="organization__doe_office", curie=LAMBDA.curie('doe_office'),
+                   model_uri=LAMBDA.organization__doe_office, domain=None, range=Optional[str])
 
 slots.sample__sample_code = Slot(uri=LAMBDA.sample_code, name="sample__sample_code", curie=LAMBDA.curie('sample_code'),
                    model_uri=LAMBDA.sample__sample_code, domain=None, range=str)
@@ -7746,6 +8333,9 @@ slots.instrument__facility_name = Slot(uri=LAMBDA.facility_name, name="instrumen
 slots.instrument__facility_ror = Slot(uri=LAMBDA.facility_ror, name="instrument__facility_ror", curie=LAMBDA.curie('facility_ror'),
                    model_uri=LAMBDA.instrument__facility_ror, domain=None, range=Optional[Union[str, URIorCURIE]],
                    pattern=re.compile(r'^https://ror\.org/\w+$'))
+
+slots.instrument__facility_organization_id = Slot(uri=LAMBDA.facility_organization_id, name="instrument__facility_organization_id", curie=LAMBDA.curie('facility_organization_id'),
+                   model_uri=LAMBDA.instrument__facility_organization_id, domain=None, range=Optional[Union[str, OrganizationId]])
 
 slots.instrument__beamline_id = Slot(uri=LAMBDA.beamline_id, name="instrument__beamline_id", curie=LAMBDA.curie('beamline_id'),
                    model_uri=LAMBDA.instrument__beamline_id, domain=None, range=Optional[str])
@@ -9243,6 +9833,66 @@ slots.workflowOutputAssociation__file_id = Slot(uri=LAMBDA.file_id, name="workfl
 
 slots.workflowOutputAssociation__output_type = Slot(uri=LAMBDA.output_type, name="workflowOutputAssociation__output_type", curie=LAMBDA.curie('output_type'),
                    model_uri=LAMBDA.workflowOutputAssociation__output_type, domain=None, range=Optional[Union[str, "OutputTypeEnum"]])
+
+slots.studyPersonAssociation__study_id = Slot(uri=LAMBDA.study_id, name="studyPersonAssociation__study_id", curie=LAMBDA.curie('study_id'),
+                   model_uri=LAMBDA.studyPersonAssociation__study_id, domain=None, range=Union[str, StudyId])
+
+slots.studyPersonAssociation__person_id = Slot(uri=LAMBDA.person_id, name="studyPersonAssociation__person_id", curie=LAMBDA.curie('person_id'),
+                   model_uri=LAMBDA.studyPersonAssociation__person_id, domain=None, range=Union[str, PersonId])
+
+slots.studyPersonAssociation__role = Slot(uri=LAMBDA.role, name="studyPersonAssociation__role", curie=LAMBDA.curie('role'),
+                   model_uri=LAMBDA.studyPersonAssociation__role, domain=None, range=Optional[Union[str, "PersonRoleEnum"]])
+
+slots.studyPersonAssociation__author_position = Slot(uri=LAMBDA.author_position, name="studyPersonAssociation__author_position", curie=LAMBDA.curie('author_position'),
+                   model_uri=LAMBDA.studyPersonAssociation__author_position, domain=None, range=Optional[int])
+
+slots.studyPersonAssociation__corresponding = Slot(uri=LAMBDA.corresponding, name="studyPersonAssociation__corresponding", curie=LAMBDA.curie('corresponding'),
+                   model_uri=LAMBDA.studyPersonAssociation__corresponding, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.experimentPersonAssociation__experiment_id = Slot(uri=LAMBDA.experiment_id, name="experimentPersonAssociation__experiment_id", curie=LAMBDA.curie('experiment_id'),
+                   model_uri=LAMBDA.experimentPersonAssociation__experiment_id, domain=None, range=Union[str, ExperimentRunId])
+
+slots.experimentPersonAssociation__person_id = Slot(uri=LAMBDA.person_id, name="experimentPersonAssociation__person_id", curie=LAMBDA.curie('person_id'),
+                   model_uri=LAMBDA.experimentPersonAssociation__person_id, domain=None, range=Union[str, PersonId])
+
+slots.experimentPersonAssociation__role = Slot(uri=LAMBDA.role, name="experimentPersonAssociation__role", curie=LAMBDA.curie('role'),
+                   model_uri=LAMBDA.experimentPersonAssociation__role, domain=None, range=Optional[Union[str, "PersonRoleEnum"]])
+
+slots.workflowPersonAssociation__workflow_id = Slot(uri=LAMBDA.workflow_id, name="workflowPersonAssociation__workflow_id", curie=LAMBDA.curie('workflow_id'),
+                   model_uri=LAMBDA.workflowPersonAssociation__workflow_id, domain=None, range=Union[str, WorkflowRunId])
+
+slots.workflowPersonAssociation__person_id = Slot(uri=LAMBDA.person_id, name="workflowPersonAssociation__person_id", curie=LAMBDA.curie('person_id'),
+                   model_uri=LAMBDA.workflowPersonAssociation__person_id, domain=None, range=Union[str, PersonId])
+
+slots.workflowPersonAssociation__role = Slot(uri=LAMBDA.role, name="workflowPersonAssociation__role", curie=LAMBDA.curie('role'),
+                   model_uri=LAMBDA.workflowPersonAssociation__role, domain=None, range=Optional[Union[str, "PersonRoleEnum"]])
+
+slots.studyOrganizationAssociation__study_id = Slot(uri=LAMBDA.study_id, name="studyOrganizationAssociation__study_id", curie=LAMBDA.curie('study_id'),
+                   model_uri=LAMBDA.studyOrganizationAssociation__study_id, domain=None, range=Union[str, StudyId])
+
+slots.studyOrganizationAssociation__organization_id = Slot(uri=LAMBDA.organization_id, name="studyOrganizationAssociation__organization_id", curie=LAMBDA.curie('organization_id'),
+                   model_uri=LAMBDA.studyOrganizationAssociation__organization_id, domain=None, range=Union[str, OrganizationId])
+
+slots.studyOrganizationAssociation__role = Slot(uri=LAMBDA.role, name="studyOrganizationAssociation__role", curie=LAMBDA.curie('role'),
+                   model_uri=LAMBDA.studyOrganizationAssociation__role, domain=None, range=Optional[Union[str, "OrganizationRoleEnum"]])
+
+slots.studyOrganizationAssociation__award_number = Slot(uri=LAMBDA.award_number, name="studyOrganizationAssociation__award_number", curie=LAMBDA.curie('award_number'),
+                   model_uri=LAMBDA.studyOrganizationAssociation__award_number, domain=None, range=Optional[str])
+
+slots.personOrganizationAssociation__person_id = Slot(uri=LAMBDA.person_id, name="personOrganizationAssociation__person_id", curie=LAMBDA.curie('person_id'),
+                   model_uri=LAMBDA.personOrganizationAssociation__person_id, domain=None, range=Union[str, PersonId])
+
+slots.personOrganizationAssociation__organization_id = Slot(uri=LAMBDA.organization_id, name="personOrganizationAssociation__organization_id", curie=LAMBDA.curie('organization_id'),
+                   model_uri=LAMBDA.personOrganizationAssociation__organization_id, domain=None, range=Union[str, OrganizationId])
+
+slots.personOrganizationAssociation__role = Slot(uri=LAMBDA.role, name="personOrganizationAssociation__role", curie=LAMBDA.curie('role'),
+                   model_uri=LAMBDA.personOrganizationAssociation__role, domain=None, range=Optional[Union[str, "OrganizationRoleEnum"]])
+
+slots.personOrganizationAssociation__start_date = Slot(uri=LAMBDA.start_date, name="personOrganizationAssociation__start_date", curie=LAMBDA.curie('start_date'),
+                   model_uri=LAMBDA.personOrganizationAssociation__start_date, domain=None, range=Optional[str])
+
+slots.personOrganizationAssociation__end_date = Slot(uri=LAMBDA.end_date, name="personOrganizationAssociation__end_date", curie=LAMBDA.curie('end_date'),
+                   model_uri=LAMBDA.personOrganizationAssociation__end_date, domain=None, range=Optional[str])
 
 slots.attributeValue__attribute = Slot(uri=LAMBDA.attribute, name="attributeValue__attribute", curie=LAMBDA.curie('attribute'),
                    model_uri=LAMBDA.attributeValue__attribute, domain=None, range=Optional[Union[dict, Attribute]])

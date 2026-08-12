@@ -4,6 +4,7 @@ description: Macromolecular crystallography beamline at Stanford Synchrotron Rad
   Lightsource optimized for MAD, SAD, and monochromatic data collection with Stanford
   Automated Mounting System (SAM) and remote access capabilities
 instrument_code: SSRL-BL9-2
+instrument_registry_id: SSRL_BL92
 instrument_category: SYNCHROTRON_BEAMLINE
 facility_name: SSRL
 facility_ror: https://ror.org/05gzmn429
