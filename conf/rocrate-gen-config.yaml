@@ -1,0 +1,52 @@
+# Generator configuration for the LAMBDA Core RO-Crate profile module.
+#
+# Separate from the top-level config.yaml, and an allow-list rather than a deny-list, because most
+# generators cannot represent this profile.
+#
+# The profile's slots are aliased to JSON-LD keywords - `@id`, `@type`, `@context`, `@graph` - so
+# that a real ro-crate-metadata.json validates as-is. Those are not identifiers in any programming
+# language, so every language-binding generator emits a file that will not parse:
+#
+#   python      `@context: Union[...] = None`   -> SyntaxError
+#   graphql     `@type: [String]!`
+#   proto       `repeated string @type = 0`
+#   sqlddl      column named `@id`
+#   typescript  same shape as python
+#
+# Shipping a binding that cannot be imported is worse than not shipping one, so they are all left
+# out. A consumer that wants typed objects should generate them from the JSON Schema, where the
+# keys are strings rather than identifiers.
+#
+# Also out:
+#   shacl  - gen-shacl raises KeyError('lambda-ber-schema') for a class whose slots come from an
+#            imported schema (shaclgen.py::_build_ignored_properties -> SchemaView.get_uri).
+#            Graph-level rules live in tests/test_rocrate_profile.py until that is fixed upstream.
+#   shex   - excluded project-wide for a pyjsg/ShExJSG incompatibility.
+#   excel  - a data-entry spreadsheet is not a useful artifact for a crate profile.
+#
+# Note that gen-project roots the JSON Schema at the *imported* schema's tree_root (Dataset), so
+# the Makefile regenerates it afterwards with --top-class ROCrateMetadataDocument.
+---
+includes:
+  - jsonschema
+  - jsonldcontext
+  - jsonld
+  - owl
+  - prefixmap
+
+generator_args:
+  jsonschema:
+    mergeimports: true
+  jsonldcontext:
+    mergeimports: true
+  jsonld:
+    mergeimports: true
+  owl:
+    mergeimports: true
+    metaclasses: false
+    type_objects: false
+    add_root_classes: true
+    mixins_as_expressions: true
+  prefixmap:
+    mergeimports: true
+...
