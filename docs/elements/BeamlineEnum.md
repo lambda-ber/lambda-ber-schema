@@ -28,15 +28,20 @@ URI: [lambda:BeamlineEnum](http://w3id.org/lambda/BeamlineEnum)
 | APS_GMCA_23IDB | None | General Medical Sciences and Cancer Institutes Collaborative Access Team - mi... |
 | APS_GMCA_23IDD | None | General Medical Sciences and Cancer Institutes Collaborative Access Team - st... |
 | APS_LSCAT_21ID | None | Life Sciences Collaborative Access Team beamline |
+| APS_LSCAT_21IDD | None | Life Sciences Collaborative Access Team - undulator station D for macromolecu... |
+| APS_LSCAT_21IDF | None | Life Sciences Collaborative Access Team - undulator station F for macromolecu... |
+| APS_LSCAT_21IDG | None | Life Sciences Collaborative Access Team - undulator station G for macromolecu... |
 | APS_NECAT_24IDC | None | Northeastern Collaborative Access Team - microfocus beamline |
 | APS_NECAT_24IDE | None | Northeastern Collaborative Access Team - standard beamline |
 | APS_SERCAT_22ID | None | Southeast Regional Collaborative Access Team - insertion device beamline |
 | APS_SERCAT_22BM | None | Southeast Regional Collaborative Access Team - bending magnet beamline |
 | APS_SBCCAT_19ID | None | Structural Biology Center Collaborative Access Team beamline |
+| APS_SBCCAT_19BM | None | Structural Biology Center Collaborative Access Team - bending magnet beamline... |
 | APS_BIOCARS_14ID | None | Center for Advanced Radiation Sources - time-resolved crystallography |
 | APS_BIOCAT_18ID | None | Biophysics Collaborative Access Team - fiber diffraction and SAXS |
 | APS_IMCACAT_17ID | None | Industrial Macromolecular Crystallography Association Collaborative Access Te... |
 | SSRL_BL92 | None | Macromolecular crystallography beamline at Stanford Synchrotron Radiation Lig... |
+| SSRL_BL121 | None | Macromolecular crystallography beamline at Stanford Synchrotron Radiation Lig... |
 | SSRL_BL122 | None | Solution scattering beamline for SAXS/WAXS at Stanford Synchrotron Radiation ... |
 | SSRL_BL141 | None | Macromolecular crystallography beamline at Stanford Synchrotron Radiation Lig... |
 | SNS_MANDI | None | Macromolecular Neutron Diffractometer for neutron protein crystallography |
@@ -429,6 +434,81 @@ permissible_values:
     aliases:
     - LS-CAT
     - 21-ID
+  APS_LSCAT_21IDD:
+    text: APS_LSCAT_21IDD
+    description: Life Sciences Collaborative Access Team - undulator station D for
+      macromolecular crystallography
+    annotations:
+      facility:
+        tag: facility
+        value: FacilityEnum:APS
+      beamline_id:
+        tag: beamline_id
+        value: 21-ID-D
+      techniques:
+        tag: techniques
+        value: TechniqueEnum:xray_crystallography
+      doe_beamline:
+        tag: doe_beamline
+        value: 'true'
+      website:
+        tag: website
+        value: https://ls-cat.org/
+    title: LS-CAT 21-ID-D
+    aliases:
+    - LS-CAT-D
+    - 21-ID-D
+    - APS 21-ID-D
+  APS_LSCAT_21IDF:
+    text: APS_LSCAT_21IDF
+    description: Life Sciences Collaborative Access Team - undulator station F for
+      macromolecular crystallography
+    annotations:
+      facility:
+        tag: facility
+        value: FacilityEnum:APS
+      beamline_id:
+        tag: beamline_id
+        value: 21-ID-F
+      techniques:
+        tag: techniques
+        value: TechniqueEnum:xray_crystallography
+      doe_beamline:
+        tag: doe_beamline
+        value: 'true'
+      website:
+        tag: website
+        value: https://ls-cat.org/
+    title: LS-CAT 21-ID-F
+    aliases:
+    - LS-CAT-F
+    - 21-ID-F
+    - APS 21-ID-F
+  APS_LSCAT_21IDG:
+    text: APS_LSCAT_21IDG
+    description: Life Sciences Collaborative Access Team - undulator station G for
+      macromolecular crystallography
+    annotations:
+      facility:
+        tag: facility
+        value: FacilityEnum:APS
+      beamline_id:
+        tag: beamline_id
+        value: 21-ID-G
+      techniques:
+        tag: techniques
+        value: TechniqueEnum:xray_crystallography
+      doe_beamline:
+        tag: doe_beamline
+        value: 'true'
+      website:
+        tag: website
+        value: https://ls-cat.org/
+    title: LS-CAT 21-ID-G
+    aliases:
+    - LS-CAT-G
+    - 21-ID-G
+    - APS 21-ID-G
   APS_NECAT_24IDC:
     text: APS_NECAT_24IDC
     description: Northeastern Collaborative Access Team - microfocus beamline
@@ -544,6 +624,31 @@ permissible_values:
     aliases:
     - SBC-CAT
     - 19-ID
+  APS_SBCCAT_19BM:
+    text: APS_SBCCAT_19BM
+    description: Structural Biology Center Collaborative Access Team - bending magnet
+      beamline for macromolecular crystallography
+    annotations:
+      facility:
+        tag: facility
+        value: FacilityEnum:APS
+      beamline_id:
+        tag: beamline_id
+        value: 19-BM
+      techniques:
+        tag: techniques
+        value: TechniqueEnum:xray_crystallography
+      doe_beamline:
+        tag: doe_beamline
+        value: 'true'
+      website:
+        tag: website
+        value: https://www.anl.gov/sbc
+    title: SBC-CAT (19-BM)
+    aliases:
+    - SBC-CAT-BM
+    - 19-BM
+    - APS 19-BM
   APS_BIOCARS_14ID:
     text: APS_BIOCARS_14ID
     description: Center for Advanced Radiation Sources - time-resolved crystallography
@@ -635,6 +740,30 @@ permissible_values:
     aliases:
     - BL9-2
     - SSRL 9-2
+  SSRL_BL121:
+    text: SSRL_BL121
+    description: Macromolecular crystallography beamline at Stanford Synchrotron Radiation
+      Lightsource with full remote access for MAD, SAD, and monochromatic data collection
+    annotations:
+      facility:
+        tag: facility
+        value: FacilityEnum:SSRL
+      beamline_id:
+        tag: beamline_id
+        value: 12-1
+      techniques:
+        tag: techniques
+        value: TechniqueEnum:xray_crystallography
+      doe_beamline:
+        tag: doe_beamline
+        value: 'true'
+      website:
+        tag: website
+        value: https://www-ssrl.slac.stanford.edu/smb/
+    title: SSRL BL12-1
+    aliases:
+    - BL12-1
+    - SSRL 12-1
   SSRL_BL122:
     text: SSRL_BL122
     description: Solution scattering beamline for SAXS/WAXS at Stanford Synchrotron

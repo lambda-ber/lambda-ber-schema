@@ -1470,11 +1470,12 @@ slots:
 
   proposal_id:
     slot_uri: lambda:proposal_id
+    exact_mappings:
+      - lambda:proposal_id
     description: >-
-      Facility proposal or allocation identifier. **No schema counterpart yet**: `Study.proposal_id`
-      is arriving on a separate in-flight branch, so this term deliberately claims no mapping rather
-      than asserting one that does not resolve on this base. Restore the `exact_mappings` when that
-      lands.
+      Facility proposal or allocation identifier. Distinct from a funder's award number, which is
+      carried on `StudyOrganizationAssociation`: one is beamtime, the other is the money that paid
+      for the science.
 
   run_parameters:
     alias: runParameters

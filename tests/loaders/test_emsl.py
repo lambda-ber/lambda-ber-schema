@@ -183,6 +183,11 @@ class TestEMSLLoader:
         assert result.dataset.id == "emsl:transaction_3736677"
         assert "PARP" in result.dataset.title
 
+    def test_study_carries_proposal_id(self, loader):
+        """EMSL's project number is the facility proposal allocation ID."""
+        result = loader.load("apo")
+        assert result.dataset.studies[0].proposal_id == "160724"
+
     def test_load_by_sample_source_url_matches_endpoint(self, loader):
         """Sample-load provenance should match the by_sample_name endpoint."""
         result = loader.load("apo")
@@ -218,6 +223,89 @@ class TestEMSLLoader:
             files=[],
         )
         assert technique == TechniqueEnum.mass_spectrometry
+
+    def test_infer_technique_detects_microed(self):
+        """MicroED runs share instruments with cryo-EM and must not be swallowed."""
+        loader = EMSLLoader()
+        for sample_value in ("microed lysozyme nanocrystals", "3DED screening", "electron diffraction series"):
+            technique = loader._infer_technique(
+                sample_key="pncc.short_sample_name",
+                sample_value=sample_value,
+                resource={"name": "PNCC Krios 1"},
+                files=[],
+            )
+            assert technique == TechniqueEnum.microed, sample_value
+
+    def test_parse_epu_session_xml_extracts_tilt_series(self):
+        """Tomography sessions should yield the full tilt series geometry."""
+        loader = EMSLLoader()
+        xml = b"""<?xml version="1.0"?>
+        <SessionData>
+          <StartTiltAngle>60.0</StartTiltAngle>
+          <EndTiltAngle>-60.0</EndTiltAngle>
+          <TiltAngleStep>-3.0</TiltAngleStep>
+          <TiltAxisAngle>85.3</TiltAxisAngle>
+          <NumberOfTiltImages>41</NumberOfTiltImages>
+        </SessionData>"""
+        parsed = loader._parse_epu_session_xml(xml)
+        # The sweep runs high-to-low; min/max should still come out ordered.
+        assert parsed["tilt_angle_min"]["numeric_value"] == -60.0
+        assert parsed["tilt_angle_max"]["numeric_value"] == 60.0
+        assert parsed["tilt_angle_increment"]["numeric_value"] == 3.0
+        assert parsed["tilt_axis_angle"]["numeric_value"] == 85.3
+        assert parsed["number_of_tilt_images"]["numeric_value"] == 41
+
+    def test_infer_technique_warns_when_falling_back(self):
+        """The cryo_em default is a guess and should be reported as one."""
+        loader = EMSLLoader()
+        warnings: list[str] = []
+        technique = loader._infer_technique(
+            sample_key="example.key",
+            sample_value="emsl_sample",
+            resource=None,
+            files=[],
+            warnings=warnings,
+        )
+        assert technique == TechniqueEnum.cryo_em
+        assert len(warnings) == 1
+        assert "defaulting to cryo_em" in warnings[0]
+
+    def test_infer_technique_does_not_warn_on_a_real_match(self):
+        """A recognised technique is not a guess and should stay quiet."""
+        loader = EMSLLoader()
+        warnings: list[str] = []
+        loader._infer_technique(
+            sample_key="example.key",
+            sample_value="saxs run",
+            resource=None,
+            files=[],
+            warnings=warnings,
+        )
+        assert warnings == []
+
+    def test_parse_epu_session_xml_extracts_tilting_scheme(self):
+        """An explicit tilt scheme tag should map onto TiltingSchemeEnum."""
+        loader = EMSLLoader()
+        for tag_value, expected in (
+            ("DoseSymmetric", "dose_symmetric"),
+            ("dose-symmetric", "dose_symmetric"),
+            ("Unidirectional", "linear"),
+            ("continuous", "continuous"),
+        ):
+            xml = f"<SessionData><TiltScheme>{tag_value}</TiltScheme></SessionData>".encode()
+            assert loader._parse_epu_session_xml(xml)["tilting_scheme"] == expected, tag_value
+
+    def test_parse_epu_session_xml_does_not_guess_tilting_scheme(self):
+        """Tilt geometry alone must not be turned into a scheme the session never stated."""
+        loader = EMSLLoader()
+        xml = b"""<SessionData>
+          <StartTiltAngle>-60</StartTiltAngle>
+          <EndTiltAngle>60</EndTiltAngle>
+          <TiltAngleStep>3</TiltAngleStep>
+        </SessionData>"""
+        parsed = loader._parse_epu_session_xml(xml)
+        assert "tilt_angle_min" in parsed
+        assert "tilting_scheme" not in parsed
 
     def test_instrument_and_associations_created(self, loader):
         """Instrument should be resolved and linked to experiment."""

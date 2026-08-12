@@ -336,6 +336,9 @@ classes:
       - IHMCIF:_ihm_entry_collection
       - IHMCIF:_ihm_entry_collection_mapping
     attributes:
+      proposal_id:
+        description: "Facility proposal or project identifier associated with this study (e.g., a DOE or facility allocation ID)"
+        range: string
       keywords:
         description: "Keywords or tags describing the study for search and categorization"
         range: string
@@ -1315,7 +1318,7 @@ classes:
         exact_mappings:
           - mmCIF:_em_imaging.nominal_magnification
       calibrated_pixel_size:
-        description: "Calibrated pixel size in Angstroms per pixel"
+        description: "Calibrated pixel size, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
         exact_mappings:
@@ -1325,7 +1328,7 @@ classes:
         range: QuantityValue
         inlined: true
       exposure_time_per_frame:
-        description: "Exposure time per frame in milliseconds"
+        description: "Exposure time per frame, typically specified in milliseconds. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
         exact_mappings:
@@ -1337,49 +1340,116 @@ classes:
         exact_mappings:
           - mmCIF:_em_image_recording.num_frames_per_image
       total_exposure_time:
-        description: "Total exposure time in milliseconds"
+        description: "Total exposure time. Data providers may specify alternative units (e.g., seconds, milliseconds) by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
       total_dose:
-        description: "Total electron dose in e-/Angstrom^2"
+        description: "Total electron dose, typically specified in e-/Angstrom^2. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
         exact_mappings:
           - mmCIF:_em_image_recording.avg_electron_dose_per_image
       dose_rate:
-        description: "Dose rate in e-/pixel/s or e-/Angstrom^2/s"
+        description: "Dose rate, typically specified in e-/pixel/s or e-/Angstrom^2/s. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
       defocus_target:
-        description: "Target defocus value in micrometers"
+        description: "Target defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
       defocus_range_min:
-        description: "Minimum defocus range in micrometers"
+        description: "Minimum defocus range, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
         exact_mappings:
           - mmCIF:_em_imaging.nominal_defocus_min
       defocus_range_max:
-        description: "Maximum defocus range in micrometers"
+        description: "Maximum defocus range, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
         exact_mappings:
           - mmCIF:_em_imaging.nominal_defocus_max
       defocus_range_increment:
-        description: "Defocus range increment in micrometers"
+        description: "Defocus range increment, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
       astigmatism_target:
-        description: "Target astigmatism in Angstroms"
+        description: "Target astigmatism, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
       coma:
-        description: "Coma aberration in nanometers"
+        description: "Coma aberration, typically specified in nanometers. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
       stage_tilt:
-        description: "Stage tilt angle in degrees"
+        description: "Fixed stage tilt angle for a single-orientation acquisition, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
+        comments:
+          - "For a tilt series, use tilt_angle_min, tilt_angle_max, and tilt_angle_increment rather than this slot."
+      tilting_scheme:
+        description: "Tilt scheme used during tomographic data collection"
+        range: TiltingSchemeEnum
+      tilt_angle_min:
+        description: "Lowest (most negative) tilt angle in the tilt series, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
+        exact_mappings:
+          - mmCIF:_em_imaging.tilt_angle_min
+          - mmCIF:_em_tomography.axis1_min_angle
+      tilt_angle_max:
+        description: "Highest (most positive) tilt angle in the tilt series, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
+        exact_mappings:
+          - mmCIF:_em_imaging.tilt_angle_max
+          - mmCIF:_em_tomography.axis1_max_angle
+      tilt_angle_increment:
+        description: "Tilt angle increment between successive tilt steps. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
+        exact_mappings:
+          - mmCIF:_em_tomography.axis1_angle_increment
+      tilt_axis_angle:
+        description: "In-plane azimuth of the tilt axis relative to the detector x-axis, typically specified in degrees. Required for tilt series alignment and reconstruction."
+        range: QuantityValue
+        inlined: true
+      number_of_tilt_images:
+        description: "Number of images collected in the tilt series"
+        range: QuantityValue
+        inlined: true
+        comments:
+          - "For a symmetric series this is usually (tilt_angle_max - tilt_angle_min) / tilt_angle_increment + 1, but record the actual count since tilts are often skipped or discarded."
+      dose_per_tilt:
+        description: "Electron dose applied at each tilt step, typically specified in e-/Angstrom^2. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
+        comments:
+          - "Use total_dose for the accumulated dose across the whole tilt series."
+        close_mappings:
+          - mmCIF:_em_image_recording.avg_electron_dose_per_image
+      dual_tilt_axis_rotation:
+        description: "Rotation between the two tilt axes in a dual-axis tomography acquisition, typically specified in degrees. Omit for the far more common single-axis case."
+        range: QuantityValue
+        inlined: true
+        exact_mappings:
+          - mmCIF:_em_tomography.dual_tilt_axis_rotation
+      fiducial_size:
+        description: "Size of fiducial markers used for tomographic alignment. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
+      rotation_rate:
+        description: "Continuous rotation rate during data collection (e.g., for MicroED). Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
+        comments:
+          - "For the extent of a continuous-rotation sweep, use the rotation-method slots shared with the diffraction techniques: start_angle, sweep_start, sweep_end, total_rotation, and oscillation_angle."
+      camera_length:
+        description: "Camera length for electron diffraction (e.g., MicroED). Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
+      frames_per_second:
+        description: "Frame acquisition rate. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
       autoloader_slot:
@@ -2998,6 +3068,11 @@ classes:
         inlined: true
         close_mappings:
           - IHMCIF:_ihm_sas_restraint.radius_of_gyration
+      # Cryo-EM grid assessment metrics
+      grid_quality:
+        description: "Cryo-EM specific quality assessments of the imaged grid (ice contamination, ice quality, particle concentration)"
+        range: CryoEMQualityMetrics
+        inlined: true
       # Legacy/deprecated
       r_factor:
         description: "R-factor for crystallography (deprecated, use r_work)"
@@ -3024,6 +3099,20 @@ classes:
         description: "Storage used, typically specified in gigabytes (GB). Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
+
+  CryoEMQualityMetrics:
+    is_a: AttributeGroup
+    description: "Cryo-EM specific quality assessments recorded during or after data collection"
+    attributes:
+      ice_contamination:
+        description: "Assessment of ice contamination level on the cryo-EM grid"
+        range: IceContaminationEnum
+      ice_quality:
+        description: "Assessment of vitreous ice thickness/quality for data collection"
+        range: IceQualityEnum
+      particle_concentration:
+        description: "Assessment of particle concentration on the cryo-EM grid"
+        range: ParticleConcentrationEnum
 
   # Structured parameter classes for specific workflow types
   MotionCorrectionParameters:
@@ -4479,6 +4568,11 @@ enums:
           - "Non-destructive 3D imaging technique"
           - "Includes micro-CT, nano-CT, and phase contrast tomography"
           - "Used for cellular imaging, materials science, and paleontology"
+      microed:
+        description: "Micro-electron diffraction for atomic-resolution structure determination from microcrystals"
+        comments:
+          - "Also known as MicroED or 3D electron diffraction (3DED)"
+          - "Uses an electron beam on sub-micron crystals"
 
   ProcessingStatusEnum:
     description: "Processing status"
@@ -5066,3 +5160,45 @@ enums:
         description: "Processed or derived data files"
       log:
         description: "Processing log files"
+
+  IceContaminationEnum:
+    description: "Assessment of ice contamination level on a cryo-EM grid"
+    permissible_values:
+      none:
+        description: "No ice contamination observed"
+      limited:
+        description: "Limited ice contamination that does not significantly affect data quality"
+      severe:
+        description: "Severe ice contamination that significantly degrades data quality"
+
+  IceQualityEnum:
+    description: "Assessment of vitreous ice thickness/quality for cryo-EM data collection"
+    permissible_values:
+      ideal:
+        description: "Ice thickness is ideal for data collection"
+      too_thin:
+        description: "Ice is too thin, risk of air exposure or beam damage"
+      too_thick:
+        description: "Ice is too thick, reducing contrast and signal quality"
+
+  ParticleConcentrationEnum:
+    description: "Assessment of particle concentration on a cryo-EM grid"
+    permissible_values:
+      optimal:
+        description: "Particle concentration is suitable for data collection"
+      too_low:
+        description: "Particle concentration is too low for efficient data collection"
+      too_high:
+        description: "Particle concentration is too high, causing overlapping particles"
+
+  TiltingSchemeEnum:
+    description: "Tilt scheme used during tomographic or continuous-rotation data collection"
+    permissible_values:
+      none:
+        description: "No tilting performed (single exposure or non-tilt acquisition)"
+      dose_symmetric:
+        description: "Dose-symmetric tilt scheme alternating around zero tilt to minimize accumulated dose at low tilt angles"
+      linear:
+        description: "Linear tilt scheme collecting images in a single sweep from minimum to maximum tilt"
+      continuous:
+        description: "Continuous rotation data collection (e.g., used in MicroED/3DED)"

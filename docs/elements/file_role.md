@@ -57,6 +57,7 @@ Alias: file_role
 | ---  | ---  |
 | self | lambda:file_role |
 | native | lambda:file_role |
+| related | IHMCIF:_ihm_external_files.content_type |
 
 
 
@@ -68,6 +69,8 @@ Alias: file_role
 name: file_role
 description: Role of the file (raw, intermediate, final, diagnostic, metadata)
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_external_files.content_type
 rank: 1000
 alias: file_role
 owner: DataFile

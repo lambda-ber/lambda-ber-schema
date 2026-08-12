@@ -94,6 +94,7 @@ URI: [lambda:WorkflowExperimentAssociation](http://w3id.org/lambda/WorkflowExper
 | ---  | ---  |
 | self | lambda:WorkflowExperimentAssociation |
 | native | lambda:WorkflowExperimentAssociation |
+| related | IHMCIF:_ihm_modeling_protocol_details |
 
 
 
@@ -111,6 +112,8 @@ URI: [lambda:WorkflowExperimentAssociation](http://w3id.org/lambda/WorkflowExper
 name: WorkflowExperimentAssociation
 description: M:N link between WorkflowRun and source ExperimentRuns
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_modeling_protocol_details
 attributes:
   workflow_id:
     name: workflow_id
@@ -145,6 +148,8 @@ attributes:
 name: WorkflowExperimentAssociation
 description: M:N link between WorkflowRun and source ExperimentRuns
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_modeling_protocol_details
 attributes:
   workflow_id:
     name: workflow_id

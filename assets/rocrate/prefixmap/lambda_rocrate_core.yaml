@@ -76,6 +76,9 @@
    "CryoEMPreparation": {
       "@id": "lambda:CryoEMPreparation"
    },
+   "CryoEMQualityMetrics": {
+      "@id": "lambda:CryoEMQualityMetrics"
+   },
    "CrystallizationConditions": {
       "@id": "lambda:CrystallizationConditions"
    },

@@ -25,10 +25,6 @@ lambdaber:dataset_authorship a lambdaber:Dataset ;
         lambdaber:org_ssrl,
         lambdaber:org_utoronto ;
     lambdaber:person_organization_associations [ a lambdaber:PersonOrganizationAssociation ;
-            lambdaber:organization_id lambdaber:org_pnnl ;
-            lambdaber:person_id lambdaber:person_garry_buchko ;
-            lambdaber:role "primary_affiliation" ],
-        [ a lambdaber:PersonOrganizationAssociation ;
             lambdaber:organization_id lambdaber:org_utoronto ;
             lambdaber:person_id lambdaber:person_emma_master ;
             lambdaber:role "primary_affiliation" ],
@@ -36,7 +32,11 @@ lambdaber:dataset_authorship a lambdaber:Dataset ;
             lambdaber:organization_id lambdaber:org_ssrl ;
             lambdaber:person_id lambdaber:person_clyde_smith ;
             lambdaber:role "primary_affiliation" ;
-            lambdaber:start_date "2001-06-01" ] ;
+            lambdaber:start_date "2001-06-01" ],
+        [ a lambdaber:PersonOrganizationAssociation ;
+            lambdaber:organization_id lambdaber:org_pnnl ;
+            lambdaber:person_id lambdaber:person_garry_buchko ;
+            lambdaber:role "primary_affiliation" ] ;
     lambdaber:persons lambdaber:person_clyde_smith,
         lambdaber:person_emma_master,
         lambdaber:person_garry_buchko,
@@ -46,27 +46,21 @@ lambdaber:dataset_authorship a lambdaber:Dataset ;
             lambdaber:experiment_id lambdaber:exp_xa_x16 ;
             lambdaber:study_id lambdaber:study_expansin ] ;
     lambdaber:study_organization_associations [ a lambdaber:StudyOrganizationAssociation ;
-            lambdaber:organization_id lambdaber:org_pnnl ;
-            lambdaber:role "collaborating_institution" ;
+            lambdaber:award_number "DE-SC0000000" ;
+            lambdaber:organization_id lambdaber:org_doe_ber ;
+            lambdaber:role "funder" ;
             lambdaber:study_id lambdaber:study_expansin ],
         [ a lambdaber:StudyOrganizationAssociation ;
             lambdaber:organization_id lambdaber:org_ssrl ;
             lambdaber:role "operating_institution" ;
             lambdaber:study_id lambdaber:study_expansin ],
         [ a lambdaber:StudyOrganizationAssociation ;
-            lambdaber:award_number "DE-SC0000000" ;
-            lambdaber:organization_id lambdaber:org_doe_ber ;
-            lambdaber:role "funder" ;
+            lambdaber:organization_id lambdaber:org_pnnl ;
+            lambdaber:role "collaborating_institution" ;
             lambdaber:study_id lambdaber:study_expansin ] ;
     lambdaber:study_person_associations [ a lambdaber:StudyPersonAssociation ;
             lambdaber:person_id lambdaber:person_unnamed_curator ;
             lambdaber:role "data_curator" ;
-            lambdaber:study_id lambdaber:study_expansin ],
-        [ a lambdaber:StudyPersonAssociation ;
-            lambdaber:author_position 1 ;
-            lambdaber:corresponding true ;
-            lambdaber:person_id lambdaber:person_emma_master ;
-            lambdaber:role "principal_investigator" ;
             lambdaber:study_id lambdaber:study_expansin ],
         [ a lambdaber:StudyPersonAssociation ;
             lambdaber:author_position 3 ;
@@ -77,6 +71,12 @@ lambdaber:dataset_authorship a lambdaber:Dataset ;
             lambdaber:author_position 2 ;
             lambdaber:person_id lambdaber:person_garry_buchko ;
             lambdaber:role "co_investigator" ;
+            lambdaber:study_id lambdaber:study_expansin ],
+        [ a lambdaber:StudyPersonAssociation ;
+            lambdaber:author_position 1 ;
+            lambdaber:corresponding true ;
+            lambdaber:person_id lambdaber:person_emma_master ;
+            lambdaber:role "principal_investigator" ;
             lambdaber:study_id lambdaber:study_expansin ] ;
     lambdaber:study_workflow_associations [ a lambdaber:StudyWorkflowAssociation ;
             lambdaber:study_id lambdaber:study_expansin ;

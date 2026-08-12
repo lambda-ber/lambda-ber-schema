@@ -57,6 +57,7 @@ Alias: data_type
 | ---  | ---  |
 | self | lambda:data_type |
 | native | lambda:data_type |
+| close | IHMCIF:_ihm_dataset_list.data_type |
 
 
 
@@ -68,6 +69,8 @@ Alias: data_type
 name: data_type
 description: Type of data in the file
 from_schema: http://w3id.org/lambda/
+close_mappings:
+- IHMCIF:_ihm_dataset_list.data_type
 rank: 1000
 alias: data_type
 owner: DataFile

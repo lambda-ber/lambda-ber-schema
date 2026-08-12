@@ -33,7 +33,8 @@ emsl:project_160724 a lambdaber:Study ;
     dcterms:title "Single particle cryo-EM analysis of human PARP enzymes: mechanisms of regulation and inhibition" ;
     lambdaber:description "Human PARP enzymes are a diverse class of medically relevant proteins that regulate multiple aspects of biology. The major catalytic activity of PARP enzymes is the production of ADP-ribose modifications on biomolecules such as proteins, nucleic acids, and metabolites. Human PARP enzymes are diverse and regulate distinct and varied biological pathways, many of which are deregulated in common diseases. PARP enzymes that are implicated in deregulated biological pathways have offered an avenue for therapeutic intervention, with the “druggable” PARP active site targeted in several diseases, most notably cancer, inflammation, and neurodegenerative disorders. The proposed work will provide important knowledge regarding the structure and regulation of human PARP enzymes and associated partner proteins." ;
     lambdaber:keywords "EMSL",
-        "General Access" .
+        "General Access" ;
+    lambdaber:proposal_id "160724" .
 
 emsl:sample_T_A_apo_5_021226_atlas_3736600 a lambdaber:Sample ;
     dcterms:title "T-A-apo_5_021226_atlas" ;

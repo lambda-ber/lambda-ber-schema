@@ -37,10 +37,10 @@ sasbdb:SASDD42 a lambdaber:Dataset ;
             lambdaber:workflow_id <https://www.sasbdb.org/data/SASDD42/workflow/fit2_model1> ],
         [ a lambdaber:WorkflowExperimentAssociation ;
             lambdaber:experiment_id <https://www.sasbdb.org/data/SASDD42/experiment> ;
-            lambdaber:workflow_id <https://www.sasbdb.org/data/SASDD42/workflow/fit1_model1> ],
+            lambdaber:workflow_id <https://www.sasbdb.org/data/SASDD42/workflow/pddf> ],
         [ a lambdaber:WorkflowExperimentAssociation ;
             lambdaber:experiment_id <https://www.sasbdb.org/data/SASDD42/experiment> ;
-            lambdaber:workflow_id <https://www.sasbdb.org/data/SASDD42/workflow/pddf> ] ;
+            lambdaber:workflow_id <https://www.sasbdb.org/data/SASDD42/workflow/fit1_model1> ] ;
     lambdaber:workflow_runs <https://www.sasbdb.org/data/SASDD42/workflow/fit1_model1>,
         <https://www.sasbdb.org/data/SASDD42/workflow/fit2_model1>,
         <https://www.sasbdb.org/data/SASDD42/workflow/pddf> .

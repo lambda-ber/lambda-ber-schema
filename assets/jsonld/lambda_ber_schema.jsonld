@@ -2943,6 +2943,14 @@
           "exact_mappings": [
             "PaNET:01154"
           ]
+        },
+        {
+          "text": "microed",
+          "description": "Micro-electron diffraction for atomic-resolution structure determination from microcrystals",
+          "comments": [
+            "Also known as MicroED or 3D electron diffraction (3DED)",
+            "Uses an electron beam on sub-micron crystals"
+          ]
         }
       ]
     },
@@ -4034,6 +4042,90 @@
         {
           "text": "log",
           "description": "Processing log files"
+        }
+      ]
+    },
+    {
+      "name": "IceContaminationEnum",
+      "definition_uri": "http://w3id.org/lambda/IceContaminationEnum",
+      "description": "Assessment of ice contamination level on a cryo-EM grid",
+      "from_schema": "http://w3id.org/lambda/",
+      "permissible_values": [
+        {
+          "text": "none",
+          "description": "No ice contamination observed"
+        },
+        {
+          "text": "limited",
+          "description": "Limited ice contamination that does not significantly affect data quality"
+        },
+        {
+          "text": "severe",
+          "description": "Severe ice contamination that significantly degrades data quality"
+        }
+      ]
+    },
+    {
+      "name": "IceQualityEnum",
+      "definition_uri": "http://w3id.org/lambda/IceQualityEnum",
+      "description": "Assessment of vitreous ice thickness/quality for cryo-EM data collection",
+      "from_schema": "http://w3id.org/lambda/",
+      "permissible_values": [
+        {
+          "text": "ideal",
+          "description": "Ice thickness is ideal for data collection"
+        },
+        {
+          "text": "too_thin",
+          "description": "Ice is too thin, risk of air exposure or beam damage"
+        },
+        {
+          "text": "too_thick",
+          "description": "Ice is too thick, reducing contrast and signal quality"
+        }
+      ]
+    },
+    {
+      "name": "ParticleConcentrationEnum",
+      "definition_uri": "http://w3id.org/lambda/ParticleConcentrationEnum",
+      "description": "Assessment of particle concentration on a cryo-EM grid",
+      "from_schema": "http://w3id.org/lambda/",
+      "permissible_values": [
+        {
+          "text": "optimal",
+          "description": "Particle concentration is suitable for data collection"
+        },
+        {
+          "text": "too_low",
+          "description": "Particle concentration is too low for efficient data collection"
+        },
+        {
+          "text": "too_high",
+          "description": "Particle concentration is too high, causing overlapping particles"
+        }
+      ]
+    },
+    {
+      "name": "TiltingSchemeEnum",
+      "definition_uri": "http://w3id.org/lambda/TiltingSchemeEnum",
+      "description": "Tilt scheme used during tomographic or continuous-rotation data collection",
+      "from_schema": "http://w3id.org/lambda/",
+      "permissible_values": [
+        {
+          "text": "none",
+          "description": "No tilting performed (single exposure or non-tilt acquisition)"
+        },
+        {
+          "text": "dose_symmetric",
+          "description": "Dose-symmetric tilt scheme alternating around zero tilt to minimize accumulated dose at low tilt angles"
+        },
+        {
+          "text": "linear",
+          "description": "Linear tilt scheme collecting images in a single sweep from minimum to maximum tilt"
+        },
+        {
+          "text": "continuous",
+          "description": "Continuous rotation data collection (e.g., used in MicroED/3DED)"
         }
       ]
     },
@@ -5766,6 +5858,19 @@
       "multivalued": true,
       "inlined": true,
       "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "study__proposal_id",
+      "description": "Facility proposal or project identifier associated with this study (e.g., a DOE or facility allocation ID)",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/proposal_id",
+      "alias": "proposal_id",
+      "owner": "Study",
+      "domain_of": [
+        "Study"
+      ],
+      "range": "string",
       "@type": "SlotDefinition"
     },
     {
@@ -9033,7 +9138,7 @@
     },
     {
       "name": "experimentRun__calibrated_pixel_size",
-      "description": "Calibrated pixel size in Angstroms per pixel",
+      "description": "Calibrated pixel size, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
       "exact_mappings": [
         "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_image_recording.calibrated_pixel_size"
@@ -9064,7 +9169,7 @@
     },
     {
       "name": "experimentRun__exposure_time_per_frame",
-      "description": "Exposure time per frame in milliseconds",
+      "description": "Exposure time per frame, typically specified in milliseconds. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
       "exact_mappings": [
         "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_image_recording.average_exposure_time"
@@ -9098,7 +9203,7 @@
     },
     {
       "name": "experimentRun__total_exposure_time",
-      "description": "Total exposure time in milliseconds",
+      "description": "Total exposure time. Data providers may specify alternative units (e.g., seconds, milliseconds) by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
       "slot_uri": "http://w3id.org/lambda/total_exposure_time",
       "alias": "total_exposure_time",
@@ -9112,7 +9217,7 @@
     },
     {
       "name": "experimentRun__total_dose",
-      "description": "Total electron dose in e-/Angstrom^2",
+      "description": "Total electron dose, typically specified in e-/Angstrom^2. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
       "exact_mappings": [
         "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_image_recording.avg_electron_dose_per_image"
@@ -9129,7 +9234,7 @@
     },
     {
       "name": "experimentRun__dose_rate",
-      "description": "Dose rate in e-/pixel/s or e-/Angstrom^2/s",
+      "description": "Dose rate, typically specified in e-/pixel/s or e-/Angstrom^2/s. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
       "slot_uri": "http://w3id.org/lambda/dose_rate",
       "alias": "dose_rate",
@@ -9143,7 +9248,7 @@
     },
     {
       "name": "experimentRun__defocus_target",
-      "description": "Target defocus value in micrometers",
+      "description": "Target defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
       "slot_uri": "http://w3id.org/lambda/defocus_target",
       "alias": "defocus_target",
@@ -9157,7 +9262,7 @@
     },
     {
       "name": "experimentRun__defocus_range_min",
-      "description": "Minimum defocus range in micrometers",
+      "description": "Minimum defocus range, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
       "exact_mappings": [
         "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_imaging.nominal_defocus_min"
@@ -9174,7 +9279,7 @@
     },
     {
       "name": "experimentRun__defocus_range_max",
-      "description": "Maximum defocus range in micrometers",
+      "description": "Maximum defocus range, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
       "exact_mappings": [
         "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_imaging.nominal_defocus_max"
@@ -9191,7 +9296,7 @@
     },
     {
       "name": "experimentRun__defocus_range_increment",
-      "description": "Defocus range increment in micrometers",
+      "description": "Defocus range increment, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
       "slot_uri": "http://w3id.org/lambda/defocus_range_increment",
       "alias": "defocus_range_increment",
@@ -9205,7 +9310,7 @@
     },
     {
       "name": "experimentRun__astigmatism_target",
-      "description": "Target astigmatism in Angstroms",
+      "description": "Target astigmatism, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
       "slot_uri": "http://w3id.org/lambda/astigmatism_target",
       "alias": "astigmatism_target",
@@ -9219,7 +9324,7 @@
     },
     {
       "name": "experimentRun__coma",
-      "description": "Coma aberration in nanometers",
+      "description": "Coma aberration, typically specified in nanometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
       "slot_uri": "http://w3id.org/lambda/coma",
       "alias": "coma",
@@ -9233,10 +9338,206 @@
     },
     {
       "name": "experimentRun__stage_tilt",
-      "description": "Stage tilt angle in degrees",
+      "description": "Fixed stage tilt angle for a single-orientation acquisition, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
+      "comments": [
+        "For a tilt series, use tilt_angle_min, tilt_angle_max, and tilt_angle_increment rather than this slot."
+      ],
       "from_schema": "http://w3id.org/lambda/",
       "slot_uri": "http://w3id.org/lambda/stage_tilt",
       "alias": "stage_tilt",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__tilting_scheme",
+      "description": "Tilt scheme used during tomographic data collection",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/tilting_scheme",
+      "alias": "tilting_scheme",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "TiltingSchemeEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__tilt_angle_min",
+      "description": "Lowest (most negative) tilt angle in the tilt series, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_imaging.tilt_angle_min",
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_tomography.axis1_min_angle"
+      ],
+      "slot_uri": "http://w3id.org/lambda/tilt_angle_min",
+      "alias": "tilt_angle_min",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__tilt_angle_max",
+      "description": "Highest (most positive) tilt angle in the tilt series, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_imaging.tilt_angle_max",
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_tomography.axis1_max_angle"
+      ],
+      "slot_uri": "http://w3id.org/lambda/tilt_angle_max",
+      "alias": "tilt_angle_max",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__tilt_angle_increment",
+      "description": "Tilt angle increment between successive tilt steps. Data providers may specify alternative units by including the unit in the QuantityValue.",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_tomography.axis1_angle_increment"
+      ],
+      "slot_uri": "http://w3id.org/lambda/tilt_angle_increment",
+      "alias": "tilt_angle_increment",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__tilt_axis_angle",
+      "description": "In-plane azimuth of the tilt axis relative to the detector x-axis, typically specified in degrees. Required for tilt series alignment and reconstruction.",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/tilt_axis_angle",
+      "alias": "tilt_axis_angle",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__number_of_tilt_images",
+      "description": "Number of images collected in the tilt series",
+      "comments": [
+        "For a symmetric series this is usually (tilt_angle_max - tilt_angle_min) / tilt_angle_increment + 1, but record the actual count since tilts are often skipped or discarded."
+      ],
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/number_of_tilt_images",
+      "alias": "number_of_tilt_images",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__dose_per_tilt",
+      "description": "Electron dose applied at each tilt step, typically specified in e-/Angstrom^2. Data providers may specify alternative units by including the unit in the QuantityValue.",
+      "comments": [
+        "Use total_dose for the accumulated dose across the whole tilt series."
+      ],
+      "from_schema": "http://w3id.org/lambda/",
+      "close_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_image_recording.avg_electron_dose_per_image"
+      ],
+      "slot_uri": "http://w3id.org/lambda/dose_per_tilt",
+      "alias": "dose_per_tilt",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__dual_tilt_axis_rotation",
+      "description": "Rotation between the two tilt axes in a dual-axis tomography acquisition, typically specified in degrees. Omit for the far more common single-axis case.",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_tomography.dual_tilt_axis_rotation"
+      ],
+      "slot_uri": "http://w3id.org/lambda/dual_tilt_axis_rotation",
+      "alias": "dual_tilt_axis_rotation",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__fiducial_size",
+      "description": "Size of fiducial markers used for tomographic alignment. Data providers may specify alternative units by including the unit in the QuantityValue.",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/fiducial_size",
+      "alias": "fiducial_size",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__rotation_rate",
+      "description": "Continuous rotation rate during data collection (e.g., for MicroED). Data providers may specify alternative units by including the unit in the QuantityValue.",
+      "comments": [
+        "For the extent of a continuous-rotation sweep, use the rotation-method slots shared with the diffraction techniques: start_angle, sweep_start, sweep_end, total_rotation, and oscillation_angle."
+      ],
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/rotation_rate",
+      "alias": "rotation_rate",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__camera_length",
+      "description": "Camera length for electron diffraction (e.g., MicroED). Data providers may specify alternative units by including the unit in the QuantityValue.",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/camera_length",
+      "alias": "camera_length",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__frames_per_second",
+      "description": "Frame acquisition rate. Data providers may specify alternative units by including the unit in the QuantityValue.",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/frames_per_second",
+      "alias": "frames_per_second",
       "owner": "ExperimentRun",
       "domain_of": [
         "ExperimentRun"
@@ -14045,6 +14346,20 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "qualityMetrics__grid_quality",
+      "description": "Cryo-EM specific quality assessments of the imaged grid (ice contamination, ice quality, particle concentration)",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/grid_quality",
+      "alias": "grid_quality",
+      "owner": "QualityMetrics",
+      "domain_of": [
+        "QualityMetrics"
+      ],
+      "range": "CryoEMQualityMetrics",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "qualityMetrics__r_factor",
       "description": "R-factor for crystallography (deprecated, use r_work)",
       "from_schema": "http://w3id.org/lambda/",
@@ -14112,6 +14427,45 @@
       ],
       "range": "QuantityValue",
       "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMQualityMetrics__ice_contamination",
+      "description": "Assessment of ice contamination level on the cryo-EM grid",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/ice_contamination",
+      "alias": "ice_contamination",
+      "owner": "CryoEMQualityMetrics",
+      "domain_of": [
+        "CryoEMQualityMetrics"
+      ],
+      "range": "IceContaminationEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMQualityMetrics__ice_quality",
+      "description": "Assessment of vitreous ice thickness/quality for data collection",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/ice_quality",
+      "alias": "ice_quality",
+      "owner": "CryoEMQualityMetrics",
+      "domain_of": [
+        "CryoEMQualityMetrics"
+      ],
+      "range": "IceQualityEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMQualityMetrics__particle_concentration",
+      "description": "Assessment of particle concentration on the cryo-EM grid",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/particle_concentration",
+      "alias": "particle_concentration",
+      "owner": "CryoEMQualityMetrics",
+      "domain_of": [
+        "CryoEMQualityMetrics"
+      ],
+      "range": "ParticleConcentrationEnum",
       "@type": "SlotDefinition"
     },
     {
@@ -17302,10 +17656,17 @@
         "namedThing__id",
         "namedThing__title",
         "namedThing__description",
+        "study__proposal_id",
         "study__keywords"
       ],
       "slot_usage": {},
       "attributes": [
+        {
+          "name": "proposal_id",
+          "description": "Facility proposal or project identifier associated with this study (e.g., a DOE or facility allocation ID)",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
         {
           "name": "keywords",
           "description": "Keywords or tags describing the study for search and categorization",
@@ -19371,6 +19732,18 @@
         "experimentRun__astigmatism_target",
         "experimentRun__coma",
         "experimentRun__stage_tilt",
+        "experimentRun__tilting_scheme",
+        "experimentRun__tilt_angle_min",
+        "experimentRun__tilt_angle_max",
+        "experimentRun__tilt_angle_increment",
+        "experimentRun__tilt_axis_angle",
+        "experimentRun__number_of_tilt_images",
+        "experimentRun__dose_per_tilt",
+        "experimentRun__dual_tilt_axis_rotation",
+        "experimentRun__fiducial_size",
+        "experimentRun__rotation_rate",
+        "experimentRun__camera_length",
+        "experimentRun__frames_per_second",
         "experimentRun__autoloader_slot",
         "experimentRun__shots_per_hole",
         "experimentRun__holes_per_group",
@@ -19492,7 +19865,7 @@
         },
         {
           "name": "calibrated_pixel_size",
-          "description": "Calibrated pixel size in Angstroms per pixel",
+          "description": "Calibrated pixel size, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue.",
           "exact_mappings": [
             "mmCIF:_em_image_recording.calibrated_pixel_size"
           ],
@@ -19509,7 +19882,7 @@
         },
         {
           "name": "exposure_time_per_frame",
-          "description": "Exposure time per frame in milliseconds",
+          "description": "Exposure time per frame, typically specified in milliseconds. Data providers may specify alternative units by including the unit in the QuantityValue.",
           "exact_mappings": [
             "mmCIF:_em_image_recording.average_exposure_time"
           ],
@@ -19529,14 +19902,14 @@
         },
         {
           "name": "total_exposure_time",
-          "description": "Total exposure time in milliseconds",
+          "description": "Total exposure time. Data providers may specify alternative units (e.g., seconds, milliseconds) by including the unit in the QuantityValue.",
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "total_dose",
-          "description": "Total electron dose in e-/Angstrom^2",
+          "description": "Total electron dose, typically specified in e-/Angstrom^2. Data providers may specify alternative units by including the unit in the QuantityValue.",
           "exact_mappings": [
             "mmCIF:_em_image_recording.avg_electron_dose_per_image"
           ],
@@ -19546,21 +19919,21 @@
         },
         {
           "name": "dose_rate",
-          "description": "Dose rate in e-/pixel/s or e-/Angstrom^2/s",
+          "description": "Dose rate, typically specified in e-/pixel/s or e-/Angstrom^2/s. Data providers may specify alternative units by including the unit in the QuantityValue.",
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "defocus_target",
-          "description": "Target defocus value in micrometers",
+          "description": "Target defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "defocus_range_min",
-          "description": "Minimum defocus range in micrometers",
+          "description": "Minimum defocus range, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
           "exact_mappings": [
             "mmCIF:_em_imaging.nominal_defocus_min"
           ],
@@ -19570,7 +19943,7 @@
         },
         {
           "name": "defocus_range_max",
-          "description": "Maximum defocus range in micrometers",
+          "description": "Maximum defocus range, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
           "exact_mappings": [
             "mmCIF:_em_imaging.nominal_defocus_max"
           ],
@@ -19580,28 +19953,140 @@
         },
         {
           "name": "defocus_range_increment",
-          "description": "Defocus range increment in micrometers",
+          "description": "Defocus range increment, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "astigmatism_target",
-          "description": "Target astigmatism in Angstroms",
+          "description": "Target astigmatism, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "coma",
-          "description": "Coma aberration in nanometers",
+          "description": "Coma aberration, typically specified in nanometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "stage_tilt",
-          "description": "Stage tilt angle in degrees",
+          "description": "Fixed stage tilt angle for a single-orientation acquisition, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "comments": [
+            "For a tilt series, use tilt_angle_min, tilt_angle_max, and tilt_angle_increment rather than this slot."
+          ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "tilting_scheme",
+          "description": "Tilt scheme used during tomographic data collection",
+          "range": "TiltingSchemeEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "tilt_angle_min",
+          "description": "Lowest (most negative) tilt angle in the tilt series, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "exact_mappings": [
+            "mmCIF:_em_imaging.tilt_angle_min",
+            "mmCIF:_em_tomography.axis1_min_angle"
+          ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "tilt_angle_max",
+          "description": "Highest (most positive) tilt angle in the tilt series, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "exact_mappings": [
+            "mmCIF:_em_imaging.tilt_angle_max",
+            "mmCIF:_em_tomography.axis1_max_angle"
+          ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "tilt_angle_increment",
+          "description": "Tilt angle increment between successive tilt steps. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "exact_mappings": [
+            "mmCIF:_em_tomography.axis1_angle_increment"
+          ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "tilt_axis_angle",
+          "description": "In-plane azimuth of the tilt axis relative to the detector x-axis, typically specified in degrees. Required for tilt series alignment and reconstruction.",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "number_of_tilt_images",
+          "description": "Number of images collected in the tilt series",
+          "comments": [
+            "For a symmetric series this is usually (tilt_angle_max - tilt_angle_min) / tilt_angle_increment + 1, but record the actual count since tilts are often skipped or discarded."
+          ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dose_per_tilt",
+          "description": "Electron dose applied at each tilt step, typically specified in e-/Angstrom^2. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "comments": [
+            "Use total_dose for the accumulated dose across the whole tilt series."
+          ],
+          "close_mappings": [
+            "mmCIF:_em_image_recording.avg_electron_dose_per_image"
+          ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dual_tilt_axis_rotation",
+          "description": "Rotation between the two tilt axes in a dual-axis tomography acquisition, typically specified in degrees. Omit for the far more common single-axis case.",
+          "exact_mappings": [
+            "mmCIF:_em_tomography.dual_tilt_axis_rotation"
+          ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "fiducial_size",
+          "description": "Size of fiducial markers used for tomographic alignment. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "rotation_rate",
+          "description": "Continuous rotation rate during data collection (e.g., for MicroED). Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "comments": [
+            "For the extent of a continuous-rotation sweep, use the rotation-method slots shared with the diffraction techniques: start_angle, sweep_start, sweep_end, total_rotation, and oscillation_angle."
+          ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "camera_length",
+          "description": "Camera length for electron diffraction (e.g., MicroED). Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "frames_per_second",
+          "description": "Frame acquisition rate. Data providers may specify alternative units by including the unit in the QuantityValue.",
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -22634,6 +23119,7 @@
         "qualityMetrics__average_b_factor_a2",
         "qualityMetrics__i_zero",
         "qualityMetrics__rg",
+        "qualityMetrics__grid_quality",
         "qualityMetrics__r_factor"
       ],
       "slot_usage": {},
@@ -22913,6 +23399,13 @@
           "@type": "SlotDefinition"
         },
         {
+          "name": "grid_quality",
+          "description": "Cryo-EM specific quality assessments of the imaged grid (ice contamination, ice quality, particle concentration)",
+          "range": "CryoEMQualityMetrics",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
           "name": "r_factor",
           "description": "R-factor for crystallography (deprecated, use r_work)",
           "range": "QuantityValue",
@@ -22968,6 +23461,42 @@
         }
       ],
       "class_uri": "http://w3id.org/lambda/ComputeResources",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "CryoEMQualityMetrics",
+      "definition_uri": "http://w3id.org/lambda/CryoEMQualityMetrics",
+      "description": "Cryo-EM specific quality assessments recorded during or after data collection",
+      "from_schema": "http://w3id.org/lambda/",
+      "is_a": "AttributeGroup",
+      "slots": [
+        "attributeGroup__description",
+        "cryoEMQualityMetrics__ice_contamination",
+        "cryoEMQualityMetrics__ice_quality",
+        "cryoEMQualityMetrics__particle_concentration"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "ice_contamination",
+          "description": "Assessment of ice contamination level on the cryo-EM grid",
+          "range": "IceContaminationEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "ice_quality",
+          "description": "Assessment of vitreous ice thickness/quality for data collection",
+          "range": "IceQualityEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "particle_concentration",
+          "description": "Assessment of particle concentration on the cryo-EM grid",
+          "range": "ParticleConcentrationEnum",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "http://w3id.org/lambda/CryoEMQualityMetrics",
       "@type": "ClassDefinition"
     },
     {
@@ -25160,9 +25689,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda_ber_schema.yaml",
-  "source_file_date": "2026-08-12T15:24:29",
-  "source_file_size": 205060,
-  "generation_date": "2026-08-12T15:29:00",
+  "source_file_date": "2026-08-12T15:38:41",
+  "source_file_size": 213506,
+  "generation_date": "2026-08-12T15:39:38",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda_ber_schema.context.jsonld",

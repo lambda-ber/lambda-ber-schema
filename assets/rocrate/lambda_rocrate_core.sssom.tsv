@@ -192,6 +192,8 @@ lambda:detector_distance	experimentRun__detector_distance	skos:exactMatch		nsls2
 lambda:detector_distance	experimentRun__detector_distance	skos:exactMatch		imgCIF:_diffrn_measurement.sample_detector_distance		skos:exactMatch	http://w3id.org/lambda/									
 lambda:detector_distance	experimentRun__detector_distance	skos:exactMatch		mmCIF:_diffrn_detector.distance		skos:exactMatch	http://w3id.org/lambda/									
 lambda:detector_distance	experimentRun__detector_distance	skos:exactMatch		ispyb:DataCollection.detectorDistance		skos:exactMatch	http://w3id.org/lambda/									
+lambda:dose_per_tilt	experimentRun__dose_per_tilt	skos:closeMatch		mmCIF:_em_image_recording.avg_electron_dose_per_image		skos:closeMatch	http://w3id.org/lambda/									
+lambda:dual_tilt_axis_rotation	experimentRun__dual_tilt_axis_rotation	skos:exactMatch		mmCIF:_em_tomography.dual_tilt_axis_rotation		skos:exactMatch	http://w3id.org/lambda/									
 lambda:end_time	experimentRun__end_time	skos:exactMatch		ispyb:DataCollection.endTime		skos:exactMatch	http://w3id.org/lambda/									
 lambda:energy	experimentRun__energy	skos:exactMatch		nsls2:Energy		skos:exactMatch	http://w3id.org/lambda/									
 lambda:energy	experimentRun__energy	skos:exactMatch		ispyb:DataCollection.energy		skos:exactMatch	http://w3id.org/lambda/									
@@ -222,6 +224,11 @@ lambda:sweep_start	experimentRun__sweep_start	skos:exactMatch		imgCIF:_diffrn_sc
 lambda:sweep_start	experimentRun__sweep_start	skos:exactMatch		ispyb:DataCollection.axisStart		skos:exactMatch	http://w3id.org/lambda/									
 lambda:synchrotron_mode	experimentRun__synchrotron_mode	skos:exactMatch		ispyb:DataCollection.synchrotronMode		skos:exactMatch	http://w3id.org/lambda/									
 lambda:technique	experimentRun__technique	skos:relatedMatch		IHMCIF:_ihm_dataset_list.data_type		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:tilt_angle_increment	experimentRun__tilt_angle_increment	skos:exactMatch		mmCIF:_em_tomography.axis1_angle_increment		skos:exactMatch	http://w3id.org/lambda/									
+lambda:tilt_angle_max	experimentRun__tilt_angle_max	skos:exactMatch		mmCIF:_em_imaging.tilt_angle_max		skos:exactMatch	http://w3id.org/lambda/									
+lambda:tilt_angle_max	experimentRun__tilt_angle_max	skos:exactMatch		mmCIF:_em_tomography.axis1_max_angle		skos:exactMatch	http://w3id.org/lambda/									
+lambda:tilt_angle_min	experimentRun__tilt_angle_min	skos:exactMatch		mmCIF:_em_imaging.tilt_angle_min		skos:exactMatch	http://w3id.org/lambda/									
+lambda:tilt_angle_min	experimentRun__tilt_angle_min	skos:exactMatch		mmCIF:_em_tomography.axis1_min_angle		skos:exactMatch	http://w3id.org/lambda/									
 lambda:total_dose	experimentRun__total_dose	skos:exactMatch		mmCIF:_em_image_recording.avg_electron_dose_per_image		skos:exactMatch	http://w3id.org/lambda/									
 lambda:total_rotation	experimentRun__total_rotation	skos:exactMatch		nsls2:Total_rotation_deg		skos:exactMatch	http://w3id.org/lambda/									
 lambda:total_rotation	experimentRun__total_rotation	skos:exactMatch		imgCIF:_diffrn_scan_axis.angle_range		skos:exactMatch	http://w3id.org/lambda/									
@@ -275,6 +282,7 @@ lambda:processing_level	processing_level	skos:closeMatch		lambdax:processing_lev
 lambda:processing_level	processing_level	skos:exactMatch		lambda:processing_level		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:processing_status	processing_status	skos:exactMatch		lambda:processing_status		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:productId	product_id	skos:relatedMatch		sdo:identifier		skos:relatedMatch	http://w3id.org/lambda/rocrate/core									
+lambda:proposal_id	proposal_id	skos:exactMatch		lambda:proposal_id		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:protein_name	protein_name	skos:exactMatch		lambda:protein_name		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:proteinName	protein_name_camel	skos:exactMatch		lambda:protein_name		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:anom_corr	qualityMetrics__anom_corr	skos:exactMatch		mmCIF:_reflns.pdbx_CC_half_anomalous		skos:exactMatch	http://w3id.org/lambda/									

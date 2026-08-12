@@ -59,6 +59,7 @@ Alias: software_name
 | ---  | ---  |
 | self | lambda:software_name |
 | native | lambda:software_name |
+| related | IHMCIF:_ihm_modeling_protocol_details.software_id |
 
 
 
@@ -70,6 +71,8 @@ Alias: software_name
 name: software_name
 description: Software used for processing
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_modeling_protocol_details.software_id
 rank: 1000
 alias: software_name
 owner: WorkflowRun

@@ -111,6 +111,8 @@ URI: [lambda:BeamlineInstrument](http://w3id.org/lambda/BeamlineInstrument)
         
       BeamlineInstrument : instrument_code
         
+      BeamlineInstrument : instrument_registry_id
+        
       BeamlineInstrument : lims_system
         
           
@@ -218,6 +220,7 @@ URI: [lambda:BeamlineInstrument](http://w3id.org/lambda/BeamlineInstrument)
 | [daq_system](daq_system.md) | 0..1 <br/> [DataAcquisitionSystemEnum](DataAcquisitionSystemEnum.md) | Data acquisition system used for experiment orchestration | direct |
 | [control_system](control_system.md) | 0..1 <br/> [ControlSystemEnum](ControlSystemEnum.md) | Low-level control system for device communication | direct |
 | [instrument_code](instrument_code.md) | 1 <br/> [String](String.md) | Human-friendly facility or laboratory identifier for the instrument (e | [Instrument](Instrument.md) |
+| [instrument_registry_id](instrument_registry_id.md) | 0..1 <br/> [String](String.md)&nbsp;or&nbsp;<br />[BeamlineEnum](BeamlineEnum.md) | Controlled-vocabulary identifier linking this instrument to its canonical ent... | [Instrument](Instrument.md) |
 | [instrument_category](instrument_category.md) | 0..1 <br/> [InstrumentCategoryEnum](InstrumentCategoryEnum.md) | Category distinguishing beamlines from laboratory equipment | [Instrument](Instrument.md) |
 | [facility_name](facility_name.md) | 0..1 <br/> [FacilityEnum](FacilityEnum.md) | Name of the research facility where the instrument is located | [Instrument](Instrument.md) |
 | [facility_ror](facility_ror.md) | 0..1 <br/> [Uriorcurie](Uriorcurie.md) | Research Organization Registry (ROR) identifier for the facility | [Instrument](Instrument.md) |
@@ -564,6 +567,30 @@ attributes:
     - Instrument
     range: string
     required: true
+  instrument_registry_id:
+    name: instrument_registry_id
+    description: Controlled-vocabulary identifier linking this instrument to its canonical
+      entry in a registry enum appropriate to the instrument type. For beamlines,
+      use a value from BeamlineEnum; additional instrument-type registries may be
+      referenced here as they are introduced.
+    comments:
+    - Use this to link an instrument record to a known, validated registry entry,
+      enabling schema-level validation against typos
+    - instrument_code is a free-text local label; instrument_registry_id is the schema-level
+      controlled identity
+    - beamline_id captures the facility-local string ID (e.g., '19-ID'); instrument_registry_id
+      captures the enum identity (e.g., APS_SBCCAT_19ID)
+    - Distinct from the instrument_id foreign-key slot used in association tables,
+      which references an Instrument object
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    alias: instrument_registry_id
+    owner: BeamlineInstrument
+    domain_of:
+    - Instrument
+    range: string
+    any_of:
+    - range: BeamlineEnum
   instrument_category:
     name: instrument_category
     description: Category distinguishing beamlines from laboratory equipment
@@ -610,9 +637,13 @@ attributes:
     comments:
     - Use facility-specific naming convention
     - 'Examples: ''12.3.1'' (ALS), ''17-ID-1'' (NSLS-II), ''I04'' (Diamond)'
+    - For a validated controlled-vocabulary identity, also set instrument_registry_id
+      (e.g., APS_SBCCAT_19ID)
     from_schema: http://w3id.org/lambda/
     exact_mappings:
     - mmCIF:_diffrn_source.pdbx_synchrotron_beamline
+    - nsls2:Beamline
+    - ispyb:BLSession.beamLineName
     rank: 1000
     alias: beamline_id
     owner: BeamlineInstrument

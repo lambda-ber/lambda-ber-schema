@@ -3,7 +3,7 @@
 # Slot: dose_rate 
 
 
-_Dose rate in e-/pixel/s or e-/Angstrom^2/s_
+_Dose rate, typically specified in e-/pixel/s or e-/Angstrom^2/s. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -66,7 +66,8 @@ Alias: dose_rate
 <details>
 ```yaml
 name: dose_rate
-description: Dose rate in e-/pixel/s or e-/Angstrom^2/s
+description: Dose rate, typically specified in e-/pixel/s or e-/Angstrom^2/s. Data
+  providers may specify alternative units by including the unit in the QuantityValue.
 from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: dose_rate

@@ -3,7 +3,7 @@
 # Slot: defocus_range_max 
 
 
-_Maximum defocus range in micrometers_
+_Maximum defocus range, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -67,7 +67,8 @@ Alias: defocus_range_max
 <details>
 ```yaml
 name: defocus_range_max
-description: Maximum defocus range in micrometers
+description: Maximum defocus range, typically specified in micrometers. Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: http://w3id.org/lambda/
 exact_mappings:
 - mmCIF:_em_imaging.nominal_defocus_max

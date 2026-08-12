@@ -1,0 +1,43 @@
+@base <http://example.org/> .
+@prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lambdaber: <http://w3id.org/lambda/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+lambdaber:exp_cryoet_tomo_001 a lambdaber:ExperimentRun ;
+    dcterms:title "Cryo-ET tilt series with tomography parameters" ;
+    lambdaber:description "Cryo-ET data collection with dose-symmetric tilting scheme and fiducial markers" ;
+    lambdaber:dose_per_tilt [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "3.2"^^xsd:float ;
+            lambdaber:unit "e-/Angstrom^2" ] ;
+    lambdaber:experiment_code "PNNL-CRYOET-TOMO-2024-001" ;
+    lambdaber:experiment_date "2024-07-15" ;
+    lambdaber:fiducial_size [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "100.0"^^xsd:float ;
+            lambdaber:unit "Angstroms" ] ;
+    lambdaber:frames_per_second [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "0.5"^^xsd:float ;
+            lambdaber:unit "frames per second" ] ;
+    lambdaber:number_of_tilt_images [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "41.0"^^xsd:float ;
+            lambdaber:unit "images" ] ;
+    lambdaber:operator_id "cryoet_specialist_001" ;
+    lambdaber:technique CHMO:0002413 ;
+    lambdaber:tilt_angle_increment [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "3.0"^^xsd:float ;
+            lambdaber:unit "degrees" ] ;
+    lambdaber:tilt_angle_max [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "60.0"^^xsd:float ;
+            lambdaber:unit "degrees" ] ;
+    lambdaber:tilt_angle_min [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "-60.0"^^xsd:float ;
+            lambdaber:unit "degrees" ] ;
+    lambdaber:tilt_axis_angle [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "85.3"^^xsd:float ;
+            lambdaber:unit "degrees" ] ;
+    lambdaber:tilting_scheme "dose_symmetric" ;
+    lambdaber:total_dose [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "131.2"^^xsd:float ;
+            lambdaber:unit "e-/Angstrom^2" ] .
+

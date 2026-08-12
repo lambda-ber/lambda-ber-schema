@@ -57,6 +57,7 @@ Alias: parameters_file_path
 | ---  | ---  |
 | self | lambda:parameters_file_path |
 | native | lambda:parameters_file_path |
+| related | IHMCIF:_ihm_modeling_protocol_details.script_file_id, IHMCIF:_ihm_external_files.file_path |
 
 
 
@@ -68,6 +69,9 @@ Alias: parameters_file_path
 name: parameters_file_path
 description: Path to parameters file or text of key parameters
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_modeling_protocol_details.script_file_id
+- IHMCIF:_ihm_external_files.file_path
 rank: 1000
 alias: parameters_file_path
 owner: WorkflowRun

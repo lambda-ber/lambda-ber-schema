@@ -1738,7 +1738,7 @@
                     ]
                 },
                 "proposal_id": {
-                    "description": "Facility proposal or allocation identifier. **No schema counterpart yet**: `Study.proposal_id` is arriving on a separate in-flight branch, so this term deliberately claims no mapping rather than asserting one that does not resolve on this base. Restore the `exact_mappings` when that lands.",
+                    "description": "Facility proposal or allocation identifier. Distinct from a funder's award number, which is carried on `StudyOrganizationAssociation`: one is beamtime, the other is the money that paid for the science.",
                     "type": [
                         "string",
                         "null"
@@ -2397,6 +2397,32 @@
                 }
             },
             "title": "CryoEMPreparation",
+            "type": "object"
+        },
+        "CryoEMQualityMetrics": {
+            "additionalProperties": false,
+            "description": "Cryo-EM specific quality assessments recorded during or after data collection",
+            "properties": {
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ice_contamination": {
+                    "$ref": "#/$defs/IceContaminationEnum",
+                    "description": "Assessment of ice contamination level on the cryo-EM grid"
+                },
+                "ice_quality": {
+                    "$ref": "#/$defs/IceQualityEnum",
+                    "description": "Assessment of vitreous ice thickness/quality for data collection"
+                },
+                "particle_concentration": {
+                    "$ref": "#/$defs/ParticleConcentrationEnum",
+                    "description": "Assessment of particle concentration on the cryo-EM grid"
+                }
+            },
+            "title": "CryoEMQualityMetrics",
             "type": "object"
         },
         "CrystallizationConditions": {
@@ -3819,7 +3845,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Target astigmatism in Angstroms"
+                    "description": "Target astigmatism, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "autoloader_slot": {
                     "description": "Autoloader slot identifier",
@@ -3870,7 +3896,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Calibrated pixel size in Angstroms per pixel"
+                    "description": "Calibrated pixel size, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "camera_binning": {
                     "anyOf": [
@@ -3883,6 +3909,17 @@
                     ],
                     "description": "Camera binning factor. This must be a positive float value (e.g., 1, 1.5, 2, 3)."
                 },
+                "camera_length": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Camera length for electron diffraction (e.g., MicroED). Data providers may specify alternative units by including the unit in the QuantityValue."
+                },
                 "coma": {
                     "anyOf": [
                         {
@@ -3892,7 +3929,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Coma aberration in nanometers"
+                    "description": "Coma aberration, typically specified in nanometers. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "daq_system": {
                     "$ref": "#/$defs/DataAcquisitionSystemEnum",
@@ -3918,7 +3955,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Defocus range increment in micrometers"
+                    "description": "Defocus range increment, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "defocus_range_max": {
                     "anyOf": [
@@ -3929,7 +3966,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Maximum defocus range in micrometers"
+                    "description": "Maximum defocus range, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "defocus_range_min": {
                     "anyOf": [
@@ -3940,7 +3977,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Minimum defocus range in micrometers"
+                    "description": "Minimum defocus range, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "defocus_target": {
                     "anyOf": [
@@ -3951,7 +3988,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Target defocus value in micrometers"
+                    "description": "Target defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "description": {
                     "description": "A detailed textual description of this entity",
@@ -3978,6 +4015,17 @@
                     ],
                     "description": "Distance from sample to detector, typically specified in millimeters (mm). Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
+                "dose_per_tilt": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Electron dose applied at each tilt step, typically specified in e-/Angstrom^2. Data providers may specify alternative units by including the unit in the QuantityValue."
+                },
                 "dose_rate": {
                     "anyOf": [
                         {
@@ -3987,7 +4035,18 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Dose rate in e-/pixel/s or e-/Angstrom^2/s"
+                    "description": "Dose rate, typically specified in e-/pixel/s or e-/Angstrom^2/s. Data providers may specify alternative units by including the unit in the QuantityValue."
+                },
+                "dual_tilt_axis_rotation": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Rotation between the two tilt axes in a dual-axis tomography acquisition, typically specified in degrees. Omit for the far more common single-axis case."
                 },
                 "end_time": {
                     "description": "Data collection end timestamp",
@@ -4053,7 +4112,18 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Exposure time per frame in milliseconds"
+                    "description": "Exposure time per frame, typically specified in milliseconds. Data providers may specify alternative units by including the unit in the QuantityValue."
+                },
+                "fiducial_size": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Size of fiducial markers used for tomographic alignment. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "flux": {
                     "anyOf": [
@@ -4087,6 +4157,17 @@
                         }
                     ],
                     "description": "Number of frames per movie"
+                },
+                "frames_per_second": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Frame acquisition rate. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "holes_per_group": {
                     "anyOf": [
@@ -4146,6 +4227,17 @@
                         }
                     ],
                     "description": "Total number of diffraction images collected"
+                },
+                "number_of_tilt_images": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Number of images collected in the tilt series"
                 },
                 "operator_id": {
                     "description": "Identifier or name of the person who performed the experiment data collection (e.g., 'jsmith', 'John Smith', or personnel ID)",
@@ -4231,6 +4323,17 @@
                     ],
                     "description": "Resolution at corner of detector, typically specified in Angstroms (\u00c5). Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
+                "rotation_rate": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Continuous rotation rate during data collection (e.g., for MicroED). Data providers may specify alternative units by including the unit in the QuantityValue."
+                },
                 "shots_per_hole": {
                     "anyOf": [
                         {
@@ -4273,7 +4376,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Stage tilt angle in degrees"
+                    "description": "Fixed stage tilt angle for a single-orientation acquisition, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "start_angle": {
                     "anyOf": [
@@ -4326,6 +4429,54 @@
                     "$ref": "#/$defs/TechniqueEnum",
                     "description": "Technique used for data collection"
                 },
+                "tilt_angle_increment": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Tilt angle increment between successive tilt steps. Data providers may specify alternative units by including the unit in the QuantityValue."
+                },
+                "tilt_angle_max": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Highest (most positive) tilt angle in the tilt series, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue."
+                },
+                "tilt_angle_min": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Lowest (most negative) tilt angle in the tilt series, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue."
+                },
+                "tilt_axis_angle": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "In-plane azimuth of the tilt axis relative to the detector x-axis, typically specified in degrees. Required for tilt series alignment and reconstruction."
+                },
+                "tilting_scheme": {
+                    "$ref": "#/$defs/TiltingSchemeEnum",
+                    "description": "Tilt scheme used during tomographic data collection"
+                },
                 "title": {
                     "description": "A human-readable name or title for this entity",
                     "type": [
@@ -4342,7 +4493,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Total electron dose in e-/Angstrom^2"
+                    "description": "Total electron dose, typically specified in e-/Angstrom^2. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "total_exposure_time": {
                     "anyOf": [
@@ -4353,7 +4504,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Total exposure time in milliseconds"
+                    "description": "Total exposure time. Data providers may specify alternative units (e.g., seconds, milliseconds) by including the unit in the QuantityValue."
                 },
                 "total_rotation": {
                     "anyOf": [
@@ -5444,6 +5595,26 @@
                 "gold"
             ],
             "title": "GridTypeEnum",
+            "type": "string"
+        },
+        "IceContaminationEnum": {
+            "description": "Assessment of ice contamination level on a cryo-EM grid",
+            "enum": [
+                "none",
+                "limited",
+                "severe"
+            ],
+            "title": "IceContaminationEnum",
+            "type": "string"
+        },
+        "IceQualityEnum": {
+            "description": "Assessment of vitreous ice thickness/quality for cryo-EM data collection",
+            "enum": [
+                "ideal",
+                "too_thin",
+                "too_thick"
+            ],
+            "title": "IceQualityEnum",
             "type": "string"
         },
         "IlluminationTypeEnum": {
@@ -7694,6 +7865,16 @@
             "title": "PackageTierEnum",
             "type": "string"
         },
+        "ParticleConcentrationEnum": {
+            "description": "Assessment of particle concentration on a cryo-EM grid",
+            "enum": [
+                "optimal",
+                "too_low",
+                "too_high"
+            ],
+            "title": "ParticleConcentrationEnum",
+            "type": "string"
+        },
         "ParticlePickingParameters": {
             "additionalProperties": false,
             "description": "Parameters specific to particle picking workflows",
@@ -8869,6 +9050,17 @@
                         "string",
                         "null"
                     ]
+                },
+                "grid_quality": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/CryoEMQualityMetrics"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Cryo-EM specific quality assessments of the imaged grid (ice contamination, ice quality, particle concentration)"
                 },
                 "i_zero": {
                     "anyOf": [
@@ -11289,6 +11481,13 @@
                         "null"
                     ]
                 },
+                "proposal_id": {
+                    "description": "Facility proposal or project identifier associated with this study (e.g., a DOE or facility allocation ID)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "title": {
                     "description": "A human-readable name or title for this entity",
                     "type": [
@@ -11538,7 +11737,8 @@
                 "neutron_crystallography",
                 "fiber_diffraction",
                 "time_resolved_crystallography",
-                "xray_tomography"
+                "xray_tomography",
+                "microed"
             ],
             "title": "TechniqueEnum",
             "type": "string"
@@ -11582,6 +11782,17 @@
             ],
             "title": "TextValue",
             "type": "object"
+        },
+        "TiltingSchemeEnum": {
+            "description": "Tilt scheme used during tomographic or continuous-rotation data collection",
+            "enum": [
+                "none",
+                "dose_symmetric",
+                "linear",
+                "continuous"
+            ],
+            "title": "TiltingSchemeEnum",
+            "type": "string"
         },
         "VitrificationMethodEnum": {
             "description": "Methods for vitrification",

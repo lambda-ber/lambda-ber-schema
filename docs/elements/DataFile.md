@@ -146,6 +146,8 @@ URI: [lambda:DataFile](http://w3id.org/lambda/DataFile)
 | ---  | ---  |
 | self | lambda:DataFile |
 | native | lambda:DataFile |
+| related | IHMCIF:_ihm_dataset_list, IHMCIF:_ihm_dataset_external_reference |
+| close | IHMCIF:_ihm_external_files |
 
 
 
@@ -163,6 +165,11 @@ URI: [lambda:DataFile](http://w3id.org/lambda/DataFile)
 name: DataFile
 description: A data file generated or used in the study
 from_schema: http://w3id.org/lambda/
+close_mappings:
+- IHMCIF:_ihm_external_files
+related_mappings:
+- IHMCIF:_ihm_dataset_list
+- IHMCIF:_ihm_dataset_external_reference
 is_a: NamedThing
 attributes:
   file_name:
@@ -178,6 +185,8 @@ attributes:
     name: file_path
     description: Path to the file
     from_schema: http://w3id.org/lambda/
+    close_mappings:
+    - IHMCIF:_ihm_external_files.file_path
     rank: 1000
     domain_of:
     - DataFile
@@ -185,6 +194,8 @@ attributes:
     name: file_format
     description: File format
     from_schema: http://w3id.org/lambda/
+    close_mappings:
+    - IHMCIF:_ihm_external_files.file_format
     rank: 1000
     domain_of:
     - DataFile
@@ -194,6 +205,8 @@ attributes:
     name: file_size_bytes
     description: File size in bytes
     from_schema: http://w3id.org/lambda/
+    close_mappings:
+    - IHMCIF:_ihm_external_files.file_size_bytes
     rank: 1000
     domain_of:
     - DataFile
@@ -218,6 +231,8 @@ attributes:
     name: data_type
     description: Type of data in the file
     from_schema: http://w3id.org/lambda/
+    close_mappings:
+    - IHMCIF:_ihm_dataset_list.data_type
     rank: 1000
     domain_of:
     - DataFile
@@ -226,6 +241,9 @@ attributes:
     name: storage_uri
     description: Storage URI (S3, Globus, etc.)
     from_schema: http://w3id.org/lambda/
+    related_mappings:
+    - IHMCIF:_ihm_external_reference_info.associated_url
+    - IHMCIF:_ihm_external_files.file_path
     rank: 1000
     domain_of:
     - DataFile
@@ -234,6 +252,8 @@ attributes:
     name: related_entity
     description: ID of the entity that owns this file
     from_schema: http://w3id.org/lambda/
+    related_mappings:
+    - IHMCIF:_ihm_dataset_list.id
     rank: 1000
     domain_of:
     - DataFile
@@ -242,6 +262,8 @@ attributes:
     name: file_role
     description: Role of the file (raw, intermediate, final, diagnostic, metadata)
     from_schema: http://w3id.org/lambda/
+    related_mappings:
+    - IHMCIF:_ihm_external_files.content_type
     rank: 1000
     domain_of:
     - DataFile
@@ -257,6 +279,11 @@ attributes:
 name: DataFile
 description: A data file generated or used in the study
 from_schema: http://w3id.org/lambda/
+close_mappings:
+- IHMCIF:_ihm_external_files
+related_mappings:
+- IHMCIF:_ihm_dataset_list
+- IHMCIF:_ihm_dataset_external_reference
 is_a: NamedThing
 attributes:
   file_name:
@@ -275,6 +302,8 @@ attributes:
     name: file_path
     description: Path to the file
     from_schema: http://w3id.org/lambda/
+    close_mappings:
+    - IHMCIF:_ihm_external_files.file_path
     rank: 1000
     alias: file_path
     owner: DataFile
@@ -285,6 +314,8 @@ attributes:
     name: file_format
     description: File format
     from_schema: http://w3id.org/lambda/
+    close_mappings:
+    - IHMCIF:_ihm_external_files.file_format
     rank: 1000
     alias: file_format
     owner: DataFile
@@ -296,6 +327,8 @@ attributes:
     name: file_size_bytes
     description: File size in bytes
     from_schema: http://w3id.org/lambda/
+    close_mappings:
+    - IHMCIF:_ihm_external_files.file_size_bytes
     rank: 1000
     alias: file_size_bytes
     owner: DataFile
@@ -327,6 +360,8 @@ attributes:
     name: data_type
     description: Type of data in the file
     from_schema: http://w3id.org/lambda/
+    close_mappings:
+    - IHMCIF:_ihm_dataset_list.data_type
     rank: 1000
     alias: data_type
     owner: DataFile
@@ -337,6 +372,9 @@ attributes:
     name: storage_uri
     description: Storage URI (S3, Globus, etc.)
     from_schema: http://w3id.org/lambda/
+    related_mappings:
+    - IHMCIF:_ihm_external_reference_info.associated_url
+    - IHMCIF:_ihm_external_files.file_path
     rank: 1000
     alias: storage_uri
     owner: DataFile
@@ -347,6 +385,8 @@ attributes:
     name: related_entity
     description: ID of the entity that owns this file
     from_schema: http://w3id.org/lambda/
+    related_mappings:
+    - IHMCIF:_ihm_dataset_list.id
     rank: 1000
     alias: related_entity
     owner: DataFile
@@ -357,6 +397,8 @@ attributes:
     name: file_role
     description: Role of the file (raw, intermediate, final, diagnostic, metadata)
     from_schema: http://w3id.org/lambda/
+    related_mappings:
+    - IHMCIF:_ihm_external_files.content_type
     rank: 1000
     alias: file_role
     owner: DataFile

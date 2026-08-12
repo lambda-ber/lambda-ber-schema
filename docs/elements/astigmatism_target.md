@@ -3,7 +3,7 @@
 # Slot: astigmatism_target 
 
 
-_Target astigmatism in Angstroms_
+_Target astigmatism, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -66,7 +66,8 @@ Alias: astigmatism_target
 <details>
 ```yaml
 name: astigmatism_target
-description: Target astigmatism in Angstroms
+description: Target astigmatism, typically specified in Angstroms. Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: astigmatism_target

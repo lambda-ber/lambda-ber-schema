@@ -57,6 +57,7 @@ Alias: related_entity
 | ---  | ---  |
 | self | lambda:related_entity |
 | native | lambda:related_entity |
+| related | IHMCIF:_ihm_dataset_list.id |
 
 
 
@@ -68,6 +69,8 @@ Alias: related_entity
 name: related_entity
 description: ID of the entity that owns this file
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_dataset_list.id
 rank: 1000
 alias: related_entity
 owner: DataFile

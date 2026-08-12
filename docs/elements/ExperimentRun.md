@@ -72,8 +72,6 @@ URI: [lambda:ExperimentRun](http://w3id.org/lambda/ExperimentRun)
     
 
         
-      ExperimentRun : beamline
-        
       ExperimentRun : calibrated_pixel_size
         
           
@@ -92,6 +90,17 @@ URI: [lambda:ExperimentRun](http://w3id.org/lambda/ExperimentRun)
         
         
         ExperimentRun --> "0..1" QuantityValue : camera_binning
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
+      ExperimentRun : camera_length
+        
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : camera_length
         click QuantityValue href "../QuantityValue/"
     
 
@@ -188,6 +197,17 @@ URI: [lambda:ExperimentRun](http://w3id.org/lambda/ExperimentRun)
     
 
         
+      ExperimentRun : dose_per_tilt
+        
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : dose_per_tilt
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       ExperimentRun : dose_rate
         
           
@@ -195,6 +215,17 @@ URI: [lambda:ExperimentRun](http://w3id.org/lambda/ExperimentRun)
         
         
         ExperimentRun --> "0..1" QuantityValue : dose_rate
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
+      ExperimentRun : dual_tilt_axis_rotation
+        
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : dual_tilt_axis_rotation
         click QuantityValue href "../QuantityValue/"
     
 
@@ -260,6 +291,17 @@ URI: [lambda:ExperimentRun](http://w3id.org/lambda/ExperimentRun)
     
 
         
+      ExperimentRun : fiducial_size
+        
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : fiducial_size
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       ExperimentRun : flux
         
           
@@ -289,6 +331,17 @@ URI: [lambda:ExperimentRun](http://w3id.org/lambda/ExperimentRun)
         
         
         ExperimentRun --> "0..1" QuantityValue : frames_per_movie
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
+      ExperimentRun : frames_per_second
+        
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : frames_per_second
         click QuantityValue href "../QuantityValue/"
     
 
@@ -346,6 +399,17 @@ URI: [lambda:ExperimentRun](http://w3id.org/lambda/ExperimentRun)
         
         
         ExperimentRun --> "0..1" QuantityValue : number_of_images
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
+      ExperimentRun : number_of_tilt_images
+        
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : number_of_tilt_images
         click QuantityValue href "../QuantityValue/"
     
 
@@ -427,6 +491,17 @@ URI: [lambda:ExperimentRun](http://w3id.org/lambda/ExperimentRun)
         
         
         ExperimentRun --> "0..1" QuantityValue : resolution_at_corner
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
+      ExperimentRun : rotation_rate
+        
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : rotation_rate
         click QuantityValue href "../QuantityValue/"
     
 
@@ -520,6 +595,61 @@ URI: [lambda:ExperimentRun](http://w3id.org/lambda/ExperimentRun)
         
         ExperimentRun --> "1" TechniqueEnum : technique
         click TechniqueEnum href "../TechniqueEnum/"
+    
+
+        
+      ExperimentRun : tilt_angle_increment
+        
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : tilt_angle_increment
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
+      ExperimentRun : tilt_angle_max
+        
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : tilt_angle_max
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
+      ExperimentRun : tilt_angle_min
+        
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : tilt_angle_min
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
+      ExperimentRun : tilt_axis_angle
+        
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : tilt_axis_angle
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
+      ExperimentRun : tilting_scheme
+        
+          
+    
+        
+        
+        ExperimentRun --> "0..1" TiltingSchemeEnum : tilting_scheme
+        click TiltingSchemeEnum href "../TiltingSchemeEnum/"
     
 
         
@@ -620,20 +750,32 @@ URI: [lambda:ExperimentRun](http://w3id.org/lambda/ExperimentRun)
 | [processing_status](processing_status.md) | 0..1 <br/> [ProcessingStatusEnum](ProcessingStatusEnum.md) | Current processing status | direct |
 | [daq_system](daq_system.md) | 0..1 <br/> [DataAcquisitionSystemEnum](DataAcquisitionSystemEnum.md) | Data acquisition system used to collect this experiment | direct |
 | [magnification](magnification.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Magnification used during data collection | direct |
-| [calibrated_pixel_size](calibrated_pixel_size.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Calibrated pixel size in Angstroms per pixel | direct |
+| [calibrated_pixel_size](calibrated_pixel_size.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Calibrated pixel size, typically specified in Angstroms per pixel | direct |
 | [camera_binning](camera_binning.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Camera binning factor | direct |
-| [exposure_time_per_frame](exposure_time_per_frame.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Exposure time per frame in milliseconds | direct |
+| [exposure_time_per_frame](exposure_time_per_frame.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Exposure time per frame, typically specified in milliseconds | direct |
 | [frames_per_movie](frames_per_movie.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Number of frames per movie | direct |
-| [total_exposure_time](total_exposure_time.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Total exposure time in milliseconds | direct |
-| [total_dose](total_dose.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Total electron dose in e-/Angstrom^2 | direct |
-| [dose_rate](dose_rate.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Dose rate in e-/pixel/s or e-/Angstrom^2/s | direct |
-| [defocus_target](defocus_target.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Target defocus value in micrometers | direct |
-| [defocus_range_min](defocus_range_min.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Minimum defocus range in micrometers | direct |
-| [defocus_range_max](defocus_range_max.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Maximum defocus range in micrometers | direct |
-| [defocus_range_increment](defocus_range_increment.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Defocus range increment in micrometers | direct |
-| [astigmatism_target](astigmatism_target.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Target astigmatism in Angstroms | direct |
-| [coma](coma.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Coma aberration in nanometers | direct |
-| [stage_tilt](stage_tilt.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Stage tilt angle in degrees | direct |
+| [total_exposure_time](total_exposure_time.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Total exposure time | direct |
+| [total_dose](total_dose.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Total electron dose, typically specified in e-/Angstrom^2 | direct |
+| [dose_rate](dose_rate.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Dose rate, typically specified in e-/pixel/s or e-/Angstrom^2/s | direct |
+| [defocus_target](defocus_target.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Target defocus value, typically specified in micrometers | direct |
+| [defocus_range_min](defocus_range_min.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Minimum defocus range, typically specified in micrometers | direct |
+| [defocus_range_max](defocus_range_max.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Maximum defocus range, typically specified in micrometers | direct |
+| [defocus_range_increment](defocus_range_increment.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Defocus range increment, typically specified in micrometers | direct |
+| [astigmatism_target](astigmatism_target.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Target astigmatism, typically specified in Angstroms | direct |
+| [coma](coma.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Coma aberration, typically specified in nanometers | direct |
+| [stage_tilt](stage_tilt.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Fixed stage tilt angle for a single-orientation acquisition, typically specif... | direct |
+| [tilting_scheme](tilting_scheme.md) | 0..1 <br/> [TiltingSchemeEnum](TiltingSchemeEnum.md) | Tilt scheme used during tomographic data collection | direct |
+| [tilt_angle_min](tilt_angle_min.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Lowest (most negative) tilt angle in the tilt series, typically specified in ... | direct |
+| [tilt_angle_max](tilt_angle_max.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Highest (most positive) tilt angle in the tilt series, typically specified in... | direct |
+| [tilt_angle_increment](tilt_angle_increment.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Tilt angle increment between successive tilt steps | direct |
+| [tilt_axis_angle](tilt_axis_angle.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | In-plane azimuth of the tilt axis relative to the detector x-axis, typically ... | direct |
+| [number_of_tilt_images](number_of_tilt_images.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Number of images collected in the tilt series | direct |
+| [dose_per_tilt](dose_per_tilt.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Electron dose applied at each tilt step, typically specified in e-/Angstrom^2 | direct |
+| [dual_tilt_axis_rotation](dual_tilt_axis_rotation.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Rotation between the two tilt axes in a dual-axis tomography acquisition, typ... | direct |
+| [fiducial_size](fiducial_size.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Size of fiducial markers used for tomographic alignment | direct |
+| [rotation_rate](rotation_rate.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Continuous rotation rate during data collection (e | direct |
+| [camera_length](camera_length.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Camera length for electron diffraction (e | direct |
+| [frames_per_second](frames_per_second.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Frame acquisition rate | direct |
 | [autoloader_slot](autoloader_slot.md) | 0..1 <br/> [String](String.md) | Autoloader slot identifier | direct |
 | [shots_per_hole](shots_per_hole.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Number of shots taken per hole | direct |
 | [holes_per_group](holes_per_group.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Number of holes per group | direct |
@@ -654,7 +796,6 @@ URI: [lambda:ExperimentRun](http://w3id.org/lambda/ExperimentRun)
 | [pixel_size_x](pixel_size_x.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Pixel size X dimension, typically specified in micrometers (µm) | direct |
 | [pixel_size_y](pixel_size_y.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Pixel size Y dimension, typically specified in micrometers (µm) | direct |
 | [total_rotation](total_rotation.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Total rotation range collected, typically specified in degrees | direct |
-| [beamline](beamline.md) | 0..1 <br/> [String](String.md) | Beamline identifier (e | direct |
 | [transmission](transmission.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | X-ray beam transmission as a percentage (0-100) | direct |
 | [flux](flux.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Photon flux at sample position, typically specified in photons per second | direct |
 | [flux_end](flux_end.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Photon flux at end of data collection, typically specified in photons per sec... | direct |
@@ -714,6 +855,7 @@ URI: [lambda:ExperimentRun](http://w3id.org/lambda/ExperimentRun)
 | ---  | ---  |
 | self | lambda:ExperimentRun |
 | native | lambda:ExperimentRun |
+| related | IHMCIF:_ihm_dataset_list, IHMCIF:_ihm_dataset_group |
 
 
 
@@ -731,6 +873,9 @@ URI: [lambda:ExperimentRun](http://w3id.org/lambda/ExperimentRun)
 name: ExperimentRun
 description: An experimental data collection session
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_dataset_list
+- IHMCIF:_ihm_dataset_group
 is_a: NamedThing
 attributes:
   experiment_code:
@@ -764,6 +909,8 @@ attributes:
     name: technique
     description: Technique used for data collection
     from_schema: http://w3id.org/lambda/
+    related_mappings:
+    - IHMCIF:_ihm_dataset_list.data_type
     domain_of:
     - SANSInstrument
     - ExperimentRun
@@ -840,7 +987,8 @@ attributes:
     inlined: true
   calibrated_pixel_size:
     name: calibrated_pixel_size
-    description: Calibrated pixel size in Angstroms per pixel
+    description: Calibrated pixel size, typically specified in Angstroms per pixel.
+      Data providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
     exact_mappings:
     - mmCIF:_em_image_recording.calibrated_pixel_size
@@ -861,7 +1009,8 @@ attributes:
     inlined: true
   exposure_time_per_frame:
     name: exposure_time_per_frame
-    description: Exposure time per frame in milliseconds
+    description: Exposure time per frame, typically specified in milliseconds. Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
     exact_mappings:
     - mmCIF:_em_image_recording.average_exposure_time
@@ -883,7 +1032,8 @@ attributes:
     inlined: true
   total_exposure_time:
     name: total_exposure_time
-    description: Total exposure time in milliseconds
+    description: Total exposure time. Data providers may specify alternative units
+      (e.g., seconds, milliseconds) by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
@@ -892,7 +1042,8 @@ attributes:
     inlined: true
   total_dose:
     name: total_dose
-    description: Total electron dose in e-/Angstrom^2
+    description: Total electron dose, typically specified in e-/Angstrom^2. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
     exact_mappings:
     - mmCIF:_em_image_recording.avg_electron_dose_per_image
@@ -904,7 +1055,8 @@ attributes:
     inlined: true
   dose_rate:
     name: dose_rate
-    description: Dose rate in e-/pixel/s or e-/Angstrom^2/s
+    description: Dose rate, typically specified in e-/pixel/s or e-/Angstrom^2/s.
+      Data providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
@@ -913,7 +1065,8 @@ attributes:
     inlined: true
   defocus_target:
     name: defocus_target
-    description: Target defocus value in micrometers
+    description: Target defocus value, typically specified in micrometers. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
@@ -922,7 +1075,8 @@ attributes:
     inlined: true
   defocus_range_min:
     name: defocus_range_min
-    description: Minimum defocus range in micrometers
+    description: Minimum defocus range, typically specified in micrometers. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
     exact_mappings:
     - mmCIF:_em_imaging.nominal_defocus_min
@@ -933,7 +1087,8 @@ attributes:
     inlined: true
   defocus_range_max:
     name: defocus_range_max
-    description: Maximum defocus range in micrometers
+    description: Maximum defocus range, typically specified in micrometers. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
     exact_mappings:
     - mmCIF:_em_imaging.nominal_defocus_max
@@ -944,7 +1099,8 @@ attributes:
     inlined: true
   defocus_range_increment:
     name: defocus_range_increment
-    description: Defocus range increment in micrometers
+    description: Defocus range increment, typically specified in micrometers. Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
@@ -953,7 +1109,8 @@ attributes:
     inlined: true
   astigmatism_target:
     name: astigmatism_target
-    description: Target astigmatism in Angstroms
+    description: Target astigmatism, typically specified in Angstroms. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
@@ -962,7 +1119,8 @@ attributes:
     inlined: true
   coma:
     name: coma
-    description: Coma aberration in nanometers
+    description: Coma aberration, typically specified in nanometers. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
@@ -971,7 +1129,152 @@ attributes:
     inlined: true
   stage_tilt:
     name: stage_tilt
-    description: Stage tilt angle in degrees
+    description: Fixed stage tilt angle for a single-orientation acquisition, typically
+      specified in degrees. Data providers may specify alternative units by including
+      the unit in the QuantityValue.
+    comments:
+    - For a tilt series, use tilt_angle_min, tilt_angle_max, and tilt_angle_increment
+      rather than this slot.
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    range: QuantityValue
+    inlined: true
+  tilting_scheme:
+    name: tilting_scheme
+    description: Tilt scheme used during tomographic data collection
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    range: TiltingSchemeEnum
+  tilt_angle_min:
+    name: tilt_angle_min
+    description: Lowest (most negative) tilt angle in the tilt series, typically specified
+      in degrees. Data providers may specify alternative units by including the unit
+      in the QuantityValue.
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_imaging.tilt_angle_min
+    - mmCIF:_em_tomography.axis1_min_angle
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    range: QuantityValue
+    inlined: true
+  tilt_angle_max:
+    name: tilt_angle_max
+    description: Highest (most positive) tilt angle in the tilt series, typically
+      specified in degrees. Data providers may specify alternative units by including
+      the unit in the QuantityValue.
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_imaging.tilt_angle_max
+    - mmCIF:_em_tomography.axis1_max_angle
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    range: QuantityValue
+    inlined: true
+  tilt_angle_increment:
+    name: tilt_angle_increment
+    description: Tilt angle increment between successive tilt steps. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_tomography.axis1_angle_increment
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    range: QuantityValue
+    inlined: true
+  tilt_axis_angle:
+    name: tilt_axis_angle
+    description: In-plane azimuth of the tilt axis relative to the detector x-axis,
+      typically specified in degrees. Required for tilt series alignment and reconstruction.
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    range: QuantityValue
+    inlined: true
+  number_of_tilt_images:
+    name: number_of_tilt_images
+    description: Number of images collected in the tilt series
+    comments:
+    - For a symmetric series this is usually (tilt_angle_max - tilt_angle_min) / tilt_angle_increment
+      + 1, but record the actual count since tilts are often skipped or discarded.
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    range: QuantityValue
+    inlined: true
+  dose_per_tilt:
+    name: dose_per_tilt
+    description: Electron dose applied at each tilt step, typically specified in e-/Angstrom^2.
+      Data providers may specify alternative units by including the unit in the QuantityValue.
+    comments:
+    - Use total_dose for the accumulated dose across the whole tilt series.
+    from_schema: http://w3id.org/lambda/
+    close_mappings:
+    - mmCIF:_em_image_recording.avg_electron_dose_per_image
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    range: QuantityValue
+    inlined: true
+  dual_tilt_axis_rotation:
+    name: dual_tilt_axis_rotation
+    description: Rotation between the two tilt axes in a dual-axis tomography acquisition,
+      typically specified in degrees. Omit for the far more common single-axis case.
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_tomography.dual_tilt_axis_rotation
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    range: QuantityValue
+    inlined: true
+  fiducial_size:
+    name: fiducial_size
+    description: Size of fiducial markers used for tomographic alignment. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    range: QuantityValue
+    inlined: true
+  rotation_rate:
+    name: rotation_rate
+    description: Continuous rotation rate during data collection (e.g., for MicroED).
+      Data providers may specify alternative units by including the unit in the QuantityValue.
+    comments:
+    - 'For the extent of a continuous-rotation sweep, use the rotation-method slots
+      shared with the diffraction techniques: start_angle, sweep_start, sweep_end,
+      total_rotation, and oscillation_angle.'
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    range: QuantityValue
+    inlined: true
+  camera_length:
+    name: camera_length
+    description: Camera length for electron diffraction (e.g., MicroED). Data providers
+      may specify alternative units by including the unit in the QuantityValue.
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    range: QuantityValue
+    inlined: true
+  frames_per_second:
+    name: frames_per_second
+    description: Frame acquisition rate. Data providers may specify alternative units
+      by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
@@ -1246,18 +1549,6 @@ attributes:
     - ExperimentRun
     range: QuantityValue
     inlined: true
-  beamline:
-    name: beamline
-    description: Beamline identifier (e.g., FMX, AMX, 12.3.1)
-    from_schema: http://w3id.org/lambda/
-    exact_mappings:
-    - nsls2:Beamline
-    - mmCIF:_diffrn_source.pdbx_synchrotron_beamline
-    - ispyb:BLSession.beamLineName
-    rank: 1000
-    domain_of:
-    - ExperimentRun
-    range: string
   transmission:
     name: transmission
     description: X-ray beam transmission as a percentage (0-100). Data providers may
@@ -1448,6 +1739,9 @@ attributes:
 name: ExperimentRun
 description: An experimental data collection session
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_dataset_list
+- IHMCIF:_ihm_dataset_group
 is_a: NamedThing
 attributes:
   experiment_code:
@@ -1488,6 +1782,8 @@ attributes:
     name: technique
     description: Technique used for data collection
     from_schema: http://w3id.org/lambda/
+    related_mappings:
+    - IHMCIF:_ihm_dataset_list.data_type
     alias: technique
     owner: ExperimentRun
     domain_of:
@@ -1583,7 +1879,8 @@ attributes:
     inlined: true
   calibrated_pixel_size:
     name: calibrated_pixel_size
-    description: Calibrated pixel size in Angstroms per pixel
+    description: Calibrated pixel size, typically specified in Angstroms per pixel.
+      Data providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
     exact_mappings:
     - mmCIF:_em_image_recording.calibrated_pixel_size
@@ -1608,7 +1905,8 @@ attributes:
     inlined: true
   exposure_time_per_frame:
     name: exposure_time_per_frame
-    description: Exposure time per frame in milliseconds
+    description: Exposure time per frame, typically specified in milliseconds. Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
     exact_mappings:
     - mmCIF:_em_image_recording.average_exposure_time
@@ -1634,7 +1932,8 @@ attributes:
     inlined: true
   total_exposure_time:
     name: total_exposure_time
-    description: Total exposure time in milliseconds
+    description: Total exposure time. Data providers may specify alternative units
+      (e.g., seconds, milliseconds) by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: total_exposure_time
@@ -1645,7 +1944,8 @@ attributes:
     inlined: true
   total_dose:
     name: total_dose
-    description: Total electron dose in e-/Angstrom^2
+    description: Total electron dose, typically specified in e-/Angstrom^2. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
     exact_mappings:
     - mmCIF:_em_image_recording.avg_electron_dose_per_image
@@ -1659,7 +1959,8 @@ attributes:
     inlined: true
   dose_rate:
     name: dose_rate
-    description: Dose rate in e-/pixel/s or e-/Angstrom^2/s
+    description: Dose rate, typically specified in e-/pixel/s or e-/Angstrom^2/s.
+      Data providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: dose_rate
@@ -1670,7 +1971,8 @@ attributes:
     inlined: true
   defocus_target:
     name: defocus_target
-    description: Target defocus value in micrometers
+    description: Target defocus value, typically specified in micrometers. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: defocus_target
@@ -1681,7 +1983,8 @@ attributes:
     inlined: true
   defocus_range_min:
     name: defocus_range_min
-    description: Minimum defocus range in micrometers
+    description: Minimum defocus range, typically specified in micrometers. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
     exact_mappings:
     - mmCIF:_em_imaging.nominal_defocus_min
@@ -1694,7 +1997,8 @@ attributes:
     inlined: true
   defocus_range_max:
     name: defocus_range_max
-    description: Maximum defocus range in micrometers
+    description: Maximum defocus range, typically specified in micrometers. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
     exact_mappings:
     - mmCIF:_em_imaging.nominal_defocus_max
@@ -1707,7 +2011,8 @@ attributes:
     inlined: true
   defocus_range_increment:
     name: defocus_range_increment
-    description: Defocus range increment in micrometers
+    description: Defocus range increment, typically specified in micrometers. Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: defocus_range_increment
@@ -1718,7 +2023,8 @@ attributes:
     inlined: true
   astigmatism_target:
     name: astigmatism_target
-    description: Target astigmatism in Angstroms
+    description: Target astigmatism, typically specified in Angstroms. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: astigmatism_target
@@ -1729,7 +2035,8 @@ attributes:
     inlined: true
   coma:
     name: coma
-    description: Coma aberration in nanometers
+    description: Coma aberration, typically specified in nanometers. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: coma
@@ -1740,10 +2047,179 @@ attributes:
     inlined: true
   stage_tilt:
     name: stage_tilt
-    description: Stage tilt angle in degrees
+    description: Fixed stage tilt angle for a single-orientation acquisition, typically
+      specified in degrees. Data providers may specify alternative units by including
+      the unit in the QuantityValue.
+    comments:
+    - For a tilt series, use tilt_angle_min, tilt_angle_max, and tilt_angle_increment
+      rather than this slot.
     from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: stage_tilt
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: QuantityValue
+    inlined: true
+  tilting_scheme:
+    name: tilting_scheme
+    description: Tilt scheme used during tomographic data collection
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    alias: tilting_scheme
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: TiltingSchemeEnum
+  tilt_angle_min:
+    name: tilt_angle_min
+    description: Lowest (most negative) tilt angle in the tilt series, typically specified
+      in degrees. Data providers may specify alternative units by including the unit
+      in the QuantityValue.
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_imaging.tilt_angle_min
+    - mmCIF:_em_tomography.axis1_min_angle
+    rank: 1000
+    alias: tilt_angle_min
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: QuantityValue
+    inlined: true
+  tilt_angle_max:
+    name: tilt_angle_max
+    description: Highest (most positive) tilt angle in the tilt series, typically
+      specified in degrees. Data providers may specify alternative units by including
+      the unit in the QuantityValue.
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_imaging.tilt_angle_max
+    - mmCIF:_em_tomography.axis1_max_angle
+    rank: 1000
+    alias: tilt_angle_max
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: QuantityValue
+    inlined: true
+  tilt_angle_increment:
+    name: tilt_angle_increment
+    description: Tilt angle increment between successive tilt steps. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_tomography.axis1_angle_increment
+    rank: 1000
+    alias: tilt_angle_increment
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: QuantityValue
+    inlined: true
+  tilt_axis_angle:
+    name: tilt_axis_angle
+    description: In-plane azimuth of the tilt axis relative to the detector x-axis,
+      typically specified in degrees. Required for tilt series alignment and reconstruction.
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    alias: tilt_axis_angle
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: QuantityValue
+    inlined: true
+  number_of_tilt_images:
+    name: number_of_tilt_images
+    description: Number of images collected in the tilt series
+    comments:
+    - For a symmetric series this is usually (tilt_angle_max - tilt_angle_min) / tilt_angle_increment
+      + 1, but record the actual count since tilts are often skipped or discarded.
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    alias: number_of_tilt_images
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: QuantityValue
+    inlined: true
+  dose_per_tilt:
+    name: dose_per_tilt
+    description: Electron dose applied at each tilt step, typically specified in e-/Angstrom^2.
+      Data providers may specify alternative units by including the unit in the QuantityValue.
+    comments:
+    - Use total_dose for the accumulated dose across the whole tilt series.
+    from_schema: http://w3id.org/lambda/
+    close_mappings:
+    - mmCIF:_em_image_recording.avg_electron_dose_per_image
+    rank: 1000
+    alias: dose_per_tilt
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: QuantityValue
+    inlined: true
+  dual_tilt_axis_rotation:
+    name: dual_tilt_axis_rotation
+    description: Rotation between the two tilt axes in a dual-axis tomography acquisition,
+      typically specified in degrees. Omit for the far more common single-axis case.
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_tomography.dual_tilt_axis_rotation
+    rank: 1000
+    alias: dual_tilt_axis_rotation
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: QuantityValue
+    inlined: true
+  fiducial_size:
+    name: fiducial_size
+    description: Size of fiducial markers used for tomographic alignment. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    alias: fiducial_size
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: QuantityValue
+    inlined: true
+  rotation_rate:
+    name: rotation_rate
+    description: Continuous rotation rate during data collection (e.g., for MicroED).
+      Data providers may specify alternative units by including the unit in the QuantityValue.
+    comments:
+    - 'For the extent of a continuous-rotation sweep, use the rotation-method slots
+      shared with the diffraction techniques: start_angle, sweep_start, sweep_end,
+      total_rotation, and oscillation_angle.'
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    alias: rotation_rate
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: QuantityValue
+    inlined: true
+  camera_length:
+    name: camera_length
+    description: Camera length for electron diffraction (e.g., MicroED). Data providers
+      may specify alternative units by including the unit in the QuantityValue.
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    alias: camera_length
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: QuantityValue
+    inlined: true
+  frames_per_second:
+    name: frames_per_second
+    description: Frame acquisition rate. Data providers may specify alternative units
+      by including the unit in the QuantityValue.
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    alias: frames_per_second
     owner: ExperimentRun
     domain_of:
     - ExperimentRun
@@ -2057,20 +2533,6 @@ attributes:
     - ExperimentRun
     range: QuantityValue
     inlined: true
-  beamline:
-    name: beamline
-    description: Beamline identifier (e.g., FMX, AMX, 12.3.1)
-    from_schema: http://w3id.org/lambda/
-    exact_mappings:
-    - nsls2:Beamline
-    - mmCIF:_diffrn_source.pdbx_synchrotron_beamline
-    - ispyb:BLSession.beamLineName
-    rank: 1000
-    alias: beamline
-    owner: ExperimentRun
-    domain_of:
-    - ExperimentRun
-    range: string
   transmission:
     name: transmission
     description: X-ray beam transmission as a percentage (0-100). Data providers may

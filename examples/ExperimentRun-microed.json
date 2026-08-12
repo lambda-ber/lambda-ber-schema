@@ -1,0 +1,35 @@
+{
+  "id": "lambdaber:exp_microed_lysozyme_001",
+  "title": "MicroED data collection from lysozyme nanocrystals",
+  "description": "Micro-electron diffraction data collection for atomic structure determination",
+  "experiment_code": "PNNL-MICROED-LYS-2024-001",
+  "technique": "microed",
+  "experiment_date": "2024-07-10",
+  "operator_id": "microed_specialist_001",
+  "tilting_scheme": "continuous",
+  "rotation_rate": {
+    "unit": "degrees per second",
+    "numeric_value": 0.3
+  },
+  "camera_length": {
+    "unit": "mm",
+    "numeric_value": 920.0
+  },
+  "oscillation_angle": {
+    "unit": "degrees",
+    "numeric_value": 0.6
+  },
+  "sweep_start": {
+    "unit": "degrees",
+    "numeric_value": -35.0
+  },
+  "sweep_end": {
+    "unit": "degrees",
+    "numeric_value": 35.0
+  },
+  "total_rotation": {
+    "unit": "degrees",
+    "numeric_value": 70.0
+  },
+  "@type": "ExperimentRun"
+}

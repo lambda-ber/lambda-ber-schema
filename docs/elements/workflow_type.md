@@ -59,6 +59,7 @@ Alias: workflow_type
 | ---  | ---  |
 | self | lambda:workflow_type |
 | native | lambda:workflow_type |
+| related | IHMCIF:_ihm_modeling_protocol_details.step_method |
 
 
 
@@ -70,6 +71,8 @@ Alias: workflow_type
 name: workflow_type
 description: Type of processing workflow
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_modeling_protocol_details.step_method
 rank: 1000
 alias: workflow_type
 owner: WorkflowRun

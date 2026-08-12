@@ -158,6 +158,7 @@ URI: [lambda:RefinementParameters](http://w3id.org/lambda/RefinementParameters)
 | ---  | ---  |
 | self | lambda:RefinementParameters |
 | native | lambda:RefinementParameters |
+| related | IHMCIF:_ihm_model_representation, IHMCIF:_ihm_model_representation_details, IHMCIF:_ihm_model_list, IHMCIF:_ihm_ensemble_info |
 
 
 
@@ -175,6 +176,11 @@ URI: [lambda:RefinementParameters](http://w3id.org/lambda/RefinementParameters)
 name: RefinementParameters
 description: Parameters specific to 3D refinement workflows
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_model_representation
+- IHMCIF:_ihm_model_representation_details
+- IHMCIF:_ihm_model_list
+- IHMCIF:_ihm_ensemble_info
 is_a: AttributeGroup
 attributes:
   symmetry:
@@ -266,6 +272,11 @@ attributes:
 name: RefinementParameters
 description: Parameters specific to 3D refinement workflows
 from_schema: http://w3id.org/lambda/
+related_mappings:
+- IHMCIF:_ihm_model_representation
+- IHMCIF:_ihm_model_representation_details
+- IHMCIF:_ihm_model_list
+- IHMCIF:_ihm_ensemble_info
 is_a: AttributeGroup
 attributes:
   symmetry:
