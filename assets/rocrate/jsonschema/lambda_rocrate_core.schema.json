@@ -1506,7 +1506,7 @@
                     "type": "array"
                 },
                 "author": {
-                    "description": "People responsible for the dataset, by ORCID where known. Note that `lambda-ber-schema` has no `Person` class, so this projects to nothing today - see `PersonEntity`.",
+                    "description": "People responsible for the dataset, by ORCID where known. Projects onto `Person` plus a person association; see `PersonEntity` for why the role travels on the association rather than on the person.",
                     "items": {
                         "$ref": "#/$defs/EntityReference"
                     },
@@ -3444,8 +3444,11 @@
                     "type": "array"
                 },
                 "prov:qualifiedAssociation": {
-                    "$ref": "#/$defs/Association",
-                    "description": "Who carried out an activity and under which plan. Qualified rather than a bare `prov:wasAssociatedWith` precisely so the plan can travel with the agent."
+                    "description": "Who carried out an activity and under which plan. Qualified rather than a bare `prov:wasAssociatedWith` precisely so the plan can travel with the agent.\nMultivalued, because PROV does not make this functional and real activities have more than one responsible party: a collection session has an operator *and* a local contact, and a processing run may be attributed to both a person and the policy they ran under. Forcing a single association would silently discard whichever agent the builder happened to write second.",
+                    "items": {
+                        "$ref": "#/$defs/Association"
+                    },
+                    "type": "array"
                 },
                 "prov:startedAtTime": {
                     "description": "When an activity began.",
@@ -4679,15 +4682,14 @@
                     ]
                 },
                 "prov:qualifiedAssociation": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/Association"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "Who carried out an activity and under which plan. Qualified rather than a bare `prov:wasAssociatedWith` precisely so the plan can travel with the agent."
+                    "description": "Who carried out an activity and under which plan. Qualified rather than a bare `prov:wasAssociatedWith` precisely so the plan can travel with the agent.\nMultivalued, because PROV does not make this functional and real activities have more than one responsible party: a collection session has an operator *and* a local contact, and a processing run may be attributed to both a person and the policy they ran under. Forcing a single association would silently discard whichever agent the builder happened to write second.",
+                    "items": {
+                        "$ref": "#/$defs/Association"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "prov:startedAtTime": {
                     "description": "When an activity began.",
@@ -8002,7 +8004,7 @@
                     ]
                 },
                 "full_name": {
-                    "description": "Full display name of the person, as they write it",
+                    "description": "Full formal name of the person, as they write it in publications",
                     "type": [
                         "string",
                         "null"
@@ -12697,15 +12699,14 @@
                     ]
                 },
                 "prov:qualifiedAssociation": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/Association"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "Who carried out an activity and under which plan. Qualified rather than a bare `prov:wasAssociatedWith` precisely so the plan can travel with the agent."
+                    "description": "Who carried out an activity and under which plan. Qualified rather than a bare `prov:wasAssociatedWith` precisely so the plan can travel with the agent.\nMultivalued, because PROV does not make this functional and real activities have more than one responsible party: a collection session has an operator *and* a local contact, and a processing run may be attributed to both a person and the policy they ran under. Forcing a single association would silently discard whichever agent the builder happened to write second.",
+                    "items": {
+                        "$ref": "#/$defs/Association"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "prov:startedAtTime": {
                     "description": "When an activity began.",

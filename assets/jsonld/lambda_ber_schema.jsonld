@@ -5907,8 +5907,15 @@
     },
     {
       "name": "person__full_name",
-      "description": "Full display name of the person, as they write it",
+      "description": "Full formal name of the person, as they write it in publications",
+      "comments": [
+        "Overlaps the inherited `title`, deliberately but not redundantly. `title` is the display label every NamedThing carries and is what a listing shows (\"Clyde Smith\"); `full_name` is the formal name a citation needs (\"Clyde A. Smith\"). They are equal often enough that a consumer reading only one is usually fine, so record `title` whenever `full_name` is known - a Person with a formal name and no display label is awkward for every UI that treats NamedThing uniformly.",
+        "Where the two would be identical, carrying only `title` is correct and `full_name` adds nothing."
+      ],
       "from_schema": "http://w3id.org/lambda/",
+      "close_mappings": [
+        "http://w3id.org/lambda/title"
+      ],
       "slot_uri": "http://w3id.org/lambda/full_name",
       "alias": "full_name",
       "owner": "Person",
@@ -17718,7 +17725,14 @@
         },
         {
           "name": "full_name",
-          "description": "Full display name of the person, as they write it",
+          "description": "Full formal name of the person, as they write it in publications",
+          "comments": [
+            "Overlaps the inherited `title`, deliberately but not redundantly. `title` is the display label every NamedThing carries and is what a listing shows (\"Clyde Smith\"); `full_name` is the formal name a citation needs (\"Clyde A. Smith\"). They are equal often enough that a consumer reading only one is usually fine, so record `title` whenever `full_name` is known - a Person with a formal name and no display label is awkward for every UI that treats NamedThing uniformly.",
+            "Where the two would be identical, carrying only `title` is correct and `full_name` adds nothing."
+          ],
+          "close_mappings": [
+            "lambda:title"
+          ],
           "range": "string",
           "@type": "SlotDefinition"
         },
@@ -25689,9 +25703,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda_ber_schema.yaml",
-  "source_file_date": "2026-08-12T15:38:41",
-  "source_file_size": 213506,
-  "generation_date": "2026-08-12T15:39:38",
+  "source_file_date": "2026-08-12T16:09:46",
+  "source_file_size": 214279,
+  "generation_date": "2026-08-12T16:12:56",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda_ber_schema.context.jsonld",

@@ -5529,7 +5529,7 @@
     {
       "name": "author",
       "definition_uri": "http://w3id.org/lambda/rocrate/author",
-      "description": "People responsible for the dataset, by ORCID where known. Note that `lambda-ber-schema` has no `Person` class, so this projects to nothing today - see `PersonEntity`.",
+      "description": "People responsible for the dataset, by ORCID where known. Projects onto `Person` plus a person association; see `PersonEntity` for why the role travels on the association rather than on the person.",
       "from_schema": "http://w3id.org/lambda/rocrate/core",
       "mappings": [
         "http://schema.org/author"
@@ -5773,12 +5773,12 @@
       "from_schema": "http://w3id.org/lambda/rocrate/core",
       "deprecated_element_has_exact_replacement": "schema:encodingFormat",
       "mappings": [
-        "http://w3id.org/lambda/mimeType"
+        "http://w3id.org/lambda/rocrate/mimeType"
       ],
       "exact_mappings": [
         "http://schema.org/encodingFormat"
       ],
-      "slot_uri": "http://w3id.org/lambda/mimeType",
+      "slot_uri": "http://w3id.org/lambda/rocrate/mimeType",
       "alias": "mimeType",
       "owner": "CrateFile",
       "domain_of": [
@@ -6521,13 +6521,13 @@
       "description": "The facility, as a reference to a `DefinedTerm` entity or a bare code.",
       "from_schema": "http://w3id.org/lambda/rocrate/core",
       "mappings": [
-        "http://w3id.org/lambda/facility"
+        "http://w3id.org/lambda/rocrate/facility"
       ],
       "close_mappings": [
         "http://w3id.org/lambda/facility_name",
         "https://lambda-ber.github.io/lambda-ber-schema/profile/saxs/0.4.0/terms/facility"
       ],
-      "slot_uri": "http://w3id.org/lambda/facility",
+      "slot_uri": "http://w3id.org/lambda/rocrate/facility",
       "owner": "CrateRoot",
       "domain_of": [
         "CrateRoot"
@@ -6582,13 +6582,13 @@
       "description": "Root-level shorthand for the instrument that produced the data, e.g. `BL12-1`. Introduced by the SSRL 0.2 crates and kept because a search index wants it on the root without resolving the instrument entity.",
       "from_schema": "http://w3id.org/lambda/rocrate/core",
       "mappings": [
-        "http://w3id.org/lambda/instrumentName"
+        "http://w3id.org/lambda/rocrate/instrumentName"
       ],
       "close_mappings": [
         "http://w3id.org/lambda/instrument_code",
         "http://w3id.org/lambda/beamline_id"
       ],
-      "slot_uri": "http://w3id.org/lambda/instrumentName",
+      "slot_uri": "http://w3id.org/lambda/rocrate/instrumentName",
       "alias": "instrumentName",
       "owner": "CrateRoot",
       "domain_of": [
@@ -6757,12 +6757,12 @@
       "description": "When the data was collected, on the root, for search.",
       "from_schema": "http://w3id.org/lambda/rocrate/core",
       "mappings": [
-        "http://w3id.org/lambda/collectionDate"
+        "http://w3id.org/lambda/rocrate/collectionDate"
       ],
       "close_mappings": [
         "http://w3id.org/lambda/experiment_date"
       ],
-      "slot_uri": "http://w3id.org/lambda/collectionDate",
+      "slot_uri": "http://w3id.org/lambda/rocrate/collectionDate",
       "alias": "collectionDate",
       "owner": "CrateRoot",
       "domain_of": [
@@ -7147,9 +7147,9 @@
       "description": "Sequence(s) of the specimen, where short enough to travel in a manifest.",
       "from_schema": "http://w3id.org/lambda/rocrate/core",
       "mappings": [
-        "http://w3id.org/lambda/sequence"
+        "http://w3id.org/lambda/rocrate/sequence"
       ],
-      "slot_uri": "http://w3id.org/lambda/sequence",
+      "slot_uri": "http://w3id.org/lambda/rocrate/sequence",
       "owner": "SampleEntity",
       "domain_of": [
         "SampleEntity"
@@ -7199,9 +7199,9 @@
       "description": "The acquisition or processing parameter block as published by the facility, verbatim. Kept opaque on purpose: it is the un-projected source record, and the typed slots on `ExperimentRun` are what a consumer should read.",
       "from_schema": "http://w3id.org/lambda/rocrate/core",
       "mappings": [
-        "http://w3id.org/lambda/runParameters"
+        "http://w3id.org/lambda/rocrate/runParameters"
       ],
-      "slot_uri": "http://w3id.org/lambda/runParameters",
+      "slot_uri": "http://w3id.org/lambda/rocrate/runParameters",
       "alias": "runParameters",
       "owner": "WorkflowRunAction",
       "domain_of": [
@@ -7433,9 +7433,9 @@
       "description": "Whether the raw payload travels with this crate or is only referenced.",
       "from_schema": "http://w3id.org/lambda/rocrate/core",
       "mappings": [
-        "http://w3id.org/lambda/rawIncluded"
+        "http://w3id.org/lambda/rocrate/rawIncluded"
       ],
-      "slot_uri": "http://w3id.org/lambda/rawIncluded",
+      "slot_uri": "http://w3id.org/lambda/rocrate/rawIncluded",
       "alias": "rawIncluded",
       "owner": "CrateDatasetPart",
       "domain_of": [
@@ -7450,9 +7450,9 @@
       "description": "Whether a zero-length file is expected here rather than a build failure.",
       "from_schema": "http://w3id.org/lambda/rocrate/core",
       "mappings": [
-        "http://w3id.org/lambda/allowEmpty"
+        "http://w3id.org/lambda/rocrate/allowEmpty"
       ],
-      "slot_uri": "http://w3id.org/lambda/allowEmpty",
+      "slot_uri": "http://w3id.org/lambda/rocrate/allowEmpty",
       "alias": "allowEmpty",
       "owner": "CrateFile",
       "domain_of": [
@@ -7628,7 +7628,7 @@
     {
       "name": "qualified_association",
       "definition_uri": "http://w3id.org/lambda/rocrate/qualified_association",
-      "description": "Who carried out an activity and under which plan. Qualified rather than a bare `prov:wasAssociatedWith` precisely so the plan can travel with the agent.",
+      "description": "Who carried out an activity and under which plan. Qualified rather than a bare `prov:wasAssociatedWith` precisely so the plan can travel with the agent.\nMultivalued, because PROV does not make this functional and real activities have more than one responsible party: a collection session has an operator *and* a local contact, and a processing run may be attributed to both a person and the policy they ran under. Forcing a single association would silently discard whichever agent the builder happened to write second.",
       "from_schema": "http://w3id.org/lambda/rocrate/core",
       "mappings": [
         "http://www.w3.org/ns/prov#qualifiedAssociation"
@@ -7642,7 +7642,9 @@
         "Designation"
       ],
       "range": "Association",
+      "multivalued": true,
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -8126,12 +8128,12 @@
       "from_schema": "http://w3id.org/lambda/rocrate/core",
       "deprecated_element_has_exact_replacement": "lambda:protein_name",
       "mappings": [
-        "http://w3id.org/lambda/proteinName"
+        "http://w3id.org/lambda/rocrate/proteinName"
       ],
       "exact_mappings": [
         "http://w3id.org/lambda/protein_name"
       ],
-      "slot_uri": "http://w3id.org/lambda/proteinName",
+      "slot_uri": "http://w3id.org/lambda/rocrate/proteinName",
       "alias": "proteinName",
       "owner": "SampleEntity",
       "domain_of": [
@@ -8147,9 +8149,9 @@
       "description": "UniProt accession. No counterpart in the main schema; a standing change request.",
       "from_schema": "http://w3id.org/lambda/rocrate/core",
       "mappings": [
-        "http://w3id.org/lambda/uniprotId"
+        "http://w3id.org/lambda/rocrate/uniprotId"
       ],
-      "slot_uri": "http://w3id.org/lambda/uniprotId",
+      "slot_uri": "http://w3id.org/lambda/rocrate/uniprotId",
       "alias": "uniprotId",
       "owner": "SampleEntity",
       "domain_of": [
@@ -8165,12 +8167,12 @@
       "description": "PDB accession of a related structure.",
       "from_schema": "http://w3id.org/lambda/rocrate/core",
       "mappings": [
-        "http://w3id.org/lambda/pdbCode"
+        "http://w3id.org/lambda/rocrate/pdbCode"
       ],
       "close_mappings": [
         "http://w3id.org/lambda/pdb_id"
       ],
-      "slot_uri": "http://w3id.org/lambda/pdbCode",
+      "slot_uri": "http://w3id.org/lambda/rocrate/pdbCode",
       "alias": "pdbCode",
       "owner": "RelatedWork",
       "domain_of": [
@@ -8186,9 +8188,9 @@
       "description": "Enzyme family or class, as published by SSRL. No schema counterpart.",
       "from_schema": "http://w3id.org/lambda/rocrate/core",
       "mappings": [
-        "http://w3id.org/lambda/enzymeClass"
+        "http://w3id.org/lambda/rocrate/enzymeClass"
       ],
-      "slot_uri": "http://w3id.org/lambda/enzymeClass",
+      "slot_uri": "http://w3id.org/lambda/rocrate/enzymeClass",
       "alias": "enzymeClass",
       "owner": "SampleEntity",
       "domain_of": [
@@ -8204,12 +8206,12 @@
       "description": "Resolution in Angstrom. Retained from the SSRL 0.2 vocabulary; new crates SHOULD carry resolution in a technique extension's result summary with its estimator.",
       "from_schema": "http://w3id.org/lambda/rocrate/core",
       "mappings": [
-        "http://w3id.org/lambda/resolutionAngstrom"
+        "http://w3id.org/lambda/rocrate/resolutionAngstrom"
       ],
       "close_mappings": [
         "http://w3id.org/lambda/resolution"
       ],
-      "slot_uri": "http://w3id.org/lambda/resolutionAngstrom",
+      "slot_uri": "http://w3id.org/lambda/rocrate/resolutionAngstrom",
       "alias": "resolutionAngstrom",
       "owner": "RelatedWork",
       "domain_of": [
@@ -8228,12 +8230,12 @@
       "from_schema": "http://w3id.org/lambda/rocrate/core",
       "deprecated_element_has_exact_replacement": "lambda:sample_code",
       "mappings": [
-        "http://w3id.org/lambda/sampleName"
+        "http://w3id.org/lambda/rocrate/sampleName"
       ],
       "exact_mappings": [
         "http://w3id.org/lambda/sample_code"
       ],
-      "slot_uri": "http://w3id.org/lambda/sampleName",
+      "slot_uri": "http://w3id.org/lambda/rocrate/sampleName",
       "alias": "sampleName",
       "owner": "SampleEntity",
       "domain_of": [
@@ -8250,12 +8252,12 @@
       "deprecated": "Use `lambda:molecular_composition` in the fuller record this crate points at.",
       "from_schema": "http://w3id.org/lambda/rocrate/core",
       "mappings": [
-        "http://w3id.org/lambda/sampleComposition"
+        "http://w3id.org/lambda/rocrate/sampleComposition"
       ],
       "close_mappings": [
         "http://w3id.org/lambda/molecular_composition"
       ],
-      "slot_uri": "http://w3id.org/lambda/sampleComposition",
+      "slot_uri": "http://w3id.org/lambda/rocrate/sampleComposition",
       "alias": "sampleComposition",
       "owner": "SampleEntity",
       "domain_of": [
@@ -8271,12 +8273,12 @@
       "deprecated": "A `lambda:RawUnit`'s local identifier. Use the part entity's `@id`, with `identifier` for facility-local accessions.",
       "from_schema": "http://w3id.org/lambda/rocrate/core",
       "mappings": [
-        "http://w3id.org/lambda/rawUnitId"
+        "http://w3id.org/lambda/rocrate/rawUnitId"
       ],
       "related_mappings": [
         "http://schema.org/identifier"
       ],
-      "slot_uri": "http://w3id.org/lambda/rawUnitId",
+      "slot_uri": "http://w3id.org/lambda/rocrate/rawUnitId",
       "alias": "rawUnitId",
       "owner": "CrateDatasetPart",
       "domain_of": [
@@ -8292,12 +8294,12 @@
       "deprecated": "A `lambda:DerivedProduct`'s local identifier. Use the part entity's `@id`.",
       "from_schema": "http://w3id.org/lambda/rocrate/core",
       "mappings": [
-        "http://w3id.org/lambda/productId"
+        "http://w3id.org/lambda/rocrate/productId"
       ],
       "related_mappings": [
         "http://schema.org/identifier"
       ],
-      "slot_uri": "http://w3id.org/lambda/productId",
+      "slot_uri": "http://w3id.org/lambda/rocrate/productId",
       "alias": "productId",
       "owner": "CrateDatasetPart",
       "domain_of": [
@@ -8313,12 +8315,12 @@
       "deprecated": "Use the `CreateAction`'s `@id`, with `lambda:workflow_code` for the human-facing code.",
       "from_schema": "http://w3id.org/lambda/rocrate/core",
       "mappings": [
-        "http://w3id.org/lambda/workflowRunId"
+        "http://w3id.org/lambda/rocrate/workflowRunId"
       ],
       "related_mappings": [
         "http://w3id.org/lambda/workflow_code"
       ],
-      "slot_uri": "http://w3id.org/lambda/workflowRunId",
+      "slot_uri": "http://w3id.org/lambda/rocrate/workflowRunId",
       "alias": "workflowRunId",
       "owner": "WorkflowRunAction",
       "domain_of": [
@@ -8335,12 +8337,12 @@
       "from_schema": "http://w3id.org/lambda/rocrate/core",
       "deprecated_element_has_exact_replacement": "lambda:runParameters",
       "mappings": [
-        "http://w3id.org/lambda/runDefinition"
+        "http://w3id.org/lambda/rocrate/runDefinition"
       ],
       "exact_mappings": [
         "http://w3id.org/lambda/runParameters"
       ],
-      "slot_uri": "http://w3id.org/lambda/runDefinition",
+      "slot_uri": "http://w3id.org/lambda/rocrate/runDefinition",
       "alias": "runDefinition",
       "owner": "WorkflowRunAction",
       "domain_of": [
@@ -8979,8 +8981,15 @@
     },
     {
       "name": "person__full_name",
-      "description": "Full display name of the person, as they write it",
+      "description": "Full formal name of the person, as they write it in publications",
+      "comments": [
+        "Overlaps the inherited `title`, deliberately but not redundantly. `title` is the display label every NamedThing carries and is what a listing shows (\"Clyde Smith\"); `full_name` is the formal name a citation needs (\"Clyde A. Smith\"). They are equal often enough that a consumer reading only one is usually fine, so record `title` whenever `full_name` is known - a Person with a formal name and no display label is awkward for every UI that treats NamedThing uniformly.",
+        "Where the two would be identical, carrying only `title` is correct and `full_name` adds nothing."
+      ],
       "from_schema": "http://w3id.org/lambda/",
+      "close_mappings": [
+        "http://w3id.org/lambda/title"
+      ],
       "slot_uri": "http://w3id.org/lambda/full_name",
       "alias": "full_name",
       "owner": "Person",
@@ -21117,7 +21126,7 @@
     {
       "name": "Designation_qualified_association",
       "definition_uri": "http://w3id.org/lambda/rocrate/qualified_association",
-      "description": "Who carried out an activity and under which plan. Qualified rather than a bare `prov:wasAssociatedWith` precisely so the plan can travel with the agent.",
+      "description": "Who carried out an activity and under which plan. Qualified rather than a bare `prov:wasAssociatedWith` precisely so the plan can travel with the agent.\nMultivalued, because PROV does not make this functional and real activities have more than one responsible party: a collection session has an operator *and* a local contact, and a processing run may be attributed to both a person and the policy they ran under. Forcing a single association would silently discard whichever agent the builder happened to write second.",
       "from_schema": "http://w3id.org/lambda/rocrate/core",
       "mappings": [
         "http://www.w3.org/ns/prov#qualifiedAssociation"
@@ -21134,7 +21143,9 @@
       "usage_slot_name": "qualified_association",
       "range": "Association",
       "required": true,
+      "multivalued": true,
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -22447,7 +22458,14 @@
         },
         {
           "name": "full_name",
-          "description": "Full display name of the person, as they write it",
+          "description": "Full formal name of the person, as they write it in publications",
+          "comments": [
+            "Overlaps the inherited `title`, deliberately but not redundantly. `title` is the display label every NamedThing carries and is what a listing shows (\"Clyde Smith\"); `full_name` is the formal name a citation needs (\"Clyde A. Smith\"). They are equal often enough that a consumer reading only one is usually fine, so record `title` whenever `full_name` is known - a Person with a formal name and no display label is awkward for every UI that treats NamedThing uniformly.",
+            "Where the two would be identical, carrying only `title` is correct and `full_name` adds nothing."
+          ],
+          "close_mappings": [
+            "lambda:title"
+          ],
           "range": "string",
           "@type": "SlotDefinition"
         },
@@ -30418,9 +30436,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda_rocrate_core.yaml",
-  "source_file_date": "2026-08-12T15:39:15",
-  "source_file_size": 67711,
-  "generation_date": "2026-08-12T15:41:58",
+  "source_file_date": "2026-08-12T16:09:25",
+  "source_file_size": 68208,
+  "generation_date": "2026-08-12T16:15:07",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/rocrate/jsonld/lambda_rocrate_core.context.jsonld",

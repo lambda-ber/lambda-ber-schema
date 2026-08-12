@@ -25,10 +25,6 @@ lambdaber:dataset_authorship a lambdaber:Dataset ;
         lambdaber:org_ssrl,
         lambdaber:org_utoronto ;
     lambdaber:person_organization_associations [ a lambdaber:PersonOrganizationAssociation ;
-            lambdaber:organization_id lambdaber:org_utoronto ;
-            lambdaber:person_id lambdaber:person_emma_master ;
-            lambdaber:role "primary_affiliation" ],
-        [ a lambdaber:PersonOrganizationAssociation ;
             lambdaber:organization_id lambdaber:org_ssrl ;
             lambdaber:person_id lambdaber:person_clyde_smith ;
             lambdaber:role "primary_affiliation" ;
@@ -36,6 +32,10 @@ lambdaber:dataset_authorship a lambdaber:Dataset ;
         [ a lambdaber:PersonOrganizationAssociation ;
             lambdaber:organization_id lambdaber:org_pnnl ;
             lambdaber:person_id lambdaber:person_garry_buchko ;
+            lambdaber:role "primary_affiliation" ],
+        [ a lambdaber:PersonOrganizationAssociation ;
+            lambdaber:organization_id lambdaber:org_utoronto ;
+            lambdaber:person_id lambdaber:person_emma_master ;
             lambdaber:role "primary_affiliation" ] ;
     lambdaber:persons lambdaber:person_clyde_smith,
         lambdaber:person_emma_master,
@@ -46,6 +46,10 @@ lambdaber:dataset_authorship a lambdaber:Dataset ;
             lambdaber:experiment_id lambdaber:exp_xa_x16 ;
             lambdaber:study_id lambdaber:study_expansin ] ;
     lambdaber:study_organization_associations [ a lambdaber:StudyOrganizationAssociation ;
+            lambdaber:organization_id lambdaber:org_pnnl ;
+            lambdaber:role "collaborating_institution" ;
+            lambdaber:study_id lambdaber:study_expansin ],
+        [ a lambdaber:StudyOrganizationAssociation ;
             lambdaber:award_number "DE-SC0000000" ;
             lambdaber:organization_id lambdaber:org_doe_ber ;
             lambdaber:role "funder" ;
@@ -53,24 +57,20 @@ lambdaber:dataset_authorship a lambdaber:Dataset ;
         [ a lambdaber:StudyOrganizationAssociation ;
             lambdaber:organization_id lambdaber:org_ssrl ;
             lambdaber:role "operating_institution" ;
-            lambdaber:study_id lambdaber:study_expansin ],
-        [ a lambdaber:StudyOrganizationAssociation ;
-            lambdaber:organization_id lambdaber:org_pnnl ;
-            lambdaber:role "collaborating_institution" ;
             lambdaber:study_id lambdaber:study_expansin ] ;
     lambdaber:study_person_associations [ a lambdaber:StudyPersonAssociation ;
             lambdaber:person_id lambdaber:person_unnamed_curator ;
             lambdaber:role "data_curator" ;
             lambdaber:study_id lambdaber:study_expansin ],
         [ a lambdaber:StudyPersonAssociation ;
-            lambdaber:author_position 3 ;
-            lambdaber:person_id lambdaber:person_clyde_smith ;
-            lambdaber:role "author" ;
-            lambdaber:study_id lambdaber:study_expansin ],
-        [ a lambdaber:StudyPersonAssociation ;
             lambdaber:author_position 2 ;
             lambdaber:person_id lambdaber:person_garry_buchko ;
             lambdaber:role "co_investigator" ;
+            lambdaber:study_id lambdaber:study_expansin ],
+        [ a lambdaber:StudyPersonAssociation ;
+            lambdaber:author_position 3 ;
+            lambdaber:person_id lambdaber:person_clyde_smith ;
+            lambdaber:role "author" ;
             lambdaber:study_id lambdaber:study_expansin ],
         [ a lambdaber:StudyPersonAssociation ;
             lambdaber:author_position 1 ;
@@ -134,12 +134,11 @@ lambdaber:person_emma_master a lambdaber:Person ;
     lambdaber:affiliation "University of Toronto" ;
     lambdaber:affiliation_ror "https://ror.org/03dbr7087"^^xsd:anyURI ;
     lambdaber:family_name "Master" ;
-    lambdaber:full_name "Emma Master" ;
     lambdaber:given_name "Emma" ;
     lambdaber:orcid "https://orcid.org/0000-0002-6837-9817"^^xsd:anyURI .
 
 lambdaber:person_garry_buchko a lambdaber:Person ;
-    dcterms:title "Garry W. Buchko" ;
+    dcterms:title "Garry Buchko" ;
     lambdaber:affiliation "Pacific Northwest National Laboratory" ;
     lambdaber:affiliation_ror "https://ror.org/05h992307"^^xsd:anyURI ;
     lambdaber:full_name "Garry W. Buchko" ;
@@ -174,7 +173,7 @@ lambdaber:org_ssrl a lambdaber:Organization ;
     lambdaber:parent_organization_id lambdaber:org_slac .
 
 lambdaber:person_clyde_smith a lambdaber:Person ;
-    dcterms:title "Clyde A. Smith" ;
+    dcterms:title "Clyde Smith" ;
     lambdaber:affiliation "Stanford Synchrotron Radiation Lightsource, SLAC National Accelerator Laboratory" ;
     lambdaber:affiliation_ror "https://ror.org/05gzmn429"^^xsd:anyURI ;
     lambdaber:full_name "Clyde A. Smith" ;

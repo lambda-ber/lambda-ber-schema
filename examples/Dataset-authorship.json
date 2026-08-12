@@ -18,7 +18,6 @@
       "id": "lambdaber:person_emma_master",
       "title": "Emma Master",
       "orcid": "https://orcid.org/0000-0002-6837-9817",
-      "full_name": "Emma Master",
       "given_name": "Emma",
       "family_name": "Master",
       "affiliation": "University of Toronto",
@@ -26,7 +25,7 @@
     },
     {
       "id": "lambdaber:person_garry_buchko",
-      "title": "Garry W. Buchko",
+      "title": "Garry Buchko",
       "orcid": "https://orcid.org/0000-0002-3639-1061",
       "full_name": "Garry W. Buchko",
       "affiliation": "Pacific Northwest National Laboratory",
@@ -34,7 +33,7 @@
     },
     {
       "id": "lambdaber:person_clyde_smith",
-      "title": "Clyde A. Smith",
+      "title": "Clyde Smith",
       "orcid": "https://orcid.org/0000-0002-1885-1511",
       "full_name": "Clyde A. Smith",
       "affiliation": "Stanford Synchrotron Radiation Lightsource, SLAC National Accelerator Laboratory",

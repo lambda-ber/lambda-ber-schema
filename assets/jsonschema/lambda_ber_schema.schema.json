@@ -6416,7 +6416,7 @@
                     ]
                 },
                 "full_name": {
-                    "description": "Full display name of the person, as they write it",
+                    "description": "Full formal name of the person, as they write it in publications",
                     "type": [
                         "string",
                         "null"

@@ -1,0 +1,5 @@
+@base <http://example.org/> .
+@prefix lambdaber: <http://w3id.org/lambda/> .
+
+lambdaber:person_identifier_only a lambdaber:Person .
+
