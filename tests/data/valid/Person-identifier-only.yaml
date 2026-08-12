@@ -1,0 +1,8 @@
+# Pins the documented intent that Person requires nothing beyond the inherited id.
+#
+# A deposition made by a facility account with no resolvable individual behind it is a real case,
+# and so is a source that publishes an ORCID and nothing else. Requiring a name would make the
+# schema unable to represent either, and would push builders into inventing one - which is worse
+# than an honest gap. If this file ever fails validation, a required slot has been added to Person
+# and that decision should be made deliberately rather than discovered here.
+id: lambdaber:person_identifier_only

@@ -364,8 +364,21 @@ classes:
           - "Persistent identifier for the individual; the preferred way to identify a person"
           - "Example: https://orcid.org/0000-0002-1885-1511"
       full_name:
-        description: "Full display name of the person, as they write it"
+        description: "Full formal name of the person, as they write it in publications"
         range: string
+        close_mappings:
+          - lambda:title
+        comments:
+          - >-
+            Overlaps the inherited `title`, deliberately but not redundantly. `title` is the display
+            label every NamedThing carries and is what a listing shows ("Clyde Smith"); `full_name`
+            is the formal name a citation needs ("Clyde A. Smith"). They are equal often enough that
+            a consumer reading only one is usually fine, so record `title` whenever `full_name` is
+            known - a Person with a formal name and no display label is awkward for every UI that
+            treats NamedThing uniformly.
+          - >-
+            Where the two would be identical, carrying only `title` is correct and `full_name` adds
+            nothing.
       given_name:
         description: "Given (personal) name, where the name has been parsed into parts"
         range: string
