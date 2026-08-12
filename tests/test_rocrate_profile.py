@@ -35,7 +35,12 @@ DOCUMENT_CLASS = "ROCrateMetadataDocument"
 
 @pytest.fixture(scope="session")
 def json_schema() -> dict:
-    """The generated JSON Schema, built once - generation parses the whole imported schema."""
+    """The generated JSON Schema, built once.
+
+    ``scope="session"`` is load-bearing, not tidiness: generation parses and traverses the whole of
+    ``lambda_ber_schema`` through the import, which takes seconds. Dropping the scope would rebuild
+    it once per test and turn a two-second suite into a multi-minute one.
+    """
     from linkml.generators.jsonschemagen import JsonSchemaGenerator
 
     return json.loads(
@@ -91,8 +96,11 @@ DISPATCH: list[tuple[str, str]] = [
     ("DefinedTerm", "DefinedTermEntity"),
     ("PropertyValue", "PropertyValueEntity"),
     ("File", "CrateFile"),
-    # Not an RO-Crate term - see FILE_TYPE_RULE below. Dispatched so the real defect is reported
-    # instead of a bare "unclassifiable entity".
+    # Not an RO-Crate term; the graph rules reject it. Dispatched anyway so that such an entity is
+    # still shape-checked as a file and the report names the real defect, rather than degenerating
+    # to "unclassifiable entity". An entity that is both wrongly typed and malformed therefore
+    # yields both findings - which is the useful outcome, since fixing only the type token would
+    # leave the other defect to be discovered on the next round.
     ("DataFile", "CrateFile"),
     ("Dataset", "CrateDatasetPart"),
     ("CreativeWork", "RelatedWork"),
@@ -111,6 +119,11 @@ def classify(entity: dict) -> str | None:
     or, for a detached crate, an absolute URI ending in it *and* carrying ``about``. A nested
     crate's descriptor lives at a path like ``saxs/ro-crate-metadata.json`` and is a plain ``File``
     of the enclosing crate, not the enclosing crate's own descriptor.
+
+    All three branches are exercised by fixtures: ``minimal-manifest.json`` for the ordinary case,
+    ``detached-crate.json`` for the absolute-URI case, and ``nested-pointers.json`` for a nested
+    crate's descriptor appearing as a File of its parent. The ``about`` requirement is what keeps
+    the last of those from being mistaken for this crate's own descriptor.
     """
     at_id = str(entity.get("@id", ""))
     if at_id == "ro-crate-metadata.json" or (
@@ -176,7 +189,7 @@ def compact_keys(entity: dict) -> dict:
     """
     out = {}
     for key, value in entity.items():
-        bare = next((key[len(p):] for p in ("lambda:", "lambdarc:", "lambdax:")
+        bare = next((key[len(p):] for p in PROFILE_PREFIXES + SCHEMA_ORG_PREFIXES
                      if key.startswith(p)), None)
         out[bare if (bare and bare not in entity) else key] = value
     return out
@@ -293,7 +306,7 @@ def test_generated_artifact_agrees(path):
     if not GENERATED_SCHEMA.exists():
         pytest.skip("run `make gen-rocrate` first")
     schema = json.loads(GENERATED_SCHEMA.read_text())
-    assert list(schema["properties"]) == ["@context", "@graph"], (
+    assert set(schema["properties"]) == {"@context", "@graph"}, (
         "the generated schema is not rooted at the crate document - "
         "was gen-json-schema --top-class dropped?"
     )
@@ -306,7 +319,11 @@ def test_generated_artifact_agrees(path):
 # --------------------------------------------------------------------------------------
 
 
-PROFILE_PREFIXES = ("lambda:", "lambdarc:")
+PROFILE_PREFIXES = ("lambda:", "lambdarc:", "lambdax:")
+
+#: RO-Crate's context resolves the bare schema.org terms, so crates rarely write these - but
+#: nothing forbids it, and a crate writing "sdo:license" must not read as having omitted a licence.
+SCHEMA_ORG_PREFIXES = ("sdo:", "schema:")
 
 
 def _is_array(prop_schema: dict) -> bool:
@@ -314,7 +331,20 @@ def _is_array(prop_schema: dict) -> bool:
     return declared == "array" or (isinstance(declared, list) and "array" in declared)
 
 
-def normalize(entity: dict, class_schema: dict) -> dict:
+def _class_schema(prop_schema: dict, defs: dict) -> dict:
+    """Resolve a property schema to the class it describes, through $ref and anyOf wrapping."""
+    if not isinstance(prop_schema, dict):
+        return {}
+    if "$ref" in prop_schema:
+        return defs.get(prop_schema["$ref"].rsplit("/", 1)[-1], {})
+    for alternative in prop_schema.get("anyOf", []):
+        resolved = _class_schema(alternative, defs)
+        if resolved.get("properties"):
+            return resolved
+    return prop_schema if prop_schema.get("properties") else {}
+
+
+def normalize(entity: dict, class_schema: dict, defs: dict | None = None) -> dict:
     """Put an entity into the form the profile defines validation against.
 
     Two normalizations, both of them things a JSON-LD processor does and neither of them a
@@ -331,22 +361,32 @@ def normalize(entity: dict, class_schema: dict) -> dict:
     this stays correct as the profile evolves.
     """
     properties = class_schema.get("properties", {})
+    defs = defs if defs is not None else {}
 
     compacted: dict = {}
     for key, value in entity.items():
         bare = next(
-            (key[len(p):] for p in PROFILE_PREFIXES if key.startswith(p)),
+            (key[len(p):] for p in PROFILE_PREFIXES + SCHEMA_ORG_PREFIXES if key.startswith(p)),
             None,
         )
         target = bare if (bare in properties and bare not in entity) else key
         compacted[target] = value
 
-    expanded = {
-        key: [value]
-        if (_is_array(properties.get(key, {})) and not isinstance(value, list))
-        else value
-        for key, value in compacted.items()
-    }
+    expanded: dict = {}
+    for key, value in compacted.items():
+        prop = properties.get(key, {})
+        if _is_array(prop) and not isinstance(value, list):
+            value = [value]
+        # recurse into nested value objects: a PROV association buried in a designation is as
+        # entitled to JSON-LD's shorthand as a top-level property is, and nothing about the rule
+        # says it stops at depth one
+        child = _class_schema(prop.get("items", prop) if _is_array(prop) else prop, defs)
+        if child.get("properties"):
+            if isinstance(value, list):
+                value = [normalize(v, child, defs) if isinstance(v, dict) else v for v in value]
+            elif isinstance(value, dict):
+                value = normalize(value, child, defs)
+        expanded[key] = value
     return _expand_types(expanded)
 
 
@@ -380,7 +420,8 @@ def entity_violations(json_schema: dict, crate: dict) -> list[str]:
             continue
         class_schema = json_schema["$defs"][class_name]
         for error in _errors(
-            _validator(json_schema, class_name), normalize(entity, class_schema)
+            _validator(json_schema, class_name),
+            normalize(entity, class_schema, json_schema["$defs"]),
         ):
             problems.append(f"{entity.get('@id')!r} as {class_name}: {error}")
     return problems

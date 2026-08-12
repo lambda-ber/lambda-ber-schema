@@ -1,0 +1,66 @@
+{
+  "@context": [
+    "https://w3id.org/ro/crate/1.2/context",
+    {
+      "lambda": "http://w3id.org/lambda/",
+      "lambdarc": "http://w3id.org/lambda/rocrate/"
+    }
+  ],
+  "@graph": [
+    {
+      "@id": "https://data.als.lbl.gov/crates/lyz-2026-08/ro-crate-metadata.json",
+      "@type": "CreativeWork",
+      "conformsTo": [{ "@id": "https://w3id.org/ro/crate/1.2" }],
+      "about": { "@id": "https://data.als.lbl.gov/crates/lyz-2026-08/" }
+    },
+    {
+      "@id": "https://data.als.lbl.gov/crates/lyz-2026-08/",
+      "@type": ["Dataset", "lambda:Dataset"],
+      "name": "Lysozyme reference collection (detached crate)",
+      "description": "A detached crate: the manifest is served from a facility endpoint and the payload never travels with it, so the root and the descriptor are both absolute URIs rather than './' and 'ro-crate-metadata.json'. Every part is referenced where it already lives in facility storage. This is the shape a facility publishes when it wants to be indexed without moving bytes.",
+      "datePublished": "2026-08-12",
+      "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" },
+      "conditionsOfAccess": "open",
+      "conformsTo": [
+        { "@id": "https://w3id.org/ro/crate/1.2" },
+        { "@id": "https://w3id.org/lambda/profile/core/0.3.0" }
+      ],
+      "url": "https://data.als.lbl.gov/crates/lyz-2026-08/",
+      "facility_name": "ALS",
+      "technique": "xray_crystallography",
+      "instrumentName": "8.3.1",
+      "sample_code": "LYZ-REF-01",
+      "packageTier": "manifest",
+      "sufficiency": {
+        "s1Findable": true,
+        "s2CoreComplete": true,
+        "s2AcquisitionComplete": false
+      },
+      "missing": [
+        {
+          "field": "raw_frame_series",
+          "reason": "not-deposited",
+          "blocks": "S2-acquisition",
+          "note": "Frames remain on beamline storage; this crate indexes them without moving them."
+        }
+      ],
+      "hasPart": [
+        { "@id": "https://data.als.lbl.gov/store/lyz-2026-08/lyz_ref_scaled.mtz" }
+      ]
+    },
+    {
+      "@id": "https://data.als.lbl.gov/store/lyz-2026-08/lyz_ref_scaled.mtz",
+      "@type": "File",
+      "name": "lyz_ref_scaled.mtz",
+      "description": "Scaled merged reflection data, addressed where it already lives.",
+      "encodingFormat": "application/x-mtz",
+      "contentSize": "2104880",
+      "sha256": "3c7e9a1b5d2f4068a9c3e5f7b1d8460259ae73c1f0b48d6259ae73c1f0b48d62",
+      "file_format": "mtz",
+      "data_type": "processed_data",
+      "processing_level": 2,
+      "storage_uri": "https://data.als.lbl.gov/store/lyz-2026-08/lyz_ref_scaled.mtz",
+      "isDesignated": true
+    }
+  ]
+}
