@@ -8,7 +8,9 @@ ELEMENTSDIR := ./docs/elements
 PYDANTIC := src/lambda_ber_schema/pydantic.py
 
 all: gen-project gendoc test-examples gen-pydantic gen-sssom gen-rocrate
-test: gen-project test-examples test-rocrate
+# gen-rocrate before test-rocrate: test_generated_artifact_agrees skips when the artifact is
+# absent, so without this a tree without generated output would report a pass it did not earn.
+test: gen-project gen-rocrate test-examples test-rocrate
 
 gen-project:
 	$(RUN) gen-project --config-file config.yaml $(SCHEMA) -d assets
