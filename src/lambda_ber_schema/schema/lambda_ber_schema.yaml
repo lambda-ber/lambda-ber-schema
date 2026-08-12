@@ -62,6 +62,17 @@ description: |
     biological questions. For example, a study might investigate "Heat stress response in Arabidopsis"
     or "Structure of the human ribosome under different conditions."
 
+  **People and organizations**
+  - [Persons](Person.md): People involved in producing, processing or publishing the data - principal
+    investigators, beamline operators, analysts, curators. Identified by ORCID where available. Which
+    work a person is attached to, and in what capacity, is carried by the person association tables,
+    so one record serves every role a person holds across the dataset.
+
+  - [Organizations](Organization.md): Institutions, facilities and funding bodies, identified by ROR.
+    The structured home for organizational identity that would otherwise live as free text on
+    instruments, on people, and in FacilityEnum's annotations - so a parent institution is stated
+    once rather than restated by everything that refers to it.
+
   ### Association Tables
 
   Many-to-many relationships are represented via explicit association tables, which can carry
@@ -75,6 +86,11 @@ description: |
   - **WorkflowExperimentAssociation**: Links source experiments to workflows
   - **WorkflowInputAssociation**: Links input files to workflows
   - **WorkflowOutputAssociation**: Links output files to workflows
+  - **StudyPersonAssociation**: Links people to studies (with role, author position, corresponding flag)
+  - **ExperimentPersonAssociation**: Links people to experiment runs (with role: operator, local contact)
+  - **WorkflowPersonAssociation**: Links people to workflow runs (with role: analyst, reviewer)
+  - **StudyOrganizationAssociation**: Links organizations to studies (with role and award number)
+  - **PersonOrganizationAssociation**: Links people to organizations (with role and affiliation dates)
 
   This relational design enables:
   - **Sample reuse**: The same sample can be used in multiple studies and experiments
@@ -193,6 +209,16 @@ classes:
         range: Study
         multivalued: true
         inlined_as_list: true
+      persons:
+        description: "All people referenced anywhere in this dataset"
+        range: Person
+        multivalued: true
+        inlined_as_list: true
+      organizations:
+        description: "All organizations referenced anywhere in this dataset"
+        range: Organization
+        multivalued: true
+        inlined_as_list: true
       instruments:
         description: "All instruments used across studies"
         range: Instrument
@@ -275,6 +301,31 @@ classes:
         range: WorkflowOutputAssociation
         multivalued: true
         inlined_as_list: true
+      study_person_associations:
+        description: "Links between studies and people (M:N with role) - where authorship lives"
+        range: StudyPersonAssociation
+        multivalued: true
+        inlined_as_list: true
+      experiment_person_associations:
+        description: "Links between experiment runs and people (M:N with role)"
+        range: ExperimentPersonAssociation
+        multivalued: true
+        inlined_as_list: true
+      workflow_person_associations:
+        description: "Links between workflow runs and people (M:N with role)"
+        range: WorkflowPersonAssociation
+        multivalued: true
+        inlined_as_list: true
+      study_organization_associations:
+        description: "Links between studies and organizations (M:N with role, award number)"
+        range: StudyOrganizationAssociation
+        multivalued: true
+        inlined_as_list: true
+      person_organization_associations:
+        description: "Links between people and organizations (M:N with role and dates)"
+        range: PersonOrganizationAssociation
+        multivalued: true
+        inlined_as_list: true
 
   Study:
     is_a: NamedThing
@@ -290,6 +341,125 @@ classes:
         range: string
         multivalued: true
       # All entity relationships removed - use association tables in Dataset
+
+  Person:
+    is_a: NamedThing
+    description: >-
+      A person involved in producing, processing or publishing data - a principal investigator,
+      beamline operator, data analyst or curator.
+      In the relational model, Person is lightweight: which study, experiment or workflow a person
+      is attached to, and in what capacity, is carried by the person association tables in Dataset,
+      so one person record serves every role they hold across a dataset.
+    exact_mappings:
+      - prov:Agent
+    attributes:
+      orcid:
+        description: "ORCID identifier for the person"
+        range: uriorcurie
+        pattern: "^https://orcid\\.org/\\d{4}-\\d{4}-\\d{4}-\\d{3}[0-9X]$"
+        comments:
+          - "Persistent identifier for the individual; the preferred way to identify a person"
+          - "Example: https://orcid.org/0000-0002-1885-1511"
+      full_name:
+        description: "Full display name of the person, as they write it"
+        range: string
+      given_name:
+        description: "Given (personal) name, where the name has been parsed into parts"
+        range: string
+      family_name:
+        description: "Family name, where the name has been parsed into parts"
+        range: string
+      email:
+        description: "Contact email address"
+        range: string
+      affiliation:
+        description: "Institution the person is affiliated with"
+        range: string
+      affiliation_ror:
+        description: "Research Organization Registry (ROR) identifier for the affiliated institution"
+        range: uriorcurie
+        pattern: "^https://ror\\.org/\\w+$"
+        comments:
+          - >-
+            Free-text convenience, retained for sources that publish only an affiliation string.
+            Where the institution can be resolved, prefer an Organization record linked by
+            PersonOrganizationAssociation, which can carry more than one affiliation and date them.
+      person_local_id:
+        description: "Facility-local user or badge identifier, where one exists"
+        range: string
+    comments:
+      - >-
+        No slot is required beyond the inherited id. An ORCID alone is a complete identification of
+        a person, and a source that publishes only a name is equally common - so neither can be
+        insisted upon. Where a name is genuinely unavailable, record that fact rather than
+        substituting the identifier for it.
+
+  Organization:
+    is_a: NamedThing
+    description: >-
+      An institution, facility, laboratory or funding body - a national laboratory, a university, a
+      light source, an agency that funded the work.
+
+      This is the structured home for organizational identity that the schema otherwise carries as
+      unvalidated free text in three places: the annotations on FacilityEnum permissible values
+      (`parent_organization`, `parent_ror`, `location`, `country`, `doe_office`, `website`,
+      `wikidata_id`), Instrument's `facility_name` / `facility_ror` pair, and Person's `affiliation` /
+      `affiliation_ror` pair. FacilityEnum remains the controlled vocabulary that says *which*
+      facility something is; Organization is the record that says what that facility is, where, and
+      who runs it - and lets a parent institution be stated once rather than restated by every
+      entity that refers to it.
+    exact_mappings:
+      - prov:Organization
+    attributes:
+      ror:
+        description: "Research Organization Registry (ROR) identifier for the organization"
+        range: uriorcurie
+        pattern: "^https://ror\\.org/\\w+$"
+        comments:
+          - "The preferred way to identify an organization"
+          - "Every FacilityEnum permissible value already carries its ROR as the term's meaning"
+          - "Example: https://ror.org/02jbv0t02 (Lawrence Berkeley National Laboratory)"
+      acronym:
+        description: "Short name or acronym, e.g. 'LBNL', 'SSRL', 'PNNL'"
+        range: string
+      organization_type:
+        description: "What kind of organization this is"
+        range: OrganizationTypeEnum
+      facility_code:
+        description: >-
+          The FacilityEnum term this organization corresponds to, where it is one of the
+          facilities the schema already names. Ties the record to the search vocabulary.
+        range: FacilityEnum
+      facility_type:
+        description: "For a research facility, the kind of facility it is"
+        range: FacilityTypeEnum
+      parent_organization_id:
+        description: >-
+          The organization this one belongs to - a light source's national laboratory, a
+          department's university. Self-referential, as Sample.parent_sample_id is.
+        range: Organization
+      location:
+        description: "Free-text location, e.g. 'Berkeley, California, USA'"
+        range: string
+      country:
+        description: "Country the organization is located in"
+        range: string
+      website:
+        description: "Organization or facility website"
+        range: uriorcurie
+      wikidata_id:
+        description: "Wikidata entity identifier, where one exists"
+        range: string
+      is_doe_facility:
+        description: "Whether this is a US Department of Energy facility"
+        range: boolean
+      doe_office:
+        description: "Sponsoring DOE office, e.g. 'Office of Science'"
+        range: string
+    comments:
+      - >-
+        As with Person, nothing beyond the inherited id is required: a ROR alone identifies an
+        organization completely, and a source that gives only a name is common.
 
   Sample:
     is_a: NamedThing
@@ -634,6 +804,16 @@ classes:
         comments:
           - "Persistent identifier for the facility organization"
           - "Example: https://ror.org/02jbv0t02 (Lawrence Berkeley National Laboratory)"
+          - >-
+            Retained for sources that publish only a ROR. Where the facility is described as an
+            entity, prefer facility_organization_id, which reaches its parent institution, type
+            and location rather than just its identifier.
+      facility_organization_id:
+        description: >-
+          The Organization that operates this instrument's facility. An instrument sits at exactly
+          one facility, so this is a direct reference rather than an association table - the same
+          shape as Sample.parent_sample_id.
+        range: Organization
       beamline_id:
         description: "Beamline identifier at synchrotron/neutron facility"
         range: string
@@ -1096,6 +1276,11 @@ classes:
       operator_id:
         description: "Identifier or name of the person who performed the experiment data collection (e.g., 'jsmith', 'John Smith', or personnel ID)"
         range: string
+        comments:
+          - >-
+            Free text, and retained for sources that publish only a bare operator string. Where the
+            person can be resolved, prefer a Person record linked by ExperimentPersonAssociation
+            with role 'operator' - that is what carries an ORCID and survives a name change.
       technique:
         description: "Technique used for data collection"
         range: TechniqueEnum
@@ -3126,6 +3311,114 @@ classes:
         description: "Type of output from the workflow"
         range: OutputTypeEnum
 
+  StudyPersonAssociation:
+    description: >-
+      M:N link between Study and Person with role metadata. This is where authorship and
+      responsibility for a body of work live - principal investigator, author, curator.
+    attributes:
+      study_id:
+        description: "Reference to the study"
+        range: Study
+        required: true
+      person_id:
+        description: "Reference to the person"
+        range: Person
+        required: true
+      role:
+        description: "Capacity in which the person is attached to the study"
+        range: PersonRoleEnum
+      author_position:
+        description: >-
+          Position in the author list, where authorship order is meaningful. 1 is first author.
+          Absent when the source does not state an order; do not invent one.
+        range: integer
+      corresponding:
+        description: "Whether this person is a corresponding author for the study"
+        range: boolean
+
+  ExperimentPersonAssociation:
+    description: >-
+      M:N link between ExperimentRun and Person with role metadata - who actually collected the
+      data, and who was the local contact.
+    comments:
+      - "Structured alternative to the free-text ExperimentRun.operator_id"
+    attributes:
+      experiment_id:
+        description: "Reference to the experiment run"
+        range: ExperimentRun
+        required: true
+      person_id:
+        description: "Reference to the person"
+        range: Person
+        required: true
+      role:
+        description: "Capacity in which the person is attached to the experiment run"
+        range: PersonRoleEnum
+
+  WorkflowPersonAssociation:
+    description: >-
+      M:N link between WorkflowRun and Person with role metadata - who ran the processing, and who
+      made the judgement calls it required.
+    attributes:
+      workflow_id:
+        description: "Reference to the workflow run"
+        range: WorkflowRun
+        required: true
+      person_id:
+        description: "Reference to the person"
+        range: Person
+        required: true
+      role:
+        description: "Capacity in which the person is attached to the workflow run"
+        range: PersonRoleEnum
+
+  StudyOrganizationAssociation:
+    description: >-
+      M:N link between Study and Organization with role metadata - the host institution, the
+      collaborating institutions, and who funded the work.
+    attributes:
+      study_id:
+        description: "Reference to the study"
+        range: Study
+        required: true
+      organization_id:
+        description: "Reference to the organization"
+        range: Organization
+        required: true
+      role:
+        description: "Capacity in which the organization is attached to the study"
+        range: OrganizationRoleEnum
+      award_number:
+        description: >-
+          Grant or award number, where the organization is a funder. Distinct from
+          Study.proposal_id, which is the facility's beamtime allocation rather than the funding
+          that paid for the science.
+        range: string
+
+  PersonOrganizationAssociation:
+    description: >-
+      M:N link between Person and Organization with role metadata. An association table rather than
+      a slot on Person because people hold several affiliations at once and move between them, and
+      a dataset's provenance may need to say which affiliation applied at the time.
+    attributes:
+      person_id:
+        description: "Reference to the person"
+        range: Person
+        required: true
+      organization_id:
+        description: "Reference to the organization"
+        range: Organization
+        required: true
+      role:
+        description: "Nature of the person's attachment to the organization"
+        range: OrganizationRoleEnum
+      start_date:
+        description: "Date the affiliation began, where known"
+        range: string
+      end_date:
+        description: "Date the affiliation ended, where known and ended"
+        range: string
+
 enums:
   FacilityEnum:
     description: "Major synchrotron and structural biology research facilities worldwide"
@@ -4629,6 +4922,82 @@ enums:
         description: >-
           Operator Interface - legacy control system used at ALS before EPICS adoption.
           Historical reference for older beamline configurations.
+
+  PersonRoleEnum:
+    description: >-
+      Capacity in which a person is attached to a study, experiment run or workflow run.
+      One vocabulary rather than one per association, because these roles belong to the person's
+      relationship to the work and travel across all three - a principal investigator who also
+      collects the data holds two roles, not two differently-named ones.
+    permissible_values:
+      principal_investigator:
+        description: "Scientifically responsible for the work; the PI on the proposal"
+      co_investigator:
+        description: "Shares scientific responsibility with the principal investigator"
+      author:
+        description: "Credited author of the dataset or its associated publication"
+      operator:
+        description: "Collected the data at the instrument"
+      local_contact:
+        description: "Facility staff member supporting the collection session"
+      analyst:
+        description: "Performed the computational processing or analysis"
+      reviewer:
+        description: "Reviewed or validated the data or its processing"
+      data_curator:
+        description: "Prepared, described or deposited the data"
+      submitter:
+        description: "Submitted the data to a facility, archive or repository"
+      contact:
+        description: "Point of contact for enquiries about the data"
+
+  OrganizationTypeEnum:
+    description: >-
+      Kind of organization. Distinct from FacilityTypeEnum, which says what kind of *facility*
+      something is - the Advanced Light Source is a SYNCHROTRON facility and part of a
+      national_laboratory, and both statements are worth keeping.
+    permissible_values:
+      national_laboratory:
+        description: "National laboratory, e.g. a DOE national lab"
+      university:
+        description: "University or college"
+      research_institute:
+        description: "Independent or institute-level research organization"
+      government_agency:
+        description: "Government department or agency"
+      funding_agency:
+        description: "Body that funds research"
+      company:
+        description: "Commercial organization"
+      hospital:
+        description: "Hospital or clinical research centre"
+      consortium:
+        description: "Collaboration or consortium of member organizations"
+      other:
+        description: "Organization that fits none of the above"
+
+  OrganizationRoleEnum:
+    description: >-
+      Capacity in which an organization is attached to a study, or a person to an organization.
+      One vocabulary rather than one per association, matching PersonRoleEnum: these are roles in a
+      relationship, and the same organization is often attached in more than one way.
+    permissible_values:
+      host_institution:
+        description: "Institution where the work was carried out"
+      operating_institution:
+        description: "Institution that operates the facility used"
+      funder:
+        description: "Funded the work; pair with an award number on the association"
+      collaborating_institution:
+        description: "Contributed to the work without hosting it"
+      depositor:
+        description: "Deposited the data to an archive or repository"
+      primary_affiliation:
+        description: "A person's main institutional affiliation"
+      secondary_affiliation:
+        description: "A further current affiliation held by a person"
+      former_affiliation:
+        description: "An affiliation a person held previously"
 
   SampleRoleEnum:
     description: "Role of a sample in a study"
