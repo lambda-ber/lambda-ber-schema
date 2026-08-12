@@ -164,7 +164,8 @@ and neither changes meaning:
 
 1. **Set expansion.** A single value stands for a one-element set wherever the profile declares a
    set: `"instrument": {"@id": "#x"}` and `"instrument": [{"@id": "#x"}]` are the same. This
-   includes `@type`.
+   includes `@type`, and it applies **at any depth** — a `prov:qualifiedAssociation` nested inside a
+   designation is as entitled to the shorthand as a top-level property.
 2. **Term compaction.** An explicitly prefixed key compacts to the profile's own term:
    `"lambda:protein_name"` and a context-mapped `"protein_name"` are the same IRI. Real crates mix
    the two spellings *within a single entity*, so this is not a theoretical concern.
@@ -403,6 +404,12 @@ inputs, generated a designated output, and was carried out by an agent acting un
 carries conformance weight: an agent acting under a resolvable, versioned `prov:hadPlan` is
 provenance; an unattributed choice is not.
 
+`prov:qualifiedAssociation` is a **set**. PROV does not make it functional, and real activities have
+more than one responsible party — a collection session has an operator and a local contact, a
+processing run may be attributed to both a person and the policy they ran under. A single-valued
+slot would silently drop whichever agent the builder wrote second. As everywhere else, a lone
+association MAY be written unwrapped and a reader expands it (§4.4).
+
 Earlier drafts used flat `designatedEntity` / `producedBy` / `rule` / `mode` / `decidedBy` /
 `decidedAt` slots and a `manual`-implies-decider rule. PROV says all of it better, and the `mode`
 flag disappears entirely: a `prov:Person` and a `prov:SoftwareAgent` are already different things,
@@ -598,7 +605,12 @@ carries the schema's own `snake_case` slot name, so `lambda:file_format` in a cr
   `encodingFormat`, `datePublished`).
 - **`lambdarc:` machinery** uses camelCase, following the SAXS profile's style, and has no schema
   counterpart yet (§16).
-- **deprecated 0.2 spellings** keep the exact spelling SSRL published (§15).
+- **deprecated 0.2 spellings** keep the exact JSON key SSRL published (§15), but sit under
+  `lambdarc:` like all other profile-local terms. The `lambda:` base is reserved for terms that
+  resolve to a schema element; a term that resolves to nothing there would claim a projection it
+  cannot make, and `lambda:rawIncluded` under the schema base is not the same IRI as the
+  `lambda:rawIncluded` an SSRL crate publishes under its own base anyway. The relationship to a
+  schema slot, where one exists, is carried by mappings — which is what mappings are for.
 
 ---
 

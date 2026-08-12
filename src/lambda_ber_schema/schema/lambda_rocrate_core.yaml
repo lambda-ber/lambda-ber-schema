@@ -857,8 +857,9 @@ slots:
     multivalued: true
     inlined_as_list: true
     description: >-
-      People responsible for the dataset, by ORCID where known. Note that `lambda-ber-schema` has
-      no `Person` class, so this projects to nothing today - see `PersonEntity`.
+      People responsible for the dataset, by ORCID where known. Projects onto `Person` plus a person
+      association; see `PersonEntity` for why the role travels on the association rather than on the
+      person.
 
   publisher:
     slot_uri: sdo:publisher
@@ -952,7 +953,7 @@ slots:
 
   mime_type:
     alias: mimeType
-    slot_uri: lambda:mimeType
+    slot_uri: lambdarc:mimeType
     exact_mappings:
       - sdo:encodingFormat
     description: Media type, as published by SSRL alongside `encodingFormat`.
@@ -1239,7 +1240,7 @@ slots:
   # ----- lambda: projecting onto lambda-ber-schema slots -------------------------------
 
   facility:
-    slot_uri: lambda:facility
+    slot_uri: lambdarc:facility
     range: Any
     close_mappings:
       - lambda:facility_name
@@ -1262,7 +1263,7 @@ slots:
 
   instrument_name:
     alias: instrumentName
-    slot_uri: lambda:instrumentName
+    slot_uri: lambdarc:instrumentName
     close_mappings:
       - lambda:instrument_code
       - lambda:beamline_id
@@ -1326,7 +1327,7 @@ slots:
 
   collection_date:
     alias: collectionDate
-    slot_uri: lambda:collectionDate
+    slot_uri: lambdarc:collectionDate
     close_mappings:
       - lambda:experiment_date
     description: When the data was collected, on the root, for search.
@@ -1458,7 +1459,7 @@ slots:
     description: Sample concentration as a quantity object.
 
   sequence:
-    slot_uri: lambda:sequence
+    slot_uri: lambdarc:sequence
     multivalued: true
     description: Sequence(s) of the specimen, where short enough to travel in a manifest.
 
@@ -1479,7 +1480,7 @@ slots:
 
   run_parameters:
     alias: runParameters
-    slot_uri: lambda:runParameters
+    slot_uri: lambdarc:runParameters
     range: Any
     description: >-
       The acquisition or processing parameter block as published by the facility, verbatim. Kept
@@ -1572,13 +1573,13 @@ slots:
 
   raw_included:
     alias: rawIncluded
-    slot_uri: lambda:rawIncluded
+    slot_uri: lambdarc:rawIncluded
     range: boolean
     description: Whether the raw payload travels with this crate or is only referenced.
 
   allow_empty:
     alias: allowEmpty
-    slot_uri: lambda:allowEmpty
+    slot_uri: lambdarc:allowEmpty
     range: boolean
     description: Whether a zero-length file is expected here rather than a build failure.
 
@@ -1666,10 +1667,16 @@ slots:
     alias: "prov:qualifiedAssociation"
     slot_uri: prov:qualifiedAssociation
     range: Association
-    inlined: true
+    multivalued: true
+    inlined_as_list: true
     description: >-
-      Who carried out an activity and under which plan. Qualified rather than a bare `prov:wasAssociatedWith`
-      precisely so the plan can travel with the agent.
+      Who carried out an activity and under which plan. Qualified rather than a bare
+      `prov:wasAssociatedWith` precisely so the plan can travel with the agent.
+
+      Multivalued, because PROV does not make this functional and real activities have more than one
+      responsible party: a collection session has an operator *and* a local contact, and a processing
+      run may be attributed to both a person and the policy they ran under. Forcing a single
+      association would silently discard whichever agent the builder happened to write second.
 
   prov_agent:
     alias: "prov:agent"
@@ -1858,7 +1865,7 @@ slots:
 
   protein_name_camel:
     alias: proteinName
-    slot_uri: lambda:proteinName
+    slot_uri: lambdarc:proteinName
     exact_mappings:
       - lambda:protein_name
     description: Protein name, in the SSRL 0.2 spelling.
@@ -1867,24 +1874,24 @@ slots:
 
   uniprot_id:
     alias: uniprotId
-    slot_uri: lambda:uniprotId
+    slot_uri: lambdarc:uniprotId
     description: UniProt accession. No counterpart in the main schema; a standing change request.
 
   pdb_code:
     alias: pdbCode
-    slot_uri: lambda:pdbCode
+    slot_uri: lambdarc:pdbCode
     close_mappings:
       - lambda:pdb_id
     description: PDB accession of a related structure.
 
   enzyme_class:
     alias: enzymeClass
-    slot_uri: lambda:enzymeClass
+    slot_uri: lambdarc:enzymeClass
     description: Enzyme family or class, as published by SSRL. No schema counterpart.
 
   resolution_angstrom:
     alias: resolutionAngstrom
-    slot_uri: lambda:resolutionAngstrom
+    slot_uri: lambdarc:resolutionAngstrom
     range: Any
     close_mappings:
       - lambda:resolution
@@ -1894,7 +1901,7 @@ slots:
 
   sample_name:
     alias: sampleName
-    slot_uri: lambda:sampleName
+    slot_uri: lambdarc:sampleName
     exact_mappings:
       - lambda:sample_code
     description: Specimen name, in the SSRL 0.2 spelling.
@@ -1903,7 +1910,7 @@ slots:
 
   sample_composition:
     alias: sampleComposition
-    slot_uri: lambda:sampleComposition
+    slot_uri: lambdarc:sampleComposition
     close_mappings:
       - lambda:molecular_composition
     description: Free-text composition summary, in the SSRL 0.2 spelling.
@@ -1911,7 +1918,7 @@ slots:
 
   raw_unit_id:
     alias: rawUnitId
-    slot_uri: lambda:rawUnitId
+    slot_uri: lambdarc:rawUnitId
     related_mappings:
       - sdo:identifier
     description: Facility-local identifier of a raw acquisition unit, in the SSRL 0.2 spelling.
@@ -1921,7 +1928,7 @@ slots:
 
   product_id:
     alias: productId
-    slot_uri: lambda:productId
+    slot_uri: lambdarc:productId
     related_mappings:
       - sdo:identifier
     description: Facility-local identifier of a derived product, in the SSRL 0.2 spelling.
@@ -1930,7 +1937,7 @@ slots:
 
   workflow_run_id:
     alias: workflowRunId
-    slot_uri: lambda:workflowRunId
+    slot_uri: lambdarc:workflowRunId
     related_mappings:
       - lambda:workflow_code
     description: Facility-local identifier of a processing run, in the SSRL 0.2 spelling.
@@ -1938,7 +1945,7 @@ slots:
 
   run_definition:
     alias: runDefinition
-    slot_uri: lambda:runDefinition
+    slot_uri: lambdarc:runDefinition
     exact_mappings:
       - lambda:runParameters
     range: Any
