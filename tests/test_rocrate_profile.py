@@ -185,6 +185,17 @@ def _refs(value) -> list[str]:
     return []
 
 
+#: The JSON keys the graph rules read, per class, spelled as the profile spells them.
+#: Hardcoded strings in a rule that only ever *adds* findings fail silently when they drift: rename
+#: an alias in the schema and the check keeps passing everything, which reads exactly like success.
+#: test_graph_rule_keys_are_profile_terms turns that into a red test instead.
+GRAPH_RULE_TERMS: dict[str, tuple[str, ...]] = {
+    "CrateRoot": ("license", "datePublished", "missing", "hasPart", "conformsTo"),
+    "CrateDatasetPart": ("conformsTo", "schemaRecord", "identifier", "url", "hasPart", "missing"),
+    "MetadataDescriptor": ("about",),
+}
+
+
 def compact_keys(entity: dict) -> dict:
     """Strip a profile prefix from any key whose bare form is not already present.
 
@@ -449,6 +460,23 @@ def test_every_entity_is_classifiable(path):
 # --------------------------------------------------------------------------------------
 # layer 3 - graph rules
 # --------------------------------------------------------------------------------------
+
+
+def test_graph_rule_keys_are_profile_terms(json_schema):
+    """Every key the graph rules read must be a real property of the class they read it from.
+
+    A crate writing a slot's canonical snake_case name rather than its alias is already rejected by
+    the per-entity layer, whose classes are closed - so there is no path by which a wrong spelling
+    quietly passes. What this guards is the opposite direction: the profile renaming a term out from
+    under a rule that would then check nothing and report nothing.
+    """
+    for class_name, keys in GRAPH_RULE_TERMS.items():
+        properties = set(json_schema["$defs"][class_name]["properties"])
+        stranded = sorted(set(keys) - properties)
+        assert not stranded, (
+            f"{class_name}: graph rules read {stranded}, which the profile no longer declares - "
+            "the rule is now inert"
+        )
 
 
 @pytest.mark.parametrize("path", VALID, ids=lambda p: p.name)
