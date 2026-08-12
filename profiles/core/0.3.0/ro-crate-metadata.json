@@ -1,0 +1,188 @@
+{
+  "@context": [
+    "https://w3id.org/ro/crate/1.2/context",
+    {
+      "prof": "http://www.w3.org/ns/dx/prof/",
+      "lambda": "http://w3id.org/lambda/",
+      "lambdarc": "http://w3id.org/lambda/rocrate/"
+    }
+  ],
+  "@graph": [
+    {
+      "@id": "ro-crate-metadata.json",
+      "@type": "CreativeWork",
+      "conformsTo": { "@id": "https://w3id.org/ro/crate/1.2" },
+      "about": { "@id": "https://w3id.org/lambda/profile/core/0.3.0" }
+    },
+    {
+      "@id": "https://w3id.org/lambda/profile/core/0.3.0",
+      "@type": ["Dataset", "Profile"],
+      "name": "LAMBDA Core RO-Crate Profile 0.3.0",
+      "description": "The technique-neutral file-manifest contract for LAMBDA. A conformant crate carries the highest-level details a program needs to decide whether a dataset is worth opening, and points at the fuller record - another RO-Crate, a full lambda-ber-schema document, or a remote registration - rather than restating it. This is a Profile Crate: it describes the profile, and is deliberately not itself a LAMBDA Core data manifest.",
+      "version": "0.3.0",
+      "datePublished": "2026-08-12",
+      "license": { "@id": "https://creativecommons.org/publicdomain/zero/1.0/" },
+      "publisher": { "@id": "https://ror.org/02jbv0t02" },
+      "conformsTo": { "@id": "https://w3id.org/ro/crate/1.2" },
+      "isProfileOf": { "@id": "https://w3id.org/ro/crate/1.2" },
+      "keywords": [
+        "RO-Crate",
+        "LinkML",
+        "structural biology",
+        "file manifest",
+        "data federation"
+      ],
+      "hasPart": [
+        { "@id": "lambda-core-rocrate-profile-v0.3.0.md" },
+        { "@id": "https://github.com/lambda-ber/lambda-ber-schema/blob/main/src/lambda_ber_schema/schema/lambda_rocrate_core.yaml" },
+        { "@id": "https://github.com/lambda-ber/lambda-ber-schema/blob/main/assets/rocrate/jsonschema/lambda_rocrate_core.schema.json" },
+        { "@id": "https://github.com/lambda-ber/lambda-ber-schema/blob/main/assets/rocrate/jsonld/lambda_rocrate_core.context.jsonld" },
+        { "@id": "https://github.com/lambda-ber/lambda-ber-schema/blob/main/assets/rocrate/lambda_rocrate_core.sssom.tsv" },
+        { "@id": "https://github.com/lambda-ber/lambda-ber-schema/blob/main/tests/data/rocrate/valid/minimal-manifest.json" },
+        { "@id": "https://github.com/lambda-ber/lambda-ber-schema/blob/main/tests/test_rocrate_profile.py" }
+      ],
+      "hasResource": [
+        { "@id": "#hasSpecification" },
+        { "@id": "#hasLinkMLSource" },
+        { "@id": "#hasJSONSchema" },
+        { "@id": "#hasContext" },
+        { "@id": "#hasCrosswalk" },
+        { "@id": "#hasExample" },
+        { "@id": "#hasValidation" }
+      ],
+      "comment": "The absolute part URIs resolve once this branch is merged to main; the specification itself travels inside this directory and is resolvable now."
+    },
+
+    {
+      "@id": "https://ror.org/02jbv0t02",
+      "@type": "Organization",
+      "name": "Lawrence Berkeley National Laboratory"
+    },
+
+    {
+      "@id": "#hasSpecification",
+      "@type": "ResourceDescriptor",
+      "name": "Normative specification",
+      "hasRole": { "@id": "http://www.w3.org/ns/dx/prof/role/specification" },
+      "hasArtifact": { "@id": "lambda-core-rocrate-profile-v0.3.0.md" }
+    },
+    {
+      "@id": "#hasLinkMLSource",
+      "@type": "ResourceDescriptor",
+      "name": "LinkML source of truth",
+      "description": "Everything else in this profile crate is generated from this module.",
+      "hasRole": { "@id": "http://www.w3.org/ns/dx/prof/role/schema" },
+      "hasArtifact": { "@id": "https://github.com/lambda-ber/lambda-ber-schema/blob/main/src/lambda_ber_schema/schema/lambda_rocrate_core.yaml" }
+    },
+    {
+      "@id": "#hasJSONSchema",
+      "@type": "ResourceDescriptor",
+      "name": "JSON Schema for crate documents",
+      "hasRole": { "@id": "http://www.w3.org/ns/dx/prof/role/schema" },
+      "hasArtifact": { "@id": "https://github.com/lambda-ber/lambda-ber-schema/blob/main/assets/rocrate/jsonschema/lambda_rocrate_core.schema.json" }
+    },
+    {
+      "@id": "#hasContext",
+      "@type": "ResourceDescriptor",
+      "name": "JSON-LD context for the profile's terms",
+      "hasRole": { "@id": "http://www.w3.org/ns/dx/prof/role/vocabulary" },
+      "hasArtifact": { "@id": "https://github.com/lambda-ber/lambda-ber-schema/blob/main/assets/rocrate/jsonld/lambda_rocrate_core.context.jsonld" }
+    },
+    {
+      "@id": "#hasCrosswalk",
+      "@type": "ResourceDescriptor",
+      "name": "Crate-term to schema-slot crosswalk (SSSOM)",
+      "description": "Includes the deprecated SSRL 0.2 spellings and their replacements, so migration is a lookup rather than prose.",
+      "hasRole": { "@id": "http://www.w3.org/ns/dx/prof/role/mapping" },
+      "hasArtifact": { "@id": "https://github.com/lambda-ber/lambda-ber-schema/blob/main/assets/rocrate/lambda_rocrate_core.sssom.tsv" }
+    },
+    {
+      "@id": "#hasExample",
+      "@type": "ResourceDescriptor",
+      "name": "Minimal conformant crate",
+      "hasRole": { "@id": "http://www.w3.org/ns/dx/prof/role/example" },
+      "hasArtifact": { "@id": "https://github.com/lambda-ber/lambda-ber-schema/blob/main/tests/data/rocrate/valid/minimal-manifest.json" }
+    },
+    {
+      "@id": "#hasValidation",
+      "@type": "ResourceDescriptor",
+      "name": "Conformance rules and fixture suite",
+      "description": "Implements the graph-level rules that JSON Schema cannot state, and pins the known gaps in the published SSRL 0.2 crate.",
+      "hasRole": { "@id": "http://www.w3.org/ns/dx/prof/role/validation" },
+      "hasArtifact": { "@id": "https://github.com/lambda-ber/lambda-ber-schema/blob/main/tests/test_rocrate_profile.py" }
+    },
+
+    {
+      "@id": "lambda-core-rocrate-profile-v0.3.0.md",
+      "@type": "File",
+      "name": "lambda-core-rocrate-profile-v0.3.0.md",
+      "description": "The normative specification: scope, principles, sufficiency tests, namespaces, crate anatomy, the three metadata-pointer mechanisms, declared absence, designation, estimators, search projection, validation, the schema crosswalk, the SSRL 0.2 back-compatibility rules and audit, and change requests to lambda-ber-schema.",
+      "encodingFormat": "text/markdown",
+      "conformsTo": { "@id": "https://www.iana.org/assignments/media-types/text/markdown" }
+    },
+    {
+      "@id": "https://github.com/lambda-ber/lambda-ber-schema/blob/main/src/lambda_ber_schema/schema/lambda_rocrate_core.yaml",
+      "@type": "File",
+      "name": "lambda_rocrate_core.yaml",
+      "description": "LinkML module defining the profile's classes, slots, term mappings and enums. Imports lambda-ber-schema so that controlled vocabularies are referenced rather than restated.",
+      "encodingFormat": "application/yaml",
+      "conformsTo": { "@id": "https://w3id.org/linkml/" }
+    },
+    {
+      "@id": "https://github.com/lambda-ber/lambda-ber-schema/blob/main/assets/rocrate/jsonschema/lambda_rocrate_core.schema.json",
+      "@type": "File",
+      "name": "lambda_rocrate_core.schema.json",
+      "description": "Generated with --top-class ROCrateMetadataDocument, so a real ro-crate-metadata.json validates as-is.",
+      "encodingFormat": "application/schema+json",
+      "conformsTo": { "@id": "https://json-schema.org/draft/2019-09/schema" }
+    },
+    {
+      "@id": "https://github.com/lambda-ber/lambda-ber-schema/blob/main/assets/rocrate/jsonld/lambda_rocrate_core.context.jsonld",
+      "@type": "File",
+      "name": "lambda_rocrate_core.context.jsonld",
+      "encodingFormat": "application/ld+json"
+    },
+    {
+      "@id": "https://github.com/lambda-ber/lambda-ber-schema/blob/main/assets/rocrate/lambda_rocrate_core.sssom.tsv",
+      "@type": "File",
+      "name": "lambda_rocrate_core.sssom.tsv",
+      "encodingFormat": "text/tab-separated-values",
+      "conformsTo": { "@id": "https://w3id.org/sssom/" }
+    },
+    {
+      "@id": "https://github.com/lambda-ber/lambda-ber-schema/blob/main/tests/data/rocrate/valid/minimal-manifest.json",
+      "@type": "File",
+      "name": "minimal-manifest.json",
+      "encodingFormat": "application/ld+json",
+      "conformsTo": { "@id": "https://w3id.org/lambda/profile/core/0.3.0" }
+    },
+    {
+      "@id": "https://github.com/lambda-ber/lambda-ber-schema/blob/main/tests/test_rocrate_profile.py",
+      "@type": "File",
+      "name": "test_rocrate_profile.py",
+      "encodingFormat": "text/x-python"
+    },
+
+    {
+      "@id": "https://w3id.org/ro/crate/1.2",
+      "@type": ["CreativeWork", "Profile"],
+      "name": "RO-Crate 1.2",
+      "version": "1.2"
+    },
+    {
+      "@id": "https://w3id.org/lambda/profile/saxs/0.3.0",
+      "@type": ["CreativeWork", "Profile"],
+      "name": "LAMBDA SAXS RO-Crate Profile 0.3.0",
+      "description": "Technique extension for small-angle X-ray scattering. Gives lambdarc:resultSummary its shape for SAXS and binds SAXS artefacts to the sufficiency tiers.",
+      "version": "0.3.0",
+      "isProfileOf": { "@id": "https://w3id.org/lambda/profile/core/0.3.0" }
+    },
+    {
+      "@id": "https://w3id.org/lambda/profile/core/0.2",
+      "@type": ["CreativeWork", "Profile"],
+      "name": "LAMBDA Core profile 0.2 (SSRL, no written specification)",
+      "description": "The profile URI claimed by SSRL's published crates. Its vocabulary is accepted by 0.3.0 as deprecated aliases; see section 15 of the specification.",
+      "version": "0.2"
+    }
+  ]
+}
