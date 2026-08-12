@@ -169,11 +169,17 @@ def root_of(crate: dict) -> dict | None:
 
 
 def _refs(value) -> list[str]:
-    """Every ``@id`` reachable from a property value, however it is nested."""
+    """Every ``@id`` reachable from a property value, however it is nested.
+
+    An ``@id`` counts whether or not it stands alone. The earlier version only recognised the pure
+    ``{"@id": ...}`` singleton and recursed past anything richer, so an inline reference carrying a
+    label alongside its identifier contributed nothing - and a dangling one would have passed the
+    hasPart check silently. Every fixture happens to use the singleton form, which is why the tests
+    did not notice.
+    """
     if isinstance(value, dict):
-        if "@id" in value and len(value) == 1:
-            return [value["@id"]]
-        return [r for v in value.values() for r in _refs(v)]
+        here = [value["@id"]] if isinstance(value.get("@id"), str) else []
+        return here + [r for key, sub in value.items() if key != "@id" for r in _refs(sub)]
     if isinstance(value, list):
         return [r for v in value for r in _refs(v)]
     return []
@@ -480,6 +486,7 @@ EXPECTED_FAILURE = {
     "bare-technique-terms.json": "ccHalf",
     "dangling-about.json": "not in the graph",
     "dangling-haspart.json": "no entity in the graph",
+    "dangling-inline-ref.json": "promised_but_absent",
 }
 
 
