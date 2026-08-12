@@ -1,0 +1,408 @@
+{
+  "@context": [
+    "https://w3id.org/ro/crate/1.2/context",
+    {
+      "lambda": "http://w3id.org/lambda/",
+      "lambdarc": "http://w3id.org/lambda/rocrate/"
+    }
+  ],
+  "@graph": [
+    {
+      "@id": "ro-crate-metadata.json",
+      "@type": "CreativeWork",
+      "conformsTo": [
+        {
+          "@id": "https://w3id.org/ro/crate/1.2"
+        }
+      ],
+      "about": {
+        "@id": "./"
+      }
+    },
+    {
+      "@id": "./",
+      "@type": [
+        "Dataset",
+        "lambda:Dataset"
+      ],
+      "name": "P. aeruginosa GluRS - SEC-SAXS-MALS single scattering curve (ALS SIBYLS 12.3.1)",
+      "description": "SEC-SAXS with inline MALS of glutamyl-tRNA synthetase from Pseudomonas aeruginosa. The designated curve is the buffer-subtracted average of the resolved elution peak. Reduced here to LAMBDA Core terms: the SAXS quantity register lives in resultSummary and is given shape by the SAXS technique extension, not by core.",
+      "datePublished": "2026-07-22",
+      "license": {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "conditionsOfAccess": "open",
+      "conformsTo": [
+        {
+          "@id": "https://w3id.org/ro/crate/1.2"
+        },
+        {
+          "@id": "https://w3id.org/lambda/profile/core/0.3.0"
+        }
+      ],
+      "identifier": [
+        {
+          "@type": "PropertyValue",
+          "propertyID": "SimpleScattering",
+          "value": "xsbhevph"
+        }
+      ],
+      "publisher": {
+        "@id": "https://ror.org/02jbv0t02"
+      },
+      "citation": [
+        {
+          "@id": "https://www.rcsb.org/structure/8VC5"
+        }
+      ],
+      "facility_name": "ALS",
+      "facility_ror": "https://ror.org/02jbv0t02",
+      "measurementTechnique": {
+        "@id": "#technique"
+      },
+      "technique": "saxs",
+      "instrumentName": "12.3.1",
+      "sample_code": "GluRS",
+      "protein_name": "Glutamyl-tRNA synthetase",
+      "organism": "Pseudomonas aeruginosa",
+      "packageTier": "full",
+      "schemaSet": [
+        {
+          "module": "lambda-ber-schema",
+          "version": "0.1.2"
+        },
+        {
+          "module": "lambda-rocrate-core",
+          "version": "0.3.0"
+        }
+      ],
+      "sufficiency": {
+        "s1Findable": false,
+        "s2CoreComplete": true,
+        "s2AcquisitionComplete": true,
+        "s3Interpretable": false
+      },
+      "designated": [
+        {
+          "@type": [
+            "lambdarc:Designation",
+            "prov:Activity"
+          ],
+          "prov:generated": [
+            {
+              "@id": "processed/A_S_GluRS_1_5.dat"
+            }
+          ],
+          "prov:used": [
+            {
+              "@id": "raw/GluRS_1_frames/"
+            }
+          ],
+          "selection": "SEC peak-region average minus pre-peak buffer region, single subtraction",
+          "species": "primary elution peak",
+          "prov:qualifiedAssociation": {
+            "@type": "prov:Association",
+            "prov:agent": {
+              "@id": "urn:lambdarc:policy:sec-peak-select/0.1",
+              "@type": "prov:SoftwareAgent",
+              "name": "SEC peak selection policy"
+            },
+            "prov:hadPlan": {
+              "@id": "https://w3id.org/lambda/rules/saxs-curve/1.0"
+            }
+          }
+        }
+      ],
+      "derived": [
+        "facility_name",
+        "contentSize"
+      ],
+      "missing": [
+        {
+          "field": "proposal_id",
+          "reason": "not-registered",
+          "blocks": "S1",
+          "note": "Originates in the ALS proposal system; unreachable by this build."
+        },
+        {
+          "field": "author",
+          "reason": "not-registered",
+          "blocks": "S1",
+          "note": "PI not published with the SimpleScattering dataset."
+        },
+        {
+          "field": "dmax",
+          "reason": "not-available",
+          "blocks": "S3",
+          "note": "Source reports no P(r)/Dmax determination. Declared absent rather than guessed."
+        }
+      ],
+      "resultSummary": {
+        "note": "Shape given by the LAMBDA SAXS extension; opaque to core.",
+        "intensityScale": "arbitrary",
+        "collectionMode": "sec_saxs"
+      },
+      "hasPart": [
+        {
+          "@id": "raw/GluRS_1_frames/"
+        },
+        {
+          "@id": "processed/GluRS_1_chromatogram.dat"
+        },
+        {
+          "@id": "processed/A_S_GluRS_1_5.dat"
+        },
+        {
+          "@id": "processed/buffer_GluRS_1.dat"
+        },
+        {
+          "@id": "sidecars/GluRS_saxs_analysis.json"
+        }
+      ]
+    },
+    {
+      "@id": "https://ror.org/02jbv0t02",
+      "@type": "Organization",
+      "name": "Lawrence Berkeley National Laboratory",
+      "ror": "https://ror.org/02jbv0t02",
+      "acronym": "LBNL",
+      "organization_type": "national_laboratory",
+      "country": "USA",
+      "isDoeFacility": true,
+      "doe_office": "Office of Science",
+      "organizationRole": "operating_institution"
+    },
+    {
+      "@id": "#org-als",
+      "@type": "Organization",
+      "name": "Advanced Light Source",
+      "description": "The light source itself, distinct from the laboratory that operates it.",
+      "acronym": "ALS",
+      "facility_code": "ALS",
+      "facility_type": "SYNCHROTRON",
+      "parentOrganization": {
+        "@id": "https://ror.org/02jbv0t02"
+      },
+      "ror": "https://ror.org/02jbv0t02",
+      "location": "Berkeley, California, USA",
+      "country": "USA",
+      "isDoeFacility": true
+    },
+    {
+      "@id": "#technique",
+      "@type": "DefinedTerm",
+      "name": "Small-angle X-ray scattering",
+      "termCode": "saxs",
+      "inDefinedTermSet": "http://w3id.org/lambda/TechniqueEnum"
+    },
+    {
+      "@id": "#sample-glurs",
+      "@type": [
+        "BioChemEntity",
+        "lambda:Sample"
+      ],
+      "name": "Glutamyl-tRNA synthetase, Pseudomonas aeruginosa",
+      "sample_code": "GluRS",
+      "sample_type": "protein",
+      "protein_name": "Glutamyl-tRNA synthetase",
+      "organism": "Pseudomonas aeruginosa",
+      "uniprotId": "Q9XCL6",
+      "expression_system": "E. coli BL21(DE3)",
+      "missing": [
+        {
+          "field": "seguid",
+          "reason": "not-registered",
+          "blocks": "S1"
+        }
+      ]
+    },
+    {
+      "@id": "#instr-sibyls",
+      "@type": [
+        "IndividualProduct",
+        "lambda:Instrument"
+      ],
+      "name": "SIBYLS BL12.3.1 (ALS) - SEC-SAXS with inline MALS",
+      "instrument_code": "ALS-12.3.1-SIBYLS",
+      "beamline_id": "12.3.1",
+      "facility_name": "ALS",
+      "facility_ror": "https://ror.org/02jbv0t02",
+      "model": "Pilatus 3 2M detector"
+    },
+    {
+      "@id": "#exp-secsaxs",
+      "@type": [
+        "Action",
+        "lambda:ExperimentRun"
+      ],
+      "name": "SEC-SAXS injection of GluRS",
+      "description": "660 elution frames with inline MALS and UV280.",
+      "experiment_code": "GluRS_1",
+      "technique": "saxs",
+      "collection_mode": "sec_saxs",
+      "beamline_id": "12.3.1",
+      "raw_data_location": "raw/GluRS_1_frames/",
+      "object": [
+        {
+          "@id": "#sample-glurs"
+        }
+      ],
+      "instrument": [
+        {
+          "@id": "#instr-sibyls"
+        }
+      ],
+      "result": [
+        {
+          "@id": "raw/GluRS_1_frames/"
+        }
+      ],
+      "missing": [
+        {
+          "field": "start_time",
+          "reason": "not-available",
+          "blocks": "S1"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:wf-saxs-proc",
+      "@type": [
+        "CreateAction",
+        "lambda:WorkflowRun"
+      ],
+      "name": "SEC peak/buffer selection, averaging and subtraction",
+      "description": "Produced the designated curve from the elution frame series.",
+      "workflow_code": "sec_saxs_proc_GluRS_1",
+      "workflow_type": "saxs_analysis",
+      "software_name": "CHROMIXS",
+      "object": [
+        {
+          "@id": "raw/GluRS_1_frames/"
+        }
+      ],
+      "result": [
+        {
+          "@id": "processed/A_S_GluRS_1_5.dat"
+        },
+        {
+          "@id": "processed/GluRS_1_chromatogram.dat"
+        },
+        {
+          "@id": "processed/buffer_GluRS_1.dat"
+        }
+      ],
+      "missing": [
+        {
+          "field": "software_version",
+          "reason": "not-available",
+          "blocks": "S3",
+          "note": "Processing software version not published at source."
+        }
+      ],
+      "prov:used": [
+        {
+          "@id": "raw/GluRS_1_frames/"
+        }
+      ],
+      "prov:generated": [
+        {
+          "@id": "processed/A_S_GluRS_1_5.dat"
+        },
+        {
+          "@id": "processed/GluRS_1_chromatogram.dat"
+        },
+        {
+          "@id": "processed/buffer_GluRS_1.dat"
+        }
+      ],
+      "prov:wasInformedBy": [
+        {
+          "@id": "#exp-secsaxs"
+        }
+      ]
+    },
+    {
+      "@id": "raw/GluRS_1_frames/",
+      "@type": "Dataset",
+      "name": "Raw SEC-SAXS frame series - GluRS_1_00001.dat through GluRS_1_00660.dat",
+      "description": "The acquisition. One dataset part with a count, never 660 file entities.",
+      "encodingFormat": "application/zip",
+      "contentSize": "11324620",
+      "partCount": 660,
+      "rawIncluded": true,
+      "sha256": "b4c5d6e7f8091a2b3c4d5e6f708192a3b4c5d6e7f8091a2b3c4d5e6f708192a3",
+      "missing": [
+        {
+          "field": "schemaRecord",
+          "reason": "not-applicable",
+          "note": "The frame series is described by #exp-secsaxs in this same crate; it has no separate metadata record to point at."
+        }
+      ]
+    },
+    {
+      "@id": "processed/A_S_GluRS_1_5.dat",
+      "@type": "File",
+      "name": "A_S_GluRS_1_5.dat",
+      "description": "The designated buffer-subtracted scattering curve.",
+      "encodingFormat": "text/plain",
+      "contentSize": "109568",
+      "sha256": "d1e2f3a4b5c6d7e8f9001122334455667788990011223344556677889900aabb",
+      "file_format": "ascii",
+      "data_type": "scattering",
+      "processing_level": 2,
+      "isDesignated": true
+    },
+    {
+      "@id": "processed/GluRS_1_chromatogram.dat",
+      "@type": "File",
+      "name": "GluRS_1_chromatogram.dat",
+      "description": "Frame-wise integrated intensity with coupled UV280 and MALS - the judgement trace.",
+      "encodingFormat": "text/plain",
+      "contentSize": "42180",
+      "sha256": "e2f3a4b5c6d7e8f9001122334455667788990011223344556677889900aabbcc",
+      "file_format": "ascii",
+      "data_type": "processed_data",
+      "processing_level": 1,
+      "additionalType": "chromatogram"
+    },
+    {
+      "@id": "processed/buffer_GluRS_1.dat",
+      "@type": "File",
+      "name": "buffer_GluRS_1.dat",
+      "description": "Averaged pre-peak SEC buffer region; the subtrahend of the designated curve.",
+      "encodingFormat": "text/plain",
+      "contentSize": "108992",
+      "sha256": "f3a4b5c6d7e8f9001122334455667788990011223344556677889900aabbccdd",
+      "file_format": "ascii",
+      "data_type": "scattering",
+      "processing_level": 1,
+      "additionalType": "subtracted-buffer"
+    },
+    {
+      "@id": "sidecars/GluRS_saxs_analysis.json",
+      "@type": "File",
+      "name": "GluRS_saxs_analysis.json",
+      "description": "Side-car holding the bulk the crate excludes: full I(q) arrays, chromatogram traces, per-frame Rg series.",
+      "encodingFormat": "application/json",
+      "contentSize": "884210",
+      "sha256": "a4b5c6d7e8f9001122334455667788990011223344556677889900aabbccddee",
+      "file_format": "json",
+      "data_type": "metadata",
+      "file_role": "metadata",
+      "prov:wasDerivedFrom": [
+        {
+          "@id": "processed/A_S_GluRS_1_5.dat"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.rcsb.org/structure/8VC5",
+      "@type": "CreativeWork",
+      "name": "Crystal structure of Zn-bound P. aeruginosa GluRS (PDB 8VC5)",
+      "description": "Complementary crystallographic structure; belongs in its own MX crate, linked here as related work.",
+      "url": "https://www.rcsb.org/structure/8VC5",
+      "pdbCode": "8VC5"
+    }
+  ]
+}
