@@ -884,7 +884,7 @@
   
   
   <span class="md-ellipsis">
-    Technical
+    Profiles
     
   </span>
   
@@ -894,6 +894,74 @@
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Profiles
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LAMBDA Core RO-Crate Profile
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Technical
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             Technical
           </label>
@@ -944,10 +1012,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
             
   
   
@@ -960,8 +1028,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             Slides
           </label>
@@ -1192,6 +1260,17 @@ A dataset might represent all data from a specific grant, collaboration, or publ
 - <a href="../Study/">Studies</a>: Lightweight groupings representing focused investigations of specific
   biological questions. For example, a study might investigate "Heat stress response in Arabidopsis"
   or "Structure of the human ribosome under different conditions."</p>
+<p><strong>People and organizations</strong>
+- <a href="../Person/">Persons</a>: People involved in producing, processing or publishing the data - principal
+  investigators, beamline operators, analysts, curators. Identified by ORCID where available. Which
+  work a person is attached to, and in what capacity, is carried by the person association tables,
+  so one record serves every role a person holds across the dataset.</p>
+<ul>
+<li><a href="../Organization/">Organizations</a>: Institutions, facilities and funding bodies, identified by ROR.
+  The structured home for organizational identity that would otherwise live as free text on
+  instruments, on people, and in FacilityEnum's annotations - so a parent institution is stated
+  once rather than restated by everything that refers to it.</li>
+</ul>
 <h3 id="association-tables">Association Tables</h3>
 <p>Many-to-many relationships are represented via explicit association tables, which can carry
 relationship metadata (e.g., the role of a sample in an experiment):</p>
@@ -1204,6 +1283,11 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <li><strong>WorkflowExperimentAssociation</strong>: Links source experiments to workflows</li>
 <li><strong>WorkflowInputAssociation</strong>: Links input files to workflows</li>
 <li><strong>WorkflowOutputAssociation</strong>: Links output files to workflows</li>
+<li><strong>StudyPersonAssociation</strong>: Links people to studies (with role, author position, corresponding flag)</li>
+<li><strong>ExperimentPersonAssociation</strong>: Links people to experiment runs (with role: operator, local contact)</li>
+<li><strong>WorkflowPersonAssociation</strong>: Links people to workflow runs (with role: analyst, reviewer)</li>
+<li><strong>StudyOrganizationAssociation</strong>: Links organizations to studies (with role and award number)</li>
+<li><strong>PersonOrganizationAssociation</strong>: Links people to organizations (with role and affiliation dates)</li>
 </ul>
 <p>This relational design enables:
 - <strong>Sample reuse</strong>: The same sample can be used in multiple studies and experiments

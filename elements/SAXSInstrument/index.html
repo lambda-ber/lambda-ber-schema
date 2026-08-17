@@ -354,13 +354,39 @@
 <input class="md-nav__toggle md-toggle" id="__nav_6" type="checkbox"/>
 <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
 <span class="md-ellipsis">
-    Technical
+    Profiles
     
   </span>
 <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
 <label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+            Profiles
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../profiles/lambda-core-rocrate-profile-v0.3.0/">
+<span class="md-ellipsis">
+    LAMBDA Core RO-Crate Profile
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+<span class="md-ellipsis">
+    Technical
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_7_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_7">
 <span class="md-nav__icon md-icon"></span>
             Technical
           </label>
@@ -377,16 +403,16 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_7" type="checkbox"/>
-<label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+<input class="md-nav__toggle md-toggle" id="__nav_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
 <span class="md-ellipsis">
     Slides
     
   </span>
 <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="false" aria-labelledby="__nav_7_label" class="md-nav" data-md-level="1">
-<label class="md-nav__title" for="__nav_7">
+<nav aria-expanded="false" aria-labelledby="__nav_8_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_8">
 <span class="md-nav__icon md-icon"></span>
             Slides
           </label>
@@ -560,6 +586,17 @@
 
 
 
+      SAXSInstrument : facility_organization_id
+
+
+
+
+
+        SAXSInstrument --&gt; "0..1" Organization : facility_organization_id
+        click Organization href "../Organization/"
+
+
+
       SAXSInstrument : facility_ror
 
       SAXSInstrument : id
@@ -709,6 +746,12 @@
 <td><a href="../facility_ror/">facility_ror</a></td>
 <td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>Research Organization Registry (ROR) identifier for the facility</td>
+<td><a href="../Instrument/">Instrument</a></td>
+</tr>
+<tr>
+<td><a href="../facility_organization_id/">facility_organization_id</a></td>
+<td>0..1 <br/> <a href="../Organization/">Organization</a></td>
+<td>The Organization that operates this instrument's facility</td>
 <td><a href="../Instrument/">Instrument</a></td>
 </tr>
 <tr>
@@ -996,6 +1039,9 @@ attributes:
     comments:
     - Persistent identifier for the facility organization
     - 'Example: https://ror.org/02jbv0t02 (Lawrence Berkeley National Laboratory)'
+    - Retained for sources that publish only a ROR. Where the facility is described
+      as an entity, prefer facility_organization_id, which reaches its parent institution,
+      type and location rather than just its identifier.
     from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: facility_ror
@@ -1004,6 +1050,18 @@ attributes:
     - Instrument
     range: uriorcurie
     pattern: ^https://ror\.org/\w+$
+  facility_organization_id:
+    name: facility_organization_id
+    description: The Organization that operates this instrument's facility. An instrument
+      sits at exactly one facility, so this is a direct reference rather than an association
+      table - the same shape as Sample.parent_sample_id.
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    alias: facility_organization_id
+    owner: SAXSInstrument
+    domain_of:
+    - Instrument
+    range: Organization
   beamline_id:
     name: beamline_id
     description: Beamline identifier at synchrotron/neutron facility

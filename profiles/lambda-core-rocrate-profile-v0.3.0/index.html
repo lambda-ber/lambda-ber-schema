@@ -1,0 +1,2944 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://lambda-ber.github.io/lambda-ber-schema/profiles/lambda-core-rocrate-profile-v0.3.0/">
+      
+      
+        <link rel="prev" href="../../use-cases/06-reanalysis-triggers.html">
+      
+      
+        <link rel="next" href="../../technical/ome-mapping/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>LAMBDA Core RO-Crate Profile - lambda-ber-schema</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="green">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lambda-core-ro-crate-profile" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="lambda-ber-schema" class="md-header__button md-logo" aria-label="lambda-ber-schema" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            lambda-ber-schema
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              LAMBDA Core RO-Crate Profile
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="green"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="green"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/lambda-ber/lambda-ber-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="lambda-ber-schema" class="md-nav__button md-logo" aria-label="lambda-ber-schema" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    lambda-ber-schema
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/lambda-ber/lambda-ber-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../elements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Schema
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Background
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Background
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/nexus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NEXUS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/mmcif/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    mmCIF
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/empiar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    EMPIAR
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/emdb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    EMDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/dials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DIALS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/sasdb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SASDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/rembi-alignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    REMBI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/lambda-ber-schema-data-lakehouse-strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Lakehouse Strategy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/ber-doe-facilities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Integration with BER
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/data-quality-challenges/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Quality Challenges
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Examples
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/simplescattering-glurs-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Scattering GluRS Dataset
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Use Cases
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Use Cases
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../use-cases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../use-cases/01-federated-data-pull.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Federated Data Pull
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../use-cases/02-ask-your-data.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ask Your Data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../use-cases/03-auto-orchestrate-processing.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Auto-Orchestrate Processing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../use-cases/04-cross-source-integration.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cross-Source Integration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../use-cases/05-bundle-deposit-lakehouse.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bundle, Deposit, and Query
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../use-cases/06-reanalysis-triggers.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reanalysis Triggers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Profiles
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Profiles
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    LAMBDA Core RO-Crate Profile
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    LAMBDA Core RO-Crate Profile
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-scope-and-the-unit-of-record" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Scope and the unit of record
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Scope and the unit of record">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-what-a-core-crate-records" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 What a Core crate records
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-the-unit-is-a-manifest-not-a-dataset-copy" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 The unit is a manifest, not a dataset copy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-three-layers-one-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3 Three layers, one graph
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Principles
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-sufficiency-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Sufficiency tests
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-conformance-and-namespaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Conformance and namespaces
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Conformance and namespaces">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-declaring-conformance" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 Declaring conformance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-three-term-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 Three term layers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-why-lambda-is-the-http-form-of-the-schema-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3 Why lambda: is the http form of the schema base
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-json-ld-spelling-freedom" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4 JSON-LD spelling freedom
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-identity-and-granularity" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Identity and granularity
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Identity and granularity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-one-crate-is-one-coherent-body-of-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 One crate is one coherent body of data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-identifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 Identifiers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-bulk-series-are-one-part-not-n-entities" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3 Bulk series are one part, not N entities
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-crate-anatomy" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Crate anatomy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Crate anatomy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-required-entities" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1 Required entities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-optional-contextual-entities" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2 Optional contextual entities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-value-objects-nest" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3 Value objects nest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-required-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.4 Required properties
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-pointing-at-fuller-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Pointing at fuller metadata
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Pointing at fuller metadata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-mechanism-1-nested-crate" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.1 Mechanism 1 — nested crate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-mechanism-2-schema-record" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.2 Mechanism 2 — schema record
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-mechanism-3-remote-registration" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.3 Mechanism 3 — remote registration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-declaring-that-a-part-has-no-pointer" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.4 Declaring that a part has no pointer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-declared-absence" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Declared absence
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Declared absence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-vocabulary-gaps" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.1 Vocabulary gaps
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-designation" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Designation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-estimators-and-admissibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Estimators and admissibility
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-search-projection" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Search projection
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. Validation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-worked-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      13. Worked examples
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-crosswalk-to-lambda-ber-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      14. Crosswalk to lambda-ber-schema
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-the-ssrl-02-vocabulary-accepted-deprecated" class="md-nav__link">
+    <span class="md-ellipsis">
+      15. The SSRL 0.2 vocabulary: accepted, deprecated
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15. The SSRL 0.2 vocabulary: accepted, deprecated">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#151-audit-of-the-published-02-crate" class="md-nav__link">
+    <span class="md-ellipsis">
+      15.1 Audit of the published 0.2 crate
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#152-peter-zwarts-saxs-drafts-reconciliation" class="md-nav__link">
+    <span class="md-ellipsis">
+      15.2 Peter Zwart's SAXS drafts: reconciliation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-change-requests-to-lambda-ber-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      16. Change requests to lambda-ber-schema
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-extension-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      17. Extension points
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Technical
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Technical
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../technical/ome-mapping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mapping to OME
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Slides
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Slides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slides/overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slides/technical-overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Technical Deep Dive
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slides/lambda-ro-crate-vision.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LAMBDA RO-Crate Vision
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-scope-and-the-unit-of-record" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Scope and the unit of record
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Scope and the unit of record">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-what-a-core-crate-records" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 What a Core crate records
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-the-unit-is-a-manifest-not-a-dataset-copy" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 The unit is a manifest, not a dataset copy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-three-layers-one-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3 Three layers, one graph
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Principles
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-sufficiency-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Sufficiency tests
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-conformance-and-namespaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Conformance and namespaces
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Conformance and namespaces">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-declaring-conformance" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 Declaring conformance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-three-term-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 Three term layers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-why-lambda-is-the-http-form-of-the-schema-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3 Why lambda: is the http form of the schema base
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-json-ld-spelling-freedom" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4 JSON-LD spelling freedom
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-identity-and-granularity" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Identity and granularity
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Identity and granularity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-one-crate-is-one-coherent-body-of-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 One crate is one coherent body of data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-identifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 Identifiers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-bulk-series-are-one-part-not-n-entities" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3 Bulk series are one part, not N entities
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-crate-anatomy" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Crate anatomy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Crate anatomy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-required-entities" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1 Required entities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-optional-contextual-entities" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2 Optional contextual entities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-value-objects-nest" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3 Value objects nest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-required-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.4 Required properties
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-pointing-at-fuller-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Pointing at fuller metadata
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Pointing at fuller metadata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-mechanism-1-nested-crate" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.1 Mechanism 1 — nested crate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-mechanism-2-schema-record" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.2 Mechanism 2 — schema record
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-mechanism-3-remote-registration" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.3 Mechanism 3 — remote registration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-declaring-that-a-part-has-no-pointer" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.4 Declaring that a part has no pointer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-declared-absence" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Declared absence
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Declared absence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-vocabulary-gaps" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.1 Vocabulary gaps
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-designation" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Designation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-estimators-and-admissibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Estimators and admissibility
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-search-projection" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Search projection
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. Validation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-worked-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      13. Worked examples
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-crosswalk-to-lambda-ber-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      14. Crosswalk to lambda-ber-schema
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-the-ssrl-02-vocabulary-accepted-deprecated" class="md-nav__link">
+    <span class="md-ellipsis">
+      15. The SSRL 0.2 vocabulary: accepted, deprecated
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15. The SSRL 0.2 vocabulary: accepted, deprecated">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#151-audit-of-the-published-02-crate" class="md-nav__link">
+    <span class="md-ellipsis">
+      15.1 Audit of the published 0.2 crate
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#152-peter-zwarts-saxs-drafts-reconciliation" class="md-nav__link">
+    <span class="md-ellipsis">
+      15.2 Peter Zwart's SAXS drafts: reconciliation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-change-requests-to-lambda-ber-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      16. Change requests to lambda-ber-schema
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-extension-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      17. Extension points
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="lambda-core-ro-crate-profile">LAMBDA Core RO-Crate Profile</h1>
+<p><strong>Version 0.3.0</strong> · Technique-neutral · Normative specification</p>
+<p>Binds <code>lambda-ber-schema</code> (LinkML) to RO-Crate 1.2 as a <strong>file manifest</strong> contract. A crate carries
+the highest-level details a program needs to decide whether a dataset is worth opening, and then
+<em>points</em> at the fuller record instead of restating it. It is a search-and-handoff surface, not a
+second copy of the schema.</p>
+<p>Profile URI: <code>https://w3id.org/lambda/profile/core/0.3.0</code>
+Machine-readable source: <a href="../../../src/lambda_ber_schema/schema/lambda_rocrate_core.yaml"><code>lambda_rocrate_core.yaml</code></a>
+Generated artifacts: <code>assets/rocrate/</code> (JSON Schema, JSON-LD context, OWL, prefix map, SSSOM crosswalk)</p>
+<p>Companion technique extensions: the <strong>LAMBDA SAXS profile v0.3.0</strong> (in this repository) and a
+prospective MX profile. Core defines the framework those cite; they add technique quantities and
+tighten the tiers.</p>
+<hr />
+<h2 id="1-scope-and-the-unit-of-record">1. Scope and the unit of record</h2>
+<h3 id="11-what-a-core-crate-records">1.1 What a Core crate records</h3>
+<p>A crate is the machine-readable record of one coherent body of data — who produced it, at which
+facility, by which technique, on which specimen, and what files it consists of — written so that a
+program which has never seen the facility can decide whether to open it and, if so, where to look
+next. Bulk detail lives elsewhere and is <em>linked</em>.</p>
+<h3 id="12-the-unit-is-a-manifest-not-a-dataset-copy">1.2 The unit is a manifest, not a dataset copy</h3>
+<p>The atomic thing a Core crate describes is a <strong>manifest</strong>: a root data entity plus the parts it
+consists of. A part is either a <strong>file</strong> (addressable, sized, checksummed) or a <strong>dataset part</strong>
+(a body of data described somewhere else). Core's job is to make both addressable and to insist that
+a dataset part say where its description lives (§7).</p>
+<p>This is the boundary rule. If a crate is restating molecular composition, buffer conditions,
+per-frame parameters or a technique's quantity register, it is doing <code>lambda-ber-schema</code>'s job
+badly. Those belong in the linked record.</p>
+<h3 id="13-three-layers-one-graph">1.3 Three layers, one graph</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Layer</th>
+<th style="text-align: left;">What it is</th>
+<th style="text-align: left;">Where it is defined</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>RO-Crate 1.2</strong></td>
+<td style="text-align: left;">packaging, <code>@graph</code>, identity, <code>hasPart</code></td>
+<td style="text-align: left;">the RO-Crate specification</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>LAMBDA Core</strong></td>
+<td style="text-align: left;">manifest contract, pointers, absence, tiers, designation</td>
+<td style="text-align: left;">this document</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Technique extension</strong></td>
+<td style="text-align: left;">technique quantities and their estimators</td>
+<td style="text-align: left;">SAXS / MX profiles</td>
+</tr>
+</tbody>
+</table>
+<p>A Core crate MUST be readable as plain RO-Crate first. Extensions add terms; they never replace
+Core's structure, and they never move a Core term.</p>
+<hr />
+<h2 id="2-principles">2. Principles</h2>
+<ul>
+<li><strong>P1 — the manifest is a search surface.</strong> Everything in a crate earns its place by helping a
+  reader decide whether to open the dataset. Detail that only matters <em>after</em> that decision belongs
+  in the linked record.</li>
+<li><strong>P2 — one crate, one coherent body of data.</strong> A federated search returns one row per crate.</li>
+<li><strong>P3 — every artefact is addressable and verifiable.</strong> A part has a locator, a size and a
+  checksum, or its absence is declared (§8).</li>
+<li><strong>P4 — a dataset part must say where its description lives.</strong> Three mechanisms, at least one
+  required (§7). A part that names data and then says nothing about it is not a manifest entry.</li>
+<li><strong>P5 — absence is declared, never implied.</strong> A gap that is stated is metadata; a gap that is
+  silent is indistinguishable from an assertion that the field does not exist (§8).</li>
+<li><strong>P6 — name the estimator.</strong> A derived number without its definition and admissibility tier is
+  not evidence (§10).</li>
+<li><strong>P7 — one designated result, provenance published.</strong> Where several defensible results exist,
+  say which is <em>the</em> one, under which rule, chosen by whom or what (§9).</li>
+<li><strong>P8 — mirror the schema, do not copy it.</strong> A crate term that has a <code>lambda-ber-schema</code>
+  counterpart carries the schema's own slot name, so the projection is identity rather than a
+  lookup table nobody maintains (§14).</li>
+<li><strong>P9 — fail closed.</strong> A builder that cannot reach a source declares the gap. It does not guess a
+  default that reads as fact — an invented <code>open</code> licence or a fabricated checksum is worse than an
+  admitted hole.</li>
+<li><strong>P10 — small core, composable extensions.</strong> A profile is worth maintaining when it changes
+  validation, identity, graph shape or round-trip behaviour. Not when only a file-naming convention
+  differs.</li>
+</ul>
+<hr />
+<h2 id="3-sufficiency-tests">3. Sufficiency tests</h2>
+<p>A crate is not simply "valid" or "invalid" — it is sufficient for some purposes and not others.
+Four tiers, named so that extensions bind their own artefacts to shared meanings and a search can
+gate filters rather than silently returning crates that cannot answer them.</p>
+<ul>
+<li><strong>S1 — findable.</strong> The generic search fields resolve: identity, facility, technique, instrument,
+  specimen, dates, access terms. Fields originating outside the pipeline (proposal identifiers,
+  embargo status, PI) are declared absent when unreachable, per P9.</li>
+<li><strong>S2-core — retrievable core.</strong> Every present artefact has a locator, a size and a <strong>valid
+  checksum</strong>, and every dataset part resolves a metadata pointer (§7). <strong>Required for conformance.</strong></li>
+<li><strong>S2-acquisition — reprocessable.</strong> The raw acquisition is present and verifiable. Optional, but
+  its absence MUST be <em>declared</em>, never silent. Most public deposits are S2-core without
+  S2-acquisition, and that is a conformant, honest state — not a failure.</li>
+<li><strong>S3 — interpretable.</strong> Every derived quantity names its estimator, defining convention and unit
+  (§10). Largely delivered by technique extensions, since core carries few numbers.</li>
+</ul>
+<p>The root SHOULD publish which tiers it meets in <code>lambdarc:sufficiency</code>. A search MUST require
+<code>s2AcquisitionComplete</code> for any filter whose answer depends on reprocessing.</p>
+<hr />
+<h2 id="4-conformance-and-namespaces">4. Conformance and namespaces</h2>
+<h3 id="41-declaring-conformance">4.1 Declaring conformance</h3>
+<p>The root data entity MUST declare <code>conformsTo</code> naming <strong>both</strong> the RO-Crate version and this
+profile:</p>
+<pre><code class="language-json">&quot;conformsTo&quot;: [
+  {&quot;@id&quot;: &quot;https://w3id.org/ro/crate/1.2&quot;},
+  {&quot;@id&quot;: &quot;https://w3id.org/lambda/profile/core/0.3.0&quot;}
+]
+</code></pre>
+<p>A technique extension appends its own URI; it never replaces the Core URI. The metadata descriptor
+separately declares the RO-Crate version, as base RO-Crate requires.</p>
+<h3 id="42-three-term-layers">4.2 Three term layers</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Prefix</th>
+<th style="text-align: left;">Namespace</th>
+<th style="text-align: left;">Carries</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">(RO-Crate base)</td>
+<td style="text-align: left;"><code>http://schema.org/</code></td>
+<td style="text-align: left;">identity, access, packaging — <code>name</code>, <code>datePublished</code>, <code>license</code>, <code>author</code>, <code>hasPart</code>, <code>encodingFormat</code>, <code>contentSize</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>lambda:</code></td>
+<td style="text-align: left;"><code>http://w3id.org/lambda/</code></td>
+<td style="text-align: left;">terms that project onto a <code>lambda-ber-schema</code> slot</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>lambdarc:</code></td>
+<td style="text-align: left;"><code>http://w3id.org/lambda/rocrate/</code></td>
+<td style="text-align: left;">profile-local machinery with no schema counterpart yet</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>prov:</code></td>
+<td style="text-align: left;"><code>http://www.w3.org/ns/prov#</code></td>
+<td style="text-align: left;">provenance — activities, agents, plans, derivations (§9, §10)</td>
+</tr>
+</tbody>
+</table>
+<p>A crate's <code>@context</code> MUST include the RO-Crate 1.2 context URI and MUST bind <code>lambda</code> and
+<code>lambdarc</code> as above:</p>
+<pre><code class="language-json">&quot;@context&quot;: [
+  &quot;https://w3id.org/ro/crate/1.2/context&quot;,
+  {&quot;lambda&quot;: &quot;http://w3id.org/lambda/&quot;,
+   &quot;lambdarc&quot;: &quot;http://w3id.org/lambda/rocrate/&quot;}
+]
+</code></pre>
+<h3 id="43-why-lambda-is-the-http-form-of-the-schema-base">4.3 Why <code>lambda:</code> is the http form of the schema base</h3>
+<p><code>lambda:</code> MUST expand to <code>http://w3id.org/lambda/</code> — the base of <code>lambda-ber-schema</code> itself — so
+that <code>lambda:Dataset</code> in a crate <strong>is</strong> the LinkML class IRI and <code>lambda:file_format</code> <strong>is</strong> the
+slot IRI. Verified: expanding a conformant crate yields <code>http://w3id.org/lambda/Dataset</code>, which is
+what <code>SchemaView.get_uri</code> returns for the <code>Dataset</code> class.</p>
+<p>Two adjacent traps:</p>
+<ul>
+<li>Crates published against the SSRL 0.2 vocabulary bound <code>lambda:</code> to
+  <code>https://w3id.org/lambda/terms/0.2/</code>. Terms under that base resolve to no schema element at all;
+  they look linked and are not. See §15.</li>
+<li><code>lambda_ber_types.yaml</code> binds <code>schema:</code> to the <strong>https</strong> form of schema.org, while RO-Crate's own
+  context maps its terms to the <strong>http</strong> form (confirmed against
+  <code>https://w3id.org/ro/crate/1.2/context</code>: <code>name</code> → <code>http://schema.org/name</code>). These are different
+  IRIs. The profile module therefore uses <code>sdo:</code> internally for the http form rather than colliding
+  with the imported prefix. Crate authors never write either prefix — RO-Crate's context resolves
+  the bare terms — so this is invisible in the crates themselves, but it is a real inconsistency
+  in the schema and is filed as a change request (§16).</li>
+</ul>
+<h3 id="44-json-ld-spelling-freedom">4.4 JSON-LD spelling freedom</h3>
+<p>A reader MUST apply two normalizations before validating. Both are things a JSON-LD processor does,
+and neither changes meaning:</p>
+<ol>
+<li><strong>Set expansion.</strong> A single value stands for a one-element set wherever the profile declares a
+   set: <code>"instrument": {"@id": "#x"}</code> and <code>"instrument": [{"@id": "#x"}]</code> are the same. This
+   includes <code>@type</code>, and it applies <strong>at any depth</strong> — a <code>prov:qualifiedAssociation</code> nested inside a
+   designation is as entitled to the shorthand as a top-level property.</li>
+<li><strong>Term compaction.</strong> An explicitly prefixed key compacts to the profile's own term:
+   <code>"lambda:protein_name"</code> and a context-mapped <code>"protein_name"</code> are the same IRI. Real crates mix
+   the two spellings <em>within a single entity</em>, so this is not a theoretical concern.</li>
+</ol>
+<p>Validation in this profile is defined against the normalized form.</p>
+<hr />
+<h2 id="5-identity-and-granularity">5. Identity and granularity</h2>
+<h3 id="51-one-crate-is-one-coherent-body-of-data">5.1 One crate is one coherent body of data</h3>
+<p>All data from one collection session on one specimen, or one processing result and its provenance,
+lives in one crate. Where a study spans techniques, each technique gets its own crate and a
+manifest crate links them (§7, and the <code>nested-pointers</code> fixture).</p>
+<h3 id="52-identifiers">5.2 Identifiers</h3>
+<p>The root <code>@id</code> is <code>./</code> for a crate stored beside its payload, or an absolute URI for a detached
+crate. Stable external identity goes in <code>identifier</code> as <code>PropertyValue</code> entries with a
+<code>propertyID</code>, so a UUID, a DOI and a facility-local accession coexist without a reader having to
+guess which is which. Contextual entities SHOULD use ORCID for people and ROR for organizations.</p>
+<h3 id="53-bulk-series-are-one-part-not-n-entities">5.3 Bulk series are one part, not N entities</h3>
+<p>A frame series, an image sweep or any bulk collection is <strong>one</strong> dataset part carrying
+<code>lambdarc:partCount</code> and a size. Enumerating 1800 frame files buries the manifest in noise and
+tells a reader nothing the count does not.</p>
+<hr />
+<h2 id="6-crate-anatomy">6. Crate anatomy</h2>
+<h3 id="61-required-entities">6.1 Required entities</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Entity</th>
+<th style="text-align: left;">Profile class</th>
+<th style="text-align: left;">Carries</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Metadata descriptor</td>
+<td style="text-align: left;"><code>MetadataDescriptor</code></td>
+<td style="text-align: left;">RO-Crate conformance; <code>about</code> → root</td>
+</tr>
+<tr>
+<td style="text-align: left;">Root <code>Dataset</code> (<code>./</code>)</td>
+<td style="text-align: left;"><code>CrateRoot</code></td>
+<td style="text-align: left;"><strong>the search row.</strong> identity, access, facility, technique, specimen, tiers, <code>hasPart</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Files</td>
+<td style="text-align: left;"><code>CrateFile</code></td>
+<td style="text-align: left;">locator, size, checksum, format, data type</td>
+</tr>
+<tr>
+<td style="text-align: left;">Dataset parts</td>
+<td style="text-align: left;"><code>CrateDatasetPart</code></td>
+<td style="text-align: left;"><strong>a metadata pointer (§7)</strong>, count, size</td>
+</tr>
+</tbody>
+</table>
+<h3 id="62-optional-contextual-entities">6.2 Optional contextual entities</h3>
+<p><code>PersonEntity</code>, <code>OrganizationEntity</code>, <code>SampleEntity</code>, <code>InstrumentEntity</code>, <code>ExperimentRunAction</code>,
+<code>WorkflowRunAction</code>, <code>SoftwareApplicationEntity</code>, <code>DefinedTermEntity</code>, <code>PropertyValueEntity</code>,
+<code>RelatedWork</code>. Each is optional; each is typed so that a plain RO-Crate consumer understands it
+(<code>Person</code>, <code>Organization</code>, <code>CreateAction</code>, …) <em>and</em> a LAMBDA-aware reader can project it.</p>
+<p>Facility and technique SHOULD be carried as <code>DefinedTerm</code> entities rather than bare strings — this
+is what lets a federated index join across crates, and the SSRL 0.2 crates already do it.</p>
+<h3 id="63-value-objects-nest">6.3 Value objects nest</h3>
+<p><code>MissingValueDeclaration</code>, <code>Designation</code>, <code>EstimatorDescriptor</code>, <code>SchemaSetEntry</code> and
+<code>SufficiencyReport</code> nest inside their owner. They are not graph entities and do not get an <code>@id</code>.</p>
+<h3 id="64-required-properties">6.4 Required properties</h3>
+<p><code>CrateRoot</code> MUST carry <code>@id</code>, <code>@type</code>, <code>name</code>, <code>description</code>, <code>datePublished</code>, <code>license</code>,
+<code>conformsTo</code>, <code>hasPart</code>. <code>CrateFile</code> MUST carry <code>@id</code>, <code>@type</code>, <code>name</code>, <code>encodingFormat</code>,
+<code>contentSize</code>, <code>sha256</code>.</p>
+<p><code>license</code> and <code>datePublished</code> are <strong>not</strong> required, but their absence MUST be declared in
+<code>lambdarc:missing</code>. Earlier drafts required them; that was wrong for the deposits this profile
+actually has to describe. A SASBDB entry records a deposition date and no publication date, and
+often no licence at all — requiring both would have made the majority of real public deposits
+non-conformant while changing nothing about what is knowable. Declared absence already carries the
+information a reader needs, and it carries it honestly.</p>
+<p>What is <em>not</em> acceptable is silence. A root that simply omits <code>license</code> is indistinguishable from
+one whose builder never looked. Where the date is a deposition rather than a publication, use
+<code>dateCreated</code> and declare <code>datePublished</code> absent.</p>
+<p><code>sha256</code> is required on files for the same reason: integrity is what distinguishes a manifest from
+a directory listing. When the bytes are unreachable, declare it (§8) rather than omitting it.</p>
+<hr />
+<h2 id="7-pointing-at-fuller-metadata">7. Pointing at fuller metadata</h2>
+<p>This is the substance of the profile. A <code>CrateDatasetPart</code> names a body of data that Core
+deliberately does not describe in detail. It MUST therefore resolve <strong>at least one</strong> of three
+mechanisms, or declare in <code>lambdarc:missing</code> why it resolves none. More than one is fine.</p>
+<h3 id="71-mechanism-1-nested-crate">7.1 Mechanism 1 — nested crate</h3>
+<p>The part carries <code>conformsTo</code> naming a LAMBDA profile, and either a <code>hasPart</code> member ending in
+<code>ro-crate-metadata.json</code> (a subdirectory with its own crate) or an absolute <code>@id</code> naming a remote
+crate.</p>
+<pre><code class="language-json">{
+  &quot;@id&quot;: &quot;saxs/&quot;,
+  &quot;@type&quot;: &quot;Dataset&quot;,
+  &quot;name&quot;: &quot;SEC-SAXS-MALS of GluRS (ALS SIBYLS 12.3.1)&quot;,
+  &quot;conformsTo&quot;: [{&quot;@id&quot;: &quot;https://w3id.org/lambda/profile/core/0.3.0&quot;},
+                 {&quot;@id&quot;: &quot;https://w3id.org/lambda/profile/saxs/0.3.0&quot;}],
+  &quot;hasPart&quot;: [{&quot;@id&quot;: &quot;saxs/ro-crate-metadata.json&quot;}]
+}
+</code></pre>
+<p>Note that a nested crate's descriptor is a plain <code>File</code> <strong>of the enclosing crate</strong>, not the
+enclosing crate's own descriptor. A reader identifies its own descriptor as the entity whose <code>@id</code>
+is exactly <code>ro-crate-metadata.json</code> (or, for a detached crate, an absolute URI ending in it and
+carrying <code>about</code>).</p>
+<h3 id="72-mechanism-2-schema-record">7.2 Mechanism 2 — schema record</h3>
+<p>The part references a file holding a full <code>lambda-ber-schema</code> document, with the schema version and
+a checksum. This is how the rigorous metadata travels without being inlined.</p>
+<pre><code class="language-json">{
+  &quot;@id&quot;: &quot;mx/&quot;,
+  &quot;@type&quot;: &quot;Dataset&quot;,
+  &quot;schemaRecord&quot;: {&quot;@id&quot;: &quot;mx/glurs_mx_lambda_ber.yaml&quot;},
+  &quot;schemaVersion&quot;: &quot;0.1.2&quot;
+}
+</code></pre>
+<p>The referenced file is itself a <code>CrateFile</code> and MUST carry its own checksum and
+<code>conformsTo</code> the schema.</p>
+<h3 id="73-mechanism-3-remote-registration">7.3 Mechanism 3 — remote registration</h3>
+<p>The part is registered in a public archive under its own accession. Record the identity and the
+locator, and claim nothing about bytes the crate does not hold.</p>
+<pre><code class="language-json">{
+  &quot;@id&quot;: &quot;https://www.sasbdb.org/data/SASDD42/&quot;,
+  &quot;@type&quot;: &quot;Dataset&quot;,
+  &quot;identifier&quot;: [{&quot;@type&quot;: &quot;PropertyValue&quot;, &quot;propertyID&quot;: &quot;SASBDB&quot;, &quot;value&quot;: &quot;SASDD42&quot;}],
+  &quot;url&quot;: &quot;https://www.sasbdb.org/data/SASDD42/&quot;,
+  &quot;missing&quot;: [{&quot;field&quot;: &quot;sha256&quot;, &quot;reason&quot;: &quot;not-available&quot;, &quot;blocks&quot;: &quot;S2-core&quot;,
+               &quot;note&quot;: &quot;Archive publishes no per-entry checksums.&quot;}]
+}
+</code></pre>
+<h3 id="74-declaring-that-a-part-has-no-pointer">7.4 Declaring that a part has no pointer</h3>
+<p>Legitimate when the part is described by another entity <em>in the same crate</em> — a raw frame series
+described by its <code>ExperimentRun</code>. Say so:</p>
+<pre><code class="language-json">&quot;missing&quot;: [{&quot;field&quot;: &quot;schemaRecord&quot;, &quot;reason&quot;: &quot;not-applicable&quot;,
+             &quot;note&quot;: &quot;Described by #exp-secsaxs in this crate; no separate record exists.&quot;}]
+</code></pre>
+<hr />
+<h2 id="8-declared-absence">8. Declared absence</h2>
+<p><code>lambdarc:missing</code> is the honesty mechanism. Each entry names the field or artefact, why it is
+absent, and which tier the absence blocks.</p>
+<pre><code class="language-json">&quot;missing&quot;: [
+  {&quot;field&quot;: &quot;raw_frame_series&quot;, &quot;reason&quot;: &quot;not-deposited&quot;, &quot;blocks&quot;: &quot;S2-acquisition&quot;,
+   &quot;note&quot;: &quot;1800 frames remain on facility disk; not published with this package.&quot;},
+  {&quot;field&quot;: &quot;proposal_id&quot;, &quot;reason&quot;: &quot;not-registered&quot;, &quot;blocks&quot;: &quot;S1&quot;}
+]
+</code></pre>
+<p>Reasons, and why the distinctions matter:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Reason</th>
+<th style="text-align: left;">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>not-registered</code></td>
+<td style="text-align: left;">No upstream system ever held it. Typically proposal-system fields.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>not-available</code></td>
+<td style="text-align: left;">It exists in an otherwise complete source; this build could not reach the bytes.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>not-deposited</code></td>
+<td style="text-align: left;">The artefact exists or existed, but the source archive did not include it. The normal case for raw acquisition in public deposits.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>embargoed</code></td>
+<td style="text-align: left;">Withheld under an access embargo; may become available later.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>not-applicable</code></td>
+<td style="text-align: left;">Does not apply to this technique or mode. Not a gap — nothing is missing.</td>
+</tr>
+</tbody>
+</table>
+<p>Rules:</p>
+<ol>
+<li><code>blocks</code> is REQUIRED for every reason except <code>not-applicable</code>, which by definition blocks nothing.</li>
+<li>A field MUST NOT be both present on an entity and declared missing on it.</li>
+<li>Do not invent a stand-in. An empty <code>Dataset</code> for absent frames, a zero-length file, or
+   descriptive prose passed off as the artefact are all worse than a declared gap.</li>
+<li>A declared-absent S2-acquisition artefact does not affect S2-core conformance.</li>
+</ol>
+<h3 id="81-vocabulary-gaps">8.1 Vocabulary gaps</h3>
+<p>Declared absence handles a <em>value</em> that is missing. <code>lambdarc:vocabEntry</code> handles the opposite case:
+the value is present and real, and the schema's controlled vocabulary has no term for it.</p>
+<pre><code class="language-json">&quot;vocabEntry&quot;: [{
+  &quot;module&quot;: &quot;lambda-ber-schema&quot;,
+  &quot;enum&quot;: &quot;BeamlineEnum&quot;,
+  &quot;key&quot;: &quot;DORIS3_X33&quot;,
+  &quot;note&quot;: &quot;Decommissioned beamline; no BeamlineEnum term exists.&quot;
+}]
+</code></pre>
+<p>The alternatives are all worse. Coercing to the nearest permissible term produces something that
+looks like data and is wrong, and nothing downstream can tell. Dropping the value loses it silently.
+Inventing a term forks the vocabulary. Declaring the gap keeps the crate honest <em>and</em> turns the gap
+into a change request with a real example attached, which is how enums should grow.</p>
+<p><code>enum</code> and <code>key</code> are REQUIRED. Adopted from Peter Zwart's SAXS drafts (§15.2), where a decommissioned
+beamline had no term and the crate said so instead of guessing.</p>
+<hr />
+<h2 id="9-designation">9. Designation</h2>
+<p>Where several defensible results exist, <code>lambdarc:designated</code> names which is <em>the</em> result and how
+that was decided.</p>
+<p>A designation is expressed in <strong>W3C PROV</strong>, because that is what it is: an activity that used some
+inputs, generated a designated output, and was carried out by an agent acting under a plan.</p>
+<pre><code class="language-json">&quot;designated&quot;: [{
+  &quot;@type&quot;: [&quot;lambdarc:Designation&quot;, &quot;prov:Activity&quot;],
+  &quot;prov:generated&quot;: [{&quot;@id&quot;: &quot;mtz/XA_x16_autoproc.mtz&quot;}],
+  &quot;prov:used&quot;:      [{&quot;@id&quot;: &quot;#rawunit-90000002&quot;}],
+  &quot;selection&quot;: &quot;autoproc merged reflection data, run 1&quot;,
+  &quot;prov:qualifiedAssociation&quot;: {
+    &quot;@type&quot;: &quot;prov:Association&quot;,
+    &quot;prov:agent&quot;: {
+      &quot;@id&quot;: &quot;urn:lambdarc:policy:ssrl-autoproc-select/0.1&quot;,
+      &quot;@type&quot;: &quot;prov:SoftwareAgent&quot;,
+      &quot;name&quot;: &quot;SSRL autoPROC result selection policy&quot;,
+      &quot;prov:actedOnBehalfOf&quot;: {&quot;@id&quot;: &quot;https://ror.org/05gzmn429&quot;}
+    },
+    &quot;prov:hadPlan&quot;: {&quot;@id&quot;: &quot;https://w3id.org/lambda/rules/mx-reflections/1.0&quot;}
+  }
+}]
+</code></pre>
+<p><code>prov:generated</code> and <code>prov:qualifiedAssociation</code> are REQUIRED. The association is the part that
+carries conformance weight: an agent acting under a resolvable, versioned <code>prov:hadPlan</code> is
+provenance; an unattributed choice is not.</p>
+<p><code>prov:qualifiedAssociation</code> is a <strong>set</strong>. PROV does not make it functional, and real activities have
+more than one responsible party — a collection session has an operator and a local contact, a
+processing run may be attributed to both a person and the policy they ran under. A single-valued
+slot would silently drop whichever agent the builder wrote second. As everywhere else, a lone
+association MAY be written unwrapped and a reader expands it (§4.4).</p>
+<p>Earlier drafts used flat <code>designatedEntity</code> / <code>producedBy</code> / <code>rule</code> / <code>mode</code> / <code>decidedBy</code> /
+<code>decidedAt</code> slots and a <code>manual</code>-implies-decider rule. PROV says all of it better, and the <code>mode</code>
+flag disappears entirely: a <code>prov:Person</code> and a <code>prov:SoftwareAgent</code> are already different things,
+so nothing needs to assert which kind of decision it was. <code>prov:actedOnBehalfOf</code> additionally
+expresses something the flat form could not — that a policy acted for an institution.</p>
+<p>Non-designated alternatives remain in the crate as further workflow runs and artefacts; designation
+selects, it does not delete.</p>
+<hr />
+<h2 id="10-estimators-and-admissibility">10. Estimators and admissibility</h2>
+<p>Any derived number in a crate travels with an <code>lambdarc:estimator</code>:</p>
+<pre><code class="language-json">&quot;estimator&quot;: {
+  &quot;prov:wasAttributedTo&quot;: {
+    &quot;@id&quot;: &quot;#software-autoproc&quot;, &quot;@type&quot;: &quot;prov:SoftwareAgent&quot;,
+    &quot;name&quot;: &quot;autoPROC&quot;, &quot;version&quot;: &quot;0.7.13&quot;
+  },
+  &quot;sourceField&quot;: &quot;CORRECT.LP merging statistics&quot;,
+  &quot;definition&quot;: &quot;STARANISO default resolution cutoff and merging statistics from the processing log&quot;,
+  &quot;admissibility&quot;: &quot;local&quot;
+}
+</code></pre>
+<p>The producing software is a <code>prov:SoftwareAgent</code> referenced by <code>@id</code>, so one agent entity serves
+every estimate it produced instead of being retyped beside each. Bare <code>software</code> / <code>version</code> strings
+remain accepted for sources that publish nothing more.</p>
+<p>Where a single value was read out of a specific artefact, <code>lambdarc:provenance</code> records which one
+and which field within it:</p>
+<pre><code class="language-json">&quot;lambdarc:provenance&quot;: {
+  &quot;@type&quot;: &quot;prov:Derivation&quot;,
+  &quot;prov:entity&quot;: {&quot;@id&quot;: &quot;SASDA55.sascif&quot;},
+  &quot;sourceField&quot;: &quot;sas_result.Rg_from_Guinier&quot;
+}
+</code></pre>
+<p><code>definition</code> and <code>admissibility</code> are REQUIRED. Two numbers computed under different definitions are
+different quantities however alike their labels look.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Admissibility</th>
+<th style="text-align: left;">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>local</code></td>
+<td style="text-align: left;">Meaningful only inside the producing pipeline. Displayable, <strong>not</strong> filterable.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>comparable</code></td>
+<td style="text-align: left;">Comparable across datasets sharing the stated definition and companions.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>global</code></td>
+<td style="text-align: left;">Comparable unconditionally, under a published shared definition.</td>
+</tr>
+</tbody>
+</table>
+<p>A search MUST NOT filter or rank on a <code>local</code> value: doing so ranks datasets against each other on
+a number that only means something in one pipeline.</p>
+<hr />
+<h2 id="11-search-projection">11. Search projection</h2>
+<p>A LAMBDA federated search projects from the root alone, without opening parts:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Field</th>
+<th style="text-align: left;">From</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">identity / pid</td>
+<td style="text-align: left;"><code>identifier</code> (<code>PropertyValue</code> with <code>propertyID</code>)</td>
+</tr>
+<tr>
+<td style="text-align: left;">title, summary</td>
+<td style="text-align: left;"><code>name</code>, <code>description</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">facility</td>
+<td style="text-align: left;"><code>lambda:facility_name</code>, <code>lambda:facility_ror</code>, or the <code>facility</code> <code>DefinedTerm</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">instrument</td>
+<td style="text-align: left;"><code>lambda:instrumentName</code>, or <code>instrument_code</code> / <code>beamline_id</code> on the instrument entity</td>
+</tr>
+<tr>
+<td style="text-align: left;">technique</td>
+<td style="text-align: left;"><code>lambda:technique</code> (<code>TechniqueEnum</code>), plus a PaNET IRI from an extension</td>
+</tr>
+<tr>
+<td style="text-align: left;">specimen</td>
+<td style="text-align: left;"><code>lambda:sample_code</code>, <code>lambda:protein_name</code>, <code>lambda:organism</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">dates</td>
+<td style="text-align: left;"><code>datePublished</code>, <code>lambda:collectionDate</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">people</td>
+<td style="text-align: left;"><code>author</code> / <code>agent</code> → <code>Person</code> entities, by ORCID where known; <code>role</code> gives the capacity</td>
+</tr>
+<tr>
+<td style="text-align: left;">access</td>
+<td style="text-align: left;"><code>conditionsOfAccess</code>, <code>license</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">size</td>
+<td style="text-align: left;"><code>contentSize</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">tiers</td>
+<td style="text-align: left;"><code>lambdarc:sufficiency</code></td>
+</tr>
+</tbody>
+</table>
+<p>Findability is tied to S2-core; reprocessing is tied to S2-acquisition. A search surface MUST expose
+<code>s2AcquisitionComplete</code> so that "crates I can reprocess" filters are gated rather than silently
+returning crates that cannot answer them.</p>
+<hr />
+<h2 id="12-validation">12. Validation</h2>
+<p>Three layers, because a flat <code>@graph</code> is an open world and no single tool covers it.</p>
+<p><strong>Layer 1 — document shape.</strong> <code>assets/rocrate/jsonschema/lambda_rocrate_core.schema.json</code>,
+generated with <code>--top-class ROCrateMetadataDocument</code>. <code>@graph</code> is deliberately permissive at this
+level so that a crate carrying technique-extension terms still validates as a document.</p>
+<p><strong>Layer 2 — per entity.</strong> Dispatch each entity on its <code>@type</code> (after §4.4 normalization) and
+validate against the matching profile class. These classes are <strong>closed</strong>, so an undeclared term
+fails. This is where the profile bites, and it is why a technique quantity must nest inside
+<code>lambdarc:resultSummary</code> rather than being scattered as a bare property: nesting keeps the crate
+valid against Core while the extension gives the block its shape.</p>
+<p><strong>Layer 3 — graph rules.</strong> The cross-entity constraints, in
+<a href="../../../tests/test_rocrate_profile.py"><code>tests/test_rocrate_profile.py</code></a>:</p>
+<ol>
+<li>A metadata descriptor exists and its <code>about</code> resolves to an entity in the graph.</li>
+<li>A root data entity exists, typed <code>lambda:Dataset</code> (or the deprecated <code>lambda:Experiment</code>).</li>
+<li>Every <code>hasPart</code> target resolves to an entity in the graph — a manifest MUST NOT promise a part
+   it does not describe.</li>
+<li>Every <code>CrateDatasetPart</code> resolves a metadata pointer or declares why it resolves none (§7).</li>
+<li>Every <code>missing</code> entry names a <code>blocks</code> tier unless its reason is <code>not-applicable</code>.</li>
+<li>No field is both present on an entity and declared missing on it.</li>
+<li>The root's <code>conformsTo</code> names both an RO-Crate version and a LAMBDA Core profile.</li>
+<li>A file entity carries <code>File</code> in its <code>@type</code>. <strong><code>DataFile</code> is not an RO-Crate term</strong> — it appears
+   in neither the 1.1 nor the 1.2 context (2899 terms, checked), and those contexts declare no
+   <code>@vocab</code>, so the token resolves to a relative IRI against the document base rather than to any
+   class. A crate using it has untyped files as far as any generic consumer is concerned. Use
+   <code>File</code>, which the context maps to <code>schema:MediaObject</code>.</li>
+<li><code>license</code> and <code>datePublished</code>, when absent from the root, appear in <code>lambdarc:missing</code> (§6.4).</li>
+</ol>
+<p>SHACL shapes would be the natural home for layer 3, since RDF validation dispatches on <code>rdf:type</code>
+properly. They are <strong>not</strong> generated: <code>gen-shacl</code> raises <code>KeyError('lambda-ber-schema')</code> for classes
+whose slots come from an imported schema (<code>shaclgen.py::_build_ignored_properties</code>). Worth
+revisiting when that is fixed upstream.</p>
+<p><code>linkml-validate</code> is not usable against a crate: it iterates a data source as a collection of
+instances, so a single JSON object is walked key by key, and <code>--legacy-mode</code> routes through
+<code>gen-python</code>, which cannot represent <code>@</code>-keyword aliases (§16.7).</p>
+<hr />
+<h2 id="13-worked-examples">13. Worked examples</h2>
+<p>Five conformant fixtures in <code>tests/data/rocrate/valid/</code>:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Fixture</th>
+<th style="text-align: left;">Shows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>minimal-manifest.json</code></td>
+<td style="text-align: left;">the smallest conformant crate — the thing to hand a new facility</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ssrl-mx-XA_x16.json</code></td>
+<td style="text-align: left;">a real SSRL MX package brought to Core 0.3.0, with MX quantities nested in <code>resultSummary</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>saxs-glurs.json</code></td>
+<td style="text-align: left;">the SAXS GluRS dataset reduced to Core terms — the extension boundary made concrete</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>nested-pointers.json</code></td>
+<td style="text-align: left;">one manifest using all three pointer mechanisms at once</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ssrl-mx-XA_x16-core-0.2.json</code> (in <code>legacy/</code>)</td>
+<td style="text-align: left;">the published 0.2 crate, unmodified — see §15</td>
+</tr>
+</tbody>
+</table>
+<p>Eight negative fixtures in <code>tests/data/rocrate/invalid/</code>, each isolating one rule, with the test
+asserting <em>which</em> rule failed so that a fixture cannot pass for the wrong reason.</p>
+<hr />
+<h2 id="14-crosswalk-to-lambda-ber-schema">14. Crosswalk to <code>lambda-ber-schema</code></h2>
+<p>The profile module <code>imports</code> the main schema, so every controlled vocabulary — <code>TechniqueEnum</code>,
+<code>FacilityEnum</code>, <code>FileFormatEnum</code>, <code>DataTypeEnum</code>, <code>WorkflowTypeEnum</code>, <code>SampleTypeEnum</code> — is
+<em>referenced</em>, never restated. Every crate term with a schema counterpart declares it as an
+<code>exact_mappings</code> or <code>close_mappings</code>, and <code>make gen-rocrate</code> emits the crosswalk to
+<code>assets/rocrate/lambda_rocrate_core.sssom.tsv</code> — one row per mapped term, regenerated with the
+profile. That file, not this table, is authoritative; no count is quoted here because it would be
+wrong by the next commit.</p>
+<p>Note that <code>deprecated_element_has_exact_replacement</code> is documentation, not a mapping predicate, so
+<code>gen-sssom</code> does not read it. Every deprecated term therefore <em>also</em> carries an explicit
+<code>exact_mappings</code> / <code>close_mappings</code> / <code>related_mappings</code> to its replacement — otherwise the
+migration would be prose a reader has to transcribe by hand.</p>
+<p>Class-level projection:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Profile class</th>
+<th style="text-align: left;"><code>@type</code> in crates</th>
+<th style="text-align: left;">Schema class</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>CrateRoot</code></td>
+<td style="text-align: left;"><code>["Dataset", "lambda:Dataset"]</code></td>
+<td style="text-align: left;"><code>Dataset</code> (+ <code>Study</code>, close)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>CrateFile</code></td>
+<td style="text-align: left;"><code>File</code></td>
+<td style="text-align: left;"><code>DataFile</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>SampleEntity</code></td>
+<td style="text-align: left;"><code>["BioChemEntity", "lambda:Sample"]</code></td>
+<td style="text-align: left;"><code>Sample</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>InstrumentEntity</code></td>
+<td style="text-align: left;"><code>["IndividualProduct", "lambda:Instrument"]</code></td>
+<td style="text-align: left;"><code>Instrument</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ExperimentRunAction</code></td>
+<td style="text-align: left;"><code>["Action", "lambda:ExperimentRun"]</code></td>
+<td style="text-align: left;"><code>ExperimentRun</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>WorkflowRunAction</code></td>
+<td style="text-align: left;"><code>["CreateAction", "lambda:WorkflowRun"]</code></td>
+<td style="text-align: left;"><code>WorkflowRun</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>PersonEntity</code></td>
+<td style="text-align: left;"><code>Person</code></td>
+<td style="text-align: left;"><code>Person</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>OrganizationEntity</code></td>
+<td style="text-align: left;"><code>Organization</code></td>
+<td style="text-align: left;"><code>Organization</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>CrateDatasetPart</code></td>
+<td style="text-align: left;"><code>Dataset</code></td>
+<td style="text-align: left;"><em>no counterpart</em> — the pointer entity</td>
+</tr>
+</tbody>
+</table>
+<p><code>PersonEntity</code> projects onto <code>Person</code> plus a person association. The crate carries a person's role
+<em>on the person</em>, because a crate describes one body of work and a flat graph has nowhere else to put
+it; the schema carries it on <code>StudyPersonAssociation</code> / <code>ExperimentPersonAssociation</code> /
+<code>WorkflowPersonAssociation</code>, because one person record should serve every role they hold across a
+dataset. A projector therefore reads <code>role</code> (and <code>author_position</code>, <code>corresponding</code>) off the crate
+entity and writes them to the association, not to <code>Person</code>.</p>
+<p><code>OrganizationEntity</code> works the same way, projecting onto <code>Organization</code> plus
+<code>StudyOrganizationAssociation</code> / <code>PersonOrganizationAssociation</code>. Note the deliberate split between
+<code>ror</code> and <code>facility_ror</code>: an organization's own identifier is <code>ror</code>, while <code>facility_ror</code> is a
+property of an <em>instrument</em> naming the facility it sits at. Putting <code>facility_ror</code> on an
+organization would assert that an organization has a facility's identifier rather than its own.</p>
+<p>An organization that is a unit of a larger institution — a light source inside a national laboratory
+— SHOULD carry <code>parentOrganization</code> and omit <code>ror</code> unless it holds one in its own right. Copying the
+parent's ROR down makes the child indistinguishable from its parent in exactly the index that was
+supposed to tell them apart.</p>
+<p>Slot-level, the projection is deliberately <strong>identity</strong>: a crate term that maps to a schema slot
+carries the schema's own <code>snake_case</code> slot name, so <code>lambda:file_format</code> in a crate <em>is</em>
+<code>DataFile.file_format</code>. Only three groups deviate, each for a stated reason:</p>
+<ul>
+<li><strong>schema.org terms</strong> keep schema.org's camelCase, because that is what they are (<code>hasPart</code>,
+  <code>encodingFormat</code>, <code>datePublished</code>).</li>
+<li><strong><code>lambdarc:</code> machinery</strong> uses camelCase, following the SAXS profile's style, and has no schema
+  counterpart yet (§16).</li>
+<li><strong>deprecated 0.2 spellings</strong> keep the exact JSON key SSRL published (§15), but sit under
+  <code>lambdarc:</code> like all other profile-local terms. The <code>lambda:</code> base is reserved for terms that
+  resolve to a schema element; a term that resolves to nothing there would claim a projection it
+  cannot make, and <code>lambda:rawIncluded</code> under the schema base is not the same IRI as the
+  <code>lambda:rawIncluded</code> an SSRL crate publishes under its own base anyway. The relationship to a
+  schema slot, where one exists, is carried by mappings — which is what mappings are for.</li>
+</ul>
+<hr />
+<h2 id="15-the-ssrl-02-vocabulary-accepted-deprecated">15. The SSRL 0.2 vocabulary: accepted, deprecated</h2>
+<p>SSRL publishes crates conforming to <code>https://w3id.org/lambda/profile/core/0.2</code> — a URI with no
+written specification — using <code>lambda:Experiment</code> / <code>lambda:RawUnit</code> / <code>lambda:DerivedProduct</code> /
+<code>lambda:AuxiliaryMetadataItem</code> and camelCase terms under
+<code>https://w3id.org/lambda/terms/0.2/</code>. Those crates exist and a loader consumes them, so Core 0.3.0
+accepts the 0.2 spellings and marks them deprecated rather than breaking them.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">0.2 spelling</th>
+<th style="text-align: left;">Core 0.3.0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>lambda:Experiment</code> (root type)</td>
+<td style="text-align: left;"><code>lambda:Dataset</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>lambda:RawUnit</code>, <code>lambda:DerivedProduct</code></td>
+<td style="text-align: left;"><code>Dataset</code> part → <code>CrateDatasetPart</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>CreateAction</code> for workflow runs</td>
+<td style="text-align: left;">unchanged — 0.2 got this right</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>sampleName</code></td>
+<td style="text-align: left;"><code>lambda:sample_code</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>proteinName</code></td>
+<td style="text-align: left;"><code>lambda:protein_name</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>rawUnitId</code>, <code>productId</code>, <code>workflowRunId</code></td>
+<td style="text-align: left;">the entity's <code>@id</code>, with <code>identifier</code> for facility accessions</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>sampleComposition</code></td>
+<td style="text-align: left;"><code>lambda:molecular_composition</code>, in the linked record</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>lambda:runDefinition</code></td>
+<td style="text-align: left;"><code>lambda:runParameters</code> (already renamed in 0.2)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>mimeType</code></td>
+<td style="text-align: left;"><code>encodingFormat</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>lambda:</code> = <code>https://w3id.org/lambda/terms/0.2/</code></td>
+<td style="text-align: left;"><code>lambda:</code> = <code>http://w3id.org/lambda/</code> (§4.3)</td>
+</tr>
+</tbody>
+</table>
+<p>Each deprecated term is declared in the profile module with its replacement, so the SSSOM crosswalk
+is a machine-readable migration map rather than prose a reader has to transcribe.</p>
+<h3 id="151-audit-of-the-published-02-crate">15.1 Audit of the published 0.2 crate</h3>
+<p>The published crate is kept unmodified at
+<code>tests/data/rocrate/legacy/ssrl-mx-XA_x16-core-0.2.json</code> and checked on every test run. After the
+§4.4 normalizations and the alias layer, <strong>three</strong> substantive gaps remain — the naming differences
+all resolve, so what is left is real:</p>
+<ol>
+<li><strong>No <code>license</code> on the root.</strong> Reuse terms are unstated, so the crate cannot be handed on
+   safely (§6.4).</li>
+<li><strong>MX quantities as bare properties on the <code>CreateAction</code></strong> — <code>lambda:unitCell</code>,
+   <code>lambda:spaceGroup</code>, <code>lambda:completeness</code>, <code>lambda:ccHalf</code>, <code>lambda:meanISigma</code>,
+   <code>lambda:resolutionAngstrom</code>. These belong nested in <code>lambdarc:resultSummary</code>, shaped by an MX
+   extension (§12, layer 2). As written they are readable but not composable.</li>
+<li><strong>Neither dataset part resolves a metadata pointer</strong> (§7). The <code>RawUnit</code> and the
+   <code>DerivedProduct</code> each name a body of data and say nothing about where its description lives.</li>
+</ol>
+<p>None is a naming quibble and none is hard to fix; the retyped
+<code>tests/data/rocrate/valid/ssrl-mx-XA_x16.json</code> shows the same package with all three closed.
+<code>tests/test_rocrate_profile.py::test_legacy_crate_gaps_are_exactly_the_known_ones</code> pins them, so
+when they are fixed upstream the test says so.</p>
+<p>Coordination note: the loader that reads these crates lives on the unmerged
+<code>feature/ssrl-mx-rocrate-loader</code> branch and is <strong>not</strong> modified by this profile. It already carries
+back-compat branches for the 0.2 → later renames; those could read the SSSOM crosswalk instead of
+hardcoding, but that is a separate change on that branch.</p>
+<hr />
+<h2 id="152-peter-zwarts-saxs-drafts-reconciliation">15.2 Peter Zwart's SAXS drafts: reconciliation</h2>
+<p>A parallel SAXS profile (v0.4.0) produces crates such as <code>SASDA55_ro-crate-metadata_v0.4.0.json</code>.
+It agrees with Core on the things that matter most and disagrees on where the shared machinery
+lives.</p>
+<p><strong>Already aligned.</strong> It binds <code>lambda:</code> to <code>http://w3id.org/lambda/</code> — the schema's own base, the
+same call Core makes and the one the SSRL 0.2 crates got wrong. Its root is typed
+<code>["Dataset", "lambda:Dataset"]</code>. Every one of its 38 <code>lambda:</code> terms resolves to a real schema class
+or slot. It passes every Core graph rule except the <code>DataFile</code> token (§12 check 8).</p>
+<p><strong>Where Core took its lead.</strong> PROV (§9, §10), <code>vocabEntry</code> (§8.1) and <code>idRecipeVersion</code> all come
+from these drafts. They are better than what Core had.</p>
+<p><strong>The reconciliation.</strong> Those drafts place the technique-neutral machinery in the SAXS terms
+namespace, which would force MX either to import SAXS terms or to redefine them. Core keeps it in
+<code>lambdarc:</code> and registers the SAXS spellings as mappings, so <code>gen-sssom</code> emits the migration:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">SAXS draft spelling</th>
+<th style="text-align: left;">LAMBDA Core</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>lambdax:missing</code></td>
+<td style="text-align: left;"><code>lambdarc:missing</code> (identical fields)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>lambdax:derived</code></td>
+<td style="text-align: left;"><code>lambdarc:derived</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>lambdax:schemaSet</code></td>
+<td style="text-align: left;"><code>lambdarc:schemaSet</code> (identical fields)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>lambdax:summary</code></td>
+<td style="text-align: left;"><code>lambdarc:resultSummary</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>lambdax:estimator</code></td>
+<td style="text-align: left;"><code>lambdarc:estimator</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>lambdax:designated</code></td>
+<td style="text-align: left;"><code>lambdarc:isDesignated</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>lambdax:s2_acquisition_complete</code></td>
+<td style="text-align: left;"><code>lambdarc:sufficiency.s2AcquisitionComplete</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>lambdax:sourceField</code> / <code>definition</code> / <code>admissibility</code></td>
+<td style="text-align: left;">same names under <code>lambdarc:</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>lambdax:vocabEntry</code>, <code>lambdax:idRecipeVersion</code></td>
+<td style="text-align: left;">same names under <code>lambdarc:</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>lambdax:facility</code></td>
+<td style="text-align: left;"><code>lambda:facility</code> — it is a schema slot</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>lambdax:processing_level</code></td>
+<td style="text-align: left;"><code>lambda:processing_level</code> — likewise</td>
+</tr>
+</tbody>
+</table>
+<p><code>lambdax:</code> keeps what is genuinely SAXS: <code>rg</code>, <code>i0</code>, <code>dmax</code>, <code>porodVolume</code>, <code>qRangeMeasured</code>,
+<code>intensityScale</code>, <code>subtraction</code>, <code>seriesCoordinate</code>, <code>curveDesignation</code> / <code>analysisDesignation</code>.</p>
+<p><strong>Open differences</strong>, both for the SAXS profile rather than Core: <code>lambda:samples</code> / <code>instruments</code> /
+<code>experiment_runs</code> / <code>workflow_runs</code> on the root restate the <code>Dataset</code> collection slots, where Core
+relies on <code>hasPart</code> plus typed entities; and <code>lambda:title</code> is used where RO-Crate consumers look
+for <code>name</code>. Carrying both costs little and is probably the right answer.</p>
+<hr />
+<h2 id="16-change-requests-to-lambda-ber-schema">16. Change requests to <code>lambda-ber-schema</code></h2>
+<p>Each <code>lambdarc:</code> term is a standing request; these are the ones this profile could not work around.</p>
+<ol>
+<li>~~<strong>A <code>Person</code> class.</strong>~~ <strong>Resolved.</strong> <code>Person</code> now exists, with <code>orcid</code>, <code>full_name</code>,
+   <code>given_name</code>, <code>family_name</code>, <code>email</code>, <code>affiliation</code>, <code>affiliation_ror</code> and <code>person_local_id</code>,
+   plus <code>StudyPersonAssociation</code>, <code>ExperimentPersonAssociation</code> and <code>WorkflowPersonAssociation</code>
+   carrying <code>PersonRoleEnum</code> (and, on the study association, <code>author_position</code> and <code>corresponding</code>).
+   <code>author</code> and <code>agent</code> now project. <code>ExperimentRun.operator_id</code> is retained for sources that
+   publish only a bare operator string, and points at the structured route.</li>
+<li>~~<strong>An <code>Organization</code> class.</strong>~~ <strong>Resolved.</strong> <code>Organization</code> now exists, with <code>ror</code>, <code>acronym</code>,
+   <code>organization_type</code>, <code>facility_code</code>, <code>facility_type</code>, <code>parent_organization_id</code>, <code>location</code>,
+   <code>country</code>, <code>website</code>, <code>wikidata_id</code>, <code>is_doe_facility</code> and <code>doe_office</code>, plus
+   <code>StudyOrganizationAssociation</code> (carrying <code>award_number</code>) and <code>PersonOrganizationAssociation</code>
+   (carrying affiliation dates), and <code>Instrument.facility_organization_id</code>. <code>publisher</code> now projects.</li>
+</ol>
+<p>The class was shaped by what <code>FacilityEnum</code> already carries: every one of its 14 permissible
+   values holds a ROR as the term's <code>meaning</code> plus annotations for <code>parent_organization</code>,
+   <code>parent_ror</code>, <code>location</code>, <code>country</code>, <code>doe_office</code>, <code>website</code> and <code>wikidata_id</code>. That is an
+   organization registry living in enum annotations, where the values are unvalidated strings and
+   nothing can point at them. <code>Organization</code> gives those fields a typed home; <code>FacilityEnum</code> stays
+   the controlled vocabulary saying <em>which</em> facility, joined by <code>facility_code</code>.
+3. <strong>Dataset-level publication metadata.</strong> <code>Dataset</code> has no <code>license</code>, <code>datePublished</code>,
+   <code>conditionsOfAccess</code> or <code>publisher</code>. A crate must carry these; nothing receives them.
+4. <strong>Typed checksums.</strong> <code>DataFile.checksum</code> is an untyped string with no algorithm slot, so
+   <code>sha256</code> has to be profile-local. Add an algorithm, or name the slot for its algorithm.
+5. <strong>Media types on <code>FileFormatEnum</code>.</strong> No permissible value carries an IANA media type, so
+   <code>encodingFormat</code> cannot be derived from <code>file_format</code> and both must be carried.
+6. <strong><code>schema:</code> prefix inconsistency.</strong> <code>lambda_ber_types.yaml</code> binds <code>schema:</code> to
+   <code>https://schema.org/</code>; RO-Crate and this profile need <code>http://schema.org/</code>. Different IRIs,
+   silently. Worth settling schema-wide (§4.3).
+7. <strong><code>@</code>-keyword aliases break the language-binding generators.</strong> <code>gen-python</code>, <code>gen-graphql</code>,
+   <code>gen-proto</code> and <code>gen-sqlddl</code> all emit <code>@id</code> / <code>@type</code> as bare identifiers and produce files that
+   will not parse, so <code>conf/rocrate-gen-config.yaml</code> excludes them. Upstream LinkML issue; the
+   workaround is to generate bindings from the JSON Schema, where keys are strings.
+8. <strong><code>gen-shacl</code> and imported schemas.</strong> <code>KeyError('lambda-ber-schema')</code> in
+   <code>_build_ignored_properties</code>, which costs this profile its SHACL layer (§12).
+9. <strong>Enum values real SAXS deposits need.</strong> <code>DataTypeEnum</code> has no <code>scattering_curve</code>,
+   <code>saxs_analysis_record</code>, <code>pddf_gnom</code> or <code>fit</code>; <code>FacilityEnum</code> has no <code>DESY</code>. Each is carried by a
+   real crate today and declared through §8.1 rather than coerced, so the evidence for adding them
+   is already written down.
+10. <strong><code>WorkflowRun.output_files</code> duplicates <code>WorkflowOutputAssociation</code>.</strong> Two ways to say the same
+   thing means a crate builder must choose, and different builders will choose differently.</p>
+<p>Not requested: technique quantity classes. Those belong to the SAXS and MX extensions, whose own
+change requests already cover them.</p>
+<hr />
+<h2 id="17-extension-points">17. Extension points</h2>
+<p>A technique extension imports this module and:</p>
+<ol>
+<li>gives <code>lambdarc:resultSummary</code> a shape — its quantity register, method-tagged and estimator-bearing;</li>
+<li>binds its artefacts to the sufficiency tiers (which file is S2-core, which is S2-acquisition);</li>
+<li>adds technique acquisition terms to <code>ExperimentRunAction</code>;</li>
+<li>declares its own profile URI alongside Core's in <code>conformsTo</code>;</li>
+<li>generates its own JSON Schema, against which its crates validate. A Core-only schema will reject
+   extension terms at layer 2, by design — validate a crate against the most specific profile it
+   claims.</li>
+</ol>
+<p>An extension MUST NOT redefine a Core term, move a Core term to a different entity, or relax a Core
+requirement. It may tighten one.</p>
+<p>Per P10: do not create a profile because a dataset has a name. Create one when required entities,
+cardinalities, quality rules or round-trip guarantees actually differ.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.tabs.link"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

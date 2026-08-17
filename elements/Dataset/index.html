@@ -354,13 +354,39 @@
 <input class="md-nav__toggle md-toggle" id="__nav_6" type="checkbox"/>
 <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
 <span class="md-ellipsis">
-    Technical
+    Profiles
     
   </span>
 <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
 <label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+            Profiles
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../profiles/lambda-core-rocrate-profile-v0.3.0/">
+<span class="md-ellipsis">
+    LAMBDA Core RO-Crate Profile
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+<span class="md-ellipsis">
+    Technical
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_7_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_7">
 <span class="md-nav__icon md-icon"></span>
             Technical
           </label>
@@ -377,16 +403,16 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_7" type="checkbox"/>
-<label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+<input class="md-nav__toggle md-toggle" id="__nav_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
 <span class="md-ellipsis">
     Slides
     
   </span>
 <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="false" aria-labelledby="__nav_7_label" class="md-nav" data-md-level="1">
-<label class="md-nav__title" for="__nav_7">
+<nav aria-expanded="false" aria-labelledby="__nav_8_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_8">
 <span class="md-nav__icon md-icon"></span>
             Slides
           </label>
@@ -536,6 +562,17 @@
 
 
 
+      Dataset : experiment_person_associations
+
+
+
+
+
+        Dataset --&gt; "*" ExperimentPersonAssociation : experiment_person_associations
+        click ExperimentPersonAssociation href "../ExperimentPersonAssociation/"
+
+
+
       Dataset : experiment_runs
 
 
@@ -583,6 +620,39 @@
 
 
       Dataset : keywords
+
+      Dataset : organizations
+
+
+
+
+
+        Dataset --&gt; "*" Organization : organizations
+        click Organization href "../Organization/"
+
+
+
+      Dataset : person_organization_associations
+
+
+
+
+
+        Dataset --&gt; "*" PersonOrganizationAssociation : person_organization_associations
+        click PersonOrganizationAssociation href "../PersonOrganizationAssociation/"
+
+
+
+      Dataset : persons
+
+
+
+
+
+        Dataset --&gt; "*" Person : persons
+        click Person href "../Person/"
+
+
 
       Dataset : protein_constructs
 
@@ -636,6 +706,28 @@
 
         Dataset --&gt; "*" StudyExperimentAssociation : study_experiment_associations
         click StudyExperimentAssociation href "../StudyExperimentAssociation/"
+
+
+
+      Dataset : study_organization_associations
+
+
+
+
+
+        Dataset --&gt; "*" StudyOrganizationAssociation : study_organization_associations
+        click StudyOrganizationAssociation href "../StudyOrganizationAssociation/"
+
+
+
+      Dataset : study_person_associations
+
+
+
+
+
+        Dataset --&gt; "*" StudyPersonAssociation : study_person_associations
+        click StudyPersonAssociation href "../StudyPersonAssociation/"
 
 
 
@@ -696,6 +788,17 @@
 
 
 
+      Dataset : workflow_person_associations
+
+
+
+
+
+        Dataset --&gt; "*" WorkflowPersonAssociation : workflow_person_associations
+        click WorkflowPersonAssociation href "../WorkflowPersonAssociation/"
+
+
+
       Dataset : workflow_runs
 
 
@@ -737,6 +840,18 @@
 <td><a href="../studies/">studies</a></td>
 <td>* <br/> <a href="../Study/">Study</a></td>
 <td>All studies in this dataset</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../persons/">persons</a></td>
+<td>* <br/> <a href="../Person/">Person</a></td>
+<td>All people referenced anywhere in this dataset</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../organizations/">organizations</a></td>
+<td>* <br/> <a href="../Organization/">Organization</a></td>
+<td>All organizations referenced anywhere in this dataset</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -836,6 +951,36 @@
 <td>direct</td>
 </tr>
 <tr>
+<td><a href="../study_person_associations/">study_person_associations</a></td>
+<td>* <br/> <a href="../StudyPersonAssociation/">StudyPersonAssociation</a></td>
+<td>Links between studies and people (M:N with role) - where authorship lives</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../experiment_person_associations/">experiment_person_associations</a></td>
+<td>* <br/> <a href="../ExperimentPersonAssociation/">ExperimentPersonAssociation</a></td>
+<td>Links between experiment runs and people (M:N with role)</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../workflow_person_associations/">workflow_person_associations</a></td>
+<td>* <br/> <a href="../WorkflowPersonAssociation/">WorkflowPersonAssociation</a></td>
+<td>Links between workflow runs and people (M:N with role)</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../study_organization_associations/">study_organization_associations</a></td>
+<td>* <br/> <a href="../StudyOrganizationAssociation/">StudyOrganizationAssociation</a></td>
+<td>Links between studies and organizations (M:N with role, award number)</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../person_organization_associations/">person_organization_associations</a></td>
+<td>* <br/> <a href="../PersonOrganizationAssociation/">PersonOrganizationAssociation</a></td>
+<td>Links between people and organizations (M:N with role and dates)</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../id/">id</a></td>
 <td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>Globally unique identifier as an IRI or CURIE for machine processing and exte...</td>
@@ -914,6 +1059,28 @@ attributes:
     domain_of:
     - Dataset
     range: Study
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  persons:
+    name: persons
+    description: All people referenced anywhere in this dataset
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    domain_of:
+    - Dataset
+    range: Person
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  organizations:
+    name: organizations
+    description: All organizations referenced anywhere in this dataset
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    domain_of:
+    - Dataset
+    range: Organization
     multivalued: true
     inlined: true
     inlined_as_list: true
@@ -1093,6 +1260,62 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
+  study_person_associations:
+    name: study_person_associations
+    description: Links between studies and people (M:N with role) - where authorship
+      lives
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    domain_of:
+    - Dataset
+    range: StudyPersonAssociation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  experiment_person_associations:
+    name: experiment_person_associations
+    description: Links between experiment runs and people (M:N with role)
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    domain_of:
+    - Dataset
+    range: ExperimentPersonAssociation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  workflow_person_associations:
+    name: workflow_person_associations
+    description: Links between workflow runs and people (M:N with role)
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    domain_of:
+    - Dataset
+    range: WorkflowPersonAssociation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  study_organization_associations:
+    name: study_organization_associations
+    description: Links between studies and organizations (M:N with role, award number)
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    domain_of:
+    - Dataset
+    range: StudyOrganizationAssociation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  person_organization_associations:
+    name: person_organization_associations
+    description: Links between people and organizations (M:N with role and dates)
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    domain_of:
+    - Dataset
+    range: PersonOrganizationAssociation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
 tree_root: true
 
 </code></pre>
@@ -1130,6 +1353,32 @@ attributes:
     domain_of:
     - Dataset
     range: Study
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  persons:
+    name: persons
+    description: All people referenced anywhere in this dataset
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    alias: persons
+    owner: Dataset
+    domain_of:
+    - Dataset
+    range: Person
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  organizations:
+    name: organizations
+    description: All organizations referenced anywhere in this dataset
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    alias: organizations
+    owner: Dataset
+    domain_of:
+    - Dataset
+    range: Organization
     multivalued: true
     inlined: true
     inlined_as_list: true
@@ -1338,6 +1587,72 @@ attributes:
     domain_of:
     - Dataset
     range: WorkflowOutputAssociation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  study_person_associations:
+    name: study_person_associations
+    description: Links between studies and people (M:N with role) - where authorship
+      lives
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    alias: study_person_associations
+    owner: Dataset
+    domain_of:
+    - Dataset
+    range: StudyPersonAssociation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  experiment_person_associations:
+    name: experiment_person_associations
+    description: Links between experiment runs and people (M:N with role)
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    alias: experiment_person_associations
+    owner: Dataset
+    domain_of:
+    - Dataset
+    range: ExperimentPersonAssociation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  workflow_person_associations:
+    name: workflow_person_associations
+    description: Links between workflow runs and people (M:N with role)
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    alias: workflow_person_associations
+    owner: Dataset
+    domain_of:
+    - Dataset
+    range: WorkflowPersonAssociation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  study_organization_associations:
+    name: study_organization_associations
+    description: Links between studies and organizations (M:N with role, award number)
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    alias: study_organization_associations
+    owner: Dataset
+    domain_of:
+    - Dataset
+    range: StudyOrganizationAssociation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  person_organization_associations:
+    name: person_organization_associations
+    description: Links between people and organizations (M:N with role and dates)
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    alias: person_organization_associations
+    owner: Dataset
+    domain_of:
+    - Dataset
+    range: PersonOrganizationAssociation
     multivalued: true
     inlined: true
     inlined_as_list: true

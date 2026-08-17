@@ -1026,7 +1026,7 @@
   
   
   <span class="md-ellipsis">
-    Technical
+    Profiles
     
   </span>
   
@@ -1036,6 +1036,74 @@
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Profiles
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../profiles/lambda-core-rocrate-profile-v0.3.0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LAMBDA Core RO-Crate Profile
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Technical
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             Technical
           </label>
@@ -1086,10 +1154,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
             
   
   
@@ -1102,8 +1170,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             Slides
           </label>
@@ -1379,6 +1447,17 @@ A dataset might represent all data from a specific grant, collaboration, or publ
 - <a href="Study/">Studies</a>: Lightweight groupings representing focused investigations of specific
   biological questions. For example, a study might investigate "Heat stress response in Arabidopsis"
   or "Structure of the human ribosome under different conditions."</p>
+<p><strong>People and organizations</strong>
+- <a href="Person/">Persons</a>: People involved in producing, processing or publishing the data - principal
+  investigators, beamline operators, analysts, curators. Identified by ORCID where available. Which
+  work a person is attached to, and in what capacity, is carried by the person association tables,
+  so one record serves every role a person holds across the dataset.</p>
+<ul>
+<li><a href="Organization/">Organizations</a>: Institutions, facilities and funding bodies, identified by ROR.
+  The structured home for organizational identity that would otherwise live as free text on
+  instruments, on people, and in FacilityEnum's annotations - so a parent institution is stated
+  once rather than restated by everything that refers to it.</li>
+</ul>
 <h3 id="association-tables">Association Tables</h3>
 <p>Many-to-many relationships are represented via explicit association tables, which can carry
 relationship metadata (e.g., the role of a sample in an experiment):</p>
@@ -1391,6 +1470,11 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <li><strong>WorkflowExperimentAssociation</strong>: Links source experiments to workflows</li>
 <li><strong>WorkflowInputAssociation</strong>: Links input files to workflows</li>
 <li><strong>WorkflowOutputAssociation</strong>: Links output files to workflows</li>
+<li><strong>StudyPersonAssociation</strong>: Links people to studies (with role, author position, corresponding flag)</li>
+<li><strong>ExperimentPersonAssociation</strong>: Links people to experiment runs (with role: operator, local contact)</li>
+<li><strong>WorkflowPersonAssociation</strong>: Links people to workflow runs (with role: analyst, reviewer)</li>
+<li><strong>StudyOrganizationAssociation</strong>: Links organizations to studies (with role and award number)</li>
+<li><strong>PersonOrganizationAssociation</strong>: Links people to organizations (with role and affiliation dates)</li>
 </ul>
 <p>This relational design enables:
 - <strong>Sample reuse</strong>: The same sample can be used in multiple studies and experiments
@@ -1571,6 +1655,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>M:N link between ExperimentRun and Instrument</td>
 </tr>
 <tr>
+<td><a href="ExperimentPersonAssociation/">ExperimentPersonAssociation</a></td>
+<td>M:N link between ExperimentRun and Person with role metadata - who actually c...</td>
+</tr>
+<tr>
 <td><a href="ExperimentSampleAssociation/">ExperimentSampleAssociation</a></td>
 <td>M:N link between ExperimentRun and Sample with role metadata</td>
 </tr>
@@ -1667,6 +1755,14 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>A term from a controlled vocabulary or ontology</td>
 </tr>
 <tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Organization/">Organization</a></td>
+<td>An institution, facility, laboratory or funding body - a national laboratory,...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Person/">Person</a></td>
+<td>A person involved in producing, processing or publishing data - a principal i...</td>
+</tr>
+<tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ProteinAnnotation/">ProteinAnnotation</a></td>
 <td>Base class for all protein-related functional and structural annotations</td>
 </tr>
@@ -1715,8 +1811,20 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>A computational processing workflow execution</td>
 </tr>
 <tr>
+<td><a href="PersonOrganizationAssociation/">PersonOrganizationAssociation</a></td>
+<td>M:N link between Person and Organization with role metadata</td>
+</tr>
+<tr>
 <td><a href="StudyExperimentAssociation/">StudyExperimentAssociation</a></td>
 <td>M:N link between Study and ExperimentRun</td>
+</tr>
+<tr>
+<td><a href="StudyOrganizationAssociation/">StudyOrganizationAssociation</a></td>
+<td>M:N link between Study and Organization with role metadata - the host institu...</td>
+</tr>
+<tr>
+<td><a href="StudyPersonAssociation/">StudyPersonAssociation</a></td>
+<td>M:N link between Study and Person with role metadata</td>
 </tr>
 <tr>
 <td><a href="StudySampleAssociation/">StudySampleAssociation</a></td>
@@ -1737,6 +1845,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="WorkflowOutputAssociation/">WorkflowOutputAssociation</a></td>
 <td>Links output DataFiles to WorkflowRun</td>
+</tr>
+<tr>
+<td><a href="WorkflowPersonAssociation/">WorkflowPersonAssociation</a></td>
+<td>M:N link between WorkflowRun and Person with role metadata - who ran the proc...</td>
 </tr>
 </tbody>
 </table>
@@ -1770,12 +1882,24 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Version of acquisition software</td>
 </tr>
 <tr>
+<td><a href="acronym/">acronym</a></td>
+<td>Short name or acronym, e</td>
+</tr>
+<tr>
 <td><a href="additional_software/">additional_software</a></td>
 <td>Additional software used in pipeline</td>
 </tr>
 <tr>
 <td><a href="additives/">additives</a></td>
 <td>Additional additives in the buffer</td>
+</tr>
+<tr>
+<td><a href="affiliation/">affiliation</a></td>
+<td>Institution the person is affiliated with</td>
+</tr>
+<tr>
+<td><a href="affiliation_ror/">affiliation_ror</a></td>
+<td>Research Organization Registry (ROR) identifier for the affiliated institutio...</td>
 </tr>
 <tr>
 <td><a href="affinity_column/">affinity_column</a></td>
@@ -1870,6 +1994,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>The attribute being represented</td>
 </tr>
 <tr>
+<td><a href="author_position/">author_position</a></td>
+<td>Position in the author list, where authorship order is meaningful</td>
+</tr>
+<tr>
 <td><a href="autoloader_capacity/">autoloader_capacity</a></td>
 <td>Number of grids the autoloader can hold</td>
 </tr>
@@ -1880,6 +2008,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="average_b_factor_a2/">average_b_factor_a2</a></td>
 <td>Average B-factor in Angstroms squared</td>
+</tr>
+<tr>
+<td><a href="award_number/">award_number</a></td>
+<td>Grant or award number, where the organization is a funder</td>
 </tr>
 <tr>
 <td><a href="backbone_flexibility/">backbone_flexibility</a></td>
@@ -2218,6 +2350,14 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Low-level control system for device communication</td>
 </tr>
 <tr>
+<td><a href="corresponding/">corresponding</a></td>
+<td>Whether this person is a corresponding author for the study</td>
+</tr>
+<tr>
+<td><a href="country/">country</a></td>
+<td>Country the organization is located in</td>
+</tr>
+<tr>
 <td><a href="cpu_hours/">cpu_hours</a></td>
 <td>CPU hours used, measured in hours</td>
 </tr>
@@ -2470,6 +2610,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Experimental Kd if available</td>
 </tr>
 <tr>
+<td><a href="doe_office/">doe_office</a></td>
+<td>Sponsoring DOE office, e</td>
+</tr>
+<tr>
 <td><a href="domain_assignment/">domain_assignment</a></td>
 <td>Domain database assignment (CATH, SCOP, Pfam)</td>
 </tr>
@@ -2550,12 +2694,20 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Buffer composition for elution</td>
 </tr>
 <tr>
+<td><a href="email/">email</a></td>
+<td>Contact email address</td>
+</tr>
+<tr>
 <td><a href="emission_filter/">emission_filter</a></td>
 <td>Specifications of the emission filter</td>
 </tr>
 <tr>
 <td><a href="emission_wavelength/">emission_wavelength</a></td>
 <td>Emission wavelength, typically specified in nanometers</td>
+</tr>
+<tr>
+<td><a href="end_date/">end_date</a></td>
+<td>Date the affiliation ended, where known and ended</td>
 </tr>
 <tr>
 <td><a href="end_time/">end_time</a></td>
@@ -2646,6 +2798,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Links between experiments and instruments (M:N)</td>
 </tr>
 <tr>
+<td><a href="experiment_person_associations/">experiment_person_associations</a></td>
+<td>Links between experiment runs and people (M:N with role)</td>
+</tr>
+<tr>
 <td><a href="experiment_runs/">experiment_runs</a></td>
 <td>All experiment runs (data collection sessions)</td>
 </tr>
@@ -2674,12 +2830,28 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Expression system used</td>
 </tr>
 <tr>
+<td><a href="facility_code/">facility_code</a></td>
+<td>The FacilityEnum term this organization corresponds to, where it is one of th...</td>
+</tr>
+<tr>
 <td><a href="facility_name/">facility_name</a></td>
 <td>Name of the research facility where the instrument is located</td>
 </tr>
 <tr>
+<td><a href="facility_organization_id/">facility_organization_id</a></td>
+<td>The Organization that operates this instrument's facility</td>
+</tr>
+<tr>
 <td><a href="facility_ror/">facility_ror</a></td>
 <td>Research Organization Registry (ROR) identifier for the facility</td>
+</tr>
+<tr>
+<td><a href="facility_type/">facility_type</a></td>
+<td>For a research facility, the kind of facility it is</td>
+</tr>
+<tr>
+<td><a href="family_name/">family_name</a></td>
+<td>Family name, where the name has been parsed into parts</td>
 </tr>
 <tr>
 <td><a href="feature_type/">feature_type</a></td>
@@ -2778,6 +2950,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>FSC values corresponding to each resolution</td>
 </tr>
 <tr>
+<td><a href="full_name/">full_name</a></td>
+<td>Full formal name of the person, as they write it in publications</td>
+</tr>
+<tr>
 <td><a href="functional_effect/">functional_effect</a></td>
 <td>Known functional effect of this PTM</td>
 </tr>
@@ -2800,6 +2976,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="gene_synthesis_provider/">gene_synthesis_provider</a></td>
 <td>Company or facility that synthesized the gene</td>
+</tr>
+<tr>
+<td><a href="given_name/">given_name</a></td>
+<td>Given (personal) name, where the name has been parsed into parts</td>
 </tr>
 <tr>
 <td><a href="glow_discharge_applied/">glow_discharge_applied</a></td>
@@ -3022,6 +3202,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Whether the ligand is a cofactor</td>
 </tr>
 <tr>
+<td><a href="is_doe_facility/">is_doe_facility</a></td>
+<td>Whether this is a US Department of Energy facility</td>
+</tr>
+<tr>
 <td><a href="is_drug_like/">is_drug_like</a></td>
 <td>Whether the ligand has drug-like properties</td>
 </tr>
@@ -3088,6 +3272,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="lims_system/">lims_system</a></td>
 <td>Laboratory Information Management System used at this beamline</td>
+</tr>
+<tr>
+<td><a href="location/">location</a></td>
+<td>Free-text location, e</td>
 </tr>
 <tr>
 <td><a href="loop_size/">loop_size</a></td>
@@ -3326,12 +3514,28 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Final optimized crystallization condition</td>
 </tr>
 <tr>
+<td><a href="orcid/">orcid</a></td>
+<td>ORCID identifier for the person</td>
+</tr>
+<tr>
 <td><a href="organism/">organism</a></td>
 <td>Source organism for the sample (e</td>
 </tr>
 <tr>
 <td><a href="organism_id/">organism_id</a></td>
 <td>NCBI taxonomy ID</td>
+</tr>
+<tr>
+<td><a href="organization_id/">organization_id</a></td>
+<td>Reference to the organization</td>
+</tr>
+<tr>
+<td><a href="organization_type/">organization_type</a></td>
+<td>What kind of organization this is</td>
+</tr>
+<tr>
+<td><a href="organizations/">organizations</a></td>
+<td>All organizations referenced anywhere in this dataset</td>
 </tr>
 <tr>
 <td><a href="origin_movie_id/">origin_movie_id</a></td>
@@ -3364,6 +3568,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="parameters_file_path/">parameters_file_path</a></td>
 <td>Path to parameters file or text of key parameters</td>
+</tr>
+<tr>
+<td><a href="parent_organization_id/">parent_organization_id</a></td>
+<td>The organization this one belongs to - a light source's national laboratory, ...</td>
 </tr>
 <tr>
 <td><a href="parent_sample_id/">parent_sample_id</a></td>
@@ -3404,6 +3612,22 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="pdb_id/">pdb_id</a></td>
 <td>PDB accession code if deposited</td>
+</tr>
+<tr>
+<td><a href="person_id/">person_id</a></td>
+<td>Reference to the person</td>
+</tr>
+<tr>
+<td><a href="person_local_id/">person_local_id</a></td>
+<td>Facility-local user or badge identifier, where one exists</td>
+</tr>
+<tr>
+<td><a href="person_organization_associations/">person_organization_associations</a></td>
+<td>Links between people and organizations (M:N with role and dates)</td>
+</tr>
+<tr>
+<td><a href="persons/">persons</a></td>
+<td>All people referenced anywhere in this dataset</td>
 </tr>
 <tr>
 <td><a href="ph/">ph</a></td>
@@ -3774,6 +3998,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Role of sample in study (e</td>
 </tr>
 <tr>
+<td><a href="ror/">ror</a></td>
+<td>Research Organization Registry (ROR) identifier for the organization</td>
+</tr>
+<tr>
 <td><a href="rotation_angle/">rotation_angle</a></td>
 <td>Rotation angle of the detector</td>
 </tr>
@@ -4018,6 +4246,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Starting rotation angle, typically specified in degrees</td>
 </tr>
 <tr>
+<td><a href="start_date/">start_date</a></td>
+<td>Date the affiliation began, where known</td>
+</tr>
+<tr>
 <td><a href="start_time/">start_time</a></td>
 <td>Data collection start timestamp</td>
 </tr>
@@ -4068,6 +4300,14 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="study_id/">study_id</a></td>
 <td>Reference to the study</td>
+</tr>
+<tr>
+<td><a href="study_organization_associations/">study_organization_associations</a></td>
+<td>Links between studies and organizations (M:N with role, award number)</td>
+</tr>
+<tr>
+<td><a href="study_person_associations/">study_person_associations</a></td>
+<td>Links between studies and people (M:N with role) - where authorship lives</td>
 </tr>
 <tr>
 <td><a href="study_sample_associations/">study_sample_associations</a></td>
@@ -4343,11 +4583,15 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 </tr>
 <tr>
 <td><a href="website/">website</a></td>
-<td>Beamline website URL</td>
+<td>Organization or facility website</td>
 </tr>
 <tr>
 <td><a href="white_balance/">white_balance</a></td>
 <td>White balance settings</td>
+</tr>
+<tr>
+<td><a href="wikidata_id/">wikidata_id</a></td>
+<td>Wikidata entity identifier, where one exists</td>
 </tr>
 <tr>
 <td><a href="wilson_b_factor/">wilson_b_factor</a></td>
@@ -4376,6 +4620,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="workflow_output_associations/">workflow_output_associations</a></td>
 <td>Links between workflows and output files</td>
+</tr>
+<tr>
+<td><a href="workflow_person_associations/">workflow_person_associations</a></td>
+<td>Links between workflow runs and people (M:N with role)</td>
 </tr>
 <tr>
 <td><a href="workflow_runs/">workflow_runs</a></td>
@@ -4573,12 +4821,24 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Types of mutations</td>
 </tr>
 <tr>
+<td><a href="OrganizationRoleEnum/">OrganizationRoleEnum</a></td>
+<td>Capacity in which an organization is attached to a study, or a person to an o...</td>
+</tr>
+<tr>
+<td><a href="OrganizationTypeEnum/">OrganizationTypeEnum</a></td>
+<td>Kind of organization</td>
+</tr>
+<tr>
 <td><a href="OutputTypeEnum/">OutputTypeEnum</a></td>
 <td>Types of outputs from computational workflows</td>
 </tr>
 <tr>
 <td><a href="ParticleConcentrationEnum/">ParticleConcentrationEnum</a></td>
 <td>Assessment of particle concentration on a cryo-EM grid</td>
+</tr>
+<tr>
+<td><a href="PersonRoleEnum/">PersonRoleEnum</a></td>
+<td>Capacity in which a person is attached to a study, experiment run or workflow...</td>
 </tr>
 <tr>
 <td><a href="PhasingMethodEnum/">PhasingMethodEnum</a></td>
