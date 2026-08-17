@@ -46,6 +46,8 @@ nav:
     - Cross-Source Integration: use-cases/04-cross-source-integration.html
     - Bundle, Deposit, and Query: use-cases/05-bundle-deposit-lakehouse.html
     - Reanalysis Triggers: use-cases/06-reanalysis-triggers.html
+  - Profiles:
+    - LAMBDA Core RO-Crate Profile: profiles/lambda-core-rocrate-profile-v0.3.0.md
   - Technical:
     - Mapping to OME: technical/ome-mapping.md
   - Slides:

@@ -1,0 +1,17 @@
+@base <http://example.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lambdaber: <http://w3id.org/lambda/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+lambdaber:person_clyde_smith a lambdaber:Person ;
+    dcterms:title "Clyde A. Smith" ;
+    lambdaber:affiliation "Stanford Synchrotron Radiation Lightsource, SLAC National Accelerator Laboratory" ;
+    lambdaber:affiliation_ror "https://ror.org/05gzmn429"^^xsd:anyURI ;
+    lambdaber:description "Beamline scientist at SSRL, BL12-1" ;
+    lambdaber:email "csmith@slac.stanford.edu" ;
+    lambdaber:family_name "Smith" ;
+    lambdaber:full_name "Clyde A. Smith" ;
+    lambdaber:given_name "Clyde" ;
+    lambdaber:orcid "https://orcid.org/0000-0002-1885-1511"^^xsd:anyURI ;
+    lambdaber:person_local_id "csmith" .
+

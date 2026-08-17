@@ -1,0 +1,12 @@
+id: lambdaber:person_clyde_smith
+title: Clyde A. Smith
+description: Beamline scientist at SSRL, BL12-1
+orcid: https://orcid.org/0000-0002-1885-1511
+full_name: Clyde A. Smith
+given_name: Clyde
+family_name: Smith
+email: csmith@slac.stanford.edu
+affiliation: Stanford Synchrotron Radiation Lightsource, SLAC National Accelerator
+  Laboratory
+affiliation_ror: https://ror.org/05gzmn429
+person_local_id: csmith

@@ -1,0 +1,85 @@
+{
+  "@context": [
+    "https://w3id.org/ro/crate/1.2/context",
+    {
+      "lambda": "http://w3id.org/lambda/",
+      "lambdarc": "http://w3id.org/lambda/rocrate/"
+    }
+  ],
+  "@graph": [
+    {
+      "@id": "ro-crate-metadata.json",
+      "@type": "CreativeWork",
+      "conformsTo": [
+        {
+          "@id": "https://w3id.org/ro/crate/1.2"
+        }
+      ],
+      "about": {
+        "@id": "./"
+      }
+    },
+    {
+      "@id": "./",
+      "@type": [
+        "Dataset",
+        "lambda:Dataset"
+      ],
+      "name": "Lysozyme test collection (ALS 8.3.1)",
+      "description": "INVALID: the designated file carries no sha256.",
+      "datePublished": "2026-08-12",
+      "license": {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "conformsTo": [
+        {
+          "@id": "https://w3id.org/ro/crate/1.2"
+        },
+        {
+          "@id": "https://w3id.org/lambda/profile/core/0.3.0"
+        }
+      ],
+      "facility_name": "ALS",
+      "technique": "xray_crystallography",
+      "instrumentName": "8.3.1",
+      "sample_code": "LYZ-42",
+      "packageTier": "manifest",
+      "sufficiency": {
+        "s1Findable": false,
+        "s2CoreComplete": true,
+        "s2AcquisitionComplete": false,
+        "s3Interpretable": false
+      },
+      "missing": [
+        {
+          "field": "author",
+          "reason": "not-registered",
+          "blocks": "S1",
+          "note": "PI originates in the proposal system; no Person could be resolved by this build."
+        },
+        {
+          "field": "raw_frame_series",
+          "reason": "not-deposited",
+          "blocks": "S2-acquisition"
+        }
+      ],
+      "hasPart": [
+        {
+          "@id": "reflections/lyz42_scaled.mtz"
+        }
+      ]
+    },
+    {
+      "@id": "reflections/lyz42_scaled.mtz",
+      "@type": "File",
+      "name": "lyz42_scaled.mtz",
+      "description": "A designated result with no checksum: unverifiable, so S2-core cannot close.",
+      "encodingFormat": "application/x-mtz",
+      "contentSize": "2104880",
+      "file_format": "mtz",
+      "data_type": "processed_data",
+      "processing_level": 2,
+      "isDesignated": true
+    }
+  ]
+}

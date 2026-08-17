@@ -1,0 +1,187 @@
+{
+  "@context": [
+    "https://w3id.org/ro/crate/1.2/context",
+    {
+      "lambda": "http://w3id.org/lambda/",
+      "lambdarc": "http://w3id.org/lambda/rocrate/"
+    }
+  ],
+  "@graph": [
+    {
+      "@id": "ro-crate-metadata.json",
+      "@type": "CreativeWork",
+      "conformsTo": [
+        {
+          "@id": "https://w3id.org/ro/crate/1.2"
+        }
+      ],
+      "about": {
+        "@id": "./"
+      }
+    },
+    {
+      "@id": "./",
+      "@type": [
+        "Dataset",
+        "lambda:Dataset"
+      ],
+      "name": "GluRS integrative study manifest (ALS SIBYLS + SSRL)",
+      "description": "A manifest crate whose parts each use a different pointer mechanism: a nested RO-Crate, a full lambda-ber-schema record, and a remote registration. The manifest itself carries no payload - it is the federation handoff object, not the data.",
+      "datePublished": "2026-08-12",
+      "license": {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "conditionsOfAccess": "open",
+      "conformsTo": [
+        {
+          "@id": "https://w3id.org/ro/crate/1.2"
+        },
+        {
+          "@id": "https://w3id.org/lambda/profile/core/0.3.0"
+        }
+      ],
+      "identifier": [
+        {
+          "@type": "PropertyValue",
+          "propertyID": "UUID",
+          "value": "urn:uuid:5b2f9c14-7d3e-4a86-9f01-2c8e6b4d5a70"
+        }
+      ],
+      "author": [
+        {
+          "@id": "https://orcid.org/0000-0002-1885-1511"
+        }
+      ],
+      "publisher": {
+        "@id": "https://ror.org/02jbv0t02"
+      },
+      "sample_code": "GluRS",
+      "protein_name": "Glutamyl-tRNA synthetase",
+      "organism": "Pseudomonas aeruginosa",
+      "packageTier": "manifest",
+      "sufficiency": {
+        "s1Findable": true,
+        "s2CoreComplete": true,
+        "s2AcquisitionComplete": false,
+        "s3Interpretable": false
+      },
+      "hasPart": [
+        {
+          "@id": "saxs/"
+        },
+        {
+          "@id": "mx/"
+        },
+        {
+          "@id": "https://www.sasbdb.org/data/SASDD42/"
+        }
+      ]
+    },
+    {
+      "@id": "https://orcid.org/0000-0002-1885-1511",
+      "@type": "Person",
+      "name": "Clyde Smith",
+      "affiliation": "Stanford University"
+    },
+    {
+      "@id": "https://ror.org/02jbv0t02",
+      "@type": "Organization",
+      "name": "Lawrence Berkeley National Laboratory",
+      "ror": "https://ror.org/02jbv0t02",
+      "acronym": "LBNL",
+      "organization_type": "national_laboratory",
+      "country": "USA",
+      "isDoeFacility": true,
+      "doe_office": "Office of Science",
+      "organizationRole": "host_institution"
+    },
+    {
+      "@id": "saxs/",
+      "@type": "Dataset",
+      "name": "SEC-SAXS-MALS of GluRS (ALS SIBYLS 12.3.1)",
+      "description": "Pointer mechanism 1 - nested RO-Crate. The subdirectory carries its own ro-crate-metadata.json conforming to the SAXS technique extension, so the technique detail lives where it belongs and this manifest stays technique-neutral.",
+      "conformsTo": [
+        {
+          "@id": "https://w3id.org/lambda/profile/core/0.3.0"
+        },
+        {
+          "@id": "https://w3id.org/lambda/profile/saxs/0.3.0"
+        }
+      ],
+      "contentSize": "11563204",
+      "partCount": 5,
+      "hasPart": [
+        {
+          "@id": "saxs/ro-crate-metadata.json"
+        }
+      ]
+    },
+    {
+      "@id": "saxs/ro-crate-metadata.json",
+      "@type": "File",
+      "name": "ro-crate-metadata.json",
+      "description": "Metadata descriptor of the nested SAXS crate.",
+      "encodingFormat": "application/ld+json",
+      "contentSize": "18402",
+      "sha256": "c3a1b2d4e5f60718293a4b5c6d7e8f90a1b2c3d4e5f60718293a4b5c6d7e8f90",
+      "file_format": "json",
+      "data_type": "metadata",
+      "file_role": "metadata"
+    },
+    {
+      "@id": "mx/",
+      "@type": "Dataset",
+      "name": "MX of Zn-bound GluRS (SSRL BL12-1)",
+      "description": "Pointer mechanism 2 - schema record. No nested crate; instead a full lambda-ber-schema Dataset document carries the rigorous metadata, referenced with its version and checksum.",
+      "schemaRecord": {
+        "@id": "mx/glurs_mx_lambda_ber.yaml"
+      },
+      "schemaVersion": "0.1.2",
+      "contentSize": "4118992",
+      "hasPart": [
+        {
+          "@id": "mx/glurs_mx_lambda_ber.yaml"
+        }
+      ]
+    },
+    {
+      "@id": "mx/glurs_mx_lambda_ber.yaml",
+      "@type": "File",
+      "name": "glurs_mx_lambda_ber.yaml",
+      "description": "Full lambda-ber-schema Dataset record for the MX arm of this study.",
+      "encodingFormat": "application/yaml",
+      "contentSize": "12744",
+      "sha256": "7e8f90a1b2c3d4e5f60718293a4b5c6d7e8f90a1b2c3d4e5f60718293a4b5c6d",
+      "file_format": "json",
+      "data_type": "metadata",
+      "file_role": "metadata",
+      "conformsTo": [
+        {
+          "@id": "http://w3id.org/lambda/"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.sasbdb.org/data/SASDD42/",
+      "@type": "Dataset",
+      "name": "SASBDB SASDD42 - deposited SAXS data for GluRS",
+      "description": "Pointer mechanism 3 - remote registration. The dataset lives in a public archive under its own accession; this manifest records the identity and the locator and claims nothing about bytes it does not hold.",
+      "identifier": [
+        {
+          "@type": "PropertyValue",
+          "propertyID": "SASBDB",
+          "value": "SASDD42"
+        }
+      ],
+      "url": "https://www.sasbdb.org/data/SASDD42/",
+      "missing": [
+        {
+          "field": "sha256",
+          "reason": "not-available",
+          "blocks": "S2-core",
+          "note": "Archive does not publish per-entry checksums; integrity cannot be asserted for a remote registration."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,331 @@
+{
+   "IHMCIF": "https://mmcif.wwpdb.org/dictionaries/mmcif_ihm_ext.dic/Items/",
+   "ORCID": "https://orcid.org/",
+   "ROR": "https://ror.org/",
+   "UO": "http://purl.obolibrary.org/obo/UO_",
+   "dcterms": "http://purl.org/dc/terms/",
+   "imgCIF": "https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#",
+   "ispyb": "https://ispyb.github.io/ISPyB/",
+   "lambda": "http://w3id.org/lambda/",
+   "lambdarc": "http://w3id.org/lambda/rocrate/",
+   "lambdax": "https://lambda-ber.github.io/lambda-ber-schema/profile/saxs/0.4.0/terms/",
+   "linkml": "https://w3id.org/linkml/",
+   "mmCIF": "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/",
+   "nmdc": "https://w3id.org/nmdc/",
+   "nsls2": "https://github.com/NSLS2/BER-LAMBDA/",
+   "prof": "http://www.w3.org/ns/dx/prof/",
+   "prov": "http://www.w3.org/ns/prov#",
+   "qud": "http://qudt.org/1.1/schema/qudt#",
+   "rocrate": "https://w3id.org/ro/crate/",
+   "schema": "https://schema.org/",
+   "sdo": "http://schema.org/",
+   "Agent": {
+      "@id": "prov:Agent"
+   },
+   "AggregatedProteinView": {
+      "@id": "http://w3id.org/lambda/functional_annotation/AggregatedProteinView"
+   },
+   "Any": {
+      "@id": "linkml:Any"
+   },
+   "Association": {
+      "@id": "prov:Association"
+   },
+   "Attribute": {
+      "@id": "lambda:Attribute"
+   },
+   "AttributeGroup": {
+      "@id": "lambda:AttributeGroup"
+   },
+   "AttributeValue": {
+      "@id": "nmdc:AttributeValue"
+   },
+   "BeamCenterPixels": {
+      "@id": "lambda:BeamCenterPixels"
+   },
+   "BeamlineInstrument": {
+      "@id": "lambda:BeamlineInstrument"
+   },
+   "BiophysicalProperty": {
+      "@id": "http://w3id.org/lambda/functional_annotation/BiophysicalProperty"
+   },
+   "BufferComposition": {
+      "@id": "lambda:BufferComposition"
+   },
+   "ComputeResources": {
+      "@id": "lambda:ComputeResources"
+   },
+   "ConformationalEnsemble": {
+      "@id": "http://w3id.org/lambda/functional_annotation/ConformationalEnsemble"
+   },
+   "ConformationalState": {
+      "@id": "http://w3id.org/lambda/functional_annotation/ConformationalState"
+   },
+   "CrateDatasetPart": {
+      "@id": "sdo:Dataset"
+   },
+   "CrateFile": {
+      "@id": "sdo:MediaObject"
+   },
+   "CrateRoot": {
+      "@id": "sdo:Dataset"
+   },
+   "CryoEMInstrument": {
+      "@id": "lambda:CryoEMInstrument"
+   },
+   "CryoEMPreparation": {
+      "@id": "lambda:CryoEMPreparation"
+   },
+   "CryoEMQualityMetrics": {
+      "@id": "lambda:CryoEMQualityMetrics"
+   },
+   "CrystallizationConditions": {
+      "@id": "lambda:CrystallizationConditions"
+   },
+   "CTFEstimationParameters": {
+      "@id": "lambda:CTFEstimationParameters"
+   },
+   "DatabaseCrossReference": {
+      "@id": "http://w3id.org/lambda/functional_annotation/DatabaseCrossReference"
+   },
+   "DataCollectionStrategy": {
+      "@id": "lambda:DataCollectionStrategy"
+   },
+   "DataFile": {
+      "@id": "lambda:DataFile"
+   },
+   "Dataset": {
+      "@id": "lambda:Dataset"
+   },
+   "DateTimeValue": {
+      "@id": "nmdc:DateTimeValue"
+   },
+   "DefinedTermEntity": {
+      "@id": "sdo:DefinedTerm"
+   },
+   "Derivation": {
+      "@id": "prov:Derivation"
+   },
+   "Designation": {
+      "@id": "prov:Activity"
+   },
+   "EvolutionaryConservation": {
+      "@id": "http://w3id.org/lambda/functional_annotation/EvolutionaryConservation"
+   },
+   "ExperimentalConditions": {
+      "@id": "lambda:ExperimentalConditions"
+   },
+   "ExperimentInstrumentAssociation": {
+      "@id": "lambda:ExperimentInstrumentAssociation"
+   },
+   "ExperimentPersonAssociation": {
+      "@id": "lambda:ExperimentPersonAssociation"
+   },
+   "ExperimentRun": {
+      "@id": "lambda:ExperimentRun"
+   },
+   "ExperimentRunAction": {
+      "@id": "sdo:Action"
+   },
+   "ExperimentSampleAssociation": {
+      "@id": "lambda:ExperimentSampleAssociation"
+   },
+   "FluorescenceImage": {
+      "@id": "lambda:FluorescenceImage"
+   },
+   "FSCCurve": {
+      "@id": "lambda:FSCCurve"
+   },
+   "FTIRImage": {
+      "@id": "lambda:FTIRImage"
+   },
+   "FunctionalSite": {
+      "@id": "http://w3id.org/lambda/functional_annotation/FunctionalSite"
+   },
+   "Image": {
+      "@id": "lambda:Image"
+   },
+   "Image2D": {
+      "@id": "lambda:Image2D"
+   },
+   "Image3D": {
+      "@id": "lambda:Image3D"
+   },
+   "ImageFeature": {
+      "@id": "lambda:ImageFeature"
+   },
+   "Instrument": {
+      "@id": "lambda:Instrument"
+   },
+   "InstrumentEntity": {
+      "@id": "sdo:IndividualProduct"
+   },
+   "LigandInteraction": {
+      "@id": "http://w3id.org/lambda/functional_annotation/LigandInteraction"
+   },
+   "MeasurementConditions": {
+      "@id": "http://w3id.org/lambda/functional_annotation/MeasurementConditions"
+   },
+   "MetadataDescriptor": {
+      "@id": "sdo:CreativeWork"
+   },
+   "Micrograph": {
+      "@id": "lambda:Micrograph"
+   },
+   "MolecularComposition": {
+      "@id": "lambda:MolecularComposition"
+   },
+   "MotionCorrectionParameters": {
+      "@id": "lambda:MotionCorrectionParameters"
+   },
+   "Movie": {
+      "@id": "lambda:Movie"
+   },
+   "MutationEffect": {
+      "@id": "http://w3id.org/lambda/functional_annotation/MutationEffect"
+   },
+   "NamedThing": {
+      "@id": "lambda:NamedThing"
+   },
+   "OntologyTerm": {
+      "@id": "lambda:OntologyTerm"
+   },
+   "OpticalImage": {
+      "@id": "lambda:OpticalImage"
+   },
+   "Organization": {
+      "@id": "lambda:Organization"
+   },
+   "OrganizationEntity": {
+      "@id": "sdo:Organization"
+   },
+   "ParticlePickingParameters": {
+      "@id": "lambda:ParticlePickingParameters"
+   },
+   "Person": {
+      "@id": "lambda:Person"
+   },
+   "PersonEntity": {
+      "@id": "sdo:Person"
+   },
+   "PersonOrganizationAssociation": {
+      "@id": "lambda:PersonOrganizationAssociation"
+   },
+   "PostTranslationalModification": {
+      "@id": "http://w3id.org/lambda/functional_annotation/PostTranslationalModification"
+   },
+   "PropertyValueEntity": {
+      "@id": "sdo:PropertyValue"
+   },
+   "ProteinAnnotation": {
+      "@id": "http://w3id.org/lambda/functional_annotation/ProteinAnnotation"
+   },
+   "ProteinConstruct": {
+      "@id": "lambda:ProteinConstruct"
+   },
+   "ProteinProteinInteraction": {
+      "@id": "http://w3id.org/lambda/functional_annotation/ProteinProteinInteraction"
+   },
+   "QualityMetrics": {
+      "@id": "lambda:QualityMetrics"
+   },
+   "QuantityValue": {
+      "@id": "nmdc:QuantityValue"
+   },
+   "RefinementParameters": {
+      "@id": "lambda:RefinementParameters"
+   },
+   "RelatedWork": {
+      "@id": "sdo:CreativeWork"
+   },
+   "ROCrateMetadataDocument": {
+      "@id": "sdo:CreativeWork"
+   },
+   "Sample": {
+      "@id": "lambda:Sample"
+   },
+   "SampleEntity": {
+      "@id": "sdo:BioChemEntity"
+   },
+   "SamplePreparation": {
+      "@id": "lambda:SamplePreparation"
+   },
+   "SANSConfiguration": {
+      "@id": "lambda:SANSConfiguration"
+   },
+   "SANSDetector": {
+      "@id": "lambda:SANSDetector"
+   },
+   "SANSInstrument": {
+      "@id": "lambda:SANSInstrument"
+   },
+   "SANSSource": {
+      "@id": "lambda:SANSSource"
+   },
+   "SAXSInstrument": {
+      "@id": "lambda:SAXSInstrument"
+   },
+   "SAXSPreparation": {
+      "@id": "lambda:SAXSPreparation"
+   },
+   "SoftwareApplicationEntity": {
+      "@id": "sdo:SoftwareApplication"
+   },
+   "StorageConditions": {
+      "@id": "lambda:StorageConditions"
+   },
+   "StructuralFeature": {
+      "@id": "http://w3id.org/lambda/functional_annotation/StructuralFeature"
+   },
+   "Study": {
+      "@id": "lambda:Study"
+   },
+   "StudyExperimentAssociation": {
+      "@id": "lambda:StudyExperimentAssociation"
+   },
+   "StudyOrganizationAssociation": {
+      "@id": "lambda:StudyOrganizationAssociation"
+   },
+   "StudyPersonAssociation": {
+      "@id": "lambda:StudyPersonAssociation"
+   },
+   "StudySampleAssociation": {
+      "@id": "lambda:StudySampleAssociation"
+   },
+   "StudyWorkflowAssociation": {
+      "@id": "lambda:StudyWorkflowAssociation"
+   },
+   "TechniqueSpecificPreparation": {
+      "@id": "lambda:TechniqueSpecificPreparation"
+   },
+   "TextValue": {
+      "@id": "nmdc:TextValue"
+   },
+   "WorkflowExperimentAssociation": {
+      "@id": "lambda:WorkflowExperimentAssociation"
+   },
+   "WorkflowInputAssociation": {
+      "@id": "lambda:WorkflowInputAssociation"
+   },
+   "WorkflowOutputAssociation": {
+      "@id": "lambda:WorkflowOutputAssociation"
+   },
+   "WorkflowPersonAssociation": {
+      "@id": "lambda:WorkflowPersonAssociation"
+   },
+   "WorkflowRun": {
+      "@id": "lambda:WorkflowRun"
+   },
+   "WorkflowRunAction": {
+      "@id": "sdo:CreateAction"
+   },
+   "XRayInstrument": {
+      "@id": "lambda:XRayInstrument"
+   },
+   "XRayPreparation": {
+      "@id": "lambda:XRayPreparation"
+   },
+   "XRFImage": {
+      "@id": "lambda:XRFImage"
+   }
+}

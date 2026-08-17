@@ -1,0 +1,188 @@
+@base <http://example.org/> .
+@prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
+@prefix ROR: <https://ror.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lambdaber: <http://w3id.org/lambda/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+lambdaber:dataset_authorship a lambdaber:Dataset ;
+    dcterms:title "Authorship and people provenance example" ;
+    lambdaber:description "Demonstrates the Person entity table and the three person association tables. The same person record serves several roles across the dataset - Clyde Smith is both an author of the study and the operator who collected the data - which is the point of keeping role on the association rather than on the person. Organizations work the same way: SLAC is stated once and referred to by the instrument, by an affiliation and by the study, rather than restated in each." ;
+    lambdaber:experiment_person_associations [ a lambdaber:ExperimentPersonAssociation ;
+            lambdaber:experiment_id lambdaber:exp_xa_x16 ;
+            lambdaber:person_id lambdaber:person_clyde_smith ;
+            lambdaber:role "local_contact" ],
+        [ a lambdaber:ExperimentPersonAssociation ;
+            lambdaber:experiment_id lambdaber:exp_xa_x16 ;
+            lambdaber:person_id lambdaber:person_clyde_smith ;
+            lambdaber:role "operator" ] ;
+    lambdaber:experiment_runs lambdaber:exp_xa_x16 ;
+    lambdaber:instruments lambdaber:instrument_ssrl_bl12_1 ;
+    lambdaber:organizations lambdaber:org_doe_ber,
+        lambdaber:org_pnnl,
+        lambdaber:org_slac,
+        lambdaber:org_ssrl,
+        lambdaber:org_utoronto ;
+    lambdaber:person_organization_associations [ a lambdaber:PersonOrganizationAssociation ;
+            lambdaber:organization_id lambdaber:org_ssrl ;
+            lambdaber:person_id lambdaber:person_clyde_smith ;
+            lambdaber:role "primary_affiliation" ;
+            lambdaber:start_date "2001-06-01" ],
+        [ a lambdaber:PersonOrganizationAssociation ;
+            lambdaber:organization_id lambdaber:org_pnnl ;
+            lambdaber:person_id lambdaber:person_garry_buchko ;
+            lambdaber:role "primary_affiliation" ],
+        [ a lambdaber:PersonOrganizationAssociation ;
+            lambdaber:organization_id lambdaber:org_utoronto ;
+            lambdaber:person_id lambdaber:person_emma_master ;
+            lambdaber:role "primary_affiliation" ] ;
+    lambdaber:persons lambdaber:person_clyde_smith,
+        lambdaber:person_emma_master,
+        lambdaber:person_garry_buchko,
+        lambdaber:person_unnamed_curator ;
+    lambdaber:studies lambdaber:study_expansin ;
+    lambdaber:study_experiment_associations [ a lambdaber:StudyExperimentAssociation ;
+            lambdaber:experiment_id lambdaber:exp_xa_x16 ;
+            lambdaber:study_id lambdaber:study_expansin ] ;
+    lambdaber:study_organization_associations [ a lambdaber:StudyOrganizationAssociation ;
+            lambdaber:organization_id lambdaber:org_pnnl ;
+            lambdaber:role "collaborating_institution" ;
+            lambdaber:study_id lambdaber:study_expansin ],
+        [ a lambdaber:StudyOrganizationAssociation ;
+            lambdaber:award_number "DE-SC0000000" ;
+            lambdaber:organization_id lambdaber:org_doe_ber ;
+            lambdaber:role "funder" ;
+            lambdaber:study_id lambdaber:study_expansin ],
+        [ a lambdaber:StudyOrganizationAssociation ;
+            lambdaber:organization_id lambdaber:org_ssrl ;
+            lambdaber:role "operating_institution" ;
+            lambdaber:study_id lambdaber:study_expansin ] ;
+    lambdaber:study_person_associations [ a lambdaber:StudyPersonAssociation ;
+            lambdaber:person_id lambdaber:person_unnamed_curator ;
+            lambdaber:role "data_curator" ;
+            lambdaber:study_id lambdaber:study_expansin ],
+        [ a lambdaber:StudyPersonAssociation ;
+            lambdaber:author_position 2 ;
+            lambdaber:person_id lambdaber:person_garry_buchko ;
+            lambdaber:role "co_investigator" ;
+            lambdaber:study_id lambdaber:study_expansin ],
+        [ a lambdaber:StudyPersonAssociation ;
+            lambdaber:author_position 3 ;
+            lambdaber:person_id lambdaber:person_clyde_smith ;
+            lambdaber:role "author" ;
+            lambdaber:study_id lambdaber:study_expansin ],
+        [ a lambdaber:StudyPersonAssociation ;
+            lambdaber:author_position 1 ;
+            lambdaber:corresponding true ;
+            lambdaber:person_id lambdaber:person_emma_master ;
+            lambdaber:role "principal_investigator" ;
+            lambdaber:study_id lambdaber:study_expansin ] ;
+    lambdaber:study_workflow_associations [ a lambdaber:StudyWorkflowAssociation ;
+            lambdaber:study_id lambdaber:study_expansin ;
+            lambdaber:workflow_id lambdaber:wf_xa_x16_autoproc ] ;
+    lambdaber:workflow_person_associations [ a lambdaber:WorkflowPersonAssociation ;
+            lambdaber:person_id lambdaber:person_clyde_smith ;
+            lambdaber:role "analyst" ;
+            lambdaber:workflow_id lambdaber:wf_xa_x16_autoproc ] ;
+    lambdaber:workflow_runs lambdaber:wf_xa_x16_autoproc .
+
+lambdaber:instrument_ssrl_bl12_1 a lambdaber:Instrument ;
+    dcterms:title "SSRL BL12-1" ;
+    lambdaber:beamline_id "BL12-1" ;
+    lambdaber:facility_name ROR:05gzmn429 ;
+    lambdaber:facility_organization_id lambdaber:org_ssrl ;
+    lambdaber:facility_ror "https://ror.org/05gzmn429"^^xsd:anyURI ;
+    lambdaber:instrument_code "SSRL-BL12-1" .
+
+lambdaber:org_doe_ber a lambdaber:Organization ;
+    dcterms:title "DOE Office of Biological and Environmental Research" ;
+    lambdaber:acronym "BER" ;
+    lambdaber:country "USA" ;
+    lambdaber:doe_office "Office of Science" ;
+    lambdaber:organization_type "funding_agency" .
+
+lambdaber:org_slac a lambdaber:Organization ;
+    dcterms:title "SLAC National Accelerator Laboratory" ;
+    lambdaber:acronym "SLAC" ;
+    lambdaber:country "USA" ;
+    lambdaber:doe_office "Office of Science" ;
+    lambdaber:is_doe_facility true ;
+    lambdaber:location "Menlo Park, California, USA" ;
+    lambdaber:organization_type "national_laboratory" ;
+    lambdaber:ror "https://ror.org/05gzmn429"^^xsd:anyURI .
+
+lambdaber:org_utoronto a lambdaber:Organization ;
+    dcterms:title "University of Toronto" ;
+    lambdaber:country "Canada" ;
+    lambdaber:organization_type "university" ;
+    lambdaber:ror "https://ror.org/03dbr7087"^^xsd:anyURI .
+
+lambdaber:person_unnamed_curator a lambdaber:Person ;
+    lambdaber:description "Deposition was made by a facility account with no resolvable individual behind it. Recorded with neither name nor ORCID rather than inventing one - the relationship is real, the identity is not known." .
+
+lambdaber:org_pnnl a lambdaber:Organization ;
+    dcterms:title "Pacific Northwest National Laboratory" ;
+    lambdaber:acronym "PNNL" ;
+    lambdaber:country "USA" ;
+    lambdaber:is_doe_facility true ;
+    lambdaber:organization_type "national_laboratory" ;
+    lambdaber:ror "https://ror.org/05h992307"^^xsd:anyURI .
+
+lambdaber:person_emma_master a lambdaber:Person ;
+    dcterms:title "Emma Master" ;
+    lambdaber:affiliation "University of Toronto" ;
+    lambdaber:affiliation_ror "https://ror.org/03dbr7087"^^xsd:anyURI ;
+    lambdaber:family_name "Master" ;
+    lambdaber:given_name "Emma" ;
+    lambdaber:orcid "https://orcid.org/0000-0002-6837-9817"^^xsd:anyURI .
+
+lambdaber:person_garry_buchko a lambdaber:Person ;
+    dcterms:title "Garry Buchko" ;
+    lambdaber:affiliation "Pacific Northwest National Laboratory" ;
+    lambdaber:affiliation_ror "https://ror.org/05h992307"^^xsd:anyURI ;
+    lambdaber:full_name "Garry W. Buchko" ;
+    lambdaber:orcid "https://orcid.org/0000-0002-3639-1061"^^xsd:anyURI .
+
+lambdaber:wf_xa_x16_autoproc a lambdaber:WorkflowRun ;
+    dcterms:title "autoPROC integration and scaling" ;
+    lambdaber:software_name "autoPROC" ;
+    lambdaber:software_version "0.7.13" ;
+    lambdaber:workflow_code "XA_x16_autoproc" ;
+    lambdaber:workflow_type "integration" .
+
+lambdaber:exp_xa_x16 a lambdaber:ExperimentRun ;
+    dcterms:title "XA_x16 diffraction collection" ;
+    lambdaber:experiment_code "XA_x16" ;
+    lambdaber:experiment_date "2023-09-01" ;
+    lambdaber:number_of_images [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "1800.0"^^xsd:float ;
+            lambdaber:unit "images" ] ;
+    lambdaber:operator_id "csmith" ;
+    lambdaber:technique CHMO:0000156 .
+
+lambdaber:org_ssrl a lambdaber:Organization ;
+    dcterms:title "Stanford Synchrotron Radiation Lightsource" ;
+    lambdaber:acronym "SSRL" ;
+    lambdaber:country "USA" ;
+    lambdaber:description "A facility within SLAC rather than an independent institution, so it carries no ROR of its own - its identity is the FacilityEnum term plus its parent. Copying the parent's ROR down here would be exactly the restatement this class exists to stop." ;
+    lambdaber:facility_code ROR:05gzmn429 ;
+    lambdaber:facility_type "SYNCHROTRON" ;
+    lambdaber:is_doe_facility true ;
+    lambdaber:location "Menlo Park, California, USA" ;
+    lambdaber:parent_organization_id lambdaber:org_slac .
+
+lambdaber:person_clyde_smith a lambdaber:Person ;
+    dcterms:title "Clyde Smith" ;
+    lambdaber:affiliation "Stanford Synchrotron Radiation Lightsource, SLAC National Accelerator Laboratory" ;
+    lambdaber:affiliation_ror "https://ror.org/05gzmn429"^^xsd:anyURI ;
+    lambdaber:full_name "Clyde A. Smith" ;
+    lambdaber:orcid "https://orcid.org/0000-0002-1885-1511"^^xsd:anyURI ;
+    lambdaber:person_local_id "csmith" .
+
+lambdaber:study_expansin a lambdaber:Study ;
+    dcterms:title "Bacterial expansin structure and cellulose loosening" ;
+    lambdaber:description "Crystallographic study of Xa_EXLX1 from Xanthomonas sacchari" ;
+    lambdaber:keywords "carbohydrate-binding",
+        "expansin" .
+

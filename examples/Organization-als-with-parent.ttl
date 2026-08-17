@@ -1,0 +1,21 @@
+@base <http://example.org/> .
+@prefix ROR: <https://ror.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lambdaber: <http://w3id.org/lambda/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+lambdaber:org_als a lambdaber:Organization ;
+    dcterms:title "Advanced Light Source" ;
+    lambdaber:acronym "ALS" ;
+    lambdaber:country "USA" ;
+    lambdaber:description "Third-generation synchrotron light source. Demonstrates an Organization record standing in for a FacilityEnum term: the enum says which facility this is, the record says what it is, where, and who operates it. This is a standalone class example, so parent_organization_id names a record that lives elsewhere; see Dataset-authorship.yaml for the parent and child resolved in one dataset." ;
+    lambdaber:doe_office "Office of Science" ;
+    lambdaber:facility_code ROR:02jbv0t02 ;
+    lambdaber:facility_type "SYNCHROTRON" ;
+    lambdaber:is_doe_facility true ;
+    lambdaber:location "Berkeley, California, USA" ;
+    lambdaber:organization_type "national_laboratory" ;
+    lambdaber:parent_organization_id lambdaber:org_lbnl ;
+    lambdaber:ror "https://ror.org/02jbv0t02"^^xsd:anyURI ;
+    lambdaber:website "https://als.lbl.gov/"^^xsd:anyURI .
+

@@ -1,0 +1,2023 @@
+id: http://w3id.org/lambda/rocrate/core
+name: lambda-rocrate-core
+title: LAMBDA Core RO-Crate Profile
+version: "0.3.0"
+license: https://creativecommons.org/publicdomain/zero/1.0/
+description: |
+  **LAMBDA Core RO-Crate profile** — the technique-neutral file-manifest contract for LAMBDA.
+
+  A LAMBDA crate is a machine-readable *manifest*: it carries the highest-level details a program
+  needs in order to decide whether a dataset is worth opening, and then **points** at the fuller
+  record rather than restating it. The fuller record may be another RO-Crate, a complete
+  `lambda-ber-schema` document, or a remote registration (DOI / archive accession).
+
+  ## Relationship to `lambda-ber-schema`
+
+  This module *mirrors* `lambda-ber-schema`; it does not copy it. It `imports` the main schema, so
+  every controlled vocabulary (`TechniqueEnum`, `FacilityEnum`, `FileFormatEnum`, `DataTypeEnum`,
+  `WorkflowTypeEnum`, `SampleTypeEnum`, …) is *referenced* from its single source. Every crate slot
+  that has a counterpart in the main schema declares it with `exact_mappings`, so
+  `gen-sssom` emits a machine-readable crate-term to schema-slot crosswalk instead of a
+  hand-maintained table that drifts.
+
+  ## Term layers
+
+  Three namespaces, by design (the two-layer discipline of the LAMBDA SAXS profile, plus RO-Crate's
+  own base):
+
+  - `sdo:` (schema.org) — identity, access and packaging. Anything RO-Crate/schema.org already
+    names (`name`, `datePublished`, `license`, `author`, `hasPart`, `encodingFormat`,
+    `contentSize`, …) uses the schema.org term, in schema.org's own camelCase. Note the **http**
+    form of the namespace, and see the prefix comment below for why it is not called `schema:`
+    here. Crate authors never write this prefix — RO-Crate's context resolves the bare terms.
+  - `lambda:` — terms that project onto a `lambda-ber-schema` slot. These deliberately keep the
+    schema's `snake_case` slot names, so `lambda:file_format` in a crate *is* the `DataFile.file_format`
+    slot IRI and the projection is an identity mapping rather than a lookup.
+  - `lambdarc:` — profile-local machinery with no schema counterpart yet (declared absence,
+    sufficiency tiers, designation, estimators). camelCase, following the SAXS profile's style.
+    Each of these is a standing change request against `lambda-ber-schema`.
+
+  ## Namespace note
+
+  Crates MUST bind `lambda:` to `http://w3id.org/lambda/` — the main schema's own base — so that
+  `lambda:Dataset` and `lambda:file_format` in a crate resolve to the actual LinkML class and slot
+  IRIs. Earlier SSRL crates bound `lambda:` to `https://w3id.org/lambda/terms/0.2/`, whose terms
+  resolve to nothing in the schema; see the deprecated-alias notes on individual elements.
+
+  ## Validation model
+
+  Three layers, because a flat RO-Crate `@graph` is an open world and no single tool covers it:
+
+  1. **JSON Schema** (`gen-json-schema --top-class ROCrateMetadataDocument`) checks document shape.
+     `@graph` is deliberately permissive at the document level so that crates carrying technique
+     extension terms still validate as documents.
+  2. **Per-entity classes** — dispatch a graph entity on its `@type` and validate it against the
+     matching class here (`linkml-validate -C CrateFile`, …). These classes are closed, so an
+     undeclared term is caught. This is where the profile actually bites.
+  3. **Graph rules** for the cross-entity constraints neither of the above can state, because they
+     are about relationships between entities rather than the shape of any one of them: does every
+     `hasPart` target resolve to an entity? does each dataset part carry a metadata pointer or
+     declare that it has none? is any field both present and declared missing? These live in
+     `tests/test_rocrate_profile.py`.
+
+     SHACL shapes would be the natural home for this layer, since RDF validation dispatches on
+     `rdf:type` properly. They are *not* generated: `gen-shacl` raises
+     `KeyError('lambda-ber-schema')` for classes whose slots come from an imported schema
+     (`shaclgen.py::_build_ignored_properties`). Worth revisiting when that is fixed upstream.
+
+  Two normalizations a reader MUST apply before validating, both of them things a JSON-LD processor
+  does and neither of them a change of meaning: expand a single value where the profile declares a
+  set (`"instrument": {"@id": "#x"}` means a one-element list), and compact an explicitly prefixed
+  key to the profile's own term (`"lambda:protein_name"` and a context-mapped `"protein_name"` are
+  the same IRI, and real crates mix the two spellings within one entity).
+
+prefixes:
+  lambda: http://w3id.org/lambda/
+  lambdarc: http://w3id.org/lambda/rocrate/
+  linkml: https://w3id.org/linkml/
+  # RO-Crate's own JSON-LD context maps its terms to the *http* form of schema.org, so that is
+  # what a crate's IRIs actually expand to. lambda_ber_types.yaml binds `schema:` to the https
+  # form; the two are different IRIs, so this profile uses `sdo:` rather than silently colliding
+  # with the imported prefix. Crate authors never write either prefix - RO-Crate's context
+  # resolves the bare terms - so this is invisible in the crates themselves.
+  sdo: http://schema.org/
+  dcterms: http://purl.org/dc/terms/
+  prov: http://www.w3.org/ns/prov#
+  # Peter Zwart's SAXS draft terms, registered so gen-sssom emits a migration map from
+  # his spellings to the technique-neutral ones. Not a namespace new crates should write.
+  lambdax: https://lambda-ber.github.io/lambda-ber-schema/profile/saxs/0.4.0/terms/
+  prof: http://www.w3.org/ns/dx/prof/
+  rocrate: https://w3id.org/ro/crate/
+  ORCID: https://orcid.org/
+  ROR: https://ror.org/
+
+default_prefix: lambdarc
+default_range: string
+
+imports:
+  - linkml:types
+  - lambda_ber_schema
+
+# =====================================================================================
+# Classes
+# =====================================================================================
+
+classes:
+
+  # ----- the document -----------------------------------------------------------------
+
+  ROCrateMetadataDocument:
+    tree_root: true
+    class_uri: sdo:CreativeWork
+    description: >-
+      An `ro-crate-metadata.json` file: a JSON-LD document whose `@graph` is a flat set of entities
+      linked by `@id`. This is the tree root of the profile, so a real crate file validates as-is.
+    slots:
+      - at_context
+      - at_graph
+    comments:
+      - >-
+        `@graph` has range `Any` on purpose. LinkML closes every nested class in the generated JSON
+        Schema, so constraining `@graph` to the entity classes here would reject any crate that
+        carries a technique-extension term - which is precisely the composition this profile is
+        built for. Per-entity enforcement happens by dispatching each entity on its `@type` and
+        validating it against the matching class (validation model, layer 2).
+
+  # ----- references -------------------------------------------------------------------
+
+  EntityReference:
+    description: >-
+      A `{"@id": "..."}` reference to another entity in the graph, or to an external resource. This
+      is how RO-Crate expresses every relationship; it is never a bare string.
+    slots:
+      - at_id
+
+  # ----- entity base ------------------------------------------------------------------
+
+  CrateEntity:
+    abstract: true
+    description: >-
+      Anything that appears in the `@graph`. Every entity is addressable (`@id`) and typed
+      (`@type`); everything else depends on what it is.
+    slots:
+      - at_id
+      - at_type
+      - name
+      - description
+
+  # ----- required entities ------------------------------------------------------------
+
+  MetadataDescriptor:
+    is_a: CrateEntity
+    class_uri: sdo:CreativeWork
+    description: >-
+      The self-description of the metadata file. `@id` is `ro-crate-metadata.json`, `conformsTo`
+      names the RO-Crate version, and `about` points at the root data entity.
+    slots:
+      - conforms_to
+      - about
+    slot_usage:
+      at_id:
+        pattern: '^(.*/)?ro-crate-metadata\.json$'
+        required: true
+      conforms_to:
+        required: true
+      about:
+        required: true
+
+  CrateRoot:
+    is_a: CrateEntity
+    class_uri: sdo:Dataset
+    exact_mappings:
+      - lambda:Dataset
+    close_mappings:
+      - lambda:Study
+    description: >-
+      The root data entity: one crate, one manifest, one search row. Carries the identity, access
+      and provenance summary a reader needs to judge the dataset without opening it, plus the
+      `hasPart` manifest of what is inside.
+
+      Typed `["Dataset", "lambda:Dataset"]`. Crates written against the SSRL 0.2 vocabulary type
+      this `["Dataset", "lambda:Experiment"]`; readers MUST accept that spelling and SHOULD treat
+      it as deprecated.
+    slots:
+      # identity and access (schema.org layer)
+      - conforms_to
+      - date_published
+      - date_modified
+      - date_created
+      - license
+      - author
+      - publisher
+      - identifier
+      - keywords
+      - citation
+      - url
+      - conditions_of_access
+      - content_size
+      - measurement_technique
+      - has_part
+      # LAMBDA layer
+      - facility
+      - facility_name
+      - facility_ror
+      - instrument_name
+      - technique
+      - collection_date
+      - sample_code
+      - protein_name
+      - organism
+      - proposal_id
+      # profile machinery
+      - schema_set
+      - sufficiency
+      - designated
+      - missing
+      - derived
+      - package_tier
+      - generated_at
+      - result_summary
+      - vocab_entry
+      - id_recipe_version
+      # deprecated SSRL 0.2 spellings
+      - sample_name
+      - protein_name_camel
+      - uniprot_id
+      - pdb_code
+      - enzyme_class
+      - resolution_angstrom
+    slot_usage:
+      at_id:
+        required: true
+        description: >-
+          `./` for a crate stored alongside its payload, or an absolute URI for a detached crate.
+      name:
+        required: true
+      description:
+        required: true
+      conforms_to:
+        required: true
+        description: >-
+          MUST include both the RO-Crate version URI and
+          `https://w3id.org/lambda/profile/core/0.3.0`. Technique extensions add their own URI
+          alongside, never instead.
+      has_part:
+        required: true
+
+  CrateFile:
+    is_a: CrateEntity
+    class_uri: sdo:MediaObject
+    exact_mappings:
+      - lambda:DataFile
+    description: >-
+      One file in the manifest. Integrity is the point of a manifest, so a file entity carries a
+      locator, a size and a checksum; where the source did not publish one, its absence is
+      *declared* on the root (see `missing`) and never silently omitted.
+    slots:
+      - encoding_format
+      - content_size
+      - sha256
+      - mime_type
+      - additional_type
+      - date_modified
+      - file_format
+      - data_type
+      - processing_level
+      - storage_uri
+      - file_role
+      - conforms_to
+      - designated_flag
+      - estimator
+      - allow_empty
+      - was_derived_from
+      - was_generated_by
+      - provenance
+    slot_usage:
+      at_id:
+        required: true
+        description: >-
+          A path relative to the crate root, or an absolute URI for a file that stays in facility
+          storage. RO-Crate does not require the bytes to travel with the manifest.
+      name:
+        required: true
+      encoding_format:
+        required: true
+      content_size:
+        required: true
+      sha256:
+        required: true
+
+  CrateDatasetPart:
+    is_a: CrateEntity
+    class_uri: sdo:Dataset
+    close_mappings:
+      - lambda:RawUnit
+      - lambda:DerivedProduct
+    description: >-
+      A part of the manifest that is itself a dataset rather than a single file - a raw frame series,
+      a processing result, a sub-collection. **This is the entity that points at fuller metadata.**
+
+      A part MUST resolve **at least one** of three pointer mechanisms, or declare in `missing` why
+      it resolves none. More than one is fine and often useful; what is not acceptable is a part
+      that names a body of data and then says nothing about where its description lives.
+
+      1. **nested crate** - `conformsTo` a LAMBDA profile URI plus either a `hasPart` member ending
+         in `ro-crate-metadata.json`, or an absolute `@id` naming a remote crate;
+      2. **schema record** - `lambdarc:schemaRecord` referencing a file that holds a full
+         `lambda-ber-schema` document, with `conformsTo`, `lambdarc:schemaVersion` and a checksum;
+      3. **remote registration** - `identifier` (DOI or archive accession) plus `url`.
+
+      Individual members of a bulk series are never enumerated: a frame series is one part with a
+      count and a size, not N file entities.
+    slots:
+      - has_part
+      - conforms_to
+      - schema_record
+      - schema_version
+      - identifier
+      - url
+      - distribution
+      - content_size
+      - sha256
+      - encoding_format
+      - additional_type
+      - part_count
+      - raw_included
+      - designated_flag
+      - missing
+      # deprecated SSRL 0.2 spellings
+      - raw_unit_id
+      - product_id
+    slot_usage:
+      at_id:
+        required: true
+      name:
+        required: true
+
+  # ----- contextual entities ----------------------------------------------------------
+
+  SampleEntity:
+    is_a: CrateEntity
+    class_uri: sdo:BioChemEntity
+    exact_mappings:
+      - lambda:Sample
+    description: >-
+      The specimen the crate is about. Only the searchable identity layer belongs here; molecular
+      composition, buffer and storage detail live in the fuller record this crate points at.
+    slots:
+      - sample_code
+      - sample_type
+      - protein_name
+      - organism
+      - sequence
+      - seguid
+      - uniprot_id
+      - expression_system
+      - concentration
+      - enzyme_class
+      - missing
+      # deprecated SSRL 0.2 spellings
+      - sample_name
+      - protein_name_camel
+      - sample_composition
+    slot_usage:
+      at_id:
+        required: true
+      sample_code:
+        required: true
+
+  InstrumentEntity:
+    is_a: CrateEntity
+    class_uri: sdo:IndividualProduct
+    exact_mappings:
+      - lambda:Instrument
+    description: >-
+      The equipment that produced the data. Instrument *capabilities* belong here; the values
+      actually measured belong on the experiment run or the result summary.
+    slots:
+      - instrument_code
+      - instrument_category
+      - beamline_id
+      - facility_name
+      - facility_ror
+      - manufacturer
+      - model
+      - detector
+      - vocab_entry
+    slot_usage:
+      at_id:
+        required: true
+      instrument_code:
+        required: true
+
+  ExperimentRunAction:
+    is_a: CrateEntity
+    class_uri: sdo:Action
+    exact_mappings:
+      - lambda:ExperimentRun
+    description: >-
+      A data-collection session, typed `["Action", "lambda:ExperimentRun"]`. `object` names the
+      sample, `result` names what was collected, `instrument` names the equipment.
+    slots:
+      - experiment_code
+      - technique
+      - experiment_date
+      - collection_mode
+      - beamline_id
+      - object
+      - result
+      - instrument
+      - agent
+      - start_time
+      - end_time
+      - prov_used
+      - prov_generated
+      - was_informed_by
+      - qualified_association
+      - started_at_time
+      - ended_at_time
+      - run_parameters
+      - raw_data_location
+      - processing_status
+      - missing
+    slot_usage:
+      at_id:
+        required: true
+      experiment_code:
+        required: true
+      technique:
+        required: true
+
+  WorkflowRunAction:
+    is_a: CrateEntity
+    class_uri: sdo:CreateAction
+    exact_mappings:
+      - lambda:WorkflowRun
+    description: >-
+      A computational run that produced derived data, typed `["CreateAction", "lambda:WorkflowRun"]`.
+      `object` names the inputs, `result` the outputs, `instrument` the software. The SSRL 0.2
+      crates already use `CreateAction` for this and need no alias.
+    slots:
+      - workflow_code
+      - workflow_type
+      - software_name
+      - software_version
+      - object
+      - result
+      - instrument
+      - agent
+      - start_time
+      - end_time
+      - prov_used
+      - prov_generated
+      - was_informed_by
+      - qualified_association
+      - started_at_time
+      - ended_at_time
+      - run_parameters
+      - processing_level
+      - result_summary
+      - designated
+      - estimator
+      - missing
+      # deprecated SSRL 0.2 spellings
+      - workflow_run_id
+      - run_definition
+    slot_usage:
+      at_id:
+        required: true
+
+  PersonEntity:
+    is_a: CrateEntity
+    class_uri: sdo:Person
+    exact_mappings:
+      - lambda:Person
+    description: >-
+      A person - PI, author, operator, analyst, or the decider of a designation. `@id` SHOULD be an
+      ORCID, which is also what `lambda:orcid` carries in the projected record.
+
+      `role` states the capacity in which the person is attached to *this* crate's work, drawn from
+      the schema's `PersonRoleEnum`. In the projected record that capacity lives on an association
+      (`StudyPersonAssociation` and friends) rather than on the person, because a person commonly
+      holds several roles across one dataset and only one record of them should exist.
+    slots:
+      - orcid
+      - full_name
+      - given_name
+      - family_name
+      - email
+      - affiliation
+      - affiliation_ror
+      - role
+      - author_position
+      - corresponding
+      - missing
+    slot_usage:
+      at_id:
+        required: true
+
+  OrganizationEntity:
+    is_a: CrateEntity
+    class_uri: sdo:Organization
+    exact_mappings:
+      - lambda:Organization
+    description: >-
+      A facility, laboratory, institution or funding body. `@id` SHOULD be a ROR identifier.
+
+      An organization appears once in the graph and is referred to by `@id` from everywhere else —
+      the root's `publisher`, an instrument's facility, a person's affiliation. That is the whole
+      point of a contextual entity, and it is what the schema's `Organization` class now mirrors.
+
+      `role` states the capacity in which the organization is attached to this crate's work. As with
+      `PersonEntity`, that capacity lives on an association in the projected record
+      (`StudyOrganizationAssociation`, `PersonOrganizationAssociation`), not on the organization.
+    slots:
+      - url
+      - identifier
+      - ror
+      - acronym
+      - organization_type
+      - facility_code
+      - facility_type
+      - parent_organization
+      - location
+      - country
+      - is_doe_facility
+      - doe_office
+      - organization_role
+      - award_number
+      - missing
+    slot_usage:
+      at_id:
+        required: true
+      name:
+        required: true
+
+  SoftwareApplicationEntity:
+    is_a: CrateEntity
+    class_uri: sdo:SoftwareApplication
+    description: Software used by a workflow run, named so a reader can reproduce the processing.
+    slots:
+      - version
+      - software_version_schemaorg
+      - url
+    slot_usage:
+      at_id:
+        required: true
+      name:
+        required: true
+
+  DefinedTermEntity:
+    is_a: CrateEntity
+    class_uri: sdo:DefinedTerm
+    description: >-
+      A controlled-vocabulary term used by reference - a facility, a technique. Carrying facility
+      and technique as `DefinedTerm` entities rather than bare strings is what lets a federated
+      index join across crates; the SSRL 0.2 crates already do this.
+    slots:
+      - term_code
+      - in_defined_term_set
+      - url
+    slot_usage:
+      at_id:
+        required: true
+      name:
+        required: true
+
+  PropertyValueEntity:
+    is_a: CrateEntity
+    class_uri: sdo:PropertyValue
+    description: >-
+      A typed identifier or measurement, used for `identifier` entries so that a UUID, a DOI and a
+      facility-local accession can coexist without ambiguity about which is which.
+    slots:
+      - property_id
+      - property_value
+      - unit_text
+      - unit_code
+
+  RelatedWork:
+    is_a: CrateEntity
+    class_uri: sdo:CreativeWork
+    description: >-
+      Related published work - a PDB or SASBDB entry, a paper, a complementary dataset in another
+      technique's crate. Linked, never inlined: a crystal structure belongs in its own MX crate.
+    slots:
+      - url
+      - identifier
+      - pdb_code
+      - resolution_angstrom
+      - conforms_to
+
+  # ----- profile machinery (value objects, not graph entities) -------------------------
+
+  MissingValueDeclaration:
+    description: >-
+      A **declared absence**. The profile's central honesty rule: a value that the pipeline could
+      not obtain is recorded as missing, with a reason and the sufficiency tier it blocks. It is
+      never silently omitted, and never faked with an empty stand-in.
+
+      Generalized from the LAMBDA SAXS profile so that every technique extension binds to one
+      vocabulary of absence instead of inventing its own.
+    slots:
+      - field
+      - reason
+      - blocks
+      - note
+    slot_usage:
+      field:
+        required: true
+      reason:
+        required: true
+    comments:
+      - >-
+        `blocks` is required in practice for every reason except `not-applicable`, which by
+        definition blocks nothing - a field that does not apply to the technique is not a gap. The
+        conformance checker enforces that conditional; JSON Schema cannot, because the condition is
+        on a sibling value.
+
+  SufficiencyReport:
+    description: >-
+      Which sufficiency tiers this crate meets. Makes the tiering machine-readable so a federated
+      search can *gate* filters rather than silently returning crates that cannot answer them: a
+      "crates I can reprocess" query requires `s2AcquisitionComplete`, and a crate that published
+      only processed results correctly drops out instead of appearing and then disappointing.
+    slots:
+      - s1_findable
+      - s2_core_complete
+      - s2_acquisition_complete
+      - s3_interpretable
+
+  Designation:
+    class_uri: prov:Activity
+    description: >-
+      One designated result, with the provenance of the choice published. Where several defensible
+      results exist, naming which one is *the* result - and by what rule, and who or what decided -
+      is what makes the crate's summary numbers mean something.
+
+      Typed `["lambdarc:Designation", "prov:Activity"]`, because that is what a designation *is*: an
+      activity that used some inputs, generated a designated output, and was carried out by an agent
+      acting under a plan. Modelling it as PROV rather than as flat `decidedBy` / `decidedAt` slots
+      means the agent, the plan it followed, and who it acted on behalf of are all first-class and
+      readable by any PROV-aware tool - and it removes the need for a `mode` flag, since a
+      `prov:SoftwareAgent` and a `prov:Person` are already different things.
+    slots:
+      - at_type
+      - prov_used
+      - prov_generated
+      - selection
+      - species
+      - qualified_association
+      - started_at_time
+      - ended_at_time
+    slot_usage:
+      prov_generated:
+        required: true
+      qualified_association:
+        required: true
+
+  Association:
+    class_uri: prov:Association
+    description: >-
+      Who or what carried out an activity, and under which published plan. The `prov:hadPlan` link
+      is the part that matters for conformance: an agent acting under a versioned, resolvable rule
+      is provenance, and an unattributed choice is not.
+    slots:
+      - at_type
+      - prov_agent
+      - had_plan
+    slot_usage:
+      prov_agent:
+        required: true
+
+  Agent:
+    class_uri: prov:Agent
+    description: >-
+      A person, piece of software or organization that acted. Typed more specifically as
+      `prov:Person`, `prov:SoftwareAgent` or `prov:Organization` where known - which is what tells a
+      reader whether a human or a tool made a choice.
+    slots:
+      - at_id
+      - at_type
+      - name
+      - version
+      - acted_on_behalf_of
+
+  Derivation:
+    class_uri: prov:Derivation
+    description: >-
+      Where a single reported value came from: which artefact it was read out of, and which field
+      within it. Attaches to the value rather than to the crate, so a reader tracing one number does
+      not have to work out which of several source files it came from.
+    slots:
+      - at_type
+      - prov_entity
+      - source_field
+
+  EstimatorDescriptor:
+    description: >-
+      What produced a derived number, and how far it may be trusted. Any qualifying statistic in a
+      crate travels with one of these: two numbers computed under different definitions are
+      different quantities, however alike their labels look.
+
+      The producing software is named with `prov:wasAttributedTo` pointing at a `prov:SoftwareAgent`
+      rather than as bare `software` / `version` strings, so the same agent can be referenced by
+      every estimate it produced instead of being retyped beside each one.
+    slots:
+      - was_attributed_to
+      - software
+      - version
+      - source_field
+      - definition
+      - admissibility
+    slot_usage:
+      definition:
+        required: true
+      admissibility:
+        required: true
+
+  VocabularyGap:
+    description: >-
+      A value the source really carries that the schema's controlled vocabulary cannot express yet.
+
+      Silently coercing such a value to the nearest permissible term is the worst option: it looks
+      like data and is wrong, and nothing downstream can tell. Dropping it is not much better. This
+      records the local value against the enum it belongs in, so the crate stays honest and the gap
+      becomes a change request with evidence attached rather than an anecdote.
+
+      Adopted from Peter Zwart's SAXS drafts, where a decommissioned beamline (`DORIS3_X33`) had no
+      `BeamlineEnum` term and the crate said so.
+    slots:
+      - module
+      - enum_name
+      - key
+      - version
+      - note
+    slot_usage:
+      enum_name:
+        required: true
+      key:
+        required: true
+
+  SchemaSetEntry:
+    description: >-
+      Pins exactly which schema and profile versions a crate was built against, with a hash, so a
+      reader can tell whether a surprising field is a bug or a version difference.
+    slots:
+      - module
+      - version
+      - sha256
+    slot_usage:
+      module:
+        required: true
+      version:
+        required: true
+
+# =====================================================================================
+# Slots
+# =====================================================================================
+
+slots:
+
+  # ----- JSON-LD structure ------------------------------------------------------------
+
+  at_context:
+    alias: "@context"
+    range: Any
+    multivalued: true
+    required: true
+    description: >-
+      The JSON-LD context. MUST include the RO-Crate 1.2 context URI, and MUST bind `lambda` to
+      `http://w3id.org/lambda/` and `lambdarc` to `http://w3id.org/lambda/rocrate/`.
+
+  at_graph:
+    alias: "@graph"
+    range: Any
+    multivalued: true
+    required: true
+    description: >-
+      The flat set of entities. Order carries no meaning; relationships are by `@id` only.
+
+  at_id:
+    alias: "@id"
+    range: uriorcurie
+    slot_uri: sdo:identifier
+    description: The entity's identifier - a relative path, an absolute URI, or a `#`-fragment.
+
+  at_type:
+    alias: "@type"
+    multivalued: true
+    required: true
+    description: >-
+      One or more types. LAMBDA entities carry the RO-Crate/schema.org type *first* so that a plain
+      RO-Crate consumer understands the crate, then the `lambda:` type for LAMBDA-aware readers.
+
+      Modelled as the set of types it semantically is. JSON-LD also permits the shorthand of a bare
+      string for a single type, and real crates use it freely; a reader MUST expand that shorthand to
+      a one-element list before validating or testing membership, exactly as a JSON-LD processor
+      would. Validation here is defined against the expanded form.
+
+  # ----- schema.org: identity, access, packaging ---------------------------------------
+
+  name:
+    slot_uri: sdo:name
+    exact_mappings:
+      - lambda:title
+    description: Human-readable label.
+
+  description:
+    slot_uri: sdo:description
+    exact_mappings:
+      - lambda:description
+    description: Prose summary, aimed at a reader deciding whether to open the dataset.
+
+  conforms_to:
+    alias: conformsTo
+    slot_uri: dcterms:conformsTo
+    range: EntityReference
+    multivalued: true
+    inlined_as_list: true
+    description: Specification or profile this entity claims conformance to.
+
+  about:
+    slot_uri: sdo:about
+    range: EntityReference
+    inlined: true
+    description: What the metadata file describes - always the root data entity.
+
+  date_published:
+    alias: datePublished
+    slot_uri: sdo:datePublished
+    description: Publication date of the crate. String-typed, matching the main schema's date policy.
+
+  date_modified:
+    alias: dateModified
+    slot_uri: sdo:dateModified
+    description: Last modification date.
+
+  date_created:
+    alias: dateCreated
+    slot_uri: sdo:dateCreated
+    description: >-
+      Creation or deposition date. Distinct from `datePublished`: an archive deposit often records
+      when the data was deposited but not when it was published, and the two should not be conflated.
+
+  license:
+    slot_uri: sdo:license
+    range: Any
+    description: >-
+      Licence, as a `{"@id": ...}` reference to a licence URI or a contextual entity. Required on
+      the root: a manifest whose reuse terms are unknown is not a usable handoff. Where the source
+      genuinely does not state one, reference a `RelatedWork` entity that says so and record the
+      gap in `missing`.
+
+  author:
+    slot_uri: sdo:author
+    range: EntityReference
+    multivalued: true
+    inlined_as_list: true
+    description: >-
+      People responsible for the dataset, by ORCID where known. Projects onto `Person` plus a person
+      association; see `PersonEntity` for why the role travels on the association rather than on the
+      person.
+
+  publisher:
+    slot_uri: sdo:publisher
+    range: EntityReference
+    inlined: true
+    description: Publishing organization, by ROR where known.
+
+  identifier:
+    slot_uri: sdo:identifier
+    range: Any
+    multivalued: true
+    description: >-
+      Identifiers for this entity. Use `PropertyValue` entries with a `propertyID` when more than
+      one identifier scheme is in play, so a UUID is never mistaken for an accession.
+
+  keywords:
+    slot_uri: sdo:keywords
+    exact_mappings:
+      - lambda:keywords
+    multivalued: true
+    description: Free-text tags for discovery.
+
+  citation:
+    slot_uri: sdo:citation
+    range: Any
+    multivalued: true
+    description: >-
+      Publications or database entries that cite or describe this dataset. A reference to a
+      contextual entity is preferred, because it can carry a DOI; a bare citation string is
+      accepted, because that is all many archive exports publish.
+
+  url:
+    slot_uri: sdo:url
+    range: uri
+    description: Landing page or direct locator.
+
+  conditions_of_access:
+    alias: conditionsOfAccess
+    slot_uri: sdo:conditionsOfAccess
+    description: >-
+      Access conditions - `open`, `embargoed`, `restricted`. Embargo detail originates outside the
+      pipeline; where a builder cannot reach the proposal system it declares this missing and fails
+      closed rather than guessing `open`.
+
+  has_part:
+    alias: hasPart
+    slot_uri: sdo:hasPart
+    range: EntityReference
+    multivalued: true
+    inlined_as_list: true
+    description: >-
+      The manifest itself: every file and dataset part carried by this entity. Every present
+      artefact appears here; every absent one appears in `missing`.
+
+  distribution:
+    slot_uri: sdo:distribution
+    range: EntityReference
+    inlined: true
+    description: A `DataDownload` for a part whose bytes are retrieved from elsewhere.
+
+  encoding_format:
+    alias: encodingFormat
+    slot_uri: sdo:encodingFormat
+    close_mappings:
+      - lambda:file_format
+    description: >-
+      IANA media type. Note this is *not* the same thing as `lambda:file_format`, which is a
+      LAMBDA-controlled term; a crate carrying both is being helpful, not redundant.
+
+  content_size:
+    alias: contentSize
+    slot_uri: sdo:contentSize
+    range: Any
+    exact_mappings:
+      - lambda:file_size_bytes
+    description: >-
+      Size in bytes. RO-Crate 1.2 expects text; integers occur in the wild and are accepted.
+
+  sha256:
+    slot_uri: sdo:sha256
+    exact_mappings:
+      - lambda:checksum
+    close_mappings:
+      - lambda:sha256
+    description: >-
+      SHA-256 of the bytes. The RO-Crate 1.2 context already maps the bare term `sha256` to
+      `http://schema.org/sha256`, so that is what it means in any crate that does not override it -
+      and a profile asserting a different IRI for the same key would be contradicted by the crate's
+      own context. The SSRL 0.2 crates *do* override it to `lambda:sha256` in their inline context;
+      that spelling is carried as a close mapping so those crates still project.
+
+  mime_type:
+    alias: mimeType
+    slot_uri: lambdarc:mimeType
+    exact_mappings:
+      - sdo:encodingFormat
+    description: Media type, as published by SSRL alongside `encodingFormat`.
+    deprecated: >-
+      Duplicates `encodingFormat`. Retained so SSRL 0.2 crates validate; do not emit in new crates.
+    deprecated_element_has_exact_replacement: schema:encodingFormat
+
+  additional_type:
+    alias: additionalType
+    slot_uri: sdo:additionalType
+    close_mappings:
+      - lambda:data_type
+    description: Finer-grained role of a part, e.g. `merged-reflections`.
+
+  measurement_technique:
+    alias: measurementTechnique
+    slot_uri: sdo:measurementTechnique
+    range: EntityReference
+    inlined: true
+    close_mappings:
+      - lambda:technique
+    description: The technique, as a reference to a `DefinedTerm` entity.
+
+  object:
+    slot_uri: sdo:object
+    range: EntityReference
+    multivalued: true
+    inlined_as_list: true
+    description: What an action consumed - the sample for a collection, the inputs for a workflow.
+
+  result:
+    slot_uri: sdo:result
+    range: EntityReference
+    multivalued: true
+    inlined_as_list: true
+    description: What an action produced.
+
+  instrument:
+    slot_uri: sdo:instrument
+    range: EntityReference
+    multivalued: true
+    inlined_as_list: true
+    description: >-
+      What an action used - equipment for a collection, software for a workflow. schema.org's
+      `instrument` covers both senses.
+
+  agent:
+    slot_uri: sdo:agent
+    range: EntityReference
+    multivalued: true
+    inlined_as_list: true
+    description: Who ran the action.
+
+  start_time:
+    alias: startTime
+    slot_uri: sdo:startTime
+    exact_mappings:
+      - lambda:start_time
+    description: When the action began.
+
+  end_time:
+    alias: endTime
+    slot_uri: sdo:endTime
+    exact_mappings:
+      - lambda:end_time
+    description: When the action ended.
+
+  affiliation:
+    slot_uri: sdo:affiliation
+    exact_mappings:
+      - lambda:affiliation
+    description: Institution a person is affiliated with.
+
+  email:
+    slot_uri: sdo:email
+    exact_mappings:
+      - lambda:email
+    description: Contact address.
+
+  given_name:
+    alias: givenName
+    slot_uri: sdo:givenName
+    exact_mappings:
+      - lambda:given_name
+    description: Personal name.
+
+  family_name:
+    alias: familyName
+    slot_uri: sdo:familyName
+    exact_mappings:
+      - lambda:family_name
+    description: Family name.
+
+  role:
+    slot_uri: sdo:roleName
+    range: PersonRoleEnum
+    close_mappings:
+      - lambda:role
+    description: >-
+      Capacity in which a person is attached to this crate's work, from the schema's own
+      `PersonRoleEnum`. Projects onto the `role` slot of a person association, not onto `Person`.
+
+  orcid:
+    slot_uri: lambda:orcid
+    range: uriorcurie
+    exact_mappings:
+      - lambda:orcid
+    description: >-
+      ORCID of the person. An entity SHOULD also use its ORCID as its `@id`, in which case this
+      restates it - deliberately, so a consumer reading properties alone still finds it.
+
+  full_name:
+    slot_uri: lambda:full_name
+    exact_mappings:
+      - lambda:full_name
+    description: >-
+      Full display name, as the person writes it. Distinct from `name`, which is the schema.org
+      label RO-Crate consumers read; carry both, since only this one projects onto the schema.
+
+  affiliation_ror:
+    slot_uri: lambda:affiliation_ror
+    range: uriorcurie
+    exact_mappings:
+      - lambda:affiliation_ror
+    description: ROR identifier of the affiliated institution.
+
+  author_position:
+    slot_uri: lambda:author_position
+    range: integer
+    exact_mappings:
+      - lambda:author_position
+    description: >-
+      Position in the author list where order is meaningful; 1 is first author. Absent when the
+      source does not state an order - an invented order is a claim about credit, so do not make one.
+
+  corresponding:
+    slot_uri: lambda:corresponding
+    range: boolean
+    exact_mappings:
+      - lambda:corresponding
+    description: Whether this person is a corresponding author.
+
+  parent_organization:
+    alias: parentOrganization
+    slot_uri: sdo:parentOrganization
+    range: EntityReference
+    inlined: true
+    exact_mappings:
+      - lambda:parent_organization_id
+    description: >-
+      Parent institution, e.g. a national laboratory above a light source. A reference, so the
+      parent is described once and the child does not restate its identifiers.
+
+  ror:
+    slot_uri: lambda:ror
+    range: uriorcurie
+    exact_mappings:
+      - lambda:ror
+    description: >-
+      ROR identifier. Omit it on a facility that is a unit of a larger institution rather than an
+      institution in its own right - copying the parent's ROR down asserts an identity that is not
+      the child's.
+
+  acronym:
+    slot_uri: lambda:acronym
+    exact_mappings:
+      - lambda:acronym
+    description: Short name or acronym, e.g. `LBNL`, `SSRL`.
+
+  organization_type:
+    slot_uri: lambda:organization_type
+    range: OrganizationTypeEnum
+    exact_mappings:
+      - lambda:organization_type
+    description: Kind of organization, from the schema's own `OrganizationTypeEnum`.
+
+  facility_code:
+    slot_uri: lambda:facility_code
+    range: FacilityEnum
+    exact_mappings:
+      - lambda:facility_code
+    description: >-
+      The `FacilityEnum` term this organization corresponds to. This is the join key a federated
+      index uses; the rest of the entity is what a reader needs once joined.
+
+  facility_type:
+    slot_uri: lambda:facility_type
+    range: FacilityTypeEnum
+    exact_mappings:
+      - lambda:facility_type
+    description: Kind of research facility, from the schema's own `FacilityTypeEnum`.
+
+  location:
+    slot_uri: lambda:location
+    exact_mappings:
+      - lambda:location
+    description: Free-text location, e.g. `Berkeley, California, USA`.
+
+  country:
+    slot_uri: lambda:country
+    exact_mappings:
+      - lambda:country
+    description: Country the organization is located in.
+
+  is_doe_facility:
+    alias: isDoeFacility
+    slot_uri: lambda:is_doe_facility
+    range: boolean
+    exact_mappings:
+      - lambda:is_doe_facility
+    description: Whether this is a US Department of Energy facility.
+
+  doe_office:
+    slot_uri: lambda:doe_office
+    exact_mappings:
+      - lambda:doe_office
+    description: Sponsoring DOE office, e.g. `Office of Science`.
+
+  organization_role:
+    alias: organizationRole
+    slot_uri: sdo:roleName
+    range: OrganizationRoleEnum
+    close_mappings:
+      - lambda:role
+    description: >-
+      Capacity in which the organization is attached to this crate's work, from the schema's own
+      `OrganizationRoleEnum`. Named distinctly from a person's `role` because the two draw on
+      different vocabularies and an entity should not have to guess which one applies.
+
+  award_number:
+    slot_uri: lambda:award_number
+    exact_mappings:
+      - lambda:award_number
+    description: >-
+      Grant or award number, where the organization is a funder. Distinct from a facility proposal
+      identifier, which is beamtime rather than the funding that paid for the science.
+
+  version:
+    slot_uri: sdo:version
+    description: Version of the referenced thing.
+
+  software_version_schemaorg:
+    alias: softwareVersion
+    slot_uri: sdo:softwareVersion
+    description: >-
+      Version of a `SoftwareApplication` contextual entity, in schema.org's own term. Distinct from
+      `lambda:software_version`, which is the version *a workflow run reports having used* - the same
+      number in the usual case, but they are different assertions and only one of them projects onto
+      the schema.
+
+  term_code:
+    alias: termCode
+    slot_uri: sdo:termCode
+    description: The code of a controlled term within its set.
+
+  in_defined_term_set:
+    alias: inDefinedTermSet
+    slot_uri: sdo:inDefinedTermSet
+    description: The vocabulary the term comes from.
+
+  property_id:
+    alias: propertyID
+    slot_uri: sdo:propertyID
+    description: Which identifier or measurement scheme a `PropertyValue` belongs to.
+
+  # named `property_value` rather than `value` because lambda_ber_types already declares a
+  # top-level `value` slot; the alias keeps the crate key as plain `value`.
+  property_value:
+    alias: value
+    slot_uri: sdo:value
+    range: Any
+    description: The value of a `PropertyValue`.
+
+  unit_text:
+    alias: unitText
+    slot_uri: sdo:unitText
+    description: Unit as free text, for readers.
+
+  unit_code:
+    alias: unitCode
+    slot_uri: sdo:unitCode
+    description: Unit as a controlled code, for machines.
+
+  # ----- lambda: projecting onto lambda-ber-schema slots -------------------------------
+
+  facility:
+    slot_uri: lambdarc:facility
+    range: Any
+    close_mappings:
+      - lambda:facility_name
+      - lambdax:facility
+    description: The facility, as a reference to a `DefinedTerm` entity or a bare code.
+
+  facility_name:
+    slot_uri: lambda:facility_name
+    range: FacilityEnum
+    exact_mappings:
+      - lambda:facility_name
+    description: Facility, from the schema's own `FacilityEnum`.
+
+  facility_ror:
+    slot_uri: lambda:facility_ror
+    range: uriorcurie
+    exact_mappings:
+      - lambda:facility_ror
+    description: ROR identifier of the facility.
+
+  instrument_name:
+    alias: instrumentName
+    slot_uri: lambdarc:instrumentName
+    close_mappings:
+      - lambda:instrument_code
+      - lambda:beamline_id
+    description: >-
+      Root-level shorthand for the instrument that produced the data, e.g. `BL12-1`. Introduced by
+      the SSRL 0.2 crates and kept because a search index wants it on the root without resolving
+      the instrument entity.
+
+  instrument_code:
+    slot_uri: lambda:instrument_code
+    exact_mappings:
+      - lambda:instrument_code
+    description: Canonical instrument identifier, e.g. `ALS-12.3.1-SIBYLS`.
+
+  instrument_category:
+    slot_uri: lambda:instrument_category
+    range: InstrumentCategoryEnum
+    exact_mappings:
+      - lambda:instrument_category
+    description: Broad instrument class, from the schema's own `InstrumentCategoryEnum`.
+
+  beamline_id:
+    slot_uri: lambda:beamline_id
+    exact_mappings:
+      - lambda:beamline_id
+    description: Beamline identifier within a facility, e.g. `12.3.1`.
+
+  manufacturer:
+    slot_uri: lambda:manufacturer
+    exact_mappings:
+      - lambda:manufacturer
+    description: Who made the instrument.
+
+  model:
+    slot_uri: lambda:model
+    exact_mappings:
+      - lambda:model
+    description: Instrument model designation.
+
+  detector:
+    slot_uri: lambda:detector
+    exact_mappings:
+      - lambda:detector
+    description: Detector in use, where the crate names it on the instrument.
+
+  technique:
+    slot_uri: lambda:technique
+    range: TechniqueEnum
+    exact_mappings:
+      - lambda:technique
+    description: Technique, from the schema's own `TechniqueEnum`. Extensions add a PaNET IRI beside it.
+
+  collection_mode:
+    slot_uri: lambda:collection_mode
+    range: CollectionModeEnum
+    exact_mappings:
+      - lambda:collection_mode
+    description: >-
+      How the data was collected, from the schema's own `CollectionModeEnum`. Worth surfacing on the
+      root so a federated index can filter on mode without parsing results.
+
+  collection_date:
+    alias: collectionDate
+    slot_uri: lambdarc:collectionDate
+    close_mappings:
+      - lambda:experiment_date
+    description: When the data was collected, on the root, for search.
+
+  experiment_date:
+    slot_uri: lambda:experiment_date
+    exact_mappings:
+      - lambda:experiment_date
+    description: Date of the collection session.
+
+  experiment_code:
+    slot_uri: lambda:experiment_code
+    exact_mappings:
+      - lambda:experiment_code
+    description: Facility-facing identifier for the collection session, e.g. `GluRS_1`.
+
+  raw_data_location:
+    slot_uri: lambda:raw_data_location
+    exact_mappings:
+      - lambda:raw_data_location
+    description: Where the raw payload lives, whether or not it travels with the crate.
+
+  processing_status:
+    slot_uri: lambda:processing_status
+    range: ProcessingStatusEnum
+    exact_mappings:
+      - lambda:processing_status
+    description: How far processing has got, from the schema's own `ProcessingStatusEnum`.
+
+  workflow_code:
+    slot_uri: lambda:workflow_code
+    exact_mappings:
+      - lambda:workflow_code
+    description: Human-facing identifier for the processing run.
+
+  workflow_type:
+    slot_uri: lambda:workflow_type
+    range: WorkflowTypeEnum
+    exact_mappings:
+      - lambda:workflow_type
+    description: Kind of processing, from the schema's own `WorkflowTypeEnum`.
+
+  software_name:
+    slot_uri: lambda:software_name
+    exact_mappings:
+      - lambda:software_name
+    description: Name of the software that did the processing.
+
+  software_version:
+    slot_uri: lambda:software_version
+    exact_mappings:
+      - lambda:software_version
+    description: Version of the software a workflow run reports having used.
+
+  processing_level:
+    slot_uri: lambda:processing_level
+    close_mappings:
+      - lambdax:processing_level
+    range: integer
+    exact_mappings:
+      - lambda:processing_level
+    description: How far from raw an artefact is - 0 raw, rising with each processing step.
+
+  file_format:
+    slot_uri: lambda:file_format
+    range: FileFormatEnum
+    exact_mappings:
+      - lambda:file_format
+    description: LAMBDA-controlled format, from the schema's own `FileFormatEnum`.
+
+  data_type:
+    slot_uri: lambda:data_type
+    range: DataTypeEnum
+    exact_mappings:
+      - lambda:data_type
+    description: What kind of data a file holds, from the schema's own `DataTypeEnum`.
+
+  storage_uri:
+    slot_uri: lambda:storage_uri
+    exact_mappings:
+      - lambda:storage_uri
+    description: Facility storage locator - S3, Globus - for a file that does not travel.
+
+  file_role:
+    slot_uri: lambda:file_role
+    exact_mappings:
+      - lambda:file_role
+    description: Role the file plays - raw, intermediate, final, diagnostic, metadata.
+
+  sample_code:
+    slot_uri: lambda:sample_code
+    exact_mappings:
+      - lambda:sample_code
+    description: The specimen's identifier, and the join key across a facility's records.
+
+  sample_type:
+    slot_uri: lambda:sample_type
+    range: SampleTypeEnum
+    exact_mappings:
+      - lambda:sample_type
+    description: Kind of specimen, from the schema's own `SampleTypeEnum`.
+
+  protein_name:
+    slot_uri: lambda:protein_name
+    exact_mappings:
+      - lambda:protein_name
+    description: Name of the protein studied - one of the highest-value search fields.
+
+  organism:
+    slot_uri: lambda:organism
+    range: Any
+    close_mappings:
+      - lambda:organism
+    description: >-
+      Source organism, as an NCBITaxon reference where resolvable or a name string. The main
+      schema's `Sample.organism` is an `OntologyTerm`; a crate may carry the bare name.
+
+  expression_system:
+    slot_uri: lambda:expression_system
+    exact_mappings:
+      - lambda:expression_system
+    description: Host the construct was expressed in.
+
+  concentration:
+    slot_uri: lambda:concentration
+    range: Any
+    exact_mappings:
+      - lambda:concentration
+    description: Sample concentration as a quantity object.
+
+  sequence:
+    slot_uri: lambdarc:sequence
+    multivalued: true
+    description: Sequence(s) of the specimen, where short enough to travel in a manifest.
+
+  seguid:
+    slot_uri: lambdarc:seguid
+    description: >-
+      SEGUID checksum of the sequence - the join key for finding the same construct across
+      facilities. No counterpart in the main schema yet.
+
+  proposal_id:
+    slot_uri: lambda:proposal_id
+    exact_mappings:
+      - lambda:proposal_id
+    description: >-
+      Facility proposal or allocation identifier. Distinct from a funder's award number, which is
+      carried on `StudyOrganizationAssociation`: one is beamtime, the other is the money that paid
+      for the science.
+
+  run_parameters:
+    alias: runParameters
+    slot_uri: lambdarc:runParameters
+    range: Any
+    description: >-
+      The acquisition or processing parameter block as published by the facility, verbatim. Kept
+      opaque on purpose: it is the un-projected source record, and the typed slots on
+      `ExperimentRun` are what a consumer should read.
+
+  # ----- lambdarc: profile-local machinery ---------------------------------------------
+
+  schema_set:
+    alias: schemaSet
+    slot_uri: lambdarc:schemaSet
+    close_mappings:
+      - lambdax:schemaSet
+    range: SchemaSetEntry
+    multivalued: true
+    inlined_as_list: true
+    description: Which schema and profile versions this crate was built against, with hashes.
+
+  schema_record:
+    alias: schemaRecord
+    slot_uri: lambdarc:schemaRecord
+    range: EntityReference
+    inlined: true
+    description: >-
+      Pointer to a file holding the full `lambda-ber-schema` record for this part - pointer
+      mechanism 2. The one mechanism that carries the rigorous metadata without inlining it.
+
+  schema_version:
+    alias: schemaVersion
+    slot_uri: lambdarc:schemaVersion
+    description: Version of `lambda-ber-schema` a referenced schema record conforms to.
+
+  sufficiency:
+    slot_uri: lambdarc:sufficiency
+    range: SufficiencyReport
+    inlined: true
+    description: Which sufficiency tiers this crate meets.
+
+  designated:
+    slot_uri: lambdarc:designated
+    range: Designation
+    multivalued: true
+    inlined_as_list: true
+    description: The designated result(s) and the provenance of each choice.
+
+  designated_flag:
+    alias: isDesignated
+    slot_uri: lambdarc:isDesignated
+    close_mappings:
+      - lambdax:designated
+    range: boolean
+    description: Marks an artefact as a designated result, for readers scanning parts directly.
+
+  missing:
+    slot_uri: lambdarc:missing
+    close_mappings:
+      - lambdax:missing
+    range: MissingValueDeclaration
+    multivalued: true
+    inlined_as_list: true
+    description: Declared absences. Absence is stated, never implied by omission.
+
+  derived:
+    slot_uri: lambdarc:derived
+    close_mappings:
+      - lambdax:derived
+    multivalued: true
+    description: >-
+      Fields the builder computed rather than read from the source, named so a reader can tell
+      recorded fact from pipeline inference.
+
+  package_tier:
+    alias: packageTier
+    slot_uri: lambdarc:packageTier
+    range: PackageTierEnum
+    description: How much of the dataset this crate packages.
+
+  generated_at:
+    alias: generatedAt
+    slot_uri: lambdarc:generatedAt
+    description: When the crate itself was built - distinct from when the data was collected.
+
+  part_count:
+    alias: partCount
+    slot_uri: lambdarc:partCount
+    range: integer
+    description: >-
+      How many members a bulk part contains. A frame series is one part with a count, never N file
+      entities - enumerating them buries the manifest in noise.
+
+  raw_included:
+    alias: rawIncluded
+    slot_uri: lambdarc:rawIncluded
+    range: boolean
+    description: Whether the raw payload travels with this crate or is only referenced.
+
+  allow_empty:
+    alias: allowEmpty
+    slot_uri: lambdarc:allowEmpty
+    range: boolean
+    description: Whether a zero-length file is expected here rather than a build failure.
+
+  estimator:
+    slot_uri: lambdarc:estimator
+    close_mappings:
+      - lambdax:estimator
+    range: EstimatorDescriptor
+    inlined: true
+    description: What produced a derived number, and how far it may be trusted.
+
+  result_summary:
+    alias: resultSummary
+    slot_uri: lambdarc:resultSummary
+    close_mappings:
+      - lambdax:summary
+    range: Any
+    description: >-
+      **The extension seam.** Technique-specific result quantities - a SAXS quantity register, an MX
+      data-reduction summary - live in here, and a technique extension is what gives the block its
+      shape. Core deliberately leaves it opaque: core's job is to say *where* such quantities go and
+      that they are subject to the estimator and admissibility rules, not to know any technique's
+      numbers.
+
+      Carrying them here rather than as bare properties on the entity is what keeps a crate
+      structurally valid against core while an extension tightens the contents. A crate that scatters
+      technique quantities directly onto an entity is readable but not composable, and will not
+      validate against core.
+
+  # ----- PROV ---------------------------------------------------------------------------
+  # Provenance is expressed in PROV rather than in profile-local slots. An activity used inputs and
+  # generated outputs; an agent carried it out under a plan; a value was derived from a field of an
+  # artefact. Those are exactly the shapes W3C PROV already names, and a PROV-aware consumer gets
+  # them for free.
+
+  prov_used:
+    alias: "prov:used"
+    slot_uri: prov:used
+    range: EntityReference
+    multivalued: true
+    inlined_as_list: true
+    description: Artefacts an activity consumed.
+
+  prov_generated:
+    alias: "prov:generated"
+    slot_uri: prov:generated
+    range: EntityReference
+    multivalued: true
+    inlined_as_list: true
+    description: Artefacts an activity produced.
+
+  was_generated_by:
+    alias: "prov:wasGeneratedBy"
+    slot_uri: prov:wasGeneratedBy
+    range: EntityReference
+    inlined: true
+    description: The activity that produced this entity or value.
+
+  was_derived_from:
+    alias: "prov:wasDerivedFrom"
+    slot_uri: prov:wasDerivedFrom
+    range: EntityReference
+    multivalued: true
+    inlined_as_list: true
+    description: Artefacts this one was derived from.
+
+  was_informed_by:
+    alias: "prov:wasInformedBy"
+    slot_uri: prov:wasInformedBy
+    range: EntityReference
+    multivalued: true
+    inlined_as_list: true
+    description: >-
+      An earlier activity this one depended on - the collection session a processing run consumed.
+      Chains activities without inventing a profile-local term for it.
+
+  was_attributed_to:
+    alias: "prov:wasAttributedTo"
+    slot_uri: prov:wasAttributedTo
+    range: Agent
+    inlined: true
+    description: The agent responsible for an entity or a derived value.
+
+  qualified_association:
+    alias: "prov:qualifiedAssociation"
+    slot_uri: prov:qualifiedAssociation
+    range: Association
+    multivalued: true
+    inlined_as_list: true
+    description: >-
+      Who carried out an activity and under which plan. Qualified rather than a bare
+      `prov:wasAssociatedWith` precisely so the plan can travel with the agent.
+
+      Multivalued, because PROV does not make this functional and real activities have more than one
+      responsible party: a collection session has an operator *and* a local contact, and a processing
+      run may be attributed to both a person and the policy they ran under. Forcing a single
+      association would silently discard whichever agent the builder happened to write second.
+
+  prov_agent:
+    alias: "prov:agent"
+    slot_uri: prov:agent
+    range: Agent
+    inlined: true
+    description: The agent in an association.
+
+  had_plan:
+    alias: "prov:hadPlan"
+    slot_uri: prov:hadPlan
+    range: EntityReference
+    inlined: true
+    exact_mappings:
+      - lambdarc:rule
+    description: >-
+      The published, versioned rule the agent followed. This is the PROV spelling of what earlier
+      drafts called `rule`.
+
+  acted_on_behalf_of:
+    alias: "prov:actedOnBehalfOf"
+    slot_uri: prov:actedOnBehalfOf
+    range: EntityReference
+    inlined: true
+    description: The organization or person an agent acted for.
+
+  prov_entity:
+    alias: "prov:entity"
+    slot_uri: prov:entity
+    range: EntityReference
+    inlined: true
+    description: The artefact a value was read out of.
+
+  started_at_time:
+    alias: "prov:startedAtTime"
+    slot_uri: prov:startedAtTime
+    exact_mappings:
+      - lambda:started_at
+    description: When an activity began.
+
+  ended_at_time:
+    alias: "prov:endedAtTime"
+    slot_uri: prov:endedAtTime
+    exact_mappings:
+      - lambda:completed_at
+    description: When an activity ended.
+
+  provenance:
+    slot_uri: lambdarc:provenance
+    range: Derivation
+    inlined: true
+    description: Where a single reported value came from - artefact plus field.
+
+  # ----- vocabulary gaps ----------------------------------------------------------------
+
+  vocab_entry:
+    alias: vocabEntry
+    slot_uri: lambdarc:vocabEntry
+    close_mappings:
+      - lambdax:vocabEntry
+    range: VocabularyGap
+    multivalued: true
+    inlined_as_list: true
+    description: >-
+      Declared gaps in a controlled vocabulary. The enum equivalent of declared absence: where a
+      real value has no permissible value to carry it, say so rather than silently coercing it to
+      the nearest wrong term or dropping it.
+
+  # MissingValueDeclaration
+  field:
+    slot_uri: lambdarc:field
+    description: The field or artefact that is absent, named as it would have appeared.
+
+  reason:
+    slot_uri: lambdarc:reason
+    range: AbsenceReasonEnum
+    description: Why it is absent.
+
+  blocks:
+    slot_uri: lambdarc:blocks
+    range: SufficiencyTierEnum
+    description: Which sufficiency tier the absence blocks.
+
+  note:
+    slot_uri: lambdarc:note
+    description: Free text for a reader deciding whether the gap matters to them.
+
+  # SufficiencyReport
+  s1_findable:
+    alias: s1Findable
+    slot_uri: lambdarc:s1Findable
+    range: boolean
+    description: Whether the generic search fields all resolve.
+
+  s2_core_complete:
+    alias: s2CoreComplete
+    slot_uri: lambdarc:s2CoreComplete
+    range: boolean
+    description: Whether the designated result and its analysis record are both verifiable.
+
+  s2_acquisition_complete:
+    alias: s2AcquisitionComplete
+    slot_uri: lambdarc:s2AcquisitionComplete
+    close_mappings:
+      - lambdax:s2_acquisition_complete
+    range: boolean
+    description: >-
+      Whether the acquisition tier is complete. A search MUST require this for any filter whose
+      answer depends on reprocessing.
+
+  s3_interpretable:
+    alias: s3Interpretable
+    slot_uri: lambdarc:s3Interpretable
+    range: boolean
+    description: Whether every derived quantity names its estimator, convention and unit.
+
+  # Designation
+  # designatedEntity / producedBy / rule / mode / decidedBy / decidedAt were the pre-PROV spelling.
+  # PROV says the same things better: prov:generated, prov:used, prov:hadPlan, and an agent whose
+  # own type distinguishes a person from a tool - which is what `mode` was standing in for.
+  selection:
+    slot_uri: lambdarc:selection
+    description: What was selected, in terms a reader of this technique understands.
+
+  species:
+    slot_uri: lambdarc:species
+    description: Which resolved species or state this result corresponds to, where several exist.
+
+  id_recipe_version:
+    alias: idRecipeVersion
+    slot_uri: lambdarc:idRecipeVersion
+    close_mappings:
+      - lambdax:idRecipeVersion
+    description: >-
+      Version of the published recipe used to mint this crate's deterministic identifiers, so a
+      rebuild that produces different UUIDs can be told from one that produces the same ones.
+      Adopted from Peter Zwart's SAXS drafts.
+
+  # EstimatorDescriptor
+  software:
+    slot_uri: lambdarc:software
+    description: Software that computed the value.
+
+  source_field:
+    alias: sourceField
+    slot_uri: lambdarc:sourceField
+    close_mappings:
+      - lambdax:sourceField
+    description: The upstream field the value was read from.
+
+  definition:
+    slot_uri: lambdarc:definition
+    close_mappings:
+      - lambdax:definition
+    description: >-
+      What the number actually means. Required: two values computed under different definitions are
+      different quantities however alike their labels look.
+
+  admissibility:
+    slot_uri: lambdarc:admissibility
+    close_mappings:
+      - lambdax:admissibility
+    range: AdmissibilityEnum
+    description: How far the value may be compared across datasets.
+
+  # VocabularyGap
+  enum_name:
+    alias: enum
+    slot_uri: lambdarc:enum
+    description: The enum in which the value is missing, e.g. `BeamlineEnum`.
+
+  key:
+    slot_uri: lambdarc:key
+    description: >-
+      The local value being used in place of a permissible value. Carried verbatim, so the change
+      request that adds it can be written from the crate.
+
+  # SchemaSetEntry
+  module:
+    slot_uri: lambdarc:module
+    description: Schema or profile module name.
+
+  # ----- deprecated SSRL 0.2 spellings ------------------------------------------------
+  # Declared so that already-published SSRL crates validate unchanged. Each names its
+  # replacement, and `gen-sssom` turns these into a machine-readable migration crosswalk.
+
+  protein_name_camel:
+    alias: proteinName
+    slot_uri: lambdarc:proteinName
+    exact_mappings:
+      - lambda:protein_name
+    description: Protein name, in the SSRL 0.2 spelling.
+    deprecated: Use the schema-aligned `lambda:protein_name`.
+    deprecated_element_has_exact_replacement: lambda:protein_name
+
+  uniprot_id:
+    alias: uniprotId
+    slot_uri: lambdarc:uniprotId
+    description: UniProt accession. No counterpart in the main schema; a standing change request.
+
+  pdb_code:
+    alias: pdbCode
+    slot_uri: lambdarc:pdbCode
+    close_mappings:
+      - lambda:pdb_id
+    description: PDB accession of a related structure.
+
+  enzyme_class:
+    alias: enzymeClass
+    slot_uri: lambdarc:enzymeClass
+    description: Enzyme family or class, as published by SSRL. No schema counterpart.
+
+  resolution_angstrom:
+    alias: resolutionAngstrom
+    slot_uri: lambdarc:resolutionAngstrom
+    range: Any
+    close_mappings:
+      - lambda:resolution
+    description: >-
+      Resolution in Angstrom. Retained from the SSRL 0.2 vocabulary; new crates SHOULD carry
+      resolution in a technique extension's result summary with its estimator.
+
+  sample_name:
+    alias: sampleName
+    slot_uri: lambdarc:sampleName
+    exact_mappings:
+      - lambda:sample_code
+    description: Specimen name, in the SSRL 0.2 spelling.
+    deprecated: Use the schema-aligned `lambda:sample_code`.
+    deprecated_element_has_exact_replacement: lambda:sample_code
+
+  sample_composition:
+    alias: sampleComposition
+    slot_uri: lambdarc:sampleComposition
+    close_mappings:
+      - lambda:molecular_composition
+    description: Free-text composition summary, in the SSRL 0.2 spelling.
+    deprecated: Use `lambda:molecular_composition` in the fuller record this crate points at.
+
+  raw_unit_id:
+    alias: rawUnitId
+    slot_uri: lambdarc:rawUnitId
+    related_mappings:
+      - sdo:identifier
+    description: Facility-local identifier of a raw acquisition unit, in the SSRL 0.2 spelling.
+    deprecated: >-
+      A `lambda:RawUnit`'s local identifier. Use the part entity's `@id`, with `identifier` for
+      facility-local accessions.
+
+  product_id:
+    alias: productId
+    slot_uri: lambdarc:productId
+    related_mappings:
+      - sdo:identifier
+    description: Facility-local identifier of a derived product, in the SSRL 0.2 spelling.
+    deprecated: >-
+      A `lambda:DerivedProduct`'s local identifier. Use the part entity's `@id`.
+
+  workflow_run_id:
+    alias: workflowRunId
+    slot_uri: lambdarc:workflowRunId
+    related_mappings:
+      - lambda:workflow_code
+    description: Facility-local identifier of a processing run, in the SSRL 0.2 spelling.
+    deprecated: Use the `CreateAction`'s `@id`, with `lambda:workflow_code` for the human-facing code.
+
+  run_definition:
+    alias: runDefinition
+    slot_uri: lambdarc:runDefinition
+    exact_mappings:
+      - lambda:runParameters
+    range: Any
+    description: The pre-rename acquisition parameter block from the earliest SSRL crates.
+    deprecated: Renamed to `runParameters` in the 0.2 crates already; retained for the oldest ones.
+    deprecated_element_has_exact_replacement: lambda:runParameters
+
+# =====================================================================================
+# Enums
+# =====================================================================================
+
+enums:
+
+  AbsenceReasonEnum:
+    description: Why a value or artefact is absent. Distinguishing these is the point of declaring absence.
+    permissible_values:
+      not-registered:
+        description: >-
+          No upstream system ever held the value. Typically fields originating in a proposal system
+          the builder cannot reach.
+      not-available:
+        description: >-
+          The value exists in an otherwise complete source, but this build could not reach the bytes.
+      not-deposited:
+        description: >-
+          The artefact exists or existed, but the source archive did not include it. The normal case
+          for raw acquisition data in public deposits.
+      embargoed:
+        description: Withheld under an access embargo; may become available later.
+      not-applicable:
+        description: >-
+          The field does not apply to this technique or collection mode. Distinct from a gap: nothing
+          is missing.
+
+  SufficiencyTierEnum:
+    description: >-
+      What a crate is sufficient *for*. Splitting these lets a crate be findable and judgeable
+      without being reprocessable - which is what most public deposits actually are.
+    permissible_values:
+      S1:
+        description: Findable - the generic search fields resolve.
+      S2-core:
+        description: >-
+          Retrievable core - the designated result and its analysis record are addressable, sized
+          and checksummed. Required for conformance.
+      S2-acquisition:
+        description: >-
+          Reprocessable - the raw acquisition and its subtracted or reference data are present.
+          Optional, but its absence MUST be declared rather than silent.
+      S3:
+        description: Interpretable - every derived quantity names its estimator, convention and unit.
+
+  AdmissibilityEnum:
+    description: >-
+      How far a derived value may be compared. A search MUST NOT filter on a `local` value: it would
+      rank datasets against each other on a number that only means something inside one pipeline.
+    permissible_values:
+      local:
+        description: Meaningful only within the producing pipeline. Displayable, not filterable.
+      comparable:
+        description: Comparable across datasets that share the stated definition and companions.
+      global:
+        description: Comparable across datasets unconditionally, under a published shared definition.
+
+  PackageTierEnum:
+    description: How much of a dataset a crate packages.
+    permissible_values:
+      manifest:
+        description: >-
+          Metadata and pointers only; no payload travels. The lightest useful crate and the default
+          for a federation handoff.
+      processing:
+        description: Processed and derived results plus their provenance; raw acquisition referenced only.
+      full:
+        description: Raw acquisition and derived results both present.
