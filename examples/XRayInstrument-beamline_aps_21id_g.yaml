@@ -2,6 +2,7 @@ id: lambdaber:beamline_aps_21id_g
 title: APS Beamline 21-ID-G (LS-CAT)
 description: LS-CAT beamline for macromolecular crystallography
 instrument_code: APS-21-ID-G
+instrument_registry_id: APS_LSCAT_21IDG
 instrument_category: SYNCHROTRON_BEAMLINE
 facility_name: APS
 facility_ror: https://ror.org/04qxsr837

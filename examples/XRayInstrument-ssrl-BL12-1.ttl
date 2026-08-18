@@ -36,6 +36,7 @@ lambdaber:instrument_ssrl_bl12_1 a lambdaber:XRayInstrument ;
     lambdaber:installation_date "2020-01-01" ;
     lambdaber:instrument_category CHMO:0001084 ;
     lambdaber:instrument_code "SSRL-BL12-1" ;
+    lambdaber:instrument_registry_id "SSRL_BL121" ;
     lambdaber:manufacturer "SLAC National Accelerator Laboratory" ;
     lambdaber:model "Insertion device beamline" ;
     lambdaber:monochromator_type "Si(111) double crystal, liquid nitrogen cooled" ;

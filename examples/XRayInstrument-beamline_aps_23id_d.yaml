@@ -2,6 +2,7 @@ id: lambdaber:beamline_aps_23id_d
 title: APS Beamline 23-ID-D (GM/CA)
 description: GM/CA canted-undulator beamline with EIGER2 XE 16M CdTe detector
 instrument_code: APS-23-ID-D
+instrument_registry_id: APS_GMCA_23IDD
 instrument_category: SYNCHROTRON_BEAMLINE
 facility_name: APS
 facility_ror: https://ror.org/04qxsr837

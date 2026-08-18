@@ -3,6 +3,7 @@
   "title": "APS Beamline 21-ID-F (LS-CAT)",
   "description": "LS-CAT beamline for macromolecular crystallography",
   "instrument_code": "APS-21-ID-F",
+  "instrument_registry_id": "APS_LSCAT_21IDF",
   "instrument_category": "SYNCHROTRON_BEAMLINE",
   "facility_name": "APS",
   "facility_ror": "https://ror.org/04qxsr837",

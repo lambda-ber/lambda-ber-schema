@@ -3,6 +3,7 @@
   "title": "APS Beamline 24-ID-C (NE-CAT)",
   "description": "Northeastern Collaborative Access Team beamline for macromolecular crystallography",
   "instrument_code": "APS-24-ID-C",
+  "instrument_registry_id": "APS_NECAT_24IDC",
   "instrument_category": "SYNCHROTRON_BEAMLINE",
   "facility_name": "APS",
   "facility_ror": "https://ror.org/04qxsr837",

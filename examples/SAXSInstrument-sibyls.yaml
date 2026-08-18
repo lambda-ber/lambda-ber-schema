@@ -2,6 +2,7 @@ id: lambdaber:instrument_sibyls_1231
 title: SIBYLS Beamline 12.3.1
 description: SIBYLS beamline at ALS for SAXS and crystallography
 instrument_code: ALS-12.3.1-SIBYLS
+instrument_registry_id: ALS_SIBYLS
 manufacturer: Lawrence Berkeley National Laboratory
 model: SIBYLS Dual Endstation
 installation_date: '2008-09-01'

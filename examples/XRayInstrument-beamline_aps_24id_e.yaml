@@ -2,6 +2,7 @@ id: lambdaber:beamline_aps_24id_e
 title: APS Beamline 24-ID-E (NE-CAT)
 description: NE-CAT beamline for macromolecular crystallography
 instrument_code: APS-24-ID-E
+instrument_registry_id: APS_NECAT_24IDE
 instrument_category: SYNCHROTRON_BEAMLINE
 facility_name: APS
 facility_ror: https://ror.org/04qxsr837
