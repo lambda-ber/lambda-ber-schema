@@ -1,0 +1,138 @@
+# Demonstrates the Protein entity table and SampleProteinAssociation.
+#
+# Two proteins (hemoglobin alpha and beta) are described once each. Two samples reuse them:
+# the intact oxyhemoglobin tetramer, and a truncated His-tagged alpha chain from a separate
+# preparation. Everything that varies between the two preparations - copy number, residue
+# range, tags, measured mass - sits on the association rows, not on the Protein records.
+id: lambdaber:dataset-hemoglobin-protein-entities
+title: Human hemoglobin - tetramer and isolated alpha chain
+description: Worked example of the Protein table shared by two samples
+
+# ===== ENTITY TABLES (FLAT COLLECTIONS) =====
+
+studies:
+- id: lambdaber:study-hemoglobin
+  title: Oxygen binding in human hemoglobin
+
+proteins:
+- id: uniprot:P69905
+  uniprot_id: uniprot:P69905
+  protein_name: Hemoglobin subunit alpha
+  gene_name: HBA1
+  organism: NCBITaxon:9606
+  organism_name: Homo sapiens
+  amino_acid_sequence: VLSPADKTNVKAAWGKVGAHAGEYGAEALERMFLSFPTTKTYFPHFDLSHGSAQVKGHGKKVADALTNAVAHVDDMPNALSALSDLHAHKLRVDPVNFKLLSHCLLVTLAAHLPAEFTPAVHASLDKFLASVSTVLTSKYR
+  sequence_length: 141
+  molecular_weight_theoretical:
+    numeric_value: 15.13
+    unit: kilodaltons
+  go_terms:
+  - GO:0005344
+  pdb_entries:
+  - pdb:1HHO
+- id: uniprot:P68871
+  uniprot_id: uniprot:P68871
+  protein_name: Hemoglobin subunit beta
+  gene_name: HBB
+  organism: NCBITaxon:9606
+  organism_name: Homo sapiens
+  sequence_length: 146
+  molecular_weight_theoretical:
+    numeric_value: 15.87
+    unit: kilodaltons
+  go_terms:
+  - GO:0005344
+  pdb_entries:
+  - pdb:1HHO
+
+protein_constructs:
+- id: lambdaber:construct-hba1-his6-nterm
+  construct_id: HBA1-His6-N
+  protein_id: uniprot:P69905
+  uniprot_id: uniprot:P69905
+  gene_name: HBA1
+  construct_description: Alpha chain residues 1-100 with an N-terminal His6 tag
+  vector_backbone: pET-28a
+  tag_nterm: His6
+  cleavage_site: ENLYFQS (TEV)
+  insert_boundaries: 1-100
+
+samples:
+- id: lambdaber:sample-hba-oxy-tetramer
+  sample_code: HBA-OXY-001
+  sample_type: complex
+  title: Oxyhemoglobin A tetramer from erythrocyte lysate
+  protein_name: Hemoglobin A (oxy)
+  organism: NCBITaxon:9606
+  oligomeric_state: heterotetramer
+  molecular_weight:
+    numeric_value: 64.5
+    unit: kilodaltons
+  concentration:
+    numeric_value: 12.0
+    unit: milligrams per milliliter
+  buffer_composition:
+    ph:
+      numeric_value: 7.4
+      unit: pH units
+    components:
+    - 50 mM sodium phosphate
+    - 100 mM NaCl
+- id: lambdaber:sample-hba1-fragment-his6
+  sample_code: HBA1-FRAG-002
+  sample_type: protein
+  title: His6-tagged alpha chain fragment, residues 1-100
+  protein_name: Hemoglobin subunit alpha
+  organism: NCBITaxon:9606
+  tag: His6
+  construct: residues 1-100
+  expression_system: Escherichia coli BL21(DE3)
+  concentration:
+    numeric_value: 3.5
+    unit: milligrams per milliliter
+
+# ===== ASSOCIATION TABLES (M:N RELATIONSHIPS) =====
+
+study_sample_associations:
+- study_id: lambdaber:study-hemoglobin
+  sample_id: lambdaber:sample-hba-oxy-tetramer
+  role: target
+- study_id: lambdaber:study-hemoglobin
+  sample_id: lambdaber:sample-hba1-fragment-his6
+  role: reference
+
+sample_protein_associations:
+# The tetramer: two copies of each chain, full length, mass measured by native MS.
+- sample_id: lambdaber:sample-hba-oxy-tetramer
+  protein_id: uniprot:P69905
+  role: subunit
+  copy_number: 2
+  chain_ids:
+  - A
+  - C
+  observed_molecular_weight:
+    numeric_value: 15.13
+    unit: kilodaltons
+- sample_id: lambdaber:sample-hba-oxy-tetramer
+  protein_id: uniprot:P68871
+  role: subunit
+  copy_number: 2
+  chain_ids:
+  - B
+  - D
+  observed_molecular_weight:
+    numeric_value: 15.87
+    unit: kilodaltons
+# The fragment: same Protein record, but a truncation with its tag still on.
+- sample_id: lambdaber:sample-hba1-fragment-his6
+  protein_id: uniprot:P69905
+  role: target
+  construct_id: lambdaber:construct-hba1-his6-nterm
+  copy_number: 1
+  residue_range: 1-100
+  sequence_coverage: 0.71
+  modifications:
+  - N-terminal His6 tag retained
+  observed_molecular_weight:
+    numeric_value: 12.9
+    unit: kilodaltons

@@ -1,0 +1,120 @@
+id: lambdaber:dataset-hemoglobin-protein-entities
+title: Human hemoglobin - tetramer and isolated alpha chain
+description: Worked example of the Protein table shared by two samples
+studies:
+- id: lambdaber:study-hemoglobin
+  title: Oxygen binding in human hemoglobin
+proteins:
+- id: uniprot:P69905
+  uniprot_id: uniprot:P69905
+  protein_name: Hemoglobin subunit alpha
+  gene_name: HBA1
+  organism: NCBITaxon:9606
+  organism_name: Homo sapiens
+  amino_acid_sequence: VLSPADKTNVKAAWGKVGAHAGEYGAEALERMFLSFPTTKTYFPHFDLSHGSAQVKGHGKKVADALTNAVAHVDDMPNALSALSDLHAHKLRVDPVNFKLLSHCLLVTLAAHLPAEFTPAVHASLDKFLASVSTVLTSKYR
+  sequence_length: 141
+  molecular_weight_theoretical:
+    unit: kilodaltons
+    numeric_value: 15.13
+  go_terms:
+  - GO:0005344
+  pdb_entries:
+  - pdb:1HHO
+- id: uniprot:P68871
+  uniprot_id: uniprot:P68871
+  protein_name: Hemoglobin subunit beta
+  gene_name: HBB
+  organism: NCBITaxon:9606
+  organism_name: Homo sapiens
+  sequence_length: 146
+  molecular_weight_theoretical:
+    unit: kilodaltons
+    numeric_value: 15.87
+  go_terms:
+  - GO:0005344
+  pdb_entries:
+  - pdb:1HHO
+protein_constructs:
+- id: lambdaber:construct-hba1-his6-nterm
+  construct_id: HBA1-His6-N
+  protein_id: uniprot:P69905
+  uniprot_id: uniprot:P69905
+  gene_name: HBA1
+  construct_description: Alpha chain residues 1-100 with an N-terminal His6 tag
+  vector_backbone: pET-28a
+  tag_nterm: His6
+  cleavage_site: ENLYFQS (TEV)
+  insert_boundaries: 1-100
+samples:
+- id: lambdaber:sample-hba-oxy-tetramer
+  title: Oxyhemoglobin A tetramer from erythrocyte lysate
+  sample_code: HBA-OXY-001
+  sample_type: complex
+  molecular_weight:
+    unit: kilodaltons
+    numeric_value: 64.5
+  concentration:
+    unit: milligrams per milliliter
+    numeric_value: 12.0
+  buffer_composition:
+    ph:
+      unit: pH units
+      numeric_value: 7.4
+    components:
+    - 50 mM sodium phosphate
+    - 100 mM NaCl
+  organism: NCBITaxon:9606
+  protein_name: Hemoglobin A (oxy)
+  oligomeric_state: heterotetramer
+- id: lambdaber:sample-hba1-fragment-his6
+  title: His6-tagged alpha chain fragment, residues 1-100
+  sample_code: HBA1-FRAG-002
+  sample_type: protein
+  concentration:
+    unit: milligrams per milliliter
+    numeric_value: 3.5
+  organism: NCBITaxon:9606
+  protein_name: Hemoglobin subunit alpha
+  construct: residues 1-100
+  tag: His6
+  expression_system: Escherichia coli BL21(DE3)
+study_sample_associations:
+- study_id: lambdaber:study-hemoglobin
+  sample_id: lambdaber:sample-hba-oxy-tetramer
+  role: target
+- study_id: lambdaber:study-hemoglobin
+  sample_id: lambdaber:sample-hba1-fragment-his6
+  role: reference
+sample_protein_associations:
+- sample_id: lambdaber:sample-hba-oxy-tetramer
+  protein_id: uniprot:P69905
+  role: subunit
+  copy_number: 2
+  chain_ids:
+  - A
+  - C
+  observed_molecular_weight:
+    unit: kilodaltons
+    numeric_value: 15.13
+- sample_id: lambdaber:sample-hba-oxy-tetramer
+  protein_id: uniprot:P68871
+  role: subunit
+  copy_number: 2
+  chain_ids:
+  - B
+  - D
+  observed_molecular_weight:
+    unit: kilodaltons
+    numeric_value: 15.87
+- sample_id: lambdaber:sample-hba1-fragment-his6
+  protein_id: uniprot:P69905
+  role: target
+  construct_id: lambdaber:construct-hba1-his6-nterm
+  copy_number: 1
+  residue_range: 1-100
+  sequence_coverage: 0.71
+  modifications:
+  - N-terminal His6 tag retained
+  observed_molecular_weight:
+    unit: kilodaltons
+    numeric_value: 12.9

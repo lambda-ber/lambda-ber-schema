@@ -1,0 +1,56 @@
+@base <http://example.org/> .
+@prefix NCBITaxon: <http://purl.obolibrary.org/obo/NCBITaxon_> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lambdaber: <http://w3id.org/lambda/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
+@prefix ns1: <http://w3id.org/lambda/functional_annotation/> .
+@prefix uniprot: <http://purl.uniprot.org/uniprot/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+uniprot:P69905 a lambdaber:Protein ;
+    dcterms:title "Hemoglobin subunit alpha (human)" ;
+    lambdaber:amino_acid_sequence "VLSPADKTNVKAAWGKVGAHAGEYGAEALERMFLSFPTTKTYFPHFDLSHGSAQVKGHGKKVADALTNAVAHVDDMPNALSALSDLHAHKLRVDPVNFKLLSHCLLVTLAAHLPAEFTPAVHASLDKFLASVSTVLTSKYR" ;
+    lambdaber:cross_references [ a ns1:DatabaseCrossReference ;
+            ns1:database_id "IPR000971" ;
+            ns1:database_name "interpro" ],
+        [ a ns1:DatabaseCrossReference ;
+            ns1:database_id "PF00042" ;
+            ns1:database_name "pfam" ;
+            ns1:database_url "https://www.ebi.ac.uk/interpro/entry/pfam/PF00042/"^^xsd:anyURI ] ;
+    lambdaber:description "Alpha chain of adult hemoglobin A. Two copies pair with two beta chains to form the oxygen-carrying tetramer." ;
+    lambdaber:function_description "Involved in oxygen transport from the lung to the various peripheral tissues." ;
+    lambdaber:functional_sites lambdaber:hba1-heme-pocket ;
+    lambdaber:gene_name "HBA1" ;
+    lambdaber:go_terms "GO:0005344"^^xsd:anyURI,
+        "GO:0005833"^^xsd:anyURI,
+        "GO:0019825"^^xsd:anyURI ;
+    lambdaber:ligand_interactions [ a ns1:LigandInteraction ;
+            ns1:binding_site_residues "58",
+                "87" ;
+            ns1:interaction_type "metal_coordination" ;
+            ns1:is_cofactor true ;
+            ns1:is_drug_like false ;
+            ns1:ligand_id "CHEBI:30413"^^xsd:anyURI ;
+            ns1:ligand_name "Protoporphyrin IX containing Fe" ] ;
+    lambdaber:molecular_weight_theoretical [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "15.13"^^xsd:float ;
+            lambdaber:unit "kilodaltons" ] ;
+    lambdaber:organism NCBITaxon:9606 ;
+    lambdaber:organism_name "Homo sapiens" ;
+    lambdaber:pdb_entries "pdb:1HHO"^^xsd:anyURI,
+        "pdb:2HHB"^^xsd:anyURI ;
+    lambdaber:protein_name "Hemoglobin subunit alpha" ;
+    lambdaber:sequence_length 141 ;
+    lambdaber:uniprot_id "uniprot:P69905"^^xsd:anyURI .
+
+lambdaber:hba1-heme-pocket a ns1:FunctionalSite ;
+    ns1:chain_id "A" ;
+    ns1:evidence_type "experimental" ;
+    ns1:pdb_entry "1HHO" ;
+    ns1:protein_id "uniprot:P69905" ;
+    ns1:residues "58",
+        "87" ;
+    ns1:site_name "Heme pocket" ;
+    ns1:site_type "cofactor_binding" ;
+    ns1:source_database "pdbe_kb" .
+

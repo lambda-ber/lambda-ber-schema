@@ -1,0 +1,52 @@
+# A Protein record: the biological entity, not any one preparation of it.
+# Identified by the UniProt accession as a Bioregistry CURIE.
+id: uniprot:P69905
+uniprot_id: uniprot:P69905
+protein_name: Hemoglobin subunit alpha
+title: Hemoglobin subunit alpha (human)
+description: Alpha chain of adult hemoglobin A. Two copies pair with two beta chains
+  to form the oxygen-carrying tetramer.
+gene_name: HBA1
+organism: NCBITaxon:9606
+organism_name: Homo sapiens
+amino_acid_sequence: VLSPADKTNVKAAWGKVGAHAGEYGAEALERMFLSFPTTKTYFPHFDLSHGSAQVKGHGKKVADALTNAVAHVDDMPNALSALSDLHAHKLRVDPVNFKLLSHCLLVTLAAHLPAEFTPAVHASLDKFLASVSTVLTSKYR
+sequence_length: 141
+molecular_weight_theoretical:
+  numeric_value: 15.13
+  unit: kilodaltons
+function_description: Involved in oxygen transport from the lung to the various peripheral
+  tissues.
+go_terms:
+- GO:0005344
+- GO:0005833
+- GO:0019825
+pdb_entries:
+- pdb:1HHO
+- pdb:2HHB
+functional_sites:
+- id: lambdaber:hba1-heme-pocket
+  protein_id: uniprot:P69905
+  pdb_entry: 1HHO
+  chain_id: A
+  site_type: cofactor_binding
+  site_name: Heme pocket
+  residues:
+  - '58'
+  - '87'
+  source_database: pdbe_kb
+  evidence_type: experimental
+ligand_interactions:
+- ligand_id: CHEBI:30413
+  ligand_name: Protoporphyrin IX containing Fe
+  interaction_type: metal_coordination
+  binding_site_residues:
+  - '58'
+  - '87'
+  is_cofactor: true
+  is_drug_like: false
+cross_references:
+- database_name: pfam
+  database_id: PF00042
+  database_url: https://www.ebi.ac.uk/interpro/entry/pfam/PF00042/
+- database_name: interpro
+  database_id: IPR000971

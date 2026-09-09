@@ -1,0 +1,132 @@
+@base <http://example.org/> .
+@prefix NCBITaxon: <http://purl.obolibrary.org/obo/NCBITaxon_> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lambdaber: <http://w3id.org/lambda/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
+@prefix uniprot: <http://purl.uniprot.org/uniprot/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+lambdaber:dataset-hemoglobin-protein-entities a lambdaber:Dataset ;
+    dcterms:title "Human hemoglobin - tetramer and isolated alpha chain" ;
+    lambdaber:description "Worked example of the Protein table shared by two samples" ;
+    lambdaber:protein_constructs lambdaber:construct-hba1-his6-nterm ;
+    lambdaber:proteins uniprot:P68871,
+        uniprot:P69905 ;
+    lambdaber:sample_protein_associations [ a lambdaber:SampleProteinAssociation ;
+            lambdaber:chain_ids "A",
+                "C" ;
+            lambdaber:copy_number 2 ;
+            lambdaber:observed_molecular_weight [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "15.13"^^xsd:float ;
+                    lambdaber:unit "kilodaltons" ] ;
+            lambdaber:protein_id uniprot:P69905 ;
+            lambdaber:role "subunit" ;
+            lambdaber:sample_id lambdaber:sample-hba-oxy-tetramer ],
+        [ a lambdaber:SampleProteinAssociation ;
+            lambdaber:chain_ids "B",
+                "D" ;
+            lambdaber:copy_number 2 ;
+            lambdaber:observed_molecular_weight [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "15.87"^^xsd:float ;
+                    lambdaber:unit "kilodaltons" ] ;
+            lambdaber:protein_id uniprot:P68871 ;
+            lambdaber:role "subunit" ;
+            lambdaber:sample_id lambdaber:sample-hba-oxy-tetramer ],
+        [ a lambdaber:SampleProteinAssociation ;
+            lambdaber:construct_id lambdaber:construct-hba1-his6-nterm ;
+            lambdaber:copy_number 1 ;
+            lambdaber:modifications "N-terminal His6 tag retained" ;
+            lambdaber:observed_molecular_weight [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "12.9"^^xsd:float ;
+                    lambdaber:unit "kilodaltons" ] ;
+            lambdaber:protein_id uniprot:P69905 ;
+            lambdaber:residue_range "1-100" ;
+            lambdaber:role "target" ;
+            lambdaber:sample_id lambdaber:sample-hba1-fragment-his6 ;
+            lambdaber:sequence_coverage "0.71"^^xsd:float ] ;
+    lambdaber:samples lambdaber:sample-hba-oxy-tetramer,
+        lambdaber:sample-hba1-fragment-his6 ;
+    lambdaber:studies lambdaber:study-hemoglobin ;
+    lambdaber:study_sample_associations [ a lambdaber:StudySampleAssociation ;
+            lambdaber:role "target" ;
+            lambdaber:sample_id lambdaber:sample-hba-oxy-tetramer ;
+            lambdaber:study_id lambdaber:study-hemoglobin ],
+        [ a lambdaber:StudySampleAssociation ;
+            lambdaber:role "reference" ;
+            lambdaber:sample_id lambdaber:sample-hba1-fragment-his6 ;
+            lambdaber:study_id lambdaber:study-hemoglobin ] .
+
+uniprot:P68871 a lambdaber:Protein ;
+    lambdaber:gene_name "HBB" ;
+    lambdaber:go_terms "GO:0005344"^^xsd:anyURI ;
+    lambdaber:molecular_weight_theoretical [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "15.87"^^xsd:float ;
+            lambdaber:unit "kilodaltons" ] ;
+    lambdaber:organism NCBITaxon:9606 ;
+    lambdaber:organism_name "Homo sapiens" ;
+    lambdaber:pdb_entries "pdb:1HHO"^^xsd:anyURI ;
+    lambdaber:protein_name "Hemoglobin subunit beta" ;
+    lambdaber:sequence_length 146 ;
+    lambdaber:uniprot_id "uniprot:P68871"^^xsd:anyURI .
+
+lambdaber:construct-hba1-his6-nterm a lambdaber:ProteinConstruct ;
+    lambdaber:cleavage_site "ENLYFQS (TEV)" ;
+    lambdaber:construct_description "Alpha chain residues 1-100 with an N-terminal His6 tag" ;
+    lambdaber:construct_id "HBA1-His6-N" ;
+    lambdaber:gene_name "HBA1" ;
+    lambdaber:insert_boundaries "1-100" ;
+    lambdaber:protein_id uniprot:P69905 ;
+    lambdaber:tag_nterm "His6" ;
+    lambdaber:uniprot_id "uniprot:P69905"^^xsd:anyURI ;
+    lambdaber:vector_backbone "pET-28a" .
+
+lambdaber:sample-hba1-fragment-his6 a lambdaber:Sample ;
+    dcterms:title "His6-tagged alpha chain fragment, residues 1-100" ;
+    lambdaber:concentration [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "3.5"^^xsd:float ;
+            lambdaber:unit "milligrams per milliliter" ] ;
+    lambdaber:construct "residues 1-100" ;
+    lambdaber:expression_system "Escherichia coli BL21(DE3)" ;
+    lambdaber:organism NCBITaxon:9606 ;
+    lambdaber:protein_name "Hemoglobin subunit alpha" ;
+    lambdaber:sample_code "HBA1-FRAG-002" ;
+    lambdaber:sample_type "protein" ;
+    lambdaber:tag "His6" .
+
+lambdaber:study-hemoglobin a lambdaber:Study ;
+    dcterms:title "Oxygen binding in human hemoglobin" .
+
+uniprot:P69905 a lambdaber:Protein ;
+    lambdaber:amino_acid_sequence "VLSPADKTNVKAAWGKVGAHAGEYGAEALERMFLSFPTTKTYFPHFDLSHGSAQVKGHGKKVADALTNAVAHVDDMPNALSALSDLHAHKLRVDPVNFKLLSHCLLVTLAAHLPAEFTPAVHASLDKFLASVSTVLTSKYR" ;
+    lambdaber:gene_name "HBA1" ;
+    lambdaber:go_terms "GO:0005344"^^xsd:anyURI ;
+    lambdaber:molecular_weight_theoretical [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "15.13"^^xsd:float ;
+            lambdaber:unit "kilodaltons" ] ;
+    lambdaber:organism NCBITaxon:9606 ;
+    lambdaber:organism_name "Homo sapiens" ;
+    lambdaber:pdb_entries "pdb:1HHO"^^xsd:anyURI ;
+    lambdaber:protein_name "Hemoglobin subunit alpha" ;
+    lambdaber:sequence_length 141 ;
+    lambdaber:uniprot_id "uniprot:P69905"^^xsd:anyURI .
+
+lambdaber:sample-hba-oxy-tetramer a lambdaber:Sample ;
+    dcterms:title "Oxyhemoglobin A tetramer from erythrocyte lysate" ;
+    lambdaber:buffer_composition [ a lambdaber:BufferComposition ;
+            lambdaber:components "100 mM NaCl",
+                "50 mM sodium phosphate" ;
+            lambdaber:ph [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "7.4"^^xsd:float ;
+                    lambdaber:unit "pH units" ] ] ;
+    lambdaber:concentration [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "12.0"^^xsd:float ;
+            lambdaber:unit "milligrams per milliliter" ] ;
+    lambdaber:molecular_weight [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "64.5"^^xsd:float ;
+            lambdaber:unit "kilodaltons" ] ;
+    lambdaber:oligomeric_state "heterotetramer" ;
+    lambdaber:organism NCBITaxon:9606 ;
+    lambdaber:protein_name "Hemoglobin A (oxy)" ;
+    lambdaber:sample_code "HBA-OXY-001" ;
+    lambdaber:sample_type "complex" .
+
