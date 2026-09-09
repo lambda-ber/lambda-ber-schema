@@ -3,7 +3,7 @@
   "description": "**LAMBDA Core RO-Crate profile** \u2014 the technique-neutral file-manifest contract for LAMBDA.\n\nA LAMBDA crate is a machine-readable *manifest*: it carries the highest-level details a program\nneeds in order to decide whether a dataset is worth opening, and then **points** at the fuller\nrecord rather than restating it. The fuller record may be another RO-Crate, a complete\n`lambda-ber-schema` document, or a remote registration (DOI / archive accession).\n\n## Relationship to `lambda-ber-schema`\n\nThis module *mirrors* `lambda-ber-schema`; it does not copy it. It `imports` the main schema, so\nevery controlled vocabulary (`TechniqueEnum`, `FacilityEnum`, `FileFormatEnum`, `DataTypeEnum`,\n`WorkflowTypeEnum`, `SampleTypeEnum`, \u2026) is *referenced* from its single source. Every crate slot\nthat has a counterpart in the main schema declares it with `exact_mappings`, so\n`gen-sssom` emits a machine-readable crate-term to schema-slot crosswalk instead of a\nhand-maintained table that drifts.\n\n## Term layers\n\nThree namespaces, by design (the two-layer discipline of the LAMBDA SAXS profile, plus RO-Crate's\nown base):\n\n- `sdo:` (schema.org) \u2014 identity, access and packaging. Anything RO-Crate/schema.org already\n  names (`name`, `datePublished`, `license`, `author`, `hasPart`, `encodingFormat`,\n  `contentSize`, \u2026) uses the schema.org term, in schema.org's own camelCase. Note the **http**\n  form of the namespace, and see the prefix comment below for why it is not called `schema:`\n  here. Crate authors never write this prefix \u2014 RO-Crate's context resolves the bare terms.\n- `lambda:` \u2014 terms that project onto a `lambda-ber-schema` slot. These deliberately keep the\n  schema's `snake_case` slot names, so `lambda:file_format` in a crate *is* the `DataFile.file_format`\n  slot IRI and the projection is an identity mapping rather than a lookup.\n- `lambdarc:` \u2014 profile-local machinery with no schema counterpart yet (declared absence,\n  sufficiency tiers, designation, estimators). camelCase, following the SAXS profile's style.\n  Each of these is a standing change request against `lambda-ber-schema`.\n\n## Namespace note\n\nCrates MUST bind `lambda:` to `http://w3id.org/lambda/` \u2014 the main schema's own base \u2014 so that\n`lambda:Dataset` and `lambda:file_format` in a crate resolve to the actual LinkML class and slot\nIRIs. Earlier SSRL crates bound `lambda:` to `https://w3id.org/lambda/terms/0.2/`, whose terms\nresolve to nothing in the schema; see the deprecated-alias notes on individual elements.\n\n## Validation model\n\nThree layers, because a flat RO-Crate `@graph` is an open world and no single tool covers it:\n\n1. **JSON Schema** (`gen-json-schema --top-class ROCrateMetadataDocument`) checks document shape.\n   `@graph` is deliberately permissive at the document level so that crates carrying technique\n   extension terms still validate as documents.\n2. **Per-entity classes** \u2014 dispatch a graph entity on its `@type` and validate it against the\n   matching class here (`linkml-validate -C CrateFile`, \u2026). These classes are closed, so an\n   undeclared term is caught. This is where the profile actually bites.\n3. **Graph rules** for the cross-entity constraints neither of the above can state, because they\n   are about relationships between entities rather than the shape of any one of them: does every\n   `hasPart` target resolve to an entity? does each dataset part carry a metadata pointer or\n   declare that it has none? is any field both present and declared missing? These live in\n   `tests/test_rocrate_profile.py`.\n\n   SHACL shapes would be the natural home for this layer, since RDF validation dispatches on\n   `rdf:type` properly. They are *not* generated: `gen-shacl` raises\n   `KeyError('lambda-ber-schema')` for classes whose slots come from an imported schema\n   (`shaclgen.py::_build_ignored_properties`). Worth revisiting when that is fixed upstream.\n\nTwo normalizations a reader MUST apply before validating, both of them things a JSON-LD processor\ndoes and neither of them a change of meaning: expand a single value where the profile declares a\nset (`\"instrument\": {\"@id\": \"#x\"}` means a one-element list), and compact an explicitly prefixed\nkey to the profile's own term (`\"lambda:protein_name\"` and a context-mapped `\"protein_name\"` are\nthe same IRI, and real crates mix the two spellings within one entity).\n",
   "title": "LAMBDA Core RO-Crate Profile",
   "id": "http://w3id.org/lambda/rocrate/core",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "imports": [
     "linkml:types",
     "lambda_ber_schema",
@@ -21149,7 +21149,7 @@
     {
       "name": "CrateRoot_conforms_to",
       "definition_uri": "http://w3id.org/lambda/rocrate/conforms_to",
-      "description": "MUST include both the RO-Crate version URI and `https://w3id.org/lambda/profile/core/0.3.0`. Technique extensions add their own URI alongside, never instead.",
+      "description": "MUST include both the RO-Crate version URI and `https://w3id.org/lambda/profile/core/0.3.1`. Technique extensions add their own URI alongside, never instead.",
       "from_schema": "http://w3id.org/lambda/rocrate/core",
       "mappings": [
         "http://purl.org/dc/terms/conformsTo"
@@ -31545,9 +31545,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda_rocrate_core.yaml",
-  "source_file_date": "2026-09-09T11:30:49",
+  "source_file_date": "2026-09-09T13:24:13",
   "source_file_size": 72300,
-  "generation_date": "2026-09-09T11:31:34",
+  "generation_date": "2026-09-09T13:24:16",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/rocrate/jsonld/lambda_rocrate_core.context.jsonld",

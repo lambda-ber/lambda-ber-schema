@@ -579,7 +579,7 @@ def test_legacy_crate_uses_the_deprecated_vocabulary(path):
     )
 
 
-#: What stops the published SSRL 0.2 crate from conforming to Core 0.3.0. Each is a real,
+#: What stops the published SSRL 0.2 crate from conforming to Core 0.3.1. Each is a real,
 #: actionable gap rather than a naming difference - the naming differences are handled by the
 #: alias layer and do not appear here. If one of these disappears, this test fails and the
 #: entry should be removed.

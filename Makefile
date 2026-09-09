@@ -27,7 +27,7 @@ test-examples:
 gendoc: $(DOCDIR)
 	cp -pr src/docs/* $(DOCDIR)
 	mkdir -p $(DOCDIR)/profiles
-	cp -p profiles/core/0.3.0/lambda-core-rocrate-profile-v0.3.0.md $(DOCDIR)/profiles/
+	cp -p profiles/core/0.3.1/lambda-core-rocrate-profile-v0.3.1.md $(DOCDIR)/profiles/
 	$(RUN) gen-doc -d $(ELEMENTSDIR) $(SCHEMA)
 
 gen-sssom: assets/sssom/lambda_ber_schema.sssom.tsv

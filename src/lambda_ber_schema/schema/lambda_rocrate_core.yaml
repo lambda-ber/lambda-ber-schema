@@ -1,7 +1,7 @@
 id: http://w3id.org/lambda/rocrate/core
 name: lambda-rocrate-core
 title: LAMBDA Core RO-Crate Profile
-version: "0.3.0"
+version: "0.3.1"
 license: https://creativecommons.org/publicdomain/zero/1.0/
 description: |
   **LAMBDA Core RO-Crate profile** — the technique-neutral file-manifest contract for LAMBDA.
@@ -242,7 +242,7 @@ classes:
         required: true
         description: >-
           MUST include both the RO-Crate version URI and
-          `https://w3id.org/lambda/profile/core/0.3.0`. Technique extensions add their own URI
+          `https://w3id.org/lambda/profile/core/0.3.1`. Technique extensions add their own URI
           alongside, never instead.
       has_part:
         required: true

@@ -47,7 +47,7 @@ nav:
     - Bundle, Deposit, and Query: use-cases/05-bundle-deposit-lakehouse.html
     - Reanalysis Triggers: use-cases/06-reanalysis-triggers.html
   - Profiles:
-    - LAMBDA Core RO-Crate Profile: profiles/lambda-core-rocrate-profile-v0.3.0.md
+    - LAMBDA Core RO-Crate Profile: profiles/lambda-core-rocrate-profile-v0.3.1.md
   - Technical:
     - Mapping to OME: technical/ome-mapping.md
   - Slides:

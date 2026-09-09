@@ -1,15 +1,22 @@
 # LAMBDA Core RO-Crate Profile
 
-**Version 0.3.0** · Technique-neutral · Normative specification
+**Version 0.3.1** · Technique-neutral · Normative specification
 
 Binds `lambda-ber-schema` (LinkML) to RO-Crate 1.2 as a **file manifest** contract. A crate carries
 the highest-level details a program needs to decide whether a dataset is worth opening, and then
 *points* at the fuller record instead of restating it. It is a search-and-handoff surface, not a
 second copy of the schema.
 
-Profile URI: `https://w3id.org/lambda/profile/core/0.3.0`
+Profile URI: `https://w3id.org/lambda/profile/core/0.3.1`
 Machine-readable source: [`lambda_rocrate_core.yaml`](../../../src/lambda_ber_schema/schema/lambda_rocrate_core.yaml)
 Generated artifacts: `assets/rocrate/` (JSON Schema, JSON-LD context, OWL, prefix map, SSSOM crosswalk)
+
+**Changes in 0.3.1.** Adds `ProteinEntity` and the `hasBioChemEntityPart` link from a sample to
+the proteins it contains (§6.2), with `lambda:uniprot_id`, `lambda:gene_name` and
+`lambda:pdb_entries` projecting onto the schema's new `Protein` class; deprecates the 0.2
+`uniprotId` spelling in favour of that route (§15); and adds graph rules 3 (second clause) and 10
+(§12). Additive: every crate that conformed to 0.3.0 conforms to 0.3.1 unchanged. Crates SHOULD
+claim `https://w3id.org/lambda/profile/core/0.3.1`; the 0.3.0 URI remains valid for what it said.
 
 Companion technique extensions: the **LAMBDA SAXS profile v0.3.0** (in this repository) and a
 prospective MX profile. Core defines the framework those cite; they add technique quantities and
@@ -110,7 +117,7 @@ profile:
 ```json
 "conformsTo": [
   {"@id": "https://w3id.org/ro/crate/1.2"},
-  {"@id": "https://w3id.org/lambda/profile/core/0.3.0"}
+  {"@id": "https://w3id.org/lambda/profile/core/0.3.1"}
 ]
 ```
 
@@ -287,7 +294,7 @@ crate.
   "@id": "saxs/",
   "@type": "Dataset",
   "name": "SEC-SAXS-MALS of GluRS (ALS SIBYLS 12.3.1)",
-  "conformsTo": [{"@id": "https://w3id.org/lambda/profile/core/0.3.0"},
+  "conformsTo": [{"@id": "https://w3id.org/lambda/profile/core/0.3.1"},
                  {"@id": "https://w3id.org/lambda/profile/saxs/0.3.0"}],
   "hasPart": [{"@id": "saxs/ro-crate-metadata.json"}]
 }
@@ -568,7 +575,7 @@ Five conformant fixtures in `tests/data/rocrate/valid/`:
 | Fixture | Shows |
 | :---- | :---- |
 | `minimal-manifest.json` | the smallest conformant crate — the thing to hand a new facility |
-| `ssrl-mx-XA_x16.json` | a real SSRL MX package brought to Core 0.3.0, with MX quantities nested in `resultSummary` |
+| `ssrl-mx-XA_x16.json` | a real SSRL MX package brought to Core 0.3.1, with MX quantities nested in `resultSummary` |
 | `saxs-glurs.json` | the SAXS GluRS dataset reduced to Core terms — the extension boundary made concrete; its sample points at a `Protein` entity (§6.2) |
 | `nested-pointers.json` | one manifest using all three pointer mechanisms at once |
 | `ssrl-mx-XA_x16-core-0.2.json` (in `legacy/`) | the published 0.2 crate, unmodified — see §15 |
@@ -657,10 +664,10 @@ carries the schema's own `snake_case` slot name, so `lambda:file_format` in a cr
 SSRL publishes crates conforming to `https://w3id.org/lambda/profile/core/0.2` — a URI with no
 written specification — using `lambda:Experiment` / `lambda:RawUnit` / `lambda:DerivedProduct` /
 `lambda:AuxiliaryMetadataItem` and camelCase terms under
-`https://w3id.org/lambda/terms/0.2/`. Those crates exist and a loader consumes them, so Core 0.3.0
+`https://w3id.org/lambda/terms/0.2/`. Those crates exist and a loader consumes them, so Core 0.3.1
 accepts the 0.2 spellings and marks them deprecated rather than breaking them.
 
-| 0.2 spelling | Core 0.3.0 |
+| 0.2 spelling | Core 0.3.1 |
 | :---- | :---- |
 | `lambda:Experiment` (root type) | `lambda:Dataset` |
 | `lambda:RawUnit`, `lambda:DerivedProduct` | `Dataset` part → `CrateDatasetPart` |

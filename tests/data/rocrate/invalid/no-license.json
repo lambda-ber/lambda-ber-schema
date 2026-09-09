@@ -33,7 +33,7 @@
           "@id": "https://w3id.org/ro/crate/1.2"
         },
         {
-          "@id": "https://w3id.org/lambda/profile/core/0.3.0"
+          "@id": "https://w3id.org/lambda/profile/core/0.3.1"
         }
       ],
       "facility_name": "ALS",

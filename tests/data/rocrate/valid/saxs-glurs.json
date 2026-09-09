@@ -38,7 +38,7 @@
           "@id": "https://w3id.org/ro/crate/1.2"
         },
         {
-          "@id": "https://w3id.org/lambda/profile/core/0.3.0"
+          "@id": "https://w3id.org/lambda/profile/core/0.3.1"
         }
       ],
       "identifier": [
@@ -74,7 +74,7 @@
         },
         {
           "module": "lambda-rocrate-core",
-          "version": "0.3.0"
+          "version": "0.3.1"
         }
       ],
       "sufficiency": {
