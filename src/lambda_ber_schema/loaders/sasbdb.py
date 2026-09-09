@@ -9,7 +9,7 @@ from urllib.parse import urlparse
 
 import requests
 
-from lambda_ber_schema.loaders.base import BaseLoader, LoaderResult
+from lambda_ber_schema.loaders.base import BaseLoader, LoaderResult, uniprot_curie
 from lambda_ber_schema.loaders.cache import ResponseCache
 from lambda_ber_schema.pydantic import (
     BufferComposition,
@@ -21,9 +21,12 @@ from lambda_ber_schema.pydantic import (
     ExperimentRun,
     ExperimentSampleAssociation,
     FileFormatEnum,
+    Protein,
     QualityMetrics,
     QuantityValue,
     Sample,
+    SampleProteinAssociation,
+    SampleProteinRoleEnum,
     SampleTypeEnum,
     SAXSInstrument,
     Study,
@@ -107,6 +110,11 @@ class SASBDBLoader(BaseLoader):
                 "title", f"SASBDB Entry {entry_code}"),
         )
 
+        # One Protein row per UniProt accession among the sample's molecules
+        proteins, sample_protein_associations = self._create_proteins(
+            raw, sample, warnings
+        )
+
         # Create association tables to link entities
         study_sample_associations = [
             StudySampleAssociation(study_id=study.id, sample_id=sample.id)
@@ -139,6 +147,7 @@ class SASBDBLoader(BaseLoader):
                 "title", f"SASBDB Entry {entry_code}"),
             studies=[study],
             instruments=[instrument],
+            proteins=proteins if proteins else None,
             samples=[sample],
             experiment_runs=[experiment],
             workflow_runs=workflows,
@@ -147,6 +156,7 @@ class SASBDBLoader(BaseLoader):
             study_experiment_associations=study_experiment_associations,
             experiment_sample_associations=experiment_sample_associations,
             experiment_instrument_associations=experiment_instrument_associations,
+            sample_protein_associations=sample_protein_associations if sample_protein_associations else None,
             workflow_experiment_associations=workflow_experiment_associations,
         )
 
@@ -328,6 +338,71 @@ class SASBDBLoader(BaseLoader):
             database_cross_references=db_xrefs,
             oligomeric_state=molecule.get("oligomerization"),
         )
+
+    def _create_proteins(
+        self, raw: dict[str, Any], sample: Sample, warnings: list[str]
+    ) -> tuple[list[Protein], list[SampleProteinAssociation]]:
+        """
+        Create Protein records and Sample-Protein links from SASBDB molecules.
+
+        SASBDB gives the canonical UniProt sequence alongside the construct
+        sequence, so the Protein row carries the canonical sequence and its
+        length. Copy number and the UniProt residue range describe this sample
+        and go on the association.
+        """
+        molecules = raw.get("experiment", {}).get("sample", {}).get("molecule", []) or []
+        proteins: dict[str, Protein] = {}
+        associations: list[SampleProteinAssociation] = []
+
+        role = (
+            SampleProteinRoleEnum.target
+            if len(molecules) == 1
+            else SampleProteinRoleEnum.subunit
+        )
+
+        for molecule in molecules:
+            accession = molecule.get("uniprot_code")
+            if not accession:
+                continue
+            curie = uniprot_curie(accession)
+
+            if curie is None:
+                warnings.append(
+                    f"Molecule {molecule.get('short_name') or molecule.get('long_name')!r} has "
+                    f"UniProt code {accession!r} that is not a UniProt accession; no Protein record created"
+                )
+                continue
+
+            if curie not in proteins:
+                # SASBDB wraps the sequence at 60 columns; the schema wants one unbroken string
+                sequence = "".join((molecule.get("uniprot_sequence") or "").split()).upper() or None
+                proteins[curie] = Protein(
+                    id=curie,
+                    uniprot_id=curie,
+                    protein_name=molecule.get("long_name"),
+                    title=molecule.get("long_name"),
+                    organism_name=molecule.get("organism"),
+                    amino_acid_sequence=sequence,
+                    sequence_length=len(sequence) if sequence else None,
+                )
+
+            residue_range = None
+            first = molecule.get("uniprot_range_first")
+            last = molecule.get("uniprot_range_last")
+            if first is not None and last is not None:
+                residue_range = f"{first}-{last}"
+
+            associations.append(
+                SampleProteinAssociation(
+                    sample_id=sample.id,
+                    protein_id=curie,
+                    role=role,
+                    copy_number=molecule.get("number_molecules"),
+                    residue_range=residue_range,
+                )
+            )
+
+        return list(proteins.values()), associations
 
     def _create_experiment_run(
         self,

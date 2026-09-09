@@ -18,7 +18,12 @@ try:
 except ImportError:  # pragma: no cover - optional dependency for Cloudflare sites
     cloudscraper = None
 
-from lambda_ber_schema.loaders.base import BaseLoader, LoaderResult
+from lambda_ber_schema.loaders.base import (
+    UNIPROT_ACCESSION_RE,
+    BaseLoader,
+    LoaderResult,
+    uniprot_curie,
+)
 from lambda_ber_schema.loaders.cache import ResponseCache
 from lambda_ber_schema.pydantic import (
     BeamlineEnum,
@@ -31,8 +36,11 @@ from lambda_ber_schema.pydantic import (
     ExperimentRun,
     ExperimentSampleAssociation,
     FileFormatEnum,
+    Protein,
     QuantityValue,
     Sample,
+    SampleProteinAssociation,
+    SampleProteinRoleEnum,
     SampleTypeEnum,
     SAXSInstrument,
     Study,
@@ -114,6 +122,11 @@ class SimpleScatteringLoader(BaseLoader):
         sample = self._create_sample(
             metadata, dataset_code, cross_references, warnings)
 
+        # Protein rows seeded from the UniProt cross-references
+        proteins, sample_protein_associations = self._create_proteins(
+            cross_references, sample, warnings
+        )
+
         # Create experiment run
         experiment = self._create_experiment_run(
             metadata, dataset_code, warnings)
@@ -154,6 +167,7 @@ class SimpleScatteringLoader(BaseLoader):
                 "title", f"Simple Scattering Dataset {dataset_code}"),
             studies=[study],
             instruments=[instrument],
+            proteins=proteins if proteins else None,
             samples=[sample],
             experiment_runs=[experiment],
             data_files=data_files,
@@ -161,6 +175,7 @@ class SimpleScatteringLoader(BaseLoader):
             study_experiment_associations=study_experiment_associations,
             experiment_sample_associations=experiment_sample_associations,
             experiment_instrument_associations=experiment_instrument_associations,
+            sample_protein_associations=sample_protein_associations if sample_protein_associations else None,
         )
 
         return LoaderResult(
@@ -400,9 +415,10 @@ class SimpleScatteringLoader(BaseLoader):
                 parsed = urlparse(href)
                 path_parts = [part for part in parsed.path.split("/") if part]
 
+                # /uniprot/<acc>, /uniprotkb/<acc>, or /uniprotkb/<acc>/entry
                 if len(path_parts) >= 2 and path_parts[0].lower() in {"uniprot", "uniprotkb"}:
-                    uid = path_parts[-1].upper()
-                    if re.fullmatch(r"[A-Z0-9]+(?:-\d+)?", uid):
+                    uid = path_parts[1].upper()
+                    if UNIPROT_ACCESSION_RE.match(uid):
                         key = ("uniprot", uid)
                         if key not in seen_ids:
                             seen_ids.add(key)
@@ -522,6 +538,42 @@ class SimpleScatteringLoader(BaseLoader):
             buffer_composition=buffer_composition,
             database_cross_references=cross_references if cross_references else None,
         )
+
+    def _create_proteins(
+        self,
+        cross_references: list[DatabaseCrossReference],
+        sample: Sample,
+        warnings: list[str],
+    ) -> tuple[list[Protein], list[SampleProteinAssociation]]:
+        """
+        Seed Protein records from the dataset page's UniProt links.
+
+        Simple Scattering gives an accession and nothing else about the protein,
+        so the row holds only its identity. The name and sequence are left for
+        enrichment from UniProt. A lone accession is taken to be the target;
+        with several, the role is left unstated rather than guessed.
+        """
+        accessions = [
+            xref.database_id
+            for xref in cross_references
+            if xref.database_name == DatabaseNameEnum.uniprot and xref.database_id
+        ]
+        role = SampleProteinRoleEnum.target if len(accessions) == 1 else None
+
+        proteins: dict[str, Protein] = {}
+        associations: list[SampleProteinAssociation] = []
+        for accession in accessions:
+            curie = uniprot_curie(accession)
+            if curie is None:
+                warnings.append(f"{accession!r} is not a UniProt accession; no Protein record created")
+                continue
+            if curie in proteins:
+                continue
+            proteins[curie] = Protein(id=curie, uniprot_id=curie)
+            associations.append(
+                SampleProteinAssociation(sample_id=sample.id, protein_id=curie, role=role)
+            )
+        return list(proteins.values()), associations
 
     def _create_experiment_run(
         self, metadata: dict[str, Any], dataset_code: str, warnings: list[str]

@@ -60,6 +60,29 @@ class TestSimpleScatteringLoader:
         assert sample.concentration.numeric_value == 3.5
         assert sample.concentration.unit == "mg/mL"
 
+    def test_uniprot_cross_reference_uses_the_accession(self, loader):
+        """The /uniprotkb/<acc>/entry link must yield the accession, not the trailing 'entry'."""
+        result = loader.load("xsbhevph")
+        sample = result.dataset.samples[0]
+        uniprot = [x for x in sample.database_cross_references if x.database_name == "uniprot"]
+        assert [x.database_id for x in uniprot] == ["Q9XCL6"]
+
+    def test_protein_seeded_from_uniprot_link(self, loader):
+        """Only an accession is known, so the Protein row holds identity alone."""
+        result = loader.load("xsbhevph")
+        ds = result.dataset
+        assert len(ds.proteins) == 1
+        protein = ds.proteins[0]
+        assert protein.id == "uniprot:Q9XCL6"
+        assert protein.uniprot_id == "uniprot:Q9XCL6"
+        assert protein.protein_name is None
+
+        assert len(ds.sample_protein_associations) == 1
+        assoc = ds.sample_protein_associations[0]
+        assert assoc.sample_id == ds.samples[0].id
+        assert assoc.protein_id == "uniprot:Q9XCL6"
+        assert assoc.role == "target"
+
     def test_sample_has_buffer_composition(self, loader):
         """Test Sample has buffer composition."""
         result = loader.load("xsbhevph")
