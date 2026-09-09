@@ -97,6 +97,7 @@ URI: [lambda:BiophysicalProperty](http://w3id.org/lambda/BiophysicalProperty)
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
 | [Sample](Sample.md) | [biophysical_properties](biophysical_properties.md) | range | [BiophysicalProperty](BiophysicalProperty.md) |
+| [Protein](Protein.md) | [biophysical_properties](biophysical_properties.md) | range | [BiophysicalProperty](BiophysicalProperty.md) |
 | [AggregatedProteinView](AggregatedProteinView.md) | [biophysical_properties](biophysical_properties.md) | range | [BiophysicalProperty](BiophysicalProperty.md) |
 
 

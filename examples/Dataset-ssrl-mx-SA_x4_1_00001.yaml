@@ -15,6 +15,15 @@ instruments:
   instrument_category: SYNCHROTRON_BEAMLINE
   facility_name: SSRL
   beamline_id: BL12-2
+proteins:
+- id: uniprot:A0A101UQ08
+  title: Ss_EXLX1
+  uniprot_id: uniprot:A0A101UQ08
+  protein_name: Ss_EXLX1
+  organism: NCBITaxon:909626
+  organism_name: Streptomyces dysideae
+  pdb_entries:
+  - pdb:9MS5
 samples:
 - id: ssrl-mx:BL12-2/SA_x4_1_00001/sample
   title: Crystal sample SA_x4 (Ss_EXLX1)
@@ -121,6 +130,10 @@ experiment_sample_associations:
 experiment_instrument_associations:
 - experiment_id: ssrl-mx:experiment/3a1d5d30-559b-4074-8433-e13db2920b48
   instrument_id: ssrl-mx:instrument/BL12-2
+sample_protein_associations:
+- sample_id: ssrl-mx:BL12-2/SA_x4_1_00001/sample
+  protein_id: uniprot:A0A101UQ08
+  role: target
 workflow_experiment_associations:
 - workflow_id: ssrl-mx:BL12-2/SA_x4_1_00001/workflow/autoproc
   experiment_id: ssrl-mx:experiment/3a1d5d30-559b-4074-8433-e13db2920b48

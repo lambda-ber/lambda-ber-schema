@@ -133,6 +133,7 @@ attributes:
     - ExperimentSampleAssociation
     - ExperimentInstrumentAssociation
     - WorkflowExperimentAssociation
+    - ExperimentPersonAssociation
     range: ExperimentRun
     required: true
   instrument_id:
@@ -151,7 +152,13 @@ attributes:
     domain_of:
     - StudySampleAssociation
     - ExperimentSampleAssociation
+    - SampleProteinAssociation
     - ExperimentInstrumentAssociation
+    - StudyPersonAssociation
+    - ExperimentPersonAssociation
+    - WorkflowPersonAssociation
+    - StudyOrganizationAssociation
+    - PersonOrganizationAssociation
     range: InstrumentRoleEnum
 
 ```
@@ -176,6 +183,7 @@ attributes:
     - ExperimentSampleAssociation
     - ExperimentInstrumentAssociation
     - WorkflowExperimentAssociation
+    - ExperimentPersonAssociation
     range: ExperimentRun
     required: true
   instrument_id:
@@ -198,7 +206,13 @@ attributes:
     domain_of:
     - StudySampleAssociation
     - ExperimentSampleAssociation
+    - SampleProteinAssociation
     - ExperimentInstrumentAssociation
+    - StudyPersonAssociation
+    - ExperimentPersonAssociation
+    - WorkflowPersonAssociation
+    - StudyOrganizationAssociation
+    - PersonOrganizationAssociation
     range: InstrumentRoleEnum
 
 ```

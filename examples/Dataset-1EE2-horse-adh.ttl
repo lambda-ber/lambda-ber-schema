@@ -36,10 +36,10 @@ lambdaber:dataset_1EE2_horse_adh a lambdaber:Dataset ;
             lambdaber:experiment_id lambdaber:exp_1EE2_xray_001 ;
             lambdaber:workflow_id lambdaber:wf_1EE2_refinement_001 ] ;
     lambdaber:workflow_output_associations [ a lambdaber:WorkflowOutputAssociation ;
-            lambdaber:file_id lambdaber:file_1EE2_sf ;
+            lambdaber:file_id lambdaber:file_1EE2_coords ;
             lambdaber:workflow_id lambdaber:wf_1EE2_refinement_001 ],
         [ a lambdaber:WorkflowOutputAssociation ;
-            lambdaber:file_id lambdaber:file_1EE2_coords ;
+            lambdaber:file_id lambdaber:file_1EE2_sf ;
             lambdaber:workflow_id lambdaber:wf_1EE2_refinement_001 ] ;
     lambdaber:workflow_runs lambdaber:wf_1EE2_refinement_001 .
 

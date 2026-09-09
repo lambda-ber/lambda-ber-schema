@@ -684,6 +684,17 @@ enum PurificationStepEnum
     dialysis
   }
 
+enum SampleProteinRoleEnum
+  {
+    target
+    subunit
+    binding_partner
+    fusion_partner
+    chaperone
+    contaminant
+    standard
+  }
+
 enum SampleRoleEnum
   {
     target
@@ -1150,6 +1161,7 @@ type Dataset
     persons: [Person]
     organizations: [Organization]
     instruments: [Instrument]
+    proteins: [Protein]
     proteinConstructs: [ProteinConstruct]
     samples: [Sample]
     samplePreparations: [SamplePreparation]
@@ -1162,6 +1174,7 @@ type Dataset
     studyWorkflowAssociations: [StudyWorkflowAssociation]
     experimentSampleAssociations: [ExperimentSampleAssociation]
     experimentInstrumentAssociations: [ExperimentInstrumentAssociation]
+    sampleProteinAssociations: [SampleProteinAssociation]
     workflowExperimentAssociations: [WorkflowExperimentAssociation]
     workflowInputAssociations: [WorkflowInputAssociation]
     workflowOutputAssociations: [WorkflowOutputAssociation]
@@ -1714,6 +1727,35 @@ type PostTranslationalModification
     removalEnzyme: String
   }
 
+type Protein
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    uniprotId: Uriorcurie
+    proteinName: String
+    geneName: String
+    organism: OntologyTerm
+    organismName: String
+    aminoAcidSequence: String
+    sequenceLength: Integer
+    molecularWeightTheoretical: QuantityValue
+    ecNumbers: [String]
+    functionDescription: String
+    goTerms: [Uriorcurie]
+    pdbEntries: [Uriorcurie]
+    functionalSites: [FunctionalSite]
+    structuralFeatures: [StructuralFeature]
+    proteinInteractions: [ProteinProteinInteraction]
+    ligandInteractions: [LigandInteraction]
+    mutationEffects: [MutationEffect]
+    ptmAnnotations: [PostTranslationalModification]
+    biophysicalProperties: [BiophysicalProperty]
+    evolutionaryConservation: EvolutionaryConservation
+    conformationalEnsemble: ConformationalEnsemble
+    crossReferences: [DatabaseCrossReference]
+  }
+
 type ProteinAnnotation
   {
     id: Uriorcurie!
@@ -1737,7 +1779,8 @@ type ProteinConstruct
     title: String
     description: String
     constructId: String!
-    uniprotId: String
+    proteinId: Protein
+    uniprotId: Uriorcurie
     geneName: String
     ncbiTaxid: String
     sequenceLengthAa: QuantityValue
@@ -1933,6 +1976,20 @@ type SamplePreparation
     purityBySdsPagePercent: QuantityValue
     aggregationAssessment: String
     aliquoting: String
+  }
+
+type SampleProteinAssociation
+  {
+    sampleId: Sample!
+    proteinId: Protein!
+    role: SampleProteinRoleEnum
+    constructId: ProteinConstruct
+    copyNumber: Integer
+    residueRange: String
+    sequenceCoverage: Float
+    chainIds: [String]
+    modifications: [String]
+    observedMolecularWeight: QuantityValue
   }
 
 type SANSConfiguration

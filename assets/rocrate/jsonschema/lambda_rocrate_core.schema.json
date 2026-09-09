@@ -1752,7 +1752,7 @@
                     ]
                 },
                 "protein_name": {
-                    "description": "Name of the protein studied - one of the highest-value search fields.",
+                    "description": "Name of the protein - one of the highest-value search fields. On a `ProteinEntity` it is the protein's recommended name; on a `SampleEntity` it is the name the facility recorded.",
                     "type": [
                         "string",
                         "null"
@@ -1830,8 +1830,9 @@
                     "$ref": "#/$defs/TechniqueEnum",
                     "description": "Technique, from the schema's own `TechniqueEnum`. Extensions add a PaNET IRI beside it."
                 },
-                "uniprotId": {
-                    "description": "UniProt accession. No counterpart in the main schema; a standing change request.",
+                "uniprot_id": {
+                    "description": "UniProt accession as a Bioregistry CURIE (`uniprot:P69905`), exactly as `Protein.uniprot_id` carries it, so the projection is identity. The bare accession belongs to the deprecated `uniprotId` spelling.",
+                    "pattern": "^uniprot:([OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2})(-[0-9]+)?$",
                     "type": [
                         "string",
                         "null"
@@ -3149,10 +3150,30 @@
                         "null"
                     ]
                 },
+                "proteins": {
+                    "description": "All proteins referenced by samples in this dataset, one record per protein",
+                    "items": {
+                        "$ref": "#/$defs/Protein"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "sample_preparations": {
                     "description": "All sample preparations",
                     "items": {
                         "$ref": "#/$defs/SamplePreparation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "sample_protein_associations": {
+                    "description": "Links between samples and the proteins they contain (M:N with role, copy number, construct)",
+                    "items": {
+                        "$ref": "#/$defs/SampleProteinAssociation"
                     },
                     "type": [
                         "array",
@@ -3714,8 +3735,8 @@
                     ]
                 },
                 "protein_id": {
-                    "description": "UniProt accession number",
-                    "pattern": "^[A-Z][0-9][A-Z0-9]{3}[0-9]|[A-Z][0-9][A-Z0-9]{3}[0-9]-[0-9]+$",
+                    "description": "UniProt accession of the annotated protein, preferably as a Bioregistry CURIE (uniprot:P69905) matching Protein.uniprot_id. A bare accession (P69905) is accepted for data recorded before the CURIE form was adopted.",
+                    "pattern": "^(uniprot:)?([OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2})(-[0-9]+)?$",
                     "type": "string"
                 },
                 "publication_ids": {
@@ -5486,8 +5507,8 @@
                     ]
                 },
                 "protein_id": {
-                    "description": "UniProt accession number",
-                    "pattern": "^[A-Z][0-9][A-Z0-9]{3}[0-9]|[A-Z][0-9][A-Z0-9]{3}[0-9]-[0-9]+$",
+                    "description": "UniProt accession of the annotated protein, preferably as a Bioregistry CURIE (uniprot:P69905) matching Protein.uniprot_id. A bare accession (P69905) is accepted for data recorded before the CURIE form was adopted.",
+                    "pattern": "^(uniprot:)?([OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2})(-[0-9]+)?$",
                     "type": "string"
                 },
                 "publication_ids": {
@@ -7241,8 +7262,8 @@
                     ]
                 },
                 "protein_id": {
-                    "description": "UniProt accession number",
-                    "pattern": "^[A-Z][0-9][A-Z0-9]{3}[0-9]|[A-Z][0-9][A-Z0-9]{3}[0-9]-[0-9]+$",
+                    "description": "UniProt accession of the annotated protein, preferably as a Bioregistry CURIE (uniprot:P69905) matching Protein.uniprot_id. A bare accession (P69905) is accepted for data recorded before the CURIE form was adopted.",
+                    "pattern": "^(uniprot:)?([OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2})(-[0-9]+)?$",
                     "type": "string"
                 },
                 "publication_ids": {
@@ -8329,8 +8350,8 @@
                     ]
                 },
                 "protein_id": {
-                    "description": "UniProt accession number",
-                    "pattern": "^[A-Z][0-9][A-Z0-9]{3}[0-9]|[A-Z][0-9][A-Z0-9]{3}[0-9]-[0-9]+$",
+                    "description": "UniProt accession of the annotated protein, preferably as a Bioregistry CURIE (uniprot:P69905) matching Protein.uniprot_id. A bare accession (P69905) is accepted for data recorded before the CURIE form was adopted.",
+                    "pattern": "^(uniprot:)?([OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2})(-[0-9]+)?$",
                     "type": "string"
                 },
                 "publication_ids": {
@@ -8485,6 +8506,237 @@
             "title": "PropertyValueEntity",
             "type": "object"
         },
+        "Protein": {
+            "additionalProperties": false,
+            "description": "A protein as a biological entity: its sequence, source organism, gene, and the functional and structural annotations that hold for it regardless of any one preparation. One Protein record is shared by every Sample that contains it, through SampleProteinAssociation. Facts about a particular preparation - buffer, concentration, tags left on, the residue range actually present, the mass actually measured - stay on Sample and on the association.",
+            "properties": {
+                "amino_acid_sequence": {
+                    "description": "Canonical one-letter amino acid sequence of the protein, without tags or other construct additions. Construct-level sequence belongs on ProteinConstruct.",
+                    "pattern": "^[ACDEFGHIKLMNPQRSTVWYBJOUXZ]+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "biophysical_properties": {
+                    "description": "Measured or predicted biophysical properties",
+                    "items": {
+                        "$ref": "#/$defs/BiophysicalProperty"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "conformational_ensemble": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ConformationalEnsemble"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Conformational states and dynamics"
+                },
+                "cross_references": {
+                    "description": "Cross-references to external databases other than UniProt (Pfam, InterPro, ChEMBL, ...). The UniProt accession itself goes in uniprot_id.",
+                    "items": {
+                        "$ref": "#/$defs/DatabaseCrossReference"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "A detailed textual description of this entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ec_numbers": {
+                    "description": "Enzyme Commission numbers, where the protein is an enzyme (e.g., 1.1.1.1)",
+                    "items": {
+                        "pattern": "^([0-9]+|-)\\.([0-9]+|-)\\.([0-9]+|-)\\.([0-9]+|n[0-9]*|-)$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "evolutionary_conservation": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/EvolutionaryConservation"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Evolutionary conservation data"
+                },
+                "function_description": {
+                    "description": "Free-text summary of molecular function, typically from UniProt",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "functional_sites": {
+                    "description": "Functional site annotations for this protein",
+                    "items": {
+                        "$ref": "#/$defs/FunctionalSite"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "gene_name": {
+                    "description": "Primary gene symbol (e.g., HBA1)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "go_terms": {
+                    "description": "Gene Ontology annotations as CURIEs (e.g., GO:0005344 for oxygen carrier activity)",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+                    "type": "string"
+                },
+                "ligand_interactions": {
+                    "description": "Small molecule interaction annotations",
+                    "items": {
+                        "$ref": "#/$defs/LigandInteraction"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "molecular_weight_theoretical": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Mass computed from the canonical sequence, typically in kDa. A mass measured for a given preparation belongs on SampleProteinAssociation.observed_molecular_weight."
+                },
+                "mutation_effects": {
+                    "description": "Known effects of mutations in this protein",
+                    "items": {
+                        "$ref": "#/$defs/MutationEffect"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "organism": {
+                    "description": "Source organism as an NCBI Taxonomy CURIE (e.g., NCBITaxon:9606)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "organism_name": {
+                    "description": "Scientific name of the source organism. For display, and for sources that give a name but no taxonomy identifier.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "pdb_entries": {
+                    "description": "PDB entries containing this protein, as CURIEs (e.g., pdb:1HHO)",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "protein_interactions": {
+                    "description": "Protein-protein interaction annotations",
+                    "items": {
+                        "$ref": "#/$defs/ProteinProteinInteraction"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "protein_name": {
+                    "description": "Recommended protein name, as UniProt or the depositor gives it. Not required, so that a record seeded from an accession alone can be enriched from UniProt later.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ptm_annotations": {
+                    "description": "Post-translational modification annotations",
+                    "items": {
+                        "$ref": "#/$defs/PostTranslationalModification"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "sequence_length": {
+                    "description": "Length of the canonical sequence in residues",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "structural_features": {
+                    "description": "Structural feature annotations for this protein",
+                    "items": {
+                        "$ref": "#/$defs/StructuralFeature"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "description": "A human-readable name or title for this entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "uniprot_id": {
+                    "description": "UniProt accession as a Bioregistry CURIE (e.g., uniprot:P69905). An isoform suffix is allowed (uniprot:P69905-2). Normally identical to id.",
+                    "pattern": "^uniprot:([OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2})(-[0-9]+)?$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "Protein",
+            "type": "object"
+        },
         "ProteinAnnotation": {
             "additionalProperties": false,
             "description": "Base class for all protein-related functional and structural annotations",
@@ -8547,8 +8799,8 @@
                     ]
                 },
                 "protein_id": {
-                    "description": "UniProt accession number",
-                    "pattern": "^[A-Z][0-9][A-Z0-9]{3}[0-9]|[A-Z][0-9][A-Z0-9]{3}[0-9]-[0-9]+$",
+                    "description": "UniProt accession of the annotated protein, preferably as a Bioregistry CURIE (uniprot:P69905) matching Protein.uniprot_id. A bare accession (P69905) is accepted for data recorded before the CURIE form was adopted.",
+                    "pattern": "^(uniprot:)?([OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2})(-[0-9]+)?$",
                     "type": "string"
                 },
                 "publication_ids": {
@@ -8671,6 +8923,13 @@
                         "null"
                     ]
                 },
+                "protein_id": {
+                    "description": "The protein this construct expresses",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "selectable_marker": {
                     "description": "Antibiotic resistance or other selectable marker",
                     "type": [
@@ -8732,7 +8991,7 @@
                     ]
                 },
                 "uniprot_id": {
-                    "description": "UniProt accession for the target protein",
+                    "description": "UniProt accession of the target protein as a CURIE (e.g., uniprot:P69905). Redundant with the linked Protein.uniprot_id; kept for constructs recorded before the protein is.",
                     "type": [
                         "string",
                         "null"
@@ -8765,6 +9024,96 @@
                 "id"
             ],
             "title": "ProteinConstruct",
+            "type": "object"
+        },
+        "ProteinEntity": {
+            "additionalProperties": false,
+            "description": "A protein as a biological entity - the thing a specimen *contains*, as distinct from the specimen. Typed `[\"Protein\", \"lambda:Protein\"]`: schema.org's `Protein` is in the RO-Crate 1.2 context, so a generic consumer sees a `BioChemEntity` and a LAMBDA-aware reader projects onto the schema's `Protein` class. One entity serves every sample in the crate that contains the protein, and its `@id` SHOULD be the UniProt IRI (`http://purl.uniprot.org/uniprot/P69905`) so that the same protein in two crates is the same node.\nOnly the identity layer travels here: accession, name, gene, organism, the structures it is known from. Sequence, annotations and anything per-preparation (copy number, tags, residue range) live in the fuller record this crate points at.",
+            "properties": {
+                "@id": {
+                    "description": "The entity's identifier - a relative path, an absolute URI, or a `#`-fragment.",
+                    "type": "string"
+                },
+                "@type": {
+                    "description": "One or more types. LAMBDA entities carry the RO-Crate/schema.org type *first* so that a plain RO-Crate consumer understands the crate, then the `lambda:` type for LAMBDA-aware readers.\nModelled as the set of types it semantically is. JSON-LD also permits the shorthand of a bare string for a single type, and real crates use it freely; a reader MUST expand that shorthand to a one-element list before validating or testing membership, exactly as a JSON-LD processor would. Validation here is defined against the expanded form.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "description": {
+                    "description": "Prose summary, aimed at a reader deciding whether to open the dataset.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "gene_name": {
+                    "description": "Primary gene symbol.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "missing": {
+                    "description": "Declared absences. Absence is stated, never implied by omission.",
+                    "items": {
+                        "$ref": "#/$defs/MissingValueDeclaration"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "Human-readable label.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "organism": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Any"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Source organism, as an NCBITaxon reference where resolvable or a name string. The main schema's `Sample.organism` is an `OntologyTerm`; a crate may carry the bare name."
+                },
+                "pdb_entries": {
+                    "description": "PDB entries the protein is known from, as CURIEs (`pdb:1HHO`).",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "protein_name": {
+                    "description": "Name of the protein - one of the highest-value search fields. On a `ProteinEntity` it is the protein's recommended name; on a `SampleEntity` it is the name the facility recorded.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "uniprot_id": {
+                    "description": "UniProt accession as a Bioregistry CURIE (`uniprot:P69905`), exactly as `Protein.uniprot_id` carries it, so the projection is identity. The bare accession belongs to the deprecated `uniprotId` spelling.",
+                    "pattern": "^uniprot:([OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2})(-[0-9]+)?$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "@id",
+                "@type"
+            ],
+            "title": "ProteinEntity",
             "type": "object"
         },
         "ProteinProteinInteraction": {
@@ -8899,8 +9248,8 @@
                     ]
                 },
                 "protein_id": {
-                    "description": "UniProt accession number",
-                    "pattern": "^[A-Z][0-9][A-Z0-9]{3}[0-9]|[A-Z][0-9][A-Z0-9]{3}[0-9]-[0-9]+$",
+                    "description": "UniProt accession of the annotated protein, preferably as a Bioregistry CURIE (uniprot:P69905) matching Protein.uniprot_id. A bare accession (P69905) is accepted for data recorded before the CURIE form was adopted.",
+                    "pattern": "^(uniprot:)?([OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2})(-[0-9]+)?$",
                     "type": "string"
                 },
                 "publication_ids": {
@@ -10299,7 +10648,7 @@
         },
         "Sample": {
             "additionalProperties": false,
-            "description": "A biological sample used in structural biology experiments",
+            "description": "A physical biological sample used in structural biology experiments. Records what is true of this preparation - buffer, concentration, storage, purity, the construct and tags used. The identity of the protein(s) it contains belongs on Protein, linked through SampleProteinAssociation, so a protein studied in ten preparations is described once.",
             "properties": {
                 "anatomy": {
                     "description": "Anatomical part or tissue (e.g., UBERON:0008945 for leaf)",
@@ -10509,7 +10858,7 @@
                     ]
                 },
                 "protein_name": {
-                    "description": "Name of the protein",
+                    "description": "Name of the protein as the facility or depositor recorded it. A display and search field; the canonical name, sequence and identifiers live on the linked Protein.",
                     "type": [
                         "string",
                         "null"
@@ -10642,6 +10991,16 @@
                         "null"
                     ]
                 },
+                "hasBioChemEntityPart": {
+                    "description": "The protein entities a specimen contains. schema.org's own part relation for `BioChemEntity`, and in the RO-Crate 1.2 context. Projects onto one `SampleProteinAssociation` per target; the role, copy number and modifications that association can carry are left to the fuller record, because a manifest says *what* is in the tube and not how much.",
+                    "items": {
+                        "$ref": "#/$defs/EntityReference"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "missing": {
                     "description": "Declared absences. Absence is stated, never implied by omission.",
                     "items": {
@@ -10678,7 +11037,7 @@
                     ]
                 },
                 "protein_name": {
-                    "description": "Name of the protein studied - one of the highest-value search fields.",
+                    "description": "Name of the protein - one of the highest-value search fields. On a `ProteinEntity` it is the protein's recommended name; on a `SampleEntity` it is the name the facility recorded.",
                     "type": [
                         "string",
                         "null"
@@ -10724,7 +11083,7 @@
                     ]
                 },
                 "uniprotId": {
-                    "description": "UniProt accession. No counterpart in the main schema; a standing change request.",
+                    "description": "Bare UniProt accession on a sample, in the SSRL 0.2 spelling. The accession now has a home in the main schema as `Protein.uniprot_id`, reached from a sample through `hasBioChemEntityPart`; a projector reading this slot creates that `Protein` and the association. Close rather than exact because the value here is bare (`P69905`) and the schema's is a CURIE (`uniprot:P69905`).",
                     "type": [
                         "string",
                         "null"
@@ -11098,6 +11457,106 @@
             "title": "SamplePreparation",
             "type": "object"
         },
+        "SampleProteinAssociation": {
+            "additionalProperties": false,
+            "description": "M:N link between Sample and Protein. A sample may hold several proteins - the subunits of a complex, a target with its chaperone, a fusion partner - and one protein turns up in many samples. What changes from preparation to preparation lives here: the role, the copy number, the residue range actually present, the modifications carried, the mass actually measured, and the construct it was made from.",
+            "properties": {
+                "chain_ids": {
+                    "description": "Chain identifiers this protein occupies in the deposited structure, where the sample is a PDB entity",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "construct_id": {
+                    "description": "The construct that produced this protein in this sample, where cloning detail is recorded",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "copy_number": {
+                    "description": "Copies of this protein per assembly in the sample (e.g., 4 for a homotetramer, 2 for each chain of an alpha2-beta2 heterotetramer). Omit when unknown rather than assuming 1.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "modifications": {
+                    "description": "Modifications carried by this protein in this sample: tags left on, mutations, labels, post-translational modifications",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "observed_molecular_weight": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Mass as measured for this preparation (mass spectrometry, SEC-MALS, SAXS), typically in kDa. The sequence-derived mass lives on Protein.molecular_weight_theoretical."
+                },
+                "protein_id": {
+                    "description": "Reference to the protein",
+                    "type": "string"
+                },
+                "residue_range": {
+                    "description": "Residues of the canonical sequence present in this sample (e.g., '1-141', '25-300'), for fragments and truncations. Omit when the full-length protein is present.",
+                    "pattern": "^[0-9,\\-]+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "role": {
+                    "$ref": "#/$defs/SampleProteinRoleEnum",
+                    "description": "Part this protein plays in the sample"
+                },
+                "sample_id": {
+                    "description": "Reference to the sample",
+                    "type": "string"
+                },
+                "sequence_coverage": {
+                    "description": "Fraction of the canonical sequence present in this sample (range: 0-1)",
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "sample_id",
+                "protein_id"
+            ],
+            "title": "SampleProteinAssociation",
+            "type": "object"
+        },
+        "SampleProteinRoleEnum": {
+            "description": "Part a protein plays in a sample",
+            "enum": [
+                "target",
+                "subunit",
+                "binding_partner",
+                "fusion_partner",
+                "chaperone",
+                "contaminant",
+                "standard"
+            ],
+            "title": "SampleProteinRoleEnum",
+            "type": "string"
+        },
         "SampleRoleEnum": {
             "description": "Role of a sample in a study",
             "enum": [
@@ -11368,8 +11827,8 @@
                     ]
                 },
                 "protein_id": {
-                    "description": "UniProt accession number",
-                    "pattern": "^[A-Z][0-9][A-Z0-9]{3}[0-9]|[A-Z][0-9][A-Z0-9]{3}[0-9]-[0-9]+$",
+                    "description": "UniProt accession of the annotated protein, preferably as a Bioregistry CURIE (uniprot:P69905) matching Protein.uniprot_id. A bare accession (P69905) is accepted for data recorded before the CURIE form was adopted.",
+                    "pattern": "^(uniprot:)?([OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2})(-[0-9]+)?$",
                     "type": "string"
                 },
                 "publication_ids": {

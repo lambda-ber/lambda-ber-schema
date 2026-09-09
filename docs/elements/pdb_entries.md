@@ -17,6 +17,7 @@ Alias: pdb_entries
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [Protein](Protein.md) | A protein as a biological entity: its sequence, source organism, gene, and th... |  no  |
 | [AggregatedProteinView](AggregatedProteinView.md) | Aggregated view of all structural and functional data for a protein |  no  |
 | [ConformationalState](ConformationalState.md) | Individual conformational state |  no  |
 
@@ -57,6 +58,7 @@ Alias: pdb_entries
 name: pdb_entries
 alias: pdb_entries
 domain_of:
+- Protein
 - ConformationalState
 - AggregatedProteinView
 range: string

@@ -22,8 +22,8 @@ Alias: unit
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [BiophysicalProperty](BiophysicalProperty.md) | Measured or calculated biophysical properties |  no  |
 | [QuantityValue](QuantityValue.md) | A simple quantity value, representing a measurement with a numeric value and ... |  yes  |
+| [BiophysicalProperty](BiophysicalProperty.md) | Measured or calculated biophysical properties |  no  |
 
 
 

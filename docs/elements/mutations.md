@@ -17,7 +17,7 @@ Alias: mutations
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Sample](Sample.md) | A biological sample used in structural biology experiments |  no  |
+| [Sample](Sample.md) | A physical biological sample used in structural biology experiments |  no  |
 | [AggregatedProteinView](AggregatedProteinView.md) | Aggregated view of all structural and functional data for a protein |  no  |
 
 

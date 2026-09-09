@@ -295,6 +295,7 @@ message Dataset
  repeated  person persons = 0
  repeated  organization organizations = 0
  repeated  instrument instruments = 0
+ repeated  protein proteins = 0
  repeated  proteinConstruct proteinConstructs = 0
  repeated  sample samples = 0
  repeated  samplePreparation samplePreparations = 0
@@ -307,6 +308,7 @@ message Dataset
  repeated  studyWorkflowAssociation studyWorkflowAssociations = 0
  repeated  experimentSampleAssociation experimentSampleAssociations = 0
  repeated  experimentInstrumentAssociation experimentInstrumentAssociations = 0
+ repeated  sampleProteinAssociation sampleProteinAssociations = 0
  repeated  workflowExperimentAssociation workflowExperimentAssociations = 0
  repeated  workflowInputAssociation workflowInputAssociations = 0
  repeated  workflowOutputAssociation workflowOutputAssociations = 0
@@ -856,6 +858,35 @@ message PostTranslationalModification
   string enzyme = 0
   string removalEnzyme = 0
  }
+// A protein as a biological entity: its sequence, source organism, gene, and the functional and structural annotations that hold for it regardless of any one preparation. One Protein record is shared by every Sample that contains it, through SampleProteinAssociation. Facts about a particular preparation - buffer, concentration, tags left on, the residue range actually present, the mass actually measured - stay on Sample and on the association.
+message Protein
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  uriorcurie uniprotId = 0
+  string proteinName = 0
+  string geneName = 0
+  ontologyTerm organism = 0
+  string organismName = 0
+  string aminoAcidSequence = 0
+  integer sequenceLength = 0
+  quantityValue molecularWeightTheoretical = 0
+ repeated  string ecNumbers = 0
+  string functionDescription = 0
+ repeated  uriorcurie goTerms = 0
+ repeated  uriorcurie pdbEntries = 0
+ repeated  functionalSite functionalSites = 0
+ repeated  structuralFeature structuralFeatures = 0
+ repeated  proteinProteinInteraction proteinInteractions = 0
+ repeated  ligandInteraction ligandInteractions = 0
+ repeated  mutationEffect mutationEffects = 0
+ repeated  postTranslationalModification ptmAnnotations = 0
+ repeated  biophysicalProperty biophysicalProperties = 0
+  evolutionaryConservation evolutionaryConservation = 0
+  conformationalEnsemble conformationalEnsemble = 0
+ repeated  databaseCrossReference crossReferences = 0
+ }
 // Base class for all protein-related functional and structural annotations
 message ProteinAnnotation
  {
@@ -880,7 +911,8 @@ message ProteinConstruct
   string title = 0
   string description = 0
   string constructId = 0
-  string uniprotId = 0
+  protein proteinId = 0
+  uriorcurie uniprotId = 0
   string geneName = 0
   string ncbiTaxid = 0
   quantityValue sequenceLengthAa = 0
@@ -990,7 +1022,7 @@ message RefinementParameters
   quantityValue resolution05 = 0
   quantityValue mapSharpeningBfactor = 0
  }
-// A biological sample used in structural biology experiments
+// A physical biological sample used in structural biology experiments. Records what is true of this preparation - buffer, concentration, storage, purity, the construct and tags used. The identity of the protein(s) it contains belongs on Protein, linked through SampleProteinAssociation, so a protein studied in ten preparations is described once.
 message Sample
  {
   uriorcurie id = 0
@@ -1076,6 +1108,20 @@ message SamplePreparation
   quantityValue purityBySdsPagePercent = 0
   string aggregationAssessment = 0
   string aliquoting = 0
+ }
+// M:N link between Sample and Protein. A sample may hold several proteins - the subunits of a complex, a target with its chaperone, a fusion partner - and one protein turns up in many samples. What changes from preparation to preparation lives here: the role, the copy number, the residue range actually present, the modifications carried, the mass actually measured, and the construct it was made from.
+message SampleProteinAssociation
+ {
+  sample sampleId = 0
+  protein proteinId = 0
+  sampleProteinRoleEnum role = 0
+  proteinConstruct constructId = 0
+  integer copyNumber = 0
+  string residueRange = 0
+  float sequenceCoverage = 0
+ repeated  string chainIds = 0
+ repeated  string modifications = 0
+  quantityValue observedMolecularWeight = 0
  }
 // Experimental configuration for a SANS instrument
 message SANSConfiguration

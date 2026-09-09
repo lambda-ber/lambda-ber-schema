@@ -3,11 +3,6 @@
 # Slot: modifications 
 
 
-_Post-translational modifications or chemical modifications_
-
-
-
-
 
 URI: [lambda:modifications](http://w3id.org/lambda/modifications)
 Alias: modifications
@@ -22,6 +17,7 @@ Alias: modifications
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [SampleProteinAssociation](SampleProteinAssociation.md) | M:N link between Sample and Protein |  no  |
 | [MolecularComposition](MolecularComposition.md) | Molecular composition of a sample |  no  |
 
 
@@ -33,8 +29,6 @@ Alias: modifications
 
 * Range: [String](String.md)
 
-* Multivalued: True
-
 
 
 
@@ -42,13 +36,6 @@ Alias: modifications
 
 
 
-
-
-
-### Schema Source
-
-
-* from schema: http://w3id.org/lambda/
 
 
 
@@ -68,15 +55,11 @@ Alias: modifications
 <details>
 ```yaml
 name: modifications
-description: Post-translational modifications or chemical modifications
-from_schema: http://w3id.org/lambda/
-rank: 1000
 alias: modifications
-owner: MolecularComposition
 domain_of:
 - MolecularComposition
+- SampleProteinAssociation
 range: string
-multivalued: true
 
 ```
 </details>

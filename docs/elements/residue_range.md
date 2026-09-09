@@ -3,11 +3,6 @@
 # Slot: residue_range 
 
 
-_Range of residues (e.g., '1-100', '25,27,30-35')_
-
-
-
-
 
 URI: [lambda:residue_range](http://w3id.org/lambda/residue_range)
 Alias: residue_range
@@ -22,12 +17,13 @@ Alias: residue_range
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ProteinAnnotation](ProteinAnnotation.md) | Base class for all protein-related functional and structural annotations |  no  |
-| [StructuralFeature](StructuralFeature.md) | Structural features and properties of protein regions |  no  |
-| [EvolutionaryConservation](EvolutionaryConservation.md) | Evolutionary conservation information |  no  |
-| [MutationEffect](MutationEffect.md) | Effects of mutations and variants on protein structure and function |  no  |
+| [SampleProteinAssociation](SampleProteinAssociation.md) | M:N link between Sample and Protein |  no  |
 | [FunctionalSite](FunctionalSite.md) | Functional sites including catalytic, binding, and regulatory sites |  no  |
+| [StructuralFeature](StructuralFeature.md) | Structural features and properties of protein regions |  no  |
+| [ProteinAnnotation](ProteinAnnotation.md) | Base class for all protein-related functional and structural annotations |  no  |
 | [PostTranslationalModification](PostTranslationalModification.md) | Post-translational modifications observed or predicted |  no  |
+| [MutationEffect](MutationEffect.md) | Effects of mutations and variants on protein structure and function |  no  |
+| [EvolutionaryConservation](EvolutionaryConservation.md) | Evolutionary conservation information |  no  |
 | [ProteinProteinInteraction](ProteinProteinInteraction.md) | Protein-protein interactions and interfaces |  no  |
 
 
@@ -39,8 +35,6 @@ Alias: residue_range
 
 * Range: [String](String.md)
 
-* Regex pattern: `^[0-9,\-]+$`
-
 
 
 
@@ -48,13 +42,6 @@ Alias: residue_range
 
 
 
-
-
-
-### Schema Source
-
-
-* from schema: http://w3id.org/lambda/
 
 
 
@@ -74,15 +61,11 @@ Alias: residue_range
 <details>
 ```yaml
 name: residue_range
-description: Range of residues (e.g., '1-100', '25,27,30-35')
-from_schema: http://w3id.org/lambda/
-rank: 1000
 alias: residue_range
-owner: ProteinAnnotation
 domain_of:
+- SampleProteinAssociation
 - ProteinAnnotation
 range: string
-pattern: ^[0-9,\-]+$
 
 ```
 </details>

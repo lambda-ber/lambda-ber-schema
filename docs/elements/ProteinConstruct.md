@@ -46,6 +46,17 @@ URI: [lambda:ProteinConstruct](http://w3id.org/lambda/ProteinConstruct)
         
       ProteinConstruct : promoter
         
+      ProteinConstruct : protein_id
+        
+          
+    
+        
+        
+        ProteinConstruct --> "0..1" Protein : protein_id
+        click Protein href "../Protein/"
+    
+
+        
       ProteinConstruct : selectable_marker
         
       ProteinConstruct : sequence_file_path
@@ -97,7 +108,8 @@ URI: [lambda:ProteinConstruct](http://w3id.org/lambda/ProteinConstruct)
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [construct_id](construct_id.md) | 1 <br/> [String](String.md) | Unique identifier for this construct | direct |
-| [uniprot_id](uniprot_id.md) | 0..1 <br/> [String](String.md) | UniProt accession for the target protein | direct |
+| [protein_id](protein_id.md) | 0..1 <br/> [Protein](Protein.md) | The protein this construct expresses | direct |
+| [uniprot_id](uniprot_id.md) | 0..1 <br/> [Uriorcurie](Uriorcurie.md) | UniProt accession of the target protein as a CURIE (e | direct |
 | [gene_name](gene_name.md) | 0..1 <br/> [String](String.md) | Gene name | direct |
 | [ncbi_taxid](ncbi_taxid.md) | 0..1 <br/> [String](String.md) | NCBI Taxonomy ID for source organism | direct |
 | [sequence_length_aa](sequence_length_aa.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Length of the protein sequence in amino acids | direct |
@@ -130,6 +142,7 @@ URI: [lambda:ProteinConstruct](http://w3id.org/lambda/ProteinConstruct)
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
 | [Dataset](Dataset.md) | [protein_constructs](protein_constructs.md) | range | [ProteinConstruct](ProteinConstruct.md) |
+| [SampleProteinAssociation](SampleProteinAssociation.md) | [construct_id](construct_id.md) | range | [ProteinConstruct](ProteinConstruct.md) |
 
 
 
@@ -185,21 +198,36 @@ attributes:
     rank: 1000
     domain_of:
     - ProteinConstruct
+    - SampleProteinAssociation
     required: true
-  uniprot_id:
-    name: uniprot_id
-    description: UniProt accession for the target protein
+  protein_id:
+    name: protein_id
+    description: The protein this construct expresses
     from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ProteinConstruct
+    - SampleProteinAssociation
+    - ProteinAnnotation
+    - ConformationalEnsemble
+    range: Protein
+  uniprot_id:
+    name: uniprot_id
+    description: UniProt accession of the target protein as a CURIE (e.g., uniprot:P69905).
+      Redundant with the linked Protein.uniprot_id; kept for constructs recorded before
+      the protein is.
+    from_schema: http://w3id.org/lambda/
+    domain_of:
+    - Protein
+    - ProteinConstruct
     - AggregatedProteinView
+    range: uriorcurie
   gene_name:
     name: gene_name
     description: Gene name
     from_schema: http://w3id.org/lambda/
-    rank: 1000
     domain_of:
+    - Protein
     - ProteinConstruct
   ncbi_taxid:
     name: ncbi_taxid
@@ -352,27 +380,43 @@ attributes:
     owner: ProteinConstruct
     domain_of:
     - ProteinConstruct
+    - SampleProteinAssociation
     range: string
     required: true
-  uniprot_id:
-    name: uniprot_id
-    description: UniProt accession for the target protein
+  protein_id:
+    name: protein_id
+    description: The protein this construct expresses
     from_schema: http://w3id.org/lambda/
     rank: 1000
-    alias: uniprot_id
+    alias: protein_id
     owner: ProteinConstruct
     domain_of:
     - ProteinConstruct
+    - SampleProteinAssociation
+    - ProteinAnnotation
+    - ConformationalEnsemble
+    range: Protein
+  uniprot_id:
+    name: uniprot_id
+    description: UniProt accession of the target protein as a CURIE (e.g., uniprot:P69905).
+      Redundant with the linked Protein.uniprot_id; kept for constructs recorded before
+      the protein is.
+    from_schema: http://w3id.org/lambda/
+    alias: uniprot_id
+    owner: ProteinConstruct
+    domain_of:
+    - Protein
+    - ProteinConstruct
     - AggregatedProteinView
-    range: string
+    range: uriorcurie
   gene_name:
     name: gene_name
     description: Gene name
     from_schema: http://w3id.org/lambda/
-    rank: 1000
     alias: gene_name
     owner: ProteinConstruct
     domain_of:
+    - Protein
     - ProteinConstruct
     range: string
   ncbi_taxid:

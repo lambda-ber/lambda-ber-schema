@@ -19,9 +19,19 @@ A dataset might represent all data from a specific grant, collaboration, or publ
 All entities are stored in flat collections at the Dataset level:
 
 **Biological Materials**
-- [Samples](Sample.md): The biological specimens being studied (proteins, nucleic acids, complexes,
-  cells, tissues). Each sample includes detailed molecular composition, buffer conditions, and
-  storage information. For example, a purified protein with its sequence, concentration, and buffer pH.
+- [Proteins](Protein.md): The protein as a biological entity - sequence, source organism, gene,
+  and the functional and structural annotations that hold for it in every preparation. Identified
+  by UniProt accession as a CURIE (`uniprot:P69905`) wherever one exists. One record serves every
+  sample that contains the protein; what varies between preparations lives on the sample and on
+  the sample-protein association.
+
+- [Samples](Sample.md): The physical specimens being studied (proteins, nucleic acids, complexes,
+  cells, tissues). Each sample records the preparation-specific facts - buffer conditions,
+  concentration, storage, purity - and links to the proteins it contains through
+  [SampleProteinAssociation](SampleProteinAssociation.md).
+
+- [Protein Constructs](ProteinConstruct.md): How a protein was cloned and expressed - vector,
+  tags, cleavage sites, codon optimization. A construct realizes one protein and may feed many samples.
 
 - [Sample Preparations](SamplePreparation.md): How samples were prepared for specific techniques.
   This includes cryo-EM grid preparation (vitrification parameters), crystallization conditions for
@@ -60,6 +70,17 @@ All entities are stored in flat collections at the Dataset level:
   biological questions. For example, a study might investigate "Heat stress response in Arabidopsis"
   or "Structure of the human ribosome under different conditions."
 
+**People and organizations**
+- [Persons](Person.md): People involved in producing, processing or publishing the data - principal
+  investigators, beamline operators, analysts, curators. Identified by ORCID where available. Which
+  work a person is attached to, and in what capacity, is carried by the person association tables,
+  so one record serves every role a person holds across the dataset.
+
+- [Organizations](Organization.md): Institutions, facilities and funding bodies, identified by ROR.
+  The structured home for organizational identity that would otherwise live as free text on
+  instruments, on people, and in FacilityEnum's annotations - so a parent institution is stated
+  once rather than restated by everything that refers to it.
+
 ### Association Tables
 
 Many-to-many relationships are represented via explicit association tables, which can carry
@@ -69,13 +90,21 @@ relationship metadata (e.g., the role of a sample in an experiment):
 - **StudyExperimentAssociation**: Links experiments to studies
 - **StudyWorkflowAssociation**: Links workflows to studies
 - **ExperimentSampleAssociation**: Links samples to experiments (with role and preparation used)
+- **SampleProteinAssociation**: Links proteins to samples (with role, copy number, residue range,
+  modifications, observed mass, and the construct used)
 - **ExperimentInstrumentAssociation**: Links instruments to experiments (with role: primary, detector)
 - **WorkflowExperimentAssociation**: Links source experiments to workflows
 - **WorkflowInputAssociation**: Links input files to workflows
 - **WorkflowOutputAssociation**: Links output files to workflows
+- **StudyPersonAssociation**: Links people to studies (with role, author position, corresponding flag)
+- **ExperimentPersonAssociation**: Links people to experiment runs (with role: operator, local contact)
+- **WorkflowPersonAssociation**: Links people to workflow runs (with role: analyst, reviewer)
+- **StudyOrganizationAssociation**: Links organizations to studies (with role and award number)
+- **PersonOrganizationAssociation**: Links people to organizations (with role and affiliation dates)
 
 This relational design enables:
 - **Sample reuse**: The same sample can be used in multiple studies and experiments
+- **Protein reuse**: The same protein is described once and linked from every sample that contains it
 - **Multi-instrument experiments**: An experiment can use multiple instruments with different roles
 - **Integrative workflows**: A workflow can combine data from multiple experiments
 
@@ -151,6 +180,7 @@ Name: lambda-ber-schema
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[QuantityValue](QuantityValue.md) | A simple quantity value, representing a measurement with a numeric value and ... |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[TextValue](TextValue.md) | A value described using a text string, optionally with a controlled vocabular... |
 | [ExperimentInstrumentAssociation](ExperimentInstrumentAssociation.md) | M:N link between ExperimentRun and Instrument |
+| [ExperimentPersonAssociation](ExperimentPersonAssociation.md) | M:N link between ExperimentRun and Person with role metadata - who actually c... |
 | [ExperimentSampleAssociation](ExperimentSampleAssociation.md) | M:N link between ExperimentRun and Sample with role metadata |
 | [NamedThing](NamedThing.md) | A named thing |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[AggregatedProteinView](AggregatedProteinView.md) | Aggregated view of all structural and functional data for a protein |
@@ -175,6 +205,9 @@ Name: lambda-ber-schema
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[XRayInstrument](XRayInstrument.md) | X-ray diffractometer or synchrotron beamline specifications |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[MeasurementConditions](MeasurementConditions.md) | Conditions under which biophysical measurements were made |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[OntologyTerm](OntologyTerm.md) | A term from a controlled vocabulary or ontology |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Organization](Organization.md) | An institution, facility, laboratory or funding body - a national laboratory,... |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Person](Person.md) | A person involved in producing, processing or publishing data - a principal i... |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Protein](Protein.md) | A protein as a biological entity: its sequence, source organism, gene, and th... |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ProteinAnnotation](ProteinAnnotation.md) | Base class for all protein-related functional and structural annotations |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[EvolutionaryConservation](EvolutionaryConservation.md) | Evolutionary conservation information |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[FunctionalSite](FunctionalSite.md) | Functional sites including catalytic, binding, and regulatory sites |
@@ -183,16 +216,21 @@ Name: lambda-ber-schema
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ProteinProteinInteraction](ProteinProteinInteraction.md) | Protein-protein interactions and interfaces |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[StructuralFeature](StructuralFeature.md) | Structural features and properties of protein regions |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ProteinConstruct](ProteinConstruct.md) | Detailed information about a protein construct including cloning and sequence... |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Sample](Sample.md) | A biological sample used in structural biology experiments |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Sample](Sample.md) | A physical biological sample used in structural biology experiments |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[SamplePreparation](SamplePreparation.md) | A process that prepares a sample for imaging |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Study](Study.md) | A logical grouping of related experiments investigating a research question |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[WorkflowRun](WorkflowRun.md) | A computational processing workflow execution |
+| [PersonOrganizationAssociation](PersonOrganizationAssociation.md) | M:N link between Person and Organization with role metadata |
+| [SampleProteinAssociation](SampleProteinAssociation.md) | M:N link between Sample and Protein |
 | [StudyExperimentAssociation](StudyExperimentAssociation.md) | M:N link between Study and ExperimentRun |
+| [StudyOrganizationAssociation](StudyOrganizationAssociation.md) | M:N link between Study and Organization with role metadata - the host institu... |
+| [StudyPersonAssociation](StudyPersonAssociation.md) | M:N link between Study and Person with role metadata |
 | [StudySampleAssociation](StudySampleAssociation.md) | M:N link between Study and Sample with role metadata |
 | [StudyWorkflowAssociation](StudyWorkflowAssociation.md) | M:N link between Study and WorkflowRun |
 | [WorkflowExperimentAssociation](WorkflowExperimentAssociation.md) | M:N link between WorkflowRun and source ExperimentRuns |
 | [WorkflowInputAssociation](WorkflowInputAssociation.md) | Links input DataFiles to WorkflowRun |
 | [WorkflowOutputAssociation](WorkflowOutputAssociation.md) | Links output DataFiles to WorkflowRun |
+| [WorkflowPersonAssociation](WorkflowPersonAssociation.md) | M:N link between WorkflowRun and Person with role metadata - who ran the proc... |
 
 
 
@@ -205,14 +243,18 @@ Name: lambda-ber-schema
 | [acquisition_group](acquisition_group.md) | Acquisition group identifier (e |
 | [acquisition_software](acquisition_software.md) | Acquisition software used (e |
 | [acquisition_software_version](acquisition_software_version.md) | Version of acquisition software |
+| [acronym](acronym.md) | Short name or acronym, e |
 | [additional_software](additional_software.md) | Additional software used in pipeline |
 | [additives](additives.md) | Additional additives in the buffer |
+| [affiliation](affiliation.md) | Institution the person is affiliated with |
+| [affiliation_ror](affiliation_ror.md) | Research Organization Registry (ROR) identifier for the affiliated institutio... |
 | [affinity_column](affinity_column.md) | Affinity column specifications |
 | [affinity_type](affinity_type.md) | Type of affinity chromatography |
 | [aggregation_assessment](aggregation_assessment.md) | Assessment of protein aggregation state |
 | [alignment_depth](alignment_depth.md) | Number of sequences in alignment |
 | [aliquoting](aliquoting.md) | How the protein was aliquoted for storage |
 | [allele_frequency](allele_frequency.md) | Population allele frequency (range: 0-1) |
+| [amino_acid_sequence](amino_acid_sequence.md) | Canonical one-letter amino acid sequence of the protein, without tags or othe... |
 | [amplitude_contrast](amplitude_contrast.md) | Amplitude contrast value |
 | [anatomy](anatomy.md) | Anatomical part or tissue (e |
 | [anisotropic_correction](anisotropic_correction.md) | Whether anisotropic motion correction was applied |
@@ -230,9 +272,11 @@ Name: lambda-ber-schema
 | [atmosphere](atmosphere.md) | Storage atmosphere conditions |
 | [attenuator](attenuator.md) | Attenuator setting |
 | [attribute](attribute.md) | The attribute being represented |
+| [author_position](author_position.md) | Position in the author list, where authorship order is meaningful |
 | [autoloader_capacity](autoloader_capacity.md) | Number of grids the autoloader can hold |
 | [autoloader_slot](autoloader_slot.md) | Autoloader slot identifier |
 | [average_b_factor_a2](average_b_factor_a2.md) | Average B-factor in Angstroms squared |
+| [award_number](award_number.md) | Grant or award number, where the organization is a funder |
 | [backbone_flexibility](backbone_flexibility.md) | B-factor or flexibility measure |
 | [background_correction](background_correction.md) | Method used for background correction |
 | [beam_center_pixels](beam_center_pixels.md) | Combined beam center pixel coordinates as reported by systems such as NSLS-II... |
@@ -278,6 +322,7 @@ Name: lambda-ber-schema
 | [cell_path_length](cell_path_length.md) | Path length, typically specified in millimeters (mm) |
 | [cell_type](cell_type.md) | Cell type if applicable (e |
 | [chain_id](chain_id.md) | Chain identifier in the PDB structure |
+| [chain_ids](chain_ids.md) | Chain identifiers this protein occupies in the deposited structure, where the... |
 | [chamber_temperature](chamber_temperature.md) | Chamber temperature, typically specified in degrees Celsius |
 | [channel_name](channel_name.md) | Name of the fluorescence channel (e |
 | [characteristic_features](characteristic_features.md) | Key features of this conformation |
@@ -317,9 +362,12 @@ Name: lambda-ber-schema
 | [construct_id](construct_id.md) | Unique identifier for this construct |
 | [contrast_method](contrast_method.md) | Contrast enhancement method used |
 | [control_system](control_system.md) | Low-level control system for device communication |
+| [copy_number](copy_number.md) | Copies of this protein per assembly in the sample (e |
+| [corresponding](corresponding.md) | Whether this person is a corresponding author for the study |
+| [country](country.md) | Country the organization is located in |
 | [cpu_hours](cpu_hours.md) | CPU hours used, measured in hours |
 | [creation_date](creation_date.md) | File creation date |
-| [cross_references](cross_references.md) | Database cross-references |
+| [cross_references](cross_references.md) | Cross-references to external databases other than UniProt (Pfam, InterPro, Ch... |
 | [cryo_protectant](cryo_protectant.md) | Cryoprotectant used for crystal cooling |
 | [cryoprotectant](cryoprotectant.md) | Cryoprotectant used |
 | [cryoprotectant_concentration](cryoprotectant_concentration.md) | Cryoprotectant concentration, typically specified as a percentage |
@@ -380,6 +428,7 @@ Name: lambda-ber-schema
 | [disease_association](disease_association.md) | Associated disease or phenotype |
 | [disorder_probability](disorder_probability.md) | Probability of disorder (range: 0-1) |
 | [dissociation_constant](dissociation_constant.md) | Experimental Kd if available |
+| [doe_office](doe_office.md) | Sponsoring DOE office, e |
 | [domain_assignment](domain_assignment.md) | Domain database assignment (CATH, SCOP, Pfam) |
 | [domain_id](domain_id.md) | Domain identifier from domain database |
 | [dose](dose.md) | Electron dose in e-/Å² |
@@ -396,12 +445,15 @@ Name: lambda-ber-schema
 | [duration](duration.md) | Storage duration |
 | [dwell_time](dwell_time.md) | Dwell time per pixel, typically specified in milliseconds |
 | [ec_number](ec_number.md) | Enzyme Commission number for catalytic sites |
+| [ec_numbers](ec_numbers.md) | Enzyme Commission numbers, where the protein is an enzyme (e |
 | [effect_on_function](effect_on_function.md) | Effect on protein function |
 | [effect_on_stability](effect_on_stability.md) | Effect on protein stability |
 | [elements_measured](elements_measured.md) | Elements detected and measured |
 | [elution_buffer](elution_buffer.md) | Buffer composition for elution |
+| [email](email.md) | Contact email address |
 | [emission_filter](emission_filter.md) | Specifications of the emission filter |
 | [emission_wavelength](emission_wavelength.md) | Emission wavelength, typically specified in nanometers |
+| [end_date](end_date.md) | Date the affiliation ended, where known and ended |
 | [end_time](end_time.md) | Data collection end timestamp |
 | [energy](energy.md) | Beam energy |
 | [energy_filter_make](energy_filter_make.md) | Energy filter manufacturer |
@@ -424,6 +476,7 @@ Name: lambda-ber-schema
 | [experiment_date](experiment_date.md) | Date of the experiment |
 | [experiment_id](experiment_id.md) | Reference to the experiment run |
 | [experiment_instrument_associations](experiment_instrument_associations.md) | Links between experiments and instruments (M:N) |
+| [experiment_person_associations](experiment_person_associations.md) | Links between experiment runs and people (M:N with role) |
 | [experiment_runs](experiment_runs.md) | All experiment runs (data collection sessions) |
 | [experiment_sample_associations](experiment_sample_associations.md) | Links between experiments and samples (M:N with role) |
 | [experimental_conditions](experimental_conditions.md) | Environmental and experimental conditions |
@@ -431,8 +484,12 @@ Name: lambda-ber-schema
 | [exposure_time](exposure_time.md) | Exposure time per image, typically specified in seconds (s) |
 | [exposure_time_per_frame](exposure_time_per_frame.md) | Exposure time per frame, typically specified in milliseconds |
 | [expression_system](expression_system.md) | Expression system used |
+| [facility_code](facility_code.md) | The FacilityEnum term this organization corresponds to, where it is one of th... |
 | [facility_name](facility_name.md) | Name of the research facility where the instrument is located |
+| [facility_organization_id](facility_organization_id.md) | The Organization that operates this instrument's facility |
 | [facility_ror](facility_ror.md) | Research Organization Registry (ROR) identifier for the facility |
+| [facility_type](facility_type.md) | For a research facility, the kind of facility it is |
+| [family_name](family_name.md) | Family name, where the name has been parsed into parts |
 | [feature_type](feature_type.md) | Type of structural feature |
 | [fiducial_size](fiducial_size.md) | Size of fiducial markers used for tomographic alignment |
 | [file_format](file_format.md) | File format |
@@ -457,18 +514,21 @@ Name: lambda-ber-schema
 | [free_energy](free_energy.md) | Relative free energy (kcal/mol) |
 | [fsc_curve](fsc_curve.md) | Fourier Shell Correlation curve data |
 | [fsc_value](fsc_value.md) | FSC values corresponding to each resolution |
+| [full_name](full_name.md) | Full formal name of the person, as they write it in publications |
+| [function_description](function_description.md) | Free-text summary of molecular function, typically from UniProt |
 | [functional_effect](functional_effect.md) | Known functional effect of this PTM |
 | [functional_impact_description](functional_impact_description.md) | Description of functional impact |
 | [functional_importance](functional_importance.md) | Description of functional importance |
 | [functional_sites](functional_sites.md) | Functional site annotations for proteins in the sample |
-| [gene_name](gene_name.md) | Gene name |
+| [gene_name](gene_name.md) | Primary gene symbol (e |
 | [gene_synthesis_provider](gene_synthesis_provider.md) | Company or facility that synthesized the gene |
+| [given_name](given_name.md) | Given (personal) name, where the name has been parsed into parts |
 | [glow_discharge_applied](glow_discharge_applied.md) | Whether glow discharge treatment was applied |
 | [glow_discharge_atmosphere](glow_discharge_atmosphere.md) | Glow discharge atmosphere (air, amylamine) |
 | [glow_discharge_current](glow_discharge_current.md) | Glow discharge current, typically specified in milliamperes |
 | [glow_discharge_pressure](glow_discharge_pressure.md) | Glow discharge pressure, typically specified in millibars |
 | [glow_discharge_time](glow_discharge_time.md) | Glow discharge time, typically specified in seconds |
-| [go_terms](go_terms.md) | Associated Gene Ontology terms |
+| [go_terms](go_terms.md) | Gene Ontology annotations as CURIEs (e |
 | [gold_standard](gold_standard.md) | Whether gold-standard refinement was used |
 | [goniometer_type](goniometer_type.md) | Type of goniometer |
 | [gpu_hours](gpu_hours.md) | GPU hours used, measured in hours |
@@ -518,6 +578,7 @@ Name: lambda-ber-schema
 | [interface_residues](interface_residues.md) | Residues at the interaction interface |
 | [ionic_strength](ionic_strength.md) | Ionic strength, typically specified in molar (mol/L) |
 | [is_cofactor](is_cofactor.md) | Whether the ligand is a cofactor |
+| [is_doe_facility](is_doe_facility.md) | Whether this is a US Department of Energy facility |
 | [is_drug_like](is_drug_like.md) | Whether the ligand has drug-like properties |
 | [ispyb_auto_proc_program_id](ispyb_auto_proc_program_id.md) | ISPyB AutoProcProgram |
 | [ispyb_auto_proc_scaling_id](ispyb_auto_proc_scaling_id.md) | ISPyB AutoProcScaling |
@@ -535,6 +596,7 @@ Name: lambda-ber-schema
 | [ligands](ligands.md) | Bound ligands or cofactors |
 | [ligands_cofactors](ligands_cofactors.md) | Ligands or cofactors modeled in the structure |
 | [lims_system](lims_system.md) | Laboratory Information Management System used at this beamline |
+| [location](location.md) | Free-text location, e |
 | [loop_size](loop_size.md) | Loop size, typically specified in micrometers |
 | [lysis_buffer](lysis_buffer.md) | Buffer composition for lysis |
 | [lysis_method](lysis_method.md) | Method used for cell lysis |
@@ -563,6 +625,7 @@ Name: lambda-ber-schema
 | [molecular_composition](molecular_composition.md) | Description of molecular composition including sequences, modifications, liga... |
 | [molecular_signatures](molecular_signatures.md) | Identified molecular signatures or peaks |
 | [molecular_weight](molecular_weight.md) | Molecular weight, typically specified in kilodaltons (kDa) |
+| [molecular_weight_theoretical](molecular_weight_theoretical.md) | Mass computed from the canonical sequence, typically in kDa |
 | [molprobity_score](molprobity_score.md) | Overall MolProbity score |
 | [monochromator_type](monochromator_type.md) | Type of monochromator |
 | [motion_correction_params](motion_correction_params.md) | Motion correction specific parameters |
@@ -587,6 +650,7 @@ Name: lambda-ber-schema
 | [numeric_value](numeric_value.md) | The numerical part of a quantity value, expressed as a number |
 | [numerical_aperture](numerical_aperture.md) | Numerical aperture of the objective lens |
 | [objective_aperture](objective_aperture.md) | Objective aperture size in micrometers |
+| [observed_molecular_weight](observed_molecular_weight.md) | Mass as measured for this preparation (mass spectrometry, SEC-MALS, SAXS), ty... |
 | [od600_at_induction](od600_at_induction.md) | Optical density at 600nm when induction was started |
 | [oligomeric_state](oligomeric_state.md) | Oligomeric state of the sample (e |
 | [omim_id](omim_id.md) | OMIM database identifier |
@@ -594,8 +658,13 @@ Name: lambda-ber-schema
 | [operator_id](operator_id.md) | Identifier or name of the person who performed the sample preparation (e |
 | [optimization_strategy](optimization_strategy.md) | Strategy used to optimize crystals |
 | [optimized_condition](optimized_condition.md) | Final optimized crystallization condition |
+| [orcid](orcid.md) | ORCID identifier for the person |
 | [organism](organism.md) | Source organism for the sample (e |
 | [organism_id](organism_id.md) | NCBI taxonomy ID |
+| [organism_name](organism_name.md) | Scientific name of the source organism |
+| [organization_id](organization_id.md) | Reference to the organization |
+| [organization_type](organization_type.md) | What kind of organization this is |
+| [organizations](organizations.md) | All organizations referenced anywhere in this dataset |
 | [origin_movie_id](origin_movie_id.md) | Reference to original movie file |
 | [oscillation_angle](oscillation_angle.md) | Oscillation angle per image, typically specified in degrees |
 | [oscillation_per_image_deg](oscillation_per_image_deg.md) | Oscillation angle per image, typically specified in degrees |
@@ -604,6 +673,7 @@ Name: lambda-ber-schema
 | [output_files](output_files.md) | Output files generated |
 | [output_type](output_type.md) | Type of output from the workflow |
 | [parameters_file_path](parameters_file_path.md) | Path to parameters file or text of key parameters |
+| [parent_organization_id](parent_organization_id.md) | The organization this one belongs to - a light source's national laboratory, ... |
 | [parent_sample_id](parent_sample_id.md) | Reference to parent sample for derivation tracking |
 | [particle_concentration](particle_concentration.md) | Assessment of particle concentration on the cryo-EM grid |
 | [particle_picking_params](particle_picking_params.md) | Particle picking specific parameters |
@@ -611,9 +681,13 @@ Name: lambda-ber-schema
 | [partner_interface_residues](partner_interface_residues.md) | Partner residues at the interaction interface |
 | [partner_protein_id](partner_protein_id.md) | UniProt ID of interacting partner |
 | [patch_size](patch_size.md) | Patch size for local motion correction |
-| [pdb_entries](pdb_entries.md) | PDB entries representing this state |
+| [pdb_entries](pdb_entries.md) | PDB entries containing this protein, as CURIEs (e |
 | [pdb_entry](pdb_entry.md) | PDB identifier |
 | [pdb_id](pdb_id.md) | PDB accession code if deposited |
+| [person_id](person_id.md) | Reference to the person |
+| [person_local_id](person_local_id.md) | Facility-local user or badge identifier, where one exists |
+| [person_organization_associations](person_organization_associations.md) | Links between people and organizations (M:N with role and dates) |
+| [persons](persons.md) | All people referenced anywhere in this dataset |
 | [ph](ph.md) | pH of the buffer (range: 0-14) |
 | [phase_plate](phase_plate.md) | Phase plate available |
 | [phase_plate_type](phase_plate_type.md) | Type of phase plate if present |
@@ -650,9 +724,10 @@ Name: lambda-ber-schema
 | [protein_concentration](protein_concentration.md) | Protein concentration for crystallization in mg/mL |
 | [protein_concentration_mg_per_ml](protein_concentration_mg_per_ml.md) | Protein concentration for crystallization in mg/mL |
 | [protein_constructs](protein_constructs.md) | All protein constructs |
-| [protein_id](protein_id.md) | UniProt accession number |
+| [protein_id](protein_id.md) | The protein this construct expresses |
 | [protein_interactions](protein_interactions.md) | Protein-protein interaction annotations |
-| [protein_name](protein_name.md) | Name of the protein |
+| [protein_name](protein_name.md) | Name of the protein as the facility or depositor recorded it |
+| [proteins](proteins.md) | All proteins referenced by samples in this dataset, one record per protein |
 | [protocol_description](protocol_description.md) | Detailed protocol description |
 | [ptm_annotations](ptm_annotations.md) | Post-translational modification annotations |
 | [ptms](ptms.md) | All post-translational modifications |
@@ -685,7 +760,7 @@ Name: lambda-ber-schema
 | [related_entity](related_entity.md) | ID of the entity that owns this file |
 | [removal_enzyme](removal_enzyme.md) | Enzyme that removes modification |
 | [reservoir_volume_ul](reservoir_volume_ul.md) | Reservoir volume, typically specified in microliters |
-| [residue_range](residue_range.md) | Range of residues (e |
+| [residue_range](residue_range.md) | Residues of the canonical sequence present in this sample (e |
 | [residues](residues.md) | List of residues forming the functional site |
 | [resolution](resolution.md) | Resolution at edge of detector, typically specified in Angstroms (Å) |
 | [resolution_0_143](resolution_0_143.md) | Resolution at FSC=0 |
@@ -706,6 +781,7 @@ Name: lambda-ber-schema
 | [rmsd_from_reference](rmsd_from_reference.md) | RMSD from reference structure |
 | [rmsd_threshold](rmsd_threshold.md) | RMSD threshold for clustering (Angstroms) |
 | [role](role.md) | Role of sample in study (e |
+| [ror](ror.md) | Research Organization Registry (ROR) identifier for the organization |
 | [rotation_angle](rotation_angle.md) | Rotation angle of the detector |
 | [rotation_rate](rotation_rate.md) | Continuous rotation rate during data collection (e |
 | [rpim](rpim.md) | Rpim - precision-indicating merging R-factor |
@@ -721,6 +797,7 @@ Name: lambda-ber-schema
 | [sample_detector_distance](sample_detector_distance.md) | Distance from sample to detector |
 | [sample_id](sample_id.md) | Reference to the sample being prepared |
 | [sample_preparations](sample_preparations.md) | All sample preparations |
+| [sample_protein_associations](sample_protein_associations.md) | Links between samples and the proteins they contain (M:N with role, copy numb... |
 | [sample_type](sample_type.md) | Type of biological sample |
 | [samples](samples.md) | All samples across all studies |
 | [scaler_module](scaler_module.md) | Scaling module used (e |
@@ -733,7 +810,9 @@ Name: lambda-ber-schema
 | [seed_stock_dilution](seed_stock_dilution.md) | Dilution factor for seed stock |
 | [seeding_type](seeding_type.md) | Type of seeding used (micro, macro, streak) |
 | [selectable_marker](selectable_marker.md) | Antibiotic resistance or other selectable marker |
+| [sequence_coverage](sequence_coverage.md) | Fraction of the canonical sequence present in this sample (range: 0-1) |
 | [sequence_file_path](sequence_file_path.md) | Path to sequence file |
+| [sequence_length](sequence_length.md) | Length of the canonical sequence in residues |
 | [sequence_length_aa](sequence_length_aa.md) | Length of the protein sequence in amino acids |
 | [sequence_verified_by](sequence_verified_by.md) | Method or person who verified the sequence |
 | [sequences](sequences.md) | Amino acid or nucleotide sequences |
@@ -767,6 +846,7 @@ Name: lambda-ber-schema
 | [stage_position_z](stage_position_z.md) | Stage Z position, typically specified in micrometers |
 | [stage_tilt](stage_tilt.md) | Fixed stage tilt angle for a single-orientation acquisition, typically specif... |
 | [start_angle](start_angle.md) | Starting rotation angle, typically specified in degrees |
+| [start_date](start_date.md) | Date the affiliation began, where known |
 | [start_time](start_time.md) | Data collection start timestamp |
 | [started_at](started_at.md) | Workflow start time |
 | [state_id](state_id.md) | Identifier for this state |
@@ -780,6 +860,8 @@ Name: lambda-ber-schema
 | [studies](studies.md) | All studies in this dataset |
 | [study_experiment_associations](study_experiment_associations.md) | Links between studies and experiments (M:N) |
 | [study_id](study_id.md) | Reference to the study |
+| [study_organization_associations](study_organization_associations.md) | Links between studies and organizations (M:N with role, award number) |
+| [study_person_associations](study_person_associations.md) | Links between studies and people (M:N with role) - where authorship lives |
 | [study_sample_associations](study_sample_associations.md) | Links between studies and samples (M:N) |
 | [study_workflow_associations](study_workflow_associations.md) | Links between studies and workflows (M:N) |
 | [super_resolution](super_resolution.md) | Whether super-resolution mode was used |
@@ -820,7 +902,7 @@ Name: lambda-ber-schema
 | [transmission](transmission.md) | X-ray beam transmission as a percentage (0-100) |
 | [transmission_percent](transmission_percent.md) | Beam transmission, typically specified as a percentage (0-100) |
 | [undulator_gap](undulator_gap.md) | Undulator gap setting, typically specified in millimeters (mm) |
-| [uniprot_id](uniprot_id.md) | UniProt accession for the target protein |
+| [uniprot_id](uniprot_id.md) | UniProt accession as a Bioregistry CURIE (e |
 | [unit](unit.md) | The unit of measurement |
 | [unit_cell_a](unit_cell_a.md) | Unit cell parameter a, typically specified in Angstroms (Å) |
 | [unit_cell_alpha](unit_cell_alpha.md) | Unit cell angle alpha, typically specified in degrees |
@@ -848,8 +930,9 @@ Name: lambda-ber-schema
 | [wavelength_spread](wavelength_spread.md) | Wavelength spread |
 | [wavenumber_max](wavenumber_max.md) | Maximum wavenumber, typically specified in inverse centimeters (cm⁻¹) |
 | [wavenumber_min](wavenumber_min.md) | Minimum wavenumber, typically specified in inverse centimeters (cm⁻¹) |
-| [website](website.md) | Beamline website URL |
+| [website](website.md) | Organization or facility website |
 | [white_balance](white_balance.md) | White balance settings |
+| [wikidata_id](wikidata_id.md) | Wikidata entity identifier, where one exists |
 | [wilson_b_factor](wilson_b_factor.md) | Wilson B-factor, typically specified in Angstroms squared (Ų) |
 | [wilson_b_factor_a2](wilson_b_factor_a2.md) | Wilson B-factor in Angstroms squared |
 | [workflow_code](workflow_code.md) | Human-friendly identifier for the computational workflow run (e |
@@ -857,6 +940,7 @@ Name: lambda-ber-schema
 | [workflow_id](workflow_id.md) | Reference to the workflow run |
 | [workflow_input_associations](workflow_input_associations.md) | Links between workflows and input files |
 | [workflow_output_associations](workflow_output_associations.md) | Links between workflows and output files |
+| [workflow_person_associations](workflow_person_associations.md) | Links between workflow runs and people (M:N with role) |
 | [workflow_runs](workflow_runs.md) | All workflow runs (computational processing) |
 | [workflow_type](workflow_type.md) | Type of processing workflow |
 | [xbeam](xbeam.md) | Beam center X coordinate in pixels |
@@ -909,13 +993,17 @@ Name: lambda-ber-schema
 | [InteractionTypeEnum](InteractionTypeEnum.md) | Types of molecular interactions |
 | [LIMSSystemEnum](LIMSSystemEnum.md) | Laboratory Information Management Systems (LIMS) used at structural biology f... |
 | [MutationTypeEnum](MutationTypeEnum.md) | Types of mutations |
+| [OrganizationRoleEnum](OrganizationRoleEnum.md) | Capacity in which an organization is attached to a study, or a person to an o... |
+| [OrganizationTypeEnum](OrganizationTypeEnum.md) | Kind of organization |
 | [OutputTypeEnum](OutputTypeEnum.md) | Types of outputs from computational workflows |
 | [ParticleConcentrationEnum](ParticleConcentrationEnum.md) | Assessment of particle concentration on a cryo-EM grid |
+| [PersonRoleEnum](PersonRoleEnum.md) | Capacity in which a person is attached to a study, experiment run or workflow... |
 | [PhasingMethodEnum](PhasingMethodEnum.md) | Methods for phase determination in X-ray crystallography |
 | [PreparationTypeEnum](PreparationTypeEnum.md) | Types of sample preparation |
 | [ProcessingStatusEnum](ProcessingStatusEnum.md) | Processing status |
 | [PTMTypeEnum](PTMTypeEnum.md) | Types of post-translational modifications |
 | [PurificationStepEnum](PurificationStepEnum.md) | Protein purification steps and methods |
+| [SampleProteinRoleEnum](SampleProteinRoleEnum.md) | Part a protein plays in a sample |
 | [SampleRoleEnum](SampleRoleEnum.md) | Role of a sample in a study |
 | [SampleTypeEnum](SampleTypeEnum.md) | Types of biological samples |
 | [SecondaryStructureEnum](SecondaryStructureEnum.md) | Secondary structure types |

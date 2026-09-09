@@ -139,8 +139,8 @@ attributes:
     name: pdb_entries
     description: PDB entries representing this state
     from_schema: http://w3id.org/lambda/functional_annotation
-    rank: 1000
     domain_of:
+    - Protein
     - ConformationalState
     - AggregatedProteinView
     multivalued: true
@@ -220,10 +220,10 @@ attributes:
     name: pdb_entries
     description: PDB entries representing this state
     from_schema: http://w3id.org/lambda/functional_annotation
-    rank: 1000
     alias: pdb_entries
     owner: ConformationalState
     domain_of:
+    - Protein
     - ConformationalState
     - AggregatedProteinView
     range: string

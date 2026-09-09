@@ -138,6 +138,7 @@ attributes:
     - WorkflowExperimentAssociation
     - WorkflowInputAssociation
     - WorkflowOutputAssociation
+    - WorkflowPersonAssociation
     range: WorkflowRun
     required: true
   file_id:
@@ -184,6 +185,7 @@ attributes:
     - WorkflowExperimentAssociation
     - WorkflowInputAssociation
     - WorkflowOutputAssociation
+    - WorkflowPersonAssociation
     range: WorkflowRun
     required: true
   file_id:

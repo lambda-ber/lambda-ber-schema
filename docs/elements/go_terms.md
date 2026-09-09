@@ -3,11 +3,6 @@
 # Slot: go_terms 
 
 
-_Associated Gene Ontology terms_
-
-
-
-
 
 URI: [lambda:go_terms](http://w3id.org/lambda/go_terms)
 Alias: go_terms
@@ -22,6 +17,7 @@ Alias: go_terms
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [Protein](Protein.md) | A protein as a biological entity: its sequence, source organism, gene, and th... |  no  |
 | [FunctionalSite](FunctionalSite.md) | Functional sites including catalytic, binding, and regulatory sites |  no  |
 
 
@@ -31,9 +27,7 @@ Alias: go_terms
 
 ## Properties
 
-* Range: [Uriorcurie](Uriorcurie.md)
-
-* Multivalued: True
+* Range: [String](String.md)
 
 
 
@@ -42,13 +36,6 @@ Alias: go_terms
 
 
 
-
-
-
-### Schema Source
-
-
-* from schema: http://w3id.org/lambda/
 
 
 
@@ -68,15 +55,11 @@ Alias: go_terms
 <details>
 ```yaml
 name: go_terms
-description: Associated Gene Ontology terms
-from_schema: http://w3id.org/lambda/
-rank: 1000
 alias: go_terms
-owner: FunctionalSite
 domain_of:
+- Protein
 - FunctionalSite
-range: uriorcurie
-multivalued: true
+range: string
 
 ```
 </details>

@@ -145,6 +145,7 @@ attributes:
     - ExperimentSampleAssociation
     - ExperimentInstrumentAssociation
     - WorkflowExperimentAssociation
+    - ExperimentPersonAssociation
     range: ExperimentRun
     required: true
   sample_id:
@@ -155,6 +156,7 @@ attributes:
     - SamplePreparation
     - StudySampleAssociation
     - ExperimentSampleAssociation
+    - SampleProteinAssociation
     range: Sample
     required: true
   role:
@@ -164,7 +166,13 @@ attributes:
     domain_of:
     - StudySampleAssociation
     - ExperimentSampleAssociation
+    - SampleProteinAssociation
     - ExperimentInstrumentAssociation
+    - StudyPersonAssociation
+    - ExperimentPersonAssociation
+    - WorkflowPersonAssociation
+    - StudyOrganizationAssociation
+    - PersonOrganizationAssociation
     range: ExperimentSampleRoleEnum
   preparation_id:
     name: preparation_id
@@ -197,6 +205,7 @@ attributes:
     - ExperimentSampleAssociation
     - ExperimentInstrumentAssociation
     - WorkflowExperimentAssociation
+    - ExperimentPersonAssociation
     range: ExperimentRun
     required: true
   sample_id:
@@ -209,6 +218,7 @@ attributes:
     - SamplePreparation
     - StudySampleAssociation
     - ExperimentSampleAssociation
+    - SampleProteinAssociation
     range: Sample
     required: true
   role:
@@ -220,7 +230,13 @@ attributes:
     domain_of:
     - StudySampleAssociation
     - ExperimentSampleAssociation
+    - SampleProteinAssociation
     - ExperimentInstrumentAssociation
+    - StudyPersonAssociation
+    - ExperimentPersonAssociation
+    - WorkflowPersonAssociation
+    - StudyOrganizationAssociation
+    - PersonOrganizationAssociation
     range: ExperimentSampleRoleEnum
   preparation_id:
     name: preparation_id

@@ -45,7 +45,7 @@
 --     * Slot: title Description: A human-readable name or title for this entity
 --     * Slot: description Description: A detailed textual description of this entity
 --     * Slot: Dataset_id Description: Autocreated FK slot
--- # Class: Sample Description: A biological sample used in structural biology experiments
+-- # Class: Sample Description: A physical biological sample used in structural biology experiments. Records what is true of this preparation - buffer, concentration, storage, purity, the construct and tags used. The identity of the protein(s) it contains belongs on Protein, linked through SampleProteinAssociation, so a protein studied in ten preparations is described once.
 --     * Slot: sample_code Description: Human-friendly laboratory identifier or facility code for the sample (e.g., 'ALS-12.3.1-SAMPLE-001', 'LAB-PROT-2024-01'). Used for local reference and tracking within laboratory workflows.
 --     * Slot: sample_type Description: Type of biological sample
 --     * Slot: preparation_method Description: Method used to prepare the sample
@@ -54,7 +54,7 @@
 --     * Slot: cell_type Description: Cell type if applicable (e.g., CL:0000057 for fibroblast)
 --     * Slot: parent_sample_id Description: Reference to parent sample for derivation tracking
 --     * Slot: quality_metrics Description: Quality control metrics for the sample
---     * Slot: protein_name Description: Name of the protein
+--     * Slot: protein_name Description: Name of the protein as the facility or depositor recorded it. A display and search field; the canonical name, sequence and identifiers live on the linked Protein.
 --     * Slot: construct Description: Construct description (e.g., domain boundaries, truncations)
 --     * Slot: tag Description: Affinity tag (e.g., His6, GST, MBP)
 --     * Slot: mutations Description: Mutations present in the sample
@@ -73,9 +73,26 @@
 --     * Slot: purity_percentage_id Description: Sample purity, typically specified as a percentage (range: 0-100). Data providers may specify as decimal fraction by including the unit in the QuantityValue.
 --     * Slot: evolutionary_conservation_id Description: Evolutionary conservation data
 --     * Slot: conformational_ensemble_id Description: Conformational states and dynamics
+-- # Class: Protein Description: A protein as a biological entity: its sequence, source organism, gene, and the functional and structural annotations that hold for it regardless of any one preparation. One Protein record is shared by every Sample that contains it, through SampleProteinAssociation. Facts about a particular preparation - buffer, concentration, tags left on, the residue range actually present, the mass actually measured - stay on Sample and on the association.
+--     * Slot: uniprot_id Description: UniProt accession as a Bioregistry CURIE (e.g., uniprot:P69905). An isoform suffix is allowed (uniprot:P69905-2). Normally identical to id.
+--     * Slot: protein_name Description: Recommended protein name, as UniProt or the depositor gives it. Not required, so that a record seeded from an accession alone can be enriched from UniProt later.
+--     * Slot: gene_name Description: Primary gene symbol (e.g., HBA1)
+--     * Slot: organism Description: Source organism as an NCBI Taxonomy CURIE (e.g., NCBITaxon:9606)
+--     * Slot: organism_name Description: Scientific name of the source organism. For display, and for sources that give a name but no taxonomy identifier.
+--     * Slot: amino_acid_sequence Description: Canonical one-letter amino acid sequence of the protein, without tags or other construct additions. Construct-level sequence belongs on ProteinConstruct.
+--     * Slot: sequence_length Description: Length of the canonical sequence in residues
+--     * Slot: function_description Description: Free-text summary of molecular function, typically from UniProt
+--     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
+--     * Slot: title Description: A human-readable name or title for this entity
+--     * Slot: description Description: A detailed textual description of this entity
+--     * Slot: Dataset_id Description: Autocreated FK slot
+--     * Slot: molecular_weight_theoretical_id Description: Mass computed from the canonical sequence, typically in kDa. A mass measured for a given preparation belongs on SampleProteinAssociation.observed_molecular_weight.
+--     * Slot: evolutionary_conservation_id Description: Evolutionary conservation data
+--     * Slot: conformational_ensemble_id Description: Conformational states and dynamics
 -- # Class: ProteinConstruct Description: Detailed information about a protein construct including cloning and sequence design
 --     * Slot: construct_id Description: Unique identifier for this construct
---     * Slot: uniprot_id Description: UniProt accession for the target protein
+--     * Slot: protein_id Description: The protein this construct expresses
+--     * Slot: uniprot_id Description: UniProt accession of the target protein as a CURIE (e.g., uniprot:P69905). Redundant with the linked Protein.uniprot_id; kept for constructs recorded before the protein is.
 --     * Slot: gene_name Description: Gene name
 --     * Slot: ncbi_taxid Description: NCBI Taxonomy ID for source organism
 --     * Slot: construct_description Description: Human-readable description of the construct
@@ -927,6 +944,17 @@
 --     * Slot: role Description: Role of sample in experiment
 --     * Slot: preparation_id Description: Specific preparation used for this sample in this experiment
 --     * Slot: Dataset_id Description: Autocreated FK slot
+-- # Class: SampleProteinAssociation Description: M:N link between Sample and Protein. A sample may hold several proteins - the subunits of a complex, a target with its chaperone, a fusion partner - and one protein turns up in many samples. What changes from preparation to preparation lives here: the role, the copy number, the residue range actually present, the modifications carried, the mass actually measured, and the construct it was made from.
+--     * Slot: id
+--     * Slot: sample_id Description: Reference to the sample
+--     * Slot: protein_id Description: Reference to the protein
+--     * Slot: role Description: Part this protein plays in the sample
+--     * Slot: construct_id Description: The construct that produced this protein in this sample, where cloning detail is recorded
+--     * Slot: copy_number Description: Copies of this protein per assembly in the sample (e.g., 4 for a homotetramer, 2 for each chain of an alpha2-beta2 heterotetramer). Omit when unknown rather than assuming 1.
+--     * Slot: residue_range Description: Residues of the canonical sequence present in this sample (e.g., '1-141', '25-300'), for fragments and truncations. Omit when the full-length protein is present.
+--     * Slot: sequence_coverage Description: Fraction of the canonical sequence present in this sample (range: 0-1)
+--     * Slot: Dataset_id Description: Autocreated FK slot
+--     * Slot: observed_molecular_weight_id Description: Mass as measured for this preparation (mass spectrometry, SEC-MALS, SAXS), typically in kDa. The sequence-derived mass lives on Protein.molecular_weight_theoretical.
 -- # Class: ExperimentInstrumentAssociation Description: M:N link between ExperimentRun and Instrument
 --     * Slot: id
 --     * Slot: experiment_id Description: Reference to the experiment run
@@ -1016,7 +1044,7 @@
 --     * Slot: raw_value Description: Unnormalized atomic string representation, suggested syntax {number} {unit}
 --     * Slot: attribute_uid Description: The attribute being represented.
 -- # Class: ProteinAnnotation Description: Base class for all protein-related functional and structural annotations
---     * Slot: protein_id Description: UniProt accession number
+--     * Slot: protein_id Description: UniProt accession of the annotated protein, preferably as a Bioregistry CURIE (uniprot:P69905) matching Protein.uniprot_id. A bare accession (P69905) is accepted for data recorded before the CURIE form was adopted.
 --     * Slot: pdb_entry Description: PDB identifier
 --     * Slot: chain_id Description: Chain identifier in the PDB structure
 --     * Slot: residue_range Description: Range of residues (e.g., '1-100', '25,27,30-35')
@@ -1034,7 +1062,7 @@
 --     * Slot: conservation_score Description: Evolutionary conservation score (range: 0-1)
 --     * Slot: functional_importance Description: Description of functional importance
 --     * Slot: ec_number Description: Enzyme Commission number for catalytic sites
---     * Slot: protein_id Description: UniProt accession number
+--     * Slot: protein_id Description: UniProt accession of the annotated protein, preferably as a Bioregistry CURIE (uniprot:P69905) matching Protein.uniprot_id. A bare accession (P69905) is accepted for data recorded before the CURIE form was adopted.
 --     * Slot: pdb_entry Description: PDB identifier
 --     * Slot: chain_id Description: Chain identifier in the PDB structure
 --     * Slot: residue_range Description: Range of residues (e.g., '1-100', '25,27,30-35')
@@ -1047,6 +1075,7 @@
 --     * Slot: title Description: A human-readable name or title for this entity
 --     * Slot: description Description: A detailed textual description of this entity
 --     * Slot: Sample_id Description: Autocreated FK slot
+--     * Slot: Protein_id Description: Autocreated FK slot
 --     * Slot: AggregatedProteinView_id Description: Autocreated FK slot
 -- # Class: StructuralFeature Description: Structural features and properties of protein regions
 --     * Slot: feature_type Description: Type of structural feature
@@ -1058,7 +1087,7 @@
 --     * Slot: structural_motif Description: Known structural motif
 --     * Slot: domain_assignment Description: Domain database assignment (CATH, SCOP, Pfam)
 --     * Slot: domain_id Description: Domain identifier from domain database
---     * Slot: protein_id Description: UniProt accession number
+--     * Slot: protein_id Description: UniProt accession of the annotated protein, preferably as a Bioregistry CURIE (uniprot:P69905) matching Protein.uniprot_id. A bare accession (P69905) is accepted for data recorded before the CURIE form was adopted.
 --     * Slot: pdb_entry Description: PDB identifier
 --     * Slot: chain_id Description: Chain identifier in the PDB structure
 --     * Slot: residue_range Description: Range of residues (e.g., '1-100', '25,27,30-35')
@@ -1071,6 +1100,7 @@
 --     * Slot: title Description: A human-readable name or title for this entity
 --     * Slot: description Description: A detailed textual description of this entity
 --     * Slot: Sample_id Description: Autocreated FK slot
+--     * Slot: Protein_id Description: Autocreated FK slot
 --     * Slot: AggregatedProteinView_id Description: Autocreated FK slot
 -- # Class: LigandInteraction Description: Small molecule/ligand interactions with proteins
 --     * Slot: id
@@ -1087,6 +1117,7 @@
 --     * Slot: interaction_distance Description: Distance criteria for interaction (Angstroms)
 --     * Slot: description
 --     * Slot: Sample_id Description: Autocreated FK slot
+--     * Slot: Protein_id Description: Autocreated FK slot
 --     * Slot: FunctionalSite_id Description: Autocreated FK slot
 --     * Slot: AggregatedProteinView_id Description: Autocreated FK slot
 -- # Class: ProteinProteinInteraction Description: Protein-protein interactions and interfaces
@@ -1097,7 +1128,7 @@
 --     * Slot: dissociation_constant Description: Experimental Kd if available
 --     * Slot: complex_stability Description: Stability assessment of the complex
 --     * Slot: biological_assembly Description: Whether this represents a biological assembly
---     * Slot: protein_id Description: UniProt accession number
+--     * Slot: protein_id Description: UniProt accession of the annotated protein, preferably as a Bioregistry CURIE (uniprot:P69905) matching Protein.uniprot_id. A bare accession (P69905) is accepted for data recorded before the CURIE form was adopted.
 --     * Slot: pdb_entry Description: PDB identifier
 --     * Slot: chain_id Description: Chain identifier in the PDB structure
 --     * Slot: residue_range Description: Range of residues (e.g., '1-100', '25,27,30-35')
@@ -1110,6 +1141,7 @@
 --     * Slot: title Description: A human-readable name or title for this entity
 --     * Slot: description Description: A detailed textual description of this entity
 --     * Slot: Sample_id Description: Autocreated FK slot
+--     * Slot: Protein_id Description: Autocreated FK slot
 --     * Slot: AggregatedProteinView_id Description: Autocreated FK slot
 -- # Class: MutationEffect Description: Effects of mutations and variants on protein structure and function
 --     * Slot: mutation Description: Mutation in standard notation (e.g., 'A123V')
@@ -1122,7 +1154,7 @@
 --     * Slot: omim_id Description: OMIM database identifier
 --     * Slot: clinical_significance Description: Clinical significance
 --     * Slot: allele_frequency Description: Population allele frequency (range: 0-1)
---     * Slot: protein_id Description: UniProt accession number
+--     * Slot: protein_id Description: UniProt accession of the annotated protein, preferably as a Bioregistry CURIE (uniprot:P69905) matching Protein.uniprot_id. A bare accession (P69905) is accepted for data recorded before the CURIE form was adopted.
 --     * Slot: pdb_entry Description: PDB identifier
 --     * Slot: chain_id Description: Chain identifier in the PDB structure
 --     * Slot: residue_range Description: Range of residues (e.g., '1-100', '25,27,30-35')
@@ -1135,6 +1167,7 @@
 --     * Slot: title Description: A human-readable name or title for this entity
 --     * Slot: description Description: A detailed textual description of this entity
 --     * Slot: Sample_id Description: Autocreated FK slot
+--     * Slot: Protein_id Description: Autocreated FK slot
 --     * Slot: AggregatedProteinView_id Description: Autocreated FK slot
 -- # Class: BiophysicalProperty Description: Measured or calculated biophysical properties
 --     * Slot: id
@@ -1145,6 +1178,7 @@
 --     * Slot: experimental_method Description: Method used for measurement
 --     * Slot: description
 --     * Slot: Sample_id Description: Autocreated FK slot
+--     * Slot: Protein_id Description: Autocreated FK slot
 --     * Slot: AggregatedProteinView_id Description: Autocreated FK slot
 -- # Class: ConformationalEnsemble Description: Ensemble of conformational states for a protein
 --     * Slot: protein_id Description: UniProt accession
@@ -1173,7 +1207,7 @@
 --     * Slot: regulatory_role Description: Role in regulation
 --     * Slot: enzyme Description: Enzyme responsible for modification
 --     * Slot: removal_enzyme Description: Enzyme that removes modification
---     * Slot: protein_id Description: UniProt accession number
+--     * Slot: protein_id Description: UniProt accession of the annotated protein, preferably as a Bioregistry CURIE (uniprot:P69905) matching Protein.uniprot_id. A bare accession (P69905) is accepted for data recorded before the CURIE form was adopted.
 --     * Slot: pdb_entry Description: PDB identifier
 --     * Slot: chain_id Description: Chain identifier in the PDB structure
 --     * Slot: residue_range Description: Range of residues (e.g., '1-100', '25,27,30-35')
@@ -1186,6 +1220,7 @@
 --     * Slot: title Description: A human-readable name or title for this entity
 --     * Slot: description Description: A detailed textual description of this entity
 --     * Slot: Sample_id Description: Autocreated FK slot
+--     * Slot: Protein_id Description: Autocreated FK slot
 --     * Slot: AggregatedProteinView_id Description: Autocreated FK slot
 -- # Class: DatabaseCrossReference Description: Cross-references to external databases
 --     * Slot: id
@@ -1195,13 +1230,14 @@
 --     * Slot: last_updated Description: Date of last update
 --     * Slot: description
 --     * Slot: Sample_id Description: Autocreated FK slot
+--     * Slot: Protein_id Description: Autocreated FK slot
 --     * Slot: AggregatedProteinView_id Description: Autocreated FK slot
 -- # Class: EvolutionaryConservation Description: Evolutionary conservation information
 --     * Slot: conservation_score Description: Overall conservation score (range: 0-1)
 --     * Slot: conservation_method Description: Method used for conservation analysis
 --     * Slot: alignment_depth Description: Number of sequences in alignment
 --     * Slot: taxonomic_range Description: Taxonomic range of conservation
---     * Slot: protein_id Description: UniProt accession number
+--     * Slot: protein_id Description: UniProt accession of the annotated protein, preferably as a Bioregistry CURIE (uniprot:P69905) matching Protein.uniprot_id. A bare accession (P69905) is accepted for data recorded before the CURIE form was adopted.
 --     * Slot: pdb_entry Description: PDB identifier
 --     * Slot: chain_id Description: Chain identifier in the PDB structure
 --     * Slot: residue_range Description: Range of residues (e.g., '1-100', '25,27,30-35')
@@ -1238,6 +1274,15 @@
 -- # Class: Study_keywords
 --     * Slot: Study_id Description: Autocreated FK slot
 --     * Slot: keywords Description: Keywords or tags describing the study for search and categorization
+-- # Class: Protein_ec_numbers
+--     * Slot: Protein_id Description: Autocreated FK slot
+--     * Slot: ec_numbers Description: Enzyme Commission numbers, where the protein is an enzyme (e.g., 1.1.1.1)
+-- # Class: Protein_go_terms
+--     * Slot: Protein_id Description: Autocreated FK slot
+--     * Slot: go_terms Description: Gene Ontology annotations as CURIEs (e.g., GO:0005344 for oxygen carrier activity)
+-- # Class: Protein_pdb_entries
+--     * Slot: Protein_id Description: Autocreated FK slot
+--     * Slot: pdb_entries Description: PDB entries containing this protein, as CURIEs (e.g., pdb:1HHO)
 -- # Class: SamplePreparation_purification_steps
 --     * Slot: SamplePreparation_id Description: Autocreated FK slot
 --     * Slot: purification_steps Description: Ordered list of purification steps performed
@@ -1271,6 +1316,12 @@
 -- # Class: BufferComposition_additives
 --     * Slot: BufferComposition_id Description: Autocreated FK slot
 --     * Slot: additives Description: Additional additives in the buffer
+-- # Class: SampleProteinAssociation_chain_ids
+--     * Slot: SampleProteinAssociation_id Description: Autocreated FK slot
+--     * Slot: chain_ids Description: Chain identifiers this protein occupies in the deposited structure, where the sample is a PDB entity
+-- # Class: SampleProteinAssociation_modifications
+--     * Slot: SampleProteinAssociation_id Description: Autocreated FK slot
+--     * Slot: modifications Description: Modifications carried by this protein in this sample: tags left on, mutations, labels, post-translational modifications
 -- # Class: ProteinAnnotation_publication_ids
 --     * Slot: ProteinAnnotation_id Description: Autocreated FK slot
 --     * Slot: publication_ids Description: IDs of one or more publications supporting this annotation. Use PubMed IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.
@@ -1577,7 +1628,7 @@ CREATE TABLE "ProteinAnnotation_publication_ids" (
 	publication_ids TEXT,
 	PRIMARY KEY ("ProteinAnnotation_id", publication_ids),
 	FOREIGN KEY("ProteinAnnotation_id") REFERENCES "ProteinAnnotation" (id)
-);CREATE INDEX "ix_ProteinAnnotation_publication_ids_publication_ids" ON "ProteinAnnotation_publication_ids" (publication_ids);CREATE INDEX "ix_ProteinAnnotation_publication_ids_ProteinAnnotation_id" ON "ProteinAnnotation_publication_ids" ("ProteinAnnotation_id");
+);CREATE INDEX "ix_ProteinAnnotation_publication_ids_ProteinAnnotation_id" ON "ProteinAnnotation_publication_ids" ("ProteinAnnotation_id");CREATE INDEX "ix_ProteinAnnotation_publication_ids_publication_ids" ON "ProteinAnnotation_publication_ids" (publication_ids);
 CREATE TABLE "ConformationalEnsemble_principal_motions" (
 	"ConformationalEnsemble_id" TEXT,
 	principal_motions TEXT,
@@ -1589,7 +1640,7 @@ CREATE TABLE "EvolutionaryConservation_conserved_residues" (
 	conserved_residues TEXT,
 	PRIMARY KEY ("EvolutionaryConservation_id", conserved_residues),
 	FOREIGN KEY("EvolutionaryConservation_id") REFERENCES "EvolutionaryConservation" (id)
-);CREATE INDEX "ix_EvolutionaryConservation_conserved_residues_EvolutionaryConservation_id" ON "EvolutionaryConservation_conserved_residues" ("EvolutionaryConservation_id");CREATE INDEX "ix_EvolutionaryConservation_conserved_residues_conserved_residues" ON "EvolutionaryConservation_conserved_residues" (conserved_residues);
+);CREATE INDEX "ix_EvolutionaryConservation_conserved_residues_conserved_residues" ON "EvolutionaryConservation_conserved_residues" (conserved_residues);CREATE INDEX "ix_EvolutionaryConservation_conserved_residues_EvolutionaryConservation_id" ON "EvolutionaryConservation_conserved_residues" ("EvolutionaryConservation_id");
 CREATE TABLE "EvolutionaryConservation_variable_residues" (
 	"EvolutionaryConservation_id" TEXT,
 	variable_residues TEXT,
@@ -1608,36 +1659,29 @@ CREATE TABLE "EvolutionaryConservation_publication_ids" (
 	PRIMARY KEY ("EvolutionaryConservation_id", publication_ids),
 	FOREIGN KEY("EvolutionaryConservation_id") REFERENCES "EvolutionaryConservation" (id)
 );CREATE INDEX "ix_EvolutionaryConservation_publication_ids_publication_ids" ON "EvolutionaryConservation_publication_ids" (publication_ids);CREATE INDEX "ix_EvolutionaryConservation_publication_ids_EvolutionaryConservation_id" ON "EvolutionaryConservation_publication_ids" ("EvolutionaryConservation_id");
-CREATE TABLE "ProteinConstruct" (
-	construct_id TEXT NOT NULL,
+CREATE TABLE "Protein" (
 	uniprot_id TEXT,
+	protein_name TEXT,
 	gene_name TEXT,
-	ncbi_taxid TEXT,
-	construct_description TEXT,
-	gene_synthesis_provider TEXT,
-	codon_optimization_organism TEXT,
-	vector_backbone TEXT,
-	vector_name TEXT,
-	promoter TEXT,
-	tag_nterm TEXT,
-	tag_cterm TEXT,
-	cleavage_site TEXT,
-	signal_peptide TEXT,
-	selectable_marker TEXT,
-	cloning_method TEXT,
-	insert_boundaries TEXT,
-	sequence_file_path TEXT,
-	sequence_verified_by TEXT,
-	verification_notes TEXT,
+	organism TEXT,
+	organism_name TEXT,
+	amino_acid_sequence TEXT,
+	sequence_length INTEGER,
+	function_description TEXT,
 	id TEXT NOT NULL,
 	title TEXT,
 	description TEXT,
 	"Dataset_id" TEXT,
-	sequence_length_aa_id INTEGER,
+	molecular_weight_theoretical_id INTEGER,
+	evolutionary_conservation_id TEXT,
+	conformational_ensemble_id TEXT,
 	PRIMARY KEY (id),
+	FOREIGN KEY(organism) REFERENCES "OntologyTerm" (id),
 	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id),
-	FOREIGN KEY(sequence_length_aa_id) REFERENCES "QuantityValue" (id)
-);CREATE INDEX "ix_ProteinConstruct_id" ON "ProteinConstruct" (id);
+	FOREIGN KEY(molecular_weight_theoretical_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(evolutionary_conservation_id) REFERENCES "EvolutionaryConservation" (id),
+	FOREIGN KEY(conformational_ensemble_id) REFERENCES "ConformationalEnsemble" (id)
+);CREATE INDEX "ix_Protein_id" ON "Protein" (id);
 CREATE TABLE "SamplePreparation" (
 	preparation_type VARCHAR(20) NOT NULL,
 	sample_id TEXT NOT NULL,
@@ -2531,13 +2575,13 @@ CREATE TABLE "ConformationalState_pdb_entries" (
 	pdb_entries TEXT,
 	PRIMARY KEY ("ConformationalState_id", pdb_entries),
 	FOREIGN KEY("ConformationalState_id") REFERENCES "ConformationalState" (id)
-);CREATE INDEX "ix_ConformationalState_pdb_entries_pdb_entries" ON "ConformationalState_pdb_entries" (pdb_entries);CREATE INDEX "ix_ConformationalState_pdb_entries_ConformationalState_id" ON "ConformationalState_pdb_entries" ("ConformationalState_id");
+);CREATE INDEX "ix_ConformationalState_pdb_entries_ConformationalState_id" ON "ConformationalState_pdb_entries" ("ConformationalState_id");CREATE INDEX "ix_ConformationalState_pdb_entries_pdb_entries" ON "ConformationalState_pdb_entries" (pdb_entries);
 CREATE TABLE "ConformationalState_characteristic_features" (
 	"ConformationalState_id" INTEGER,
 	characteristic_features TEXT,
 	PRIMARY KEY ("ConformationalState_id", characteristic_features),
 	FOREIGN KEY("ConformationalState_id") REFERENCES "ConformationalState" (id)
-);CREATE INDEX "ix_ConformationalState_characteristic_features_ConformationalState_id" ON "ConformationalState_characteristic_features" ("ConformationalState_id");CREATE INDEX "ix_ConformationalState_characteristic_features_characteristic_features" ON "ConformationalState_characteristic_features" (characteristic_features);
+);CREATE INDEX "ix_ConformationalState_characteristic_features_characteristic_features" ON "ConformationalState_characteristic_features" (characteristic_features);CREATE INDEX "ix_ConformationalState_characteristic_features_ConformationalState_id" ON "ConformationalState_characteristic_features" ("ConformationalState_id");
 CREATE TABLE "AggregatedProteinView_pdb_entries" (
 	"AggregatedProteinView_id" TEXT,
 	pdb_entries TEXT,
@@ -2587,6 +2631,38 @@ CREATE TABLE "Sample" (
 	FOREIGN KEY(evolutionary_conservation_id) REFERENCES "EvolutionaryConservation" (id),
 	FOREIGN KEY(conformational_ensemble_id) REFERENCES "ConformationalEnsemble" (id)
 );CREATE INDEX "ix_Sample_id" ON "Sample" (id);
+CREATE TABLE "ProteinConstruct" (
+	construct_id TEXT NOT NULL,
+	protein_id TEXT,
+	uniprot_id TEXT,
+	gene_name TEXT,
+	ncbi_taxid TEXT,
+	construct_description TEXT,
+	gene_synthesis_provider TEXT,
+	codon_optimization_organism TEXT,
+	vector_backbone TEXT,
+	vector_name TEXT,
+	promoter TEXT,
+	tag_nterm TEXT,
+	tag_cterm TEXT,
+	cleavage_site TEXT,
+	signal_peptide TEXT,
+	selectable_marker TEXT,
+	cloning_method TEXT,
+	insert_boundaries TEXT,
+	sequence_file_path TEXT,
+	sequence_verified_by TEXT,
+	verification_notes TEXT,
+	id TEXT NOT NULL,
+	title TEXT,
+	description TEXT,
+	"Dataset_id" TEXT,
+	sequence_length_aa_id INTEGER,
+	PRIMARY KEY (id),
+	FOREIGN KEY(protein_id) REFERENCES "Protein" (id),
+	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id),
+	FOREIGN KEY(sequence_length_aa_id) REFERENCES "QuantityValue" (id)
+);CREATE INDEX "ix_ProteinConstruct_id" ON "ProteinConstruct" (id);
 CREATE TABLE "SANSInstrument" (
 	technique VARCHAR(29),
 	environment TEXT,
@@ -2814,6 +2890,24 @@ CREATE TABLE "DataCollectionStrategy" (
 	FOREIGN KEY(total_rotation_deg_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(exposure_time_id) REFERENCES "QuantityValue" (id)
 );CREATE INDEX "ix_DataCollectionStrategy_id" ON "DataCollectionStrategy" (id);
+CREATE TABLE "Protein_ec_numbers" (
+	"Protein_id" TEXT,
+	ec_numbers TEXT,
+	PRIMARY KEY ("Protein_id", ec_numbers),
+	FOREIGN KEY("Protein_id") REFERENCES "Protein" (id)
+);CREATE INDEX "ix_Protein_ec_numbers_Protein_id" ON "Protein_ec_numbers" ("Protein_id");CREATE INDEX "ix_Protein_ec_numbers_ec_numbers" ON "Protein_ec_numbers" (ec_numbers);
+CREATE TABLE "Protein_go_terms" (
+	"Protein_id" TEXT,
+	go_terms TEXT,
+	PRIMARY KEY ("Protein_id", go_terms),
+	FOREIGN KEY("Protein_id") REFERENCES "Protein" (id)
+);CREATE INDEX "ix_Protein_go_terms_go_terms" ON "Protein_go_terms" (go_terms);CREATE INDEX "ix_Protein_go_terms_Protein_id" ON "Protein_go_terms" ("Protein_id");
+CREATE TABLE "Protein_pdb_entries" (
+	"Protein_id" TEXT,
+	pdb_entries TEXT,
+	PRIMARY KEY ("Protein_id", pdb_entries),
+	FOREIGN KEY("Protein_id") REFERENCES "Protein" (id)
+);CREATE INDEX "ix_Protein_pdb_entries_Protein_id" ON "Protein_pdb_entries" ("Protein_id");CREATE INDEX "ix_Protein_pdb_entries_pdb_entries" ON "Protein_pdb_entries" (pdb_entries);
 CREATE TABLE "SamplePreparation_purification_steps" (
 	"SamplePreparation_id" TEXT,
 	purification_steps VARCHAR(23),
@@ -2831,19 +2925,19 @@ CREATE TABLE "FTIRImage_molecular_signatures" (
 	molecular_signatures TEXT,
 	PRIMARY KEY ("FTIRImage_id", molecular_signatures),
 	FOREIGN KEY("FTIRImage_id") REFERENCES "FTIRImage" (id)
-);CREATE INDEX "ix_FTIRImage_molecular_signatures_FTIRImage_id" ON "FTIRImage_molecular_signatures" ("FTIRImage_id");CREATE INDEX "ix_FTIRImage_molecular_signatures_molecular_signatures" ON "FTIRImage_molecular_signatures" (molecular_signatures);
+);CREATE INDEX "ix_FTIRImage_molecular_signatures_molecular_signatures" ON "FTIRImage_molecular_signatures" (molecular_signatures);CREATE INDEX "ix_FTIRImage_molecular_signatures_FTIRImage_id" ON "FTIRImage_molecular_signatures" ("FTIRImage_id");
 CREATE TABLE "OpticalImage_color_channels" (
 	"OpticalImage_id" TEXT,
 	color_channels TEXT,
 	PRIMARY KEY ("OpticalImage_id", color_channels),
 	FOREIGN KEY("OpticalImage_id") REFERENCES "OpticalImage" (id)
-);CREATE INDEX "ix_OpticalImage_color_channels_color_channels" ON "OpticalImage_color_channels" (color_channels);CREATE INDEX "ix_OpticalImage_color_channels_OpticalImage_id" ON "OpticalImage_color_channels" ("OpticalImage_id");
+);CREATE INDEX "ix_OpticalImage_color_channels_OpticalImage_id" ON "OpticalImage_color_channels" ("OpticalImage_id");CREATE INDEX "ix_OpticalImage_color_channels_color_channels" ON "OpticalImage_color_channels" (color_channels);
 CREATE TABLE "XRFImage_elements_measured" (
 	"XRFImage_id" TEXT,
 	elements_measured TEXT,
 	PRIMARY KEY ("XRFImage_id", elements_measured),
 	FOREIGN KEY("XRFImage_id") REFERENCES "XRFImage" (id)
-);CREATE INDEX "ix_XRFImage_elements_measured_elements_measured" ON "XRFImage_elements_measured" (elements_measured);CREATE INDEX "ix_XRFImage_elements_measured_XRFImage_id" ON "XRFImage_elements_measured" ("XRFImage_id");
+);CREATE INDEX "ix_XRFImage_elements_measured_XRFImage_id" ON "XRFImage_elements_measured" ("XRFImage_id");CREATE INDEX "ix_XRFImage_elements_measured_elements_measured" ON "XRFImage_elements_measured" (elements_measured);
 CREATE TABLE "BufferComposition_components" (
 	"BufferComposition_id" INTEGER,
 	components TEXT,
@@ -3037,6 +3131,24 @@ CREATE TABLE "StudyWorkflowAssociation" (
 	FOREIGN KEY(workflow_id) REFERENCES "WorkflowRun" (id),
 	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id)
 );CREATE INDEX "ix_StudyWorkflowAssociation_id" ON "StudyWorkflowAssociation" (id);
+CREATE TABLE "SampleProteinAssociation" (
+	id INTEGER NOT NULL,
+	sample_id TEXT NOT NULL,
+	protein_id TEXT NOT NULL,
+	role VARCHAR(15),
+	construct_id TEXT,
+	copy_number INTEGER,
+	residue_range TEXT,
+	sequence_coverage FLOAT,
+	"Dataset_id" TEXT,
+	observed_molecular_weight_id INTEGER,
+	PRIMARY KEY (id),
+	FOREIGN KEY(sample_id) REFERENCES "Sample" (id),
+	FOREIGN KEY(protein_id) REFERENCES "Protein" (id),
+	FOREIGN KEY(construct_id) REFERENCES "ProteinConstruct" (id),
+	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id),
+	FOREIGN KEY(observed_molecular_weight_id) REFERENCES "QuantityValue" (id)
+);CREATE INDEX "ix_SampleProteinAssociation_id" ON "SampleProteinAssociation" (id);
 CREATE TABLE "WorkflowInputAssociation" (
 	id INTEGER NOT NULL,
 	workflow_id TEXT NOT NULL,
@@ -3089,9 +3201,11 @@ CREATE TABLE "FunctionalSite" (
 	title TEXT,
 	description TEXT,
 	"Sample_id" TEXT,
+	"Protein_id" TEXT,
 	"AggregatedProteinView_id" TEXT,
 	PRIMARY KEY (id),
 	FOREIGN KEY("Sample_id") REFERENCES "Sample" (id),
+	FOREIGN KEY("Protein_id") REFERENCES "Protein" (id),
 	FOREIGN KEY("AggregatedProteinView_id") REFERENCES "AggregatedProteinView" (id)
 );CREATE INDEX "ix_FunctionalSite_id" ON "FunctionalSite" (id);
 CREATE TABLE "StructuralFeature" (
@@ -3117,9 +3231,11 @@ CREATE TABLE "StructuralFeature" (
 	title TEXT,
 	description TEXT,
 	"Sample_id" TEXT,
+	"Protein_id" TEXT,
 	"AggregatedProteinView_id" TEXT,
 	PRIMARY KEY (id),
 	FOREIGN KEY("Sample_id") REFERENCES "Sample" (id),
+	FOREIGN KEY("Protein_id") REFERENCES "Protein" (id),
 	FOREIGN KEY("AggregatedProteinView_id") REFERENCES "AggregatedProteinView" (id)
 );CREATE INDEX "ix_StructuralFeature_id" ON "StructuralFeature" (id);
 CREATE TABLE "ProteinProteinInteraction" (
@@ -3143,9 +3259,11 @@ CREATE TABLE "ProteinProteinInteraction" (
 	title TEXT,
 	description TEXT,
 	"Sample_id" TEXT,
+	"Protein_id" TEXT,
 	"AggregatedProteinView_id" TEXT,
 	PRIMARY KEY (id),
 	FOREIGN KEY("Sample_id") REFERENCES "Sample" (id),
+	FOREIGN KEY("Protein_id") REFERENCES "Protein" (id),
 	FOREIGN KEY("AggregatedProteinView_id") REFERENCES "AggregatedProteinView" (id)
 );CREATE INDEX "ix_ProteinProteinInteraction_id" ON "ProteinProteinInteraction" (id);
 CREATE TABLE "MutationEffect" (
@@ -3172,9 +3290,11 @@ CREATE TABLE "MutationEffect" (
 	title TEXT,
 	description TEXT,
 	"Sample_id" TEXT,
+	"Protein_id" TEXT,
 	"AggregatedProteinView_id" TEXT,
 	PRIMARY KEY (id),
 	FOREIGN KEY("Sample_id") REFERENCES "Sample" (id),
+	FOREIGN KEY("Protein_id") REFERENCES "Protein" (id),
 	FOREIGN KEY("AggregatedProteinView_id") REFERENCES "AggregatedProteinView" (id)
 );CREATE INDEX "ix_MutationEffect_id" ON "MutationEffect" (id);
 CREATE TABLE "BiophysicalProperty" (
@@ -3186,9 +3306,11 @@ CREATE TABLE "BiophysicalProperty" (
 	experimental_method VARCHAR(33),
 	description TEXT,
 	"Sample_id" TEXT,
+	"Protein_id" TEXT,
 	"AggregatedProteinView_id" TEXT,
 	PRIMARY KEY (id),
 	FOREIGN KEY("Sample_id") REFERENCES "Sample" (id),
+	FOREIGN KEY("Protein_id") REFERENCES "Protein" (id),
 	FOREIGN KEY("AggregatedProteinView_id") REFERENCES "AggregatedProteinView" (id)
 );CREATE INDEX "ix_BiophysicalProperty_id" ON "BiophysicalProperty" (id);
 CREATE TABLE "PostTranslationalModification" (
@@ -3213,9 +3335,11 @@ CREATE TABLE "PostTranslationalModification" (
 	title TEXT,
 	description TEXT,
 	"Sample_id" TEXT,
+	"Protein_id" TEXT,
 	"AggregatedProteinView_id" TEXT,
 	PRIMARY KEY (id),
 	FOREIGN KEY("Sample_id") REFERENCES "Sample" (id),
+	FOREIGN KEY("Protein_id") REFERENCES "Protein" (id),
 	FOREIGN KEY("AggregatedProteinView_id") REFERENCES "AggregatedProteinView" (id)
 );CREATE INDEX "ix_PostTranslationalModification_id" ON "PostTranslationalModification" (id);
 CREATE TABLE "DatabaseCrossReference" (
@@ -3226,9 +3350,11 @@ CREATE TABLE "DatabaseCrossReference" (
 	last_updated TEXT,
 	description TEXT,
 	"Sample_id" TEXT,
+	"Protein_id" TEXT,
 	"AggregatedProteinView_id" TEXT,
 	PRIMARY KEY (id),
 	FOREIGN KEY("Sample_id") REFERENCES "Sample" (id),
+	FOREIGN KEY("Protein_id") REFERENCES "Protein" (id),
 	FOREIGN KEY("AggregatedProteinView_id") REFERENCES "AggregatedProteinView" (id)
 );CREATE INDEX "ix_DatabaseCrossReference_id" ON "DatabaseCrossReference" (id);
 CREATE TABLE "WorkflowRun_output_files" (
@@ -3237,7 +3363,7 @@ CREATE TABLE "WorkflowRun_output_files" (
 	PRIMARY KEY ("WorkflowRun_id", output_files_id),
 	FOREIGN KEY("WorkflowRun_id") REFERENCES "WorkflowRun" (id),
 	FOREIGN KEY(output_files_id) REFERENCES "DataFile" (id)
-);CREATE INDEX "ix_WorkflowRun_output_files_WorkflowRun_id" ON "WorkflowRun_output_files" ("WorkflowRun_id");CREATE INDEX "ix_WorkflowRun_output_files_output_files_id" ON "WorkflowRun_output_files" (output_files_id);
+);CREATE INDEX "ix_WorkflowRun_output_files_output_files_id" ON "WorkflowRun_output_files" (output_files_id);CREATE INDEX "ix_WorkflowRun_output_files_WorkflowRun_id" ON "WorkflowRun_output_files" ("WorkflowRun_id");
 CREATE TABLE "StudyExperimentAssociation" (
 	id INTEGER NOT NULL,
 	study_id TEXT NOT NULL,
@@ -3308,10 +3434,12 @@ CREATE TABLE "LigandInteraction" (
 	interaction_distance FLOAT,
 	description TEXT,
 	"Sample_id" TEXT,
+	"Protein_id" TEXT,
 	"FunctionalSite_id" TEXT,
 	"AggregatedProteinView_id" TEXT,
 	PRIMARY KEY (id),
 	FOREIGN KEY("Sample_id") REFERENCES "Sample" (id),
+	FOREIGN KEY("Protein_id") REFERENCES "Protein" (id),
 	FOREIGN KEY("FunctionalSite_id") REFERENCES "FunctionalSite" (id),
 	FOREIGN KEY("AggregatedProteinView_id") REFERENCES "AggregatedProteinView" (id)
 );CREATE INDEX "ix_LigandInteraction_id" ON "LigandInteraction" (id);
@@ -3331,6 +3459,18 @@ CREATE TABLE "MeasurementConditions" (
 	FOREIGN KEY(ionic_strength_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(temperature_id) REFERENCES "QuantityValue" (id)
 );CREATE INDEX "ix_MeasurementConditions_id" ON "MeasurementConditions" (id);
+CREATE TABLE "SampleProteinAssociation_chain_ids" (
+	"SampleProteinAssociation_id" INTEGER,
+	chain_ids TEXT,
+	PRIMARY KEY ("SampleProteinAssociation_id", chain_ids),
+	FOREIGN KEY("SampleProteinAssociation_id") REFERENCES "SampleProteinAssociation" (id)
+);CREATE INDEX "ix_SampleProteinAssociation_chain_ids_SampleProteinAssociation_id" ON "SampleProteinAssociation_chain_ids" ("SampleProteinAssociation_id");CREATE INDEX "ix_SampleProteinAssociation_chain_ids_chain_ids" ON "SampleProteinAssociation_chain_ids" (chain_ids);
+CREATE TABLE "SampleProteinAssociation_modifications" (
+	"SampleProteinAssociation_id" INTEGER,
+	modifications TEXT,
+	PRIMARY KEY ("SampleProteinAssociation_id", modifications),
+	FOREIGN KEY("SampleProteinAssociation_id") REFERENCES "SampleProteinAssociation" (id)
+);CREATE INDEX "ix_SampleProteinAssociation_modifications_SampleProteinAssociation_id" ON "SampleProteinAssociation_modifications" ("SampleProteinAssociation_id");CREATE INDEX "ix_SampleProteinAssociation_modifications_modifications" ON "SampleProteinAssociation_modifications" (modifications);
 CREATE TABLE "FunctionalSite_residues" (
 	"FunctionalSite_id" TEXT,
 	residues TEXT,
@@ -3366,19 +3506,19 @@ CREATE TABLE "ProteinProteinInteraction_partner_interface_residues" (
 	partner_interface_residues TEXT,
 	PRIMARY KEY ("ProteinProteinInteraction_id", partner_interface_residues),
 	FOREIGN KEY("ProteinProteinInteraction_id") REFERENCES "ProteinProteinInteraction" (id)
-);CREATE INDEX "ix_ProteinProteinInteraction_partner_interface_residues_partner_interface_residues" ON "ProteinProteinInteraction_partner_interface_residues" (partner_interface_residues);CREATE INDEX "ix_ProteinProteinInteraction_partner_interface_residues_ProteinProteinInteraction_id" ON "ProteinProteinInteraction_partner_interface_residues" ("ProteinProteinInteraction_id");
+);CREATE INDEX "ix_ProteinProteinInteraction_partner_interface_residues_ProteinProteinInteraction_id" ON "ProteinProteinInteraction_partner_interface_residues" ("ProteinProteinInteraction_id");CREATE INDEX "ix_ProteinProteinInteraction_partner_interface_residues_partner_interface_residues" ON "ProteinProteinInteraction_partner_interface_residues" (partner_interface_residues);
 CREATE TABLE "ProteinProteinInteraction_interaction_evidence" (
 	"ProteinProteinInteraction_id" TEXT,
 	interaction_evidence VARCHAR(14),
 	PRIMARY KEY ("ProteinProteinInteraction_id", interaction_evidence),
 	FOREIGN KEY("ProteinProteinInteraction_id") REFERENCES "ProteinProteinInteraction" (id)
-);CREATE INDEX "ix_ProteinProteinInteraction_interaction_evidence_interaction_evidence" ON "ProteinProteinInteraction_interaction_evidence" (interaction_evidence);CREATE INDEX "ix_ProteinProteinInteraction_interaction_evidence_ProteinProteinInteraction_id" ON "ProteinProteinInteraction_interaction_evidence" ("ProteinProteinInteraction_id");
+);CREATE INDEX "ix_ProteinProteinInteraction_interaction_evidence_ProteinProteinInteraction_id" ON "ProteinProteinInteraction_interaction_evidence" ("ProteinProteinInteraction_id");CREATE INDEX "ix_ProteinProteinInteraction_interaction_evidence_interaction_evidence" ON "ProteinProteinInteraction_interaction_evidence" (interaction_evidence);
 CREATE TABLE "ProteinProteinInteraction_publication_ids" (
 	"ProteinProteinInteraction_id" TEXT,
 	publication_ids TEXT,
 	PRIMARY KEY ("ProteinProteinInteraction_id", publication_ids),
 	FOREIGN KEY("ProteinProteinInteraction_id") REFERENCES "ProteinProteinInteraction" (id)
-);CREATE INDEX "ix_ProteinProteinInteraction_publication_ids_ProteinProteinInteraction_id" ON "ProteinProteinInteraction_publication_ids" ("ProteinProteinInteraction_id");CREATE INDEX "ix_ProteinProteinInteraction_publication_ids_publication_ids" ON "ProteinProteinInteraction_publication_ids" (publication_ids);
+);CREATE INDEX "ix_ProteinProteinInteraction_publication_ids_publication_ids" ON "ProteinProteinInteraction_publication_ids" (publication_ids);CREATE INDEX "ix_ProteinProteinInteraction_publication_ids_ProteinProteinInteraction_id" ON "ProteinProteinInteraction_publication_ids" ("ProteinProteinInteraction_id");
 CREATE TABLE "MutationEffect_publication_ids" (
 	"MutationEffect_id" TEXT,
 	publication_ids TEXT,

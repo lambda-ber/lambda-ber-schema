@@ -3,11 +3,6 @@
 # Slot: construct_id 
 
 
-_Unique identifier for this construct_
-
-
-
-
 
 URI: [lambda:construct_id](http://w3id.org/lambda/construct_id)
 Alias: construct_id
@@ -22,6 +17,7 @@ Alias: construct_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [SampleProteinAssociation](SampleProteinAssociation.md) | M:N link between Sample and Protein |  no  |
 | [ProteinConstruct](ProteinConstruct.md) | Detailed information about a protein construct including cloning and sequence... |  no  |
 
 
@@ -33,8 +29,6 @@ Alias: construct_id
 
 * Range: [String](String.md)
 
-* Required: True
-
 
 
 
@@ -42,13 +36,6 @@ Alias: construct_id
 
 
 
-
-
-
-### Schema Source
-
-
-* from schema: http://w3id.org/lambda/
 
 
 
@@ -68,15 +55,11 @@ Alias: construct_id
 <details>
 ```yaml
 name: construct_id
-description: Unique identifier for this construct
-from_schema: http://w3id.org/lambda/
-rank: 1000
 alias: construct_id
-owner: ProteinConstruct
 domain_of:
 - ProteinConstruct
+- SampleProteinAssociation
 range: string
-required: true
 
 ```
 </details>

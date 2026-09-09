@@ -115,6 +115,7 @@ URI: [lambda:LigandInteraction](http://w3id.org/lambda/LigandInteraction)
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
 | [Sample](Sample.md) | [ligand_interactions](ligand_interactions.md) | range | [LigandInteraction](LigandInteraction.md) |
+| [Protein](Protein.md) | [ligand_interactions](ligand_interactions.md) | range | [LigandInteraction](LigandInteraction.md) |
 | [FunctionalSite](FunctionalSite.md) | [ligand_interactions](ligand_interactions.md) | range | [LigandInteraction](LigandInteraction.md) |
 | [AggregatedProteinView](AggregatedProteinView.md) | [ligand_interactions](ligand_interactions.md) | range | [LigandInteraction](LigandInteraction.md) |
 

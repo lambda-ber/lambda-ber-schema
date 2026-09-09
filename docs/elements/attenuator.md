@@ -17,8 +17,8 @@ Alias: attenuator
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [SANSConfiguration](SANSConfiguration.md) | Experimental configuration for a SANS instrument |  no  |
 | [DataCollectionStrategy](DataCollectionStrategy.md) | Strategy for data collection |  no  |
+| [SANSConfiguration](SANSConfiguration.md) | Experimental configuration for a SANS instrument |  no  |
 
 
 

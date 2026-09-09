@@ -827,6 +827,7 @@ URI: [lambda:ExperimentRun](http://w3id.org/lambda/ExperimentRun)
 | [ExperimentSampleAssociation](ExperimentSampleAssociation.md) | [experiment_id](experiment_id.md) | range | [ExperimentRun](ExperimentRun.md) |
 | [ExperimentInstrumentAssociation](ExperimentInstrumentAssociation.md) | [experiment_id](experiment_id.md) | range | [ExperimentRun](ExperimentRun.md) |
 | [WorkflowExperimentAssociation](WorkflowExperimentAssociation.md) | [experiment_id](experiment_id.md) | range | [ExperimentRun](ExperimentRun.md) |
+| [ExperimentPersonAssociation](ExperimentPersonAssociation.md) | [experiment_id](experiment_id.md) | range | [ExperimentRun](ExperimentRun.md) |
 
 
 
@@ -900,6 +901,10 @@ attributes:
     name: operator_id
     description: Identifier or name of the person who performed the experiment data
       collection (e.g., 'jsmith', 'John Smith', or personnel ID)
+    comments:
+    - Free text, and retained for sources that publish only a bare operator string.
+      Where the person can be resolved, prefer a Person record linked by ExperimentPersonAssociation
+      with role 'operator' - that is what carries an ORCID and survives a name change.
     from_schema: http://w3id.org/lambda/
     domain_of:
     - SamplePreparation
@@ -1771,6 +1776,10 @@ attributes:
     name: operator_id
     description: Identifier or name of the person who performed the experiment data
       collection (e.g., 'jsmith', 'John Smith', or personnel ID)
+    comments:
+    - Free text, and retained for sources that publish only a bare operator string.
+      Where the person can be resolved, prefer a Person record linked by ExperimentPersonAssociation
+      with role 'operator' - that is what carries an ORCID and survives a name change.
     from_schema: http://w3id.org/lambda/
     alias: operator_id
     owner: ExperimentRun

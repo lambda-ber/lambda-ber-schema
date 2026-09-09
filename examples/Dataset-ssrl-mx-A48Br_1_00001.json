@@ -23,6 +23,19 @@
       "beamline_id": "BL9-2"
     }
   ],
+  "proteins": [
+    {
+      "id": "uniprot:A0A8D5AJ83",
+      "title": "PWe1",
+      "uniprot_id": "uniprot:A0A8D5AJ83",
+      "protein_name": "PWe1",
+      "organism": "NCBITaxon:1295382",
+      "organism_name": "Methylogaea oryzae",
+      "pdb_entries": [
+        "pdb:9MS6"
+      ]
+    }
+  ],
   "samples": [
     {
       "id": "ssrl-mx:BL9-2/A48Br_1_00001/sample",
@@ -171,6 +184,13 @@
     {
       "experiment_id": "ssrl-mx:experiment/7ed002c6-ecb2-4188-abc7-e722e156a7a1",
       "instrument_id": "ssrl-mx:instrument/BL9-2"
+    }
+  ],
+  "sample_protein_associations": [
+    {
+      "sample_id": "ssrl-mx:BL9-2/A48Br_1_00001/sample",
+      "protein_id": "uniprot:A0A8D5AJ83",
+      "role": "target"
     }
   ],
   "workflow_experiment_associations": [

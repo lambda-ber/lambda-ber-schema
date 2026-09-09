@@ -3,7 +3,7 @@
 # Class: Sample 
 
 
-_A biological sample used in structural biology experiments_
+_A physical biological sample used in structural biology experiments. Records what is true of this preparation - buffer, concentration, storage, purity, the construct and tags used. The identity of the protein(s) it contains belongs on Protein, linked through SampleProteinAssociation, so a protein studied in ten preparations is described once._
 
 
 
@@ -320,7 +320,7 @@ URI: [lambda:Sample](http://w3id.org/lambda/Sample)
 | [evolutionary_conservation](evolutionary_conservation.md) | 0..1 <br/> [EvolutionaryConservation](EvolutionaryConservation.md) | Evolutionary conservation data | direct |
 | [conformational_ensemble](conformational_ensemble.md) | 0..1 <br/> [ConformationalEnsemble](ConformationalEnsemble.md) | Conformational states and dynamics | direct |
 | [database_cross_references](database_cross_references.md) | * <br/> [DatabaseCrossReference](DatabaseCrossReference.md) | Cross-references to external databases | direct |
-| [protein_name](protein_name.md) | 0..1 <br/> [String](String.md) | Name of the protein | direct |
+| [protein_name](protein_name.md) | 0..1 <br/> [String](String.md) | Name of the protein as the facility or depositor recorded it | direct |
 | [construct](construct.md) | 0..1 <br/> [String](String.md) | Construct description (e | direct |
 | [tag](tag.md) | 0..1 <br/> [String](String.md) | Affinity tag (e | direct |
 | [mutations](mutations.md) | 0..1 <br/> [String](String.md) | Mutations present in the sample | direct |
@@ -343,12 +343,17 @@ URI: [lambda:Sample](http://w3id.org/lambda/Sample)
 | [Sample](Sample.md) | [parent_sample_id](parent_sample_id.md) | range | [Sample](Sample.md) |
 | [StudySampleAssociation](StudySampleAssociation.md) | [sample_id](sample_id.md) | range | [Sample](Sample.md) |
 | [ExperimentSampleAssociation](ExperimentSampleAssociation.md) | [sample_id](sample_id.md) | range | [Sample](Sample.md) |
+| [SampleProteinAssociation](SampleProteinAssociation.md) | [sample_id](sample_id.md) | range | [Sample](Sample.md) |
 
 
 
 
 
 
+
+## Comments
+
+* protein_name, organism and the functional annotation collections remain here for data that arrives without a resolvable protein identity, and for search convenience. When a Protein record exists, it is the canonical source and these slots should agree with it.
 
 ## Identifier and Mapping Information
 
@@ -387,7 +392,16 @@ URI: [lambda:Sample](http://w3id.org/lambda/Sample)
 <details>
 ```yaml
 name: Sample
-description: A biological sample used in structural biology experiments
+description: A physical biological sample used in structural biology experiments.
+  Records what is true of this preparation - buffer, concentration, storage, purity,
+  the construct and tags used. The identity of the protein(s) it contains belongs
+  on Protein, linked through SampleProteinAssociation, so a protein studied in ten
+  preparations is described once.
+comments:
+- protein_name, organism and the functional annotation collections remain here for
+  data that arrives without a resolvable protein identity, and for search convenience.
+  When a Protein record exists, it is the canonical source and these slots should
+  agree with it.
 from_schema: http://w3id.org/lambda/
 related_mappings:
 - IHMCIF:_ihm_struct_assembly
@@ -479,6 +493,7 @@ attributes:
     rank: 1000
     domain_of:
     - Sample
+    - Protein
     - AggregatedProteinView
     range: OntologyTerm
   anatomy:
@@ -531,6 +546,7 @@ attributes:
     rank: 1000
     domain_of:
     - Sample
+    - Protein
     - AggregatedProteinView
     range: FunctionalSite
     multivalued: true
@@ -543,6 +559,7 @@ attributes:
     rank: 1000
     domain_of:
     - Sample
+    - Protein
     - AggregatedProteinView
     range: StructuralFeature
     multivalued: true
@@ -555,6 +572,7 @@ attributes:
     rank: 1000
     domain_of:
     - Sample
+    - Protein
     - AggregatedProteinView
     range: ProteinProteinInteraction
     multivalued: true
@@ -567,6 +585,7 @@ attributes:
     rank: 1000
     domain_of:
     - Sample
+    - Protein
     - FunctionalSite
     - AggregatedProteinView
     range: LigandInteraction
@@ -580,6 +599,7 @@ attributes:
     rank: 1000
     domain_of:
     - Sample
+    - Protein
     range: MutationEffect
     multivalued: true
     inlined: true
@@ -591,6 +611,7 @@ attributes:
     rank: 1000
     domain_of:
     - Sample
+    - Protein
     range: PostTranslationalModification
     multivalued: true
     inlined: true
@@ -602,6 +623,7 @@ attributes:
     rank: 1000
     domain_of:
     - Sample
+    - Protein
     - AggregatedProteinView
     range: BiophysicalProperty
     multivalued: true
@@ -614,6 +636,7 @@ attributes:
     rank: 1000
     domain_of:
     - Sample
+    - Protein
     - AggregatedProteinView
     range: EvolutionaryConservation
     inlined: true
@@ -624,6 +647,7 @@ attributes:
     rank: 1000
     domain_of:
     - Sample
+    - Protein
     - AggregatedProteinView
     range: ConformationalEnsemble
     inlined: true
@@ -640,13 +664,16 @@ attributes:
     inlined_as_list: true
   protein_name:
     name: protein_name
-    description: Name of the protein
+    description: Name of the protein as the facility or depositor recorded it. A display
+      and search field; the canonical name, sequence and identifiers live on the linked
+      Protein.
     from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:Protein_Name
     rank: 1000
     domain_of:
     - Sample
+    - Protein
     - AggregatedProteinView
     range: string
   construct:
@@ -718,7 +745,16 @@ attributes:
 <details>
 ```yaml
 name: Sample
-description: A biological sample used in structural biology experiments
+description: A physical biological sample used in structural biology experiments.
+  Records what is true of this preparation - buffer, concentration, storage, purity,
+  the construct and tags used. The identity of the protein(s) it contains belongs
+  on Protein, linked through SampleProteinAssociation, so a protein studied in ten
+  preparations is described once.
+comments:
+- protein_name, organism and the functional annotation collections remain here for
+  data that arrives without a resolvable protein identity, and for search convenience.
+  When a Protein record exists, it is the canonical source and these slots should
+  agree with it.
 from_schema: http://w3id.org/lambda/
 related_mappings:
 - IHMCIF:_ihm_struct_assembly
@@ -830,6 +866,7 @@ attributes:
     owner: Sample
     domain_of:
     - Sample
+    - Protein
     - AggregatedProteinView
     range: OntologyTerm
   anatomy:
@@ -895,6 +932,7 @@ attributes:
     owner: Sample
     domain_of:
     - Sample
+    - Protein
     - AggregatedProteinView
     range: FunctionalSite
     multivalued: true
@@ -909,6 +947,7 @@ attributes:
     owner: Sample
     domain_of:
     - Sample
+    - Protein
     - AggregatedProteinView
     range: StructuralFeature
     multivalued: true
@@ -923,6 +962,7 @@ attributes:
     owner: Sample
     domain_of:
     - Sample
+    - Protein
     - AggregatedProteinView
     range: ProteinProteinInteraction
     multivalued: true
@@ -937,6 +977,7 @@ attributes:
     owner: Sample
     domain_of:
     - Sample
+    - Protein
     - FunctionalSite
     - AggregatedProteinView
     range: LigandInteraction
@@ -952,6 +993,7 @@ attributes:
     owner: Sample
     domain_of:
     - Sample
+    - Protein
     range: MutationEffect
     multivalued: true
     inlined: true
@@ -965,6 +1007,7 @@ attributes:
     owner: Sample
     domain_of:
     - Sample
+    - Protein
     range: PostTranslationalModification
     multivalued: true
     inlined: true
@@ -978,6 +1021,7 @@ attributes:
     owner: Sample
     domain_of:
     - Sample
+    - Protein
     - AggregatedProteinView
     range: BiophysicalProperty
     multivalued: true
@@ -992,6 +1036,7 @@ attributes:
     owner: Sample
     domain_of:
     - Sample
+    - Protein
     - AggregatedProteinView
     range: EvolutionaryConservation
     inlined: true
@@ -1004,6 +1049,7 @@ attributes:
     owner: Sample
     domain_of:
     - Sample
+    - Protein
     - AggregatedProteinView
     range: ConformationalEnsemble
     inlined: true
@@ -1022,7 +1068,9 @@ attributes:
     inlined_as_list: true
   protein_name:
     name: protein_name
-    description: Name of the protein
+    description: Name of the protein as the facility or depositor recorded it. A display
+      and search field; the canonical name, sequence and identifiers live on the linked
+      Protein.
     from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:Protein_Name
@@ -1031,6 +1079,7 @@ attributes:
     owner: Sample
     domain_of:
     - Sample
+    - Protein
     - AggregatedProteinView
     range: string
   construct:

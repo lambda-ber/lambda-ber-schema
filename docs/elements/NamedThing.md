@@ -25,8 +25,14 @@ URI: [lambda:NamedThing](http://w3id.org/lambda/NamedThing)
         click Dataset href "../Dataset/"
       NamedThing <|-- Study
         click Study href "../Study/"
+      NamedThing <|-- Person
+        click Person href "../Person/"
+      NamedThing <|-- Organization
+        click Organization href "../Organization/"
       NamedThing <|-- Sample
         click Sample href "../Sample/"
+      NamedThing <|-- Protein
+        click Protein href "../Protein/"
       NamedThing <|-- ProteinConstruct
         click ProteinConstruct href "../ProteinConstruct/"
       NamedThing <|-- SamplePreparation
@@ -69,7 +75,10 @@ URI: [lambda:NamedThing](http://w3id.org/lambda/NamedThing)
 * **NamedThing**
     * [Dataset](Dataset.md)
     * [Study](Study.md)
+    * [Person](Person.md)
+    * [Organization](Organization.md)
     * [Sample](Sample.md)
+    * [Protein](Protein.md)
     * [ProteinConstruct](ProteinConstruct.md)
     * [SamplePreparation](SamplePreparation.md)
     * [Instrument](Instrument.md)

@@ -17,8 +17,8 @@ Alias: label
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Attribute](Attribute.md) | A domain, measurement, attribute, property, or any descriptor for additional ... |  no  |
 | [OntologyTerm](OntologyTerm.md) | A term from a controlled vocabulary or ontology |  no  |
+| [Attribute](Attribute.md) | A domain, measurement, attribute, property, or any descriptor for additional ... |  no  |
 
 
 

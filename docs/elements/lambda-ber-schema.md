@@ -19,9 +19,19 @@ A dataset might represent all data from a specific grant, collaboration, or publ
 All entities are stored in flat collections at the Dataset level:
 
 **Biological Materials**
-- [Samples](Sample.md): The biological specimens being studied (proteins, nucleic acids, complexes,
-  cells, tissues). Each sample includes detailed molecular composition, buffer conditions, and
-  storage information. For example, a purified protein with its sequence, concentration, and buffer pH.
+- [Proteins](Protein.md): The protein as a biological entity - sequence, source organism, gene,
+  and the functional and structural annotations that hold for it in every preparation. Identified
+  by UniProt accession as a CURIE (`uniprot:P69905`) wherever one exists. One record serves every
+  sample that contains the protein; what varies between preparations lives on the sample and on
+  the sample-protein association.
+
+- [Samples](Sample.md): The physical specimens being studied (proteins, nucleic acids, complexes,
+  cells, tissues). Each sample records the preparation-specific facts - buffer conditions,
+  concentration, storage, purity - and links to the proteins it contains through
+  [SampleProteinAssociation](SampleProteinAssociation.md).
+
+- [Protein Constructs](ProteinConstruct.md): How a protein was cloned and expressed - vector,
+  tags, cleavage sites, codon optimization. A construct realizes one protein and may feed many samples.
 
 - [Sample Preparations](SamplePreparation.md): How samples were prepared for specific techniques.
   This includes cryo-EM grid preparation (vitrification parameters), crystallization conditions for
@@ -60,6 +70,17 @@ All entities are stored in flat collections at the Dataset level:
   biological questions. For example, a study might investigate "Heat stress response in Arabidopsis"
   or "Structure of the human ribosome under different conditions."
 
+**People and organizations**
+- [Persons](Person.md): People involved in producing, processing or publishing the data - principal
+  investigators, beamline operators, analysts, curators. Identified by ORCID where available. Which
+  work a person is attached to, and in what capacity, is carried by the person association tables,
+  so one record serves every role a person holds across the dataset.
+
+- [Organizations](Organization.md): Institutions, facilities and funding bodies, identified by ROR.
+  The structured home for organizational identity that would otherwise live as free text on
+  instruments, on people, and in FacilityEnum's annotations - so a parent institution is stated
+  once rather than restated by everything that refers to it.
+
 ### Association Tables
 
 Many-to-many relationships are represented via explicit association tables, which can carry
@@ -69,13 +90,21 @@ relationship metadata (e.g., the role of a sample in an experiment):
 - **StudyExperimentAssociation**: Links experiments to studies
 - **StudyWorkflowAssociation**: Links workflows to studies
 - **ExperimentSampleAssociation**: Links samples to experiments (with role and preparation used)
+- **SampleProteinAssociation**: Links proteins to samples (with role, copy number, residue range,
+  modifications, observed mass, and the construct used)
 - **ExperimentInstrumentAssociation**: Links instruments to experiments (with role: primary, detector)
 - **WorkflowExperimentAssociation**: Links source experiments to workflows
 - **WorkflowInputAssociation**: Links input files to workflows
 - **WorkflowOutputAssociation**: Links output files to workflows
+- **StudyPersonAssociation**: Links people to studies (with role, author position, corresponding flag)
+- **ExperimentPersonAssociation**: Links people to experiment runs (with role: operator, local contact)
+- **WorkflowPersonAssociation**: Links people to workflow runs (with role: analyst, reviewer)
+- **StudyOrganizationAssociation**: Links organizations to studies (with role and award number)
+- **PersonOrganizationAssociation**: Links people to organizations (with role and affiliation dates)
 
 This relational design enables:
 - **Sample reuse**: The same sample can be used in multiple studies and experiments
+- **Protein reuse**: The same protein is described once and linked from every sample that contains it
 - **Multi-instrument experiments**: An experiment can use multiple instruments with different roles
 - **Integrative workflows**: A workflow can combine data from multiple experiments
 

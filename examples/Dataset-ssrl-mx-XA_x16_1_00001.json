@@ -23,6 +23,19 @@
       "beamline_id": "BL12-1"
     }
   ],
+  "proteins": [
+    {
+      "id": "uniprot:A0AA46ST83",
+      "title": "Xa_EXLX1",
+      "uniprot_id": "uniprot:A0AA46ST83",
+      "protein_name": "Xa_EXLX1",
+      "organism": "NCBITaxon:56458",
+      "organism_name": "Xanthomonas sacchari",
+      "pdb_entries": [
+        "pdb:9MS4"
+      ]
+    }
+  ],
   "samples": [
     {
       "id": "ssrl-mx:BL12-1/XA_x16_1_00001/sample",
@@ -171,6 +184,13 @@
     {
       "experiment_id": "ssrl-mx:experiment/4d7d9700-94b2-44be-a540-494bbb6658a6",
       "instrument_id": "ssrl-mx:instrument/BL12-1"
+    }
+  ],
+  "sample_protein_associations": [
+    {
+      "sample_id": "ssrl-mx:BL12-1/XA_x16_1_00001/sample",
+      "protein_id": "uniprot:A0AA46ST83",
+      "role": "target"
     }
   ],
   "workflow_experiment_associations": [

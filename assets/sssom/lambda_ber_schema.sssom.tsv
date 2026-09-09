@@ -2,7 +2,7 @@
 #mapping_set_id: http://w3id.org/lambda/
 #mapping_tool: https://w3id.org/linkml/
 #creator_id: linkml_user
-#mapping_date: 2026-08-07
+#mapping_date: 2026-09-09
 #curie_map: 
 # lambda: http://w3id.org/lambda/
 # lambdaber: http://w3id.org/lambda/
@@ -14,6 +14,7 @@
 # sio: http://semanticscience.org/resource/
 # nmdc: https://w3id.org/nmdc/
 # NCBITaxon: http://purl.obolibrary.org/obo/NCBITaxon_
+# uniprot: http://purl.uniprot.org/uniprot/
 # UBERON: http://purl.obolibrary.org/obo/UBERON_
 # CL: http://purl.obolibrary.org/obo/CL_
 # GO: http://purl.obolibrary.org/obo/GO_
@@ -219,6 +220,15 @@ lambda:wavelength	experimentRun__wavelength	skos:exactMatch		ispyb:DataCollectio
 lambda:beamline_id	instrument__beamline_id	skos:exactMatch		mmCIF:_diffrn_source.pdbx_synchrotron_beamline		skos:exactMatch	http://w3id.org/lambda/									
 lambda:beamline_id	instrument__beamline_id	skos:exactMatch		nsls2:Beamline		skos:exactMatch	http://w3id.org/lambda/									
 lambda:beamline_id	instrument__beamline_id	skos:exactMatch		ispyb:BLSession.beamLineName		skos:exactMatch	http://w3id.org/lambda/									
+lambda:full_name	person__full_name	skos:closeMatch		lambda:title		skos:closeMatch	http://w3id.org/lambda/									
+lambda:amino_acid_sequence	protein__amino_acid_sequence	skos:exactMatch		mmCIF:_entity_poly.pdbx_seq_one_letter_code_can		skos:exactMatch	http://w3id.org/lambda/									
+lambda:ec_numbers	protein__ec_numbers	skos:exactMatch		mmCIF:_entity.pdbx_ec		skos:exactMatch	http://w3id.org/lambda/									
+lambda:gene_name	protein__gene_name	skos:exactMatch		mmCIF:_entity_src_gen.pdbx_gene_src_gene		skos:exactMatch	http://w3id.org/lambda/									
+lambda:molecular_weight_theoretical	protein__molecular_weight_theoretical	skos:relatedMatch		mmCIF:_entity.formula_weight		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:organism	protein__organism	skos:exactMatch		mmCIF:_entity_src_gen.pdbx_gene_src_ncbi_taxonomy_id		skos:exactMatch	http://w3id.org/lambda/									
+lambda:organism_name	protein__organism_name	skos:exactMatch		mmCIF:_entity_src_gen.pdbx_gene_src_scientific_name		skos:exactMatch	http://w3id.org/lambda/									
+lambda:protein_name	protein__protein_name	skos:relatedMatch		mmCIF:_entity.pdbx_description		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:uniprot_id	protein__uniprot_id	skos:exactMatch		mmCIF:_struct_ref.pdbx_db_accession		skos:exactMatch	http://w3id.org/lambda/									
 lambda:anom_corr	qualityMetrics__anom_corr	skos:exactMatch		mmCIF:_reflns.pdbx_CC_half_anomalous		skos:exactMatch	http://w3id.org/lambda/									
 lambda:average_b_factor_a2	qualityMetrics__average_b_factor_a2	skos:exactMatch		mmCIF:_refine.B_iso_mean		skos:exactMatch	http://w3id.org/lambda/									
 lambda:cc_half	qualityMetrics__cc_half	skos:exactMatch		mmCIF:_reflns.pdbx_CC_half		skos:exactMatch	http://w3id.org/lambda/									
@@ -248,6 +258,9 @@ lambda:molecular_weight	sample__molecular_weight	skos:exactMatch		mmCIF:_entity.
 lambda:mutations	sample__mutations	skos:exactMatch		nsls2:Mutations		skos:exactMatch	http://w3id.org/lambda/									
 lambda:protein_name	sample__protein_name	skos:exactMatch		nsls2:Protein_Name		skos:exactMatch	http://w3id.org/lambda/									
 lambda:tag	sample__tag	skos:exactMatch		nsls2:Tag		skos:exactMatch	http://w3id.org/lambda/									
+lambda:chain_ids	sampleProteinAssociation__chain_ids	skos:exactMatch		mmCIF:_entity_poly.pdbx_strand_id		skos:exactMatch	http://w3id.org/lambda/									
+lambda:copy_number	sampleProteinAssociation__copy_number	skos:exactMatch		mmCIF:_entity.pdbx_number_of_molecules		skos:exactMatch	http://w3id.org/lambda/									
+lambda:residue_range	sampleProteinAssociation__residue_range	skos:relatedMatch		IHMCIF:_ihm_entity_poly_segment		skos:relatedMatch	http://w3id.org/lambda/									
 lambda:anomalous_completeness	workflowRun__anomalous_completeness	skos:exactMatch		ispyb:AutoProcScalingStatistics.anomalousCompleteness		skos:exactMatch	http://w3id.org/lambda/									
 lambda:completeness_percent	workflowRun__completeness_percent	skos:exactMatch		nsls2:Completeness		skos:exactMatch	http://w3id.org/lambda/									
 lambda:completeness_percent	workflowRun__completeness_percent	skos:exactMatch		mmCIF:_reflns.percent_possible_obs		skos:exactMatch	http://w3id.org/lambda/									
@@ -316,6 +329,10 @@ lambda:Image3D	Image3D	skos:relatedMatch		IHMCIF:_ihm_3dem_restraint		skos:relat
 lambda:Image3D	Image3D	skos:relatedMatch		IHMCIF:_ihm_localization_density_files		skos:relatedMatch	http://w3id.org/lambda/									
 lambda:MolecularComposition	MolecularComposition	skos:relatedMatch		IHMCIF:_ihm_entity_poly_segment		skos:relatedMatch	http://w3id.org/lambda/									
 lambda:MolecularComposition	MolecularComposition	skos:relatedMatch		IHMCIF:_ihm_struct_assembly_details		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:Organization	Organization	skos:exactMatch		prov:Organization		skos:exactMatch	http://w3id.org/lambda/									
+lambda:Person	Person	skos:exactMatch		prov:Agent		skos:exactMatch	http://w3id.org/lambda/									
+lambda:Protein	Protein	skos:relatedMatch		mmCIF:_entity		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:Protein	Protein	skos:relatedMatch		mmCIF:_struct_ref		skos:relatedMatch	http://w3id.org/lambda/									
 lambda:QualityMetrics	QualityMetrics	skos:relatedMatch		IHMCIF:_ihm_ensemble_info		skos:relatedMatch	http://w3id.org/lambda/									
 lambda:QualityMetrics	QualityMetrics	skos:relatedMatch		IHMCIF:_ihm_sas_restraint		skos:relatedMatch	http://w3id.org/lambda/									
 lambda:QualityMetrics	QualityMetrics	skos:relatedMatch		IHMCIF:_ihm_3dem_restraint		skos:relatedMatch	http://w3id.org/lambda/									
@@ -326,6 +343,8 @@ lambda:RefinementParameters	RefinementParameters	skos:relatedMatch		IHMCIF:_ihm_
 lambda:Sample	Sample	skos:relatedMatch		IHMCIF:_ihm_struct_assembly		skos:relatedMatch	http://w3id.org/lambda/									
 lambda:Sample	Sample	skos:relatedMatch		IHMCIF:_ihm_struct_assembly_details		skos:relatedMatch	http://w3id.org/lambda/									
 lambda:Sample	Sample	skos:relatedMatch		IHMCIF:_ihm_entity_poly_segment		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:SampleProteinAssociation	SampleProteinAssociation	skos:relatedMatch		IHMCIF:_ihm_struct_assembly_details		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:SampleProteinAssociation	SampleProteinAssociation	skos:relatedMatch		IHMCIF:_ihm_entity_poly_segment		skos:relatedMatch	http://w3id.org/lambda/									
 lambda:SAXSPreparation	SAXSPreparation	skos:relatedMatch		IHMCIF:_ihm_sas_restraint		skos:relatedMatch	http://w3id.org/lambda/									
 lambda:Study	Study	skos:relatedMatch		IHMCIF:_ihm_entry_collection		skos:relatedMatch	http://w3id.org/lambda/									
 lambda:Study	Study	skos:relatedMatch		IHMCIF:_ihm_entry_collection_mapping		skos:relatedMatch	http://w3id.org/lambda/									

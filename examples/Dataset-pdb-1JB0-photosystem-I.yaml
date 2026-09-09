@@ -10,6 +10,103 @@ instruments:
   title: ESRF ID2
   description: 'Detector: MARRESEARCH'
   instrument_code: ESRF-ID2
+proteins:
+- id: uniprot:P0A405
+  title: Photosystem I P700 chlorophyll a apoprotein A1
+  uniprot_id: uniprot:P0A405
+  protein_name: Photosystem I P700 chlorophyll a apoprotein A1
+  organism: NCBITaxon:32046
+  organism_name: Synechococcus elongatus
+  pdb_entries:
+  - pdb:1JB0
+- id: uniprot:P0A407
+  title: Photosystem I P700 chlorophyll a apoprotein A2
+  uniprot_id: uniprot:P0A407
+  protein_name: Photosystem I P700 chlorophyll a apoprotein A2
+  organism: NCBITaxon:32046
+  organism_name: Synechococcus elongatus
+  pdb_entries:
+  - pdb:1JB0
+- id: uniprot:P0A415
+  title: Photosystem I iron-sulfur center
+  uniprot_id: uniprot:P0A415
+  protein_name: Photosystem I iron-sulfur center
+  organism: NCBITaxon:32046
+  organism_name: Synechococcus elongatus
+  pdb_entries:
+  - pdb:1JB0
+- id: uniprot:P0A420
+  title: Photosystem I reaction center subunit II
+  uniprot_id: uniprot:P0A420
+  protein_name: Photosystem I reaction center subunit II
+  organism: NCBITaxon:32046
+  organism_name: Synechococcus elongatus
+  pdb_entries:
+  - pdb:1JB0
+- id: uniprot:P0A423
+  title: Photosystem I reaction center subunit IV
+  uniprot_id: uniprot:P0A423
+  protein_name: Photosystem I reaction center subunit IV
+  organism: NCBITaxon:32046
+  organism_name: Synechococcus elongatus
+  pdb_entries:
+  - pdb:1JB0
+- id: uniprot:P0A401
+  title: Photosystem I reaction center subunit III
+  uniprot_id: uniprot:P0A401
+  protein_name: Photosystem I reaction center subunit III
+  organism: NCBITaxon:32046
+  organism_name: Synechococcus elongatus
+  pdb_entries:
+  - pdb:1JB0
+- id: uniprot:P0A427
+  title: Photosystem I reaction center subunit VIII
+  uniprot_id: uniprot:P0A427
+  protein_name: Photosystem I reaction center subunit VIII
+  organism: NCBITaxon:32046
+  organism_name: Synechococcus elongatus
+  pdb_entries:
+  - pdb:1JB0
+- id: uniprot:P0A429
+  title: Photosystem I reaction center subunit IX
+  uniprot_id: uniprot:P0A429
+  protein_name: Photosystem I reaction center subunit IX
+  organism: NCBITaxon:32046
+  organism_name: Synechococcus elongatus
+  pdb_entries:
+  - pdb:1JB0
+- id: uniprot:P0A425
+  title: Photosystem I reaction center subunit PsaK
+  uniprot_id: uniprot:P0A425
+  protein_name: Photosystem I reaction center subunit PsaK
+  organism: NCBITaxon:32046
+  organism_name: Synechococcus elongatus
+  pdb_entries:
+  - pdb:1JB0
+- id: uniprot:Q8DGB4
+  title: Photosystem I reaction center subunit XI
+  uniprot_id: uniprot:Q8DGB4
+  protein_name: Photosystem I reaction center subunit XI
+  organism: NCBITaxon:32046
+  organism_name: Synechococcus elongatus
+  pdb_entries:
+  - pdb:1JB0
+- id: uniprot:P0A403
+  title: Photosystem I reaction center subunit XII
+  uniprot_id: uniprot:P0A403
+  protein_name: Photosystem I reaction center subunit XII
+  organism: NCBITaxon:32046
+  organism_name: Synechococcus elongatus
+  pdb_entries:
+  - pdb:1JB0
+- id: uniprot:Q8DKP6
+  title: Photosystem I 4.8K protein
+  uniprot_id: uniprot:Q8DKP6
+  protein_name: Photosystem I 4.8K protein
+  organism: NCBITaxon:32046
+  organism_name: Synechococcus elongatus
+  pdb_entries:
+  - pdb:1JB0
 samples:
 - id: pdb:1JB0/sample/1
   title: PHOTOSYSTEM I P700 CHLOROPHYLL A APOPROTEIN A1
@@ -293,6 +390,91 @@ experiment_sample_associations:
 experiment_instrument_associations:
 - experiment_id: pdb:1JB0/experiment
   instrument_id: pdb:instrument/ESRF-ID2
+sample_protein_associations:
+- sample_id: pdb:1JB0/sample/1
+  protein_id: uniprot:P0A405
+  role: subunit
+  copy_number: 1
+  sequence_coverage: 1.0
+  chain_ids:
+  - A
+- sample_id: pdb:1JB0/sample/2
+  protein_id: uniprot:P0A407
+  role: subunit
+  copy_number: 1
+  sequence_coverage: 0.9987
+  chain_ids:
+  - B
+- sample_id: pdb:1JB0/sample/3
+  protein_id: uniprot:P0A415
+  role: subunit
+  copy_number: 1
+  sequence_coverage: 0.9877
+  chain_ids:
+  - C
+- sample_id: pdb:1JB0/sample/4
+  protein_id: uniprot:P0A420
+  role: subunit
+  copy_number: 1
+  sequence_coverage: 0.9928
+  chain_ids:
+  - D
+- sample_id: pdb:1JB0/sample/5
+  protein_id: uniprot:P0A423
+  role: subunit
+  copy_number: 1
+  sequence_coverage: 0.9868
+  chain_ids:
+  - E
+- sample_id: pdb:1JB0/sample/6
+  protein_id: uniprot:P0A401
+  role: subunit
+  copy_number: 1
+  sequence_coverage: 1.0
+  chain_ids:
+  - F
+- sample_id: pdb:1JB0/sample/7
+  protein_id: uniprot:P0A427
+  role: subunit
+  copy_number: 1
+  sequence_coverage: 1.0
+  chain_ids:
+  - I
+- sample_id: pdb:1JB0/sample/8
+  protein_id: uniprot:P0A429
+  role: subunit
+  copy_number: 1
+  sequence_coverage: 1.0
+  chain_ids:
+  - J
+- sample_id: pdb:1JB0/sample/9
+  protein_id: uniprot:P0A425
+  role: subunit
+  copy_number: 1
+  sequence_coverage: 1.0
+  chain_ids:
+  - K
+- sample_id: pdb:1JB0/sample/10
+  protein_id: uniprot:Q8DGB4
+  role: subunit
+  copy_number: 1
+  sequence_coverage: 0.9935
+  chain_ids:
+  - L
+- sample_id: pdb:1JB0/sample/11
+  protein_id: uniprot:P0A403
+  role: subunit
+  copy_number: 1
+  sequence_coverage: 1.0
+  chain_ids:
+  - M
+- sample_id: pdb:1JB0/sample/12
+  protein_id: uniprot:Q8DKP6
+  role: subunit
+  copy_number: 1
+  sequence_coverage: 0.7949
+  chain_ids:
+  - X
 workflow_experiment_associations:
 - workflow_id: pdb:1JB0/workflow/refinement
   experiment_id: pdb:1JB0/experiment

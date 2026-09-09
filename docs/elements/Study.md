@@ -67,6 +67,8 @@ URI: [lambda:Study](http://w3id.org/lambda/Study)
 | [StudySampleAssociation](StudySampleAssociation.md) | [study_id](study_id.md) | range | [Study](Study.md) |
 | [StudyExperimentAssociation](StudyExperimentAssociation.md) | [study_id](study_id.md) | range | [Study](Study.md) |
 | [StudyWorkflowAssociation](StudyWorkflowAssociation.md) | [study_id](study_id.md) | range | [Study](Study.md) |
+| [StudyPersonAssociation](StudyPersonAssociation.md) | [study_id](study_id.md) | range | [Study](Study.md) |
+| [StudyOrganizationAssociation](StudyOrganizationAssociation.md) | [study_id](study_id.md) | range | [Study](Study.md) |
 
 
 
