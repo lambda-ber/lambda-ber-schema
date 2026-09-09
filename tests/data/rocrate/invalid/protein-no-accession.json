@@ -1,0 +1,112 @@
+{
+  "@context": [
+    "https://w3id.org/ro/crate/1.2/context",
+    {
+      "lambda": "http://w3id.org/lambda/",
+      "lambdarc": "http://w3id.org/lambda/rocrate/",
+      "uniprot": "http://purl.uniprot.org/uniprot/"
+    }
+  ],
+  "@graph": [
+    {
+      "@id": "ro-crate-metadata.json",
+      "@type": "CreativeWork",
+      "conformsTo": [
+        {
+          "@id": "https://w3id.org/ro/crate/1.2"
+        }
+      ],
+      "about": {
+        "@id": "./"
+      }
+    },
+    {
+      "@id": "./",
+      "@type": [
+        "Dataset",
+        "lambda:Dataset"
+      ],
+      "name": "Lysozyme test collection (ALS 8.3.1)",
+      "description": "INVALID: a protein entity with neither a uniprot_id nor a declared absence of one.",
+      "datePublished": "2026-08-12",
+      "license": {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "conformsTo": [
+        {
+          "@id": "https://w3id.org/ro/crate/1.2"
+        },
+        {
+          "@id": "https://w3id.org/lambda/profile/core/0.3.0"
+        }
+      ],
+      "facility_name": "ALS",
+      "technique": "xray_crystallography",
+      "instrumentName": "8.3.1",
+      "sample_code": "LYZ-42",
+      "packageTier": "manifest",
+      "sufficiency": {
+        "s1Findable": false,
+        "s2CoreComplete": true,
+        "s2AcquisitionComplete": false,
+        "s3Interpretable": false
+      },
+      "missing": [
+        {
+          "field": "author",
+          "reason": "not-registered",
+          "blocks": "S1",
+          "note": "PI originates in the proposal system; no Person could be resolved by this build."
+        },
+        {
+          "field": "raw_frame_series",
+          "reason": "not-deposited",
+          "blocks": "S2-acquisition"
+        }
+      ],
+      "hasPart": [
+        {
+          "@id": "reflections/lyz42_scaled.mtz"
+        }
+      ]
+    },
+    {
+      "@id": "reflections/lyz42_scaled.mtz",
+      "@type": "File",
+      "name": "lyz42_scaled.mtz",
+      "description": "Scaled merged reflection data.",
+      "encodingFormat": "application/x-mtz",
+      "contentSize": "2104880",
+      "sha256": "9f2b4d1c0a3e5f6789abcdef0123456789abcdef0123456789abcdef01234567",
+      "file_format": "mtz",
+      "data_type": "processed_data",
+      "processing_level": 2,
+      "isDesignated": true
+    },
+    {
+      "@id": "#sample-lyz42",
+      "@type": [
+        "BioChemEntity",
+        "lambda:Sample"
+      ],
+      "name": "Hen egg-white lysozyme crystal",
+      "sample_code": "LYZ-42",
+      "sample_type": "protein",
+      "protein_name": "Lysozyme C",
+      "hasBioChemEntityPart": [
+        {
+          "@id": "#protein-designed-binder"
+        }
+      ]
+    },
+    {
+      "@id": "#protein-designed-binder",
+      "@type": [
+        "Protein",
+        "lambda:Protein"
+      ],
+      "name": "Designed lysozyme binder",
+      "protein_name": "Designed lysozyme binder"
+    }
+  ]
+}

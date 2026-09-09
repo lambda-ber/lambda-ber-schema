@@ -90,6 +90,9 @@ prefixes:
   rocrate: https://w3id.org/ro/crate/
   ORCID: https://orcid.org/
   ROR: https://ror.org/
+  # Bound here as well as in the main schema so that `uniprot:P69905` in a crate expands to the
+  # same IRI a `Protein.uniprot_id` value does. Crates SHOULD bind it in their own context.
+  uniprot: http://purl.uniprot.org/uniprot/
 
 default_prefix: lambdarc
 default_range: string
@@ -351,7 +354,7 @@ classes:
       - organism
       - sequence
       - seguid
-      - uniprot_id
+      - has_biochem_entity_part
       - expression_system
       - concentration
       - enzyme_class
@@ -359,12 +362,52 @@ classes:
       # deprecated SSRL 0.2 spellings
       - sample_name
       - protein_name_camel
+      - uniprot_id_camel
       - sample_composition
     slot_usage:
       at_id:
         required: true
       sample_code:
         required: true
+    comments:
+      - >-
+        Which protein(s) the specimen contains is said by pointing at `ProteinEntity` records
+        through `hasBioChemEntityPart`. `protein_name` stays on the sample as the facility's own
+        display name and the cheapest search field; the accession lives on the protein entity.
+
+  ProteinEntity:
+    is_a: CrateEntity
+    class_uri: sdo:Protein
+    exact_mappings:
+      - lambda:Protein
+    description: >-
+      A protein as a biological entity - the thing a specimen *contains*, as distinct from the
+      specimen. Typed `["Protein", "lambda:Protein"]`: schema.org's `Protein` is in the RO-Crate
+      1.2 context, so a generic consumer sees a `BioChemEntity` and a LAMBDA-aware reader projects
+      onto the schema's `Protein` class. One entity serves every sample in the crate that contains
+      the protein, and its `@id` SHOULD be the UniProt IRI (`http://purl.uniprot.org/uniprot/P69905`)
+      so that the same protein in two crates is the same node.
+
+      Only the identity layer travels here: accession, name, gene, organism, the structures it is
+      known from. Sequence, annotations and anything per-preparation (copy number, tags, residue
+      range) live in the fuller record this crate points at.
+    slots:
+      - uniprot_id
+      - protein_name
+      - gene_name
+      - organism
+      - pdb_entries
+      - missing
+    slot_usage:
+      at_id:
+        required: true
+      uniprot_id:
+        recommended: true
+    comments:
+      - >-
+        A protein with no UniProt accession - a designed protein, an unannotated metagenomic
+        sequence - is still a protein entity. It MUST then declare `uniprot_id` in `missing`
+        (reason `not-registered`), per the rule that absence is stated, never implied.
 
   InstrumentEntity:
     is_a: CrateEntity
@@ -1434,7 +1477,46 @@ slots:
     slot_uri: lambda:protein_name
     exact_mappings:
       - lambda:protein_name
-    description: Name of the protein studied - one of the highest-value search fields.
+    description: >-
+      Name of the protein - one of the highest-value search fields. On a `ProteinEntity` it is the
+      protein's recommended name; on a `SampleEntity` it is the name the facility recorded.
+
+  uniprot_id:
+    slot_uri: lambda:uniprot_id
+    exact_mappings:
+      - lambda:uniprot_id
+    pattern: "^uniprot:([OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2})(-[0-9]+)?$"
+    description: >-
+      UniProt accession as a Bioregistry CURIE (`uniprot:P69905`), exactly as `Protein.uniprot_id`
+      carries it, so the projection is identity. The bare accession belongs to the deprecated
+      `uniprotId` spelling.
+
+  gene_name:
+    slot_uri: lambda:gene_name
+    exact_mappings:
+      - lambda:gene_name
+    description: Primary gene symbol.
+
+  pdb_entries:
+    slot_uri: lambda:pdb_entries
+    multivalued: true
+    exact_mappings:
+      - lambda:pdb_entries
+    description: PDB entries the protein is known from, as CURIEs (`pdb:1HHO`).
+
+  has_biochem_entity_part:
+    alias: hasBioChemEntityPart
+    slot_uri: sdo:hasBioChemEntityPart
+    range: EntityReference
+    multivalued: true
+    inlined: true
+    close_mappings:
+      - lambda:SampleProteinAssociation
+    description: >-
+      The protein entities a specimen contains. schema.org's own part relation for
+      `BioChemEntity`, and in the RO-Crate 1.2 context. Projects onto one `SampleProteinAssociation`
+      per target; the role, copy number and modifications that association can carry are left to the
+      fuller record, because a manifest says *what* is in the tube and not how much.
 
   organism:
     slot_uri: lambda:organism
@@ -1872,10 +1954,18 @@ slots:
     deprecated: Use the schema-aligned `lambda:protein_name`.
     deprecated_element_has_exact_replacement: lambda:protein_name
 
-  uniprot_id:
+  uniprot_id_camel:
     alias: uniprotId
     slot_uri: lambdarc:uniprotId
-    description: UniProt accession. No counterpart in the main schema; a standing change request.
+    close_mappings:
+      - lambda:uniprot_id
+    description: >-
+      Bare UniProt accession on a sample, in the SSRL 0.2 spelling. The accession now has a home in
+      the main schema as `Protein.uniprot_id`, reached from a sample through `hasBioChemEntityPart`;
+      a projector reading this slot creates that `Protein` and the association. Close rather than
+      exact because the value here is bare (`P69905`) and the schema's is a CURIE (`uniprot:P69905`).
+    deprecated: Point at a `ProteinEntity` with `hasBioChemEntityPart` and carry `lambda:uniprot_id` there.
+    deprecated_element_has_exact_replacement: lambda:uniprot_id
 
   pdb_code:
     alias: pdbCode
