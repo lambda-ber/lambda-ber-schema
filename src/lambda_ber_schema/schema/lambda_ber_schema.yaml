@@ -1,6 +1,6 @@
 id: http://w3id.org/lambda/
 name: lambda-ber-schema
-version: "0.1.2.post178.dev0+17a9409" # Managed by uv-dynamic-versioning
+version: "0.1.2.post218.dev0+829558d2" # Managed by uv-dynamic-versioning
 description: |
   lambda-ber-schema is a comprehensive schema for representing multimodal structural biology imaging data, 
   from atomic-resolution structures to tissue-level organization. It supports diverse experimental 
@@ -21,9 +21,19 @@ description: |
   All entities are stored in flat collections at the Dataset level:
 
   **Biological Materials**
-  - [Samples](Sample.md): The biological specimens being studied (proteins, nucleic acids, complexes,
-    cells, tissues). Each sample includes detailed molecular composition, buffer conditions, and
-    storage information. For example, a purified protein with its sequence, concentration, and buffer pH.
+  - [Proteins](Protein.md): The protein as a biological entity - sequence, source organism, gene,
+    and the functional and structural annotations that hold for it in every preparation. Identified
+    by UniProt accession as a CURIE (`uniprot:P69905`) wherever one exists. One record serves every
+    sample that contains the protein; what varies between preparations lives on the sample and on
+    the sample-protein association.
+
+  - [Samples](Sample.md): The physical specimens being studied (proteins, nucleic acids, complexes,
+    cells, tissues). Each sample records the preparation-specific facts - buffer conditions,
+    concentration, storage, purity - and links to the proteins it contains through
+    [SampleProteinAssociation](SampleProteinAssociation.md).
+
+  - [Protein Constructs](ProteinConstruct.md): How a protein was cloned and expressed - vector,
+    tags, cleavage sites, codon optimization. A construct realizes one protein and may feed many samples.
 
   - [Sample Preparations](SamplePreparation.md): How samples were prepared for specific techniques.
     This includes cryo-EM grid preparation (vitrification parameters), crystallization conditions for
@@ -82,6 +92,8 @@ description: |
   - **StudyExperimentAssociation**: Links experiments to studies
   - **StudyWorkflowAssociation**: Links workflows to studies
   - **ExperimentSampleAssociation**: Links samples to experiments (with role and preparation used)
+  - **SampleProteinAssociation**: Links proteins to samples (with role, copy number, residue range,
+    modifications, observed mass, and the construct used)
   - **ExperimentInstrumentAssociation**: Links instruments to experiments (with role: primary, detector)
   - **WorkflowExperimentAssociation**: Links source experiments to workflows
   - **WorkflowInputAssociation**: Links input files to workflows
@@ -94,6 +106,7 @@ description: |
 
   This relational design enables:
   - **Sample reuse**: The same sample can be used in multiple studies and experiments
+  - **Protein reuse**: The same protein is described once and linked from every sample that contains it
   - **Multi-instrument experiments**: An experiment can use multiple instruments with different roles
   - **Integrative workflows**: A workflow can combine data from multiple experiments
 
@@ -134,6 +147,7 @@ prefixes:
   sio: http://semanticscience.org/resource/
   nmdc: https://w3id.org/nmdc/
   NCBITaxon: http://purl.obolibrary.org/obo/NCBITaxon_
+  uniprot: http://purl.uniprot.org/uniprot/
   UBERON: http://purl.obolibrary.org/obo/UBERON_
   CL: http://purl.obolibrary.org/obo/CL_
   GO: http://purl.obolibrary.org/obo/GO_
@@ -224,6 +238,11 @@ classes:
         range: Instrument
         multivalued: true
         inlined_as_list: true
+      proteins:
+        description: "All proteins referenced by samples in this dataset, one record per protein"
+        range: Protein
+        multivalued: true
+        inlined_as_list: true
       protein_constructs:
         description: "All protein constructs"
         range: ProteinConstruct
@@ -284,6 +303,11 @@ classes:
       experiment_instrument_associations:
         description: "Links between experiments and instruments (M:N)"
         range: ExperimentInstrumentAssociation
+        multivalued: true
+        inlined_as_list: true
+      sample_protein_associations:
+        description: "Links between samples and the proteins they contain (M:N with role, copy number, construct)"
+        range: SampleProteinAssociation
         multivalued: true
         inlined_as_list: true
       workflow_experiment_associations:
@@ -479,7 +503,13 @@ classes:
 
   Sample:
     is_a: NamedThing
-    description: "A biological sample used in structural biology experiments"
+    description: >-
+      A physical biological sample used in structural biology experiments. Records what is true of
+      this preparation - buffer, concentration, storage, purity, the construct and tags used. The
+      identity of the protein(s) it contains belongs on Protein, linked through
+      SampleProteinAssociation, so a protein studied in ten preparations is described once.
+    comments:
+      - "protein_name, organism and the functional annotation collections remain here for data that arrives without a resolvable protein identity, and for search convenience. When a Protein record exists, it is the canonical source and these slots should agree with it."
     related_mappings:
       - IHMCIF:_ihm_struct_assembly
       - IHMCIF:_ihm_struct_assembly_details
@@ -582,7 +612,9 @@ classes:
         inlined_as_list: true
       # NSLS2 Sample mapping
       protein_name:
-        description: "Name of the protein"
+        description: >-
+          Name of the protein as the facility or depositor recorded it. A display and search
+          field; the canonical name, sequence and identifiers live on the linked Protein.
         range: string
         exact_mappings:
           - nsls2:Protein_Name
@@ -615,6 +647,141 @@ classes:
         description: "Oligomeric state of the sample (e.g., monomer, dimer, tetramer, hexamer)"
         range: string
 
+  Protein:
+    is_a: NamedThing
+    description: >-
+      A protein as a biological entity: its sequence, source organism, gene, and the functional and
+      structural annotations that hold for it regardless of any one preparation. One Protein record
+      is shared by every Sample that contains it, through SampleProteinAssociation. Facts about a
+      particular preparation - buffer, concentration, tags left on, the residue range actually
+      present, the mass actually measured - stay on Sample and on the association.
+    comments:
+      - "Use the UniProt accession as a Bioregistry CURIE for the id wherever one exists (uniprot:P69905). Reserve lambda-prefixed ids for proteins with no UniProt entry, such as designed proteins or uncharacterized metagenomic sequences."
+      - "Supersedes AggregatedProteinView from the functional_annotation extension, which carried the same annotation collections but lived outside the Dataset tables."
+    id_prefixes:
+      - uniprot
+      - lambda
+    related_mappings:
+      - mmCIF:_entity
+      - mmCIF:_struct_ref
+    attributes:
+      uniprot_id:
+        description: >-
+          UniProt accession as a Bioregistry CURIE (e.g., uniprot:P69905). An isoform suffix is
+          allowed (uniprot:P69905-2). Normally identical to id.
+        range: uriorcurie
+        pattern: "^uniprot:([OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2})(-[0-9]+)?$"
+        recommended: true
+        exact_mappings:
+          - mmCIF:_struct_ref.pdbx_db_accession
+      protein_name:
+        description: >-
+          Recommended protein name, as UniProt or the depositor gives it. Not required, so that a
+          record seeded from an accession alone can be enriched from UniProt later.
+        recommended: true
+        related_mappings:
+          - mmCIF:_entity.pdbx_description
+      gene_name:
+        description: "Primary gene symbol (e.g., HBA1)"
+        exact_mappings:
+          - mmCIF:_entity_src_gen.pdbx_gene_src_gene
+      organism:
+        description: "Source organism as an NCBI Taxonomy CURIE (e.g., NCBITaxon:9606)"
+        range: OntologyTerm
+        exact_mappings:
+          - mmCIF:_entity_src_gen.pdbx_gene_src_ncbi_taxonomy_id
+      organism_name:
+        description: >-
+          Scientific name of the source organism. For display, and for sources that give a name but
+          no taxonomy identifier.
+        exact_mappings:
+          - mmCIF:_entity_src_gen.pdbx_gene_src_scientific_name
+      amino_acid_sequence:
+        description: >-
+          Canonical one-letter amino acid sequence of the protein, without tags or other construct
+          additions. Construct-level sequence belongs on ProteinConstruct.
+        pattern: "^[ACDEFGHIKLMNPQRSTVWYBJOUXZ]+$"
+        exact_mappings:
+          - mmCIF:_entity_poly.pdbx_seq_one_letter_code_can
+      sequence_length:
+        description: "Length of the canonical sequence in residues"
+        range: integer
+      molecular_weight_theoretical:
+        description: >-
+          Mass computed from the canonical sequence, typically in kDa. A mass measured for a given
+          preparation belongs on SampleProteinAssociation.observed_molecular_weight.
+        range: QuantityValue
+        inlined: true
+        related_mappings:
+          - mmCIF:_entity.formula_weight
+      ec_numbers:
+        description: "Enzyme Commission numbers, where the protein is an enzyme (e.g., 1.1.1.1)"
+        multivalued: true
+        pattern: "^([0-9]+|-)\\.([0-9]+|-)\\.([0-9]+|-)\\.([0-9]+|n[0-9]*|-)$"
+        exact_mappings:
+          - mmCIF:_entity.pdbx_ec
+      function_description:
+        description: "Free-text summary of molecular function, typically from UniProt"
+      go_terms:
+        description: "Gene Ontology annotations as CURIEs (e.g., GO:0005344 for oxygen carrier activity)"
+        range: uriorcurie
+        multivalued: true
+      pdb_entries:
+        description: "PDB entries containing this protein, as CURIEs (e.g., pdb:1HHO)"
+        range: uriorcurie
+        multivalued: true
+      # Functional and structural annotations from knowledge bases
+      functional_sites:
+        description: "Functional site annotations for this protein"
+        range: FunctionalSite
+        multivalued: true
+        inlined_as_list: true
+      structural_features:
+        description: "Structural feature annotations for this protein"
+        range: StructuralFeature
+        multivalued: true
+        inlined_as_list: true
+      protein_interactions:
+        description: "Protein-protein interaction annotations"
+        range: ProteinProteinInteraction
+        multivalued: true
+        inlined_as_list: true
+      ligand_interactions:
+        description: "Small molecule interaction annotations"
+        range: LigandInteraction
+        multivalued: true
+        inlined_as_list: true
+      mutation_effects:
+        description: "Known effects of mutations in this protein"
+        range: MutationEffect
+        multivalued: true
+        inlined_as_list: true
+      ptm_annotations:
+        description: "Post-translational modification annotations"
+        range: PostTranslationalModification
+        multivalued: true
+        inlined_as_list: true
+      biophysical_properties:
+        description: "Measured or predicted biophysical properties"
+        range: BiophysicalProperty
+        multivalued: true
+        inlined_as_list: true
+      evolutionary_conservation:
+        description: "Evolutionary conservation data"
+        range: EvolutionaryConservation
+        inlined: true
+      conformational_ensemble:
+        description: "Conformational states and dynamics"
+        range: ConformationalEnsemble
+        inlined: true
+      cross_references:
+        description: >-
+          Cross-references to external databases other than UniProt (Pfam, InterPro, ChEMBL, ...).
+          The UniProt accession itself goes in uniprot_id.
+        range: DatabaseCrossReference
+        multivalued: true
+        inlined_as_list: true
+
   ProteinConstruct:
     is_a: NamedThing
     description: "Detailed information about a protein construct including cloning and sequence design"
@@ -622,8 +789,14 @@ classes:
       construct_id:
         description: "Unique identifier for this construct"
         required: true
+      protein_id:
+        description: "The protein this construct expresses"
+        range: Protein
       uniprot_id:
-        description: "UniProt accession for the target protein"
+        description: >-
+          UniProt accession of the target protein as a CURIE (e.g., uniprot:P69905). Redundant with
+          the linked Protein.uniprot_id; kept for constructs recorded before the protein is.
+        range: uriorcurie
       gene_name:
         description: "Gene name"
       ncbi_taxid:
@@ -3347,6 +3520,65 @@ classes:
         description: "Specific preparation used for this sample in this experiment"
         range: SamplePreparation
 
+  SampleProteinAssociation:
+    description: >-
+      M:N link between Sample and Protein. A sample may hold several proteins - the subunits of a
+      complex, a target with its chaperone, a fusion partner - and one protein turns up in many
+      samples. What changes from preparation to preparation lives here: the role, the copy number,
+      the residue range actually present, the modifications carried, the mass actually measured,
+      and the construct it was made from.
+    related_mappings:
+      - IHMCIF:_ihm_struct_assembly_details
+      - IHMCIF:_ihm_entity_poly_segment
+    attributes:
+      sample_id:
+        description: "Reference to the sample"
+        range: Sample
+        required: true
+      protein_id:
+        description: "Reference to the protein"
+        range: Protein
+        required: true
+      role:
+        description: "Part this protein plays in the sample"
+        range: SampleProteinRoleEnum
+      construct_id:
+        description: "The construct that produced this protein in this sample, where cloning detail is recorded"
+        range: ProteinConstruct
+      copy_number:
+        description: >-
+          Copies of this protein per assembly in the sample (e.g., 4 for a homotetramer, 2 for each
+          chain of an alpha2-beta2 heterotetramer). Omit when unknown rather than assuming 1.
+        range: integer
+        exact_mappings:
+          - mmCIF:_entity.pdbx_number_of_molecules
+      residue_range:
+        description: >-
+          Residues of the canonical sequence present in this sample (e.g., '1-141', '25-300'), for
+          fragments and truncations. Omit when the full-length protein is present.
+        pattern: "^[0-9,\\-]+$"
+        related_mappings:
+          - IHMCIF:_ihm_entity_poly_segment
+      sequence_coverage:
+        description: "Fraction of the canonical sequence present in this sample (range: 0-1)"
+        range: float
+        minimum_value: 0
+        maximum_value: 1
+      chain_ids:
+        description: "Chain identifiers this protein occupies in the deposited structure, where the sample is a PDB entity"
+        multivalued: true
+        exact_mappings:
+          - mmCIF:_entity_poly.pdbx_strand_id
+      modifications:
+        description: "Modifications carried by this protein in this sample: tags left on, mutations, labels, post-translational modifications"
+        multivalued: true
+      observed_molecular_weight:
+        description: >-
+          Mass as measured for this preparation (mass spectrometry, SEC-MALS, SAXS), typically in
+          kDa. The sequence-derived mass lives on Protein.molecular_weight_theoretical.
+        range: QuantityValue
+        inlined: true
+
   ExperimentInstrumentAssociation:
     description: "M:N link between ExperimentRun and Instrument"
     attributes:
@@ -5129,6 +5361,24 @@ enums:
         description: "Calibration or reference standard"
       size_marker:
         description: "Molecular weight marker"
+
+  SampleProteinRoleEnum:
+    description: "Part a protein plays in a sample"
+    permissible_values:
+      target:
+        description: "The protein under investigation"
+      subunit:
+        description: "One subunit of a complex that is the target as a whole"
+      binding_partner:
+        description: "A protein present for its interaction with the target, such as a substrate, inhibitor or antibody"
+      fusion_partner:
+        description: "A solubility or affinity fusion partner left attached (e.g., MBP, GST, GFP)"
+      chaperone:
+        description: "A chaperone or scaffold added to stabilize or reconstitute the target"
+      contaminant:
+        description: "A protein present unintentionally and identified after the fact"
+      standard:
+        description: "A reference protein added for calibration or as a size marker"
 
   InstrumentRoleEnum:
     description: "Role of an instrument in an experiment"
