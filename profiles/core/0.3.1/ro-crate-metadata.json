@@ -12,14 +12,14 @@
       "@id": "ro-crate-metadata.json",
       "@type": "CreativeWork",
       "conformsTo": { "@id": "https://w3id.org/ro/crate/1.2" },
-      "about": { "@id": "https://w3id.org/lambda/profile/core/0.3.0" }
+      "about": { "@id": "https://w3id.org/lambda/profile/core/0.3.1" }
     },
     {
-      "@id": "https://w3id.org/lambda/profile/core/0.3.0",
+      "@id": "https://w3id.org/lambda/profile/core/0.3.1",
       "@type": ["Dataset", "Profile"],
-      "name": "LAMBDA Core RO-Crate Profile 0.3.0",
+      "name": "LAMBDA Core RO-Crate Profile 0.3.1",
       "description": "The technique-neutral file-manifest contract for LAMBDA. A conformant crate carries the highest-level details a program needs to decide whether a dataset is worth opening, and points at the fuller record - another RO-Crate, a full lambda-ber-schema document, or a remote registration - rather than restating it. This is a Profile Crate: it describes the profile, and is deliberately not itself a LAMBDA Core data manifest.",
-      "version": "0.3.0",
+      "version": "0.3.1",
       "datePublished": "2026-08-12",
       "license": { "@id": "https://creativecommons.org/publicdomain/zero/1.0/" },
       "publisher": { "@id": "https://ror.org/02jbv0t02" },
@@ -33,7 +33,7 @@
         "data federation"
       ],
       "hasPart": [
-        { "@id": "lambda-core-rocrate-profile-v0.3.0.md" },
+        { "@id": "lambda-core-rocrate-profile-v0.3.1.md" },
         { "@id": "https://github.com/lambda-ber/lambda-ber-schema/blob/main/src/lambda_ber_schema/schema/lambda_rocrate_core.yaml" },
         { "@id": "https://github.com/lambda-ber/lambda-ber-schema/blob/main/assets/rocrate/jsonschema/lambda_rocrate_core.schema.json" },
         { "@id": "https://github.com/lambda-ber/lambda-ber-schema/blob/main/assets/rocrate/jsonld/lambda_rocrate_core.context.jsonld" },
@@ -64,7 +64,7 @@
       "@type": "ResourceDescriptor",
       "name": "Normative specification",
       "hasRole": { "@id": "http://www.w3.org/ns/dx/prof/role/specification" },
-      "hasArtifact": { "@id": "lambda-core-rocrate-profile-v0.3.0.md" }
+      "hasArtifact": { "@id": "lambda-core-rocrate-profile-v0.3.1.md" }
     },
     {
       "@id": "#hasLinkMLSource",
@@ -113,9 +113,9 @@
     },
 
     {
-      "@id": "lambda-core-rocrate-profile-v0.3.0.md",
+      "@id": "lambda-core-rocrate-profile-v0.3.1.md",
       "@type": "File",
-      "name": "lambda-core-rocrate-profile-v0.3.0.md",
+      "name": "lambda-core-rocrate-profile-v0.3.1.md",
       "description": "The normative specification: scope, principles, sufficiency tests, namespaces, crate anatomy, the three metadata-pointer mechanisms, declared absence, designation, estimators, search projection, validation, the schema crosswalk, the SSRL 0.2 back-compatibility rules and audit, and change requests to lambda-ber-schema.",
       "encodingFormat": "text/markdown",
       "conformsTo": { "@id": "https://www.iana.org/assignments/media-types/text/markdown" }
@@ -154,7 +154,7 @@
       "@type": "File",
       "name": "minimal-manifest.json",
       "encodingFormat": "application/ld+json",
-      "conformsTo": { "@id": "https://w3id.org/lambda/profile/core/0.3.0" }
+      "conformsTo": { "@id": "https://w3id.org/lambda/profile/core/0.3.1" }
     },
     {
       "@id": "https://github.com/lambda-ber/lambda-ber-schema/blob/main/tests/test_rocrate_profile.py",
@@ -175,13 +175,13 @@
       "name": "LAMBDA SAXS RO-Crate Profile 0.3.0",
       "description": "Technique extension for small-angle X-ray scattering. Gives lambdarc:resultSummary its shape for SAXS and binds SAXS artefacts to the sufficiency tiers.",
       "version": "0.3.0",
-      "isProfileOf": { "@id": "https://w3id.org/lambda/profile/core/0.3.0" }
+      "isProfileOf": { "@id": "https://w3id.org/lambda/profile/core/0.3.1" }
     },
     {
       "@id": "https://w3id.org/lambda/profile/core/0.2",
       "@type": ["CreativeWork", "Profile"],
       "name": "LAMBDA Core profile 0.2 (SSRL, no written specification)",
-      "description": "The profile URI claimed by SSRL's published crates. Its vocabulary is accepted by 0.3.0 as deprecated aliases; see section 15 of the specification.",
+      "description": "The profile URI claimed by SSRL's published crates. Its vocabulary is accepted by 0.3.1 as deprecated aliases; see section 15 of the specification.",
       "version": "0.2"
     }
   ]

@@ -17,8 +17,8 @@ Alias: keywords
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Study](Study.md) | A logical grouping of related experiments investigating a research question |  no  |
 | [Dataset](Dataset.md) | Root container holding flat entity collections and association tables |  no  |
+| [Study](Study.md) | A logical grouping of related experiments investigating a research question |  no  |
 
 
 

@@ -3,11 +3,6 @@
 # Slot: mutation_effects 
 
 
-_Effects of mutations present in the sample_
-
-
-
-
 
 URI: [lambda:mutation_effects](http://w3id.org/lambda/mutation_effects)
 Alias: mutation_effects
@@ -22,7 +17,8 @@ Alias: mutation_effects
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Sample](Sample.md) | A biological sample used in structural biology experiments |  no  |
+| [Sample](Sample.md) | A physical biological sample used in structural biology experiments |  no  |
+| [Protein](Protein.md) | A protein as a biological entity: its sequence, source organism, gene, and th... |  no  |
 
 
 
@@ -31,9 +27,7 @@ Alias: mutation_effects
 
 ## Properties
 
-* Range: [MutationEffect](MutationEffect.md)
-
-* Multivalued: True
+* Range: [String](String.md)
 
 
 
@@ -42,13 +36,6 @@ Alias: mutation_effects
 
 
 
-
-
-
-### Schema Source
-
-
-* from schema: http://w3id.org/lambda/
 
 
 
@@ -68,17 +55,11 @@ Alias: mutation_effects
 <details>
 ```yaml
 name: mutation_effects
-description: Effects of mutations present in the sample
-from_schema: http://w3id.org/lambda/
-rank: 1000
 alias: mutation_effects
-owner: Sample
 domain_of:
 - Sample
-range: MutationEffect
-multivalued: true
-inlined: true
-inlined_as_list: true
+- Protein
+range: string
 
 ```
 </details>

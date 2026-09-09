@@ -56,6 +56,33 @@ class TestSASBDBLoader:
         assert sample.protein_name == "Alcohol dehydrogenase 1"
         assert sample.organism == "Saccharomyces cerevisiae"
 
+    def test_protein_created_from_molecule(self, loader):
+        """The molecule's UniProt entry becomes a Protein with the canonical sequence."""
+        result = loader.load("SASDA52")
+        assert len(result.dataset.proteins) == 1
+        protein = result.dataset.proteins[0]
+        assert protein.id == "uniprot:P00330"
+        assert protein.uniprot_id == "uniprot:P00330"
+        assert protein.protein_name == "Alcohol dehydrogenase 1"
+        assert protein.organism_name == "Saccharomyces cerevisiae"
+        # SASBDB wraps the sequence at 60 columns; it must arrive as one string
+        assert protein.amino_acid_sequence is not None
+        assert "\n" not in protein.amino_acid_sequence
+        assert protein.amino_acid_sequence.startswith("MSIPETQKGVIFYESHGKLEYKDIPVPKPKANELLINVKYSGVCHTDLHAWHGDWPLPVK")
+        assert protein.sequence_length == len(protein.amino_acid_sequence)
+
+    def test_sample_protein_association_carries_copy_number(self, loader):
+        """A tetramer of one molecule: target role, four copies."""
+        result = loader.load("SASDA52")
+        ds = result.dataset
+        assert len(ds.sample_protein_associations) == 1
+        assoc = ds.sample_protein_associations[0]
+        assert assoc.sample_id == ds.samples[0].id
+        assert assoc.protein_id == "uniprot:P00330"
+        assert assoc.role == "target"
+        assert assoc.copy_number == 4
+        assert assoc.residue_range is None  # range not given in the entry
+
     def test_sample_has_quantity_values(self, loader):
         """Test Sample uses QuantityValue for numeric fields."""
         result = loader.load("SASDA52")

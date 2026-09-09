@@ -81,6 +81,7 @@ URI: [nmdc:QuantityValue](https://w3id.org/nmdc/QuantityValue)
 | [Sample](Sample.md) | [molecular_weight](molecular_weight.md) | range | [QuantityValue](QuantityValue.md) |
 | [Sample](Sample.md) | [concentration](concentration.md) | range | [QuantityValue](QuantityValue.md) |
 | [Sample](Sample.md) | [purity_percentage](purity_percentage.md) | range | [QuantityValue](QuantityValue.md) |
+| [Protein](Protein.md) | [molecular_weight_theoretical](molecular_weight_theoretical.md) | range | [QuantityValue](QuantityValue.md) |
 | [ProteinConstruct](ProteinConstruct.md) | [sequence_length_aa](sequence_length_aa.md) | range | [QuantityValue](QuantityValue.md) |
 | [SamplePreparation](SamplePreparation.md) | [culture_volume_l](culture_volume_l.md) | range | [QuantityValue](QuantityValue.md) |
 | [SamplePreparation](SamplePreparation.md) | [growth_temperature_c](growth_temperature_c.md) | range | [QuantityValue](QuantityValue.md) |
@@ -428,6 +429,7 @@ URI: [nmdc:QuantityValue](https://w3id.org/nmdc/QuantityValue)
 | [RefinementParameters](RefinementParameters.md) | [map_sharpening_bfactor](map_sharpening_bfactor.md) | range | [QuantityValue](QuantityValue.md) |
 | [FSCCurve](FSCCurve.md) | [resolution_angstrom](resolution_angstrom.md) | range | [QuantityValue](QuantityValue.md) |
 | [FSCCurve](FSCCurve.md) | [fsc_value](fsc_value.md) | range | [QuantityValue](QuantityValue.md) |
+| [SampleProteinAssociation](SampleProteinAssociation.md) | [observed_molecular_weight](observed_molecular_weight.md) | range | [QuantityValue](QuantityValue.md) |
 | [MeasurementConditions](MeasurementConditions.md) | [ph](ph.md) | range | [QuantityValue](QuantityValue.md) |
 | [MeasurementConditions](MeasurementConditions.md) | [ionic_strength](ionic_strength.md) | range | [QuantityValue](QuantityValue.md) |
 | [MeasurementConditions](MeasurementConditions.md) | [temperature](temperature.md) | range | [QuantityValue](QuantityValue.md) |

@@ -3,11 +3,6 @@
 # Slot: website 
 
 
-_Beamline website URL_
-
-
-
-
 
 URI: [lambda:website](http://w3id.org/lambda/website)
 Alias: website
@@ -22,6 +17,7 @@ Alias: website
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [Organization](Organization.md) | An institution, facility, laboratory or funding body - a national laboratory,... |  no  |
 | [BeamlineInstrument](BeamlineInstrument.md) | Multi-technique synchrotron beamline that supports multiple experimental meth... |  no  |
 
 
@@ -31,7 +27,7 @@ Alias: website
 
 ## Properties
 
-* Range: [Uri](Uri.md)
+* Range: [String](String.md)
 
 
 
@@ -40,13 +36,6 @@ Alias: website
 
 
 
-
-
-
-### Schema Source
-
-
-* from schema: http://w3id.org/lambda/
 
 
 
@@ -66,14 +55,11 @@ Alias: website
 <details>
 ```yaml
 name: website
-description: Beamline website URL
-from_schema: http://w3id.org/lambda/
-rank: 1000
 alias: website
-owner: BeamlineInstrument
 domain_of:
+- Organization
 - BeamlineInstrument
-range: uri
+range: string
 
 ```
 </details>

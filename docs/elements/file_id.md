@@ -17,8 +17,8 @@ Alias: file_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [WorkflowInputAssociation](WorkflowInputAssociation.md) | Links input DataFiles to WorkflowRun |  no  |
 | [WorkflowOutputAssociation](WorkflowOutputAssociation.md) | Links output DataFiles to WorkflowRun |  no  |
+| [WorkflowInputAssociation](WorkflowInputAssociation.md) | Links input DataFiles to WorkflowRun |  no  |
 
 
 

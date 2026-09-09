@@ -124,6 +124,7 @@ attributes:
     - WorkflowExperimentAssociation
     - WorkflowInputAssociation
     - WorkflowOutputAssociation
+    - WorkflowPersonAssociation
     range: WorkflowRun
     required: true
   experiment_id:
@@ -135,6 +136,7 @@ attributes:
     - ExperimentSampleAssociation
     - ExperimentInstrumentAssociation
     - WorkflowExperimentAssociation
+    - ExperimentPersonAssociation
     range: ExperimentRun
     required: true
 
@@ -162,6 +164,7 @@ attributes:
     - WorkflowExperimentAssociation
     - WorkflowInputAssociation
     - WorkflowOutputAssociation
+    - WorkflowPersonAssociation
     range: WorkflowRun
     required: true
   experiment_id:
@@ -175,6 +178,7 @@ attributes:
     - ExperimentSampleAssociation
     - ExperimentInstrumentAssociation
     - WorkflowExperimentAssociation
+    - ExperimentPersonAssociation
     range: ExperimentRun
     required: true
 

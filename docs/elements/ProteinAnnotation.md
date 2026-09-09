@@ -104,7 +104,7 @@ URI: [lambda:ProteinAnnotation](http://w3id.org/lambda/ProteinAnnotation)
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [protein_id](protein_id.md) | 1 <br/> [String](String.md) | UniProt accession number | direct |
+| [protein_id](protein_id.md) | 1 <br/> [String](String.md) | UniProt accession of the annotated protein, preferably as a Bioregistry CURIE... | direct |
 | [pdb_entry](pdb_entry.md) | 0..1 <br/> [String](String.md) | PDB identifier | direct |
 | [chain_id](chain_id.md) | 0..1 <br/> [String](String.md) | Chain identifier in the PDB structure | direct |
 | [residue_range](residue_range.md) | 0..1 <br/> [String](String.md) | Range of residues (e | direct |
@@ -169,14 +169,17 @@ is_a: NamedThing
 attributes:
   protein_id:
     name: protein_id
-    description: UniProt accession number
+    description: UniProt accession of the annotated protein, preferably as a Bioregistry
+      CURIE (uniprot:P69905) matching Protein.uniprot_id. A bare accession (P69905)
+      is accepted for data recorded before the CURIE form was adopted.
     from_schema: http://w3id.org/lambda/functional_annotation
-    rank: 1000
     domain_of:
+    - ProteinConstruct
+    - SampleProteinAssociation
     - ProteinAnnotation
     - ConformationalEnsemble
     required: true
-    pattern: ^[A-Z][0-9][A-Z0-9]{3}[0-9]|[A-Z][0-9][A-Z0-9]{3}[0-9]-[0-9]+$
+    pattern: ^(uniprot:)?([OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2})(-[0-9]+)?$
   pdb_entry:
     name: pdb_entry
     description: PDB identifier
@@ -197,10 +200,10 @@ attributes:
     name: residue_range
     description: Range of residues (e.g., '1-100', '25,27,30-35')
     from_schema: http://w3id.org/lambda/functional_annotation
-    rank: 1000
     domain_of:
+    - SampleProteinAssociation
     - ProteinAnnotation
-    pattern: ^[0-9,\-]+$
+    pattern: ^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$
   confidence_score:
     name: confidence_score
     description: 'Confidence score for the annotation (range: 0-1)'
@@ -267,17 +270,20 @@ is_a: NamedThing
 attributes:
   protein_id:
     name: protein_id
-    description: UniProt accession number
+    description: UniProt accession of the annotated protein, preferably as a Bioregistry
+      CURIE (uniprot:P69905) matching Protein.uniprot_id. A bare accession (P69905)
+      is accepted for data recorded before the CURIE form was adopted.
     from_schema: http://w3id.org/lambda/functional_annotation
-    rank: 1000
     alias: protein_id
     owner: ProteinAnnotation
     domain_of:
+    - ProteinConstruct
+    - SampleProteinAssociation
     - ProteinAnnotation
     - ConformationalEnsemble
     range: string
     required: true
-    pattern: ^[A-Z][0-9][A-Z0-9]{3}[0-9]|[A-Z][0-9][A-Z0-9]{3}[0-9]-[0-9]+$
+    pattern: ^(uniprot:)?([OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2})(-[0-9]+)?$
   pdb_entry:
     name: pdb_entry
     description: PDB identifier
@@ -304,13 +310,13 @@ attributes:
     name: residue_range
     description: Range of residues (e.g., '1-100', '25,27,30-35')
     from_schema: http://w3id.org/lambda/functional_annotation
-    rank: 1000
     alias: residue_range
     owner: ProteinAnnotation
     domain_of:
+    - SampleProteinAssociation
     - ProteinAnnotation
     range: string
-    pattern: ^[0-9,\-]+$
+    pattern: ^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$
   confidence_score:
     name: confidence_score
     description: 'Confidence score for the annotation (range: 0-1)'

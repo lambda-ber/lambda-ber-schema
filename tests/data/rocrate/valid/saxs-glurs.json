@@ -3,7 +3,8 @@
     "https://w3id.org/ro/crate/1.2/context",
     {
       "lambda": "http://w3id.org/lambda/",
-      "lambdarc": "http://w3id.org/lambda/rocrate/"
+      "lambdarc": "http://w3id.org/lambda/rocrate/",
+      "uniprot": "http://purl.uniprot.org/uniprot/"
     }
   ],
   "@graph": [
@@ -37,7 +38,7 @@
           "@id": "https://w3id.org/ro/crate/1.2"
         },
         {
-          "@id": "https://w3id.org/lambda/profile/core/0.3.0"
+          "@id": "https://w3id.org/lambda/profile/core/0.3.1"
         }
       ],
       "identifier": [
@@ -73,7 +74,7 @@
         },
         {
           "module": "lambda-rocrate-core",
-          "version": "0.3.0"
+          "version": "0.3.1"
         }
       ],
       "sufficiency": {
@@ -206,7 +207,11 @@
       "sample_type": "protein",
       "protein_name": "Glutamyl-tRNA synthetase",
       "organism": "Pseudomonas aeruginosa",
-      "uniprotId": "Q9XCL6",
+      "hasBioChemEntityPart": [
+        {
+          "@id": "http://purl.uniprot.org/uniprot/Q9XCL6"
+        }
+      ],
       "expression_system": "E. coli BL21(DE3)",
       "missing": [
         {
@@ -215,6 +220,19 @@
           "blocks": "S1"
         }
       ]
+    },
+    {
+      "@id": "http://purl.uniprot.org/uniprot/Q9XCL6",
+      "@type": [
+        "Protein",
+        "lambda:Protein"
+      ],
+      "name": "Glutamate--tRNA ligase",
+      "description": "The protein the specimen contains, as distinct from the specimen. Identified by its UniProt IRI so that the same protein in another crate is the same node; the accession is carried as the CURIE the schema's Protein.uniprot_id uses.",
+      "uniprot_id": "uniprot:Q9XCL6",
+      "protein_name": "Glutamate--tRNA ligase",
+      "gene_name": "gltX",
+      "organism": "NCBITaxon:208964"
     },
     {
       "@id": "#instr-sibyls",

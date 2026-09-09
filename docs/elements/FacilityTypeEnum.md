@@ -21,6 +21,12 @@ URI: [lambda:FacilityTypeEnum](http://w3id.org/lambda/FacilityTypeEnum)
 
 
 
+## Slots
+
+| Name | Description |
+| ---  | --- |
+| [facility_type](facility_type.md) | For a research facility, the kind of facility it is |
+
 
 
 

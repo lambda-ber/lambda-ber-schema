@@ -88,6 +88,7 @@ URI: [lambda:ConformationalEnsemble](http://w3id.org/lambda/ConformationalEnsemb
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
 | [Sample](Sample.md) | [conformational_ensemble](conformational_ensemble.md) | range | [ConformationalEnsemble](ConformationalEnsemble.md) |
+| [Protein](Protein.md) | [conformational_ensemble](conformational_ensemble.md) | range | [ConformationalEnsemble](ConformationalEnsemble.md) |
 | [AggregatedProteinView](AggregatedProteinView.md) | [conformational_ensemble](conformational_ensemble.md) | range | [ConformationalEnsemble](ConformationalEnsemble.md) |
 
 
@@ -141,6 +142,8 @@ attributes:
     description: UniProt accession
     from_schema: http://w3id.org/lambda/functional_annotation
     domain_of:
+    - ProteinConstruct
+    - SampleProteinAssociation
     - ProteinAnnotation
     - ConformationalEnsemble
     required: true
@@ -214,6 +217,8 @@ attributes:
     alias: protein_id
     owner: ConformationalEnsemble
     domain_of:
+    - ProteinConstruct
+    - SampleProteinAssociation
     - ProteinAnnotation
     - ConformationalEnsemble
     range: string

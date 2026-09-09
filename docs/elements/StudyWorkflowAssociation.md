@@ -120,6 +120,8 @@ attributes:
     - StudySampleAssociation
     - StudyExperimentAssociation
     - StudyWorkflowAssociation
+    - StudyPersonAssociation
+    - StudyOrganizationAssociation
     range: Study
     required: true
   workflow_id:
@@ -132,6 +134,7 @@ attributes:
     - WorkflowExperimentAssociation
     - WorkflowInputAssociation
     - WorkflowOutputAssociation
+    - WorkflowPersonAssociation
     range: WorkflowRun
     required: true
 
@@ -156,6 +159,8 @@ attributes:
     - StudySampleAssociation
     - StudyExperimentAssociation
     - StudyWorkflowAssociation
+    - StudyPersonAssociation
+    - StudyOrganizationAssociation
     range: Study
     required: true
   workflow_id:
@@ -170,6 +175,7 @@ attributes:
     - WorkflowExperimentAssociation
     - WorkflowInputAssociation
     - WorkflowOutputAssociation
+    - WorkflowPersonAssociation
     range: WorkflowRun
     required: true
 

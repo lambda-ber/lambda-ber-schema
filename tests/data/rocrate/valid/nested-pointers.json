@@ -37,7 +37,7 @@
           "@id": "https://w3id.org/ro/crate/1.2"
         },
         {
-          "@id": "https://w3id.org/lambda/profile/core/0.3.0"
+          "@id": "https://w3id.org/lambda/profile/core/0.3.1"
         }
       ],
       "identifier": [
@@ -102,7 +102,7 @@
       "description": "Pointer mechanism 1 - nested RO-Crate. The subdirectory carries its own ro-crate-metadata.json conforming to the SAXS technique extension, so the technique detail lives where it belongs and this manifest stays technique-neutral.",
       "conformsTo": [
         {
-          "@id": "https://w3id.org/lambda/profile/core/0.3.0"
+          "@id": "https://w3id.org/lambda/profile/core/0.3.1"
         },
         {
           "@id": "https://w3id.org/lambda/profile/saxs/0.3.0"

@@ -17,8 +17,8 @@ Alias: pixel_size_x
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentRun](ExperimentRun.md) | An experimental data collection session |  no  |
 | [SANSDetector](SANSDetector.md) | Description of a detector used in a SANS instrument |  no  |
+| [ExperimentRun](ExperimentRun.md) | An experimental data collection session |  no  |
 
 
 

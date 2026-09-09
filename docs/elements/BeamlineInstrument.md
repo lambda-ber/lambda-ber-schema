@@ -92,6 +92,17 @@ URI: [lambda:BeamlineInstrument](http://w3id.org/lambda/BeamlineInstrument)
     
 
         
+      BeamlineInstrument : facility_organization_id
+        
+          
+    
+        
+        
+        BeamlineInstrument --> "0..1" Organization : facility_organization_id
+        click Organization href "../Organization/"
+    
+
+        
       BeamlineInstrument : facility_ror
         
       BeamlineInstrument : id
@@ -224,6 +235,7 @@ URI: [lambda:BeamlineInstrument](http://w3id.org/lambda/BeamlineInstrument)
 | [instrument_category](instrument_category.md) | 0..1 <br/> [InstrumentCategoryEnum](InstrumentCategoryEnum.md) | Category distinguishing beamlines from laboratory equipment | [Instrument](Instrument.md) |
 | [facility_name](facility_name.md) | 0..1 <br/> [FacilityEnum](FacilityEnum.md) | Name of the research facility where the instrument is located | [Instrument](Instrument.md) |
 | [facility_ror](facility_ror.md) | 0..1 <br/> [Uriorcurie](Uriorcurie.md) | Research Organization Registry (ROR) identifier for the facility | [Instrument](Instrument.md) |
+| [facility_organization_id](facility_organization_id.md) | 0..1 <br/> [Organization](Organization.md) | The Organization that operates this instrument's facility | [Instrument](Instrument.md) |
 | [beamline_id](beamline_id.md) | 0..1 <br/> [String](String.md) | Beamline identifier at synchrotron/neutron facility | [Instrument](Instrument.md) |
 | [manufacturer](manufacturer.md) | 0..1 <br/> [String](String.md) | Instrument manufacturer | [Instrument](Instrument.md) |
 | [model](model.md) | 0..1 <br/> [String](String.md) | Instrument model | [Instrument](Instrument.md) |
@@ -373,8 +385,8 @@ attributes:
     name: website
     description: Beamline website URL
     from_schema: http://w3id.org/lambda/
-    rank: 1000
     domain_of:
+    - Organization
     - BeamlineInstrument
     range: uri
   lims_system:
@@ -517,10 +529,10 @@ attributes:
     name: website
     description: Beamline website URL
     from_schema: http://w3id.org/lambda/
-    rank: 1000
     alias: website
     owner: BeamlineInstrument
     domain_of:
+    - Organization
     - BeamlineInstrument
     range: uri
   lims_system:
@@ -623,6 +635,9 @@ attributes:
     comments:
     - Persistent identifier for the facility organization
     - 'Example: https://ror.org/02jbv0t02 (Lawrence Berkeley National Laboratory)'
+    - Retained for sources that publish only a ROR. Where the facility is described
+      as an entity, prefer facility_organization_id, which reaches its parent institution,
+      type and location rather than just its identifier.
     from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: facility_ror
@@ -631,6 +646,18 @@ attributes:
     - Instrument
     range: uriorcurie
     pattern: ^https://ror\.org/\w+$
+  facility_organization_id:
+    name: facility_organization_id
+    description: The Organization that operates this instrument's facility. An instrument
+      sits at exactly one facility, so this is a direct reference rather than an association
+      table - the same shape as Sample.parent_sample_id.
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    alias: facility_organization_id
+    owner: BeamlineInstrument
+    domain_of:
+    - Instrument
+    range: Organization
   beamline_id:
     name: beamline_id
     description: Beamline identifier at synchrotron/neutron facility

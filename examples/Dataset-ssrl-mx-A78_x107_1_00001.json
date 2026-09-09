@@ -23,6 +23,19 @@
       "beamline_id": "BL12-2"
     }
   ],
+  "proteins": [
+    {
+      "id": "uniprot:A0A562R7W5",
+      "title": "PWe2",
+      "uniprot_id": "uniprot:A0A562R7W5",
+      "protein_name": "PWe2",
+      "organism": "NCBITaxon:1036180",
+      "organism_name": "Pseudoduganella lurida",
+      "pdb_entries": [
+        "pdb:9MS7"
+      ]
+    }
+  ],
   "samples": [
     {
       "id": "ssrl-mx:BL12-2/A78_x107_1_00001/sample",
@@ -141,6 +154,13 @@
     {
       "experiment_id": "ssrl-mx:experiment/a1e0eb79-4b9c-48e9-b8b0-cda51f109647",
       "instrument_id": "ssrl-mx:instrument/BL12-2"
+    }
+  ],
+  "sample_protein_associations": [
+    {
+      "sample_id": "ssrl-mx:BL12-2/A78_x107_1_00001/sample",
+      "protein_id": "uniprot:A0A562R7W5",
+      "role": "target"
     }
   ],
   "workflow_experiment_associations": [

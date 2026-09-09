@@ -3,11 +3,6 @@
 # Slot: ptm_annotations 
 
 
-_Post-translational modification annotations_
-
-
-
-
 
 URI: [lambda:ptm_annotations](http://w3id.org/lambda/ptm_annotations)
 Alias: ptm_annotations
@@ -22,7 +17,8 @@ Alias: ptm_annotations
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Sample](Sample.md) | A biological sample used in structural biology experiments |  no  |
+| [Sample](Sample.md) | A physical biological sample used in structural biology experiments |  no  |
+| [Protein](Protein.md) | A protein as a biological entity: its sequence, source organism, gene, and th... |  no  |
 
 
 
@@ -31,9 +27,7 @@ Alias: ptm_annotations
 
 ## Properties
 
-* Range: [PostTranslationalModification](PostTranslationalModification.md)
-
-* Multivalued: True
+* Range: [String](String.md)
 
 
 
@@ -42,13 +36,6 @@ Alias: ptm_annotations
 
 
 
-
-
-
-### Schema Source
-
-
-* from schema: http://w3id.org/lambda/
 
 
 
@@ -68,17 +55,11 @@ Alias: ptm_annotations
 <details>
 ```yaml
 name: ptm_annotations
-description: Post-translational modification annotations
-from_schema: http://w3id.org/lambda/
-rank: 1000
 alias: ptm_annotations
-owner: Sample
 domain_of:
 - Sample
-range: PostTranslationalModification
-multivalued: true
-inlined: true
-inlined_as_list: true
+- Protein
+range: string
 
 ```
 </details>

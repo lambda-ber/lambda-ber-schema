@@ -3,11 +3,6 @@
 # Slot: cross_references 
 
 
-_Database cross-references_
-
-
-
-
 
 URI: [lambda:cross_references](http://w3id.org/lambda/cross_references)
 Alias: cross_references
@@ -22,6 +17,7 @@ Alias: cross_references
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [Protein](Protein.md) | A protein as a biological entity: its sequence, source organism, gene, and th... |  no  |
 | [AggregatedProteinView](AggregatedProteinView.md) | Aggregated view of all structural and functional data for a protein |  no  |
 
 
@@ -31,9 +27,7 @@ Alias: cross_references
 
 ## Properties
 
-* Range: [DatabaseCrossReference](DatabaseCrossReference.md)
-
-* Multivalued: True
+* Range: [String](String.md)
 
 
 
@@ -42,13 +36,6 @@ Alias: cross_references
 
 
 
-
-
-
-### Schema Source
-
-
-* from schema: http://w3id.org/lambda/
 
 
 
@@ -68,17 +55,11 @@ Alias: cross_references
 <details>
 ```yaml
 name: cross_references
-description: Database cross-references
-from_schema: http://w3id.org/lambda/
-rank: 1000
 alias: cross_references
-owner: AggregatedProteinView
 domain_of:
+- Protein
 - AggregatedProteinView
-range: DatabaseCrossReference
-multivalued: true
-inlined: true
-inlined_as_list: true
+range: string
 
 ```
 </details>

@@ -35,6 +35,7 @@ URI: [lambda:FacilityEnum](http://w3id.org/lambda/FacilityEnum)
 
 | Name | Description |
 | ---  | --- |
+| [facility_code](facility_code.md) | The FacilityEnum term this organization corresponds to, where it is one of th... |
 | [facility_name](facility_name.md) | Name of the research facility where the instrument is located |
 
 

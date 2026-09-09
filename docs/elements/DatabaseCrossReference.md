@@ -73,6 +73,7 @@ URI: [lambda:DatabaseCrossReference](http://w3id.org/lambda/DatabaseCrossReferen
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
 | [Sample](Sample.md) | [database_cross_references](database_cross_references.md) | range | [DatabaseCrossReference](DatabaseCrossReference.md) |
+| [Protein](Protein.md) | [cross_references](cross_references.md) | range | [DatabaseCrossReference](DatabaseCrossReference.md) |
 | [AggregatedProteinView](AggregatedProteinView.md) | [cross_references](cross_references.md) | range | [DatabaseCrossReference](DatabaseCrossReference.md) |
 
 

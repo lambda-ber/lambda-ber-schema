@@ -65,10 +65,41 @@ class TestPDBLoader:
         assert "ALPHA" in alpha.protein_name
 
     def test_sample_has_organism(self, loader):
-        """Test Sample has organism from source organism."""
+        """Test Sample has organism from source organism, as an NCBITaxon CURIE."""
         result = loader.load("1HHO")
         sample = result.dataset.samples[0]
-        assert sample.organism == "Homo sapiens"
+        assert sample.organism == "NCBITaxon:9606"
+
+    def test_proteins_created_from_uniprot_mappings(self, loader):
+        """One Protein per UniProt accession, keyed by CURIE."""
+        result = loader.load("1HHO")
+        proteins = {p.id: p for p in result.dataset.proteins}
+        assert set(proteins) == {"uniprot:P69905", "uniprot:P68871"}
+
+        alpha = proteins["uniprot:P69905"]
+        assert alpha.uniprot_id == "uniprot:P69905"
+        # UniProt-derived name preferred over the depositor's description
+        assert alpha.protein_name == "Hemoglobin subunit alpha"
+        assert alpha.organism == "NCBITaxon:9606"
+        assert alpha.organism_name == "Homo sapiens"
+        assert alpha.pdb_entries == ["pdb:1HHO"]
+        # The deposited sequence is the construct, not the canonical one; left for enrichment
+        assert alpha.amino_acid_sequence is None
+
+    def test_sample_protein_associations_carry_entity_detail(self, loader):
+        """Chain ids, copy number and reference coverage describe this entity, not the protein."""
+        result = loader.load("1HHO")
+        ds = result.dataset
+        assocs = {a.protein_id: a for a in ds.sample_protein_associations}
+        assert len(assocs) == 2
+
+        alpha = assocs["uniprot:P69905"]
+        assert alpha.sample_id == ds.samples[0].id
+        assert alpha.role == "subunit"  # two polymer entities make up the assembly
+        assert alpha.chain_ids == ["A"]
+        assert alpha.copy_number == 1
+        assert alpha.sequence_coverage is not None
+        assert 0.99 <= alpha.sequence_coverage <= 1.0
 
     def test_sample_has_molecular_weight(self, loader):
         """Test Sample has molecular weight from entity."""

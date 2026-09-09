@@ -1,6 +1,6 @@
 
 
-# Class: AggregatedProteinView 
+# Class: AggregatedProteinView  <span style="color: red;"><strong> (DEPRECATED) </strong></span> 
 
 
 _Aggregated view of all structural and functional data for a protein_
@@ -230,7 +230,11 @@ URI: [lambda:AggregatedProteinView](http://w3id.org/lambda/AggregatedProteinView
 ```yaml
 name: AggregatedProteinView
 description: Aggregated view of all structural and functional data for a protein
+deprecated: Superseded by Protein in the core schema, which carries the same annotation
+  collections, uses a CURIE for the UniProt accession, and lives in Dataset.proteins
+  where samples can link to it. Retained so existing data keeps validating.
 from_schema: http://w3id.org/lambda/
+deprecated_element_has_exact_replacement: lambda:Protein
 is_a: NamedThing
 attributes:
   uniprot_id:
@@ -238,6 +242,7 @@ attributes:
     description: UniProt accession
     from_schema: http://w3id.org/lambda/functional_annotation
     domain_of:
+    - Protein
     - ProteinConstruct
     - AggregatedProteinView
     required: true
@@ -247,6 +252,7 @@ attributes:
     from_schema: http://w3id.org/lambda/functional_annotation
     domain_of:
     - Sample
+    - Protein
     - AggregatedProteinView
     required: true
   organism:
@@ -255,6 +261,7 @@ attributes:
     from_schema: http://w3id.org/lambda/functional_annotation
     domain_of:
     - Sample
+    - Protein
     - AggregatedProteinView
   organism_id:
     name: organism_id
@@ -269,6 +276,7 @@ attributes:
     description: All PDB entries for this protein
     from_schema: http://w3id.org/lambda/functional_annotation
     domain_of:
+    - Protein
     - ConformationalState
     - AggregatedProteinView
     multivalued: true
@@ -278,6 +286,7 @@ attributes:
     from_schema: http://w3id.org/lambda/functional_annotation
     domain_of:
     - Sample
+    - Protein
     - AggregatedProteinView
     range: FunctionalSite
     multivalued: true
@@ -289,6 +298,7 @@ attributes:
     from_schema: http://w3id.org/lambda/functional_annotation
     domain_of:
     - Sample
+    - Protein
     - AggregatedProteinView
     range: StructuralFeature
     multivalued: true
@@ -300,6 +310,7 @@ attributes:
     from_schema: http://w3id.org/lambda/functional_annotation
     domain_of:
     - Sample
+    - Protein
     - AggregatedProteinView
     range: ProteinProteinInteraction
     multivalued: true
@@ -311,6 +322,7 @@ attributes:
     from_schema: http://w3id.org/lambda/functional_annotation
     domain_of:
     - Sample
+    - Protein
     - FunctionalSite
     - AggregatedProteinView
     range: LigandInteraction
@@ -345,6 +357,7 @@ attributes:
     from_schema: http://w3id.org/lambda/functional_annotation
     domain_of:
     - Sample
+    - Protein
     - AggregatedProteinView
     range: BiophysicalProperty
     multivalued: true
@@ -356,6 +369,7 @@ attributes:
     from_schema: http://w3id.org/lambda/functional_annotation
     domain_of:
     - Sample
+    - Protein
     - AggregatedProteinView
     range: ConformationalEnsemble
     inlined: true
@@ -365,6 +379,7 @@ attributes:
     from_schema: http://w3id.org/lambda/functional_annotation
     domain_of:
     - Sample
+    - Protein
     - AggregatedProteinView
     range: EvolutionaryConservation
     inlined: true
@@ -372,8 +387,8 @@ attributes:
     name: cross_references
     description: Database cross-references
     from_schema: http://w3id.org/lambda/functional_annotation
-    rank: 1000
     domain_of:
+    - Protein
     - AggregatedProteinView
     range: DatabaseCrossReference
     multivalued: true
@@ -389,7 +404,11 @@ attributes:
 ```yaml
 name: AggregatedProteinView
 description: Aggregated view of all structural and functional data for a protein
+deprecated: Superseded by Protein in the core schema, which carries the same annotation
+  collections, uses a CURIE for the UniProt accession, and lives in Dataset.proteins
+  where samples can link to it. Retained so existing data keeps validating.
 from_schema: http://w3id.org/lambda/
+deprecated_element_has_exact_replacement: lambda:Protein
 is_a: NamedThing
 attributes:
   uniprot_id:
@@ -399,6 +418,7 @@ attributes:
     alias: uniprot_id
     owner: AggregatedProteinView
     domain_of:
+    - Protein
     - ProteinConstruct
     - AggregatedProteinView
     range: string
@@ -411,6 +431,7 @@ attributes:
     owner: AggregatedProteinView
     domain_of:
     - Sample
+    - Protein
     - AggregatedProteinView
     range: string
     required: true
@@ -422,6 +443,7 @@ attributes:
     owner: AggregatedProteinView
     domain_of:
     - Sample
+    - Protein
     - AggregatedProteinView
     range: string
   organism_id:
@@ -441,6 +463,7 @@ attributes:
     alias: pdb_entries
     owner: AggregatedProteinView
     domain_of:
+    - Protein
     - ConformationalState
     - AggregatedProteinView
     range: string
@@ -453,6 +476,7 @@ attributes:
     owner: AggregatedProteinView
     domain_of:
     - Sample
+    - Protein
     - AggregatedProteinView
     range: FunctionalSite
     multivalued: true
@@ -466,6 +490,7 @@ attributes:
     owner: AggregatedProteinView
     domain_of:
     - Sample
+    - Protein
     - AggregatedProteinView
     range: StructuralFeature
     multivalued: true
@@ -479,6 +504,7 @@ attributes:
     owner: AggregatedProteinView
     domain_of:
     - Sample
+    - Protein
     - AggregatedProteinView
     range: ProteinProteinInteraction
     multivalued: true
@@ -492,6 +518,7 @@ attributes:
     owner: AggregatedProteinView
     domain_of:
     - Sample
+    - Protein
     - FunctionalSite
     - AggregatedProteinView
     range: LigandInteraction
@@ -532,6 +559,7 @@ attributes:
     owner: AggregatedProteinView
     domain_of:
     - Sample
+    - Protein
     - AggregatedProteinView
     range: BiophysicalProperty
     multivalued: true
@@ -545,6 +573,7 @@ attributes:
     owner: AggregatedProteinView
     domain_of:
     - Sample
+    - Protein
     - AggregatedProteinView
     range: ConformationalEnsemble
     inlined: true
@@ -556,6 +585,7 @@ attributes:
     owner: AggregatedProteinView
     domain_of:
     - Sample
+    - Protein
     - AggregatedProteinView
     range: EvolutionaryConservation
     inlined: true
@@ -563,10 +593,10 @@ attributes:
     name: cross_references
     description: Database cross-references
     from_schema: http://w3id.org/lambda/functional_annotation
-    rank: 1000
     alias: cross_references
     owner: AggregatedProteinView
     domain_of:
+    - Protein
     - AggregatedProteinView
     range: DatabaseCrossReference
     multivalued: true

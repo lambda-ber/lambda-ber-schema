@@ -19,6 +19,7 @@
    "rocrate": "https://w3id.org/ro/crate/",
    "schema": "https://schema.org/",
    "sdo": "http://schema.org/",
+   "uniprot": "http://purl.uniprot.org/uniprot/",
    "Agent": {
       "@id": "prov:Agent"
    },
@@ -217,11 +218,17 @@
    "PropertyValueEntity": {
       "@id": "sdo:PropertyValue"
    },
+   "Protein": {
+      "@id": "lambda:Protein"
+   },
    "ProteinAnnotation": {
       "@id": "http://w3id.org/lambda/functional_annotation/ProteinAnnotation"
    },
    "ProteinConstruct": {
       "@id": "lambda:ProteinConstruct"
+   },
+   "ProteinEntity": {
+      "@id": "sdo:Protein"
    },
    "ProteinProteinInteraction": {
       "@id": "http://w3id.org/lambda/functional_annotation/ProteinProteinInteraction"
@@ -249,6 +256,9 @@
    },
    "SamplePreparation": {
       "@id": "lambda:SamplePreparation"
+   },
+   "SampleProteinAssociation": {
+      "@id": "lambda:SampleProteinAssociation"
    },
    "SANSConfiguration": {
       "@id": "lambda:SANSConfiguration"

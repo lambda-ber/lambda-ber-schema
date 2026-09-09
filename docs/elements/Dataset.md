@@ -46,6 +46,17 @@ URI: [lambda:Dataset](http://w3id.org/lambda/Dataset)
     
 
         
+      Dataset : experiment_person_associations
+        
+          
+    
+        
+        
+        Dataset --> "*" ExperimentPersonAssociation : experiment_person_associations
+        click ExperimentPersonAssociation href "../ExperimentPersonAssociation/"
+    
+
+        
       Dataset : experiment_runs
         
           
@@ -94,6 +105,39 @@ URI: [lambda:Dataset](http://w3id.org/lambda/Dataset)
         
       Dataset : keywords
         
+      Dataset : organizations
+        
+          
+    
+        
+        
+        Dataset --> "*" Organization : organizations
+        click Organization href "../Organization/"
+    
+
+        
+      Dataset : person_organization_associations
+        
+          
+    
+        
+        
+        Dataset --> "*" PersonOrganizationAssociation : person_organization_associations
+        click PersonOrganizationAssociation href "../PersonOrganizationAssociation/"
+    
+
+        
+      Dataset : persons
+        
+          
+    
+        
+        
+        Dataset --> "*" Person : persons
+        click Person href "../Person/"
+    
+
+        
       Dataset : protein_constructs
         
           
@@ -105,6 +149,17 @@ URI: [lambda:Dataset](http://w3id.org/lambda/Dataset)
     
 
         
+      Dataset : proteins
+        
+          
+    
+        
+        
+        Dataset --> "*" Protein : proteins
+        click Protein href "../Protein/"
+    
+
+        
       Dataset : sample_preparations
         
           
@@ -113,6 +168,17 @@ URI: [lambda:Dataset](http://w3id.org/lambda/Dataset)
         
         Dataset --> "*" SamplePreparation : sample_preparations
         click SamplePreparation href "../SamplePreparation/"
+    
+
+        
+      Dataset : sample_protein_associations
+        
+          
+    
+        
+        
+        Dataset --> "*" SampleProteinAssociation : sample_protein_associations
+        click SampleProteinAssociation href "../SampleProteinAssociation/"
     
 
         
@@ -146,6 +212,28 @@ URI: [lambda:Dataset](http://w3id.org/lambda/Dataset)
         
         Dataset --> "*" StudyExperimentAssociation : study_experiment_associations
         click StudyExperimentAssociation href "../StudyExperimentAssociation/"
+    
+
+        
+      Dataset : study_organization_associations
+        
+          
+    
+        
+        
+        Dataset --> "*" StudyOrganizationAssociation : study_organization_associations
+        click StudyOrganizationAssociation href "../StudyOrganizationAssociation/"
+    
+
+        
+      Dataset : study_person_associations
+        
+          
+    
+        
+        
+        Dataset --> "*" StudyPersonAssociation : study_person_associations
+        click StudyPersonAssociation href "../StudyPersonAssociation/"
     
 
         
@@ -206,6 +294,17 @@ URI: [lambda:Dataset](http://w3id.org/lambda/Dataset)
     
 
         
+      Dataset : workflow_person_associations
+        
+          
+    
+        
+        
+        Dataset --> "*" WorkflowPersonAssociation : workflow_person_associations
+        click WorkflowPersonAssociation href "../WorkflowPersonAssociation/"
+    
+
+        
       Dataset : workflow_runs
         
           
@@ -236,7 +335,10 @@ URI: [lambda:Dataset](http://w3id.org/lambda/Dataset)
 | ---  | --- | --- | --- |
 | [keywords](keywords.md) | * <br/> [String](String.md) | Keywords or tags describing the dataset for search and categorization | direct |
 | [studies](studies.md) | * <br/> [Study](Study.md) | All studies in this dataset | direct |
+| [persons](persons.md) | * <br/> [Person](Person.md) | All people referenced anywhere in this dataset | direct |
+| [organizations](organizations.md) | * <br/> [Organization](Organization.md) | All organizations referenced anywhere in this dataset | direct |
 | [instruments](instruments.md) | * <br/> [Instrument](Instrument.md) | All instruments used across studies | direct |
+| [proteins](proteins.md) | * <br/> [Protein](Protein.md) | All proteins referenced by samples in this dataset, one record per protein | direct |
 | [protein_constructs](protein_constructs.md) | * <br/> [ProteinConstruct](ProteinConstruct.md) | All protein constructs | direct |
 | [samples](samples.md) | * <br/> [Sample](Sample.md) | All samples across all studies | direct |
 | [sample_preparations](sample_preparations.md) | * <br/> [SamplePreparation](SamplePreparation.md) | All sample preparations | direct |
@@ -249,9 +351,15 @@ URI: [lambda:Dataset](http://w3id.org/lambda/Dataset)
 | [study_workflow_associations](study_workflow_associations.md) | * <br/> [StudyWorkflowAssociation](StudyWorkflowAssociation.md) | Links between studies and workflows (M:N) | direct |
 | [experiment_sample_associations](experiment_sample_associations.md) | * <br/> [ExperimentSampleAssociation](ExperimentSampleAssociation.md) | Links between experiments and samples (M:N with role) | direct |
 | [experiment_instrument_associations](experiment_instrument_associations.md) | * <br/> [ExperimentInstrumentAssociation](ExperimentInstrumentAssociation.md) | Links between experiments and instruments (M:N) | direct |
+| [sample_protein_associations](sample_protein_associations.md) | * <br/> [SampleProteinAssociation](SampleProteinAssociation.md) | Links between samples and the proteins they contain (M:N with role, copy numb... | direct |
 | [workflow_experiment_associations](workflow_experiment_associations.md) | * <br/> [WorkflowExperimentAssociation](WorkflowExperimentAssociation.md) | Links between workflows and source experiments (M:N) | direct |
 | [workflow_input_associations](workflow_input_associations.md) | * <br/> [WorkflowInputAssociation](WorkflowInputAssociation.md) | Links between workflows and input files | direct |
 | [workflow_output_associations](workflow_output_associations.md) | * <br/> [WorkflowOutputAssociation](WorkflowOutputAssociation.md) | Links between workflows and output files | direct |
+| [study_person_associations](study_person_associations.md) | * <br/> [StudyPersonAssociation](StudyPersonAssociation.md) | Links between studies and people (M:N with role) - where authorship lives | direct |
+| [experiment_person_associations](experiment_person_associations.md) | * <br/> [ExperimentPersonAssociation](ExperimentPersonAssociation.md) | Links between experiment runs and people (M:N with role) | direct |
+| [workflow_person_associations](workflow_person_associations.md) | * <br/> [WorkflowPersonAssociation](WorkflowPersonAssociation.md) | Links between workflow runs and people (M:N with role) | direct |
+| [study_organization_associations](study_organization_associations.md) | * <br/> [StudyOrganizationAssociation](StudyOrganizationAssociation.md) | Links between studies and organizations (M:N with role, award number) | direct |
+| [person_organization_associations](person_organization_associations.md) | * <br/> [PersonOrganizationAssociation](PersonOrganizationAssociation.md) | Links between people and organizations (M:N with role and dates) | direct |
 | [id](id.md) | 1 <br/> [Uriorcurie](Uriorcurie.md) | Globally unique identifier as an IRI or CURIE for machine processing and exte... | [NamedThing](NamedThing.md) |
 | [title](title.md) | 0..1 <br/> [String](String.md) | A human-readable name or title for this entity | [NamedThing](NamedThing.md) |
 | [description](description.md) | 0..1 <br/> [String](String.md) | A detailed textual description of this entity | [NamedThing](NamedThing.md) |
@@ -331,6 +439,28 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
+  persons:
+    name: persons
+    description: All people referenced anywhere in this dataset
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    domain_of:
+    - Dataset
+    range: Person
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  organizations:
+    name: organizations
+    description: All organizations referenced anywhere in this dataset
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    domain_of:
+    - Dataset
+    range: Organization
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
   instruments:
     name: instruments
     description: All instruments used across studies
@@ -339,6 +469,18 @@ attributes:
     domain_of:
     - Dataset
     range: Instrument
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  proteins:
+    name: proteins
+    description: All proteins referenced by samples in this dataset, one record per
+      protein
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    domain_of:
+    - Dataset
+    range: Protein
     multivalued: true
     inlined: true
     inlined_as_list: true
@@ -474,6 +616,18 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
+  sample_protein_associations:
+    name: sample_protein_associations
+    description: Links between samples and the proteins they contain (M:N with role,
+      copy number, construct)
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    domain_of:
+    - Dataset
+    range: SampleProteinAssociation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
   workflow_experiment_associations:
     name: workflow_experiment_associations
     description: Links between workflows and source experiments (M:N)
@@ -504,6 +658,62 @@ attributes:
     domain_of:
     - Dataset
     range: WorkflowOutputAssociation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  study_person_associations:
+    name: study_person_associations
+    description: Links between studies and people (M:N with role) - where authorship
+      lives
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    domain_of:
+    - Dataset
+    range: StudyPersonAssociation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  experiment_person_associations:
+    name: experiment_person_associations
+    description: Links between experiment runs and people (M:N with role)
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    domain_of:
+    - Dataset
+    range: ExperimentPersonAssociation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  workflow_person_associations:
+    name: workflow_person_associations
+    description: Links between workflow runs and people (M:N with role)
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    domain_of:
+    - Dataset
+    range: WorkflowPersonAssociation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  study_organization_associations:
+    name: study_organization_associations
+    description: Links between studies and organizations (M:N with role, award number)
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    domain_of:
+    - Dataset
+    range: StudyOrganizationAssociation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  person_organization_associations:
+    name: person_organization_associations
+    description: Links between people and organizations (M:N with role and dates)
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    domain_of:
+    - Dataset
+    range: PersonOrganizationAssociation
     multivalued: true
     inlined: true
     inlined_as_list: true
@@ -550,6 +760,32 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
+  persons:
+    name: persons
+    description: All people referenced anywhere in this dataset
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    alias: persons
+    owner: Dataset
+    domain_of:
+    - Dataset
+    range: Person
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  organizations:
+    name: organizations
+    description: All organizations referenced anywhere in this dataset
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    alias: organizations
+    owner: Dataset
+    domain_of:
+    - Dataset
+    range: Organization
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
   instruments:
     name: instruments
     description: All instruments used across studies
@@ -560,6 +796,20 @@ attributes:
     domain_of:
     - Dataset
     range: Instrument
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  proteins:
+    name: proteins
+    description: All proteins referenced by samples in this dataset, one record per
+      protein
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    alias: proteins
+    owner: Dataset
+    domain_of:
+    - Dataset
+    range: Protein
     multivalued: true
     inlined: true
     inlined_as_list: true
@@ -719,6 +969,20 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
+  sample_protein_associations:
+    name: sample_protein_associations
+    description: Links between samples and the proteins they contain (M:N with role,
+      copy number, construct)
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    alias: sample_protein_associations
+    owner: Dataset
+    domain_of:
+    - Dataset
+    range: SampleProteinAssociation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
   workflow_experiment_associations:
     name: workflow_experiment_associations
     description: Links between workflows and source experiments (M:N)
@@ -755,6 +1019,72 @@ attributes:
     domain_of:
     - Dataset
     range: WorkflowOutputAssociation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  study_person_associations:
+    name: study_person_associations
+    description: Links between studies and people (M:N with role) - where authorship
+      lives
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    alias: study_person_associations
+    owner: Dataset
+    domain_of:
+    - Dataset
+    range: StudyPersonAssociation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  experiment_person_associations:
+    name: experiment_person_associations
+    description: Links between experiment runs and people (M:N with role)
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    alias: experiment_person_associations
+    owner: Dataset
+    domain_of:
+    - Dataset
+    range: ExperimentPersonAssociation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  workflow_person_associations:
+    name: workflow_person_associations
+    description: Links between workflow runs and people (M:N with role)
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    alias: workflow_person_associations
+    owner: Dataset
+    domain_of:
+    - Dataset
+    range: WorkflowPersonAssociation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  study_organization_associations:
+    name: study_organization_associations
+    description: Links between studies and organizations (M:N with role, award number)
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    alias: study_organization_associations
+    owner: Dataset
+    domain_of:
+    - Dataset
+    range: StudyOrganizationAssociation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  person_organization_associations:
+    name: person_organization_associations
+    description: Links between people and organizations (M:N with role and dates)
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    alias: person_organization_associations
+    owner: Dataset
+    domain_of:
+    - Dataset
+    range: PersonOrganizationAssociation
     multivalued: true
     inlined: true
     inlined_as_list: true

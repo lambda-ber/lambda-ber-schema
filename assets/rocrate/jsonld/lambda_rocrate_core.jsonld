@@ -3,7 +3,7 @@
   "description": "**LAMBDA Core RO-Crate profile** \u2014 the technique-neutral file-manifest contract for LAMBDA.\n\nA LAMBDA crate is a machine-readable *manifest*: it carries the highest-level details a program\nneeds in order to decide whether a dataset is worth opening, and then **points** at the fuller\nrecord rather than restating it. The fuller record may be another RO-Crate, a complete\n`lambda-ber-schema` document, or a remote registration (DOI / archive accession).\n\n## Relationship to `lambda-ber-schema`\n\nThis module *mirrors* `lambda-ber-schema`; it does not copy it. It `imports` the main schema, so\nevery controlled vocabulary (`TechniqueEnum`, `FacilityEnum`, `FileFormatEnum`, `DataTypeEnum`,\n`WorkflowTypeEnum`, `SampleTypeEnum`, \u2026) is *referenced* from its single source. Every crate slot\nthat has a counterpart in the main schema declares it with `exact_mappings`, so\n`gen-sssom` emits a machine-readable crate-term to schema-slot crosswalk instead of a\nhand-maintained table that drifts.\n\n## Term layers\n\nThree namespaces, by design (the two-layer discipline of the LAMBDA SAXS profile, plus RO-Crate's\nown base):\n\n- `sdo:` (schema.org) \u2014 identity, access and packaging. Anything RO-Crate/schema.org already\n  names (`name`, `datePublished`, `license`, `author`, `hasPart`, `encodingFormat`,\n  `contentSize`, \u2026) uses the schema.org term, in schema.org's own camelCase. Note the **http**\n  form of the namespace, and see the prefix comment below for why it is not called `schema:`\n  here. Crate authors never write this prefix \u2014 RO-Crate's context resolves the bare terms.\n- `lambda:` \u2014 terms that project onto a `lambda-ber-schema` slot. These deliberately keep the\n  schema's `snake_case` slot names, so `lambda:file_format` in a crate *is* the `DataFile.file_format`\n  slot IRI and the projection is an identity mapping rather than a lookup.\n- `lambdarc:` \u2014 profile-local machinery with no schema counterpart yet (declared absence,\n  sufficiency tiers, designation, estimators). camelCase, following the SAXS profile's style.\n  Each of these is a standing change request against `lambda-ber-schema`.\n\n## Namespace note\n\nCrates MUST bind `lambda:` to `http://w3id.org/lambda/` \u2014 the main schema's own base \u2014 so that\n`lambda:Dataset` and `lambda:file_format` in a crate resolve to the actual LinkML class and slot\nIRIs. Earlier SSRL crates bound `lambda:` to `https://w3id.org/lambda/terms/0.2/`, whose terms\nresolve to nothing in the schema; see the deprecated-alias notes on individual elements.\n\n## Validation model\n\nThree layers, because a flat RO-Crate `@graph` is an open world and no single tool covers it:\n\n1. **JSON Schema** (`gen-json-schema --top-class ROCrateMetadataDocument`) checks document shape.\n   `@graph` is deliberately permissive at the document level so that crates carrying technique\n   extension terms still validate as documents.\n2. **Per-entity classes** \u2014 dispatch a graph entity on its `@type` and validate it against the\n   matching class here (`linkml-validate -C CrateFile`, \u2026). These classes are closed, so an\n   undeclared term is caught. This is where the profile actually bites.\n3. **Graph rules** for the cross-entity constraints neither of the above can state, because they\n   are about relationships between entities rather than the shape of any one of them: does every\n   `hasPart` target resolve to an entity? does each dataset part carry a metadata pointer or\n   declare that it has none? is any field both present and declared missing? These live in\n   `tests/test_rocrate_profile.py`.\n\n   SHACL shapes would be the natural home for this layer, since RDF validation dispatches on\n   `rdf:type` properly. They are *not* generated: `gen-shacl` raises\n   `KeyError('lambda-ber-schema')` for classes whose slots come from an imported schema\n   (`shaclgen.py::_build_ignored_properties`). Worth revisiting when that is fixed upstream.\n\nTwo normalizations a reader MUST apply before validating, both of them things a JSON-LD processor\ndoes and neither of them a change of meaning: expand a single value where the profile declares a\nset (`\"instrument\": {\"@id\": \"#x\"}` means a one-element list), and compact an explicitly prefixed\nkey to the profile's own term (`\"lambda:protein_name\"` and a context-mapped `\"protein_name\"` are\nthe same IRI, and real crates mix the two spellings within one entity).\n",
   "title": "LAMBDA Core RO-Crate Profile",
   "id": "http://w3id.org/lambda/rocrate/core",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "imports": [
     "linkml:types",
     "lambda_ber_schema",
@@ -55,6 +55,10 @@
     {
       "prefix_prefix": "ROR",
       "prefix_reference": "https://ror.org/"
+    },
+    {
+      "prefix_prefix": "uniprot",
+      "prefix_reference": "http://purl.uniprot.org/uniprot/"
     }
   ],
   "default_prefix": "lambdarc",
@@ -3984,6 +3988,42 @@
       ]
     },
     {
+      "name": "SampleProteinRoleEnum",
+      "definition_uri": "http://w3id.org/lambda/SampleProteinRoleEnum",
+      "description": "Part a protein plays in a sample",
+      "from_schema": "http://w3id.org/lambda/",
+      "permissible_values": [
+        {
+          "text": "target",
+          "description": "The protein under investigation"
+        },
+        {
+          "text": "subunit",
+          "description": "One subunit of a complex that is the target as a whole"
+        },
+        {
+          "text": "binding_partner",
+          "description": "A protein present for its interaction with the target, such as a substrate, inhibitor or antibody"
+        },
+        {
+          "text": "fusion_partner",
+          "description": "A solubility or affinity fusion partner left attached (e.g., MBP, GST, GFP)"
+        },
+        {
+          "text": "chaperone",
+          "description": "A chaperone or scaffold added to stabilize or reconstitute the target"
+        },
+        {
+          "text": "contaminant",
+          "description": "A protein present unintentionally and identified after the fact"
+        },
+        {
+          "text": "standard",
+          "description": "A reference protein added for calibration or as a size marker"
+        }
+      ]
+    },
+    {
       "name": "InstrumentRoleEnum",
       "definition_uri": "http://w3id.org/lambda/InstrumentRoleEnum",
       "description": "Role of an instrument in an experiment",
@@ -7064,7 +7104,7 @@
     {
       "name": "protein_name",
       "definition_uri": "http://w3id.org/lambda/rocrate/protein_name",
-      "description": "Name of the protein studied - one of the highest-value search fields.",
+      "description": "Name of the protein - one of the highest-value search fields. On a `ProteinEntity` it is the protein's recommended name; on a `SampleEntity` it is the name the facility recorded.",
       "from_schema": "http://w3id.org/lambda/rocrate/core",
       "mappings": [
         "http://w3id.org/lambda/protein_name"
@@ -7073,12 +7113,95 @@
         "http://w3id.org/lambda/protein_name"
       ],
       "slot_uri": "http://w3id.org/lambda/protein_name",
-      "owner": "SampleEntity",
+      "owner": "ProteinEntity",
       "domain_of": [
         "CrateRoot",
-        "SampleEntity"
+        "SampleEntity",
+        "ProteinEntity"
       ],
       "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "uniprot_id",
+      "definition_uri": "http://w3id.org/lambda/rocrate/uniprot_id",
+      "description": "UniProt accession as a Bioregistry CURIE (`uniprot:P69905`), exactly as `Protein.uniprot_id` carries it, so the projection is identity. The bare accession belongs to the deprecated `uniprotId` spelling.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/uniprot_id"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/uniprot_id"
+      ],
+      "slot_uri": "http://w3id.org/lambda/uniprot_id",
+      "owner": "ProteinEntity",
+      "domain_of": [
+        "CrateRoot",
+        "ProteinEntity"
+      ],
+      "range": "string",
+      "pattern": "^uniprot:([OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2})(-[0-9]+)?$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "gene_name",
+      "definition_uri": "http://w3id.org/lambda/rocrate/gene_name",
+      "description": "Primary gene symbol.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/gene_name"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/gene_name"
+      ],
+      "slot_uri": "http://w3id.org/lambda/gene_name",
+      "owner": "ProteinEntity",
+      "domain_of": [
+        "ProteinEntity"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "pdb_entries",
+      "definition_uri": "http://w3id.org/lambda/rocrate/pdb_entries",
+      "description": "PDB entries the protein is known from, as CURIEs (`pdb:1HHO`).",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/pdb_entries"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/pdb_entries"
+      ],
+      "slot_uri": "http://w3id.org/lambda/pdb_entries",
+      "owner": "ProteinEntity",
+      "domain_of": [
+        "ProteinEntity"
+      ],
+      "range": "string",
+      "multivalued": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "has_biochem_entity_part",
+      "definition_uri": "http://w3id.org/lambda/rocrate/has_biochem_entity_part",
+      "description": "The protein entities a specimen contains. schema.org's own part relation for `BioChemEntity`, and in the RO-Crate 1.2 context. Projects onto one `SampleProteinAssociation` per target; the role, copy number and modifications that association can carry are left to the fuller record, because a manifest says *what* is in the tube and not how much.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://schema.org/hasBioChemEntityPart"
+      ],
+      "close_mappings": [
+        "http://w3id.org/lambda/SampleProteinAssociation"
+      ],
+      "slot_uri": "http://schema.org/hasBioChemEntityPart",
+      "alias": "hasBioChemEntityPart",
+      "owner": "SampleEntity",
+      "domain_of": [
+        "SampleEntity"
+      ],
+      "range": "EntityReference",
+      "multivalued": true,
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -7093,10 +7216,11 @@
         "http://w3id.org/lambda/organism"
       ],
       "slot_uri": "http://w3id.org/lambda/organism",
-      "owner": "SampleEntity",
+      "owner": "ProteinEntity",
       "domain_of": [
         "CrateRoot",
-        "SampleEntity"
+        "SampleEntity",
+        "ProteinEntity"
       ],
       "range": "Any",
       "inlined": true,
@@ -7345,6 +7469,7 @@
         "CrateRoot",
         "CrateDatasetPart",
         "SampleEntity",
+        "ProteinEntity",
         "ExperimentRunAction",
         "WorkflowRunAction",
         "PersonEntity",
@@ -8144,18 +8269,22 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "uniprot_id",
-      "definition_uri": "http://w3id.org/lambda/rocrate/uniprot_id",
-      "description": "UniProt accession. No counterpart in the main schema; a standing change request.",
+      "name": "uniprot_id_camel",
+      "definition_uri": "http://w3id.org/lambda/rocrate/uniprot_id_camel",
+      "description": "Bare UniProt accession on a sample, in the SSRL 0.2 spelling. The accession now has a home in the main schema as `Protein.uniprot_id`, reached from a sample through `hasBioChemEntityPart`; a projector reading this slot creates that `Protein` and the association. Close rather than exact because the value here is bare (`P69905`) and the schema's is a CURIE (`uniprot:P69905`).",
+      "deprecated": "Point at a `ProteinEntity` with `hasBioChemEntityPart` and carry `lambda:uniprot_id` there.",
       "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "deprecated_element_has_exact_replacement": "lambda:uniprot_id",
       "mappings": [
         "http://w3id.org/lambda/rocrate/uniprotId"
+      ],
+      "close_mappings": [
+        "http://w3id.org/lambda/uniprot_id"
       ],
       "slot_uri": "http://w3id.org/lambda/rocrate/uniprotId",
       "alias": "uniprotId",
       "owner": "SampleEntity",
       "domain_of": [
-        "CrateRoot",
         "SampleEntity"
       ],
       "range": "string",
@@ -8615,6 +8744,22 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "dataset__proteins",
+      "description": "All proteins referenced by samples in this dataset, one record per protein",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/proteins",
+      "alias": "proteins",
+      "owner": "Dataset",
+      "domain_of": [
+        "Dataset"
+      ],
+      "range": "Protein",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "dataset__protein_constructs",
       "description": "All protein constructs",
       "from_schema": "http://w3id.org/lambda/",
@@ -8801,6 +8946,22 @@
         "Dataset"
       ],
       "range": "ExperimentInstrumentAssociation",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataset__sample_protein_associations",
+      "description": "Links between samples and the proteins they contain (M:N with role, copy number, construct)",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/sample_protein_associations",
+      "alias": "sample_protein_associations",
+      "owner": "Dataset",
+      "domain_of": [
+        "Dataset"
+      ],
+      "range": "SampleProteinAssociation",
       "multivalued": true,
       "inlined": true,
       "inlined_as_list": true,
@@ -9594,7 +9755,7 @@
     },
     {
       "name": "sample__protein_name",
-      "description": "Name of the protein",
+      "description": "Name of the protein as the facility or depositor recorded it. A display and search field; the canonical name, sequence and identifiers live on the linked Protein.",
       "from_schema": "http://w3id.org/lambda/",
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Protein_Name"
@@ -9702,6 +9863,351 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "protein__uniprot_id",
+      "description": "UniProt accession as a Bioregistry CURIE (e.g., uniprot:P69905). An isoform suffix is allowed (uniprot:P69905-2). Normally identical to id.",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_struct_ref.pdbx_db_accession"
+      ],
+      "slot_uri": "http://w3id.org/lambda/uniprot_id",
+      "alias": "uniprot_id",
+      "owner": "Protein",
+      "domain_of": [
+        "Protein"
+      ],
+      "range": "uriorcurie",
+      "recommended": true,
+      "pattern": "^uniprot:([OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2})(-[0-9]+)?$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "protein__protein_name",
+      "description": "Recommended protein name, as UniProt or the depositor gives it. Not required, so that a record seeded from an accession alone can be enriched from UniProt later.",
+      "from_schema": "http://w3id.org/lambda/",
+      "related_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_entity.pdbx_description"
+      ],
+      "slot_uri": "http://w3id.org/lambda/protein_name",
+      "alias": "protein_name",
+      "owner": "Protein",
+      "domain_of": [
+        "Protein"
+      ],
+      "range": "string",
+      "recommended": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "protein__gene_name",
+      "description": "Primary gene symbol (e.g., HBA1)",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_entity_src_gen.pdbx_gene_src_gene"
+      ],
+      "slot_uri": "http://w3id.org/lambda/gene_name",
+      "alias": "gene_name",
+      "owner": "Protein",
+      "domain_of": [
+        "Protein"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "protein__organism",
+      "description": "Source organism as an NCBI Taxonomy CURIE (e.g., NCBITaxon:9606)",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_entity_src_gen.pdbx_gene_src_ncbi_taxonomy_id"
+      ],
+      "slot_uri": "http://w3id.org/lambda/organism",
+      "alias": "organism",
+      "owner": "Protein",
+      "domain_of": [
+        "Protein"
+      ],
+      "range": "OntologyTerm",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "protein__organism_name",
+      "description": "Scientific name of the source organism. For display, and for sources that give a name but no taxonomy identifier.",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_entity_src_gen.pdbx_gene_src_scientific_name"
+      ],
+      "slot_uri": "http://w3id.org/lambda/organism_name",
+      "alias": "organism_name",
+      "owner": "Protein",
+      "domain_of": [
+        "Protein"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "protein__amino_acid_sequence",
+      "description": "Canonical one-letter amino acid sequence of the protein, without tags or other construct additions. Construct-level sequence belongs on ProteinConstruct.",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_entity_poly.pdbx_seq_one_letter_code_can"
+      ],
+      "slot_uri": "http://w3id.org/lambda/amino_acid_sequence",
+      "alias": "amino_acid_sequence",
+      "owner": "Protein",
+      "domain_of": [
+        "Protein"
+      ],
+      "range": "string",
+      "pattern": "^[ACDEFGHIKLMNPQRSTVWYBJOUXZ]+$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "protein__sequence_length",
+      "description": "Length of the canonical sequence in residues",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/sequence_length",
+      "alias": "sequence_length",
+      "owner": "Protein",
+      "domain_of": [
+        "Protein"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "protein__molecular_weight_theoretical",
+      "description": "Mass computed from the canonical sequence, typically in kDa. A mass measured for a given preparation belongs on SampleProteinAssociation.observed_molecular_weight.",
+      "from_schema": "http://w3id.org/lambda/",
+      "related_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_entity.formula_weight"
+      ],
+      "slot_uri": "http://w3id.org/lambda/molecular_weight_theoretical",
+      "alias": "molecular_weight_theoretical",
+      "owner": "Protein",
+      "domain_of": [
+        "Protein"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "protein__ec_numbers",
+      "description": "Enzyme Commission numbers, where the protein is an enzyme (e.g., 1.1.1.1)",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_entity.pdbx_ec"
+      ],
+      "slot_uri": "http://w3id.org/lambda/ec_numbers",
+      "alias": "ec_numbers",
+      "owner": "Protein",
+      "domain_of": [
+        "Protein"
+      ],
+      "range": "string",
+      "multivalued": true,
+      "pattern": "^([0-9]+|-)\\.([0-9]+|-)\\.([0-9]+|-)\\.([0-9]+|n[0-9]*|-)$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "protein__function_description",
+      "description": "Free-text summary of molecular function, typically from UniProt",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/function_description",
+      "alias": "function_description",
+      "owner": "Protein",
+      "domain_of": [
+        "Protein"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "protein__go_terms",
+      "description": "Gene Ontology annotations as CURIEs (e.g., GO:0005344 for oxygen carrier activity)",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/go_terms",
+      "alias": "go_terms",
+      "owner": "Protein",
+      "domain_of": [
+        "Protein"
+      ],
+      "range": "uriorcurie",
+      "multivalued": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "protein__pdb_entries",
+      "description": "PDB entries containing this protein, as CURIEs (e.g., pdb:1HHO)",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/pdb_entries",
+      "alias": "pdb_entries",
+      "owner": "Protein",
+      "domain_of": [
+        "Protein"
+      ],
+      "range": "uriorcurie",
+      "multivalued": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "protein__functional_sites",
+      "description": "Functional site annotations for this protein",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/functional_sites",
+      "alias": "functional_sites",
+      "owner": "Protein",
+      "domain_of": [
+        "Protein"
+      ],
+      "range": "FunctionalSite",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "protein__structural_features",
+      "description": "Structural feature annotations for this protein",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/structural_features",
+      "alias": "structural_features",
+      "owner": "Protein",
+      "domain_of": [
+        "Protein"
+      ],
+      "range": "StructuralFeature",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "protein__protein_interactions",
+      "description": "Protein-protein interaction annotations",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/protein_interactions",
+      "alias": "protein_interactions",
+      "owner": "Protein",
+      "domain_of": [
+        "Protein"
+      ],
+      "range": "ProteinProteinInteraction",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "protein__ligand_interactions",
+      "description": "Small molecule interaction annotations",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/ligand_interactions",
+      "alias": "ligand_interactions",
+      "owner": "Protein",
+      "domain_of": [
+        "Protein"
+      ],
+      "range": "LigandInteraction",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "protein__mutation_effects",
+      "description": "Known effects of mutations in this protein",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/mutation_effects",
+      "alias": "mutation_effects",
+      "owner": "Protein",
+      "domain_of": [
+        "Protein"
+      ],
+      "range": "MutationEffect",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "protein__ptm_annotations",
+      "description": "Post-translational modification annotations",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/ptm_annotations",
+      "alias": "ptm_annotations",
+      "owner": "Protein",
+      "domain_of": [
+        "Protein"
+      ],
+      "range": "PostTranslationalModification",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "protein__biophysical_properties",
+      "description": "Measured or predicted biophysical properties",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/biophysical_properties",
+      "alias": "biophysical_properties",
+      "owner": "Protein",
+      "domain_of": [
+        "Protein"
+      ],
+      "range": "BiophysicalProperty",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "protein__evolutionary_conservation",
+      "description": "Evolutionary conservation data",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/evolutionary_conservation",
+      "alias": "evolutionary_conservation",
+      "owner": "Protein",
+      "domain_of": [
+        "Protein"
+      ],
+      "range": "EvolutionaryConservation",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "protein__conformational_ensemble",
+      "description": "Conformational states and dynamics",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/conformational_ensemble",
+      "alias": "conformational_ensemble",
+      "owner": "Protein",
+      "domain_of": [
+        "Protein"
+      ],
+      "range": "ConformationalEnsemble",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "protein__cross_references",
+      "description": "Cross-references to external databases other than UniProt (Pfam, InterPro, ChEMBL, ...). The UniProt accession itself goes in uniprot_id.",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/cross_references",
+      "alias": "cross_references",
+      "owner": "Protein",
+      "domain_of": [
+        "Protein"
+      ],
+      "range": "DatabaseCrossReference",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "proteinConstruct__construct_id",
       "description": "Unique identifier for this construct",
       "from_schema": "http://w3id.org/lambda/",
@@ -9716,8 +10222,21 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "proteinConstruct__protein_id",
+      "description": "The protein this construct expresses. Set whenever the dataset carries a Protein row for it; a construct that names a protein only by accession uses uniprot_id instead.",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/protein_id",
+      "alias": "protein_id",
+      "owner": "ProteinConstruct",
+      "domain_of": [
+        "ProteinConstruct"
+      ],
+      "range": "Protein",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "proteinConstruct__uniprot_id",
-      "description": "UniProt accession for the target protein",
+      "description": "UniProt accession of the target protein as a CURIE (e.g., uniprot:P69905). Carries the identity when no Protein row exists in the dataset; where protein_id is set the two must agree, and protein_id is the join key.",
       "from_schema": "http://w3id.org/lambda/",
       "slot_uri": "http://w3id.org/lambda/uniprot_id",
       "alias": "uniprot_id",
@@ -9725,7 +10244,7 @@
       "domain_of": [
         "ProteinConstruct"
       ],
-      "range": "string",
+      "range": "uriorcurie",
       "@type": "SlotDefinition"
     },
     {
@@ -18159,6 +18678,153 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "sampleProteinAssociation__sample_id",
+      "description": "Reference to the sample",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/sample_id",
+      "alias": "sample_id",
+      "owner": "SampleProteinAssociation",
+      "domain_of": [
+        "SampleProteinAssociation"
+      ],
+      "range": "Sample",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sampleProteinAssociation__protein_id",
+      "description": "Reference to the protein",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/protein_id",
+      "alias": "protein_id",
+      "owner": "SampleProteinAssociation",
+      "domain_of": [
+        "SampleProteinAssociation"
+      ],
+      "range": "Protein",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sampleProteinAssociation__role",
+      "description": "Part this protein plays in the sample",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/role",
+      "alias": "role",
+      "owner": "SampleProteinAssociation",
+      "domain_of": [
+        "SampleProteinAssociation"
+      ],
+      "range": "SampleProteinRoleEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sampleProteinAssociation__construct_id",
+      "description": "The construct that produced this protein in this sample, where cloning detail is recorded",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/construct_id",
+      "alias": "construct_id",
+      "owner": "SampleProteinAssociation",
+      "domain_of": [
+        "SampleProteinAssociation"
+      ],
+      "range": "ProteinConstruct",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sampleProteinAssociation__copy_number",
+      "description": "Copies of this protein per assembly in the sample (e.g., 4 for a homotetramer, 2 for each chain of an alpha2-beta2 heterotetramer). Omit when unknown rather than assuming 1.",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_entity.pdbx_number_of_molecules"
+      ],
+      "slot_uri": "http://w3id.org/lambda/copy_number",
+      "alias": "copy_number",
+      "owner": "SampleProteinAssociation",
+      "domain_of": [
+        "SampleProteinAssociation"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sampleProteinAssociation__residue_range",
+      "description": "Residues of the canonical sequence present in this sample (e.g., '1-141', '25-300'), for fragments and truncations. Omit when the full-length protein is present. Residues or ranges, comma-separated: '1-141', '25,27,30-35'.",
+      "from_schema": "http://w3id.org/lambda/",
+      "related_mappings": [
+        "https://mmcif.wwpdb.org/dictionaries/mmcif_ihm_ext.dic/Items/_ihm_entity_poly_segment"
+      ],
+      "slot_uri": "http://w3id.org/lambda/residue_range",
+      "alias": "residue_range",
+      "owner": "SampleProteinAssociation",
+      "domain_of": [
+        "SampleProteinAssociation"
+      ],
+      "range": "string",
+      "pattern": "^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sampleProteinAssociation__sequence_coverage",
+      "description": "Fraction of the canonical sequence present in this sample (range: 0-1)",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/sequence_coverage",
+      "alias": "sequence_coverage",
+      "owner": "SampleProteinAssociation",
+      "domain_of": [
+        "SampleProteinAssociation"
+      ],
+      "range": "float",
+      "minimum_value": 0,
+      "maximum_value": 1,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sampleProteinAssociation__chain_ids",
+      "description": "Chain identifiers this protein occupies in the deposited structure, where the sample is a PDB entity",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_entity_poly.pdbx_strand_id"
+      ],
+      "slot_uri": "http://w3id.org/lambda/chain_ids",
+      "alias": "chain_ids",
+      "owner": "SampleProteinAssociation",
+      "domain_of": [
+        "SampleProteinAssociation"
+      ],
+      "range": "string",
+      "multivalued": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sampleProteinAssociation__modifications",
+      "description": "Modifications carried by this protein in this sample: tags left on, mutations, labels, post-translational modifications",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/modifications",
+      "alias": "modifications",
+      "owner": "SampleProteinAssociation",
+      "domain_of": [
+        "SampleProteinAssociation"
+      ],
+      "range": "string",
+      "multivalued": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sampleProteinAssociation__observed_molecular_weight",
+      "description": "Mass as measured for this preparation (mass spectrometry, SEC-MALS, SAXS), typically in kDa. The sequence-derived mass lives on Protein.molecular_weight_theoretical.",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/observed_molecular_weight",
+      "alias": "observed_molecular_weight",
+      "owner": "SampleProteinAssociation",
+      "domain_of": [
+        "SampleProteinAssociation"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "experimentInstrumentAssociation__experiment_id",
       "description": "Reference to the experiment run",
       "from_schema": "http://w3id.org/lambda/",
@@ -18691,7 +19357,7 @@
     },
     {
       "name": "proteinAnnotation__protein_id",
-      "description": "UniProt accession number",
+      "description": "UniProt accession of the annotated protein, preferably as a Bioregistry CURIE (uniprot:P69905) matching Protein.uniprot_id. A bare accession (P69905) is accepted for data recorded before the CURIE form was adopted.",
       "from_schema": "http://w3id.org/lambda/functional_annotation",
       "slot_uri": "http://w3id.org/lambda/functional_annotation/protein_id",
       "alias": "protein_id",
@@ -18701,7 +19367,7 @@
       ],
       "range": "string",
       "required": true,
-      "pattern": "^[A-Z][0-9][A-Z0-9]{3}[0-9]|[A-Z][0-9][A-Z0-9]{3}[0-9]-[0-9]+$",
+      "pattern": "^(uniprot:)?([OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2})(-[0-9]+)?$",
       "@type": "SlotDefinition"
     },
     {
@@ -18743,7 +19409,7 @@
         "ProteinAnnotation"
       ],
       "range": "string",
-      "pattern": "^[0-9,\\-]+$",
+      "pattern": "^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$",
       "@type": "SlotDefinition"
     },
     {
@@ -20483,7 +21149,7 @@
     {
       "name": "CrateRoot_conforms_to",
       "definition_uri": "http://w3id.org/lambda/rocrate/conforms_to",
-      "description": "MUST include both the RO-Crate version URI and `https://w3id.org/lambda/profile/core/0.3.0`. Technique extensions add their own URI alongside, never instead.",
+      "description": "MUST include both the RO-Crate version URI and `https://w3id.org/lambda/profile/core/0.3.1`. Technique extensions add their own URI alongside, never instead.",
       "from_schema": "http://w3id.org/lambda/rocrate/core",
       "mappings": [
         "http://purl.org/dc/terms/conformsTo"
@@ -20748,6 +21414,54 @@
       "usage_slot_name": "sample_code",
       "range": "string",
       "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "ProteinEntity_at_id",
+      "definition_uri": "http://w3id.org/lambda/rocrate/at_id",
+      "description": "The entity's identifier - a relative path, an absolute URI, or a `#`-fragment.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://schema.org/identifier"
+      ],
+      "is_a": "at_id",
+      "domain": "ProteinEntity",
+      "slot_uri": "http://schema.org/identifier",
+      "alias": "@id",
+      "owner": "ProteinEntity",
+      "domain_of": [
+        "ProteinEntity"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "at_id",
+      "range": "uriorcurie",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "ProteinEntity_uniprot_id",
+      "definition_uri": "http://w3id.org/lambda/rocrate/uniprot_id",
+      "description": "UniProt accession as a Bioregistry CURIE (`uniprot:P69905`), exactly as `Protein.uniprot_id` carries it, so the projection is identity. The bare accession belongs to the deprecated `uniprotId` spelling.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/uniprot_id"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/uniprot_id"
+      ],
+      "is_a": "uniprot_id",
+      "domain": "ProteinEntity",
+      "slot_uri": "http://w3id.org/lambda/uniprot_id",
+      "alias": "uniprot_id",
+      "owner": "ProteinEntity",
+      "domain_of": [
+        "ProteinEntity"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "uniprot_id",
+      "range": "string",
+      "recommended": true,
+      "pattern": "^uniprot:([OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2})(-[0-9]+)?$",
       "@type": "SlotDefinition"
     },
     {
@@ -21612,6 +22326,9 @@
       "name": "SampleEntity",
       "definition_uri": "http://w3id.org/lambda/rocrate/SampleEntity",
       "description": "The specimen the crate is about. Only the searchable identity layer belongs here; molecular composition, buffer and storage detail live in the fuller record this crate points at.",
+      "comments": [
+        "Which protein(s) the specimen contains is said by pointing at `ProteinEntity` records through `hasBioChemEntityPart`. `protein_name` stays on the sample as the facility's own display name and the cheapest search field; the accession lives on the protein entity."
+      ],
       "from_schema": "http://w3id.org/lambda/rocrate/core",
       "mappings": [
         "sdo:BioChemEntity"
@@ -21630,18 +22347,50 @@
         "organism",
         "sequence",
         "seguid",
-        "uniprot_id",
+        "has_biochem_entity_part",
         "expression_system",
         "concentration",
         "enzyme_class",
         "missing",
         "sample_name",
         "protein_name_camel",
+        "uniprot_id_camel",
         "sample_composition",
         "SampleEntity_at_id"
       ],
       "slot_usage": {},
       "class_uri": "http://schema.org/BioChemEntity",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ProteinEntity",
+      "definition_uri": "http://w3id.org/lambda/rocrate/ProteinEntity",
+      "description": "A protein as a biological entity - the thing a specimen *contains*, as distinct from the specimen. Typed `[\"Protein\", \"lambda:Protein\"]`: schema.org's `Protein` is in the RO-Crate 1.2 context, so a generic consumer sees a `BioChemEntity` and a LAMBDA-aware reader projects onto the schema's `Protein` class. One entity serves every sample in the crate that contains the protein, and its `@id` SHOULD be the UniProt IRI (`http://purl.uniprot.org/uniprot/P69905`) so that the same protein in two crates is the same node.\nOnly the identity layer travels here: accession, name, gene, organism, the structures it is known from. Sequence, annotations and anything per-preparation (copy number, tags, residue range) live in the fuller record this crate points at.\nThe `@id` and `uniprot_id` are one identifier in two spellings. The crate's `@id` is the full IRI, as RO-Crate wants; the schema's `Protein.id` is the CURIE `uniprot:P69905`, and the `uniprot` prefix expands to exactly `http://purl.uniprot.org/uniprot/`. A projector therefore compacts the `@id` to get `Protein.id`, or expands `uniprot_id` to get the `@id`, and either route gives the same node. A crate MAY use a local `@id` (`#protein-hba1`) when it has to; `uniprot_id` then carries the identity on its own.",
+      "comments": [
+        "A protein with no UniProt accession - a designed protein, an unannotated metagenomic sequence - is still a protein entity. It MUST then declare `uniprot_id` in `missing` (reason `not-registered`), per the rule that absence is stated, never implied."
+      ],
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "sdo:Protein"
+      ],
+      "exact_mappings": [
+        "lambda:Protein"
+      ],
+      "is_a": "CrateEntity",
+      "slots": [
+        "at_type",
+        "name",
+        "description",
+        "ProteinEntity_uniprot_id",
+        "protein_name",
+        "gene_name",
+        "organism",
+        "pdb_entries",
+        "missing",
+        "ProteinEntity_at_id"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://schema.org/Protein",
       "@type": "ClassDefinition"
     },
     {
@@ -22155,6 +22904,7 @@
         "dataset__persons",
         "dataset__organizations",
         "dataset__instruments",
+        "dataset__proteins",
         "dataset__protein_constructs",
         "dataset__samples",
         "dataset__sample_preparations",
@@ -22167,6 +22917,7 @@
         "dataset__study_workflow_associations",
         "dataset__experiment_sample_associations",
         "dataset__experiment_instrument_associations",
+        "dataset__sample_protein_associations",
         "dataset__workflow_experiment_associations",
         "dataset__workflow_input_associations",
         "dataset__workflow_output_associations",
@@ -22213,6 +22964,14 @@
           "name": "instruments",
           "description": "All instruments used across studies",
           "range": "Instrument",
+          "multivalued": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "proteins",
+          "description": "All proteins referenced by samples in this dataset, one record per protein",
+          "range": "Protein",
           "multivalued": true,
           "inlined_as_list": true,
           "@type": "SlotDefinition"
@@ -22309,6 +23068,14 @@
           "name": "experiment_instrument_associations",
           "description": "Links between experiments and instruments (M:N)",
           "range": "ExperimentInstrumentAssociation",
+          "multivalued": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "sample_protein_associations",
+          "description": "Links between samples and the proteins they contain (M:N with role, copy number, construct)",
+          "range": "SampleProteinAssociation",
           "multivalued": true,
           "inlined_as_list": true,
           "@type": "SlotDefinition"
@@ -22629,7 +23396,10 @@
     {
       "name": "Sample",
       "definition_uri": "http://w3id.org/lambda/Sample",
-      "description": "A biological sample used in structural biology experiments",
+      "description": "A physical biological sample used in structural biology experiments. Records what is true of this preparation - buffer, concentration, storage, purity, the construct and tags used. The identity of the protein(s) it contains belongs on Protein, linked through SampleProteinAssociation, so a protein studied in ten preparations is described once.",
+      "comments": [
+        "protein_name, organism and the functional annotation collections remain here for data that arrives without a resolvable protein identity, and for search convenience. When a Protein record exists, it is the canonical source and these slots should agree with it."
+      ],
       "from_schema": "http://w3id.org/lambda/",
       "related_mappings": [
         "IHMCIF:_ihm_struct_assembly",
@@ -22844,7 +23614,7 @@
         },
         {
           "name": "protein_name",
-          "description": "Name of the protein",
+          "description": "Name of the protein as the facility or depositor recorded it. A display and search field; the canonical name, sequence and identifiers live on the linked Protein.",
           "exact_mappings": [
             "nsls2:Protein_Name"
           ],
@@ -22907,6 +23677,234 @@
       "@type": "ClassDefinition"
     },
     {
+      "name": "Protein",
+      "id_prefixes": [
+        "uniprot",
+        "lambda"
+      ],
+      "definition_uri": "http://w3id.org/lambda/Protein",
+      "description": "A protein as a biological entity: its sequence, source organism, gene, and the functional and structural annotations that hold for it regardless of any one preparation. One Protein record is shared by every Sample that contains it, through SampleProteinAssociation. Facts about a particular preparation - buffer, concentration, tags left on, the residue range actually present, the mass actually measured - stay on Sample and on the association.",
+      "comments": [
+        "Use the UniProt accession as a Bioregistry CURIE for the id wherever one exists (uniprot:P69905). Reserve lambda-prefixed ids for proteins with no UniProt entry, such as designed proteins or uncharacterized metagenomic sequences.",
+        "Supersedes AggregatedProteinView from the functional_annotation extension, which carried the same annotation collections but lived outside the Dataset tables."
+      ],
+      "from_schema": "http://w3id.org/lambda/",
+      "related_mappings": [
+        "mmCIF:_entity",
+        "mmCIF:_struct_ref"
+      ],
+      "is_a": "NamedThing",
+      "slots": [
+        "namedThing__id",
+        "namedThing__title",
+        "namedThing__description",
+        "protein__uniprot_id",
+        "protein__protein_name",
+        "protein__gene_name",
+        "protein__organism",
+        "protein__organism_name",
+        "protein__amino_acid_sequence",
+        "protein__sequence_length",
+        "protein__molecular_weight_theoretical",
+        "protein__ec_numbers",
+        "protein__function_description",
+        "protein__go_terms",
+        "protein__pdb_entries",
+        "protein__functional_sites",
+        "protein__structural_features",
+        "protein__protein_interactions",
+        "protein__ligand_interactions",
+        "protein__mutation_effects",
+        "protein__ptm_annotations",
+        "protein__biophysical_properties",
+        "protein__evolutionary_conservation",
+        "protein__conformational_ensemble",
+        "protein__cross_references"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "uniprot_id",
+          "description": "UniProt accession as a Bioregistry CURIE (e.g., uniprot:P69905). An isoform suffix is allowed (uniprot:P69905-2). Normally identical to id.",
+          "exact_mappings": [
+            "mmCIF:_struct_ref.pdbx_db_accession"
+          ],
+          "range": "uriorcurie",
+          "recommended": true,
+          "pattern": "^uniprot:([OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2})(-[0-9]+)?$",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "protein_name",
+          "description": "Recommended protein name, as UniProt or the depositor gives it. Not required, so that a record seeded from an accession alone can be enriched from UniProt later.",
+          "related_mappings": [
+            "mmCIF:_entity.pdbx_description"
+          ],
+          "recommended": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "gene_name",
+          "description": "Primary gene symbol (e.g., HBA1)",
+          "exact_mappings": [
+            "mmCIF:_entity_src_gen.pdbx_gene_src_gene"
+          ],
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "organism",
+          "description": "Source organism as an NCBI Taxonomy CURIE (e.g., NCBITaxon:9606)",
+          "exact_mappings": [
+            "mmCIF:_entity_src_gen.pdbx_gene_src_ncbi_taxonomy_id"
+          ],
+          "range": "OntologyTerm",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "organism_name",
+          "description": "Scientific name of the source organism. For display, and for sources that give a name but no taxonomy identifier.",
+          "exact_mappings": [
+            "mmCIF:_entity_src_gen.pdbx_gene_src_scientific_name"
+          ],
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "amino_acid_sequence",
+          "description": "Canonical one-letter amino acid sequence of the protein, without tags or other construct additions. Construct-level sequence belongs on ProteinConstruct.",
+          "exact_mappings": [
+            "mmCIF:_entity_poly.pdbx_seq_one_letter_code_can"
+          ],
+          "pattern": "^[ACDEFGHIKLMNPQRSTVWYBJOUXZ]+$",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "sequence_length",
+          "description": "Length of the canonical sequence in residues",
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "molecular_weight_theoretical",
+          "description": "Mass computed from the canonical sequence, typically in kDa. A mass measured for a given preparation belongs on SampleProteinAssociation.observed_molecular_weight.",
+          "related_mappings": [
+            "mmCIF:_entity.formula_weight"
+          ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "ec_numbers",
+          "description": "Enzyme Commission numbers, where the protein is an enzyme (e.g., 1.1.1.1)",
+          "exact_mappings": [
+            "mmCIF:_entity.pdbx_ec"
+          ],
+          "multivalued": true,
+          "pattern": "^([0-9]+|-)\\.([0-9]+|-)\\.([0-9]+|-)\\.([0-9]+|n[0-9]*|-)$",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "function_description",
+          "description": "Free-text summary of molecular function, typically from UniProt",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "go_terms",
+          "description": "Gene Ontology annotations as CURIEs (e.g., GO:0005344 for oxygen carrier activity)",
+          "range": "uriorcurie",
+          "multivalued": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "pdb_entries",
+          "description": "PDB entries containing this protein, as CURIEs (e.g., pdb:1HHO)",
+          "range": "uriorcurie",
+          "multivalued": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "functional_sites",
+          "description": "Functional site annotations for this protein",
+          "range": "FunctionalSite",
+          "multivalued": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "structural_features",
+          "description": "Structural feature annotations for this protein",
+          "range": "StructuralFeature",
+          "multivalued": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "protein_interactions",
+          "description": "Protein-protein interaction annotations",
+          "range": "ProteinProteinInteraction",
+          "multivalued": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "ligand_interactions",
+          "description": "Small molecule interaction annotations",
+          "range": "LigandInteraction",
+          "multivalued": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "mutation_effects",
+          "description": "Known effects of mutations in this protein",
+          "range": "MutationEffect",
+          "multivalued": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "ptm_annotations",
+          "description": "Post-translational modification annotations",
+          "range": "PostTranslationalModification",
+          "multivalued": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "biophysical_properties",
+          "description": "Measured or predicted biophysical properties",
+          "range": "BiophysicalProperty",
+          "multivalued": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "evolutionary_conservation",
+          "description": "Evolutionary conservation data",
+          "range": "EvolutionaryConservation",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "conformational_ensemble",
+          "description": "Conformational states and dynamics",
+          "range": "ConformationalEnsemble",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "cross_references",
+          "description": "Cross-references to external databases other than UniProt (Pfam, InterPro, ChEMBL, ...). The UniProt accession itself goes in uniprot_id.",
+          "range": "DatabaseCrossReference",
+          "multivalued": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "http://w3id.org/lambda/Protein",
+      "@type": "ClassDefinition"
+    },
+    {
       "name": "ProteinConstruct",
       "definition_uri": "http://w3id.org/lambda/ProteinConstruct",
       "description": "Detailed information about a protein construct including cloning and sequence design",
@@ -22917,6 +23915,7 @@
         "namedThing__title",
         "namedThing__description",
         "proteinConstruct__construct_id",
+        "proteinConstruct__protein_id",
         "proteinConstruct__uniprot_id",
         "proteinConstruct__gene_name",
         "proteinConstruct__ncbi_taxid",
@@ -22947,8 +23946,15 @@
           "@type": "SlotDefinition"
         },
         {
+          "name": "protein_id",
+          "description": "The protein this construct expresses. Set whenever the dataset carries a Protein row for it; a construct that names a protein only by accession uses uniprot_id instead.",
+          "range": "Protein",
+          "@type": "SlotDefinition"
+        },
+        {
           "name": "uniprot_id",
-          "description": "UniProt accession for the target protein",
+          "description": "UniProt accession of the target protein as a CURIE (e.g., uniprot:P69905). Carries the identity when no Protein row exists in the dataset; where protein_id is set the two must agree, and protein_id is the join key.",
+          "range": "uriorcurie",
           "@type": "SlotDefinition"
         },
         {
@@ -28725,6 +29731,107 @@
       "@type": "ClassDefinition"
     },
     {
+      "name": "SampleProteinAssociation",
+      "definition_uri": "http://w3id.org/lambda/SampleProteinAssociation",
+      "description": "M:N link between Sample and Protein. A sample may hold several proteins - the subunits of a complex, a target with its chaperone, a fusion partner - and one protein turns up in many samples. What changes from preparation to preparation lives here: the role, the copy number, the residue range actually present, the modifications carried, the mass actually measured, and the construct it was made from.",
+      "from_schema": "http://w3id.org/lambda/",
+      "related_mappings": [
+        "IHMCIF:_ihm_struct_assembly_details",
+        "IHMCIF:_ihm_entity_poly_segment"
+      ],
+      "slots": [
+        "sampleProteinAssociation__sample_id",
+        "sampleProteinAssociation__protein_id",
+        "sampleProteinAssociation__role",
+        "sampleProteinAssociation__construct_id",
+        "sampleProteinAssociation__copy_number",
+        "sampleProteinAssociation__residue_range",
+        "sampleProteinAssociation__sequence_coverage",
+        "sampleProteinAssociation__chain_ids",
+        "sampleProteinAssociation__modifications",
+        "sampleProteinAssociation__observed_molecular_weight"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "sample_id",
+          "description": "Reference to the sample",
+          "range": "Sample",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "protein_id",
+          "description": "Reference to the protein",
+          "range": "Protein",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "role",
+          "description": "Part this protein plays in the sample",
+          "range": "SampleProteinRoleEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "construct_id",
+          "description": "The construct that produced this protein in this sample, where cloning detail is recorded",
+          "range": "ProteinConstruct",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "copy_number",
+          "description": "Copies of this protein per assembly in the sample (e.g., 4 for a homotetramer, 2 for each chain of an alpha2-beta2 heterotetramer). Omit when unknown rather than assuming 1.",
+          "exact_mappings": [
+            "mmCIF:_entity.pdbx_number_of_molecules"
+          ],
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "residue_range",
+          "description": "Residues of the canonical sequence present in this sample (e.g., '1-141', '25-300'), for fragments and truncations. Omit when the full-length protein is present. Residues or ranges, comma-separated: '1-141', '25,27,30-35'.",
+          "related_mappings": [
+            "IHMCIF:_ihm_entity_poly_segment"
+          ],
+          "pattern": "^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "sequence_coverage",
+          "description": "Fraction of the canonical sequence present in this sample (range: 0-1)",
+          "range": "float",
+          "minimum_value": 0,
+          "maximum_value": 1,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "chain_ids",
+          "description": "Chain identifiers this protein occupies in the deposited structure, where the sample is a PDB entity",
+          "exact_mappings": [
+            "mmCIF:_entity_poly.pdbx_strand_id"
+          ],
+          "multivalued": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "modifications",
+          "description": "Modifications carried by this protein in this sample: tags left on, mutations, labels, post-translational modifications",
+          "multivalued": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "observed_molecular_weight",
+          "description": "Mass as measured for this preparation (mass spectrometry, SEC-MALS, SAXS), typically in kDa. The sequence-derived mass lives on Protein.molecular_weight_theoretical.",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "http://w3id.org/lambda/SampleProteinAssociation",
+      "@type": "ClassDefinition"
+    },
+    {
       "name": "ExperimentInstrumentAssociation",
       "definition_uri": "http://w3id.org/lambda/ExperimentInstrumentAssociation",
       "description": "M:N link between ExperimentRun and Instrument",
@@ -29283,9 +30390,9 @@
       "attributes": [
         {
           "name": "protein_id",
-          "description": "UniProt accession number",
+          "description": "UniProt accession of the annotated protein, preferably as a Bioregistry CURIE (uniprot:P69905) matching Protein.uniprot_id. A bare accession (P69905) is accepted for data recorded before the CURIE form was adopted.",
           "required": true,
-          "pattern": "^[A-Z][0-9][A-Z0-9]{3}[0-9]|[A-Z][0-9][A-Z0-9]{3}[0-9]-[0-9]+$",
+          "pattern": "^(uniprot:)?([OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2})(-[0-9]+)?$",
           "@type": "SlotDefinition"
         },
         {
@@ -29303,7 +30410,7 @@
         {
           "name": "residue_range",
           "description": "Range of residues (e.g., '1-100', '25,27,30-35')",
-          "pattern": "^[0-9,\\-]+$",
+          "pattern": "^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$",
           "@type": "SlotDefinition"
         },
         {
@@ -30250,7 +31357,9 @@
       "name": "AggregatedProteinView",
       "definition_uri": "http://w3id.org/lambda/functional_annotation/AggregatedProteinView",
       "description": "Aggregated view of all structural and functional data for a protein",
+      "deprecated": "Superseded by Protein in the core schema, which carries the same annotation collections, uses a CURIE for the UniProt accession, and lives in Dataset.proteins where samples can link to it. Retained so existing data keeps validating.",
       "from_schema": "http://w3id.org/lambda/functional_annotation",
+      "deprecated_element_has_exact_replacement": "lambda:Protein",
       "is_a": "NamedThing",
       "slots": [
         "namedThing__id",
@@ -30436,9 +31545,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda_rocrate_core.yaml",
-  "source_file_date": "2026-08-12T16:09:25",
-  "source_file_size": 68208,
-  "generation_date": "2026-08-12T16:15:07",
+  "source_file_date": "2026-09-09T13:29:31",
+  "source_file_size": 72849,
+  "generation_date": "2026-09-09T13:32:13",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/rocrate/jsonld/lambda_rocrate_core.context.jsonld",

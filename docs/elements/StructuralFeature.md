@@ -138,7 +138,7 @@ URI: [lambda:StructuralFeature](http://w3id.org/lambda/StructuralFeature)
 | [structural_motif](structural_motif.md) | 0..1 <br/> [String](String.md) | Known structural motif | direct |
 | [domain_assignment](domain_assignment.md) | 0..1 <br/> [String](String.md) | Domain database assignment (CATH, SCOP, Pfam) | direct |
 | [domain_id](domain_id.md) | 0..1 <br/> [String](String.md) | Domain identifier from domain database | direct |
-| [protein_id](protein_id.md) | 1 <br/> [String](String.md) | UniProt accession number | [ProteinAnnotation](ProteinAnnotation.md) |
+| [protein_id](protein_id.md) | 1 <br/> [String](String.md) | UniProt accession of the annotated protein, preferably as a Bioregistry CURIE... | [ProteinAnnotation](ProteinAnnotation.md) |
 | [pdb_entry](pdb_entry.md) | 0..1 <br/> [String](String.md) | PDB identifier | [ProteinAnnotation](ProteinAnnotation.md) |
 | [chain_id](chain_id.md) | 0..1 <br/> [String](String.md) | Chain identifier in the PDB structure | [ProteinAnnotation](ProteinAnnotation.md) |
 | [residue_range](residue_range.md) | 0..1 <br/> [String](String.md) | Range of residues (e | [ProteinAnnotation](ProteinAnnotation.md) |
@@ -161,6 +161,7 @@ URI: [lambda:StructuralFeature](http://w3id.org/lambda/StructuralFeature)
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
 | [Sample](Sample.md) | [structural_features](structural_features.md) | range | [StructuralFeature](StructuralFeature.md) |
+| [Protein](Protein.md) | [structural_features](structural_features.md) | range | [StructuralFeature](StructuralFeature.md) |
 | [AggregatedProteinView](AggregatedProteinView.md) | [structural_features](structural_features.md) | range | [StructuralFeature](StructuralFeature.md) |
 
 
@@ -393,17 +394,20 @@ attributes:
     range: string
   protein_id:
     name: protein_id
-    description: UniProt accession number
+    description: UniProt accession of the annotated protein, preferably as a Bioregistry
+      CURIE (uniprot:P69905) matching Protein.uniprot_id. A bare accession (P69905)
+      is accepted for data recorded before the CURIE form was adopted.
     from_schema: http://w3id.org/lambda/functional_annotation
-    rank: 1000
     alias: protein_id
     owner: StructuralFeature
     domain_of:
+    - ProteinConstruct
+    - SampleProteinAssociation
     - ProteinAnnotation
     - ConformationalEnsemble
     range: string
     required: true
-    pattern: ^[A-Z][0-9][A-Z0-9]{3}[0-9]|[A-Z][0-9][A-Z0-9]{3}[0-9]-[0-9]+$
+    pattern: ^(uniprot:)?([OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2})(-[0-9]+)?$
   pdb_entry:
     name: pdb_entry
     description: PDB identifier
@@ -430,13 +434,13 @@ attributes:
     name: residue_range
     description: Range of residues (e.g., '1-100', '25,27,30-35')
     from_schema: http://w3id.org/lambda/functional_annotation
-    rank: 1000
     alias: residue_range
     owner: StructuralFeature
     domain_of:
+    - SampleProteinAssociation
     - ProteinAnnotation
     range: string
-    pattern: ^[0-9,\-]+$
+    pattern: ^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$
   confidence_score:
     name: confidence_score
     description: 'Confidence score for the annotation (range: 0-1)'

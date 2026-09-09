@@ -1,5 +1,5 @@
 # Auto generated from lambda_ber_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-08-12T16:13:08
+# Generation date: 2026-09-09T13:29:57
 # Schema: lambda-ber-schema
 #
 # id: http://w3id.org/lambda/
@@ -22,9 +22,19 @@
 #   All entities are stored in flat collections at the Dataset level:
 #
 #   **Biological Materials**
-#   - [Samples](Sample.md): The biological specimens being studied (proteins, nucleic acids, complexes,
-#     cells, tissues). Each sample includes detailed molecular composition, buffer conditions, and
-#     storage information. For example, a purified protein with its sequence, concentration, and buffer pH.
+#   - [Proteins](Protein.md): The protein as a biological entity - sequence, source organism, gene,
+#     and the functional and structural annotations that hold for it in every preparation. Identified
+#     by UniProt accession as a CURIE (`uniprot:P69905`) wherever one exists. One record serves every
+#     sample that contains the protein; what varies between preparations lives on the sample and on
+#     the sample-protein association.
+#
+#   - [Samples](Sample.md): The physical specimens being studied (proteins, nucleic acids, complexes,
+#     cells, tissues). Each sample records the preparation-specific facts - buffer conditions,
+#     concentration, storage, purity - and links to the proteins it contains through
+#     [SampleProteinAssociation](SampleProteinAssociation.md).
+#
+#   - [Protein Constructs](ProteinConstruct.md): How a protein was cloned and expressed - vector,
+#     tags, cleavage sites, codon optimization. A construct realizes one protein and may feed many samples.
 #
 #   - [Sample Preparations](SamplePreparation.md): How samples were prepared for specific techniques.
 #     This includes cryo-EM grid preparation (vitrification parameters), crystallization conditions for
@@ -83,6 +93,8 @@
 #   - **StudyExperimentAssociation**: Links experiments to studies
 #   - **StudyWorkflowAssociation**: Links workflows to studies
 #   - **ExperimentSampleAssociation**: Links samples to experiments (with role and preparation used)
+#   - **SampleProteinAssociation**: Links proteins to samples (with role, copy number, residue range,
+#     modifications, observed mass, and the construct used)
 #   - **ExperimentInstrumentAssociation**: Links instruments to experiments (with role: primary, detector)
 #   - **WorkflowExperimentAssociation**: Links source experiments to workflows
 #   - **WorkflowInputAssociation**: Links input files to workflows
@@ -95,6 +107,7 @@
 #
 #   This relational design enables:
 #   - **Sample reuse**: The same sample can be used in multiple studies and experiments
+#   - **Protein reuse**: The same protein is described once and linked from every sample that contains it
 #   - **Multi-instrument experiments**: An experiment can use multiple instruments with different roles
 #   - **Integrative workflows**: A workflow can combine data from multiple experiments
 #
@@ -180,7 +193,7 @@ from linkml_runtime.linkml_model.types import Boolean, Curie, Date, Float, Integ
 from linkml_runtime.utils.metamodelcore import Bool, Curie, URI, URIorCURIE, XSDDate
 
 metamodel_version = "1.7.0"
-version = "0.1.2.post178.dev0+17a9409"
+version = "0.1.2.post218.dev0+829558d2"
 
 # Namespaces
 CHMO = CurieNamespace('CHMO', 'http://purl.obolibrary.org/obo/CHMO_')
@@ -212,6 +225,7 @@ SIMPLESCATTERING = CurieNamespace('simplescattering', 'https://www.simplescatter
 SIO = CurieNamespace('sio', 'http://semanticscience.org/resource/')
 SKOS = CurieNamespace('skos', 'http://www.w3.org/2004/02/skos/core#')
 SSRL_MX = CurieNamespace('ssrl-mx', 'https://smb.slac.stanford.edu/dev/lims/lambda/')
+UNIPROT = CurieNamespace('uniprot', 'http://purl.uniprot.org/uniprot/')
 WIKIDATA = CurieNamespace('wikidata', 'http://www.wikidata.org/entity/')
 XSD = CurieNamespace('xsd', 'http://www.w3.org/2001/XMLSchema#')
 DEFAULT_ = LAMBDA
@@ -256,6 +270,10 @@ class OrganizationId(NamedThingId):
 
 
 class SampleId(NamedThingId):
+    pass
+
+
+class ProteinId(NamedThingId):
     pass
 
 
@@ -454,6 +472,7 @@ class Dataset(NamedThing):
     persons: Optional[Union[dict[Union[str, PersonId], Union[dict, "Person"]], list[Union[dict, "Person"]]]] = empty_dict()
     organizations: Optional[Union[dict[Union[str, OrganizationId], Union[dict, "Organization"]], list[Union[dict, "Organization"]]]] = empty_dict()
     instruments: Optional[Union[dict[Union[str, InstrumentId], Union[dict, "Instrument"]], list[Union[dict, "Instrument"]]]] = empty_dict()
+    proteins: Optional[Union[dict[Union[str, ProteinId], Union[dict, "Protein"]], list[Union[dict, "Protein"]]]] = empty_dict()
     protein_constructs: Optional[Union[dict[Union[str, ProteinConstructId], Union[dict, "ProteinConstruct"]], list[Union[dict, "ProteinConstruct"]]]] = empty_dict()
     samples: Optional[Union[dict[Union[str, SampleId], Union[dict, "Sample"]], list[Union[dict, "Sample"]]]] = empty_dict()
     sample_preparations: Optional[Union[dict[Union[str, SamplePreparationId], Union[dict, "SamplePreparation"]], list[Union[dict, "SamplePreparation"]]]] = empty_dict()
@@ -466,6 +485,7 @@ class Dataset(NamedThing):
     study_workflow_associations: Optional[Union[Union[dict, "StudyWorkflowAssociation"], list[Union[dict, "StudyWorkflowAssociation"]]]] = empty_list()
     experiment_sample_associations: Optional[Union[Union[dict, "ExperimentSampleAssociation"], list[Union[dict, "ExperimentSampleAssociation"]]]] = empty_list()
     experiment_instrument_associations: Optional[Union[Union[dict, "ExperimentInstrumentAssociation"], list[Union[dict, "ExperimentInstrumentAssociation"]]]] = empty_list()
+    sample_protein_associations: Optional[Union[Union[dict, "SampleProteinAssociation"], list[Union[dict, "SampleProteinAssociation"]]]] = empty_list()
     workflow_experiment_associations: Optional[Union[Union[dict, "WorkflowExperimentAssociation"], list[Union[dict, "WorkflowExperimentAssociation"]]]] = empty_list()
     workflow_input_associations: Optional[Union[Union[dict, "WorkflowInputAssociation"], list[Union[dict, "WorkflowInputAssociation"]]]] = empty_list()
     workflow_output_associations: Optional[Union[Union[dict, "WorkflowOutputAssociation"], list[Union[dict, "WorkflowOutputAssociation"]]]] = empty_list()
@@ -492,6 +512,8 @@ class Dataset(NamedThing):
         self._normalize_inlined_as_list(slot_name="organizations", slot_type=Organization, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="instruments", slot_type=Instrument, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="proteins", slot_type=Protein, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="protein_constructs", slot_type=ProteinConstruct, key_name="id", keyed=True)
 
@@ -526,6 +548,10 @@ class Dataset(NamedThing):
         if not isinstance(self.experiment_instrument_associations, list):
             self.experiment_instrument_associations = [self.experiment_instrument_associations] if self.experiment_instrument_associations is not None else []
         self.experiment_instrument_associations = [v if isinstance(v, ExperimentInstrumentAssociation) else ExperimentInstrumentAssociation(**as_dict(v)) for v in self.experiment_instrument_associations]
+
+        if not isinstance(self.sample_protein_associations, list):
+            self.sample_protein_associations = [self.sample_protein_associations] if self.sample_protein_associations is not None else []
+        self.sample_protein_associations = [v if isinstance(v, SampleProteinAssociation) else SampleProteinAssociation(**as_dict(v)) for v in self.sample_protein_associations]
 
         if not isinstance(self.workflow_experiment_associations, list):
             self.workflow_experiment_associations = [self.workflow_experiment_associations] if self.workflow_experiment_associations is not None else []
@@ -734,7 +760,10 @@ class Organization(NamedThing):
 @dataclass(repr=False)
 class Sample(NamedThing):
     """
-    A biological sample used in structural biology experiments
+    A physical biological sample used in structural biology experiments. Records what is true of this preparation -
+    buffer, concentration, storage, purity, the construct and tags used. The identity of the protein(s) it contains
+    belongs on Protein, linked through SampleProteinAssociation, so a protein studied in ten preparations is described
+    once.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -881,6 +910,121 @@ class Sample(NamedThing):
 
 
 @dataclass(repr=False)
+class Protein(NamedThing):
+    """
+    A protein as a biological entity: its sequence, source organism, gene, and the functional and structural
+    annotations that hold for it regardless of any one preparation. One Protein record is shared by every Sample that
+    contains it, through SampleProteinAssociation. Facts about a particular preparation - buffer, concentration, tags
+    left on, the residue range actually present, the mass actually measured - stay on Sample and on the association.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDA["Protein"]
+    class_class_curie: ClassVar[str] = "lambda:Protein"
+    class_name: ClassVar[str] = "Protein"
+    class_model_uri: ClassVar[URIRef] = LAMBDA.Protein
+
+    id: Union[str, ProteinId] = None
+    uniprot_id: Optional[Union[str, URIorCURIE]] = None
+    protein_name: Optional[str] = None
+    gene_name: Optional[str] = None
+    organism: Optional[Union[str, OntologyTermId]] = None
+    organism_name: Optional[str] = None
+    amino_acid_sequence: Optional[str] = None
+    sequence_length: Optional[int] = None
+    molecular_weight_theoretical: Optional[Union[dict, "QuantityValue"]] = None
+    ec_numbers: Optional[Union[str, list[str]]] = empty_list()
+    function_description: Optional[str] = None
+    go_terms: Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]] = empty_list()
+    pdb_entries: Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]] = empty_list()
+    functional_sites: Optional[Union[dict[Union[str, FunctionalSiteId], Union[dict, "FunctionalSite"]], list[Union[dict, "FunctionalSite"]]]] = empty_dict()
+    structural_features: Optional[Union[dict[Union[str, StructuralFeatureId], Union[dict, "StructuralFeature"]], list[Union[dict, "StructuralFeature"]]]] = empty_dict()
+    protein_interactions: Optional[Union[dict[Union[str, ProteinProteinInteractionId], Union[dict, "ProteinProteinInteraction"]], list[Union[dict, "ProteinProteinInteraction"]]]] = empty_dict()
+    ligand_interactions: Optional[Union[Union[dict, "LigandInteraction"], list[Union[dict, "LigandInteraction"]]]] = empty_list()
+    mutation_effects: Optional[Union[dict[Union[str, MutationEffectId], Union[dict, "MutationEffect"]], list[Union[dict, "MutationEffect"]]]] = empty_dict()
+    ptm_annotations: Optional[Union[dict[Union[str, PostTranslationalModificationId], Union[dict, "PostTranslationalModification"]], list[Union[dict, "PostTranslationalModification"]]]] = empty_dict()
+    biophysical_properties: Optional[Union[Union[dict, "BiophysicalProperty"], list[Union[dict, "BiophysicalProperty"]]]] = empty_list()
+    evolutionary_conservation: Optional[Union[dict, "EvolutionaryConservation"]] = None
+    conformational_ensemble: Optional[Union[dict, "ConformationalEnsemble"]] = None
+    cross_references: Optional[Union[Union[dict, "DatabaseCrossReference"], list[Union[dict, "DatabaseCrossReference"]]]] = empty_list()
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, ProteinId):
+            self.id = ProteinId(self.id)
+
+        if self.uniprot_id is not None and not isinstance(self.uniprot_id, URIorCURIE):
+            self.uniprot_id = URIorCURIE(self.uniprot_id)
+
+        if self.protein_name is not None and not isinstance(self.protein_name, str):
+            self.protein_name = str(self.protein_name)
+
+        if self.gene_name is not None and not isinstance(self.gene_name, str):
+            self.gene_name = str(self.gene_name)
+
+        if self.organism is not None and not isinstance(self.organism, OntologyTermId):
+            self.organism = OntologyTermId(self.organism)
+
+        if self.organism_name is not None and not isinstance(self.organism_name, str):
+            self.organism_name = str(self.organism_name)
+
+        if self.amino_acid_sequence is not None and not isinstance(self.amino_acid_sequence, str):
+            self.amino_acid_sequence = str(self.amino_acid_sequence)
+
+        if self.sequence_length is not None and not isinstance(self.sequence_length, int):
+            self.sequence_length = int(self.sequence_length)
+
+        if self.molecular_weight_theoretical is not None and not isinstance(self.molecular_weight_theoretical, QuantityValue):
+            self.molecular_weight_theoretical = QuantityValue(**as_dict(self.molecular_weight_theoretical))
+
+        if not isinstance(self.ec_numbers, list):
+            self.ec_numbers = [self.ec_numbers] if self.ec_numbers is not None else []
+        self.ec_numbers = [v if isinstance(v, str) else str(v) for v in self.ec_numbers]
+
+        if self.function_description is not None and not isinstance(self.function_description, str):
+            self.function_description = str(self.function_description)
+
+        if not isinstance(self.go_terms, list):
+            self.go_terms = [self.go_terms] if self.go_terms is not None else []
+        self.go_terms = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.go_terms]
+
+        if not isinstance(self.pdb_entries, list):
+            self.pdb_entries = [self.pdb_entries] if self.pdb_entries is not None else []
+        self.pdb_entries = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.pdb_entries]
+
+        self._normalize_inlined_as_list(slot_name="functional_sites", slot_type=FunctionalSite, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="structural_features", slot_type=StructuralFeature, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="protein_interactions", slot_type=ProteinProteinInteraction, key_name="id", keyed=True)
+
+        if not isinstance(self.ligand_interactions, list):
+            self.ligand_interactions = [self.ligand_interactions] if self.ligand_interactions is not None else []
+        self.ligand_interactions = [v if isinstance(v, LigandInteraction) else LigandInteraction(**as_dict(v)) for v in self.ligand_interactions]
+
+        self._normalize_inlined_as_list(slot_name="mutation_effects", slot_type=MutationEffect, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="ptm_annotations", slot_type=PostTranslationalModification, key_name="id", keyed=True)
+
+        if not isinstance(self.biophysical_properties, list):
+            self.biophysical_properties = [self.biophysical_properties] if self.biophysical_properties is not None else []
+        self.biophysical_properties = [v if isinstance(v, BiophysicalProperty) else BiophysicalProperty(**as_dict(v)) for v in self.biophysical_properties]
+
+        if self.evolutionary_conservation is not None and not isinstance(self.evolutionary_conservation, EvolutionaryConservation):
+            self.evolutionary_conservation = EvolutionaryConservation(**as_dict(self.evolutionary_conservation))
+
+        if self.conformational_ensemble is not None and not isinstance(self.conformational_ensemble, ConformationalEnsemble):
+            self.conformational_ensemble = ConformationalEnsemble(**as_dict(self.conformational_ensemble))
+
+        if not isinstance(self.cross_references, list):
+            self.cross_references = [self.cross_references] if self.cross_references is not None else []
+        self.cross_references = [v if isinstance(v, DatabaseCrossReference) else DatabaseCrossReference(**as_dict(v)) for v in self.cross_references]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
 class ProteinConstruct(NamedThing):
     """
     Detailed information about a protein construct including cloning and sequence design
@@ -894,7 +1038,8 @@ class ProteinConstruct(NamedThing):
 
     id: Union[str, ProteinConstructId] = None
     construct_id: str = None
-    uniprot_id: Optional[str] = None
+    protein_id: Optional[Union[str, ProteinId]] = None
+    uniprot_id: Optional[Union[str, URIorCURIE]] = None
     gene_name: Optional[str] = None
     ncbi_taxid: Optional[str] = None
     sequence_length_aa: Optional[Union[dict, "QuantityValue"]] = None
@@ -926,8 +1071,11 @@ class ProteinConstruct(NamedThing):
         if not isinstance(self.construct_id, str):
             self.construct_id = str(self.construct_id)
 
-        if self.uniprot_id is not None and not isinstance(self.uniprot_id, str):
-            self.uniprot_id = str(self.uniprot_id)
+        if self.protein_id is not None and not isinstance(self.protein_id, ProteinId):
+            self.protein_id = ProteinId(self.protein_id)
+
+        if self.uniprot_id is not None and not isinstance(self.uniprot_id, URIorCURIE):
+            self.uniprot_id = URIorCURIE(self.uniprot_id)
 
         if self.gene_name is not None and not isinstance(self.gene_name, str):
             self.gene_name = str(self.gene_name)
@@ -4180,6 +4328,72 @@ class ExperimentSampleAssociation(YAMLRoot):
 
 
 @dataclass(repr=False)
+class SampleProteinAssociation(YAMLRoot):
+    """
+    M:N link between Sample and Protein. A sample may hold several proteins - the subunits of a complex, a target with
+    its chaperone, a fusion partner - and one protein turns up in many samples. What changes from preparation to
+    preparation lives here: the role, the copy number, the residue range actually present, the modifications carried,
+    the mass actually measured, and the construct it was made from.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDA["SampleProteinAssociation"]
+    class_class_curie: ClassVar[str] = "lambda:SampleProteinAssociation"
+    class_name: ClassVar[str] = "SampleProteinAssociation"
+    class_model_uri: ClassVar[URIRef] = LAMBDA.SampleProteinAssociation
+
+    sample_id: Union[str, SampleId] = None
+    protein_id: Union[str, ProteinId] = None
+    role: Optional[Union[str, "SampleProteinRoleEnum"]] = None
+    construct_id: Optional[Union[str, ProteinConstructId]] = None
+    copy_number: Optional[int] = None
+    residue_range: Optional[str] = None
+    sequence_coverage: Optional[float] = None
+    chain_ids: Optional[Union[str, list[str]]] = empty_list()
+    modifications: Optional[Union[str, list[str]]] = empty_list()
+    observed_molecular_weight: Optional[Union[dict, "QuantityValue"]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.sample_id):
+            self.MissingRequiredField("sample_id")
+        if not isinstance(self.sample_id, SampleId):
+            self.sample_id = SampleId(self.sample_id)
+
+        if self._is_empty(self.protein_id):
+            self.MissingRequiredField("protein_id")
+        if not isinstance(self.protein_id, ProteinId):
+            self.protein_id = ProteinId(self.protein_id)
+
+        if self.role is not None and not isinstance(self.role, SampleProteinRoleEnum):
+            self.role = SampleProteinRoleEnum(self.role)
+
+        if self.construct_id is not None and not isinstance(self.construct_id, ProteinConstructId):
+            self.construct_id = ProteinConstructId(self.construct_id)
+
+        if self.copy_number is not None and not isinstance(self.copy_number, int):
+            self.copy_number = int(self.copy_number)
+
+        if self.residue_range is not None and not isinstance(self.residue_range, str):
+            self.residue_range = str(self.residue_range)
+
+        if self.sequence_coverage is not None and not isinstance(self.sequence_coverage, float):
+            self.sequence_coverage = float(self.sequence_coverage)
+
+        if not isinstance(self.chain_ids, list):
+            self.chain_ids = [self.chain_ids] if self.chain_ids is not None else []
+        self.chain_ids = [v if isinstance(v, str) else str(v) for v in self.chain_ids]
+
+        if not isinstance(self.modifications, list):
+            self.modifications = [self.modifications] if self.modifications is not None else []
+        self.modifications = [v if isinstance(v, str) else str(v) for v in self.modifications]
+
+        if self.observed_molecular_weight is not None and not isinstance(self.observed_molecular_weight, QuantityValue):
+            self.observed_molecular_weight = QuantityValue(**as_dict(self.observed_molecular_weight))
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
 class ExperimentInstrumentAssociation(YAMLRoot):
     """
     M:N link between ExperimentRun and Instrument
@@ -6913,6 +7127,37 @@ class ExperimentSampleRoleEnum(EnumDefinitionImpl):
         description="Role of a sample in an experiment",
     )
 
+class SampleProteinRoleEnum(EnumDefinitionImpl):
+    """
+    Part a protein plays in a sample
+    """
+    target = PermissibleValue(
+        text="target",
+        description="The protein under investigation")
+    subunit = PermissibleValue(
+        text="subunit",
+        description="One subunit of a complex that is the target as a whole")
+    binding_partner = PermissibleValue(
+        text="binding_partner",
+        description="""A protein present for its interaction with the target, such as a substrate, inhibitor or antibody""")
+    fusion_partner = PermissibleValue(
+        text="fusion_partner",
+        description="A solubility or affinity fusion partner left attached (e.g., MBP, GST, GFP)")
+    chaperone = PermissibleValue(
+        text="chaperone",
+        description="A chaperone or scaffold added to stabilize or reconstitute the target")
+    contaminant = PermissibleValue(
+        text="contaminant",
+        description="A protein present unintentionally and identified after the fact")
+    standard = PermissibleValue(
+        text="standard",
+        description="A reference protein added for calibration or as a size marker")
+
+    _defn = EnumDefinition(
+        name="SampleProteinRoleEnum",
+        description="Part a protein plays in a sample",
+    )
+
 class InstrumentRoleEnum(EnumDefinitionImpl):
     """
     Role of an instrument in an experiment
@@ -8077,6 +8322,9 @@ slots.dataset__organizations = Slot(uri=LAMBDA.organizations, name="dataset__org
 slots.dataset__instruments = Slot(uri=LAMBDA.instruments, name="dataset__instruments", curie=LAMBDA.curie('instruments'),
                    model_uri=LAMBDA.dataset__instruments, domain=None, range=Optional[Union[dict[Union[str, InstrumentId], Union[dict, Instrument]], list[Union[dict, Instrument]]]])
 
+slots.dataset__proteins = Slot(uri=LAMBDA.proteins, name="dataset__proteins", curie=LAMBDA.curie('proteins'),
+                   model_uri=LAMBDA.dataset__proteins, domain=None, range=Optional[Union[dict[Union[str, ProteinId], Union[dict, Protein]], list[Union[dict, Protein]]]])
+
 slots.dataset__protein_constructs = Slot(uri=LAMBDA.protein_constructs, name="dataset__protein_constructs", curie=LAMBDA.curie('protein_constructs'),
                    model_uri=LAMBDA.dataset__protein_constructs, domain=None, range=Optional[Union[dict[Union[str, ProteinConstructId], Union[dict, ProteinConstruct]], list[Union[dict, ProteinConstruct]]]])
 
@@ -8112,6 +8360,9 @@ slots.dataset__experiment_sample_associations = Slot(uri=LAMBDA.experiment_sampl
 
 slots.dataset__experiment_instrument_associations = Slot(uri=LAMBDA.experiment_instrument_associations, name="dataset__experiment_instrument_associations", curie=LAMBDA.curie('experiment_instrument_associations'),
                    model_uri=LAMBDA.dataset__experiment_instrument_associations, domain=None, range=Optional[Union[Union[dict, ExperimentInstrumentAssociation], list[Union[dict, ExperimentInstrumentAssociation]]]])
+
+slots.dataset__sample_protein_associations = Slot(uri=LAMBDA.sample_protein_associations, name="dataset__sample_protein_associations", curie=LAMBDA.curie('sample_protein_associations'),
+                   model_uri=LAMBDA.dataset__sample_protein_associations, domain=None, range=Optional[Union[Union[dict, SampleProteinAssociation], list[Union[dict, SampleProteinAssociation]]]])
 
 slots.dataset__workflow_experiment_associations = Slot(uri=LAMBDA.workflow_experiment_associations, name="dataset__workflow_experiment_associations", curie=LAMBDA.curie('workflow_experiment_associations'),
                    model_uri=LAMBDA.dataset__workflow_experiment_associations, domain=None, range=Optional[Union[Union[dict, WorkflowExperimentAssociation], list[Union[dict, WorkflowExperimentAssociation]]]])
@@ -8299,11 +8550,83 @@ slots.sample__ligand = Slot(uri=LAMBDA.ligand, name="sample__ligand", curie=LAMB
 slots.sample__oligomeric_state = Slot(uri=LAMBDA.oligomeric_state, name="sample__oligomeric_state", curie=LAMBDA.curie('oligomeric_state'),
                    model_uri=LAMBDA.sample__oligomeric_state, domain=None, range=Optional[str])
 
+slots.protein__uniprot_id = Slot(uri=LAMBDA.uniprot_id, name="protein__uniprot_id", curie=LAMBDA.curie('uniprot_id'),
+                   model_uri=LAMBDA.protein__uniprot_id, domain=None, range=Optional[Union[str, URIorCURIE]],
+                   pattern=re.compile(r'^uniprot:([OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2})(-[0-9]+)?$'))
+
+slots.protein__protein_name = Slot(uri=LAMBDA.protein_name, name="protein__protein_name", curie=LAMBDA.curie('protein_name'),
+                   model_uri=LAMBDA.protein__protein_name, domain=None, range=Optional[str])
+
+slots.protein__gene_name = Slot(uri=LAMBDA.gene_name, name="protein__gene_name", curie=LAMBDA.curie('gene_name'),
+                   model_uri=LAMBDA.protein__gene_name, domain=None, range=Optional[str])
+
+slots.protein__organism = Slot(uri=LAMBDA.organism, name="protein__organism", curie=LAMBDA.curie('organism'),
+                   model_uri=LAMBDA.protein__organism, domain=None, range=Optional[Union[str, OntologyTermId]])
+
+slots.protein__organism_name = Slot(uri=LAMBDA.organism_name, name="protein__organism_name", curie=LAMBDA.curie('organism_name'),
+                   model_uri=LAMBDA.protein__organism_name, domain=None, range=Optional[str])
+
+slots.protein__amino_acid_sequence = Slot(uri=LAMBDA.amino_acid_sequence, name="protein__amino_acid_sequence", curie=LAMBDA.curie('amino_acid_sequence'),
+                   model_uri=LAMBDA.protein__amino_acid_sequence, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^[ACDEFGHIKLMNPQRSTVWYBJOUXZ]+$'))
+
+slots.protein__sequence_length = Slot(uri=LAMBDA.sequence_length, name="protein__sequence_length", curie=LAMBDA.curie('sequence_length'),
+                   model_uri=LAMBDA.protein__sequence_length, domain=None, range=Optional[int])
+
+slots.protein__molecular_weight_theoretical = Slot(uri=LAMBDA.molecular_weight_theoretical, name="protein__molecular_weight_theoretical", curie=LAMBDA.curie('molecular_weight_theoretical'),
+                   model_uri=LAMBDA.protein__molecular_weight_theoretical, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.protein__ec_numbers = Slot(uri=LAMBDA.ec_numbers, name="protein__ec_numbers", curie=LAMBDA.curie('ec_numbers'),
+                   model_uri=LAMBDA.protein__ec_numbers, domain=None, range=Optional[Union[str, list[str]]],
+                   pattern=re.compile(r'^([0-9]+|-)\.([0-9]+|-)\.([0-9]+|-)\.([0-9]+|n[0-9]*|-)$'))
+
+slots.protein__function_description = Slot(uri=LAMBDA.function_description, name="protein__function_description", curie=LAMBDA.curie('function_description'),
+                   model_uri=LAMBDA.protein__function_description, domain=None, range=Optional[str])
+
+slots.protein__go_terms = Slot(uri=LAMBDA.go_terms, name="protein__go_terms", curie=LAMBDA.curie('go_terms'),
+                   model_uri=LAMBDA.protein__go_terms, domain=None, range=Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]])
+
+slots.protein__pdb_entries = Slot(uri=LAMBDA.pdb_entries, name="protein__pdb_entries", curie=LAMBDA.curie('pdb_entries'),
+                   model_uri=LAMBDA.protein__pdb_entries, domain=None, range=Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]])
+
+slots.protein__functional_sites = Slot(uri=LAMBDA.functional_sites, name="protein__functional_sites", curie=LAMBDA.curie('functional_sites'),
+                   model_uri=LAMBDA.protein__functional_sites, domain=None, range=Optional[Union[dict[Union[str, FunctionalSiteId], Union[dict, FunctionalSite]], list[Union[dict, FunctionalSite]]]])
+
+slots.protein__structural_features = Slot(uri=LAMBDA.structural_features, name="protein__structural_features", curie=LAMBDA.curie('structural_features'),
+                   model_uri=LAMBDA.protein__structural_features, domain=None, range=Optional[Union[dict[Union[str, StructuralFeatureId], Union[dict, StructuralFeature]], list[Union[dict, StructuralFeature]]]])
+
+slots.protein__protein_interactions = Slot(uri=LAMBDA.protein_interactions, name="protein__protein_interactions", curie=LAMBDA.curie('protein_interactions'),
+                   model_uri=LAMBDA.protein__protein_interactions, domain=None, range=Optional[Union[dict[Union[str, ProteinProteinInteractionId], Union[dict, ProteinProteinInteraction]], list[Union[dict, ProteinProteinInteraction]]]])
+
+slots.protein__ligand_interactions = Slot(uri=LAMBDA.ligand_interactions, name="protein__ligand_interactions", curie=LAMBDA.curie('ligand_interactions'),
+                   model_uri=LAMBDA.protein__ligand_interactions, domain=None, range=Optional[Union[Union[dict, LigandInteraction], list[Union[dict, LigandInteraction]]]])
+
+slots.protein__mutation_effects = Slot(uri=LAMBDA.mutation_effects, name="protein__mutation_effects", curie=LAMBDA.curie('mutation_effects'),
+                   model_uri=LAMBDA.protein__mutation_effects, domain=None, range=Optional[Union[dict[Union[str, MutationEffectId], Union[dict, MutationEffect]], list[Union[dict, MutationEffect]]]])
+
+slots.protein__ptm_annotations = Slot(uri=LAMBDA.ptm_annotations, name="protein__ptm_annotations", curie=LAMBDA.curie('ptm_annotations'),
+                   model_uri=LAMBDA.protein__ptm_annotations, domain=None, range=Optional[Union[dict[Union[str, PostTranslationalModificationId], Union[dict, PostTranslationalModification]], list[Union[dict, PostTranslationalModification]]]])
+
+slots.protein__biophysical_properties = Slot(uri=LAMBDA.biophysical_properties, name="protein__biophysical_properties", curie=LAMBDA.curie('biophysical_properties'),
+                   model_uri=LAMBDA.protein__biophysical_properties, domain=None, range=Optional[Union[Union[dict, BiophysicalProperty], list[Union[dict, BiophysicalProperty]]]])
+
+slots.protein__evolutionary_conservation = Slot(uri=LAMBDA.evolutionary_conservation, name="protein__evolutionary_conservation", curie=LAMBDA.curie('evolutionary_conservation'),
+                   model_uri=LAMBDA.protein__evolutionary_conservation, domain=None, range=Optional[Union[dict, EvolutionaryConservation]])
+
+slots.protein__conformational_ensemble = Slot(uri=LAMBDA.conformational_ensemble, name="protein__conformational_ensemble", curie=LAMBDA.curie('conformational_ensemble'),
+                   model_uri=LAMBDA.protein__conformational_ensemble, domain=None, range=Optional[Union[dict, ConformationalEnsemble]])
+
+slots.protein__cross_references = Slot(uri=LAMBDA.cross_references, name="protein__cross_references", curie=LAMBDA.curie('cross_references'),
+                   model_uri=LAMBDA.protein__cross_references, domain=None, range=Optional[Union[Union[dict, DatabaseCrossReference], list[Union[dict, DatabaseCrossReference]]]])
+
 slots.proteinConstruct__construct_id = Slot(uri=LAMBDA.construct_id, name="proteinConstruct__construct_id", curie=LAMBDA.curie('construct_id'),
                    model_uri=LAMBDA.proteinConstruct__construct_id, domain=None, range=str)
 
+slots.proteinConstruct__protein_id = Slot(uri=LAMBDA.protein_id, name="proteinConstruct__protein_id", curie=LAMBDA.curie('protein_id'),
+                   model_uri=LAMBDA.proteinConstruct__protein_id, domain=None, range=Optional[Union[str, ProteinId]])
+
 slots.proteinConstruct__uniprot_id = Slot(uri=LAMBDA.uniprot_id, name="proteinConstruct__uniprot_id", curie=LAMBDA.curie('uniprot_id'),
-                   model_uri=LAMBDA.proteinConstruct__uniprot_id, domain=None, range=Optional[str])
+                   model_uri=LAMBDA.proteinConstruct__uniprot_id, domain=None, range=Optional[Union[str, URIorCURIE]])
 
 slots.proteinConstruct__gene_name = Slot(uri=LAMBDA.gene_name, name="proteinConstruct__gene_name", curie=LAMBDA.curie('gene_name'),
                    model_uri=LAMBDA.proteinConstruct__gene_name, domain=None, range=Optional[str])
@@ -10019,6 +10342,37 @@ slots.experimentSampleAssociation__role = Slot(uri=LAMBDA.role, name="experiment
 slots.experimentSampleAssociation__preparation_id = Slot(uri=LAMBDA.preparation_id, name="experimentSampleAssociation__preparation_id", curie=LAMBDA.curie('preparation_id'),
                    model_uri=LAMBDA.experimentSampleAssociation__preparation_id, domain=None, range=Optional[Union[str, SamplePreparationId]])
 
+slots.sampleProteinAssociation__sample_id = Slot(uri=LAMBDA.sample_id, name="sampleProteinAssociation__sample_id", curie=LAMBDA.curie('sample_id'),
+                   model_uri=LAMBDA.sampleProteinAssociation__sample_id, domain=None, range=Union[str, SampleId])
+
+slots.sampleProteinAssociation__protein_id = Slot(uri=LAMBDA.protein_id, name="sampleProteinAssociation__protein_id", curie=LAMBDA.curie('protein_id'),
+                   model_uri=LAMBDA.sampleProteinAssociation__protein_id, domain=None, range=Union[str, ProteinId])
+
+slots.sampleProteinAssociation__role = Slot(uri=LAMBDA.role, name="sampleProteinAssociation__role", curie=LAMBDA.curie('role'),
+                   model_uri=LAMBDA.sampleProteinAssociation__role, domain=None, range=Optional[Union[str, "SampleProteinRoleEnum"]])
+
+slots.sampleProteinAssociation__construct_id = Slot(uri=LAMBDA.construct_id, name="sampleProteinAssociation__construct_id", curie=LAMBDA.curie('construct_id'),
+                   model_uri=LAMBDA.sampleProteinAssociation__construct_id, domain=None, range=Optional[Union[str, ProteinConstructId]])
+
+slots.sampleProteinAssociation__copy_number = Slot(uri=LAMBDA.copy_number, name="sampleProteinAssociation__copy_number", curie=LAMBDA.curie('copy_number'),
+                   model_uri=LAMBDA.sampleProteinAssociation__copy_number, domain=None, range=Optional[int])
+
+slots.sampleProteinAssociation__residue_range = Slot(uri=LAMBDA.residue_range, name="sampleProteinAssociation__residue_range", curie=LAMBDA.curie('residue_range'),
+                   model_uri=LAMBDA.sampleProteinAssociation__residue_range, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$'))
+
+slots.sampleProteinAssociation__sequence_coverage = Slot(uri=LAMBDA.sequence_coverage, name="sampleProteinAssociation__sequence_coverage", curie=LAMBDA.curie('sequence_coverage'),
+                   model_uri=LAMBDA.sampleProteinAssociation__sequence_coverage, domain=None, range=Optional[float])
+
+slots.sampleProteinAssociation__chain_ids = Slot(uri=LAMBDA.chain_ids, name="sampleProteinAssociation__chain_ids", curie=LAMBDA.curie('chain_ids'),
+                   model_uri=LAMBDA.sampleProteinAssociation__chain_ids, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.sampleProteinAssociation__modifications = Slot(uri=LAMBDA.modifications, name="sampleProteinAssociation__modifications", curie=LAMBDA.curie('modifications'),
+                   model_uri=LAMBDA.sampleProteinAssociation__modifications, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.sampleProteinAssociation__observed_molecular_weight = Slot(uri=LAMBDA.observed_molecular_weight, name="sampleProteinAssociation__observed_molecular_weight", curie=LAMBDA.curie('observed_molecular_weight'),
+                   model_uri=LAMBDA.sampleProteinAssociation__observed_molecular_weight, domain=None, range=Optional[Union[dict, QuantityValue]])
+
 slots.experimentInstrumentAssociation__experiment_id = Slot(uri=LAMBDA.experiment_id, name="experimentInstrumentAssociation__experiment_id", curie=LAMBDA.curie('experiment_id'),
                    model_uri=LAMBDA.experimentInstrumentAssociation__experiment_id, domain=None, range=Union[str, ExperimentRunId])
 
@@ -10135,7 +10489,7 @@ slots.dateTimeValue__value = Slot(uri=LAMBDA.value, name="dateTimeValue__value",
 
 slots.proteinAnnotation__protein_id = Slot(uri=LAMBDA['functional_annotation/protein_id'], name="proteinAnnotation__protein_id", curie=LAMBDA.curie('functional_annotation/protein_id'),
                    model_uri=LAMBDA.proteinAnnotation__protein_id, domain=None, range=str,
-                   pattern=re.compile(r'^[A-Z][0-9][A-Z0-9]{3}[0-9]|[A-Z][0-9][A-Z0-9]{3}[0-9]-[0-9]+$'))
+                   pattern=re.compile(r'^(uniprot:)?([OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2})(-[0-9]+)?$'))
 
 slots.proteinAnnotation__pdb_entry = Slot(uri=LAMBDA['functional_annotation/pdb_entry'], name="proteinAnnotation__pdb_entry", curie=LAMBDA.curie('functional_annotation/pdb_entry'),
                    model_uri=LAMBDA.proteinAnnotation__pdb_entry, domain=None, range=Optional[str],
@@ -10147,7 +10501,7 @@ slots.proteinAnnotation__chain_id = Slot(uri=LAMBDA['functional_annotation/chain
 
 slots.proteinAnnotation__residue_range = Slot(uri=LAMBDA['functional_annotation/residue_range'], name="proteinAnnotation__residue_range", curie=LAMBDA.curie('functional_annotation/residue_range'),
                    model_uri=LAMBDA.proteinAnnotation__residue_range, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^[0-9,\-]+$'))
+                   pattern=re.compile(r'^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$'))
 
 slots.proteinAnnotation__confidence_score = Slot(uri=LAMBDA['functional_annotation/confidence_score'], name="proteinAnnotation__confidence_score", curie=LAMBDA.curie('functional_annotation/confidence_score'),
                    model_uri=LAMBDA.proteinAnnotation__confidence_score, domain=None, range=Optional[float])

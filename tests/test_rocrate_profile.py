@@ -86,6 +86,7 @@ DISPATCH: list[tuple[str, str]] = [
     ("lambda:Dataset", "CrateRoot"),
     ("lambda:Experiment", "CrateRoot"),  # deprecated SSRL 0.2 spelling
     ("lambda:Sample", "SampleEntity"),
+    ("lambda:Protein", "ProteinEntity"),
     ("lambda:Instrument", "InstrumentEntity"),
     ("lambda:ExperimentRun", "ExperimentRunAction"),
     ("lambda:WorkflowRun", "WorkflowRunAction"),
@@ -193,6 +194,8 @@ GRAPH_RULE_TERMS: dict[str, tuple[str, ...]] = {
     "CrateRoot": ("license", "datePublished", "missing", "hasPart", "conformsTo"),
     "CrateDatasetPart": ("conformsTo", "schemaRecord", "identifier", "url", "hasPart", "missing"),
     "MetadataDescriptor": ("about",),
+    "SampleEntity": ("hasBioChemEntityPart",),
+    "ProteinEntity": ("uniprot_id", "missing"),
 }
 
 
@@ -239,6 +242,26 @@ def graph_rule_violations(crate: dict) -> list[str]:
                 problems.append(
                     f"{entity.get('@id')!r} hasPart {target!r}, which has no entity in the graph"
                 )
+
+    # a specimen's proteins must be described, not merely pointed at
+    for entity in entities:
+        for target in _refs(entity.get("hasBioChemEntityPart")):
+            if target not in ids:
+                problems.append(
+                    f"{entity.get('@id')!r} hasBioChemEntityPart {target!r}, "
+                    "which has no entity in the graph"
+                )
+
+    # a protein without an accession says so
+    for entity in entities:
+        if classify(entity) != "ProteinEntity":
+            continue
+        declared = {d.get("field") for d in (entity.get("missing") or [])}
+        if "uniprot_id" not in entity and "uniprot_id" not in declared:
+            problems.append(
+                f"{entity.get('@id')!r} is a protein with no uniprot_id and no declared absence - "
+                "absence is stated, never implied"
+            )
 
     # a dataset part must say where its fuller metadata lives, or declare that it has none
     for entity in entities:
@@ -515,6 +538,8 @@ EXPECTED_FAILURE = {
     "dangling-about.json": "not in the graph",
     "dangling-haspart.json": "no entity in the graph",
     "dangling-inline-ref.json": "promised_but_absent",
+    "dangling-protein-part.json": "hasBioChemEntityPart",
+    "protein-no-accession.json": "no uniprot_id and no declared absence",
 }
 
 
@@ -554,7 +579,7 @@ def test_legacy_crate_uses_the_deprecated_vocabulary(path):
     )
 
 
-#: What stops the published SSRL 0.2 crate from conforming to Core 0.3.0. Each is a real,
+#: What stops the published SSRL 0.2 crate from conforming to Core 0.3.1. Each is a real,
 #: actionable gap rather than a naming difference - the naming differences are handled by the
 #: alias layer and do not appear here. If one of these disappears, this test fails and the
 #: entry should be removed.

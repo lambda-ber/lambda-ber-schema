@@ -17,18 +17,18 @@ Alias: exposure_time
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OpticalImage](OpticalImage.md) | Visible light optical microscopy or photography image |  no  |
-| [XRFImage](XRFImage.md) | X-ray fluorescence (XRF) image showing elemental distribution |  no  |
-| [ExperimentRun](ExperimentRun.md) | An experimental data collection session |  no  |
-| [Movie](Movie.md) | Raw cryo-EM movie with frame-by-frame metadata for motion correction |  no  |
-| [FluorescenceImage](FluorescenceImage.md) | Fluorescence microscopy image capturing specific molecular targets through fl... |  no  |
-| [Micrograph](Micrograph.md) | Motion-corrected micrograph derived from movie |  no  |
-| [ExperimentalConditions](ExperimentalConditions.md) | Environmental and experimental conditions |  no  |
 | [Image](Image.md) | An image file from structural biology experiments |  no  |
-| [DataCollectionStrategy](DataCollectionStrategy.md) | Strategy for data collection |  no  |
-| [FTIRImage](FTIRImage.md) | Fourier Transform Infrared (FTIR) spectroscopy image capturing molecular comp... |  no  |
 | [Image2D](Image2D.md) | A 2D image (micrograph, diffraction pattern) |  no  |
+| [ExperimentRun](ExperimentRun.md) | An experimental data collection session |  no  |
+| [Micrograph](Micrograph.md) | Motion-corrected micrograph derived from movie |  no  |
+| [FluorescenceImage](FluorescenceImage.md) | Fluorescence microscopy image capturing specific molecular targets through fl... |  no  |
+| [ExperimentalConditions](ExperimentalConditions.md) | Environmental and experimental conditions |  no  |
 | [Image3D](Image3D.md) | A 3D volume or tomogram |  no  |
+| [XRFImage](XRFImage.md) | X-ray fluorescence (XRF) image showing elemental distribution |  no  |
+| [DataCollectionStrategy](DataCollectionStrategy.md) | Strategy for data collection |  no  |
+| [OpticalImage](OpticalImage.md) | Visible light optical microscopy or photography image |  no  |
+| [FTIRImage](FTIRImage.md) | Fourier Transform Infrared (FTIR) spectroscopy image capturing molecular comp... |  no  |
+| [Movie](Movie.md) | Raw cryo-EM movie with frame-by-frame metadata for motion correction |  no  |
 
 
 

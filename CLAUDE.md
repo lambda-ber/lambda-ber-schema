@@ -19,7 +19,9 @@ The main schema definition is located at `src/lambda_ber_schema/schema/lambda_be
 
 **Entity Tables** (flat collections in Dataset):
 - **Study**: Lightweight grouping for related experiments
-- **Sample**: Biological samples with molecular composition, buffer conditions, storage details
+- **Protein**: The protein as a biological entity, identified by UniProt CURIE (`uniprot:P69905`); sequence, organism, gene, functional annotations. One row shared by every sample containing it
+- **Sample**: Physical samples with buffer conditions, concentration, storage details. Protein identity lives on Protein via SampleProteinAssociation
+- **ProteinConstruct**: Cloning and expression detail for one protein; links to Protein
 - **SamplePreparation**: Technique-specific preparation protocols
 - **Instrument**: Equipment specifications for CryoEM, XRay, SAXS instruments
 - **ExperimentRun**: Data collection sessions with quality metrics
@@ -29,7 +31,7 @@ The main schema definition is located at `src/lambda_ber_schema/schema/lambda_be
 
 **Association Tables** (M:N relationships):
 - **StudySampleAssociation**, **StudyExperimentAssociation**, **StudyWorkflowAssociation**
-- **ExperimentSampleAssociation**, **ExperimentInstrumentAssociation**
+- **ExperimentSampleAssociation**, **ExperimentInstrumentAssociation**, **SampleProteinAssociation** (role, copy number, residue range, observed mass, construct)
 - **WorkflowExperimentAssociation**, **WorkflowInputAssociation**, **WorkflowOutputAssociation**
 
 **Supporting classes**: MolecularComposition, BufferComposition, StorageConditions, ExperimentalConditions, etc.
@@ -100,6 +102,8 @@ All date and datetime fields use `string` type rather than strict date/datetime 
 
 ### Required Fields
 Each major class has minimal required fields to ensure data integrity:
+- **Protein**: `id` only (use the UniProt CURIE); `uniprot_id` and `protein_name` are recommended, not required, so a row seeded from an accession can be enriched later
+- **ProteinConstruct**: `construct_id`. Set `protein_id` whenever the dataset carries the Protein row; use `uniprot_id` alone only when it does not. Where both are set they must agree, and `protein_id` is the join key
 - **Sample**: `sample_code`, `sample_type`
 - **SamplePreparation**: `preparation_type`, `sample_id`
 - **Instrument**: `instrument_code`
@@ -139,3 +143,4 @@ The `tests/data/valid/` directory contains comprehensive examples covering all s
 3. **Use association tables** for M:N relationships (not direct FK fields on entities)
 4. **Include all required fields** even in minimal examples
 5. **Use proper enum values** from the defined permissible_values
+6. **Write UniProt accessions as CURIEs** (`uniprot:P69905`) for `Protein.id`, `Protein.uniprot_id`, and new `protein_id` values in functional annotations; the bare form is only tolerated in `ProteinAnnotation.protein_id` for older data

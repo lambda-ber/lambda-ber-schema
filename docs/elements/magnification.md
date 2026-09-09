@@ -17,8 +17,8 @@ Alias: magnification
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentRun](ExperimentRun.md) | An experimental data collection session |  no  |
 | [OpticalImage](OpticalImage.md) | Visible light optical microscopy or photography image |  no  |
+| [ExperimentRun](ExperimentRun.md) | An experimental data collection session |  no  |
 
 
 

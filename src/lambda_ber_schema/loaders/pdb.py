@@ -9,7 +9,7 @@ from typing import Any
 
 import requests
 
-from lambda_ber_schema.loaders.base import BaseLoader, LoaderResult
+from lambda_ber_schema.loaders.base import BaseLoader, LoaderResult, uniprot_curie
 from lambda_ber_schema.loaders.cache import ResponseCache
 from lambda_ber_schema.pydantic import (
     DatabaseCrossReference,
@@ -20,9 +20,12 @@ from lambda_ber_schema.pydantic import (
     ExperimentRun,
     ExperimentSampleAssociation,
     FileFormatEnum,
+    Protein,
     QualityMetrics,
     QuantityValue,
     Sample,
+    SampleProteinAssociation,
+    SampleProteinRoleEnum,
     SampleTypeEnum,
     Study,
     StudyExperimentAssociation,
@@ -104,6 +107,11 @@ class PDBLoader(BaseLoader):
             polymer_entities, entry_data, entry_id, warnings
         )
 
+        # One Protein row per UniProt accession, shared across entities and entries
+        proteins, sample_protein_associations = self._create_proteins(
+            polymer_entities, samples, entry_id, warnings
+        )
+
         # Create experiment run
         experiment = self._create_experiment_run(
             entry_data, entry_id, technique, warnings
@@ -154,6 +162,7 @@ class PDBLoader(BaseLoader):
             title=title,
             studies=[study],
             instruments=[instrument],
+            proteins=proteins if proteins else None,
             samples=samples,
             experiment_runs=[experiment],
             workflow_runs=workflows,
@@ -162,6 +171,7 @@ class PDBLoader(BaseLoader):
             study_experiment_associations=study_experiment_associations,
             experiment_sample_associations=experiment_sample_associations,
             experiment_instrument_associations=experiment_instrument_associations,
+            sample_protein_associations=sample_protein_associations if sample_protein_associations else None,
             workflow_experiment_associations=workflow_experiment_associations,
         )
 
@@ -448,6 +458,133 @@ class PDBLoader(BaseLoader):
             )
 
         return samples
+
+    def _create_proteins(
+        self,
+        polymer_entities: list[dict[str, Any]],
+        samples: list[Sample],
+        entry_id: str,
+        warnings: list[str],
+    ) -> tuple[list[Protein], list[SampleProteinAssociation]]:
+        """
+        Create Protein records and Sample-Protein links from polymer entities.
+
+        Each polymer entity became one Sample (see _create_samples). A protein
+        entity with UniProt mappings yields one Protein per accession, keyed by
+        CURIE so that the same accession in two entities gives one row, and one
+        association per (sample, protein) pair.
+
+        The entity sequence is the construct as deposited, not the canonical
+        UniProt sequence, so Protein.amino_acid_sequence is left for UniProt
+        enrichment. What the entity does tell us about this preparation goes on
+        the association: copy number, chain ids, and reference coverage.
+
+        Deduplication is within one entry. Protein.pdb_entries therefore holds
+        this entry alone; a caller merging several loads into one Dataset must
+        union the lists for rows that share an id.
+        """
+        proteins: dict[str, Protein] = {}
+        associations: list[SampleProteinAssociation] = []
+
+        def is_protein(entity: dict[str, Any]) -> bool:
+            polymer_type = entity.get("entity_poly", {}).get("rcsb_entity_polymer_type", "")
+            return "protein" in polymer_type.lower()
+
+        # A lone protein entity is the target even when nucleic acid or other polymer
+        # entities share the entry; two or more protein entities make each a subunit
+        # of the deposited assembly. Antibody-antigen and other binding-partner
+        # arrangements also land here as subunit, since the entry does not say which
+        # chain the depositor considered the target.
+        protein_entity_count = sum(1 for e in polymer_entities if is_protein(e))
+        role = (
+            SampleProteinRoleEnum.target
+            if protein_entity_count == 1
+            else SampleProteinRoleEnum.subunit
+        )
+
+        for entity, sample in zip(polymer_entities, samples):
+            entity_poly = entity.get("entity_poly", {})
+            if not is_protein(entity):
+                continue
+
+            container_ids = entity.get("rcsb_polymer_entity_container_identifiers", {})
+            uniprot_ids = container_ids.get("uniprot_ids") or []
+            if not uniprot_ids:
+                warnings.append(
+                    f"Polymer entity {container_ids.get('entity_id', '?')} has no UniProt "
+                    "mapping; no Protein record created"
+                )
+                continue
+
+            polymer_entity = entity.get("rcsb_polymer_entity", {})
+            # Prefer the UniProt-derived name over the depositor's description
+            combined = polymer_entity.get("rcsb_polymer_name_combined", {}) or {}
+            uniprot_names = combined.get("names") or []
+            protein_name = (
+                uniprot_names[0] if uniprot_names else polymer_entity.get("pdbx_description")
+            )
+
+            organism = None
+            organism_name = None
+            source_organisms = entity.get("rcsb_entity_source_organism") or []
+            if source_organisms:
+                organism_name = source_organisms[0].get("scientific_name")
+                taxid = source_organisms[0].get("ncbi_taxonomy_id")
+                if taxid:
+                    organism = f"NCBITaxon:{taxid}"
+
+            gene_name = None
+            for src in entity.get("entity_src_gen") or []:
+                if src.get("pdbx_gene_src_gene"):
+                    gene_name = src["pdbx_gene_src_gene"].split(",")[0].strip()
+                    break
+
+            coverage_by_accession = {
+                ref.get("database_accession"): ref.get("reference_sequence_coverage")
+                for ref in container_ids.get("reference_sequence_identifiers") or []
+                if ref.get("database_name", "").lower() == "uniprot"
+            }
+            strand_ids = entity_poly.get("pdbx_strand_id")
+            chain_ids = (
+                [c.strip() for c in strand_ids.split(",") if c.strip()] if strand_ids else None
+            )
+            copy_number = polymer_entity.get("pdbx_number_of_molecules")
+
+            for accession in uniprot_ids:
+                curie = uniprot_curie(accession)
+                if curie is None:
+                    warnings.append(
+                        f"Polymer entity {container_ids.get('entity_id', '?')} lists "
+                        f"{accession!r}, which is not a UniProt accession; skipped"
+                    )
+                    continue
+                protein = proteins.get(curie)
+                if protein is None:
+                    protein = Protein(
+                        id=curie,
+                        uniprot_id=curie,
+                        protein_name=protein_name,
+                        title=protein_name,
+                        gene_name=gene_name,
+                        organism=organism,
+                        organism_name=organism_name,
+                        pdb_entries=[f"pdb:{entry_id}"],
+                    )
+                    proteins[curie] = protein
+
+                coverage = coverage_by_accession.get(accession)
+                associations.append(
+                    SampleProteinAssociation(
+                        sample_id=sample.id,
+                        protein_id=curie,
+                        role=role,
+                        copy_number=copy_number,
+                        chain_ids=chain_ids,
+                        sequence_coverage=round(coverage, 4) if coverage is not None else None,
+                    )
+                )
+
+        return list(proteins.values()), associations
 
     def _create_experiment_run(
         self,

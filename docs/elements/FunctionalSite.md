@@ -126,7 +126,7 @@ URI: [lambda:FunctionalSite](http://w3id.org/lambda/FunctionalSite)
 | [functional_importance](functional_importance.md) | 0..1 <br/> [String](String.md) | Description of functional importance | direct |
 | [go_terms](go_terms.md) | * <br/> [Uriorcurie](Uriorcurie.md) | Associated Gene Ontology terms | direct |
 | [ec_number](ec_number.md) | 0..1 <br/> [String](String.md) | Enzyme Commission number for catalytic sites | direct |
-| [protein_id](protein_id.md) | 1 <br/> [String](String.md) | UniProt accession number | [ProteinAnnotation](ProteinAnnotation.md) |
+| [protein_id](protein_id.md) | 1 <br/> [String](String.md) | UniProt accession of the annotated protein, preferably as a Bioregistry CURIE... | [ProteinAnnotation](ProteinAnnotation.md) |
 | [pdb_entry](pdb_entry.md) | 0..1 <br/> [String](String.md) | PDB identifier | [ProteinAnnotation](ProteinAnnotation.md) |
 | [chain_id](chain_id.md) | 0..1 <br/> [String](String.md) | Chain identifier in the PDB structure | [ProteinAnnotation](ProteinAnnotation.md) |
 | [residue_range](residue_range.md) | 0..1 <br/> [String](String.md) | Range of residues (e | [ProteinAnnotation](ProteinAnnotation.md) |
@@ -149,6 +149,7 @@ URI: [lambda:FunctionalSite](http://w3id.org/lambda/FunctionalSite)
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
 | [Sample](Sample.md) | [functional_sites](functional_sites.md) | range | [FunctionalSite](FunctionalSite.md) |
+| [Protein](Protein.md) | [functional_sites](functional_sites.md) | range | [FunctionalSite](FunctionalSite.md) |
 | [AggregatedProteinView](AggregatedProteinView.md) | [functional_sites](functional_sites.md) | range | [FunctionalSite](FunctionalSite.md) |
 
 
@@ -228,6 +229,7 @@ attributes:
     from_schema: http://w3id.org/lambda/functional_annotation
     domain_of:
     - Sample
+    - Protein
     - FunctionalSite
     - AggregatedProteinView
     range: LigandInteraction
@@ -256,8 +258,8 @@ attributes:
     name: go_terms
     description: Associated Gene Ontology terms
     from_schema: http://w3id.org/lambda/functional_annotation
-    rank: 1000
     domain_of:
+    - Protein
     - FunctionalSite
     range: uriorcurie
     multivalued: true
@@ -323,6 +325,7 @@ attributes:
     owner: FunctionalSite
     domain_of:
     - Sample
+    - Protein
     - FunctionalSite
     - AggregatedProteinView
     range: LigandInteraction
@@ -356,10 +359,10 @@ attributes:
     name: go_terms
     description: Associated Gene Ontology terms
     from_schema: http://w3id.org/lambda/functional_annotation
-    rank: 1000
     alias: go_terms
     owner: FunctionalSite
     domain_of:
+    - Protein
     - FunctionalSite
     range: uriorcurie
     multivalued: true
@@ -376,17 +379,20 @@ attributes:
     pattern: ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$
   protein_id:
     name: protein_id
-    description: UniProt accession number
+    description: UniProt accession of the annotated protein, preferably as a Bioregistry
+      CURIE (uniprot:P69905) matching Protein.uniprot_id. A bare accession (P69905)
+      is accepted for data recorded before the CURIE form was adopted.
     from_schema: http://w3id.org/lambda/functional_annotation
-    rank: 1000
     alias: protein_id
     owner: FunctionalSite
     domain_of:
+    - ProteinConstruct
+    - SampleProteinAssociation
     - ProteinAnnotation
     - ConformationalEnsemble
     range: string
     required: true
-    pattern: ^[A-Z][0-9][A-Z0-9]{3}[0-9]|[A-Z][0-9][A-Z0-9]{3}[0-9]-[0-9]+$
+    pattern: ^(uniprot:)?([OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2})(-[0-9]+)?$
   pdb_entry:
     name: pdb_entry
     description: PDB identifier
@@ -413,13 +419,13 @@ attributes:
     name: residue_range
     description: Range of residues (e.g., '1-100', '25,27,30-35')
     from_schema: http://w3id.org/lambda/functional_annotation
-    rank: 1000
     alias: residue_range
     owner: FunctionalSite
     domain_of:
+    - SampleProteinAssociation
     - ProteinAnnotation
     range: string
-    pattern: ^[0-9,\-]+$
+    pattern: ^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$
   confidence_score:
     name: confidence_score
     description: 'Confidence score for the annotation (range: 0-1)'

@@ -128,6 +128,7 @@ attributes:
     rank: 1000
     domain_of:
     - MolecularComposition
+    - SampleProteinAssociation
     range: string
     multivalued: true
   ligands:
@@ -175,6 +176,7 @@ attributes:
     owner: MolecularComposition
     domain_of:
     - MolecularComposition
+    - SampleProteinAssociation
     range: string
     multivalued: true
   ligands:

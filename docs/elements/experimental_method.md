@@ -17,8 +17,8 @@ Alias: experimental_method
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentRun](ExperimentRun.md) | An experimental data collection session |  no  |
 | [BiophysicalProperty](BiophysicalProperty.md) | Measured or calculated biophysical properties |  no  |
+| [ExperimentRun](ExperimentRun.md) | An experimental data collection session |  no  |
 
 
 

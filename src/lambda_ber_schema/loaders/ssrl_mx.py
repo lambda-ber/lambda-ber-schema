@@ -19,7 +19,7 @@ import re
 from pathlib import Path
 from typing import Any
 
-from lambda_ber_schema.loaders.base import BaseLoader, LoaderResult
+from lambda_ber_schema.loaders.base import BaseLoader, LoaderResult, uniprot_curie
 from lambda_ber_schema.pydantic import (
     DataFile,
     DataTypeEnum,
@@ -32,9 +32,12 @@ from lambda_ber_schema.pydantic import (
     FileFormatEnum,
     InstrumentCategoryEnum,
     OutputTypeEnum,
+    Protein,
     QualityMetrics,
     QuantityValue,
     Sample,
+    SampleProteinAssociation,
+    SampleProteinRoleEnum,
     SampleTypeEnum,
     Study,
     StudyExperimentAssociation,
@@ -222,6 +225,11 @@ class SSRLMXLoader(BaseLoader):
         # Create sample from crystalStatus, enriched with sidecar metadata
         sample = self._create_sample(raw, dataset_id, run_metadata, warnings)
 
+        # Protein record from the sidecar's UniProt accession, where one is given
+        proteins, sample_protein_associations = self._create_proteins(
+            run_metadata, sample, warnings
+        )
+
         # Enrich experiment runs with per-run metadata when available.
         experiments = [
             self._enrich_experiment_with_metadata(
@@ -317,6 +325,7 @@ class SSRLMXLoader(BaseLoader):
             title=f"SSRL MX: {beamline_id}/{snapshot_name}",
             studies=[study],
             instruments=[instrument],
+            proteins=proteins if proteins else None,
             samples=[sample],
             experiment_runs=experiments,
             workflow_runs=workflow_runs if workflow_runs else None,
@@ -325,6 +334,7 @@ class SSRLMXLoader(BaseLoader):
             study_experiment_associations=study_experiment_associations,
             experiment_sample_associations=experiment_sample_associations,
             experiment_instrument_associations=experiment_instrument_associations,
+            sample_protein_associations=sample_protein_associations if sample_protein_associations else None,
             study_workflow_associations=study_workflow_associations if study_workflow_associations else None,
             workflow_experiment_associations=workflow_experiment_associations if workflow_experiment_associations else None,
             workflow_output_associations=workflow_output_associations if workflow_output_associations else None,
@@ -490,6 +500,47 @@ class SSRLMXLoader(BaseLoader):
             organism=organism,
             description="; ".join(description_parts) if description_parts else None,
         )
+
+    def _create_proteins(
+        self,
+        metadata: dict[str, Any] | None,
+        sample: Sample,
+        warnings: list[str],
+    ) -> tuple[list[Protein], list[SampleProteinAssociation]]:
+        """
+        Create the Protein record named by the sidecar metadata.
+
+        The sidecar carries one protein per run directory: a name, a UniProt
+        accession, an NCBITaxon CURIE with its label, and the PDB code the
+        structure was deposited under. Without an accession there is no stable
+        identity to key a row on, so none is made and the name stays on the Sample.
+        """
+        if not metadata or not metadata.get("uniprot_id"):
+            return [], []
+
+        curie = uniprot_curie(str(metadata["uniprot_id"]))
+        if curie is None:
+            warnings.append(
+                f"Sidecar uniprot_id {metadata['uniprot_id']!r} is not a UniProt accession; "
+                "no Protein record created"
+            )
+            return [], []
+        pdb_code = metadata.get("pdb_code")
+        protein = Protein(
+            id=curie,
+            uniprot_id=curie,
+            protein_name=metadata.get("protein_name"),
+            title=metadata.get("protein_name"),
+            organism=metadata.get("organism"),
+            organism_name=metadata.get("organism_label"),
+            pdb_entries=[f"pdb:{pdb_code}"] if pdb_code else None,
+        )
+        association = SampleProteinAssociation(
+            sample_id=sample.id,
+            protein_id=curie,
+            role=SampleProteinRoleEnum.target,
+        )
+        return [protein], [association]
 
     def _enrich_experiment_with_metadata(
         self,

@@ -15,6 +15,8 @@ The schema follows a **relational design** with:
 Dataset (root container)
 ├── Entity Tables (flat collections)
 │   ├── studies
+│   ├── proteins
+│   ├── protein_constructs
 │   ├── samples
 │   ├── sample_preparations
 │   ├── instruments
@@ -29,6 +31,7 @@ Dataset (root container)
     ├── study_workflow_associations
     ├── experiment_sample_associations
     ├── experiment_instrument_associations
+    ├── sample_protein_associations
     ├── workflow_experiment_associations
     ├── workflow_input_associations
     └── workflow_output_associations
@@ -52,8 +55,9 @@ Dataset (root container)
 
 | Class | Description |
 |-------|-------------|
-| [Sample](https://w3id.org/lambda-ber-schema/Sample) | Biological specimens (proteins, nucleic acids, complexes, cells, tissues) |
-| [ProteinConstruct](https://w3id.org/lambda-ber-schema/ProteinConstruct) | Detailed protein construct information including expression system |
+| [Protein](https://w3id.org/lambda-ber-schema/Protein) | The protein as a biological entity: UniProt CURIE, sequence, organism, gene, functional annotations. Described once, shared by every sample that contains it |
+| [Sample](https://w3id.org/lambda-ber-schema/Sample) | Physical specimens (proteins, nucleic acids, complexes, cells, tissues) with preparation-specific facts: buffer, concentration, storage, purity |
+| [ProteinConstruct](https://w3id.org/lambda-ber-schema/ProteinConstruct) | How a protein was cloned and expressed: vector, tags, cleavage sites. Links to its Protein |
 | [SamplePreparation](https://w3id.org/lambda-ber-schema/SamplePreparation) | How samples were prepared for specific techniques |
 
 ### Instrumentation
@@ -102,6 +106,7 @@ Association tables model many-to-many relationships and can carry relationship m
 | [StudyWorkflowAssociation](https://w3id.org/lambda-ber-schema/StudyWorkflowAssociation) | Study ↔ WorkflowRun | |
 | [ExperimentSampleAssociation](https://w3id.org/lambda-ber-schema/ExperimentSampleAssociation) | ExperimentRun ↔ Sample | role, preparation used |
 | [ExperimentInstrumentAssociation](https://w3id.org/lambda-ber-schema/ExperimentInstrumentAssociation) | ExperimentRun ↔ Instrument | role (primary, detector) |
+| [SampleProteinAssociation](https://w3id.org/lambda-ber-schema/SampleProteinAssociation) | Sample ↔ Protein | role (target, subunit, fusion_partner, ...), copy number, residue range, chain ids, modifications, observed mass, construct used |
 | [WorkflowExperimentAssociation](https://w3id.org/lambda-ber-schema/WorkflowExperimentAssociation) | WorkflowRun ↔ ExperimentRun | |
 | [WorkflowInputAssociation](https://w3id.org/lambda-ber-schema/WorkflowInputAssociation) | WorkflowRun ↔ DataFile | input type |
 | [WorkflowOutputAssociation](https://w3id.org/lambda-ber-schema/WorkflowOutputAssociation) | WorkflowRun ↔ DataFile | output type |

@@ -81,6 +81,7 @@ URI: [lambda:OntologyTerm](http://w3id.org/lambda/OntologyTerm)
 | [Sample](Sample.md) | [organism](organism.md) | range | [OntologyTerm](OntologyTerm.md) |
 | [Sample](Sample.md) | [anatomy](anatomy.md) | range | [OntologyTerm](OntologyTerm.md) |
 | [Sample](Sample.md) | [cell_type](cell_type.md) | range | [OntologyTerm](OntologyTerm.md) |
+| [Protein](Protein.md) | [organism](organism.md) | range | [OntologyTerm](OntologyTerm.md) |
 | [ImageFeature](ImageFeature.md) | [terms](terms.md) | range | [OntologyTerm](OntologyTerm.md) |
 | [OntologyTerm](OntologyTerm.md) | [terms](terms.md) | range | [OntologyTerm](OntologyTerm.md) |
 

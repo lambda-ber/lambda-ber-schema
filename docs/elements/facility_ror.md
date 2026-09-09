@@ -23,11 +23,11 @@ Alias: facility_ror
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [Instrument](Instrument.md) | An instrument used to collect data |  no  |
-| [SANSInstrument](SANSInstrument.md) | Small-angle neutron scattering (SANS) instrument specifications |  no  |
 | [XRayInstrument](XRayInstrument.md) | X-ray diffractometer or synchrotron beamline specifications |  no  |
-| [BeamlineInstrument](BeamlineInstrument.md) | Multi-technique synchrotron beamline that supports multiple experimental meth... |  no  |
 | [SAXSInstrument](SAXSInstrument.md) | SAXS/WAXS instrument specifications |  no  |
 | [CryoEMInstrument](CryoEMInstrument.md) | Cryo-EM microscope specifications |  no  |
+| [SANSInstrument](SANSInstrument.md) | Small-angle neutron scattering (SANS) instrument specifications |  no  |
+| [BeamlineInstrument](BeamlineInstrument.md) | Multi-technique synchrotron beamline that supports multiple experimental meth... |  no  |
 
 
 
@@ -47,6 +47,7 @@ Alias: facility_ror
 
 * Persistent identifier for the facility organization
 * Example: https://ror.org/02jbv0t02 (Lawrence Berkeley National Laboratory)
+* Retained for sources that publish only a ROR. Where the facility is described as an entity, prefer facility_organization_id, which reaches its parent institution, type and location rather than just its identifier.
 
 ## Identifier and Mapping Information
 
@@ -82,6 +83,9 @@ description: Research Organization Registry (ROR) identifier for the facility
 comments:
 - Persistent identifier for the facility organization
 - 'Example: https://ror.org/02jbv0t02 (Lawrence Berkeley National Laboratory)'
+- Retained for sources that publish only a ROR. Where the facility is described as
+  an entity, prefer facility_organization_id, which reaches its parent institution,
+  type and location rather than just its identifier.
 from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: facility_ror

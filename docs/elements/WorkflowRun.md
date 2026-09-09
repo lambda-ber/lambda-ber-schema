@@ -644,6 +644,7 @@ URI: [lambda:WorkflowRun](http://w3id.org/lambda/WorkflowRun)
 | [WorkflowExperimentAssociation](WorkflowExperimentAssociation.md) | [workflow_id](workflow_id.md) | range | [WorkflowRun](WorkflowRun.md) |
 | [WorkflowInputAssociation](WorkflowInputAssociation.md) | [workflow_id](workflow_id.md) | range | [WorkflowRun](WorkflowRun.md) |
 | [WorkflowOutputAssociation](WorkflowOutputAssociation.md) | [workflow_id](workflow_id.md) | range | [WorkflowRun](WorkflowRun.md) |
+| [WorkflowPersonAssociation](WorkflowPersonAssociation.md) | [workflow_id](workflow_id.md) | range | [WorkflowRun](WorkflowRun.md) |
 
 
 

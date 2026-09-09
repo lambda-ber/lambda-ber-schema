@@ -37,8 +37,11 @@ classes:
     description: "Base class for all protein-related functional and structural annotations"
     attributes:
       protein_id:
-        description: "UniProt accession number"
-        pattern: "^[A-Z][0-9][A-Z0-9]{3}[0-9]|[A-Z][0-9][A-Z0-9]{3}[0-9]-[0-9]+$"
+        description: >-
+          UniProt accession of the annotated protein, preferably as a Bioregistry CURIE
+          (uniprot:P69905) matching Protein.uniprot_id. A bare accession (P69905) is accepted for
+          data recorded before the CURIE form was adopted.
+        pattern: "^(uniprot:)?([OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2})(-[0-9]+)?$"
         required: true
       pdb_entry:
         description: "PDB identifier"
@@ -48,7 +51,7 @@ classes:
         pattern: "^[A-Za-z0-9]+$"
       residue_range:
         description: "Range of residues (e.g., '1-100', '25,27,30-35')"
-        pattern: "^[0-9,\\-]+$"
+        pattern: "^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$"
       confidence_score:
         description: "Confidence score for the annotation (range: 0-1)"
         range: float
@@ -439,6 +442,11 @@ classes:
   AggregatedProteinView:
     is_a: NamedThing
     description: "Aggregated view of all structural and functional data for a protein"
+    deprecated: >-
+      Superseded by Protein in the core schema, which carries the same annotation collections,
+      uses a CURIE for the UniProt accession, and lives in Dataset.proteins where samples can link
+      to it. Retained so existing data keeps validating.
+    deprecated_element_has_exact_replacement: lambda:Protein
     attributes:
       uniprot_id:
         description: "UniProt accession"

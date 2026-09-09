@@ -65,6 +65,26 @@ class TestSSRLMXLoader:
         assert "UniProt: A0A101UQ08" in sample.description
         assert "PDB: 9MS5" in sample.description
 
+    def test_protein_created_from_sidecar_metadata(self, ssrl_mx_snapshot_path: Path, ssrl_mx_loader):
+        """The sidecar's UniProt accession becomes a Protein linked to the crystal sample."""
+        result = ssrl_mx_loader.load(str(ssrl_mx_snapshot_path))
+        ds = result.dataset
+
+        assert len(ds.proteins) == 1
+        protein = ds.proteins[0]
+        assert protein.id == "uniprot:A0A101UQ08"
+        assert protein.uniprot_id == "uniprot:A0A101UQ08"
+        assert protein.protein_name == "Ss_EXLX1"
+        assert protein.organism == "NCBITaxon:909626"
+        assert protein.organism_name == "Streptomyces dysideae"
+        assert protein.pdb_entries == ["pdb:9MS5"]
+
+        assert len(ds.sample_protein_associations) == 1
+        assoc = ds.sample_protein_associations[0]
+        assert assoc.sample_id == ds.samples[0].id
+        assert assoc.protein_id == "uniprot:A0A101UQ08"
+        assert assoc.role == "target"
+
     def test_only_collecting_runs_included(self, ssrl_mx_snapshot_path: Path, ssrl_mx_loader):
         """Test that only runs with status='collecting' are included."""
         result = ssrl_mx_loader.load(str(ssrl_mx_snapshot_path))
@@ -521,6 +541,14 @@ class TestSSRLMXLoaderMultiRunMetadata:
 
 
 class TestSSRLMXLoaderWithoutMetadata:
+    """Without a sidecar there is no accession, so no Protein row is made."""
+
+    def test_no_protein_without_metadata(self, tmp_path: Path, ssrl_mx_snapshot_path: Path):
+        loader = SSRLMXLoader()
+        result = loader.load(str(ssrl_mx_snapshot_path))
+        assert result.dataset.proteins is None
+        assert result.dataset.sample_protein_associations is None
+
     """Test behavior when no sidecar metadata file exists."""
 
     def test_load_without_metadata_file(self, tmp_path: Path):

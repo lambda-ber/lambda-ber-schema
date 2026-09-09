@@ -5,6 +5,7 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix lambdaber: <http://w3id.org/lambda/> .
 @prefix nmdc: <https://w3id.org/nmdc/> .
+@prefix uniprot: <http://purl.uniprot.org/uniprot/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://smb.slac.stanford.edu/dev/lims/lambda/BL12-2/SA_x4_1_00001> a lambdaber:Dataset ;
@@ -18,6 +19,11 @@
             lambdaber:experiment_id <https://smb.slac.stanford.edu/dev/lims/lambda/experiment/3a1d5d30-559b-4074-8433-e13db2920b48> ;
             lambdaber:sample_id <https://smb.slac.stanford.edu/dev/lims/lambda/BL12-2/SA_x4_1_00001/sample> ] ;
     lambdaber:instruments <https://smb.slac.stanford.edu/dev/lims/lambda/instrument/BL12-2> ;
+    lambdaber:proteins uniprot:A0A101UQ08 ;
+    lambdaber:sample_protein_associations [ a lambdaber:SampleProteinAssociation ;
+            lambdaber:protein_id uniprot:A0A101UQ08 ;
+            lambdaber:role "target" ;
+            lambdaber:sample_id <https://smb.slac.stanford.edu/dev/lims/lambda/BL12-2/SA_x4_1_00001/sample> ] ;
     lambdaber:samples <https://smb.slac.stanford.edu/dev/lims/lambda/BL12-2/SA_x4_1_00001/sample> ;
     lambdaber:studies <https://smb.slac.stanford.edu/dev/lims/lambda/study/5c2cdf5a-c0e9-41e9-80ba-b5ef87a080c2> ;
     lambdaber:study_experiment_associations [ a lambdaber:StudyExperimentAssociation ;
@@ -37,6 +43,14 @@
             lambdaber:output_type "processed_data" ;
             lambdaber:workflow_id <https://smb.slac.stanford.edu/dev/lims/lambda/BL12-2/SA_x4_1_00001/workflow/autoproc> ] ;
     lambdaber:workflow_runs <https://smb.slac.stanford.edu/dev/lims/lambda/BL12-2/SA_x4_1_00001/workflow/autoproc> .
+
+uniprot:A0A101UQ08 a lambdaber:Protein ;
+    dcterms:title "Ss_EXLX1" ;
+    lambdaber:organism NCBITaxon:909626 ;
+    lambdaber:organism_name "Streptomyces dysideae" ;
+    lambdaber:pdb_entries "pdb:9MS5"^^xsd:anyURI ;
+    lambdaber:protein_name "Ss_EXLX1" ;
+    lambdaber:uniprot_id "uniprot:A0A101UQ08"^^xsd:anyURI .
 
 <https://smb.slac.stanford.edu/dev/lims/lambda/BL12-2/SA_x4_1_00001/workflow/autoproc/output/aimless.mtz> a lambdaber:DataFile ;
     dcterms:title "aimless.mtz" ;

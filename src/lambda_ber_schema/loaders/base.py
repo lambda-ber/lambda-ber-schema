@@ -4,6 +4,7 @@ Base classes for ETL loaders.
 This module defines the abstract interface that all data source loaders must implement.
 """
 
+import re
 from abc import ABC, abstractmethod
 from typing import Any
 
@@ -11,6 +12,44 @@ from pydantic import BaseModel
 from pydantic import Field
 
 from lambda_ber_schema.pydantic import Dataset
+
+
+# UniProt accession grammar, with an optional isoform suffix. Mirrors the pattern on
+# Protein.uniprot_id in the schema so a loader rejects what the model would reject.
+UNIPROT_ACCESSION_RE = re.compile(
+    r"^([OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2})(-[0-9]+)?$"
+)
+
+
+def uniprot_curie(accession: str) -> str | None:
+    """
+    Normalize a UniProt accession to its Bioregistry CURIE form.
+
+    Protein records are identified by ``uniprot:<accession>`` so that one protein
+    studied in many samples resolves to a single row. Sources hand back the bare
+    accession, sometimes already prefixed, sometimes wrapped in whitespace.
+    Returns None when the string is not a UniProt accession at all, so a scraped
+    fragment of a URL does not become a Protein row.
+
+    Example:
+        >>> uniprot_curie("P69905")
+        'uniprot:P69905'
+        >>> uniprot_curie(" uniprot:P69905 ")
+        'uniprot:P69905'
+        >>> uniprot_curie("UniProt:P69905-2")
+        'uniprot:P69905-2'
+        >>> uniprot_curie("entry") is None
+        True
+    """
+    accession = accession.strip()
+    if ":" in accession:
+        prefix, _, local = accession.partition(":")
+        if prefix.lower() == "uniprot":
+            accession = local.strip()
+    accession = accession.upper()
+    if not UNIPROT_ACCESSION_RE.match(accession):
+        return None
+    return f"uniprot:{accession}"
 
 
 class LoaderResult(BaseModel):
