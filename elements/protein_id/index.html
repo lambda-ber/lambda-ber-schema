@@ -906,7 +906,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.0/" class="md-nav__link">
+      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.1/" class="md-nav__link">
         
   
   
@@ -1217,6 +1217,31 @@ Alias: protein_id</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="../FunctionalSite/">FunctionalSite</a></td>
+<td>Functional sites including catalytic, binding, and regulatory sites</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../EvolutionaryConservation/">EvolutionaryConservation</a></td>
+<td>Evolutionary conservation information</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ConformationalEnsemble/">ConformationalEnsemble</a></td>
+<td>Ensemble of conformational states for a protein</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../PostTranslationalModification/">PostTranslationalModification</a></td>
+<td>Post-translational modifications observed or predicted</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SampleProteinAssociation/">SampleProteinAssociation</a></td>
+<td>M:N link between Sample and Protein</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../ProteinProteinInteraction/">ProteinProteinInteraction</a></td>
 <td>Protein-protein interactions and interfaces</td>
 <td>no</td>
@@ -1227,18 +1252,8 @@ Alias: protein_id</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../FunctionalSite/">FunctionalSite</a></td>
-<td>Functional sites including catalytic, binding, and regulatory sites</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ConformationalEnsemble/">ConformationalEnsemble</a></td>
-<td>Ensemble of conformational states for a protein</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../EvolutionaryConservation/">EvolutionaryConservation</a></td>
-<td>Evolutionary conservation information</td>
+<td><a href="../ProteinAnnotation/">ProteinAnnotation</a></td>
+<td>Base class for all protein-related functional and structural annotations</td>
 <td>no</td>
 </tr>
 <tr>
@@ -1247,13 +1262,8 @@ Alias: protein_id</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../PostTranslationalModification/">PostTranslationalModification</a></td>
-<td>Post-translational modifications observed or predicted</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ProteinAnnotation/">ProteinAnnotation</a></td>
-<td>Base class for all protein-related functional and structural annotations</td>
+<td><a href="../ProteinConstruct/">ProteinConstruct</a></td>
+<td>Detailed information about a protein construct including cloning and sequence...</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -1288,6 +1298,8 @@ Alias: protein_id</p>
 <pre><code class="language-yaml">name: protein_id
 alias: protein_id
 domain_of:
+- ProteinConstruct
+- SampleProteinAssociation
 - ProteinAnnotation
 - ConformationalEnsemble
 range: string

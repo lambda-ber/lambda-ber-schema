@@ -1048,7 +1048,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../profiles/lambda-core-rocrate-profile-v0.3.0/" class="md-nav__link">
+      <a href="../profiles/lambda-core-rocrate-profile-v0.3.1/" class="md-nav__link">
         
   
   
@@ -1408,13 +1408,27 @@ A dataset might represent all data from a specific grant, collaboration, or publ
 <h3 id="entity-tables">Entity Tables</h3>
 <p>All entities are stored in flat collections at the Dataset level:</p>
 <p><strong>Biological Materials</strong>
-- <a href="Sample/">Samples</a>: The biological specimens being studied (proteins, nucleic acids, complexes,
-  cells, tissues). Each sample includes detailed molecular composition, buffer conditions, and
-  storage information. For example, a purified protein with its sequence, concentration, and buffer pH.</p>
+- <a href="Protein/">Proteins</a>: The protein as a biological entity - sequence, source organism, gene,
+  and the functional and structural annotations that hold for it in every preparation. Identified
+  by UniProt accession as a CURIE (<code>uniprot:P69905</code>) wherever one exists. One record serves every
+  sample that contains the protein; what varies between preparations lives on the sample and on
+  the sample-protein association.</p>
 <ul>
-<li><a href="SamplePreparation/">Sample Preparations</a>: How samples were prepared for specific techniques.
+<li>
+<p><a href="Sample/">Samples</a>: The physical specimens being studied (proteins, nucleic acids, complexes,
+  cells, tissues). Each sample records the preparation-specific facts - buffer conditions,
+  concentration, storage, purity - and links to the proteins it contains through
+  <a href="SampleProteinAssociation/">SampleProteinAssociation</a>.</p>
+</li>
+<li>
+<p><a href="ProteinConstruct/">Protein Constructs</a>: How a protein was cloned and expressed - vector,
+  tags, cleavage sites, codon optimization. A construct realizes one protein and may feed many samples.</p>
+</li>
+<li>
+<p><a href="SamplePreparation/">Sample Preparations</a>: How samples were prepared for specific techniques.
   This includes cryo-EM grid preparation (vitrification parameters), crystallization conditions for
-  X-ray studies, or staining protocols for fluorescence microscopy.</li>
+  X-ray studies, or staining protocols for fluorescence microscopy.</p>
+</li>
 </ul>
 <p><strong>Data Collection</strong>
 - <a href="Instrument/">Instruments</a>: The equipment used, from Titan Krios microscopes to synchrotron
@@ -1466,6 +1480,8 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <li><strong>StudyExperimentAssociation</strong>: Links experiments to studies</li>
 <li><strong>StudyWorkflowAssociation</strong>: Links workflows to studies</li>
 <li><strong>ExperimentSampleAssociation</strong>: Links samples to experiments (with role and preparation used)</li>
+<li><strong>SampleProteinAssociation</strong>: Links proteins to samples (with role, copy number, residue range,
+  modifications, observed mass, and the construct used)</li>
 <li><strong>ExperimentInstrumentAssociation</strong>: Links instruments to experiments (with role: primary, detector)</li>
 <li><strong>WorkflowExperimentAssociation</strong>: Links source experiments to workflows</li>
 <li><strong>WorkflowInputAssociation</strong>: Links input files to workflows</li>
@@ -1478,6 +1494,7 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 </ul>
 <p>This relational design enables:
 - <strong>Sample reuse</strong>: The same sample can be used in multiple studies and experiments
+- <strong>Protein reuse</strong>: The same protein is described once and linked from every sample that contains it
 - <strong>Multi-instrument experiments</strong>: An experiment can use multiple instruments with different roles
 - <strong>Integrative workflows</strong>: A workflow can combine data from multiple experiments</p>
 <h2 id="example-usage">Example Usage</h2>
@@ -1763,6 +1780,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>A person involved in producing, processing or publishing data - a principal i...</td>
 </tr>
 <tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Protein/">Protein</a></td>
+<td>A protein as a biological entity: its sequence, source organism, gene, and th...</td>
+</tr>
+<tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ProteinAnnotation/">ProteinAnnotation</a></td>
 <td>Base class for all protein-related functional and structural annotations</td>
 </tr>
@@ -1796,7 +1817,7 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Sample/">Sample</a></td>
-<td>A biological sample used in structural biology experiments</td>
+<td>A physical biological sample used in structural biology experiments</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SamplePreparation/">SamplePreparation</a></td>
@@ -1813,6 +1834,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="PersonOrganizationAssociation/">PersonOrganizationAssociation</a></td>
 <td>M:N link between Person and Organization with role metadata</td>
+</tr>
+<tr>
+<td><a href="SampleProteinAssociation/">SampleProteinAssociation</a></td>
+<td>M:N link between Sample and Protein</td>
 </tr>
 <tr>
 <td><a href="StudyExperimentAssociation/">StudyExperimentAssociation</a></td>
@@ -1924,6 +1949,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="allele_frequency/">allele_frequency</a></td>
 <td>Population allele frequency (range: 0-1)</td>
+</tr>
+<tr>
+<td><a href="amino_acid_sequence/">amino_acid_sequence</a></td>
+<td>Canonical one-letter amino acid sequence of the protein, without tags or othe...</td>
 </tr>
 <tr>
 <td><a href="amplitude_contrast/">amplitude_contrast</a></td>
@@ -2194,6 +2223,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Chain identifier in the PDB structure</td>
 </tr>
 <tr>
+<td><a href="chain_ids/">chain_ids</a></td>
+<td>Chain identifiers this protein occupies in the deposited structure, where the...</td>
+</tr>
+<tr>
 <td><a href="chamber_temperature/">chamber_temperature</a></td>
 <td>Chamber temperature, typically specified in degrees Celsius</td>
 </tr>
@@ -2350,6 +2383,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Low-level control system for device communication</td>
 </tr>
 <tr>
+<td><a href="copy_number/">copy_number</a></td>
+<td>Copies of this protein per assembly in the sample (e</td>
+</tr>
+<tr>
 <td><a href="corresponding/">corresponding</a></td>
 <td>Whether this person is a corresponding author for the study</td>
 </tr>
@@ -2367,7 +2404,7 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 </tr>
 <tr>
 <td><a href="cross_references/">cross_references</a></td>
-<td>Database cross-references</td>
+<td>Cross-references to external databases other than UniProt (Pfam, InterPro, Ch...</td>
 </tr>
 <tr>
 <td><a href="cryo_protectant/">cryo_protectant</a></td>
@@ -2678,6 +2715,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Enzyme Commission number for catalytic sites</td>
 </tr>
 <tr>
+<td><a href="ec_numbers/">ec_numbers</a></td>
+<td>Enzyme Commission numbers, where the protein is an enzyme (e</td>
+</tr>
+<tr>
 <td><a href="effect_on_function/">effect_on_function</a></td>
 <td>Effect on protein function</td>
 </tr>
@@ -2954,6 +2995,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Full formal name of the person, as they write it in publications</td>
 </tr>
 <tr>
+<td><a href="function_description/">function_description</a></td>
+<td>Free-text summary of molecular function, typically from UniProt</td>
+</tr>
+<tr>
 <td><a href="functional_effect/">functional_effect</a></td>
 <td>Known functional effect of this PTM</td>
 </tr>
@@ -2971,7 +3016,7 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 </tr>
 <tr>
 <td><a href="gene_name/">gene_name</a></td>
-<td>Gene name</td>
+<td>Primary gene symbol (e</td>
 </tr>
 <tr>
 <td><a href="gene_synthesis_provider/">gene_synthesis_provider</a></td>
@@ -3003,7 +3048,7 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 </tr>
 <tr>
 <td><a href="go_terms/">go_terms</a></td>
-<td>Associated Gene Ontology terms</td>
+<td>Gene Ontology annotations as CURIEs (e</td>
 </tr>
 <tr>
 <td><a href="gold_standard/">gold_standard</a></td>
@@ -3390,6 +3435,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Molecular weight, typically specified in kilodaltons (kDa)</td>
 </tr>
 <tr>
+<td><a href="molecular_weight_theoretical/">molecular_weight_theoretical</a></td>
+<td>Mass computed from the canonical sequence, typically in kDa</td>
+</tr>
+<tr>
 <td><a href="molprobity_score/">molprobity_score</a></td>
 <td>Overall MolProbity score</td>
 </tr>
@@ -3486,6 +3535,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Objective aperture size in micrometers</td>
 </tr>
 <tr>
+<td><a href="observed_molecular_weight/">observed_molecular_weight</a></td>
+<td>Mass as measured for this preparation (mass spectrometry, SEC-MALS, SAXS), ty...</td>
+</tr>
+<tr>
 <td><a href="od600_at_induction/">od600_at_induction</a></td>
 <td>Optical density at 600nm when induction was started</td>
 </tr>
@@ -3524,6 +3577,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="organism_id/">organism_id</a></td>
 <td>NCBI taxonomy ID</td>
+</tr>
+<tr>
+<td><a href="organism_name/">organism_name</a></td>
+<td>Scientific name of the source organism</td>
 </tr>
 <tr>
 <td><a href="organization_id/">organization_id</a></td>
@@ -3603,7 +3660,7 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 </tr>
 <tr>
 <td><a href="pdb_entries/">pdb_entries</a></td>
-<td>PDB entries representing this state</td>
+<td>PDB entries containing this protein, as CURIEs (e</td>
 </tr>
 <tr>
 <td><a href="pdb_entry/">pdb_entry</a></td>
@@ -3775,7 +3832,7 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 </tr>
 <tr>
 <td><a href="protein_id/">protein_id</a></td>
-<td>UniProt accession number</td>
+<td>The protein this construct expresses</td>
 </tr>
 <tr>
 <td><a href="protein_interactions/">protein_interactions</a></td>
@@ -3783,7 +3840,11 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 </tr>
 <tr>
 <td><a href="protein_name/">protein_name</a></td>
-<td>Name of the protein</td>
+<td>Name of the protein as the facility or depositor recorded it</td>
+</tr>
+<tr>
+<td><a href="proteins/">proteins</a></td>
+<td>All proteins referenced by samples in this dataset, one record per protein</td>
 </tr>
 <tr>
 <td><a href="protocol_description/">protocol_description</a></td>
@@ -3915,7 +3976,7 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 </tr>
 <tr>
 <td><a href="residue_range/">residue_range</a></td>
-<td>Range of residues (e</td>
+<td>Residues of the canonical sequence present in this sample (e</td>
 </tr>
 <tr>
 <td><a href="residues/">residues</a></td>
@@ -4062,6 +4123,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>All sample preparations</td>
 </tr>
 <tr>
+<td><a href="sample_protein_associations/">sample_protein_associations</a></td>
+<td>Links between samples and the proteins they contain (M:N with role, copy numb...</td>
+</tr>
+<tr>
 <td><a href="sample_type/">sample_type</a></td>
 <td>Type of biological sample</td>
 </tr>
@@ -4110,8 +4175,16 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Antibiotic resistance or other selectable marker</td>
 </tr>
 <tr>
+<td><a href="sequence_coverage/">sequence_coverage</a></td>
+<td>Fraction of the canonical sequence present in this sample (range: 0-1)</td>
+</tr>
+<tr>
 <td><a href="sequence_file_path/">sequence_file_path</a></td>
 <td>Path to sequence file</td>
+</tr>
+<tr>
+<td><a href="sequence_length/">sequence_length</a></td>
+<td>Length of the canonical sequence in residues</td>
 </tr>
 <tr>
 <td><a href="sequence_length_aa/">sequence_length_aa</a></td>
@@ -4471,7 +4544,7 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 </tr>
 <tr>
 <td><a href="uniprot_id/">uniprot_id</a></td>
-<td>UniProt accession for the target protein</td>
+<td>UniProt accession as a Bioregistry CURIE (e</td>
 </tr>
 <tr>
 <td><a href="unit/">unit</a></td>
@@ -4859,6 +4932,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="PurificationStepEnum/">PurificationStepEnum</a></td>
 <td>Protein purification steps and methods</td>
+</tr>
+<tr>
+<td><a href="SampleProteinRoleEnum/">SampleProteinRoleEnum</a></td>
+<td>Part a protein plays in a sample</td>
 </tr>
 <tr>
 <td><a href="SampleRoleEnum/">SampleRoleEnum</a></td>

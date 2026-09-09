@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://lambda-ber.github.io/lambda-ber-schema/profiles/lambda-core-rocrate-profile-v0.3.0/">
+        <link rel="canonical" href="https://lambda-ber.github.io/lambda-ber-schema/profiles/lambda-core-rocrate-profile-v0.3.1/">
       
       
         <link rel="prev" href="../../use-cases/06-reanalysis-triggers.html">
@@ -1973,14 +1973,20 @@
 
 
 <h1 id="lambda-core-ro-crate-profile">LAMBDA Core RO-Crate Profile</h1>
-<p><strong>Version 0.3.0</strong> · Technique-neutral · Normative specification</p>
+<p><strong>Version 0.3.1</strong> · Technique-neutral · Normative specification</p>
 <p>Binds <code>lambda-ber-schema</code> (LinkML) to RO-Crate 1.2 as a <strong>file manifest</strong> contract. A crate carries
 the highest-level details a program needs to decide whether a dataset is worth opening, and then
 <em>points</em> at the fuller record instead of restating it. It is a search-and-handoff surface, not a
 second copy of the schema.</p>
-<p>Profile URI: <code>https://w3id.org/lambda/profile/core/0.3.0</code>
+<p>Profile URI: <code>https://w3id.org/lambda/profile/core/0.3.1</code>
 Machine-readable source: <a href="../../../src/lambda_ber_schema/schema/lambda_rocrate_core.yaml"><code>lambda_rocrate_core.yaml</code></a>
 Generated artifacts: <code>assets/rocrate/</code> (JSON Schema, JSON-LD context, OWL, prefix map, SSSOM crosswalk)</p>
+<p><strong>Changes in 0.3.1.</strong> Adds <code>ProteinEntity</code> and the <code>hasBioChemEntityPart</code> link from a sample to
+the proteins it contains (§6.2), with <code>lambda:uniprot_id</code>, <code>lambda:gene_name</code> and
+<code>lambda:pdb_entries</code> projecting onto the schema's new <code>Protein</code> class; deprecates the 0.2
+<code>uniprotId</code> spelling in favour of that route (§15); and adds graph rules 3 (second clause) and 10
+(§12). Additive: every crate that conformed to 0.3.0 conforms to 0.3.1 unchanged. Crates SHOULD
+claim <code>https://w3id.org/lambda/profile/core/0.3.1</code>; the 0.3.0 URI remains valid for what it said.</p>
 <p>Companion technique extensions: the <strong>LAMBDA SAXS profile v0.3.0</strong> (in this repository) and a
 prospective MX profile. Core defines the framework those cite; they add technique quantities and
 tighten the tiers.</p>
@@ -2081,7 +2087,7 @@ gate filters rather than silently returning crates that cannot answer them.</p>
 profile:</p>
 <pre><code class="language-json">&quot;conformsTo&quot;: [
   {&quot;@id&quot;: &quot;https://w3id.org/ro/crate/1.2&quot;},
-  {&quot;@id&quot;: &quot;https://w3id.org/lambda/profile/core/0.3.0&quot;}
+  {&quot;@id&quot;: &quot;https://w3id.org/lambda/profile/core/0.3.1&quot;}
 ]
 </code></pre>
 <p>A technique extension appends its own URI; it never replaces the Core URI. The metadata descriptor
@@ -2207,10 +2213,36 @@ tells a reader nothing the count does not.</p>
 </tbody>
 </table>
 <h3 id="62-optional-contextual-entities">6.2 Optional contextual entities</h3>
-<p><code>PersonEntity</code>, <code>OrganizationEntity</code>, <code>SampleEntity</code>, <code>InstrumentEntity</code>, <code>ExperimentRunAction</code>,
-<code>WorkflowRunAction</code>, <code>SoftwareApplicationEntity</code>, <code>DefinedTermEntity</code>, <code>PropertyValueEntity</code>,
-<code>RelatedWork</code>. Each is optional; each is typed so that a plain RO-Crate consumer understands it
-(<code>Person</code>, <code>Organization</code>, <code>CreateAction</code>, …) <em>and</em> a LAMBDA-aware reader can project it.</p>
+<p><code>PersonEntity</code>, <code>OrganizationEntity</code>, <code>SampleEntity</code>, <code>ProteinEntity</code>, <code>InstrumentEntity</code>,
+<code>ExperimentRunAction</code>, <code>WorkflowRunAction</code>, <code>SoftwareApplicationEntity</code>, <code>DefinedTermEntity</code>,
+<code>PropertyValueEntity</code>, <code>RelatedWork</code>. Each is optional; each is typed so that a plain RO-Crate
+consumer understands it (<code>Person</code>, <code>Organization</code>, <code>Protein</code>, <code>CreateAction</code>, …) <em>and</em> a
+LAMBDA-aware reader can project it.</p>
+<p><strong>Specimen and protein are two entities.</strong> A <code>SampleEntity</code> is the thing in the tube or on the
+grid; a <code>ProteinEntity</code> is the protein it contains, and the same protein entity serves every sample
+in the crate that contains it. The sample points at its proteins with schema.org's own
+<code>hasBioChemEntityPart</code>, which the RO-Crate 1.2 context resolves. A protein entity's <code>@id</code> SHOULD be
+its UniProt IRI (<code>http://purl.uniprot.org/uniprot/P69905</code>), so that the same protein in two crates
+is the same node, and it carries the accession as the CURIE the schema uses:</p>
+<pre><code class="language-json">{&quot;@id&quot;: &quot;#sample-hba&quot;, &quot;@type&quot;: [&quot;BioChemEntity&quot;, &quot;lambda:Sample&quot;],
+ &quot;sample_code&quot;: &quot;HBA-OXY-001&quot;, &quot;sample_type&quot;: &quot;complex&quot;, &quot;protein_name&quot;: &quot;Hemoglobin A (oxy)&quot;,
+ &quot;hasBioChemEntityPart&quot;: [{&quot;@id&quot;: &quot;http://purl.uniprot.org/uniprot/P69905&quot;},
+                          {&quot;@id&quot;: &quot;http://purl.uniprot.org/uniprot/P68871&quot;}]},
+{&quot;@id&quot;: &quot;http://purl.uniprot.org/uniprot/P69905&quot;, &quot;@type&quot;: [&quot;Protein&quot;, &quot;lambda:Protein&quot;],
+ &quot;name&quot;: &quot;Hemoglobin subunit alpha&quot;, &quot;uniprot_id&quot;: &quot;uniprot:P69905&quot;,
+ &quot;protein_name&quot;: &quot;Hemoglobin subunit alpha&quot;, &quot;gene_name&quot;: &quot;HBA1&quot;, &quot;organism&quot;: &quot;NCBITaxon:9606&quot;,
+ &quot;pdb_entries&quot;: [&quot;pdb:1HHO&quot;]}
+</code></pre>
+<p>The <code>@id</code> and <code>uniprot_id</code> above are one identifier in two spellings: the <code>uniprot</code> prefix expands to
+<code>http://purl.uniprot.org/uniprot/</code>, so a projector compacts the <code>@id</code> to obtain the schema's
+<code>Protein.id</code> (<code>uniprot:P69905</code>), or expands <code>uniprot_id</code> to obtain the <code>@id</code>, and either route gives
+the same node. A local <code>@id</code> (<code>#protein-hba1</code>) is permitted; <code>uniprot_id</code> then carries the identity
+alone.</p>
+<p><code>protein_name</code> stays on the sample too, as the name the facility recorded and the cheapest search
+field. A protein with no UniProt accession is still a protein entity; it MUST then declare
+<code>uniprot_id</code> in <code>missing</code> (§8). Crates that write <code>uniprot_id</code> SHOULD bind <code>uniprot</code> to
+<code>http://purl.uniprot.org/uniprot/</code> in their context, so that a reader treating the value as a CURIE
+expands it to the entity's own <code>@id</code>.</p>
 <p>Facility and technique SHOULD be carried as <code>DefinedTerm</code> entities rather than bare strings — this
 is what lets a federated index join across crates, and the SSRL 0.2 crates already do it.</p>
 <h3 id="63-value-objects-nest">6.3 Value objects nest</h3>
@@ -2244,7 +2276,7 @@ crate.</p>
   &quot;@id&quot;: &quot;saxs/&quot;,
   &quot;@type&quot;: &quot;Dataset&quot;,
   &quot;name&quot;: &quot;SEC-SAXS-MALS of GluRS (ALS SIBYLS 12.3.1)&quot;,
-  &quot;conformsTo&quot;: [{&quot;@id&quot;: &quot;https://w3id.org/lambda/profile/core/0.3.0&quot;},
+  &quot;conformsTo&quot;: [{&quot;@id&quot;: &quot;https://w3id.org/lambda/profile/core/0.3.1&quot;},
                  {&quot;@id&quot;: &quot;https://w3id.org/lambda/profile/saxs/0.3.0&quot;}],
   &quot;hasPart&quot;: [{&quot;@id&quot;: &quot;saxs/ro-crate-metadata.json&quot;}]
 }
@@ -2472,6 +2504,10 @@ a number that only means something in one pipeline.</p>
 <td style="text-align: left;"><code>lambda:sample_code</code>, <code>lambda:protein_name</code>, <code>lambda:organism</code></td>
 </tr>
 <tr>
+<td style="text-align: left;">protein</td>
+<td style="text-align: left;"><code>lambda:uniprot_id</code>, <code>lambda:gene_name</code> on the <code>Protein</code> entities the sample points at with <code>hasBioChemEntityPart</code></td>
+</tr>
+<tr>
 <td style="text-align: left;">dates</td>
 <td style="text-align: left;"><code>datePublished</code>, <code>lambda:collectionDate</code></td>
 </tr>
@@ -2513,7 +2549,8 @@ valid against Core while the extension gives the block its shape.</p>
 <li>A metadata descriptor exists and its <code>about</code> resolves to an entity in the graph.</li>
 <li>A root data entity exists, typed <code>lambda:Dataset</code> (or the deprecated <code>lambda:Experiment</code>).</li>
 <li>Every <code>hasPart</code> target resolves to an entity in the graph — a manifest MUST NOT promise a part
-   it does not describe.</li>
+   it does not describe. The same holds for every <code>hasBioChemEntityPart</code> target: a sample MUST NOT
+   point at a protein the graph does not describe.</li>
 <li>Every <code>CrateDatasetPart</code> resolves a metadata pointer or declares why it resolves none (§7).</li>
 <li>Every <code>missing</code> entry names a <code>blocks</code> tier unless its reason is <code>not-applicable</code>.</li>
 <li>No field is both present on an entity and declared missing on it.</li>
@@ -2524,6 +2561,7 @@ valid against Core while the extension gives the block its shape.</p>
    class. A crate using it has untyped files as far as any generic consumer is concerned. Use
    <code>File</code>, which the context maps to <code>schema:MediaObject</code>.</li>
 <li><code>license</code> and <code>datePublished</code>, when absent from the root, appear in <code>lambdarc:missing</code> (§6.4).</li>
+<li>A <code>ProteinEntity</code> carries <code>uniprot_id</code> or declares it in <code>lambdarc:missing</code> (§6.2).</li>
 </ol>
 <p>SHACL shapes would be the natural home for layer 3, since RDF validation dispatches on <code>rdf:type</code>
 properly. They are <strong>not</strong> generated: <code>gen-shacl</code> raises <code>KeyError('lambda-ber-schema')</code> for classes
@@ -2549,11 +2587,11 @@ instances, so a single JSON object is walked key by key, and <code>--legacy-mode
 </tr>
 <tr>
 <td style="text-align: left;"><code>ssrl-mx-XA_x16.json</code></td>
-<td style="text-align: left;">a real SSRL MX package brought to Core 0.3.0, with MX quantities nested in <code>resultSummary</code></td>
+<td style="text-align: left;">a real SSRL MX package brought to Core 0.3.1, with MX quantities nested in <code>resultSummary</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>saxs-glurs.json</code></td>
-<td style="text-align: left;">the SAXS GluRS dataset reduced to Core terms — the extension boundary made concrete</td>
+<td style="text-align: left;">the SAXS GluRS dataset reduced to Core terms — the extension boundary made concrete; its sample points at a <code>Protein</code> entity (§6.2)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>nested-pointers.json</code></td>
@@ -2565,7 +2603,7 @@ instances, so a single JSON object is walked key by key, and <code>--legacy-mode
 </tr>
 </tbody>
 </table>
-<p>Eight negative fixtures in <code>tests/data/rocrate/invalid/</code>, each isolating one rule, with the test
+<p>Twelve negative fixtures in <code>tests/data/rocrate/invalid/</code>, each isolating one rule, with the test
 asserting <em>which</em> rule failed so that a fixture cannot pass for the wrong reason.</p>
 <hr />
 <h2 id="14-crosswalk-to-lambda-ber-schema">14. Crosswalk to <code>lambda-ber-schema</code></h2>
@@ -2603,7 +2641,12 @@ migration would be prose a reader has to transcribe by hand.</p>
 <tr>
 <td style="text-align: left;"><code>SampleEntity</code></td>
 <td style="text-align: left;"><code>["BioChemEntity", "lambda:Sample"]</code></td>
-<td style="text-align: left;"><code>Sample</code></td>
+<td style="text-align: left;"><code>Sample</code> (+ <code>SampleProteinAssociation</code>, via <code>hasBioChemEntityPart</code>)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ProteinEntity</code></td>
+<td style="text-align: left;"><code>["Protein", "lambda:Protein"]</code></td>
+<td style="text-align: left;"><code>Protein</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>InstrumentEntity</code></td>
@@ -2643,6 +2686,14 @@ it; the schema carries it on <code>StudyPersonAssociation</code> / <code>Experim
 <code>WorkflowPersonAssociation</code>, because one person record should serve every role they hold across a
 dataset. A projector therefore reads <code>role</code> (and <code>author_position</code>, <code>corresponding</code>) off the crate
 entity and writes them to the association, not to <code>Person</code>.</p>
+<p><code>SampleEntity</code> and <code>ProteinEntity</code> split the same way the schema does. <code>hasBioChemEntityPart</code> on
+the sample projects onto one <code>SampleProteinAssociation</code> per target, with <code>sample_id</code> and
+<code>protein_id</code> and nothing else: the role, copy number, residue range and modifications that
+association can carry describe a preparation in detail a manifest does not attempt, and belong to
+the fuller record. The protein entity itself projects onto <code>Protein</code> by identity — <code>uniprot_id</code>,
+<code>protein_name</code>, <code>gene_name</code>, <code>organism</code>, <code>pdb_entries</code> are the schema's own slot names. The
+deprecated <code>uniprotId</code> on a sample (§15) projects by <em>creating</em> that <code>Protein</code> and association,
+which is why its mapping is close rather than exact: the value is bare where the schema's is a CURIE.</p>
 <p><code>OrganizationEntity</code> works the same way, projecting onto <code>Organization</code> plus
 <code>StudyOrganizationAssociation</code> / <code>PersonOrganizationAssociation</code>. Note the deliberate split between
 <code>ror</code> and <code>facility_ror</code>: an organization's own identifier is <code>ror</code>, while <code>facility_ror</code> is a
@@ -2672,13 +2723,13 @@ carries the schema's own <code>snake_case</code> slot name, so <code>lambda:file
 <p>SSRL publishes crates conforming to <code>https://w3id.org/lambda/profile/core/0.2</code> — a URI with no
 written specification — using <code>lambda:Experiment</code> / <code>lambda:RawUnit</code> / <code>lambda:DerivedProduct</code> /
 <code>lambda:AuxiliaryMetadataItem</code> and camelCase terms under
-<code>https://w3id.org/lambda/terms/0.2/</code>. Those crates exist and a loader consumes them, so Core 0.3.0
+<code>https://w3id.org/lambda/terms/0.2/</code>. Those crates exist and a loader consumes them, so Core 0.3.1
 accepts the 0.2 spellings and marks them deprecated rather than breaking them.</p>
 <table>
 <thead>
 <tr>
 <th style="text-align: left;">0.2 spelling</th>
-<th style="text-align: left;">Core 0.3.0</th>
+<th style="text-align: left;">Core 0.3.1</th>
 </tr>
 </thead>
 <tbody>
@@ -2701,6 +2752,10 @@ accepts the 0.2 spellings and marks them deprecated rather than breaking them.</
 <tr>
 <td style="text-align: left;"><code>proteinName</code></td>
 <td style="text-align: left;"><code>lambda:protein_name</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>uniprotId</code> (bare accession, on the sample)</td>
+<td style="text-align: left;"><code>lambda:uniprot_id</code> (CURIE), on a <code>Protein</code> entity the sample points at with <code>hasBioChemEntityPart</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>rawUnitId</code>, <code>productId</code>, <code>workflowRunId</code></td>
@@ -2865,7 +2920,13 @@ for <code>name</code>. Carrying both costs little and is probably the right answ
    real crate today and declared through §8.1 rather than coerced, so the evidence for adding them
    is already written down.
 10. <strong><code>WorkflowRun.output_files</code> duplicates <code>WorkflowOutputAssociation</code>.</strong> Two ways to say the same
-   thing means a crate builder must choose, and different builders will choose differently.</p>
+   thing means a crate builder must choose, and different builders will choose differently.
+11. ~~<strong>A <code>Protein</code> class, and a home for the UniProt accession.</strong>~~ <strong>Resolved.</strong> <code>Protein</code> now
+   exists in <code>Dataset.proteins</code>, identified by UniProt CURIE, with <code>uniprot_id</code>, <code>protein_name</code>,
+   <code>gene_name</code>, <code>organism</code>, <code>amino_acid_sequence</code>, <code>pdb_entries</code> and the functional annotation
+   collections, plus <code>SampleProteinAssociation</code> carrying role, copy number, residue range,
+   modifications and observed mass. <code>lambdarc:uniprotId</code> was the standing request; <code>ProteinEntity</code>
+   and <code>lambda:uniprot_id</code> now project, and the 0.2 spelling is deprecated (§15).</p>
 <p>Not requested: technique quantity classes. Those belong to the SAXS and MX extensions, whose own
 change requests already cover them.</p>
 <hr />

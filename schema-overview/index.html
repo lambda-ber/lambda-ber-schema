@@ -906,7 +906,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../profiles/lambda-core-rocrate-profile-v0.3.0/" class="md-nav__link">
+      <a href="../profiles/lambda-core-rocrate-profile-v0.3.1/" class="md-nav__link">
         
   
   
@@ -1392,6 +1392,8 @@
 <pre><code>Dataset (root container)
 ├── Entity Tables (flat collections)
 │   ├── studies
+│   ├── proteins
+│   ├── protein_constructs
 │   ├── samples
 │   ├── sample_preparations
 │   ├── instruments
@@ -1406,6 +1408,7 @@
     ├── study_workflow_associations
     ├── experiment_sample_associations
     ├── experiment_instrument_associations
+    ├── sample_protein_associations
     ├── workflow_experiment_associations
     ├── workflow_input_associations
     └── workflow_output_associations
@@ -1451,12 +1454,16 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="https://w3id.org/lambda-ber-schema/Protein">Protein</a></td>
+<td>The protein as a biological entity: UniProt CURIE, sequence, organism, gene, functional annotations. Described once, shared by every sample that contains it</td>
+</tr>
+<tr>
 <td><a href="https://w3id.org/lambda-ber-schema/Sample">Sample</a></td>
-<td>Biological specimens (proteins, nucleic acids, complexes, cells, tissues)</td>
+<td>Physical specimens (proteins, nucleic acids, complexes, cells, tissues) with preparation-specific facts: buffer, concentration, storage, purity</td>
 </tr>
 <tr>
 <td><a href="https://w3id.org/lambda-ber-schema/ProteinConstruct">ProteinConstruct</a></td>
-<td>Detailed protein construct information including expression system</td>
+<td>How a protein was cloned and expressed: vector, tags, cleavage sites. Links to its Protein</td>
 </tr>
 <tr>
 <td><a href="https://w3id.org/lambda-ber-schema/SamplePreparation">SamplePreparation</a></td>
@@ -1603,6 +1610,11 @@
 <td><a href="https://w3id.org/lambda-ber-schema/ExperimentInstrumentAssociation">ExperimentInstrumentAssociation</a></td>
 <td>ExperimentRun ↔ Instrument</td>
 <td>role (primary, detector)</td>
+</tr>
+<tr>
+<td><a href="https://w3id.org/lambda-ber-schema/SampleProteinAssociation">SampleProteinAssociation</a></td>
+<td>Sample ↔ Protein</td>
+<td>role (target, subunit, fusion_partner, ...), copy number, residue range, chain ids, modifications, observed mass, construct used</td>
 </tr>
 <tr>
 <td><a href="https://w3id.org/lambda-ber-schema/WorkflowExperimentAssociation">WorkflowExperimentAssociation</a></td>

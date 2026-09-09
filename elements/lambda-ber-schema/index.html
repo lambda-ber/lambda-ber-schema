@@ -906,7 +906,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.0/" class="md-nav__link">
+      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.1/" class="md-nav__link">
         
   
   
@@ -1221,13 +1221,27 @@ A dataset might represent all data from a specific grant, collaboration, or publ
 <h3 id="entity-tables">Entity Tables</h3>
 <p>All entities are stored in flat collections at the Dataset level:</p>
 <p><strong>Biological Materials</strong>
-- <a href="../Sample/">Samples</a>: The biological specimens being studied (proteins, nucleic acids, complexes,
-  cells, tissues). Each sample includes detailed molecular composition, buffer conditions, and
-  storage information. For example, a purified protein with its sequence, concentration, and buffer pH.</p>
+- <a href="../Protein/">Proteins</a>: The protein as a biological entity - sequence, source organism, gene,
+  and the functional and structural annotations that hold for it in every preparation. Identified
+  by UniProt accession as a CURIE (<code>uniprot:P69905</code>) wherever one exists. One record serves every
+  sample that contains the protein; what varies between preparations lives on the sample and on
+  the sample-protein association.</p>
 <ul>
-<li><a href="../SamplePreparation/">Sample Preparations</a>: How samples were prepared for specific techniques.
+<li>
+<p><a href="../Sample/">Samples</a>: The physical specimens being studied (proteins, nucleic acids, complexes,
+  cells, tissues). Each sample records the preparation-specific facts - buffer conditions,
+  concentration, storage, purity - and links to the proteins it contains through
+  <a href="../SampleProteinAssociation/">SampleProteinAssociation</a>.</p>
+</li>
+<li>
+<p><a href="../ProteinConstruct/">Protein Constructs</a>: How a protein was cloned and expressed - vector,
+  tags, cleavage sites, codon optimization. A construct realizes one protein and may feed many samples.</p>
+</li>
+<li>
+<p><a href="../SamplePreparation/">Sample Preparations</a>: How samples were prepared for specific techniques.
   This includes cryo-EM grid preparation (vitrification parameters), crystallization conditions for
-  X-ray studies, or staining protocols for fluorescence microscopy.</li>
+  X-ray studies, or staining protocols for fluorescence microscopy.</p>
+</li>
 </ul>
 <p><strong>Data Collection</strong>
 - <a href="../Instrument/">Instruments</a>: The equipment used, from Titan Krios microscopes to synchrotron
@@ -1279,6 +1293,8 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <li><strong>StudyExperimentAssociation</strong>: Links experiments to studies</li>
 <li><strong>StudyWorkflowAssociation</strong>: Links workflows to studies</li>
 <li><strong>ExperimentSampleAssociation</strong>: Links samples to experiments (with role and preparation used)</li>
+<li><strong>SampleProteinAssociation</strong>: Links proteins to samples (with role, copy number, residue range,
+  modifications, observed mass, and the construct used)</li>
 <li><strong>ExperimentInstrumentAssociation</strong>: Links instruments to experiments (with role: primary, detector)</li>
 <li><strong>WorkflowExperimentAssociation</strong>: Links source experiments to workflows</li>
 <li><strong>WorkflowInputAssociation</strong>: Links input files to workflows</li>
@@ -1291,6 +1307,7 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 </ul>
 <p>This relational design enables:
 - <strong>Sample reuse</strong>: The same sample can be used in multiple studies and experiments
+- <strong>Protein reuse</strong>: The same protein is described once and linked from every sample that contains it
 - <strong>Multi-instrument experiments</strong>: An experiment can use multiple instruments with different roles
 - <strong>Integrative workflows</strong>: A workflow can combine data from multiple experiments</p>
 <h2 id="example-usage">Example Usage</h2>

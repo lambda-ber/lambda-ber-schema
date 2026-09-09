@@ -366,7 +366,7 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../profiles/lambda-core-rocrate-profile-v0.3.0/">
+<a class="md-nav__link" href="../../profiles/lambda-core-rocrate-profile-v0.3.1/">
 <span class="md-ellipsis">
     LAMBDA Core RO-Crate Profile
     
@@ -665,6 +665,17 @@
 
 
 
+      Dataset : proteins
+
+
+
+
+
+        Dataset --&gt; "*" Protein : proteins
+        click Protein href "../Protein/"
+
+
+
       Dataset : sample_preparations
 
 
@@ -673,6 +684,17 @@
 
         Dataset --&gt; "*" SamplePreparation : sample_preparations
         click SamplePreparation href "../SamplePreparation/"
+
+
+
+      Dataset : sample_protein_associations
+
+
+
+
+
+        Dataset --&gt; "*" SampleProteinAssociation : sample_protein_associations
+        click SampleProteinAssociation href "../SampleProteinAssociation/"
 
 
 
@@ -861,6 +883,12 @@
 <td>direct</td>
 </tr>
 <tr>
+<td><a href="../proteins/">proteins</a></td>
+<td>* <br/> <a href="../Protein/">Protein</a></td>
+<td>All proteins referenced by samples in this dataset, one record per protein</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../protein_constructs/">protein_constructs</a></td>
 <td>* <br/> <a href="../ProteinConstruct/">ProteinConstruct</a></td>
 <td>All protein constructs</td>
@@ -930,6 +958,12 @@
 <td><a href="../experiment_instrument_associations/">experiment_instrument_associations</a></td>
 <td>* <br/> <a href="../ExperimentInstrumentAssociation/">ExperimentInstrumentAssociation</a></td>
 <td>Links between experiments and instruments (M:N)</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../sample_protein_associations/">sample_protein_associations</a></td>
+<td>* <br/> <a href="../SampleProteinAssociation/">SampleProteinAssociation</a></td>
+<td>Links between samples and the proteins they contain (M:N with role, copy numb...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -1095,6 +1129,18 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
+  proteins:
+    name: proteins
+    description: All proteins referenced by samples in this dataset, one record per
+      protein
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    domain_of:
+    - Dataset
+    range: Protein
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
   protein_constructs:
     name: protein_constructs
     description: All protein constructs
@@ -1224,6 +1270,18 @@ attributes:
     domain_of:
     - Dataset
     range: ExperimentInstrumentAssociation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  sample_protein_associations:
+    name: sample_protein_associations
+    description: Links between samples and the proteins they contain (M:N with role,
+      copy number, construct)
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    domain_of:
+    - Dataset
+    range: SampleProteinAssociation
     multivalued: true
     inlined: true
     inlined_as_list: true
@@ -1395,6 +1453,20 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
+  proteins:
+    name: proteins
+    description: All proteins referenced by samples in this dataset, one record per
+      protein
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    alias: proteins
+    owner: Dataset
+    domain_of:
+    - Dataset
+    range: Protein
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
   protein_constructs:
     name: protein_constructs
     description: All protein constructs
@@ -1548,6 +1620,20 @@ attributes:
     domain_of:
     - Dataset
     range: ExperimentInstrumentAssociation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  sample_protein_associations:
+    name: sample_protein_associations
+    description: Links between samples and the proteins they contain (M:N with role,
+      copy number, construct)
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    alias: sample_protein_associations
+    owner: Dataset
+    domain_of:
+    - Dataset
+    range: SampleProteinAssociation
     multivalued: true
     inlined: true
     inlined_as_list: true

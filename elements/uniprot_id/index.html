@@ -906,7 +906,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.0/" class="md-nav__link">
+      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.1/" class="md-nav__link">
         
   
   
@@ -1217,6 +1217,11 @@ Alias: uniprot_id</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="../Protein/">Protein</a></td>
+<td>A protein as a biological entity: its sequence, source organism, gene, and th...</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../AggregatedProteinView/">AggregatedProteinView</a></td>
 <td>Aggregated view of all structural and functional data for a protein</td>
 <td>no</td>
@@ -1258,6 +1263,7 @@ Alias: uniprot_id</p>
 <pre><code class="language-yaml">name: uniprot_id
 alias: uniprot_id
 domain_of:
+- Protein
 - ProteinConstruct
 - AggregatedProteinView
 range: string

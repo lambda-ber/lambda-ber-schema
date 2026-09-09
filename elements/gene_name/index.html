@@ -906,7 +906,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.0/" class="md-nav__link">
+      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.1/" class="md-nav__link">
         
   
   
@@ -1162,21 +1162,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Identifier and Mapping Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schema-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      Schema Source
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -1217,7 +1202,6 @@
 
 
 <h1 id="slot-gene_name">Slot: gene_name</h1>
-<p><em>Gene name</em></p>
 <p>URI: <a href="http://w3id.org/lambda/gene_name">lambda:gene_name</a>
 Alias: gene_name</p>
 <!-- no inheritance hierarchy -->
@@ -1233,6 +1217,11 @@ Alias: gene_name</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="../Protein/">Protein</a></td>
+<td>A protein as a biological entity: its sequence, source organism, gene, and th...</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../ProteinConstruct/">ProteinConstruct</a></td>
 <td>Detailed information about a protein construct including cloning and sequence...</td>
 <td>no</td>
@@ -1244,10 +1233,6 @@ Alias: gene_name</p>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: http://w3id.org/lambda/</li>
-</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -1271,12 +1256,9 @@ Alias: gene_name</p>
 <details>
 
 <pre><code class="language-yaml">name: gene_name
-description: Gene name
-from_schema: http://w3id.org/lambda/
-rank: 1000
 alias: gene_name
-owner: ProteinConstruct
 domain_of:
+- Protein
 - ProteinConstruct
 range: string
 

@@ -906,7 +906,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.0/" class="md-nav__link">
+      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.1/" class="md-nav__link">
         
   
   
@@ -1162,21 +1162,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Identifier and Mapping Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schema-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      Schema Source
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -1217,7 +1202,6 @@
 
 
 <h1 id="slot-go_terms">Slot: go_terms</h1>
-<p><em>Associated Gene Ontology terms</em></p>
 <p>URI: <a href="http://w3id.org/lambda/go_terms">lambda:go_terms</a>
 Alias: go_terms</p>
 <!-- no inheritance hierarchy -->
@@ -1237,22 +1221,18 @@ Alias: go_terms</p>
 <td>Functional sites including catalytic, binding, and regulatory sites</td>
 <td>no</td>
 </tr>
+<tr>
+<td><a href="../Protein/">Protein</a></td>
+<td>A protein as a biological entity: its sequence, source organism, gene, and th...</td>
+<td>no</td>
+</tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>
-<p>Range: <a href="../Uriorcurie/">Uriorcurie</a></p>
-</li>
-<li>
-<p>Multivalued: True</p>
-</li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: http://w3id.org/lambda/</li>
-</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -1276,15 +1256,11 @@ Alias: go_terms</p>
 <details>
 
 <pre><code class="language-yaml">name: go_terms
-description: Associated Gene Ontology terms
-from_schema: http://w3id.org/lambda/
-rank: 1000
 alias: go_terms
-owner: FunctionalSite
 domain_of:
+- Protein
 - FunctionalSite
-range: uriorcurie
-multivalued: true
+range: string
 
 </code></pre>
 

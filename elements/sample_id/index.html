@@ -906,7 +906,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.0/" class="md-nav__link">
+      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.1/" class="md-nav__link">
         
   
   
@@ -1217,6 +1217,11 @@ Alias: sample_id</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="../SamplePreparation/">SamplePreparation</a></td>
+<td>A process that prepares a sample for imaging</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../ExperimentSampleAssociation/">ExperimentSampleAssociation</a></td>
 <td>M:N link between ExperimentRun and Sample with role metadata</td>
 <td>no</td>
@@ -1227,8 +1232,8 @@ Alias: sample_id</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../SamplePreparation/">SamplePreparation</a></td>
-<td>A process that prepares a sample for imaging</td>
+<td><a href="../SampleProteinAssociation/">SampleProteinAssociation</a></td>
+<td>M:N link between Sample and Protein</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -1266,6 +1271,7 @@ domain_of:
 - SamplePreparation
 - StudySampleAssociation
 - ExperimentSampleAssociation
+- SampleProteinAssociation
 range: string
 
 </code></pre>
