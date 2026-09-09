@@ -478,20 +478,33 @@ class PDBLoader(BaseLoader):
         UniProt sequence, so Protein.amino_acid_sequence is left for UniProt
         enrichment. What the entity does tell us about this preparation goes on
         the association: copy number, chain ids, and reference coverage.
+
+        Deduplication is within one entry. Protein.pdb_entries therefore holds
+        this entry alone; a caller merging several loads into one Dataset must
+        union the lists for rows that share an id.
         """
         proteins: dict[str, Protein] = {}
         associations: list[SampleProteinAssociation] = []
 
-        # The deposited assembly is the target; with several entities each one is a subunit.
+        def is_protein(entity: dict[str, Any]) -> bool:
+            polymer_type = entity.get("entity_poly", {}).get("rcsb_entity_polymer_type", "")
+            return "protein" in polymer_type.lower()
+
+        # A lone protein entity is the target even when nucleic acid or other polymer
+        # entities share the entry; two or more protein entities make each a subunit
+        # of the deposited assembly. Antibody-antigen and other binding-partner
+        # arrangements also land here as subunit, since the entry does not say which
+        # chain the depositor considered the target.
+        protein_entity_count = sum(1 for e in polymer_entities if is_protein(e))
         role = (
             SampleProteinRoleEnum.target
-            if len(polymer_entities) == 1
+            if protein_entity_count == 1
             else SampleProteinRoleEnum.subunit
         )
 
         for entity, sample in zip(polymer_entities, samples):
             entity_poly = entity.get("entity_poly", {})
-            if "protein" not in entity_poly.get("rcsb_entity_polymer_type", "").lower():
+            if not is_protein(entity):
                 continue
 
             container_ids = entity.get("rcsb_polymer_entity_container_identifiers", {})

@@ -391,6 +391,13 @@ classes:
       Only the identity layer travels here: accession, name, gene, organism, the structures it is
       known from. Sequence, annotations and anything per-preparation (copy number, tags, residue
       range) live in the fuller record this crate points at.
+
+      The `@id` and `uniprot_id` are one identifier in two spellings. The crate's `@id` is the full
+      IRI, as RO-Crate wants; the schema's `Protein.id` is the CURIE `uniprot:P69905`, and the
+      `uniprot` prefix expands to exactly `http://purl.uniprot.org/uniprot/`. A projector therefore
+      compacts the `@id` to get `Protein.id`, or expands `uniprot_id` to get the `@id`, and either
+      route gives the same node. A crate MAY use a local `@id` (`#protein-hba1`) when it has to;
+      `uniprot_id` then carries the identity on its own.
     slots:
       - uniprot_id
       - protein_name

@@ -241,6 +241,12 @@ is the same node, and it carries the accession as the CURIE the schema uses:
  "pdb_entries": ["pdb:1HHO"]}
 ```
 
+The `@id` and `uniprot_id` above are one identifier in two spellings: the `uniprot` prefix expands to
+`http://purl.uniprot.org/uniprot/`, so a projector compacts the `@id` to obtain the schema's
+`Protein.id` (`uniprot:P69905`), or expands `uniprot_id` to obtain the `@id`, and either route gives
+the same node. A local `@id` (`#protein-hba1`) is permitted; `uniprot_id` then carries the identity
+alone.
+
 `protein_name` stays on the sample too, as the name the facility recorded and the cheapest search
 field. A protein with no UniProt accession is still a protein entity; it MUST then declare
 `uniprot_id` in `missing` (§8). Crates that write `uniprot_id` SHOULD bind `uniprot` to

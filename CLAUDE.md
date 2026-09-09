@@ -103,6 +103,7 @@ All date and datetime fields use `string` type rather than strict date/datetime 
 ### Required Fields
 Each major class has minimal required fields to ensure data integrity:
 - **Protein**: `id` only (use the UniProt CURIE); `uniprot_id` and `protein_name` are recommended, not required, so a row seeded from an accession can be enriched later
+- **ProteinConstruct**: `construct_id`. Set `protein_id` whenever the dataset carries the Protein row; use `uniprot_id` alone only when it does not. Where both are set they must agree, and `protein_id` is the join key
 - **Sample**: `sample_code`, `sample_type`
 - **SamplePreparation**: `preparation_type`, `sample_id`
 - **Instrument**: `instrument_code`

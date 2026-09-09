@@ -1,6 +1,6 @@
 id: http://w3id.org/lambda/
 name: lambda-ber-schema
-version: "0.1.2.post218.dev0+829558d2" # Managed by uv-dynamic-versioning
+version: "0.1.2.post226.dev0+76469c01" # Managed by uv-dynamic-versioning
 description: |
   lambda-ber-schema is a comprehensive schema for representing multimodal structural biology imaging data, 
   from atomic-resolution structures to tissue-level organization. It supports diverse experimental 
@@ -790,12 +790,15 @@ classes:
         description: "Unique identifier for this construct"
         required: true
       protein_id:
-        description: "The protein this construct expresses"
+        description: >-
+          The protein this construct expresses. Set whenever the dataset carries a Protein row for
+          it; a construct that names a protein only by accession uses uniprot_id instead.
         range: Protein
       uniprot_id:
         description: >-
-          UniProt accession of the target protein as a CURIE (e.g., uniprot:P69905). Redundant with
-          the linked Protein.uniprot_id; kept for constructs recorded before the protein is.
+          UniProt accession of the target protein as a CURIE (e.g., uniprot:P69905). Carries the
+          identity when no Protein row exists in the dataset; where protein_id is set the two must
+          agree, and protein_id is the join key.
         range: uriorcurie
       gene_name:
         description: "Gene name"
@@ -3555,8 +3558,9 @@ classes:
       residue_range:
         description: >-
           Residues of the canonical sequence present in this sample (e.g., '1-141', '25-300'), for
-          fragments and truncations. Omit when the full-length protein is present.
-        pattern: "^[0-9,\\-]+$"
+          fragments and truncations. Omit when the full-length protein is present. Residues or
+          ranges, comma-separated: '1-141', '25,27,30-35'.
+        pattern: "^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$"
         related_mappings:
           - IHMCIF:_ihm_entity_poly_segment
       sequence_coverage:

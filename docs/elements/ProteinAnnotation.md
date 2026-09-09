@@ -203,7 +203,7 @@ attributes:
     domain_of:
     - SampleProteinAssociation
     - ProteinAnnotation
-    pattern: ^[0-9,\-]+$
+    pattern: ^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$
   confidence_score:
     name: confidence_score
     description: 'Confidence score for the annotation (range: 0-1)'
@@ -316,7 +316,7 @@ attributes:
     - SampleProteinAssociation
     - ProteinAnnotation
     range: string
-    pattern: ^[0-9,\-]+$
+    pattern: ^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$
   confidence_score:
     name: confidence_score
     description: 'Confidence score for the annotation (range: 0-1)'

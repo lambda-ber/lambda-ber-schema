@@ -231,9 +231,9 @@ attributes:
     range: integer
   residue_range:
     name: residue_range
-    description: Residues of the canonical sequence present in this sample (e.g.,
-      '1-141', '25-300'), for fragments and truncations. Omit when the full-length
-      protein is present.
+    description: 'Residues of the canonical sequence present in this sample (e.g.,
+      ''1-141'', ''25-300''), for fragments and truncations. Omit when the full-length
+      protein is present. Residues or ranges, comma-separated: ''1-141'', ''25,27,30-35''.'
     from_schema: http://w3id.org/lambda/
     related_mappings:
     - IHMCIF:_ihm_entity_poly_segment
@@ -241,7 +241,7 @@ attributes:
     domain_of:
     - SampleProteinAssociation
     - ProteinAnnotation
-    pattern: ^[0-9,\-]+$
+    pattern: ^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$
   sequence_coverage:
     name: sequence_coverage
     description: 'Fraction of the canonical sequence present in this sample (range:
@@ -372,9 +372,9 @@ attributes:
     range: integer
   residue_range:
     name: residue_range
-    description: Residues of the canonical sequence present in this sample (e.g.,
-      '1-141', '25-300'), for fragments and truncations. Omit when the full-length
-      protein is present.
+    description: 'Residues of the canonical sequence present in this sample (e.g.,
+      ''1-141'', ''25-300''), for fragments and truncations. Omit when the full-length
+      protein is present. Residues or ranges, comma-separated: ''1-141'', ''25,27,30-35''.'
     from_schema: http://w3id.org/lambda/
     related_mappings:
     - IHMCIF:_ihm_entity_poly_segment
@@ -385,7 +385,7 @@ attributes:
     - SampleProteinAssociation
     - ProteinAnnotation
     range: string
-    pattern: ^[0-9,\-]+$
+    pattern: ^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$
   sequence_coverage:
     name: sequence_coverage
     description: 'Fraction of the canonical sequence present in this sample (range:

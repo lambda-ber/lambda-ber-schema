@@ -202,7 +202,9 @@ attributes:
     required: true
   protein_id:
     name: protein_id
-    description: The protein this construct expresses
+    description: The protein this construct expresses. Set whenever the dataset carries
+      a Protein row for it; a construct that names a protein only by accession uses
+      uniprot_id instead.
     from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
@@ -214,8 +216,8 @@ attributes:
   uniprot_id:
     name: uniprot_id
     description: UniProt accession of the target protein as a CURIE (e.g., uniprot:P69905).
-      Redundant with the linked Protein.uniprot_id; kept for constructs recorded before
-      the protein is.
+      Carries the identity when no Protein row exists in the dataset; where protein_id
+      is set the two must agree, and protein_id is the join key.
     from_schema: http://w3id.org/lambda/
     domain_of:
     - Protein
@@ -385,7 +387,9 @@ attributes:
     required: true
   protein_id:
     name: protein_id
-    description: The protein this construct expresses
+    description: The protein this construct expresses. Set whenever the dataset carries
+      a Protein row for it; a construct that names a protein only by accession uses
+      uniprot_id instead.
     from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: protein_id
@@ -399,8 +403,8 @@ attributes:
   uniprot_id:
     name: uniprot_id
     description: UniProt accession of the target protein as a CURIE (e.g., uniprot:P69905).
-      Redundant with the linked Protein.uniprot_id; kept for constructs recorded before
-      the protein is.
+      Carries the identity when no Protein row exists in the dataset; where protein_id
+      is set the two must agree, and protein_id is the join key.
     from_schema: http://w3id.org/lambda/
     alias: uniprot_id
     owner: ProteinConstruct
