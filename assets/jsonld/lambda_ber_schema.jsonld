@@ -2,7 +2,7 @@
   "name": "lambda-ber-schema",
   "description": "lambda-ber-schema is a comprehensive schema for representing multimodal structural biology imaging data, \nfrom atomic-resolution structures to tissue-level organization. It supports diverse experimental \ntechniques including cryo-EM, X-ray crystallography, SAXS/SANS, fluorescence microscopy, and \nspectroscopic imaging.\n\n## Schema Organization\n\nThe schema follows a **relational design** with flat entity collections and explicit association\ntables for many-to-many relationships. This maps cleanly to SQL databases while supporting\nflexible data reuse across studies.\n\nThe top-level entity is a [Dataset](Dataset.md), which serves as a container for related research.\nA dataset might represent all data from a specific grant, collaboration, or publication.\n\n### Entity Tables\n\nAll entities are stored in flat collections at the Dataset level:\n\n**Biological Materials**\n- [Proteins](Protein.md): The protein as a biological entity - sequence, source organism, gene,\n  and the functional and structural annotations that hold for it in every preparation. Identified\n  by UniProt accession as a CURIE (`uniprot:P69905`) wherever one exists. One record serves every\n  sample that contains the protein; what varies between preparations lives on the sample and on\n  the sample-protein association.\n\n- [Samples](Sample.md): The physical specimens being studied (proteins, nucleic acids, complexes,\n  cells, tissues). Each sample records the preparation-specific facts - buffer conditions,\n  concentration, storage, purity - and links to the proteins it contains through\n  [SampleProteinAssociation](SampleProteinAssociation.md).\n\n- [Protein Constructs](ProteinConstruct.md): How a protein was cloned and expressed - vector,\n  tags, cleavage sites, codon optimization. A construct realizes one protein and may feed many samples.\n\n- [Sample Preparations](SamplePreparation.md): How samples were prepared for specific techniques.\n  This includes cryo-EM grid preparation (vitrification parameters), crystallization conditions for\n  X-ray studies, or staining protocols for fluorescence microscopy.\n\n**Data Collection**\n- [Instruments](Instrument.md): The equipment used, from Titan Krios microscopes to synchrotron\n  beamlines. Each instrument type ([CryoEMInstrument](CryoEMInstrument.md),\n  [XRayInstrument](XRayInstrument.md), [SANSInstrument](SANSInstrument.md),\n  [SAXSInstrument](SAXSInstrument.md)) has specific parameters like accelerating voltage,\n  detector type, or beam energy.\n\n- [Experiment Runs](ExperimentRun.md): Individual data collection sessions. An experiment run\n  captures when, how, and under what conditions data was collected, including quality metrics\n  like resolution and completeness.\n\n**Data Processing**\n- [Workflow Runs](WorkflowRun.md): Computational processing steps applied to raw data. This includes\n  motion correction for cryo-EM movies, 3D reconstruction, model building, or phase determination\n  for crystallography. Each workflow tracks the software used, parameters, and computational resources.\n\n**Data Products**\n- [Data Files](DataFile.md): Any files generated or used, from raw data to final models. Each file\n  is tracked with checksums for data integrity and typed (micrograph, particles, volume, model).\n\n- [Images](Image.md): Specialized classes for different imaging modalities:\n  - [Image2D](Image2D.md): Micrographs, diffraction patterns\n  - [Image3D](Image3D.md): 3D reconstructions, tomograms\n  - [FTIRImage](FTIRImage.md): Molecular composition maps from infrared spectroscopy\n  - [FluorescenceImage](FluorescenceImage.md): Fluorophore-labeled cellular components\n  - [OpticalImage](OpticalImage.md): Brightfield/phase contrast microscopy\n  - [XRFImage](XRFImage.md): Elemental distribution maps\n\n**Logical Groupings**\n- [Studies](Study.md): Lightweight groupings representing focused investigations of specific\n  biological questions. For example, a study might investigate \"Heat stress response in Arabidopsis\"\n  or \"Structure of the human ribosome under different conditions.\"\n\n**People and organizations**\n- [Persons](Person.md): People involved in producing, processing or publishing the data - principal\n  investigators, beamline operators, analysts, curators. Identified by ORCID where available. Which\n  work a person is attached to, and in what capacity, is carried by the person association tables,\n  so one record serves every role a person holds across the dataset.\n\n- [Organizations](Organization.md): Institutions, facilities and funding bodies, identified by ROR.\n  The structured home for organizational identity that would otherwise live as free text on\n  instruments, on people, and in FacilityEnum's annotations - so a parent institution is stated\n  once rather than restated by everything that refers to it.\n\n### Association Tables\n\nMany-to-many relationships are represented via explicit association tables, which can carry\nrelationship metadata (e.g., the role of a sample in an experiment):\n\n- **StudySampleAssociation**: Links samples to studies (with role: target, control, reference)\n- **StudyExperimentAssociation**: Links experiments to studies\n- **StudyWorkflowAssociation**: Links workflows to studies\n- **ExperimentSampleAssociation**: Links samples to experiments (with role and preparation used)\n- **SampleProteinAssociation**: Links proteins to samples (with role, copy number, residue range,\n  modifications, observed mass, and the construct used)\n- **ExperimentInstrumentAssociation**: Links instruments to experiments (with role: primary, detector)\n- **WorkflowExperimentAssociation**: Links source experiments to workflows\n- **WorkflowInputAssociation**: Links input files to workflows\n- **WorkflowOutputAssociation**: Links output files to workflows\n- **StudyPersonAssociation**: Links people to studies (with role, author position, corresponding flag)\n- **ExperimentPersonAssociation**: Links people to experiment runs (with role: operator, local contact)\n- **WorkflowPersonAssociation**: Links people to workflow runs (with role: analyst, reviewer)\n- **StudyOrganizationAssociation**: Links organizations to studies (with role and award number)\n- **PersonOrganizationAssociation**: Links people to organizations (with role and affiliation dates)\n\nThis relational design enables:\n- **Sample reuse**: The same sample can be used in multiple studies and experiments\n- **Protein reuse**: The same protein is described once and linked from every sample that contains it\n- **Multi-instrument experiments**: An experiment can use multiple instruments with different roles\n- **Integrative workflows**: A workflow can combine data from multiple experiments\n\n## Example Usage\n\nA typical cryo-EM study of a protein complex would include:\n1. Sample records for the purified complex with molecular weight and buffer composition\n2. Grid preparation details with vitrification parameters\n3. Microscope specifications and data collection parameters\n4. Processing workflows from motion correction through 3D refinement\n5. Final reconstructed volumes and fitted atomic models\n\nA multimodal plant imaging study might combine:\n1. Whole plant optical imaging for morphology\n2. XRF imaging to map nutrient distribution\n3. FTIR spectroscopy to identify stress-related molecular changes\n4. Fluorescence microscopy to track specific protein responses\n5. Cryo-EM of isolated organelles for ultrastructural details\n\n## Key Features\n\n- **Relational design**: Flat entity tables with explicit association tables for M:N relationships\n- **SQL-friendly**: Maps directly to normalized database tables\n- **Technique-agnostic core**: The same schema handles data from any structural biology method\n- **Rich metadata**: Comprehensive tracking from sample to structure\n- **Workflow provenance**: Complete computational reproducibility\n- **Multimodal support**: Seamlessly integrate data across scales and techniques\n- **Standards-compliant**: Follows FAIR principles and integrates with existing ontologies\n",
   "id": "http://w3id.org/lambda/",
-  "version": "0.1.2.post178.dev0+17a9409",
+  "version": "0.1.2.post218.dev0+829558d2",
   "imports": [
     "linkml:types",
     "lambda_ber_types",
@@ -7060,7 +7060,7 @@
     },
     {
       "name": "proteinConstruct__protein_id",
-      "description": "The protein this construct expresses",
+      "description": "The protein this construct expresses. Set whenever the dataset carries a Protein row for it; a construct that names a protein only by accession uses uniprot_id instead.",
       "from_schema": "http://w3id.org/lambda/",
       "slot_uri": "http://w3id.org/lambda/protein_id",
       "alias": "protein_id",
@@ -7073,7 +7073,7 @@
     },
     {
       "name": "proteinConstruct__uniprot_id",
-      "description": "UniProt accession of the target protein as a CURIE (e.g., uniprot:P69905). Redundant with the linked Protein.uniprot_id; kept for constructs recorded before the protein is.",
+      "description": "UniProt accession of the target protein as a CURIE (e.g., uniprot:P69905). Carries the identity when no Protein row exists in the dataset; where protein_id is set the two must agree, and protein_id is the join key.",
       "from_schema": "http://w3id.org/lambda/",
       "slot_uri": "http://w3id.org/lambda/uniprot_id",
       "alias": "uniprot_id",
@@ -15586,7 +15586,7 @@
     },
     {
       "name": "sampleProteinAssociation__residue_range",
-      "description": "Residues of the canonical sequence present in this sample (e.g., '1-141', '25-300'), for fragments and truncations. Omit when the full-length protein is present.",
+      "description": "Residues of the canonical sequence present in this sample (e.g., '1-141', '25-300'), for fragments and truncations. Omit when the full-length protein is present. Residues or ranges, comma-separated: '1-141', '25,27,30-35'.",
       "from_schema": "http://w3id.org/lambda/",
       "related_mappings": [
         "https://mmcif.wwpdb.org/dictionaries/mmcif_ihm_ext.dic/Items/_ihm_entity_poly_segment"
@@ -15598,7 +15598,7 @@
         "SampleProteinAssociation"
       ],
       "range": "string",
-      "pattern": "^[0-9,\\-]+$",
+      "pattern": "^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$",
       "@type": "SlotDefinition"
     },
     {
@@ -16246,7 +16246,7 @@
         "ProteinAnnotation"
       ],
       "range": "string",
-      "pattern": "^[0-9,\\-]+$",
+      "pattern": "^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$",
       "@type": "SlotDefinition"
     },
     {
@@ -19042,13 +19042,13 @@
         },
         {
           "name": "protein_id",
-          "description": "The protein this construct expresses",
+          "description": "The protein this construct expresses. Set whenever the dataset carries a Protein row for it; a construct that names a protein only by accession uses uniprot_id instead.",
           "range": "Protein",
           "@type": "SlotDefinition"
         },
         {
           "name": "uniprot_id",
-          "description": "UniProt accession of the target protein as a CURIE (e.g., uniprot:P69905). Redundant with the linked Protein.uniprot_id; kept for constructs recorded before the protein is.",
+          "description": "UniProt accession of the target protein as a CURIE (e.g., uniprot:P69905). Carries the identity when no Protein row exists in the dataset; where protein_id is set the two must agree, and protein_id is the join key.",
           "range": "uriorcurie",
           "@type": "SlotDefinition"
         },
@@ -24885,11 +24885,11 @@
         },
         {
           "name": "residue_range",
-          "description": "Residues of the canonical sequence present in this sample (e.g., '1-141', '25-300'), for fragments and truncations. Omit when the full-length protein is present.",
+          "description": "Residues of the canonical sequence present in this sample (e.g., '1-141', '25-300'), for fragments and truncations. Omit when the full-length protein is present. Residues or ranges, comma-separated: '1-141', '25,27,30-35'.",
           "related_mappings": [
             "IHMCIF:_ihm_entity_poly_segment"
           ],
-          "pattern": "^[0-9,\\-]+$",
+          "pattern": "^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$",
           "@type": "SlotDefinition"
         },
         {
@@ -25505,7 +25505,7 @@
         {
           "name": "residue_range",
           "description": "Range of residues (e.g., '1-100', '25,27,30-35')",
-          "pattern": "^[0-9,\\-]+$",
+          "pattern": "^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$",
           "@type": "SlotDefinition"
         },
         {
@@ -26640,9 +26640,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda_ber_schema.yaml",
-  "source_file_date": "2026-09-09T11:08:34",
-  "source_file_size": 226246,
-  "generation_date": "2026-09-09T11:18:13",
+  "source_file_date": "2026-09-09T13:29:31",
+  "source_file_size": 226549,
+  "generation_date": "2026-09-09T13:29:50",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda_ber_schema.context.jsonld",

@@ -3752,7 +3752,7 @@
                 },
                 "residue_range": {
                     "description": "Range of residues (e.g., '1-100', '25,27,30-35')",
-                    "pattern": "^[0-9,\\-]+$",
+                    "pattern": "^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$",
                     "type": [
                         "string",
                         "null"
@@ -5524,7 +5524,7 @@
                 },
                 "residue_range": {
                     "description": "Range of residues (e.g., '1-100', '25,27,30-35')",
-                    "pattern": "^[0-9,\\-]+$",
+                    "pattern": "^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$",
                     "type": [
                         "string",
                         "null"
@@ -7279,7 +7279,7 @@
                 },
                 "residue_range": {
                     "description": "Range of residues (e.g., '1-100', '25,27,30-35')",
-                    "pattern": "^[0-9,\\-]+$",
+                    "pattern": "^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$",
                     "type": [
                         "string",
                         "null"
@@ -8381,7 +8381,7 @@
                 },
                 "residue_range": {
                     "description": "Range of residues (e.g., '1-100', '25,27,30-35')",
-                    "pattern": "^[0-9,\\-]+$",
+                    "pattern": "^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$",
                     "type": [
                         "string",
                         "null"
@@ -8816,7 +8816,7 @@
                 },
                 "residue_range": {
                     "description": "Range of residues (e.g., '1-100', '25,27,30-35')",
-                    "pattern": "^[0-9,\\-]+$",
+                    "pattern": "^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$",
                     "type": [
                         "string",
                         "null"
@@ -8924,7 +8924,7 @@
                     ]
                 },
                 "protein_id": {
-                    "description": "The protein this construct expresses",
+                    "description": "The protein this construct expresses. Set whenever the dataset carries a Protein row for it; a construct that names a protein only by accession uses uniprot_id instead.",
                     "type": [
                         "string",
                         "null"
@@ -8991,7 +8991,7 @@
                     ]
                 },
                 "uniprot_id": {
-                    "description": "UniProt accession of the target protein as a CURIE (e.g., uniprot:P69905). Redundant with the linked Protein.uniprot_id; kept for constructs recorded before the protein is.",
+                    "description": "UniProt accession of the target protein as a CURIE (e.g., uniprot:P69905). Carries the identity when no Protein row exists in the dataset; where protein_id is set the two must agree, and protein_id is the join key.",
                     "type": [
                         "string",
                         "null"
@@ -9028,7 +9028,7 @@
         },
         "ProteinEntity": {
             "additionalProperties": false,
-            "description": "A protein as a biological entity - the thing a specimen *contains*, as distinct from the specimen. Typed `[\"Protein\", \"lambda:Protein\"]`: schema.org's `Protein` is in the RO-Crate 1.2 context, so a generic consumer sees a `BioChemEntity` and a LAMBDA-aware reader projects onto the schema's `Protein` class. One entity serves every sample in the crate that contains the protein, and its `@id` SHOULD be the UniProt IRI (`http://purl.uniprot.org/uniprot/P69905`) so that the same protein in two crates is the same node.\nOnly the identity layer travels here: accession, name, gene, organism, the structures it is known from. Sequence, annotations and anything per-preparation (copy number, tags, residue range) live in the fuller record this crate points at.",
+            "description": "A protein as a biological entity - the thing a specimen *contains*, as distinct from the specimen. Typed `[\"Protein\", \"lambda:Protein\"]`: schema.org's `Protein` is in the RO-Crate 1.2 context, so a generic consumer sees a `BioChemEntity` and a LAMBDA-aware reader projects onto the schema's `Protein` class. One entity serves every sample in the crate that contains the protein, and its `@id` SHOULD be the UniProt IRI (`http://purl.uniprot.org/uniprot/P69905`) so that the same protein in two crates is the same node.\nOnly the identity layer travels here: accession, name, gene, organism, the structures it is known from. Sequence, annotations and anything per-preparation (copy number, tags, residue range) live in the fuller record this crate points at.\nThe `@id` and `uniprot_id` are one identifier in two spellings. The crate's `@id` is the full IRI, as RO-Crate wants; the schema's `Protein.id` is the CURIE `uniprot:P69905`, and the `uniprot` prefix expands to exactly `http://purl.uniprot.org/uniprot/`. A projector therefore compacts the `@id` to get `Protein.id`, or expands `uniprot_id` to get the `@id`, and either route gives the same node. A crate MAY use a local `@id` (`#protein-hba1`) when it has to; `uniprot_id` then carries the identity on its own.",
             "properties": {
                 "@id": {
                     "description": "The entity's identifier - a relative path, an absolute URI, or a `#`-fragment.",
@@ -9265,7 +9265,7 @@
                 },
                 "residue_range": {
                     "description": "Range of residues (e.g., '1-100', '25,27,30-35')",
-                    "pattern": "^[0-9,\\-]+$",
+                    "pattern": "^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$",
                     "type": [
                         "string",
                         "null"
@@ -11511,8 +11511,8 @@
                     "type": "string"
                 },
                 "residue_range": {
-                    "description": "Residues of the canonical sequence present in this sample (e.g., '1-141', '25-300'), for fragments and truncations. Omit when the full-length protein is present.",
-                    "pattern": "^[0-9,\\-]+$",
+                    "description": "Residues of the canonical sequence present in this sample (e.g., '1-141', '25-300'), for fragments and truncations. Omit when the full-length protein is present. Residues or ranges, comma-separated: '1-141', '25,27,30-35'.",
+                    "pattern": "^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$",
                     "type": [
                         "string",
                         "null"
@@ -11844,7 +11844,7 @@
                 },
                 "residue_range": {
                     "description": "Range of residues (e.g., '1-100', '25,27,30-35')",
-                    "pattern": "^[0-9,\\-]+$",
+                    "pattern": "^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$",
                     "type": [
                         "string",
                         "null"

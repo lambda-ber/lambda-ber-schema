@@ -27,7 +27,7 @@ from pydantic import (
 
 
 metamodel_version = "None"
-version = "0.1.2.post178.dev0+17a9409"
+version = "0.1.2.post218.dev0+829558d2"
 
 
 class ConfiguredBaseModel(BaseModel):
@@ -3298,7 +3298,7 @@ class ProteinAnnotation(NamedThing):
 
     @field_validator('residue_range')
     def pattern_residue_range(cls, v):
-        pattern=re.compile(r"^[0-9,\-]+$")
+        pattern=re.compile(r"^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -3412,7 +3412,7 @@ class FunctionalSite(ProteinAnnotation):
 
     @field_validator('residue_range')
     def pattern_residue_range(cls, v):
-        pattern=re.compile(r"^[0-9,\-]+$")
+        pattern=re.compile(r"^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -3512,7 +3512,7 @@ class StructuralFeature(ProteinAnnotation):
 
     @field_validator('residue_range')
     def pattern_residue_range(cls, v):
-        pattern=re.compile(r"^[0-9,\-]+$")
+        pattern=re.compile(r"^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -3618,7 +3618,7 @@ class ProteinProteinInteraction(ProteinAnnotation):
 
     @field_validator('residue_range')
     def pattern_residue_range(cls, v):
-        pattern=re.compile(r"^[0-9,\-]+$")
+        pattern=re.compile(r"^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -3747,7 +3747,7 @@ class MutationEffect(ProteinAnnotation):
 
     @field_validator('residue_range')
     def pattern_residue_range(cls, v):
-        pattern=re.compile(r"^[0-9,\-]+$")
+        pattern=re.compile(r"^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -3872,7 +3872,7 @@ class PostTranslationalModification(ProteinAnnotation):
 
     @field_validator('residue_range')
     def pattern_residue_range(cls, v):
-        pattern=re.compile(r"^[0-9,\-]+$")
+        pattern=re.compile(r"^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -3971,7 +3971,7 @@ class EvolutionaryConservation(ProteinAnnotation):
 
     @field_validator('residue_range')
     def pattern_residue_range(cls, v):
-        pattern=re.compile(r"^[0-9,\-]+$")
+        pattern=re.compile(r"^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -4501,12 +4501,12 @@ class ProteinConstruct(NamedThing):
 
     construct_id: str = Field(default=..., description="""Unique identifier for this construct""", json_schema_extra = { "linkml_meta": {'alias': 'construct_id',
          'domain_of': ['ProteinConstruct', 'SampleProteinAssociation']} })
-    protein_id: Optional[str] = Field(default=None, description="""The protein this construct expresses""", json_schema_extra = { "linkml_meta": {'alias': 'protein_id',
+    protein_id: Optional[str] = Field(default=None, description="""The protein this construct expresses. Set whenever the dataset carries a Protein row for it; a construct that names a protein only by accession uses uniprot_id instead.""", json_schema_extra = { "linkml_meta": {'alias': 'protein_id',
          'domain_of': ['ProteinAnnotation',
                        'ConformationalEnsemble',
                        'ProteinConstruct',
                        'SampleProteinAssociation']} })
-    uniprot_id: Optional[str] = Field(default=None, description="""UniProt accession of the target protein as a CURIE (e.g., uniprot:P69905). Redundant with the linked Protein.uniprot_id; kept for constructs recorded before the protein is.""", json_schema_extra = { "linkml_meta": {'alias': 'uniprot_id',
+    uniprot_id: Optional[str] = Field(default=None, description="""UniProt accession of the target protein as a CURIE (e.g., uniprot:P69905). Carries the identity when no Protein row exists in the dataset; where protein_id is set the two must agree, and protein_id is the join key.""", json_schema_extra = { "linkml_meta": {'alias': 'uniprot_id',
          'domain_of': ['AggregatedProteinView', 'Protein', 'ProteinConstruct']} })
     gene_name: Optional[str] = Field(default=None, description="""Gene name""", json_schema_extra = { "linkml_meta": {'alias': 'gene_name', 'domain_of': ['Protein', 'ProteinConstruct']} })
     ncbi_taxid: Optional[str] = Field(default=None, description="""NCBI Taxonomy ID for source organism""", json_schema_extra = { "linkml_meta": {'alias': 'ncbi_taxid', 'domain_of': ['ProteinConstruct']} })
@@ -6575,7 +6575,7 @@ class SampleProteinAssociation(ConfiguredBaseModel):
     copy_number: Optional[int] = Field(default=None, description="""Copies of this protein per assembly in the sample (e.g., 4 for a homotetramer, 2 for each chain of an alpha2-beta2 heterotetramer). Omit when unknown rather than assuming 1.""", json_schema_extra = { "linkml_meta": {'alias': 'copy_number',
          'domain_of': ['SampleProteinAssociation'],
          'exact_mappings': ['mmCIF:_entity.pdbx_number_of_molecules']} })
-    residue_range: Optional[str] = Field(default=None, description="""Residues of the canonical sequence present in this sample (e.g., '1-141', '25-300'), for fragments and truncations. Omit when the full-length protein is present.""", json_schema_extra = { "linkml_meta": {'alias': 'residue_range',
+    residue_range: Optional[str] = Field(default=None, description="""Residues of the canonical sequence present in this sample (e.g., '1-141', '25-300'), for fragments and truncations. Omit when the full-length protein is present. Residues or ranges, comma-separated: '1-141', '25,27,30-35'.""", json_schema_extra = { "linkml_meta": {'alias': 'residue_range',
          'domain_of': ['ProteinAnnotation', 'SampleProteinAssociation'],
          'related_mappings': ['IHMCIF:_ihm_entity_poly_segment']} })
     sequence_coverage: Optional[float] = Field(default=None, description="""Fraction of the canonical sequence present in this sample (range: 0-1)""", ge=0, le=1, json_schema_extra = { "linkml_meta": {'alias': 'sequence_coverage', 'domain_of': ['SampleProteinAssociation']} })
@@ -6589,7 +6589,7 @@ class SampleProteinAssociation(ConfiguredBaseModel):
 
     @field_validator('residue_range')
     def pattern_residue_range(cls, v):
-        pattern=re.compile(r"^[0-9,\-]+$")
+        pattern=re.compile(r"^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):

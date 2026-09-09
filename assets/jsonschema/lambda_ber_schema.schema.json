@@ -2693,7 +2693,7 @@
                 },
                 "residue_range": {
                     "description": "Range of residues (e.g., '1-100', '25,27,30-35')",
-                    "pattern": "^[0-9,\\-]+$",
+                    "pattern": "^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$",
                     "type": [
                         "string",
                         "null"
@@ -4260,7 +4260,7 @@
                 },
                 "residue_range": {
                     "description": "Range of residues (e.g., '1-100', '25,27,30-35')",
-                    "pattern": "^[0-9,\\-]+$",
+                    "pattern": "^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$",
                     "type": [
                         "string",
                         "null"
@@ -5838,7 +5838,7 @@
                 },
                 "residue_range": {
                     "description": "Range of residues (e.g., '1-100', '25,27,30-35')",
-                    "pattern": "^[0-9,\\-]+$",
+                    "pattern": "^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$",
                     "type": [
                         "string",
                         "null"
@@ -6678,7 +6678,7 @@
                 },
                 "residue_range": {
                     "description": "Range of residues (e.g., '1-100', '25,27,30-35')",
-                    "pattern": "^[0-9,\\-]+$",
+                    "pattern": "^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$",
                     "type": [
                         "string",
                         "null"
@@ -7042,7 +7042,7 @@
                 },
                 "residue_range": {
                     "description": "Range of residues (e.g., '1-100', '25,27,30-35')",
-                    "pattern": "^[0-9,\\-]+$",
+                    "pattern": "^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$",
                     "type": [
                         "string",
                         "null"
@@ -7150,7 +7150,7 @@
                     ]
                 },
                 "protein_id": {
-                    "description": "The protein this construct expresses",
+                    "description": "The protein this construct expresses. Set whenever the dataset carries a Protein row for it; a construct that names a protein only by accession uses uniprot_id instead.",
                     "type": [
                         "string",
                         "null"
@@ -7217,7 +7217,7 @@
                     ]
                 },
                 "uniprot_id": {
-                    "description": "UniProt accession of the target protein as a CURIE (e.g., uniprot:P69905). Redundant with the linked Protein.uniprot_id; kept for constructs recorded before the protein is.",
+                    "description": "UniProt accession of the target protein as a CURIE (e.g., uniprot:P69905). Carries the identity when no Protein row exists in the dataset; where protein_id is set the two must agree, and protein_id is the join key.",
                     "type": [
                         "string",
                         "null"
@@ -7401,7 +7401,7 @@
                 },
                 "residue_range": {
                     "description": "Range of residues (e.g., '1-100', '25,27,30-35')",
-                    "pattern": "^[0-9,\\-]+$",
+                    "pattern": "^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$",
                     "type": [
                         "string",
                         "null"
@@ -9383,8 +9383,8 @@
                     "type": "string"
                 },
                 "residue_range": {
-                    "description": "Residues of the canonical sequence present in this sample (e.g., '1-141', '25-300'), for fragments and truncations. Omit when the full-length protein is present.",
-                    "pattern": "^[0-9,\\-]+$",
+                    "description": "Residues of the canonical sequence present in this sample (e.g., '1-141', '25-300'), for fragments and truncations. Omit when the full-length protein is present. Residues or ranges, comma-separated: '1-141', '25,27,30-35'.",
+                    "pattern": "^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$",
                     "type": [
                         "string",
                         "null"
@@ -9633,7 +9633,7 @@
                 },
                 "residue_range": {
                     "description": "Range of residues (e.g., '1-100', '25,27,30-35')",
-                    "pattern": "^[0-9,\\-]+$",
+                    "pattern": "^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$",
                     "type": [
                         "string",
                         "null"
@@ -11689,5 +11689,5 @@
     ],
     "title": "lambda-ber-schema",
     "type": "object",
-    "version": "0.1.2.post178.dev0+17a9409"
+    "version": "0.1.2.post218.dev0+829558d2"
 }

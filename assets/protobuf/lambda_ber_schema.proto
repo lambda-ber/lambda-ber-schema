@@ -1,7 +1,7 @@
  syntax="proto3";
  package
 // metamodel_version: 1.7.0
-// version: 0.1.2.post178.dev0+17a9409
+// version: 0.1.2.post218.dev0+829558d2
 // Aggregated view of all structural and functional data for a protein
 message AggregatedProteinView
  {

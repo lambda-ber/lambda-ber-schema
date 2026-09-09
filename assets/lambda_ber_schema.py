@@ -1,5 +1,5 @@
 # Auto generated from lambda_ber_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-09-09T11:18:30
+# Generation date: 2026-09-09T13:29:57
 # Schema: lambda-ber-schema
 #
 # id: http://w3id.org/lambda/
@@ -193,7 +193,7 @@ from linkml_runtime.linkml_model.types import Boolean, Curie, Date, Float, Integ
 from linkml_runtime.utils.metamodelcore import Bool, Curie, URI, URIorCURIE, XSDDate
 
 metamodel_version = "1.7.0"
-version = "0.1.2.post178.dev0+17a9409"
+version = "0.1.2.post218.dev0+829558d2"
 
 # Namespaces
 CHMO = CurieNamespace('CHMO', 'http://purl.obolibrary.org/obo/CHMO_')
@@ -10359,7 +10359,7 @@ slots.sampleProteinAssociation__copy_number = Slot(uri=LAMBDA.copy_number, name=
 
 slots.sampleProteinAssociation__residue_range = Slot(uri=LAMBDA.residue_range, name="sampleProteinAssociation__residue_range", curie=LAMBDA.curie('residue_range'),
                    model_uri=LAMBDA.sampleProteinAssociation__residue_range, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^[0-9,\-]+$'))
+                   pattern=re.compile(r'^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$'))
 
 slots.sampleProteinAssociation__sequence_coverage = Slot(uri=LAMBDA.sequence_coverage, name="sampleProteinAssociation__sequence_coverage", curie=LAMBDA.curie('sequence_coverage'),
                    model_uri=LAMBDA.sampleProteinAssociation__sequence_coverage, domain=None, range=Optional[float])
@@ -10501,7 +10501,7 @@ slots.proteinAnnotation__chain_id = Slot(uri=LAMBDA['functional_annotation/chain
 
 slots.proteinAnnotation__residue_range = Slot(uri=LAMBDA['functional_annotation/residue_range'], name="proteinAnnotation__residue_range", curie=LAMBDA.curie('functional_annotation/residue_range'),
                    model_uri=LAMBDA.proteinAnnotation__residue_range, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^[0-9,\-]+$'))
+                   pattern=re.compile(r'^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$'))
 
 slots.proteinAnnotation__confidence_score = Slot(uri=LAMBDA['functional_annotation/confidence_score'], name="proteinAnnotation__confidence_score", curie=LAMBDA.curie('functional_annotation/confidence_score'),
                    model_uri=LAMBDA.proteinAnnotation__confidence_score, domain=None, range=Optional[float])
