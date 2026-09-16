@@ -1,0 +1,62 @@
+# YAML serialization of public JSON metadata; not a LAMBDA example.
+# Source: https://files.cryoetdataportal.cziscience.com/10000/TS_026/Reconstructions/VoxelSpacing13.480/Annotations/101/cytosolic_ribosome-1.0.json
+annotation_ingest_id: cytosolic-ribosome-1
+annotation_method: Cumulative template-matching trained 2D CNN predictions + visual filtering + distance
+  constraints + manual addition
+annotation_object:
+  id: GO:0022626
+  name: cytosolic ribosome
+annotation_publications: EMPIAR-10988, EMD-14412, EMD-14413, EMD-14415, EMD-14417, EMD-14418, EMD-14419,
+  EMD-14420, 10.1101/2022.04.12.488077
+annotation_software: pyTOM + Keras
+authors:
+- ORCID: 0000-0002-9903-3667
+  name: Sara Goetz
+  primary_author_status: true
+- ORCID: 0000-0002-4691-9501
+  name: Irene de Teresa Trueba
+- ORCID: 0000-0003-0901-8701
+  name: Alexander Mattausch
+- ORCID: 0000-0002-4327-1068
+  name: Frosina Stojanovska
+- ORCID: 0000-0003-4388-1349
+  name: Christian Eugen Zimmerli
+- ORCID: 0000-0001-5333-3640
+  name: Mauricio Toro-Nahuelpan
+- name: Dorothy W. C. Cheng
+- name: Fergus Tollervey
+- ORCID: 0000-0001-6562-7187
+  name: Constantin Pape
+- ORCID: 0000-0002-7397-1321
+  name: Martin Beck
+- ORCID: 0000-0001-6864-8901
+  name: Alba Diz-Munoz
+- ORCID: 0000-0003-1334-6388
+  name: Anna Kreshuk
+- ORCID: 0000-0001-6968-041X
+  corresponding_author_status: true
+  name: Julia Mahamid
+- ORCID: 0000-0001-8324-4040
+  corresponding_author_status: true
+  name: Judith B. Zaugg
+dates:
+  deposition_date: '2023-04-01'
+  last_modified_date: '2023-06-01'
+  release_date: '2023-06-01'
+ground_truth_status: true
+is_curator_recommended: true
+method_links:
+- custom_name: DeePiCt on GitHub
+  link: https://github.com/ZauggGroup/DeePiCt
+  link_type: source_code
+method_type: hybrid
+version: 1.0
+object_count: 838
+files:
+- format: ndjson
+  path: 10000/TS_026/Reconstructions/VoxelSpacing13.480/Annotations/101/cytosolic_ribosome-1.0_point.ndjson
+  shape: Point
+  is_visualization_default: true
+alignment_metadata_path: 10000/TS_026/Alignments/100/alignment_metadata.json
+deposition_id: 10000
+last_updated_at: 1773165421

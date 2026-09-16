@@ -1,0 +1,81 @@
+# YAML serialization of public JSON metadata; not a LAMBDA example.
+# Source: https://files.cryoetdataportal.cziscience.com/10000/dataset_metadata.json
+authors:
+- ORCID: 0000-0002-4691-9501
+  name: Irene de Teresa Trueba
+  primary_author_status: true
+- ORCID: 0000-0002-9903-3667
+  name: Sara Goetz
+- ORCID: 0000-0003-0901-8701
+  name: Alexander Mattausch
+- ORCID: 0000-0002-4327-1068
+  name: Frosina Stojanovska
+- ORCID: 0000-0003-4388-1349
+  name: Christian Eugen Zimmerli
+- ORCID: 0000-0001-5333-3640
+  name: Mauricio Toro-Nahuelpan
+- name: Dorothy W. C. Cheng
+- name: Fergus Tollervey
+- ORCID: 0000-0001-6562-7187
+  name: Constantin Pape
+- ORCID: 0000-0002-7397-1321
+  name: Martin Beck
+- ORCID: 0000-0001-6864-8901
+  name: Alba Diz-Munoz
+- ORCID: 0000-0003-1334-6388
+  name: Anna Kreshuk
+- ORCID: 0000-0001-6968-041X
+  corresponding_author_status: true
+  name: Julia Mahamid
+- ORCID: 0000-0001-8324-4040
+  corresponding_author_status: true
+  name: Judith B. Zaugg
+cell_strain:
+  name: Schizosaccharomyces pombe 972h-
+  id: NCBITaxon:284812
+cross_references:
+  publications: doi:10.1101/2022.04.12.488077, doi:10.1038/s41592-022-01746-2
+  related_database_entries: EMPIAR-10988, EMD-14412, EMD-14413, EMD-14415, EMD-14417, EMD-14418, EMD-14419,
+    EMD-14420
+dataset_description: Defocus cryo-electron tomography of S. pombe cryo-FIB lamellae with comprehensive
+  annotations of structures and macromolecules
+dataset_identifier: 10000
+dataset_title: S. pombe cells with defocus
+dates:
+  deposition_date: '2023-04-01'
+  last_modified_date: '2023-06-01'
+  release_date: '2023-06-01'
+funding:
+- funding_agency_name: European Research Council (ERC)
+  grant_id: '760067'
+grid_preparation: 'model: Quantifoil R2/1, material: COPPER, mesh: 200, support_film_film_type_id: 1,
+  support_film_film_material: CARBON, support_film_film_topology: HOLEY, support_film_instance_type: support_film,
+  pretreatment_type_: GLOW DISCHARGE'
+organism:
+  name: Schizosaccharomyces pombe 972h-
+  taxonomy_id: 284812
+sample_preparation: 'buffer_ph: 7.0, vitrification_cryogen_name: ETHANE, instance_type: subtomogram_averaging_preparation'
+sample_type: primary_cell_culture
+tissue:
+  name: vegetative cell (sensu Fungi)
+  id: CL:0000334
+cell_type:
+  name: vegetative cell (sensu Fungi)
+  id: CL:0000334
+assay:
+  name: microscopy assay
+  id: EFO:0002909
+development_stage:
+  name: unknown
+  id: unknown
+disease:
+  name: normal
+  id: PATO:0000461
+cell_component:
+  name: not_reported
+  id: not_reported
+key_photos:
+  snapshot: 10000/Images/snapshot.gif
+  thumbnail: 10000/Images/thumbnail.gif
+deposition_id: 10000
+last_updated_at: 1753388190

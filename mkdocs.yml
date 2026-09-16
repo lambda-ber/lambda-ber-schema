@@ -29,6 +29,7 @@ nav:
     - NEXUS: background/nexus.md
     - mmCIF: background/mmcif.md
     - EMPIAR: background/empiar.md
+    - CZ cryoET Data Portal: background/czi-cryoet.md
     - EMDB: background/emdb.md
     - DIALS: background/dials.md
     - SASDB: background/sasdb.md

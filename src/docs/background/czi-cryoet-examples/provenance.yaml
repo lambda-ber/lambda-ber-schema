@@ -1,0 +1,33 @@
+retrieved_on: '2026-09-15'
+dataset_id: 10000
+run_name: TS_026
+portal_run_id: 241
+files:
+- local_file: dataset.yaml
+  source_url: https://files.cryoetdataportal.cziscience.com/10000/dataset_metadata.json
+  source_sha256: e737fc9bd90efbd55ca867a1f1dd2e3fc9e77710a198a3112facbd8f6d155ded
+  transformation: JSON parsed and serialized as YAML; all fields retained
+- local_file: tomogram.yaml
+  source_url: https://files.cryoetdataportal.cziscience.com/10000/TS_026/Reconstructions/VoxelSpacing13.480/Tomograms/100/tomogram_metadata.json
+  source_sha256: 4ba3a5851d41b42facd6f3e47d3c35f04be0204e84d94c552fc170abe6da6fe6
+  transformation: JSON parsed and serialized as YAML; all fields retained
+- local_file: ribosome.yaml
+  source_url: https://files.cryoetdataportal.cziscience.com/10000/TS_026/Reconstructions/VoxelSpacing13.480/Annotations/101/cytosolic_ribosome-1.0.json
+  source_sha256: 90f11a6fc6dd38c9fa6e15e94e1a1cb9a4e584b4baa9f376822942b8e1d39810
+  transformation: JSON parsed and serialized as YAML; all fields retained
+- local_file: membrane.yaml
+  source_url: https://files.cryoetdataportal.cziscience.com/10000/TS_026/Reconstructions/VoxelSpacing13.480/Annotations/114/membrane-1.0.json
+  source_sha256: c70bd80facb6f45caf614d9caf56764a175cae9b448945b8a7c4d49b3445e608
+  transformation: JSON parsed and serialized as YAML; all fields retained
+- local_file: alignment.yaml
+  source_url: https://files.cryoetdataportal.cziscience.com/10000/TS_026/Alignments/100/alignment_metadata.json
+  source_sha256: 5e831024aeb28af4307b5b098cbf9547dfd2d2e452eb36a43a94e266f86965d4
+  transformation: JSON parsed and serialized as YAML; all fields retained
+- local_file: ribosome-points.ndjson
+  source_url: https://files.cryoetdataportal.cziscience.com/10000/TS_026/Reconstructions/VoxelSpacing13.480/Annotations/101/cytosolic_ribosome-1.0_point.ndjson
+  source_sha256: 6ab17b2807320d195f8e0ea741c4033d781e6d7bd0e5722d3522519544fc622c
+  transformation: none
+- local_file: TS_026-preview.png
+  source_url: https://files.cryoetdataportal.cziscience.com/10000/TS_026/Reconstructions/VoxelSpacing13.480/Images/100/key-photo-snapshot.png
+  source_sha256: e9150a08f265519eae3c1617af72e741a96be728df8d8ed2587087699e919f7b
+  transformation: none
