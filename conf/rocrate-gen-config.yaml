@@ -20,7 +20,8 @@
 # Also out:
 #   shacl  - gen-shacl raises KeyError('lambda-ber-schema') for a class whose slots come from an
 #            imported schema (shaclgen.py::_build_ignored_properties -> SchemaView.get_uri).
-#            Graph-level rules live in tests/test_rocrate_profile.py until that is fixed upstream.
+#            Graph-level rules live in src/lambda_ber_schema/rocrate/validation.py until that is
+#            fixed upstream.
 #   shex   - excluded project-wide for a pyjsg/ShExJSG incompatibility.
 #   excel  - a data-entry spreadsheet is not a useful artifact for a crate profile.
 #
