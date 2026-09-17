@@ -929,7 +929,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.1/" class="md-nav__link">
+      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.2/" class="md-nav__link">
         
   
   
@@ -1185,21 +1185,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Identifier and Mapping Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schema-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      Schema Source
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -1240,7 +1225,6 @@
 
 
 <h1 id="slot-function_description">Slot: function_description</h1>
-<p><em>Free-text summary of molecular function, typically from UniProt</em></p>
 <p>URI: <a href="http://w3id.org/lambda/function_description">lambda:function_description</a>
 Alias: function_description</p>
 <!-- no inheritance hierarchy -->
@@ -1256,6 +1240,11 @@ Alias: function_description</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="../NucleicAcid/">NucleicAcid</a></td>
+<td>A nucleic acid as a molecular entity: one DNA, RNA or hybrid strand, with its...</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../Protein/">Protein</a></td>
 <td>A protein as a biological entity: its sequence, source organism, gene, and th...</td>
 <td>no</td>
@@ -1267,10 +1256,6 @@ Alias: function_description</p>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: http://w3id.org/lambda/</li>
-</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -1294,13 +1279,10 @@ Alias: function_description</p>
 <details>
 
 <pre><code class="language-yaml">name: function_description
-description: Free-text summary of molecular function, typically from UniProt
-from_schema: http://w3id.org/lambda/
-rank: 1000
 alias: function_description
-owner: Protein
 domain_of:
 - Protein
+- NucleicAcid
 range: string
 
 </code></pre>

@@ -929,7 +929,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.1/" class="md-nav__link">
+      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.2/" class="md-nav__link">
         
   
   
@@ -1185,21 +1185,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Identifier and Mapping Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schema-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      Schema Source
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -1240,7 +1225,6 @@
 
 
 <h1 id="slot-chain_ids">Slot: chain_ids</h1>
-<p><em>Chain identifiers this protein occupies in the deposited structure, where the sample is a PDB entity</em></p>
 <p>URI: <a href="http://w3id.org/lambda/chain_ids">lambda:chain_ids</a>
 Alias: chain_ids</p>
 <!-- no inheritance hierarchy -->
@@ -1260,22 +1244,18 @@ Alias: chain_ids</p>
 <td>M:N link between Sample and Protein</td>
 <td>no</td>
 </tr>
+<tr>
+<td><a href="../SampleNucleicAcidAssociation/">SampleNucleicAcidAssociation</a></td>
+<td>M:N link between Sample and NucleicAcid</td>
+<td>no</td>
+</tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>
-<p>Range: <a href="../String/">String</a></p>
-</li>
-<li>
-<p>Multivalued: True</p>
-</li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: http://w3id.org/lambda/</li>
-</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -1293,28 +1273,17 @@ Alias: chain_ids</p>
 <td>native</td>
 <td>lambda:chain_ids</td>
 </tr>
-<tr>
-<td>exact</td>
-<td>mmCIF:_entity_poly.pdbx_strand_id</td>
-</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
 <pre><code class="language-yaml">name: chain_ids
-description: Chain identifiers this protein occupies in the deposited structure, where
-  the sample is a PDB entity
-from_schema: http://w3id.org/lambda/
-exact_mappings:
-- mmCIF:_entity_poly.pdbx_strand_id
-rank: 1000
 alias: chain_ids
-owner: SampleProteinAssociation
 domain_of:
 - SampleProteinAssociation
+- SampleNucleicAcidAssociation
 range: string
-multivalued: true
 
 </code></pre>
 

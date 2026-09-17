@@ -929,7 +929,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.1/" class="md-nav__link">
+      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.2/" class="md-nav__link">
         
   
   
@@ -1185,21 +1185,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Identifier and Mapping Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schema-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      Schema Source
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -1240,7 +1225,6 @@
 
 
 <h1 id="slot-sequence_coverage">Slot: sequence_coverage</h1>
-<p><em>Fraction of the canonical sequence present in this sample (range: 0-1)</em></p>
 <p>URI: <a href="http://w3id.org/lambda/sequence_coverage">lambda:sequence_coverage</a>
 Alias: sequence_coverage</p>
 <!-- no inheritance hierarchy -->
@@ -1260,25 +1244,18 @@ Alias: sequence_coverage</p>
 <td>M:N link between Sample and Protein</td>
 <td>no</td>
 </tr>
+<tr>
+<td><a href="../SampleNucleicAcidAssociation/">SampleNucleicAcidAssociation</a></td>
+<td>M:N link between Sample and NucleicAcid</td>
+<td>no</td>
+</tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>
-<p>Range: <a href="../Float/">Float</a></p>
-</li>
-<li>
-<p>Minimum Value: 0</p>
-</li>
-<li>
-<p>Maximum Value: 1</p>
-</li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: http://w3id.org/lambda/</li>
-</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -1302,16 +1279,11 @@ Alias: sequence_coverage</p>
 <details>
 
 <pre><code class="language-yaml">name: sequence_coverage
-description: 'Fraction of the canonical sequence present in this sample (range: 0-1)'
-from_schema: http://w3id.org/lambda/
-rank: 1000
 alias: sequence_coverage
-owner: SampleProteinAssociation
 domain_of:
 - SampleProteinAssociation
-range: float
-minimum_value: 0
-maximum_value: 1
+- SampleNucleicAcidAssociation
+range: string
 
 </code></pre>
 

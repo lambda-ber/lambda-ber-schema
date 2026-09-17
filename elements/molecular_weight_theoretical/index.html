@@ -929,7 +929,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.1/" class="md-nav__link">
+      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.2/" class="md-nav__link">
         
   
   
@@ -1185,21 +1185,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Identifier and Mapping Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schema-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      Schema Source
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -1240,7 +1225,6 @@
 
 
 <h1 id="slot-molecular_weight_theoretical">Slot: molecular_weight_theoretical</h1>
-<p><em>Mass computed from the canonical sequence, typically in kDa. A mass measured for a given preparation belongs on SampleProteinAssociation.observed_molecular_weight.</em></p>
 <p>URI: <a href="http://w3id.org/lambda/molecular_weight_theoretical">lambda:molecular_weight_theoretical</a>
 Alias: molecular_weight_theoretical</p>
 <!-- no inheritance hierarchy -->
@@ -1256,6 +1240,11 @@ Alias: molecular_weight_theoretical</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="../NucleicAcid/">NucleicAcid</a></td>
+<td>A nucleic acid as a molecular entity: one DNA, RNA or hybrid strand, with its...</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../Protein/">Protein</a></td>
 <td>A protein as a biological entity: its sequence, source organism, gene, and th...</td>
 <td>no</td>
@@ -1264,13 +1253,9 @@ Alias: molecular_weight_theoretical</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: http://w3id.org/lambda/</li>
-</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -1288,28 +1273,17 @@ Alias: molecular_weight_theoretical</p>
 <td>native</td>
 <td>lambda:molecular_weight_theoretical</td>
 </tr>
-<tr>
-<td>related</td>
-<td>mmCIF:_entity.formula_weight</td>
-</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
 <pre><code class="language-yaml">name: molecular_weight_theoretical
-description: Mass computed from the canonical sequence, typically in kDa. A mass measured
-  for a given preparation belongs on SampleProteinAssociation.observed_molecular_weight.
-from_schema: http://w3id.org/lambda/
-related_mappings:
-- mmCIF:_entity.formula_weight
-rank: 1000
 alias: molecular_weight_theoretical
-owner: Protein
 domain_of:
 - Protein
-range: QuantityValue
-inlined: true
+- NucleicAcid
+range: string
 
 </code></pre>
 

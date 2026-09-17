@@ -929,7 +929,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.1/" class="md-nav__link">
+      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.2/" class="md-nav__link">
         
   
   
@@ -1251,10 +1251,17 @@ A dataset might represent all data from a specific grant, collaboration, or publ
   the sample-protein association.</p>
 <ul>
 <li>
+<p><a href="../NucleicAcid/">Nucleic Acids</a>: The DNA or RNA strand as a molecular entity - sequence, type,
+  source organism, gene - shared by every sample that contains it, as Protein is for proteins.
+  Identified by RNAcentral, RefSeq or INSDC accession where one exists; a synthetic
+  oligonucleotide, which is most of what structural biology sees, gets a local id.</p>
+</li>
+<li>
 <p><a href="../Sample/">Samples</a>: The physical specimens being studied (proteins, nucleic acids, complexes,
   cells, tissues). Each sample records the preparation-specific facts - buffer conditions,
-  concentration, storage, purity - and links to the proteins it contains through
-  <a href="../SampleProteinAssociation/">SampleProteinAssociation</a>.</p>
+  concentration, storage, purity - and links to the proteins and nucleic acids it contains through
+  <a href="../SampleProteinAssociation/">SampleProteinAssociation</a> and
+  <a href="../SampleNucleicAcidAssociation/">SampleNucleicAcidAssociation</a>.</p>
 </li>
 <li>
 <p><a href="../ProteinConstruct/">Protein Constructs</a>: How a protein was cloned and expressed - vector,
@@ -1318,6 +1325,8 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <li><strong>ExperimentSampleAssociation</strong>: Links samples to experiments (with role and preparation used)</li>
 <li><strong>SampleProteinAssociation</strong>: Links proteins to samples (with role, copy number, residue range,
   modifications, observed mass, and the construct used)</li>
+<li><strong>SampleNucleicAcidAssociation</strong>: Links nucleic acids to samples (with role, copy number,
+  structural form, how the strand was made, modifications, and observed mass)</li>
 <li><strong>ExperimentInstrumentAssociation</strong>: Links instruments to experiments (with role: primary, detector)</li>
 <li><strong>WorkflowExperimentAssociation</strong>: Links source experiments to workflows</li>
 <li><strong>WorkflowInputAssociation</strong>: Links input files to workflows</li>
@@ -1331,6 +1340,7 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <p>This relational design enables:
 - <strong>Sample reuse</strong>: The same sample can be used in multiple studies and experiments
 - <strong>Protein reuse</strong>: The same protein is described once and linked from every sample that contains it
+- <strong>Nucleic acid reuse</strong>: Likewise for a DNA or RNA strand - one record, linked from every sample it is in
 - <strong>Multi-instrument experiments</strong>: An experiment can use multiple instruments with different roles
 - <strong>Integrative workflows</strong>: A workflow can combine data from multiple experiments</p>
 <h2 id="example-usage">Example Usage</h2>

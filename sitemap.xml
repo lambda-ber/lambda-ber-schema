@@ -541,6 +541,22 @@
          <lastmod>2026-09-17</lastmod>
     </url>
     <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/NucleicAcid/</loc>
+         <lastmod>2026-09-17</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/NucleicAcidFormEnum/</loc>
+         <lastmod>2026-09-17</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/NucleicAcidSourceEnum/</loc>
+         <lastmod>2026-09-17</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/NucleicAcidTypeEnum/</loc>
+         <lastmod>2026-09-17</lastmod>
+    </url>
+    <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/Objectidentifier/</loc>
          <lastmod>2026-09-17</lastmod>
     </url>
@@ -666,6 +682,14 @@
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/Sample/</loc>
+         <lastmod>2026-09-17</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/SampleNucleicAcidAssociation/</loc>
+         <lastmod>2026-09-17</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/SampleNucleicAcidRoleEnum/</loc>
          <lastmod>2026-09-17</lastmod>
     </url>
     <url>
@@ -2469,6 +2493,26 @@
          <lastmod>2026-09-17</lastmod>
     </url>
     <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/nucleic_acid_id/</loc>
+         <lastmod>2026-09-17</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/nucleic_acid_name/</loc>
+         <lastmod>2026-09-17</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/nucleic_acid_type/</loc>
+         <lastmod>2026-09-17</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/nucleic_acids/</loc>
+         <lastmod>2026-09-17</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/nucleotide_sequence/</loc>
+         <lastmod>2026-09-17</lastmod>
+    </url>
+    <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/number_of_guides/</loc>
          <lastmod>2026-09-17</lastmod>
     </url>
@@ -2993,6 +3037,10 @@
          <lastmod>2026-09-17</lastmod>
     </url>
     <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/rfam_families/</loc>
+         <lastmod>2026-09-17</lastmod>
+    </url>
+    <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/rfree/</loc>
          <lastmod>2026-09-17</lastmod>
     </url>
@@ -3018,6 +3066,10 @@
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/rmsd_threshold/</loc>
+         <lastmod>2026-09-17</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/rnacentral_id/</loc>
          <lastmod>2026-09-17</lastmod>
     </url>
     <url>
@@ -3085,6 +3137,10 @@
          <lastmod>2026-09-17</lastmod>
     </url>
     <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/sample_nucleic_acid_associations/</loc>
+         <lastmod>2026-09-17</lastmod>
+    </url>
+    <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/sample_preparations/</loc>
          <lastmod>2026-09-17</lastmod>
     </url>
@@ -3138,6 +3194,10 @@
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/selectable_marker/</loc>
+         <lastmod>2026-09-17</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/sequence_accession/</loc>
          <lastmod>2026-09-17</lastmod>
     </url>
     <url>
@@ -3245,6 +3305,10 @@
          <lastmod>2026-09-17</lastmod>
     </url>
     <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/source_method/</loc>
+         <lastmod>2026-09-17</lastmod>
+    </url>
+    <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/source_type/</loc>
          <lastmod>2026-09-17</lastmod>
     </url>
@@ -3322,6 +3386,10 @@
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/structural_features/</loc>
+         <lastmod>2026-09-17</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/structural_form/</loc>
          <lastmod>2026-09-17</lastmod>
     </url>
     <url>
@@ -3733,7 +3801,7 @@
          <lastmod>2026-09-17</lastmod>
     </url>
     <url>
-         <loc>https://lambda-ber.github.io/lambda-ber-schema/profiles/lambda-core-rocrate-profile-v0.3.1/</loc>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/profiles/lambda-core-rocrate-profile-v0.3.2/</loc>
          <lastmod>2026-09-17</lastmod>
     </url>
     <url>

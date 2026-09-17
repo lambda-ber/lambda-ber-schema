@@ -929,7 +929,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.1/" class="md-nav__link">
+      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.2/" class="md-nav__link">
         
   
   
@@ -1245,18 +1245,8 @@ Alias: residue_range</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../StructuralFeature/">StructuralFeature</a></td>
-<td>Structural features and properties of protein regions</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ProteinProteinInteraction/">ProteinProteinInteraction</a></td>
-<td>Protein-protein interactions and interfaces</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MutationEffect/">MutationEffect</a></td>
-<td>Effects of mutations and variants on protein structure and function</td>
+<td><a href="../PostTranslationalModification/">PostTranslationalModification</a></td>
+<td>Post-translational modifications observed or predicted</td>
 <td>no</td>
 </tr>
 <tr>
@@ -1265,8 +1255,23 @@ Alias: residue_range</p>
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../ProteinProteinInteraction/">ProteinProteinInteraction</a></td>
+<td>Protein-protein interactions and interfaces</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../ProteinAnnotation/">ProteinAnnotation</a></td>
 <td>Base class for all protein-related functional and structural annotations</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../StructuralFeature/">StructuralFeature</a></td>
+<td>Structural features and properties of protein regions</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MutationEffect/">MutationEffect</a></td>
+<td>Effects of mutations and variants on protein structure and function</td>
 <td>no</td>
 </tr>
 <tr>
@@ -1275,8 +1280,8 @@ Alias: residue_range</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../PostTranslationalModification/">PostTranslationalModification</a></td>
-<td>Post-translational modifications observed or predicted</td>
+<td><a href="../SampleNucleicAcidAssociation/">SampleNucleicAcidAssociation</a></td>
+<td>M:N link between Sample and NucleicAcid</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -1312,6 +1317,7 @@ Alias: residue_range</p>
 alias: residue_range
 domain_of:
 - SampleProteinAssociation
+- SampleNucleicAcidAssociation
 - ProteinAnnotation
 range: string
 

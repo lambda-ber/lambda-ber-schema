@@ -929,7 +929,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.1/" class="md-nav__link">
+      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.2/" class="md-nav__link">
         
   
   
@@ -1240,23 +1240,28 @@ Alias: sample_id</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../ExperimentSampleAssociation/">ExperimentSampleAssociation</a></td>
-<td>M:N link between ExperimentRun and Sample with role metadata</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../SamplePreparation/">SamplePreparation</a></td>
-<td>A process that prepares a sample for imaging</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../StudySampleAssociation/">StudySampleAssociation</a></td>
 <td>M:N link between Study and Sample with role metadata</td>
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../ExperimentSampleAssociation/">ExperimentSampleAssociation</a></td>
+<td>M:N link between ExperimentRun and Sample with role metadata</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../SampleProteinAssociation/">SampleProteinAssociation</a></td>
 <td>M:N link between Sample and Protein</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SampleNucleicAcidAssociation/">SampleNucleicAcidAssociation</a></td>
+<td>M:N link between Sample and NucleicAcid</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SamplePreparation/">SamplePreparation</a></td>
+<td>A process that prepares a sample for imaging</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -1295,6 +1300,7 @@ domain_of:
 - StudySampleAssociation
 - ExperimentSampleAssociation
 - SampleProteinAssociation
+- SampleNucleicAcidAssociation
 range: string
 
 </code></pre>

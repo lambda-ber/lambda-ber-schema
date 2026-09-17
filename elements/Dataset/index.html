@@ -374,7 +374,7 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../profiles/lambda-core-rocrate-profile-v0.3.1/">
+<a class="md-nav__link" href="../../profiles/lambda-core-rocrate-profile-v0.3.2/">
 <span class="md-ellipsis">
     LAMBDA Core RO-Crate Profile
     
@@ -629,6 +629,17 @@
 
       Dataset : keywords
 
+      Dataset : nucleic_acids
+
+
+
+
+
+        Dataset --&gt; "*" NucleicAcid : nucleic_acids
+        click NucleicAcid href "../NucleicAcid/"
+
+
+
       Dataset : organizations
 
 
@@ -681,6 +692,17 @@
 
         Dataset --&gt; "*" Protein : proteins
         click Protein href "../Protein/"
+
+
+
+      Dataset : sample_nucleic_acid_associations
+
+
+
+
+
+        Dataset --&gt; "*" SampleNucleicAcidAssociation : sample_nucleic_acid_associations
+        click SampleNucleicAcidAssociation href "../SampleNucleicAcidAssociation/"
 
 
 
@@ -903,6 +925,12 @@
 <td>direct</td>
 </tr>
 <tr>
+<td><a href="../nucleic_acids/">nucleic_acids</a></td>
+<td>* <br/> <a href="../NucleicAcid/">NucleicAcid</a></td>
+<td>All nucleic acids referenced by samples in this dataset, one record per stran...</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../samples/">samples</a></td>
 <td>* <br/> <a href="../Sample/">Sample</a></td>
 <td>All samples across all studies</td>
@@ -972,6 +1000,12 @@
 <td><a href="../sample_protein_associations/">sample_protein_associations</a></td>
 <td>* <br/> <a href="../SampleProteinAssociation/">SampleProteinAssociation</a></td>
 <td>Links between samples and the proteins they contain (M:N with role, copy numb...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../sample_nucleic_acid_associations/">sample_nucleic_acid_associations</a></td>
+<td>* <br/> <a href="../SampleNucleicAcidAssociation/">SampleNucleicAcidAssociation</a></td>
+<td>Links between samples and the nucleic acids they contain (M:N with role, copy...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -1160,6 +1194,18 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
+  nucleic_acids:
+    name: nucleic_acids
+    description: All nucleic acids referenced by samples in this dataset, one record
+      per strand
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    domain_of:
+    - Dataset
+    range: NucleicAcid
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
   samples:
     name: samples
     description: All samples across all studies
@@ -1290,6 +1336,18 @@ attributes:
     domain_of:
     - Dataset
     range: SampleProteinAssociation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  sample_nucleic_acid_associations:
+    name: sample_nucleic_acid_associations
+    description: Links between samples and the nucleic acids they contain (M:N with
+      role, copy number, structural form, source)
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    domain_of:
+    - Dataset
+    range: SampleNucleicAcidAssociation
     multivalued: true
     inlined: true
     inlined_as_list: true
@@ -1488,6 +1546,20 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
+  nucleic_acids:
+    name: nucleic_acids
+    description: All nucleic acids referenced by samples in this dataset, one record
+      per strand
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    alias: nucleic_acids
+    owner: Dataset
+    domain_of:
+    - Dataset
+    range: NucleicAcid
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
   samples:
     name: samples
     description: All samples across all studies
@@ -1642,6 +1714,20 @@ attributes:
     domain_of:
     - Dataset
     range: SampleProteinAssociation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  sample_nucleic_acid_associations:
+    name: sample_nucleic_acid_associations
+    description: Links between samples and the nucleic acids they contain (M:N with
+      role, copy number, structural form, source)
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    alias: sample_nucleic_acid_associations
+    owner: Dataset
+    domain_of:
+    - Dataset
+    range: SampleNucleicAcidAssociation
     multivalued: true
     inlined: true
     inlined_as_list: true

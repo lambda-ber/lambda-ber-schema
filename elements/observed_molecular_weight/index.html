@@ -929,7 +929,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.1/" class="md-nav__link">
+      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.2/" class="md-nav__link">
         
   
   
@@ -1185,21 +1185,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Identifier and Mapping Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schema-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      Schema Source
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -1240,7 +1225,6 @@
 
 
 <h1 id="slot-observed_molecular_weight">Slot: observed_molecular_weight</h1>
-<p><em>Mass as measured for this preparation (mass spectrometry, SEC-MALS, SAXS), typically in kDa. The sequence-derived mass lives on Protein.molecular_weight_theoretical.</em></p>
 <p>URI: <a href="http://w3id.org/lambda/observed_molecular_weight">lambda:observed_molecular_weight</a>
 Alias: observed_molecular_weight</p>
 <!-- no inheritance hierarchy -->
@@ -1260,17 +1244,18 @@ Alias: observed_molecular_weight</p>
 <td>M:N link between Sample and Protein</td>
 <td>no</td>
 </tr>
+<tr>
+<td><a href="../SampleNucleicAcidAssociation/">SampleNucleicAcidAssociation</a></td>
+<td>M:N link between Sample and NucleicAcid</td>
+<td>no</td>
+</tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: http://w3id.org/lambda/</li>
-</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -1294,16 +1279,11 @@ Alias: observed_molecular_weight</p>
 <details>
 
 <pre><code class="language-yaml">name: observed_molecular_weight
-description: Mass as measured for this preparation (mass spectrometry, SEC-MALS, SAXS),
-  typically in kDa. The sequence-derived mass lives on Protein.molecular_weight_theoretical.
-from_schema: http://w3id.org/lambda/
-rank: 1000
 alias: observed_molecular_weight
-owner: SampleProteinAssociation
 domain_of:
 - SampleProteinAssociation
-range: QuantityValue
-inlined: true
+- SampleNucleicAcidAssociation
+range: string
 
 </code></pre>
 

@@ -929,7 +929,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../profiles/lambda-core-rocrate-profile-v0.3.1/" class="md-nav__link">
+      <a href="../profiles/lambda-core-rocrate-profile-v0.3.2/" class="md-nav__link">
         
   
   
@@ -1417,6 +1417,7 @@
 │   ├── studies
 │   ├── proteins
 │   ├── protein_constructs
+│   ├── nucleic_acids
 │   ├── samples
 │   ├── sample_preparations
 │   ├── instruments
@@ -1432,6 +1433,7 @@
     ├── experiment_sample_associations
     ├── experiment_instrument_associations
     ├── sample_protein_associations
+    ├── sample_nucleic_acid_associations
     ├── workflow_experiment_associations
     ├── workflow_input_associations
     └── workflow_output_associations
@@ -1479,6 +1481,10 @@
 <tr>
 <td><a href="https://w3id.org/lambda-ber-schema/Protein">Protein</a></td>
 <td>The protein as a biological entity: UniProt CURIE, sequence, organism, gene, functional annotations. Described once, shared by every sample that contains it</td>
+</tr>
+<tr>
+<td><a href="https://w3id.org/lambda-ber-schema/NucleicAcid">NucleicAcid</a></td>
+<td>The DNA or RNA strand as a molecular entity: type, sequence, organism, gene, RNAcentral or RefSeq/INSDC accession where one exists. Described once, shared by every sample that contains it</td>
 </tr>
 <tr>
 <td><a href="https://w3id.org/lambda-ber-schema/Sample">Sample</a></td>
@@ -1638,6 +1644,11 @@
 <td><a href="https://w3id.org/lambda-ber-schema/SampleProteinAssociation">SampleProteinAssociation</a></td>
 <td>Sample ↔ Protein</td>
 <td>role (target, subunit, fusion_partner, ...), copy number, residue range, chain ids, modifications, observed mass, construct used</td>
+</tr>
+<tr>
+<td><a href="https://w3id.org/lambda-ber-schema/SampleNucleicAcidAssociation">SampleNucleicAcidAssociation</a></td>
+<td>Sample ↔ NucleicAcid</td>
+<td>role (target, subunit, guide, template, primer, ...), copy number, residue range, chain ids, structural form (duplex, hairpin, quadruplex, ...), source method (synthesis, in vitro transcription, ...), modifications, observed mass</td>
 </tr>
 <tr>
 <td><a href="https://w3id.org/lambda-ber-schema/WorkflowExperimentAssociation">WorkflowExperimentAssociation</a></td>

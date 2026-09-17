@@ -1071,7 +1071,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../profiles/lambda-core-rocrate-profile-v0.3.1/" class="md-nav__link">
+      <a href="../profiles/lambda-core-rocrate-profile-v0.3.2/" class="md-nav__link">
         
   
   
@@ -1438,10 +1438,17 @@ A dataset might represent all data from a specific grant, collaboration, or publ
   the sample-protein association.</p>
 <ul>
 <li>
+<p><a href="NucleicAcid/">Nucleic Acids</a>: The DNA or RNA strand as a molecular entity - sequence, type,
+  source organism, gene - shared by every sample that contains it, as Protein is for proteins.
+  Identified by RNAcentral, RefSeq or INSDC accession where one exists; a synthetic
+  oligonucleotide, which is most of what structural biology sees, gets a local id.</p>
+</li>
+<li>
 <p><a href="Sample/">Samples</a>: The physical specimens being studied (proteins, nucleic acids, complexes,
   cells, tissues). Each sample records the preparation-specific facts - buffer conditions,
-  concentration, storage, purity - and links to the proteins it contains through
-  <a href="SampleProteinAssociation/">SampleProteinAssociation</a>.</p>
+  concentration, storage, purity - and links to the proteins and nucleic acids it contains through
+  <a href="SampleProteinAssociation/">SampleProteinAssociation</a> and
+  <a href="SampleNucleicAcidAssociation/">SampleNucleicAcidAssociation</a>.</p>
 </li>
 <li>
 <p><a href="ProteinConstruct/">Protein Constructs</a>: How a protein was cloned and expressed - vector,
@@ -1505,6 +1512,8 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <li><strong>ExperimentSampleAssociation</strong>: Links samples to experiments (with role and preparation used)</li>
 <li><strong>SampleProteinAssociation</strong>: Links proteins to samples (with role, copy number, residue range,
   modifications, observed mass, and the construct used)</li>
+<li><strong>SampleNucleicAcidAssociation</strong>: Links nucleic acids to samples (with role, copy number,
+  structural form, how the strand was made, modifications, and observed mass)</li>
 <li><strong>ExperimentInstrumentAssociation</strong>: Links instruments to experiments (with role: primary, detector)</li>
 <li><strong>WorkflowExperimentAssociation</strong>: Links source experiments to workflows</li>
 <li><strong>WorkflowInputAssociation</strong>: Links input files to workflows</li>
@@ -1518,6 +1527,7 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <p>This relational design enables:
 - <strong>Sample reuse</strong>: The same sample can be used in multiple studies and experiments
 - <strong>Protein reuse</strong>: The same protein is described once and linked from every sample that contains it
+- <strong>Nucleic acid reuse</strong>: Likewise for a DNA or RNA strand - one record, linked from every sample it is in
 - <strong>Multi-instrument experiments</strong>: An experiment can use multiple instruments with different roles
 - <strong>Integrative workflows</strong>: A workflow can combine data from multiple experiments</p>
 <h2 id="example-usage">Example Usage</h2>
@@ -1791,6 +1801,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Conditions under which biophysical measurements were made</td>
 </tr>
 <tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="NucleicAcid/">NucleicAcid</a></td>
+<td>A nucleic acid as a molecular entity: one DNA, RNA or hybrid strand, with its...</td>
+</tr>
+<tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="OntologyTerm/">OntologyTerm</a></td>
 <td>A term from a controlled vocabulary or ontology</td>
 </tr>
@@ -1857,6 +1871,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="PersonOrganizationAssociation/">PersonOrganizationAssociation</a></td>
 <td>M:N link between Person and Organization with role metadata</td>
+</tr>
+<tr>
+<td><a href="SampleNucleicAcidAssociation/">SampleNucleicAcidAssociation</a></td>
+<td>M:N link between Sample and NucleicAcid</td>
 </tr>
 <tr>
 <td><a href="SampleProteinAssociation/">SampleProteinAssociation</a></td>
@@ -3526,6 +3544,26 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Nominal defocus value, typically specified in micrometers</td>
 </tr>
 <tr>
+<td><a href="nucleic_acid_id/">nucleic_acid_id</a></td>
+<td>Reference to the nucleic acid</td>
+</tr>
+<tr>
+<td><a href="nucleic_acid_name/">nucleic_acid_name</a></td>
+<td>Name as the depositor or database gives it (e</td>
+</tr>
+<tr>
+<td><a href="nucleic_acid_type/">nucleic_acid_type</a></td>
+<td>Chemical type of the polymer: DNA, RNA, a DNA/RNA hybrid, or an analogue</td>
+</tr>
+<tr>
+<td><a href="nucleic_acids/">nucleic_acids</a></td>
+<td>All nucleic acids referenced by samples in this dataset, one record per stran...</td>
+</tr>
+<tr>
+<td><a href="nucleotide_sequence/">nucleotide_sequence</a></td>
+<td>Sequence in one-letter code, written 5' to 3'</td>
+</tr>
+<tr>
 <td><a href="number_of_guides/">number_of_guides</a></td>
 <td>Number of neutron guides</td>
 </tr>
@@ -4050,6 +4088,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Other restraints applied during refinement</td>
 </tr>
 <tr>
+<td><a href="rfam_families/">rfam_families</a></td>
+<td>Rfam families the RNA belongs to, as CURIEs (rfam:RF00005 for tRNA)</td>
+</tr>
+<tr>
 <td><a href="rfree/">rfree</a></td>
 <td>R-free (test set)</td>
 </tr>
@@ -4076,6 +4118,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="rmsd_threshold/">rmsd_threshold</a></td>
 <td>RMSD threshold for clustering (Angstroms)</td>
+</tr>
+<tr>
+<td><a href="rnacentral_id/">rnacentral_id</a></td>
+<td>RNAcentral identifier as a Bioregistry CURIE (rnacentral:URS0000759CF4), opti...</td>
 </tr>
 <tr>
 <td><a href="role/">role</a></td>
@@ -4142,6 +4188,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Reference to the sample being prepared</td>
 </tr>
 <tr>
+<td><a href="sample_nucleic_acid_associations/">sample_nucleic_acid_associations</a></td>
+<td>Links between samples and the nucleic acids they contain (M:N with role, copy...</td>
+</tr>
+<tr>
 <td><a href="sample_preparations/">sample_preparations</a></td>
 <td>All sample preparations</td>
 </tr>
@@ -4196,6 +4246,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="selectable_marker/">selectable_marker</a></td>
 <td>Antibiotic resistance or other selectable marker</td>
+</tr>
+<tr>
+<td><a href="sequence_accession/">sequence_accession</a></td>
+<td>Accession of the reference nucleotide sequence as a CURIE: RefSeq (refseq:NM_...</td>
 </tr>
 <tr>
 <td><a href="sequence_coverage/">sequence_coverage</a></td>
@@ -4302,6 +4356,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Free-text description of the source</td>
 </tr>
 <tr>
+<td><a href="source_method/">source_method</a></td>
+<td>How this strand was made for this preparation: chemical synthesis, in vitro t...</td>
+</tr>
+<tr>
 <td><a href="source_type/">source_type</a></td>
 <td>Type of X-ray source</td>
 </tr>
@@ -4380,6 +4438,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="structural_features/">structural_features</a></td>
 <td>Structural feature annotations</td>
+</tr>
+<tr>
+<td><a href="structural_form/">structural_form</a></td>
+<td>Form the strand takes in this sample: single-stranded, paired in a duplex, fo...</td>
 </tr>
 <tr>
 <td><a href="structural_motif/">structural_motif</a></td>
@@ -4917,6 +4979,18 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Types of mutations</td>
 </tr>
 <tr>
+<td><a href="NucleicAcidFormEnum/">NucleicAcidFormEnum</a></td>
+<td>Form a nucleic acid strand takes in a sample</td>
+</tr>
+<tr>
+<td><a href="NucleicAcidSourceEnum/">NucleicAcidSourceEnum</a></td>
+<td>How a nucleic acid strand was produced for a preparation</td>
+</tr>
+<tr>
+<td><a href="NucleicAcidTypeEnum/">NucleicAcidTypeEnum</a></td>
+<td>Chemical type of a nucleic acid polymer</td>
+</tr>
+<tr>
 <td><a href="OrganizationRoleEnum/">OrganizationRoleEnum</a></td>
 <td>Capacity in which an organization is attached to a study, or a person to an o...</td>
 </tr>
@@ -4955,6 +5029,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="PurificationStepEnum/">PurificationStepEnum</a></td>
 <td>Protein purification steps and methods</td>
+</tr>
+<tr>
+<td><a href="SampleNucleicAcidRoleEnum/">SampleNucleicAcidRoleEnum</a></td>
+<td>Part a nucleic acid plays in a sample</td>
 </tr>
 <tr>
 <td><a href="SampleProteinRoleEnum/">SampleProteinRoleEnum</a></td>
