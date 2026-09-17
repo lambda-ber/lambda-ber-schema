@@ -54,9 +54,13 @@ gen-rocrate:
 # single JSON object is walked key-by-key, and --legacy-mode routes through gen-python, which cannot
 # represent the @-keyword aliases. The checker in src/lambda_ber_schema/rocrate/ validates against
 # the generated JSON Schema and adds the per-entity and graph-rule layers on top; the pytest suite
-# runs it over the fixtures.
+# runs it over the fixtures. Users run the same checker with `lambda-ber-schema rocrate validate`.
 test-rocrate:
 	$(RUN) pytest tests/test_rocrate_profile.py
+
+# Validate a crate the way a user would: make validate-rocrate CRATE=path/to/ro-crate-metadata.json
+validate-rocrate:
+	$(RUN) lambda-ber-schema rocrate validate $(CRATE)
 
 serve:
 	$(RUN) mkdocs serve
