@@ -268,8 +268,9 @@ class SASBDBLoader(BaseLoader):
         # Get first molecule (primary)
         molecule = molecules[0] if molecules else {}
 
-        # Determine sample type from molecular_type field
-        mol_type = molecule.get("molecular_type", "protein")
+        # Determine sample type from molecular_type field. SASBDB writes the type as
+        # it likes ("RNA" on one entry, "protein" on another), so compare lowercased.
+        mol_type = (molecule.get("molecular_type") or "protein").lower()
         sample_type_map = {
             "protein": SampleTypeEnum.protein,
             "dna": SampleTypeEnum.nucleic_acid,

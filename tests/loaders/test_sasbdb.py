@@ -21,6 +21,24 @@ def loader(mocker, sasbdb_sasda52_response):
     return loader
 
 
+@pytest.fixture
+def rna_loader(mocker, sasbdb_sasdv63_response):
+    """Loader for SASDV63, a single RNA molecule with no UniProt entry."""
+    loader = SASBDBLoader()
+    mocker.patch.object(loader, "_fetch_entry", return_value=sasbdb_sasdv63_response)
+    return loader
+
+
+class TestSASBDBLoaderNucleicAcids:
+    """An RNA entry: no Protein row."""
+
+    def test_sample_type_reads_molecular_type_case_insensitively(self, rna_loader):
+        """SASBDB spells the type "RNA" here; it must not fall back to protein."""
+        result = rna_loader.load("SASDV63")
+        assert result.dataset.samples[0].sample_type == "nucleic_acid"
+        assert result.dataset.proteins is None
+
+
 class TestSASBDBLoader:
     """Tests for SASBDBLoader."""
 
