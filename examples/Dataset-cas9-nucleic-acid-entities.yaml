@@ -1,0 +1,171 @@
+id: lambdaber:dataset-cas9-nucleic-acid-entities
+title: Streptococcus pyogenes Cas9 with guide RNA and target DNA
+description: Worked example of the NucleicAcid table shared by three samples, with
+  the Protein table for the nuclease
+studies:
+- id: lambdaber:study-cas9-target-recognition
+  title: Target recognition by Cas9-sgRNA
+proteins:
+- id: uniprot:Q99ZW2
+  uniprot_id: uniprot:Q99ZW2
+  protein_name: CRISPR-associated endonuclease Cas9/Csn1
+  gene_name: cas9
+  organism: NCBITaxon:301447
+  organism_name: Streptococcus pyogenes serotype M1
+  sequence_length: 1368
+  molecular_weight_theoretical:
+    unit: kilodaltons
+    numeric_value: 158.4
+  ec_numbers:
+  - 3.1.-.-
+  go_terms:
+  - GO:0004519
+  - GO:0003677
+  pdb_entries:
+  - pdb:4OO8
+nucleic_acids:
+- id: lambdaber:na-sgrna-4oo8
+  title: sgRNA used in PDB 4OO8
+  description: 20-nucleotide guide segment followed by the crRNA repeat, tetraloop,
+    tracrRNA anti-repeat and stem loops. Begins with GG for T7 transcription.
+  nucleic_acid_type: rna
+  nucleic_acid_name: Single-guide RNA, 98-mer
+  organism: NCBITaxon:32630
+  organism_name: synthetic construct
+  nucleotide_sequence: GGAAAUUAGGUGCGCUUGGCGUUUUAGAGCUAGAAAUAGCAAGUUAAAAUAAGGCUAGUCCGUUAUCAACUUGAAAAAGUGGCACCGAGUCGGUGCUU
+  sequence_length: 98
+  molecular_weight_theoretical:
+    unit: kilodaltons
+    numeric_value: 31.7
+  pdb_entries:
+  - pdb:4OO8
+- id: lambdaber:na-target-strand-4oo8
+  nucleic_acid_type: dna
+  nucleic_acid_name: Target DNA strand, 23-mer
+  organism: NCBITaxon:32630
+  organism_name: synthetic construct
+  nucleotide_sequence: CCAGCCAAGCGCACCTAATTTCC
+  sequence_length: 23
+  molecular_weight_theoretical:
+    unit: kilodaltons
+    numeric_value: 6.93
+  pdb_entries:
+  - pdb:4OO8
+- id: lambdaber:na-nontarget-strand-4oo8
+  nucleic_acid_type: dna
+  nucleic_acid_name: Non-target DNA strand, 23-mer
+  organism: NCBITaxon:32630
+  organism_name: synthetic construct
+  nucleotide_sequence: GGAAATTAGGTGCGCTTGGCTGG
+  sequence_length: 23
+  molecular_weight_theoretical:
+    unit: kilodaltons
+    numeric_value: 7.16
+samples:
+- id: lambdaber:sample-cas9-sgrna-dna-complex
+  title: Cas9-sgRNA-target DNA ternary complex
+  sample_code: CAS9-TERNARY-001
+  sample_type: complex
+  molecular_weight:
+    unit: kilodaltons
+    numeric_value: 197.0
+  concentration:
+    unit: milligrams per milliliter
+    numeric_value: 5.0
+  buffer_composition:
+    ph:
+      unit: pH units
+      numeric_value: 7.5
+    components:
+    - 20 mM Tris-HCl
+    - 150 mM NaCl
+    - 5 mM MgCl2
+    - 1 mM DTT
+  organism: NCBITaxon:301447
+  protein_name: Cas9
+- id: lambdaber:sample-sgrna-ivt
+  title: sgRNA from in vitro transcription, free in solution
+  sample_code: SGRNA-IVT-002
+  sample_type: nucleic_acid
+  concentration:
+    unit: milligrams per milliliter
+    numeric_value: 2.0
+  buffer_composition:
+    ph:
+      unit: pH units
+      numeric_value: 7.5
+    components:
+    - 20 mM HEPES-KOH
+    - 100 mM KCl
+    - 5 mM MgCl2
+- id: lambdaber:sample-target-duplex-fam
+  title: Annealed target DNA duplex with 5' 6-FAM on the non-target strand
+  sample_code: TARGET-DUPLEX-FAM-003
+  sample_type: nucleic_acid
+  concentration:
+    unit: micromolar
+    numeric_value: 10.0
+  buffer_composition:
+    ph:
+      unit: pH units
+      numeric_value: 7.5
+    components:
+    - 20 mM Tris-HCl
+    - 100 mM NaCl
+study_sample_associations:
+- study_id: lambdaber:study-cas9-target-recognition
+  sample_id: lambdaber:sample-cas9-sgrna-dna-complex
+  role: target
+- study_id: lambdaber:study-cas9-target-recognition
+  sample_id: lambdaber:sample-sgrna-ivt
+  role: reference
+- study_id: lambdaber:study-cas9-target-recognition
+  sample_id: lambdaber:sample-target-duplex-fam
+  role: reference
+sample_protein_associations:
+- sample_id: lambdaber:sample-cas9-sgrna-dna-complex
+  protein_id: uniprot:Q99ZW2
+  role: target
+  copy_number: 1
+  chain_ids:
+  - A
+sample_nucleic_acid_associations:
+- sample_id: lambdaber:sample-cas9-sgrna-dna-complex
+  nucleic_acid_id: lambdaber:na-sgrna-4oo8
+  role: guide
+  copy_number: 1
+  chain_ids:
+  - B
+  source_method: in_vitro_transcription
+- sample_id: lambdaber:sample-cas9-sgrna-dna-complex
+  nucleic_acid_id: lambdaber:na-target-strand-4oo8
+  role: binding_partner
+  copy_number: 1
+  chain_ids:
+  - C
+  structural_form: single_stranded
+  source_method: chemical_synthesis
+- sample_id: lambdaber:sample-sgrna-ivt
+  nucleic_acid_id: lambdaber:na-sgrna-4oo8
+  role: target
+  copy_number: 1
+  source_method: in_vitro_transcription
+  modifications:
+  - 5' triphosphate retained
+  observed_molecular_weight:
+    unit: kilodaltons
+    numeric_value: 31.9
+- sample_id: lambdaber:sample-target-duplex-fam
+  nucleic_acid_id: lambdaber:na-target-strand-4oo8
+  role: subunit
+  copy_number: 1
+  structural_form: double_stranded
+  source_method: chemical_synthesis
+- sample_id: lambdaber:sample-target-duplex-fam
+  nucleic_acid_id: lambdaber:na-nontarget-strand-4oo8
+  role: subunit
+  copy_number: 1
+  structural_form: double_stranded
+  source_method: chemical_synthesis
+  modifications:
+  - 5' 6-FAM
