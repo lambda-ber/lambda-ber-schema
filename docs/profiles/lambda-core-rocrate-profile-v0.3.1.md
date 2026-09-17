@@ -531,7 +531,17 @@ returning crates that cannot answer them.
 
 ## 12. Validation
 
-Three layers, because a flat `@graph` is an open world and no single tool covers it.
+Three layers, because a flat `@graph` is an open world and no single tool covers it. All three
+run from one command, which is what a facility should run over a crate before publishing it:
+
+```bash
+lambda-ber-schema rocrate validate path/to/ro-crate-metadata.json   # or the crate directory
+```
+
+Exit 0 is conformant, 1 is not, 2 is unreadable. Each finding names its layer. The checker is
+[`src/lambda_ber_schema/rocrate/validation.py`](../../../src/lambda_ber_schema/rocrate/validation.py),
+importable as `lambda_ber_schema.rocrate.validate_path`; the test suite runs the same code over
+the fixtures in §13.
 
 **Layer 1 — document shape.** `assets/rocrate/jsonschema/lambda_rocrate_core.schema.json`,
 generated with `--top-class ROCrateMetadataDocument`. `@graph` is deliberately permissive at this
@@ -543,8 +553,8 @@ fails. This is where the profile bites, and it is why a technique quantity must 
 `lambdarc:resultSummary` rather than being scattered as a bare property: nesting keeps the crate
 valid against Core while the extension gives the block its shape.
 
-**Layer 3 — graph rules.** The cross-entity constraints, in
-[`tests/test_rocrate_profile.py`](../../../tests/test_rocrate_profile.py):
+**Layer 3 — graph rules.** The cross-entity constraints, as `graph_rule_violations` in the
+checker:
 
 1. A metadata descriptor exists and its `about` resolves to an entity in the graph.
 2. A root data entity exists, typed `lambda:Dataset` (or the deprecated `lambda:Experiment`).
