@@ -6,6 +6,32 @@ A comprehensive LinkML schema for representing multimodal structural biology ima
 
 - [Schema Docs](https://lambda-ber.github.io/lambda-ber-schema/)
 
+## Validating an RO-Crate
+
+A LAMBDA data package is an [RO-Crate](https://www.researchobject.org/ro-crate/) whose
+`ro-crate-metadata.json` conforms to the
+[LAMBDA Core profile](profiles/core/0.3.2/lambda-core-rocrate-profile-v0.3.2.md). One command
+checks it:
+
+```bash
+# pip install lambda-ber-schema   (or `uv sync` in a checkout and prefix with `uv run`)
+lambda-ber-schema rocrate validate path/to/ro-crate-metadata.json
+# or point at the crate directory
+lambda-ber-schema rocrate validate path/to/crate/
+```
+
+The exit code is 0 when the crate conforms, 1 when it does not, and 2 when it could not be read.
+Every finding is tagged with the layer that produced it: `[document]` for the overall shape,
+`[entity]` for a term or value a profile class does not allow, and `[graph]` for a rule about
+relationships between entities (a dangling `hasPart`, an undeclared absence, and so on).
+`--json` gives a machine-readable report (one JSON array, one object per crate), `--layer` restricts the check to one or more layers,
+and `--schema` swaps in a different generated JSON Schema.
+
+`linkml-validate` alone cannot do this. It walks a crate as a collection of instances rather than
+one document, and it has no way to express the per-entity dispatch on `@type` or the graph rules.
+The checker is importable too, as `lambda_ber_schema.rocrate.validate_path` and
+`validate_crate`.
+
 ## Development
 
 ### Setup

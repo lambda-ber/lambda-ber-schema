@@ -34,6 +34,9 @@ etl_app = typer.Typer(
     help="ETL commands for loading data from external sources")
 app.add_typer(etl_app, name="etl")
 
+rocrate_app = typer.Typer(help="LAMBDA Core RO-Crate profile: validate ro-crate-metadata.json")
+app.add_typer(rocrate_app, name="rocrate")
+
 
 def _serialize_dataset(dataset, format: str) -> str:
     """Serialize dataset to requested format."""
@@ -1033,6 +1036,94 @@ def etl_dump_ssrl_mx(
         f"Complete: {succeeded} succeeded, {skipped} skipped, {failed} failed",
         err=True,
     )
+    if failed:
+        raise typer.Exit(1)
+
+
+@rocrate_app.command("validate")
+def rocrate_validate(
+    paths: Annotated[
+        list[Path],
+        typer.Argument(
+            help="One or more ro-crate-metadata.json files, or crate directories containing one",
+            show_default=False,
+        ),
+    ],
+    schema: Annotated[
+        Path | None,
+        typer.Option(
+            "--schema",
+            help=(
+                "JSON Schema to validate against, generated with --top-class "
+                "ROCrateMetadataDocument. Defaults to the copy shipped in the package."
+            ),
+        ),
+    ] = None,
+    layer: Annotated[
+        list[str] | None,
+        typer.Option(
+            "--layer",
+            help="Run only these layers (document, entity, graph). Repeatable. Default: all.",
+        ),
+    ] = None,
+    output_json: Annotated[
+        bool,
+        typer.Option(
+            "--json",
+            help="Emit a single JSON array with one report per crate instead of text",
+        ),
+    ] = False,
+    quiet: Annotated[
+        bool, typer.Option("--quiet", "-q", help="Print nothing; the exit code is the verdict")
+    ] = False,
+) -> None:
+    """Check a crate against the LAMBDA Core RO-Crate profile.
+
+    Runs the three validation layers of the profile: document shape, per-entity closed-class
+    checks, and the cross-entity graph rules. Exit code 0 when every crate conforms, 1 when any
+    does not, and 2 when a path does not exist, a crate could not be read, or the schema could
+    not be loaded.
+    """
+    from lambda_ber_schema.rocrate import LAYERS, SchemaNotAvailable, load_schema, validate_path
+
+    layers = tuple(layer) if layer else LAYERS
+    unknown = sorted(set(layers) - set(LAYERS))
+    if unknown:
+        typer.echo(f"Error: unknown layer(s) {unknown}; choose from {', '.join(LAYERS)}", err=True)
+        raise typer.Exit(2)
+
+    try:
+        json_schema = load_schema(schema)
+    except (SchemaNotAvailable, OSError, json.JSONDecodeError) as exc:
+        typer.echo(f"Error: could not load the profile schema: {exc}", err=True)
+        raise typer.Exit(2)
+
+    failed = False
+    unreadable = False
+    reports = []
+    for path in paths:
+        try:
+            report = validate_path(path, json_schema, layers=layers)
+        except OSError as exc:
+            typer.echo(f"Error: {exc}", err=True)
+            unreadable = True
+            continue
+        if not report.ok:
+            failed = True
+        reports.append(report)
+        if quiet or output_json:
+            continue
+        if report.ok:
+            typer.echo(f"{report.source}: conformant")
+        else:
+            typer.echo(f"{report.source}: {len(report.findings)} finding(s)")
+            for finding in report.findings:
+                typer.echo(f"  {finding}")
+
+    if output_json and not quiet:
+        typer.echo(json.dumps([r.to_dict() for r in reports], indent=2))
+    if unreadable:
+        raise typer.Exit(2)
     if failed:
         raise typer.Exit(1)
 

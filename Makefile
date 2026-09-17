@@ -40,17 +40,27 @@ assets/sssom/lambda_ber_schema.sssom.tsv: $(SCHEMA)
 # The profile imports the main schema, which also declares a tree_root. gen-project would
 # therefore root the generated JSON Schema at Dataset rather than at the crate document, so
 # the JSON Schema is regenerated afterwards with the crate document named explicitly.
+# The JSON Schema is also copied into the package so that `lambda-ber-schema rocrate validate`
+# works from a plain install, where the linkml generators are not present to rebuild it.
+RCJSONSCHEMA := $(RCDIR)/jsonschema/lambda_rocrate_core.schema.json
+RCPACKAGED := src/lambda_ber_schema/schema/lambda_rocrate_core.schema.json
 gen-rocrate:
 	$(RUN) gen-project --config-file conf/rocrate-gen-config.yaml $(RCSCHEMA) -d $(RCDIR)
-	$(RUN) gen-json-schema --top-class $(RCDOC) $(RCSCHEMA) > $(RCDIR)/jsonschema/lambda_rocrate_core.schema.json
+	$(RUN) gen-json-schema --top-class $(RCDOC) $(RCSCHEMA) > $(RCJSONSCHEMA)
+	cp -p $(RCJSONSCHEMA) $(RCPACKAGED)
 	$(RUN) gen-sssom $(RCSCHEMA) -o $(RCDIR)/lambda_rocrate_core.sssom.tsv
 
 # linkml-validate is not used here: it iterates a data source as a collection of instances, so a
 # single JSON object is walked key-by-key, and --legacy-mode routes through gen-python, which cannot
-# represent the @-keyword aliases. The pytest suite validates against the generated JSON Schema and
-# adds the per-entity and graph-rule layers on top.
+# represent the @-keyword aliases. The checker in src/lambda_ber_schema/rocrate/ validates against
+# the generated JSON Schema and adds the per-entity and graph-rule layers on top; the pytest suite
+# runs it over the fixtures. Users run the same checker with `lambda-ber-schema rocrate validate`.
 test-rocrate:
 	$(RUN) pytest tests/test_rocrate_profile.py
+
+# Validate a crate the way a user would: make validate-rocrate CRATE=path/to/ro-crate-metadata.json
+validate-rocrate:
+	$(RUN) lambda-ber-schema rocrate validate $(CRATE)
 
 serve:
 	$(RUN) mkdocs serve
