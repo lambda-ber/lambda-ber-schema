@@ -405,9 +405,11 @@ class PDBLoader(BaseLoader):
                     unit="kDa",
                 )
 
-            # Get protein name
-            protein_name = entity.get(
+            # The depositor's description names the entity whatever its polymer;
+            # protein_name is the sample's display field for proteins only
+            entity_name = entity.get(
                 "rcsb_polymer_entity", {}).get("pdbx_description")
+            protein_name = entity_name if sample_type == SampleTypeEnum.protein else None
 
             # Get UniProt IDs from container identifiers
             container_ids = entity.get("rcsb_polymer_entity_container_identifiers", {})
@@ -437,7 +439,7 @@ class PDBLoader(BaseLoader):
                     id=f"pdb:{entry_id}/sample/{i}",
                     sample_code=f"PDB-{entry_id}-{i}",
                     sample_type=sample_type,
-                    title=protein_name,
+                    title=entity_name,
                     protein_name=protein_name,
                     organism=organism,
                     molecular_weight=molecular_weight,

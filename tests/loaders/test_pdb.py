@@ -234,6 +234,34 @@ class TestPDBLoader:
         assert post_mock.call_count == 1
 
 
+@pytest.fixture
+def dna_loader(mocker, pdb_1aay_entry_response, pdb_1aay_polymer_entities):
+    """Loader for 1AAY: Zif268 zinc finger bound to an 11-bp DNA duplex."""
+    loader = PDBLoader()
+    mocker.patch.object(loader, "_fetch_entry", return_value=pdb_1aay_entry_response)
+    mocker.patch.object(
+        loader, "_fetch_polymer_entities", return_value=pdb_1aay_polymer_entities
+    )
+    return loader
+
+
+class TestPDBLoaderNucleicAcids:
+    """A protein-DNA complex: two DNA entities and one protein entity."""
+
+    def test_samples_typed_by_polymer(self, dna_loader):
+        result = dna_loader.load("1AAY")
+        types = [s.sample_type for s in result.dataset.samples]
+        assert types == ["nucleic_acid", "nucleic_acid", "protein"]
+
+    def test_protein_name_is_for_protein_samples_only(self, dna_loader):
+        """A DNA strand's description is its title, not a protein name."""
+        result = dna_loader.load("1AAY")
+        strand, _, protein = result.dataset.samples
+        assert strand.title.startswith("DNA (5'-D(*AP*GP*CP*GP")
+        assert strand.protein_name is None
+        assert protein.protein_name == "PROTEIN (ZIF268 ZINC FINGER PEPTIDE)"
+
+
 @pytest.mark.integration
 @pytest.mark.slow
 class TestPDBLoaderIntegration:
