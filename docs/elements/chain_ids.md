@@ -3,11 +3,6 @@
 # Slot: chain_ids 
 
 
-_Chain identifiers this protein occupies in the deposited structure, where the sample is a PDB entity_
-
-
-
-
 
 URI: [lambda:chain_ids](http://w3id.org/lambda/chain_ids)
 Alias: chain_ids
@@ -23,6 +18,7 @@ Alias: chain_ids
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [SampleProteinAssociation](SampleProteinAssociation.md) | M:N link between Sample and Protein |  no  |
+| [SampleNucleicAcidAssociation](SampleNucleicAcidAssociation.md) | M:N link between Sample and NucleicAcid |  no  |
 
 
 
@@ -32,8 +28,6 @@ Alias: chain_ids
 ## Properties
 
 * Range: [String](String.md)
-
-* Multivalued: True
 
 
 
@@ -45,13 +39,6 @@ Alias: chain_ids
 
 
 
-### Schema Source
-
-
-* from schema: http://w3id.org/lambda/
-
-
-
 
 ## Mappings
 
@@ -59,7 +46,6 @@ Alias: chain_ids
 | ---  | ---  |
 | self | lambda:chain_ids |
 | native | lambda:chain_ids |
-| exact | mmCIF:_entity_poly.pdbx_strand_id |
 
 
 
@@ -69,18 +55,11 @@ Alias: chain_ids
 <details>
 ```yaml
 name: chain_ids
-description: Chain identifiers this protein occupies in the deposited structure, where
-  the sample is a PDB entity
-from_schema: http://w3id.org/lambda/
-exact_mappings:
-- mmCIF:_entity_poly.pdbx_strand_id
-rank: 1000
 alias: chain_ids
-owner: SampleProteinAssociation
 domain_of:
 - SampleProteinAssociation
+- SampleNucleicAcidAssociation
 range: string
-multivalued: true
 
 ```
 </details>

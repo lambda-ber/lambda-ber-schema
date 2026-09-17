@@ -1,5 +1,5 @@
 # Auto generated from lambda_ber_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-09-09T13:29:57
+# Generation date: 2026-09-17T10:59:48
 # Schema: lambda-ber-schema
 #
 # id: http://w3id.org/lambda/
@@ -28,10 +28,16 @@
 #     sample that contains the protein; what varies between preparations lives on the sample and on
 #     the sample-protein association.
 #
+#   - [Nucleic Acids](NucleicAcid.md): The DNA or RNA strand as a molecular entity - sequence, type,
+#     source organism, gene - shared by every sample that contains it, as Protein is for proteins.
+#     Identified by RNAcentral, RefSeq or INSDC accession where one exists; a synthetic
+#     oligonucleotide, which is most of what structural biology sees, gets a local id.
+#
 #   - [Samples](Sample.md): The physical specimens being studied (proteins, nucleic acids, complexes,
 #     cells, tissues). Each sample records the preparation-specific facts - buffer conditions,
-#     concentration, storage, purity - and links to the proteins it contains through
-#     [SampleProteinAssociation](SampleProteinAssociation.md).
+#     concentration, storage, purity - and links to the proteins and nucleic acids it contains through
+#     [SampleProteinAssociation](SampleProteinAssociation.md) and
+#     [SampleNucleicAcidAssociation](SampleNucleicAcidAssociation.md).
 #
 #   - [Protein Constructs](ProteinConstruct.md): How a protein was cloned and expressed - vector,
 #     tags, cleavage sites, codon optimization. A construct realizes one protein and may feed many samples.
@@ -95,6 +101,8 @@
 #   - **ExperimentSampleAssociation**: Links samples to experiments (with role and preparation used)
 #   - **SampleProteinAssociation**: Links proteins to samples (with role, copy number, residue range,
 #     modifications, observed mass, and the construct used)
+#   - **SampleNucleicAcidAssociation**: Links nucleic acids to samples (with role, copy number,
+#     structural form, how the strand was made, modifications, and observed mass)
 #   - **ExperimentInstrumentAssociation**: Links instruments to experiments (with role: primary, detector)
 #   - **WorkflowExperimentAssociation**: Links source experiments to workflows
 #   - **WorkflowInputAssociation**: Links input files to workflows
@@ -108,6 +116,7 @@
 #   This relational design enables:
 #   - **Sample reuse**: The same sample can be used in multiple studies and experiments
 #   - **Protein reuse**: The same protein is described once and linked from every sample that contains it
+#   - **Nucleic acid reuse**: Likewise for a DNA or RNA strand - one record, linked from every sample it is in
 #   - **Multi-instrument experiments**: An experiment can use multiple instruments with different roles
 #   - **Integrative workflows**: A workflow can combine data from multiple experiments
 #
@@ -193,7 +202,7 @@ from linkml_runtime.linkml_model.types import Boolean, Curie, Date, Float, Integ
 from linkml_runtime.utils.metamodelcore import Bool, Curie, URI, URIorCURIE, XSDDate
 
 metamodel_version = "1.7.0"
-version = "0.1.2.post218.dev0+829558d2"
+version = "0.1.2.post231.dev0+52d03959"
 
 # Namespaces
 CHMO = CurieNamespace('CHMO', 'http://purl.obolibrary.org/obo/CHMO_')
@@ -208,6 +217,7 @@ UO = CurieNamespace('UO', 'http://purl.obolibrary.org/obo/UO_')
 DCTERMS = CurieNamespace('dcterms', 'http://purl.org/dc/terms/')
 EMSL = CurieNamespace('emsl', 'https://api.emsl.pnnl.gov/external/')
 IMGCIF = CurieNamespace('imgCIF', 'https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#')
+INSDC = CurieNamespace('insdc', 'https://www.ebi.ac.uk/ena/data/view/')
 ISPYB = CurieNamespace('ispyb', 'https://ispyb.github.io/ISPyB/')
 LAMBDA = CurieNamespace('lambda', 'http://w3id.org/lambda/')
 LAMBDABER = CurieNamespace('lambdaber', 'http://w3id.org/lambda/')
@@ -219,6 +229,9 @@ PDB = CurieNamespace('pdb', 'https://www.rcsb.org/structure/')
 PROV = CurieNamespace('prov', 'http://www.w3.org/ns/prov#')
 QUD = CurieNamespace('qud', 'http://qudt.org/1.1/schema/qudt#')
 RDFS = CurieNamespace('rdfs', 'http://www.w3.org/2000/01/rdf-schema#')
+REFSEQ = CurieNamespace('refseq', 'https://www.ncbi.nlm.nih.gov/nuccore/')
+RFAM = CurieNamespace('rfam', 'https://rfam.org/family/')
+RNACENTRAL = CurieNamespace('rnacentral', 'https://rnacentral.org/rna/')
 SASBDB = CurieNamespace('sasbdb', 'https://www.sasbdb.org/data/')
 SCHEMA = CurieNamespace('schema', 'https://schema.org/')
 SIMPLESCATTERING = CurieNamespace('simplescattering', 'https://www.simplescattering.com/open_dataset/')
@@ -278,6 +291,10 @@ class ProteinId(NamedThingId):
 
 
 class ProteinConstructId(NamedThingId):
+    pass
+
+
+class NucleicAcidId(NamedThingId):
     pass
 
 
@@ -474,6 +491,7 @@ class Dataset(NamedThing):
     instruments: Optional[Union[dict[Union[str, InstrumentId], Union[dict, "Instrument"]], list[Union[dict, "Instrument"]]]] = empty_dict()
     proteins: Optional[Union[dict[Union[str, ProteinId], Union[dict, "Protein"]], list[Union[dict, "Protein"]]]] = empty_dict()
     protein_constructs: Optional[Union[dict[Union[str, ProteinConstructId], Union[dict, "ProteinConstruct"]], list[Union[dict, "ProteinConstruct"]]]] = empty_dict()
+    nucleic_acids: Optional[Union[dict[Union[str, NucleicAcidId], Union[dict, "NucleicAcid"]], list[Union[dict, "NucleicAcid"]]]] = empty_dict()
     samples: Optional[Union[dict[Union[str, SampleId], Union[dict, "Sample"]], list[Union[dict, "Sample"]]]] = empty_dict()
     sample_preparations: Optional[Union[dict[Union[str, SamplePreparationId], Union[dict, "SamplePreparation"]], list[Union[dict, "SamplePreparation"]]]] = empty_dict()
     experiment_runs: Optional[Union[dict[Union[str, ExperimentRunId], Union[dict, "ExperimentRun"]], list[Union[dict, "ExperimentRun"]]]] = empty_dict()
@@ -486,6 +504,7 @@ class Dataset(NamedThing):
     experiment_sample_associations: Optional[Union[Union[dict, "ExperimentSampleAssociation"], list[Union[dict, "ExperimentSampleAssociation"]]]] = empty_list()
     experiment_instrument_associations: Optional[Union[Union[dict, "ExperimentInstrumentAssociation"], list[Union[dict, "ExperimentInstrumentAssociation"]]]] = empty_list()
     sample_protein_associations: Optional[Union[Union[dict, "SampleProteinAssociation"], list[Union[dict, "SampleProteinAssociation"]]]] = empty_list()
+    sample_nucleic_acid_associations: Optional[Union[Union[dict, "SampleNucleicAcidAssociation"], list[Union[dict, "SampleNucleicAcidAssociation"]]]] = empty_list()
     workflow_experiment_associations: Optional[Union[Union[dict, "WorkflowExperimentAssociation"], list[Union[dict, "WorkflowExperimentAssociation"]]]] = empty_list()
     workflow_input_associations: Optional[Union[Union[dict, "WorkflowInputAssociation"], list[Union[dict, "WorkflowInputAssociation"]]]] = empty_list()
     workflow_output_associations: Optional[Union[Union[dict, "WorkflowOutputAssociation"], list[Union[dict, "WorkflowOutputAssociation"]]]] = empty_list()
@@ -516,6 +535,8 @@ class Dataset(NamedThing):
         self._normalize_inlined_as_list(slot_name="proteins", slot_type=Protein, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="protein_constructs", slot_type=ProteinConstruct, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="nucleic_acids", slot_type=NucleicAcid, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="samples", slot_type=Sample, key_name="id", keyed=True)
 
@@ -552,6 +573,10 @@ class Dataset(NamedThing):
         if not isinstance(self.sample_protein_associations, list):
             self.sample_protein_associations = [self.sample_protein_associations] if self.sample_protein_associations is not None else []
         self.sample_protein_associations = [v if isinstance(v, SampleProteinAssociation) else SampleProteinAssociation(**as_dict(v)) for v in self.sample_protein_associations]
+
+        if not isinstance(self.sample_nucleic_acid_associations, list):
+            self.sample_nucleic_acid_associations = [self.sample_nucleic_acid_associations] if self.sample_nucleic_acid_associations is not None else []
+        self.sample_nucleic_acid_associations = [v if isinstance(v, SampleNucleicAcidAssociation) else SampleNucleicAcidAssociation(**as_dict(v)) for v in self.sample_nucleic_acid_associations]
 
         if not isinstance(self.workflow_experiment_associations, list):
             self.workflow_experiment_associations = [self.workflow_experiment_associations] if self.workflow_experiment_associations is not None else []
@@ -763,7 +788,8 @@ class Sample(NamedThing):
     A physical biological sample used in structural biology experiments. Records what is true of this preparation -
     buffer, concentration, storage, purity, the construct and tags used. The identity of the protein(s) it contains
     belongs on Protein, linked through SampleProteinAssociation, so a protein studied in ten preparations is described
-    once.
+    once. The nucleic acid(s) it contains belong on NucleicAcid in the same way, linked through
+    SampleNucleicAcidAssociation; a protein-DNA complex is one sample with one row in each.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -1133,6 +1159,100 @@ class ProteinConstruct(NamedThing):
 
         if self.verification_notes is not None and not isinstance(self.verification_notes, str):
             self.verification_notes = str(self.verification_notes)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class NucleicAcid(NamedThing):
+    """
+    A nucleic acid as a molecular entity: one DNA, RNA or hybrid strand, with its sequence, type, source and the
+    annotations that hold for it regardless of any one preparation. The counterpart of Protein for the other
+    biopolymer. One NucleicAcid record is shared by every Sample that contains it, through
+    SampleNucleicAcidAssociation. A duplex of two different strands is two records; a self-complementary duplex is one
+    record with copy_number 2 on the association. Whether the strand is paired in a given sample, how it was made, and
+    which chemical modifications it carries are preparation facts and live on the association.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDA["NucleicAcid"]
+    class_class_curie: ClassVar[str] = "lambda:NucleicAcid"
+    class_name: ClassVar[str] = "NucleicAcid"
+    class_model_uri: ClassVar[URIRef] = LAMBDA.NucleicAcid
+
+    id: Union[str, NucleicAcidId] = None
+    nucleic_acid_type: Union[str, "NucleicAcidTypeEnum"] = None
+    nucleic_acid_name: Optional[str] = None
+    rnacentral_id: Optional[Union[str, URIorCURIE]] = None
+    sequence_accession: Optional[Union[str, URIorCURIE]] = None
+    rfam_families: Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]] = empty_list()
+    gene_name: Optional[str] = None
+    organism: Optional[Union[str, OntologyTermId]] = None
+    organism_name: Optional[str] = None
+    nucleotide_sequence: Optional[str] = None
+    sequence_length: Optional[int] = None
+    molecular_weight_theoretical: Optional[Union[dict, "QuantityValue"]] = None
+    function_description: Optional[str] = None
+    go_terms: Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]] = empty_list()
+    pdb_entries: Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]] = empty_list()
+    cross_references: Optional[Union[Union[dict, "DatabaseCrossReference"], list[Union[dict, "DatabaseCrossReference"]]]] = empty_list()
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, NucleicAcidId):
+            self.id = NucleicAcidId(self.id)
+
+        if self._is_empty(self.nucleic_acid_type):
+            self.MissingRequiredField("nucleic_acid_type")
+        if not isinstance(self.nucleic_acid_type, NucleicAcidTypeEnum):
+            self.nucleic_acid_type = NucleicAcidTypeEnum(self.nucleic_acid_type)
+
+        if self.nucleic_acid_name is not None and not isinstance(self.nucleic_acid_name, str):
+            self.nucleic_acid_name = str(self.nucleic_acid_name)
+
+        if self.rnacentral_id is not None and not isinstance(self.rnacentral_id, URIorCURIE):
+            self.rnacentral_id = URIorCURIE(self.rnacentral_id)
+
+        if self.sequence_accession is not None and not isinstance(self.sequence_accession, URIorCURIE):
+            self.sequence_accession = URIorCURIE(self.sequence_accession)
+
+        if not isinstance(self.rfam_families, list):
+            self.rfam_families = [self.rfam_families] if self.rfam_families is not None else []
+        self.rfam_families = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.rfam_families]
+
+        if self.gene_name is not None and not isinstance(self.gene_name, str):
+            self.gene_name = str(self.gene_name)
+
+        if self.organism is not None and not isinstance(self.organism, OntologyTermId):
+            self.organism = OntologyTermId(self.organism)
+
+        if self.organism_name is not None and not isinstance(self.organism_name, str):
+            self.organism_name = str(self.organism_name)
+
+        if self.nucleotide_sequence is not None and not isinstance(self.nucleotide_sequence, str):
+            self.nucleotide_sequence = str(self.nucleotide_sequence)
+
+        if self.sequence_length is not None and not isinstance(self.sequence_length, int):
+            self.sequence_length = int(self.sequence_length)
+
+        if self.molecular_weight_theoretical is not None and not isinstance(self.molecular_weight_theoretical, QuantityValue):
+            self.molecular_weight_theoretical = QuantityValue(**as_dict(self.molecular_weight_theoretical))
+
+        if self.function_description is not None and not isinstance(self.function_description, str):
+            self.function_description = str(self.function_description)
+
+        if not isinstance(self.go_terms, list):
+            self.go_terms = [self.go_terms] if self.go_terms is not None else []
+        self.go_terms = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.go_terms]
+
+        if not isinstance(self.pdb_entries, list):
+            self.pdb_entries = [self.pdb_entries] if self.pdb_entries is not None else []
+        self.pdb_entries = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.pdb_entries]
+
+        if not isinstance(self.cross_references, list):
+            self.cross_references = [self.cross_references] if self.cross_references is not None else []
+        self.cross_references = [v if isinstance(v, DatabaseCrossReference) else DatabaseCrossReference(**as_dict(v)) for v in self.cross_references]
 
         super().__post_init__(**kwargs)
 
@@ -4394,6 +4514,76 @@ class SampleProteinAssociation(YAMLRoot):
 
 
 @dataclass(repr=False)
+class SampleNucleicAcidAssociation(YAMLRoot):
+    """
+    M:N link between Sample and NucleicAcid. A sample may hold several strands - the two strands of a duplex, a guide
+    RNA with its target DNA, a primer with its template - and one strand turns up in many samples. What changes from
+    preparation to preparation lives here: the role, the copy number, the form the strand takes (single, duplex,
+    hairpin, quadruplex), how it was made, the modifications it carries, and the mass actually measured.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDA["SampleNucleicAcidAssociation"]
+    class_class_curie: ClassVar[str] = "lambda:SampleNucleicAcidAssociation"
+    class_name: ClassVar[str] = "SampleNucleicAcidAssociation"
+    class_model_uri: ClassVar[URIRef] = LAMBDA.SampleNucleicAcidAssociation
+
+    sample_id: Union[str, SampleId] = None
+    nucleic_acid_id: Union[str, NucleicAcidId] = None
+    role: Optional[Union[str, "SampleNucleicAcidRoleEnum"]] = None
+    copy_number: Optional[int] = None
+    residue_range: Optional[str] = None
+    sequence_coverage: Optional[float] = None
+    chain_ids: Optional[Union[str, list[str]]] = empty_list()
+    structural_form: Optional[Union[str, "NucleicAcidFormEnum"]] = None
+    source_method: Optional[Union[str, "NucleicAcidSourceEnum"]] = None
+    modifications: Optional[Union[str, list[str]]] = empty_list()
+    observed_molecular_weight: Optional[Union[dict, "QuantityValue"]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.sample_id):
+            self.MissingRequiredField("sample_id")
+        if not isinstance(self.sample_id, SampleId):
+            self.sample_id = SampleId(self.sample_id)
+
+        if self._is_empty(self.nucleic_acid_id):
+            self.MissingRequiredField("nucleic_acid_id")
+        if not isinstance(self.nucleic_acid_id, NucleicAcidId):
+            self.nucleic_acid_id = NucleicAcidId(self.nucleic_acid_id)
+
+        if self.role is not None and not isinstance(self.role, SampleNucleicAcidRoleEnum):
+            self.role = SampleNucleicAcidRoleEnum(self.role)
+
+        if self.copy_number is not None and not isinstance(self.copy_number, int):
+            self.copy_number = int(self.copy_number)
+
+        if self.residue_range is not None and not isinstance(self.residue_range, str):
+            self.residue_range = str(self.residue_range)
+
+        if self.sequence_coverage is not None and not isinstance(self.sequence_coverage, float):
+            self.sequence_coverage = float(self.sequence_coverage)
+
+        if not isinstance(self.chain_ids, list):
+            self.chain_ids = [self.chain_ids] if self.chain_ids is not None else []
+        self.chain_ids = [v if isinstance(v, str) else str(v) for v in self.chain_ids]
+
+        if self.structural_form is not None and not isinstance(self.structural_form, NucleicAcidFormEnum):
+            self.structural_form = NucleicAcidFormEnum(self.structural_form)
+
+        if self.source_method is not None and not isinstance(self.source_method, NucleicAcidSourceEnum):
+            self.source_method = NucleicAcidSourceEnum(self.source_method)
+
+        if not isinstance(self.modifications, list):
+            self.modifications = [self.modifications] if self.modifications is not None else []
+        self.modifications = [v if isinstance(v, str) else str(v) for v in self.modifications]
+
+        if self.observed_molecular_weight is not None and not isinstance(self.observed_molecular_weight, QuantityValue):
+            self.observed_molecular_weight = QuantityValue(**as_dict(self.observed_molecular_weight))
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
 class ExperimentInstrumentAssociation(YAMLRoot):
     """
     M:N link between ExperimentRun and Instrument
@@ -7158,6 +7348,130 @@ class SampleProteinRoleEnum(EnumDefinitionImpl):
         description="Part a protein plays in a sample",
     )
 
+class SampleNucleicAcidRoleEnum(EnumDefinitionImpl):
+    """
+    Part a nucleic acid plays in a sample
+    """
+    target = PermissibleValue(
+        text="target",
+        description="The nucleic acid under investigation")
+    subunit = PermissibleValue(
+        text="subunit",
+        description="One strand of a duplex, or one chain of an assembly, that is the target as a whole")
+    binding_partner = PermissibleValue(
+        text="binding_partner",
+        description="""A nucleic acid present for its interaction with the target, such as the DNA site a transcription factor binds, an aptamer, or an enzyme substrate""")
+    template = PermissibleValue(
+        text="template",
+        description="The strand a polymerase or reverse transcriptase reads")
+    primer = PermissibleValue(
+        text="primer",
+        description="The strand a polymerase extends")
+    guide = PermissibleValue(
+        text="guide",
+        description="""A guide RNA or DNA that directs a nuclease or other effector to its target (e.g., sgRNA, crRNA)""")
+    scaffold = PermissibleValue(
+        text="scaffold",
+        description="A nucleic acid used as a structural scaffold, as in DNA origami or a nanoparticle assembly")
+    contaminant = PermissibleValue(
+        text="contaminant",
+        description="""A nucleic acid present unintentionally and identified after the fact, such as host DNA co-purified with a protein""")
+    standard = PermissibleValue(
+        text="standard",
+        description="A reference nucleic acid added for calibration or as a size marker")
+
+    _defn = EnumDefinition(
+        name="SampleNucleicAcidRoleEnum",
+        description="Part a nucleic acid plays in a sample",
+    )
+
+class NucleicAcidTypeEnum(EnumDefinitionImpl):
+    """
+    Chemical type of a nucleic acid polymer. The mmCIF _entity_poly.type value is given for each.
+    """
+    dna = PermissibleValue(
+        text="dna",
+        description="Deoxyribonucleic acid (mmCIF: polydeoxyribonucleotide)")
+    rna = PermissibleValue(
+        text="rna",
+        description="Ribonucleic acid (mmCIF: polyribonucleotide)")
+    dna_rna_hybrid = PermissibleValue(
+        text="dna_rna_hybrid",
+        description="""A single strand containing both deoxyribo- and ribonucleotides (mmCIF: polydeoxyribonucleotide/polyribonucleotide hybrid)""")
+    peptide_nucleic_acid = PermissibleValue(
+        text="peptide_nucleic_acid",
+        description="""Peptide nucleic acid, a synthetic analogue with a peptide-like backbone (mmCIF: peptide nucleic acid)""")
+    other = PermissibleValue(
+        text="other",
+        description="""Another nucleic acid analogue, such as a locked nucleic acid, morpholino or threose nucleic acid""")
+
+    _defn = EnumDefinition(
+        name="NucleicAcidTypeEnum",
+        description="Chemical type of a nucleic acid polymer. The mmCIF _entity_poly.type value is given for each.",
+    )
+
+class NucleicAcidFormEnum(EnumDefinitionImpl):
+    """
+    Form a nucleic acid strand takes in a sample
+    """
+    single_stranded = PermissibleValue(
+        text="single_stranded",
+        description="Unpaired, or with no defined secondary structure")
+    double_stranded = PermissibleValue(
+        text="double_stranded",
+        description="""Paired with a complementary strand in a duplex, including a self-complementary strand paired with a second copy of itself""")
+    hairpin = PermissibleValue(
+        text="hairpin",
+        description="Folded back on itself to form a stem-loop")
+    triplex = PermissibleValue(
+        text="triplex",
+        description="Three strands, a third strand bound in the major groove of a duplex")
+    quadruplex = PermissibleValue(
+        text="quadruplex",
+        description="Four-stranded, such as a G-quadruplex or i-motif")
+    junction = PermissibleValue(
+        text="junction",
+        description="A three- or four-way junction, such as a Holliday junction")
+    circular = PermissibleValue(
+        text="circular",
+        description="Covalently closed circle, such as a plasmid or a circular RNA")
+    other = PermissibleValue(
+        text="other",
+        description="A form not listed, described in the association's description")
+
+    _defn = EnumDefinition(
+        name="NucleicAcidFormEnum",
+        description="Form a nucleic acid strand takes in a sample",
+    )
+
+class NucleicAcidSourceEnum(EnumDefinitionImpl):
+    """
+    How a nucleic acid strand was produced for a preparation
+    """
+    chemical_synthesis = PermissibleValue(
+        text="chemical_synthesis",
+        description="Solid-phase chemical synthesis, as for most oligonucleotides")
+    in_vitro_transcription = PermissibleValue(
+        text="in_vitro_transcription",
+        description="Transcribed in vitro, typically by T7 RNA polymerase from a DNA template")
+    pcr_amplification = PermissibleValue(
+        text="pcr_amplification",
+        description="Amplified by PCR")
+    plasmid_preparation = PermissibleValue(
+        text="plasmid_preparation",
+        description="Purified as plasmid DNA from a host")
+    isolated_from_organism = PermissibleValue(
+        text="isolated_from_organism",
+        description="""Purified from cells, tissue or virions without amplification, as for native tRNA or genomic DNA""")
+    other = PermissibleValue(
+        text="other",
+        description="A method not listed, described in the association's description")
+
+    _defn = EnumDefinition(
+        name="NucleicAcidSourceEnum",
+        description="How a nucleic acid strand was produced for a preparation",
+    )
+
 class InstrumentRoleEnum(EnumDefinitionImpl):
     """
     Role of an instrument in an experiment
@@ -8258,6 +8572,30 @@ class DatabaseNameEnum(EnumDefinitionImpl):
     go = PermissibleValue(
         text="go",
         description="Gene Ontology")
+    rnacentral = PermissibleValue(
+        text="rnacentral",
+        description="RNAcentral")
+    rfam = PermissibleValue(
+        text="rfam",
+        description="Rfam")
+    refseq = PermissibleValue(
+        text="refseq",
+        description="NCBI RefSeq")
+    insdc = PermissibleValue(
+        text="insdc",
+        description="INSDC (GenBank, ENA, DDBJ)")
+    mirbase = PermissibleValue(
+        text="mirbase",
+        description="miRBase")
+    gtrnadb = PermissibleValue(
+        text="gtrnadb",
+        description="GtRNAdb")
+    ndb = PermissibleValue(
+        text="ndb",
+        description="Nucleic Acid Database")
+    modomics = PermissibleValue(
+        text="modomics",
+        description="MODOMICS, modified RNA nucleosides")
 
     _defn = EnumDefinition(
         name="DatabaseNameEnum",
@@ -8328,6 +8666,9 @@ slots.dataset__proteins = Slot(uri=LAMBDA.proteins, name="dataset__proteins", cu
 slots.dataset__protein_constructs = Slot(uri=LAMBDA.protein_constructs, name="dataset__protein_constructs", curie=LAMBDA.curie('protein_constructs'),
                    model_uri=LAMBDA.dataset__protein_constructs, domain=None, range=Optional[Union[dict[Union[str, ProteinConstructId], Union[dict, ProteinConstruct]], list[Union[dict, ProteinConstruct]]]])
 
+slots.dataset__nucleic_acids = Slot(uri=LAMBDA.nucleic_acids, name="dataset__nucleic_acids", curie=LAMBDA.curie('nucleic_acids'),
+                   model_uri=LAMBDA.dataset__nucleic_acids, domain=None, range=Optional[Union[dict[Union[str, NucleicAcidId], Union[dict, NucleicAcid]], list[Union[dict, NucleicAcid]]]])
+
 slots.dataset__samples = Slot(uri=LAMBDA.samples, name="dataset__samples", curie=LAMBDA.curie('samples'),
                    model_uri=LAMBDA.dataset__samples, domain=None, range=Optional[Union[dict[Union[str, SampleId], Union[dict, Sample]], list[Union[dict, Sample]]]])
 
@@ -8363,6 +8704,9 @@ slots.dataset__experiment_instrument_associations = Slot(uri=LAMBDA.experiment_i
 
 slots.dataset__sample_protein_associations = Slot(uri=LAMBDA.sample_protein_associations, name="dataset__sample_protein_associations", curie=LAMBDA.curie('sample_protein_associations'),
                    model_uri=LAMBDA.dataset__sample_protein_associations, domain=None, range=Optional[Union[Union[dict, SampleProteinAssociation], list[Union[dict, SampleProteinAssociation]]]])
+
+slots.dataset__sample_nucleic_acid_associations = Slot(uri=LAMBDA.sample_nucleic_acid_associations, name="dataset__sample_nucleic_acid_associations", curie=LAMBDA.curie('sample_nucleic_acid_associations'),
+                   model_uri=LAMBDA.dataset__sample_nucleic_acid_associations, domain=None, range=Optional[Union[Union[dict, SampleNucleicAcidAssociation], list[Union[dict, SampleNucleicAcidAssociation]]]])
 
 slots.dataset__workflow_experiment_associations = Slot(uri=LAMBDA.workflow_experiment_associations, name="dataset__workflow_experiment_associations", curie=LAMBDA.curie('workflow_experiment_associations'),
                    model_uri=LAMBDA.dataset__workflow_experiment_associations, domain=None, range=Optional[Union[Union[dict, WorkflowExperimentAssociation], list[Union[dict, WorkflowExperimentAssociation]]]])
@@ -8684,6 +9028,55 @@ slots.proteinConstruct__sequence_verified_by = Slot(uri=LAMBDA.sequence_verified
 
 slots.proteinConstruct__verification_notes = Slot(uri=LAMBDA.verification_notes, name="proteinConstruct__verification_notes", curie=LAMBDA.curie('verification_notes'),
                    model_uri=LAMBDA.proteinConstruct__verification_notes, domain=None, range=Optional[str])
+
+slots.nucleicAcid__nucleic_acid_type = Slot(uri=LAMBDA.nucleic_acid_type, name="nucleicAcid__nucleic_acid_type", curie=LAMBDA.curie('nucleic_acid_type'),
+                   model_uri=LAMBDA.nucleicAcid__nucleic_acid_type, domain=None, range=Union[str, "NucleicAcidTypeEnum"])
+
+slots.nucleicAcid__nucleic_acid_name = Slot(uri=LAMBDA.nucleic_acid_name, name="nucleicAcid__nucleic_acid_name", curie=LAMBDA.curie('nucleic_acid_name'),
+                   model_uri=LAMBDA.nucleicAcid__nucleic_acid_name, domain=None, range=Optional[str])
+
+slots.nucleicAcid__rnacentral_id = Slot(uri=LAMBDA.rnacentral_id, name="nucleicAcid__rnacentral_id", curie=LAMBDA.curie('rnacentral_id'),
+                   model_uri=LAMBDA.nucleicAcid__rnacentral_id, domain=None, range=Optional[Union[str, URIorCURIE]],
+                   pattern=re.compile(r'^rnacentral:URS[0-9A-F]{10}(_[0-9]+)?$'))
+
+slots.nucleicAcid__sequence_accession = Slot(uri=LAMBDA.sequence_accession, name="nucleicAcid__sequence_accession", curie=LAMBDA.curie('sequence_accession'),
+                   model_uri=LAMBDA.nucleicAcid__sequence_accession, domain=None, range=Optional[Union[str, URIorCURIE]],
+                   pattern=re.compile(r'^(refseq|insdc):[A-Z][A-Z0-9_]*[0-9](\.[0-9]+)?$'))
+
+slots.nucleicAcid__rfam_families = Slot(uri=LAMBDA.rfam_families, name="nucleicAcid__rfam_families", curie=LAMBDA.curie('rfam_families'),
+                   model_uri=LAMBDA.nucleicAcid__rfam_families, domain=None, range=Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]],
+                   pattern=re.compile(r'^rfam:RF[0-9]{5}$'))
+
+slots.nucleicAcid__gene_name = Slot(uri=LAMBDA.gene_name, name="nucleicAcid__gene_name", curie=LAMBDA.curie('gene_name'),
+                   model_uri=LAMBDA.nucleicAcid__gene_name, domain=None, range=Optional[str])
+
+slots.nucleicAcid__organism = Slot(uri=LAMBDA.organism, name="nucleicAcid__organism", curie=LAMBDA.curie('organism'),
+                   model_uri=LAMBDA.nucleicAcid__organism, domain=None, range=Optional[Union[str, OntologyTermId]])
+
+slots.nucleicAcid__organism_name = Slot(uri=LAMBDA.organism_name, name="nucleicAcid__organism_name", curie=LAMBDA.curie('organism_name'),
+                   model_uri=LAMBDA.nucleicAcid__organism_name, domain=None, range=Optional[str])
+
+slots.nucleicAcid__nucleotide_sequence = Slot(uri=LAMBDA.nucleotide_sequence, name="nucleicAcid__nucleotide_sequence", curie=LAMBDA.curie('nucleotide_sequence'),
+                   model_uri=LAMBDA.nucleicAcid__nucleotide_sequence, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^[ACGTURYKMSWBDHVNI]+$'))
+
+slots.nucleicAcid__sequence_length = Slot(uri=LAMBDA.sequence_length, name="nucleicAcid__sequence_length", curie=LAMBDA.curie('sequence_length'),
+                   model_uri=LAMBDA.nucleicAcid__sequence_length, domain=None, range=Optional[int])
+
+slots.nucleicAcid__molecular_weight_theoretical = Slot(uri=LAMBDA.molecular_weight_theoretical, name="nucleicAcid__molecular_weight_theoretical", curie=LAMBDA.curie('molecular_weight_theoretical'),
+                   model_uri=LAMBDA.nucleicAcid__molecular_weight_theoretical, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.nucleicAcid__function_description = Slot(uri=LAMBDA.function_description, name="nucleicAcid__function_description", curie=LAMBDA.curie('function_description'),
+                   model_uri=LAMBDA.nucleicAcid__function_description, domain=None, range=Optional[str])
+
+slots.nucleicAcid__go_terms = Slot(uri=LAMBDA.go_terms, name="nucleicAcid__go_terms", curie=LAMBDA.curie('go_terms'),
+                   model_uri=LAMBDA.nucleicAcid__go_terms, domain=None, range=Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]])
+
+slots.nucleicAcid__pdb_entries = Slot(uri=LAMBDA.pdb_entries, name="nucleicAcid__pdb_entries", curie=LAMBDA.curie('pdb_entries'),
+                   model_uri=LAMBDA.nucleicAcid__pdb_entries, domain=None, range=Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]])
+
+slots.nucleicAcid__cross_references = Slot(uri=LAMBDA.cross_references, name="nucleicAcid__cross_references", curie=LAMBDA.curie('cross_references'),
+                   model_uri=LAMBDA.nucleicAcid__cross_references, domain=None, range=Optional[Union[Union[dict, DatabaseCrossReference], list[Union[dict, DatabaseCrossReference]]]])
 
 slots.samplePreparation__preparation_type = Slot(uri=LAMBDA.preparation_type, name="samplePreparation__preparation_type", curie=LAMBDA.curie('preparation_type'),
                    model_uri=LAMBDA.samplePreparation__preparation_type, domain=None, range=Union[str, "PreparationTypeEnum"])
@@ -10372,6 +10765,40 @@ slots.sampleProteinAssociation__modifications = Slot(uri=LAMBDA.modifications, n
 
 slots.sampleProteinAssociation__observed_molecular_weight = Slot(uri=LAMBDA.observed_molecular_weight, name="sampleProteinAssociation__observed_molecular_weight", curie=LAMBDA.curie('observed_molecular_weight'),
                    model_uri=LAMBDA.sampleProteinAssociation__observed_molecular_weight, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.sampleNucleicAcidAssociation__sample_id = Slot(uri=LAMBDA.sample_id, name="sampleNucleicAcidAssociation__sample_id", curie=LAMBDA.curie('sample_id'),
+                   model_uri=LAMBDA.sampleNucleicAcidAssociation__sample_id, domain=None, range=Union[str, SampleId])
+
+slots.sampleNucleicAcidAssociation__nucleic_acid_id = Slot(uri=LAMBDA.nucleic_acid_id, name="sampleNucleicAcidAssociation__nucleic_acid_id", curie=LAMBDA.curie('nucleic_acid_id'),
+                   model_uri=LAMBDA.sampleNucleicAcidAssociation__nucleic_acid_id, domain=None, range=Union[str, NucleicAcidId])
+
+slots.sampleNucleicAcidAssociation__role = Slot(uri=LAMBDA.role, name="sampleNucleicAcidAssociation__role", curie=LAMBDA.curie('role'),
+                   model_uri=LAMBDA.sampleNucleicAcidAssociation__role, domain=None, range=Optional[Union[str, "SampleNucleicAcidRoleEnum"]])
+
+slots.sampleNucleicAcidAssociation__copy_number = Slot(uri=LAMBDA.copy_number, name="sampleNucleicAcidAssociation__copy_number", curie=LAMBDA.curie('copy_number'),
+                   model_uri=LAMBDA.sampleNucleicAcidAssociation__copy_number, domain=None, range=Optional[int])
+
+slots.sampleNucleicAcidAssociation__residue_range = Slot(uri=LAMBDA.residue_range, name="sampleNucleicAcidAssociation__residue_range", curie=LAMBDA.curie('residue_range'),
+                   model_uri=LAMBDA.sampleNucleicAcidAssociation__residue_range, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$'))
+
+slots.sampleNucleicAcidAssociation__sequence_coverage = Slot(uri=LAMBDA.sequence_coverage, name="sampleNucleicAcidAssociation__sequence_coverage", curie=LAMBDA.curie('sequence_coverage'),
+                   model_uri=LAMBDA.sampleNucleicAcidAssociation__sequence_coverage, domain=None, range=Optional[float])
+
+slots.sampleNucleicAcidAssociation__chain_ids = Slot(uri=LAMBDA.chain_ids, name="sampleNucleicAcidAssociation__chain_ids", curie=LAMBDA.curie('chain_ids'),
+                   model_uri=LAMBDA.sampleNucleicAcidAssociation__chain_ids, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.sampleNucleicAcidAssociation__structural_form = Slot(uri=LAMBDA.structural_form, name="sampleNucleicAcidAssociation__structural_form", curie=LAMBDA.curie('structural_form'),
+                   model_uri=LAMBDA.sampleNucleicAcidAssociation__structural_form, domain=None, range=Optional[Union[str, "NucleicAcidFormEnum"]])
+
+slots.sampleNucleicAcidAssociation__source_method = Slot(uri=LAMBDA.source_method, name="sampleNucleicAcidAssociation__source_method", curie=LAMBDA.curie('source_method'),
+                   model_uri=LAMBDA.sampleNucleicAcidAssociation__source_method, domain=None, range=Optional[Union[str, "NucleicAcidSourceEnum"]])
+
+slots.sampleNucleicAcidAssociation__modifications = Slot(uri=LAMBDA.modifications, name="sampleNucleicAcidAssociation__modifications", curie=LAMBDA.curie('modifications'),
+                   model_uri=LAMBDA.sampleNucleicAcidAssociation__modifications, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.sampleNucleicAcidAssociation__observed_molecular_weight = Slot(uri=LAMBDA.observed_molecular_weight, name="sampleNucleicAcidAssociation__observed_molecular_weight", curie=LAMBDA.curie('observed_molecular_weight'),
+                   model_uri=LAMBDA.sampleNucleicAcidAssociation__observed_molecular_weight, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentInstrumentAssociation__experiment_id = Slot(uri=LAMBDA.experiment_id, name="experimentInstrumentAssociation__experiment_id", curie=LAMBDA.curie('experiment_id'),
                    model_uri=LAMBDA.experimentInstrumentAssociation__experiment_id, domain=None, range=Union[str, ExperimentRunId])

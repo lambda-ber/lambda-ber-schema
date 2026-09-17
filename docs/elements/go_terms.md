@@ -17,8 +17,9 @@ Alias: go_terms
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Protein](Protein.md) | A protein as a biological entity: its sequence, source organism, gene, and th... |  no  |
 | [FunctionalSite](FunctionalSite.md) | Functional sites including catalytic, binding, and regulatory sites |  no  |
+| [NucleicAcid](NucleicAcid.md) | A nucleic acid as a molecular entity: one DNA, RNA or hybrid strand, with its... |  no  |
+| [Protein](Protein.md) | A protein as a biological entity: its sequence, source organism, gene, and th... |  no  |
 
 
 
@@ -58,6 +59,7 @@ name: go_terms
 alias: go_terms
 domain_of:
 - Protein
+- NucleicAcid
 - FunctionalSite
 range: string
 

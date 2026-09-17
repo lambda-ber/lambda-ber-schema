@@ -27,7 +27,7 @@ from pydantic import (
 
 
 metamodel_version = "None"
-version = "0.1.2.post218.dev0+829558d2"
+version = "0.1.2.post231.dev0+52d03959"
 
 
 class ConfiguredBaseModel(BaseModel):
@@ -100,13 +100,25 @@ linkml_meta = LinkMLMeta({'default_prefix': 'lambda',
                     'preparations lives on the sample and on\n'
                     '  the sample-protein association.\n'
                     '\n'
+                    '- [Nucleic Acids](NucleicAcid.md): The DNA or RNA strand as a '
+                    'molecular entity - sequence, type,\n'
+                    '  source organism, gene - shared by every sample that '
+                    'contains it, as Protein is for proteins.\n'
+                    '  Identified by RNAcentral, RefSeq or INSDC accession where '
+                    'one exists; a synthetic\n'
+                    '  oligonucleotide, which is most of what structural biology '
+                    'sees, gets a local id.\n'
+                    '\n'
                     '- [Samples](Sample.md): The physical specimens being studied '
                     '(proteins, nucleic acids, complexes,\n'
                     '  cells, tissues). Each sample records the '
                     'preparation-specific facts - buffer conditions,\n'
                     '  concentration, storage, purity - and links to the proteins '
-                    'it contains through\n'
-                    '  [SampleProteinAssociation](SampleProteinAssociation.md).\n'
+                    'and nucleic acids it contains through\n'
+                    '  [SampleProteinAssociation](SampleProteinAssociation.md) '
+                    'and\n'
+                    '  '
+                    '[SampleNucleicAcidAssociation](SampleNucleicAcidAssociation.md).\n'
                     '\n'
                     '- [Protein Constructs](ProteinConstruct.md): How a protein '
                     'was cloned and expressed - vector,\n'
@@ -206,6 +218,10 @@ linkml_meta = LinkMLMeta({'default_prefix': 'lambda',
                     '- **SampleProteinAssociation**: Links proteins to samples '
                     '(with role, copy number, residue range,\n'
                     '  modifications, observed mass, and the construct used)\n'
+                    '- **SampleNucleicAcidAssociation**: Links nucleic acids to '
+                    'samples (with role, copy number,\n'
+                    '  structural form, how the strand was made, modifications, '
+                    'and observed mass)\n'
                     '- **ExperimentInstrumentAssociation**: Links instruments to '
                     'experiments (with role: primary, detector)\n'
                     '- **WorkflowExperimentAssociation**: Links source experiments '
@@ -230,6 +246,8 @@ linkml_meta = LinkMLMeta({'default_prefix': 'lambda',
                     'studies and experiments\n'
                     '- **Protein reuse**: The same protein is described once and '
                     'linked from every sample that contains it\n'
+                    '- **Nucleic acid reuse**: Likewise for a DNA or RNA strand - '
+                    'one record, linked from every sample it is in\n'
                     '- **Multi-instrument experiments**: An experiment can use '
                     'multiple instruments with different roles\n'
                     '- **Integrative workflows**: A workflow can combine data from '
@@ -299,6 +317,8 @@ linkml_meta = LinkMLMeta({'default_prefix': 'lambda',
                            'prefix_reference': 'https://api.emsl.pnnl.gov/external/'},
                   'imgCIF': {'prefix_prefix': 'imgCIF',
                              'prefix_reference': 'https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#'},
+                  'insdc': {'prefix_prefix': 'insdc',
+                            'prefix_reference': 'https://www.ebi.ac.uk/ena/data/view/'},
                   'ispyb': {'prefix_prefix': 'ispyb',
                             'prefix_reference': 'https://ispyb.github.io/ISPyB/'},
                   'lambda': {'prefix_prefix': 'lambda',
@@ -319,6 +339,12 @@ linkml_meta = LinkMLMeta({'default_prefix': 'lambda',
                            'prefix_reference': 'http://www.w3.org/ns/prov#'},
                   'rdfs': {'prefix_prefix': 'rdfs',
                            'prefix_reference': 'http://www.w3.org/2000/01/rdf-schema#'},
+                  'refseq': {'prefix_prefix': 'refseq',
+                             'prefix_reference': 'https://www.ncbi.nlm.nih.gov/nuccore/'},
+                  'rfam': {'prefix_prefix': 'rfam',
+                           'prefix_reference': 'https://rfam.org/family/'},
+                  'rnacentral': {'prefix_prefix': 'rnacentral',
+                                 'prefix_reference': 'https://rnacentral.org/rna/'},
                   'sasbdb': {'prefix_prefix': 'sasbdb',
                              'prefix_reference': 'https://www.sasbdb.org/data/'},
                   'simplescattering': {'prefix_prefix': 'simplescattering',
@@ -2963,6 +2989,142 @@ class SampleProteinRoleEnum(str, Enum):
     """
 
 
+class SampleNucleicAcidRoleEnum(str, Enum):
+    """
+    Part a nucleic acid plays in a sample
+    """
+    target = "target"
+    """
+    The nucleic acid under investigation
+    """
+    subunit = "subunit"
+    """
+    One strand of a duplex, or one chain of an assembly, that is the target as a whole
+    """
+    binding_partner = "binding_partner"
+    """
+    A nucleic acid present for its interaction with the target, such as the DNA site a transcription factor binds, an aptamer, or an enzyme substrate
+    """
+    template = "template"
+    """
+    The strand a polymerase or reverse transcriptase reads
+    """
+    primer = "primer"
+    """
+    The strand a polymerase extends
+    """
+    guide = "guide"
+    """
+    A guide RNA or DNA that directs a nuclease or other effector to its target (e.g., sgRNA, crRNA)
+    """
+    scaffold = "scaffold"
+    """
+    A nucleic acid used as a structural scaffold, as in DNA origami or a nanoparticle assembly
+    """
+    contaminant = "contaminant"
+    """
+    A nucleic acid present unintentionally and identified after the fact, such as host DNA co-purified with a protein
+    """
+    standard = "standard"
+    """
+    A reference nucleic acid added for calibration or as a size marker
+    """
+
+
+class NucleicAcidTypeEnum(str, Enum):
+    """
+    Chemical type of a nucleic acid polymer. The mmCIF _entity_poly.type value is given for each.
+    """
+    dna = "dna"
+    """
+    Deoxyribonucleic acid (mmCIF: polydeoxyribonucleotide)
+    """
+    rna = "rna"
+    """
+    Ribonucleic acid (mmCIF: polyribonucleotide)
+    """
+    dna_rna_hybrid = "dna_rna_hybrid"
+    """
+    A single strand containing both deoxyribo- and ribonucleotides (mmCIF: polydeoxyribonucleotide/polyribonucleotide hybrid)
+    """
+    peptide_nucleic_acid = "peptide_nucleic_acid"
+    """
+    Peptide nucleic acid, a synthetic analogue with a peptide-like backbone (mmCIF: peptide nucleic acid)
+    """
+    other = "other"
+    """
+    Another nucleic acid analogue, such as a locked nucleic acid, morpholino or threose nucleic acid
+    """
+
+
+class NucleicAcidFormEnum(str, Enum):
+    """
+    Form a nucleic acid strand takes in a sample
+    """
+    single_stranded = "single_stranded"
+    """
+    Unpaired, or with no defined secondary structure
+    """
+    double_stranded = "double_stranded"
+    """
+    Paired with a complementary strand in a duplex, including a self-complementary strand paired with a second copy of itself
+    """
+    hairpin = "hairpin"
+    """
+    Folded back on itself to form a stem-loop
+    """
+    triplex = "triplex"
+    """
+    Three strands, a third strand bound in the major groove of a duplex
+    """
+    quadruplex = "quadruplex"
+    """
+    Four-stranded, such as a G-quadruplex or i-motif
+    """
+    junction = "junction"
+    """
+    A three- or four-way junction, such as a Holliday junction
+    """
+    circular = "circular"
+    """
+    Covalently closed circle, such as a plasmid or a circular RNA
+    """
+    other = "other"
+    """
+    A form not listed, described in the association's description
+    """
+
+
+class NucleicAcidSourceEnum(str, Enum):
+    """
+    How a nucleic acid strand was produced for a preparation
+    """
+    chemical_synthesis = "chemical_synthesis"
+    """
+    Solid-phase chemical synthesis, as for most oligonucleotides
+    """
+    in_vitro_transcription = "in_vitro_transcription"
+    """
+    Transcribed in vitro, typically by T7 RNA polymerase from a DNA template
+    """
+    pcr_amplification = "pcr_amplification"
+    """
+    Amplified by PCR
+    """
+    plasmid_preparation = "plasmid_preparation"
+    """
+    Purified as plasmid DNA from a host
+    """
+    isolated_from_organism = "isolated_from_organism"
+    """
+    Purified from cells, tissue or virions without amplification, as for native tRNA or genomic DNA
+    """
+    other = "other"
+    """
+    A method not listed, described in the association's description
+    """
+
+
 class InstrumentRoleEnum(str, Enum):
     """
     Role of an instrument in an experiment
@@ -3246,7 +3408,9 @@ class ProteinAnnotation(NamedThing):
     pdb_entry: Optional[str] = Field(default=None, description="""PDB identifier""", json_schema_extra = { "linkml_meta": {'alias': 'pdb_entry', 'domain_of': ['ProteinAnnotation']} })
     chain_id: Optional[str] = Field(default=None, description="""Chain identifier in the PDB structure""", json_schema_extra = { "linkml_meta": {'alias': 'chain_id', 'domain_of': ['ProteinAnnotation']} })
     residue_range: Optional[str] = Field(default=None, description="""Range of residues (e.g., '1-100', '25,27,30-35')""", json_schema_extra = { "linkml_meta": {'alias': 'residue_range',
-         'domain_of': ['ProteinAnnotation', 'SampleProteinAssociation']} })
+         'domain_of': ['ProteinAnnotation',
+                       'SampleProteinAssociation',
+                       'SampleNucleicAcidAssociation']} })
     confidence_score: Optional[float] = Field(default=None, description="""Confidence score for the annotation (range: 0-1)""", ge=0, le=1, json_schema_extra = { "linkml_meta": {'alias': 'confidence_score', 'domain_of': ['ProteinAnnotation']} })
     evidence_type: Optional[EvidenceTypeEnum] = Field(default=None, description="""Type of evidence supporting this annotation""", json_schema_extra = { "linkml_meta": {'alias': 'evidence_type', 'domain_of': ['ProteinAnnotation']} })
     evidence_code: Optional[str] = Field(default=None, description="""Evidence and Conclusion Ontology (ECO) code""", json_schema_extra = { "linkml_meta": {'alias': 'evidence_code', 'domain_of': ['ProteinAnnotation']} })
@@ -3337,7 +3501,7 @@ class FunctionalSite(ProteinAnnotation):
     conservation_score: Optional[float] = Field(default=None, description="""Evolutionary conservation score (range: 0-1)""", ge=0, le=1, json_schema_extra = { "linkml_meta": {'alias': 'conservation_score',
          'domain_of': ['FunctionalSite', 'EvolutionaryConservation']} })
     functional_importance: Optional[str] = Field(default=None, description="""Description of functional importance""", json_schema_extra = { "linkml_meta": {'alias': 'functional_importance', 'domain_of': ['FunctionalSite']} })
-    go_terms: Optional[list[str]] = Field(default=None, description="""Associated Gene Ontology terms""", json_schema_extra = { "linkml_meta": {'alias': 'go_terms', 'domain_of': ['FunctionalSite', 'Protein']} })
+    go_terms: Optional[list[str]] = Field(default=None, description="""Associated Gene Ontology terms""", json_schema_extra = { "linkml_meta": {'alias': 'go_terms', 'domain_of': ['FunctionalSite', 'Protein', 'NucleicAcid']} })
     ec_number: Optional[str] = Field(default=None, description="""Enzyme Commission number for catalytic sites""", json_schema_extra = { "linkml_meta": {'alias': 'ec_number', 'domain_of': ['FunctionalSite']} })
     protein_id: str = Field(default=..., description="""UniProt accession of the annotated protein, preferably as a Bioregistry CURIE (uniprot:P69905) matching Protein.uniprot_id. A bare accession (P69905) is accepted for data recorded before the CURIE form was adopted.""", json_schema_extra = { "linkml_meta": {'alias': 'protein_id',
          'domain_of': ['ProteinAnnotation',
@@ -3347,7 +3511,9 @@ class FunctionalSite(ProteinAnnotation):
     pdb_entry: Optional[str] = Field(default=None, description="""PDB identifier""", json_schema_extra = { "linkml_meta": {'alias': 'pdb_entry', 'domain_of': ['ProteinAnnotation']} })
     chain_id: Optional[str] = Field(default=None, description="""Chain identifier in the PDB structure""", json_schema_extra = { "linkml_meta": {'alias': 'chain_id', 'domain_of': ['ProteinAnnotation']} })
     residue_range: Optional[str] = Field(default=None, description="""Range of residues (e.g., '1-100', '25,27,30-35')""", json_schema_extra = { "linkml_meta": {'alias': 'residue_range',
-         'domain_of': ['ProteinAnnotation', 'SampleProteinAssociation']} })
+         'domain_of': ['ProteinAnnotation',
+                       'SampleProteinAssociation',
+                       'SampleNucleicAcidAssociation']} })
     confidence_score: Optional[float] = Field(default=None, description="""Confidence score for the annotation (range: 0-1)""", ge=0, le=1, json_schema_extra = { "linkml_meta": {'alias': 'confidence_score', 'domain_of': ['ProteinAnnotation']} })
     evidence_type: Optional[EvidenceTypeEnum] = Field(default=None, description="""Type of evidence supporting this annotation""", json_schema_extra = { "linkml_meta": {'alias': 'evidence_type', 'domain_of': ['ProteinAnnotation']} })
     evidence_code: Optional[str] = Field(default=None, description="""Evidence and Conclusion Ontology (ECO) code""", json_schema_extra = { "linkml_meta": {'alias': 'evidence_code', 'domain_of': ['ProteinAnnotation']} })
@@ -3460,7 +3626,9 @@ class StructuralFeature(ProteinAnnotation):
     pdb_entry: Optional[str] = Field(default=None, description="""PDB identifier""", json_schema_extra = { "linkml_meta": {'alias': 'pdb_entry', 'domain_of': ['ProteinAnnotation']} })
     chain_id: Optional[str] = Field(default=None, description="""Chain identifier in the PDB structure""", json_schema_extra = { "linkml_meta": {'alias': 'chain_id', 'domain_of': ['ProteinAnnotation']} })
     residue_range: Optional[str] = Field(default=None, description="""Range of residues (e.g., '1-100', '25,27,30-35')""", json_schema_extra = { "linkml_meta": {'alias': 'residue_range',
-         'domain_of': ['ProteinAnnotation', 'SampleProteinAssociation']} })
+         'domain_of': ['ProteinAnnotation',
+                       'SampleProteinAssociation',
+                       'SampleNucleicAcidAssociation']} })
     confidence_score: Optional[float] = Field(default=None, description="""Confidence score for the annotation (range: 0-1)""", ge=0, le=1, json_schema_extra = { "linkml_meta": {'alias': 'confidence_score', 'domain_of': ['ProteinAnnotation']} })
     evidence_type: Optional[EvidenceTypeEnum] = Field(default=None, description="""Type of evidence supporting this annotation""", json_schema_extra = { "linkml_meta": {'alias': 'evidence_type', 'domain_of': ['ProteinAnnotation']} })
     evidence_code: Optional[str] = Field(default=None, description="""Evidence and Conclusion Ontology (ECO) code""", json_schema_extra = { "linkml_meta": {'alias': 'evidence_code', 'domain_of': ['ProteinAnnotation']} })
@@ -3566,7 +3734,9 @@ class ProteinProteinInteraction(ProteinAnnotation):
     pdb_entry: Optional[str] = Field(default=None, description="""PDB identifier""", json_schema_extra = { "linkml_meta": {'alias': 'pdb_entry', 'domain_of': ['ProteinAnnotation']} })
     chain_id: Optional[str] = Field(default=None, description="""Chain identifier in the PDB structure""", json_schema_extra = { "linkml_meta": {'alias': 'chain_id', 'domain_of': ['ProteinAnnotation']} })
     residue_range: Optional[str] = Field(default=None, description="""Range of residues (e.g., '1-100', '25,27,30-35')""", json_schema_extra = { "linkml_meta": {'alias': 'residue_range',
-         'domain_of': ['ProteinAnnotation', 'SampleProteinAssociation']} })
+         'domain_of': ['ProteinAnnotation',
+                       'SampleProteinAssociation',
+                       'SampleNucleicAcidAssociation']} })
     confidence_score: Optional[float] = Field(default=None, description="""Confidence score for the annotation (range: 0-1)""", ge=0, le=1, json_schema_extra = { "linkml_meta": {'alias': 'confidence_score', 'domain_of': ['ProteinAnnotation']} })
     evidence_type: Optional[EvidenceTypeEnum] = Field(default=None, description="""Type of evidence supporting this annotation""", json_schema_extra = { "linkml_meta": {'alias': 'evidence_type', 'domain_of': ['ProteinAnnotation']} })
     evidence_code: Optional[str] = Field(default=None, description="""Evidence and Conclusion Ontology (ECO) code""", json_schema_extra = { "linkml_meta": {'alias': 'evidence_code', 'domain_of': ['ProteinAnnotation']} })
@@ -3669,7 +3839,9 @@ class MutationEffect(ProteinAnnotation):
     pdb_entry: Optional[str] = Field(default=None, description="""PDB identifier""", json_schema_extra = { "linkml_meta": {'alias': 'pdb_entry', 'domain_of': ['ProteinAnnotation']} })
     chain_id: Optional[str] = Field(default=None, description="""Chain identifier in the PDB structure""", json_schema_extra = { "linkml_meta": {'alias': 'chain_id', 'domain_of': ['ProteinAnnotation']} })
     residue_range: Optional[str] = Field(default=None, description="""Range of residues (e.g., '1-100', '25,27,30-35')""", json_schema_extra = { "linkml_meta": {'alias': 'residue_range',
-         'domain_of': ['ProteinAnnotation', 'SampleProteinAssociation']} })
+         'domain_of': ['ProteinAnnotation',
+                       'SampleProteinAssociation',
+                       'SampleNucleicAcidAssociation']} })
     confidence_score: Optional[float] = Field(default=None, description="""Confidence score for the annotation (range: 0-1)""", ge=0, le=1, json_schema_extra = { "linkml_meta": {'alias': 'confidence_score', 'domain_of': ['ProteinAnnotation']} })
     evidence_type: Optional[EvidenceTypeEnum] = Field(default=None, description="""Type of evidence supporting this annotation""", json_schema_extra = { "linkml_meta": {'alias': 'evidence_type', 'domain_of': ['ProteinAnnotation']} })
     evidence_code: Optional[str] = Field(default=None, description="""Evidence and Conclusion Ontology (ECO) code""", json_schema_extra = { "linkml_meta": {'alias': 'evidence_code', 'domain_of': ['ProteinAnnotation']} })
@@ -3820,7 +3992,9 @@ class PostTranslationalModification(ProteinAnnotation):
     pdb_entry: Optional[str] = Field(default=None, description="""PDB identifier""", json_schema_extra = { "linkml_meta": {'alias': 'pdb_entry', 'domain_of': ['ProteinAnnotation']} })
     chain_id: Optional[str] = Field(default=None, description="""Chain identifier in the PDB structure""", json_schema_extra = { "linkml_meta": {'alias': 'chain_id', 'domain_of': ['ProteinAnnotation']} })
     residue_range: Optional[str] = Field(default=None, description="""Range of residues (e.g., '1-100', '25,27,30-35')""", json_schema_extra = { "linkml_meta": {'alias': 'residue_range',
-         'domain_of': ['ProteinAnnotation', 'SampleProteinAssociation']} })
+         'domain_of': ['ProteinAnnotation',
+                       'SampleProteinAssociation',
+                       'SampleNucleicAcidAssociation']} })
     confidence_score: Optional[float] = Field(default=None, description="""Confidence score for the annotation (range: 0-1)""", ge=0, le=1, json_schema_extra = { "linkml_meta": {'alias': 'confidence_score', 'domain_of': ['ProteinAnnotation']} })
     evidence_type: Optional[EvidenceTypeEnum] = Field(default=None, description="""Type of evidence supporting this annotation""", json_schema_extra = { "linkml_meta": {'alias': 'evidence_type', 'domain_of': ['ProteinAnnotation']} })
     evidence_code: Optional[str] = Field(default=None, description="""Evidence and Conclusion Ontology (ECO) code""", json_schema_extra = { "linkml_meta": {'alias': 'evidence_code', 'domain_of': ['ProteinAnnotation']} })
@@ -3919,7 +4093,9 @@ class EvolutionaryConservation(ProteinAnnotation):
     pdb_entry: Optional[str] = Field(default=None, description="""PDB identifier""", json_schema_extra = { "linkml_meta": {'alias': 'pdb_entry', 'domain_of': ['ProteinAnnotation']} })
     chain_id: Optional[str] = Field(default=None, description="""Chain identifier in the PDB structure""", json_schema_extra = { "linkml_meta": {'alias': 'chain_id', 'domain_of': ['ProteinAnnotation']} })
     residue_range: Optional[str] = Field(default=None, description="""Range of residues (e.g., '1-100', '25,27,30-35')""", json_schema_extra = { "linkml_meta": {'alias': 'residue_range',
-         'domain_of': ['ProteinAnnotation', 'SampleProteinAssociation']} })
+         'domain_of': ['ProteinAnnotation',
+                       'SampleProteinAssociation',
+                       'SampleNucleicAcidAssociation']} })
     confidence_score: Optional[float] = Field(default=None, description="""Confidence score for the annotation (range: 0-1)""", ge=0, le=1, json_schema_extra = { "linkml_meta": {'alias': 'confidence_score', 'domain_of': ['ProteinAnnotation']} })
     evidence_type: Optional[EvidenceTypeEnum] = Field(default=None, description="""Type of evidence supporting this annotation""", json_schema_extra = { "linkml_meta": {'alias': 'evidence_type', 'domain_of': ['ProteinAnnotation']} })
     evidence_code: Optional[str] = Field(default=None, description="""Evidence and Conclusion Ontology (ECO) code""", json_schema_extra = { "linkml_meta": {'alias': 'evidence_code', 'domain_of': ['ProteinAnnotation']} })
@@ -4012,10 +4188,13 @@ class AggregatedProteinView(NamedThing):
     protein_name: str = Field(default=..., description="""Protein name""", json_schema_extra = { "linkml_meta": {'alias': 'protein_name',
          'domain_of': ['AggregatedProteinView', 'Sample', 'Protein']} })
     organism: Optional[str] = Field(default=None, description="""Source organism""", json_schema_extra = { "linkml_meta": {'alias': 'organism',
-         'domain_of': ['AggregatedProteinView', 'Sample', 'Protein']} })
+         'domain_of': ['AggregatedProteinView', 'Sample', 'Protein', 'NucleicAcid']} })
     organism_id: Optional[int] = Field(default=None, description="""NCBI taxonomy ID""", json_schema_extra = { "linkml_meta": {'alias': 'organism_id', 'domain_of': ['AggregatedProteinView']} })
     pdb_entries: Optional[list[str]] = Field(default=None, description="""All PDB entries for this protein""", json_schema_extra = { "linkml_meta": {'alias': 'pdb_entries',
-         'domain_of': ['ConformationalState', 'AggregatedProteinView', 'Protein']} })
+         'domain_of': ['ConformationalState',
+                       'AggregatedProteinView',
+                       'Protein',
+                       'NucleicAcid']} })
     functional_sites: Optional[list[FunctionalSite]] = Field(default=None, description="""All functional site annotations""", json_schema_extra = { "linkml_meta": {'alias': 'functional_sites',
          'domain_of': ['AggregatedProteinView', 'Sample', 'Protein']} })
     structural_features: Optional[list[StructuralFeature]] = Field(default=None, description="""All structural feature annotations""", json_schema_extra = { "linkml_meta": {'alias': 'structural_features',
@@ -4032,7 +4211,8 @@ class AggregatedProteinView(NamedThing):
          'domain_of': ['AggregatedProteinView', 'Sample', 'Protein']} })
     evolutionary_conservation: Optional[EvolutionaryConservation] = Field(default=None, description="""Conservation analysis""", json_schema_extra = { "linkml_meta": {'alias': 'evolutionary_conservation',
          'domain_of': ['AggregatedProteinView', 'Sample', 'Protein']} })
-    cross_references: Optional[list[DatabaseCrossReference]] = Field(default=None, description="""Database cross-references""", json_schema_extra = { "linkml_meta": {'alias': 'cross_references', 'domain_of': ['AggregatedProteinView', 'Protein']} })
+    cross_references: Optional[list[DatabaseCrossReference]] = Field(default=None, description="""Database cross-references""", json_schema_extra = { "linkml_meta": {'alias': 'cross_references',
+         'domain_of': ['AggregatedProteinView', 'Protein', 'NucleicAcid']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
     description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
@@ -4115,7 +4295,10 @@ class ConformationalState(AttributeGroup):
     state_id: str = Field(default=..., description="""Identifier for this state""", json_schema_extra = { "linkml_meta": {'alias': 'state_id', 'domain_of': ['ConformationalState']} })
     state_name: Optional[str] = Field(default=None, description="""Descriptive name (e.g., 'open', 'closed')""", json_schema_extra = { "linkml_meta": {'alias': 'state_name', 'domain_of': ['ConformationalState']} })
     pdb_entries: Optional[list[str]] = Field(default=None, description="""PDB entries representing this state""", json_schema_extra = { "linkml_meta": {'alias': 'pdb_entries',
-         'domain_of': ['ConformationalState', 'AggregatedProteinView', 'Protein']} })
+         'domain_of': ['ConformationalState',
+                       'AggregatedProteinView',
+                       'Protein',
+                       'NucleicAcid']} })
     population: Optional[float] = Field(default=None, description="""Relative population of this state (range: 0-1)""", ge=0, le=1, json_schema_extra = { "linkml_meta": {'alias': 'population', 'domain_of': ['ConformationalState']} })
     free_energy: Optional[float] = Field(default=None, description="""Relative free energy (kcal/mol)""", json_schema_extra = { "linkml_meta": {'alias': 'free_energy',
          'domain_of': ['ConformationalState'],
@@ -4156,6 +4339,7 @@ class Dataset(NamedThing):
     instruments: Optional[list[Instrument]] = Field(default=None, description="""All instruments used across studies""", json_schema_extra = { "linkml_meta": {'alias': 'instruments', 'domain_of': ['Dataset']} })
     proteins: Optional[list[Protein]] = Field(default=None, description="""All proteins referenced by samples in this dataset, one record per protein""", json_schema_extra = { "linkml_meta": {'alias': 'proteins', 'domain_of': ['Dataset']} })
     protein_constructs: Optional[list[ProteinConstruct]] = Field(default=None, description="""All protein constructs""", json_schema_extra = { "linkml_meta": {'alias': 'protein_constructs', 'domain_of': ['Dataset']} })
+    nucleic_acids: Optional[list[NucleicAcid]] = Field(default=None, description="""All nucleic acids referenced by samples in this dataset, one record per strand""", json_schema_extra = { "linkml_meta": {'alias': 'nucleic_acids', 'domain_of': ['Dataset']} })
     samples: Optional[list[Sample]] = Field(default=None, description="""All samples across all studies""", json_schema_extra = { "linkml_meta": {'alias': 'samples', 'domain_of': ['Dataset']} })
     sample_preparations: Optional[list[SamplePreparation]] = Field(default=None, description="""All sample preparations""", json_schema_extra = { "linkml_meta": {'alias': 'sample_preparations', 'domain_of': ['Dataset']} })
     experiment_runs: Optional[list[ExperimentRun]] = Field(default=None, description="""All experiment runs (data collection sessions)""", json_schema_extra = { "linkml_meta": {'alias': 'experiment_runs', 'domain_of': ['Dataset']} })
@@ -4168,6 +4352,7 @@ class Dataset(NamedThing):
     experiment_sample_associations: Optional[list[ExperimentSampleAssociation]] = Field(default=None, description="""Links between experiments and samples (M:N with role)""", json_schema_extra = { "linkml_meta": {'alias': 'experiment_sample_associations', 'domain_of': ['Dataset']} })
     experiment_instrument_associations: Optional[list[ExperimentInstrumentAssociation]] = Field(default=None, description="""Links between experiments and instruments (M:N)""", json_schema_extra = { "linkml_meta": {'alias': 'experiment_instrument_associations', 'domain_of': ['Dataset']} })
     sample_protein_associations: Optional[list[SampleProteinAssociation]] = Field(default=None, description="""Links between samples and the proteins they contain (M:N with role, copy number, construct)""", json_schema_extra = { "linkml_meta": {'alias': 'sample_protein_associations', 'domain_of': ['Dataset']} })
+    sample_nucleic_acid_associations: Optional[list[SampleNucleicAcidAssociation]] = Field(default=None, description="""Links between samples and the nucleic acids they contain (M:N with role, copy number, structural form, source)""", json_schema_extra = { "linkml_meta": {'alias': 'sample_nucleic_acid_associations', 'domain_of': ['Dataset']} })
     workflow_experiment_associations: Optional[list[WorkflowExperimentAssociation]] = Field(default=None, description="""Links between workflows and source experiments (M:N)""", json_schema_extra = { "linkml_meta": {'alias': 'workflow_experiment_associations', 'domain_of': ['Dataset']} })
     workflow_input_associations: Optional[list[WorkflowInputAssociation]] = Field(default=None, description="""Links between workflows and input files""", json_schema_extra = { "linkml_meta": {'alias': 'workflow_input_associations', 'domain_of': ['Dataset']} })
     workflow_output_associations: Optional[list[WorkflowOutputAssociation]] = Field(default=None, description="""Links between workflows and output files""", json_schema_extra = { "linkml_meta": {'alias': 'workflow_output_associations', 'domain_of': ['Dataset']} })
@@ -4319,7 +4504,7 @@ class Organization(NamedThing):
 
 class Sample(NamedThing):
     """
-    A physical biological sample used in structural biology experiments. Records what is true of this preparation - buffer, concentration, storage, purity, the construct and tags used. The identity of the protein(s) it contains belongs on Protein, linked through SampleProteinAssociation, so a protein studied in ten preparations is described once.
+    A physical biological sample used in structural biology experiments. Records what is true of this preparation - buffer, concentration, storage, purity, the construct and tags used. The identity of the protein(s) it contains belongs on Protein, linked through SampleProteinAssociation, so a protein studied in ten preparations is described once. The nucleic acid(s) it contains belong on NucleicAcid in the same way, linked through SampleNucleicAcidAssociation; a protein-DNA complex is one sample with one row in each.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'comments': ['protein_name, organism and the functional annotation '
                       'collections remain here for data that arrives without a '
@@ -4343,7 +4528,7 @@ class Sample(NamedThing):
     preparation_method: Optional[str] = Field(default=None, description="""Method used to prepare the sample""", json_schema_extra = { "linkml_meta": {'alias': 'preparation_method', 'domain_of': ['Sample']} })
     storage_conditions: Optional[StorageConditions] = Field(default=None, description="""Storage conditions for the sample""", json_schema_extra = { "linkml_meta": {'alias': 'storage_conditions', 'domain_of': ['Sample']} })
     organism: Optional[str] = Field(default=None, description="""Source organism for the sample (e.g., NCBITaxon:3702 for Arabidopsis thaliana)""", json_schema_extra = { "linkml_meta": {'alias': 'organism',
-         'domain_of': ['AggregatedProteinView', 'Sample', 'Protein']} })
+         'domain_of': ['AggregatedProteinView', 'Sample', 'Protein', 'NucleicAcid']} })
     anatomy: Optional[str] = Field(default=None, description="""Anatomical part or tissue (e.g., UBERON:0008945 for leaf)""", json_schema_extra = { "linkml_meta": {'alias': 'anatomy', 'domain_of': ['Sample']} })
     cell_type: Optional[str] = Field(default=None, description="""Cell type if applicable (e.g., CL:0000057 for fibroblast)""", json_schema_extra = { "linkml_meta": {'alias': 'cell_type', 'domain_of': ['Sample']} })
     parent_sample_id: Optional[str] = Field(default=None, description="""Reference to parent sample for derivation tracking""", json_schema_extra = { "linkml_meta": {'alias': 'parent_sample_id', 'domain_of': ['Sample']} })
@@ -4410,28 +4595,31 @@ class Protein(NamedThing):
          'recommended': True,
          'related_mappings': ['mmCIF:_entity.pdbx_description']} })
     gene_name: Optional[str] = Field(default=None, description="""Primary gene symbol (e.g., HBA1)""", json_schema_extra = { "linkml_meta": {'alias': 'gene_name',
-         'domain_of': ['Protein', 'ProteinConstruct'],
+         'domain_of': ['Protein', 'ProteinConstruct', 'NucleicAcid'],
          'exact_mappings': ['mmCIF:_entity_src_gen.pdbx_gene_src_gene']} })
     organism: Optional[str] = Field(default=None, description="""Source organism as an NCBI Taxonomy CURIE (e.g., NCBITaxon:9606)""", json_schema_extra = { "linkml_meta": {'alias': 'organism',
-         'domain_of': ['AggregatedProteinView', 'Sample', 'Protein'],
+         'domain_of': ['AggregatedProteinView', 'Sample', 'Protein', 'NucleicAcid'],
          'exact_mappings': ['mmCIF:_entity_src_gen.pdbx_gene_src_ncbi_taxonomy_id']} })
     organism_name: Optional[str] = Field(default=None, description="""Scientific name of the source organism. For display, and for sources that give a name but no taxonomy identifier.""", json_schema_extra = { "linkml_meta": {'alias': 'organism_name',
-         'domain_of': ['Protein'],
+         'domain_of': ['Protein', 'NucleicAcid'],
          'exact_mappings': ['mmCIF:_entity_src_gen.pdbx_gene_src_scientific_name']} })
     amino_acid_sequence: Optional[str] = Field(default=None, description="""Canonical one-letter amino acid sequence of the protein, without tags or other construct additions. Construct-level sequence belongs on ProteinConstruct.""", json_schema_extra = { "linkml_meta": {'alias': 'amino_acid_sequence',
          'domain_of': ['Protein'],
          'exact_mappings': ['mmCIF:_entity_poly.pdbx_seq_one_letter_code_can']} })
-    sequence_length: Optional[int] = Field(default=None, description="""Length of the canonical sequence in residues""", json_schema_extra = { "linkml_meta": {'alias': 'sequence_length', 'domain_of': ['Protein']} })
+    sequence_length: Optional[int] = Field(default=None, description="""Length of the canonical sequence in residues""", json_schema_extra = { "linkml_meta": {'alias': 'sequence_length', 'domain_of': ['Protein', 'NucleicAcid']} })
     molecular_weight_theoretical: Optional[QuantityValue] = Field(default=None, description="""Mass computed from the canonical sequence, typically in kDa. A mass measured for a given preparation belongs on SampleProteinAssociation.observed_molecular_weight.""", json_schema_extra = { "linkml_meta": {'alias': 'molecular_weight_theoretical',
-         'domain_of': ['Protein'],
+         'domain_of': ['Protein', 'NucleicAcid'],
          'related_mappings': ['mmCIF:_entity.formula_weight']} })
     ec_numbers: Optional[list[str]] = Field(default=None, description="""Enzyme Commission numbers, where the protein is an enzyme (e.g., 1.1.1.1)""", json_schema_extra = { "linkml_meta": {'alias': 'ec_numbers',
          'domain_of': ['Protein'],
          'exact_mappings': ['mmCIF:_entity.pdbx_ec']} })
-    function_description: Optional[str] = Field(default=None, description="""Free-text summary of molecular function, typically from UniProt""", json_schema_extra = { "linkml_meta": {'alias': 'function_description', 'domain_of': ['Protein']} })
-    go_terms: Optional[list[str]] = Field(default=None, description="""Gene Ontology annotations as CURIEs (e.g., GO:0005344 for oxygen carrier activity)""", json_schema_extra = { "linkml_meta": {'alias': 'go_terms', 'domain_of': ['FunctionalSite', 'Protein']} })
+    function_description: Optional[str] = Field(default=None, description="""Free-text summary of molecular function, typically from UniProt""", json_schema_extra = { "linkml_meta": {'alias': 'function_description', 'domain_of': ['Protein', 'NucleicAcid']} })
+    go_terms: Optional[list[str]] = Field(default=None, description="""Gene Ontology annotations as CURIEs (e.g., GO:0005344 for oxygen carrier activity)""", json_schema_extra = { "linkml_meta": {'alias': 'go_terms', 'domain_of': ['FunctionalSite', 'Protein', 'NucleicAcid']} })
     pdb_entries: Optional[list[str]] = Field(default=None, description="""PDB entries containing this protein, as CURIEs (e.g., pdb:1HHO)""", json_schema_extra = { "linkml_meta": {'alias': 'pdb_entries',
-         'domain_of': ['ConformationalState', 'AggregatedProteinView', 'Protein']} })
+         'domain_of': ['ConformationalState',
+                       'AggregatedProteinView',
+                       'Protein',
+                       'NucleicAcid']} })
     functional_sites: Optional[list[FunctionalSite]] = Field(default=None, description="""Functional site annotations for this protein""", json_schema_extra = { "linkml_meta": {'alias': 'functional_sites',
          'domain_of': ['AggregatedProteinView', 'Sample', 'Protein']} })
     structural_features: Optional[list[StructuralFeature]] = Field(default=None, description="""Structural feature annotations for this protein""", json_schema_extra = { "linkml_meta": {'alias': 'structural_features',
@@ -4448,7 +4636,8 @@ class Protein(NamedThing):
          'domain_of': ['AggregatedProteinView', 'Sample', 'Protein']} })
     conformational_ensemble: Optional[ConformationalEnsemble] = Field(default=None, description="""Conformational states and dynamics""", json_schema_extra = { "linkml_meta": {'alias': 'conformational_ensemble',
          'domain_of': ['AggregatedProteinView', 'Sample', 'Protein']} })
-    cross_references: Optional[list[DatabaseCrossReference]] = Field(default=None, description="""Cross-references to external databases other than UniProt (Pfam, InterPro, ChEMBL, ...). The UniProt accession itself goes in uniprot_id.""", json_schema_extra = { "linkml_meta": {'alias': 'cross_references', 'domain_of': ['AggregatedProteinView', 'Protein']} })
+    cross_references: Optional[list[DatabaseCrossReference]] = Field(default=None, description="""Cross-references to external databases other than UniProt (Pfam, InterPro, ChEMBL, ...). The UniProt accession itself goes in uniprot_id.""", json_schema_extra = { "linkml_meta": {'alias': 'cross_references',
+         'domain_of': ['AggregatedProteinView', 'Protein', 'NucleicAcid']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
     description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
@@ -4508,7 +4697,8 @@ class ProteinConstruct(NamedThing):
                        'SampleProteinAssociation']} })
     uniprot_id: Optional[str] = Field(default=None, description="""UniProt accession of the target protein as a CURIE (e.g., uniprot:P69905). Carries the identity when no Protein row exists in the dataset; where protein_id is set the two must agree, and protein_id is the join key.""", json_schema_extra = { "linkml_meta": {'alias': 'uniprot_id',
          'domain_of': ['AggregatedProteinView', 'Protein', 'ProteinConstruct']} })
-    gene_name: Optional[str] = Field(default=None, description="""Gene name""", json_schema_extra = { "linkml_meta": {'alias': 'gene_name', 'domain_of': ['Protein', 'ProteinConstruct']} })
+    gene_name: Optional[str] = Field(default=None, description="""Gene name""", json_schema_extra = { "linkml_meta": {'alias': 'gene_name',
+         'domain_of': ['Protein', 'ProteinConstruct', 'NucleicAcid']} })
     ncbi_taxid: Optional[str] = Field(default=None, description="""NCBI Taxonomy ID for source organism""", json_schema_extra = { "linkml_meta": {'alias': 'ncbi_taxid', 'domain_of': ['ProteinConstruct']} })
     sequence_length_aa: Optional[QuantityValue] = Field(default=None, description="""Length of the protein sequence in amino acids""", json_schema_extra = { "linkml_meta": {'alias': 'sequence_length_aa', 'domain_of': ['ProteinConstruct']} })
     construct_description: Optional[str] = Field(default=None, description="""Human-readable description of the construct""", json_schema_extra = { "linkml_meta": {'alias': 'construct_description', 'domain_of': ['ProteinConstruct']} })
@@ -4532,6 +4722,122 @@ class ProteinConstruct(NamedThing):
     description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
 
 
+class NucleicAcid(NamedThing):
+    """
+    A nucleic acid as a molecular entity: one DNA, RNA or hybrid strand, with its sequence, type, source and the annotations that hold for it regardless of any one preparation. The counterpart of Protein for the other biopolymer. One NucleicAcid record is shared by every Sample that contains it, through SampleNucleicAcidAssociation. A duplex of two different strands is two records; a self-complementary duplex is one record with copy_number 2 on the association. Whether the strand is paired in a given sample, how it was made, and which chemical modifications it carries are preparation facts and live on the association.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'comments': ['Nucleic acids have no single registry the way proteins have '
+                      'UniProt. Use RNAcentral for a non-coding RNA '
+                      '(rnacentral:URS0000759CF4), RefSeq or INSDC for a transcript or '
+                      'genomic sequence (refseq:NM_000518, insdc:J00153), and a '
+                      'lambda-prefixed id for a synthetic oligonucleotide, which is '
+                      'most of what structural biology sees. A record derived from a '
+                      'PDB entry may be named by entry and entity '
+                      '(pdb:1AAY/nucleic_acid/1).',
+                      'Modified nucleotides that belong to the molecule itself, such '
+                      'as the modified bases of a mature tRNA, are part of its '
+                      'identity and are noted in description or cross_references. '
+                      'Modifications introduced for a preparation - labels, '
+                      "2'-O-methyl groups, phosphorothioate linkages - go on "
+                      'SampleNucleicAcidAssociation.modifications.'],
+         'from_schema': 'http://w3id.org/lambda/',
+         'id_prefixes': ['rnacentral', 'refseq', 'insdc', 'lambda', 'pdb'],
+         'related_mappings': ['mmCIF:_entity', 'mmCIF:_entity_poly']})
+
+    nucleic_acid_type: NucleicAcidTypeEnum = Field(default=..., description="""Chemical type of the polymer: DNA, RNA, a DNA/RNA hybrid, or an analogue""", json_schema_extra = { "linkml_meta": {'alias': 'nucleic_acid_type',
+         'domain_of': ['NucleicAcid'],
+         'exact_mappings': ['mmCIF:_entity_poly.type']} })
+    nucleic_acid_name: Optional[str] = Field(default=None, description="""Name as the depositor or database gives it (e.g., 'tRNA-Phe', 'Dickerson dodecamer', 'sgRNA targeting EMX1'). Recommended, not required, so that a record seeded from an accession alone can be enriched later.""", json_schema_extra = { "linkml_meta": {'alias': 'nucleic_acid_name',
+         'domain_of': ['NucleicAcid'],
+         'recommended': True,
+         'related_mappings': ['mmCIF:_entity.pdbx_description']} })
+    rnacentral_id: Optional[str] = Field(default=None, description="""RNAcentral identifier as a Bioregistry CURIE (rnacentral:URS0000759CF4), optionally with the taxon suffix (rnacentral:URS0000759CF4_9606). For non-coding RNAs. Normally identical to id when set.""", json_schema_extra = { "linkml_meta": {'alias': 'rnacentral_id', 'domain_of': ['NucleicAcid']} })
+    sequence_accession: Optional[str] = Field(default=None, description="""Accession of the reference nucleotide sequence as a CURIE: RefSeq (refseq:NM_000518.5) or INSDC, which covers GenBank, ENA and DDBJ (insdc:J00153.1). For transcripts, genes and genomic fragments; a synthetic oligonucleotide has none.""", json_schema_extra = { "linkml_meta": {'alias': 'sequence_accession',
+         'domain_of': ['NucleicAcid'],
+         'exact_mappings': ['mmCIF:_struct_ref.pdbx_db_accession']} })
+    rfam_families: Optional[list[str]] = Field(default=None, description="""Rfam families the RNA belongs to, as CURIEs (rfam:RF00005 for tRNA)""", json_schema_extra = { "linkml_meta": {'alias': 'rfam_families', 'domain_of': ['NucleicAcid']} })
+    gene_name: Optional[str] = Field(default=None, description="""Gene the sequence is transcribed from or taken from (e.g., HBB for a beta-globin mRNA, EMX1 for the target site a guide RNA is designed against)""", json_schema_extra = { "linkml_meta": {'alias': 'gene_name',
+         'domain_of': ['Protein', 'ProteinConstruct', 'NucleicAcid'],
+         'exact_mappings': ['mmCIF:_entity_src_gen.pdbx_gene_src_gene']} })
+    organism: Optional[str] = Field(default=None, description="""Source organism as an NCBI Taxonomy CURIE (e.g., NCBITaxon:9606). A chemically synthesized oligonucleotide is NCBITaxon:32630 (synthetic construct), as the PDB records it; a synthetic copy of a natural sequence may instead name the organism the sequence comes from, with the synthesis recorded in SampleNucleicAcidAssociation.source_method.""", json_schema_extra = { "linkml_meta": {'alias': 'organism',
+         'domain_of': ['AggregatedProteinView', 'Sample', 'Protein', 'NucleicAcid'],
+         'exact_mappings': ['mmCIF:_entity_src_gen.pdbx_gene_src_ncbi_taxonomy_id']} })
+    organism_name: Optional[str] = Field(default=None, description="""Scientific name of the source organism. For display, and for sources that give a name but no taxonomy identifier.""", json_schema_extra = { "linkml_meta": {'alias': 'organism_name',
+         'domain_of': ['Protein', 'NucleicAcid'],
+         'exact_mappings': ['mmCIF:_entity_src_gen.pdbx_gene_src_scientific_name']} })
+    nucleotide_sequence: Optional[str] = Field(default=None, description="""Sequence in one-letter code, written 5' to 3'. T for DNA, U for RNA; IUPAC ambiguity codes and I for inosine are allowed. A modified nucleotide is written as its parent base and described in the association's modifications or in cross_references.""", json_schema_extra = { "linkml_meta": {'alias': 'nucleotide_sequence',
+         'domain_of': ['NucleicAcid'],
+         'exact_mappings': ['mmCIF:_entity_poly.pdbx_seq_one_letter_code_can']} })
+    sequence_length: Optional[int] = Field(default=None, description="""Length of the sequence in nucleotides""", json_schema_extra = { "linkml_meta": {'alias': 'sequence_length', 'domain_of': ['Protein', 'NucleicAcid']} })
+    molecular_weight_theoretical: Optional[QuantityValue] = Field(default=None, description="""Mass computed from the sequence, typically in kDa. A mass measured for a given preparation belongs on SampleNucleicAcidAssociation.observed_molecular_weight.""", json_schema_extra = { "linkml_meta": {'alias': 'molecular_weight_theoretical',
+         'domain_of': ['Protein', 'NucleicAcid'],
+         'related_mappings': ['mmCIF:_entity.formula_weight']} })
+    function_description: Optional[str] = Field(default=None, description="""Free-text summary of the molecule's role, typically from RNAcentral or the literature""", json_schema_extra = { "linkml_meta": {'alias': 'function_description', 'domain_of': ['Protein', 'NucleicAcid']} })
+    go_terms: Optional[list[str]] = Field(default=None, description="""Gene Ontology annotations as CURIEs (e.g., GO:0030533 for triplet codon-amino acid adaptor activity)""", json_schema_extra = { "linkml_meta": {'alias': 'go_terms', 'domain_of': ['FunctionalSite', 'Protein', 'NucleicAcid']} })
+    pdb_entries: Optional[list[str]] = Field(default=None, description="""PDB entries containing this nucleic acid, as CURIEs (e.g., pdb:1AAY)""", json_schema_extra = { "linkml_meta": {'alias': 'pdb_entries',
+         'domain_of': ['ConformationalState',
+                       'AggregatedProteinView',
+                       'Protein',
+                       'NucleicAcid']} })
+    cross_references: Optional[list[DatabaseCrossReference]] = Field(default=None, description="""Cross-references to external databases other than those named by rnacentral_id, sequence_accession and rfam_families (miRBase, GtRNAdb, NDB, ...).""", json_schema_extra = { "linkml_meta": {'alias': 'cross_references',
+         'domain_of': ['AggregatedProteinView', 'Protein', 'NucleicAcid']} })
+    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
+    title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+
+    @field_validator('rnacentral_id')
+    def pattern_rnacentral_id(cls, v):
+        pattern=re.compile(r"^rnacentral:URS[0-9A-F]{10}(_[0-9]+)?$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid rnacentral_id format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid rnacentral_id format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+    @field_validator('sequence_accession')
+    def pattern_sequence_accession(cls, v):
+        pattern=re.compile(r"^(refseq|insdc):[A-Z][A-Z0-9_]*[0-9](\.[0-9]+)?$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid sequence_accession format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid sequence_accession format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+    @field_validator('rfam_families')
+    def pattern_rfam_families(cls, v):
+        pattern=re.compile(r"^rfam:RF[0-9]{5}$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid rfam_families format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid rfam_families format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+    @field_validator('nucleotide_sequence')
+    def pattern_nucleotide_sequence(cls, v):
+        pattern=re.compile(r"^[ACGTURYKMSWBDHVNI]+$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid nucleotide_sequence format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid nucleotide_sequence format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
 class SamplePreparation(NamedThing):
     """
     A process that prepares a sample for imaging
@@ -4543,7 +4849,8 @@ class SamplePreparation(NamedThing):
          'domain_of': ['SamplePreparation',
                        'StudySampleAssociation',
                        'ExperimentSampleAssociation',
-                       'SampleProteinAssociation']} })
+                       'SampleProteinAssociation',
+                       'SampleNucleicAcidAssociation']} })
     preparation_date: Optional[str] = Field(default=None, description="""Date of sample preparation""", json_schema_extra = { "linkml_meta": {'alias': 'preparation_date', 'domain_of': ['SamplePreparation']} })
     operator_id: Optional[str] = Field(default=None, description="""Identifier or name of the person who performed the sample preparation (e.g., 'jsmith', 'John Smith', or personnel ID)""", json_schema_extra = { "linkml_meta": {'alias': 'operator_id', 'domain_of': ['SamplePreparation', 'ExperimentRun']} })
     protocol_description: Optional[str] = Field(default=None, description="""Detailed protocol description""", json_schema_extra = { "linkml_meta": {'alias': 'protocol_description', 'domain_of': ['SamplePreparation']} })
@@ -5910,7 +6217,9 @@ class MolecularComposition(AttributeGroup):
 
     sequences: Optional[list[str]] = Field(default=None, description="""Amino acid or nucleotide sequences""", json_schema_extra = { "linkml_meta": {'alias': 'sequences', 'domain_of': ['MolecularComposition']} })
     modifications: Optional[list[str]] = Field(default=None, description="""Post-translational modifications or chemical modifications""", json_schema_extra = { "linkml_meta": {'alias': 'modifications',
-         'domain_of': ['MolecularComposition', 'SampleProteinAssociation']} })
+         'domain_of': ['MolecularComposition',
+                       'SampleProteinAssociation',
+                       'SampleNucleicAcidAssociation']} })
     ligands: Optional[list[str]] = Field(default=None, description="""Bound ligands or cofactors""", json_schema_extra = { "linkml_meta": {'alias': 'ligands', 'domain_of': ['MolecularComposition']} })
     description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
 
@@ -6458,11 +6767,13 @@ class StudySampleAssociation(ConfiguredBaseModel):
          'domain_of': ['SamplePreparation',
                        'StudySampleAssociation',
                        'ExperimentSampleAssociation',
-                       'SampleProteinAssociation']} })
+                       'SampleProteinAssociation',
+                       'SampleNucleicAcidAssociation']} })
     role: Optional[SampleRoleEnum] = Field(default=None, description="""Role of sample in study (e.g., target, control, reference)""", json_schema_extra = { "linkml_meta": {'alias': 'role',
          'domain_of': ['StudySampleAssociation',
                        'ExperimentSampleAssociation',
                        'SampleProteinAssociation',
+                       'SampleNucleicAcidAssociation',
                        'ExperimentInstrumentAssociation',
                        'StudyPersonAssociation',
                        'ExperimentPersonAssociation',
@@ -6528,11 +6839,13 @@ class ExperimentSampleAssociation(ConfiguredBaseModel):
          'domain_of': ['SamplePreparation',
                        'StudySampleAssociation',
                        'ExperimentSampleAssociation',
-                       'SampleProteinAssociation']} })
+                       'SampleProteinAssociation',
+                       'SampleNucleicAcidAssociation']} })
     role: Optional[ExperimentSampleRoleEnum] = Field(default=None, description="""Role of sample in experiment""", json_schema_extra = { "linkml_meta": {'alias': 'role',
          'domain_of': ['StudySampleAssociation',
                        'ExperimentSampleAssociation',
                        'SampleProteinAssociation',
+                       'SampleNucleicAcidAssociation',
                        'ExperimentInstrumentAssociation',
                        'StudyPersonAssociation',
                        'ExperimentPersonAssociation',
@@ -6554,7 +6867,8 @@ class SampleProteinAssociation(ConfiguredBaseModel):
          'domain_of': ['SamplePreparation',
                        'StudySampleAssociation',
                        'ExperimentSampleAssociation',
-                       'SampleProteinAssociation']} })
+                       'SampleProteinAssociation',
+                       'SampleNucleicAcidAssociation']} })
     protein_id: str = Field(default=..., description="""Reference to the protein""", json_schema_extra = { "linkml_meta": {'alias': 'protein_id',
          'domain_of': ['ProteinAnnotation',
                        'ConformationalEnsemble',
@@ -6564,6 +6878,7 @@ class SampleProteinAssociation(ConfiguredBaseModel):
          'domain_of': ['StudySampleAssociation',
                        'ExperimentSampleAssociation',
                        'SampleProteinAssociation',
+                       'SampleNucleicAcidAssociation',
                        'ExperimentInstrumentAssociation',
                        'StudyPersonAssociation',
                        'ExperimentPersonAssociation',
@@ -6573,19 +6888,86 @@ class SampleProteinAssociation(ConfiguredBaseModel):
     construct_id: Optional[str] = Field(default=None, description="""The construct that produced this protein in this sample, where cloning detail is recorded""", json_schema_extra = { "linkml_meta": {'alias': 'construct_id',
          'domain_of': ['ProteinConstruct', 'SampleProteinAssociation']} })
     copy_number: Optional[int] = Field(default=None, description="""Copies of this protein per assembly in the sample (e.g., 4 for a homotetramer, 2 for each chain of an alpha2-beta2 heterotetramer). Omit when unknown rather than assuming 1.""", json_schema_extra = { "linkml_meta": {'alias': 'copy_number',
-         'domain_of': ['SampleProteinAssociation'],
+         'domain_of': ['SampleProteinAssociation', 'SampleNucleicAcidAssociation'],
          'exact_mappings': ['mmCIF:_entity.pdbx_number_of_molecules']} })
     residue_range: Optional[str] = Field(default=None, description="""Residues of the canonical sequence present in this sample (e.g., '1-141', '25-300'), for fragments and truncations. Omit when the full-length protein is present. Residues or ranges, comma-separated: '1-141', '25,27,30-35'.""", json_schema_extra = { "linkml_meta": {'alias': 'residue_range',
-         'domain_of': ['ProteinAnnotation', 'SampleProteinAssociation'],
+         'domain_of': ['ProteinAnnotation',
+                       'SampleProteinAssociation',
+                       'SampleNucleicAcidAssociation'],
          'related_mappings': ['IHMCIF:_ihm_entity_poly_segment']} })
-    sequence_coverage: Optional[float] = Field(default=None, description="""Fraction of the canonical sequence present in this sample (range: 0-1)""", ge=0, le=1, json_schema_extra = { "linkml_meta": {'alias': 'sequence_coverage', 'domain_of': ['SampleProteinAssociation']} })
+    sequence_coverage: Optional[float] = Field(default=None, description="""Fraction of the canonical sequence present in this sample (range: 0-1)""", ge=0, le=1, json_schema_extra = { "linkml_meta": {'alias': 'sequence_coverage',
+         'domain_of': ['SampleProteinAssociation', 'SampleNucleicAcidAssociation']} })
     chain_ids: Optional[list[str]] = Field(default=None, description="""Chain identifiers this protein occupies in the deposited structure, where the sample is a PDB entity""", json_schema_extra = { "linkml_meta": {'alias': 'chain_ids',
-         'domain_of': ['SampleProteinAssociation'],
+         'domain_of': ['SampleProteinAssociation', 'SampleNucleicAcidAssociation'],
          'exact_mappings': ['mmCIF:_entity_poly.pdbx_strand_id']} })
     modifications: Optional[list[str]] = Field(default=None, description="""Modifications carried by this protein in this sample: tags left on, mutations, labels, post-translational modifications""", json_schema_extra = { "linkml_meta": {'alias': 'modifications',
-         'domain_of': ['MolecularComposition', 'SampleProteinAssociation']} })
+         'domain_of': ['MolecularComposition',
+                       'SampleProteinAssociation',
+                       'SampleNucleicAcidAssociation']} })
     observed_molecular_weight: Optional[QuantityValue] = Field(default=None, description="""Mass as measured for this preparation (mass spectrometry, SEC-MALS, SAXS), typically in kDa. The sequence-derived mass lives on Protein.molecular_weight_theoretical.""", json_schema_extra = { "linkml_meta": {'alias': 'observed_molecular_weight',
-         'domain_of': ['SampleProteinAssociation']} })
+         'domain_of': ['SampleProteinAssociation', 'SampleNucleicAcidAssociation']} })
+
+    @field_validator('residue_range')
+    def pattern_residue_range(cls, v):
+        pattern=re.compile(r"^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid residue_range format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid residue_range format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class SampleNucleicAcidAssociation(ConfiguredBaseModel):
+    """
+    M:N link between Sample and NucleicAcid. A sample may hold several strands - the two strands of a duplex, a guide RNA with its target DNA, a primer with its template - and one strand turns up in many samples. What changes from preparation to preparation lives here: the role, the copy number, the form the strand takes (single, duplex, hairpin, quadruplex), how it was made, the modifications it carries, and the mass actually measured.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/',
+         'related_mappings': ['IHMCIF:_ihm_struct_assembly_details',
+                              'IHMCIF:_ihm_entity_poly_segment']})
+
+    sample_id: str = Field(default=..., description="""Reference to the sample""", json_schema_extra = { "linkml_meta": {'alias': 'sample_id',
+         'domain_of': ['SamplePreparation',
+                       'StudySampleAssociation',
+                       'ExperimentSampleAssociation',
+                       'SampleProteinAssociation',
+                       'SampleNucleicAcidAssociation']} })
+    nucleic_acid_id: str = Field(default=..., description="""Reference to the nucleic acid""", json_schema_extra = { "linkml_meta": {'alias': 'nucleic_acid_id', 'domain_of': ['SampleNucleicAcidAssociation']} })
+    role: Optional[SampleNucleicAcidRoleEnum] = Field(default=None, description="""Part this nucleic acid plays in the sample""", json_schema_extra = { "linkml_meta": {'alias': 'role',
+         'domain_of': ['StudySampleAssociation',
+                       'ExperimentSampleAssociation',
+                       'SampleProteinAssociation',
+                       'SampleNucleicAcidAssociation',
+                       'ExperimentInstrumentAssociation',
+                       'StudyPersonAssociation',
+                       'ExperimentPersonAssociation',
+                       'WorkflowPersonAssociation',
+                       'StudyOrganizationAssociation',
+                       'PersonOrganizationAssociation']} })
+    copy_number: Optional[int] = Field(default=None, description="""Copies of this strand per assembly in the sample: 2 for a self-complementary duplex, 1 for each strand of a duplex made of two different strands. Omit when unknown rather than assuming 1.""", json_schema_extra = { "linkml_meta": {'alias': 'copy_number',
+         'domain_of': ['SampleProteinAssociation', 'SampleNucleicAcidAssociation'],
+         'exact_mappings': ['mmCIF:_entity.pdbx_number_of_molecules']} })
+    residue_range: Optional[str] = Field(default=None, description="""Nucleotides of the reference sequence present in this sample (e.g., '1-76', '30-45'), for fragments of a longer RNA or DNA. Omit when the whole sequence is present. Positions or ranges, comma-separated: '1-76', '30-45,60-72'.""", json_schema_extra = { "linkml_meta": {'alias': 'residue_range',
+         'domain_of': ['ProteinAnnotation',
+                       'SampleProteinAssociation',
+                       'SampleNucleicAcidAssociation'],
+         'related_mappings': ['IHMCIF:_ihm_entity_poly_segment']} })
+    sequence_coverage: Optional[float] = Field(default=None, description="""Fraction of the reference sequence present in this sample (range: 0-1)""", ge=0, le=1, json_schema_extra = { "linkml_meta": {'alias': 'sequence_coverage',
+         'domain_of': ['SampleProteinAssociation', 'SampleNucleicAcidAssociation']} })
+    chain_ids: Optional[list[str]] = Field(default=None, description="""Chain identifiers this strand occupies in the deposited structure, where the sample is a PDB entity""", json_schema_extra = { "linkml_meta": {'alias': 'chain_ids',
+         'domain_of': ['SampleProteinAssociation', 'SampleNucleicAcidAssociation'],
+         'exact_mappings': ['mmCIF:_entity_poly.pdbx_strand_id']} })
+    structural_form: Optional[NucleicAcidFormEnum] = Field(default=None, description="""Form the strand takes in this sample: single-stranded, paired in a duplex, folded as a hairpin, a quadruplex, and so on. Both strands of a heteroduplex say double_stranded.""", json_schema_extra = { "linkml_meta": {'alias': 'structural_form', 'domain_of': ['SampleNucleicAcidAssociation']} })
+    source_method: Optional[NucleicAcidSourceEnum] = Field(default=None, description="""How this strand was made for this preparation: chemical synthesis, in vitro transcription, PCR, ...""", json_schema_extra = { "linkml_meta": {'alias': 'source_method', 'domain_of': ['SampleNucleicAcidAssociation']} })
+    modifications: Optional[list[str]] = Field(default=None, description="""Modifications carried by this strand in this sample: fluorophore or biotin labels, 2'-O-methyl groups, phosphorothioate linkages, a 5' triphosphate left on, methylated bases""", json_schema_extra = { "linkml_meta": {'alias': 'modifications',
+         'domain_of': ['MolecularComposition',
+                       'SampleProteinAssociation',
+                       'SampleNucleicAcidAssociation']} })
+    observed_molecular_weight: Optional[QuantityValue] = Field(default=None, description="""Mass as measured for this preparation (mass spectrometry, SEC-MALS, SAXS), typically in kDa. The sequence-derived mass lives on NucleicAcid.molecular_weight_theoretical.""", json_schema_extra = { "linkml_meta": {'alias': 'observed_molecular_weight',
+         'domain_of': ['SampleProteinAssociation', 'SampleNucleicAcidAssociation']} })
 
     @field_validator('residue_range')
     def pattern_residue_range(cls, v):
@@ -6618,6 +7000,7 @@ class ExperimentInstrumentAssociation(ConfiguredBaseModel):
          'domain_of': ['StudySampleAssociation',
                        'ExperimentSampleAssociation',
                        'SampleProteinAssociation',
+                       'SampleNucleicAcidAssociation',
                        'ExperimentInstrumentAssociation',
                        'StudyPersonAssociation',
                        'ExperimentPersonAssociation',
@@ -6707,6 +7090,7 @@ class StudyPersonAssociation(ConfiguredBaseModel):
          'domain_of': ['StudySampleAssociation',
                        'ExperimentSampleAssociation',
                        'SampleProteinAssociation',
+                       'SampleNucleicAcidAssociation',
                        'ExperimentInstrumentAssociation',
                        'StudyPersonAssociation',
                        'ExperimentPersonAssociation',
@@ -6740,6 +7124,7 @@ class ExperimentPersonAssociation(ConfiguredBaseModel):
          'domain_of': ['StudySampleAssociation',
                        'ExperimentSampleAssociation',
                        'SampleProteinAssociation',
+                       'SampleNucleicAcidAssociation',
                        'ExperimentInstrumentAssociation',
                        'StudyPersonAssociation',
                        'ExperimentPersonAssociation',
@@ -6769,6 +7154,7 @@ class WorkflowPersonAssociation(ConfiguredBaseModel):
          'domain_of': ['StudySampleAssociation',
                        'ExperimentSampleAssociation',
                        'SampleProteinAssociation',
+                       'SampleNucleicAcidAssociation',
                        'ExperimentInstrumentAssociation',
                        'StudyPersonAssociation',
                        'ExperimentPersonAssociation',
@@ -6795,6 +7181,7 @@ class StudyOrganizationAssociation(ConfiguredBaseModel):
          'domain_of': ['StudySampleAssociation',
                        'ExperimentSampleAssociation',
                        'SampleProteinAssociation',
+                       'SampleNucleicAcidAssociation',
                        'ExperimentInstrumentAssociation',
                        'StudyPersonAssociation',
                        'ExperimentPersonAssociation',
@@ -6821,6 +7208,7 @@ class PersonOrganizationAssociation(ConfiguredBaseModel):
          'domain_of': ['StudySampleAssociation',
                        'ExperimentSampleAssociation',
                        'SampleProteinAssociation',
+                       'SampleNucleicAcidAssociation',
                        'ExperimentInstrumentAssociation',
                        'StudyPersonAssociation',
                        'ExperimentPersonAssociation',
@@ -6861,6 +7249,7 @@ Organization.model_rebuild()
 Sample.model_rebuild()
 Protein.model_rebuild()
 ProteinConstruct.model_rebuild()
+NucleicAcid.model_rebuild()
 SamplePreparation.model_rebuild()
 Instrument.model_rebuild()
 CryoEMInstrument.model_rebuild()
@@ -6909,6 +7298,7 @@ StudyExperimentAssociation.model_rebuild()
 StudyWorkflowAssociation.model_rebuild()
 ExperimentSampleAssociation.model_rebuild()
 SampleProteinAssociation.model_rebuild()
+SampleNucleicAcidAssociation.model_rebuild()
 ExperimentInstrumentAssociation.model_rebuild()
 WorkflowExperimentAssociation.model_rebuild()
 WorkflowInputAssociation.model_rebuild()

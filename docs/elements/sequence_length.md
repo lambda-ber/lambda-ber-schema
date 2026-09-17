@@ -3,11 +3,6 @@
 # Slot: sequence_length 
 
 
-_Length of the canonical sequence in residues_
-
-
-
-
 
 URI: [lambda:sequence_length](http://w3id.org/lambda/sequence_length)
 Alias: sequence_length
@@ -22,6 +17,7 @@ Alias: sequence_length
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [NucleicAcid](NucleicAcid.md) | A nucleic acid as a molecular entity: one DNA, RNA or hybrid strand, with its... |  no  |
 | [Protein](Protein.md) | A protein as a biological entity: its sequence, source organism, gene, and th... |  no  |
 
 
@@ -31,7 +27,7 @@ Alias: sequence_length
 
 ## Properties
 
-* Range: [Integer](Integer.md)
+* Range: [String](String.md)
 
 
 
@@ -40,13 +36,6 @@ Alias: sequence_length
 
 
 
-
-
-
-### Schema Source
-
-
-* from schema: http://w3id.org/lambda/
 
 
 
@@ -66,14 +55,11 @@ Alias: sequence_length
 <details>
 ```yaml
 name: sequence_length
-description: Length of the canonical sequence in residues
-from_schema: http://w3id.org/lambda/
-rank: 1000
 alias: sequence_length
-owner: Protein
 domain_of:
 - Protein
-range: integer
+- NucleicAcid
+range: string
 
 ```
 </details>

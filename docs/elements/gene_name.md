@@ -17,6 +17,7 @@ Alias: gene_name
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [NucleicAcid](NucleicAcid.md) | A nucleic acid as a molecular entity: one DNA, RNA or hybrid strand, with its... |  no  |
 | [Protein](Protein.md) | A protein as a biological entity: its sequence, source organism, gene, and th... |  no  |
 | [ProteinConstruct](ProteinConstruct.md) | Detailed information about a protein construct including cloning and sequence... |  no  |
 
@@ -59,6 +60,7 @@ alias: gene_name
 domain_of:
 - Protein
 - ProteinConstruct
+- NucleicAcid
 range: string
 
 ```

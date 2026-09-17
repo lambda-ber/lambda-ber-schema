@@ -5,6 +5,7 @@
    "UO": "http://purl.obolibrary.org/obo/UO_",
    "dcterms": "http://purl.org/dc/terms/",
    "imgCIF": "https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#",
+   "insdc": "https://www.ebi.ac.uk/ena/data/view/",
    "ispyb": "https://ispyb.github.io/ISPyB/",
    "lambda": "http://w3id.org/lambda/",
    "lambdarc": "http://w3id.org/lambda/rocrate/",
@@ -13,9 +14,12 @@
    "mmCIF": "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/",
    "nmdc": "https://w3id.org/nmdc/",
    "nsls2": "https://github.com/NSLS2/BER-LAMBDA/",
+   "pdb": "https://www.rcsb.org/structure/",
    "prof": "http://www.w3.org/ns/dx/prof/",
    "prov": "http://www.w3.org/ns/prov#",
    "qud": "http://qudt.org/1.1/schema/qudt#",
+   "refseq": "https://www.ncbi.nlm.nih.gov/nuccore/",
+   "rnacentral": "https://rnacentral.org/rna/",
    "rocrate": "https://w3id.org/ro/crate/",
    "schema": "https://schema.org/",
    "sdo": "http://schema.org/",
@@ -188,6 +192,12 @@
    "NamedThing": {
       "@id": "lambda:NamedThing"
    },
+   "NucleicAcid": {
+      "@id": "lambda:NucleicAcid"
+   },
+   "NucleicAcidEntity": {
+      "@id": "sdo:BioChemEntity"
+   },
    "OntologyTerm": {
       "@id": "lambda:OntologyTerm"
    },
@@ -253,6 +263,9 @@
    },
    "SampleEntity": {
       "@id": "sdo:BioChemEntity"
+   },
+   "SampleNucleicAcidAssociation": {
+      "@id": "lambda:SampleNucleicAcidAssociation"
    },
    "SamplePreparation": {
       "@id": "lambda:SamplePreparation"

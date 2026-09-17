@@ -3,11 +3,6 @@
 # Slot: function_description 
 
 
-_Free-text summary of molecular function, typically from UniProt_
-
-
-
-
 
 URI: [lambda:function_description](http://w3id.org/lambda/function_description)
 Alias: function_description
@@ -22,6 +17,7 @@ Alias: function_description
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [NucleicAcid](NucleicAcid.md) | A nucleic acid as a molecular entity: one DNA, RNA or hybrid strand, with its... |  no  |
 | [Protein](Protein.md) | A protein as a biological entity: its sequence, source organism, gene, and th... |  no  |
 
 
@@ -43,13 +39,6 @@ Alias: function_description
 
 
 
-### Schema Source
-
-
-* from schema: http://w3id.org/lambda/
-
-
-
 
 ## Mappings
 
@@ -66,13 +55,10 @@ Alias: function_description
 <details>
 ```yaml
 name: function_description
-description: Free-text summary of molecular function, typically from UniProt
-from_schema: http://w3id.org/lambda/
-rank: 1000
 alias: function_description
-owner: Protein
 domain_of:
 - Protein
+- NucleicAcid
 range: string
 
 ```

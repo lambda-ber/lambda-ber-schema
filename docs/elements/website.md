@@ -17,8 +17,8 @@ Alias: website
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Organization](Organization.md) | An institution, facility, laboratory or funding body - a national laboratory,... |  no  |
 | [BeamlineInstrument](BeamlineInstrument.md) | Multi-technique synchrotron beamline that supports multiple experimental meth... |  no  |
+| [Organization](Organization.md) | An institution, facility, laboratory or funding body - a national laboratory,... |  no  |
 
 
 

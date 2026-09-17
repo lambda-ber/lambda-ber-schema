@@ -22,10 +22,10 @@ Alias: raw_value
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [AttributeValue](AttributeValue.md) | The value for any attribute of an entity |  no  |
+| [TextValue](TextValue.md) | A value described using a text string, optionally with a controlled vocabular... |  no  |
 | [QuantityValue](QuantityValue.md) | A simple quantity value, representing a measurement with a numeric value and ... |  yes  |
 | [DateTimeValue](DateTimeValue.md) | A date or date and time value |  no  |
-| [TextValue](TextValue.md) | A value described using a text string, optionally with a controlled vocabular... |  no  |
-| [AttributeValue](AttributeValue.md) | The value for any attribute of an entity |  no  |
 
 
 

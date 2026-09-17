@@ -3,11 +3,6 @@
 # Slot: copy_number 
 
 
-_Copies of this protein per assembly in the sample (e.g., 4 for a homotetramer, 2 for each chain of an alpha2-beta2 heterotetramer). Omit when unknown rather than assuming 1._
-
-
-
-
 
 URI: [lambda:copy_number](http://w3id.org/lambda/copy_number)
 Alias: copy_number
@@ -23,6 +18,7 @@ Alias: copy_number
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [SampleProteinAssociation](SampleProteinAssociation.md) | M:N link between Sample and Protein |  no  |
+| [SampleNucleicAcidAssociation](SampleNucleicAcidAssociation.md) | M:N link between Sample and NucleicAcid |  no  |
 
 
 
@@ -31,7 +27,7 @@ Alias: copy_number
 
 ## Properties
 
-* Range: [Integer](Integer.md)
+* Range: [String](String.md)
 
 
 
@@ -43,13 +39,6 @@ Alias: copy_number
 
 
 
-### Schema Source
-
-
-* from schema: http://w3id.org/lambda/
-
-
-
 
 ## Mappings
 
@@ -57,7 +46,6 @@ Alias: copy_number
 | ---  | ---  |
 | self | lambda:copy_number |
 | native | lambda:copy_number |
-| exact | mmCIF:_entity.pdbx_number_of_molecules |
 
 
 
@@ -67,18 +55,11 @@ Alias: copy_number
 <details>
 ```yaml
 name: copy_number
-description: Copies of this protein per assembly in the sample (e.g., 4 for a homotetramer,
-  2 for each chain of an alpha2-beta2 heterotetramer). Omit when unknown rather than
-  assuming 1.
-from_schema: http://w3id.org/lambda/
-exact_mappings:
-- mmCIF:_entity.pdbx_number_of_molecules
-rank: 1000
 alias: copy_number
-owner: SampleProteinAssociation
 domain_of:
 - SampleProteinAssociation
-range: integer
+- SampleNucleicAcidAssociation
+range: string
 
 ```
 </details>

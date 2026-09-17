@@ -3,7 +3,7 @@
 # Class: Sample 
 
 
-_A physical biological sample used in structural biology experiments. Records what is true of this preparation - buffer, concentration, storage, purity, the construct and tags used. The identity of the protein(s) it contains belongs on Protein, linked through SampleProteinAssociation, so a protein studied in ten preparations is described once._
+_A physical biological sample used in structural biology experiments. Records what is true of this preparation - buffer, concentration, storage, purity, the construct and tags used. The identity of the protein(s) it contains belongs on Protein, linked through SampleProteinAssociation, so a protein studied in ten preparations is described once. The nucleic acid(s) it contains belong on NucleicAcid in the same way, linked through SampleNucleicAcidAssociation; a protein-DNA complex is one sample with one row in each._
 
 
 
@@ -344,6 +344,7 @@ URI: [lambda:Sample](http://w3id.org/lambda/Sample)
 | [StudySampleAssociation](StudySampleAssociation.md) | [sample_id](sample_id.md) | range | [Sample](Sample.md) |
 | [ExperimentSampleAssociation](ExperimentSampleAssociation.md) | [sample_id](sample_id.md) | range | [Sample](Sample.md) |
 | [SampleProteinAssociation](SampleProteinAssociation.md) | [sample_id](sample_id.md) | range | [Sample](Sample.md) |
+| [SampleNucleicAcidAssociation](SampleNucleicAcidAssociation.md) | [sample_id](sample_id.md) | range | [Sample](Sample.md) |
 
 
 
@@ -396,7 +397,9 @@ description: A physical biological sample used in structural biology experiments
   Records what is true of this preparation - buffer, concentration, storage, purity,
   the construct and tags used. The identity of the protein(s) it contains belongs
   on Protein, linked through SampleProteinAssociation, so a protein studied in ten
-  preparations is described once.
+  preparations is described once. The nucleic acid(s) it contains belong on NucleicAcid
+  in the same way, linked through SampleNucleicAcidAssociation; a protein-DNA complex
+  is one sample with one row in each.
 comments:
 - protein_name, organism and the functional annotation collections remain here for
   data that arrives without a resolvable protein identity, and for search convenience.
@@ -494,6 +497,7 @@ attributes:
     domain_of:
     - Sample
     - Protein
+    - NucleicAcid
     - AggregatedProteinView
     range: OntologyTerm
   anatomy:
@@ -749,7 +753,9 @@ description: A physical biological sample used in structural biology experiments
   Records what is true of this preparation - buffer, concentration, storage, purity,
   the construct and tags used. The identity of the protein(s) it contains belongs
   on Protein, linked through SampleProteinAssociation, so a protein studied in ten
-  preparations is described once.
+  preparations is described once. The nucleic acid(s) it contains belong on NucleicAcid
+  in the same way, linked through SampleNucleicAcidAssociation; a protein-DNA complex
+  is one sample with one row in each.
 comments:
 - protein_name, organism and the functional annotation collections remain here for
   data that arrives without a resolvable protein identity, and for search convenience.
@@ -867,6 +873,7 @@ attributes:
     domain_of:
     - Sample
     - Protein
+    - NucleicAcid
     - AggregatedProteinView
     range: OntologyTerm
   anatomy:

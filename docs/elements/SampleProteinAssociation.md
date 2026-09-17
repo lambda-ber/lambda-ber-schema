@@ -180,6 +180,7 @@ attributes:
     - StudySampleAssociation
     - ExperimentSampleAssociation
     - SampleProteinAssociation
+    - SampleNucleicAcidAssociation
     range: Sample
     required: true
   protein_id:
@@ -201,6 +202,7 @@ attributes:
     - StudySampleAssociation
     - ExperimentSampleAssociation
     - SampleProteinAssociation
+    - SampleNucleicAcidAssociation
     - ExperimentInstrumentAssociation
     - StudyPersonAssociation
     - ExperimentPersonAssociation
@@ -228,6 +230,7 @@ attributes:
     rank: 1000
     domain_of:
     - SampleProteinAssociation
+    - SampleNucleicAcidAssociation
     range: integer
   residue_range:
     name: residue_range
@@ -240,6 +243,7 @@ attributes:
     rank: 1000
     domain_of:
     - SampleProteinAssociation
+    - SampleNucleicAcidAssociation
     - ProteinAnnotation
     pattern: ^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$
   sequence_coverage:
@@ -250,6 +254,7 @@ attributes:
     rank: 1000
     domain_of:
     - SampleProteinAssociation
+    - SampleNucleicAcidAssociation
     range: float
     minimum_value: 0
     maximum_value: 1
@@ -263,6 +268,7 @@ attributes:
     rank: 1000
     domain_of:
     - SampleProteinAssociation
+    - SampleNucleicAcidAssociation
     multivalued: true
   modifications:
     name: modifications
@@ -272,6 +278,7 @@ attributes:
     domain_of:
     - MolecularComposition
     - SampleProteinAssociation
+    - SampleNucleicAcidAssociation
     multivalued: true
   observed_molecular_weight:
     name: observed_molecular_weight
@@ -281,6 +288,7 @@ attributes:
     rank: 1000
     domain_of:
     - SampleProteinAssociation
+    - SampleNucleicAcidAssociation
     range: QuantityValue
     inlined: true
 
@@ -313,6 +321,7 @@ attributes:
     - StudySampleAssociation
     - ExperimentSampleAssociation
     - SampleProteinAssociation
+    - SampleNucleicAcidAssociation
     range: Sample
     required: true
   protein_id:
@@ -338,6 +347,7 @@ attributes:
     - StudySampleAssociation
     - ExperimentSampleAssociation
     - SampleProteinAssociation
+    - SampleNucleicAcidAssociation
     - ExperimentInstrumentAssociation
     - StudyPersonAssociation
     - ExperimentPersonAssociation
@@ -369,6 +379,7 @@ attributes:
     owner: SampleProteinAssociation
     domain_of:
     - SampleProteinAssociation
+    - SampleNucleicAcidAssociation
     range: integer
   residue_range:
     name: residue_range
@@ -383,6 +394,7 @@ attributes:
     owner: SampleProteinAssociation
     domain_of:
     - SampleProteinAssociation
+    - SampleNucleicAcidAssociation
     - ProteinAnnotation
     range: string
     pattern: ^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$
@@ -396,6 +408,7 @@ attributes:
     owner: SampleProteinAssociation
     domain_of:
     - SampleProteinAssociation
+    - SampleNucleicAcidAssociation
     range: float
     minimum_value: 0
     maximum_value: 1
@@ -411,6 +424,7 @@ attributes:
     owner: SampleProteinAssociation
     domain_of:
     - SampleProteinAssociation
+    - SampleNucleicAcidAssociation
     range: string
     multivalued: true
   modifications:
@@ -423,6 +437,7 @@ attributes:
     domain_of:
     - MolecularComposition
     - SampleProteinAssociation
+    - SampleNucleicAcidAssociation
     range: string
     multivalued: true
   observed_molecular_weight:
@@ -435,6 +450,7 @@ attributes:
     owner: SampleProteinAssociation
     domain_of:
     - SampleProteinAssociation
+    - SampleNucleicAcidAssociation
     range: QuantityValue
     inlined: true
 

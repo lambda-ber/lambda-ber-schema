@@ -262,6 +262,7 @@ attributes:
     domain_of:
     - Sample
     - Protein
+    - NucleicAcid
     - AggregatedProteinView
   organism_id:
     name: organism_id
@@ -277,6 +278,7 @@ attributes:
     from_schema: http://w3id.org/lambda/functional_annotation
     domain_of:
     - Protein
+    - NucleicAcid
     - ConformationalState
     - AggregatedProteinView
     multivalued: true
@@ -389,6 +391,7 @@ attributes:
     from_schema: http://w3id.org/lambda/functional_annotation
     domain_of:
     - Protein
+    - NucleicAcid
     - AggregatedProteinView
     range: DatabaseCrossReference
     multivalued: true
@@ -444,6 +447,7 @@ attributes:
     domain_of:
     - Sample
     - Protein
+    - NucleicAcid
     - AggregatedProteinView
     range: string
   organism_id:
@@ -464,6 +468,7 @@ attributes:
     owner: AggregatedProteinView
     domain_of:
     - Protein
+    - NucleicAcid
     - ConformationalState
     - AggregatedProteinView
     range: string
@@ -597,6 +602,7 @@ attributes:
     owner: AggregatedProteinView
     domain_of:
     - Protein
+    - NucleicAcid
     - AggregatedProteinView
     range: DatabaseCrossReference
     multivalued: true

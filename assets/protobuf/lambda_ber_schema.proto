@@ -1,7 +1,7 @@
  syntax="proto3";
  package
 // metamodel_version: 1.7.0
-// version: 0.1.2.post218.dev0+829558d2
+// version: 0.1.2.post231.dev0+52d03959
 // Aggregated view of all structural and functional data for a protein
 message AggregatedProteinView
  {
@@ -297,6 +297,7 @@ message Dataset
  repeated  instrument instruments = 0
  repeated  protein proteins = 0
  repeated  proteinConstruct proteinConstructs = 0
+ repeated  nucleicAcid nucleicAcids = 0
  repeated  sample samples = 0
  repeated  samplePreparation samplePreparations = 0
  repeated  experimentRun experimentRuns = 0
@@ -309,6 +310,7 @@ message Dataset
  repeated  experimentSampleAssociation experimentSampleAssociations = 0
  repeated  experimentInstrumentAssociation experimentInstrumentAssociations = 0
  repeated  sampleProteinAssociation sampleProteinAssociations = 0
+ repeated  sampleNucleicAcidAssociation sampleNucleicAcidAssociations = 0
  repeated  workflowExperimentAssociation workflowExperimentAssociations = 0
  repeated  workflowInputAssociation workflowInputAssociations = 0
  repeated  workflowOutputAssociation workflowOutputAssociations = 0
@@ -743,6 +745,28 @@ message MutationEffect
   clinicalSignificanceEnum clinicalSignificance = 0
   float alleleFrequency = 0
  }
+// A nucleic acid as a molecular entity: one DNA, RNA or hybrid strand, with its sequence, type, source and the annotations that hold for it regardless of any one preparation. The counterpart of Protein for the other biopolymer. One NucleicAcid record is shared by every Sample that contains it, through SampleNucleicAcidAssociation. A duplex of two different strands is two records; a self-complementary duplex is one record with copy_number 2 on the association. Whether the strand is paired in a given sample, how it was made, and which chemical modifications it carries are preparation facts and live on the association.
+message NucleicAcid
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  nucleicAcidTypeEnum nucleicAcidType = 0
+  string nucleicAcidName = 0
+  uriorcurie rnacentralId = 0
+  uriorcurie sequenceAccession = 0
+ repeated  uriorcurie rfamFamilies = 0
+  string geneName = 0
+  ontologyTerm organism = 0
+  string organismName = 0
+  string nucleotideSequence = 0
+  integer sequenceLength = 0
+  quantityValue molecularWeightTheoretical = 0
+  string functionDescription = 0
+ repeated  uriorcurie goTerms = 0
+ repeated  uriorcurie pdbEntries = 0
+ repeated  databaseCrossReference crossReferences = 0
+ }
 // A term from a controlled vocabulary or ontology
 message OntologyTerm
  {
@@ -1022,7 +1046,7 @@ message RefinementParameters
   quantityValue resolution05 = 0
   quantityValue mapSharpeningBfactor = 0
  }
-// A physical biological sample used in structural biology experiments. Records what is true of this preparation - buffer, concentration, storage, purity, the construct and tags used. The identity of the protein(s) it contains belongs on Protein, linked through SampleProteinAssociation, so a protein studied in ten preparations is described once.
+// A physical biological sample used in structural biology experiments. Records what is true of this preparation - buffer, concentration, storage, purity, the construct and tags used. The identity of the protein(s) it contains belongs on Protein, linked through SampleProteinAssociation, so a protein studied in ten preparations is described once. The nucleic acid(s) it contains belong on NucleicAcid in the same way, linked through SampleNucleicAcidAssociation; a protein-DNA complex is one sample with one row in each.
 message Sample
  {
   uriorcurie id = 0
@@ -1059,6 +1083,21 @@ message Sample
   string expressionSystem = 0
   string ligand = 0
   string oligomericState = 0
+ }
+// M:N link between Sample and NucleicAcid. A sample may hold several strands - the two strands of a duplex, a guide RNA with its target DNA, a primer with its template - and one strand turns up in many samples. What changes from preparation to preparation lives here: the role, the copy number, the form the strand takes (single, duplex, hairpin, quadruplex), how it was made, the modifications it carries, and the mass actually measured.
+message SampleNucleicAcidAssociation
+ {
+  sample sampleId = 0
+  nucleicAcid nucleicAcidId = 0
+  sampleNucleicAcidRoleEnum role = 0
+  integer copyNumber = 0
+  string residueRange = 0
+  float sequenceCoverage = 0
+ repeated  string chainIds = 0
+  nucleicAcidFormEnum structuralForm = 0
+  nucleicAcidSourceEnum sourceMethod = 0
+ repeated  string modifications = 0
+  quantityValue observedMolecularWeight = 0
  }
 // A process that prepares a sample for imaging
 message SamplePreparation

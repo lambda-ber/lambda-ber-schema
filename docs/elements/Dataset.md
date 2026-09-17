@@ -105,6 +105,17 @@ URI: [lambda:Dataset](http://w3id.org/lambda/Dataset)
         
       Dataset : keywords
         
+      Dataset : nucleic_acids
+        
+          
+    
+        
+        
+        Dataset --> "*" NucleicAcid : nucleic_acids
+        click NucleicAcid href "../NucleicAcid/"
+    
+
+        
       Dataset : organizations
         
           
@@ -157,6 +168,17 @@ URI: [lambda:Dataset](http://w3id.org/lambda/Dataset)
         
         Dataset --> "*" Protein : proteins
         click Protein href "../Protein/"
+    
+
+        
+      Dataset : sample_nucleic_acid_associations
+        
+          
+    
+        
+        
+        Dataset --> "*" SampleNucleicAcidAssociation : sample_nucleic_acid_associations
+        click SampleNucleicAcidAssociation href "../SampleNucleicAcidAssociation/"
     
 
         
@@ -340,6 +362,7 @@ URI: [lambda:Dataset](http://w3id.org/lambda/Dataset)
 | [instruments](instruments.md) | * <br/> [Instrument](Instrument.md) | All instruments used across studies | direct |
 | [proteins](proteins.md) | * <br/> [Protein](Protein.md) | All proteins referenced by samples in this dataset, one record per protein | direct |
 | [protein_constructs](protein_constructs.md) | * <br/> [ProteinConstruct](ProteinConstruct.md) | All protein constructs | direct |
+| [nucleic_acids](nucleic_acids.md) | * <br/> [NucleicAcid](NucleicAcid.md) | All nucleic acids referenced by samples in this dataset, one record per stran... | direct |
 | [samples](samples.md) | * <br/> [Sample](Sample.md) | All samples across all studies | direct |
 | [sample_preparations](sample_preparations.md) | * <br/> [SamplePreparation](SamplePreparation.md) | All sample preparations | direct |
 | [experiment_runs](experiment_runs.md) | * <br/> [ExperimentRun](ExperimentRun.md) | All experiment runs (data collection sessions) | direct |
@@ -352,6 +375,7 @@ URI: [lambda:Dataset](http://w3id.org/lambda/Dataset)
 | [experiment_sample_associations](experiment_sample_associations.md) | * <br/> [ExperimentSampleAssociation](ExperimentSampleAssociation.md) | Links between experiments and samples (M:N with role) | direct |
 | [experiment_instrument_associations](experiment_instrument_associations.md) | * <br/> [ExperimentInstrumentAssociation](ExperimentInstrumentAssociation.md) | Links between experiments and instruments (M:N) | direct |
 | [sample_protein_associations](sample_protein_associations.md) | * <br/> [SampleProteinAssociation](SampleProteinAssociation.md) | Links between samples and the proteins they contain (M:N with role, copy numb... | direct |
+| [sample_nucleic_acid_associations](sample_nucleic_acid_associations.md) | * <br/> [SampleNucleicAcidAssociation](SampleNucleicAcidAssociation.md) | Links between samples and the nucleic acids they contain (M:N with role, copy... | direct |
 | [workflow_experiment_associations](workflow_experiment_associations.md) | * <br/> [WorkflowExperimentAssociation](WorkflowExperimentAssociation.md) | Links between workflows and source experiments (M:N) | direct |
 | [workflow_input_associations](workflow_input_associations.md) | * <br/> [WorkflowInputAssociation](WorkflowInputAssociation.md) | Links between workflows and input files | direct |
 | [workflow_output_associations](workflow_output_associations.md) | * <br/> [WorkflowOutputAssociation](WorkflowOutputAssociation.md) | Links between workflows and output files | direct |
@@ -495,6 +519,18 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
+  nucleic_acids:
+    name: nucleic_acids
+    description: All nucleic acids referenced by samples in this dataset, one record
+      per strand
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    domain_of:
+    - Dataset
+    range: NucleicAcid
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
   samples:
     name: samples
     description: All samples across all studies
@@ -625,6 +661,18 @@ attributes:
     domain_of:
     - Dataset
     range: SampleProteinAssociation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  sample_nucleic_acid_associations:
+    name: sample_nucleic_acid_associations
+    description: Links between samples and the nucleic acids they contain (M:N with
+      role, copy number, structural form, source)
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    domain_of:
+    - Dataset
+    range: SampleNucleicAcidAssociation
     multivalued: true
     inlined: true
     inlined_as_list: true
@@ -826,6 +874,20 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
+  nucleic_acids:
+    name: nucleic_acids
+    description: All nucleic acids referenced by samples in this dataset, one record
+      per strand
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    alias: nucleic_acids
+    owner: Dataset
+    domain_of:
+    - Dataset
+    range: NucleicAcid
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
   samples:
     name: samples
     description: All samples across all studies
@@ -980,6 +1042,20 @@ attributes:
     domain_of:
     - Dataset
     range: SampleProteinAssociation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  sample_nucleic_acid_associations:
+    name: sample_nucleic_acid_associations
+    description: Links between samples and the nucleic acids they contain (M:N with
+      role, copy number, structural form, source)
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    alias: sample_nucleic_acid_associations
+    owner: Dataset
+    domain_of:
+    - Dataset
+    range: SampleNucleicAcidAssociation
     multivalued: true
     inlined: true
     inlined_as_list: true

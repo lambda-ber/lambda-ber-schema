@@ -45,7 +45,7 @@
 --     * Slot: title Description: A human-readable name or title for this entity
 --     * Slot: description Description: A detailed textual description of this entity
 --     * Slot: Dataset_id Description: Autocreated FK slot
--- # Class: Sample Description: A physical biological sample used in structural biology experiments. Records what is true of this preparation - buffer, concentration, storage, purity, the construct and tags used. The identity of the protein(s) it contains belongs on Protein, linked through SampleProteinAssociation, so a protein studied in ten preparations is described once.
+-- # Class: Sample Description: A physical biological sample used in structural biology experiments. Records what is true of this preparation - buffer, concentration, storage, purity, the construct and tags used. The identity of the protein(s) it contains belongs on Protein, linked through SampleProteinAssociation, so a protein studied in ten preparations is described once. The nucleic acid(s) it contains belong on NucleicAcid in the same way, linked through SampleNucleicAcidAssociation; a protein-DNA complex is one sample with one row in each.
 --     * Slot: sample_code Description: Human-friendly laboratory identifier or facility code for the sample (e.g., 'ALS-12.3.1-SAMPLE-001', 'LAB-PROT-2024-01'). Used for local reference and tracking within laboratory workflows.
 --     * Slot: sample_type Description: Type of biological sample
 --     * Slot: preparation_method Description: Method used to prepare the sample
@@ -116,6 +116,22 @@
 --     * Slot: description Description: A detailed textual description of this entity
 --     * Slot: Dataset_id Description: Autocreated FK slot
 --     * Slot: sequence_length_aa_id Description: Length of the protein sequence in amino acids
+-- # Class: NucleicAcid Description: A nucleic acid as a molecular entity: one DNA, RNA or hybrid strand, with its sequence, type, source and the annotations that hold for it regardless of any one preparation. The counterpart of Protein for the other biopolymer. One NucleicAcid record is shared by every Sample that contains it, through SampleNucleicAcidAssociation. A duplex of two different strands is two records; a self-complementary duplex is one record with copy_number 2 on the association. Whether the strand is paired in a given sample, how it was made, and which chemical modifications it carries are preparation facts and live on the association.
+--     * Slot: nucleic_acid_type Description: Chemical type of the polymer: DNA, RNA, a DNA/RNA hybrid, or an analogue
+--     * Slot: nucleic_acid_name Description: Name as the depositor or database gives it (e.g., 'tRNA-Phe', 'Dickerson dodecamer', 'sgRNA targeting EMX1'). Recommended, not required, so that a record seeded from an accession alone can be enriched later.
+--     * Slot: rnacentral_id Description: RNAcentral identifier as a Bioregistry CURIE (rnacentral:URS0000759CF4), optionally with the taxon suffix (rnacentral:URS0000759CF4_9606). For non-coding RNAs. Normally identical to id when set.
+--     * Slot: sequence_accession Description: Accession of the reference nucleotide sequence as a CURIE: RefSeq (refseq:NM_000518.5) or INSDC, which covers GenBank, ENA and DDBJ (insdc:J00153.1). For transcripts, genes and genomic fragments; a synthetic oligonucleotide has none.
+--     * Slot: gene_name Description: Gene the sequence is transcribed from or taken from (e.g., HBB for a beta-globin mRNA, EMX1 for the target site a guide RNA is designed against)
+--     * Slot: organism Description: Source organism as an NCBI Taxonomy CURIE (e.g., NCBITaxon:9606). A chemically synthesized oligonucleotide is NCBITaxon:32630 (synthetic construct), as the PDB records it; a synthetic copy of a natural sequence may instead name the organism the sequence comes from, with the synthesis recorded in SampleNucleicAcidAssociation.source_method.
+--     * Slot: organism_name Description: Scientific name of the source organism. For display, and for sources that give a name but no taxonomy identifier.
+--     * Slot: nucleotide_sequence Description: Sequence in one-letter code, written 5' to 3'. T for DNA, U for RNA; IUPAC ambiguity codes and I for inosine are allowed. A modified nucleotide is written as its parent base and described in the association's modifications or in cross_references.
+--     * Slot: sequence_length Description: Length of the sequence in nucleotides
+--     * Slot: function_description Description: Free-text summary of the molecule's role, typically from RNAcentral or the literature
+--     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
+--     * Slot: title Description: A human-readable name or title for this entity
+--     * Slot: description Description: A detailed textual description of this entity
+--     * Slot: Dataset_id Description: Autocreated FK slot
+--     * Slot: molecular_weight_theoretical_id Description: Mass computed from the sequence, typically in kDa. A mass measured for a given preparation belongs on SampleNucleicAcidAssociation.observed_molecular_weight.
 -- # Class: SamplePreparation Description: A process that prepares a sample for imaging
 --     * Slot: preparation_type Description: Type of sample preparation
 --     * Slot: sample_id Description: Reference to the sample being prepared
@@ -955,6 +971,18 @@
 --     * Slot: sequence_coverage Description: Fraction of the canonical sequence present in this sample (range: 0-1)
 --     * Slot: Dataset_id Description: Autocreated FK slot
 --     * Slot: observed_molecular_weight_id Description: Mass as measured for this preparation (mass spectrometry, SEC-MALS, SAXS), typically in kDa. The sequence-derived mass lives on Protein.molecular_weight_theoretical.
+-- # Class: SampleNucleicAcidAssociation Description: M:N link between Sample and NucleicAcid. A sample may hold several strands - the two strands of a duplex, a guide RNA with its target DNA, a primer with its template - and one strand turns up in many samples. What changes from preparation to preparation lives here: the role, the copy number, the form the strand takes (single, duplex, hairpin, quadruplex), how it was made, the modifications it carries, and the mass actually measured.
+--     * Slot: id
+--     * Slot: sample_id Description: Reference to the sample
+--     * Slot: nucleic_acid_id Description: Reference to the nucleic acid
+--     * Slot: role Description: Part this nucleic acid plays in the sample
+--     * Slot: copy_number Description: Copies of this strand per assembly in the sample: 2 for a self-complementary duplex, 1 for each strand of a duplex made of two different strands. Omit when unknown rather than assuming 1.
+--     * Slot: residue_range Description: Nucleotides of the reference sequence present in this sample (e.g., '1-76', '30-45'), for fragments of a longer RNA or DNA. Omit when the whole sequence is present. Positions or ranges, comma-separated: '1-76', '30-45,60-72'.
+--     * Slot: sequence_coverage Description: Fraction of the reference sequence present in this sample (range: 0-1)
+--     * Slot: structural_form Description: Form the strand takes in this sample: single-stranded, paired in a duplex, folded as a hairpin, a quadruplex, and so on. Both strands of a heteroduplex say double_stranded.
+--     * Slot: source_method Description: How this strand was made for this preparation: chemical synthesis, in vitro transcription, PCR, ...
+--     * Slot: Dataset_id Description: Autocreated FK slot
+--     * Slot: observed_molecular_weight_id Description: Mass as measured for this preparation (mass spectrometry, SEC-MALS, SAXS), typically in kDa. The sequence-derived mass lives on NucleicAcid.molecular_weight_theoretical.
 -- # Class: ExperimentInstrumentAssociation Description: M:N link between ExperimentRun and Instrument
 --     * Slot: id
 --     * Slot: experiment_id Description: Reference to the experiment run
@@ -1231,6 +1259,7 @@
 --     * Slot: description
 --     * Slot: Sample_id Description: Autocreated FK slot
 --     * Slot: Protein_id Description: Autocreated FK slot
+--     * Slot: NucleicAcid_id Description: Autocreated FK slot
 --     * Slot: AggregatedProteinView_id Description: Autocreated FK slot
 -- # Class: EvolutionaryConservation Description: Evolutionary conservation information
 --     * Slot: conservation_score Description: Overall conservation score (range: 0-1)
@@ -1283,6 +1312,15 @@
 -- # Class: Protein_pdb_entries
 --     * Slot: Protein_id Description: Autocreated FK slot
 --     * Slot: pdb_entries Description: PDB entries containing this protein, as CURIEs (e.g., pdb:1HHO)
+-- # Class: NucleicAcid_rfam_families
+--     * Slot: NucleicAcid_id Description: Autocreated FK slot
+--     * Slot: rfam_families Description: Rfam families the RNA belongs to, as CURIEs (rfam:RF00005 for tRNA)
+-- # Class: NucleicAcid_go_terms
+--     * Slot: NucleicAcid_id Description: Autocreated FK slot
+--     * Slot: go_terms Description: Gene Ontology annotations as CURIEs (e.g., GO:0030533 for triplet codon-amino acid adaptor activity)
+-- # Class: NucleicAcid_pdb_entries
+--     * Slot: NucleicAcid_id Description: Autocreated FK slot
+--     * Slot: pdb_entries Description: PDB entries containing this nucleic acid, as CURIEs (e.g., pdb:1AAY)
 -- # Class: SamplePreparation_purification_steps
 --     * Slot: SamplePreparation_id Description: Autocreated FK slot
 --     * Slot: purification_steps Description: Ordered list of purification steps performed
@@ -1322,6 +1360,12 @@
 -- # Class: SampleProteinAssociation_modifications
 --     * Slot: SampleProteinAssociation_id Description: Autocreated FK slot
 --     * Slot: modifications Description: Modifications carried by this protein in this sample: tags left on, mutations, labels, post-translational modifications
+-- # Class: SampleNucleicAcidAssociation_chain_ids
+--     * Slot: SampleNucleicAcidAssociation_id Description: Autocreated FK slot
+--     * Slot: chain_ids Description: Chain identifiers this strand occupies in the deposited structure, where the sample is a PDB entity
+-- # Class: SampleNucleicAcidAssociation_modifications
+--     * Slot: SampleNucleicAcidAssociation_id Description: Autocreated FK slot
+--     * Slot: modifications Description: Modifications carried by this strand in this sample: fluorophore or biotin labels, 2'-O-methyl groups, phosphorothioate linkages, a 5' triphosphate left on, methylated bases
 -- # Class: ProteinAnnotation_publication_ids
 --     * Slot: ProteinAnnotation_id Description: Autocreated FK slot
 --     * Slot: publication_ids Description: IDs of one or more publications supporting this annotation. Use PubMed IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.
@@ -1604,25 +1648,25 @@ CREATE TABLE "Dataset_keywords" (
 	keywords TEXT,
 	PRIMARY KEY ("Dataset_id", keywords),
 	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id)
-);CREATE INDEX "ix_Dataset_keywords_Dataset_id" ON "Dataset_keywords" ("Dataset_id");CREATE INDEX "ix_Dataset_keywords_keywords" ON "Dataset_keywords" (keywords);
+);CREATE INDEX "ix_Dataset_keywords_keywords" ON "Dataset_keywords" (keywords);CREATE INDEX "ix_Dataset_keywords_Dataset_id" ON "Dataset_keywords" ("Dataset_id");
 CREATE TABLE "MolecularComposition_sequences" (
 	"MolecularComposition_id" INTEGER,
 	sequences TEXT,
 	PRIMARY KEY ("MolecularComposition_id", sequences),
 	FOREIGN KEY("MolecularComposition_id") REFERENCES "MolecularComposition" (id)
-);CREATE INDEX "ix_MolecularComposition_sequences_sequences" ON "MolecularComposition_sequences" (sequences);CREATE INDEX "ix_MolecularComposition_sequences_MolecularComposition_id" ON "MolecularComposition_sequences" ("MolecularComposition_id");
+);CREATE INDEX "ix_MolecularComposition_sequences_MolecularComposition_id" ON "MolecularComposition_sequences" ("MolecularComposition_id");CREATE INDEX "ix_MolecularComposition_sequences_sequences" ON "MolecularComposition_sequences" (sequences);
 CREATE TABLE "MolecularComposition_modifications" (
 	"MolecularComposition_id" INTEGER,
 	modifications TEXT,
 	PRIMARY KEY ("MolecularComposition_id", modifications),
 	FOREIGN KEY("MolecularComposition_id") REFERENCES "MolecularComposition" (id)
-);CREATE INDEX "ix_MolecularComposition_modifications_modifications" ON "MolecularComposition_modifications" (modifications);CREATE INDEX "ix_MolecularComposition_modifications_MolecularComposition_id" ON "MolecularComposition_modifications" ("MolecularComposition_id");
+);CREATE INDEX "ix_MolecularComposition_modifications_MolecularComposition_id" ON "MolecularComposition_modifications" ("MolecularComposition_id");CREATE INDEX "ix_MolecularComposition_modifications_modifications" ON "MolecularComposition_modifications" (modifications);
 CREATE TABLE "MolecularComposition_ligands" (
 	"MolecularComposition_id" INTEGER,
 	ligands TEXT,
 	PRIMARY KEY ("MolecularComposition_id", ligands),
 	FOREIGN KEY("MolecularComposition_id") REFERENCES "MolecularComposition" (id)
-);CREATE INDEX "ix_MolecularComposition_ligands_ligands" ON "MolecularComposition_ligands" (ligands);CREATE INDEX "ix_MolecularComposition_ligands_MolecularComposition_id" ON "MolecularComposition_ligands" ("MolecularComposition_id");
+);CREATE INDEX "ix_MolecularComposition_ligands_MolecularComposition_id" ON "MolecularComposition_ligands" ("MolecularComposition_id");CREATE INDEX "ix_MolecularComposition_ligands_ligands" ON "MolecularComposition_ligands" (ligands);
 CREATE TABLE "ProteinAnnotation_publication_ids" (
 	"ProteinAnnotation_id" TEXT,
 	publication_ids TEXT,
@@ -1634,7 +1678,7 @@ CREATE TABLE "ConformationalEnsemble_principal_motions" (
 	principal_motions TEXT,
 	PRIMARY KEY ("ConformationalEnsemble_id", principal_motions),
 	FOREIGN KEY("ConformationalEnsemble_id") REFERENCES "ConformationalEnsemble" (id)
-);CREATE INDEX "ix_ConformationalEnsemble_principal_motions_principal_motions" ON "ConformationalEnsemble_principal_motions" (principal_motions);CREATE INDEX "ix_ConformationalEnsemble_principal_motions_ConformationalEnsemble_id" ON "ConformationalEnsemble_principal_motions" ("ConformationalEnsemble_id");
+);CREATE INDEX "ix_ConformationalEnsemble_principal_motions_ConformationalEnsemble_id" ON "ConformationalEnsemble_principal_motions" ("ConformationalEnsemble_id");CREATE INDEX "ix_ConformationalEnsemble_principal_motions_principal_motions" ON "ConformationalEnsemble_principal_motions" (principal_motions);
 CREATE TABLE "EvolutionaryConservation_conserved_residues" (
 	"EvolutionaryConservation_id" TEXT,
 	conserved_residues TEXT,
@@ -1646,13 +1690,13 @@ CREATE TABLE "EvolutionaryConservation_variable_residues" (
 	variable_residues TEXT,
 	PRIMARY KEY ("EvolutionaryConservation_id", variable_residues),
 	FOREIGN KEY("EvolutionaryConservation_id") REFERENCES "EvolutionaryConservation" (id)
-);CREATE INDEX "ix_EvolutionaryConservation_variable_residues_EvolutionaryConservation_id" ON "EvolutionaryConservation_variable_residues" ("EvolutionaryConservation_id");CREATE INDEX "ix_EvolutionaryConservation_variable_residues_variable_residues" ON "EvolutionaryConservation_variable_residues" (variable_residues);
+);CREATE INDEX "ix_EvolutionaryConservation_variable_residues_variable_residues" ON "EvolutionaryConservation_variable_residues" (variable_residues);CREATE INDEX "ix_EvolutionaryConservation_variable_residues_EvolutionaryConservation_id" ON "EvolutionaryConservation_variable_residues" ("EvolutionaryConservation_id");
 CREATE TABLE "EvolutionaryConservation_coevolved_residues" (
 	"EvolutionaryConservation_id" TEXT,
 	coevolved_residues TEXT,
 	PRIMARY KEY ("EvolutionaryConservation_id", coevolved_residues),
 	FOREIGN KEY("EvolutionaryConservation_id") REFERENCES "EvolutionaryConservation" (id)
-);CREATE INDEX "ix_EvolutionaryConservation_coevolved_residues_coevolved_residues" ON "EvolutionaryConservation_coevolved_residues" (coevolved_residues);CREATE INDEX "ix_EvolutionaryConservation_coevolved_residues_EvolutionaryConservation_id" ON "EvolutionaryConservation_coevolved_residues" ("EvolutionaryConservation_id");
+);CREATE INDEX "ix_EvolutionaryConservation_coevolved_residues_EvolutionaryConservation_id" ON "EvolutionaryConservation_coevolved_residues" ("EvolutionaryConservation_id");CREATE INDEX "ix_EvolutionaryConservation_coevolved_residues_coevolved_residues" ON "EvolutionaryConservation_coevolved_residues" (coevolved_residues);
 CREATE TABLE "EvolutionaryConservation_publication_ids" (
 	"EvolutionaryConservation_id" TEXT,
 	publication_ids TEXT,
@@ -1682,6 +1726,27 @@ CREATE TABLE "Protein" (
 	FOREIGN KEY(evolutionary_conservation_id) REFERENCES "EvolutionaryConservation" (id),
 	FOREIGN KEY(conformational_ensemble_id) REFERENCES "ConformationalEnsemble" (id)
 );CREATE INDEX "ix_Protein_id" ON "Protein" (id);
+CREATE TABLE "NucleicAcid" (
+	nucleic_acid_type VARCHAR(20) NOT NULL,
+	nucleic_acid_name TEXT,
+	rnacentral_id TEXT,
+	sequence_accession TEXT,
+	gene_name TEXT,
+	organism TEXT,
+	organism_name TEXT,
+	nucleotide_sequence TEXT,
+	sequence_length INTEGER,
+	function_description TEXT,
+	id TEXT NOT NULL,
+	title TEXT,
+	description TEXT,
+	"Dataset_id" TEXT,
+	molecular_weight_theoretical_id INTEGER,
+	PRIMARY KEY (id),
+	FOREIGN KEY(organism) REFERENCES "OntologyTerm" (id),
+	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id),
+	FOREIGN KEY(molecular_weight_theoretical_id) REFERENCES "QuantityValue" (id)
+);CREATE INDEX "ix_NucleicAcid_id" ON "NucleicAcid" (id);
 CREATE TABLE "SamplePreparation" (
 	preparation_type VARCHAR(20) NOT NULL,
 	sample_id TEXT NOT NULL,
@@ -2569,19 +2634,19 @@ CREATE TABLE "Study_keywords" (
 	keywords TEXT,
 	PRIMARY KEY ("Study_id", keywords),
 	FOREIGN KEY("Study_id") REFERENCES "Study" (id)
-);CREATE INDEX "ix_Study_keywords_Study_id" ON "Study_keywords" ("Study_id");CREATE INDEX "ix_Study_keywords_keywords" ON "Study_keywords" (keywords);
+);CREATE INDEX "ix_Study_keywords_keywords" ON "Study_keywords" (keywords);CREATE INDEX "ix_Study_keywords_Study_id" ON "Study_keywords" ("Study_id");
 CREATE TABLE "ConformationalState_pdb_entries" (
 	"ConformationalState_id" INTEGER,
 	pdb_entries TEXT,
 	PRIMARY KEY ("ConformationalState_id", pdb_entries),
 	FOREIGN KEY("ConformationalState_id") REFERENCES "ConformationalState" (id)
-);CREATE INDEX "ix_ConformationalState_pdb_entries_ConformationalState_id" ON "ConformationalState_pdb_entries" ("ConformationalState_id");CREATE INDEX "ix_ConformationalState_pdb_entries_pdb_entries" ON "ConformationalState_pdb_entries" (pdb_entries);
+);CREATE INDEX "ix_ConformationalState_pdb_entries_pdb_entries" ON "ConformationalState_pdb_entries" (pdb_entries);CREATE INDEX "ix_ConformationalState_pdb_entries_ConformationalState_id" ON "ConformationalState_pdb_entries" ("ConformationalState_id");
 CREATE TABLE "ConformationalState_characteristic_features" (
 	"ConformationalState_id" INTEGER,
 	characteristic_features TEXT,
 	PRIMARY KEY ("ConformationalState_id", characteristic_features),
 	FOREIGN KEY("ConformationalState_id") REFERENCES "ConformationalState" (id)
-);CREATE INDEX "ix_ConformationalState_characteristic_features_ConformationalState_id" ON "ConformationalState_characteristic_features" ("ConformationalState_id");CREATE INDEX "ix_ConformationalState_characteristic_features_characteristic_features" ON "ConformationalState_characteristic_features" (characteristic_features);
+);CREATE INDEX "ix_ConformationalState_characteristic_features_characteristic_features" ON "ConformationalState_characteristic_features" (characteristic_features);CREATE INDEX "ix_ConformationalState_characteristic_features_ConformationalState_id" ON "ConformationalState_characteristic_features" ("ConformationalState_id");
 CREATE TABLE "AggregatedProteinView_pdb_entries" (
 	"AggregatedProteinView_id" TEXT,
 	pdb_entries TEXT,
@@ -2901,19 +2966,37 @@ CREATE TABLE "Protein_go_terms" (
 	go_terms TEXT,
 	PRIMARY KEY ("Protein_id", go_terms),
 	FOREIGN KEY("Protein_id") REFERENCES "Protein" (id)
-);CREATE INDEX "ix_Protein_go_terms_go_terms" ON "Protein_go_terms" (go_terms);CREATE INDEX "ix_Protein_go_terms_Protein_id" ON "Protein_go_terms" ("Protein_id");
+);CREATE INDEX "ix_Protein_go_terms_Protein_id" ON "Protein_go_terms" ("Protein_id");CREATE INDEX "ix_Protein_go_terms_go_terms" ON "Protein_go_terms" (go_terms);
 CREATE TABLE "Protein_pdb_entries" (
 	"Protein_id" TEXT,
 	pdb_entries TEXT,
 	PRIMARY KEY ("Protein_id", pdb_entries),
 	FOREIGN KEY("Protein_id") REFERENCES "Protein" (id)
-);CREATE INDEX "ix_Protein_pdb_entries_pdb_entries" ON "Protein_pdb_entries" (pdb_entries);CREATE INDEX "ix_Protein_pdb_entries_Protein_id" ON "Protein_pdb_entries" ("Protein_id");
+);CREATE INDEX "ix_Protein_pdb_entries_Protein_id" ON "Protein_pdb_entries" ("Protein_id");CREATE INDEX "ix_Protein_pdb_entries_pdb_entries" ON "Protein_pdb_entries" (pdb_entries);
+CREATE TABLE "NucleicAcid_rfam_families" (
+	"NucleicAcid_id" TEXT,
+	rfam_families TEXT,
+	PRIMARY KEY ("NucleicAcid_id", rfam_families),
+	FOREIGN KEY("NucleicAcid_id") REFERENCES "NucleicAcid" (id)
+);CREATE INDEX "ix_NucleicAcid_rfam_families_rfam_families" ON "NucleicAcid_rfam_families" (rfam_families);CREATE INDEX "ix_NucleicAcid_rfam_families_NucleicAcid_id" ON "NucleicAcid_rfam_families" ("NucleicAcid_id");
+CREATE TABLE "NucleicAcid_go_terms" (
+	"NucleicAcid_id" TEXT,
+	go_terms TEXT,
+	PRIMARY KEY ("NucleicAcid_id", go_terms),
+	FOREIGN KEY("NucleicAcid_id") REFERENCES "NucleicAcid" (id)
+);CREATE INDEX "ix_NucleicAcid_go_terms_NucleicAcid_id" ON "NucleicAcid_go_terms" ("NucleicAcid_id");CREATE INDEX "ix_NucleicAcid_go_terms_go_terms" ON "NucleicAcid_go_terms" (go_terms);
+CREATE TABLE "NucleicAcid_pdb_entries" (
+	"NucleicAcid_id" TEXT,
+	pdb_entries TEXT,
+	PRIMARY KEY ("NucleicAcid_id", pdb_entries),
+	FOREIGN KEY("NucleicAcid_id") REFERENCES "NucleicAcid" (id)
+);CREATE INDEX "ix_NucleicAcid_pdb_entries_pdb_entries" ON "NucleicAcid_pdb_entries" (pdb_entries);CREATE INDEX "ix_NucleicAcid_pdb_entries_NucleicAcid_id" ON "NucleicAcid_pdb_entries" ("NucleicAcid_id");
 CREATE TABLE "SamplePreparation_purification_steps" (
 	"SamplePreparation_id" TEXT,
 	purification_steps VARCHAR(23),
 	PRIMARY KEY ("SamplePreparation_id", purification_steps),
 	FOREIGN KEY("SamplePreparation_id") REFERENCES "SamplePreparation" (id)
-);CREATE INDEX "ix_SamplePreparation_purification_steps_SamplePreparation_id" ON "SamplePreparation_purification_steps" ("SamplePreparation_id");CREATE INDEX "ix_SamplePreparation_purification_steps_purification_steps" ON "SamplePreparation_purification_steps" (purification_steps);
+);CREATE INDEX "ix_SamplePreparation_purification_steps_purification_steps" ON "SamplePreparation_purification_steps" (purification_steps);CREATE INDEX "ix_SamplePreparation_purification_steps_SamplePreparation_id" ON "SamplePreparation_purification_steps" ("SamplePreparation_id");
 CREATE TABLE "BeamlineInstrument_techniques_supported" (
 	"BeamlineInstrument_id" TEXT,
 	techniques_supported VARCHAR(29) NOT NULL,
@@ -3149,6 +3232,24 @@ CREATE TABLE "SampleProteinAssociation" (
 	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id),
 	FOREIGN KEY(observed_molecular_weight_id) REFERENCES "QuantityValue" (id)
 );CREATE INDEX "ix_SampleProteinAssociation_id" ON "SampleProteinAssociation" (id);
+CREATE TABLE "SampleNucleicAcidAssociation" (
+	id INTEGER NOT NULL,
+	sample_id TEXT NOT NULL,
+	nucleic_acid_id TEXT NOT NULL,
+	role VARCHAR(15),
+	copy_number INTEGER,
+	residue_range TEXT,
+	sequence_coverage FLOAT,
+	structural_form VARCHAR(15),
+	source_method VARCHAR(22),
+	"Dataset_id" TEXT,
+	observed_molecular_weight_id INTEGER,
+	PRIMARY KEY (id),
+	FOREIGN KEY(sample_id) REFERENCES "Sample" (id),
+	FOREIGN KEY(nucleic_acid_id) REFERENCES "NucleicAcid" (id),
+	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id),
+	FOREIGN KEY(observed_molecular_weight_id) REFERENCES "QuantityValue" (id)
+);CREATE INDEX "ix_SampleNucleicAcidAssociation_id" ON "SampleNucleicAcidAssociation" (id);
 CREATE TABLE "WorkflowInputAssociation" (
 	id INTEGER NOT NULL,
 	workflow_id TEXT NOT NULL,
@@ -3344,17 +3445,19 @@ CREATE TABLE "PostTranslationalModification" (
 );CREATE INDEX "ix_PostTranslationalModification_id" ON "PostTranslationalModification" (id);
 CREATE TABLE "DatabaseCrossReference" (
 	id INTEGER NOT NULL,
-	database_name VARCHAR(8) NOT NULL,
+	database_name VARCHAR(10) NOT NULL,
 	database_id TEXT NOT NULL,
 	database_url TEXT,
 	last_updated TEXT,
 	description TEXT,
 	"Sample_id" TEXT,
 	"Protein_id" TEXT,
+	"NucleicAcid_id" TEXT,
 	"AggregatedProteinView_id" TEXT,
 	PRIMARY KEY (id),
 	FOREIGN KEY("Sample_id") REFERENCES "Sample" (id),
 	FOREIGN KEY("Protein_id") REFERENCES "Protein" (id),
+	FOREIGN KEY("NucleicAcid_id") REFERENCES "NucleicAcid" (id),
 	FOREIGN KEY("AggregatedProteinView_id") REFERENCES "AggregatedProteinView" (id)
 );CREATE INDEX "ix_DatabaseCrossReference_id" ON "DatabaseCrossReference" (id);
 CREATE TABLE "WorkflowRun_output_files" (
@@ -3363,7 +3466,7 @@ CREATE TABLE "WorkflowRun_output_files" (
 	PRIMARY KEY ("WorkflowRun_id", output_files_id),
 	FOREIGN KEY("WorkflowRun_id") REFERENCES "WorkflowRun" (id),
 	FOREIGN KEY(output_files_id) REFERENCES "DataFile" (id)
-);CREATE INDEX "ix_WorkflowRun_output_files_WorkflowRun_id" ON "WorkflowRun_output_files" ("WorkflowRun_id");CREATE INDEX "ix_WorkflowRun_output_files_output_files_id" ON "WorkflowRun_output_files" (output_files_id);
+);CREATE INDEX "ix_WorkflowRun_output_files_output_files_id" ON "WorkflowRun_output_files" (output_files_id);CREATE INDEX "ix_WorkflowRun_output_files_WorkflowRun_id" ON "WorkflowRun_output_files" ("WorkflowRun_id");
 CREATE TABLE "StudyExperimentAssociation" (
 	id INTEGER NOT NULL,
 	study_id TEXT NOT NULL,
@@ -3470,13 +3573,25 @@ CREATE TABLE "SampleProteinAssociation_modifications" (
 	modifications TEXT,
 	PRIMARY KEY ("SampleProteinAssociation_id", modifications),
 	FOREIGN KEY("SampleProteinAssociation_id") REFERENCES "SampleProteinAssociation" (id)
-);CREATE INDEX "ix_SampleProteinAssociation_modifications_SampleProteinAssociation_id" ON "SampleProteinAssociation_modifications" ("SampleProteinAssociation_id");CREATE INDEX "ix_SampleProteinAssociation_modifications_modifications" ON "SampleProteinAssociation_modifications" (modifications);
+);CREATE INDEX "ix_SampleProteinAssociation_modifications_modifications" ON "SampleProteinAssociation_modifications" (modifications);CREATE INDEX "ix_SampleProteinAssociation_modifications_SampleProteinAssociation_id" ON "SampleProteinAssociation_modifications" ("SampleProteinAssociation_id");
+CREATE TABLE "SampleNucleicAcidAssociation_chain_ids" (
+	"SampleNucleicAcidAssociation_id" INTEGER,
+	chain_ids TEXT,
+	PRIMARY KEY ("SampleNucleicAcidAssociation_id", chain_ids),
+	FOREIGN KEY("SampleNucleicAcidAssociation_id") REFERENCES "SampleNucleicAcidAssociation" (id)
+);CREATE INDEX "ix_SampleNucleicAcidAssociation_chain_ids_SampleNucleicAcidAssociation_id" ON "SampleNucleicAcidAssociation_chain_ids" ("SampleNucleicAcidAssociation_id");CREATE INDEX "ix_SampleNucleicAcidAssociation_chain_ids_chain_ids" ON "SampleNucleicAcidAssociation_chain_ids" (chain_ids);
+CREATE TABLE "SampleNucleicAcidAssociation_modifications" (
+	"SampleNucleicAcidAssociation_id" INTEGER,
+	modifications TEXT,
+	PRIMARY KEY ("SampleNucleicAcidAssociation_id", modifications),
+	FOREIGN KEY("SampleNucleicAcidAssociation_id") REFERENCES "SampleNucleicAcidAssociation" (id)
+);CREATE INDEX "ix_SampleNucleicAcidAssociation_modifications_SampleNucleicAcidAssociation_id" ON "SampleNucleicAcidAssociation_modifications" ("SampleNucleicAcidAssociation_id");CREATE INDEX "ix_SampleNucleicAcidAssociation_modifications_modifications" ON "SampleNucleicAcidAssociation_modifications" (modifications);
 CREATE TABLE "FunctionalSite_residues" (
 	"FunctionalSite_id" TEXT,
 	residues TEXT,
 	PRIMARY KEY ("FunctionalSite_id", residues),
 	FOREIGN KEY("FunctionalSite_id") REFERENCES "FunctionalSite" (id)
-);CREATE INDEX "ix_FunctionalSite_residues_residues" ON "FunctionalSite_residues" (residues);CREATE INDEX "ix_FunctionalSite_residues_FunctionalSite_id" ON "FunctionalSite_residues" ("FunctionalSite_id");
+);CREATE INDEX "ix_FunctionalSite_residues_FunctionalSite_id" ON "FunctionalSite_residues" ("FunctionalSite_id");CREATE INDEX "ix_FunctionalSite_residues_residues" ON "FunctionalSite_residues" (residues);
 CREATE TABLE "FunctionalSite_go_terms" (
 	"FunctionalSite_id" TEXT,
 	go_terms TEXT,
@@ -3500,7 +3615,7 @@ CREATE TABLE "ProteinProteinInteraction_interface_residues" (
 	interface_residues TEXT,
 	PRIMARY KEY ("ProteinProteinInteraction_id", interface_residues),
 	FOREIGN KEY("ProteinProteinInteraction_id") REFERENCES "ProteinProteinInteraction" (id)
-);CREATE INDEX "ix_ProteinProteinInteraction_interface_residues_ProteinProteinInteraction_id" ON "ProteinProteinInteraction_interface_residues" ("ProteinProteinInteraction_id");CREATE INDEX "ix_ProteinProteinInteraction_interface_residues_interface_residues" ON "ProteinProteinInteraction_interface_residues" (interface_residues);
+);CREATE INDEX "ix_ProteinProteinInteraction_interface_residues_interface_residues" ON "ProteinProteinInteraction_interface_residues" (interface_residues);CREATE INDEX "ix_ProteinProteinInteraction_interface_residues_ProteinProteinInteraction_id" ON "ProteinProteinInteraction_interface_residues" ("ProteinProteinInteraction_id");
 CREATE TABLE "ProteinProteinInteraction_partner_interface_residues" (
 	"ProteinProteinInteraction_id" TEXT,
 	partner_interface_residues TEXT,
@@ -3512,7 +3627,7 @@ CREATE TABLE "ProteinProteinInteraction_interaction_evidence" (
 	interaction_evidence VARCHAR(14),
 	PRIMARY KEY ("ProteinProteinInteraction_id", interaction_evidence),
 	FOREIGN KEY("ProteinProteinInteraction_id") REFERENCES "ProteinProteinInteraction" (id)
-);CREATE INDEX "ix_ProteinProteinInteraction_interaction_evidence_interaction_evidence" ON "ProteinProteinInteraction_interaction_evidence" (interaction_evidence);CREATE INDEX "ix_ProteinProteinInteraction_interaction_evidence_ProteinProteinInteraction_id" ON "ProteinProteinInteraction_interaction_evidence" ("ProteinProteinInteraction_id");
+);CREATE INDEX "ix_ProteinProteinInteraction_interaction_evidence_ProteinProteinInteraction_id" ON "ProteinProteinInteraction_interaction_evidence" ("ProteinProteinInteraction_id");CREATE INDEX "ix_ProteinProteinInteraction_interaction_evidence_interaction_evidence" ON "ProteinProteinInteraction_interaction_evidence" (interaction_evidence);
 CREATE TABLE "ProteinProteinInteraction_publication_ids" (
 	"ProteinProteinInteraction_id" TEXT,
 	publication_ids TEXT,
@@ -3536,4 +3651,4 @@ CREATE TABLE "LigandInteraction_binding_site_residues" (
 	binding_site_residues TEXT,
 	PRIMARY KEY ("LigandInteraction_id", binding_site_residues),
 	FOREIGN KEY("LigandInteraction_id") REFERENCES "LigandInteraction" (id)
-);CREATE INDEX "ix_LigandInteraction_binding_site_residues_binding_site_residues" ON "LigandInteraction_binding_site_residues" (binding_site_residues);CREATE INDEX "ix_LigandInteraction_binding_site_residues_LigandInteraction_id" ON "LigandInteraction_binding_site_residues" ("LigandInteraction_id");
+);CREATE INDEX "ix_LigandInteraction_binding_site_residues_LigandInteraction_id" ON "LigandInteraction_binding_site_residues" ("LigandInteraction_id");CREATE INDEX "ix_LigandInteraction_binding_site_residues_binding_site_residues" ON "LigandInteraction_binding_site_residues" (binding_site_residues);
