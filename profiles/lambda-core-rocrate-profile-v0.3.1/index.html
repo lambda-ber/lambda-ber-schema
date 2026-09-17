@@ -2557,7 +2557,14 @@ a number that only means something in one pipeline.</p>
 returning crates that cannot answer them.</p>
 <hr />
 <h2 id="12-validation">12. Validation</h2>
-<p>Three layers, because a flat <code>@graph</code> is an open world and no single tool covers it.</p>
+<p>Three layers, because a flat <code>@graph</code> is an open world and no single tool covers it. All three
+run from one command, which is what a facility should run over a crate before publishing it:</p>
+<pre><code class="language-bash">lambda-ber-schema rocrate validate path/to/ro-crate-metadata.json   # or the crate directory
+</code></pre>
+<p>Exit 0 is conformant, 1 is not, 2 is unreadable. Each finding names its layer. The checker is
+<a href="../../../src/lambda_ber_schema/rocrate/validation.py"><code>src/lambda_ber_schema/rocrate/validation.py</code></a>,
+importable as <code>lambda_ber_schema.rocrate.validate_path</code>; the test suite runs the same code over
+the fixtures in §13.</p>
 <p><strong>Layer 1 — document shape.</strong> <code>assets/rocrate/jsonschema/lambda_rocrate_core.schema.json</code>,
 generated with <code>--top-class ROCrateMetadataDocument</code>. <code>@graph</code> is deliberately permissive at this
 level so that a crate carrying technique-extension terms still validates as a document.</p>
@@ -2566,8 +2573,8 @@ validate against the matching profile class. These classes are <strong>closed</s
 fails. This is where the profile bites, and it is why a technique quantity must nest inside
 <code>lambdarc:resultSummary</code> rather than being scattered as a bare property: nesting keeps the crate
 valid against Core while the extension gives the block its shape.</p>
-<p><strong>Layer 3 — graph rules.</strong> The cross-entity constraints, in
-<a href="../../../tests/test_rocrate_profile.py"><code>tests/test_rocrate_profile.py</code></a>:</p>
+<p><strong>Layer 3 — graph rules.</strong> The cross-entity constraints, as <code>graph_rule_violations</code> in the
+checker:</p>
 <ol>
 <li>A metadata descriptor exists and its <code>about</code> resolves to an entity in the graph.</li>
 <li>A root data entity exists, typed <code>lambda:Dataset</code> (or the deprecated <code>lambda:Experiment</code>).</li>

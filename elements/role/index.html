@@ -1240,13 +1240,23 @@ Alias: role</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../ExperimentSampleAssociation/">ExperimentSampleAssociation</a></td>
-<td>M:N link between ExperimentRun and Sample with role metadata</td>
+<td><a href="../WorkflowPersonAssociation/">WorkflowPersonAssociation</a></td>
+<td>M:N link between WorkflowRun and Person with role metadata - who ran the proc...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../SampleProteinAssociation/">SampleProteinAssociation</a></td>
-<td>M:N link between Sample and Protein</td>
+<td><a href="../StudyOrganizationAssociation/">StudyOrganizationAssociation</a></td>
+<td>M:N link between Study and Organization with role metadata - the host institu...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ExperimentPersonAssociation/">ExperimentPersonAssociation</a></td>
+<td>M:N link between ExperimentRun and Person with role metadata - who actually c...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../StudySampleAssociation/">StudySampleAssociation</a></td>
+<td>M:N link between Study and Sample with role metadata</td>
 <td>no</td>
 </tr>
 <tr>
@@ -1260,28 +1270,18 @@ Alias: role</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../StudyOrganizationAssociation/">StudyOrganizationAssociation</a></td>
-<td>M:N link between Study and Organization with role metadata - the host institu...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../WorkflowPersonAssociation/">WorkflowPersonAssociation</a></td>
-<td>M:N link between WorkflowRun and Person with role metadata - who ran the proc...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../StudySampleAssociation/">StudySampleAssociation</a></td>
-<td>M:N link between Study and Sample with role metadata</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../ExperimentInstrumentAssociation/">ExperimentInstrumentAssociation</a></td>
 <td>M:N link between ExperimentRun and Instrument</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ExperimentPersonAssociation/">ExperimentPersonAssociation</a></td>
-<td>M:N link between ExperimentRun and Person with role metadata - who actually c...</td>
+<td><a href="../ExperimentSampleAssociation/">ExperimentSampleAssociation</a></td>
+<td>M:N link between ExperimentRun and Sample with role metadata</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SampleProteinAssociation/">SampleProteinAssociation</a></td>
+<td>M:N link between Sample and Protein</td>
 <td>no</td>
 </tr>
 </tbody>
