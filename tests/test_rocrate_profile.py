@@ -59,7 +59,7 @@ LEGACY = _crates("legacy")
 
 
 def load(path: Path) -> dict:
-    return json.loads(path.read_text())
+    return json.loads(path.read_text(encoding="utf-8"))
 
 
 # --------------------------------------------------------------------------------------
@@ -85,7 +85,7 @@ def test_shipped_schema_matches_source(json_schema):
     """
     for shipped in (GENERATED_SCHEMA, v.packaged_schema_path()):
         assert shipped.exists(), f"{shipped} is missing; run `make gen-rocrate`"
-        schema = json.loads(shipped.read_text())
+        schema = json.loads(shipped.read_text(encoding="utf-8"))
         assert set(schema["properties"]) == {"@context", "@graph"}, (
             f"{shipped} is not rooted at the crate document - "
             "was gen-json-schema --top-class dropped?"
@@ -278,7 +278,7 @@ def test_validate_crate_only_graph_needs_no_schema():
 def test_validate_path_accepts_a_crate_directory(json_schema, tmp_path):
     crate_dir = tmp_path / "crate"
     crate_dir.mkdir()
-    (crate_dir / v.METADATA_FILE).write_text((CRATES / "valid" / "minimal-manifest.json").read_text())
+    (crate_dir / v.METADATA_FILE).write_text((CRATES / "valid" / "minimal-manifest.json").read_text(encoding="utf-8"))
     assert validate_path(crate_dir, json_schema).ok
     with pytest.raises(FileNotFoundError):
         validate_path(tmp_path, json_schema)

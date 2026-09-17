@@ -321,8 +321,9 @@ def entity_violations(json_schema: dict, crate: dict) -> list[str]:
         class_schema = json_schema["$defs"].get(class_name)
         if class_schema is None:
             raise SchemaNotAvailable(
-                f"{class_name} is dispatched to but not in the schema's $defs; "
-                "the schema and the DISPATCH table disagree"
+                f"the JSON Schema defines no {class_name} class, which this checker needs; "
+                "it was generated from a different version of the profile than the checker "
+                "expects, so regenerate it with `make gen-rocrate` or drop --schema"
             )
         for error in _errors(
             _validator(json_schema, class_name),
