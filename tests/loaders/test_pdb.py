@@ -23,6 +23,23 @@ def loader(mocker, pdb_1hho_entry_response, pdb_1hho_polymer_entities):
     return loader
 
 
+def _synthetic_entity(
+    entity_id: str, polymer_type: str, poly_type: str, sequence: str, strand: str, length: int | None = None
+) -> dict:
+    """The few polymer-entity fields the loader reads, for cases no fixture entry covers."""
+    return {
+        "entity_poly": {
+            "rcsb_entity_polymer_type": polymer_type,
+            "type": poly_type,
+            "pdbx_seq_one_letter_code_can": sequence,
+            "pdbx_strand_id": strand,
+            "rcsb_sample_sequence_length": length if length is not None else len(sequence),
+        },
+        "rcsb_polymer_entity": {"pdbx_description": f"Synthetic {polymer_type}", "pdbx_number_of_molecules": 1},
+        "rcsb_polymer_entity_container_identifiers": {"entity_id": entity_id},
+    }
+
+
 class TestPDBLoader:
     """Tests for PDBLoader."""
 
@@ -211,26 +228,63 @@ class TestPDBLoader:
         assert ds.experiment_instrument_associations is not None
         assert len(ds.experiment_instrument_associations) == 1
 
-    def test_nucleic_acid_sample_type_covers_hybrids(self, mocker, pdb_1hho_entry_response):
-        """An NA-hybrid entity is a nucleic acid sample, not a complex."""
+    @pytest.mark.parametrize(
+        ("polymer_type", "poly_type", "expected"),
+        [
+            ("NA-hybrid", "polydeoxyribonucleotide/polyribonucleotide hybrid", "dna_rna_hybrid"),
+            ("Other", "peptide nucleic acid", "peptide_nucleic_acid"),
+        ],
+    )
+    def test_nucleic_acid_sample_type_covers_hybrids_and_analogues(
+        self, mocker, pdb_1hho_entry_response, polymer_type, poly_type, expected
+    ):
+        """An NA-hybrid or PNA entity is a nucleic acid sample, not a complex."""
         loader = PDBLoader()
-        hybrid = {
-            "entity_poly": {
-                "rcsb_entity_polymer_type": "NA-hybrid",
-                "type": "polydeoxyribonucleotide/polyribonucleotide hybrid",
-                "pdbx_seq_one_letter_code_can": "ACGUACGT",
-                "pdbx_strand_id": "A",
-            },
-            "rcsb_polymer_entity": {"pdbx_description": "DNA/RNA chimera", "pdbx_number_of_molecules": 1},
-            "rcsb_polymer_entity_container_identifiers": {"entity_id": "1"},
-        }
+        entity = _synthetic_entity("1", polymer_type, poly_type, "ACGUACGT", "A")
         mocker.patch.object(loader, "_fetch_entry", return_value=pdb_1hho_entry_response)
-        mocker.patch.object(loader, "_fetch_polymer_entities", return_value=[hybrid])
+        mocker.patch.object(loader, "_fetch_polymer_entities", return_value=[entity])
         result = loader.load("1HHO")
         assert result.dataset.samples[0].sample_type == "nucleic_acid"
-        assert result.dataset.nucleic_acids[0].nucleic_acid_type == "dna_rna_hybrid"
+        assert result.dataset.nucleic_acids[0].nucleic_acid_type == expected
         # A lone strand with no protein in the entry is the target
         assert result.dataset.sample_nucleic_acid_associations[0].role == "target"
+
+    def test_strands_beside_several_proteins_are_subunits(
+        self, mocker, pdb_1hho_entry_response, pdb_1hho_polymer_entities
+    ):
+        """With two protein entities the entry is an assembly and a strand is one subunit of it."""
+        loader = PDBLoader()
+        strand = _synthetic_entity("3", "DNA", "polydeoxyribonucleotide", "ACGTACGT", "E")
+        mocker.patch.object(loader, "_fetch_entry", return_value=pdb_1hho_entry_response)
+        mocker.patch.object(
+            loader, "_fetch_polymer_entities", return_value=pdb_1hho_polymer_entities + [strand]
+        )
+        result = loader.load("1HHO")
+        assert [a.role for a in result.dataset.sample_protein_associations] == ["subunit", "subunit"]
+        assert [a.role for a in result.dataset.sample_nucleic_acid_associations] == ["subunit"]
+
+    def test_sequence_outside_the_alphabet_is_dropped_with_a_warning(
+        self, mocker, pdb_1hho_entry_response
+    ):
+        """A modified residue in house notation leaves the sequence empty; the length still arrives."""
+        loader = PDBLoader()
+        entity = _synthetic_entity("1", "RNA", "polyribonucleotide", "ACG(5MC)U", "A", length=5)
+        mocker.patch.object(loader, "_fetch_entry", return_value=pdb_1hho_entry_response)
+        mocker.patch.object(loader, "_fetch_polymer_entities", return_value=[entity])
+        result = loader.load("1HHO")
+        rna = result.dataset.nucleic_acids[0]
+        assert rna.nucleotide_sequence is None
+        assert rna.sequence_length == 5
+        assert any("nucleotide alphabet" in w for w in result.warnings)
+
+    def test_sequence_length_agrees_with_the_sequence(self, mocker, pdb_1hho_entry_response):
+        """When the sequence is on the record its length is measured, not copied from the API."""
+        loader = PDBLoader()
+        entity = _synthetic_entity("1", "DNA", "polydeoxyribonucleotide", "ACGTACGT", "A", length=99)
+        mocker.patch.object(loader, "_fetch_entry", return_value=pdb_1hho_entry_response)
+        mocker.patch.object(loader, "_fetch_polymer_entities", return_value=[entity])
+        result = loader.load("1HHO")
+        assert result.dataset.nucleic_acids[0].sequence_length == 8
 
     def test_raw_data_contains_entry_and_entities(self, loader):
         """Test raw_data contains entry and polymer entity data."""

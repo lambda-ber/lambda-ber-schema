@@ -693,6 +693,11 @@ class PDBLoader(BaseLoader):
                     f"Polymer entity {entity_id} has a sequence with characters outside the "
                     "nucleotide alphabet; nucleotide_sequence left empty"
                 )
+            # The length describes the sequence on the record when there is one, so the two
+            # cannot disagree; the API's count stands in only when the sequence was dropped.
+            sequence_length = (
+                len(sequence) if sequence else entity_poly.get("rcsb_sample_sequence_length")
+            )
 
             organism = None
             organism_name = None
@@ -718,7 +723,7 @@ class PDBLoader(BaseLoader):
                 organism=organism,
                 organism_name=organism_name,
                 nucleotide_sequence=sequence,
-                sequence_length=entity_poly.get("rcsb_sample_sequence_length"),
+                sequence_length=sequence_length,
                 pdb_entries=[f"pdb:{entry_id}"],
             )
             nucleic_acids.append(nucleic_acid)

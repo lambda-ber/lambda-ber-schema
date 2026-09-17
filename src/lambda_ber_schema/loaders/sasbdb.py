@@ -400,7 +400,9 @@ class SASBDBLoader(BaseLoader):
                 continue
 
             if curie not in proteins:
-                # SASBDB wraps the sequence at 60 columns; the schema wants one unbroken string
+                # SASBDB wraps the sequence at 60 columns; the schema wants one unbroken
+                # string, so drop all whitespace. (Nucleic acids go through
+                # nucleotide_sequence() instead, which also skips a FASTA header.)
                 sequence = "".join((molecule.get("uniprot_sequence") or "").split()).upper() or None
                 proteins[curie] = Protein(
                     id=curie,
