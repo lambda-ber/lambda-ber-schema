@@ -1,0 +1,152 @@
+id: sasbdb:SASDV63
+title: Cleavage region organizes the structural architecture of the SINE-derived B2
+  repressive ribozyme.
+studies:
+- id: sasbdb:SASDV63/study
+  title: Cleavage region organizes the structural architecture of the SINE-derived
+    B2 repressive ribozyme.
+instruments:
+- id: sasbdb:instrument/Diamond_Light_Source-B21
+  title: Diamond Light Source B21
+  description: 'Detector: Eiger 4M (resolution: 75.0 mm)'
+  instrument_code: Diamond-Light-Source-B21
+  manufacturer: Didcot
+nucleic_acids:
+- id: sasbdb:SASDV63/nucleic_acid/1
+  title: B2 short interspaced nuclear element (SINE) RNA
+  description: B2 SINE ribozyme wildtype.
+  nucleic_acid_type: rna
+  nucleic_acid_name: B2 short interspaced nuclear element (SINE) RNA
+  organism_name: Mus musculus
+  nucleotide_sequence: GGCUGGUGAGAUGGCUCAGUGGGUAAGAGCACCCGACUGCUCUUCCGAAGGUCAGGAGUUCAAAUCCCAGCAACCACAUGGUGGCUCACAACCAUCCGUAACGAGAUCUGAUUCCCUCUUCUGGAGUGUCUGAAGUCUGAAGACAGCUACAGUGUACUUACAUAUAAAUAAAUCUUU
+  sequence_length: 177
+  molecular_weight_theoretical:
+    unit: kDa
+    numeric_value: 56.913
+samples:
+- id: sasbdb:SASDV63/sample
+  title: B2 SINE ribozyme wildtype
+  sample_code: SASBDB-SASDV63
+  sample_type: nucleic_acid
+  molecular_weight:
+    unit: kDa
+    numeric_value: 56.913
+  concentration:
+    unit: mg/mL
+    numeric_value: 1.6
+  buffer_composition:
+    ph:
+      unit: pH
+      numeric_value: 7.9
+    components:
+    - 5 mM Tris-HCl, 10 mM NaCl, 0.01% NP-40, 0.02 mM EDTA, 0.2 mM DTT, 0.5 mM MgCl2
+      and 1.5 % Glycerol
+  protein_name: B2 short interspaced nuclear element (SINE) RNA
+  oligomeric_state: monomer
+experiment_runs:
+- id: sasbdb:SASDV63/experiment
+  experiment_code: SASBDB-SASDV63-EXP
+  technique: saxs
+  experiment_date: '2021-02-20'
+  quality_metrics:
+    i_zero:
+      unit: arbitrary
+      numeric_value: 0.0289055
+    rg:
+      unit: nm
+      numeric_value: 5.384
+  wavelength:
+    unit: Angstroms
+    numeric_value: 0.94
+  detector_distance:
+    unit: mm
+    numeric_value: 3700.0
+workflow_runs:
+- id: sasbdb:SASDV63/workflow/pddf
+  description: PDDF analysis. Rg=5.46, Dmax=17.3, I0=0.02876
+  workflow_code: SASBDB-SASDV63-PDDF
+  workflow_type: saxs_analysis
+  software_name: ATSAS GNOM
+  software_version: '5.0'
+- id: sasbdb:SASDV63/workflow/fit1_model1
+  description: 'Dummy model fit. Chi-square: 1.608'
+  workflow_code: SASBDB-SASDV63-FIT1-M1
+  workflow_type: saxs_analysis
+  software_name: DAMMIN
+- id: sasbdb:SASDV63/workflow/fit2_model1
+  description: 'Dummy model fit. Chi-square: 1.604'
+  workflow_code: SASBDB-SASDV63-FIT2-M1
+  workflow_type: saxs_analysis
+  software_name: DAMMIN
+- id: sasbdb:SASDV63/workflow/fit3_model1
+  description: 'Dummy model fit. Chi-square: 1.602'
+  workflow_code: SASBDB-SASDV63-FIT3-M1
+  workflow_type: saxs_analysis
+  software_name: DAMMIN
+data_files:
+- id: sasbdb:SASDV63/file/intensities
+  description: Scattering intensity data
+  file_name: SASDV63.dat
+  file_format: ascii
+  file_path: https://www.sasbdb.org/media/intensities_files/SASDV63.dat
+- id: sasbdb:SASDV63/file/sascif
+  description: sasCIF format data
+  file_name: SASDV63.sascif
+  file_format: ascii
+  file_path: https://www.sasbdb.org/media/sascif/sascif_files/SASDV63.sascif
+- id: sasbdb:SASDV63/file/fit1
+  description: Fit 1 data
+  file_name: SASDV63_fit1.fir
+  file_format: ascii
+  file_path: https://www.sasbdb.org/media/fitting_files/SASDV63_fit1.fir
+- id: sasbdb:SASDV63/file/fit1_model1
+  description: Model 1 from fit 1
+  file_name: SASDV63_fit1_model1.pdb
+  file_format: pdb
+  file_path: https://www.sasbdb.org/media/pdb_file/SASDV63_fit1_model1.pdb
+- id: sasbdb:SASDV63/file/fit2
+  description: Fit 2 data
+  file_name: SASDV63_fit2.fir
+  file_format: ascii
+  file_path: https://www.sasbdb.org/media/fitting_files/SASDV63_fit2.fir
+- id: sasbdb:SASDV63/file/fit2_model1
+  description: Model 1 from fit 2
+  file_name: SASDV63_fit2_model1.pdb
+  file_format: pdb
+  file_path: https://www.sasbdb.org/media/pdb_file/SASDV63_fit2_model1.pdb
+- id: sasbdb:SASDV63/file/fit3
+  description: Fit 3 data
+  file_name: SASDV63_fit3.fir
+  file_format: ascii
+  file_path: https://www.sasbdb.org/media/fitting_files/SASDV63_fit3.fir
+- id: sasbdb:SASDV63/file/fit3_model1
+  description: Model 1 from fit 3
+  file_name: SASDV63_fit3_model1.pdb
+  file_format: pdb
+  file_path: https://www.sasbdb.org/media/pdb_file/SASDV63_fit3_model1.pdb
+study_sample_associations:
+- study_id: sasbdb:SASDV63/study
+  sample_id: sasbdb:SASDV63/sample
+study_experiment_associations:
+- study_id: sasbdb:SASDV63/study
+  experiment_id: sasbdb:SASDV63/experiment
+experiment_sample_associations:
+- experiment_id: sasbdb:SASDV63/experiment
+  sample_id: sasbdb:SASDV63/sample
+experiment_instrument_associations:
+- experiment_id: sasbdb:SASDV63/experiment
+  instrument_id: sasbdb:instrument/Diamond_Light_Source-B21
+sample_nucleic_acid_associations:
+- sample_id: sasbdb:SASDV63/sample
+  nucleic_acid_id: sasbdb:SASDV63/nucleic_acid/1
+  role: target
+  copy_number: 1
+workflow_experiment_associations:
+- workflow_id: sasbdb:SASDV63/workflow/pddf
+  experiment_id: sasbdb:SASDV63/experiment
+- workflow_id: sasbdb:SASDV63/workflow/fit1_model1
+  experiment_id: sasbdb:SASDV63/experiment
+- workflow_id: sasbdb:SASDV63/workflow/fit2_model1
+  experiment_id: sasbdb:SASDV63/experiment
+- workflow_id: sasbdb:SASDV63/workflow/fit3_model1
+  experiment_id: sasbdb:SASDV63/experiment
