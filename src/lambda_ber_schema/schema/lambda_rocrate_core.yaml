@@ -93,6 +93,10 @@ prefixes:
   # Bound here as well as in the main schema so that `uniprot:P69905` in a crate expands to the
   # same IRI a `Protein.uniprot_id` value does. Crates SHOULD bind it in their own context.
   uniprot: http://purl.uniprot.org/uniprot/
+  # Likewise for the nucleic acid registries a `NucleicAcidEntity` may be named by.
+  rnacentral: https://rnacentral.org/rna/
+  refseq: https://www.ncbi.nlm.nih.gov/nuccore/
+  insdc: https://www.ebi.ac.uk/ena/data/view/
 
 default_prefix: lambdarc
 default_range: string
@@ -371,9 +375,10 @@ classes:
         required: true
     comments:
       - >-
-        Which protein(s) the specimen contains is said by pointing at `ProteinEntity` records
-        through `hasBioChemEntityPart`. `protein_name` stays on the sample as the facility's own
-        display name and the cheapest search field; the accession lives on the protein entity.
+        Which protein(s) and nucleic acid(s) the specimen contains is said by pointing at
+        `ProteinEntity` and `NucleicAcidEntity` records through `hasBioChemEntityPart`.
+        `protein_name` stays on the sample as the facility's own display name and the cheapest
+        search field; the accession lives on the protein entity.
 
   ProteinEntity:
     is_a: CrateEntity
@@ -415,6 +420,55 @@ classes:
         A protein with no UniProt accession - a designed protein, an unannotated metagenomic
         sequence - is still a protein entity. It MUST then declare `uniprot_id` in `missing`
         (reason `not-registered`), per the rule that absence is stated, never implied.
+
+  NucleicAcidEntity:
+    is_a: CrateEntity
+    class_uri: sdo:BioChemEntity
+    exact_mappings:
+      - lambda:NucleicAcid
+    description: >-
+      A DNA or RNA strand as a molecular entity - the thing a specimen *contains*, as distinct
+      from the specimen, and the counterpart of `ProteinEntity` for the other biopolymer. Typed
+      `["BioChemEntity", "lambda:NucleicAcid"]`: schema.org has no nucleic acid type, so the
+      generic consumer sees a `BioChemEntity`, as it does for a sample, and the LAMBDA token tells
+      a LAMBDA-aware reader which of the two it is. One entity serves every sample in the crate
+      that contains the strand.
+
+      Nucleic acids have no UniProt. Where a registry entry exists the `@id` SHOULD be its IRI
+      (`https://rnacentral.org/rna/URS000011107D` for a non-coding RNA; a RefSeq or INSDC IRI for
+      a transcript or genomic sequence), with the same accession as a CURIE in `rnacentral_id` or
+      `sequence_accession`, the two spellings of one identifier as for `ProteinEntity`. Most
+      strands in structural biology are synthetic oligonucleotides with no registry entry; those
+      take a local `@id` (`#na-target-strand`) and their `nucleotide_sequence` is the identity.
+      Unlike a protein, the sequence therefore travels in the crate; a 23-mer is shorter than its
+      own name.
+
+      Only the identity layer is here: type, name, accession or sequence, gene, organism, the
+      structures it is known from. Whether the strand is paired, how it was made, its labels and
+      its measured mass are per-preparation and live in the fuller record this crate points at.
+    slots:
+      - nucleic_acid_type
+      - nucleic_acid_name
+      - rnacentral_id
+      - sequence_accession
+      - nucleotide_sequence
+      - gene_name
+      - organism
+      - pdb_entries
+      - missing
+    slot_usage:
+      at_id:
+        required: true
+      nucleic_acid_type:
+        required: true
+      nucleic_acid_name:
+        recommended: true
+    comments:
+      - >-
+        A nucleic acid entity MUST say what it is: at least one of `rnacentral_id`,
+        `sequence_accession` and `nucleotide_sequence`. A crate that has none of them - a strand
+        whose sequence is withheld, say - declares one of the three in `missing`, per the rule that
+        absence is stated, never implied.
 
   InstrumentEntity:
     is_a: CrateEntity
@@ -1509,7 +1563,48 @@ slots:
     multivalued: true
     exact_mappings:
       - lambda:pdb_entries
-    description: PDB entries the protein is known from, as CURIEs (`pdb:1HHO`).
+    description: PDB entries the protein or nucleic acid is known from, as CURIEs (`pdb:1HHO`).
+
+  nucleic_acid_type:
+    slot_uri: lambda:nucleic_acid_type
+    range: NucleicAcidTypeEnum
+    exact_mappings:
+      - lambda:nucleic_acid_type
+    description: Chemical type of the strand, from the schema's own `NucleicAcidTypeEnum` (`dna`, `rna`, ...).
+
+  nucleic_acid_name:
+    slot_uri: lambda:nucleic_acid_name
+    exact_mappings:
+      - lambda:nucleic_acid_name
+    description: Name of the strand as the depositor or database gives it (`tRNA-Phe`, `sgRNA targeting EMX1`).
+
+  rnacentral_id:
+    slot_uri: lambda:rnacentral_id
+    exact_mappings:
+      - lambda:rnacentral_id
+    pattern: "^rnacentral:URS[0-9A-F]{10}(_[0-9]+)?$"
+    description: >-
+      RNAcentral identifier as a Bioregistry CURIE (`rnacentral:URS000011107D`), exactly as
+      `NucleicAcid.rnacentral_id` carries it. The `rnacentral` prefix expands to the entity's own
+      `@id` when that is the RNAcentral IRI.
+
+  sequence_accession:
+    slot_uri: lambda:sequence_accession
+    exact_mappings:
+      - lambda:sequence_accession
+    pattern: "^(refseq|insdc):[A-Z][A-Z0-9_]*[0-9](\\.[0-9]+)?$"
+    description: >-
+      RefSeq or INSDC accession of the reference sequence as a CURIE (`refseq:NM_000518.5`,
+      `insdc:J00153.1`), exactly as `NucleicAcid.sequence_accession` carries it.
+
+  nucleotide_sequence:
+    slot_uri: lambda:nucleotide_sequence
+    exact_mappings:
+      - lambda:nucleotide_sequence
+    pattern: "^[ACGTURYKMSWBDHVNI]+$"
+    description: >-
+      One-letter sequence, 5' to 3', as `NucleicAcid.nucleotide_sequence` carries it. The identity
+      of a synthetic oligonucleotide, which has no accession.
 
   has_biochem_entity_part:
     alias: hasBioChemEntityPart
@@ -1519,10 +1614,12 @@ slots:
     inlined: true
     close_mappings:
       - lambda:SampleProteinAssociation
+      - lambda:SampleNucleicAcidAssociation
     description: >-
-      The protein entities a specimen contains. schema.org's own part relation for
+      The protein and nucleic acid entities a specimen contains. schema.org's own part relation for
       `BioChemEntity`, and in the RO-Crate 1.2 context. Projects onto one `SampleProteinAssociation`
-      per target; the role, copy number and modifications that association can carry are left to the
+      per `ProteinEntity` target and one `SampleNucleicAcidAssociation` per `NucleicAcidEntity`
+      target; the role, copy number and modifications those associations can carry are left to the
       fuller record, because a manifest says *what* is in the tube and not how much.
 
   organism:
