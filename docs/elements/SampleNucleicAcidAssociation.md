@@ -291,7 +291,10 @@ attributes:
     name: modifications
     description: 'Modifications carried by this strand in this sample: fluorophore
       or biotin labels, 2''-O-methyl groups, phosphorothioate linkages, a 5'' triphosphate
-      left on, methylated bases'
+      left on, methylated bases. One modification per entry, its position or extent
+      first where it has one, then the chemistry: "5'' 6-FAM", "3'' biotin", "2''-O-methyl
+      at 1-3", "phosphorothioate at 1-2,21-22", "m6A at 15", "5'' triphosphate". A
+      modification with no position is named alone: "phosphorothioate backbone".'
     from_schema: http://w3id.org/lambda/
     domain_of:
     - MolecularComposition
@@ -455,7 +458,10 @@ attributes:
     name: modifications
     description: 'Modifications carried by this strand in this sample: fluorophore
       or biotin labels, 2''-O-methyl groups, phosphorothioate linkages, a 5'' triphosphate
-      left on, methylated bases'
+      left on, methylated bases. One modification per entry, its position or extent
+      first where it has one, then the chemistry: "5'' 6-FAM", "3'' biotin", "2''-O-methyl
+      at 1-3", "phosphorothioate at 1-2,21-22", "m6A at 15", "5'' triphosphate". A
+      modification with no position is named alone: "phosphorothioate backbone".'
     from_schema: http://w3id.org/lambda/
     alias: modifications
     owner: SampleNucleicAcidAssociation

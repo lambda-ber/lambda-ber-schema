@@ -1437,6 +1437,38 @@ class DatabaseNameEnum(str, Enum):
     """
     Gene Ontology
     """
+    rnacentral = "rnacentral"
+    """
+    RNAcentral
+    """
+    rfam = "rfam"
+    """
+    Rfam
+    """
+    refseq = "refseq"
+    """
+    NCBI RefSeq
+    """
+    insdc = "insdc"
+    """
+    INSDC (GenBank, ENA, DDBJ)
+    """
+    mirbase = "mirbase"
+    """
+    miRBase
+    """
+    gtrnadb = "gtrnadb"
+    """
+    GtRNAdb
+    """
+    ndb = "ndb"
+    """
+    Nucleic Acid Database
+    """
+    modomics = "modomics"
+    """
+    MODOMICS, modified RNA nucleosides
+    """
 
 
 class FacilityEnum(str, Enum):
@@ -6962,7 +6994,7 @@ class SampleNucleicAcidAssociation(ConfiguredBaseModel):
          'exact_mappings': ['mmCIF:_entity_poly.pdbx_strand_id']} })
     structural_form: Optional[NucleicAcidFormEnum] = Field(default=None, description="""Form the strand takes in this sample: single-stranded, paired in a duplex, folded as a hairpin, a quadruplex, and so on. Both strands of a heteroduplex say double_stranded.""", json_schema_extra = { "linkml_meta": {'alias': 'structural_form', 'domain_of': ['SampleNucleicAcidAssociation']} })
     source_method: Optional[NucleicAcidSourceEnum] = Field(default=None, description="""How this strand was made for this preparation: chemical synthesis, in vitro transcription, PCR, ...""", json_schema_extra = { "linkml_meta": {'alias': 'source_method', 'domain_of': ['SampleNucleicAcidAssociation']} })
-    modifications: Optional[list[str]] = Field(default=None, description="""Modifications carried by this strand in this sample: fluorophore or biotin labels, 2'-O-methyl groups, phosphorothioate linkages, a 5' triphosphate left on, methylated bases""", json_schema_extra = { "linkml_meta": {'alias': 'modifications',
+    modifications: Optional[list[str]] = Field(default=None, description="""Modifications carried by this strand in this sample: fluorophore or biotin labels, 2'-O-methyl groups, phosphorothioate linkages, a 5' triphosphate left on, methylated bases. One modification per entry, its position or extent first where it has one, then the chemistry: \"5' 6-FAM\", \"3' biotin\", \"2'-O-methyl at 1-3\", \"phosphorothioate at 1-2,21-22\", \"m6A at 15\", \"5' triphosphate\". A modification with no position is named alone: \"phosphorothioate backbone\".""", json_schema_extra = { "linkml_meta": {'alias': 'modifications',
          'domain_of': ['MolecularComposition',
                        'SampleProteinAssociation',
                        'SampleNucleicAcidAssociation']} })
