@@ -95,9 +95,9 @@ def load_schema(path: str | Path | None = None) -> dict:
     3. Generated on the fly from the YAML, when ``linkml`` is importable.
     """
     if path is not None:
-        schema = json.loads(Path(path).read_text())
+        schema = json.loads(Path(path).read_text(encoding="utf-8"))
     elif packaged_schema_path().exists():
-        schema = json.loads(packaged_schema_path().read_text())
+        schema = json.loads(packaged_schema_path().read_text(encoding="utf-8"))
     else:
         schema = generate_schema()
     if set(schema.get("properties", {})) != {"@context", "@graph"}:
@@ -260,6 +260,9 @@ def normalize(entity: dict, class_schema: dict, defs: dict | None = None) -> dic
     properties = class_schema.get("properties", {})
     defs = defs if defs is not None else {}
 
+    # Two prefixed spellings of one term (``lambda:x`` and ``lambdax:x``) compact to the same key
+    # and the later one wins. Such an entity is malformed either way; layer 2 will report the
+    # surviving value if it is wrong, and nothing here tries to guess which one was meant.
     compacted: dict = {}
     for key, value in entity.items():
         bare = next(
@@ -315,7 +318,12 @@ def entity_violations(json_schema: dict, crate: dict) -> list[str]:
                 f"{entity.get('@id')!r} has no profile class for @type {entity_types(entity)}"
             )
             continue
-        class_schema = json_schema["$defs"][class_name]
+        class_schema = json_schema["$defs"].get(class_name)
+        if class_schema is None:
+            raise SchemaNotAvailable(
+                f"{class_name} is dispatched to but not in the schema's $defs; "
+                "the schema and the DISPATCH table disagree"
+            )
         for error in _errors(
             _validator(json_schema, class_name),
             normalize(entity, class_schema, json_schema["$defs"]),
@@ -578,11 +586,16 @@ def validate_path(
     *,
     layers: Iterable[str] = LAYERS,
 ) -> ValidationReport:
-    """Validate a crate on disk. ``path`` may be the metadata file or the crate directory."""
+    """Validate a crate on disk. ``path`` may be the metadata file or the crate directory.
+
+    Raises ``OSError`` (``FileNotFoundError``, ``PermissionError``, ...) when the file cannot be
+    reached or read: that is a problem with the path, not with the crate. A file that is read
+    but is not JSON comes back as a report with one document-layer finding.
+    """
     metadata = resolve_metadata_path(path)
     try:
-        crate = json.loads(metadata.read_text())
-    except json.JSONDecodeError as exc:
+        crate = json.loads(metadata.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, UnicodeDecodeError) as exc:
         return ValidationReport(
             source=str(metadata),
             findings=[Finding("document", f"not valid JSON: {exc}")],

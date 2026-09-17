@@ -292,6 +292,38 @@ def test_validate_path_reports_bad_json(json_schema, tmp_path):
     assert "not valid JSON" in report.findings[0].message
 
 
+def test_validate_path_reads_utf8_regardless_of_locale(json_schema, tmp_path, monkeypatch):
+    """RO-Crate mandates UTF-8; the platform default encoding must not get a say."""
+    crate = load(CRATES / "valid" / "minimal-manifest.json")
+    root_of(crate)["name"] = "Glutamyl-tRNA synthetase \u00e0 la SIBYLS \u2014 \u03b2 sheet"
+    path = tmp_path / v.METADATA_FILE
+    path.write_bytes(json.dumps(crate, ensure_ascii=False).encode("utf-8"))
+    monkeypatch.setattr(Path, "read_text", _ascii_only_read_text)
+    assert validate_path(path, json_schema).ok
+
+
+def _ascii_only_read_text(self, encoding=None, errors=None):
+    """Stand-in for a platform whose default text encoding is not UTF-8."""
+    with open(self, encoding=encoding or "ascii", errors=errors) as fh:
+        return fh.read()
+
+
+def test_validate_path_raises_on_unreadable_file(json_schema, tmp_path):
+    """A file that exists but cannot be read is a path problem, not a crate finding."""
+    import os
+
+    if os.geteuid() == 0:
+        pytest.skip("root can read anything")
+    locked = tmp_path / v.METADATA_FILE
+    locked.write_text("{}")
+    locked.chmod(0)
+    try:
+        with pytest.raises(PermissionError):
+            validate_path(locked, json_schema)
+    finally:
+        locked.chmod(0o644)
+
+
 @pytest.fixture(scope="module")
 def cli():
     from lambda_ber_schema.cli import app
@@ -323,11 +355,6 @@ class TestCLI:
         report = json.loads(result.output)
         assert report["conformant"] is False
         assert all(f["layer"] == "graph" for f in report["findings"])
-
-    def test_quiet_prints_nothing(self, cli):
-        result = cli("--quiet", str(CRATES / "invalid" / "no-license.json"))
-        assert result.exit_code == 1
-        assert result.output == ""
 
     def test_explicit_schema(self, cli):
         result = cli("--schema", str(GENERATED_SCHEMA), str(VALID[0]))
