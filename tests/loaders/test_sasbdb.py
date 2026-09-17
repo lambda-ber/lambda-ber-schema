@@ -30,13 +30,37 @@ def rna_loader(mocker, sasbdb_sasdv63_response):
 
 
 class TestSASBDBLoaderNucleicAcids:
-    """An RNA entry: no Protein row."""
+    """An RNA entry: no Protein row, one NucleicAcid row carrying the sequence."""
 
     def test_sample_type_reads_molecular_type_case_insensitively(self, rna_loader):
         """SASBDB spells the type "RNA" here; it must not fall back to protein."""
         result = rna_loader.load("SASDV63")
         assert result.dataset.samples[0].sample_type == "nucleic_acid"
         assert result.dataset.proteins is None
+
+    def test_nucleic_acid_created_from_molecule(self, rna_loader):
+        result = rna_loader.load("SASDV63")
+        assert len(result.dataset.nucleic_acids) == 1
+        rna = result.dataset.nucleic_acids[0]
+        assert rna.id == "sasbdb:SASDV63/nucleic_acid/1"
+        assert rna.nucleic_acid_type == "rna"
+        assert rna.nucleic_acid_name == "B2 short interspaced nuclear element (SINE) RNA"
+        assert rna.description == "B2 SINE ribozyme wildtype."
+        assert rna.organism_name == "Mus musculus"
+        assert rna.nucleotide_sequence.startswith("GGCUGGUGAGAUGGCUCAGUGGGUAAGAGCACCCGACUGCUCUUCCGAAGGUCAGGAGUUCAAAUCCCAGCAACCACAUG")
+        assert rna.sequence_length == 177
+        assert rna.molecular_weight_theoretical.numeric_value == 56.913
+        assert rna.molecular_weight_theoretical.unit == "kDa"
+
+    def test_sample_nucleic_acid_association(self, rna_loader):
+        result = rna_loader.load("SASDV63")
+        ds = result.dataset
+        assert len(ds.sample_nucleic_acid_associations) == 1
+        assoc = ds.sample_nucleic_acid_associations[0]
+        assert assoc.sample_id == ds.samples[0].id
+        assert assoc.nucleic_acid_id == "sasbdb:SASDV63/nucleic_acid/1"
+        assert assoc.role == "target"
+        assert assoc.copy_number == 1
 
 
 class TestSASBDBLoader:
@@ -100,6 +124,11 @@ class TestSASBDBLoader:
         assert assoc.role == "target"
         assert assoc.copy_number == 4
         assert assoc.residue_range is None  # range not given in the entry
+
+    def test_no_nucleic_acids_for_a_protein_entry(self, loader):
+        result = loader.load("SASDA52")
+        assert result.dataset.nucleic_acids is None
+        assert result.dataset.sample_nucleic_acid_associations is None
 
     def test_sample_has_quantity_values(self, loader):
         """Test Sample uses QuantityValue for numeric fields."""
