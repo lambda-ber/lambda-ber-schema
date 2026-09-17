@@ -352,9 +352,36 @@ class TestCLI:
     def test_json_output(self, cli):
         result = cli("--json", "--layer", "graph", str(CRATES / "invalid" / "dangling-about.json"))
         assert result.exit_code == 1, result.output
-        report = json.loads(result.output)
+        [report] = json.loads(result.output)
         assert report["conformant"] is False
         assert all(f["layer"] == "graph" for f in report["findings"])
+
+    def test_json_output_is_one_array_over_many_crates(self, cli):
+        """Several crates and all three layers still come out as one parseable document."""
+        result = cli("--json", str(VALID[0]), str(CRATES / "invalid" / "no-license.json"))
+        assert result.exit_code == 1, result.output
+        reports = json.loads(result.output)
+        assert [r["conformant"] for r in reports] == [True, False]
+        assert reports[0]["source"] == str(VALID[0])
+
+    def test_unreadable_file_exits_two(self, cli, tmp_path):
+        import os
+
+        if os.geteuid() == 0:
+            pytest.skip("root can read anything")
+        locked = tmp_path / v.METADATA_FILE
+        locked.write_text("{}")
+        locked.chmod(0)
+        try:
+            result = cli(str(locked))
+        finally:
+            locked.chmod(0o644)
+        assert result.exit_code == 2, result.output
+
+    def test_quiet_prints_nothing(self, cli):
+        result = cli("--quiet", str(CRATES / "invalid" / "no-license.json"))
+        assert result.exit_code == 1
+        assert result.output == ""
 
     def test_explicit_schema(self, cli):
         result = cli("--schema", str(GENERATED_SCHEMA), str(VALID[0]))

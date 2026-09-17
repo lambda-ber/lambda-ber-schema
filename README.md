@@ -24,7 +24,7 @@ The exit code is 0 when the crate conforms, 1 when it does not, and 2 when it co
 Every finding is tagged with the layer that produced it: `[document]` for the overall shape,
 `[entity]` for a term or value a profile class does not allow, and `[graph]` for a rule about
 relationships between entities (a dangling `hasPart`, an undeclared absence, and so on).
-`--json` gives a machine-readable report, `--layer` restricts the check to one or more layers,
+`--json` gives a machine-readable report (one JSON array, one object per crate), `--layer` restricts the check to one or more layers,
 and `--schema` swaps in a different generated JSON Schema.
 
 `linkml-validate` alone cannot do this. It walks a crate as a collection of instances rather than

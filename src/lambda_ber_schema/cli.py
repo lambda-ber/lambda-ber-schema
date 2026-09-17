@@ -1067,7 +1067,11 @@ def rocrate_validate(
         ),
     ] = None,
     output_json: Annotated[
-        bool, typer.Option("--json", help="Emit one JSON report per crate instead of text")
+        bool,
+        typer.Option(
+            "--json",
+            help="Emit a single JSON array with one report per crate instead of text",
+        ),
     ] = False,
     quiet: Annotated[
         bool, typer.Option("--quiet", "-q", help="Print nothing; the exit code is the verdict")
@@ -1077,7 +1081,8 @@ def rocrate_validate(
 
     Runs the three validation layers of the profile: document shape, per-entity closed-class
     checks, and the cross-entity graph rules. Exit code 0 when every crate conforms, 1 when any
-    does not, and 2 when a crate could not be read or the schema could not be loaded.
+    does not, and 2 when a path does not exist, a crate could not be read, or the schema could
+    not be loaded.
     """
     from lambda_ber_schema.rocrate import LAYERS, SchemaNotAvailable, load_schema, validate_path
 
@@ -1095,19 +1100,18 @@ def rocrate_validate(
 
     failed = False
     unreadable = False
+    reports = []
     for path in paths:
         try:
             report = validate_path(path, json_schema, layers=layers)
-        except FileNotFoundError as exc:
+        except OSError as exc:
             typer.echo(f"Error: {exc}", err=True)
             unreadable = True
             continue
         if not report.ok:
             failed = True
-        if quiet:
-            continue
-        if output_json:
-            typer.echo(json.dumps(report.to_dict(), indent=2))
+        reports.append(report)
+        if quiet or output_json:
             continue
         if report.ok:
             typer.echo(f"{report.source}: conformant")
@@ -1116,6 +1120,8 @@ def rocrate_validate(
             for finding in report.findings:
                 typer.echo(f"  {finding}")
 
+    if output_json and not quiet:
+        typer.echo(json.dumps([r.to_dict() for r in reports], indent=2))
     if unreadable:
         raise typer.Exit(2)
     if failed:
