@@ -52,6 +52,39 @@ def uniprot_curie(accession: str) -> str | None:
     return f"uniprot:{accession}"
 
 
+#: Letters the schema's NucleicAcid.nucleotide_sequence pattern accepts: the four bases of
+#: each polymer, the IUPAC ambiguity codes, and I for inosine.
+NUCLEOTIDE_LETTERS = frozenset("ACGTURYKMSWBDHVNI")
+
+
+def nucleotide_sequence(raw: str | None) -> str | None:
+    """
+    Normalize a source's nucleotide sequence to the one unbroken string the schema wants.
+
+    Sources wrap the sequence at 60 columns, sometimes under a FASTA header, and
+    sometimes in lowercase. Returns None for an empty sequence, and None for one
+    with a character outside the nucleotide alphabet, so that a modified residue
+    written in some house notation does not fail validation downstream; the caller
+    decides whether that is worth a warning.
+
+    Example:
+        >>> nucleotide_sequence(">seq\\nacgu\\nacgu")
+        'ACGUACGU'
+        >>> nucleotide_sequence("ACG(5MC)T") is None
+        True
+        >>> nucleotide_sequence("") is None
+        True
+    """
+    if not raw:
+        return None
+    sequence = "".join(
+        line.strip() for line in raw.splitlines() if not line.startswith(">")
+    ).upper()
+    if not sequence or not NUCLEOTIDE_LETTERS.issuperset(sequence):
+        return None
+    return sequence
+
+
 class LoaderResult(BaseModel):
     """
     Result container for loader operations.

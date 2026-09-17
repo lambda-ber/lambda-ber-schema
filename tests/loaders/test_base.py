@@ -2,7 +2,11 @@
 
 import pytest
 
-from lambda_ber_schema.loaders.base import UNIPROT_ACCESSION_RE, uniprot_curie
+from lambda_ber_schema.loaders.base import (
+    UNIPROT_ACCESSION_RE,
+    nucleotide_sequence,
+    uniprot_curie,
+)
 
 
 class TestUniprotCurie:
@@ -51,3 +55,20 @@ class TestUniprotCurie:
         for accession in ["P69905", "A0A101UQ08", "P69905-2"]:
             assert UNIPROT_ACCESSION_RE.match(accession)
             Protein(id=f"uniprot:{accession}", uniprot_id=f"uniprot:{accession}")
+
+
+class TestNucleotideSequence:
+    """nucleotide_sequence() gives the schema one clean string or nothing."""
+
+    def test_joins_wrapped_lines_and_uppercases(self):
+        assert nucleotide_sequence("acgu\nacgu\n") == "ACGUACGU"
+
+    def test_drops_a_fasta_header(self):
+        assert nucleotide_sequence(">tRNA-Phe\nGCGGAUUU") == "GCGGAUUU"
+
+    def test_accepts_ambiguity_codes_and_inosine(self):
+        assert nucleotide_sequence("ACGTNRYI") == "ACGTNRYI"
+
+    @pytest.mark.parametrize("raw", ["", None, "ACG(5MC)T", "ACGX", "MSIPETQK"])
+    def test_rejects_what_the_schema_would_reject(self, raw):
+        assert nucleotide_sequence(raw) is None
