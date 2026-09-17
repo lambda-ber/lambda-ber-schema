@@ -1122,3 +1122,20 @@ enums:
         description: "KEGG"
       go:
         description: "Gene Ontology"
+      # Nucleic acid databases, for NucleicAcid.cross_references
+      rnacentral:
+        description: "RNAcentral"
+      rfam:
+        description: "Rfam"
+      refseq:
+        description: "NCBI RefSeq"
+      insdc:
+        description: "INSDC (GenBank, ENA, DDBJ)"
+      mirbase:
+        description: "miRBase"
+      gtrnadb:
+        description: "GtRNAdb"
+      ndb:
+        description: "Nucleic Acid Database"
+      modomics:
+        description: "MODOMICS, modified RNA nucleosides"
