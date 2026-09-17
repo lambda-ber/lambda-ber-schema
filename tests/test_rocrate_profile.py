@@ -87,6 +87,7 @@ DISPATCH: list[tuple[str, str]] = [
     ("lambda:Experiment", "CrateRoot"),  # deprecated SSRL 0.2 spelling
     ("lambda:Sample", "SampleEntity"),
     ("lambda:Protein", "ProteinEntity"),
+    ("lambda:NucleicAcid", "NucleicAcidEntity"),
     ("lambda:Instrument", "InstrumentEntity"),
     ("lambda:ExperimentRun", "ExperimentRunAction"),
     ("lambda:WorkflowRun", "WorkflowRunAction"),
@@ -196,7 +197,11 @@ GRAPH_RULE_TERMS: dict[str, tuple[str, ...]] = {
     "MetadataDescriptor": ("about",),
     "SampleEntity": ("hasBioChemEntityPart",),
     "ProteinEntity": ("uniprot_id", "missing"),
+    "NucleicAcidEntity": ("rnacentral_id", "sequence_accession", "nucleotide_sequence", "missing"),
 }
+
+#: What identifies a nucleic acid entity: a registry accession, or the sequence itself.
+NUCLEIC_ACID_IDENTITY = ("rnacentral_id", "sequence_accession", "nucleotide_sequence")
 
 
 def compact_keys(entity: dict) -> dict:
@@ -260,6 +265,18 @@ def graph_rule_violations(crate: dict) -> list[str]:
         if "uniprot_id" not in entity and "uniprot_id" not in declared:
             problems.append(
                 f"{entity.get('@id')!r} is a protein with no uniprot_id and no declared absence - "
+                "absence is stated, never implied"
+            )
+
+    # a nucleic acid without an accession or a sequence says so
+    for entity in entities:
+        if classify(entity) != "NucleicAcidEntity":
+            continue
+        declared = {d.get("field") for d in (entity.get("missing") or [])}
+        if not any(k in entity or k in declared for k in NUCLEIC_ACID_IDENTITY):
+            problems.append(
+                f"{entity.get('@id')!r} is a nucleic acid with no rnacentral_id, "
+                "sequence_accession or nucleotide_sequence and no declared absence - "
                 "absence is stated, never implied"
             )
 
@@ -540,6 +557,7 @@ EXPECTED_FAILURE = {
     "dangling-inline-ref.json": "promised_but_absent",
     "dangling-protein-part.json": "hasBioChemEntityPart",
     "protein-no-accession.json": "no uniprot_id and no declared absence",
+    "nucleic-acid-no-identity.json": "nucleic acid with no rnacentral_id",
 }
 
 

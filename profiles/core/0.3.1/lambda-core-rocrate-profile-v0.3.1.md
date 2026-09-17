@@ -217,8 +217,8 @@ tells a reader nothing the count does not.
 
 ### 6.2 Optional contextual entities
 
-`PersonEntity`, `OrganizationEntity`, `SampleEntity`, `ProteinEntity`, `InstrumentEntity`,
-`ExperimentRunAction`, `WorkflowRunAction`, `SoftwareApplicationEntity`, `DefinedTermEntity`,
+`PersonEntity`, `OrganizationEntity`, `SampleEntity`, `ProteinEntity`, `NucleicAcidEntity`,
+`InstrumentEntity`, `ExperimentRunAction`, `WorkflowRunAction`, `SoftwareApplicationEntity`, `DefinedTermEntity`,
 `PropertyValueEntity`, `RelatedWork`. Each is optional; each is typed so that a plain RO-Crate
 consumer understands it (`Person`, `Organization`, `Protein`, `CreateAction`, …) *and* a
 LAMBDA-aware reader can project it.
@@ -252,6 +252,33 @@ field. A protein with no UniProt accession is still a protein entity; it MUST th
 `uniprot_id` in `missing` (§8). Crates that write `uniprot_id` SHOULD bind `uniprot` to
 `http://purl.uniprot.org/uniprot/` in their context, so that a reader treating the value as a CURIE
 expands it to the entity's own `@id`.
+
+**Nucleic acids split the same way.** A `NucleicAcidEntity` is a DNA or RNA strand the specimen
+contains, reached through the same `hasBioChemEntityPart`, and typed
+`["BioChemEntity", "lambda:NucleicAcid"]` because schema.org has no nucleic acid type. There is no
+UniProt for nucleic acids. Where a registry entry exists the `@id` SHOULD be its IRI and the entity
+carries the accession as the schema's CURIE (`rnacentral_id` for RNAcentral, `sequence_accession`
+for RefSeq or INSDC), the two spellings of one identifier as above. Most strands in structural
+biology are synthetic oligonucleotides with no registry entry: those take a local `@id`, and the
+`nucleotide_sequence` is the identity and travels in the crate, which for a protein it does not. A
+nucleic acid entity MUST carry at least one of `rnacentral_id`, `sequence_accession` and
+`nucleotide_sequence`, or declare one of them in `missing` (§8):
+
+```json
+{"@id": "#sample-zif-dna07", "@type": ["BioChemEntity", "lambda:Sample"],
+ "sample_code": "ZIF-DNA-07", "sample_type": "complex",
+ "hasBioChemEntityPart": [{"@id": "http://purl.uniprot.org/uniprot/P08046"},
+                          {"@id": "#na-target-strand"}]},
+{"@id": "#na-target-strand", "@type": ["BioChemEntity", "lambda:NucleicAcid"],
+ "name": "DNA target strand, 11-mer", "nucleic_acid_type": "dna",
+ "nucleotide_sequence": "AGCGTGGGCGT", "organism": "NCBITaxon:32630", "pdb_entries": ["pdb:1AAY"]},
+{"@id": "https://rnacentral.org/rna/URS000011107D", "@type": ["BioChemEntity", "lambda:NucleicAcid"],
+ "name": "tRNA-Phe (GAA)", "nucleic_acid_type": "rna", "rnacentral_id": "rnacentral:URS000011107D",
+ "gene_name": "tF(GAA)", "organism": "NCBITaxon:4932", "pdb_entries": ["pdb:1EHZ"]}
+```
+
+Whether the strand is paired, how it was made, its labels and its measured mass are facts about a
+preparation and stay in the fuller record, on `SampleNucleicAcidAssociation`.
 
 Facility and technique SHOULD be carried as `DefinedTerm` entities rather than bare strings — this
 is what lets a federated index join across crates, and the SSRL 0.2 crates already do it.
@@ -517,6 +544,7 @@ A LAMBDA federated search projects from the root alone, without opening parts:
 | technique | `lambda:technique` (`TechniqueEnum`), plus a PaNET IRI from an extension |
 | specimen | `lambda:sample_code`, `lambda:protein_name`, `lambda:organism` |
 | protein | `lambda:uniprot_id`, `lambda:gene_name` on the `Protein` entities the sample points at with `hasBioChemEntityPart` |
+| nucleic acid | `lambda:nucleic_acid_type`, `lambda:rnacentral_id`, `lambda:sequence_accession` or `lambda:nucleotide_sequence` on the `NucleicAcid` entities the sample points at with `hasBioChemEntityPart` |
 | dates | `datePublished`, `lambda:collectionDate` |
 | people | `author` / `agent` → `Person` entities, by ORCID where known; `role` gives the capacity |
 | access | `conditionsOfAccess`, `license` |
@@ -550,7 +578,7 @@ valid against Core while the extension gives the block its shape.
 2. A root data entity exists, typed `lambda:Dataset` (or the deprecated `lambda:Experiment`).
 3. Every `hasPart` target resolves to an entity in the graph — a manifest MUST NOT promise a part
    it does not describe. The same holds for every `hasBioChemEntityPart` target: a sample MUST NOT
-   point at a protein the graph does not describe.
+   point at a protein or nucleic acid the graph does not describe.
 4. Every `CrateDatasetPart` resolves a metadata pointer or declares why it resolves none (§7).
 5. Every `missing` entry names a `blocks` tier unless its reason is `not-applicable`.
 6. No field is both present on an entity and declared missing on it.
@@ -562,6 +590,8 @@ valid against Core while the extension gives the block its shape.
    `File`, which the context maps to `schema:MediaObject`.
 9. `license` and `datePublished`, when absent from the root, appear in `lambdarc:missing` (§6.4).
 10. A `ProteinEntity` carries `uniprot_id` or declares it in `lambdarc:missing` (§6.2).
+11. A `NucleicAcidEntity` carries at least one of `rnacentral_id`, `sequence_accession` and
+   `nucleotide_sequence`, or declares one of them in `lambdarc:missing` (§6.2).
 
 SHACL shapes would be the natural home for layer 3, since RDF validation dispatches on `rdf:type`
 properly. They are **not** generated: `gen-shacl` raises `KeyError('lambda-ber-schema')` for classes
@@ -576,7 +606,7 @@ instances, so a single JSON object is walked key by key, and `--legacy-mode` rou
 
 ## 13. Worked examples
 
-Five conformant fixtures in `tests/data/rocrate/valid/`:
+Six conformant fixtures in `tests/data/rocrate/valid/`:
 
 | Fixture | Shows |
 | :---- | :---- |
@@ -584,9 +614,11 @@ Five conformant fixtures in `tests/data/rocrate/valid/`:
 | `ssrl-mx-XA_x16.json` | a real SSRL MX package brought to Core 0.3.1, with MX quantities nested in `resultSummary` |
 | `saxs-glurs.json` | the SAXS GluRS dataset reduced to Core terms — the extension boundary made concrete; its sample points at a `Protein` entity (§6.2) |
 | `nested-pointers.json` | one manifest using all three pointer mechanisms at once |
+| `detached-crate.json` | a crate whose root `@id` is an absolute URI, stored apart from its payload |
+| `nucleic-acid-entities.json` | a protein-DNA complex whose sample points at a `Protein` entity and two `NucleicAcid` entities, one with its sequence withheld and declared, plus a natural RNA named by its RNAcentral IRI (§6.2) |
 | `ssrl-mx-XA_x16-core-0.2.json` (in `legacy/`) | the published 0.2 crate, unmodified — see §15 |
 
-Twelve negative fixtures in `tests/data/rocrate/invalid/`, each isolating one rule, with the test
+Thirteen negative fixtures in `tests/data/rocrate/invalid/`, each isolating one rule, with the test
 asserting *which* rule failed so that a fixture cannot pass for the wrong reason.
 
 ---
@@ -612,8 +644,9 @@ Class-level projection:
 | :---- | :---- | :---- |
 | `CrateRoot` | `["Dataset", "lambda:Dataset"]` | `Dataset` (+ `Study`, close) |
 | `CrateFile` | `File` | `DataFile` |
-| `SampleEntity` | `["BioChemEntity", "lambda:Sample"]` | `Sample` (+ `SampleProteinAssociation`, via `hasBioChemEntityPart`) |
+| `SampleEntity` | `["BioChemEntity", "lambda:Sample"]` | `Sample` (+ `SampleProteinAssociation` and `SampleNucleicAcidAssociation`, via `hasBioChemEntityPart`) |
 | `ProteinEntity` | `["Protein", "lambda:Protein"]` | `Protein` |
+| `NucleicAcidEntity` | `["BioChemEntity", "lambda:NucleicAcid"]` | `NucleicAcid` |
 | `InstrumentEntity` | `["IndividualProduct", "lambda:Instrument"]` | `Instrument` |
 | `ExperimentRunAction` | `["Action", "lambda:ExperimentRun"]` | `ExperimentRun` |
 | `WorkflowRunAction` | `["CreateAction", "lambda:WorkflowRun"]` | `WorkflowRun` |
@@ -628,14 +661,18 @@ it; the schema carries it on `StudyPersonAssociation` / `ExperimentPersonAssocia
 dataset. A projector therefore reads `role` (and `author_position`, `corresponding`) off the crate
 entity and writes them to the association, not to `Person`.
 
-`SampleEntity` and `ProteinEntity` split the same way the schema does. `hasBioChemEntityPart` on
-the sample projects onto one `SampleProteinAssociation` per target, with `sample_id` and
-`protein_id` and nothing else: the role, copy number, residue range and modifications that
-association can carry describe a preparation in detail a manifest does not attempt, and belong to
-the fuller record. The protein entity itself projects onto `Protein` by identity — `uniprot_id`,
-`protein_name`, `gene_name`, `organism`, `pdb_entries` are the schema's own slot names. The
-deprecated `uniprotId` on a sample (§15) projects by *creating* that `Protein` and association,
-which is why its mapping is close rather than exact: the value is bare where the schema's is a CURIE.
+`SampleEntity`, `ProteinEntity` and `NucleicAcidEntity` split the same way the schema does.
+`hasBioChemEntityPart` on the sample projects onto one `SampleProteinAssociation` per
+`ProteinEntity` target and one `SampleNucleicAcidAssociation` per `NucleicAcidEntity` target - the
+projector reads the `lambda:` type token to tell them apart - with the two ids and nothing else:
+the role, copy number, residue range, structural form and modifications those associations can
+carry describe a preparation in detail a manifest does not attempt, and belong to the fuller
+record. The protein entity itself projects onto `Protein` by identity — `uniprot_id`,
+`protein_name`, `gene_name`, `organism`, `pdb_entries` are the schema's own slot names — and the
+nucleic acid entity onto `NucleicAcid` likewise, with `nucleic_acid_type`, `nucleic_acid_name`,
+`rnacentral_id`, `sequence_accession` and `nucleotide_sequence`. The deprecated `uniprotId` on a
+sample (§15) projects by *creating* that `Protein` and association, which is why its mapping is
+close rather than exact: the value is bare where the schema's is a CURIE.
 
 `OrganizationEntity` works the same way, projecting onto `Organization` plus
 `StudyOrganizationAssociation` / `PersonOrganizationAssociation`. Note the deliberate split between
