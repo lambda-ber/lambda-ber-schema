@@ -1,0 +1,183 @@
+@base <http://example.org/> .
+@prefix NCBITaxon: <http://purl.obolibrary.org/obo/NCBITaxon_> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lambdaber: <http://w3id.org/lambda/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
+@prefix uniprot: <http://purl.uniprot.org/uniprot/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+lambdaber:dataset-cas9-nucleic-acid-entities a lambdaber:Dataset ;
+    dcterms:title "Streptococcus pyogenes Cas9 with guide RNA and target DNA" ;
+    lambdaber:description "Worked example of the NucleicAcid table shared by three samples, with the Protein table for the nuclease" ;
+    lambdaber:nucleic_acids lambdaber:na-nontarget-strand-4oo8,
+        lambdaber:na-sgrna-4oo8,
+        lambdaber:na-target-strand-4oo8 ;
+    lambdaber:proteins uniprot:Q99ZW2 ;
+    lambdaber:sample_nucleic_acid_associations [ a lambdaber:SampleNucleicAcidAssociation ;
+            lambdaber:copy_number 1 ;
+            lambdaber:modifications "5' 6-FAM" ;
+            lambdaber:nucleic_acid_id lambdaber:na-nontarget-strand-4oo8 ;
+            lambdaber:role "subunit" ;
+            lambdaber:sample_id lambdaber:sample-target-duplex-fam ;
+            lambdaber:source_method "chemical_synthesis" ;
+            lambdaber:structural_form "double_stranded" ],
+        [ a lambdaber:SampleNucleicAcidAssociation ;
+            lambdaber:chain_ids "C" ;
+            lambdaber:copy_number 1 ;
+            lambdaber:nucleic_acid_id lambdaber:na-target-strand-4oo8 ;
+            lambdaber:role "binding_partner" ;
+            lambdaber:sample_id lambdaber:sample-cas9-sgrna-dna-complex ;
+            lambdaber:source_method "chemical_synthesis" ;
+            lambdaber:structural_form "single_stranded" ],
+        [ a lambdaber:SampleNucleicAcidAssociation ;
+            lambdaber:chain_ids "B" ;
+            lambdaber:copy_number 1 ;
+            lambdaber:nucleic_acid_id lambdaber:na-sgrna-4oo8 ;
+            lambdaber:role "guide" ;
+            lambdaber:sample_id lambdaber:sample-cas9-sgrna-dna-complex ;
+            lambdaber:source_method "in_vitro_transcription" ],
+        [ a lambdaber:SampleNucleicAcidAssociation ;
+            lambdaber:copy_number 1 ;
+            lambdaber:nucleic_acid_id lambdaber:na-target-strand-4oo8 ;
+            lambdaber:role "subunit" ;
+            lambdaber:sample_id lambdaber:sample-target-duplex-fam ;
+            lambdaber:source_method "chemical_synthesis" ;
+            lambdaber:structural_form "double_stranded" ],
+        [ a lambdaber:SampleNucleicAcidAssociation ;
+            lambdaber:copy_number 1 ;
+            lambdaber:modifications "5' triphosphate retained" ;
+            lambdaber:nucleic_acid_id lambdaber:na-sgrna-4oo8 ;
+            lambdaber:observed_molecular_weight [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "31.9"^^xsd:float ;
+                    lambdaber:unit "kilodaltons" ] ;
+            lambdaber:role "target" ;
+            lambdaber:sample_id lambdaber:sample-sgrna-ivt ;
+            lambdaber:source_method "in_vitro_transcription" ] ;
+    lambdaber:sample_protein_associations [ a lambdaber:SampleProteinAssociation ;
+            lambdaber:chain_ids "A" ;
+            lambdaber:copy_number 1 ;
+            lambdaber:protein_id uniprot:Q99ZW2 ;
+            lambdaber:role "target" ;
+            lambdaber:sample_id lambdaber:sample-cas9-sgrna-dna-complex ] ;
+    lambdaber:samples lambdaber:sample-cas9-sgrna-dna-complex,
+        lambdaber:sample-sgrna-ivt,
+        lambdaber:sample-target-duplex-fam ;
+    lambdaber:studies lambdaber:study-cas9-target-recognition ;
+    lambdaber:study_sample_associations [ a lambdaber:StudySampleAssociation ;
+            lambdaber:role "reference" ;
+            lambdaber:sample_id lambdaber:sample-sgrna-ivt ;
+            lambdaber:study_id lambdaber:study-cas9-target-recognition ],
+        [ a lambdaber:StudySampleAssociation ;
+            lambdaber:role "reference" ;
+            lambdaber:sample_id lambdaber:sample-target-duplex-fam ;
+            lambdaber:study_id lambdaber:study-cas9-target-recognition ],
+        [ a lambdaber:StudySampleAssociation ;
+            lambdaber:role "target" ;
+            lambdaber:sample_id lambdaber:sample-cas9-sgrna-dna-complex ;
+            lambdaber:study_id lambdaber:study-cas9-target-recognition ] .
+
+uniprot:Q99ZW2 a lambdaber:Protein ;
+    lambdaber:ec_numbers "3.1.-.-" ;
+    lambdaber:gene_name "cas9" ;
+    lambdaber:go_terms "GO:0003677"^^xsd:anyURI,
+        "GO:0004519"^^xsd:anyURI ;
+    lambdaber:molecular_weight_theoretical [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "158.4"^^xsd:float ;
+            lambdaber:unit "kilodaltons" ] ;
+    lambdaber:organism NCBITaxon:301447 ;
+    lambdaber:organism_name "Streptococcus pyogenes serotype M1" ;
+    lambdaber:pdb_entries "pdb:4OO8"^^xsd:anyURI ;
+    lambdaber:protein_name "CRISPR-associated endonuclease Cas9/Csn1" ;
+    lambdaber:sequence_length 1368 ;
+    lambdaber:uniprot_id "uniprot:Q99ZW2"^^xsd:anyURI .
+
+lambdaber:na-nontarget-strand-4oo8 a lambdaber:NucleicAcid ;
+    lambdaber:molecular_weight_theoretical [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "7.16"^^xsd:float ;
+            lambdaber:unit "kilodaltons" ] ;
+    lambdaber:nucleic_acid_name "Non-target DNA strand, 23-mer" ;
+    lambdaber:nucleic_acid_type "dna" ;
+    lambdaber:nucleotide_sequence "GGAAATTAGGTGCGCTTGGCTGG" ;
+    lambdaber:organism NCBITaxon:32630 ;
+    lambdaber:organism_name "synthetic construct" ;
+    lambdaber:sequence_length 23 .
+
+lambdaber:na-sgrna-4oo8 a lambdaber:NucleicAcid ;
+    dcterms:title "sgRNA used in PDB 4OO8" ;
+    lambdaber:description "20-nucleotide guide segment followed by the crRNA repeat, tetraloop, tracrRNA anti-repeat and stem loops. Begins with GG for T7 transcription." ;
+    lambdaber:molecular_weight_theoretical [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "31.7"^^xsd:float ;
+            lambdaber:unit "kilodaltons" ] ;
+    lambdaber:nucleic_acid_name "Single-guide RNA, 98-mer" ;
+    lambdaber:nucleic_acid_type "rna" ;
+    lambdaber:nucleotide_sequence "GGAAAUUAGGUGCGCUUGGCGUUUUAGAGCUAGAAAUAGCAAGUUAAAAUAAGGCUAGUCCGUUAUCAACUUGAAAAAGUGGCACCGAGUCGGUGCUU" ;
+    lambdaber:organism NCBITaxon:32630 ;
+    lambdaber:organism_name "synthetic construct" ;
+    lambdaber:pdb_entries "pdb:4OO8"^^xsd:anyURI ;
+    lambdaber:sequence_length 98 .
+
+lambdaber:na-target-strand-4oo8 a lambdaber:NucleicAcid ;
+    lambdaber:molecular_weight_theoretical [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "6.93"^^xsd:float ;
+            lambdaber:unit "kilodaltons" ] ;
+    lambdaber:nucleic_acid_name "Target DNA strand, 23-mer" ;
+    lambdaber:nucleic_acid_type "dna" ;
+    lambdaber:nucleotide_sequence "CCAGCCAAGCGCACCTAATTTCC" ;
+    lambdaber:organism NCBITaxon:32630 ;
+    lambdaber:organism_name "synthetic construct" ;
+    lambdaber:pdb_entries "pdb:4OO8"^^xsd:anyURI ;
+    lambdaber:sequence_length 23 .
+
+lambdaber:sample-sgrna-ivt a lambdaber:Sample ;
+    dcterms:title "sgRNA from in vitro transcription, free in solution" ;
+    lambdaber:buffer_composition [ a lambdaber:BufferComposition ;
+            lambdaber:components "100 mM KCl",
+                "20 mM HEPES-KOH",
+                "5 mM MgCl2" ;
+            lambdaber:ph [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "7.5"^^xsd:float ;
+                    lambdaber:unit "pH units" ] ] ;
+    lambdaber:concentration [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "2.0"^^xsd:float ;
+            lambdaber:unit "milligrams per milliliter" ] ;
+    lambdaber:sample_code "SGRNA-IVT-002" ;
+    lambdaber:sample_type "nucleic_acid" .
+
+lambdaber:sample-target-duplex-fam a lambdaber:Sample ;
+    dcterms:title "Annealed target DNA duplex with 5' 6-FAM on the non-target strand" ;
+    lambdaber:buffer_composition [ a lambdaber:BufferComposition ;
+            lambdaber:components "100 mM NaCl",
+                "20 mM Tris-HCl" ;
+            lambdaber:ph [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "7.5"^^xsd:float ;
+                    lambdaber:unit "pH units" ] ] ;
+    lambdaber:concentration [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "10.0"^^xsd:float ;
+            lambdaber:unit "micromolar" ] ;
+    lambdaber:sample_code "TARGET-DUPLEX-FAM-003" ;
+    lambdaber:sample_type "nucleic_acid" .
+
+lambdaber:study-cas9-target-recognition a lambdaber:Study ;
+    dcterms:title "Target recognition by Cas9-sgRNA" .
+
+lambdaber:sample-cas9-sgrna-dna-complex a lambdaber:Sample ;
+    dcterms:title "Cas9-sgRNA-target DNA ternary complex" ;
+    lambdaber:buffer_composition [ a lambdaber:BufferComposition ;
+            lambdaber:components "1 mM DTT",
+                "150 mM NaCl",
+                "20 mM Tris-HCl",
+                "5 mM MgCl2" ;
+            lambdaber:ph [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "7.5"^^xsd:float ;
+                    lambdaber:unit "pH units" ] ] ;
+    lambdaber:concentration [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "5.0"^^xsd:float ;
+            lambdaber:unit "milligrams per milliliter" ] ;
+    lambdaber:molecular_weight [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "197.0"^^xsd:float ;
+            lambdaber:unit "kilodaltons" ] ;
+    lambdaber:organism NCBITaxon:301447 ;
+    lambdaber:protein_name "Cas9" ;
+    lambdaber:sample_code "CAS9-TERNARY-001" ;
+    lambdaber:sample_type "complex" .
+

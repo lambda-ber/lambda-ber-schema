@@ -9,7 +9,12 @@ from typing import Any
 
 import requests
 
-from lambda_ber_schema.loaders.base import BaseLoader, LoaderResult, uniprot_curie
+from lambda_ber_schema.loaders.base import (
+    BaseLoader,
+    LoaderResult,
+    nucleotide_sequence,
+    uniprot_curie,
+)
 from lambda_ber_schema.loaders.cache import ResponseCache
 from lambda_ber_schema.pydantic import (
     DatabaseCrossReference,
@@ -20,10 +25,14 @@ from lambda_ber_schema.pydantic import (
     ExperimentRun,
     ExperimentSampleAssociation,
     FileFormatEnum,
+    NucleicAcid,
+    NucleicAcidTypeEnum,
     Protein,
     QualityMetrics,
     QuantityValue,
     Sample,
+    SampleNucleicAcidAssociation,
+    SampleNucleicAcidRoleEnum,
     SampleProteinAssociation,
     SampleProteinRoleEnum,
     SampleTypeEnum,
@@ -36,6 +45,31 @@ from lambda_ber_schema.pydantic import (
     WorkflowTypeEnum,
     XRayInstrument,
 )
+
+
+#: mmCIF _entity_poly.type values for nucleic acid polymers.
+_ENTITY_POLY_TYPES = {
+    "polydeoxyribonucleotide": NucleicAcidTypeEnum.dna,
+    "polyribonucleotide": NucleicAcidTypeEnum.rna,
+    "polydeoxyribonucleotide/polyribonucleotide hybrid": NucleicAcidTypeEnum.dna_rna_hybrid,
+    "peptide nucleic acid": NucleicAcidTypeEnum.peptide_nucleic_acid,
+}
+
+#: RCSB's coarser rcsb_entity_polymer_type, used when _entity_poly.type is absent.
+_RCSB_POLYMER_TYPES = {
+    "dna": NucleicAcidTypeEnum.dna,
+    "rna": NucleicAcidTypeEnum.rna,
+    "na-hybrid": NucleicAcidTypeEnum.dna_rna_hybrid,
+}
+
+
+def _nucleic_acid_type(entity: dict[str, Any]) -> NucleicAcidTypeEnum | None:
+    """The schema's nucleic acid type for a polymer entity, or None for a protein or other polymer."""
+    entity_poly = entity.get("entity_poly", {})
+    poly_type = (entity_poly.get("type") or "").lower()
+    if poly_type in _ENTITY_POLY_TYPES:
+        return _ENTITY_POLY_TYPES[poly_type]
+    return _RCSB_POLYMER_TYPES.get((entity_poly.get("rcsb_entity_polymer_type") or "").lower())
 
 
 class PDBLoader(BaseLoader):
@@ -112,6 +146,11 @@ class PDBLoader(BaseLoader):
             polymer_entities, samples, entry_id, warnings
         )
 
+        # One NucleicAcid row per DNA or RNA entity
+        nucleic_acids, sample_nucleic_acid_associations = self._create_nucleic_acids(
+            polymer_entities, samples, entry_id, warnings
+        )
+
         # Create experiment run
         experiment = self._create_experiment_run(
             entry_data, entry_id, technique, warnings
@@ -163,6 +202,7 @@ class PDBLoader(BaseLoader):
             studies=[study],
             instruments=[instrument],
             proteins=proteins if proteins else None,
+            nucleic_acids=nucleic_acids if nucleic_acids else None,
             samples=samples,
             experiment_runs=[experiment],
             workflow_runs=workflows,
@@ -172,6 +212,9 @@ class PDBLoader(BaseLoader):
             experiment_sample_associations=experiment_sample_associations,
             experiment_instrument_associations=experiment_instrument_associations,
             sample_protein_associations=sample_protein_associations if sample_protein_associations else None,
+            sample_nucleic_acid_associations=(
+                sample_nucleic_acid_associations if sample_nucleic_acid_associations else None
+            ),
             workflow_experiment_associations=workflow_experiment_associations,
         )
 
@@ -382,7 +425,7 @@ class PDBLoader(BaseLoader):
                 "rcsb_entity_polymer_type", "").lower()
             if "protein" in polymer_type:
                 sample_type = SampleTypeEnum.protein
-            elif "dna" in polymer_type or "rna" in polymer_type:
+            elif _nucleic_acid_type(entity) is not None:
                 sample_type = SampleTypeEnum.nucleic_acid
             else:
                 sample_type = SampleTypeEnum.complex
@@ -405,9 +448,11 @@ class PDBLoader(BaseLoader):
                     unit="kDa",
                 )
 
-            # Get protein name
-            protein_name = entity.get(
+            # The depositor's description names the entity whatever its polymer;
+            # protein_name is the sample's display field for proteins only
+            entity_name = entity.get(
                 "rcsb_polymer_entity", {}).get("pdbx_description")
+            protein_name = entity_name if sample_type == SampleTypeEnum.protein else None
 
             # Get UniProt IDs from container identifiers
             container_ids = entity.get("rcsb_polymer_entity_container_identifiers", {})
@@ -437,7 +482,7 @@ class PDBLoader(BaseLoader):
                     id=f"pdb:{entry_id}/sample/{i}",
                     sample_code=f"PDB-{entry_id}-{i}",
                     sample_type=sample_type,
-                    title=protein_name,
+                    title=entity_name,
                     protein_name=protein_name,
                     organism=organism,
                     molecular_weight=molecular_weight,
@@ -585,6 +630,119 @@ class PDBLoader(BaseLoader):
                 )
 
         return list(proteins.values()), associations
+
+    def _create_nucleic_acids(
+        self,
+        polymer_entities: list[dict[str, Any]],
+        samples: list[Sample],
+        entry_id: str,
+        warnings: list[str],
+    ) -> tuple[list[NucleicAcid], list[SampleNucleicAcidAssociation]]:
+        """
+        Create NucleicAcid records and Sample-NucleicAcid links from polymer entities.
+
+        Each DNA, RNA or hybrid entity becomes one NucleicAcid, named by entry and
+        entity id because the strands in a crystal are nearly always synthetic
+        oligonucleotides with no registry entry. Unlike a protein entity, the
+        deposited sequence is the molecule itself, so it is carried on the record.
+
+        The role follows the same reading of the entry as _create_proteins: with no
+        protein entities a lone strand is the target and several are subunits; with
+        exactly one protein entity, which _create_proteins calls the target, the
+        strands are its binding partners; with several proteins everything is a
+        subunit of the assembly. A guide RNA or a primer therefore arrives as
+        binding_partner or subunit, since the entry does not say which it is.
+        """
+        nucleic_acids: list[NucleicAcid] = []
+        associations: list[SampleNucleicAcidAssociation] = []
+
+        protein_entity_count = sum(
+            1
+            for e in polymer_entities
+            if "protein" in e.get("entity_poly", {}).get("rcsb_entity_polymer_type", "").lower()
+        )
+        nucleic_acid_entity_count = sum(
+            1 for e in polymer_entities if _nucleic_acid_type(e) is not None
+        )
+        if protein_entity_count == 0:
+            role = (
+                SampleNucleicAcidRoleEnum.target
+                if nucleic_acid_entity_count == 1
+                else SampleNucleicAcidRoleEnum.subunit
+            )
+        elif protein_entity_count == 1:
+            role = SampleNucleicAcidRoleEnum.binding_partner
+        else:
+            role = SampleNucleicAcidRoleEnum.subunit
+
+        for entity, sample in zip(polymer_entities, samples):
+            nucleic_acid_type = _nucleic_acid_type(entity)
+            if nucleic_acid_type is None:
+                continue
+
+            entity_poly = entity.get("entity_poly", {})
+            polymer_entity = entity.get("rcsb_polymer_entity", {})
+            container_ids = entity.get("rcsb_polymer_entity_container_identifiers", {})
+            entity_id = container_ids.get("entity_id") or entity.get("rcsb_id", "").split("_")[-1]
+            name = polymer_entity.get("pdbx_description")
+
+            raw_sequence = entity_poly.get("pdbx_seq_one_letter_code_can")
+            sequence = nucleotide_sequence(raw_sequence)
+            if raw_sequence and sequence is None:
+                warnings.append(
+                    f"Polymer entity {entity_id} has a sequence with characters outside the "
+                    "nucleotide alphabet; nucleotide_sequence left empty"
+                )
+            # The length describes the sequence on the record when there is one, so the two
+            # cannot disagree; the API's count stands in only when the sequence was dropped.
+            sequence_length = (
+                len(sequence) if sequence else entity_poly.get("rcsb_sample_sequence_length")
+            )
+
+            organism = None
+            organism_name = None
+            source_organisms = entity.get("rcsb_entity_source_organism") or []
+            if source_organisms:
+                organism_name = source_organisms[0].get("scientific_name")
+                taxid = source_organisms[0].get("ncbi_taxonomy_id")
+                if taxid:
+                    organism = f"NCBITaxon:{taxid}"
+
+            gene_name = None
+            for src in entity.get("entity_src_gen") or []:
+                if src.get("pdbx_gene_src_gene"):
+                    gene_name = src["pdbx_gene_src_gene"].split(",")[0].strip()
+                    break
+
+            nucleic_acid = NucleicAcid(
+                id=f"pdb:{entry_id}/nucleic_acid/{entity_id}",
+                nucleic_acid_type=nucleic_acid_type,
+                nucleic_acid_name=name,
+                title=name,
+                gene_name=gene_name,
+                organism=organism,
+                organism_name=organism_name,
+                nucleotide_sequence=sequence,
+                sequence_length=sequence_length,
+                pdb_entries=[f"pdb:{entry_id}"],
+            )
+            nucleic_acids.append(nucleic_acid)
+
+            strand_ids = entity_poly.get("pdbx_strand_id")
+            chain_ids = (
+                [c.strip() for c in strand_ids.split(",") if c.strip()] if strand_ids else None
+            )
+            associations.append(
+                SampleNucleicAcidAssociation(
+                    sample_id=sample.id,
+                    nucleic_acid_id=nucleic_acid.id,
+                    role=role,
+                    copy_number=polymer_entity.get("pdbx_number_of_molecules"),
+                    chain_ids=chain_ids,
+                )
+            )
+
+        return nucleic_acids, associations
 
     def _create_experiment_run(
         self,

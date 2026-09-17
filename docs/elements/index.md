@@ -25,10 +25,16 @@ All entities are stored in flat collections at the Dataset level:
   sample that contains the protein; what varies between preparations lives on the sample and on
   the sample-protein association.
 
+- [Nucleic Acids](NucleicAcid.md): The DNA or RNA strand as a molecular entity - sequence, type,
+  source organism, gene - shared by every sample that contains it, as Protein is for proteins.
+  Identified by RNAcentral, RefSeq or INSDC accession where one exists; a synthetic
+  oligonucleotide, which is most of what structural biology sees, gets a local id.
+
 - [Samples](Sample.md): The physical specimens being studied (proteins, nucleic acids, complexes,
   cells, tissues). Each sample records the preparation-specific facts - buffer conditions,
-  concentration, storage, purity - and links to the proteins it contains through
-  [SampleProteinAssociation](SampleProteinAssociation.md).
+  concentration, storage, purity - and links to the proteins and nucleic acids it contains through
+  [SampleProteinAssociation](SampleProteinAssociation.md) and
+  [SampleNucleicAcidAssociation](SampleNucleicAcidAssociation.md).
 
 - [Protein Constructs](ProteinConstruct.md): How a protein was cloned and expressed - vector,
   tags, cleavage sites, codon optimization. A construct realizes one protein and may feed many samples.
@@ -92,6 +98,8 @@ relationship metadata (e.g., the role of a sample in an experiment):
 - **ExperimentSampleAssociation**: Links samples to experiments (with role and preparation used)
 - **SampleProteinAssociation**: Links proteins to samples (with role, copy number, residue range,
   modifications, observed mass, and the construct used)
+- **SampleNucleicAcidAssociation**: Links nucleic acids to samples (with role, copy number,
+  structural form, how the strand was made, modifications, and observed mass)
 - **ExperimentInstrumentAssociation**: Links instruments to experiments (with role: primary, detector)
 - **WorkflowExperimentAssociation**: Links source experiments to workflows
 - **WorkflowInputAssociation**: Links input files to workflows
@@ -105,6 +113,7 @@ relationship metadata (e.g., the role of a sample in an experiment):
 This relational design enables:
 - **Sample reuse**: The same sample can be used in multiple studies and experiments
 - **Protein reuse**: The same protein is described once and linked from every sample that contains it
+- **Nucleic acid reuse**: Likewise for a DNA or RNA strand - one record, linked from every sample it is in
 - **Multi-instrument experiments**: An experiment can use multiple instruments with different roles
 - **Integrative workflows**: A workflow can combine data from multiple experiments
 
@@ -204,6 +213,7 @@ Name: lambda-ber-schema
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[SAXSInstrument](SAXSInstrument.md) | SAXS/WAXS instrument specifications |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[XRayInstrument](XRayInstrument.md) | X-ray diffractometer or synchrotron beamline specifications |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[MeasurementConditions](MeasurementConditions.md) | Conditions under which biophysical measurements were made |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[NucleicAcid](NucleicAcid.md) | A nucleic acid as a molecular entity: one DNA, RNA or hybrid strand, with its... |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[OntologyTerm](OntologyTerm.md) | A term from a controlled vocabulary or ontology |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Organization](Organization.md) | An institution, facility, laboratory or funding body - a national laboratory,... |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Person](Person.md) | A person involved in producing, processing or publishing data - a principal i... |
@@ -221,6 +231,7 @@ Name: lambda-ber-schema
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Study](Study.md) | A logical grouping of related experiments investigating a research question |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[WorkflowRun](WorkflowRun.md) | A computational processing workflow execution |
 | [PersonOrganizationAssociation](PersonOrganizationAssociation.md) | M:N link between Person and Organization with role metadata |
+| [SampleNucleicAcidAssociation](SampleNucleicAcidAssociation.md) | M:N link between Sample and NucleicAcid |
 | [SampleProteinAssociation](SampleProteinAssociation.md) | M:N link between Sample and Protein |
 | [StudyExperimentAssociation](StudyExperimentAssociation.md) | M:N link between Study and ExperimentRun |
 | [StudyOrganizationAssociation](StudyOrganizationAssociation.md) | M:N link between Study and Organization with role metadata - the host institu... |
@@ -642,6 +653,11 @@ Name: lambda-ber-schema
 | [ncc_score](ncc_score.md) | Normalized cross-correlation score threshold |
 | [ncs_used](ncs_used.md) | Whether Non-Crystallographic Symmetry restraints were used |
 | [nominal_defocus](nominal_defocus.md) | Nominal defocus value, typically specified in micrometers |
+| [nucleic_acid_id](nucleic_acid_id.md) | Reference to the nucleic acid |
+| [nucleic_acid_name](nucleic_acid_name.md) | Name as the depositor or database gives it (e |
+| [nucleic_acid_type](nucleic_acid_type.md) | Chemical type of the polymer: DNA, RNA, a DNA/RNA hybrid, or an analogue |
+| [nucleic_acids](nucleic_acids.md) | All nucleic acids referenced by samples in this dataset, one record per stran... |
+| [nucleotide_sequence](nucleotide_sequence.md) | Sequence in one-letter code, written 5' to 3' |
 | [number_of_guides](number_of_guides.md) | Number of neutron guides |
 | [number_of_images](number_of_images.md) | Total number of diffraction images collected |
 | [number_of_scans](number_of_scans.md) | Number of scans averaged for the spectrum |
@@ -773,6 +789,7 @@ Name: lambda-ber-schema
 | [resolution_low](resolution_low.md) | Low resolution limit, typically specified in Angstroms (Å) |
 | [resolution_low_a](resolution_low_a.md) | Low resolution limit, typically specified in Angstroms |
 | [restraints_other](restraints_other.md) | Other restraints applied during refinement |
+| [rfam_families](rfam_families.md) | Rfam families the RNA belongs to, as CURIEs (rfam:RF00005 for tRNA) |
 | [rfree](rfree.md) | R-free (test set) |
 | [rg](rg.md) | Radius of gyration, typically specified in Angstroms |
 | [rmerge](rmerge.md) | Rmerge - merge R-factor |
@@ -780,6 +797,7 @@ Name: lambda-ber-schema
 | [rmsd_bonds](rmsd_bonds.md) | RMSD from ideal bond lengths, typically specified in Angstroms (Å) |
 | [rmsd_from_reference](rmsd_from_reference.md) | RMSD from reference structure |
 | [rmsd_threshold](rmsd_threshold.md) | RMSD threshold for clustering (Angstroms) |
+| [rnacentral_id](rnacentral_id.md) | RNAcentral identifier as a Bioregistry CURIE (rnacentral:URS0000759CF4), opti... |
 | [role](role.md) | Role of sample in study (e |
 | [ror](ror.md) | Research Organization Registry (ROR) identifier for the organization |
 | [rotation_angle](rotation_angle.md) | Rotation angle of the detector |
@@ -796,6 +814,7 @@ Name: lambda-ber-schema
 | [sample_code](sample_code.md) | Human-friendly laboratory identifier or facility code for the sample (e |
 | [sample_detector_distance](sample_detector_distance.md) | Distance from sample to detector |
 | [sample_id](sample_id.md) | Reference to the sample being prepared |
+| [sample_nucleic_acid_associations](sample_nucleic_acid_associations.md) | Links between samples and the nucleic acids they contain (M:N with role, copy... |
 | [sample_preparations](sample_preparations.md) | All sample preparations |
 | [sample_protein_associations](sample_protein_associations.md) | Links between samples and the proteins they contain (M:N with role, copy numb... |
 | [sample_type](sample_type.md) | Type of biological sample |
@@ -810,6 +829,7 @@ Name: lambda-ber-schema
 | [seed_stock_dilution](seed_stock_dilution.md) | Dilution factor for seed stock |
 | [seeding_type](seeding_type.md) | Type of seeding used (micro, macro, streak) |
 | [selectable_marker](selectable_marker.md) | Antibiotic resistance or other selectable marker |
+| [sequence_accession](sequence_accession.md) | Accession of the reference nucleotide sequence as a CURIE: RefSeq (refseq:NM_... |
 | [sequence_coverage](sequence_coverage.md) | Fraction of the canonical sequence present in this sample (range: 0-1) |
 | [sequence_file_path](sequence_file_path.md) | Path to sequence file |
 | [sequence_length](sequence_length.md) | Length of the canonical sequence in residues |
@@ -836,6 +856,7 @@ Name: lambda-ber-schema
 | [source_aperature_diameter](source_aperature_diameter.md) | Source aperture diameter |
 | [source_database](source_database.md) | Source database or resource that provided this annotation |
 | [source_description](source_description.md) | Free-text description of the source |
+| [source_method](source_method.md) | How this strand was made for this preparation: chemical synthesis, in vitro t... |
 | [source_type](source_type.md) | Type of X-ray source |
 | [space_group](space_group.md) | Crystallographic space group |
 | [spectral_resolution](spectral_resolution.md) | Spectral resolution, typically specified in inverse centimeters (cm⁻¹) |
@@ -856,6 +877,7 @@ Name: lambda-ber-schema
 | [storage_uri](storage_uri.md) | Storage URI (S3, Globus, etc |
 | [strategy_notes](strategy_notes.md) | Notes about data collection strategy |
 | [structural_features](structural_features.md) | Structural feature annotations |
+| [structural_form](structural_form.md) | Form the strand takes in this sample: single-stranded, paired in a duplex, fo... |
 | [structural_motif](structural_motif.md) | Known structural motif |
 | [studies](studies.md) | All studies in this dataset |
 | [study_experiment_associations](study_experiment_associations.md) | Links between studies and experiments (M:N) |
@@ -993,6 +1015,9 @@ Name: lambda-ber-schema
 | [InteractionTypeEnum](InteractionTypeEnum.md) | Types of molecular interactions |
 | [LIMSSystemEnum](LIMSSystemEnum.md) | Laboratory Information Management Systems (LIMS) used at structural biology f... |
 | [MutationTypeEnum](MutationTypeEnum.md) | Types of mutations |
+| [NucleicAcidFormEnum](NucleicAcidFormEnum.md) | Form a nucleic acid strand takes in a sample |
+| [NucleicAcidSourceEnum](NucleicAcidSourceEnum.md) | How a nucleic acid strand was produced for a preparation |
+| [NucleicAcidTypeEnum](NucleicAcidTypeEnum.md) | Chemical type of a nucleic acid polymer |
 | [OrganizationRoleEnum](OrganizationRoleEnum.md) | Capacity in which an organization is attached to a study, or a person to an o... |
 | [OrganizationTypeEnum](OrganizationTypeEnum.md) | Kind of organization |
 | [OutputTypeEnum](OutputTypeEnum.md) | Types of outputs from computational workflows |
@@ -1003,6 +1028,7 @@ Name: lambda-ber-schema
 | [ProcessingStatusEnum](ProcessingStatusEnum.md) | Processing status |
 | [PTMTypeEnum](PTMTypeEnum.md) | Types of post-translational modifications |
 | [PurificationStepEnum](PurificationStepEnum.md) | Protein purification steps and methods |
+| [SampleNucleicAcidRoleEnum](SampleNucleicAcidRoleEnum.md) | Part a nucleic acid plays in a sample |
 | [SampleProteinRoleEnum](SampleProteinRoleEnum.md) | Part a protein plays in a sample |
 | [SampleRoleEnum](SampleRoleEnum.md) | Role of a sample in a study |
 | [SampleTypeEnum](SampleTypeEnum.md) | Types of biological samples |

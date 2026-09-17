@@ -1,5 +1,5 @@
 # metamodel_version: 1.7.0
-# version: 0.1.2.post218.dev0+829558d2
+# version: 0.1.2.post231.dev0+52d03959
 enum AffinityUnitEnum
   {
     molar
@@ -233,6 +233,14 @@ enum DatabaseNameEnum
     reactome
     kegg
     go
+    rnacentral
+    rfam
+    refseq
+    insdc
+    mirbase
+    gtrnadb
+    ndb
+    modomics
   }
 
 enum DataTypeEnum
@@ -540,6 +548,37 @@ enum MutationTypeEnum
     substitution
   }
 
+enum NucleicAcidFormEnum
+  {
+    single_stranded
+    double_stranded
+    hairpin
+    triplex
+    quadruplex
+    junction
+    circular
+    other
+  }
+
+enum NucleicAcidSourceEnum
+  {
+    chemical_synthesis
+    in_vitro_transcription
+    pcr_amplification
+    plasmid_preparation
+    isolated_from_organism
+    other
+  }
+
+enum NucleicAcidTypeEnum
+  {
+    dna
+    rna
+    dna_rna_hybrid
+    peptide_nucleic_acid
+    other
+  }
+
 enum OrganizationRoleEnum
   {
     host_institution
@@ -682,6 +721,19 @@ enum PurificationStepEnum
     hydrophobic_interaction
     size_exclusion
     dialysis
+  }
+
+enum SampleNucleicAcidRoleEnum
+  {
+    target
+    subunit
+    binding_partner
+    template
+    primer
+    guide
+    scaffold
+    contaminant
+    standard
   }
 
 enum SampleProteinRoleEnum
@@ -1163,6 +1215,7 @@ type Dataset
     instruments: [Instrument]
     proteins: [Protein]
     proteinConstructs: [ProteinConstruct]
+    nucleicAcids: [NucleicAcid]
     samples: [Sample]
     samplePreparations: [SamplePreparation]
     experimentRuns: [ExperimentRun]
@@ -1175,6 +1228,7 @@ type Dataset
     experimentSampleAssociations: [ExperimentSampleAssociation]
     experimentInstrumentAssociations: [ExperimentInstrumentAssociation]
     sampleProteinAssociations: [SampleProteinAssociation]
+    sampleNucleicAcidAssociations: [SampleNucleicAcidAssociation]
     workflowExperimentAssociations: [WorkflowExperimentAssociation]
     workflowInputAssociations: [WorkflowInputAssociation]
     workflowOutputAssociations: [WorkflowOutputAssociation]
@@ -1613,6 +1667,28 @@ interface NamedThing
     description: String
   }
 
+type NucleicAcid
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    nucleicAcidType: NucleicAcidTypeEnum!
+    nucleicAcidName: String
+    rnacentralId: Uriorcurie
+    sequenceAccession: Uriorcurie
+    rfamFamilies: [Uriorcurie]
+    geneName: String
+    organism: OntologyTerm
+    organismName: String
+    nucleotideSequence: String
+    sequenceLength: Integer
+    molecularWeightTheoretical: QuantityValue
+    functionDescription: String
+    goTerms: [Uriorcurie]
+    pdbEntries: [Uriorcurie]
+    crossReferences: [DatabaseCrossReference]
+  }
+
 type OntologyTerm
   {
     id: Uriorcurie!
@@ -1927,6 +2003,21 @@ type Sample
     expressionSystem: String
     ligand: String
     oligomericState: String
+  }
+
+type SampleNucleicAcidAssociation
+  {
+    sampleId: Sample!
+    nucleicAcidId: NucleicAcid!
+    role: SampleNucleicAcidRoleEnum
+    copyNumber: Integer
+    residueRange: String
+    sequenceCoverage: Float
+    chainIds: [String]
+    structuralForm: NucleicAcidFormEnum
+    sourceMethod: NucleicAcidSourceEnum
+    modifications: [String]
+    observedMolecularWeight: QuantityValue
   }
 
 type SamplePreparation

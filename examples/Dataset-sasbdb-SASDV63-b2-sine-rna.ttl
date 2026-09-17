@@ -1,0 +1,187 @@
+@base <http://example.org/> .
+@prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lambdaber: <http://w3id.org/lambda/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
+@prefix sasbdb: <https://www.sasbdb.org/data/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+sasbdb:SASDV63 a lambdaber:Dataset ;
+    dcterms:title "Cleavage region organizes the structural architecture of the SINE-derived B2 repressive ribozyme." ;
+    lambdaber:data_files <https://www.sasbdb.org/data/SASDV63/file/fit1>,
+        <https://www.sasbdb.org/data/SASDV63/file/fit1_model1>,
+        <https://www.sasbdb.org/data/SASDV63/file/fit2>,
+        <https://www.sasbdb.org/data/SASDV63/file/fit2_model1>,
+        <https://www.sasbdb.org/data/SASDV63/file/fit3>,
+        <https://www.sasbdb.org/data/SASDV63/file/fit3_model1>,
+        <https://www.sasbdb.org/data/SASDV63/file/intensities>,
+        <https://www.sasbdb.org/data/SASDV63/file/sascif> ;
+    lambdaber:experiment_instrument_associations [ a lambdaber:ExperimentInstrumentAssociation ;
+            lambdaber:experiment_id <https://www.sasbdb.org/data/SASDV63/experiment> ;
+            lambdaber:instrument_id <https://www.sasbdb.org/data/instrument/Diamond_Light_Source-B21> ] ;
+    lambdaber:experiment_runs <https://www.sasbdb.org/data/SASDV63/experiment> ;
+    lambdaber:experiment_sample_associations [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id <https://www.sasbdb.org/data/SASDV63/experiment> ;
+            lambdaber:sample_id <https://www.sasbdb.org/data/SASDV63/sample> ] ;
+    lambdaber:instruments <https://www.sasbdb.org/data/instrument/Diamond_Light_Source-B21> ;
+    lambdaber:nucleic_acids <https://www.sasbdb.org/data/SASDV63/nucleic_acid/1> ;
+    lambdaber:sample_nucleic_acid_associations [ a lambdaber:SampleNucleicAcidAssociation ;
+            lambdaber:copy_number 1 ;
+            lambdaber:nucleic_acid_id <https://www.sasbdb.org/data/SASDV63/nucleic_acid/1> ;
+            lambdaber:role "target" ;
+            lambdaber:sample_id <https://www.sasbdb.org/data/SASDV63/sample> ] ;
+    lambdaber:samples <https://www.sasbdb.org/data/SASDV63/sample> ;
+    lambdaber:studies <https://www.sasbdb.org/data/SASDV63/study> ;
+    lambdaber:study_experiment_associations [ a lambdaber:StudyExperimentAssociation ;
+            lambdaber:experiment_id <https://www.sasbdb.org/data/SASDV63/experiment> ;
+            lambdaber:study_id <https://www.sasbdb.org/data/SASDV63/study> ] ;
+    lambdaber:study_sample_associations [ a lambdaber:StudySampleAssociation ;
+            lambdaber:sample_id <https://www.sasbdb.org/data/SASDV63/sample> ;
+            lambdaber:study_id <https://www.sasbdb.org/data/SASDV63/study> ] ;
+    lambdaber:workflow_experiment_associations [ a lambdaber:WorkflowExperimentAssociation ;
+            lambdaber:experiment_id <https://www.sasbdb.org/data/SASDV63/experiment> ;
+            lambdaber:workflow_id <https://www.sasbdb.org/data/SASDV63/workflow/pddf> ],
+        [ a lambdaber:WorkflowExperimentAssociation ;
+            lambdaber:experiment_id <https://www.sasbdb.org/data/SASDV63/experiment> ;
+            lambdaber:workflow_id <https://www.sasbdb.org/data/SASDV63/workflow/fit2_model1> ],
+        [ a lambdaber:WorkflowExperimentAssociation ;
+            lambdaber:experiment_id <https://www.sasbdb.org/data/SASDV63/experiment> ;
+            lambdaber:workflow_id <https://www.sasbdb.org/data/SASDV63/workflow/fit3_model1> ],
+        [ a lambdaber:WorkflowExperimentAssociation ;
+            lambdaber:experiment_id <https://www.sasbdb.org/data/SASDV63/experiment> ;
+            lambdaber:workflow_id <https://www.sasbdb.org/data/SASDV63/workflow/fit1_model1> ] ;
+    lambdaber:workflow_runs <https://www.sasbdb.org/data/SASDV63/workflow/fit1_model1>,
+        <https://www.sasbdb.org/data/SASDV63/workflow/fit2_model1>,
+        <https://www.sasbdb.org/data/SASDV63/workflow/fit3_model1>,
+        <https://www.sasbdb.org/data/SASDV63/workflow/pddf> .
+
+<https://www.sasbdb.org/data/SASDV63/file/fit1> a lambdaber:DataFile ;
+    lambdaber:description "Fit 1 data" ;
+    lambdaber:file_format "ascii" ;
+    lambdaber:file_name "SASDV63_fit1.fir" ;
+    lambdaber:file_path "https://www.sasbdb.org/media/fitting_files/SASDV63_fit1.fir" .
+
+<https://www.sasbdb.org/data/SASDV63/file/fit1_model1> a lambdaber:DataFile ;
+    lambdaber:description "Model 1 from fit 1" ;
+    lambdaber:file_format "pdb" ;
+    lambdaber:file_name "SASDV63_fit1_model1.pdb" ;
+    lambdaber:file_path "https://www.sasbdb.org/media/pdb_file/SASDV63_fit1_model1.pdb" .
+
+<https://www.sasbdb.org/data/SASDV63/file/fit2> a lambdaber:DataFile ;
+    lambdaber:description "Fit 2 data" ;
+    lambdaber:file_format "ascii" ;
+    lambdaber:file_name "SASDV63_fit2.fir" ;
+    lambdaber:file_path "https://www.sasbdb.org/media/fitting_files/SASDV63_fit2.fir" .
+
+<https://www.sasbdb.org/data/SASDV63/file/fit2_model1> a lambdaber:DataFile ;
+    lambdaber:description "Model 1 from fit 2" ;
+    lambdaber:file_format "pdb" ;
+    lambdaber:file_name "SASDV63_fit2_model1.pdb" ;
+    lambdaber:file_path "https://www.sasbdb.org/media/pdb_file/SASDV63_fit2_model1.pdb" .
+
+<https://www.sasbdb.org/data/SASDV63/file/fit3> a lambdaber:DataFile ;
+    lambdaber:description "Fit 3 data" ;
+    lambdaber:file_format "ascii" ;
+    lambdaber:file_name "SASDV63_fit3.fir" ;
+    lambdaber:file_path "https://www.sasbdb.org/media/fitting_files/SASDV63_fit3.fir" .
+
+<https://www.sasbdb.org/data/SASDV63/file/fit3_model1> a lambdaber:DataFile ;
+    lambdaber:description "Model 1 from fit 3" ;
+    lambdaber:file_format "pdb" ;
+    lambdaber:file_name "SASDV63_fit3_model1.pdb" ;
+    lambdaber:file_path "https://www.sasbdb.org/media/pdb_file/SASDV63_fit3_model1.pdb" .
+
+<https://www.sasbdb.org/data/SASDV63/file/intensities> a lambdaber:DataFile ;
+    lambdaber:description "Scattering intensity data" ;
+    lambdaber:file_format "ascii" ;
+    lambdaber:file_name "SASDV63.dat" ;
+    lambdaber:file_path "https://www.sasbdb.org/media/intensities_files/SASDV63.dat" .
+
+<https://www.sasbdb.org/data/SASDV63/file/sascif> a lambdaber:DataFile ;
+    lambdaber:description "sasCIF format data" ;
+    lambdaber:file_format "ascii" ;
+    lambdaber:file_name "SASDV63.sascif" ;
+    lambdaber:file_path "https://www.sasbdb.org/media/sascif/sascif_files/SASDV63.sascif" .
+
+<https://www.sasbdb.org/data/SASDV63/nucleic_acid/1> a lambdaber:NucleicAcid ;
+    dcterms:title "B2 short interspaced nuclear element (SINE) RNA" ;
+    lambdaber:description "B2 SINE ribozyme wildtype." ;
+    lambdaber:molecular_weight_theoretical [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "56.913"^^xsd:float ;
+            lambdaber:unit "kDa" ] ;
+    lambdaber:nucleic_acid_name "B2 short interspaced nuclear element (SINE) RNA" ;
+    lambdaber:nucleic_acid_type "rna" ;
+    lambdaber:nucleotide_sequence "GGCUGGUGAGAUGGCUCAGUGGGUAAGAGCACCCGACUGCUCUUCCGAAGGUCAGGAGUUCAAAUCCCAGCAACCACAUGGUGGCUCACAACCAUCCGUAACGAGAUCUGAUUCCCUCUUCUGGAGUGUCUGAAGUCUGAAGACAGCUACAGUGUACUUACAUAUAAAUAAAUCUUU" ;
+    lambdaber:organism_name "Mus musculus" ;
+    lambdaber:sequence_length 177 .
+
+<https://www.sasbdb.org/data/SASDV63/workflow/fit1_model1> a lambdaber:WorkflowRun ;
+    lambdaber:description "Dummy model fit. Chi-square: 1.608" ;
+    lambdaber:software_name "DAMMIN" ;
+    lambdaber:workflow_code "SASBDB-SASDV63-FIT1-M1" ;
+    lambdaber:workflow_type "saxs_analysis" .
+
+<https://www.sasbdb.org/data/SASDV63/workflow/fit2_model1> a lambdaber:WorkflowRun ;
+    lambdaber:description "Dummy model fit. Chi-square: 1.604" ;
+    lambdaber:software_name "DAMMIN" ;
+    lambdaber:workflow_code "SASBDB-SASDV63-FIT2-M1" ;
+    lambdaber:workflow_type "saxs_analysis" .
+
+<https://www.sasbdb.org/data/SASDV63/workflow/fit3_model1> a lambdaber:WorkflowRun ;
+    lambdaber:description "Dummy model fit. Chi-square: 1.602" ;
+    lambdaber:software_name "DAMMIN" ;
+    lambdaber:workflow_code "SASBDB-SASDV63-FIT3-M1" ;
+    lambdaber:workflow_type "saxs_analysis" .
+
+<https://www.sasbdb.org/data/SASDV63/workflow/pddf> a lambdaber:WorkflowRun ;
+    lambdaber:description "PDDF analysis. Rg=5.46, Dmax=17.3, I0=0.02876" ;
+    lambdaber:software_name "ATSAS GNOM" ;
+    lambdaber:software_version "5.0" ;
+    lambdaber:workflow_code "SASBDB-SASDV63-PDDF" ;
+    lambdaber:workflow_type "saxs_analysis" .
+
+<https://www.sasbdb.org/data/instrument/Diamond_Light_Source-B21> a lambdaber:Instrument ;
+    dcterms:title "Diamond Light Source B21" ;
+    lambdaber:description "Detector: Eiger 4M (resolution: 75.0 mm)" ;
+    lambdaber:instrument_code "Diamond-Light-Source-B21" ;
+    lambdaber:manufacturer "Didcot" .
+
+<https://www.sasbdb.org/data/SASDV63/study> a lambdaber:Study ;
+    dcterms:title "Cleavage region organizes the structural architecture of the SINE-derived B2 repressive ribozyme." .
+
+<https://www.sasbdb.org/data/SASDV63/sample> a lambdaber:Sample ;
+    dcterms:title "B2 SINE ribozyme wildtype" ;
+    lambdaber:buffer_composition [ a lambdaber:BufferComposition ;
+            lambdaber:components "5 mM Tris-HCl, 10 mM NaCl, 0.01% NP-40, 0.02 mM EDTA, 0.2 mM DTT, 0.5 mM MgCl2 and 1.5 % Glycerol" ;
+            lambdaber:ph [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "7.9"^^xsd:float ;
+                    lambdaber:unit "pH" ] ] ;
+    lambdaber:concentration [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "1.6"^^xsd:float ;
+            lambdaber:unit "mg/mL" ] ;
+    lambdaber:molecular_weight [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "56.913"^^xsd:float ;
+            lambdaber:unit "kDa" ] ;
+    lambdaber:oligomeric_state "monomer" ;
+    lambdaber:protein_name "B2 short interspaced nuclear element (SINE) RNA" ;
+    lambdaber:sample_code "SASBDB-SASDV63" ;
+    lambdaber:sample_type "nucleic_acid" .
+
+<https://www.sasbdb.org/data/SASDV63/experiment> a lambdaber:ExperimentRun ;
+    lambdaber:detector_distance [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "3700.0"^^xsd:float ;
+            lambdaber:unit "mm" ] ;
+    lambdaber:experiment_code "SASBDB-SASDV63-EXP" ;
+    lambdaber:experiment_date "2021-02-20" ;
+    lambdaber:quality_metrics [ a lambdaber:QualityMetrics ;
+            lambdaber:i_zero [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "0.0289055"^^xsd:float ;
+                    lambdaber:unit "arbitrary" ] ;
+            lambdaber:rg [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "5.384"^^xsd:float ;
+                    lambdaber:unit "nm" ] ] ;
+    lambdaber:technique CHMO:0000204 ;
+    lambdaber:wavelength [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "0.94"^^xsd:float ;
+            lambdaber:unit "Angstroms" ] .
+

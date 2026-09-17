@@ -202,6 +202,7 @@ attributes:
     from_schema: http://w3id.org/lambda/functional_annotation
     domain_of:
     - SampleProteinAssociation
+    - SampleNucleicAcidAssociation
     - ProteinAnnotation
     pattern: ^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$
   confidence_score:
@@ -314,6 +315,7 @@ attributes:
     owner: ProteinAnnotation
     domain_of:
     - SampleProteinAssociation
+    - SampleNucleicAcidAssociation
     - ProteinAnnotation
     range: string
     pattern: ^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$

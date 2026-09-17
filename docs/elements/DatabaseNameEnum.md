@@ -33,6 +33,14 @@ URI: [lambda:DatabaseNameEnum](http://w3id.org/lambda/DatabaseNameEnum)
 | reactome | None | Reactome |
 | kegg | None | KEGG |
 | go | None | Gene Ontology |
+| rnacentral | None | RNAcentral |
+| rfam | None | Rfam |
+| refseq | None | NCBI RefSeq |
+| insdc | None | INSDC (GenBank, ENA, DDBJ) |
+| mirbase | None | miRBase |
+| gtrnadb | None | GtRNAdb |
+| ndb | None | Nucleic Acid Database |
+| modomics | None | MODOMICS, modified RNA nucleosides |
 
 
 
@@ -133,6 +141,30 @@ permissible_values:
   go:
     text: go
     description: Gene Ontology
+  rnacentral:
+    text: rnacentral
+    description: RNAcentral
+  rfam:
+    text: rfam
+    description: Rfam
+  refseq:
+    text: refseq
+    description: NCBI RefSeq
+  insdc:
+    text: insdc
+    description: INSDC (GenBank, ENA, DDBJ)
+  mirbase:
+    text: mirbase
+    description: miRBase
+  gtrnadb:
+    text: gtrnadb
+    description: GtRNAdb
+  ndb:
+    text: ndb
+    description: Nucleic Acid Database
+  modomics:
+    text: modomics
+    description: MODOMICS, modified RNA nucleosides
 
 ```
 </details>

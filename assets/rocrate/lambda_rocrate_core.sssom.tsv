@@ -2,7 +2,7 @@
 #mapping_set_id: http://w3id.org/lambda/rocrate/core
 #mapping_tool: https://w3id.org/linkml/
 #creator_id: linkml_user
-#mapping_date: 2026-09-09
+#mapping_date: 2026-09-17
 #curie_map: 
 # lambda: http://w3id.org/lambda/
 # lambdarc: http://w3id.org/lambda/rocrate/
@@ -16,6 +16,9 @@
 # ORCID: https://orcid.org/
 # ROR: https://ror.org/
 # uniprot: http://purl.uniprot.org/uniprot/
+# rnacentral: https://rnacentral.org/rna/
+# refseq: https://www.ncbi.nlm.nih.gov/nuccore/
+# insdc: https://www.ebi.ac.uk/ena/data/view/
 subject_id	subject_label	predicate_id	predicate_modifier	object_id	object_label	match_type	subject_source	object_source	mapping_tool	confidence	subject_match_field	object_match_field	subject_category	object_category	match_string	comment
 lambda:ExperimentalMethodEnum#x_ray_diffraction	x_ray_diffraction	skos:exactMatch		CHMO:0000156		skos:exactMatch	http://w3id.org/lambda/						ExperimentalMethodEnum			
 lambda:FacilityEnum#NSLS_II	NSLS_II	skos:exactMatch		ROR:01q47ea17		skos:exactMatch	http://w3id.org/lambda/						FacilityEnum			
@@ -256,6 +259,7 @@ lambda:gene_name	gene_name	skos:exactMatch		lambda:gene_name		skos:exactMatch	ht
 sdo:givenName	given_name	skos:exactMatch		lambda:given_name		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 prov:hadPlan	had_plan	skos:exactMatch		lambdarc:rule		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 sdo:hasBioChemEntityPart	has_biochem_entity_part	skos:closeMatch		lambda:SampleProteinAssociation		skos:closeMatch	http://w3id.org/lambda/rocrate/core									
+sdo:hasBioChemEntityPart	has_biochem_entity_part	skos:closeMatch		lambda:SampleNucleicAcidAssociation		skos:closeMatch	http://w3id.org/lambda/rocrate/core									
 lambdarc:idRecipeVersion	id_recipe_version	skos:closeMatch		lambdax:idRecipeVersion		skos:closeMatch	http://w3id.org/lambda/rocrate/core									
 lambda:beamline_id	instrument__beamline_id	skos:exactMatch		mmCIF:_diffrn_source.pdbx_synchrotron_beamline		skos:exactMatch	http://w3id.org/lambda/									
 lambda:beamline_id	instrument__beamline_id	skos:exactMatch		nsls2:Beamline		skos:exactMatch	http://w3id.org/lambda/									
@@ -274,6 +278,19 @@ lambdarc:mimeType	mime_type	skos:exactMatch		sdo:encodingFormat		skos:exactMatch
 lambdarc:missing	missing	skos:closeMatch		lambdax:missing		skos:closeMatch	http://w3id.org/lambda/rocrate/core									
 lambda:model	model	skos:exactMatch		lambda:model		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 sdo:name	name	skos:exactMatch		lambda:title		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
+lambda:nucleic_acid_name	nucleic_acid_name	skos:exactMatch		lambda:nucleic_acid_name		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
+lambda:nucleic_acid_type	nucleic_acid_type	skos:exactMatch		lambda:nucleic_acid_type		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
+lambda:gene_name	nucleicAcid__gene_name	skos:exactMatch		mmCIF:_entity_src_gen.pdbx_gene_src_gene		skos:exactMatch	http://w3id.org/lambda/									
+lambda:molecular_weight_theoretical	nucleicAcid__molecular_weight_theoretical	skos:relatedMatch		mmCIF:_entity.formula_weight		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:nucleic_acid_name	nucleicAcid__nucleic_acid_name	skos:relatedMatch		mmCIF:_entity.pdbx_description		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:nucleic_acid_type	nucleicAcid__nucleic_acid_type	skos:exactMatch		mmCIF:_entity_poly.type		skos:exactMatch	http://w3id.org/lambda/									
+lambda:nucleotide_sequence	nucleicAcid__nucleotide_sequence	skos:exactMatch		mmCIF:_entity_poly.pdbx_seq_one_letter_code_can		skos:exactMatch	http://w3id.org/lambda/									
+lambda:organism	nucleicAcid__organism	skos:exactMatch		mmCIF:_entity_src_gen.pdbx_gene_src_ncbi_taxonomy_id		skos:exactMatch	http://w3id.org/lambda/									
+lambda:organism_name	nucleicAcid__organism_name	skos:exactMatch		mmCIF:_entity_src_gen.pdbx_gene_src_scientific_name		skos:exactMatch	http://w3id.org/lambda/									
+lambda:sequence_accession	nucleicAcid__sequence_accession	skos:exactMatch		mmCIF:_struct_ref.pdbx_db_accession		skos:exactMatch	http://w3id.org/lambda/									
+lambda:nucleic_acid_name	NucleicAcidEntity_nucleic_acid_name	skos:exactMatch		lambda:nucleic_acid_name		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
+lambda:nucleic_acid_type	NucleicAcidEntity_nucleic_acid_type	skos:exactMatch		lambda:nucleic_acid_type		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
+lambda:nucleotide_sequence	nucleotide_sequence	skos:exactMatch		lambda:nucleotide_sequence		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:orcid	orcid	skos:exactMatch		lambda:orcid		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:organism	organism	skos:closeMatch		lambda:organism		skos:closeMatch	http://w3id.org/lambda/rocrate/core									
 sdo:roleName	organization_role	skos:closeMatch		lambda:role		skos:closeMatch	http://w3id.org/lambda/rocrate/core									
@@ -325,6 +342,7 @@ lambda:resolution_0_143	refinementParameters__resolution_0_143	skos:exactMatch		
 lambda:symmetry	refinementParameters__symmetry	skos:exactMatch		mmCIF:_em_3d_reconstruction.symmetry_type		skos:exactMatch	http://w3id.org/lambda/									
 lambdarc:resolutionAngstrom	resolution_angstrom	skos:closeMatch		lambda:resolution		skos:closeMatch	http://w3id.org/lambda/rocrate/core									
 lambdarc:resultSummary	result_summary	skos:closeMatch		lambdax:summary		skos:closeMatch	http://w3id.org/lambda/rocrate/core									
+lambda:rnacentral_id	rnacentral_id	skos:exactMatch		lambda:rnacentral_id		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 sdo:roleName	role	skos:closeMatch		lambda:role		skos:closeMatch	http://w3id.org/lambda/rocrate/core									
 lambda:ror	ror	skos:exactMatch		lambda:ror		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambdarc:runDefinition	run_definition	skos:exactMatch		lambda:runParameters		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
@@ -341,10 +359,14 @@ lambdarc:sampleComposition	sample_composition	skos:closeMatch		lambda:molecular_
 lambdarc:sampleName	sample_name	skos:exactMatch		lambda:sample_code		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:sample_type	sample_type	skos:exactMatch		lambda:sample_type		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:sample_code	SampleEntity_sample_code	skos:exactMatch		lambda:sample_code		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
+lambda:chain_ids	sampleNucleicAcidAssociation__chain_ids	skos:exactMatch		mmCIF:_entity_poly.pdbx_strand_id		skos:exactMatch	http://w3id.org/lambda/									
+lambda:copy_number	sampleNucleicAcidAssociation__copy_number	skos:exactMatch		mmCIF:_entity.pdbx_number_of_molecules		skos:exactMatch	http://w3id.org/lambda/									
+lambda:residue_range	sampleNucleicAcidAssociation__residue_range	skos:relatedMatch		IHMCIF:_ihm_entity_poly_segment		skos:relatedMatch	http://w3id.org/lambda/									
 lambda:chain_ids	sampleProteinAssociation__chain_ids	skos:exactMatch		mmCIF:_entity_poly.pdbx_strand_id		skos:exactMatch	http://w3id.org/lambda/									
 lambda:copy_number	sampleProteinAssociation__copy_number	skos:exactMatch		mmCIF:_entity.pdbx_number_of_molecules		skos:exactMatch	http://w3id.org/lambda/									
 lambda:residue_range	sampleProteinAssociation__residue_range	skos:relatedMatch		IHMCIF:_ihm_entity_poly_segment		skos:relatedMatch	http://w3id.org/lambda/									
 lambdarc:schemaSet	schema_set	skos:closeMatch		lambdax:schemaSet		skos:closeMatch	http://w3id.org/lambda/rocrate/core									
+lambda:sequence_accession	sequence_accession	skos:exactMatch		lambda:sequence_accession		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 sdo:sha256	sha256	skos:closeMatch		lambda:sha256		skos:closeMatch	http://w3id.org/lambda/rocrate/core									
 sdo:sha256	sha256	skos:exactMatch		lambda:checksum		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:software_name	software_name	skos:exactMatch		lambda:software_name		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
@@ -436,6 +458,9 @@ lambda:Image3D	Image3D	skos:relatedMatch		IHMCIF:_ihm_localization_density_files
 sdo:IndividualProduct	InstrumentEntity	skos:exactMatch		lambda:Instrument		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:MolecularComposition	MolecularComposition	skos:relatedMatch		IHMCIF:_ihm_entity_poly_segment		skos:relatedMatch	http://w3id.org/lambda/									
 lambda:MolecularComposition	MolecularComposition	skos:relatedMatch		IHMCIF:_ihm_struct_assembly_details		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:NucleicAcid	NucleicAcid	skos:relatedMatch		mmCIF:_entity		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:NucleicAcid	NucleicAcid	skos:relatedMatch		mmCIF:_entity_poly		skos:relatedMatch	http://w3id.org/lambda/									
+sdo:BioChemEntity	NucleicAcidEntity	skos:exactMatch		lambda:NucleicAcid		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:Organization	Organization	skos:exactMatch		prov:Organization		skos:exactMatch	http://w3id.org/lambda/									
 sdo:Organization	OrganizationEntity	skos:exactMatch		lambda:Organization		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:Person	Person	skos:exactMatch		prov:Agent		skos:exactMatch	http://w3id.org/lambda/									
@@ -454,6 +479,8 @@ lambda:Sample	Sample	skos:relatedMatch		IHMCIF:_ihm_struct_assembly		skos:relate
 lambda:Sample	Sample	skos:relatedMatch		IHMCIF:_ihm_struct_assembly_details		skos:relatedMatch	http://w3id.org/lambda/									
 lambda:Sample	Sample	skos:relatedMatch		IHMCIF:_ihm_entity_poly_segment		skos:relatedMatch	http://w3id.org/lambda/									
 sdo:BioChemEntity	SampleEntity	skos:exactMatch		lambda:Sample		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
+lambda:SampleNucleicAcidAssociation	SampleNucleicAcidAssociation	skos:relatedMatch		IHMCIF:_ihm_struct_assembly_details		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:SampleNucleicAcidAssociation	SampleNucleicAcidAssociation	skos:relatedMatch		IHMCIF:_ihm_entity_poly_segment		skos:relatedMatch	http://w3id.org/lambda/									
 lambda:SampleProteinAssociation	SampleProteinAssociation	skos:relatedMatch		IHMCIF:_ihm_struct_assembly_details		skos:relatedMatch	http://w3id.org/lambda/									
 lambda:SampleProteinAssociation	SampleProteinAssociation	skos:relatedMatch		IHMCIF:_ihm_entity_poly_segment		skos:relatedMatch	http://w3id.org/lambda/									
 lambda:SAXSPreparation	SAXSPreparation	skos:relatedMatch		IHMCIF:_ihm_sas_restraint		skos:relatedMatch	http://w3id.org/lambda/									

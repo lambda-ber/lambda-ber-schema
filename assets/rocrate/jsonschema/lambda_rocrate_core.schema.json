@@ -1540,7 +1540,7 @@
                     ]
                 },
                 "conformsTo": {
-                    "description": "MUST include both the RO-Crate version URI and `https://w3id.org/lambda/profile/core/0.3.1`. Technique extensions add their own URI alongside, never instead.",
+                    "description": "MUST include both the RO-Crate version URI and `https://w3id.org/lambda/profile/core/0.3.2`. Technique extensions add their own URI alongside, never instead.",
                     "items": {
                         "$ref": "#/$defs/EntityReference"
                     },
@@ -3010,7 +3010,15 @@
                 "biogrid",
                 "reactome",
                 "kegg",
-                "go"
+                "go",
+                "rnacentral",
+                "rfam",
+                "refseq",
+                "insdc",
+                "mirbase",
+                "gtrnadb",
+                "ndb",
+                "modomics"
             ],
             "title": "DatabaseNameEnum",
             "type": "string"
@@ -3110,6 +3118,16 @@
                         "null"
                     ]
                 },
+                "nucleic_acids": {
+                    "description": "All nucleic acids referenced by samples in this dataset, one record per strand",
+                    "items": {
+                        "$ref": "#/$defs/NucleicAcid"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "organizations": {
                     "description": "All organizations referenced anywhere in this dataset",
                     "items": {
@@ -3154,6 +3172,16 @@
                     "description": "All proteins referenced by samples in this dataset, one record per protein",
                     "items": {
                         "$ref": "#/$defs/Protein"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "sample_nucleic_acid_associations": {
+                    "description": "Links between samples and the nucleic acids they contain (M:N with role, copy number, structural form, source)",
+                    "items": {
+                        "$ref": "#/$defs/SampleNucleicAcidAssociation"
                     },
                     "type": [
                         "array",
@@ -7319,6 +7347,309 @@
             "title": "MutationTypeEnum",
             "type": "string"
         },
+        "NucleicAcid": {
+            "additionalProperties": false,
+            "description": "A nucleic acid as a molecular entity: one DNA, RNA or hybrid strand, with its sequence, type, source and the annotations that hold for it regardless of any one preparation. The counterpart of Protein for the other biopolymer. One NucleicAcid record is shared by every Sample that contains it, through SampleNucleicAcidAssociation. A duplex of two different strands is two records; a self-complementary duplex is one record with copy_number 2 on the association. Whether the strand is paired in a given sample, how it was made, and which chemical modifications it carries are preparation facts and live on the association.",
+            "properties": {
+                "cross_references": {
+                    "description": "Cross-references to external databases other than those named by rnacentral_id, sequence_accession and rfam_families (miRBase, GtRNAdb, NDB, ...).",
+                    "items": {
+                        "$ref": "#/$defs/DatabaseCrossReference"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "A detailed textual description of this entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "function_description": {
+                    "description": "Free-text summary of the molecule's role, typically from RNAcentral or the literature",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "gene_name": {
+                    "description": "Gene the sequence is transcribed from or taken from (e.g., HBB for a beta-globin mRNA, EMX1 for the target site a guide RNA is designed against)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "go_terms": {
+                    "description": "Gene Ontology annotations as CURIEs (e.g., GO:0030533 for triplet codon-amino acid adaptor activity)",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+                    "type": "string"
+                },
+                "molecular_weight_theoretical": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Mass computed from the sequence, typically in kDa. A mass measured for a given preparation belongs on SampleNucleicAcidAssociation.observed_molecular_weight."
+                },
+                "nucleic_acid_name": {
+                    "description": "Name as the depositor or database gives it (e.g., 'tRNA-Phe', 'Dickerson dodecamer', 'sgRNA targeting EMX1'). Recommended, not required, so that a record seeded from an accession alone can be enriched later.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "nucleic_acid_type": {
+                    "$ref": "#/$defs/NucleicAcidTypeEnum",
+                    "description": "Chemical type of the polymer: DNA, RNA, a DNA/RNA hybrid, or an analogue"
+                },
+                "nucleotide_sequence": {
+                    "description": "Sequence in one-letter code, written 5' to 3'. T for DNA, U for RNA; IUPAC ambiguity codes and I for inosine are allowed. A modified nucleotide is written as its parent base and described in the association's modifications or in cross_references.",
+                    "pattern": "^[ACGTURYKMSWBDHVNI]+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "organism": {
+                    "description": "Source organism as an NCBI Taxonomy CURIE (e.g., NCBITaxon:9606). A chemically synthesized oligonucleotide is NCBITaxon:32630 (synthetic construct), as the PDB records it; a synthetic copy of a natural sequence may instead name the organism the sequence comes from, with the synthesis recorded in SampleNucleicAcidAssociation.source_method.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "organism_name": {
+                    "description": "Scientific name of the source organism. For display, and for sources that give a name but no taxonomy identifier.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "pdb_entries": {
+                    "description": "PDB entries containing this nucleic acid, as CURIEs (e.g., pdb:1AAY)",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "rfam_families": {
+                    "description": "Rfam families the RNA belongs to, as CURIEs (rfam:RF00005 for tRNA)",
+                    "items": {
+                        "pattern": "^rfam:RF[0-9]{5}$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "rnacentral_id": {
+                    "description": "RNAcentral identifier as a Bioregistry CURIE (rnacentral:URS0000759CF4), optionally with the taxon suffix (rnacentral:URS0000759CF4_9606). For non-coding RNAs. Normally identical to id when set.",
+                    "pattern": "^rnacentral:URS[0-9A-F]{10}(_[0-9]+)?$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "sequence_accession": {
+                    "description": "Accession of the reference nucleotide sequence as a CURIE: RefSeq (refseq:NM_000518.5) or INSDC, which covers GenBank, ENA and DDBJ (insdc:J00153.1). For transcripts, genes and genomic fragments; a synthetic oligonucleotide has none.",
+                    "pattern": "^(refseq|insdc):[A-Z][A-Z0-9_]*[0-9](\\.[0-9]+)?$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "sequence_length": {
+                    "description": "Length of the sequence in nucleotides",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "description": "A human-readable name or title for this entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "nucleic_acid_type",
+                "id"
+            ],
+            "title": "NucleicAcid",
+            "type": "object"
+        },
+        "NucleicAcidEntity": {
+            "additionalProperties": false,
+            "description": "A DNA or RNA strand as a molecular entity - the thing a specimen *contains*, as distinct from the specimen, and the counterpart of `ProteinEntity` for the other biopolymer. Typed `[\"BioChemEntity\", \"lambda:NucleicAcid\"]`: schema.org has no nucleic acid type, so the generic consumer sees a `BioChemEntity`, as it does for a sample, and the LAMBDA token tells a LAMBDA-aware reader which of the two it is. One entity serves every sample in the crate that contains the strand.\nNucleic acids have no UniProt. Where a registry entry exists the `@id` SHOULD be its IRI (`https://rnacentral.org/rna/URS000011107D` for a non-coding RNA; a RefSeq or INSDC IRI for a transcript or genomic sequence), with the same accession as a CURIE in `rnacentral_id` or `sequence_accession`, the two spellings of one identifier as for `ProteinEntity`. Most strands in structural biology are synthetic oligonucleotides with no registry entry; those take a local `@id` (`#na-target-strand`) and their `nucleotide_sequence` is the identity. Unlike a protein, the sequence therefore travels in the crate; a 23-mer is shorter than its own name.\nOnly the identity layer is here: type, name, accession or sequence, gene, organism, the structures it is known from. Whether the strand is paired, how it was made, its labels and its measured mass are per-preparation and live in the fuller record this crate points at.",
+            "properties": {
+                "@id": {
+                    "description": "The entity's identifier - a relative path, an absolute URI, or a `#`-fragment.",
+                    "type": "string"
+                },
+                "@type": {
+                    "description": "One or more types. LAMBDA entities carry the RO-Crate/schema.org type *first* so that a plain RO-Crate consumer understands the crate, then the `lambda:` type for LAMBDA-aware readers.\nModelled as the set of types it semantically is. JSON-LD also permits the shorthand of a bare string for a single type, and real crates use it freely; a reader MUST expand that shorthand to a one-element list before validating or testing membership, exactly as a JSON-LD processor would. Validation here is defined against the expanded form.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "description": {
+                    "description": "Prose summary, aimed at a reader deciding whether to open the dataset.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "gene_name": {
+                    "description": "Primary gene symbol.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "missing": {
+                    "description": "Declared absences. Absence is stated, never implied by omission.",
+                    "items": {
+                        "$ref": "#/$defs/MissingValueDeclaration"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "Human-readable label.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "nucleic_acid_name": {
+                    "description": "Name of the strand as the depositor or database gives it (`tRNA-Phe`, `sgRNA targeting EMX1`).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "nucleic_acid_type": {
+                    "$ref": "#/$defs/NucleicAcidTypeEnum",
+                    "description": "Chemical type of the strand, from the schema's own `NucleicAcidTypeEnum` (`dna`, `rna`, ...)."
+                },
+                "nucleotide_sequence": {
+                    "description": "One-letter sequence, 5' to 3', as `NucleicAcid.nucleotide_sequence` carries it. The identity of a synthetic oligonucleotide, which has no accession.",
+                    "pattern": "^[ACGTURYKMSWBDHVNI]+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "organism": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Any"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Source organism, as an NCBITaxon reference where resolvable or a name string. The main schema's `Sample.organism` is an `OntologyTerm`; a crate may carry the bare name."
+                },
+                "pdb_entries": {
+                    "description": "PDB entries the protein or nucleic acid is known from, as CURIEs (`pdb:1HHO`).",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "rnacentral_id": {
+                    "description": "RNAcentral identifier as a Bioregistry CURIE (`rnacentral:URS000011107D`), exactly as `NucleicAcid.rnacentral_id` carries it. The `rnacentral` prefix expands to the entity's own `@id` when that is the RNAcentral IRI.",
+                    "pattern": "^rnacentral:URS[0-9A-F]{10}(_[0-9]+)?$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "sequence_accession": {
+                    "description": "RefSeq or INSDC accession of the reference sequence as a CURIE (`refseq:NM_000518.5`, `insdc:J00153.1`), exactly as `NucleicAcid.sequence_accession` carries it.",
+                    "pattern": "^(refseq|insdc):[A-Z][A-Z0-9_]*[0-9](\\.[0-9]+)?$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "nucleic_acid_type",
+                "@id",
+                "@type"
+            ],
+            "title": "NucleicAcidEntity",
+            "type": "object"
+        },
+        "NucleicAcidFormEnum": {
+            "description": "Form a nucleic acid strand takes in a sample",
+            "enum": [
+                "single_stranded",
+                "double_stranded",
+                "hairpin",
+                "triplex",
+                "quadruplex",
+                "junction",
+                "circular",
+                "other"
+            ],
+            "title": "NucleicAcidFormEnum",
+            "type": "string"
+        },
+        "NucleicAcidSourceEnum": {
+            "description": "How a nucleic acid strand was produced for a preparation",
+            "enum": [
+                "chemical_synthesis",
+                "in_vitro_transcription",
+                "pcr_amplification",
+                "plasmid_preparation",
+                "isolated_from_organism",
+                "other"
+            ],
+            "title": "NucleicAcidSourceEnum",
+            "type": "string"
+        },
+        "NucleicAcidTypeEnum": {
+            "description": "Chemical type of a nucleic acid polymer. The mmCIF _entity_poly.type value is given for each.",
+            "enum": [
+                "dna",
+                "rna",
+                "dna_rna_hybrid",
+                "peptide_nucleic_acid",
+                "other"
+            ],
+            "title": "NucleicAcidTypeEnum",
+            "type": "string"
+        },
         "OntologyTerm": {
             "additionalProperties": false,
             "description": "A term from a controlled vocabulary or ontology",
@@ -9084,7 +9415,7 @@
                     "description": "Source organism, as an NCBITaxon reference where resolvable or a name string. The main schema's `Sample.organism` is an `OntologyTerm`; a crate may carry the bare name."
                 },
                 "pdb_entries": {
-                    "description": "PDB entries the protein is known from, as CURIEs (`pdb:1HHO`).",
+                    "description": "PDB entries the protein or nucleic acid is known from, as CURIEs (`pdb:1HHO`).",
                     "items": {
                         "type": "string"
                     },
@@ -10648,7 +10979,7 @@
         },
         "Sample": {
             "additionalProperties": false,
-            "description": "A physical biological sample used in structural biology experiments. Records what is true of this preparation - buffer, concentration, storage, purity, the construct and tags used. The identity of the protein(s) it contains belongs on Protein, linked through SampleProteinAssociation, so a protein studied in ten preparations is described once.",
+            "description": "A physical biological sample used in structural biology experiments. Records what is true of this preparation - buffer, concentration, storage, purity, the construct and tags used. The identity of the protein(s) it contains belongs on Protein, linked through SampleProteinAssociation, so a protein studied in ten preparations is described once. The nucleic acid(s) it contains belong on NucleicAcid in the same way, linked through SampleNucleicAcidAssociation; a protein-DNA complex is one sample with one row in each.",
             "properties": {
                 "anatomy": {
                     "description": "Anatomical part or tissue (e.g., UBERON:0008945 for leaf)",
@@ -10992,7 +11323,7 @@
                     ]
                 },
                 "hasBioChemEntityPart": {
-                    "description": "The protein entities a specimen contains. schema.org's own part relation for `BioChemEntity`, and in the RO-Crate 1.2 context. Projects onto one `SampleProteinAssociation` per target; the role, copy number and modifications that association can carry are left to the fuller record, because a manifest says *what* is in the tube and not how much.",
+                    "description": "The protein and nucleic acid entities a specimen contains. schema.org's own part relation for `BioChemEntity`, and in the RO-Crate 1.2 context. Projects onto one `SampleProteinAssociation` per `ProteinEntity` target and one `SampleNucleicAcidAssociation` per `NucleicAcidEntity` target; the role, copy number and modifications those associations can carry are left to the fuller record, because a manifest says *what* is in the tube and not how much.",
                     "items": {
                         "$ref": "#/$defs/EntityReference"
                     },
@@ -11097,6 +11428,109 @@
             ],
             "title": "SampleEntity",
             "type": "object"
+        },
+        "SampleNucleicAcidAssociation": {
+            "additionalProperties": false,
+            "description": "M:N link between Sample and NucleicAcid. A sample may hold several strands - the two strands of a duplex, a guide RNA with its target DNA, a primer with its template - and one strand turns up in many samples. What changes from preparation to preparation lives here: the role, the copy number, the form the strand takes (single, duplex, hairpin, quadruplex), how it was made, the modifications it carries, and the mass actually measured.",
+            "properties": {
+                "chain_ids": {
+                    "description": "Chain identifiers this strand occupies in the deposited structure, where the sample is a PDB entity",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "copy_number": {
+                    "description": "Copies of this strand per assembly in the sample: 2 for a self-complementary duplex, 1 for each strand of a duplex made of two different strands. Omit when unknown rather than assuming 1.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "modifications": {
+                    "description": "Modifications carried by this strand in this sample: fluorophore or biotin labels, 2'-O-methyl groups, phosphorothioate linkages, a 5' triphosphate left on, methylated bases. One modification per entry, its position or extent first where it has one, then the chemistry: \"5' 6-FAM\", \"3' biotin\", \"2'-O-methyl at 1-3\", \"phosphorothioate at 1-2,21-22\", \"m6A at 15\", \"5' triphosphate\". A modification with no position is named alone: \"phosphorothioate backbone\".",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "nucleic_acid_id": {
+                    "description": "Reference to the nucleic acid",
+                    "type": "string"
+                },
+                "observed_molecular_weight": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Mass as measured for this preparation (mass spectrometry, SEC-MALS, SAXS), typically in kDa. The sequence-derived mass lives on NucleicAcid.molecular_weight_theoretical."
+                },
+                "residue_range": {
+                    "description": "Nucleotides of the reference sequence present in this sample (e.g., '1-76', '30-45'), for fragments of a longer RNA or DNA. Omit when the whole sequence is present. Positions or ranges, comma-separated: '1-76', '30-45,60-72'.",
+                    "pattern": "^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "role": {
+                    "$ref": "#/$defs/SampleNucleicAcidRoleEnum",
+                    "description": "Part this nucleic acid plays in the sample"
+                },
+                "sample_id": {
+                    "description": "Reference to the sample",
+                    "type": "string"
+                },
+                "sequence_coverage": {
+                    "description": "Fraction of the reference sequence present in this sample (range: 0-1)",
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "source_method": {
+                    "$ref": "#/$defs/NucleicAcidSourceEnum",
+                    "description": "How this strand was made for this preparation: chemical synthesis, in vitro transcription, PCR, ..."
+                },
+                "structural_form": {
+                    "$ref": "#/$defs/NucleicAcidFormEnum",
+                    "description": "Form the strand takes in this sample: single-stranded, paired in a duplex, folded as a hairpin, a quadruplex, and so on. Both strands of a heteroduplex say double_stranded."
+                }
+            },
+            "required": [
+                "sample_id",
+                "nucleic_acid_id"
+            ],
+            "title": "SampleNucleicAcidAssociation",
+            "type": "object"
+        },
+        "SampleNucleicAcidRoleEnum": {
+            "description": "Part a nucleic acid plays in a sample",
+            "enum": [
+                "target",
+                "subunit",
+                "binding_partner",
+                "template",
+                "primer",
+                "guide",
+                "scaffold",
+                "contaminant",
+                "standard"
+            ],
+            "title": "SampleNucleicAcidRoleEnum",
+            "type": "string"
         },
         "SamplePreparation": {
             "additionalProperties": false,
@@ -13963,6 +14397,6 @@
     ],
     "title": "lambda-rocrate-core",
     "type": "object",
-    "version": "0.3.1"
+    "version": "0.3.2"
 }
 

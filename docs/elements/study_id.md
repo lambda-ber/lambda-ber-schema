@@ -17,11 +17,11 @@ Alias: study_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [StudySampleAssociation](StudySampleAssociation.md) | M:N link between Study and Sample with role metadata |  no  |
 | [StudyExperimentAssociation](StudyExperimentAssociation.md) | M:N link between Study and ExperimentRun |  no  |
-| [StudyPersonAssociation](StudyPersonAssociation.md) | M:N link between Study and Person with role metadata |  no  |
-| [StudyOrganizationAssociation](StudyOrganizationAssociation.md) | M:N link between Study and Organization with role metadata - the host institu... |  no  |
 | [StudyWorkflowAssociation](StudyWorkflowAssociation.md) | M:N link between Study and WorkflowRun |  no  |
+| [StudySampleAssociation](StudySampleAssociation.md) | M:N link between Study and Sample with role metadata |  no  |
+| [StudyOrganizationAssociation](StudyOrganizationAssociation.md) | M:N link between Study and Organization with role metadata - the host institu... |  no  |
+| [StudyPersonAssociation](StudyPersonAssociation.md) | M:N link between Study and Person with role metadata |  no  |
 
 
 

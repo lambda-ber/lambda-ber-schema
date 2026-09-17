@@ -352,6 +352,7 @@ attributes:
     domain_of:
     - Protein
     - ProteinConstruct
+    - NucleicAcid
   organism:
     name: organism
     description: Source organism as an NCBI Taxonomy CURIE (e.g., NCBITaxon:9606)
@@ -361,6 +362,7 @@ attributes:
     domain_of:
     - Sample
     - Protein
+    - NucleicAcid
     - AggregatedProteinView
     range: OntologyTerm
   organism_name:
@@ -373,6 +375,7 @@ attributes:
     rank: 1000
     domain_of:
     - Protein
+    - NucleicAcid
   amino_acid_sequence:
     name: amino_acid_sequence
     description: Canonical one-letter amino acid sequence of the protein, without
@@ -391,6 +394,7 @@ attributes:
     rank: 1000
     domain_of:
     - Protein
+    - NucleicAcid
     range: integer
   molecular_weight_theoretical:
     name: molecular_weight_theoretical
@@ -402,6 +406,7 @@ attributes:
     rank: 1000
     domain_of:
     - Protein
+    - NucleicAcid
     range: QuantityValue
     inlined: true
   ec_numbers:
@@ -423,6 +428,7 @@ attributes:
     rank: 1000
     domain_of:
     - Protein
+    - NucleicAcid
   go_terms:
     name: go_terms
     description: Gene Ontology annotations as CURIEs (e.g., GO:0005344 for oxygen
@@ -431,6 +437,7 @@ attributes:
     rank: 1000
     domain_of:
     - Protein
+    - NucleicAcid
     - FunctionalSite
     range: uriorcurie
     multivalued: true
@@ -441,6 +448,7 @@ attributes:
     rank: 1000
     domain_of:
     - Protein
+    - NucleicAcid
     - ConformationalState
     - AggregatedProteinView
     range: uriorcurie
@@ -556,6 +564,7 @@ attributes:
     rank: 1000
     domain_of:
     - Protein
+    - NucleicAcid
     - AggregatedProteinView
     range: DatabaseCrossReference
     multivalued: true
@@ -636,6 +645,7 @@ attributes:
     domain_of:
     - Protein
     - ProteinConstruct
+    - NucleicAcid
     range: string
   organism:
     name: organism
@@ -648,6 +658,7 @@ attributes:
     domain_of:
     - Sample
     - Protein
+    - NucleicAcid
     - AggregatedProteinView
     range: OntologyTerm
   organism_name:
@@ -662,6 +673,7 @@ attributes:
     owner: Protein
     domain_of:
     - Protein
+    - NucleicAcid
     range: string
   amino_acid_sequence:
     name: amino_acid_sequence
@@ -686,6 +698,7 @@ attributes:
     owner: Protein
     domain_of:
     - Protein
+    - NucleicAcid
     range: integer
   molecular_weight_theoretical:
     name: molecular_weight_theoretical
@@ -699,6 +712,7 @@ attributes:
     owner: Protein
     domain_of:
     - Protein
+    - NucleicAcid
     range: QuantityValue
     inlined: true
   ec_numbers:
@@ -725,6 +739,7 @@ attributes:
     owner: Protein
     domain_of:
     - Protein
+    - NucleicAcid
     range: string
   go_terms:
     name: go_terms
@@ -736,6 +751,7 @@ attributes:
     owner: Protein
     domain_of:
     - Protein
+    - NucleicAcid
     - FunctionalSite
     range: uriorcurie
     multivalued: true
@@ -748,6 +764,7 @@ attributes:
     owner: Protein
     domain_of:
     - Protein
+    - NucleicAcid
     - ConformationalState
     - AggregatedProteinView
     range: uriorcurie
@@ -883,6 +900,7 @@ attributes:
     owner: Protein
     domain_of:
     - Protein
+    - NucleicAcid
     - AggregatedProteinView
     range: DatabaseCrossReference
     multivalued: true

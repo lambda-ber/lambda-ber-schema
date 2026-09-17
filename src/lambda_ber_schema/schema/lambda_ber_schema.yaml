@@ -1,6 +1,6 @@
 id: http://w3id.org/lambda/
 name: lambda-ber-schema
-version: "0.1.2.post226.dev0+76469c01" # Managed by uv-dynamic-versioning
+version: "0.1.2.post231.dev0+52d03959" # Managed by uv-dynamic-versioning
 description: |
   lambda-ber-schema is a comprehensive schema for representing multimodal structural biology imaging data, 
   from atomic-resolution structures to tissue-level organization. It supports diverse experimental 
@@ -27,10 +27,16 @@ description: |
     sample that contains the protein; what varies between preparations lives on the sample and on
     the sample-protein association.
 
+  - [Nucleic Acids](NucleicAcid.md): The DNA or RNA strand as a molecular entity - sequence, type,
+    source organism, gene - shared by every sample that contains it, as Protein is for proteins.
+    Identified by RNAcentral, RefSeq or INSDC accession where one exists; a synthetic
+    oligonucleotide, which is most of what structural biology sees, gets a local id.
+
   - [Samples](Sample.md): The physical specimens being studied (proteins, nucleic acids, complexes,
     cells, tissues). Each sample records the preparation-specific facts - buffer conditions,
-    concentration, storage, purity - and links to the proteins it contains through
-    [SampleProteinAssociation](SampleProteinAssociation.md).
+    concentration, storage, purity - and links to the proteins and nucleic acids it contains through
+    [SampleProteinAssociation](SampleProteinAssociation.md) and
+    [SampleNucleicAcidAssociation](SampleNucleicAcidAssociation.md).
 
   - [Protein Constructs](ProteinConstruct.md): How a protein was cloned and expressed - vector,
     tags, cleavage sites, codon optimization. A construct realizes one protein and may feed many samples.
@@ -94,6 +100,8 @@ description: |
   - **ExperimentSampleAssociation**: Links samples to experiments (with role and preparation used)
   - **SampleProteinAssociation**: Links proteins to samples (with role, copy number, residue range,
     modifications, observed mass, and the construct used)
+  - **SampleNucleicAcidAssociation**: Links nucleic acids to samples (with role, copy number,
+    structural form, how the strand was made, modifications, and observed mass)
   - **ExperimentInstrumentAssociation**: Links instruments to experiments (with role: primary, detector)
   - **WorkflowExperimentAssociation**: Links source experiments to workflows
   - **WorkflowInputAssociation**: Links input files to workflows
@@ -107,6 +115,7 @@ description: |
   This relational design enables:
   - **Sample reuse**: The same sample can be used in multiple studies and experiments
   - **Protein reuse**: The same protein is described once and linked from every sample that contains it
+  - **Nucleic acid reuse**: Likewise for a DNA or RNA strand - one record, linked from every sample it is in
   - **Multi-instrument experiments**: An experiment can use multiple instruments with different roles
   - **Integrative workflows**: A workflow can combine data from multiple experiments
 
@@ -148,6 +157,10 @@ prefixes:
   nmdc: https://w3id.org/nmdc/
   NCBITaxon: http://purl.obolibrary.org/obo/NCBITaxon_
   uniprot: http://purl.uniprot.org/uniprot/
+  rnacentral: https://rnacentral.org/rna/
+  refseq: https://www.ncbi.nlm.nih.gov/nuccore/
+  insdc: https://www.ebi.ac.uk/ena/data/view/
+  rfam: https://rfam.org/family/
   UBERON: http://purl.obolibrary.org/obo/UBERON_
   CL: http://purl.obolibrary.org/obo/CL_
   GO: http://purl.obolibrary.org/obo/GO_
@@ -248,6 +261,11 @@ classes:
         range: ProteinConstruct
         multivalued: true
         inlined_as_list: true
+      nucleic_acids:
+        description: "All nucleic acids referenced by samples in this dataset, one record per strand"
+        range: NucleicAcid
+        multivalued: true
+        inlined_as_list: true
       samples:
         description: "All samples across all studies"
         range: Sample
@@ -308,6 +326,11 @@ classes:
       sample_protein_associations:
         description: "Links between samples and the proteins they contain (M:N with role, copy number, construct)"
         range: SampleProteinAssociation
+        multivalued: true
+        inlined_as_list: true
+      sample_nucleic_acid_associations:
+        description: "Links between samples and the nucleic acids they contain (M:N with role, copy number, structural form, source)"
+        range: SampleNucleicAcidAssociation
         multivalued: true
         inlined_as_list: true
       workflow_experiment_associations:
@@ -507,7 +530,9 @@ classes:
       A physical biological sample used in structural biology experiments. Records what is true of
       this preparation - buffer, concentration, storage, purity, the construct and tags used. The
       identity of the protein(s) it contains belongs on Protein, linked through
-      SampleProteinAssociation, so a protein studied in ten preparations is described once.
+      SampleProteinAssociation, so a protein studied in ten preparations is described once. The
+      nucleic acid(s) it contains belong on NucleicAcid in the same way, linked through
+      SampleNucleicAcidAssociation; a protein-DNA complex is one sample with one row in each.
     comments:
       - "protein_name, organism and the functional annotation collections remain here for data that arrives without a resolvable protein identity, and for search convenience. When a Protein record exists, it is the canonical source and these slots should agree with it."
     related_mappings:
@@ -840,6 +865,122 @@ classes:
         description: "Method or person who verified the sequence"
       verification_notes:
         description: "Notes from sequence verification"
+
+  NucleicAcid:
+    is_a: NamedThing
+    description: >-
+      A nucleic acid as a molecular entity: one DNA, RNA or hybrid strand, with its sequence, type,
+      source and the annotations that hold for it regardless of any one preparation. The counterpart
+      of Protein for the other biopolymer. One NucleicAcid record is shared by every Sample that
+      contains it, through SampleNucleicAcidAssociation. A duplex of two different strands is two
+      records; a self-complementary duplex is one record with copy_number 2 on the association.
+      Whether the strand is paired in a given sample, how it was made, and which chemical
+      modifications it carries are preparation facts and live on the association.
+    comments:
+      - "Nucleic acids have no single registry the way proteins have UniProt. Use RNAcentral for a non-coding RNA (rnacentral:URS0000759CF4), RefSeq or INSDC for a transcript or genomic sequence (refseq:NM_000518, insdc:J00153), and a lambda-prefixed id for a synthetic oligonucleotide, which is most of what structural biology sees. A record derived from a PDB entry may be named by entry and entity (pdb:1AAY/nucleic_acid/1)."
+      - "Modified nucleotides that belong to the molecule itself, such as the modified bases of a mature tRNA, are part of its identity and are noted in description or cross_references. Modifications introduced for a preparation - labels, 2'-O-methyl groups, phosphorothioate linkages - go on SampleNucleicAcidAssociation.modifications."
+    id_prefixes:
+      - rnacentral
+      - refseq
+      - insdc
+      - lambda
+      - pdb
+    related_mappings:
+      - mmCIF:_entity
+      - mmCIF:_entity_poly
+    attributes:
+      nucleic_acid_type:
+        description: "Chemical type of the polymer: DNA, RNA, a DNA/RNA hybrid, or an analogue"
+        range: NucleicAcidTypeEnum
+        required: true
+        exact_mappings:
+          - mmCIF:_entity_poly.type
+      nucleic_acid_name:
+        description: >-
+          Name as the depositor or database gives it (e.g., 'tRNA-Phe', 'Dickerson dodecamer',
+          'sgRNA targeting EMX1'). Recommended, not required, so that a record seeded from an
+          accession alone can be enriched later.
+        recommended: true
+        related_mappings:
+          - mmCIF:_entity.pdbx_description
+      rnacentral_id:
+        description: >-
+          RNAcentral identifier as a Bioregistry CURIE (rnacentral:URS0000759CF4), optionally with
+          the taxon suffix (rnacentral:URS0000759CF4_9606). For non-coding RNAs. Normally identical
+          to id when set.
+        range: uriorcurie
+        pattern: "^rnacentral:URS[0-9A-F]{10}(_[0-9]+)?$"
+      sequence_accession:
+        description: >-
+          Accession of the reference nucleotide sequence as a CURIE: RefSeq (refseq:NM_000518.5)
+          or INSDC, which covers GenBank, ENA and DDBJ (insdc:J00153.1). For transcripts, genes
+          and genomic fragments; a synthetic oligonucleotide has none.
+        range: uriorcurie
+        pattern: "^(refseq|insdc):[A-Z][A-Z0-9_]*[0-9](\\.[0-9]+)?$"
+        exact_mappings:
+          - mmCIF:_struct_ref.pdbx_db_accession
+      rfam_families:
+        description: "Rfam families the RNA belongs to, as CURIEs (rfam:RF00005 for tRNA)"
+        range: uriorcurie
+        multivalued: true
+        pattern: "^rfam:RF[0-9]{5}$"
+      gene_name:
+        description: >-
+          Gene the sequence is transcribed from or taken from (e.g., HBB for a beta-globin mRNA,
+          EMX1 for the target site a guide RNA is designed against)
+        exact_mappings:
+          - mmCIF:_entity_src_gen.pdbx_gene_src_gene
+      organism:
+        description: >-
+          Source organism as an NCBI Taxonomy CURIE (e.g., NCBITaxon:9606). A chemically
+          synthesized oligonucleotide is NCBITaxon:32630 (synthetic construct), as the PDB records
+          it; a synthetic copy of a natural sequence may instead name the organism the sequence
+          comes from, with the synthesis recorded in SampleNucleicAcidAssociation.source_method.
+        range: OntologyTerm
+        exact_mappings:
+          - mmCIF:_entity_src_gen.pdbx_gene_src_ncbi_taxonomy_id
+      organism_name:
+        description: >-
+          Scientific name of the source organism. For display, and for sources that give a name but
+          no taxonomy identifier.
+        exact_mappings:
+          - mmCIF:_entity_src_gen.pdbx_gene_src_scientific_name
+      nucleotide_sequence:
+        description: >-
+          Sequence in one-letter code, written 5' to 3'. T for DNA, U for RNA; IUPAC ambiguity codes
+          and I for inosine are allowed. A modified nucleotide is written as its parent base and
+          described in the association's modifications or in cross_references.
+        pattern: "^[ACGTURYKMSWBDHVNI]+$"
+        exact_mappings:
+          - mmCIF:_entity_poly.pdbx_seq_one_letter_code_can
+      sequence_length:
+        description: "Length of the sequence in nucleotides"
+        range: integer
+      molecular_weight_theoretical:
+        description: >-
+          Mass computed from the sequence, typically in kDa. A mass measured for a given preparation
+          belongs on SampleNucleicAcidAssociation.observed_molecular_weight.
+        range: QuantityValue
+        inlined: true
+        related_mappings:
+          - mmCIF:_entity.formula_weight
+      function_description:
+        description: "Free-text summary of the molecule's role, typically from RNAcentral or the literature"
+      go_terms:
+        description: "Gene Ontology annotations as CURIEs (e.g., GO:0030533 for triplet codon-amino acid adaptor activity)"
+        range: uriorcurie
+        multivalued: true
+      pdb_entries:
+        description: "PDB entries containing this nucleic acid, as CURIEs (e.g., pdb:1AAY)"
+        range: uriorcurie
+        multivalued: true
+      cross_references:
+        description: >-
+          Cross-references to external databases other than those named by rnacentral_id,
+          sequence_accession and rfam_families (miRBase, GtRNAdb, NDB, ...).
+        range: DatabaseCrossReference
+        multivalued: true
+        inlined_as_list: true
 
   SamplePreparation:
     is_a: NamedThing
@@ -3583,6 +3724,78 @@ classes:
         range: QuantityValue
         inlined: true
 
+  SampleNucleicAcidAssociation:
+    description: >-
+      M:N link between Sample and NucleicAcid. A sample may hold several strands - the two strands
+      of a duplex, a guide RNA with its target DNA, a primer with its template - and one strand
+      turns up in many samples. What changes from preparation to preparation lives here: the role,
+      the copy number, the form the strand takes (single, duplex, hairpin, quadruplex), how it was
+      made, the modifications it carries, and the mass actually measured.
+    related_mappings:
+      - IHMCIF:_ihm_struct_assembly_details
+      - IHMCIF:_ihm_entity_poly_segment
+    attributes:
+      sample_id:
+        description: "Reference to the sample"
+        range: Sample
+        required: true
+      nucleic_acid_id:
+        description: "Reference to the nucleic acid"
+        range: NucleicAcid
+        required: true
+      role:
+        description: "Part this nucleic acid plays in the sample"
+        range: SampleNucleicAcidRoleEnum
+      copy_number:
+        description: >-
+          Copies of this strand per assembly in the sample: 2 for a self-complementary duplex, 1
+          for each strand of a duplex made of two different strands. Omit when unknown rather than
+          assuming 1.
+        range: integer
+        exact_mappings:
+          - mmCIF:_entity.pdbx_number_of_molecules
+      residue_range:
+        description: >-
+          Nucleotides of the reference sequence present in this sample (e.g., '1-76', '30-45'),
+          for fragments of a longer RNA or DNA. Omit when the whole sequence is present. Positions
+          or ranges, comma-separated: '1-76', '30-45,60-72'.
+        pattern: "^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$"
+        related_mappings:
+          - IHMCIF:_ihm_entity_poly_segment
+      sequence_coverage:
+        description: "Fraction of the reference sequence present in this sample (range: 0-1)"
+        range: float
+        minimum_value: 0
+        maximum_value: 1
+      chain_ids:
+        description: "Chain identifiers this strand occupies in the deposited structure, where the sample is a PDB entity"
+        multivalued: true
+        exact_mappings:
+          - mmCIF:_entity_poly.pdbx_strand_id
+      structural_form:
+        description: >-
+          Form the strand takes in this sample: single-stranded, paired in a duplex, folded as a
+          hairpin, a quadruplex, and so on. Both strands of a heteroduplex say double_stranded.
+        range: NucleicAcidFormEnum
+      source_method:
+        description: "How this strand was made for this preparation: chemical synthesis, in vitro transcription, PCR, ..."
+        range: NucleicAcidSourceEnum
+      modifications:
+        description: >-
+          Modifications carried by this strand in this sample: fluorophore or biotin labels,
+          2'-O-methyl groups, phosphorothioate linkages, a 5' triphosphate left on, methylated bases.
+          One modification per entry, its position or extent first where it has one, then the
+          chemistry: "5' 6-FAM", "3' biotin", "2'-O-methyl at 1-3", "phosphorothioate at 1-2,21-22",
+          "m6A at 15", "5' triphosphate". A modification with no position is named alone:
+          "phosphorothioate backbone".
+        multivalued: true
+      observed_molecular_weight:
+        description: >-
+          Mass as measured for this preparation (mass spectrometry, SEC-MALS, SAXS), typically in
+          kDa. The sequence-derived mass lives on NucleicAcid.molecular_weight_theoretical.
+        range: QuantityValue
+        inlined: true
+
   ExperimentInstrumentAssociation:
     description: "M:N link between ExperimentRun and Instrument"
     attributes:
@@ -5383,6 +5596,78 @@ enums:
         description: "A protein present unintentionally and identified after the fact"
       standard:
         description: "A reference protein added for calibration or as a size marker"
+
+  SampleNucleicAcidRoleEnum:
+    description: "Part a nucleic acid plays in a sample"
+    permissible_values:
+      target:
+        description: "The nucleic acid under investigation"
+      subunit:
+        description: "One strand of a duplex, or one chain of an assembly, that is the target as a whole"
+      binding_partner:
+        description: "A nucleic acid present for its interaction with the target, such as the DNA site a transcription factor binds, an aptamer, or an enzyme substrate"
+      template:
+        description: "The strand a polymerase or reverse transcriptase reads"
+      primer:
+        description: "The strand a polymerase extends"
+      guide:
+        description: "A guide RNA or DNA that directs a nuclease or other effector to its target (e.g., sgRNA, crRNA)"
+      scaffold:
+        description: "A nucleic acid used as a structural scaffold, as in DNA origami or a nanoparticle assembly"
+      contaminant:
+        description: "A nucleic acid present unintentionally and identified after the fact, such as host DNA co-purified with a protein"
+      standard:
+        description: "A reference nucleic acid added for calibration or as a size marker"
+
+  NucleicAcidTypeEnum:
+    description: "Chemical type of a nucleic acid polymer. The mmCIF _entity_poly.type value is given for each."
+    permissible_values:
+      dna:
+        description: "Deoxyribonucleic acid (mmCIF: polydeoxyribonucleotide)"
+      rna:
+        description: "Ribonucleic acid (mmCIF: polyribonucleotide)"
+      dna_rna_hybrid:
+        description: "A single strand containing both deoxyribo- and ribonucleotides (mmCIF: polydeoxyribonucleotide/polyribonucleotide hybrid)"
+      peptide_nucleic_acid:
+        description: "Peptide nucleic acid, a synthetic analogue with a peptide-like backbone (mmCIF: peptide nucleic acid)"
+      other:
+        description: "Another nucleic acid analogue, such as a locked nucleic acid, morpholino or threose nucleic acid"
+
+  NucleicAcidFormEnum:
+    description: "Form a nucleic acid strand takes in a sample"
+    permissible_values:
+      single_stranded:
+        description: "Unpaired, or with no defined secondary structure"
+      double_stranded:
+        description: "Paired with a complementary strand in a duplex, including a self-complementary strand paired with a second copy of itself"
+      hairpin:
+        description: "Folded back on itself to form a stem-loop"
+      triplex:
+        description: "Three strands, a third strand bound in the major groove of a duplex"
+      quadruplex:
+        description: "Four-stranded, such as a G-quadruplex or i-motif"
+      junction:
+        description: "A three- or four-way junction, such as a Holliday junction"
+      circular:
+        description: "Covalently closed circle, such as a plasmid or a circular RNA"
+      other:
+        description: "A form not listed, described in the association's description"
+
+  NucleicAcidSourceEnum:
+    description: "How a nucleic acid strand was produced for a preparation"
+    permissible_values:
+      chemical_synthesis:
+        description: "Solid-phase chemical synthesis, as for most oligonucleotides"
+      in_vitro_transcription:
+        description: "Transcribed in vitro, typically by T7 RNA polymerase from a DNA template"
+      pcr_amplification:
+        description: "Amplified by PCR"
+      plasmid_preparation:
+        description: "Purified as plasmid DNA from a host"
+      isolated_from_organism:
+        description: "Purified from cells, tissue or virions without amplification, as for native tRNA or genomic DNA"
+      other:
+        description: "A method not listed, described in the association's description"
 
   InstrumentRoleEnum:
     description: "Role of an instrument in an experiment"

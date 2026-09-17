@@ -3,11 +3,6 @@
 # Slot: organism_name 
 
 
-_Scientific name of the source organism. For display, and for sources that give a name but no taxonomy identifier._
-
-
-
-
 
 URI: [lambda:organism_name](http://w3id.org/lambda/organism_name)
 Alias: organism_name
@@ -22,6 +17,7 @@ Alias: organism_name
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [NucleicAcid](NucleicAcid.md) | A nucleic acid as a molecular entity: one DNA, RNA or hybrid strand, with its... |  no  |
 | [Protein](Protein.md) | A protein as a biological entity: its sequence, source organism, gene, and th... |  no  |
 
 
@@ -43,13 +39,6 @@ Alias: organism_name
 
 
 
-### Schema Source
-
-
-* from schema: http://w3id.org/lambda/
-
-
-
 
 ## Mappings
 
@@ -57,7 +46,6 @@ Alias: organism_name
 | ---  | ---  |
 | self | lambda:organism_name |
 | native | lambda:organism_name |
-| exact | mmCIF:_entity_src_gen.pdbx_gene_src_scientific_name |
 
 
 
@@ -67,16 +55,10 @@ Alias: organism_name
 <details>
 ```yaml
 name: organism_name
-description: Scientific name of the source organism. For display, and for sources
-  that give a name but no taxonomy identifier.
-from_schema: http://w3id.org/lambda/
-exact_mappings:
-- mmCIF:_entity_src_gen.pdbx_gene_src_scientific_name
-rank: 1000
 alias: organism_name
-owner: Protein
 domain_of:
 - Protein
+- NucleicAcid
 range: string
 
 ```

@@ -156,6 +156,7 @@ attributes:
     - StudySampleAssociation
     - ExperimentSampleAssociation
     - SampleProteinAssociation
+    - SampleNucleicAcidAssociation
     - ExperimentInstrumentAssociation
     - StudyPersonAssociation
     - ExperimentPersonAssociation
@@ -213,6 +214,7 @@ attributes:
     - StudySampleAssociation
     - ExperimentSampleAssociation
     - SampleProteinAssociation
+    - SampleNucleicAcidAssociation
     - ExperimentInstrumentAssociation
     - StudyPersonAssociation
     - ExperimentPersonAssociation

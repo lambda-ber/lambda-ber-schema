@@ -149,6 +149,7 @@ attributes:
     - StudySampleAssociation
     - ExperimentSampleAssociation
     - SampleProteinAssociation
+    - SampleNucleicAcidAssociation
     range: Sample
     required: true
   role:
@@ -160,6 +161,7 @@ attributes:
     - StudySampleAssociation
     - ExperimentSampleAssociation
     - SampleProteinAssociation
+    - SampleNucleicAcidAssociation
     - ExperimentInstrumentAssociation
     - StudyPersonAssociation
     - ExperimentPersonAssociation
@@ -213,6 +215,7 @@ attributes:
     - StudySampleAssociation
     - ExperimentSampleAssociation
     - SampleProteinAssociation
+    - SampleNucleicAcidAssociation
     range: Sample
     required: true
   role:
@@ -226,6 +229,7 @@ attributes:
     - StudySampleAssociation
     - ExperimentSampleAssociation
     - SampleProteinAssociation
+    - SampleNucleicAcidAssociation
     - ExperimentInstrumentAssociation
     - StudyPersonAssociation
     - ExperimentPersonAssociation

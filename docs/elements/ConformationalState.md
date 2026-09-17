@@ -141,6 +141,7 @@ attributes:
     from_schema: http://w3id.org/lambda/functional_annotation
     domain_of:
     - Protein
+    - NucleicAcid
     - ConformationalState
     - AggregatedProteinView
     multivalued: true
@@ -224,6 +225,7 @@ attributes:
     owner: ConformationalState
     domain_of:
     - Protein
+    - NucleicAcid
     - ConformationalState
     - AggregatedProteinView
     range: string

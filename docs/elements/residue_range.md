@@ -17,14 +17,15 @@ Alias: residue_range
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [SampleProteinAssociation](SampleProteinAssociation.md) | M:N link between Sample and Protein |  no  |
 | [FunctionalSite](FunctionalSite.md) | Functional sites including catalytic, binding, and regulatory sites |  no  |
 | [StructuralFeature](StructuralFeature.md) | Structural features and properties of protein regions |  no  |
-| [ProteinAnnotation](ProteinAnnotation.md) | Base class for all protein-related functional and structural annotations |  no  |
-| [PostTranslationalModification](PostTranslationalModification.md) | Post-translational modifications observed or predicted |  no  |
 | [MutationEffect](MutationEffect.md) | Effects of mutations and variants on protein structure and function |  no  |
-| [EvolutionaryConservation](EvolutionaryConservation.md) | Evolutionary conservation information |  no  |
+| [PostTranslationalModification](PostTranslationalModification.md) | Post-translational modifications observed or predicted |  no  |
+| [ProteinAnnotation](ProteinAnnotation.md) | Base class for all protein-related functional and structural annotations |  no  |
 | [ProteinProteinInteraction](ProteinProteinInteraction.md) | Protein-protein interactions and interfaces |  no  |
+| [SampleNucleicAcidAssociation](SampleNucleicAcidAssociation.md) | M:N link between Sample and NucleicAcid |  no  |
+| [EvolutionaryConservation](EvolutionaryConservation.md) | Evolutionary conservation information |  no  |
+| [SampleProteinAssociation](SampleProteinAssociation.md) | M:N link between Sample and Protein |  no  |
 
 
 
@@ -64,6 +65,7 @@ name: residue_range
 alias: residue_range
 domain_of:
 - SampleProteinAssociation
+- SampleNucleicAcidAssociation
 - ProteinAnnotation
 range: string
 

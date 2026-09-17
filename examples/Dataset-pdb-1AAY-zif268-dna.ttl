@@ -1,0 +1,184 @@
+@base <http://example.org/> .
+@prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
+@prefix NCBITaxon: <http://purl.obolibrary.org/obo/NCBITaxon_> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lambdaber: <http://w3id.org/lambda/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
+@prefix ns1: <http://w3id.org/lambda/functional_annotation/> .
+@prefix pdb: <https://www.rcsb.org/structure/> .
+@prefix uniprot: <http://purl.uniprot.org/uniprot/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+pdb:1AAY a lambdaber:Dataset ;
+    dcterms:title "ZIF268 ZINC FINGER-DNA COMPLEX" ;
+    lambdaber:data_files <https://www.rcsb.org/structure/1AAY/file/mmcif>,
+        <https://www.rcsb.org/structure/1AAY/file/pdb> ;
+    lambdaber:experiment_instrument_associations [ a lambdaber:ExperimentInstrumentAssociation ;
+            lambdaber:experiment_id <https://www.rcsb.org/structure/1AAY/experiment> ;
+            lambdaber:instrument_id <https://www.rcsb.org/structure/instrument/PDB-1AAY> ] ;
+    lambdaber:experiment_runs <https://www.rcsb.org/structure/1AAY/experiment> ;
+    lambdaber:experiment_sample_associations [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id <https://www.rcsb.org/structure/1AAY/experiment> ;
+            lambdaber:sample_id <https://www.rcsb.org/structure/1AAY/sample/1> ],
+        [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id <https://www.rcsb.org/structure/1AAY/experiment> ;
+            lambdaber:sample_id <https://www.rcsb.org/structure/1AAY/sample/2> ],
+        [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id <https://www.rcsb.org/structure/1AAY/experiment> ;
+            lambdaber:sample_id <https://www.rcsb.org/structure/1AAY/sample/3> ] ;
+    lambdaber:instruments <https://www.rcsb.org/structure/instrument/PDB-1AAY> ;
+    lambdaber:nucleic_acids <https://www.rcsb.org/structure/1AAY/nucleic_acid/1>,
+        <https://www.rcsb.org/structure/1AAY/nucleic_acid/2> ;
+    lambdaber:proteins uniprot:P08046 ;
+    lambdaber:sample_nucleic_acid_associations [ a lambdaber:SampleNucleicAcidAssociation ;
+            lambdaber:chain_ids "B" ;
+            lambdaber:copy_number 1 ;
+            lambdaber:nucleic_acid_id <https://www.rcsb.org/structure/1AAY/nucleic_acid/1> ;
+            lambdaber:role "binding_partner" ;
+            lambdaber:sample_id <https://www.rcsb.org/structure/1AAY/sample/1> ],
+        [ a lambdaber:SampleNucleicAcidAssociation ;
+            lambdaber:chain_ids "C" ;
+            lambdaber:copy_number 1 ;
+            lambdaber:nucleic_acid_id <https://www.rcsb.org/structure/1AAY/nucleic_acid/2> ;
+            lambdaber:role "binding_partner" ;
+            lambdaber:sample_id <https://www.rcsb.org/structure/1AAY/sample/2> ] ;
+    lambdaber:sample_protein_associations [ a lambdaber:SampleProteinAssociation ;
+            lambdaber:chain_ids "A" ;
+            lambdaber:copy_number 1 ;
+            lambdaber:protein_id uniprot:P08046 ;
+            lambdaber:role "target" ;
+            lambdaber:sample_id <https://www.rcsb.org/structure/1AAY/sample/3> ;
+            lambdaber:sequence_coverage "0.167"^^xsd:float ] ;
+    lambdaber:samples <https://www.rcsb.org/structure/1AAY/sample/1>,
+        <https://www.rcsb.org/structure/1AAY/sample/2>,
+        <https://www.rcsb.org/structure/1AAY/sample/3> ;
+    lambdaber:studies <https://www.rcsb.org/structure/1AAY/study> ;
+    lambdaber:study_experiment_associations [ a lambdaber:StudyExperimentAssociation ;
+            lambdaber:experiment_id <https://www.rcsb.org/structure/1AAY/experiment> ;
+            lambdaber:study_id <https://www.rcsb.org/structure/1AAY/study> ] ;
+    lambdaber:study_sample_associations [ a lambdaber:StudySampleAssociation ;
+            lambdaber:sample_id <https://www.rcsb.org/structure/1AAY/sample/2> ;
+            lambdaber:study_id <https://www.rcsb.org/structure/1AAY/study> ],
+        [ a lambdaber:StudySampleAssociation ;
+            lambdaber:sample_id <https://www.rcsb.org/structure/1AAY/sample/3> ;
+            lambdaber:study_id <https://www.rcsb.org/structure/1AAY/study> ],
+        [ a lambdaber:StudySampleAssociation ;
+            lambdaber:sample_id <https://www.rcsb.org/structure/1AAY/sample/1> ;
+            lambdaber:study_id <https://www.rcsb.org/structure/1AAY/study> ] ;
+    lambdaber:workflow_experiment_associations [ a lambdaber:WorkflowExperimentAssociation ;
+            lambdaber:experiment_id <https://www.rcsb.org/structure/1AAY/experiment> ;
+            lambdaber:workflow_id <https://www.rcsb.org/structure/1AAY/workflow/refinement> ] ;
+    lambdaber:workflow_runs <https://www.rcsb.org/structure/1AAY/workflow/refinement> .
+
+<https://www.rcsb.org/structure/1AAY/file/mmcif> a lambdaber:DataFile ;
+    lambdaber:description "mmCIF format coordinates" ;
+    lambdaber:file_format "mmcif" ;
+    lambdaber:file_name "1aay.cif" ;
+    lambdaber:file_path "https://files.rcsb.org/download/1AAY.cif" .
+
+<https://www.rcsb.org/structure/1AAY/file/pdb> a lambdaber:DataFile ;
+    lambdaber:description "PDB format coordinates" ;
+    lambdaber:file_format "pdb" ;
+    lambdaber:file_name "1aay.pdb" ;
+    lambdaber:file_path "https://files.rcsb.org/download/1AAY.pdb" .
+
+uniprot:P08046 a lambdaber:Protein ;
+    dcterms:title "Early growth response protein 1" ;
+    lambdaber:organism NCBITaxon:10090 ;
+    lambdaber:organism_name "Mus musculus" ;
+    lambdaber:pdb_entries "pdb:1AAY"^^xsd:anyURI ;
+    lambdaber:protein_name "Early growth response protein 1" ;
+    lambdaber:uniprot_id "uniprot:P08046"^^xsd:anyURI .
+
+<https://www.rcsb.org/structure/1AAY/nucleic_acid/1> a lambdaber:NucleicAcid ;
+    dcterms:title "DNA (5'-D(*AP*GP*CP*GP*TP*GP*GP*GP*CP*GP*T)-3')" ;
+    lambdaber:nucleic_acid_name "DNA (5'-D(*AP*GP*CP*GP*TP*GP*GP*GP*CP*GP*T)-3')" ;
+    lambdaber:nucleic_acid_type "dna" ;
+    lambdaber:nucleotide_sequence "AGCGTGGGCGT" ;
+    lambdaber:pdb_entries "pdb:1AAY"^^xsd:anyURI ;
+    lambdaber:sequence_length 11 .
+
+<https://www.rcsb.org/structure/1AAY/nucleic_acid/2> a lambdaber:NucleicAcid ;
+    dcterms:title "DNA (5'-D(*TP*AP*CP*GP*CP*CP*CP*AP*CP*GP*C)-3')" ;
+    lambdaber:nucleic_acid_name "DNA (5'-D(*TP*AP*CP*GP*CP*CP*CP*AP*CP*GP*C)-3')" ;
+    lambdaber:nucleic_acid_type "dna" ;
+    lambdaber:nucleotide_sequence "TACGCCCACGC" ;
+    lambdaber:pdb_entries "pdb:1AAY"^^xsd:anyURI ;
+    lambdaber:sequence_length 11 .
+
+<https://www.rcsb.org/structure/1AAY/workflow/refinement> a lambdaber:WorkflowRun ;
+    lambdaber:software_name "X-PLOR" ;
+    lambdaber:workflow_code "PDB-1AAY-REFINE" ;
+    lambdaber:workflow_type "refinement" .
+
+<https://www.rcsb.org/structure/instrument/PDB-1AAY> a lambdaber:Instrument ;
+    dcterms:title "ROTATING ANODE" ;
+    lambdaber:description "Detector: RIGAKU RAXIS IIC" ;
+    lambdaber:instrument_code "PDB-1AAY" .
+
+<https://www.rcsb.org/structure/1AAY/sample/1> a lambdaber:Sample ;
+    dcterms:title "DNA (5'-D(*AP*GP*CP*GP*TP*GP*GP*GP*CP*GP*T)-3')" ;
+    lambdaber:description "Sequence length: 11" ;
+    lambdaber:molecular_weight [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "3.43"^^xsd:float ;
+            lambdaber:unit "kDa" ] ;
+    lambdaber:sample_code "PDB-1AAY-1" ;
+    lambdaber:sample_type "nucleic_acid" .
+
+<https://www.rcsb.org/structure/1AAY/sample/2> a lambdaber:Sample ;
+    dcterms:title "DNA (5'-D(*TP*AP*CP*GP*CP*CP*CP*AP*CP*GP*C)-3')" ;
+    lambdaber:description "Sequence length: 11" ;
+    lambdaber:molecular_weight [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "3.28"^^xsd:float ;
+            lambdaber:unit "kDa" ] ;
+    lambdaber:sample_code "PDB-1AAY-2" ;
+    lambdaber:sample_type "nucleic_acid" .
+
+<https://www.rcsb.org/structure/1AAY/sample/3> a lambdaber:Sample ;
+    dcterms:title "PROTEIN (ZIF268 ZINC FINGER PEPTIDE)" ;
+    lambdaber:database_cross_references [ a ns1:DatabaseCrossReference ;
+            ns1:database_id "P08046" ;
+            ns1:database_name "uniprot" ;
+            ns1:database_url "https://www.uniprot.org/uniprotkb/P08046"^^xsd:anyURI ] ;
+    lambdaber:description "Organism: Mus musculus; Sequence length: 90" ;
+    lambdaber:molecular_weight [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "10.85"^^xsd:float ;
+            lambdaber:unit "kDa" ] ;
+    lambdaber:organism NCBITaxon:10090 ;
+    lambdaber:protein_name "PROTEIN (ZIF268 ZINC FINGER PEPTIDE)" ;
+    lambdaber:sample_code "PDB-1AAY-3" ;
+    lambdaber:sample_type "protein" .
+
+<https://www.rcsb.org/structure/1AAY/study> a lambdaber:Study ;
+    dcterms:title "ZIF268 ZINC FINGER-DNA COMPLEX" .
+
+<https://www.rcsb.org/structure/1AAY/experiment> a lambdaber:ExperimentRun ;
+    lambdaber:experiment_code "PDB-1AAY-EXP" ;
+    lambdaber:experiment_date "1997-01-18" ;
+    lambdaber:quality_metrics [ a lambdaber:QualityMetrics ;
+            lambdaber:clashscore [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "6.0"^^xsd:float ;
+                    lambdaber:unit "dimensionless" ] ;
+            lambdaber:resolution [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "1.6"^^xsd:float ;
+                    lambdaber:unit "Angstroms" ] ;
+            lambdaber:unit_cell_a [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "45.4"^^xsd:float ;
+                    lambdaber:unit "Angstroms" ] ;
+            lambdaber:unit_cell_alpha [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "90.0"^^xsd:float ;
+                    lambdaber:unit "degrees" ] ;
+            lambdaber:unit_cell_b [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "56.2"^^xsd:float ;
+                    lambdaber:unit "Angstroms" ] ;
+            lambdaber:unit_cell_beta [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "90.0"^^xsd:float ;
+                    lambdaber:unit "degrees" ] ;
+            lambdaber:unit_cell_c [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "130.8"^^xsd:float ;
+                    lambdaber:unit "Angstroms" ] ;
+            lambdaber:unit_cell_gamma [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "90.0"^^xsd:float ;
+                    lambdaber:unit "degrees" ] ] ;
+    lambdaber:technique CHMO:0000156 .
+

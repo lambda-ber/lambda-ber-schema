@@ -17,9 +17,9 @@ Alias: uniprot_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [AggregatedProteinView](AggregatedProteinView.md) | Aggregated view of all structural and functional data for a protein |  no  |
 | [Protein](Protein.md) | A protein as a biological entity: its sequence, source organism, gene, and th... |  no  |
 | [ProteinConstruct](ProteinConstruct.md) | Detailed information about a protein construct including cloning and sequence... |  no  |
-| [AggregatedProteinView](AggregatedProteinView.md) | Aggregated view of all structural and functional data for a protein |  no  |
 
 
 

@@ -17,10 +17,11 @@ Alias: sample_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [SamplePreparation](SamplePreparation.md) | A process that prepares a sample for imaging |  no  |
-| [SampleProteinAssociation](SampleProteinAssociation.md) | M:N link between Sample and Protein |  no  |
 | [ExperimentSampleAssociation](ExperimentSampleAssociation.md) | M:N link between ExperimentRun and Sample with role metadata |  no  |
 | [StudySampleAssociation](StudySampleAssociation.md) | M:N link between Study and Sample with role metadata |  no  |
+| [SampleNucleicAcidAssociation](SampleNucleicAcidAssociation.md) | M:N link between Sample and NucleicAcid |  no  |
+| [SamplePreparation](SamplePreparation.md) | A process that prepares a sample for imaging |  no  |
+| [SampleProteinAssociation](SampleProteinAssociation.md) | M:N link between Sample and Protein |  no  |
 
 
 
@@ -63,6 +64,7 @@ domain_of:
 - StudySampleAssociation
 - ExperimentSampleAssociation
 - SampleProteinAssociation
+- SampleNucleicAcidAssociation
 range: string
 
 ```

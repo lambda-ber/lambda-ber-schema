@@ -17,6 +17,7 @@ Dataset (root container)
 │   ├── studies
 │   ├── proteins
 │   ├── protein_constructs
+│   ├── nucleic_acids
 │   ├── samples
 │   ├── sample_preparations
 │   ├── instruments
@@ -32,6 +33,7 @@ Dataset (root container)
     ├── experiment_sample_associations
     ├── experiment_instrument_associations
     ├── sample_protein_associations
+    ├── sample_nucleic_acid_associations
     ├── workflow_experiment_associations
     ├── workflow_input_associations
     └── workflow_output_associations
@@ -56,6 +58,7 @@ Dataset (root container)
 | Class | Description |
 |-------|-------------|
 | [Protein](https://w3id.org/lambda-ber-schema/Protein) | The protein as a biological entity: UniProt CURIE, sequence, organism, gene, functional annotations. Described once, shared by every sample that contains it |
+| [NucleicAcid](https://w3id.org/lambda-ber-schema/NucleicAcid) | The DNA or RNA strand as a molecular entity: type, sequence, organism, gene, RNAcentral or RefSeq/INSDC accession where one exists. Described once, shared by every sample that contains it |
 | [Sample](https://w3id.org/lambda-ber-schema/Sample) | Physical specimens (proteins, nucleic acids, complexes, cells, tissues) with preparation-specific facts: buffer, concentration, storage, purity |
 | [ProteinConstruct](https://w3id.org/lambda-ber-schema/ProteinConstruct) | How a protein was cloned and expressed: vector, tags, cleavage sites. Links to its Protein |
 | [SamplePreparation](https://w3id.org/lambda-ber-schema/SamplePreparation) | How samples were prepared for specific techniques |
@@ -107,6 +110,7 @@ Association tables model many-to-many relationships and can carry relationship m
 | [ExperimentSampleAssociation](https://w3id.org/lambda-ber-schema/ExperimentSampleAssociation) | ExperimentRun ↔ Sample | role, preparation used |
 | [ExperimentInstrumentAssociation](https://w3id.org/lambda-ber-schema/ExperimentInstrumentAssociation) | ExperimentRun ↔ Instrument | role (primary, detector) |
 | [SampleProteinAssociation](https://w3id.org/lambda-ber-schema/SampleProteinAssociation) | Sample ↔ Protein | role (target, subunit, fusion_partner, ...), copy number, residue range, chain ids, modifications, observed mass, construct used |
+| [SampleNucleicAcidAssociation](https://w3id.org/lambda-ber-schema/SampleNucleicAcidAssociation) | Sample ↔ NucleicAcid | role (target, subunit, guide, template, primer, ...), copy number, residue range, chain ids, structural form (duplex, hairpin, quadruplex, ...), source method (synthesis, in vitro transcription, ...), modifications, observed mass |
 | [WorkflowExperimentAssociation](https://w3id.org/lambda-ber-schema/WorkflowExperimentAssociation) | WorkflowRun ↔ ExperimentRun | |
 | [WorkflowInputAssociation](https://w3id.org/lambda-ber-schema/WorkflowInputAssociation) | WorkflowRun ↔ DataFile | input type |
 | [WorkflowOutputAssociation](https://w3id.org/lambda-ber-schema/WorkflowOutputAssociation) | WorkflowRun ↔ DataFile | output type |

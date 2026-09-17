@@ -35,6 +35,8 @@ URI: [lambda:NamedThing](http://w3id.org/lambda/NamedThing)
         click Protein href "../Protein/"
       NamedThing <|-- ProteinConstruct
         click ProteinConstruct href "../ProteinConstruct/"
+      NamedThing <|-- NucleicAcid
+        click NucleicAcid href "../NucleicAcid/"
       NamedThing <|-- SamplePreparation
         click SamplePreparation href "../SamplePreparation/"
       NamedThing <|-- Instrument
@@ -80,6 +82,7 @@ URI: [lambda:NamedThing](http://w3id.org/lambda/NamedThing)
     * [Sample](Sample.md)
     * [Protein](Protein.md)
     * [ProteinConstruct](ProteinConstruct.md)
+    * [NucleicAcid](NucleicAcid.md)
     * [SamplePreparation](SamplePreparation.md)
     * [Instrument](Instrument.md)
     * [ExperimentRun](ExperimentRun.md)

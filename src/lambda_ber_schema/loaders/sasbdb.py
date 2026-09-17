@@ -9,7 +9,12 @@ from urllib.parse import urlparse
 
 import requests
 
-from lambda_ber_schema.loaders.base import BaseLoader, LoaderResult, uniprot_curie
+from lambda_ber_schema.loaders.base import (
+    BaseLoader,
+    LoaderResult,
+    nucleotide_sequence,
+    uniprot_curie,
+)
 from lambda_ber_schema.loaders.cache import ResponseCache
 from lambda_ber_schema.pydantic import (
     BufferComposition,
@@ -21,10 +26,14 @@ from lambda_ber_schema.pydantic import (
     ExperimentRun,
     ExperimentSampleAssociation,
     FileFormatEnum,
+    NucleicAcid,
+    NucleicAcidTypeEnum,
     Protein,
     QualityMetrics,
     QuantityValue,
     Sample,
+    SampleNucleicAcidAssociation,
+    SampleNucleicAcidRoleEnum,
     SampleProteinAssociation,
     SampleProteinRoleEnum,
     SampleTypeEnum,
@@ -37,6 +46,13 @@ from lambda_ber_schema.pydantic import (
     WorkflowRun,
     WorkflowTypeEnum,
 )
+
+
+#: SASBDB molecular_type values (lowercased) that are nucleic acids.
+_NUCLEIC_ACID_TYPES = {
+    "dna": NucleicAcidTypeEnum.dna,
+    "rna": NucleicAcidTypeEnum.rna,
+}
 
 
 class SASBDBLoader(BaseLoader):
@@ -115,6 +131,11 @@ class SASBDBLoader(BaseLoader):
             raw, sample, warnings
         )
 
+        # One NucleicAcid row per DNA or RNA molecule
+        nucleic_acids, sample_nucleic_acid_associations = self._create_nucleic_acids(
+            raw, sample, entry_code, warnings
+        )
+
         # Create association tables to link entities
         study_sample_associations = [
             StudySampleAssociation(study_id=study.id, sample_id=sample.id)
@@ -148,6 +169,7 @@ class SASBDBLoader(BaseLoader):
             studies=[study],
             instruments=[instrument],
             proteins=proteins if proteins else None,
+            nucleic_acids=nucleic_acids if nucleic_acids else None,
             samples=[sample],
             experiment_runs=[experiment],
             workflow_runs=workflows,
@@ -157,6 +179,9 @@ class SASBDBLoader(BaseLoader):
             experiment_sample_associations=experiment_sample_associations,
             experiment_instrument_associations=experiment_instrument_associations,
             sample_protein_associations=sample_protein_associations if sample_protein_associations else None,
+            sample_nucleic_acid_associations=(
+                sample_nucleic_acid_associations if sample_nucleic_acid_associations else None
+            ),
             workflow_experiment_associations=workflow_experiment_associations,
         )
 
@@ -268,8 +293,9 @@ class SASBDBLoader(BaseLoader):
         # Get first molecule (primary)
         molecule = molecules[0] if molecules else {}
 
-        # Determine sample type from molecular_type field
-        mol_type = molecule.get("molecular_type", "protein")
+        # Determine sample type from molecular_type field. SASBDB writes the type as
+        # it likes ("RNA" on one entry, "protein" on another), so compare lowercased.
+        mol_type = (molecule.get("molecular_type") or "protein").lower()
         sample_type_map = {
             "protein": SampleTypeEnum.protein,
             "dna": SampleTypeEnum.nucleic_acid,
@@ -374,7 +400,9 @@ class SASBDBLoader(BaseLoader):
                 continue
 
             if curie not in proteins:
-                # SASBDB wraps the sequence at 60 columns; the schema wants one unbroken string
+                # SASBDB wraps the sequence at 60 columns; the schema wants one unbroken
+                # string, so drop all whitespace. (Nucleic acids go through
+                # nucleotide_sequence() instead, which also skips a FASTA header.)
                 sequence = "".join((molecule.get("uniprot_sequence") or "").split()).upper() or None
                 proteins[curie] = Protein(
                     id=curie,
@@ -403,6 +431,72 @@ class SASBDBLoader(BaseLoader):
             )
 
         return list(proteins.values()), associations
+
+    def _create_nucleic_acids(
+        self, raw: dict[str, Any], sample: Sample, entry_code: str, warnings: list[str]
+    ) -> tuple[list[NucleicAcid], list[SampleNucleicAcidAssociation]]:
+        """
+        Create NucleicAcid records and Sample-NucleicAcid links from SASBDB molecules.
+
+        A DNA or RNA molecule has no UniProt code and usually no registry entry
+        at all, so the row is named by entry and position. SASBDB gives the
+        sequence, the organism name and a mass computed from the sequence, and
+        those go on the record; the copy number describes this sample and goes
+        on the association. molecule_source is not read: SASBDB says "biological"
+        of a synthetic poly-C, so it does not tell us how the strand was made.
+        """
+        molecules = raw.get("experiment", {}).get("sample", {}).get("molecule", []) or []
+        nucleic_acids: list[NucleicAcid] = []
+        associations: list[SampleNucleicAcidAssociation] = []
+
+        role = (
+            SampleNucleicAcidRoleEnum.target
+            if len(molecules) == 1
+            else SampleNucleicAcidRoleEnum.subunit
+        )
+
+        for position, molecule in enumerate(molecules, 1):
+            nucleic_acid_type = _NUCLEIC_ACID_TYPES.get(
+                (molecule.get("molecular_type") or "").lower()
+            )
+            if nucleic_acid_type is None:
+                continue
+
+            name = molecule.get("long_name") or molecule.get("short_name")
+            raw_sequence = molecule.get("sequence")
+            sequence = nucleotide_sequence(raw_sequence)
+            if raw_sequence and sequence is None:
+                warnings.append(
+                    f"Molecule {name!r} has a sequence with characters outside the nucleotide "
+                    "alphabet; nucleotide_sequence left empty"
+                )
+
+            molecular_weight = None
+            if molecule.get("mw"):
+                molecular_weight = QuantityValue(numeric_value=molecule["mw"], unit="kDa")
+
+            nucleic_acid = NucleicAcid(
+                id=f"sasbdb:{entry_code}/nucleic_acid/{position}",
+                nucleic_acid_type=nucleic_acid_type,
+                nucleic_acid_name=name,
+                title=name,
+                description=molecule.get("molecule_description") or None,
+                organism_name=molecule.get("organism") or None,
+                nucleotide_sequence=sequence,
+                sequence_length=len(sequence) if sequence else None,
+                molecular_weight_theoretical=molecular_weight,
+            )
+            nucleic_acids.append(nucleic_acid)
+            associations.append(
+                SampleNucleicAcidAssociation(
+                    sample_id=sample.id,
+                    nucleic_acid_id=nucleic_acid.id,
+                    role=role,
+                    copy_number=molecule.get("number_molecules"),
+                )
+            )
+
+        return nucleic_acids, associations
 
     def _create_experiment_run(
         self,

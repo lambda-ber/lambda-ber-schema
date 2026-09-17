@@ -25,10 +25,16 @@ All entities are stored in flat collections at the Dataset level:
   sample that contains the protein; what varies between preparations lives on the sample and on
   the sample-protein association.
 
+- [Nucleic Acids](NucleicAcid.md): The DNA or RNA strand as a molecular entity - sequence, type,
+  source organism, gene - shared by every sample that contains it, as Protein is for proteins.
+  Identified by RNAcentral, RefSeq or INSDC accession where one exists; a synthetic
+  oligonucleotide, which is most of what structural biology sees, gets a local id.
+
 - [Samples](Sample.md): The physical specimens being studied (proteins, nucleic acids, complexes,
   cells, tissues). Each sample records the preparation-specific facts - buffer conditions,
-  concentration, storage, purity - and links to the proteins it contains through
-  [SampleProteinAssociation](SampleProteinAssociation.md).
+  concentration, storage, purity - and links to the proteins and nucleic acids it contains through
+  [SampleProteinAssociation](SampleProteinAssociation.md) and
+  [SampleNucleicAcidAssociation](SampleNucleicAcidAssociation.md).
 
 - [Protein Constructs](ProteinConstruct.md): How a protein was cloned and expressed - vector,
   tags, cleavage sites, codon optimization. A construct realizes one protein and may feed many samples.
@@ -92,6 +98,8 @@ relationship metadata (e.g., the role of a sample in an experiment):
 - **ExperimentSampleAssociation**: Links samples to experiments (with role and preparation used)
 - **SampleProteinAssociation**: Links proteins to samples (with role, copy number, residue range,
   modifications, observed mass, and the construct used)
+- **SampleNucleicAcidAssociation**: Links nucleic acids to samples (with role, copy number,
+  structural form, how the strand was made, modifications, and observed mass)
 - **ExperimentInstrumentAssociation**: Links instruments to experiments (with role: primary, detector)
 - **WorkflowExperimentAssociation**: Links source experiments to workflows
 - **WorkflowInputAssociation**: Links input files to workflows
@@ -105,6 +113,7 @@ relationship metadata (e.g., the role of a sample in an experiment):
 This relational design enables:
 - **Sample reuse**: The same sample can be used in multiple studies and experiments
 - **Protein reuse**: The same protein is described once and linked from every sample that contains it
+- **Nucleic acid reuse**: Likewise for a DNA or RNA strand - one record, linked from every sample it is in
 - **Multi-instrument experiments**: An experiment can use multiple instruments with different roles
 - **Integrative workflows**: A workflow can combine data from multiple experiments
 

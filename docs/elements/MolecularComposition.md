@@ -129,6 +129,7 @@ attributes:
     domain_of:
     - MolecularComposition
     - SampleProteinAssociation
+    - SampleNucleicAcidAssociation
     range: string
     multivalued: true
   ligands:
@@ -177,6 +178,7 @@ attributes:
     domain_of:
     - MolecularComposition
     - SampleProteinAssociation
+    - SampleNucleicAcidAssociation
     range: string
     multivalued: true
   ligands:

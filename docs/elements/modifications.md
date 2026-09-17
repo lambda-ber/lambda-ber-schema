@@ -17,8 +17,9 @@ Alias: modifications
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [SampleProteinAssociation](SampleProteinAssociation.md) | M:N link between Sample and Protein |  no  |
 | [MolecularComposition](MolecularComposition.md) | Molecular composition of a sample |  no  |
+| [SampleProteinAssociation](SampleProteinAssociation.md) | M:N link between Sample and Protein |  no  |
+| [SampleNucleicAcidAssociation](SampleNucleicAcidAssociation.md) | M:N link between Sample and NucleicAcid |  no  |
 
 
 
@@ -59,6 +60,7 @@ alias: modifications
 domain_of:
 - MolecularComposition
 - SampleProteinAssociation
+- SampleNucleicAcidAssociation
 range: string
 
 ```

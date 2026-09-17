@@ -1,0 +1,204 @@
+# Demonstrates the NucleicAcid entity table and SampleNucleicAcidAssociation, alongside the
+# Protein table for the same complex.
+#
+# Three strands are described once each: a single-guide RNA, the DNA target strand it pairs
+# with, and the complementary non-target strand. Three samples reuse them. The Cas9-sgRNA-DNA
+# ternary complex that was crystallized (PDB 4OO8) holds the protein and two of the strands.
+# The sgRNA on its own, made by in vitro transcription for solution work, is the same
+# NucleicAcid record with a 5' triphosphate it did not have in the complex. The target duplex
+# on its own, annealed from two synthetic oligonucleotides with a fluorophore on one, is two
+# rows pointing at two records. Everything that varies between the preparations - role, form,
+# how the strand was made, labels, measured mass - sits on the association rows.
+id: lambdaber:dataset-cas9-nucleic-acid-entities
+title: Streptococcus pyogenes Cas9 with guide RNA and target DNA
+description: Worked example of the NucleicAcid table shared by three samples, with the Protein
+  table for the nuclease
+
+# ===== ENTITY TABLES (FLAT COLLECTIONS) =====
+
+studies:
+- id: lambdaber:study-cas9-target-recognition
+  title: Target recognition by Cas9-sgRNA
+
+proteins:
+- id: uniprot:Q99ZW2
+  uniprot_id: uniprot:Q99ZW2
+  protein_name: CRISPR-associated endonuclease Cas9/Csn1
+  gene_name: cas9
+  organism: NCBITaxon:301447
+  organism_name: Streptococcus pyogenes serotype M1
+  sequence_length: 1368
+  molecular_weight_theoretical:
+    numeric_value: 158.4
+    unit: kilodaltons
+  ec_numbers:
+  - 3.1.-.-
+  go_terms:
+  - GO:0004519
+  - GO:0003677
+  pdb_entries:
+  - pdb:4OO8
+
+nucleic_acids:
+# The guide: an RNA with no registry entry, so a local id. The 5' GG is the T7 start and
+# not part of the guide sequence, which is why the record says so rather than leaving it out.
+- id: lambdaber:na-sgrna-4oo8
+  nucleic_acid_type: rna
+  nucleic_acid_name: Single-guide RNA, 98-mer
+  title: sgRNA used in PDB 4OO8
+  description: 20-nucleotide guide segment followed by the crRNA repeat, tetraloop, tracrRNA
+    anti-repeat and stem loops. Begins with GG for T7 transcription.
+  organism: NCBITaxon:32630
+  organism_name: synthetic construct
+  nucleotide_sequence: GGAAAUUAGGUGCGCUUGGCGUUUUAGAGCUAGAAAUAGCAAGUUAAAAUAAGGCUAGUCCGUUAUCAACUUGAAAAAGUGGCACCGAGUCGGUGCUU
+  sequence_length: 98
+  molecular_weight_theoretical:
+    numeric_value: 31.7
+    unit: kilodaltons
+  pdb_entries:
+  - pdb:4OO8
+# The target strand: complementary to the guide segment, with the 5' CCA that pairs with
+# the TGG PAM on the other strand.
+- id: lambdaber:na-target-strand-4oo8
+  nucleic_acid_type: dna
+  nucleic_acid_name: Target DNA strand, 23-mer
+  organism: NCBITaxon:32630
+  organism_name: synthetic construct
+  nucleotide_sequence: CCAGCCAAGCGCACCTAATTTCC
+  sequence_length: 23
+  molecular_weight_theoretical:
+    numeric_value: 6.93
+    unit: kilodaltons
+  pdb_entries:
+  - pdb:4OO8
+# The non-target strand: reverse complement of the target strand, carrying the PAM. Absent
+# from the crystal, present in the solution duplex.
+- id: lambdaber:na-nontarget-strand-4oo8
+  nucleic_acid_type: dna
+  nucleic_acid_name: Non-target DNA strand, 23-mer
+  organism: NCBITaxon:32630
+  organism_name: synthetic construct
+  nucleotide_sequence: GGAAATTAGGTGCGCTTGGCTGG
+  sequence_length: 23
+  molecular_weight_theoretical:
+    numeric_value: 7.16
+    unit: kilodaltons
+
+samples:
+- id: lambdaber:sample-cas9-sgrna-dna-complex
+  sample_code: CAS9-TERNARY-001
+  sample_type: complex
+  title: Cas9-sgRNA-target DNA ternary complex
+  protein_name: Cas9
+  organism: NCBITaxon:301447
+  molecular_weight:
+    numeric_value: 197.0
+    unit: kilodaltons
+  concentration:
+    numeric_value: 5.0
+    unit: milligrams per milliliter
+  buffer_composition:
+    ph:
+      numeric_value: 7.5
+      unit: pH units
+    components:
+    - 20 mM Tris-HCl
+    - 150 mM NaCl
+    - 5 mM MgCl2
+    - 1 mM DTT
+- id: lambdaber:sample-sgrna-ivt
+  sample_code: SGRNA-IVT-002
+  sample_type: nucleic_acid
+  title: sgRNA from in vitro transcription, free in solution
+  concentration:
+    numeric_value: 2.0
+    unit: milligrams per milliliter
+  buffer_composition:
+    ph:
+      numeric_value: 7.5
+      unit: pH units
+    components:
+    - 20 mM HEPES-KOH
+    - 100 mM KCl
+    - 5 mM MgCl2
+- id: lambdaber:sample-target-duplex-fam
+  sample_code: TARGET-DUPLEX-FAM-003
+  sample_type: nucleic_acid
+  title: Annealed target DNA duplex with 5' 6-FAM on the non-target strand
+  concentration:
+    numeric_value: 10.0
+    unit: micromolar
+  buffer_composition:
+    ph:
+      numeric_value: 7.5
+      unit: pH units
+    components:
+    - 20 mM Tris-HCl
+    - 100 mM NaCl
+
+# ===== ASSOCIATION TABLES (M:N RELATIONSHIPS) =====
+
+study_sample_associations:
+- study_id: lambdaber:study-cas9-target-recognition
+  sample_id: lambdaber:sample-cas9-sgrna-dna-complex
+  role: target
+- study_id: lambdaber:study-cas9-target-recognition
+  sample_id: lambdaber:sample-sgrna-ivt
+  role: reference
+- study_id: lambdaber:study-cas9-target-recognition
+  sample_id: lambdaber:sample-target-duplex-fam
+  role: reference
+
+sample_protein_associations:
+- sample_id: lambdaber:sample-cas9-sgrna-dna-complex
+  protein_id: uniprot:Q99ZW2
+  role: target
+  copy_number: 1
+  chain_ids:
+  - A
+
+sample_nucleic_acid_associations:
+# The complex: guide and target strand as they sit in the crystal. The sgRNA folds into stem
+# loops and pairs its guide segment with the target strand, so no single structural_form
+# fits it and the slot is left off. The target strand is present without its complement.
+- sample_id: lambdaber:sample-cas9-sgrna-dna-complex
+  nucleic_acid_id: lambdaber:na-sgrna-4oo8
+  role: guide
+  copy_number: 1
+  chain_ids:
+  - B
+  source_method: in_vitro_transcription
+- sample_id: lambdaber:sample-cas9-sgrna-dna-complex
+  nucleic_acid_id: lambdaber:na-target-strand-4oo8
+  role: binding_partner
+  copy_number: 1
+  chain_ids:
+  - C
+  structural_form: single_stranded
+  source_method: chemical_synthesis
+# The sgRNA alone: same record, but straight off the T7 reaction with its triphosphate on.
+- sample_id: lambdaber:sample-sgrna-ivt
+  nucleic_acid_id: lambdaber:na-sgrna-4oo8
+  role: target
+  copy_number: 1
+  source_method: in_vitro_transcription
+  modifications:
+  - 5' triphosphate
+  observed_molecular_weight:
+    numeric_value: 31.9
+    unit: kilodaltons
+# The duplex alone: two strands, two rows, both double_stranded, one of them labelled.
+- sample_id: lambdaber:sample-target-duplex-fam
+  nucleic_acid_id: lambdaber:na-target-strand-4oo8
+  role: subunit
+  copy_number: 1
+  structural_form: double_stranded
+  source_method: chemical_synthesis
+- sample_id: lambdaber:sample-target-duplex-fam
+  nucleic_acid_id: lambdaber:na-nontarget-strand-4oo8
+  role: subunit
+  copy_number: 1
+  structural_form: double_stranded
+  source_method: chemical_synthesis
+  modifications:
+  - 5' 6-FAM

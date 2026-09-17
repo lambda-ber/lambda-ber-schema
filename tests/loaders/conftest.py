@@ -37,6 +37,26 @@ def pdb_1hho_polymer_entities() -> list[dict]:
     return [entity1, entity2]
 
 
+@pytest.fixture
+def pdb_1aay_entry_response() -> dict:
+    """Load mocked PDB 1AAY entry API response (Zif268 zinc finger bound to DNA)."""
+    return json.loads((FIXTURES_DIR / "pdb_1AAY_entry.json").read_text())
+
+
+@pytest.fixture
+def pdb_1aay_polymer_entities() -> list[dict]:
+    """Load mocked PDB 1AAY polymer entity responses: two DNA strands, then the protein."""
+    return [
+        json.loads((FIXTURES_DIR / f"pdb_1AAY_entity{n}.json").read_text()) for n in (1, 2, 3)
+    ]
+
+
+@pytest.fixture
+def sasbdb_sasdv63_response() -> dict:
+    """Load mocked SASBDB SASDV63 API response (B2 SINE RNA, a single RNA molecule)."""
+    return json.loads((FIXTURES_DIR / "sasbdb_SASDV63.json").read_text())
+
+
 _SSRL_MX_SNAPSHOT = (
     Path(__file__).parent.parent / "data" / "raw" / "beamline-snapshots" / "SA_x4_1_00001.json"
 )

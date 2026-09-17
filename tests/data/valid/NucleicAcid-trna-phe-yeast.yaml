@@ -1,0 +1,38 @@
+# A NucleicAcid record: the molecule as a biological entity, not any one preparation of it.
+# A natural RNA with a registry entry, so the id is the RNAcentral CURIE. Its modified bases
+# belong to the molecule and are described here; a label or a 2'-O-methyl added for an
+# experiment would go on the SampleNucleicAcidAssociation instead.
+id: rnacentral:URS000011107D
+nucleic_acid_type: rna
+nucleic_acid_name: tRNA-Phe (GAA)
+title: Yeast phenylalanine tRNA
+description: Mature cytoplasmic tRNA-Phe of Saccharomyces cerevisiae, 76 nucleotides. The first
+  tRNA structure solved and the reference L-shaped fold. Carries fourteen modified nucleosides,
+  among them D16, D17, m2,2G26, Cm32, Gm34, wybutosine at 37, m5C40, m7G46, m5C49, T54, psi55
+  and m1A58; each is written as its parent base in nucleotide_sequence.
+rnacentral_id: rnacentral:URS000011107D
+rfam_families:
+- rfam:RF00005
+gene_name: tF(GAA)
+organism: NCBITaxon:4932
+organism_name: Saccharomyces cerevisiae
+nucleotide_sequence: GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+sequence_length: 76
+molecular_weight_theoretical:
+  numeric_value: 24.6
+  unit: kilodaltons
+function_description: Adaptor that reads UUC and UUU codons and delivers phenylalanine to the
+  ribosome.
+go_terms:
+- GO:0030533
+- GO:0006414
+pdb_entries:
+- pdb:1EHZ
+- pdb:4TNA
+- pdb:6TNA
+cross_references:
+- database_name: gtrnadb
+  database_id: tRNA-Phe-GAA-1-1
+  database_url: https://gtrnadb.ucsc.edu/genomes/eukaryota/Scere3/genes/tRNA-Phe-GAA-1-1.html
+- database_name: modomics
+  database_id: tRNA-Phe-GAA-Saccharomyces_cerevisiae

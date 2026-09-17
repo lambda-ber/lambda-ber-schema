@@ -368,6 +368,7 @@ attributes:
     - StudySampleAssociation
     - ExperimentSampleAssociation
     - SampleProteinAssociation
+    - SampleNucleicAcidAssociation
     range: string
     required: true
   preparation_date:
@@ -720,6 +721,7 @@ attributes:
     - StudySampleAssociation
     - ExperimentSampleAssociation
     - SampleProteinAssociation
+    - SampleNucleicAcidAssociation
     range: string
     required: true
   preparation_date:

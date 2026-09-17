@@ -23,6 +23,23 @@ def loader(mocker, pdb_1hho_entry_response, pdb_1hho_polymer_entities):
     return loader
 
 
+def _synthetic_entity(
+    entity_id: str, polymer_type: str, poly_type: str, sequence: str, strand: str, length: int | None = None
+) -> dict:
+    """The few polymer-entity fields the loader reads, for cases no fixture entry covers."""
+    return {
+        "entity_poly": {
+            "rcsb_entity_polymer_type": polymer_type,
+            "type": poly_type,
+            "pdbx_seq_one_letter_code_can": sequence,
+            "pdbx_strand_id": strand,
+            "rcsb_sample_sequence_length": length if length is not None else len(sequence),
+        },
+        "rcsb_polymer_entity": {"pdbx_description": f"Synthetic {polymer_type}", "pdbx_number_of_molecules": 1},
+        "rcsb_polymer_entity_container_identifiers": {"entity_id": entity_id},
+    }
+
+
 class TestPDBLoader:
     """Tests for PDBLoader."""
 
@@ -100,6 +117,12 @@ class TestPDBLoader:
         assert alpha.copy_number == 1
         assert alpha.sequence_coverage is not None
         assert 0.99 <= alpha.sequence_coverage <= 1.0
+
+    def test_no_nucleic_acids_for_a_protein_only_entry(self, loader):
+        """Hemoglobin has no DNA or RNA entity, so the table is absent rather than empty."""
+        result = loader.load("1HHO")
+        assert result.dataset.nucleic_acids is None
+        assert result.dataset.sample_nucleic_acid_associations is None
 
     def test_sample_has_molecular_weight(self, loader):
         """Test Sample has molecular weight from entity."""
@@ -205,6 +228,64 @@ class TestPDBLoader:
         assert ds.experiment_instrument_associations is not None
         assert len(ds.experiment_instrument_associations) == 1
 
+    @pytest.mark.parametrize(
+        ("polymer_type", "poly_type", "expected"),
+        [
+            ("NA-hybrid", "polydeoxyribonucleotide/polyribonucleotide hybrid", "dna_rna_hybrid"),
+            ("Other", "peptide nucleic acid", "peptide_nucleic_acid"),
+        ],
+    )
+    def test_nucleic_acid_sample_type_covers_hybrids_and_analogues(
+        self, mocker, pdb_1hho_entry_response, polymer_type, poly_type, expected
+    ):
+        """An NA-hybrid or PNA entity is a nucleic acid sample, not a complex."""
+        loader = PDBLoader()
+        entity = _synthetic_entity("1", polymer_type, poly_type, "ACGUACGT", "A")
+        mocker.patch.object(loader, "_fetch_entry", return_value=pdb_1hho_entry_response)
+        mocker.patch.object(loader, "_fetch_polymer_entities", return_value=[entity])
+        result = loader.load("1HHO")
+        assert result.dataset.samples[0].sample_type == "nucleic_acid"
+        assert result.dataset.nucleic_acids[0].nucleic_acid_type == expected
+        # A lone strand with no protein in the entry is the target
+        assert result.dataset.sample_nucleic_acid_associations[0].role == "target"
+
+    def test_strands_beside_several_proteins_are_subunits(
+        self, mocker, pdb_1hho_entry_response, pdb_1hho_polymer_entities
+    ):
+        """With two protein entities the entry is an assembly and a strand is one subunit of it."""
+        loader = PDBLoader()
+        strand = _synthetic_entity("3", "DNA", "polydeoxyribonucleotide", "ACGTACGT", "E")
+        mocker.patch.object(loader, "_fetch_entry", return_value=pdb_1hho_entry_response)
+        mocker.patch.object(
+            loader, "_fetch_polymer_entities", return_value=pdb_1hho_polymer_entities + [strand]
+        )
+        result = loader.load("1HHO")
+        assert [a.role for a in result.dataset.sample_protein_associations] == ["subunit", "subunit"]
+        assert [a.role for a in result.dataset.sample_nucleic_acid_associations] == ["subunit"]
+
+    def test_sequence_outside_the_alphabet_is_dropped_with_a_warning(
+        self, mocker, pdb_1hho_entry_response
+    ):
+        """A modified residue in house notation leaves the sequence empty; the length still arrives."""
+        loader = PDBLoader()
+        entity = _synthetic_entity("1", "RNA", "polyribonucleotide", "ACG(5MC)U", "A", length=5)
+        mocker.patch.object(loader, "_fetch_entry", return_value=pdb_1hho_entry_response)
+        mocker.patch.object(loader, "_fetch_polymer_entities", return_value=[entity])
+        result = loader.load("1HHO")
+        rna = result.dataset.nucleic_acids[0]
+        assert rna.nucleotide_sequence is None
+        assert rna.sequence_length == 5
+        assert any("nucleotide alphabet" in w for w in result.warnings)
+
+    def test_sequence_length_agrees_with_the_sequence(self, mocker, pdb_1hho_entry_response):
+        """When the sequence is on the record its length is measured, not copied from the API."""
+        loader = PDBLoader()
+        entity = _synthetic_entity("1", "DNA", "polydeoxyribonucleotide", "ACGTACGT", "A", length=99)
+        mocker.patch.object(loader, "_fetch_entry", return_value=pdb_1hho_entry_response)
+        mocker.patch.object(loader, "_fetch_polymer_entities", return_value=[entity])
+        result = loader.load("1HHO")
+        assert result.dataset.nucleic_acids[0].sequence_length == 8
+
     def test_raw_data_contains_entry_and_entities(self, loader):
         """Test raw_data contains entry and polymer entity data."""
         result = loader.load("1HHO")
@@ -236,6 +317,78 @@ class TestPDBLoader:
 
 @pytest.mark.integration
 @pytest.mark.slow
+@pytest.fixture
+def dna_loader(mocker, pdb_1aay_entry_response, pdb_1aay_polymer_entities):
+    """Loader for 1AAY: Zif268 zinc finger bound to an 11-bp DNA duplex."""
+    loader = PDBLoader()
+    mocker.patch.object(loader, "_fetch_entry", return_value=pdb_1aay_entry_response)
+    mocker.patch.object(
+        loader, "_fetch_polymer_entities", return_value=pdb_1aay_polymer_entities
+    )
+    return loader
+
+
+class TestPDBLoaderNucleicAcids:
+    """A protein-DNA complex: one Protein row, two NucleicAcid rows, three samples."""
+
+    def test_samples_typed_by_polymer(self, dna_loader):
+        result = dna_loader.load("1AAY")
+        types = [s.sample_type for s in result.dataset.samples]
+        assert types == ["nucleic_acid", "nucleic_acid", "protein"]
+
+    def test_protein_name_is_for_protein_samples_only(self, dna_loader):
+        """A DNA strand's description is its title, not a protein name."""
+        result = dna_loader.load("1AAY")
+        strand, _, protein = result.dataset.samples
+        assert strand.title.startswith("DNA (5'-D(*AP*GP*CP*GP")
+        assert strand.protein_name is None
+        assert protein.protein_name == "PROTEIN (ZIF268 ZINC FINGER PEPTIDE)"
+
+    def test_nucleic_acids_created_from_dna_entities(self, dna_loader):
+        """Each DNA entity is one NucleicAcid, named by entry and entity, with its sequence."""
+        result = dna_loader.load("1AAY")
+        ds = result.dataset
+        assert [n.id for n in ds.nucleic_acids] == [
+            "pdb:1AAY/nucleic_acid/1",
+            "pdb:1AAY/nucleic_acid/2",
+        ]
+        strand = ds.nucleic_acids[0]
+        assert strand.nucleic_acid_type == "dna"
+        assert strand.nucleic_acid_name.startswith("DNA (5'-D(*AP*GP*CP*GP")
+        # The deposited sequence is the molecule itself for a synthetic strand
+        assert strand.nucleotide_sequence == "AGCGTGGGCGT"
+        assert strand.sequence_length == 11
+        assert strand.pdb_entries == ["pdb:1AAY"]
+        # This 1997 entry gives the oligonucleotides no source organism
+        assert strand.organism is None
+        assert not [w for w in result.warnings if "nucleotide alphabet" in w]
+
+    def test_protein_still_created_alongside(self, dna_loader):
+        result = dna_loader.load("1AAY")
+        assert [p.id for p in result.dataset.proteins] == ["uniprot:P08046"]
+        # The lone protein entity is the target
+        assert result.dataset.sample_protein_associations[0].role == "target"
+
+    def test_strands_are_binding_partners_of_the_lone_protein(self, dna_loader):
+        """With exactly one protein entity, the strands are its binding partners."""
+        result = dna_loader.load("1AAY")
+        ds = result.dataset
+        assocs = {a.nucleic_acid_id: a for a in ds.sample_nucleic_acid_associations}
+        assert set(assocs) == {"pdb:1AAY/nucleic_acid/1", "pdb:1AAY/nucleic_acid/2"}
+        first = assocs["pdb:1AAY/nucleic_acid/1"]
+        assert first.sample_id == ds.samples[0].id
+        assert first.role == "binding_partner"
+        assert first.chain_ids == ["B"]
+        assert first.copy_number == 1
+        assert assocs["pdb:1AAY/nucleic_acid/2"].chain_ids == ["C"]
+
+    def test_dataset_validates_against_schema(self, dna_loader):
+        """The pydantic model accepts what the loader built, including the new tables."""
+        result = dna_loader.load("1AAY")
+        assert isinstance(result.dataset, Dataset)
+        assert result.dataset.model_dump(exclude_none=True)["nucleic_acids"]
+
+
 class TestPDBLoaderIntegration:
     """Integration tests that hit the real PDB API."""
 

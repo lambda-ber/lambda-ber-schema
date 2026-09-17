@@ -3,11 +3,6 @@
 # Slot: observed_molecular_weight 
 
 
-_Mass as measured for this preparation (mass spectrometry, SEC-MALS, SAXS), typically in kDa. The sequence-derived mass lives on Protein.molecular_weight_theoretical._
-
-
-
-
 
 URI: [lambda:observed_molecular_weight](http://w3id.org/lambda/observed_molecular_weight)
 Alias: observed_molecular_weight
@@ -23,6 +18,7 @@ Alias: observed_molecular_weight
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [SampleProteinAssociation](SampleProteinAssociation.md) | M:N link between Sample and Protein |  no  |
+| [SampleNucleicAcidAssociation](SampleNucleicAcidAssociation.md) | M:N link between Sample and NucleicAcid |  no  |
 
 
 
@@ -31,7 +27,7 @@ Alias: observed_molecular_weight
 
 ## Properties
 
-* Range: [QuantityValue](QuantityValue.md)
+* Range: [String](String.md)
 
 
 
@@ -40,13 +36,6 @@ Alias: observed_molecular_weight
 
 
 
-
-
-
-### Schema Source
-
-
-* from schema: http://w3id.org/lambda/
 
 
 
@@ -66,16 +55,11 @@ Alias: observed_molecular_weight
 <details>
 ```yaml
 name: observed_molecular_weight
-description: Mass as measured for this preparation (mass spectrometry, SEC-MALS, SAXS),
-  typically in kDa. The sequence-derived mass lives on Protein.molecular_weight_theoretical.
-from_schema: http://w3id.org/lambda/
-rank: 1000
 alias: observed_molecular_weight
-owner: SampleProteinAssociation
 domain_of:
 - SampleProteinAssociation
-range: QuantityValue
-inlined: true
+- SampleNucleicAcidAssociation
+range: string
 
 ```
 </details>

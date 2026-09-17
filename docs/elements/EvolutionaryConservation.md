@@ -367,6 +367,7 @@ attributes:
     owner: EvolutionaryConservation
     domain_of:
     - SampleProteinAssociation
+    - SampleNucleicAcidAssociation
     - ProteinAnnotation
     range: string
     pattern: ^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$

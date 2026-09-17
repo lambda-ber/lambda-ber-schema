@@ -1,0 +1,244 @@
+{
+  "id": "pdb:1AAY",
+  "title": "ZIF268 ZINC FINGER-DNA COMPLEX",
+  "studies": [
+    {
+      "id": "pdb:1AAY/study",
+      "title": "ZIF268 ZINC FINGER-DNA COMPLEX"
+    }
+  ],
+  "instruments": [
+    {
+      "id": "pdb:instrument/PDB-1AAY",
+      "title": "ROTATING ANODE",
+      "description": "Detector: RIGAKU RAXIS IIC",
+      "instrument_code": "PDB-1AAY"
+    }
+  ],
+  "proteins": [
+    {
+      "id": "uniprot:P08046",
+      "title": "Early growth response protein 1",
+      "uniprot_id": "uniprot:P08046",
+      "protein_name": "Early growth response protein 1",
+      "organism": "NCBITaxon:10090",
+      "organism_name": "Mus musculus",
+      "pdb_entries": [
+        "pdb:1AAY"
+      ]
+    }
+  ],
+  "nucleic_acids": [
+    {
+      "id": "pdb:1AAY/nucleic_acid/1",
+      "title": "DNA (5'-D(*AP*GP*CP*GP*TP*GP*GP*GP*CP*GP*T)-3')",
+      "nucleic_acid_type": "dna",
+      "nucleic_acid_name": "DNA (5'-D(*AP*GP*CP*GP*TP*GP*GP*GP*CP*GP*T)-3')",
+      "nucleotide_sequence": "AGCGTGGGCGT",
+      "sequence_length": 11,
+      "pdb_entries": [
+        "pdb:1AAY"
+      ]
+    },
+    {
+      "id": "pdb:1AAY/nucleic_acid/2",
+      "title": "DNA (5'-D(*TP*AP*CP*GP*CP*CP*CP*AP*CP*GP*C)-3')",
+      "nucleic_acid_type": "dna",
+      "nucleic_acid_name": "DNA (5'-D(*TP*AP*CP*GP*CP*CP*CP*AP*CP*GP*C)-3')",
+      "nucleotide_sequence": "TACGCCCACGC",
+      "sequence_length": 11,
+      "pdb_entries": [
+        "pdb:1AAY"
+      ]
+    }
+  ],
+  "samples": [
+    {
+      "id": "pdb:1AAY/sample/1",
+      "title": "DNA (5'-D(*AP*GP*CP*GP*TP*GP*GP*GP*CP*GP*T)-3')",
+      "description": "Sequence length: 11",
+      "sample_code": "PDB-1AAY-1",
+      "sample_type": "nucleic_acid",
+      "molecular_weight": {
+        "unit": "kDa",
+        "numeric_value": 3.43
+      }
+    },
+    {
+      "id": "pdb:1AAY/sample/2",
+      "title": "DNA (5'-D(*TP*AP*CP*GP*CP*CP*CP*AP*CP*GP*C)-3')",
+      "description": "Sequence length: 11",
+      "sample_code": "PDB-1AAY-2",
+      "sample_type": "nucleic_acid",
+      "molecular_weight": {
+        "unit": "kDa",
+        "numeric_value": 3.28
+      }
+    },
+    {
+      "id": "pdb:1AAY/sample/3",
+      "title": "PROTEIN (ZIF268 ZINC FINGER PEPTIDE)",
+      "description": "Organism: Mus musculus; Sequence length: 90",
+      "sample_code": "PDB-1AAY-3",
+      "sample_type": "protein",
+      "molecular_weight": {
+        "unit": "kDa",
+        "numeric_value": 10.85
+      },
+      "organism": "NCBITaxon:10090",
+      "database_cross_references": [
+        {
+          "database_name": "uniprot",
+          "database_id": "P08046",
+          "database_url": "https://www.uniprot.org/uniprotkb/P08046"
+        }
+      ],
+      "protein_name": "PROTEIN (ZIF268 ZINC FINGER PEPTIDE)"
+    }
+  ],
+  "experiment_runs": [
+    {
+      "id": "pdb:1AAY/experiment",
+      "experiment_code": "PDB-1AAY-EXP",
+      "technique": "xray_crystallography",
+      "experiment_date": "1997-01-18",
+      "quality_metrics": {
+        "resolution": {
+          "unit": "Angstroms",
+          "numeric_value": 1.6
+        },
+        "unit_cell_a": {
+          "unit": "Angstroms",
+          "numeric_value": 45.4
+        },
+        "unit_cell_b": {
+          "unit": "Angstroms",
+          "numeric_value": 56.2
+        },
+        "unit_cell_c": {
+          "unit": "Angstroms",
+          "numeric_value": 130.8
+        },
+        "unit_cell_alpha": {
+          "unit": "degrees",
+          "numeric_value": 90.0
+        },
+        "unit_cell_beta": {
+          "unit": "degrees",
+          "numeric_value": 90.0
+        },
+        "unit_cell_gamma": {
+          "unit": "degrees",
+          "numeric_value": 90.0
+        },
+        "clashscore": {
+          "unit": "dimensionless",
+          "numeric_value": 6.0
+        }
+      }
+    }
+  ],
+  "workflow_runs": [
+    {
+      "id": "pdb:1AAY/workflow/refinement",
+      "workflow_code": "PDB-1AAY-REFINE",
+      "workflow_type": "refinement",
+      "software_name": "X-PLOR"
+    }
+  ],
+  "data_files": [
+    {
+      "id": "pdb:1AAY/file/pdb",
+      "description": "PDB format coordinates",
+      "file_name": "1aay.pdb",
+      "file_format": "pdb",
+      "file_path": "https://files.rcsb.org/download/1AAY.pdb"
+    },
+    {
+      "id": "pdb:1AAY/file/mmcif",
+      "description": "mmCIF format coordinates",
+      "file_name": "1aay.cif",
+      "file_format": "mmcif",
+      "file_path": "https://files.rcsb.org/download/1AAY.cif"
+    }
+  ],
+  "study_sample_associations": [
+    {
+      "study_id": "pdb:1AAY/study",
+      "sample_id": "pdb:1AAY/sample/1"
+    },
+    {
+      "study_id": "pdb:1AAY/study",
+      "sample_id": "pdb:1AAY/sample/2"
+    },
+    {
+      "study_id": "pdb:1AAY/study",
+      "sample_id": "pdb:1AAY/sample/3"
+    }
+  ],
+  "study_experiment_associations": [
+    {
+      "study_id": "pdb:1AAY/study",
+      "experiment_id": "pdb:1AAY/experiment"
+    }
+  ],
+  "experiment_sample_associations": [
+    {
+      "experiment_id": "pdb:1AAY/experiment",
+      "sample_id": "pdb:1AAY/sample/1"
+    },
+    {
+      "experiment_id": "pdb:1AAY/experiment",
+      "sample_id": "pdb:1AAY/sample/2"
+    },
+    {
+      "experiment_id": "pdb:1AAY/experiment",
+      "sample_id": "pdb:1AAY/sample/3"
+    }
+  ],
+  "experiment_instrument_associations": [
+    {
+      "experiment_id": "pdb:1AAY/experiment",
+      "instrument_id": "pdb:instrument/PDB-1AAY"
+    }
+  ],
+  "sample_protein_associations": [
+    {
+      "sample_id": "pdb:1AAY/sample/3",
+      "protein_id": "uniprot:P08046",
+      "role": "target",
+      "copy_number": 1,
+      "sequence_coverage": 0.167,
+      "chain_ids": [
+        "A"
+      ]
+    }
+  ],
+  "sample_nucleic_acid_associations": [
+    {
+      "sample_id": "pdb:1AAY/sample/1",
+      "nucleic_acid_id": "pdb:1AAY/nucleic_acid/1",
+      "role": "binding_partner",
+      "copy_number": 1,
+      "chain_ids": [
+        "B"
+      ]
+    },
+    {
+      "sample_id": "pdb:1AAY/sample/2",
+      "nucleic_acid_id": "pdb:1AAY/nucleic_acid/2",
+      "role": "binding_partner",
+      "copy_number": 1,
+      "chain_ids": [
+        "C"
+      ]
+    }
+  ],
+  "workflow_experiment_associations": [
+    {
+      "workflow_id": "pdb:1AAY/workflow/refinement",
+      "experiment_id": "pdb:1AAY/experiment"
+    }
+  ],
+  "@type": "Dataset"
+}

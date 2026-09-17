@@ -260,6 +260,7 @@ attributes:
     from_schema: http://w3id.org/lambda/functional_annotation
     domain_of:
     - Protein
+    - NucleicAcid
     - FunctionalSite
     range: uriorcurie
     multivalued: true
@@ -363,6 +364,7 @@ attributes:
     owner: FunctionalSite
     domain_of:
     - Protein
+    - NucleicAcid
     - FunctionalSite
     range: uriorcurie
     multivalued: true
@@ -423,6 +425,7 @@ attributes:
     owner: FunctionalSite
     domain_of:
     - SampleProteinAssociation
+    - SampleNucleicAcidAssociation
     - ProteinAnnotation
     range: string
     pattern: ^[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*$

@@ -231,6 +231,7 @@ attributes:
     domain_of:
     - Protein
     - ProteinConstruct
+    - NucleicAcid
   ncbi_taxid:
     name: ncbi_taxid
     description: NCBI Taxonomy ID for source organism
@@ -422,6 +423,7 @@ attributes:
     domain_of:
     - Protein
     - ProteinConstruct
+    - NucleicAcid
     range: string
   ncbi_taxid:
     name: ncbi_taxid
