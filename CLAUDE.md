@@ -21,7 +21,9 @@ The main schema definition is located at `src/lambda_ber_schema/schema/lambda_be
 - **Study**: Lightweight grouping for related experiments
 - **Protein**: The protein as a biological entity, identified by UniProt CURIE (`uniprot:P69905`); sequence, organism, gene, functional annotations. One row shared by every sample containing it
 - **NucleicAcid**: The DNA or RNA strand as a molecular entity; `nucleic_acid_type` required. Identified by RNAcentral, RefSeq or INSDC CURIE where one exists (`rnacentral:URS000011107D`), else a `lambda:` or `pdb:` id, since most strands in structural biology are synthetic oligos. One row shared by every sample containing it
-- **Sample**: Physical samples with buffer conditions, concentration, storage details. Protein identity lives on Protein via SampleProteinAssociation; nucleic acid identity on NucleicAcid via SampleNucleicAcidAssociation
+- **SmallMolecule**: The ligand, cofactor, metal ion, lipid or detergent as a chemical entity, identified by ChEBI CURIE (`CHEBI:30616`) where one exists, else `chembl.compound:`, `pubchem.compound:`, `drugbank:`, the wwPDB ligand code (`pdb.ligand:ATP`) or `lambda:`. One row shared by every sample containing it
+- **Sample**: Physical samples with buffer conditions, concentration, storage details. `sample_type` is a one-word summary. Protein identity lives on Protein via SampleProteinAssociation; nucleic acid identity on NucleicAcid via SampleNucleicAcidAssociation; the full inventory lives on SampleComponent
+- **SampleComponent**: One constituent of one sample, of any kind: `component_type` required, then exactly one of `protein_id`, `nucleic_acid_id`, `small_molecule_id` where an entity row exists, or `ontology_term` plus `title` for a virus particle, organelle, cell, tissue or membrane mimetic. Carries role, copy number, concentration. Has an id, so SampleComponentInteraction rows can point at it
 - **ProteinConstruct**: Cloning and expression detail for one protein; links to Protein
 - **SamplePreparation**: Technique-specific preparation protocols
 - **Instrument**: Equipment specifications for CryoEM, XRay, SAXS instruments
@@ -33,6 +35,7 @@ The main schema definition is located at `src/lambda_ber_schema/schema/lambda_be
 **Association Tables** (M:N relationships):
 - **StudySampleAssociation**, **StudyExperimentAssociation**, **StudyWorkflowAssociation**
 - **ExperimentSampleAssociation**, **ExperimentInstrumentAssociation**, **SampleProteinAssociation** (role, copy number, residue range, observed mass, construct), **SampleNucleicAcidAssociation** (role, copy number, structural form, source method, modifications, observed mass)
+- **SampleComponentInteraction**: subject component → object component within one sample, with `interaction_type` (binds, inhibits, is_coordinated_by, base_pairs_with, embedded_in, ...), `interaction_status` (designed, expected, observed, not_observed), stoichiometry, sites, affinity, evidence. Both ends are SampleComponent rows
 - **WorkflowExperimentAssociation**, **WorkflowInputAssociation**, **WorkflowOutputAssociation**
 
 **Supporting classes**: MolecularComposition, BufferComposition, StorageConditions, ExperimentalConditions, etc.
@@ -114,6 +117,9 @@ Each major class has minimal required fields to ensure data integrity:
 - **Protein**: `id` only (use the UniProt CURIE); `uniprot_id` and `protein_name` are recommended, not required, so a row seeded from an accession can be enriched later
 - **ProteinConstruct**: `construct_id`. Set `protein_id` whenever the dataset carries the Protein row; use `uniprot_id` alone only when it does not. Where both are set they must agree, and `protein_id` is the join key
 - **NucleicAcid**: `id` and `nucleic_acid_type`; `nucleic_acid_name` is recommended. A duplex of two different strands is two rows; a self-complementary duplex is one row with `copy_number: 2` on the association
+- **SmallMolecule**: `id` only (use the ChEBI CURIE); `small_molecule_name` is recommended
+- **SampleComponent**: `id`, `sample_id`, `component_type`. Exactly one of `protein_id`, `nucleic_acid_id`, `small_molecule_id` when the type has an entity table
+- **SampleComponentInteraction**: `sample_id`, `subject_id`, `object_id`, `interaction_type`. Read subject to object as the type is worded
 - **Sample**: `sample_code`, `sample_type`
 - **SamplePreparation**: `preparation_type`, `sample_id`
 - **Instrument**: `instrument_code`
@@ -155,3 +161,5 @@ The `tests/data/valid/` directory contains comprehensive examples covering all s
 5. **Use proper enum values** from the defined permissible_values
 6. **Write UniProt accessions as CURIEs** (`uniprot:P69905`) for `Protein.id`, `Protein.uniprot_id`, and new `protein_id` values in functional annotations; the bare form is only tolerated in `ProteinAnnotation.protein_id` for older data
 7. **Keep per-preparation nucleic acid facts on the association**: whether a strand is paired (`structural_form`), how it was made (`source_method`), and labels or backbone chemistry (`modifications`) belong on `SampleNucleicAcidAssociation`, not on `NucleicAcid`
+8. **SampleComponent and the biopolymer associations coexist**: a protein or strand in a sample may have both a SampleComponent row (the inventory entry and the handle an interaction points at) and an association row (the per-preparation detail). Where `role` or `copy_number` is set on both, they must agree. A dataset with no interactions may carry the associations alone
+9. **Ligands are SmallMolecule rows, not strings**: `Sample.ligand` and `MolecularComposition.ligands` remain as facility display text; the structured form is a SampleComponent of type `small_molecule` pointing at a SmallMolecule, with a SampleComponentInteraction saying what it binds
