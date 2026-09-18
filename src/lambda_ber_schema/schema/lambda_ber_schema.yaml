@@ -282,6 +282,11 @@ classes:
         range: Sample
         multivalued: true
         inlined_as_list: true
+      sample_components:
+        description: "What each sample contains, one row per constituent: the inventory behind sample_type"
+        range: SampleComponent
+        multivalued: true
+        inlined_as_list: true
       sample_preparations:
         description: "All sample preparations"
         range: SamplePreparation
@@ -1066,6 +1071,63 @@ classes:
         range: DatabaseCrossReference
         multivalued: true
         inlined_as_list: true
+
+  SampleComponent:
+    is_a: NamedThing
+    description: >-
+      One constituent of one sample: a protein, a nucleic acid, a small molecule, a virus particle,
+      an organelle, a cell, a membrane mimetic. The inventory of what a sample contains, one row per
+      kind of thing in it, so that a sample can hold any mixture and each thing in it can be named,
+      given a role, counted and pointed at. SampleComponentInteraction rows say which components are
+      expected or observed to act on which. Sample.sample_type remains the one-word summary; this
+      table is the detail behind it.
+    comments:
+      - "A component that has an entity record points at it: protein_id for a protein, nucleic_acid_id for a strand, small_molecule_id for a ligand, ion, lipid or detergent. Exactly one of the three is set, and it matches component_type. A component with no entity table - a virus particle, an organelle, a cell, a nanodisc - is named in title and, where an ontology has a term for it, in ontology_term: NCBITaxon for a virus, GO cellular component for an organelle, CL for a cell type, UBERON for a tissue."
+      - "For a protein or nucleic acid the component row is the entry in the inventory and the handle an interaction points at. SampleProteinAssociation and SampleNucleicAcidAssociation, keyed on the same sample and entity, carry the per-preparation detail of the biopolymer: residue range, chain ids, modifications, measured mass, construct. A dataset that records no interactions may carry the associations alone. Where role or copy_number is set on both the component and the association, the two must agree."
+    related_mappings:
+      - IHMCIF:_ihm_struct_assembly_details
+      - mmCIF:_entity
+    attributes:
+      sample_id:
+        description: "The sample this component is part of"
+        range: Sample
+        required: true
+      component_type:
+        description: "What kind of thing this component is"
+        range: SampleComponentTypeEnum
+        required: true
+      protein_id:
+        description: "The Protein record, where component_type is protein"
+        range: Protein
+      nucleic_acid_id:
+        description: "The NucleicAcid record, where component_type is nucleic_acid"
+        range: NucleicAcid
+      small_molecule_id:
+        description: "The SmallMolecule record, where component_type is small_molecule"
+        range: SmallMolecule
+      ontology_term:
+        description: >-
+          Ontology term naming a component that has no entity table: the NCBI Taxonomy term for a
+          virus particle (NCBITaxon:11676), the GO cellular component for an organelle
+          (GO:0005840 for ribosome), the Cell Ontology term for a cell, the UBERON term for a tissue.
+        range: OntologyTerm
+      role:
+        description: "Part this component plays in the sample"
+        range: SampleComponentRoleEnum
+      copy_number:
+        description: >-
+          Copies of this component per assembly in the sample (4 for the subunits of a homotetramer,
+          2 for two zinc ions per monomer). Omit when unknown rather than assuming 1.
+        range: integer
+        exact_mappings:
+          - mmCIF:_entity.pdbx_number_of_molecules
+      concentration:
+        description: >-
+          Concentration of this component in the sample as prepared (1 mM ATP, 0.02 % DDM, 5 mM
+          MgCl2). Sample.concentration is the concentration of the sample as a whole, usually of
+          its target.
+        range: QuantityValue
+        inlined: true
 
   SamplePreparation:
     is_a: NamedThing
@@ -5677,6 +5739,8 @@ enums:
         description: "A solubility or affinity fusion partner left attached (e.g., MBP, GST, GFP)"
       chaperone:
         description: "A chaperone or scaffold added to stabilize or reconstitute the target"
+      carrier:
+        description: "A membrane scaffold protein or other protein that forms the host a membrane protein target sits in, as MSP1D1 does for a nanodisc"
       contaminant:
         description: "A protein present unintentionally and identified after the fact"
       standard:
@@ -5753,6 +5817,75 @@ enums:
         description: "Purified from cells, tissue or virions without amplification, as for native tRNA or genomic DNA"
       other:
         description: "A method not listed, described in the association's description"
+
+  SampleComponentTypeEnum:
+    description: "Kinds of thing a sample may contain. The first three are described by an entity record; the rest are named by title and an ontology term."
+    permissible_values:
+      protein:
+        description: "A protein or peptide, described by a Protein record"
+      nucleic_acid:
+        description: "A DNA or RNA strand, described by a NucleicAcid record"
+      small_molecule:
+        description: "A ligand, cofactor, metal ion, lipid, detergent, sugar or additive, described by a SmallMolecule record"
+      virus_particle:
+        description: "A virion or virus-like particle, named by its NCBI Taxonomy term"
+      organelle:
+        description: "An organelle or other cellular substructure such as a ribosome, a proteasome or a mitochondrion, named by its GO cellular component term"
+      cell:
+        description: "A whole cell, named by its Cell Ontology or NCBI Taxonomy term"
+      tissue:
+        description: "A tissue or tissue section, named by its UBERON term"
+      membrane_mimetic:
+        description: "A nanodisc, liposome, bicelle, micelle or amphipol that hosts a membrane protein"
+      nanoparticle:
+        description: "A synthetic nanoparticle or scaffold"
+      other:
+        description: "A component of a kind not listed, described in title and description"
+
+  SampleComponentRoleEnum:
+    description: >-
+      Part a component plays in a sample. A superset of SampleProteinRoleEnum and
+      SampleNucleicAcidRoleEnum, so a role given on an association can be repeated on the
+      component without translation.
+    permissible_values:
+      target:
+        description: "The thing under investigation"
+      subunit:
+        description: "One subunit or strand of a complex that is the target as a whole"
+      binding_partner:
+        description: "A macromolecule present for its interaction with the target: an antibody, a substrate protein, the DNA site a transcription factor binds"
+      ligand:
+        description: "A small molecule present for its binding to the target, where a more specific role does not apply"
+      substrate:
+        description: "A substrate of an enzyme in the sample, including a non-hydrolysable analogue"
+      product:
+        description: "A product of an enzyme in the sample"
+      inhibitor:
+        description: "A small molecule or macromolecule that inhibits the target"
+      activator:
+        description: "A small molecule or macromolecule that activates the target"
+      cofactor:
+        description: "A cofactor, coenzyme, prosthetic group or structural metal ion of the target"
+      fusion_partner:
+        description: "A solubility or affinity fusion partner left attached (e.g., MBP, GST, GFP)"
+      chaperone:
+        description: "A chaperone or scaffold added to stabilize or reconstitute the target"
+      template:
+        description: "The strand a polymerase or reverse transcriptase reads"
+      primer:
+        description: "The strand a polymerase extends"
+      guide:
+        description: "A guide RNA or DNA that directs a nuclease or other effector to its target"
+      scaffold:
+        description: "A structural scaffold, as in DNA origami or a nanoparticle assembly"
+      carrier:
+        description: "A nanodisc, micelle, liposome or other host that holds a membrane protein"
+      additive:
+        description: "A cryoprotectant, precipitant, reducing agent or other additive that is part of the sample rather than of the buffer"
+      contaminant:
+        description: "Present unintentionally and identified after the fact"
+      standard:
+        description: "A reference added for calibration or as a size marker"
 
   ChemicalClassEnum:
     description: "Broad chemical kind of a SmallMolecule"
