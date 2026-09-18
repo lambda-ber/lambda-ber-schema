@@ -40,16 +40,16 @@ sasbdb:SASDV63 a lambdaber:Dataset ;
             lambdaber:study_id <https://www.sasbdb.org/data/SASDV63/study> ] ;
     lambdaber:workflow_experiment_associations [ a lambdaber:WorkflowExperimentAssociation ;
             lambdaber:experiment_id <https://www.sasbdb.org/data/SASDV63/experiment> ;
+            lambdaber:workflow_id <https://www.sasbdb.org/data/SASDV63/workflow/fit1_model1> ],
+        [ a lambdaber:WorkflowExperimentAssociation ;
+            lambdaber:experiment_id <https://www.sasbdb.org/data/SASDV63/experiment> ;
             lambdaber:workflow_id <https://www.sasbdb.org/data/SASDV63/workflow/pddf> ],
         [ a lambdaber:WorkflowExperimentAssociation ;
             lambdaber:experiment_id <https://www.sasbdb.org/data/SASDV63/experiment> ;
             lambdaber:workflow_id <https://www.sasbdb.org/data/SASDV63/workflow/fit2_model1> ],
         [ a lambdaber:WorkflowExperimentAssociation ;
             lambdaber:experiment_id <https://www.sasbdb.org/data/SASDV63/experiment> ;
-            lambdaber:workflow_id <https://www.sasbdb.org/data/SASDV63/workflow/fit3_model1> ],
-        [ a lambdaber:WorkflowExperimentAssociation ;
-            lambdaber:experiment_id <https://www.sasbdb.org/data/SASDV63/experiment> ;
-            lambdaber:workflow_id <https://www.sasbdb.org/data/SASDV63/workflow/fit1_model1> ] ;
+            lambdaber:workflow_id <https://www.sasbdb.org/data/SASDV63/workflow/fit3_model1> ] ;
     lambdaber:workflow_runs <https://www.sasbdb.org/data/SASDV63/workflow/fit1_model1>,
         <https://www.sasbdb.org/data/SASDV63/workflow/fit2_model1>,
         <https://www.sasbdb.org/data/SASDV63/workflow/fit3_model1>,

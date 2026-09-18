@@ -27,7 +27,7 @@ from pydantic import (
 
 
 metamodel_version = "None"
-version = "0.1.2.post231.dev0+52d03959"
+version = "0.1.2.post262.dev0+0be35f65"
 
 
 class ConfiguredBaseModel(BaseModel):
@@ -293,7 +293,9 @@ linkml_meta = LinkMLMeta({'default_prefix': 'lambda',
      'id': 'http://w3id.org/lambda/',
      'imports': ['linkml:types', 'lambda_ber_types', 'functional_annotation'],
      'name': 'lambda-ber-schema',
-     'prefixes': {'CHMO': {'prefix_prefix': 'CHMO',
+     'prefixes': {'CHEBI': {'prefix_prefix': 'CHEBI',
+                            'prefix_reference': 'http://purl.obolibrary.org/obo/CHEBI_'},
+                  'CHMO': {'prefix_prefix': 'CHMO',
                            'prefix_reference': 'http://purl.obolibrary.org/obo/CHMO_'},
                   'CL': {'prefix_prefix': 'CL',
                          'prefix_reference': 'http://purl.obolibrary.org/obo/CL_'},
@@ -311,8 +313,12 @@ linkml_meta = LinkMLMeta({'default_prefix': 'lambda',
                              'prefix_reference': 'http://purl.obolibrary.org/obo/UBERON_'},
                   'UO': {'prefix_prefix': 'UO',
                          'prefix_reference': 'http://purl.obolibrary.org/obo/UO_'},
+                  'chembl.compound': {'prefix_prefix': 'chembl.compound',
+                                      'prefix_reference': 'https://www.ebi.ac.uk/chembl/compound_report_card/'},
                   'dcterms': {'prefix_prefix': 'dcterms',
                               'prefix_reference': 'http://purl.org/dc/terms/'},
+                  'drugbank': {'prefix_prefix': 'drugbank',
+                               'prefix_reference': 'https://go.drugbank.com/drugs/'},
                   'emsl': {'prefix_prefix': 'emsl',
                            'prefix_reference': 'https://api.emsl.pnnl.gov/external/'},
                   'imgCIF': {'prefix_prefix': 'imgCIF',
@@ -335,8 +341,12 @@ linkml_meta = LinkMLMeta({'default_prefix': 'lambda',
                             'prefix_reference': 'https://github.com/NSLS2/BER-LAMBDA/'},
                   'pdb': {'prefix_prefix': 'pdb',
                           'prefix_reference': 'https://www.rcsb.org/structure/'},
+                  'pdb.ligand': {'prefix_prefix': 'pdb.ligand',
+                                 'prefix_reference': 'https://www.rcsb.org/ligand/'},
                   'prov': {'prefix_prefix': 'prov',
                            'prefix_reference': 'http://www.w3.org/ns/prov#'},
+                  'pubchem.compound': {'prefix_prefix': 'pubchem.compound',
+                                       'prefix_reference': 'https://pubchem.ncbi.nlm.nih.gov/compound/'},
                   'rdfs': {'prefix_prefix': 'rdfs',
                            'prefix_reference': 'http://www.w3.org/2000/01/rdf-schema#'},
                   'refseq': {'prefix_prefix': 'refseq',
@@ -1535,7 +1545,7 @@ class FacilityEnum(str, Enum):
 
 class SampleTypeEnum(str, Enum):
     """
-    Types of biological samples
+    Coarse kind of a sample, a one-word summary for search. What the sample actually contains - which proteins, strands, ligands and particles, in what roles, and which acts on which - is recorded in SampleComponent and SampleComponentInteraction.
     """
     protein = "protein"
     """
@@ -1547,7 +1557,7 @@ class SampleTypeEnum(str, Enum):
     """
     complex = "complex"
     """
-    Protein-protein or protein-nucleic acid complex
+    A complex of two or more macromolecules, or of a macromolecule with its ligands; the components say which
     """
     membrane_protein = "membrane_protein"
     """
@@ -1560,6 +1570,14 @@ class SampleTypeEnum(str, Enum):
     organelle = "organelle"
     """
     Cellular organelle
+    """
+    cell = "cell"
+    """
+    Whole cell, as for cryo-electron tomography of a lamella
+    """
+    tissue = "tissue"
+    """
+    Tissue or tissue section
     """
 
 
@@ -3011,6 +3029,10 @@ class SampleProteinRoleEnum(str, Enum):
     """
     A chaperone or scaffold added to stabilize or reconstitute the target
     """
+    carrier = "carrier"
+    """
+    A membrane scaffold protein or other protein that forms the host a membrane protein target sits in, as MSP1D1 does for a nanodisc
+    """
     contaminant = "contaminant"
     """
     A protein present unintentionally and identified after the fact
@@ -3154,6 +3176,276 @@ class NucleicAcidSourceEnum(str, Enum):
     other = "other"
     """
     A method not listed, described in the association's description
+    """
+
+
+class SampleComponentTypeEnum(str, Enum):
+    """
+    Kinds of thing a sample may contain. The first three are described by an entity record; the rest are named by title and an ontology term.
+    """
+    protein = "protein"
+    """
+    A protein or peptide, described by a Protein record
+    """
+    nucleic_acid = "nucleic_acid"
+    """
+    A DNA or RNA strand, described by a NucleicAcid record
+    """
+    small_molecule = "small_molecule"
+    """
+    A ligand, cofactor, metal ion, lipid, detergent, sugar or additive, described by a SmallMolecule record
+    """
+    virus_particle = "virus_particle"
+    """
+    A virion or virus-like particle, named by its NCBI Taxonomy term
+    """
+    organelle = "organelle"
+    """
+    An organelle or other cellular substructure such as a ribosome, a proteasome or a mitochondrion, named by its GO cellular component term
+    """
+    cell = "cell"
+    """
+    A whole cell, named by its Cell Ontology or NCBI Taxonomy term
+    """
+    tissue = "tissue"
+    """
+    A tissue or tissue section, named by its UBERON term
+    """
+    membrane_mimetic = "membrane_mimetic"
+    """
+    A nanodisc, liposome, bicelle, micelle or amphipol that hosts a membrane protein
+    """
+    nanoparticle = "nanoparticle"
+    """
+    A synthetic nanoparticle or scaffold
+    """
+    other = "other"
+    """
+    A component of a kind not listed, described in title and description
+    """
+
+
+class SampleComponentRoleEnum(str, Enum):
+    """
+    Part a component plays in a sample. A superset of SampleProteinRoleEnum and SampleNucleicAcidRoleEnum, so a role given on an association can be repeated on the component without translation.
+    """
+    target = "target"
+    """
+    The thing under investigation
+    """
+    subunit = "subunit"
+    """
+    One subunit or strand of a complex that is the target as a whole
+    """
+    binding_partner = "binding_partner"
+    """
+    A macromolecule present for its interaction with the target: an antibody, a substrate protein, the DNA site a transcription factor binds
+    """
+    ligand = "ligand"
+    """
+    A small molecule present for its binding to the target, where a more specific role does not apply
+    """
+    substrate = "substrate"
+    """
+    A substrate of an enzyme in the sample, including a non-hydrolysable analogue
+    """
+    product = "product"
+    """
+    A product of an enzyme in the sample
+    """
+    inhibitor = "inhibitor"
+    """
+    A small molecule or macromolecule that inhibits the target
+    """
+    activator = "activator"
+    """
+    A small molecule or macromolecule that activates the target
+    """
+    cofactor = "cofactor"
+    """
+    A cofactor, coenzyme, prosthetic group or structural metal ion of the target
+    """
+    fusion_partner = "fusion_partner"
+    """
+    A solubility or affinity fusion partner left attached (e.g., MBP, GST, GFP)
+    """
+    chaperone = "chaperone"
+    """
+    A chaperone or scaffold added to stabilize or reconstitute the target
+    """
+    template = "template"
+    """
+    The strand a polymerase or reverse transcriptase reads
+    """
+    primer = "primer"
+    """
+    The strand a polymerase extends
+    """
+    guide = "guide"
+    """
+    A guide RNA or DNA that directs a nuclease or other effector to its target
+    """
+    scaffold = "scaffold"
+    """
+    A structural scaffold, as in DNA origami or a nanoparticle assembly
+    """
+    carrier = "carrier"
+    """
+    A nanodisc, micelle, liposome or other host that holds a membrane protein
+    """
+    additive = "additive"
+    """
+    A cryoprotectant, precipitant, reducing agent or other additive that is part of the sample rather than of the buffer
+    """
+    contaminant = "contaminant"
+    """
+    Present unintentionally and identified after the fact
+    """
+    standard = "standard"
+    """
+    A reference added for calibration or as a size marker
+    """
+
+
+class ComponentInteractionTypeEnum(str, Enum):
+    """
+    What the subject of a SampleComponentInteraction does to its object. Each term reads in the direction subject to object.
+    """
+    binds = "binds"
+    """
+    Subject binds object non-covalently, where a more specific term does not apply
+    """
+    inhibits = "inhibits"
+    """
+    Subject inhibits object
+    """
+    activates = "activates"
+    """
+    Subject activates object
+    """
+    is_substrate_of = "is_substrate_of"
+    """
+    Subject is a substrate of object, an enzyme
+    """
+    is_product_of = "is_product_of"
+    """
+    Subject is a product of object, an enzyme
+    """
+    is_cofactor_of = "is_cofactor_of"
+    """
+    Subject is a cofactor, coenzyme or prosthetic group of object
+    """
+    is_coordinated_by = "is_coordinated_by"
+    """
+    Subject, a metal ion, is coordinated by object
+    """
+    cleaves = "cleaves"
+    """
+    Subject cleaves object, as a nuclease cleaves its target strand or a protease its substrate
+    """
+    covalently_modifies = "covalently_modifies"
+    """
+    Subject adds a covalent modification to object, as a kinase phosphorylates its substrate
+    """
+    covalently_linked_to = "covalently_linked_to"
+    """
+    Subject is covalently bonded to object: a covalent inhibitor, a glycan, a lipid anchor
+    """
+    crosslinked_to = "crosslinked_to"
+    """
+    Subject is joined to object by a chemical crosslinker
+    """
+    base_pairs_with = "base_pairs_with"
+    """
+    Subject, a nucleic acid, is base-paired with object: the two strands of a duplex, a guide with its target
+    """
+    embedded_in = "embedded_in"
+    """
+    Subject, a membrane protein, sits in object, a membrane mimetic
+    """
+    solubilized_by = "solubilized_by"
+    """
+    Subject is kept in solution by object, a detergent or amphipol
+    """
+    encapsulated_in = "encapsulated_in"
+    """
+    Subject is enclosed by object: a genome in a capsid, a cargo in a liposome
+    """
+    forms_complex_with = "forms_complex_with"
+    """
+    Subject and object are parts of one assembly, where the nature of the contact is not specified
+    """
+    competes_with = "competes_with"
+    """
+    Subject competes with object for the same site on a third component
+    """
+    no_interaction = "no_interaction"
+    """
+    Subject is expected not to interact with object: a negative control pairing
+    """
+
+
+class InteractionStatusEnum(str, Enum):
+    """
+    Standing of an interaction claim: the sample's design, prior knowledge, or this dataset's result
+    """
+    designed = "designed"
+    """
+    The pairing the sample was made to test or to capture
+    """
+    expected = "expected"
+    """
+    Known or predicted from prior work, and assumed to hold in this sample
+    """
+    observed = "observed"
+    """
+    Seen in this dataset's data: density for the ligand, a shift in the scattering curve, a crosslink
+    """
+    not_observed = "not_observed"
+    """
+    Designed or expected, and not seen in this dataset's data
+    """
+
+
+class ChemicalClassEnum(str, Enum):
+    """
+    Broad chemical kind of a SmallMolecule
+    """
+    ion = "ion"
+    """
+    A metal or other inorganic ion: Zn2+, Mg2+, Ca2+, Cl-
+    """
+    lipid = "lipid"
+    """
+    A lipid: a phospholipid, sterol, fatty acid or lipid anchor
+    """
+    detergent = "detergent"
+    """
+    A detergent or amphipol used to solubilize a membrane protein
+    """
+    carbohydrate = "carbohydrate"
+    """
+    A sugar, glycan or glycan fragment
+    """
+    nucleotide = "nucleotide"
+    """
+    A free nucleotide or nucleotide analogue: ATP, GDP, AMP-PNP, NAD
+    """
+    amino_acid = "amino_acid"
+    """
+    A free amino acid or amino acid derivative
+    """
+    organic = "organic"
+    """
+    An organic small molecule in no more specific class: a drug, a fragment, a natural product, a dye
+    """
+    polymer = "polymer"
+    """
+    A synthetic polymer such as PEG
+    """
+    other = "other"
+    """
+    A compound in no class listed
     """
 
 
@@ -3423,7 +3715,8 @@ class NamedThing(ConfiguredBaseModel):
 
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class ProteinAnnotation(NamedThing):
@@ -3436,6 +3729,7 @@ class ProteinAnnotation(NamedThing):
          'domain_of': ['ProteinAnnotation',
                        'ConformationalEnsemble',
                        'ProteinConstruct',
+                       'SampleComponent',
                        'SampleProteinAssociation']} })
     pdb_entry: Optional[str] = Field(default=None, description="""PDB identifier""", json_schema_extra = { "linkml_meta": {'alias': 'pdb_entry', 'domain_of': ['ProteinAnnotation']} })
     chain_id: Optional[str] = Field(default=None, description="""Chain identifier in the PDB structure""", json_schema_extra = { "linkml_meta": {'alias': 'chain_id', 'domain_of': ['ProteinAnnotation']} })
@@ -3451,7 +3745,8 @@ class ProteinAnnotation(NamedThing):
     publication_ids: Optional[list[str]] = Field(default=None, description="""IDs of one or more publications supporting this annotation. Use PubMed IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.""", json_schema_extra = { "linkml_meta": {'alias': 'publication_ids', 'domain_of': ['ProteinAnnotation']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
     @field_validator('protein_id')
     def pattern_protein_id(cls, v):
@@ -3539,6 +3834,7 @@ class FunctionalSite(ProteinAnnotation):
          'domain_of': ['ProteinAnnotation',
                        'ConformationalEnsemble',
                        'ProteinConstruct',
+                       'SampleComponent',
                        'SampleProteinAssociation']} })
     pdb_entry: Optional[str] = Field(default=None, description="""PDB identifier""", json_schema_extra = { "linkml_meta": {'alias': 'pdb_entry', 'domain_of': ['ProteinAnnotation']} })
     chain_id: Optional[str] = Field(default=None, description="""Chain identifier in the PDB structure""", json_schema_extra = { "linkml_meta": {'alias': 'chain_id', 'domain_of': ['ProteinAnnotation']} })
@@ -3554,7 +3850,8 @@ class FunctionalSite(ProteinAnnotation):
     publication_ids: Optional[list[str]] = Field(default=None, description="""IDs of one or more publications supporting this annotation. Use PubMed IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.""", json_schema_extra = { "linkml_meta": {'alias': 'publication_ids', 'domain_of': ['ProteinAnnotation']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
     @field_validator('ec_number')
     def pattern_ec_number(cls, v):
@@ -3654,6 +3951,7 @@ class StructuralFeature(ProteinAnnotation):
          'domain_of': ['ProteinAnnotation',
                        'ConformationalEnsemble',
                        'ProteinConstruct',
+                       'SampleComponent',
                        'SampleProteinAssociation']} })
     pdb_entry: Optional[str] = Field(default=None, description="""PDB identifier""", json_schema_extra = { "linkml_meta": {'alias': 'pdb_entry', 'domain_of': ['ProteinAnnotation']} })
     chain_id: Optional[str] = Field(default=None, description="""Chain identifier in the PDB structure""", json_schema_extra = { "linkml_meta": {'alias': 'chain_id', 'domain_of': ['ProteinAnnotation']} })
@@ -3669,7 +3967,8 @@ class StructuralFeature(ProteinAnnotation):
     publication_ids: Optional[list[str]] = Field(default=None, description="""IDs of one or more publications supporting this annotation. Use PubMed IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.""", json_schema_extra = { "linkml_meta": {'alias': 'publication_ids', 'domain_of': ['ProteinAnnotation']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
     @field_validator('protein_id')
     def pattern_protein_id(cls, v):
@@ -3762,6 +4061,7 @@ class ProteinProteinInteraction(ProteinAnnotation):
          'domain_of': ['ProteinAnnotation',
                        'ConformationalEnsemble',
                        'ProteinConstruct',
+                       'SampleComponent',
                        'SampleProteinAssociation']} })
     pdb_entry: Optional[str] = Field(default=None, description="""PDB identifier""", json_schema_extra = { "linkml_meta": {'alias': 'pdb_entry', 'domain_of': ['ProteinAnnotation']} })
     chain_id: Optional[str] = Field(default=None, description="""Chain identifier in the PDB structure""", json_schema_extra = { "linkml_meta": {'alias': 'chain_id', 'domain_of': ['ProteinAnnotation']} })
@@ -3777,7 +4077,8 @@ class ProteinProteinInteraction(ProteinAnnotation):
     publication_ids: Optional[list[str]] = Field(default=None, description="""IDs of one or more publications supporting this annotation. Use PubMed IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.""", json_schema_extra = { "linkml_meta": {'alias': 'publication_ids', 'domain_of': ['ProteinAnnotation']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
     @field_validator('protein_id')
     def pattern_protein_id(cls, v):
@@ -3867,6 +4168,7 @@ class MutationEffect(ProteinAnnotation):
          'domain_of': ['ProteinAnnotation',
                        'ConformationalEnsemble',
                        'ProteinConstruct',
+                       'SampleComponent',
                        'SampleProteinAssociation']} })
     pdb_entry: Optional[str] = Field(default=None, description="""PDB identifier""", json_schema_extra = { "linkml_meta": {'alias': 'pdb_entry', 'domain_of': ['ProteinAnnotation']} })
     chain_id: Optional[str] = Field(default=None, description="""Chain identifier in the PDB structure""", json_schema_extra = { "linkml_meta": {'alias': 'chain_id', 'domain_of': ['ProteinAnnotation']} })
@@ -3882,7 +4184,8 @@ class MutationEffect(ProteinAnnotation):
     publication_ids: Optional[list[str]] = Field(default=None, description="""IDs of one or more publications supporting this annotation. Use PubMed IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.""", json_schema_extra = { "linkml_meta": {'alias': 'publication_ids', 'domain_of': ['ProteinAnnotation']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
     @field_validator('mutation')
     def pattern_mutation(cls, v):
@@ -3986,6 +4289,7 @@ class ConformationalEnsemble(NamedThing):
          'domain_of': ['ProteinAnnotation',
                        'ConformationalEnsemble',
                        'ProteinConstruct',
+                       'SampleComponent',
                        'SampleProteinAssociation']} })
     conformational_states: Optional[list[ConformationalState]] = Field(default=None, description="""Individual conformational states""", json_schema_extra = { "linkml_meta": {'alias': 'conformational_states', 'domain_of': ['ConformationalEnsemble']} })
     clustering_method: Optional[str] = Field(default=None, description="""Method used for conformational clustering""", json_schema_extra = { "linkml_meta": {'alias': 'clustering_method', 'domain_of': ['ConformationalEnsemble']} })
@@ -3997,7 +4301,8 @@ class ConformationalEnsemble(NamedThing):
     principal_motions: Optional[list[str]] = Field(default=None, description="""Description of principal motions""", json_schema_extra = { "linkml_meta": {'alias': 'principal_motions', 'domain_of': ['ConformationalEnsemble']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class PostTranslationalModification(ProteinAnnotation):
@@ -4020,6 +4325,7 @@ class PostTranslationalModification(ProteinAnnotation):
          'domain_of': ['ProteinAnnotation',
                        'ConformationalEnsemble',
                        'ProteinConstruct',
+                       'SampleComponent',
                        'SampleProteinAssociation']} })
     pdb_entry: Optional[str] = Field(default=None, description="""PDB identifier""", json_schema_extra = { "linkml_meta": {'alias': 'pdb_entry', 'domain_of': ['ProteinAnnotation']} })
     chain_id: Optional[str] = Field(default=None, description="""Chain identifier in the PDB structure""", json_schema_extra = { "linkml_meta": {'alias': 'chain_id', 'domain_of': ['ProteinAnnotation']} })
@@ -4035,7 +4341,8 @@ class PostTranslationalModification(ProteinAnnotation):
     publication_ids: Optional[list[str]] = Field(default=None, description="""IDs of one or more publications supporting this annotation. Use PubMed IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.""", json_schema_extra = { "linkml_meta": {'alias': 'publication_ids', 'domain_of': ['ProteinAnnotation']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
     @field_validator('protein_id')
     def pattern_protein_id(cls, v):
@@ -4121,6 +4428,7 @@ class EvolutionaryConservation(ProteinAnnotation):
          'domain_of': ['ProteinAnnotation',
                        'ConformationalEnsemble',
                        'ProteinConstruct',
+                       'SampleComponent',
                        'SampleProteinAssociation']} })
     pdb_entry: Optional[str] = Field(default=None, description="""PDB identifier""", json_schema_extra = { "linkml_meta": {'alias': 'pdb_entry', 'domain_of': ['ProteinAnnotation']} })
     chain_id: Optional[str] = Field(default=None, description="""Chain identifier in the PDB structure""", json_schema_extra = { "linkml_meta": {'alias': 'chain_id', 'domain_of': ['ProteinAnnotation']} })
@@ -4136,7 +4444,8 @@ class EvolutionaryConservation(ProteinAnnotation):
     publication_ids: Optional[list[str]] = Field(default=None, description="""IDs of one or more publications supporting this annotation. Use PubMed IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.""", json_schema_extra = { "linkml_meta": {'alias': 'publication_ids', 'domain_of': ['ProteinAnnotation']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
     @field_validator('protein_id')
     def pattern_protein_id(cls, v):
@@ -4244,10 +4553,14 @@ class AggregatedProteinView(NamedThing):
     evolutionary_conservation: Optional[EvolutionaryConservation] = Field(default=None, description="""Conservation analysis""", json_schema_extra = { "linkml_meta": {'alias': 'evolutionary_conservation',
          'domain_of': ['AggregatedProteinView', 'Sample', 'Protein']} })
     cross_references: Optional[list[DatabaseCrossReference]] = Field(default=None, description="""Database cross-references""", json_schema_extra = { "linkml_meta": {'alias': 'cross_references',
-         'domain_of': ['AggregatedProteinView', 'Protein', 'NucleicAcid']} })
+         'domain_of': ['AggregatedProteinView',
+                       'Protein',
+                       'NucleicAcid',
+                       'SmallMolecule']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class MeasurementConditions(NamedThing):
@@ -4266,7 +4579,8 @@ class MeasurementConditions(NamedThing):
                        'ExperimentalConditions']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class AttributeGroup(ConfiguredBaseModel):
@@ -4275,7 +4589,8 @@ class AttributeGroup(ConfiguredBaseModel):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True, 'from_schema': 'http://w3id.org/lambda/'})
 
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class LigandInteraction(AttributeGroup):
@@ -4290,7 +4605,8 @@ class LigandInteraction(AttributeGroup):
     binding_affinity: Optional[float] = Field(default=None, description="""Binding affinity value""", json_schema_extra = { "linkml_meta": {'alias': 'binding_affinity', 'domain_of': ['LigandInteraction']} })
     binding_affinity_type: Optional[BindingAffinityTypeEnum] = Field(default=None, description="""Type of binding measurement (Kd, Ki, IC50)""", json_schema_extra = { "linkml_meta": {'alias': 'binding_affinity_type', 'domain_of': ['LigandInteraction']} })
     binding_affinity_unit: Optional[AffinityUnitEnum] = Field(default=None, description="""Unit of binding affinity""", json_schema_extra = { "linkml_meta": {'alias': 'binding_affinity_unit', 'domain_of': ['LigandInteraction']} })
-    interaction_type: Optional[InteractionTypeEnum] = Field(default=None, description="""Type of interaction""", json_schema_extra = { "linkml_meta": {'alias': 'interaction_type', 'domain_of': ['LigandInteraction']} })
+    interaction_type: Optional[InteractionTypeEnum] = Field(default=None, description="""Type of interaction""", json_schema_extra = { "linkml_meta": {'alias': 'interaction_type',
+         'domain_of': ['LigandInteraction', 'SampleComponentInteraction']} })
     binding_site_residues: Optional[list[str]] = Field(default=None, description="""Residues involved in ligand binding""", json_schema_extra = { "linkml_meta": {'alias': 'binding_site_residues', 'domain_of': ['LigandInteraction']} })
     is_cofactor: Optional[bool] = Field(default=None, description="""Whether the ligand is a cofactor""", json_schema_extra = { "linkml_meta": {'alias': 'is_cofactor', 'domain_of': ['LigandInteraction']} })
     is_drug_like: Optional[bool] = Field(default=None, description="""Whether the ligand has drug-like properties""", json_schema_extra = { "linkml_meta": {'alias': 'is_drug_like', 'domain_of': ['LigandInteraction']} })
@@ -4298,7 +4614,8 @@ class LigandInteraction(AttributeGroup):
     interaction_distance: Optional[float] = Field(default=None, description="""Distance criteria for interaction (Angstroms)""", json_schema_extra = { "linkml_meta": {'alias': 'interaction_distance',
          'domain_of': ['LigandInteraction'],
          'unit': {'ucum_code': 'Angstrom'}} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class BiophysicalProperty(AttributeGroup):
@@ -4315,7 +4632,8 @@ class BiophysicalProperty(AttributeGroup):
     measurement_conditions: Optional[list[MeasurementConditions]] = Field(default=None, description="""Conditions under which measurement was made. If multiple sets of conditions were used, this will represent that the same values were obtained under different conditions. If values differ under different conditions, separate BiophysicalProperty instances should be created.""", json_schema_extra = { "linkml_meta": {'alias': 'measurement_conditions', 'domain_of': ['BiophysicalProperty']} })
     experimental_method: Optional[BiophysicalMethodEnum] = Field(default=None, description="""Method used for measurement""", json_schema_extra = { "linkml_meta": {'alias': 'experimental_method',
          'domain_of': ['BiophysicalProperty', 'ExperimentRun']} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class ConformationalState(AttributeGroup):
@@ -4339,7 +4657,8 @@ class ConformationalState(AttributeGroup):
          'domain_of': ['ConformationalState'],
          'unit': {'ucum_code': 'Angstrom'}} })
     characteristic_features: Optional[list[str]] = Field(default=None, description="""Key features of this conformation""", json_schema_extra = { "linkml_meta": {'alias': 'characteristic_features', 'domain_of': ['ConformationalState']} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class DatabaseCrossReference(AttributeGroup):
@@ -4352,7 +4671,8 @@ class DatabaseCrossReference(AttributeGroup):
     database_id: str = Field(default=..., description="""Identifier in the external database""", json_schema_extra = { "linkml_meta": {'alias': 'database_id', 'domain_of': ['DatabaseCrossReference']} })
     database_url: Optional[str] = Field(default=None, description="""URL to the database entry""", json_schema_extra = { "linkml_meta": {'alias': 'database_url', 'domain_of': ['DatabaseCrossReference']} })
     last_updated: Optional[str] = Field(default=None, description="""Date of last update""", json_schema_extra = { "linkml_meta": {'alias': 'last_updated', 'domain_of': ['DatabaseCrossReference']} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class Dataset(NamedThing):
@@ -4372,7 +4692,9 @@ class Dataset(NamedThing):
     proteins: Optional[list[Protein]] = Field(default=None, description="""All proteins referenced by samples in this dataset, one record per protein""", json_schema_extra = { "linkml_meta": {'alias': 'proteins', 'domain_of': ['Dataset']} })
     protein_constructs: Optional[list[ProteinConstruct]] = Field(default=None, description="""All protein constructs""", json_schema_extra = { "linkml_meta": {'alias': 'protein_constructs', 'domain_of': ['Dataset']} })
     nucleic_acids: Optional[list[NucleicAcid]] = Field(default=None, description="""All nucleic acids referenced by samples in this dataset, one record per strand""", json_schema_extra = { "linkml_meta": {'alias': 'nucleic_acids', 'domain_of': ['Dataset']} })
+    small_molecules: Optional[list[SmallMolecule]] = Field(default=None, description="""All small molecules referenced by samples in this dataset, one record per compound""", json_schema_extra = { "linkml_meta": {'alias': 'small_molecules', 'domain_of': ['Dataset']} })
     samples: Optional[list[Sample]] = Field(default=None, description="""All samples across all studies""", json_schema_extra = { "linkml_meta": {'alias': 'samples', 'domain_of': ['Dataset']} })
+    sample_components: Optional[list[SampleComponent]] = Field(default=None, description="""What each sample contains, one row per constituent: the inventory behind sample_type""", json_schema_extra = { "linkml_meta": {'alias': 'sample_components', 'domain_of': ['Dataset']} })
     sample_preparations: Optional[list[SamplePreparation]] = Field(default=None, description="""All sample preparations""", json_schema_extra = { "linkml_meta": {'alias': 'sample_preparations', 'domain_of': ['Dataset']} })
     experiment_runs: Optional[list[ExperimentRun]] = Field(default=None, description="""All experiment runs (data collection sessions)""", json_schema_extra = { "linkml_meta": {'alias': 'experiment_runs', 'domain_of': ['Dataset']} })
     workflow_runs: Optional[list[WorkflowRun]] = Field(default=None, description="""All workflow runs (computational processing)""", json_schema_extra = { "linkml_meta": {'alias': 'workflow_runs', 'domain_of': ['Dataset']} })
@@ -4385,6 +4707,7 @@ class Dataset(NamedThing):
     experiment_instrument_associations: Optional[list[ExperimentInstrumentAssociation]] = Field(default=None, description="""Links between experiments and instruments (M:N)""", json_schema_extra = { "linkml_meta": {'alias': 'experiment_instrument_associations', 'domain_of': ['Dataset']} })
     sample_protein_associations: Optional[list[SampleProteinAssociation]] = Field(default=None, description="""Links between samples and the proteins they contain (M:N with role, copy number, construct)""", json_schema_extra = { "linkml_meta": {'alias': 'sample_protein_associations', 'domain_of': ['Dataset']} })
     sample_nucleic_acid_associations: Optional[list[SampleNucleicAcidAssociation]] = Field(default=None, description="""Links between samples and the nucleic acids they contain (M:N with role, copy number, structural form, source)""", json_schema_extra = { "linkml_meta": {'alias': 'sample_nucleic_acid_associations', 'domain_of': ['Dataset']} })
+    sample_component_interactions: Optional[list[SampleComponentInteraction]] = Field(default=None, description="""Relationships between the components of a sample: which binds, inhibits, pairs with or sits in which""", json_schema_extra = { "linkml_meta": {'alias': 'sample_component_interactions', 'domain_of': ['Dataset']} })
     workflow_experiment_associations: Optional[list[WorkflowExperimentAssociation]] = Field(default=None, description="""Links between workflows and source experiments (M:N)""", json_schema_extra = { "linkml_meta": {'alias': 'workflow_experiment_associations', 'domain_of': ['Dataset']} })
     workflow_input_associations: Optional[list[WorkflowInputAssociation]] = Field(default=None, description="""Links between workflows and input files""", json_schema_extra = { "linkml_meta": {'alias': 'workflow_input_associations', 'domain_of': ['Dataset']} })
     workflow_output_associations: Optional[list[WorkflowOutputAssociation]] = Field(default=None, description="""Links between workflows and output files""", json_schema_extra = { "linkml_meta": {'alias': 'workflow_output_associations', 'domain_of': ['Dataset']} })
@@ -4395,7 +4718,8 @@ class Dataset(NamedThing):
     person_organization_associations: Optional[list[PersonOrganizationAssociation]] = Field(default=None, description="""Links between people and organizations (M:N with role and dates)""", json_schema_extra = { "linkml_meta": {'alias': 'person_organization_associations', 'domain_of': ['Dataset']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class Study(NamedThing):
@@ -4410,7 +4734,8 @@ class Study(NamedThing):
     keywords: Optional[list[str]] = Field(default=None, description="""Keywords or tags describing the study for search and categorization""", json_schema_extra = { "linkml_meta": {'alias': 'keywords', 'domain_of': ['Dataset', 'Study']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class Person(NamedThing):
@@ -4458,7 +4783,8 @@ class Person(NamedThing):
     person_local_id: Optional[str] = Field(default=None, description="""Facility-local user or badge identifier, where one exists""", json_schema_extra = { "linkml_meta": {'alias': 'person_local_id', 'domain_of': ['Person']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
     @field_validator('orcid')
     def pattern_orcid(cls, v):
@@ -4518,7 +4844,8 @@ class Organization(NamedThing):
     doe_office: Optional[str] = Field(default=None, description="""Sponsoring DOE office, e.g. 'Office of Science'""", json_schema_extra = { "linkml_meta": {'alias': 'doe_office', 'domain_of': ['Organization']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
     @field_validator('ror')
     def pattern_ror(cls, v):
@@ -4536,7 +4863,7 @@ class Organization(NamedThing):
 
 class Sample(NamedThing):
     """
-    A physical biological sample used in structural biology experiments. Records what is true of this preparation - buffer, concentration, storage, purity, the construct and tags used. The identity of the protein(s) it contains belongs on Protein, linked through SampleProteinAssociation, so a protein studied in ten preparations is described once. The nucleic acid(s) it contains belong on NucleicAcid in the same way, linked through SampleNucleicAcidAssociation; a protein-DNA complex is one sample with one row in each.
+    A physical biological sample used in structural biology experiments. Records what is true of this preparation - buffer, concentration, storage, purity, the construct and tags used. The identity of the protein(s) it contains belongs on Protein, linked through SampleProteinAssociation, so a protein studied in ten preparations is described once. The nucleic acid(s) it contains belong on NucleicAcid in the same way, linked through SampleNucleicAcidAssociation; a protein-DNA complex is one sample with one row in each. Everything else it contains - ligands, ions, lipids, detergents, virus particles, organelles - and the full inventory of what is in it, one row per constituent with its role, lives in SampleComponent; what acts on what within the sample lives in SampleComponentInteraction.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'comments': ['protein_name, organism and the functional annotation '
                       'collections remain here for data that arrives without a '
@@ -4549,12 +4876,12 @@ class Sample(NamedThing):
                               'IHMCIF:_ihm_entity_poly_segment']})
 
     sample_code: str = Field(default=..., description="""Human-friendly laboratory identifier or facility code for the sample (e.g., 'ALS-12.3.1-SAMPLE-001', 'LAB-PROT-2024-01'). Used for local reference and tracking within laboratory workflows.""", json_schema_extra = { "linkml_meta": {'alias': 'sample_code', 'domain_of': ['Sample']} })
-    sample_type: SampleTypeEnum = Field(default=..., description="""Type of biological sample""", json_schema_extra = { "linkml_meta": {'alias': 'sample_type', 'domain_of': ['Sample']} })
-    molecular_composition: Optional[MolecularComposition] = Field(default=None, description="""Description of molecular composition including sequences, modifications, ligands""", json_schema_extra = { "linkml_meta": {'alias': 'molecular_composition', 'domain_of': ['Sample']} })
+    sample_type: SampleTypeEnum = Field(default=..., description="""Coarse kind of sample, a one-word summary. The detail is in SampleComponent.""", json_schema_extra = { "linkml_meta": {'alias': 'sample_type', 'domain_of': ['Sample']} })
+    molecular_composition: Optional[MolecularComposition] = Field(default=None, description="""Free-text description of molecular composition including sequences, modifications, ligands. The structured form is the SampleComponent rows for the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'molecular_composition', 'domain_of': ['Sample']} })
     molecular_weight: Optional[QuantityValue] = Field(default=None, description="""Molecular weight, typically specified in kilodaltons (kDa). Data providers may specify alternative units (e.g., Daltons, g/mol) by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'molecular_weight',
          'domain_of': ['Sample'],
          'exact_mappings': ['mmCIF:_entity.formula_weight']} })
-    concentration: Optional[QuantityValue] = Field(default=None, description="""Sample concentration, typically specified in mg/mL or µM. Data providers may specify alternative units (e.g., molar, g/L) by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'concentration', 'domain_of': ['Sample']} })
+    concentration: Optional[QuantityValue] = Field(default=None, description="""Sample concentration, typically specified in mg/mL or µM. Data providers may specify alternative units (e.g., molar, g/L) by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'concentration', 'domain_of': ['Sample', 'SampleComponent']} })
     buffer_composition: Optional[BufferComposition] = Field(default=None, description="""Buffer composition including pH, salts, additives""", json_schema_extra = { "linkml_meta": {'alias': 'buffer_composition',
          'domain_of': ['MeasurementConditions', 'Sample']} })
     preparation_method: Optional[str] = Field(default=None, description="""Method used to prepare the sample""", json_schema_extra = { "linkml_meta": {'alias': 'preparation_method', 'domain_of': ['Sample']} })
@@ -4596,11 +4923,12 @@ class Sample(NamedThing):
     expression_system: Optional[str] = Field(default=None, description="""Expression system used""", json_schema_extra = { "linkml_meta": {'alias': 'expression_system',
          'domain_of': ['Sample', 'SamplePreparation'],
          'exact_mappings': ['nsls2:Expression_System']} })
-    ligand: Optional[str] = Field(default=None, description="""Ligand or small molecule bound to sample""", json_schema_extra = { "linkml_meta": {'alias': 'ligand', 'domain_of': ['Sample'], 'exact_mappings': ['nsls2:Ligand']} })
+    ligand: Optional[str] = Field(default=None, description="""Ligand or small molecule bound to sample, as the facility recorded it. A display and search field; the structured form is a SampleComponent of type small_molecule pointing at a SmallMolecule record, with a SampleComponentInteraction saying what it binds.""", json_schema_extra = { "linkml_meta": {'alias': 'ligand', 'domain_of': ['Sample'], 'exact_mappings': ['nsls2:Ligand']} })
     oligomeric_state: Optional[str] = Field(default=None, description="""Oligomeric state of the sample (e.g., monomer, dimer, tetramer, hexamer)""", json_schema_extra = { "linkml_meta": {'alias': 'oligomeric_state', 'domain_of': ['Sample']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class Protein(NamedThing):
@@ -4640,7 +4968,7 @@ class Protein(NamedThing):
          'exact_mappings': ['mmCIF:_entity_poly.pdbx_seq_one_letter_code_can']} })
     sequence_length: Optional[int] = Field(default=None, description="""Length of the canonical sequence in residues""", json_schema_extra = { "linkml_meta": {'alias': 'sequence_length', 'domain_of': ['Protein', 'NucleicAcid']} })
     molecular_weight_theoretical: Optional[QuantityValue] = Field(default=None, description="""Mass computed from the canonical sequence, typically in kDa. A mass measured for a given preparation belongs on SampleProteinAssociation.observed_molecular_weight.""", json_schema_extra = { "linkml_meta": {'alias': 'molecular_weight_theoretical',
-         'domain_of': ['Protein', 'NucleicAcid'],
+         'domain_of': ['Protein', 'NucleicAcid', 'SmallMolecule'],
          'related_mappings': ['mmCIF:_entity.formula_weight']} })
     ec_numbers: Optional[list[str]] = Field(default=None, description="""Enzyme Commission numbers, where the protein is an enzyme (e.g., 1.1.1.1)""", json_schema_extra = { "linkml_meta": {'alias': 'ec_numbers',
          'domain_of': ['Protein'],
@@ -4669,10 +4997,14 @@ class Protein(NamedThing):
     conformational_ensemble: Optional[ConformationalEnsemble] = Field(default=None, description="""Conformational states and dynamics""", json_schema_extra = { "linkml_meta": {'alias': 'conformational_ensemble',
          'domain_of': ['AggregatedProteinView', 'Sample', 'Protein']} })
     cross_references: Optional[list[DatabaseCrossReference]] = Field(default=None, description="""Cross-references to external databases other than UniProt (Pfam, InterPro, ChEMBL, ...). The UniProt accession itself goes in uniprot_id.""", json_schema_extra = { "linkml_meta": {'alias': 'cross_references',
-         'domain_of': ['AggregatedProteinView', 'Protein', 'NucleicAcid']} })
+         'domain_of': ['AggregatedProteinView',
+                       'Protein',
+                       'NucleicAcid',
+                       'SmallMolecule']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
     @field_validator('uniprot_id')
     def pattern_uniprot_id(cls, v):
@@ -4726,6 +5058,7 @@ class ProteinConstruct(NamedThing):
          'domain_of': ['ProteinAnnotation',
                        'ConformationalEnsemble',
                        'ProteinConstruct',
+                       'SampleComponent',
                        'SampleProteinAssociation']} })
     uniprot_id: Optional[str] = Field(default=None, description="""UniProt accession of the target protein as a CURIE (e.g., uniprot:P69905). Carries the identity when no Protein row exists in the dataset; where protein_id is set the two must agree, and protein_id is the join key.""", json_schema_extra = { "linkml_meta": {'alias': 'uniprot_id',
          'domain_of': ['AggregatedProteinView', 'Protein', 'ProteinConstruct']} })
@@ -4751,7 +5084,8 @@ class ProteinConstruct(NamedThing):
     verification_notes: Optional[str] = Field(default=None, description="""Notes from sequence verification""", json_schema_extra = { "linkml_meta": {'alias': 'verification_notes', 'domain_of': ['ProteinConstruct']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class NucleicAcid(NamedThing):
@@ -4802,7 +5136,7 @@ class NucleicAcid(NamedThing):
          'exact_mappings': ['mmCIF:_entity_poly.pdbx_seq_one_letter_code_can']} })
     sequence_length: Optional[int] = Field(default=None, description="""Length of the sequence in nucleotides""", json_schema_extra = { "linkml_meta": {'alias': 'sequence_length', 'domain_of': ['Protein', 'NucleicAcid']} })
     molecular_weight_theoretical: Optional[QuantityValue] = Field(default=None, description="""Mass computed from the sequence, typically in kDa. A mass measured for a given preparation belongs on SampleNucleicAcidAssociation.observed_molecular_weight.""", json_schema_extra = { "linkml_meta": {'alias': 'molecular_weight_theoretical',
-         'domain_of': ['Protein', 'NucleicAcid'],
+         'domain_of': ['Protein', 'NucleicAcid', 'SmallMolecule'],
          'related_mappings': ['mmCIF:_entity.formula_weight']} })
     function_description: Optional[str] = Field(default=None, description="""Free-text summary of the molecule's role, typically from RNAcentral or the literature""", json_schema_extra = { "linkml_meta": {'alias': 'function_description', 'domain_of': ['Protein', 'NucleicAcid']} })
     go_terms: Optional[list[str]] = Field(default=None, description="""Gene Ontology annotations as CURIEs (e.g., GO:0030533 for triplet codon-amino acid adaptor activity)""", json_schema_extra = { "linkml_meta": {'alias': 'go_terms', 'domain_of': ['FunctionalSite', 'Protein', 'NucleicAcid']} })
@@ -4812,10 +5146,14 @@ class NucleicAcid(NamedThing):
                        'Protein',
                        'NucleicAcid']} })
     cross_references: Optional[list[DatabaseCrossReference]] = Field(default=None, description="""Cross-references to external databases other than those named by rnacentral_id, sequence_accession and rfam_families (miRBase, GtRNAdb, NDB, ...).""", json_schema_extra = { "linkml_meta": {'alias': 'cross_references',
-         'domain_of': ['AggregatedProteinView', 'Protein', 'NucleicAcid']} })
+         'domain_of': ['AggregatedProteinView',
+                       'Protein',
+                       'NucleicAcid',
+                       'SmallMolecule']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
     @field_validator('rnacentral_id')
     def pattern_rnacentral_id(cls, v):
@@ -4870,6 +5208,179 @@ class NucleicAcid(NamedThing):
         return v
 
 
+class SmallMolecule(NamedThing):
+    """
+    A small molecule as a chemical entity: a ligand, drug, substrate, cofactor, metal ion, lipid, detergent, sugar or crystallization additive, with its structure and identifiers. The counterpart of Protein and NucleicAcid for everything in a sample that is not a biopolymer. One SmallMolecule record is shared by every Sample that contains it, through SampleComponent. Facts about a particular preparation - how much was added, what it was added for, what it is bound to - stay on SampleComponent and SampleComponentInteraction.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'comments': ['Use the ChEBI CURIE for the id wherever one exists (CHEBI:30616 '
+                      'for ATP, CHEBI:29105 for zinc(2+)). Where ChEBI has no entry '
+                      'use ChEMBL, PubChem or DrugBank, or the wwPDB Chemical '
+                      'Component Dictionary code (pdb.ligand:ATP), which every ligand '
+                      'in a deposited structure has. Reserve lambda-prefixed ids for '
+                      'compounds with no entry anywhere, such as a hit from an '
+                      'in-house screening library.',
+                      'A peptide is a Protein, however short. A modified nucleotide '
+                      'that is part of a strand is described on the NucleicAcid. A '
+                      'free nucleotide such as ATP, or a free amino acid, is a '
+                      'SmallMolecule.'],
+         'from_schema': 'http://w3id.org/lambda/',
+         'id_prefixes': ['CHEBI',
+                         'chembl.compound',
+                         'pubchem.compound',
+                         'drugbank',
+                         'pdb.ligand',
+                         'lambda'],
+         'related_mappings': ['mmCIF:_chem_comp', 'mmCIF:_pdbx_entity_nonpoly']})
+
+    small_molecule_name: Optional[str] = Field(default=None, description="""Name as ChEBI, the depositor or the supplier gives it (e.g., 'ATP', 'heme b', 'n-dodecyl beta-D-maltoside'). Recommended, not required, so that a record seeded from an identifier alone can be enriched later.""", json_schema_extra = { "linkml_meta": {'alias': 'small_molecule_name',
+         'domain_of': ['SmallMolecule'],
+         'exact_mappings': ['mmCIF:_chem_comp.name'],
+         'recommended': True} })
+    chebi_id: Optional[str] = Field(default=None, description="""ChEBI identifier as a CURIE (CHEBI:30616). Normally identical to id.""", json_schema_extra = { "linkml_meta": {'alias': 'chebi_id', 'domain_of': ['SmallMolecule']} })
+    pdb_ligand_id: Optional[str] = Field(default=None, description="""wwPDB Chemical Component Dictionary code as a CURIE (pdb.ligand:ATP, pdb.ligand:HEM, pdb.ligand:ZN). Every ligand in a deposited structure has one, so it is the join key between a sample's components and the ligands of the structure it produced.""", json_schema_extra = { "linkml_meta": {'alias': 'pdb_ligand_id',
+         'domain_of': ['SmallMolecule'],
+         'exact_mappings': ['mmCIF:_chem_comp.id']} })
+    chemical_class: Optional[ChemicalClassEnum] = Field(default=None, description="""Broad chemical kind: ion, lipid, detergent, carbohydrate, nucleotide, ...""", json_schema_extra = { "linkml_meta": {'alias': 'chemical_class', 'domain_of': ['SmallMolecule']} })
+    molecular_formula: Optional[str] = Field(default=None, description="""Molecular formula (e.g., C10H16N5O13P3 for ATP)""", json_schema_extra = { "linkml_meta": {'alias': 'molecular_formula',
+         'domain_of': ['SmallMolecule'],
+         'exact_mappings': ['mmCIF:_chem_comp.formula']} })
+    smiles: Optional[str] = Field(default=None, description="""SMILES string for the structure""", json_schema_extra = { "linkml_meta": {'alias': 'smiles', 'domain_of': ['SmallMolecule']} })
+    inchi: Optional[str] = Field(default=None, description="""IUPAC InChI string for the structure""", json_schema_extra = { "linkml_meta": {'alias': 'inchi', 'domain_of': ['SmallMolecule']} })
+    inchikey: Optional[str] = Field(default=None, description="""InChIKey hash of the InChI, the 27-character form used for exact-structure lookup""", json_schema_extra = { "linkml_meta": {'alias': 'inchikey', 'domain_of': ['SmallMolecule']} })
+    molecular_weight_theoretical: Optional[QuantityValue] = Field(default=None, description="""Mass computed from the formula, typically in daltons""", json_schema_extra = { "linkml_meta": {'alias': 'molecular_weight_theoretical',
+         'domain_of': ['Protein', 'NucleicAcid', 'SmallMolecule'],
+         'exact_mappings': ['mmCIF:_chem_comp.formula_weight']} })
+    cross_references: Optional[list[DatabaseCrossReference]] = Field(default=None, description="""Cross-references to databases other than those named by chebi_id and pdb_ligand_id (ChEMBL, PubChem, DrugBank, KEGG, ...).""", json_schema_extra = { "linkml_meta": {'alias': 'cross_references',
+         'domain_of': ['AggregatedProteinView',
+                       'Protein',
+                       'NucleicAcid',
+                       'SmallMolecule']} })
+    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
+    title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
+
+    @field_validator('chebi_id')
+    def pattern_chebi_id(cls, v):
+        pattern=re.compile(r"^CHEBI:[0-9]+$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid chebi_id format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid chebi_id format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+    @field_validator('pdb_ligand_id')
+    def pattern_pdb_ligand_id(cls, v):
+        pattern=re.compile(r"^pdb\.ligand:[A-Z0-9]{1,5}$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid pdb_ligand_id format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid pdb_ligand_id format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+    @field_validator('inchi')
+    def pattern_inchi(cls, v):
+        pattern=re.compile(r"^InChI=1S?/")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid inchi format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid inchi format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+    @field_validator('inchikey')
+    def pattern_inchikey(cls, v):
+        pattern=re.compile(r"^[A-Z]{14}-[A-Z]{10}-[A-Z]$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid inchikey format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid inchikey format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class SampleComponent(NamedThing):
+    """
+    One constituent of one sample: a protein, a nucleic acid, a small molecule, a virus particle, an organelle, a cell, a membrane mimetic. The inventory of what a sample contains, one row per kind of thing in it, so that a sample can hold any mixture and each thing in it can be named, given a role, counted and pointed at. SampleComponentInteraction rows say which components are expected or observed to act on which. Sample.sample_type remains the one-word summary; this table is the detail behind it.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'comments': ['A component that has an entity record points at it: protein_id '
+                      'for a protein, nucleic_acid_id for a strand, small_molecule_id '
+                      'for a ligand, ion, lipid or detergent. Exactly one of the three '
+                      'is set, and it matches component_type. A component with no '
+                      'entity table - a virus particle, an organelle, a cell, a '
+                      'nanodisc - is named in title and, where an ontology has a term '
+                      'for it, in ontology_term: NCBITaxon for a virus, GO cellular '
+                      'component for an organelle, CL for a cell type, UBERON for a '
+                      'tissue.',
+                      'For a protein or nucleic acid the component row is the entry in '
+                      'the inventory and the handle an interaction points at. '
+                      'SampleProteinAssociation and SampleNucleicAcidAssociation, '
+                      'keyed on the same sample and entity, carry the per-preparation '
+                      'detail of the biopolymer: residue range, chain ids, '
+                      'modifications, measured mass, construct. A dataset that records '
+                      'no interactions may carry the associations alone. Where role or '
+                      'copy_number is set on both the component and the association, '
+                      'the two must agree.'],
+         'from_schema': 'http://w3id.org/lambda/',
+         'related_mappings': ['IHMCIF:_ihm_struct_assembly_details', 'mmCIF:_entity']})
+
+    sample_id: str = Field(default=..., description="""The sample this component is part of""", json_schema_extra = { "linkml_meta": {'alias': 'sample_id',
+         'domain_of': ['SampleComponent',
+                       'SamplePreparation',
+                       'StudySampleAssociation',
+                       'ExperimentSampleAssociation',
+                       'SampleProteinAssociation',
+                       'SampleNucleicAcidAssociation',
+                       'SampleComponentInteraction']} })
+    component_type: SampleComponentTypeEnum = Field(default=..., description="""What kind of thing this component is""", json_schema_extra = { "linkml_meta": {'alias': 'component_type', 'domain_of': ['SampleComponent']} })
+    protein_id: Optional[str] = Field(default=None, description="""The Protein record, where component_type is protein""", json_schema_extra = { "linkml_meta": {'alias': 'protein_id',
+         'domain_of': ['ProteinAnnotation',
+                       'ConformationalEnsemble',
+                       'ProteinConstruct',
+                       'SampleComponent',
+                       'SampleProteinAssociation']} })
+    nucleic_acid_id: Optional[str] = Field(default=None, description="""The NucleicAcid record, where component_type is nucleic_acid""", json_schema_extra = { "linkml_meta": {'alias': 'nucleic_acid_id',
+         'domain_of': ['SampleComponent', 'SampleNucleicAcidAssociation']} })
+    small_molecule_id: Optional[str] = Field(default=None, description="""The SmallMolecule record, where component_type is small_molecule""", json_schema_extra = { "linkml_meta": {'alias': 'small_molecule_id', 'domain_of': ['SampleComponent']} })
+    ontology_term: Optional[str] = Field(default=None, description="""Ontology term naming a component that has no entity table: the NCBI Taxonomy term for a virus particle (NCBITaxon:11676), the GO cellular component for an organelle (GO:0005840 for ribosome), the Cell Ontology term for a cell, the UBERON term for a tissue.""", json_schema_extra = { "linkml_meta": {'alias': 'ontology_term', 'domain_of': ['SampleComponent']} })
+    role: Optional[SampleComponentRoleEnum] = Field(default=None, description="""Part this component plays in the sample""", json_schema_extra = { "linkml_meta": {'alias': 'role',
+         'domain_of': ['SampleComponent',
+                       'StudySampleAssociation',
+                       'ExperimentSampleAssociation',
+                       'SampleProteinAssociation',
+                       'SampleNucleicAcidAssociation',
+                       'ExperimentInstrumentAssociation',
+                       'StudyPersonAssociation',
+                       'ExperimentPersonAssociation',
+                       'WorkflowPersonAssociation',
+                       'StudyOrganizationAssociation',
+                       'PersonOrganizationAssociation']} })
+    copy_number: Optional[int] = Field(default=None, description="""Copies of this component per assembly in the sample (4 for the subunits of a homotetramer, 2 for two zinc ions per monomer). Omit when unknown rather than assuming 1.""", json_schema_extra = { "linkml_meta": {'alias': 'copy_number',
+         'domain_of': ['SampleComponent',
+                       'SampleProteinAssociation',
+                       'SampleNucleicAcidAssociation'],
+         'exact_mappings': ['mmCIF:_entity.pdbx_number_of_molecules']} })
+    concentration: Optional[QuantityValue] = Field(default=None, description="""Concentration of this component in the sample as prepared (1 mM ATP, 0.02 % DDM, 5 mM MgCl2). Sample.concentration is the concentration of the sample as a whole, usually of its target.""", json_schema_extra = { "linkml_meta": {'alias': 'concentration', 'domain_of': ['Sample', 'SampleComponent']} })
+    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
+    title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
+
+
 class SamplePreparation(NamedThing):
     """
     A process that prepares a sample for imaging
@@ -4878,11 +5389,13 @@ class SamplePreparation(NamedThing):
 
     preparation_type: PreparationTypeEnum = Field(default=..., description="""Type of sample preparation""", json_schema_extra = { "linkml_meta": {'alias': 'preparation_type', 'domain_of': ['SamplePreparation']} })
     sample_id: str = Field(default=..., description="""Reference to the sample being prepared""", json_schema_extra = { "linkml_meta": {'alias': 'sample_id',
-         'domain_of': ['SamplePreparation',
+         'domain_of': ['SampleComponent',
+                       'SamplePreparation',
                        'StudySampleAssociation',
                        'ExperimentSampleAssociation',
                        'SampleProteinAssociation',
-                       'SampleNucleicAcidAssociation']} })
+                       'SampleNucleicAcidAssociation',
+                       'SampleComponentInteraction']} })
     preparation_date: Optional[str] = Field(default=None, description="""Date of sample preparation""", json_schema_extra = { "linkml_meta": {'alias': 'preparation_date', 'domain_of': ['SamplePreparation']} })
     operator_id: Optional[str] = Field(default=None, description="""Identifier or name of the person who performed the sample preparation (e.g., 'jsmith', 'John Smith', or personnel ID)""", json_schema_extra = { "linkml_meta": {'alias': 'operator_id', 'domain_of': ['SamplePreparation', 'ExperimentRun']} })
     protocol_description: Optional[str] = Field(default=None, description="""Detailed protocol description""", json_schema_extra = { "linkml_meta": {'alias': 'protocol_description', 'domain_of': ['SamplePreparation']} })
@@ -4901,7 +5414,8 @@ class SamplePreparation(NamedThing):
     lysis_method: Optional[str] = Field(default=None, description="""Method used for cell lysis""", json_schema_extra = { "linkml_meta": {'alias': 'lysis_method', 'domain_of': ['SamplePreparation']} })
     protease_inhibitors: Optional[str] = Field(default=None, description="""Protease inhibitors added""", json_schema_extra = { "linkml_meta": {'alias': 'protease_inhibitors', 'domain_of': ['SamplePreparation']} })
     purification_steps: Optional[list[PurificationStepEnum]] = Field(default=None, description="""Ordered list of purification steps performed""", json_schema_extra = { "linkml_meta": {'alias': 'purification_steps', 'domain_of': ['SamplePreparation']} })
-    affinity_type: Optional[str] = Field(default=None, description="""Type of affinity chromatography""", json_schema_extra = { "linkml_meta": {'alias': 'affinity_type', 'domain_of': ['SamplePreparation']} })
+    affinity_type: Optional[str] = Field(default=None, description="""Type of affinity chromatography""", json_schema_extra = { "linkml_meta": {'alias': 'affinity_type',
+         'domain_of': ['SamplePreparation', 'SampleComponentInteraction']} })
     affinity_column: Optional[str] = Field(default=None, description="""Affinity column specifications""", json_schema_extra = { "linkml_meta": {'alias': 'affinity_column', 'domain_of': ['SamplePreparation']} })
     lysis_buffer: Optional[str] = Field(default=None, description="""Buffer composition for lysis""", json_schema_extra = { "linkml_meta": {'alias': 'lysis_buffer', 'domain_of': ['SamplePreparation']} })
     wash_buffer: Optional[str] = Field(default=None, description="""Buffer composition for washing""", json_schema_extra = { "linkml_meta": {'alias': 'wash_buffer', 'domain_of': ['SamplePreparation']} })
@@ -4925,7 +5439,8 @@ class SamplePreparation(NamedThing):
     aliquoting: Optional[str] = Field(default=None, description="""How the protein was aliquoted for storage""", json_schema_extra = { "linkml_meta": {'alias': 'aliquoting', 'domain_of': ['SamplePreparation']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class Instrument(NamedThing):
@@ -4981,7 +5496,8 @@ class Instrument(NamedThing):
     current_status: Optional[InstrumentStatusEnum] = Field(default=None, description="""Current operational status""", json_schema_extra = { "linkml_meta": {'alias': 'current_status', 'domain_of': ['Instrument']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
     @field_validator('facility_ror')
     def pattern_facility_ror(cls, v):
@@ -5105,7 +5621,8 @@ class CryoEMInstrument(Instrument):
     current_status: Optional[InstrumentStatusEnum] = Field(default=None, description="""Current operational status""", json_schema_extra = { "linkml_meta": {'alias': 'current_status', 'domain_of': ['Instrument']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
     @field_validator('facility_ror')
     def pattern_facility_ror(cls, v):
@@ -5210,7 +5727,8 @@ class XRayInstrument(Instrument):
     current_status: Optional[InstrumentStatusEnum] = Field(default=None, description="""Current operational status""", json_schema_extra = { "linkml_meta": {'alias': 'current_status', 'domain_of': ['Instrument']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
     @field_validator('facility_ror')
     def pattern_facility_ror(cls, v):
@@ -5242,7 +5760,8 @@ class SANSDetector(AttributeGroup):
     beam_trap_type: Optional[str] = Field(default=None, description="""Type of beam trap (if any)""", json_schema_extra = { "linkml_meta": {'alias': 'beam_trap_type', 'domain_of': ['SANSDetector']} })
     beam_trap_position_x: Optional[QuantityValue] = Field(default=None, description="""X coordinate of beam trap""", json_schema_extra = { "linkml_meta": {'alias': 'beam_trap_position_x', 'domain_of': ['SANSDetector']} })
     beam_trap_position_y: Optional[QuantityValue] = Field(default=None, description="""Y coordinate of beam trap""", json_schema_extra = { "linkml_meta": {'alias': 'beam_trap_position_y', 'domain_of': ['SANSDetector']} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class SANSSource(AttributeGroup):
@@ -5263,7 +5782,8 @@ class SANSSource(AttributeGroup):
     energy: Optional[QuantityValue] = Field(default=None, description="""Beam energy""", json_schema_extra = { "linkml_meta": {'alias': 'energy',
          'domain_of': ['SANSSource', 'ExperimentRun', 'DataCollectionStrategy']} })
     flux: Optional[QuantityValue] = Field(default=None, description="""Beam flux""", json_schema_extra = { "linkml_meta": {'alias': 'flux', 'domain_of': ['SANSSource', 'ExperimentRun', 'XRFImage']} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class SANSConfiguration(AttributeGroup):
@@ -5285,7 +5805,8 @@ class SANSConfiguration(AttributeGroup):
     sample_ap_to_sample_distance: Optional[QuantityValue] = Field(default=None, description="""Sample aperture to sample distance""", json_schema_extra = { "linkml_meta": {'alias': 'sample_ap_to_sample_distance', 'domain_of': ['SANSConfiguration']} })
     source_ap_to_siwindow_distance: Optional[QuantityValue] = Field(default=None, description="""Source aperture to silicon window distance""", json_schema_extra = { "linkml_meta": {'alias': 'source_ap_to_siwindow_distance', 'domain_of': ['SANSConfiguration']} })
     source_ap_to_sample_ap_distance: Optional[QuantityValue] = Field(default=None, description="""Source aperture to sample aperture distance""", json_schema_extra = { "linkml_meta": {'alias': 'source_ap_to_sample_ap_distance', 'domain_of': ['SANSConfiguration']} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class SANSInstrument(Instrument):
@@ -5352,7 +5873,8 @@ class SANSInstrument(Instrument):
     current_status: Optional[InstrumentStatusEnum] = Field(default=None, description="""Current operational status""", json_schema_extra = { "linkml_meta": {'alias': 'current_status', 'domain_of': ['Instrument']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
     @field_validator('facility_ror')
     def pattern_facility_ror(cls, v):
@@ -5430,7 +5952,8 @@ class SAXSInstrument(Instrument):
     current_status: Optional[InstrumentStatusEnum] = Field(default=None, description="""Current operational status""", json_schema_extra = { "linkml_meta": {'alias': 'current_status', 'domain_of': ['Instrument']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
     @field_validator('facility_ror')
     def pattern_facility_ror(cls, v):
@@ -5525,7 +6048,8 @@ class BeamlineInstrument(Instrument):
     current_status: Optional[InstrumentStatusEnum] = Field(default=None, description="""Current operational status""", json_schema_extra = { "linkml_meta": {'alias': 'current_status', 'domain_of': ['Instrument']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
     @field_validator('facility_ror')
     def pattern_facility_ror(cls, v):
@@ -5758,7 +6282,8 @@ class ExperimentRun(NamedThing):
     ispyb_session_id: Optional[QuantityValue] = Field(default=None, description="""ISPyB BLSession.sessionId""", json_schema_extra = { "linkml_meta": {'alias': 'ispyb_session_id', 'domain_of': ['ExperimentRun']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class WorkflowRun(NamedThing):
@@ -5897,7 +6422,8 @@ class WorkflowRun(NamedThing):
     output_files: Optional[list[str]] = Field(default=None, description="""Output files generated""", json_schema_extra = { "linkml_meta": {'alias': 'output_files', 'domain_of': ['WorkflowRun']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class DataFile(NamedThing):
@@ -5936,7 +6462,8 @@ class DataFile(NamedThing):
          'related_mappings': ['IHMCIF:_ihm_external_files.content_type']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class Image(NamedThing):
@@ -5958,7 +6485,8 @@ class Image(NamedThing):
     dose: Optional[QuantityValue] = Field(default=None, description="""Electron dose in e-/Å²""", json_schema_extra = { "linkml_meta": {'alias': 'dose', 'domain_of': ['Image', 'Micrograph']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class Image2D(Image):
@@ -5982,7 +6510,8 @@ class Image2D(Image):
     dose: Optional[QuantityValue] = Field(default=None, description="""Electron dose in e-/Å²""", json_schema_extra = { "linkml_meta": {'alias': 'dose', 'domain_of': ['Image', 'Micrograph']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class Image3D(Image):
@@ -6009,7 +6538,8 @@ class Image3D(Image):
     dose: Optional[QuantityValue] = Field(default=None, description="""Electron dose in e-/Å²""", json_schema_extra = { "linkml_meta": {'alias': 'dose', 'domain_of': ['Image', 'Micrograph']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class Movie(Image2D):
@@ -6048,7 +6578,8 @@ class Movie(Image2D):
     dose: Optional[QuantityValue] = Field(default=None, description="""Electron dose in e-/Å²""", json_schema_extra = { "linkml_meta": {'alias': 'dose', 'domain_of': ['Image', 'Micrograph']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class Micrograph(Image2D):
@@ -6078,7 +6609,8 @@ class Micrograph(Image2D):
                        'DataCollectionStrategy']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class FTIRImage(Image):
@@ -6107,7 +6639,8 @@ class FTIRImage(Image):
     dose: Optional[QuantityValue] = Field(default=None, description="""Electron dose in e-/Å²""", json_schema_extra = { "linkml_meta": {'alias': 'dose', 'domain_of': ['Image', 'Micrograph']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class FluorescenceImage(Image2D):
@@ -6140,7 +6673,8 @@ class FluorescenceImage(Image2D):
     dose: Optional[QuantityValue] = Field(default=None, description="""Electron dose in e-/Å²""", json_schema_extra = { "linkml_meta": {'alias': 'dose', 'domain_of': ['Image', 'Micrograph']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class OpticalImage(Image2D):
@@ -6170,7 +6704,8 @@ class OpticalImage(Image2D):
     dose: Optional[QuantityValue] = Field(default=None, description="""Electron dose in e-/Å²""", json_schema_extra = { "linkml_meta": {'alias': 'dose', 'domain_of': ['Image', 'Micrograph']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class XRFImage(Image2D):
@@ -6211,7 +6746,8 @@ class XRFImage(Image2D):
     dose: Optional[QuantityValue] = Field(default=None, description="""Electron dose in e-/Å²""", json_schema_extra = { "linkml_meta": {'alias': 'dose', 'domain_of': ['Image', 'Micrograph']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class ImageFeature(AttributeGroup):
@@ -6221,7 +6757,8 @@ class ImageFeature(AttributeGroup):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/'})
 
     terms: Optional[list[OntologyTerm]] = Field(default=None, description="""Ontology terms describing features identified in the image""", json_schema_extra = { "linkml_meta": {'alias': 'terms', 'domain_of': ['ImageFeature', 'OntologyTerm']} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class OntologyTerm(NamedThing):
@@ -6236,7 +6773,8 @@ class OntologyTerm(NamedThing):
     ontology: Optional[str] = Field(default=None, description="""The ontology or controlled vocabulary this term comes from (e.g., GO, SO, UBERON)""", json_schema_extra = { "linkml_meta": {'alias': 'ontology', 'domain_of': ['OntologyTerm']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class MolecularComposition(AttributeGroup):
@@ -6252,8 +6790,9 @@ class MolecularComposition(AttributeGroup):
          'domain_of': ['MolecularComposition',
                        'SampleProteinAssociation',
                        'SampleNucleicAcidAssociation']} })
-    ligands: Optional[list[str]] = Field(default=None, description="""Bound ligands or cofactors""", json_schema_extra = { "linkml_meta": {'alias': 'ligands', 'domain_of': ['MolecularComposition']} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    ligands: Optional[list[str]] = Field(default=None, description="""Bound ligands or cofactors, as free text. The structured form is SampleComponent.""", json_schema_extra = { "linkml_meta": {'alias': 'ligands', 'domain_of': ['MolecularComposition']} })
+    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class BufferComposition(AttributeGroup):
@@ -6265,7 +6804,8 @@ class BufferComposition(AttributeGroup):
     ph: Optional[QuantityValue] = Field(default=None, description="""pH of the buffer (range: 0-14)""", json_schema_extra = { "linkml_meta": {'alias': 'ph', 'domain_of': ['MeasurementConditions', 'BufferComposition']} })
     components: Optional[list[str]] = Field(default=None, description="""Buffer components and their concentrations""", json_schema_extra = { "linkml_meta": {'alias': 'components', 'domain_of': ['BufferComposition']} })
     additives: Optional[list[str]] = Field(default=None, description="""Additional additives in the buffer""", json_schema_extra = { "linkml_meta": {'alias': 'additives', 'domain_of': ['BufferComposition', 'XRayPreparation']} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class StorageConditions(AttributeGroup):
@@ -6281,7 +6821,8 @@ class StorageConditions(AttributeGroup):
     duration: Optional[str] = Field(default=None, description="""Storage duration""", json_schema_extra = { "linkml_meta": {'alias': 'duration', 'domain_of': ['StorageConditions']} })
     atmosphere: Optional[str] = Field(default=None, description="""Storage atmosphere conditions""", json_schema_extra = { "linkml_meta": {'alias': 'atmosphere',
          'domain_of': ['StorageConditions', 'ExperimentalConditions']} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class TechniqueSpecificPreparation(AttributeGroup):
@@ -6290,7 +6831,8 @@ class TechniqueSpecificPreparation(AttributeGroup):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True, 'from_schema': 'http://w3id.org/lambda/'})
 
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class CryoEMPreparation(TechniqueSpecificPreparation):
@@ -6347,7 +6889,8 @@ class CryoEMPreparation(TechniqueSpecificPreparation):
          'domain_of': ['CryoEMPreparation'],
          'exact_mappings': ['mmCIF:_em_vitrification.cryogen_name']} })
     plasma_treatment: Optional[str] = Field(default=None, description="""Plasma treatment details""", json_schema_extra = { "linkml_meta": {'alias': 'plasma_treatment', 'domain_of': ['CryoEMPreparation']} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class CrystallizationConditions(AttributeGroup):
@@ -6388,7 +6931,8 @@ class CrystallizationConditions(AttributeGroup):
          'domain_of': ['CrystallizationConditions', 'XRayPreparation']} })
     seed_stock_dilution: Optional[str] = Field(default=None, description="""Dilution factor for seed stock""", json_schema_extra = { "linkml_meta": {'alias': 'seed_stock_dilution',
          'domain_of': ['CrystallizationConditions', 'XRayPreparation']} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class XRayPreparation(TechniqueSpecificPreparation):
@@ -6439,7 +6983,8 @@ class XRayPreparation(TechniqueSpecificPreparation):
     mounting_temperature: Optional[QuantityValue] = Field(default=None, description="""Temperature during mounting, typically specified in Kelvin. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'mounting_temperature',
          'domain_of': ['XRayPreparation'],
          'exact_mappings': ['nsls2:Temperature']} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class SAXSPreparation(TechniqueSpecificPreparation):
@@ -6454,7 +6999,8 @@ class SAXSPreparation(TechniqueSpecificPreparation):
     sample_cell_type: Optional[str] = Field(default=None, description="""Type of sample cell used""", json_schema_extra = { "linkml_meta": {'alias': 'sample_cell_type', 'domain_of': ['SAXSPreparation']} })
     cell_path_length: Optional[QuantityValue] = Field(default=None, description="""Path length, typically specified in millimeters (mm). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'cell_path_length', 'domain_of': ['SAXSPreparation']} })
     temperature_control: Optional[str] = Field(default=None, description="""Temperature control settings""", json_schema_extra = { "linkml_meta": {'alias': 'temperature_control', 'domain_of': ['SAXSPreparation']} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class ExperimentalConditions(AttributeGroup):
@@ -6477,7 +7023,8 @@ class ExperimentalConditions(AttributeGroup):
                        'Image',
                        'ExperimentalConditions',
                        'DataCollectionStrategy']} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class DataCollectionStrategy(AttributeGroup):
@@ -6554,7 +7101,8 @@ class DataCollectionStrategy(AttributeGroup):
                        'DataCollectionStrategy'],
          'exact_mappings': ['nsls2:Exposure_time', 'ispyb:DataCollection.exposureTime']} })
     strategy_notes: Optional[str] = Field(default=None, description="""Notes about data collection strategy""", json_schema_extra = { "linkml_meta": {'alias': 'strategy_notes', 'domain_of': ['DataCollectionStrategy']} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class BeamCenterPixels(AttributeGroup):
@@ -6577,7 +7125,8 @@ class BeamCenterPixels(AttributeGroup):
                             'imgCIF:_diffrn_detector.beam_center_y',
                             'mmCIF:_diffrn_detector.beam_center_y',
                             'ispyb:DataCollection.yBeam']} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class QualityMetrics(AttributeGroup):
@@ -6663,7 +7212,8 @@ class QualityMetrics(AttributeGroup):
          'domain_of': ['QualityMetrics']} })
     grid_quality: Optional[CryoEMQualityMetrics] = Field(default=None, description="""Cryo-EM specific quality assessments of the imaged grid (ice contamination, ice quality, particle concentration)""", json_schema_extra = { "linkml_meta": {'alias': 'grid_quality', 'domain_of': ['QualityMetrics']} })
     r_factor: Optional[QuantityValue] = Field(default=None, description="""R-factor for crystallography (deprecated, use r_work)""", json_schema_extra = { "linkml_meta": {'alias': 'r_factor', 'domain_of': ['QualityMetrics']} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class ComputeResources(AttributeGroup):
@@ -6676,7 +7226,8 @@ class ComputeResources(AttributeGroup):
     gpu_hours: Optional[QuantityValue] = Field(default=None, description="""GPU hours used, measured in hours. Data providers may specify alternative time units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'gpu_hours', 'domain_of': ['ComputeResources']} })
     memory_gb: Optional[QuantityValue] = Field(default=None, description="""Maximum memory used, typically specified in gigabytes (GB). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'memory_gb', 'domain_of': ['ComputeResources']} })
     storage_gb: Optional[QuantityValue] = Field(default=None, description="""Storage used, typically specified in gigabytes (GB). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'storage_gb', 'domain_of': ['ComputeResources']} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class CryoEMQualityMetrics(AttributeGroup):
@@ -6688,7 +7239,8 @@ class CryoEMQualityMetrics(AttributeGroup):
     ice_contamination: Optional[IceContaminationEnum] = Field(default=None, description="""Assessment of ice contamination level on the cryo-EM grid""", json_schema_extra = { "linkml_meta": {'alias': 'ice_contamination', 'domain_of': ['CryoEMQualityMetrics']} })
     ice_quality: Optional[IceQualityEnum] = Field(default=None, description="""Assessment of vitreous ice thickness/quality for data collection""", json_schema_extra = { "linkml_meta": {'alias': 'ice_quality', 'domain_of': ['CryoEMQualityMetrics']} })
     particle_concentration: Optional[ParticleConcentrationEnum] = Field(default=None, description="""Assessment of particle concentration on the cryo-EM grid""", json_schema_extra = { "linkml_meta": {'alias': 'particle_concentration', 'domain_of': ['CryoEMQualityMetrics']} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class MotionCorrectionParameters(AttributeGroup):
@@ -6705,7 +7257,8 @@ class MotionCorrectionParameters(AttributeGroup):
     frame_grouping: Optional[QuantityValue] = Field(default=None, description="""Number of frames grouped together""", json_schema_extra = { "linkml_meta": {'alias': 'frame_grouping', 'domain_of': ['MotionCorrectionParameters']} })
     output_binning: Optional[QuantityValue] = Field(default=None, description="""Output binning factor. This must be a positive float value (e.g., 1, 1.5, 2, 3).""", json_schema_extra = { "linkml_meta": {'alias': 'output_binning', 'domain_of': ['MotionCorrectionParameters']} })
     drift_total: Optional[QuantityValue] = Field(default=None, description="""Total drift, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'drift_total', 'domain_of': ['MotionCorrectionParameters']} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class CTFEstimationParameters(AttributeGroup):
@@ -6721,7 +7274,8 @@ class CTFEstimationParameters(AttributeGroup):
     cs_used_in_estimation: Optional[QuantityValue] = Field(default=None, description="""Spherical aberration (Cs) value used during CTF estimation, typically specified in millimeters; may differ from instrument specification. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'cs_used_in_estimation', 'domain_of': ['CTFEstimationParameters']} })
     voltage_used_in_estimation: Optional[QuantityValue] = Field(default=None, description="""Accelerating voltage value used during CTF estimation, typically specified in kilovolts (kV); may differ from instrument specification. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'voltage_used_in_estimation',
          'domain_of': ['CTFEstimationParameters']} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class ParticlePickingParameters(AttributeGroup):
@@ -6739,7 +7293,8 @@ class ParticlePickingParameters(AttributeGroup):
     model_name: Optional[str] = Field(default=None, description="""Name or identifier of the deep learning model (e.g., 'resnet16', 'resnet8', 'cryolo_general'). Use this for standard pretrained models. Either model_name or model_file_path should be provided when using deep learning methods.""", json_schema_extra = { "linkml_meta": {'alias': 'model_name', 'domain_of': ['ParticlePickingParameters']} })
     model_file_path: Optional[str] = Field(default=None, description="""Path to deep learning model file if using a local or custom trained model file. Use this instead of model_name when pointing to a specific file on disk. Either model_name or model_file_path should be provided when using deep learning methods.""", json_schema_extra = { "linkml_meta": {'alias': 'model_file_path', 'domain_of': ['ParticlePickingParameters']} })
     model_source: Optional[str] = Field(default=None, description="""Source or software associated with the model (e.g., 'topaz', 'cryolo', 'warp', 'custom', 'pretrained'). Helps track model provenance and should be provided alongside model_name or model_file_path to document which software/framework the model is for.""", json_schema_extra = { "linkml_meta": {'alias': 'model_source', 'domain_of': ['ParticlePickingParameters']} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class RefinementParameters(AttributeGroup):
@@ -6765,7 +7320,8 @@ class RefinementParameters(AttributeGroup):
          'exact_mappings': ['mmCIF:_em_3d_reconstruction.resolution']} })
     resolution_0_5: Optional[QuantityValue] = Field(default=None, description="""Resolution at FSC=0.5, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'resolution_0_5', 'domain_of': ['RefinementParameters']} })
     map_sharpening_bfactor: Optional[QuantityValue] = Field(default=None, description="""B-factor used for map sharpening, typically specified in Angstroms squared (Å²). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'map_sharpening_bfactor', 'domain_of': ['RefinementParameters']} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class FSCCurve(AttributeGroup):
@@ -6780,7 +7336,8 @@ class FSCCurve(AttributeGroup):
 
     resolution_angstrom: Optional[QuantityValue] = Field(default=None, description="""Resolution values in Angstroms""", json_schema_extra = { "linkml_meta": {'alias': 'resolution_angstrom', 'domain_of': ['FSCCurve']} })
     fsc_value: Optional[QuantityValue] = Field(default=None, description="""FSC values corresponding to each resolution""", json_schema_extra = { "linkml_meta": {'alias': 'fsc_value', 'domain_of': ['FSCCurve']} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
 
 class StudySampleAssociation(ConfiguredBaseModel):
@@ -6796,13 +7353,16 @@ class StudySampleAssociation(ConfiguredBaseModel):
                        'StudyPersonAssociation',
                        'StudyOrganizationAssociation']} })
     sample_id: str = Field(default=..., description="""Reference to the sample""", json_schema_extra = { "linkml_meta": {'alias': 'sample_id',
-         'domain_of': ['SamplePreparation',
+         'domain_of': ['SampleComponent',
+                       'SamplePreparation',
                        'StudySampleAssociation',
                        'ExperimentSampleAssociation',
                        'SampleProteinAssociation',
-                       'SampleNucleicAcidAssociation']} })
+                       'SampleNucleicAcidAssociation',
+                       'SampleComponentInteraction']} })
     role: Optional[SampleRoleEnum] = Field(default=None, description="""Role of sample in study (e.g., target, control, reference)""", json_schema_extra = { "linkml_meta": {'alias': 'role',
-         'domain_of': ['StudySampleAssociation',
+         'domain_of': ['SampleComponent',
+                       'StudySampleAssociation',
                        'ExperimentSampleAssociation',
                        'SampleProteinAssociation',
                        'SampleNucleicAcidAssociation',
@@ -6868,13 +7428,16 @@ class ExperimentSampleAssociation(ConfiguredBaseModel):
                        'WorkflowExperimentAssociation',
                        'ExperimentPersonAssociation']} })
     sample_id: str = Field(default=..., description="""Reference to the sample""", json_schema_extra = { "linkml_meta": {'alias': 'sample_id',
-         'domain_of': ['SamplePreparation',
+         'domain_of': ['SampleComponent',
+                       'SamplePreparation',
                        'StudySampleAssociation',
                        'ExperimentSampleAssociation',
                        'SampleProteinAssociation',
-                       'SampleNucleicAcidAssociation']} })
+                       'SampleNucleicAcidAssociation',
+                       'SampleComponentInteraction']} })
     role: Optional[ExperimentSampleRoleEnum] = Field(default=None, description="""Role of sample in experiment""", json_schema_extra = { "linkml_meta": {'alias': 'role',
-         'domain_of': ['StudySampleAssociation',
+         'domain_of': ['SampleComponent',
+                       'StudySampleAssociation',
                        'ExperimentSampleAssociation',
                        'SampleProteinAssociation',
                        'SampleNucleicAcidAssociation',
@@ -6891,23 +7454,33 @@ class SampleProteinAssociation(ConfiguredBaseModel):
     """
     M:N link between Sample and Protein. A sample may hold several proteins - the subunits of a complex, a target with its chaperone, a fusion partner - and one protein turns up in many samples. What changes from preparation to preparation lives here: the role, the copy number, the residue range actually present, the modifications carried, the mass actually measured, and the construct it was made from.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'comments': ['A SampleComponent row of type protein for the same sample and '
+                      'protein is the inventory entry and the handle a '
+                      'SampleComponentInteraction points at; this association is the '
+                      'per-preparation detail. A dataset that records no interactions '
+                      'may carry this row alone. Where role or copy_number is set on '
+                      'both, they must agree.'],
+         'from_schema': 'http://w3id.org/lambda/',
          'related_mappings': ['IHMCIF:_ihm_struct_assembly_details',
                               'IHMCIF:_ihm_entity_poly_segment']})
 
     sample_id: str = Field(default=..., description="""Reference to the sample""", json_schema_extra = { "linkml_meta": {'alias': 'sample_id',
-         'domain_of': ['SamplePreparation',
+         'domain_of': ['SampleComponent',
+                       'SamplePreparation',
                        'StudySampleAssociation',
                        'ExperimentSampleAssociation',
                        'SampleProteinAssociation',
-                       'SampleNucleicAcidAssociation']} })
+                       'SampleNucleicAcidAssociation',
+                       'SampleComponentInteraction']} })
     protein_id: str = Field(default=..., description="""Reference to the protein""", json_schema_extra = { "linkml_meta": {'alias': 'protein_id',
          'domain_of': ['ProteinAnnotation',
                        'ConformationalEnsemble',
                        'ProteinConstruct',
+                       'SampleComponent',
                        'SampleProteinAssociation']} })
     role: Optional[SampleProteinRoleEnum] = Field(default=None, description="""Part this protein plays in the sample""", json_schema_extra = { "linkml_meta": {'alias': 'role',
-         'domain_of': ['StudySampleAssociation',
+         'domain_of': ['SampleComponent',
+                       'StudySampleAssociation',
                        'ExperimentSampleAssociation',
                        'SampleProteinAssociation',
                        'SampleNucleicAcidAssociation',
@@ -6920,7 +7493,9 @@ class SampleProteinAssociation(ConfiguredBaseModel):
     construct_id: Optional[str] = Field(default=None, description="""The construct that produced this protein in this sample, where cloning detail is recorded""", json_schema_extra = { "linkml_meta": {'alias': 'construct_id',
          'domain_of': ['ProteinConstruct', 'SampleProteinAssociation']} })
     copy_number: Optional[int] = Field(default=None, description="""Copies of this protein per assembly in the sample (e.g., 4 for a homotetramer, 2 for each chain of an alpha2-beta2 heterotetramer). Omit when unknown rather than assuming 1.""", json_schema_extra = { "linkml_meta": {'alias': 'copy_number',
-         'domain_of': ['SampleProteinAssociation', 'SampleNucleicAcidAssociation'],
+         'domain_of': ['SampleComponent',
+                       'SampleProteinAssociation',
+                       'SampleNucleicAcidAssociation'],
          'exact_mappings': ['mmCIF:_entity.pdbx_number_of_molecules']} })
     residue_range: Optional[str] = Field(default=None, description="""Residues of the canonical sequence present in this sample (e.g., '1-141', '25-300'), for fragments and truncations. Omit when the full-length protein is present. Residues or ranges, comma-separated: '1-141', '25,27,30-35'.""", json_schema_extra = { "linkml_meta": {'alias': 'residue_range',
          'domain_of': ['ProteinAnnotation',
@@ -6957,19 +7532,29 @@ class SampleNucleicAcidAssociation(ConfiguredBaseModel):
     """
     M:N link between Sample and NucleicAcid. A sample may hold several strands - the two strands of a duplex, a guide RNA with its target DNA, a primer with its template - and one strand turns up in many samples. What changes from preparation to preparation lives here: the role, the copy number, the form the strand takes (single, duplex, hairpin, quadruplex), how it was made, the modifications it carries, and the mass actually measured.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'comments': ['A SampleComponent row of type nucleic_acid for the same sample '
+                      'and strand is the inventory entry and the handle a '
+                      'SampleComponentInteraction points at; this association is the '
+                      'per-preparation detail. A dataset that records no interactions '
+                      'may carry this row alone. Where role or copy_number is set on '
+                      'both, they must agree.'],
+         'from_schema': 'http://w3id.org/lambda/',
          'related_mappings': ['IHMCIF:_ihm_struct_assembly_details',
                               'IHMCIF:_ihm_entity_poly_segment']})
 
     sample_id: str = Field(default=..., description="""Reference to the sample""", json_schema_extra = { "linkml_meta": {'alias': 'sample_id',
-         'domain_of': ['SamplePreparation',
+         'domain_of': ['SampleComponent',
+                       'SamplePreparation',
                        'StudySampleAssociation',
                        'ExperimentSampleAssociation',
                        'SampleProteinAssociation',
-                       'SampleNucleicAcidAssociation']} })
-    nucleic_acid_id: str = Field(default=..., description="""Reference to the nucleic acid""", json_schema_extra = { "linkml_meta": {'alias': 'nucleic_acid_id', 'domain_of': ['SampleNucleicAcidAssociation']} })
+                       'SampleNucleicAcidAssociation',
+                       'SampleComponentInteraction']} })
+    nucleic_acid_id: str = Field(default=..., description="""Reference to the nucleic acid""", json_schema_extra = { "linkml_meta": {'alias': 'nucleic_acid_id',
+         'domain_of': ['SampleComponent', 'SampleNucleicAcidAssociation']} })
     role: Optional[SampleNucleicAcidRoleEnum] = Field(default=None, description="""Part this nucleic acid plays in the sample""", json_schema_extra = { "linkml_meta": {'alias': 'role',
-         'domain_of': ['StudySampleAssociation',
+         'domain_of': ['SampleComponent',
+                       'StudySampleAssociation',
                        'ExperimentSampleAssociation',
                        'SampleProteinAssociation',
                        'SampleNucleicAcidAssociation',
@@ -6980,7 +7565,9 @@ class SampleNucleicAcidAssociation(ConfiguredBaseModel):
                        'StudyOrganizationAssociation',
                        'PersonOrganizationAssociation']} })
     copy_number: Optional[int] = Field(default=None, description="""Copies of this strand per assembly in the sample: 2 for a self-complementary duplex, 1 for each strand of a duplex made of two different strands. Omit when unknown rather than assuming 1.""", json_schema_extra = { "linkml_meta": {'alias': 'copy_number',
-         'domain_of': ['SampleProteinAssociation', 'SampleNucleicAcidAssociation'],
+         'domain_of': ['SampleComponent',
+                       'SampleProteinAssociation',
+                       'SampleNucleicAcidAssociation'],
          'exact_mappings': ['mmCIF:_entity.pdbx_number_of_molecules']} })
     residue_range: Optional[str] = Field(default=None, description="""Nucleotides of the reference sequence present in this sample (e.g., '1-76', '30-45'), for fragments of a longer RNA or DNA. Omit when the whole sequence is present. Positions or ranges, comma-separated: '1-76', '30-45,60-72'.""", json_schema_extra = { "linkml_meta": {'alias': 'residue_range',
          'domain_of': ['ProteinAnnotation',
@@ -7015,6 +7602,58 @@ class SampleNucleicAcidAssociation(ConfiguredBaseModel):
         return v
 
 
+class SampleComponentInteraction(ConfiguredBaseModel):
+    """
+    A relationship between two components of one sample: this ligand binds that protein, this metal is coordinated by that enzyme, this guide RNA pairs with that DNA strand, this membrane protein sits in that nanodisc. One row per ordered pair and relationship, read subject to object as interaction_type is worded. Rows can say what the sample was made to test as well as what the data showed: interaction_status separates the design from the result, so a ligand soaked in and not seen in the density is recorded rather than silently dropped.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'comments': ['Subject and object are components of the same sample, and '
+                      'sample_id names that sample. Add the component rows first; the '
+                      'entities they point at are what the interaction is between, and '
+                      'the components are what it is between in this preparation.',
+                      'Affinity and site may be known from prior work rather than '
+                      'measured here. Say which in evidence.'],
+         'from_schema': 'http://w3id.org/lambda/',
+         'related_mappings': ['mmCIF:_struct_conn',
+                              'mmCIF:_struct_site',
+                              'mmCIF:_pdbx_entity_nonpoly']})
+
+    sample_id: str = Field(default=..., description="""The sample both components belong to""", json_schema_extra = { "linkml_meta": {'alias': 'sample_id',
+         'domain_of': ['SampleComponent',
+                       'SamplePreparation',
+                       'StudySampleAssociation',
+                       'ExperimentSampleAssociation',
+                       'SampleProteinAssociation',
+                       'SampleNucleicAcidAssociation',
+                       'SampleComponentInteraction']} })
+    subject_id: str = Field(default=..., description="""The component that acts on, binds to or sits in the object""", json_schema_extra = { "linkml_meta": {'alias': 'subject_id', 'domain_of': ['SampleComponentInteraction']} })
+    object_id: str = Field(default=..., description="""The component acted on, bound or hosting""", json_schema_extra = { "linkml_meta": {'alias': 'object_id', 'domain_of': ['SampleComponentInteraction']} })
+    interaction_type: ComponentInteractionTypeEnum = Field(default=..., description="""What the subject does to the object""", json_schema_extra = { "linkml_meta": {'alias': 'interaction_type',
+         'domain_of': ['LigandInteraction', 'SampleComponentInteraction']} })
+    interaction_status: Optional[InteractionStatusEnum] = Field(default=None, description="""Whether the interaction is the design of the sample, expected from prior work, observed in this dataset's data, or expected and not observed""", json_schema_extra = { "linkml_meta": {'alias': 'interaction_status', 'domain_of': ['SampleComponentInteraction']} })
+    stoichiometry: Optional[str] = Field(default=None, description="""Copies of subject to copies of object per assembly, written 'subject:object' ('1:1', '2:1')""", json_schema_extra = { "linkml_meta": {'alias': 'stoichiometry', 'domain_of': ['SampleComponentInteraction']} })
+    subject_site: Optional[str] = Field(default=None, description="""Where on the subject the interaction takes place: residues or positions as 'D184,D186' or '45-60', or a named site such as 'active site' or 'ATP-binding pocket'""", json_schema_extra = { "linkml_meta": {'alias': 'subject_site', 'domain_of': ['SampleComponentInteraction']} })
+    object_site: Optional[str] = Field(default=None, description="""Where on the object the interaction takes place, in the same form as subject_site""", json_schema_extra = { "linkml_meta": {'alias': 'object_site', 'domain_of': ['SampleComponentInteraction']} })
+    affinity: Optional[QuantityValue] = Field(default=None, description="""Binding affinity as a quantity with its unit (e.g., 12 nanomolar); affinity_type says which constant it is""", json_schema_extra = { "linkml_meta": {'alias': 'affinity', 'domain_of': ['SampleComponentInteraction']} })
+    affinity_type: Optional[BindingAffinityTypeEnum] = Field(default=None, description="""Which constant affinity reports: Kd, Ki, IC50, ...""", json_schema_extra = { "linkml_meta": {'alias': 'affinity_type',
+         'domain_of': ['SamplePreparation', 'SampleComponentInteraction']} })
+    evidence: Optional[list[InteractionEvidenceEnum]] = Field(default=None, description="""Kind of evidence for the interaction""", json_schema_extra = { "linkml_meta": {'alias': 'evidence', 'domain_of': ['SampleComponentInteraction']} })
+    description: Optional[str] = Field(default=None, description="""Free-text detail: the binding mode, the reference the expectation comes from, why an expected interaction was not seen""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
+
+    @field_validator('stoichiometry')
+    def pattern_stoichiometry(cls, v):
+        pattern=re.compile(r"^[0-9]+:[0-9]+$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid stoichiometry format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid stoichiometry format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
 class ExperimentInstrumentAssociation(ConfiguredBaseModel):
     """
     M:N link between ExperimentRun and Instrument
@@ -7029,7 +7668,8 @@ class ExperimentInstrumentAssociation(ConfiguredBaseModel):
                        'ExperimentPersonAssociation']} })
     instrument_id: str = Field(default=..., description="""Reference to the instrument""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_id', 'domain_of': ['ExperimentInstrumentAssociation']} })
     role: Optional[InstrumentRoleEnum] = Field(default=None, description="""Role of instrument in experiment""", json_schema_extra = { "linkml_meta": {'alias': 'role',
-         'domain_of': ['StudySampleAssociation',
+         'domain_of': ['SampleComponent',
+                       'StudySampleAssociation',
                        'ExperimentSampleAssociation',
                        'SampleProteinAssociation',
                        'SampleNucleicAcidAssociation',
@@ -7119,7 +7759,8 @@ class StudyPersonAssociation(ConfiguredBaseModel):
                        'WorkflowPersonAssociation',
                        'PersonOrganizationAssociation']} })
     role: Optional[PersonRoleEnum] = Field(default=None, description="""Capacity in which the person is attached to the study""", json_schema_extra = { "linkml_meta": {'alias': 'role',
-         'domain_of': ['StudySampleAssociation',
+         'domain_of': ['SampleComponent',
+                       'StudySampleAssociation',
                        'ExperimentSampleAssociation',
                        'SampleProteinAssociation',
                        'SampleNucleicAcidAssociation',
@@ -7153,7 +7794,8 @@ class ExperimentPersonAssociation(ConfiguredBaseModel):
                        'WorkflowPersonAssociation',
                        'PersonOrganizationAssociation']} })
     role: Optional[PersonRoleEnum] = Field(default=None, description="""Capacity in which the person is attached to the experiment run""", json_schema_extra = { "linkml_meta": {'alias': 'role',
-         'domain_of': ['StudySampleAssociation',
+         'domain_of': ['SampleComponent',
+                       'StudySampleAssociation',
                        'ExperimentSampleAssociation',
                        'SampleProteinAssociation',
                        'SampleNucleicAcidAssociation',
@@ -7183,7 +7825,8 @@ class WorkflowPersonAssociation(ConfiguredBaseModel):
                        'WorkflowPersonAssociation',
                        'PersonOrganizationAssociation']} })
     role: Optional[PersonRoleEnum] = Field(default=None, description="""Capacity in which the person is attached to the workflow run""", json_schema_extra = { "linkml_meta": {'alias': 'role',
-         'domain_of': ['StudySampleAssociation',
+         'domain_of': ['SampleComponent',
+                       'StudySampleAssociation',
                        'ExperimentSampleAssociation',
                        'SampleProteinAssociation',
                        'SampleNucleicAcidAssociation',
@@ -7210,7 +7853,8 @@ class StudyOrganizationAssociation(ConfiguredBaseModel):
     organization_id: str = Field(default=..., description="""Reference to the organization""", json_schema_extra = { "linkml_meta": {'alias': 'organization_id',
          'domain_of': ['StudyOrganizationAssociation', 'PersonOrganizationAssociation']} })
     role: Optional[OrganizationRoleEnum] = Field(default=None, description="""Capacity in which the organization is attached to the study""", json_schema_extra = { "linkml_meta": {'alias': 'role',
-         'domain_of': ['StudySampleAssociation',
+         'domain_of': ['SampleComponent',
+                       'StudySampleAssociation',
                        'ExperimentSampleAssociation',
                        'SampleProteinAssociation',
                        'SampleNucleicAcidAssociation',
@@ -7237,7 +7881,8 @@ class PersonOrganizationAssociation(ConfiguredBaseModel):
     organization_id: str = Field(default=..., description="""Reference to the organization""", json_schema_extra = { "linkml_meta": {'alias': 'organization_id',
          'domain_of': ['StudyOrganizationAssociation', 'PersonOrganizationAssociation']} })
     role: Optional[OrganizationRoleEnum] = Field(default=None, description="""Nature of the person's attachment to the organization""", json_schema_extra = { "linkml_meta": {'alias': 'role',
-         'domain_of': ['StudySampleAssociation',
+         'domain_of': ['SampleComponent',
+                       'StudySampleAssociation',
                        'ExperimentSampleAssociation',
                        'SampleProteinAssociation',
                        'SampleNucleicAcidAssociation',
@@ -7282,6 +7927,8 @@ Sample.model_rebuild()
 Protein.model_rebuild()
 ProteinConstruct.model_rebuild()
 NucleicAcid.model_rebuild()
+SmallMolecule.model_rebuild()
+SampleComponent.model_rebuild()
 SamplePreparation.model_rebuild()
 Instrument.model_rebuild()
 CryoEMInstrument.model_rebuild()
@@ -7331,6 +7978,7 @@ StudyWorkflowAssociation.model_rebuild()
 ExperimentSampleAssociation.model_rebuild()
 SampleProteinAssociation.model_rebuild()
 SampleNucleicAcidAssociation.model_rebuild()
+SampleComponentInteraction.model_rebuild()
 ExperimentInstrumentAssociation.model_rebuild()
 WorkflowExperimentAssociation.model_rebuild()
 WorkflowInputAssociation.model_rebuild()

@@ -151,7 +151,7 @@ sample_nucleic_acid_associations:
   copy_number: 1
   source_method: in_vitro_transcription
   modifications:
-  - 5' triphosphate retained
+  - 5' triphosphate
   observed_molecular_weight:
     unit: kilodaltons
     numeric_value: 31.9

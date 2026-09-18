@@ -1,5 +1,5 @@
 # metamodel_version: 1.7.0
-# version: 0.1.2.post231.dev0+52d03959
+# version: 0.1.2.post262.dev0+0be35f65
 enum AffinityUnitEnum
   {
     molar
@@ -133,6 +133,19 @@ enum BiophysicalPropertyEnum
     hydrodynamic_radius
   }
 
+enum ChemicalClassEnum
+  {
+    ion
+    lipid
+    detergent
+    carbohydrate
+    nucleotide
+    amino_acid
+    organic
+    polymer
+    other
+  }
+
 enum ClinicalSignificanceEnum
   {
     pathogenic
@@ -162,6 +175,28 @@ enum ComplexStabilityEnum
     strong
     obligate
     non_obligate
+  }
+
+enum ComponentInteractionTypeEnum
+  {
+    binds
+    inhibits
+    activates
+    is_substrate_of
+    is_product_of
+    is_cofactor_of
+    is_coordinated_by
+    cleaves
+    covalently_modifies
+    covalently_linked_to
+    crosslinked_to
+    base_pairs_with
+    embedded_in
+    solubilized_by
+    encapsulated_in
+    forms_complex_with
+    competes_with
+    no_interaction
   }
 
 enum ConformationalStateEnum
@@ -513,6 +548,14 @@ enum InteractionEvidenceEnum
     functional
   }
 
+enum InteractionStatusEnum
+  {
+    designed
+    expected
+    observed
+    not_observed
+  }
+
 enum InteractionTypeEnum
   {
     covalent
@@ -723,6 +766,43 @@ enum PurificationStepEnum
     dialysis
   }
 
+enum SampleComponentRoleEnum
+  {
+    target
+    subunit
+    binding_partner
+    ligand
+    substrate
+    product
+    inhibitor
+    activator
+    cofactor
+    fusion_partner
+    chaperone
+    template
+    primer
+    guide
+    scaffold
+    carrier
+    additive
+    contaminant
+    standard
+  }
+
+enum SampleComponentTypeEnum
+  {
+    protein
+    nucleic_acid
+    small_molecule
+    virus_particle
+    organelle
+    cell
+    tissue
+    membrane_mimetic
+    nanoparticle
+    other
+  }
+
 enum SampleNucleicAcidRoleEnum
   {
     target
@@ -743,6 +823,7 @@ enum SampleProteinRoleEnum
     binding_partner
     fusion_partner
     chaperone
+    carrier
     contaminant
     standard
   }
@@ -763,6 +844,8 @@ enum SampleTypeEnum
     membrane_protein
     virus
     organelle
+    cell
+    tissue
   }
 
 enum SecondaryStructureEnum
@@ -1216,7 +1299,9 @@ type Dataset
     proteins: [Protein]
     proteinConstructs: [ProteinConstruct]
     nucleicAcids: [NucleicAcid]
+    smallMolecules: [SmallMolecule]
     samples: [Sample]
+    sampleComponents: [SampleComponent]
     samplePreparations: [SamplePreparation]
     experimentRuns: [ExperimentRun]
     workflowRuns: [WorkflowRun]
@@ -1229,6 +1314,7 @@ type Dataset
     experimentInstrumentAssociations: [ExperimentInstrumentAssociation]
     sampleProteinAssociations: [SampleProteinAssociation]
     sampleNucleicAcidAssociations: [SampleNucleicAcidAssociation]
+    sampleComponentInteractions: [SampleComponentInteraction]
     workflowExperimentAssociations: [WorkflowExperimentAssociation]
     workflowInputAssociations: [WorkflowInputAssociation]
     workflowOutputAssociations: [WorkflowOutputAssociation]
@@ -2005,6 +2091,38 @@ type Sample
     oligomericState: String
   }
 
+type SampleComponent
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    sampleId: Sample!
+    componentType: SampleComponentTypeEnum!
+    proteinId: Protein
+    nucleicAcidId: NucleicAcid
+    smallMoleculeId: SmallMolecule
+    ontologyTerm: OntologyTerm
+    role: SampleComponentRoleEnum
+    copyNumber: Integer
+    concentration: QuantityValue
+  }
+
+type SampleComponentInteraction
+  {
+    sampleId: Sample!
+    subjectId: SampleComponent!
+    objectId: SampleComponent!
+    interactionType: ComponentInteractionTypeEnum!
+    interactionStatus: InteractionStatusEnum
+    stoichiometry: String
+    subjectSite: String
+    objectSite: String
+    affinity: QuantityValue
+    affinityType: BindingAffinityTypeEnum
+    evidence: [InteractionEvidenceEnum]
+    description: String
+  }
+
 type SampleNucleicAcidAssociation
   {
     sampleId: Sample!
@@ -2184,6 +2302,23 @@ type SAXSPreparation
     sampleCellType: String
     cellPathLength: QuantityValue
     temperatureControl: String
+  }
+
+type SmallMolecule
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    smallMoleculeName: String
+    chebiId: Uriorcurie
+    pdbLigandId: Uriorcurie
+    chemicalClass: ChemicalClassEnum
+    molecularFormula: String
+    smiles: SmilesString
+    inchi: String
+    inchikey: String
+    molecularWeightTheoretical: QuantityValue
+    crossReferences: [DatabaseCrossReference]
   }
 
 type StorageConditions

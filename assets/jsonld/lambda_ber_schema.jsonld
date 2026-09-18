@@ -2,7 +2,7 @@
   "name": "lambda-ber-schema",
   "description": "lambda-ber-schema is a comprehensive schema for representing multimodal structural biology imaging data, \nfrom atomic-resolution structures to tissue-level organization. It supports diverse experimental \ntechniques including cryo-EM, X-ray crystallography, SAXS/SANS, fluorescence microscopy, and \nspectroscopic imaging.\n\n## Schema Organization\n\nThe schema follows a **relational design** with flat entity collections and explicit association\ntables for many-to-many relationships. This maps cleanly to SQL databases while supporting\nflexible data reuse across studies.\n\nThe top-level entity is a [Dataset](Dataset.md), which serves as a container for related research.\nA dataset might represent all data from a specific grant, collaboration, or publication.\n\n### Entity Tables\n\nAll entities are stored in flat collections at the Dataset level:\n\n**Biological Materials**\n- [Proteins](Protein.md): The protein as a biological entity - sequence, source organism, gene,\n  and the functional and structural annotations that hold for it in every preparation. Identified\n  by UniProt accession as a CURIE (`uniprot:P69905`) wherever one exists. One record serves every\n  sample that contains the protein; what varies between preparations lives on the sample and on\n  the sample-protein association.\n\n- [Nucleic Acids](NucleicAcid.md): The DNA or RNA strand as a molecular entity - sequence, type,\n  source organism, gene - shared by every sample that contains it, as Protein is for proteins.\n  Identified by RNAcentral, RefSeq or INSDC accession where one exists; a synthetic\n  oligonucleotide, which is most of what structural biology sees, gets a local id.\n\n- [Samples](Sample.md): The physical specimens being studied (proteins, nucleic acids, complexes,\n  cells, tissues). Each sample records the preparation-specific facts - buffer conditions,\n  concentration, storage, purity - and links to the proteins and nucleic acids it contains through\n  [SampleProteinAssociation](SampleProteinAssociation.md) and\n  [SampleNucleicAcidAssociation](SampleNucleicAcidAssociation.md).\n\n- [Protein Constructs](ProteinConstruct.md): How a protein was cloned and expressed - vector,\n  tags, cleavage sites, codon optimization. A construct realizes one protein and may feed many samples.\n\n- [Sample Preparations](SamplePreparation.md): How samples were prepared for specific techniques.\n  This includes cryo-EM grid preparation (vitrification parameters), crystallization conditions for\n  X-ray studies, or staining protocols for fluorescence microscopy.\n\n**Data Collection**\n- [Instruments](Instrument.md): The equipment used, from Titan Krios microscopes to synchrotron\n  beamlines. Each instrument type ([CryoEMInstrument](CryoEMInstrument.md),\n  [XRayInstrument](XRayInstrument.md), [SANSInstrument](SANSInstrument.md),\n  [SAXSInstrument](SAXSInstrument.md)) has specific parameters like accelerating voltage,\n  detector type, or beam energy.\n\n- [Experiment Runs](ExperimentRun.md): Individual data collection sessions. An experiment run\n  captures when, how, and under what conditions data was collected, including quality metrics\n  like resolution and completeness.\n\n**Data Processing**\n- [Workflow Runs](WorkflowRun.md): Computational processing steps applied to raw data. This includes\n  motion correction for cryo-EM movies, 3D reconstruction, model building, or phase determination\n  for crystallography. Each workflow tracks the software used, parameters, and computational resources.\n\n**Data Products**\n- [Data Files](DataFile.md): Any files generated or used, from raw data to final models. Each file\n  is tracked with checksums for data integrity and typed (micrograph, particles, volume, model).\n\n- [Images](Image.md): Specialized classes for different imaging modalities:\n  - [Image2D](Image2D.md): Micrographs, diffraction patterns\n  - [Image3D](Image3D.md): 3D reconstructions, tomograms\n  - [FTIRImage](FTIRImage.md): Molecular composition maps from infrared spectroscopy\n  - [FluorescenceImage](FluorescenceImage.md): Fluorophore-labeled cellular components\n  - [OpticalImage](OpticalImage.md): Brightfield/phase contrast microscopy\n  - [XRFImage](XRFImage.md): Elemental distribution maps\n\n**Logical Groupings**\n- [Studies](Study.md): Lightweight groupings representing focused investigations of specific\n  biological questions. For example, a study might investigate \"Heat stress response in Arabidopsis\"\n  or \"Structure of the human ribosome under different conditions.\"\n\n**People and organizations**\n- [Persons](Person.md): People involved in producing, processing or publishing the data - principal\n  investigators, beamline operators, analysts, curators. Identified by ORCID where available. Which\n  work a person is attached to, and in what capacity, is carried by the person association tables,\n  so one record serves every role a person holds across the dataset.\n\n- [Organizations](Organization.md): Institutions, facilities and funding bodies, identified by ROR.\n  The structured home for organizational identity that would otherwise live as free text on\n  instruments, on people, and in FacilityEnum's annotations - so a parent institution is stated\n  once rather than restated by everything that refers to it.\n\n### Association Tables\n\nMany-to-many relationships are represented via explicit association tables, which can carry\nrelationship metadata (e.g., the role of a sample in an experiment):\n\n- **StudySampleAssociation**: Links samples to studies (with role: target, control, reference)\n- **StudyExperimentAssociation**: Links experiments to studies\n- **StudyWorkflowAssociation**: Links workflows to studies\n- **ExperimentSampleAssociation**: Links samples to experiments (with role and preparation used)\n- **SampleProteinAssociation**: Links proteins to samples (with role, copy number, residue range,\n  modifications, observed mass, and the construct used)\n- **SampleNucleicAcidAssociation**: Links nucleic acids to samples (with role, copy number,\n  structural form, how the strand was made, modifications, and observed mass)\n- **ExperimentInstrumentAssociation**: Links instruments to experiments (with role: primary, detector)\n- **WorkflowExperimentAssociation**: Links source experiments to workflows\n- **WorkflowInputAssociation**: Links input files to workflows\n- **WorkflowOutputAssociation**: Links output files to workflows\n- **StudyPersonAssociation**: Links people to studies (with role, author position, corresponding flag)\n- **ExperimentPersonAssociation**: Links people to experiment runs (with role: operator, local contact)\n- **WorkflowPersonAssociation**: Links people to workflow runs (with role: analyst, reviewer)\n- **StudyOrganizationAssociation**: Links organizations to studies (with role and award number)\n- **PersonOrganizationAssociation**: Links people to organizations (with role and affiliation dates)\n\nThis relational design enables:\n- **Sample reuse**: The same sample can be used in multiple studies and experiments\n- **Protein reuse**: The same protein is described once and linked from every sample that contains it\n- **Nucleic acid reuse**: Likewise for a DNA or RNA strand - one record, linked from every sample it is in\n- **Multi-instrument experiments**: An experiment can use multiple instruments with different roles\n- **Integrative workflows**: A workflow can combine data from multiple experiments\n\n## Example Usage\n\nA typical cryo-EM study of a protein complex would include:\n1. Sample records for the purified complex with molecular weight and buffer composition\n2. Grid preparation details with vitrification parameters\n3. Microscope specifications and data collection parameters\n4. Processing workflows from motion correction through 3D refinement\n5. Final reconstructed volumes and fitted atomic models\n\nA multimodal plant imaging study might combine:\n1. Whole plant optical imaging for morphology\n2. XRF imaging to map nutrient distribution\n3. FTIR spectroscopy to identify stress-related molecular changes\n4. Fluorescence microscopy to track specific protein responses\n5. Cryo-EM of isolated organelles for ultrastructural details\n\n## Key Features\n\n- **Relational design**: Flat entity tables with explicit association tables for M:N relationships\n- **SQL-friendly**: Maps directly to normalized database tables\n- **Technique-agnostic core**: The same schema handles data from any structural biology method\n- **Rich metadata**: Comprehensive tracking from sample to structure\n- **Workflow provenance**: Complete computational reproducibility\n- **Multimodal support**: Seamlessly integrate data across scales and techniques\n- **Standards-compliant**: Follows FAIR principles and integrates with existing ontologies\n",
   "id": "http://w3id.org/lambda/",
-  "version": "0.1.2.post231.dev0+52d03959",
+  "version": "0.1.2.post262.dev0+0be35f65",
   "imports": [
     "linkml:types",
     "lambda_ber_types",
@@ -69,6 +69,26 @@
     {
       "prefix_prefix": "rfam",
       "prefix_reference": "https://rfam.org/family/"
+    },
+    {
+      "prefix_prefix": "CHEBI",
+      "prefix_reference": "http://purl.obolibrary.org/obo/CHEBI_"
+    },
+    {
+      "prefix_prefix": "chembl.compound",
+      "prefix_reference": "https://www.ebi.ac.uk/chembl/compound_report_card/"
+    },
+    {
+      "prefix_prefix": "pubchem.compound",
+      "prefix_reference": "https://pubchem.ncbi.nlm.nih.gov/compound/"
+    },
+    {
+      "prefix_prefix": "drugbank",
+      "prefix_reference": "https://go.drugbank.com/drugs/"
+    },
+    {
+      "prefix_prefix": "pdb.ligand",
+      "prefix_reference": "https://www.rcsb.org/ligand/"
     },
     {
       "prefix_prefix": "UBERON",
@@ -141,6 +161,10 @@
     {
       "prefix_prefix": "ssrl-mx",
       "prefix_reference": "https://smb.slac.stanford.edu/dev/lims/lambda/"
+    },
+    {
+      "prefix_prefix": "anl-lambda",
+      "prefix_reference": "https://sg.bio.anl.gov/lambda/"
     }
   ],
   "default_prefix": "lambda",
@@ -1190,7 +1214,7 @@
     {
       "name": "SampleTypeEnum",
       "definition_uri": "http://w3id.org/lambda/SampleTypeEnum",
-      "description": "Types of biological samples",
+      "description": "Coarse kind of a sample, a one-word summary for search. What the sample actually contains - which proteins, strands, ligands and particles, in what roles, and which acts on which - is recorded in SampleComponent and SampleComponentInteraction.",
       "from_schema": "http://w3id.org/lambda/",
       "permissible_values": [
         {
@@ -1203,7 +1227,7 @@
         },
         {
           "text": "complex",
-          "description": "Protein-protein or protein-nucleic acid complex"
+          "description": "A complex of two or more macromolecules, or of a macromolecule with its ligands; the components say which"
         },
         {
           "text": "membrane_protein",
@@ -1216,6 +1240,14 @@
         {
           "text": "organelle",
           "description": "Cellular organelle"
+        },
+        {
+          "text": "cell",
+          "description": "Whole cell, as for cryo-electron tomography of a lamella"
+        },
+        {
+          "text": "tissue",
+          "description": "Tissue or tissue section"
         }
       ]
     },
@@ -4004,6 +4036,10 @@
           "description": "A chaperone or scaffold added to stabilize or reconstitute the target"
         },
         {
+          "text": "carrier",
+          "description": "A membrane scaffold protein or other protein that forms the host a membrane protein target sits in, as MSP1D1 does for a nanodisc"
+        },
+        {
           "text": "contaminant",
           "description": "A protein present unintentionally and identified after the fact"
         },
@@ -4154,6 +4190,286 @@
         {
           "text": "other",
           "description": "A method not listed, described in the association's description"
+        }
+      ]
+    },
+    {
+      "name": "SampleComponentTypeEnum",
+      "definition_uri": "http://w3id.org/lambda/SampleComponentTypeEnum",
+      "description": "Kinds of thing a sample may contain. The first three are described by an entity record; the rest are named by title and an ontology term.",
+      "from_schema": "http://w3id.org/lambda/",
+      "permissible_values": [
+        {
+          "text": "protein",
+          "description": "A protein or peptide, described by a Protein record"
+        },
+        {
+          "text": "nucleic_acid",
+          "description": "A DNA or RNA strand, described by a NucleicAcid record"
+        },
+        {
+          "text": "small_molecule",
+          "description": "A ligand, cofactor, metal ion, lipid, detergent, sugar or additive, described by a SmallMolecule record"
+        },
+        {
+          "text": "virus_particle",
+          "description": "A virion or virus-like particle, named by its NCBI Taxonomy term"
+        },
+        {
+          "text": "organelle",
+          "description": "An organelle or other cellular substructure such as a ribosome, a proteasome or a mitochondrion, named by its GO cellular component term"
+        },
+        {
+          "text": "cell",
+          "description": "A whole cell, named by its Cell Ontology or NCBI Taxonomy term"
+        },
+        {
+          "text": "tissue",
+          "description": "A tissue or tissue section, named by its UBERON term"
+        },
+        {
+          "text": "membrane_mimetic",
+          "description": "A nanodisc, liposome, bicelle, micelle or amphipol that hosts a membrane protein"
+        },
+        {
+          "text": "nanoparticle",
+          "description": "A synthetic nanoparticle or scaffold"
+        },
+        {
+          "text": "other",
+          "description": "A component of a kind not listed, described in title and description"
+        }
+      ]
+    },
+    {
+      "name": "SampleComponentRoleEnum",
+      "definition_uri": "http://w3id.org/lambda/SampleComponentRoleEnum",
+      "description": "Part a component plays in a sample. A superset of SampleProteinRoleEnum and SampleNucleicAcidRoleEnum, so a role given on an association can be repeated on the component without translation.",
+      "from_schema": "http://w3id.org/lambda/",
+      "permissible_values": [
+        {
+          "text": "target",
+          "description": "The thing under investigation"
+        },
+        {
+          "text": "subunit",
+          "description": "One subunit or strand of a complex that is the target as a whole"
+        },
+        {
+          "text": "binding_partner",
+          "description": "A macromolecule present for its interaction with the target: an antibody, a substrate protein, the DNA site a transcription factor binds"
+        },
+        {
+          "text": "ligand",
+          "description": "A small molecule present for its binding to the target, where a more specific role does not apply"
+        },
+        {
+          "text": "substrate",
+          "description": "A substrate of an enzyme in the sample, including a non-hydrolysable analogue"
+        },
+        {
+          "text": "product",
+          "description": "A product of an enzyme in the sample"
+        },
+        {
+          "text": "inhibitor",
+          "description": "A small molecule or macromolecule that inhibits the target"
+        },
+        {
+          "text": "activator",
+          "description": "A small molecule or macromolecule that activates the target"
+        },
+        {
+          "text": "cofactor",
+          "description": "A cofactor, coenzyme, prosthetic group or structural metal ion of the target"
+        },
+        {
+          "text": "fusion_partner",
+          "description": "A solubility or affinity fusion partner left attached (e.g., MBP, GST, GFP)"
+        },
+        {
+          "text": "chaperone",
+          "description": "A chaperone or scaffold added to stabilize or reconstitute the target"
+        },
+        {
+          "text": "template",
+          "description": "The strand a polymerase or reverse transcriptase reads"
+        },
+        {
+          "text": "primer",
+          "description": "The strand a polymerase extends"
+        },
+        {
+          "text": "guide",
+          "description": "A guide RNA or DNA that directs a nuclease or other effector to its target"
+        },
+        {
+          "text": "scaffold",
+          "description": "A structural scaffold, as in DNA origami or a nanoparticle assembly"
+        },
+        {
+          "text": "carrier",
+          "description": "A nanodisc, micelle, liposome or other host that holds a membrane protein"
+        },
+        {
+          "text": "additive",
+          "description": "A cryoprotectant, precipitant, reducing agent or other additive that is part of the sample rather than of the buffer"
+        },
+        {
+          "text": "contaminant",
+          "description": "Present unintentionally and identified after the fact"
+        },
+        {
+          "text": "standard",
+          "description": "A reference added for calibration or as a size marker"
+        }
+      ]
+    },
+    {
+      "name": "ComponentInteractionTypeEnum",
+      "definition_uri": "http://w3id.org/lambda/ComponentInteractionTypeEnum",
+      "description": "What the subject of a SampleComponentInteraction does to its object. Each term reads in the direction subject to object.",
+      "from_schema": "http://w3id.org/lambda/",
+      "permissible_values": [
+        {
+          "text": "binds",
+          "description": "Subject binds object non-covalently, where a more specific term does not apply"
+        },
+        {
+          "text": "inhibits",
+          "description": "Subject inhibits object"
+        },
+        {
+          "text": "activates",
+          "description": "Subject activates object"
+        },
+        {
+          "text": "is_substrate_of",
+          "description": "Subject is a substrate of object, an enzyme"
+        },
+        {
+          "text": "is_product_of",
+          "description": "Subject is a product of object, an enzyme"
+        },
+        {
+          "text": "is_cofactor_of",
+          "description": "Subject is a cofactor, coenzyme or prosthetic group of object"
+        },
+        {
+          "text": "is_coordinated_by",
+          "description": "Subject, a metal ion, is coordinated by object"
+        },
+        {
+          "text": "cleaves",
+          "description": "Subject cleaves object, as a nuclease cleaves its target strand or a protease its substrate"
+        },
+        {
+          "text": "covalently_modifies",
+          "description": "Subject adds a covalent modification to object, as a kinase phosphorylates its substrate"
+        },
+        {
+          "text": "covalently_linked_to",
+          "description": "Subject is covalently bonded to object: a covalent inhibitor, a glycan, a lipid anchor"
+        },
+        {
+          "text": "crosslinked_to",
+          "description": "Subject is joined to object by a chemical crosslinker"
+        },
+        {
+          "text": "base_pairs_with",
+          "description": "Subject, a nucleic acid, is base-paired with object: the two strands of a duplex, a guide with its target"
+        },
+        {
+          "text": "embedded_in",
+          "description": "Subject, a membrane protein, sits in object, a membrane mimetic"
+        },
+        {
+          "text": "solubilized_by",
+          "description": "Subject is kept in solution by object, a detergent or amphipol"
+        },
+        {
+          "text": "encapsulated_in",
+          "description": "Subject is enclosed by object: a genome in a capsid, a cargo in a liposome"
+        },
+        {
+          "text": "forms_complex_with",
+          "description": "Subject and object are parts of one assembly, where the nature of the contact is not specified"
+        },
+        {
+          "text": "competes_with",
+          "description": "Subject competes with object for the same site on a third component"
+        },
+        {
+          "text": "no_interaction",
+          "description": "Subject is expected not to interact with object: a negative control pairing"
+        }
+      ]
+    },
+    {
+      "name": "InteractionStatusEnum",
+      "definition_uri": "http://w3id.org/lambda/InteractionStatusEnum",
+      "description": "Standing of an interaction claim: the sample's design, prior knowledge, or this dataset's result",
+      "from_schema": "http://w3id.org/lambda/",
+      "permissible_values": [
+        {
+          "text": "designed",
+          "description": "The pairing the sample was made to test or to capture"
+        },
+        {
+          "text": "expected",
+          "description": "Known or predicted from prior work, and assumed to hold in this sample"
+        },
+        {
+          "text": "observed",
+          "description": "Seen in this dataset's data: density for the ligand, a shift in the scattering curve, a crosslink"
+        },
+        {
+          "text": "not_observed",
+          "description": "Designed or expected, and not seen in this dataset's data"
+        }
+      ]
+    },
+    {
+      "name": "ChemicalClassEnum",
+      "definition_uri": "http://w3id.org/lambda/ChemicalClassEnum",
+      "description": "Broad chemical kind of a SmallMolecule",
+      "from_schema": "http://w3id.org/lambda/",
+      "permissible_values": [
+        {
+          "text": "ion",
+          "description": "A metal or other inorganic ion: Zn2+, Mg2+, Ca2+, Cl-"
+        },
+        {
+          "text": "lipid",
+          "description": "A lipid: a phospholipid, sterol, fatty acid or lipid anchor"
+        },
+        {
+          "text": "detergent",
+          "description": "A detergent or amphipol used to solubilize a membrane protein"
+        },
+        {
+          "text": "carbohydrate",
+          "description": "A sugar, glycan or glycan fragment"
+        },
+        {
+          "text": "nucleotide",
+          "description": "A free nucleotide or nucleotide analogue: ATP, GDP, AMP-PNP, NAD"
+        },
+        {
+          "text": "amino_acid",
+          "description": "A free amino acid or amino acid derivative"
+        },
+        {
+          "text": "organic",
+          "description": "An organic small molecule in no more specific class: a drug, a fragment, a natural product, a dye"
+        },
+        {
+          "text": "polymer",
+          "description": "A synthetic polymer such as PEG"
+        },
+        {
+          "text": "other",
+          "description": "A compound in no class listed"
         }
       ]
     },
@@ -5821,6 +6137,22 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "dataset__small_molecules",
+      "description": "All small molecules referenced by samples in this dataset, one record per compound",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/small_molecules",
+      "alias": "small_molecules",
+      "owner": "Dataset",
+      "domain_of": [
+        "Dataset"
+      ],
+      "range": "SmallMolecule",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "dataset__samples",
       "description": "All samples across all studies",
       "from_schema": "http://w3id.org/lambda/",
@@ -5831,6 +6163,22 @@
         "Dataset"
       ],
       "range": "Sample",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataset__sample_components",
+      "description": "What each sample contains, one row per constituent: the inventory behind sample_type",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/sample_components",
+      "alias": "sample_components",
+      "owner": "Dataset",
+      "domain_of": [
+        "Dataset"
+      ],
+      "range": "SampleComponent",
       "multivalued": true,
       "inlined": true,
       "inlined_as_list": true,
@@ -6023,6 +6371,22 @@
         "Dataset"
       ],
       "range": "SampleNucleicAcidAssociation",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataset__sample_component_interactions",
+      "description": "Relationships between the components of a sample: which binds, inhibits, pairs with or sits in which",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/sample_component_interactions",
+      "alias": "sample_component_interactions",
+      "owner": "Dataset",
+      "domain_of": [
+        "Dataset"
+      ],
+      "range": "SampleComponentInteraction",
       "multivalued": true,
       "inlined": true,
       "inlined_as_list": true,
@@ -6481,7 +6845,7 @@
     },
     {
       "name": "sample__sample_type",
-      "description": "Type of biological sample",
+      "description": "Coarse kind of sample, a one-word summary. The detail is in SampleComponent.",
       "from_schema": "http://w3id.org/lambda/",
       "slot_uri": "http://w3id.org/lambda/sample_type",
       "alias": "sample_type",
@@ -6495,7 +6859,7 @@
     },
     {
       "name": "sample__molecular_composition",
-      "description": "Description of molecular composition including sequences, modifications, ligands",
+      "description": "Free-text description of molecular composition including sequences, modifications, ligands. The structured form is the SampleComponent rows for the sample.",
       "from_schema": "http://w3id.org/lambda/",
       "slot_uri": "http://w3id.org/lambda/molecular_composition",
       "alias": "molecular_composition",
@@ -6896,7 +7260,7 @@
     },
     {
       "name": "sample__ligand",
-      "description": "Ligand or small molecule bound to sample",
+      "description": "Ligand or small molecule bound to sample, as the facility recorded it. A display and search field; the structured form is a SampleComponent of type small_molecule pointing at a SmallMolecule record, with a SampleComponentInteraction saying what it binds.",
       "from_schema": "http://w3id.org/lambda/",
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Ligand"
@@ -7786,6 +8150,280 @@
       "multivalued": true,
       "inlined": true,
       "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "smallMolecule__small_molecule_name",
+      "description": "Name as ChEBI, the depositor or the supplier gives it (e.g., 'ATP', 'heme b', 'n-dodecyl beta-D-maltoside'). Recommended, not required, so that a record seeded from an identifier alone can be enriched later.",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_chem_comp.name"
+      ],
+      "slot_uri": "http://w3id.org/lambda/small_molecule_name",
+      "alias": "small_molecule_name",
+      "owner": "SmallMolecule",
+      "domain_of": [
+        "SmallMolecule"
+      ],
+      "range": "string",
+      "recommended": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "smallMolecule__chebi_id",
+      "description": "ChEBI identifier as a CURIE (CHEBI:30616). Normally identical to id.",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/chebi_id",
+      "alias": "chebi_id",
+      "owner": "SmallMolecule",
+      "domain_of": [
+        "SmallMolecule"
+      ],
+      "range": "uriorcurie",
+      "pattern": "^CHEBI:[0-9]+$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "smallMolecule__pdb_ligand_id",
+      "description": "wwPDB Chemical Component Dictionary code as a CURIE (pdb.ligand:ATP, pdb.ligand:HEM, pdb.ligand:ZN). Every ligand in a deposited structure has one, so it is the join key between a sample's components and the ligands of the structure it produced.",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_chem_comp.id"
+      ],
+      "slot_uri": "http://w3id.org/lambda/pdb_ligand_id",
+      "alias": "pdb_ligand_id",
+      "owner": "SmallMolecule",
+      "domain_of": [
+        "SmallMolecule"
+      ],
+      "range": "uriorcurie",
+      "pattern": "^pdb\\.ligand:[A-Z0-9]{1,5}$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "smallMolecule__chemical_class",
+      "description": "Broad chemical kind: ion, lipid, detergent, carbohydrate, nucleotide, ...",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/chemical_class",
+      "alias": "chemical_class",
+      "owner": "SmallMolecule",
+      "domain_of": [
+        "SmallMolecule"
+      ],
+      "range": "ChemicalClassEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "smallMolecule__molecular_formula",
+      "description": "Molecular formula (e.g., C10H16N5O13P3 for ATP)",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_chem_comp.formula"
+      ],
+      "slot_uri": "http://w3id.org/lambda/molecular_formula",
+      "alias": "molecular_formula",
+      "owner": "SmallMolecule",
+      "domain_of": [
+        "SmallMolecule"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "smallMolecule__smiles",
+      "description": "SMILES string for the structure",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/smiles",
+      "alias": "smiles",
+      "owner": "SmallMolecule",
+      "domain_of": [
+        "SmallMolecule"
+      ],
+      "range": "smiles_string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "smallMolecule__inchi",
+      "description": "IUPAC InChI string for the structure",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/inchi",
+      "alias": "inchi",
+      "owner": "SmallMolecule",
+      "domain_of": [
+        "SmallMolecule"
+      ],
+      "range": "string",
+      "pattern": "^InChI=1S?/",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "smallMolecule__inchikey",
+      "description": "InChIKey hash of the InChI, the 27-character form used for exact-structure lookup",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/inchikey",
+      "alias": "inchikey",
+      "owner": "SmallMolecule",
+      "domain_of": [
+        "SmallMolecule"
+      ],
+      "range": "string",
+      "pattern": "^[A-Z]{14}-[A-Z]{10}-[A-Z]$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "smallMolecule__molecular_weight_theoretical",
+      "description": "Mass computed from the formula, typically in daltons",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_chem_comp.formula_weight"
+      ],
+      "slot_uri": "http://w3id.org/lambda/molecular_weight_theoretical",
+      "alias": "molecular_weight_theoretical",
+      "owner": "SmallMolecule",
+      "domain_of": [
+        "SmallMolecule"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "smallMolecule__cross_references",
+      "description": "Cross-references to databases other than those named by chebi_id and pdb_ligand_id (ChEMBL, PubChem, DrugBank, KEGG, ...).",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/cross_references",
+      "alias": "cross_references",
+      "owner": "SmallMolecule",
+      "domain_of": [
+        "SmallMolecule"
+      ],
+      "range": "DatabaseCrossReference",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sampleComponent__sample_id",
+      "description": "The sample this component is part of",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/sample_id",
+      "alias": "sample_id",
+      "owner": "SampleComponent",
+      "domain_of": [
+        "SampleComponent"
+      ],
+      "range": "Sample",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sampleComponent__component_type",
+      "description": "What kind of thing this component is",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/component_type",
+      "alias": "component_type",
+      "owner": "SampleComponent",
+      "domain_of": [
+        "SampleComponent"
+      ],
+      "range": "SampleComponentTypeEnum",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sampleComponent__protein_id",
+      "description": "The Protein record, where component_type is protein",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/protein_id",
+      "alias": "protein_id",
+      "owner": "SampleComponent",
+      "domain_of": [
+        "SampleComponent"
+      ],
+      "range": "Protein",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sampleComponent__nucleic_acid_id",
+      "description": "The NucleicAcid record, where component_type is nucleic_acid",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/nucleic_acid_id",
+      "alias": "nucleic_acid_id",
+      "owner": "SampleComponent",
+      "domain_of": [
+        "SampleComponent"
+      ],
+      "range": "NucleicAcid",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sampleComponent__small_molecule_id",
+      "description": "The SmallMolecule record, where component_type is small_molecule",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/small_molecule_id",
+      "alias": "small_molecule_id",
+      "owner": "SampleComponent",
+      "domain_of": [
+        "SampleComponent"
+      ],
+      "range": "SmallMolecule",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sampleComponent__ontology_term",
+      "description": "Ontology term naming a component that has no entity table: the NCBI Taxonomy term for a virus particle (NCBITaxon:11676), the GO cellular component for an organelle (GO:0005840 for ribosome), the Cell Ontology term for a cell, the UBERON term for a tissue.",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/ontology_term",
+      "alias": "ontology_term",
+      "owner": "SampleComponent",
+      "domain_of": [
+        "SampleComponent"
+      ],
+      "range": "OntologyTerm",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sampleComponent__role",
+      "description": "Part this component plays in the sample",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/role",
+      "alias": "role",
+      "owner": "SampleComponent",
+      "domain_of": [
+        "SampleComponent"
+      ],
+      "range": "SampleComponentRoleEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sampleComponent__copy_number",
+      "description": "Copies of this component per assembly in the sample (4 for the subunits of a homotetramer, 2 for two zinc ions per monomer). Omit when unknown rather than assuming 1.",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_entity.pdbx_number_of_molecules"
+      ],
+      "slot_uri": "http://w3id.org/lambda/copy_number",
+      "alias": "copy_number",
+      "owner": "SampleComponent",
+      "domain_of": [
+        "SampleComponent"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sampleComponent__concentration",
+      "description": "Concentration of this component in the sample as prepared (1 mM ATP, 0.02 % DDM, 5 mM MgCl2). Sample.concentration is the concentration of the sample as a whole, usually of its target.",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/concentration",
+      "alias": "concentration",
+      "owner": "SampleComponent",
+      "domain_of": [
+        "SampleComponent"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -13178,7 +13816,7 @@
     },
     {
       "name": "molecularComposition__ligands",
-      "description": "Bound ligands or cofactors",
+      "description": "Bound ligands or cofactors, as free text. The structured form is SampleComponent.",
       "from_schema": "http://w3id.org/lambda/",
       "slot_uri": "http://w3id.org/lambda/ligands",
       "alias": "ligands",
@@ -16278,6 +16916,169 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "sampleComponentInteraction__sample_id",
+      "description": "The sample both components belong to",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/sample_id",
+      "alias": "sample_id",
+      "owner": "SampleComponentInteraction",
+      "domain_of": [
+        "SampleComponentInteraction"
+      ],
+      "range": "Sample",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sampleComponentInteraction__subject_id",
+      "description": "The component that acts on, binds to or sits in the object",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/subject_id",
+      "alias": "subject_id",
+      "owner": "SampleComponentInteraction",
+      "domain_of": [
+        "SampleComponentInteraction"
+      ],
+      "range": "SampleComponent",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sampleComponentInteraction__object_id",
+      "description": "The component acted on, bound or hosting",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/object_id",
+      "alias": "object_id",
+      "owner": "SampleComponentInteraction",
+      "domain_of": [
+        "SampleComponentInteraction"
+      ],
+      "range": "SampleComponent",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sampleComponentInteraction__interaction_type",
+      "description": "What the subject does to the object",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/interaction_type",
+      "alias": "interaction_type",
+      "owner": "SampleComponentInteraction",
+      "domain_of": [
+        "SampleComponentInteraction"
+      ],
+      "range": "ComponentInteractionTypeEnum",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sampleComponentInteraction__interaction_status",
+      "description": "Whether the interaction is the design of the sample, expected from prior work, observed in this dataset's data, or expected and not observed",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/interaction_status",
+      "alias": "interaction_status",
+      "owner": "SampleComponentInteraction",
+      "domain_of": [
+        "SampleComponentInteraction"
+      ],
+      "range": "InteractionStatusEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sampleComponentInteraction__stoichiometry",
+      "description": "Copies of subject to copies of object per assembly, written 'subject:object' ('1:1', '2:1')",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/stoichiometry",
+      "alias": "stoichiometry",
+      "owner": "SampleComponentInteraction",
+      "domain_of": [
+        "SampleComponentInteraction"
+      ],
+      "range": "string",
+      "pattern": "^[0-9]+:[0-9]+$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sampleComponentInteraction__subject_site",
+      "description": "Where on the subject the interaction takes place: residues or positions as 'D184,D186' or '45-60', or a named site such as 'active site' or 'ATP-binding pocket'",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/subject_site",
+      "alias": "subject_site",
+      "owner": "SampleComponentInteraction",
+      "domain_of": [
+        "SampleComponentInteraction"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sampleComponentInteraction__object_site",
+      "description": "Where on the object the interaction takes place, in the same form as subject_site",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/object_site",
+      "alias": "object_site",
+      "owner": "SampleComponentInteraction",
+      "domain_of": [
+        "SampleComponentInteraction"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sampleComponentInteraction__affinity",
+      "description": "Binding affinity as a quantity with its unit (e.g., 12 nanomolar); affinity_type says which constant it is",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/affinity",
+      "alias": "affinity",
+      "owner": "SampleComponentInteraction",
+      "domain_of": [
+        "SampleComponentInteraction"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sampleComponentInteraction__affinity_type",
+      "description": "Which constant affinity reports: Kd, Ki, IC50, ...",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/affinity_type",
+      "alias": "affinity_type",
+      "owner": "SampleComponentInteraction",
+      "domain_of": [
+        "SampleComponentInteraction"
+      ],
+      "range": "BindingAffinityTypeEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sampleComponentInteraction__evidence",
+      "description": "Kind of evidence for the interaction",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/evidence",
+      "alias": "evidence",
+      "owner": "SampleComponentInteraction",
+      "domain_of": [
+        "SampleComponentInteraction"
+      ],
+      "range": "InteractionEvidenceEnum",
+      "multivalued": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sampleComponentInteraction__description",
+      "description": "Free-text detail: the binding mode, the reference the expectation comes from, why an expected interaction was not seen",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/description",
+      "alias": "description",
+      "owner": "SampleComponentInteraction",
+      "domain_of": [
+        "SampleComponentInteraction"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "experimentInstrumentAssociation__experiment_id",
       "description": "Reference to the experiment run",
       "from_schema": "http://w3id.org/lambda/",
@@ -18618,7 +19419,9 @@
         "dataset__proteins",
         "dataset__protein_constructs",
         "dataset__nucleic_acids",
+        "dataset__small_molecules",
         "dataset__samples",
+        "dataset__sample_components",
         "dataset__sample_preparations",
         "dataset__experiment_runs",
         "dataset__workflow_runs",
@@ -18631,6 +19434,7 @@
         "dataset__experiment_instrument_associations",
         "dataset__sample_protein_associations",
         "dataset__sample_nucleic_acid_associations",
+        "dataset__sample_component_interactions",
         "dataset__workflow_experiment_associations",
         "dataset__workflow_input_associations",
         "dataset__workflow_output_associations",
@@ -18706,9 +19510,25 @@
           "@type": "SlotDefinition"
         },
         {
+          "name": "small_molecules",
+          "description": "All small molecules referenced by samples in this dataset, one record per compound",
+          "range": "SmallMolecule",
+          "multivalued": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        },
+        {
           "name": "samples",
           "description": "All samples across all studies",
           "range": "Sample",
+          "multivalued": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "sample_components",
+          "description": "What each sample contains, one row per constituent: the inventory behind sample_type",
+          "range": "SampleComponent",
           "multivalued": true,
           "inlined_as_list": true,
           "@type": "SlotDefinition"
@@ -18805,6 +19625,14 @@
           "name": "sample_nucleic_acid_associations",
           "description": "Links between samples and the nucleic acids they contain (M:N with role, copy number, structural form, source)",
           "range": "SampleNucleicAcidAssociation",
+          "multivalued": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "sample_component_interactions",
+          "description": "Relationships between the components of a sample: which binds, inhibits, pairs with or sits in which",
+          "range": "SampleComponentInteraction",
           "multivalued": true,
           "inlined_as_list": true,
           "@type": "SlotDefinition"
@@ -19125,7 +19953,7 @@
     {
       "name": "Sample",
       "definition_uri": "http://w3id.org/lambda/Sample",
-      "description": "A physical biological sample used in structural biology experiments. Records what is true of this preparation - buffer, concentration, storage, purity, the construct and tags used. The identity of the protein(s) it contains belongs on Protein, linked through SampleProteinAssociation, so a protein studied in ten preparations is described once. The nucleic acid(s) it contains belong on NucleicAcid in the same way, linked through SampleNucleicAcidAssociation; a protein-DNA complex is one sample with one row in each.",
+      "description": "A physical biological sample used in structural biology experiments. Records what is true of this preparation - buffer, concentration, storage, purity, the construct and tags used. The identity of the protein(s) it contains belongs on Protein, linked through SampleProteinAssociation, so a protein studied in ten preparations is described once. The nucleic acid(s) it contains belong on NucleicAcid in the same way, linked through SampleNucleicAcidAssociation; a protein-DNA complex is one sample with one row in each. Everything else it contains - ligands, ions, lipids, detergents, virus particles, organelles - and the full inventory of what is in it, one row per constituent with its role, lives in SampleComponent; what acts on what within the sample lives in SampleComponentInteraction.",
       "comments": [
         "protein_name, organism and the functional annotation collections remain here for data that arrives without a resolvable protein identity, and for search convenience. When a Protein record exists, it is the canonical source and these slots should agree with it."
       ],
@@ -19182,14 +20010,14 @@
         },
         {
           "name": "sample_type",
-          "description": "Type of biological sample",
+          "description": "Coarse kind of sample, a one-word summary. The detail is in SampleComponent.",
           "range": "SampleTypeEnum",
           "required": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "molecular_composition",
-          "description": "Description of molecular composition including sequences, modifications, ligands",
+          "description": "Free-text description of molecular composition including sequences, modifications, ligands. The structured form is the SampleComponent rows for the sample.",
           "range": "MolecularComposition",
           "@type": "SlotDefinition"
         },
@@ -19388,7 +20216,7 @@
         },
         {
           "name": "ligand",
-          "description": "Ligand or small molecule bound to sample",
+          "description": "Ligand or small molecule bound to sample, as the facility recorded it. A display and search field; the structured form is a SampleComponent of type small_molecule pointing at a SmallMolecule record, with a SampleComponentInteraction saying what it binds.",
           "exact_mappings": [
             "nsls2:Ligand"
           ],
@@ -19953,6 +20781,219 @@
         }
       ],
       "class_uri": "http://w3id.org/lambda/NucleicAcid",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "SmallMolecule",
+      "id_prefixes": [
+        "CHEBI",
+        "chembl.compound",
+        "pubchem.compound",
+        "drugbank",
+        "pdb.ligand",
+        "lambda"
+      ],
+      "definition_uri": "http://w3id.org/lambda/SmallMolecule",
+      "description": "A small molecule as a chemical entity: a ligand, drug, substrate, cofactor, metal ion, lipid, detergent, sugar or crystallization additive, with its structure and identifiers. The counterpart of Protein and NucleicAcid for everything in a sample that is not a biopolymer. One SmallMolecule record is shared by every Sample that contains it, through SampleComponent. Facts about a particular preparation - how much was added, what it was added for, what it is bound to - stay on SampleComponent and SampleComponentInteraction.",
+      "comments": [
+        "Use the ChEBI CURIE for the id wherever one exists (CHEBI:30616 for ATP, CHEBI:29105 for zinc(2+)). Where ChEBI has no entry use ChEMBL, PubChem or DrugBank, or the wwPDB Chemical Component Dictionary code (pdb.ligand:ATP), which every ligand in a deposited structure has. Reserve lambda-prefixed ids for compounds with no entry anywhere, such as a hit from an in-house screening library.",
+        "A peptide is a Protein, however short. A modified nucleotide that is part of a strand is described on the NucleicAcid. A free nucleotide such as ATP, or a free amino acid, is a SmallMolecule."
+      ],
+      "from_schema": "http://w3id.org/lambda/",
+      "related_mappings": [
+        "mmCIF:_chem_comp",
+        "mmCIF:_pdbx_entity_nonpoly"
+      ],
+      "is_a": "NamedThing",
+      "slots": [
+        "namedThing__id",
+        "namedThing__title",
+        "namedThing__description",
+        "smallMolecule__small_molecule_name",
+        "smallMolecule__chebi_id",
+        "smallMolecule__pdb_ligand_id",
+        "smallMolecule__chemical_class",
+        "smallMolecule__molecular_formula",
+        "smallMolecule__smiles",
+        "smallMolecule__inchi",
+        "smallMolecule__inchikey",
+        "smallMolecule__molecular_weight_theoretical",
+        "smallMolecule__cross_references"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "small_molecule_name",
+          "description": "Name as ChEBI, the depositor or the supplier gives it (e.g., 'ATP', 'heme b', 'n-dodecyl beta-D-maltoside'). Recommended, not required, so that a record seeded from an identifier alone can be enriched later.",
+          "exact_mappings": [
+            "mmCIF:_chem_comp.name"
+          ],
+          "recommended": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "chebi_id",
+          "description": "ChEBI identifier as a CURIE (CHEBI:30616). Normally identical to id.",
+          "range": "uriorcurie",
+          "pattern": "^CHEBI:[0-9]+$",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "pdb_ligand_id",
+          "description": "wwPDB Chemical Component Dictionary code as a CURIE (pdb.ligand:ATP, pdb.ligand:HEM, pdb.ligand:ZN). Every ligand in a deposited structure has one, so it is the join key between a sample's components and the ligands of the structure it produced.",
+          "exact_mappings": [
+            "mmCIF:_chem_comp.id"
+          ],
+          "range": "uriorcurie",
+          "pattern": "^pdb\\.ligand:[A-Z0-9]{1,5}$",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "chemical_class",
+          "description": "Broad chemical kind: ion, lipid, detergent, carbohydrate, nucleotide, ...",
+          "range": "ChemicalClassEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "molecular_formula",
+          "description": "Molecular formula (e.g., C10H16N5O13P3 for ATP)",
+          "exact_mappings": [
+            "mmCIF:_chem_comp.formula"
+          ],
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "smiles",
+          "description": "SMILES string for the structure",
+          "range": "smiles_string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "inchi",
+          "description": "IUPAC InChI string for the structure",
+          "pattern": "^InChI=1S?/",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "inchikey",
+          "description": "InChIKey hash of the InChI, the 27-character form used for exact-structure lookup",
+          "pattern": "^[A-Z]{14}-[A-Z]{10}-[A-Z]$",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "molecular_weight_theoretical",
+          "description": "Mass computed from the formula, typically in daltons",
+          "exact_mappings": [
+            "mmCIF:_chem_comp.formula_weight"
+          ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "cross_references",
+          "description": "Cross-references to databases other than those named by chebi_id and pdb_ligand_id (ChEMBL, PubChem, DrugBank, KEGG, ...).",
+          "range": "DatabaseCrossReference",
+          "multivalued": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "http://w3id.org/lambda/SmallMolecule",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "SampleComponent",
+      "definition_uri": "http://w3id.org/lambda/SampleComponent",
+      "description": "One constituent of one sample: a protein, a nucleic acid, a small molecule, a virus particle, an organelle, a cell, a membrane mimetic. The inventory of what a sample contains, one row per kind of thing in it, so that a sample can hold any mixture and each thing in it can be named, given a role, counted and pointed at. SampleComponentInteraction rows say which components are expected or observed to act on which. Sample.sample_type remains the one-word summary; this table is the detail behind it.",
+      "comments": [
+        "A component that has an entity record points at it: protein_id for a protein, nucleic_acid_id for a strand, small_molecule_id for a ligand, ion, lipid or detergent. Exactly one of the three is set, and it matches component_type. A component with no entity table - a virus particle, an organelle, a cell, a nanodisc - is named in title and, where an ontology has a term for it, in ontology_term: NCBITaxon for a virus, GO cellular component for an organelle, CL for a cell type, UBERON for a tissue.",
+        "For a protein or nucleic acid the component row is the entry in the inventory and the handle an interaction points at. SampleProteinAssociation and SampleNucleicAcidAssociation, keyed on the same sample and entity, carry the per-preparation detail of the biopolymer: residue range, chain ids, modifications, measured mass, construct. A dataset that records no interactions may carry the associations alone. Where role or copy_number is set on both the component and the association, the two must agree."
+      ],
+      "from_schema": "http://w3id.org/lambda/",
+      "related_mappings": [
+        "IHMCIF:_ihm_struct_assembly_details",
+        "mmCIF:_entity"
+      ],
+      "is_a": "NamedThing",
+      "slots": [
+        "namedThing__id",
+        "namedThing__title",
+        "namedThing__description",
+        "sampleComponent__sample_id",
+        "sampleComponent__component_type",
+        "sampleComponent__protein_id",
+        "sampleComponent__nucleic_acid_id",
+        "sampleComponent__small_molecule_id",
+        "sampleComponent__ontology_term",
+        "sampleComponent__role",
+        "sampleComponent__copy_number",
+        "sampleComponent__concentration"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "sample_id",
+          "description": "The sample this component is part of",
+          "range": "Sample",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "component_type",
+          "description": "What kind of thing this component is",
+          "range": "SampleComponentTypeEnum",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "protein_id",
+          "description": "The Protein record, where component_type is protein",
+          "range": "Protein",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "nucleic_acid_id",
+          "description": "The NucleicAcid record, where component_type is nucleic_acid",
+          "range": "NucleicAcid",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "small_molecule_id",
+          "description": "The SmallMolecule record, where component_type is small_molecule",
+          "range": "SmallMolecule",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "ontology_term",
+          "description": "Ontology term naming a component that has no entity table: the NCBI Taxonomy term for a virus particle (NCBITaxon:11676), the GO cellular component for an organelle (GO:0005840 for ribosome), the Cell Ontology term for a cell, the UBERON term for a tissue.",
+          "range": "OntologyTerm",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "role",
+          "description": "Part this component plays in the sample",
+          "range": "SampleComponentRoleEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "copy_number",
+          "description": "Copies of this component per assembly in the sample (4 for the subunits of a homotetramer, 2 for two zinc ions per monomer). Omit when unknown rather than assuming 1.",
+          "exact_mappings": [
+            "mmCIF:_entity.pdbx_number_of_molecules"
+          ],
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "concentration",
+          "description": "Concentration of this component in the sample as prepared (1 mM ATP, 0.02 % DDM, 5 mM MgCl2). Sample.concentration is the concentration of the sample as a whole, usually of its target.",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "http://w3id.org/lambda/SampleComponent",
       "@type": "ClassDefinition"
     },
     {
@@ -23653,7 +24694,7 @@
         },
         {
           "name": "ligands",
-          "description": "Bound ligands or cofactors",
+          "description": "Bound ligands or cofactors, as free text. The structured form is SampleComponent.",
           "range": "string",
           "multivalued": true,
           "@type": "SlotDefinition"
@@ -25631,6 +26672,9 @@
       "name": "SampleProteinAssociation",
       "definition_uri": "http://w3id.org/lambda/SampleProteinAssociation",
       "description": "M:N link between Sample and Protein. A sample may hold several proteins - the subunits of a complex, a target with its chaperone, a fusion partner - and one protein turns up in many samples. What changes from preparation to preparation lives here: the role, the copy number, the residue range actually present, the modifications carried, the mass actually measured, and the construct it was made from.",
+      "comments": [
+        "A SampleComponent row of type protein for the same sample and protein is the inventory entry and the handle a SampleComponentInteraction points at; this association is the per-preparation detail. A dataset that records no interactions may carry this row alone. Where role or copy_number is set on both, they must agree."
+      ],
       "from_schema": "http://w3id.org/lambda/",
       "related_mappings": [
         "IHMCIF:_ihm_struct_assembly_details",
@@ -25732,6 +26776,9 @@
       "name": "SampleNucleicAcidAssociation",
       "definition_uri": "http://w3id.org/lambda/SampleNucleicAcidAssociation",
       "description": "M:N link between Sample and NucleicAcid. A sample may hold several strands - the two strands of a duplex, a guide RNA with its target DNA, a primer with its template - and one strand turns up in many samples. What changes from preparation to preparation lives here: the role, the copy number, the form the strand takes (single, duplex, hairpin, quadruplex), how it was made, the modifications it carries, and the mass actually measured.",
+      "comments": [
+        "A SampleComponent row of type nucleic_acid for the same sample and strand is the inventory entry and the handle a SampleComponentInteraction points at; this association is the per-preparation detail. A dataset that records no interactions may carry this row alone. Where role or copy_number is set on both, they must agree."
+      ],
       "from_schema": "http://w3id.org/lambda/",
       "related_mappings": [
         "IHMCIF:_ihm_struct_assembly_details",
@@ -25834,6 +26881,116 @@
         }
       ],
       "class_uri": "http://w3id.org/lambda/SampleNucleicAcidAssociation",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "SampleComponentInteraction",
+      "definition_uri": "http://w3id.org/lambda/SampleComponentInteraction",
+      "description": "A relationship between two components of one sample: this ligand binds that protein, this metal is coordinated by that enzyme, this guide RNA pairs with that DNA strand, this membrane protein sits in that nanodisc. One row per ordered pair and relationship, read subject to object as interaction_type is worded. Rows can say what the sample was made to test as well as what the data showed: interaction_status separates the design from the result, so a ligand soaked in and not seen in the density is recorded rather than silently dropped.",
+      "comments": [
+        "Subject and object are components of the same sample, and sample_id names that sample. Add the component rows first; the entities they point at are what the interaction is between, and the components are what it is between in this preparation.",
+        "Affinity and site may be known from prior work rather than measured here. Say which in evidence."
+      ],
+      "from_schema": "http://w3id.org/lambda/",
+      "related_mappings": [
+        "mmCIF:_struct_conn",
+        "mmCIF:_struct_site",
+        "mmCIF:_pdbx_entity_nonpoly"
+      ],
+      "slots": [
+        "sampleComponentInteraction__sample_id",
+        "sampleComponentInteraction__subject_id",
+        "sampleComponentInteraction__object_id",
+        "sampleComponentInteraction__interaction_type",
+        "sampleComponentInteraction__interaction_status",
+        "sampleComponentInteraction__stoichiometry",
+        "sampleComponentInteraction__subject_site",
+        "sampleComponentInteraction__object_site",
+        "sampleComponentInteraction__affinity",
+        "sampleComponentInteraction__affinity_type",
+        "sampleComponentInteraction__evidence",
+        "sampleComponentInteraction__description"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "sample_id",
+          "description": "The sample both components belong to",
+          "range": "Sample",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "subject_id",
+          "description": "The component that acts on, binds to or sits in the object",
+          "range": "SampleComponent",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "object_id",
+          "description": "The component acted on, bound or hosting",
+          "range": "SampleComponent",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "interaction_type",
+          "description": "What the subject does to the object",
+          "range": "ComponentInteractionTypeEnum",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "interaction_status",
+          "description": "Whether the interaction is the design of the sample, expected from prior work, observed in this dataset's data, or expected and not observed",
+          "range": "InteractionStatusEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "stoichiometry",
+          "description": "Copies of subject to copies of object per assembly, written 'subject:object' ('1:1', '2:1')",
+          "pattern": "^[0-9]+:[0-9]+$",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "subject_site",
+          "description": "Where on the subject the interaction takes place: residues or positions as 'D184,D186' or '45-60', or a named site such as 'active site' or 'ATP-binding pocket'",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "object_site",
+          "description": "Where on the object the interaction takes place, in the same form as subject_site",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "affinity",
+          "description": "Binding affinity as a quantity with its unit (e.g., 12 nanomolar); affinity_type says which constant it is",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "affinity_type",
+          "description": "Which constant affinity reports: Kd, Ki, IC50, ...",
+          "range": "BindingAffinityTypeEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "evidence",
+          "description": "Kind of evidence for the interaction",
+          "range": "InteractionEvidenceEnum",
+          "multivalued": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "description",
+          "description": "Free-text detail: the binding mode, the reference the expectation comes from, why an expected interaction was not seen",
+          "range": "string",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "http://w3id.org/lambda/SampleComponentInteraction",
       "@type": "ClassDefinition"
     },
     {
@@ -27550,9 +28707,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda_ber_schema.yaml",
-  "source_file_date": "2026-09-17T11:58:30",
-  "source_file_size": 241500,
-  "generation_date": "2026-09-17T11:58:37",
+  "source_file_date": "2026-09-18T15:40:27",
+  "source_file_size": 262187,
+  "generation_date": "2026-09-18T15:40:40",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda_ber_schema.context.jsonld",
