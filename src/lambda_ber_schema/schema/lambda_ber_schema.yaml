@@ -272,6 +272,11 @@ classes:
         range: NucleicAcid
         multivalued: true
         inlined_as_list: true
+      small_molecules:
+        description: "All small molecules referenced by samples in this dataset, one record per compound"
+        range: SmallMolecule
+        multivalued: true
+        inlined_as_list: true
       samples:
         description: "All samples across all studies"
         range: Sample
@@ -984,6 +989,80 @@ classes:
         description: >-
           Cross-references to external databases other than those named by rnacentral_id,
           sequence_accession and rfam_families (miRBase, GtRNAdb, NDB, ...).
+        range: DatabaseCrossReference
+        multivalued: true
+        inlined_as_list: true
+
+  SmallMolecule:
+    is_a: NamedThing
+    description: >-
+      A small molecule as a chemical entity: a ligand, drug, substrate, cofactor, metal ion, lipid,
+      detergent, sugar or crystallization additive, with its structure and identifiers. The
+      counterpart of Protein and NucleicAcid for everything in a sample that is not a biopolymer.
+      One SmallMolecule record is shared by every Sample that contains it, through SampleComponent.
+      Facts about a particular preparation - how much was added, what it was added for, what it is
+      bound to - stay on SampleComponent and SampleComponentInteraction.
+    comments:
+      - "Use the ChEBI CURIE for the id wherever one exists (CHEBI:30616 for ATP, CHEBI:29105 for zinc(2+)). Where ChEBI has no entry use ChEMBL, PubChem or DrugBank, or the wwPDB Chemical Component Dictionary code (pdb.ligand:ATP), which every ligand in a deposited structure has. Reserve lambda-prefixed ids for compounds with no entry anywhere, such as a hit from an in-house screening library."
+      - "A peptide is a Protein, however short. A modified nucleotide that is part of a strand is described on the NucleicAcid. A free nucleotide such as ATP, or a free amino acid, is a SmallMolecule."
+    id_prefixes:
+      - CHEBI
+      - chembl.compound
+      - pubchem.compound
+      - drugbank
+      - pdb.ligand
+      - lambda
+    related_mappings:
+      - mmCIF:_chem_comp
+      - mmCIF:_pdbx_entity_nonpoly
+    attributes:
+      small_molecule_name:
+        description: >-
+          Name as ChEBI, the depositor or the supplier gives it (e.g., 'ATP', 'heme b',
+          'n-dodecyl beta-D-maltoside'). Recommended, not required, so that a record seeded from
+          an identifier alone can be enriched later.
+        recommended: true
+        exact_mappings:
+          - mmCIF:_chem_comp.name
+      chebi_id:
+        description: "ChEBI identifier as a CURIE (CHEBI:30616). Normally identical to id."
+        range: uriorcurie
+        pattern: "^CHEBI:[0-9]+$"
+      pdb_ligand_id:
+        description: >-
+          wwPDB Chemical Component Dictionary code as a CURIE (pdb.ligand:ATP, pdb.ligand:HEM,
+          pdb.ligand:ZN). Every ligand in a deposited structure has one, so it is the join key
+          between a sample's components and the ligands of the structure it produced.
+        range: uriorcurie
+        pattern: "^pdb\\.ligand:[A-Z0-9]{1,5}$"
+        exact_mappings:
+          - mmCIF:_chem_comp.id
+      chemical_class:
+        description: "Broad chemical kind: ion, lipid, detergent, carbohydrate, nucleotide, ..."
+        range: ChemicalClassEnum
+      molecular_formula:
+        description: "Molecular formula (e.g., C10H16N5O13P3 for ATP)"
+        exact_mappings:
+          - mmCIF:_chem_comp.formula
+      smiles:
+        description: "SMILES string for the structure"
+        range: smiles_string
+      inchi:
+        description: "IUPAC InChI string for the structure"
+        pattern: "^InChI=1S?/"
+      inchikey:
+        description: "InChIKey hash of the InChI, the 27-character form used for exact-structure lookup"
+        pattern: "^[A-Z]{14}-[A-Z]{10}-[A-Z]$"
+      molecular_weight_theoretical:
+        description: "Mass computed from the formula, typically in daltons"
+        range: QuantityValue
+        inlined: true
+        exact_mappings:
+          - mmCIF:_chem_comp.formula_weight
+      cross_references:
+        description: >-
+          Cross-references to databases other than those named by chebi_id and pdb_ligand_id
+          (ChEMBL, PubChem, DrugBank, KEGG, ...).
         range: DatabaseCrossReference
         multivalued: true
         inlined_as_list: true
@@ -5674,6 +5753,28 @@ enums:
         description: "Purified from cells, tissue or virions without amplification, as for native tRNA or genomic DNA"
       other:
         description: "A method not listed, described in the association's description"
+
+  ChemicalClassEnum:
+    description: "Broad chemical kind of a SmallMolecule"
+    permissible_values:
+      ion:
+        description: "A metal or other inorganic ion: Zn2+, Mg2+, Ca2+, Cl-"
+      lipid:
+        description: "A lipid: a phospholipid, sterol, fatty acid or lipid anchor"
+      detergent:
+        description: "A detergent or amphipol used to solubilize a membrane protein"
+      carbohydrate:
+        description: "A sugar, glycan or glycan fragment"
+      nucleotide:
+        description: "A free nucleotide or nucleotide analogue: ATP, GDP, AMP-PNP, NAD"
+      amino_acid:
+        description: "A free amino acid or amino acid derivative"
+      organic:
+        description: "An organic small molecule in no more specific class: a drug, a fragment, a natural product, a dye"
+      polymer:
+        description: "A synthetic polymer such as PEG"
+      other:
+        description: "A compound in no class listed"
 
   InstrumentRoleEnum:
     description: "Role of an instrument in an experiment"
