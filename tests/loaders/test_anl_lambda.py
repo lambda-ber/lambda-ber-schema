@@ -443,6 +443,25 @@ class TestLoadExperiment:
         assert ds.samples[0].protein_name == "EspG2-Glycosyltransferase, Hemoglobin alpha"
         assert any("several values" in w for w in result.warnings)
 
+    def test_target_columns_of_different_lengths_keep_only_the_first(self):
+        record = fixture("mx_experiment.json")
+        record["data"].update(
+            {
+                "uniprotid": ["A0A0R4I999", "P69905"],
+                "target_annotation": ["EspG2", "Hemoglobin alpha", "stray third name"],
+                "taxonid": [46165, 9606],
+                "row_count": 3,
+                "multi_valued": ["uniprotid", "target_annotation", "taxonid"],
+            }
+        )
+        loader = ANLLambdaLoader(client=FakeClient({f"api/mx/experiments/{UUID}": record}))
+        result = loader.load(UUID)
+        ds = result.dataset
+        assert [p.id for p in ds.proteins] == ["uniprot:A0A0R4I999"]
+        assert ds.proteins[0].organism == "NCBITaxon:46165"
+        assert [a.role for a in ds.sample_protein_associations] == [SampleProteinRoleEnum.target]
+        assert any("disagree in length" in w for w in result.warnings)
+
     def test_bad_accession_is_warned_not_recorded(self):
         record = fixture("mx_experiment.json")
         record["data"]["uniprotid"] = "not-an-accession"
