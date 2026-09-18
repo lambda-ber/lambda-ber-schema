@@ -25,6 +25,14 @@ Identifiers are rewritten into the ``anl-lambda:`` namespace registered in the s
 keeping the server's local part (``lims:experiment:<uuid>`` becomes
 ``anl-lambda:experiment/<uuid>``), and the MX side emits the same ids for the same rows,
 so the two views join.
+
+Two things a consumer should know about the values, neither of which is warned about
+at load time because both are how the source records them:
+
+* every ``operator_id`` is a LIMS employee number (``282``), not a name; the API does
+  not resolve them;
+* ``culture_volume_l`` is served with unit ``L`` but the figure is in mL. The LIMS view
+  flags this in ``warnings`` since it is a unit error; the MX view writes ``mL``.
 """
 
 import json
