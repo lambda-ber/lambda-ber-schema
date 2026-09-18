@@ -403,15 +403,24 @@ class TestLoadExperiment:
         assert "Andrzej Joachimiak" in study.description
         assert "0000-0003-2535-6209" in study.description
 
-    def test_without_files_still_fills_the_run_from_the_first_page(self):
-        client = FakeClient()
+    def test_without_files_fetches_one_frame_and_sweeps_from_the_total(self):
+        # What the server gives back for page_size=1: one frame, the full total.
+        one_frame = fixture("mx_files.json")
+        one_frame["data"] = one_frame["data"][:1]
+        one_frame.update({"page_size": 1, "count": 1, "total_pages": 3})
+        client = FakeClient({f"api/mx/experiments/{UUID}/files": one_frame})
         loader = ANLLambdaLoader(client=client, include_files=False)
         ds = loader.load(UUID).dataset
+        run = ds.experiment_runs[0]
         assert ds.data_files is None
-        assert ds.experiment_runs[0].wavelength.numeric_value == pytest.approx(0.9791827)
-        assert ds.experiment_runs[0].number_of_images.numeric_value == 3
+        assert run.wavelength.numeric_value == pytest.approx(0.9791827)
+        assert run.number_of_images.numeric_value == 3
+        assert run.start_angle.numeric_value == -45
+        assert run.sweep_end.numeric_value == -42
+        assert run.total_rotation.numeric_value == 3
+        assert run.end_time is None
         files_calls = [c for c in client.calls if c[0].endswith("/files")]
-        assert len(files_calls) == 1
+        assert files_calls == [(f"api/mx/experiments/{UUID}/files", {"page": 1, "page_size": 1})]
 
     def test_no_structure_means_no_workflow(self):
         record = fixture("mx_experiment.json")

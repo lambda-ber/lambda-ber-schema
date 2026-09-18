@@ -561,12 +561,18 @@ class ANLLambdaLoader(BaseLoader):
         )
 
     def _fetch_files(self, uuid: str) -> tuple[list[dict[str, Any]], int]:
-        """The frame listing and the server's total, one page when files are not wanted."""
+        """
+        The frame listing and the server's total.
+
+        When files are not wanted only the first frame is fetched: its header fills the
+        beam geometry of the ExperimentRun, and the page's ``total_count`` gives the
+        frame count. The server returns ``total_count`` on a one-item page.
+        """
         path = f"api/mx/experiments/{uuid}/files"
         if self.include_files:
             files = [_clean(f) for f in self.client.pages(path, page_size=FILES_PAGE_SIZE)]
             return files, len(files)
-        body = self.client.get_json(path, {"page": 1, "page_size": FILES_PAGE_SIZE})
+        body = self.client.get_json(path, {"page": 1, "page_size": 1})
         return [_clean(f) for f in body.get("data") or []], int(body.get("total_count") or 0)
 
     @staticmethod
@@ -870,10 +876,15 @@ class ANLLambdaLoader(BaseLoader):
 
         osc_starts = [f["osc_start"] for f in files if f.get("osc_start") is not None]
         increment = header.get("osc_increment")
+        complete = len(files) >= total_files
         sweep_start = min(osc_starts) if osc_starts else None
-        sweep_end = (
-            max(osc_starts) + increment if osc_starts and increment is not None else None
-        )
+        sweep_end = None
+        if osc_starts and increment is not None:
+            if complete:
+                sweep_end = max(osc_starts) + increment
+            else:
+                # Only the first frame is in hand; take the run as one contiguous sweep.
+                sweep_end = sweep_start + total_files * increment
         total_rotation = (
             total_files * increment if total_files and increment is not None else None
         )
@@ -911,7 +922,7 @@ class ANLLambdaLoader(BaseLoader):
             resolution=_quantity(record.get("resolution"), "Å"),
             raw_data_location=f"{base_dir}/{uuid}" if base_dir else None,
             start_time=_text(header.get("file_timestamp")),
-            end_time=_text(files[-1].get("file_timestamp")) if len(files) > 1 else None,
+            end_time=_text(files[-1].get("file_timestamp")) if complete and len(files) > 1 else None,
         )
 
     def _create_data_files(self, files: list[dict[str, Any]], experiment_id: str) -> list[DataFile]:
