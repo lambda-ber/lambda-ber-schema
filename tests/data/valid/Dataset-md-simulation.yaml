@@ -23,7 +23,7 @@ samples:
 - id: lambdaber:md-sample-001
   title: Prothrombin-ligand complex
   sample_code: PROT-LIG-001
-  sample_type: protein_ligand_complex
+  sample_type: complex
 
 instruments:
 - id: lambdaber:gpu-cluster-001
@@ -66,6 +66,7 @@ workflow_runs:
       - "Cl-"
     net_charge:
       numeric_value: 0
+      unit: e
     hydrogen_mass_repartitioning: true
     simulation_stage: topology_building
   started_at: "2026-09-01T10:00:00"
@@ -87,8 +88,10 @@ workflow_runs:
       unit: "kcal/mol/A^2"
     minimization_max_cycles:
       numeric_value: 4000
+      unit: cycles
     minimization_steepest_descent_cycles:
       numeric_value: 3000
+      unit: cycles
     nonbonded_cutoff:
       numeric_value: 10.0
       unit: angstrom
@@ -123,10 +126,9 @@ workflow_runs:
     nonbonded_cutoff:
       numeric_value: 8.0
       unit: angstrom
-    duration_ns:
-      numeric_value: 1.0
     heat_duration_ns:
       numeric_value: 1.0
+      unit: ns
     restraint_mask: "!(@H=)&!(:WAT|:ETH|@Na+=)"
     restraint_force_constant:
       numeric_value: 5.0
@@ -164,8 +166,10 @@ workflow_runs:
       unit: femtosecond
     equil_restrained_duration_ns:
       numeric_value: 3.0
+      unit: ns
     equil_free_duration_ns:
       numeric_value: 5.0
+      unit: ns
   started_at: "2026-09-01T10:03:05"
   completed_at: "2026-09-01T10:03:34"
 
@@ -201,13 +205,17 @@ workflow_runs:
     hydrogen_mass_repartitioning: true
     production_duration_ns:
       numeric_value: 100.0
+      unit: ns
     total_steps:
       numeric_value: 25000000
+      unit: steps
     trajectory_output_interval:
       numeric_value: 25000
+      unit: steps
   compute_resources:
     gpu_hours:
       numeric_value: 21.4
+      unit: hours
   started_at: "2026-09-01T10:04:00"
   completed_at: "2026-09-02T07:25:00"
 
