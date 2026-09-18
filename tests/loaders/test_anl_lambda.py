@@ -434,6 +434,25 @@ class TestLoadExperiment:
         files_calls = [c for c in client.calls if c[0].endswith("/files")]
         assert files_calls == [(f"api/mx/experiments/{UUID}/files", {"page": 1, "page_size": 1})]
 
+    def test_experiment_with_no_frames_has_no_geometry_and_no_files(self):
+        empty = fixture("mx_files.json")
+        empty.update({"data": [], "total_count": 0, "count": 0, "total_pages": 0})
+        loader = ANLLambdaLoader(client=FakeClient({f"api/mx/experiments/{UUID}/files": empty}))
+        result = loader.load(UUID)
+        ds = result.dataset
+        run = ds.experiment_runs[0]
+        assert ds.data_files is None
+        assert ds.instruments[0].detector_model is None
+        for field in (
+            "detector", "wavelength", "detector_distance", "beam_center_x", "pixel_size_x",
+            "exposure_time", "oscillation_angle", "start_angle", "sweep_end",
+            "total_rotation", "number_of_images", "start_time", "end_time",
+        ):
+            assert getattr(run, field) is None, field
+        # The record still carries what it carries.
+        assert run.resolution.numeric_value == 2.7
+        assert result.dataset.experiment_runs[0].experiment_code == "5191"
+
     def test_no_structure_means_no_workflow(self):
         record = fixture("mx_experiment.json")
         record["data"]["rcsb_id"] = None
