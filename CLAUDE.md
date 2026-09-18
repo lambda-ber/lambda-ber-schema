@@ -119,7 +119,7 @@ Each major class has minimal required fields to ensure data integrity:
 - **NucleicAcid**: `id` and `nucleic_acid_type`; `nucleic_acid_name` is recommended. A duplex of two different strands is two rows; a self-complementary duplex is one row with `copy_number: 2` on the association
 - **SmallMolecule**: `id` only (use the ChEBI CURIE); `small_molecule_name` is recommended
 - **SampleComponent**: `id`, `sample_id`, `component_type`. Exactly one of `protein_id`, `nucleic_acid_id`, `small_molecule_id` when the type has an entity table
-- **SampleComponentInteraction**: `sample_id`, `subject_id`, `object_id`, `interaction_type`. Read subject to object as the type is worded
+- **SampleComponentInteraction**: `sample_id`, `subject_id`, `object_id`, `interaction_type`. Read subject to object as the type is worded. No `id`: it is an association table like the others, so nothing can point at an interaction row; giving it one later would be a breaking change
 - **Sample**: `sample_code`, `sample_type`
 - **SamplePreparation**: `preparation_type`, `sample_id`
 - **Instrument**: `instrument_code`
