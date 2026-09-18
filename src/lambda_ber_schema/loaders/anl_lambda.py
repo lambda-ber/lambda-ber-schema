@@ -507,6 +507,11 @@ class ANLLambdaLoader(BaseLoader):
         ]
         files, total_files = self._fetch_files(uuid)
         warnings: list[str] = []
+        if not files:
+            warnings.append(
+                "No diffraction frames served for this experiment; the ExperimentRun has "
+                "no beam geometry, timing or frame count and there are no DataFile rows"
+            )
 
         dataset_id = f"{self.source_name}:experiment/{uuid}"
         multi_valued = set(_as_list(record.get("multi_valued")))

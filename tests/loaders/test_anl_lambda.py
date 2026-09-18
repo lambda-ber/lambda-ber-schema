@@ -463,6 +463,7 @@ class TestLoadExperiment:
             "total_rotation", "number_of_images", "start_time", "end_time",
         ):
             assert getattr(run, field) is None, field
+        assert any("No diffraction frames" in w for w in result.warnings)
         # The record still carries what it carries.
         assert run.resolution.numeric_value == 2.7
         assert result.dataset.experiment_runs[0].experiment_code == "5191"
