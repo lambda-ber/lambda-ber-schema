@@ -382,7 +382,7 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../profiles/lambda-core-rocrate-profile-v0.3.2/">
+<a class="md-nav__link" href="../../profiles/lambda-core-rocrate-profile-v0.3.3/">
 <span class="md-ellipsis">
     LAMBDA Core RO-Crate Profile
     
@@ -604,7 +604,7 @@
 <tr>
 <td><a href="../ligands/">ligands</a></td>
 <td>* <br/> <a href="../String/">String</a></td>
-<td>Bound ligands or cofactors</td>
+<td>Bound ligands or cofactors, as free text</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -696,7 +696,8 @@ attributes:
     multivalued: true
   ligands:
     name: ligands
-    description: Bound ligands or cofactors
+    description: Bound ligands or cofactors, as free text. The structured form is
+      SampleComponent.
     from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
@@ -742,7 +743,8 @@ attributes:
     multivalued: true
   ligands:
     name: ligands
-    description: Bound ligands or cofactors
+    description: Bound ligands or cofactors, as free text. The structured form is
+      SampleComponent.
     from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: ligands
@@ -759,6 +761,7 @@ attributes:
     domain_of:
     - NamedThing
     - AttributeGroup
+    - SampleComponentInteraction
     range: string
 
 </code></pre>

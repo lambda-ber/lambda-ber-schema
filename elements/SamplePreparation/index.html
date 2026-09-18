@@ -382,7 +382,7 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../profiles/lambda-core-rocrate-profile-v0.3.2/">
+<a class="md-nav__link" href="../../profiles/lambda-core-rocrate-profile-v0.3.3/">
 <span class="md-ellipsis">
     LAMBDA Core RO-Crate Profile
     
@@ -1131,13 +1131,14 @@ attributes:
     name: sample_id
     description: Reference to the sample being prepared
     from_schema: http://w3id.org/lambda/
-    rank: 1000
     domain_of:
+    - SampleComponent
     - SamplePreparation
     - StudySampleAssociation
     - ExperimentSampleAssociation
     - SampleProteinAssociation
     - SampleNucleicAcidAssociation
+    - SampleComponentInteraction
     range: string
     required: true
   preparation_date:
@@ -1296,6 +1297,7 @@ attributes:
     rank: 1000
     domain_of:
     - SamplePreparation
+    - SampleComponentInteraction
   affinity_column:
     name: affinity_column
     description: Affinity column specifications
@@ -1479,15 +1481,16 @@ attributes:
     name: sample_id
     description: Reference to the sample being prepared
     from_schema: http://w3id.org/lambda/
-    rank: 1000
     alias: sample_id
     owner: SamplePreparation
     domain_of:
+    - SampleComponent
     - SamplePreparation
     - StudySampleAssociation
     - ExperimentSampleAssociation
     - SampleProteinAssociation
     - SampleNucleicAcidAssociation
+    - SampleComponentInteraction
     range: string
     required: true
   preparation_date:
@@ -1694,6 +1697,7 @@ attributes:
     owner: SamplePreparation
     domain_of:
     - SamplePreparation
+    - SampleComponentInteraction
     range: string
   affinity_column:
     name: affinity_column
@@ -1946,6 +1950,7 @@ attributes:
     domain_of:
     - NamedThing
     - AttributeGroup
+    - SampleComponentInteraction
     range: string
 
 </code></pre>

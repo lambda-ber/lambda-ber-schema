@@ -952,7 +952,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.2/" class="md-nav__link">
+      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.3/" class="md-nav__link">
         
   
   
@@ -1208,21 +1208,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Identifier and Mapping Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schema-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      Schema Source
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -1263,7 +1248,6 @@
 
 
 <h1 id="slot-interaction_type">Slot: interaction_type</h1>
-<p><em>Type of interaction</em></p>
 <p>URI: <a href="http://w3id.org/lambda/interaction_type">lambda:interaction_type</a>
 Alias: interaction_type</p>
 <!-- no inheritance hierarchy -->
@@ -1283,17 +1267,18 @@ Alias: interaction_type</p>
 <td>Small molecule/ligand interactions with proteins</td>
 <td>no</td>
 </tr>
+<tr>
+<td><a href="../SampleComponentInteraction/">SampleComponentInteraction</a></td>
+<td>A relationship between two components of one sample: this ligand binds that p...</td>
+<td>no</td>
+</tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../InteractionTypeEnum/">InteractionTypeEnum</a></li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: http://w3id.org/lambda/</li>
-</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -1317,14 +1302,11 @@ Alias: interaction_type</p>
 <details>
 
 <pre><code class="language-yaml">name: interaction_type
-description: Type of interaction
-from_schema: http://w3id.org/lambda/
-rank: 1000
 alias: interaction_type
-owner: LigandInteraction
 domain_of:
+- SampleComponentInteraction
 - LigandInteraction
-range: InteractionTypeEnum
+range: string
 
 </code></pre>
 

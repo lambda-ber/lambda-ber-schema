@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://lambda-ber.github.io/lambda-ber-schema/profiles/lambda-core-rocrate-profile-v0.3.2/">
+        <link rel="canonical" href="https://lambda-ber.github.io/lambda-ber-schema/profiles/lambda-core-rocrate-profile-v0.3.3/">
       
       
         <link rel="prev" href="../../use-cases/06-reanalysis-triggers.html">
@@ -2019,14 +2019,26 @@
 
 
 <h1 id="lambda-core-ro-crate-profile">LAMBDA Core RO-Crate Profile</h1>
-<p><strong>Version 0.3.2</strong> · Technique-neutral · Normative specification</p>
+<p><strong>Version 0.3.3</strong> · Technique-neutral · Normative specification</p>
 <p>Binds <code>lambda-ber-schema</code> (LinkML) to RO-Crate 1.2 as a <strong>file manifest</strong> contract. A crate carries
 the highest-level details a program needs to decide whether a dataset is worth opening, and then
 <em>points</em> at the fuller record instead of restating it. It is a search-and-handoff surface, not a
 second copy of the schema.</p>
-<p>Profile URI: <code>https://w3id.org/lambda/profile/core/0.3.2</code>
+<p>Profile URI: <code>https://w3id.org/lambda/profile/core/0.3.3</code>
 Machine-readable source: <a href="../../../src/lambda_ber_schema/schema/lambda_rocrate_core.yaml"><code>lambda_rocrate_core.yaml</code></a>
 Generated artifacts: <code>assets/rocrate/</code> (JSON Schema, JSON-LD context, OWL, prefix map, SSSOM crosswalk)</p>
+<p><strong>Changes in 0.3.3.</strong> Adds <code>SmallMoleculeEntity</code>, the chemical counterpart of <code>ProteinEntity</code>
+and <code>NucleicAcidEntity</code> for ligands, cofactors, metal ions, lipids and detergents, reached from a
+sample through the same <code>hasBioChemEntityPart</code> (§6.2), with <code>lambda:chebi_id</code>,
+<code>lambda:pdb_ligand_id</code>, <code>lambda:chemical_class</code> and schema.org's own <code>inChIKey</code>, <code>smiles</code> and
+<code>molecularFormula</code> projecting onto the schema's new <code>SmallMolecule</code> class; adds
+<code>ComponentInteractionEntity</code>, a typed, sample-scoped statement that one thing a sample contains
+binds, inhibits, pairs with or is coordinated by another, projecting onto the schema's new
+<code>SampleComponentInteraction</code> (§6.2); admits schema.org's <code>bioChemInteraction</code> on the three
+molecular entities for the generic consumer; extends graph rule 3 to small molecule targets and
+adds graph rules 12 and 13 (§12). Additive: every crate that conformed to 0.3.2 conforms to 0.3.3
+unchanged. Crates SHOULD claim <code>https://w3id.org/lambda/profile/core/0.3.3</code>; the 0.3.2, 0.3.1 and
+0.3.0 URIs remain valid for what they said.</p>
 <p><strong>Changes in 0.3.2.</strong> Adds <code>NucleicAcidEntity</code>, the counterpart of <code>ProteinEntity</code> for DNA and
 RNA strands, reached from a sample through the same <code>hasBioChemEntityPart</code> (§6.2), with
 <code>lambda:nucleic_acid_type</code>, <code>lambda:rnacentral_id</code>, <code>lambda:sequence_accession</code> and
@@ -2140,7 +2152,7 @@ gate filters rather than silently returning crates that cannot answer them.</p>
 profile:</p>
 <pre><code class="language-json">&quot;conformsTo&quot;: [
   {&quot;@id&quot;: &quot;https://w3id.org/ro/crate/1.2&quot;},
-  {&quot;@id&quot;: &quot;https://w3id.org/lambda/profile/core/0.3.2&quot;}
+  {&quot;@id&quot;: &quot;https://w3id.org/lambda/profile/core/0.3.3&quot;}
 ]
 </code></pre>
 <p>A technique extension appends its own URI; it never replaces the Core URI. The metadata descriptor
@@ -2267,7 +2279,7 @@ tells a reader nothing the count does not.</p>
 </table>
 <h3 id="62-optional-contextual-entities">6.2 Optional contextual entities</h3>
 <p><code>PersonEntity</code>, <code>OrganizationEntity</code>, <code>SampleEntity</code>, <code>ProteinEntity</code>, <code>NucleicAcidEntity</code>,
-<code>InstrumentEntity</code>, <code>ExperimentRunAction</code>, <code>WorkflowRunAction</code>, <code>SoftwareApplicationEntity</code>, <code>DefinedTermEntity</code>,
+<code>SmallMoleculeEntity</code>, <code>ComponentInteractionEntity</code>, <code>InstrumentEntity</code>, <code>ExperimentRunAction</code>, <code>WorkflowRunAction</code>, <code>SoftwareApplicationEntity</code>, <code>DefinedTermEntity</code>,
 <code>PropertyValueEntity</code>, <code>RelatedWork</code>. Each is optional; each is typed so that a plain RO-Crate
 consumer understands it (<code>Person</code>, <code>Organization</code>, <code>Protein</code>, <code>CreateAction</code>, …) <em>and</em> a
 LAMBDA-aware reader can project it.</p>
@@ -2319,6 +2331,53 @@ nucleic acid entity MUST carry at least one of <code>rnacentral_id</code>, <code
 </code></pre>
 <p>Whether the strand is paired, how it was made, its labels and its measured mass are facts about a
 preparation and stay in the fuller record, on <code>SampleNucleicAcidAssociation</code>.</p>
+<p><strong>Small molecules split the same way.</strong> A <code>SmallMoleculeEntity</code> is a ligand, cofactor, metal ion,
+lipid or detergent the specimen contains, reached through the same <code>hasBioChemEntityPart</code>, and
+typed <code>["MolecularEntity", "lambda:SmallMolecule"]</code>: schema.org's <code>MolecularEntity</code> is in the
+RO-Crate 1.2 context, together with <code>inChIKey</code>, <code>smiles</code> and <code>molecularFormula</code>, so those three
+are written in schema.org's spelling and project onto the schema's <code>SmallMolecule</code> slots. Where
+ChEBI has the compound the <code>@id</code> SHOULD be its IRI and the entity carries the accession as the
+schema's CURIE in <code>chebi_id</code>. Every ligand in a deposited structure has a wwPDB Chemical Component
+Dictionary code, carried in <code>pdb_ligand_id</code> (<code>pdb.ligand:ZN</code>) and usable as the <code>@id</code> where ChEBI
+has no entry. A compound with neither, a screening hit say, takes a local <code>@id</code> and its <code>inChIKey</code>
+or <code>smiles</code> is the identity. A small molecule entity MUST carry at least one of <code>chebi_id</code>,
+<code>pdb_ligand_id</code>, <code>inChIKey</code> and <code>smiles</code>, or declare one of them in <code>missing</code> (§8).</p>
+<p><strong>What acts on what is a fourth kind of entity.</strong> The inventory says the tube holds a protein,
+two strands and zinc. It does not say the zinc is coordinated by the protein, or that a soaked
+fragment was not seen in the density, and for a complex those are the facts a search wants most.
+A <code>ComponentInteractionEntity</code> states one such relationship. It is typed
+<code>["lambda:SampleComponentInteraction"]</code> alone, the one entity in this profile without a
+schema.org type: schema.org's <code>bioChemInteraction</code> is untyped and entity-level, and cannot say
+which sample, what kind, or whether it was seen. It points back at its sample with <code>sample_id</code>,
+and at two of the entities that sample lists in <code>hasBioChemEntityPart</code> with <code>subject_id</code> and
+<code>object_id</code>, read subject to object as <code>interaction_type</code> is worded (<code>binds</code>, <code>inhibits</code>,
+<code>is_coordinated_by</code>, <code>base_pairs_with</code>, <code>embedded_in</code>, ...). <code>interaction_status</code> separates the
+sample's design from the data's verdict: <code>designed</code>, <code>expected</code>, <code>observed</code>, <code>not_observed</code>.
+Affinity, site and evidence do not travel in a manifest and stay in the fuller record.</p>
+<p>The lambda-only type has a cost that implementers should know: a consumer that walks the graph
+dispatching on schema.org types does not see interaction entities at all. It still sees what the
+sample contains, through <code>hasBioChemEntityPart</code>. To let it see that two of those things interact,
+the three molecular entities MAY also carry <code>bioChemInteraction</code>, schema.org's untyped
+entity-level "is known to interact with", and a crate that wants the generic view SHOULD write it
+beside the typed entity:</p>
+<pre><code class="language-json">{&quot;@id&quot;: &quot;#sample-zif-dna07&quot;, &quot;@type&quot;: [&quot;BioChemEntity&quot;, &quot;lambda:Sample&quot;],
+ &quot;sample_code&quot;: &quot;ZIF-DNA-07&quot;, &quot;sample_type&quot;: &quot;complex&quot;,
+ &quot;hasBioChemEntityPart&quot;: [{&quot;@id&quot;: &quot;http://purl.uniprot.org/uniprot/P08046&quot;},
+                          {&quot;@id&quot;: &quot;#na-target-strand&quot;},
+                          {&quot;@id&quot;: &quot;http://purl.obolibrary.org/obo/CHEBI_29105&quot;}]},
+{&quot;@id&quot;: &quot;http://purl.obolibrary.org/obo/CHEBI_29105&quot;, &quot;@type&quot;: [&quot;MolecularEntity&quot;, &quot;lambda:SmallMolecule&quot;],
+ &quot;name&quot;: &quot;zinc(2+)&quot;, &quot;chebi_id&quot;: &quot;CHEBI:29105&quot;, &quot;pdb_ligand_id&quot;: &quot;pdb.ligand:ZN&quot;,
+ &quot;chemical_class&quot;: &quot;ion&quot;, &quot;molecularFormula&quot;: &quot;Zn&quot;},
+{&quot;@id&quot;: &quot;#ix-zinc-coordinated&quot;, &quot;@type&quot;: [&quot;lambda:SampleComponentInteraction&quot;],
+ &quot;sample_id&quot;: {&quot;@id&quot;: &quot;#sample-zif-dna07&quot;},
+ &quot;subject_id&quot;: {&quot;@id&quot;: &quot;http://purl.obolibrary.org/obo/CHEBI_29105&quot;},
+ &quot;object_id&quot;: {&quot;@id&quot;: &quot;http://purl.uniprot.org/uniprot/P08046&quot;},
+ &quot;interaction_type&quot;: &quot;is_coordinated_by&quot;, &quot;interaction_status&quot;: &quot;observed&quot;}
+</code></pre>
+<p>The crate has no component rows: the subject and object of an interaction are the entities
+themselves, and the (sample, entity) pair identifies the <code>SampleComponent</code> row in the fuller
+record. Crates that write <code>chebi_id</code> or <code>pdb_ligand_id</code> SHOULD bind <code>CHEBI</code> and <code>pdb.ligand</code> in
+their context, as they bind <code>uniprot</code>.</p>
 <p>Facility and technique SHOULD be carried as <code>DefinedTerm</code> entities rather than bare strings — this
 is what lets a federated index join across crates, and the SSRL 0.2 crates already do it.</p>
 <h3 id="63-value-objects-nest">6.3 Value objects nest</h3>
@@ -2352,7 +2411,7 @@ crate.</p>
   &quot;@id&quot;: &quot;saxs/&quot;,
   &quot;@type&quot;: &quot;Dataset&quot;,
   &quot;name&quot;: &quot;SEC-SAXS-MALS of GluRS (ALS SIBYLS 12.3.1)&quot;,
-  &quot;conformsTo&quot;: [{&quot;@id&quot;: &quot;https://w3id.org/lambda/profile/core/0.3.2&quot;},
+  &quot;conformsTo&quot;: [{&quot;@id&quot;: &quot;https://w3id.org/lambda/profile/core/0.3.3&quot;},
                  {&quot;@id&quot;: &quot;https://w3id.org/lambda/profile/saxs/0.3.0&quot;}],
   &quot;hasPart&quot;: [{&quot;@id&quot;: &quot;saxs/ro-crate-metadata.json&quot;}]
 }
@@ -2637,7 +2696,7 @@ checker:</p>
 <li>A root data entity exists, typed <code>lambda:Dataset</code> (or the deprecated <code>lambda:Experiment</code>).</li>
 <li>Every <code>hasPart</code> target resolves to an entity in the graph — a manifest MUST NOT promise a part
    it does not describe. The same holds for every <code>hasBioChemEntityPart</code> target: a sample MUST NOT
-   point at a protein or nucleic acid the graph does not describe.</li>
+   point at a protein, nucleic acid or small molecule the graph does not describe.</li>
 <li>Every <code>CrateDatasetPart</code> resolves a metadata pointer or declares why it resolves none (§7).</li>
 <li>Every <code>missing</code> entry names a <code>blocks</code> tier unless its reason is <code>not-applicable</code>.</li>
 <li>No field is both present on an entity and declared missing on it.</li>
@@ -2651,6 +2710,11 @@ checker:</p>
 <li>A <code>ProteinEntity</code> carries <code>uniprot_id</code> or declares it in <code>lambdarc:missing</code> (§6.2).</li>
 <li>A <code>NucleicAcidEntity</code> carries at least one of <code>rnacentral_id</code>, <code>sequence_accession</code> and
    <code>nucleotide_sequence</code>, or declares one of them in <code>lambdarc:missing</code> (§6.2).</li>
+<li>A <code>SmallMoleculeEntity</code> carries at least one of <code>chebi_id</code>, <code>pdb_ligand_id</code>, <code>inChIKey</code> and
+   <code>smiles</code>, or declares one of them in <code>lambdarc:missing</code> (§6.2).</li>
+<li>A <code>ComponentInteractionEntity</code>'s <code>sample_id</code> resolves to a <code>SampleEntity</code> in the graph, and its
+   <code>subject_id</code> and <code>object_id</code> each resolve to an entity that sample lists in
+   <code>hasBioChemEntityPart</code> (§6.2). An interaction is between two things its sample actually holds.</li>
 </ol>
 <p>SHACL shapes would be the natural home for layer 3, since RDF validation dispatches on <code>rdf:type</code>
 properly. They are <strong>not</strong> generated: <code>gen-shacl</code> raises <code>KeyError('lambda-ber-schema')</code> for classes
@@ -2661,7 +2725,7 @@ instances, so a single JSON object is walked key by key, and <code>--legacy-mode
 <code>gen-python</code>, which cannot represent <code>@</code>-keyword aliases (§16.7).</p>
 <hr />
 <h2 id="13-worked-examples">13. Worked examples</h2>
-<p>Six conformant fixtures in <code>tests/data/rocrate/valid/</code>:</p>
+<p>Seven conformant fixtures in <code>tests/data/rocrate/valid/</code>:</p>
 <table>
 <thead>
 <tr>
@@ -2676,7 +2740,7 @@ instances, so a single JSON object is walked key by key, and <code>--legacy-mode
 </tr>
 <tr>
 <td style="text-align: left;"><code>ssrl-mx-XA_x16.json</code></td>
-<td style="text-align: left;">a real SSRL MX package brought to Core 0.3.2, with MX quantities nested in <code>resultSummary</code></td>
+<td style="text-align: left;">a real SSRL MX package brought to Core 0.3.3, with MX quantities nested in <code>resultSummary</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>saxs-glurs.json</code></td>
@@ -2695,12 +2759,16 @@ instances, so a single JSON object is walked key by key, and <code>--legacy-mode
 <td style="text-align: left;">a protein-DNA complex whose sample points at a <code>Protein</code> entity and two <code>NucleicAcid</code> entities, one with its sequence withheld and declared, plus a natural RNA named by its RNAcentral IRI (§6.2)</td>
 </tr>
 <tr>
+<td style="text-align: left;"><code>sample-components.json</code></td>
+<td style="text-align: left;">the same complex with its zinc as a <code>SmallMolecule</code> entity and three interaction entities saying what binds, pairs with and coordinates what; a second sample with a fragment named by InChIKey, a detergent with its structure withheld and declared, and a soak recorded as <code>not_observed</code> (§6.2)</td>
+</tr>
+<tr>
 <td style="text-align: left;"><code>ssrl-mx-XA_x16-core-0.2.json</code> (in <code>legacy/</code>)</td>
 <td style="text-align: left;">the published 0.2 crate, unmodified — see §15</td>
 </tr>
 </tbody>
 </table>
-<p>Thirteen negative fixtures in <code>tests/data/rocrate/invalid/</code>, each isolating one rule, with the test
+<p>Seventeen negative fixtures in <code>tests/data/rocrate/invalid/</code>, each isolating one rule, with the test
 asserting <em>which</em> rule failed so that a fixture cannot pass for the wrong reason.</p>
 <hr />
 <h2 id="14-crosswalk-to-lambda-ber-schema">14. Crosswalk to <code>lambda-ber-schema</code></h2>
@@ -2738,7 +2806,7 @@ migration would be prose a reader has to transcribe by hand.</p>
 <tr>
 <td style="text-align: left;"><code>SampleEntity</code></td>
 <td style="text-align: left;"><code>["BioChemEntity", "lambda:Sample"]</code></td>
-<td style="text-align: left;"><code>Sample</code> (+ <code>SampleProteinAssociation</code> and <code>SampleNucleicAcidAssociation</code>, via <code>hasBioChemEntityPart</code>)</td>
+<td style="text-align: left;"><code>Sample</code> (+ <code>SampleComponent</code>, <code>SampleProteinAssociation</code> and <code>SampleNucleicAcidAssociation</code>, via <code>hasBioChemEntityPart</code>)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ProteinEntity</code></td>
@@ -2749,6 +2817,16 @@ migration would be prose a reader has to transcribe by hand.</p>
 <td style="text-align: left;"><code>NucleicAcidEntity</code></td>
 <td style="text-align: left;"><code>["BioChemEntity", "lambda:NucleicAcid"]</code></td>
 <td style="text-align: left;"><code>NucleicAcid</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>SmallMoleculeEntity</code></td>
+<td style="text-align: left;"><code>["MolecularEntity", "lambda:SmallMolecule"]</code></td>
+<td style="text-align: left;"><code>SmallMolecule</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ComponentInteractionEntity</code></td>
+<td style="text-align: left;"><code>["lambda:SampleComponentInteraction"]</code></td>
+<td style="text-align: left;"><code>SampleComponentInteraction</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>InstrumentEntity</code></td>
@@ -2788,16 +2866,22 @@ it; the schema carries it on <code>StudyPersonAssociation</code> / <code>Experim
 <code>WorkflowPersonAssociation</code>, because one person record should serve every role they hold across a
 dataset. A projector therefore reads <code>role</code> (and <code>author_position</code>, <code>corresponding</code>) off the crate
 entity and writes them to the association, not to <code>Person</code>.</p>
-<p><code>SampleEntity</code>, <code>ProteinEntity</code> and <code>NucleicAcidEntity</code> split the same way the schema does.
-<code>hasBioChemEntityPart</code> on the sample projects onto one <code>SampleProteinAssociation</code> per
-<code>ProteinEntity</code> target and one <code>SampleNucleicAcidAssociation</code> per <code>NucleicAcidEntity</code> target - the
-projector reads the <code>lambda:</code> type token to tell them apart - with the two ids and nothing else:
-the role, copy number, residue range, structural form and modifications those associations can
-carry describe a preparation in detail a manifest does not attempt, and belong to the fuller
-record. The protein entity itself projects onto <code>Protein</code> by identity — <code>uniprot_id</code>,
+<p><code>SampleEntity</code>, <code>ProteinEntity</code>, <code>NucleicAcidEntity</code> and <code>SmallMoleculeEntity</code> split the same way
+the schema does. <code>hasBioChemEntityPart</code> on the sample projects onto one <code>SampleComponent</code> per
+target, with <code>component_type</code> read off the <code>lambda:</code> type token, and besides that onto one
+<code>SampleProteinAssociation</code> per <code>ProteinEntity</code> target and one <code>SampleNucleicAcidAssociation</code> per
+<code>NucleicAcidEntity</code> target, with the two ids and nothing else: the role, copy number, residue
+range, structural form and modifications those rows can carry describe a preparation in detail a
+manifest does not attempt, and belong to the fuller record. A <code>ComponentInteractionEntity</code>
+projects onto one <code>SampleComponentInteraction</code> row whose <code>subject_id</code> and <code>object_id</code> are the
+component rows the projector just made for the sample and the two entities; the crate's
+<code>subject_id</code> and <code>object_id</code> name entities, which is why they are close rather than exact
+mappings. The protein entity itself projects onto <code>Protein</code> by identity — <code>uniprot_id</code>,
 <code>protein_name</code>, <code>gene_name</code>, <code>organism</code>, <code>pdb_entries</code> are the schema's own slot names — and the
 nucleic acid entity onto <code>NucleicAcid</code> likewise, with <code>nucleic_acid_type</code>, <code>nucleic_acid_name</code>,
-<code>rnacentral_id</code>, <code>sequence_accession</code> and <code>nucleotide_sequence</code>. The deprecated <code>uniprotId</code> on a
+<code>rnacentral_id</code>, <code>sequence_accession</code> and <code>nucleotide_sequence</code>, and the small molecule entity onto
+<code>SmallMolecule</code> with <code>chebi_id</code>, <code>pdb_ligand_id</code> and <code>chemical_class</code>, plus <code>inChIKey</code>, <code>smiles</code>
+and <code>molecularFormula</code> renamed to the schema's snake_case. The deprecated <code>uniprotId</code> on a
 sample (§15) projects by <em>creating</em> that <code>Protein</code> and association, which is why its mapping is
 close rather than exact: the value is bare where the schema's is a CURIE.</p>
 <p><code>OrganizationEntity</code> works the same way, projecting onto <code>Organization</code> plus
@@ -2829,13 +2913,13 @@ carries the schema's own <code>snake_case</code> slot name, so <code>lambda:file
 <p>SSRL publishes crates conforming to <code>https://w3id.org/lambda/profile/core/0.2</code> — a URI with no
 written specification — using <code>lambda:Experiment</code> / <code>lambda:RawUnit</code> / <code>lambda:DerivedProduct</code> /
 <code>lambda:AuxiliaryMetadataItem</code> and camelCase terms under
-<code>https://w3id.org/lambda/terms/0.2/</code>. Those crates exist and a loader consumes them, so Core 0.3.2
+<code>https://w3id.org/lambda/terms/0.2/</code>. Those crates exist and a loader consumes them, so Core 0.3.3
 accepts the 0.2 spellings and marks them deprecated rather than breaking them.</p>
 <table>
 <thead>
 <tr>
 <th style="text-align: left;">0.2 spelling</th>
-<th style="text-align: left;">Core 0.3.2</th>
+<th style="text-align: left;">Core 0.3.3</th>
 </tr>
 </thead>
 <tbody>

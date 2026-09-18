@@ -1094,7 +1094,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../profiles/lambda-core-rocrate-profile-v0.3.2/" class="md-nav__link">
+      <a href="../profiles/lambda-core-rocrate-profile-v0.3.3/" class="md-nav__link">
         
   
   
@@ -1880,8 +1880,16 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>A physical biological sample used in structural biology experiments</td>
 </tr>
 <tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SampleComponent/">SampleComponent</a></td>
+<td>One constituent of one sample: a protein, a nucleic acid, a small molecule, a...</td>
+</tr>
+<tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SamplePreparation/">SamplePreparation</a></td>
 <td>A process that prepares a sample for imaging</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SmallMolecule/">SmallMolecule</a></td>
+<td>A small molecule as a chemical entity: a ligand, drug, substrate, cofactor, m...</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Study/">Study</a></td>
@@ -1894,6 +1902,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="PersonOrganizationAssociation/">PersonOrganizationAssociation</a></td>
 <td>M:N link between Person and Organization with role metadata</td>
+</tr>
+<tr>
+<td><a href="SampleComponentInteraction/">SampleComponentInteraction</a></td>
+<td>A relationship between two components of one sample: this ligand binds that p...</td>
 </tr>
 <tr>
 <td><a href="SampleNucleicAcidAssociation/">SampleNucleicAcidAssociation</a></td>
@@ -1989,6 +2001,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="affiliation_ror/">affiliation_ror</a></td>
 <td>Research Organization Registry (ROR) identifier for the affiliated institutio...</td>
+</tr>
+<tr>
+<td><a href="affinity/">affinity</a></td>
+<td>Binding affinity as a quantity with its unit (e</td>
 </tr>
 <tr>
 <td><a href="affinity_column/">affinity_column</a></td>
@@ -2303,8 +2319,16 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Key features of this conformation</td>
 </tr>
 <tr>
+<td><a href="chebi_id/">chebi_id</a></td>
+<td>ChEBI identifier as a CURIE (CHEBI:30616)</td>
+</tr>
+<tr>
 <td><a href="checksum/">checksum</a></td>
 <td>SHA-256 checksum for data integrity</td>
+</tr>
+<tr>
+<td><a href="chemical_class/">chemical_class</a></td>
+<td>Broad chemical kind: ion, lipid, detergent, carbohydrate, nucleotide,</td>
 </tr>
 <tr>
 <td><a href="clashscore/">clashscore</a></td>
@@ -2373,6 +2397,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="complex_stability/">complex_stability</a></td>
 <td>Stability assessment of the complex</td>
+</tr>
+<tr>
+<td><a href="component_type/">component_type</a></td>
+<td>What kind of thing this component is</td>
 </tr>
 <tr>
 <td><a href="components/">components</a></td>
@@ -2448,7 +2476,7 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 </tr>
 <tr>
 <td><a href="copy_number/">copy_number</a></td>
-<td>Copies of this protein per assembly in the sample (e</td>
+<td>Copies of this component per assembly in the sample (4 for the subunits of a ...</td>
 </tr>
 <tr>
 <td><a href="corresponding/">corresponding</a></td>
@@ -2867,6 +2895,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Ethane temperature, typically specified in degrees Celsius</td>
 </tr>
 <tr>
+<td><a href="evidence/">evidence</a></td>
+<td>Kind of evidence for the interaction</td>
+</tr>
+<tr>
 <td><a href="evidence_code/">evidence_code</a></td>
 <td>Evidence and Conclusion Ontology (ECO) code</td>
 </tr>
@@ -3223,6 +3255,14 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Imaging mode for electron microscopy</td>
 </tr>
 <tr>
+<td><a href="inchi/">inchi</a></td>
+<td>IUPAC InChI string for the structure</td>
+</tr>
+<tr>
+<td><a href="inchikey/">inchikey</a></td>
+<td>InChIKey hash of the InChI, the 27-character form used for exact-structure lo...</td>
+</tr>
+<tr>
 <td><a href="indexer_module/">indexer_module</a></td>
 <td>Indexing module used (e</td>
 </tr>
@@ -3291,8 +3331,12 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Evidence for this interaction</td>
 </tr>
 <tr>
+<td><a href="interaction_status/">interaction_status</a></td>
+<td>Whether the interaction is the design of the sample, expected from prior work...</td>
+</tr>
+<tr>
 <td><a href="interaction_type/">interaction_type</a></td>
-<td>Type of interaction</td>
+<td>What the subject does to the object</td>
 </tr>
 <tr>
 <td><a href="interface_area/">interface_area</a></td>
@@ -3352,7 +3396,7 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 </tr>
 <tr>
 <td><a href="ligand/">ligand</a></td>
-<td>Ligand or small molecule bound to sample</td>
+<td>Ligand or small molecule bound to sample, as the facility recorded it</td>
 </tr>
 <tr>
 <td><a href="ligand_id/">ligand_id</a></td>
@@ -3372,7 +3416,7 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 </tr>
 <tr>
 <td><a href="ligands/">ligands</a></td>
-<td>Bound ligands or cofactors</td>
+<td>Bound ligands or cofactors, as free text</td>
 </tr>
 <tr>
 <td><a href="ligands_cofactors/">ligands_cofactors</a></td>
@@ -3488,7 +3532,11 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 </tr>
 <tr>
 <td><a href="molecular_composition/">molecular_composition</a></td>
-<td>Description of molecular composition including sequences, modifications, liga...</td>
+<td>Free-text description of molecular composition including sequences, modificat...</td>
+</tr>
+<tr>
+<td><a href="molecular_formula/">molecular_formula</a></td>
+<td>Molecular formula (e</td>
 </tr>
 <tr>
 <td><a href="molecular_signatures/">molecular_signatures</a></td>
@@ -3568,7 +3616,7 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 </tr>
 <tr>
 <td><a href="nucleic_acid_id/">nucleic_acid_id</a></td>
-<td>Reference to the nucleic acid</td>
+<td>The NucleicAcid record, where component_type is nucleic_acid</td>
 </tr>
 <tr>
 <td><a href="nucleic_acid_name/">nucleic_acid_name</a></td>
@@ -3615,6 +3663,14 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Numerical aperture of the objective lens</td>
 </tr>
 <tr>
+<td><a href="object_id/">object_id</a></td>
+<td>The component acted on, bound or hosting</td>
+</tr>
+<tr>
+<td><a href="object_site/">object_site</a></td>
+<td>Where on the object the interaction takes place, in the same form as subject_...</td>
+</tr>
+<tr>
 <td><a href="objective_aperture/">objective_aperture</a></td>
 <td>Objective aperture size in micrometers</td>
 </tr>
@@ -3637,6 +3693,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="ontology/">ontology</a></td>
 <td>The ontology or controlled vocabulary this term comes from (e</td>
+</tr>
+<tr>
+<td><a href="ontology_term/">ontology_term</a></td>
+<td>Ontology term naming a component that has no entity table: the NCBI Taxonomy ...</td>
 </tr>
 <tr>
 <td><a href="operator_id/">operator_id</a></td>
@@ -3753,6 +3813,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="pdb_id/">pdb_id</a></td>
 <td>PDB accession code if deposited</td>
+</tr>
+<tr>
+<td><a href="pdb_ligand_id/">pdb_ligand_id</a></td>
+<td>wwPDB Chemical Component Dictionary code as a CURIE (pdb</td>
 </tr>
 <tr>
 <td><a href="person_id/">person_id</a></td>
@@ -4148,7 +4212,7 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 </tr>
 <tr>
 <td><a href="role/">role</a></td>
-<td>Role of sample in study (e</td>
+<td>Part this component plays in the sample</td>
 </tr>
 <tr>
 <td><a href="ror/">ror</a></td>
@@ -4203,12 +4267,20 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Human-friendly laboratory identifier or facility code for the sample (e</td>
 </tr>
 <tr>
+<td><a href="sample_component_interactions/">sample_component_interactions</a></td>
+<td>Relationships between the components of a sample: which binds, inhibits, pair...</td>
+</tr>
+<tr>
+<td><a href="sample_components/">sample_components</a></td>
+<td>What each sample contains, one row per constituent: the inventory behind samp...</td>
+</tr>
+<tr>
 <td><a href="sample_detector_distance/">sample_detector_distance</a></td>
 <td>Distance from sample to detector</td>
 </tr>
 <tr>
 <td><a href="sample_id/">sample_id</a></td>
-<td>Reference to the sample being prepared</td>
+<td>The sample this component is part of</td>
 </tr>
 <tr>
 <td><a href="sample_nucleic_acid_associations/">sample_nucleic_acid_associations</a></td>
@@ -4224,7 +4296,7 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 </tr>
 <tr>
 <td><a href="sample_type/">sample_type</a></td>
-<td>Type of biological sample</td>
+<td>Coarse kind of sample, a one-word summary</td>
 </tr>
 <tr>
 <td><a href="samples/">samples</a></td>
@@ -4335,6 +4407,22 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Vertical slit gap aperture, typically specified in micrometers (µm)</td>
 </tr>
 <tr>
+<td><a href="small_molecule_id/">small_molecule_id</a></td>
+<td>The SmallMolecule record, where component_type is small_molecule</td>
+</tr>
+<tr>
+<td><a href="small_molecule_name/">small_molecule_name</a></td>
+<td>Name as ChEBI, the depositor or the supplier gives it (e</td>
+</tr>
+<tr>
+<td><a href="small_molecules/">small_molecules</a></td>
+<td>All small molecules referenced by samples in this dataset, one record per com...</td>
+</tr>
+<tr>
+<td><a href="smiles/">smiles</a></td>
+<td>SMILES string for the structure</td>
+</tr>
+<tr>
 <td><a href="soak_compound/">soak_compound</a></td>
 <td>Compound used for soaking (ligand, heavy atom)</td>
 </tr>
@@ -4443,6 +4531,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Descriptive name (e</td>
 </tr>
 <tr>
+<td><a href="stoichiometry/">stoichiometry</a></td>
+<td>Copies of subject to copies of object per assembly, written 'subject:object':...</td>
+</tr>
+<tr>
 <td><a href="storage_conditions/">storage_conditions</a></td>
 <td>Storage conditions for the sample</td>
 </tr>
@@ -4497,6 +4589,14 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="study_workflow_associations/">study_workflow_associations</a></td>
 <td>Links between studies and workflows (M:N)</td>
+</tr>
+<tr>
+<td><a href="subject_id/">subject_id</a></td>
+<td>The component that acts on, binds to or sits in the object</td>
+</tr>
+<tr>
+<td><a href="subject_site/">subject_site</a></td>
+<td>Where on the subject the interaction takes place: residues or positions as 'D...</td>
 </tr>
 <tr>
 <td><a href="super_resolution/">super_resolution</a></td>
@@ -4862,6 +4962,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Types of biophysical properties</td>
 </tr>
 <tr>
+<td><a href="ChemicalClassEnum/">ChemicalClassEnum</a></td>
+<td>Broad chemical kind of a SmallMolecule</td>
+</tr>
+<tr>
 <td><a href="ClinicalSignificanceEnum/">ClinicalSignificanceEnum</a></td>
 <td>Clinical significance of variants</td>
 </tr>
@@ -4872,6 +4976,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="ComplexStabilityEnum/">ComplexStabilityEnum</a></td>
 <td>Stability of protein complexes</td>
+</tr>
+<tr>
+<td><a href="ComponentInteractionTypeEnum/">ComponentInteractionTypeEnum</a></td>
+<td>What the subject of a SampleComponentInteraction does to its object</td>
 </tr>
 <tr>
 <td><a href="ConformationalStateEnum/">ConformationalStateEnum</a></td>
@@ -4990,6 +5098,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Evidence for interactions</td>
 </tr>
 <tr>
+<td><a href="InteractionStatusEnum/">InteractionStatusEnum</a></td>
+<td>Standing of an interaction claim: the sample's design, prior knowledge, or th...</td>
+</tr>
+<tr>
 <td><a href="InteractionTypeEnum/">InteractionTypeEnum</a></td>
 <td>Types of molecular interactions</td>
 </tr>
@@ -5054,6 +5166,14 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Protein purification steps and methods</td>
 </tr>
 <tr>
+<td><a href="SampleComponentRoleEnum/">SampleComponentRoleEnum</a></td>
+<td>Part a component plays in a sample</td>
+</tr>
+<tr>
+<td><a href="SampleComponentTypeEnum/">SampleComponentTypeEnum</a></td>
+<td>Kinds of thing a sample may contain</td>
+</tr>
+<tr>
 <td><a href="SampleNucleicAcidRoleEnum/">SampleNucleicAcidRoleEnum</a></td>
 <td>Part a nucleic acid plays in a sample</td>
 </tr>
@@ -5067,7 +5187,7 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 </tr>
 <tr>
 <td><a href="SampleTypeEnum/">SampleTypeEnum</a></td>
-<td>Types of biological samples</td>
+<td>Coarse kind of a sample, a one-word summary for search</td>
 </tr>
 <tr>
 <td><a href="SecondaryStructureEnum/">SecondaryStructureEnum</a></td>

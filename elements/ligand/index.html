@@ -952,7 +952,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.2/" class="md-nav__link">
+      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.3/" class="md-nav__link">
         
   
   
@@ -1263,7 +1263,7 @@
 
 
 <h1 id="slot-ligand">Slot: ligand</h1>
-<p><em>Ligand or small molecule bound to sample</em></p>
+<p><em>Ligand or small molecule bound to sample, as the facility recorded it. A display and search field; the structured form is a SampleComponent of type small_molecule pointing at a SmallMolecule record, with a SampleComponentInteraction saying what it binds.</em></p>
 <p>URI: <a href="http://w3id.org/lambda/ligand">lambda:ligand</a>
 Alias: ligand</p>
 <!-- no inheritance hierarchy -->
@@ -1321,7 +1321,10 @@ Alias: ligand</p>
 <details>
 
 <pre><code class="language-yaml">name: ligand
-description: Ligand or small molecule bound to sample
+description: Ligand or small molecule bound to sample, as the facility recorded it.
+  A display and search field; the structured form is a SampleComponent of type small_molecule
+  pointing at a SmallMolecule record, with a SampleComponentInteraction saying what
+  it binds.
 from_schema: http://w3id.org/lambda/
 exact_mappings:
 - nsls2:Ligand

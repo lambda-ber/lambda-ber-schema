@@ -382,7 +382,7 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../profiles/lambda-core-rocrate-profile-v0.3.2/">
+<a class="md-nav__link" href="../../profiles/lambda-core-rocrate-profile-v0.3.3/">
 <span class="md-ellipsis">
     LAMBDA Core RO-Crate Profile
     
@@ -703,6 +703,28 @@
 
 
 
+      Dataset : sample_component_interactions
+
+
+
+
+
+        Dataset --&gt; "*" SampleComponentInteraction : sample_component_interactions
+        click SampleComponentInteraction href "../SampleComponentInteraction/"
+
+
+
+      Dataset : sample_components
+
+
+
+
+
+        Dataset --&gt; "*" SampleComponent : sample_components
+        click SampleComponent href "../SampleComponent/"
+
+
+
       Dataset : sample_nucleic_acid_associations
 
 
@@ -744,6 +766,17 @@
 
         Dataset --&gt; "*" Sample : samples
         click Sample href "../Sample/"
+
+
+
+      Dataset : small_molecules
+
+
+
+
+
+        Dataset --&gt; "*" SmallMolecule : small_molecules
+        click SmallMolecule href "../SmallMolecule/"
 
 
 
@@ -939,9 +972,21 @@
 <td>direct</td>
 </tr>
 <tr>
+<td><a href="../small_molecules/">small_molecules</a></td>
+<td>* <br/> <a href="../SmallMolecule/">SmallMolecule</a></td>
+<td>All small molecules referenced by samples in this dataset, one record per com...</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../samples/">samples</a></td>
 <td>* <br/> <a href="../Sample/">Sample</a></td>
 <td>All samples across all studies</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../sample_components/">sample_components</a></td>
+<td>* <br/> <a href="../SampleComponent/">SampleComponent</a></td>
+<td>What each sample contains, one row per constituent: the inventory behind samp...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -1014,6 +1059,12 @@
 <td><a href="../sample_nucleic_acid_associations/">sample_nucleic_acid_associations</a></td>
 <td>* <br/> <a href="../SampleNucleicAcidAssociation/">SampleNucleicAcidAssociation</a></td>
 <td>Links between samples and the nucleic acids they contain (M:N with role, copy...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../sample_component_interactions/">sample_component_interactions</a></td>
+<td>* <br/> <a href="../SampleComponentInteraction/">SampleComponentInteraction</a></td>
+<td>Relationships between the components of a sample: which binds, inhibits, pair...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -1214,6 +1265,18 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
+  small_molecules:
+    name: small_molecules
+    description: All small molecules referenced by samples in this dataset, one record
+      per compound
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    domain_of:
+    - Dataset
+    range: SmallMolecule
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
   samples:
     name: samples
     description: All samples across all studies
@@ -1222,6 +1285,18 @@ attributes:
     domain_of:
     - Dataset
     range: Sample
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  sample_components:
+    name: sample_components
+    description: 'What each sample contains, one row per constituent: the inventory
+      behind sample_type'
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    domain_of:
+    - Dataset
+    range: SampleComponent
     multivalued: true
     inlined: true
     inlined_as_list: true
@@ -1356,6 +1431,18 @@ attributes:
     domain_of:
     - Dataset
     range: SampleNucleicAcidAssociation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  sample_component_interactions:
+    name: sample_component_interactions
+    description: 'Relationships between the components of a sample: which binds, inhibits,
+      pairs with or sits in which'
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    domain_of:
+    - Dataset
+    range: SampleComponentInteraction
     multivalued: true
     inlined: true
     inlined_as_list: true
@@ -1568,6 +1655,20 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
+  small_molecules:
+    name: small_molecules
+    description: All small molecules referenced by samples in this dataset, one record
+      per compound
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    alias: small_molecules
+    owner: Dataset
+    domain_of:
+    - Dataset
+    range: SmallMolecule
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
   samples:
     name: samples
     description: All samples across all studies
@@ -1578,6 +1679,20 @@ attributes:
     domain_of:
     - Dataset
     range: Sample
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  sample_components:
+    name: sample_components
+    description: 'What each sample contains, one row per constituent: the inventory
+      behind sample_type'
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    alias: sample_components
+    owner: Dataset
+    domain_of:
+    - Dataset
+    range: SampleComponent
     multivalued: true
     inlined: true
     inlined_as_list: true
@@ -1739,6 +1854,20 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
+  sample_component_interactions:
+    name: sample_component_interactions
+    description: 'Relationships between the components of a sample: which binds, inhibits,
+      pairs with or sits in which'
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    alias: sample_component_interactions
+    owner: Dataset
+    domain_of:
+    - Dataset
+    range: SampleComponentInteraction
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
   workflow_experiment_associations:
     name: workflow_experiment_associations
     description: Links between workflows and source experiments (M:N)
@@ -1880,6 +2009,7 @@ attributes:
     domain_of:
     - NamedThing
     - AttributeGroup
+    - SampleComponentInteraction
     range: string
 tree_root: true
 

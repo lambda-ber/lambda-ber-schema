@@ -382,7 +382,7 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../profiles/lambda-core-rocrate-profile-v0.3.2/">
+<a class="md-nav__link" href="../../profiles/lambda-core-rocrate-profile-v0.3.3/">
 <span class="md-ellipsis">
     LAMBDA Core RO-Crate Profile
     
@@ -560,7 +560,7 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-sample">Class: Sample</h1>
-<p><em>A physical biological sample used in structural biology experiments. Records what is true of this preparation - buffer, concentration, storage, purity, the construct and tags used. The identity of the protein(s) it contains belongs on Protein, linked through SampleProteinAssociation, so a protein studied in ten preparations is described once. The nucleic acid(s) it contains belong on NucleicAcid in the same way, linked through SampleNucleicAcidAssociation; a protein-DNA complex is one sample with one row in each.</em></p>
+<p><em>A physical biological sample used in structural biology experiments. Records what is true of this preparation - buffer, concentration, storage, purity, the construct and tags used. The identity of the protein(s) it contains belongs on Protein, linked through SampleProteinAssociation, so a protein studied in ten preparations is described once. The nucleic acid(s) it contains belong on NucleicAcid in the same way, linked through SampleNucleicAcidAssociation; a protein-DNA complex is one sample with one row in each. Everything else it contains - ligands, ions, lipids, detergents, virus particles, organelles - and the full inventory of what is in it, one row per constituent with its role, lives in SampleComponent; what acts on what within the sample lives in SampleComponentInteraction.</em></p>
 <p>URI: <a href="http://w3id.org/lambda/Sample">lambda:Sample</a></p>
 <div class="mermaid"> classDiagram
     class Sample
@@ -854,13 +854,13 @@
 <tr>
 <td><a href="../sample_type/">sample_type</a></td>
 <td>1 <br/> <a href="../SampleTypeEnum/">SampleTypeEnum</a></td>
-<td>Type of biological sample</td>
+<td>Coarse kind of sample, a one-word summary</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../molecular_composition/">molecular_composition</a></td>
 <td>0..1 <br/> <a href="../MolecularComposition/">MolecularComposition</a></td>
-<td>Description of molecular composition including sequences, modifications, liga...</td>
+<td>Free-text description of molecular composition including sequences, modificat...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -1022,7 +1022,7 @@
 <tr>
 <td><a href="../ligand/">ligand</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Ligand or small molecule bound to sample</td>
+<td>Ligand or small molecule bound to sample, as the facility recorded it</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -1075,6 +1075,12 @@
 <td><a href="./">Sample</a></td>
 </tr>
 <tr>
+<td><a href="../SampleComponent/">SampleComponent</a></td>
+<td><a href="../sample_id/">sample_id</a></td>
+<td>range</td>
+<td><a href="./">Sample</a></td>
+</tr>
+<tr>
 <td><a href="../StudySampleAssociation/">StudySampleAssociation</a></td>
 <td><a href="../sample_id/">sample_id</a></td>
 <td>range</td>
@@ -1094,6 +1100,12 @@
 </tr>
 <tr>
 <td><a href="../SampleNucleicAcidAssociation/">SampleNucleicAcidAssociation</a></td>
+<td><a href="../sample_id/">sample_id</a></td>
+<td>range</td>
+<td><a href="./">Sample</a></td>
+</tr>
+<tr>
+<td><a href="../SampleComponentInteraction/">SampleComponentInteraction</a></td>
 <td><a href="../sample_id/">sample_id</a></td>
 <td>range</td>
 <td><a href="./">Sample</a></td>
@@ -1143,7 +1155,10 @@ description: A physical biological sample used in structural biology experiments
   on Protein, linked through SampleProteinAssociation, so a protein studied in ten
   preparations is described once. The nucleic acid(s) it contains belong on NucleicAcid
   in the same way, linked through SampleNucleicAcidAssociation; a protein-DNA complex
-  is one sample with one row in each.
+  is one sample with one row in each. Everything else it contains - ligands, ions,
+  lipids, detergents, virus particles, organelles - and the full inventory of what
+  is in it, one row per constituent with its role, lives in SampleComponent; what
+  acts on what within the sample lives in SampleComponentInteraction.
 comments:
 - protein_name, organism and the functional annotation collections remain here for
   data that arrives without a resolvable protein identity, and for search convenience.
@@ -1168,7 +1183,7 @@ attributes:
     required: true
   sample_type:
     name: sample_type
-    description: Type of biological sample
+    description: Coarse kind of sample, a one-word summary. The detail is in SampleComponent.
     from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
@@ -1177,8 +1192,9 @@ attributes:
     required: true
   molecular_composition:
     name: molecular_composition
-    description: Description of molecular composition including sequences, modifications,
-      ligands
+    description: Free-text description of molecular composition including sequences,
+      modifications, ligands. The structured form is the SampleComponent rows for
+      the sample.
     from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
@@ -1206,6 +1222,7 @@ attributes:
     rank: 1000
     domain_of:
     - Sample
+    - SampleComponent
     range: QuantityValue
     inlined: true
   buffer_composition:
@@ -1468,7 +1485,10 @@ attributes:
     range: string
   ligand:
     name: ligand
-    description: Ligand or small molecule bound to sample
+    description: Ligand or small molecule bound to sample, as the facility recorded
+      it. A display and search field; the structured form is a SampleComponent of
+      type small_molecule pointing at a SmallMolecule record, with a SampleComponentInteraction
+      saying what it binds.
     from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:Ligand
@@ -1496,7 +1516,10 @@ description: A physical biological sample used in structural biology experiments
   on Protein, linked through SampleProteinAssociation, so a protein studied in ten
   preparations is described once. The nucleic acid(s) it contains belong on NucleicAcid
   in the same way, linked through SampleNucleicAcidAssociation; a protein-DNA complex
-  is one sample with one row in each.
+  is one sample with one row in each. Everything else it contains - ligands, ions,
+  lipids, detergents, virus particles, organelles - and the full inventory of what
+  is in it, one row per constituent with its role, lives in SampleComponent; what
+  acts on what within the sample lives in SampleComponentInteraction.
 comments:
 - protein_name, organism and the functional annotation collections remain here for
   data that arrives without a resolvable protein identity, and for search convenience.
@@ -1524,7 +1547,7 @@ attributes:
     required: true
   sample_type:
     name: sample_type
-    description: Type of biological sample
+    description: Coarse kind of sample, a one-word summary. The detail is in SampleComponent.
     from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: sample_type
@@ -1535,8 +1558,9 @@ attributes:
     required: true
   molecular_composition:
     name: molecular_composition
-    description: Description of molecular composition including sequences, modifications,
-      ligands
+    description: Free-text description of molecular composition including sequences,
+      modifications, ligands. The structured form is the SampleComponent rows for
+      the sample.
     from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: molecular_composition
@@ -1570,6 +1594,7 @@ attributes:
     owner: Sample
     domain_of:
     - Sample
+    - SampleComponent
     range: QuantityValue
     inlined: true
   buffer_composition:
@@ -1882,7 +1907,10 @@ attributes:
     range: string
   ligand:
     name: ligand
-    description: Ligand or small molecule bound to sample
+    description: Ligand or small molecule bound to sample, as the facility recorded
+      it. A display and search field; the structured form is a SampleComponent of
+      type small_molecule pointing at a SmallMolecule record, with a SampleComponentInteraction
+      saying what it binds.
     from_schema: http://w3id.org/lambda/
     exact_mappings:
     - nsls2:Ligand
@@ -1938,6 +1966,7 @@ attributes:
     domain_of:
     - NamedThing
     - AttributeGroup
+    - SampleComponentInteraction
     range: string
 
 </code></pre>

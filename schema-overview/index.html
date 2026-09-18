@@ -952,7 +952,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../profiles/lambda-core-rocrate-profile-v0.3.2/" class="md-nav__link">
+      <a href="../profiles/lambda-core-rocrate-profile-v0.3.3/" class="md-nav__link">
         
   
   
@@ -1510,8 +1510,16 @@
 <td>The DNA or RNA strand as a molecular entity: type, sequence, organism, gene, RNAcentral or RefSeq/INSDC accession where one exists. Described once, shared by every sample that contains it</td>
 </tr>
 <tr>
+<td><a href="https://w3id.org/lambda-ber-schema/SmallMolecule">SmallMolecule</a></td>
+<td>The ligand, cofactor, metal ion, lipid or detergent as a chemical entity: ChEBI CURIE, PDB ligand code, formula, SMILES, InChIKey, chemical class. Described once, shared by every sample that contains it</td>
+</tr>
+<tr>
 <td><a href="https://w3id.org/lambda-ber-schema/Sample">Sample</a></td>
 <td>Physical specimens (proteins, nucleic acids, complexes, cells, tissues) with preparation-specific facts: buffer, concentration, storage, purity</td>
+</tr>
+<tr>
+<td><a href="https://w3id.org/lambda-ber-schema/SampleComponent">SampleComponent</a></td>
+<td>One constituent of one sample: its kind, the Protein, NucleicAcid or SmallMolecule it is (or an ontology term for a virus particle, organelle, cell or nanodisc), role, copy number, concentration. The inventory behind <code>sample_type</code></td>
 </tr>
 <tr>
 <td><a href="https://w3id.org/lambda-ber-schema/ProteinConstruct">ProteinConstruct</a></td>
@@ -1672,6 +1680,11 @@
 <td><a href="https://w3id.org/lambda-ber-schema/SampleNucleicAcidAssociation">SampleNucleicAcidAssociation</a></td>
 <td>Sample ↔ NucleicAcid</td>
 <td>role (target, subunit, guide, template, primer, ...), copy number, residue range, chain ids, structural form (duplex, hairpin, quadruplex, ...), source method (synthesis, in vitro transcription, ...), modifications, observed mass</td>
+</tr>
+<tr>
+<td><a href="https://w3id.org/lambda-ber-schema/SampleComponentInteraction">SampleComponentInteraction</a></td>
+<td>SampleComponent → SampleComponent, within one Sample</td>
+<td>interaction type (binds, inhibits, is_coordinated_by, base_pairs_with, embedded_in, ...), status (designed, expected, observed, not_observed), stoichiometry, sites, affinity, evidence</td>
 </tr>
 <tr>
 <td><a href="https://w3id.org/lambda-ber-schema/WorkflowExperimentAssociation">WorkflowExperimentAssociation</a></td>

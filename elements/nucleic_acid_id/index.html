@@ -952,7 +952,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.2/" class="md-nav__link">
+      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.3/" class="md-nav__link">
         
   
   
@@ -1208,21 +1208,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Identifier and Mapping Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schema-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      Schema Source
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -1263,7 +1248,6 @@
 
 
 <h1 id="slot-nucleic_acid_id">Slot: nucleic_acid_id</h1>
-<p><em>Reference to the nucleic acid</em></p>
 <p>URI: <a href="http://w3id.org/lambda/nucleic_acid_id">lambda:nucleic_acid_id</a>
 Alias: nucleic_acid_id</p>
 <!-- no inheritance hierarchy -->
@@ -1283,22 +1267,18 @@ Alias: nucleic_acid_id</p>
 <td>M:N link between Sample and NucleicAcid</td>
 <td>no</td>
 </tr>
+<tr>
+<td><a href="../SampleComponent/">SampleComponent</a></td>
+<td>One constituent of one sample: a protein, a nucleic acid, a small molecule, a...</td>
+<td>no</td>
+</tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>
-<p>Range: <a href="../NucleicAcid/">NucleicAcid</a></p>
-</li>
-<li>
-<p>Required: True</p>
-</li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: http://w3id.org/lambda/</li>
-</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -1322,15 +1302,11 @@ Alias: nucleic_acid_id</p>
 <details>
 
 <pre><code class="language-yaml">name: nucleic_acid_id
-description: Reference to the nucleic acid
-from_schema: http://w3id.org/lambda/
-rank: 1000
 alias: nucleic_acid_id
-owner: SampleNucleicAcidAssociation
 domain_of:
+- SampleComponent
 - SampleNucleicAcidAssociation
-range: NucleicAcid
-required: true
+range: string
 
 </code></pre>
 

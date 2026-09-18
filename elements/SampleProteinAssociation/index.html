@@ -382,7 +382,7 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../profiles/lambda-core-rocrate-profile-v0.3.2/">
+<a class="md-nav__link" href="../../profiles/lambda-core-rocrate-profile-v0.3.3/">
 <span class="md-ellipsis">
     LAMBDA Core RO-Crate Profile
     
@@ -485,6 +485,13 @@
 <a class="md-nav__link" href="#usages">
 <span class="md-ellipsis">
       Usages
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#comments">
+<span class="md-ellipsis">
+      Comments
     </span>
 </a>
 </li>
@@ -711,6 +718,10 @@
 </tr>
 </tbody>
 </table>
+<h2 id="comments">Comments</h2>
+<ul>
+<li>A SampleComponent row of type protein for the same sample and protein is the inventory entry and the handle a SampleComponentInteraction points at; this association is the per-preparation detail. A dataset that records no interactions may carry this row alone. Where role or copy_number is set on both, they must agree.</li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -749,6 +760,11 @@ description: 'M:N link between Sample and Protein. A sample may hold several pro
   one protein turns up in many samples. What changes from preparation to preparation
   lives here: the role, the copy number, the residue range actually present, the modifications
   carried, the mass actually measured, and the construct it was made from.'
+comments:
+- A SampleComponent row of type protein for the same sample and protein is the inventory
+  entry and the handle a SampleComponentInteraction points at; this association is
+  the per-preparation detail. A dataset that records no interactions may carry this
+  row alone. Where role or copy_number is set on both, they must agree.
 from_schema: http://w3id.org/lambda/
 related_mappings:
 - IHMCIF:_ihm_struct_assembly_details
@@ -759,11 +775,13 @@ attributes:
     description: Reference to the sample
     from_schema: http://w3id.org/lambda/
     domain_of:
+    - SampleComponent
     - SamplePreparation
     - StudySampleAssociation
     - ExperimentSampleAssociation
     - SampleProteinAssociation
     - SampleNucleicAcidAssociation
+    - SampleComponentInteraction
     range: Sample
     required: true
   protein_id:
@@ -772,6 +790,7 @@ attributes:
     from_schema: http://w3id.org/lambda/
     domain_of:
     - ProteinConstruct
+    - SampleComponent
     - SampleProteinAssociation
     - ProteinAnnotation
     - ConformationalEnsemble
@@ -782,6 +801,7 @@ attributes:
     description: Part this protein plays in the sample
     from_schema: http://w3id.org/lambda/
     domain_of:
+    - SampleComponent
     - StudySampleAssociation
     - ExperimentSampleAssociation
     - SampleProteinAssociation
@@ -810,8 +830,8 @@ attributes:
     from_schema: http://w3id.org/lambda/
     exact_mappings:
     - mmCIF:_entity.pdbx_number_of_molecules
-    rank: 1000
     domain_of:
+    - SampleComponent
     - SampleProteinAssociation
     - SampleNucleicAcidAssociation
     range: integer
@@ -885,6 +905,11 @@ description: 'M:N link between Sample and Protein. A sample may hold several pro
   one protein turns up in many samples. What changes from preparation to preparation
   lives here: the role, the copy number, the residue range actually present, the modifications
   carried, the mass actually measured, and the construct it was made from.'
+comments:
+- A SampleComponent row of type protein for the same sample and protein is the inventory
+  entry and the handle a SampleComponentInteraction points at; this association is
+  the per-preparation detail. A dataset that records no interactions may carry this
+  row alone. Where role or copy_number is set on both, they must agree.
 from_schema: http://w3id.org/lambda/
 related_mappings:
 - IHMCIF:_ihm_struct_assembly_details
@@ -897,11 +922,13 @@ attributes:
     alias: sample_id
     owner: SampleProteinAssociation
     domain_of:
+    - SampleComponent
     - SamplePreparation
     - StudySampleAssociation
     - ExperimentSampleAssociation
     - SampleProteinAssociation
     - SampleNucleicAcidAssociation
+    - SampleComponentInteraction
     range: Sample
     required: true
   protein_id:
@@ -912,6 +939,7 @@ attributes:
     owner: SampleProteinAssociation
     domain_of:
     - ProteinConstruct
+    - SampleComponent
     - SampleProteinAssociation
     - ProteinAnnotation
     - ConformationalEnsemble
@@ -924,6 +952,7 @@ attributes:
     alias: role
     owner: SampleProteinAssociation
     domain_of:
+    - SampleComponent
     - StudySampleAssociation
     - ExperimentSampleAssociation
     - SampleProteinAssociation
@@ -954,10 +983,10 @@ attributes:
     from_schema: http://w3id.org/lambda/
     exact_mappings:
     - mmCIF:_entity.pdbx_number_of_molecules
-    rank: 1000
     alias: copy_number
     owner: SampleProteinAssociation
     domain_of:
+    - SampleComponent
     - SampleProteinAssociation
     - SampleNucleicAcidAssociation
     range: integer

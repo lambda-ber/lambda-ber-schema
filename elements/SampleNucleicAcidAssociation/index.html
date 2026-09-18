@@ -382,7 +382,7 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../profiles/lambda-core-rocrate-profile-v0.3.2/">
+<a class="md-nav__link" href="../../profiles/lambda-core-rocrate-profile-v0.3.3/">
 <span class="md-ellipsis">
     LAMBDA Core RO-Crate Profile
     
@@ -485,6 +485,13 @@
 <a class="md-nav__link" href="#usages">
 <span class="md-ellipsis">
       Usages
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#comments">
+<span class="md-ellipsis">
+      Comments
     </span>
 </a>
 </li>
@@ -728,6 +735,10 @@
 </tr>
 </tbody>
 </table>
+<h2 id="comments">Comments</h2>
+<ul>
+<li>A SampleComponent row of type nucleic_acid for the same sample and strand is the inventory entry and the handle a SampleComponentInteraction points at; this association is the per-preparation detail. A dataset that records no interactions may carry this row alone. Where role or copy_number is set on both, they must agree.</li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -767,6 +778,11 @@ description: 'M:N link between Sample and NucleicAcid. A sample may hold several
   to preparation lives here: the role, the copy number, the form the strand takes
   (single, duplex, hairpin, quadruplex), how it was made, the modifications it carries,
   and the mass actually measured.'
+comments:
+- A SampleComponent row of type nucleic_acid for the same sample and strand is the
+  inventory entry and the handle a SampleComponentInteraction points at; this association
+  is the per-preparation detail. A dataset that records no interactions may carry
+  this row alone. Where role or copy_number is set on both, they must agree.
 from_schema: http://w3id.org/lambda/
 related_mappings:
 - IHMCIF:_ihm_struct_assembly_details
@@ -777,19 +793,21 @@ attributes:
     description: Reference to the sample
     from_schema: http://w3id.org/lambda/
     domain_of:
+    - SampleComponent
     - SamplePreparation
     - StudySampleAssociation
     - ExperimentSampleAssociation
     - SampleProteinAssociation
     - SampleNucleicAcidAssociation
+    - SampleComponentInteraction
     range: Sample
     required: true
   nucleic_acid_id:
     name: nucleic_acid_id
     description: Reference to the nucleic acid
     from_schema: http://w3id.org/lambda/
-    rank: 1000
     domain_of:
+    - SampleComponent
     - SampleNucleicAcidAssociation
     range: NucleicAcid
     required: true
@@ -798,6 +816,7 @@ attributes:
     description: Part this nucleic acid plays in the sample
     from_schema: http://w3id.org/lambda/
     domain_of:
+    - SampleComponent
     - StudySampleAssociation
     - ExperimentSampleAssociation
     - SampleProteinAssociation
@@ -818,6 +837,7 @@ attributes:
     exact_mappings:
     - mmCIF:_entity.pdbx_number_of_molecules
     domain_of:
+    - SampleComponent
     - SampleProteinAssociation
     - SampleNucleicAcidAssociation
     range: integer
@@ -911,6 +931,11 @@ description: 'M:N link between Sample and NucleicAcid. A sample may hold several
   to preparation lives here: the role, the copy number, the form the strand takes
   (single, duplex, hairpin, quadruplex), how it was made, the modifications it carries,
   and the mass actually measured.'
+comments:
+- A SampleComponent row of type nucleic_acid for the same sample and strand is the
+  inventory entry and the handle a SampleComponentInteraction points at; this association
+  is the per-preparation detail. A dataset that records no interactions may carry
+  this row alone. Where role or copy_number is set on both, they must agree.
 from_schema: http://w3id.org/lambda/
 related_mappings:
 - IHMCIF:_ihm_struct_assembly_details
@@ -923,21 +948,23 @@ attributes:
     alias: sample_id
     owner: SampleNucleicAcidAssociation
     domain_of:
+    - SampleComponent
     - SamplePreparation
     - StudySampleAssociation
     - ExperimentSampleAssociation
     - SampleProteinAssociation
     - SampleNucleicAcidAssociation
+    - SampleComponentInteraction
     range: Sample
     required: true
   nucleic_acid_id:
     name: nucleic_acid_id
     description: Reference to the nucleic acid
     from_schema: http://w3id.org/lambda/
-    rank: 1000
     alias: nucleic_acid_id
     owner: SampleNucleicAcidAssociation
     domain_of:
+    - SampleComponent
     - SampleNucleicAcidAssociation
     range: NucleicAcid
     required: true
@@ -948,6 +975,7 @@ attributes:
     alias: role
     owner: SampleNucleicAcidAssociation
     domain_of:
+    - SampleComponent
     - StudySampleAssociation
     - ExperimentSampleAssociation
     - SampleProteinAssociation
@@ -970,6 +998,7 @@ attributes:
     alias: copy_number
     owner: SampleNucleicAcidAssociation
     domain_of:
+    - SampleComponent
     - SampleProteinAssociation
     - SampleNucleicAcidAssociation
     range: integer

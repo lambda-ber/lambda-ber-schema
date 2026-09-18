@@ -952,7 +952,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.2/" class="md-nav__link">
+      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.3/" class="md-nav__link">
         
   
   
@@ -1254,7 +1254,7 @@
 
 
 <h1 id="enum-sampletypeenum">Enum: SampleTypeEnum</h1>
-<p><em>Types of biological samples</em></p>
+<p><em>Coarse kind of a sample, a one-word summary for search. What the sample actually contains - which proteins, strands, ligands and particles, in what roles, and which acts on which - is recorded in SampleComponent and SampleComponentInteraction.</em></p>
 <p>URI: <a href="http://w3id.org/lambda/SampleTypeEnum">lambda:SampleTypeEnum</a></p>
 <h2 id="permissible-values">Permissible Values</h2>
 <table>
@@ -1279,7 +1279,7 @@
 <tr>
 <td>complex</td>
 <td>None</td>
-<td>Protein-protein or protein-nucleic acid complex</td>
+<td>A complex of two or more macromolecules, or of a macromolecule with its ligan...</td>
 </tr>
 <tr>
 <td>membrane_protein</td>
@@ -1296,6 +1296,16 @@
 <td>None</td>
 <td>Cellular organelle</td>
 </tr>
+<tr>
+<td>cell</td>
+<td>None</td>
+<td>Whole cell, as for cryo-electron tomography of a lamella</td>
+</tr>
+<tr>
+<td>tissue</td>
+<td>None</td>
+<td>Tissue or tissue section</td>
+</tr>
 </tbody>
 </table>
 <h2 id="slots">Slots</h2>
@@ -1309,7 +1319,7 @@
 <tbody>
 <tr>
 <td><a href="../sample_type/">sample_type</a></td>
-<td>Type of biological sample</td>
+<td>Coarse kind of sample, a one-word summary</td>
 </tr>
 </tbody>
 </table>
@@ -1322,7 +1332,9 @@
 <details>
 
 <pre><code class="language-yaml">name: SampleTypeEnum
-description: Types of biological samples
+description: Coarse kind of a sample, a one-word summary for search. What the sample
+  actually contains - which proteins, strands, ligands and particles, in what roles,
+  and which acts on which - is recorded in SampleComponent and SampleComponentInteraction.
 from_schema: http://w3id.org/lambda/
 rank: 1000
 permissible_values:
@@ -1334,7 +1346,8 @@ permissible_values:
     description: Nucleic acid sample (DNA or RNA)
   complex:
     text: complex
-    description: Protein-protein or protein-nucleic acid complex
+    description: A complex of two or more macromolecules, or of a macromolecule with
+      its ligands; the components say which
   membrane_protein:
     text: membrane_protein
     description: Membrane protein sample
@@ -1344,6 +1357,12 @@ permissible_values:
   organelle:
     text: organelle
     description: Cellular organelle
+  cell:
+    text: cell
+    description: Whole cell, as for cryo-electron tomography of a lamella
+  tissue:
+    text: tissue
+    description: Tissue or tissue section
 
 </code></pre>
 

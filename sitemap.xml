@@ -213,6 +213,10 @@
          <lastmod>2026-09-18</lastmod>
     </url>
     <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/ChemicalClassEnum/</loc>
+         <lastmod>2026-09-18</lastmod>
+    </url>
+    <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/ClinicalSignificanceEnum/</loc>
          <lastmod>2026-09-18</lastmod>
     </url>
@@ -222,6 +226,10 @@
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/ComplexStabilityEnum/</loc>
+         <lastmod>2026-09-18</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/ComponentInteractionTypeEnum/</loc>
          <lastmod>2026-09-18</lastmod>
     </url>
     <url>
@@ -489,6 +497,10 @@
          <lastmod>2026-09-18</lastmod>
     </url>
     <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/InteractionStatusEnum/</loc>
+         <lastmod>2026-09-18</lastmod>
+    </url>
+    <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/InteractionTypeEnum/</loc>
          <lastmod>2026-09-18</lastmod>
     </url>
@@ -693,6 +705,22 @@
          <lastmod>2026-09-18</lastmod>
     </url>
     <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/SampleComponent/</loc>
+         <lastmod>2026-09-18</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/SampleComponentInteraction/</loc>
+         <lastmod>2026-09-18</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/SampleComponentRoleEnum/</loc>
+         <lastmod>2026-09-18</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/SampleComponentTypeEnum/</loc>
+         <lastmod>2026-09-18</lastmod>
+    </url>
+    <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/SampleNucleicAcidAssociation/</loc>
          <lastmod>2026-09-18</lastmod>
     </url>
@@ -722,6 +750,10 @@
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/SecondaryStructureEnum/</loc>
+         <lastmod>2026-09-18</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/SmallMolecule/</loc>
          <lastmod>2026-09-18</lastmod>
     </url>
     <url>
@@ -894,6 +926,10 @@
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/affiliation_ror/</loc>
+         <lastmod>2026-09-18</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/affinity/</loc>
          <lastmod>2026-09-18</lastmod>
     </url>
     <url>
@@ -1217,7 +1253,15 @@
          <lastmod>2026-09-18</lastmod>
     </url>
     <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/chebi_id/</loc>
+         <lastmod>2026-09-18</lastmod>
+    </url>
+    <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/checksum/</loc>
+         <lastmod>2026-09-18</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/chemical_class/</loc>
          <lastmod>2026-09-18</lastmod>
     </url>
     <url>
@@ -1286,6 +1330,10 @@
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/complex_stability/</loc>
+         <lastmod>2026-09-18</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/component_type/</loc>
          <lastmod>2026-09-18</lastmod>
     </url>
     <url>
@@ -1789,6 +1837,10 @@
          <lastmod>2026-09-18</lastmod>
     </url>
     <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/evidence/</loc>
+         <lastmod>2026-09-18</lastmod>
+    </url>
+    <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/evidence_code/</loc>
          <lastmod>2026-09-18</lastmod>
     </url>
@@ -2145,6 +2197,14 @@
          <lastmod>2026-09-18</lastmod>
     </url>
     <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/inchi/</loc>
+         <lastmod>2026-09-18</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/inchikey/</loc>
+         <lastmod>2026-09-18</lastmod>
+    </url>
+    <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/indexer_module/</loc>
          <lastmod>2026-09-18</lastmod>
     </url>
@@ -2214,6 +2274,10 @@
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/interaction_evidence/</loc>
+         <lastmod>2026-09-18</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/interaction_status/</loc>
          <lastmod>2026-09-18</lastmod>
     </url>
     <url>
@@ -2425,6 +2489,10 @@
          <lastmod>2026-09-18</lastmod>
     </url>
     <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/molecular_formula/</loc>
+         <lastmod>2026-09-18</lastmod>
+    </url>
+    <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/molecular_signatures/</loc>
          <lastmod>2026-09-18</lastmod>
     </url>
@@ -2549,6 +2617,14 @@
          <lastmod>2026-09-18</lastmod>
     </url>
     <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/object_id/</loc>
+         <lastmod>2026-09-18</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/object_site/</loc>
+         <lastmod>2026-09-18</lastmod>
+    </url>
+    <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/objective_aperture/</loc>
          <lastmod>2026-09-18</lastmod>
     </url>
@@ -2570,6 +2646,10 @@
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/ontology/</loc>
+         <lastmod>2026-09-18</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/ontology_term/</loc>
          <lastmod>2026-09-18</lastmod>
     </url>
     <url>
@@ -2686,6 +2766,10 @@
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/pdb_id/</loc>
+         <lastmod>2026-09-18</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/pdb_ligand_id/</loc>
          <lastmod>2026-09-18</lastmod>
     </url>
     <url>
@@ -3137,6 +3221,14 @@
          <lastmod>2026-09-18</lastmod>
     </url>
     <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/sample_component_interactions/</loc>
+         <lastmod>2026-09-18</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/sample_components/</loc>
+         <lastmod>2026-09-18</lastmod>
+    </url>
+    <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/sample_detector_distance/</loc>
          <lastmod>2026-09-18</lastmod>
     </url>
@@ -3269,6 +3361,22 @@
          <lastmod>2026-09-18</lastmod>
     </url>
     <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/small_molecule_id/</loc>
+         <lastmod>2026-09-18</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/small_molecule_name/</loc>
+         <lastmod>2026-09-18</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/small_molecules/</loc>
+         <lastmod>2026-09-18</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/smiles/</loc>
+         <lastmod>2026-09-18</lastmod>
+    </url>
+    <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/soak_compound/</loc>
          <lastmod>2026-09-18</lastmod>
     </url>
@@ -3377,6 +3485,10 @@
          <lastmod>2026-09-18</lastmod>
     </url>
     <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/stoichiometry/</loc>
+         <lastmod>2026-09-18</lastmod>
+    </url>
+    <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/storage_conditions/</loc>
          <lastmod>2026-09-18</lastmod>
     </url>
@@ -3430,6 +3542,14 @@
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/study_workflow_associations/</loc>
+         <lastmod>2026-09-18</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/subject_id/</loc>
+         <lastmod>2026-09-18</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/elements/subject_site/</loc>
          <lastmod>2026-09-18</lastmod>
     </url>
     <url>
@@ -3809,7 +3929,7 @@
          <lastmod>2026-09-18</lastmod>
     </url>
     <url>
-         <loc>https://lambda-ber.github.io/lambda-ber-schema/profiles/lambda-core-rocrate-profile-v0.3.2/</loc>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/profiles/lambda-core-rocrate-profile-v0.3.3/</loc>
          <lastmod>2026-09-18</lastmod>
     </url>
     <url>
