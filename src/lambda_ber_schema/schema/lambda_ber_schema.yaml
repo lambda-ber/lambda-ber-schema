@@ -1,6 +1,6 @@
 id: http://w3id.org/lambda/
 name: lambda-ber-schema
-version: "0.1.2.post262.dev0+0be35f65" # Managed by uv-dynamic-versioning
+version: "0.1.2.post308.dev0+8a814589" # Managed by uv-dynamic-versioning
 description: |
   lambda-ber-schema is a comprehensive schema for representing multimodal structural biology imaging data, 
   from atomic-resolution structures to tissue-level organization. It supports diverse experimental 
@@ -1098,6 +1098,64 @@ classes:
     related_mappings:
       - IHMCIF:_ihm_struct_assembly_details
       - mmCIF:_entity
+    # component_type and the entity pointer must agree, in both directions: a protein component
+    # names its Protein, and only a protein component names one. A kind with no entity table
+    # (virus particle, organelle, cell, tissue, membrane mimetic) therefore carries no pointer.
+    rules:
+      - description: "A protein component points at its Protein record"
+        preconditions:
+          slot_conditions:
+            component_type:
+              equals_string: protein
+        postconditions:
+          slot_conditions:
+            protein_id:
+              required: true
+      - description: "A nucleic acid component points at its NucleicAcid record"
+        preconditions:
+          slot_conditions:
+            component_type:
+              equals_string: nucleic_acid
+        postconditions:
+          slot_conditions:
+            nucleic_acid_id:
+              required: true
+      - description: "A small molecule component points at its SmallMolecule record"
+        preconditions:
+          slot_conditions:
+            component_type:
+              equals_string: small_molecule
+        postconditions:
+          slot_conditions:
+            small_molecule_id:
+              required: true
+      - description: "Only a protein component points at a protein record"
+        preconditions:
+          slot_conditions:
+            protein_id:
+              value_presence: PRESENT
+        postconditions:
+          slot_conditions:
+            component_type:
+              equals_string: protein
+      - description: "Only a nucleic acid component points at a nucleic acid record"
+        preconditions:
+          slot_conditions:
+            nucleic_acid_id:
+              value_presence: PRESENT
+        postconditions:
+          slot_conditions:
+            component_type:
+              equals_string: nucleic_acid
+      - description: "Only a small molecule component points at a small molecule record"
+        preconditions:
+          slot_conditions:
+            small_molecule_id:
+              value_presence: PRESENT
+        postconditions:
+          slot_conditions:
+            component_type:
+              equals_string: small_molecule
     attributes:
       sample_id:
         description: "The sample this component is part of"
