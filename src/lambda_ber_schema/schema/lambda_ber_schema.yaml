@@ -2527,6 +2527,9 @@ classes:
       particle_picking_params:
         description: "Particle picking specific parameters"
         range: ParticlePickingParameters
+      md_simulation_params:
+        description: "Molecular dynamics simulation parameters"
+        range: MDSimulationParameters
       refinement_params:
         description: "3D refinement specific parameters"
         range: RefinementParameters
@@ -3798,6 +3801,142 @@ classes:
         inlined: true
       map_sharpening_bfactor:
         description: "B-factor used for map sharpening, typically specified in Angstroms squared (Å²). Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
+
+  MDSimulationParameters:
+    is_a: AttributeGroup
+    description: >-
+      Parameters for a molecular dynamics simulation workflow.
+      Captures force field selection, simulation conditions, integration settings,
+      solvation setup, and the multi-stage pipeline (minimization, heating,
+      equilibration, production).
+    comments:
+      - "Modeled after the Amber/pmemd.cuda pipeline used in BraveDock"
+      - "Generalizes to GROMACS, NAMD, OpenMM, and other MD engines"
+    attributes:
+      # --- Simulation engine ---
+      simulation_engine:
+        description: "MD simulation engine used (e.g., pmemd.cuda, GROMACS, NAMD, OpenMM)"
+      simulation_engine_version:
+        description: "Version of the simulation engine"
+      # --- Force field ---
+      protein_force_field:
+        description: "Force field for protein (e.g., ff19SB, ff14SB, CHARMM36m, OPLS-AA)"
+      ligand_force_field:
+        description: "Force field for small-molecule ligand (e.g., GAFF2, GAFF, CGenFF, OPLS)"
+      water_model:
+        description: "Explicit solvent water model (e.g., OPC, TIP3P, SPC/E, TIP4P-Ew)"
+      charge_method:
+        description: "Method used to assign partial charges to the ligand (e.g., AM1-BCC, RESP, HF/6-31G*)"
+      # --- Solvation and system setup ---
+      box_padding:
+        description: "Minimum distance from solute to box edge, typically in Angstroms"
+        range: QuantityValue
+        inlined: true
+      box_shape:
+        description: "Simulation box geometry (e.g., cubic, truncated_octahedron, rhombic_dodecahedron)"
+      ion_neutralization:
+        description: "Whether counterions were added to neutralize the system"
+        range: boolean
+      ion_species:
+        description: "Ion species added (e.g., Na+, Cl-, K+, Mg2+)"
+        multivalued: true
+      net_charge:
+        description: "Target net charge of the system after ion addition"
+        range: QuantityValue
+        inlined: true
+      hydrogen_mass_repartitioning:
+        description: "Whether hydrogen mass repartitioning (HMR) was applied to enable larger timesteps"
+        range: boolean
+      # --- Ensemble and thermostat/barostat ---
+      ensemble:
+        description: "Thermodynamic ensemble for the simulation stage"
+        range: MDEnsembleEnum
+      thermostat:
+        description: "Thermostat algorithm (e.g., Langevin, Nose-Hoover, Berendsen, velocity-rescale)"
+      thermostat_coupling:
+        description: "Thermostat coupling constant (gamma_ln for Langevin), typically in 1/ps"
+        range: QuantityValue
+        inlined: true
+      barostat:
+        description: "Barostat algorithm (e.g., Berendsen, Monte-Carlo, Parrinello-Rahman)"
+      barostat_coupling:
+        description: "Barostat coupling constant (taup), typically in ps"
+        range: QuantityValue
+        inlined: true
+      # --- Target conditions ---
+      temperature:
+        description: "Target simulation temperature in Kelvin"
+        range: QuantityValue
+        inlined: true
+      pressure:
+        description: "Target simulation pressure, typically in atm"
+        range: QuantityValue
+        inlined: true
+      # --- Integration ---
+      timestep:
+        description: "Integration timestep, typically in femtoseconds"
+        range: QuantityValue
+        inlined: true
+      constraint_algorithm:
+        description: "Bond constraint algorithm (e.g., SHAKE, LINCS, SETTLE)"
+      nonbonded_cutoff:
+        description: "Cutoff for non-bonded interactions, typically in Angstroms"
+        range: QuantityValue
+        inlined: true
+      # --- Duration and output ---
+      simulation_stage:
+        description: "Stage of the MD workflow this run represents"
+        range: MDStageEnum
+      duration_ns:
+        description: "Duration of this simulation stage in nanoseconds"
+        range: QuantityValue
+        inlined: true
+      total_steps:
+        description: "Total number of integration steps"
+        range: QuantityValue
+        inlined: true
+      trajectory_output_interval:
+        description: "Interval between saved trajectory frames in steps"
+        range: QuantityValue
+        inlined: true
+      # --- Restraints ---
+      restraint_mask:
+        description: "Atom selection mask for positional restraints (Amber mask syntax or equivalent)"
+      restraint_force_constant:
+        description: "Restraint force constant, typically in kcal/mol/A^2"
+        range: QuantityValue
+        inlined: true
+      # --- Minimization-specific ---
+      minimization_max_cycles:
+        description: "Maximum number of minimization cycles"
+        range: QuantityValue
+        inlined: true
+      minimization_steepest_descent_cycles:
+        description: "Number of initial steepest-descent cycles before switching to conjugate gradient"
+        range: QuantityValue
+        inlined: true
+      # --- Heating-specific ---
+      initial_temperature:
+        description: "Starting temperature for heating stage in Kelvin"
+        range: QuantityValue
+        inlined: true
+      # --- Multi-stage pipeline summary ---
+      heat_duration_ns:
+        description: "Duration of the heating phase in nanoseconds"
+        range: QuantityValue
+        inlined: true
+      equil_restrained_duration_ns:
+        description: "Duration of restrained equilibration in nanoseconds"
+        range: QuantityValue
+        inlined: true
+      equil_free_duration_ns:
+        description: "Duration of unrestrained equilibration in nanoseconds"
+        range: QuantityValue
+        inlined: true
+      production_duration_ns:
+        description: "Duration of production MD in nanoseconds"
         range: QuantityValue
         inlined: true
 
@@ -5325,6 +5464,46 @@ enums:
         comments:
           - "Also known as MicroED or 3D electron diffraction (3DED)"
           - "Uses an electron beam on sub-micron crystals"
+      molecular_dynamics:
+        description: "Molecular dynamics simulation"
+        meaning: sio:000983
+        comments:
+          - "Computational technique simulating atomic motion over time"
+          - "Used for protein-ligand binding, conformational sampling, ensemble generation"
+
+  # ===== MOLECULAR DYNAMICS ENUMS =====
+
+  MDEnsembleEnum:
+    description: "Thermodynamic ensemble for MD simulation"
+    permissible_values:
+      nve:
+        description: "Microcanonical ensemble (constant energy, volume, particle number)"
+      nvt:
+        description: "Canonical ensemble (constant temperature, volume, particle number)"
+      npt:
+        description: "Isothermal-isobaric ensemble (constant temperature, pressure, particle number)"
+
+  MDStageEnum:
+    description: "Stage within a multi-step MD simulation pipeline"
+    permissible_values:
+      parameterization:
+        description: "Ligand parameterization and charge assignment (e.g., antechamber, parmchk2)"
+      topology_building:
+        description: "System topology construction and solvation (e.g., tleap, pdb2gmx)"
+      hydrogen_mass_repartitioning:
+        description: "Hydrogen mass repartitioning for larger timesteps (parmed HMR)"
+      minimization_restrained:
+        description: "Energy minimization with positional restraints on solute"
+      minimization_unrestrained:
+        description: "Energy minimization without restraints"
+      heating:
+        description: "Gradual heating from low temperature to target temperature (NVT)"
+      equilibration_restrained:
+        description: "NPT equilibration with positional restraints"
+      equilibration_unrestrained:
+        description: "NPT equilibration without restraints"
+      production:
+        description: "Production MD data collection"
 
   ProcessingStatusEnum:
     description: "Processing status"
@@ -5391,6 +5570,21 @@ enums:
         description: "Atomic model refinement"
       model_validation:
         description: "Model validation and quality assessment"
+      # Molecular dynamics workflow types
+      md_system_setup:
+        description: "MD system preparation - parameterization, solvation, topology building"
+        comments:
+          - "Includes antechamber, parmchk2, tleap, parmed stages"
+      md_minimization:
+        description: "Energy minimization prior to MD simulation"
+      md_equilibration:
+        description: "MD equilibration - heating and NPT/NVT equilibration phases"
+      md_production:
+        description: "Production molecular dynamics simulation"
+      md_analysis:
+        description: "Post-simulation trajectory analysis (RMSD, RMSF, clustering, etc.)"
+        comments:
+          - "Analysis parameter class to be added in a future revision"
 
   FileFormatEnum:
     description: "File formats"
@@ -5439,6 +5633,35 @@ enums:
         description: "CCP4 map format"
       gz:
         description: "Gzip compressed format"
+      # Molecular dynamics file formats
+      mol2:
+        description: "Tripos MOL2 format for parameterized small molecules"
+      sdf:
+        description: "Structure-Data File format for chemical structures"
+      frcmod:
+        description: "Amber force field modification file"
+      prmtop:
+        description: "Amber topology (parameter/topology) file"
+      inpcrd:
+        description: "Amber initial coordinates file"
+      rst7:
+        description: "Amber restart file (ASCII coordinates/velocities)"
+      netcdf:
+        description: "NetCDF trajectory format (Amber mdcrd binary)"
+        comments:
+          - "Standard binary trajectory format for Amber MD simulations"
+      dcd:
+        description: "DCD trajectory format (CHARMM/NAMD)"
+      xtc:
+        description: "XTC compressed trajectory format (GROMACS)"
+      trr:
+        description: "TRR full-precision trajectory format (GROMACS)"
+      gro:
+        description: "GROMACS coordinate file format"
+      top:
+        description: "GROMACS topology file format"
+      lib:
+        description: "Amber residue library file"
 
   DataTypeEnum:
     description: "Types of data"
@@ -5477,6 +5700,35 @@ enums:
         description: "Half-map for gold-standard refinement"
       validation_report:
         description: "Validation report"
+      # Molecular dynamics data types
+      topology:
+        description: "MD system topology (atom types, bonds, charges, force field parameters)"
+      trajectory:
+        description: "MD trajectory (time series of atomic coordinates)"
+      restart:
+        description: "MD restart/checkpoint file for resuming simulations"
+      force_field_params:
+        description: "Force field parameter or modification file"
+      solvated_structure:
+        description: "Solvated system structure (protein + solvent + ions)"
+      parameterized_ligand:
+        description: "Small molecule with assigned force field parameters"
+      md_rmsd:
+        description: "Root mean square deviation time series"
+      md_rmsf:
+        description: "Root mean square fluctuation per atom or residue"
+      md_clustering:
+        description: "Trajectory pose clustering results"
+      md_hbond:
+        description: "Hydrogen bond analysis results"
+      md_interaction_fingerprint:
+        description: "Protein-ligand interaction fingerprint (e.g. ProLIF)"
+      md_event_detection:
+        description: "Change-point or event detection results from trajectory analysis"
+      md_dihedral_entropy:
+        description: "Configurational (dihedral) entropy analysis"
+      md_energy:
+        description: "Energy terms from MD simulation output"
 
   CollectionModeEnum:
     description: "Data collection modes"
