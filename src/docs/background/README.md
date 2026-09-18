@@ -6,6 +6,14 @@ This directory contains alignment analyses and comparisons between lambda-ber-sc
 
 ## Available Analyses
 
+### [TomoBabel / CETS](tomobabel-cets.md)
+
+CryoET geometry and processing interchange, with YAML examples, links to real images and GO annotations, converter/version boundaries, and proposed LAMBDA integration.
+
+### [CZ cryoET Data Portal](czi-cryoet.md)
+
+Portal metadata and API schemas, including public image and annotation examples and their relationship to LAMBDA.
+
 ### [NeXus Alignment](nexus.md)
 Analysis of how lambda-ber-schema aligns with the NeXus data format, the international standard for neutron, X-ray, and muon science. This document covers:
 - Structural mapping between NeXus and lambda-ber-schema concepts

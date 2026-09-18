@@ -6,6 +6,8 @@ Research date: 2026-09-15. Scope: the Chan Zuckerberg cryoET Data Portal metadat
 
 ## Findings
 
+For the separate CZII-funded interchange effort, see [TomoBabel / CETS](tomobabel-cets.md), which covers coordinate systems, processing-tool converters, spatial annotations, and their relationship to LAMBDA and the portal.
+
 The portal is a useful reference for extending LAMBDA's cryoET support. Both projects use LinkML. LAMBDA already represents acquisition parameters, instruments, preparation, workflows, movies, and 3D images. The biggest opportunities are explicit tilt-series identity, alignment and coordinate-system provenance, and spatial annotation entities.
 
 The portal's source has several distinct schema layers; “the CZI schema” does not identify a single interchangeable serialization. The backend snapshot inspected was `a991047558b09decf1a3f323adc6b24a8e8eef54`. The local schema baseline was `cdb7221a57c7439cf371847fd6a2989d7cb71678`.

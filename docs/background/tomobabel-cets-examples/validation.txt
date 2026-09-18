@@ -1,0 +1,13 @@
+Date: 2026-09-17
+CETS core: 0c8c4e3c7a2885f29caba551ffcaacde45c00101
+Model: cets_data_model.models.models.Dataset
+Scope: metadata only; no image downloads or converter/reconstruction validation.
+
+Published example checksums and YAML parsing: passed
+Published synthetic Dataset validation and JSON round-trip: passed
+EMPIAR excerpt values compared with original JSON: passed
+Portal excerpt values compared with original JSON: passed
+Original metadata byte counts and SHA-256 hashes: verified
+Synthetic example: valid; JSON round-trip preserved
+Historical EMPIAR export: 50 missing-ID errors, as documented
+All seven structural-validation probes reproduced

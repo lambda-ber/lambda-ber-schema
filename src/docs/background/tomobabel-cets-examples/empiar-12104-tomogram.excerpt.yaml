@@ -1,0 +1,46 @@
+# Abridged upstream metadata; source values unchanged. Referenced tilt series omitted.
+name: EMPIAR-12104
+regions:
+- id: Control_TS_006
+  tomograms:
+  - width: 1022
+    height: 1440
+    depth: 500
+    coordinate_systems:
+    - name: default_image_voxel
+      axes:
+      - name: default voxel axis X
+        axis_unit: voxel
+        axis_type: array
+      - name: default voxel axis Y
+        axis_unit: voxel
+        axis_type: array
+      - name: default voxel axis Z
+        axis_unit: voxel
+        axis_type: array
+    - name: physical_sampling_angstrom
+      axes:
+      - name: physical sampling angstrom axis X
+        axis_unit: angstrom
+        axis_type: space
+      - name: physical sampling angstrom axis Y
+        axis_unit: angstrom
+        axis_type: space
+      - name: physical sampling angstrom axis Z
+        axis_unit: angstrom
+        axis_type: space
+    coordinate_transformations:
+    - transformation_type: scale
+      name: default_image_voxel_to_physical_sampling_angstrom_scale_13.699999809265137_13.699999809265137_13.699999809265137
+      input: default_image_voxel
+      output: physical_sampling_angstrom
+      scale:
+      - 13.699999809265137
+      - 13.699999809265137
+      - 13.699999809265137
+    id: Control_TS_006_tomogram
+    path: https://ftp.ebi.ac.uk/empiar/world_availability/12104/data/Control/tomograms/TS_006_aretomo.mrc
+    ctf_corrected: null
+    even_path: null
+    odd_path: null
+    tilt_series_id: Control_TS_006_tilt_series
