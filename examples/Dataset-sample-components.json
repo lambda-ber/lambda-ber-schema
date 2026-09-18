@@ -88,6 +88,18 @@
       }
     },
     {
+      "id": "lambdaber:sm-fragment-f0417",
+      "small_molecule_name": "Fragment F-0417 (benzamide)",
+      "chemical_class": "organic",
+      "molecular_formula": "C7H7NO",
+      "smiles": "NC(=O)c1ccccc1",
+      "inchikey": "KXDAEFPNCMNJSK-UHFFFAOYSA-N",
+      "molecular_weight_theoretical": {
+        "unit": "daltons",
+        "numeric_value": 121.14
+      }
+    },
+    {
       "id": "pdb.ligand:LMT",
       "small_molecule_name": "n-dodecyl beta-D-maltoside",
       "pdb_ligand_id": "pdb.ligand:LMT",
@@ -179,6 +191,17 @@
       "concentration": {
         "unit": "micromolar",
         "numeric_value": 50.0
+      }
+    },
+    {
+      "id": "lambdaber:component-zif-fragment",
+      "sample_id": "lambdaber:sample-zif268-dna-zn",
+      "component_type": "small_molecule",
+      "small_molecule_id": "lambdaber:sm-fragment-f0417",
+      "role": "ligand",
+      "concentration": {
+        "unit": "millimolar",
+        "numeric_value": 5.0
       }
     },
     {
@@ -328,6 +351,14 @@
       "evidence": [
         "experimental"
       ]
+    },
+    {
+      "sample_id": "lambdaber:sample-zif268-dna-zn",
+      "subject_id": "lambdaber:component-zif-fragment",
+      "object_id": "lambdaber:component-zif-protein",
+      "interaction_type": "binds",
+      "interaction_status": "not_observed",
+      "description": "Soaked at 5 mM for 2 h. No difference density anywhere on the domain or the DNA."
     },
     {
       "sample_id": "lambdaber:sample-br-nanodisc",

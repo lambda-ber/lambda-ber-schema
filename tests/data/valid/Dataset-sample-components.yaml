@@ -7,6 +7,9 @@
 # strand, the two strands pair, and the zinc is coordinated by the fingers. The protein and
 # strand associations are still there, carrying the per-preparation detail; the component rows
 # repeat the role and copy number and add nothing else for the biopolymers, which is the point.
+# A fragment was soaked into the crystal and never appeared in the density. It stays in the
+# inventory, and its interaction row says not_observed, because a soak that showed nothing is a
+# result and not an absence.
 #
 # The second is bacteriorhodopsin in a nanodisc for solution scattering. The protein was
 # solubilized in DDM and reconstituted into MSP1D1 discs; the retinal is covalently bound. The
@@ -90,6 +93,17 @@ small_molecules:
   molecular_weight_theoretical:
     numeric_value: 284.44
     unit: daltons
+# A screening fragment with no registry entry anywhere: a local id, and the structure is the
+# identity.
+- id: lambdaber:sm-fragment-f0417
+  small_molecule_name: Fragment F-0417 (benzamide)
+  chemical_class: organic
+  molecular_formula: C7H7NO
+  smiles: NC(=O)c1ccccc1
+  inchikey: KXDAEFPNCMNJSK-UHFFFAOYSA-N
+  molecular_weight_theoretical:
+    numeric_value: 121.14
+    unit: daltons
 # DDM: no ChEBI id given, so the PDB ligand code is the id.
 - id: pdb.ligand:LMT
   small_molecule_name: n-dodecyl beta-D-maltoside
@@ -163,6 +177,14 @@ sample_components:
   concentration:
     numeric_value: 50
     unit: micromolar
+- id: lambdaber:component-zif-fragment
+  sample_id: lambdaber:sample-zif268-dna-zn
+  component_type: small_molecule
+  small_molecule_id: lambdaber:sm-fragment-f0417
+  role: ligand
+  concentration:
+    numeric_value: 5
+    unit: millimolar
 - id: lambdaber:component-br-protein
   sample_id: lambdaber:sample-br-nanodisc
   component_type: protein
@@ -278,6 +300,12 @@ sample_component_interactions:
   object_site: Cys2His2 of each finger
   evidence:
   - experimental
+- sample_id: lambdaber:sample-zif268-dna-zn
+  subject_id: lambdaber:component-zif-fragment
+  object_id: lambdaber:component-zif-protein
+  interaction_type: binds
+  interaction_status: not_observed
+  description: Soaked at 5 mM for 2 h. No difference density anywhere on the domain or the DNA.
 - sample_id: lambdaber:sample-br-nanodisc
   subject_id: lambdaber:component-br-retinal
   object_id: lambdaber:component-br-protein
