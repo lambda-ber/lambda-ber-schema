@@ -848,10 +848,13 @@ class ANLLambdaLoader(BaseLoader):
         if well:
             details.append(f"well {well}")
         drop = _first(record.get("drop_vol"))
-        if drop is not None:
-            details.append(
-                f"drop {_first(record.get('drop_prot_vol'))} nL protein + {drop} nL reservoir"
-            )
+        protein = _first(record.get("drop_prot_vol"))
+        if drop is not None and protein is not None:
+            details.append(f"drop {protein} nL protein + {drop} nL reservoir")
+        elif drop is not None:
+            details.append(f"drop {drop} nL reservoir")
+        elif protein is not None:
+            details.append(f"drop {protein} nL protein")
         cryo = _text(record.get("cryo_name"))
         if cryo:
             details.append(f"cryo {cryo}")

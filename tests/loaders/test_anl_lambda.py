@@ -361,6 +361,8 @@ class TestLoadExperiment:
         assert details({"drop_vol": 100, "drop_prot_vol": 50}) == (
             "drop 50 nL protein + 100 nL reservoir"
         )
+        assert details({"drop_vol": 100}) == "drop 100 nL reservoir"
+        assert details({"drop_prot_vol": 50}) == "drop 50 nL protein"
 
     def test_experiment_run_reads_the_frame_headers_in_schema_units(self, loader):
         run = loader.load(UUID).dataset.experiment_runs[0]
