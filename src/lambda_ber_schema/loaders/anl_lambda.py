@@ -1098,7 +1098,13 @@ class ANLLambdaLoader(BaseLoader):
     def _repair_constructs(
         self, constructs: list[dict[str, Any]], warnings: list[str]
     ) -> dict[str, dict[str, Any]]:
-        """Write construct accessions as CURIEs and set protein_id; index them by protein."""
+        """
+        Write construct accessions as CURIEs and set protein_id; index them by protein.
+
+        The construct dicts are edited in place: they are the rows of the cleaned,
+        rewritten ``data`` that becomes the Dataset, and the index returned holds the
+        same objects, so a later edit through the index shows in the Dataset.
+        """
         by_protein: dict[str, dict[str, Any]] = {}
         for construct in constructs:
             accession = construct.pop("uniprot_id", None)
