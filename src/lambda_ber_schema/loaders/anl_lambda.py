@@ -150,6 +150,10 @@ _ROLE_ENUMS: dict[str, str] = {
 #: writes it as the source organism of every sample, whatever the species label says.
 _BL21_DE3_TAXON = "NCBITaxon:469008"
 
+#: What ``Sample.mutations`` holds when the export has put a sequence there: ten or
+#: more residue letters and nothing else. A mutation such as ``K282A`` has digits and
+#: is left alone. A run of ten or more bare letters with no digit is taken to be a
+#: sequence; no LIMS mutation string looks like that.
 _AMINO_ACIDS_RE = re.compile(r"^[ACDEFGHIKLMNPQRSTVWYXUBZ]{10,}$")
 _LIMS_ID_RE = re.compile(r"^lims:([a-z_]+):(.+)$")
 _BEAMLINE_CODE_RE = re.compile(r"beamline_([a-z0-9]+)_(\d+)([a-z]+)$", re.IGNORECASE)
