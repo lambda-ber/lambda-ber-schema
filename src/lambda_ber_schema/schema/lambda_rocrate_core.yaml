@@ -524,6 +524,11 @@ classes:
         `inChIKey` and `smiles`. A crate that has none of them - a compound whose structure is
         withheld - declares one of the four in `missing`, per the rule that absence is stated, never
         implied.
+      - >-
+        The full InChI string is not carried. `SmallMolecule.inchi` holds it in the fuller record;
+        the crate carries the `inChIKey`, which is the hash of that string, fixed at 27 characters,
+        and the join key a registry lookup wants. An InChI can run to hundreds of characters and
+        adds nothing to identity that the key does not already give.
 
   ComponentInteractionEntity:
     is_a: CrateEntity
@@ -548,6 +553,11 @@ classes:
       This is the highest-value search fact about a complex - which target, which ligand, bound
       or not - and so it earns its place in a manifest. Affinity, site and evidence do not, and
       stay in the fuller record.
+
+      The cost of the lambda-only type: a consumer that walks the graph dispatching on schema.org
+      types will not see these entities at all. That consumer still sees what the sample contains
+      through `hasBioChemEntityPart`, and sees that two entities interact where the crate also
+      writes `bioChemInteraction` on them. Crates that want the generic view SHOULD write it.
     slots:
       - sample_id
       - subject_id
