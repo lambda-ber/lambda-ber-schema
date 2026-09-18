@@ -15,6 +15,7 @@ import yaml
 import logging
 
 from lambda_ber_schema.loaders import (
+    ANLLambdaLoader,
     BatchLoader,
     EMSLLoader,
     PDBLoader,
@@ -521,12 +522,145 @@ def etl_ssrl_mx(
         typer.echo(output_str)
 
 
+@etl_app.command("anl-lambda")
+def etl_anl_lambda(
+    experiment: Annotated[
+        str | None,
+        typer.Option(
+            "--experiment",
+            "-e",
+            help="MX experiment uuid (see: etl list anl-lambda)",
+        ),
+    ] = None,
+    lims: Annotated[
+        bool,
+        typer.Option(
+            "--lims",
+            help="Load the whole LIMS export (/api/v1/lims/dataset) as one Dataset",
+        ),
+    ] = False,
+    output: Annotated[
+        Path | None,
+        typer.Option("--output", "-o",
+                     help="Output file path (stdout if not specified)"),
+    ] = None,
+    format: Annotated[
+        str,
+        typer.Option("--format", "-f", help="Output format: yaml or json"),
+    ] = "yaml",
+    cache: Annotated[
+        bool,
+        typer.Option("--cache/--no-cache",
+                     help="Enable/disable response caching"),
+    ] = False,
+    cache_dir: Annotated[
+        Path | None,
+        typer.Option("--cache-dir", help="Cache directory (default: .cache)"),
+    ] = None,
+    files: Annotated[
+        bool,
+        typer.Option(
+            "--files/--no-files",
+            help="Fetch every diffraction frame of an MX experiment as a DataFile",
+        ),
+    ] = True,
+    api_key: Annotated[
+        str | None,
+        typer.Option(
+            "--api-key",
+            help=(
+                "ANL LAMBDA API key (overrides ANL_LAMBDA_API_KEY). A key on the command "
+                "line shows up in shell history and process listings; prefer the "
+                "environment variable or --api-key-file"
+            ),
+            envvar="ANL_LAMBDA_API_KEY",
+            show_default=False,
+        ),
+    ] = None,
+    api_key_file: Annotated[
+        Path | None,
+        typer.Option(
+            "--api-key-file",
+            help="File holding the API key (default: ./anl_lambda_token)",
+            envvar="ANL_LAMBDA_API_KEY_FILE",
+            show_default=False,
+        ),
+    ] = None,
+) -> None:
+    """
+    Load data from the ANL LAMBDA API (Structural Biology Center, Argonne).
+
+    Needs an API key. Set ANL_LAMBDA_API_KEY or keep the key in ./anl_lambda_token
+    (which is gitignored). --api-key also works, but a key given on the command line
+    is visible in shell history and process listings.
+
+    Examples:
+
+        lambda-ber-schema etl anl-lambda --experiment e22fc16d-4e38-43f3-ad9b-50eea6b8ac69
+
+        lambda-ber-schema etl anl-lambda --experiment e22fc16d-... --no-files --format json
+
+        lambda-ber-schema etl anl-lambda --lims --output anl_lims.yaml
+    """
+    if bool(experiment) == lims:
+        typer.echo("Error: give exactly one of --experiment UUID or --lims", err=True)
+        raise typer.Exit(1)
+
+    response_cache = ResponseCache(
+        cache_dir=cache_dir or Path(".cache"),
+        enabled=cache,
+    )
+    loader = ANLLambdaLoader(
+        api_key=api_key,
+        api_key_file=api_key_file,
+        cache=response_cache,
+        include_files=files,
+    )
+
+    if lims:
+        typer.echo("Loading ANL LAMBDA LIMS export", err=True)
+        result = _run_with_error_handling(
+            loader.load_lims_dataset,
+            http_error_message=lambda status_msg: (
+                f"Error: failed to fetch the ANL LAMBDA LIMS export{status_msg}"
+            ),
+            value_error_message=lambda exc: f"Error: {exc}",
+            unexpected_error_message=lambda exc: (
+                f"Error: unexpected failure loading the ANL LAMBDA LIMS export ({exc})"
+            ),
+        )
+    else:
+        typer.echo(f"Loading ANL LAMBDA MX experiment: {experiment}", err=True)
+        result = _run_with_error_handling(
+            lambda: loader.load(experiment),
+            http_error_message=lambda status_msg: (
+                f"Error: failed to fetch ANL LAMBDA experiment {experiment}{status_msg}"
+            ),
+            value_error_message=lambda exc: f"Error: {exc}",
+            unexpected_error_message=lambda exc: (
+                f"Error: unexpected failure loading ANL LAMBDA experiment {experiment} ({exc})"
+            ),
+        )
+
+    if result.warnings:
+        for warning in result.warnings:
+            typer.echo(f"Warning: {warning}", err=True)
+
+    output_str = _serialize_dataset(result.dataset, format)
+
+    if output:
+        output.write_text(output_str)
+        typer.echo(f"Wrote output to: {output}", err=True)
+    else:
+        typer.echo(output_str)
+
+
 @etl_app.command("list")
 def etl_list(
     source: Annotated[
         str,
         typer.Argument(
-            help="Data source: pdb, sasbdb, simplescattering, emsl, ssrl-mx"),
+            help="Data source: pdb, sasbdb, simplescattering, emsl, ssrl-mx, anl-lambda"),
     ],
     molecular_type: Annotated[
         str | None,
@@ -546,6 +680,16 @@ def etl_list(
         Path | None,
         typer.Option("--directory", "-d",
                      help="Directory to search for snapshots (ssrl-mx only)"),
+    ] = None,
+    protein_name: Annotated[
+        str | None,
+        typer.Option("--protein-name",
+                     help="Protein name, partial match (anl-lambda only)"),
+    ] = None,
+    pi_name: Annotated[
+        str | None,
+        typer.Option("--pi-name",
+                     help="Principal investigator name, partial match (anl-lambda only)"),
     ] = None,
     limit: Annotated[
         int,
@@ -569,6 +713,8 @@ def etl_list(
         lambda-ber-schema etl list emsl --sample apo --limit 10
 
         lambda-ber-schema etl list ssrl-mx --directory /path/to/snapshots
+
+        lambda-ber-schema etl list anl-lambda --protein-name kinase --limit 10
     """
     source_lower = source.lower()
 
@@ -605,9 +751,26 @@ def etl_list(
         entries = loader.list_entries(directory=directory)
         if limit:
             entries = entries[:limit]
+    elif source_lower == "anl-lambda":
+        loader = ANLLambdaLoader()
+        entries = _run_with_error_handling(
+            lambda: loader.list_entries(
+                protein_name=protein_name, pi_name=pi_name, limit=limit
+            ),
+            http_error_message=lambda status_msg: (
+                f"Error: failed to list ANL LAMBDA experiments{status_msg}"
+            ),
+            value_error_message=lambda exc: f"Error: {exc}",
+            unexpected_error_message=lambda exc: (
+                f"Error: unexpected failure listing ANL LAMBDA experiments ({exc})"
+            ),
+        )
     else:
         typer.echo(
-            f"Unknown source: {source}. Available: pdb, sasbdb, simplescattering, emsl, ssrl-mx", err=True)
+            f"Unknown source: {source}. Available: pdb, sasbdb, simplescattering, emsl, "
+            "ssrl-mx, anl-lambda",
+            err=True,
+        )
         raise typer.Exit(1)
 
     typer.echo(f"Found {len(entries)} entries:")
@@ -897,6 +1060,129 @@ def etl_dump_sasbdb(
             typer.echo(f"Limit: {limit} entries", err=True)
         if molecular_type:
             typer.echo(f"Filter: type={molecular_type}", err=True)
+
+        result = batch.load_all(format=format, limit=limit, **filters)
+        typer.echo(f"Complete: {result}", err=True)
+
+
+@etl_app.command("dump-anl-lambda")
+def etl_dump_anl_lambda(
+    output_dir: Annotated[
+        Path,
+        typer.Option("--output-dir", "-o",
+                     help="Directory to save output files"),
+    ],
+    format: Annotated[
+        str,
+        typer.Option("--format", "-f", help="Output format: yaml or json"),
+    ] = "yaml",
+    protein_name: Annotated[
+        str | None,
+        typer.Option("--protein-name", help="Protein name filter, partial match"),
+    ] = None,
+    pi_name: Annotated[
+        str | None,
+        typer.Option("--pi-name", help="Principal investigator filter, partial match"),
+    ] = None,
+    limit: Annotated[
+        int | None,
+        typer.Option("--limit", "-n",
+                     help="Maximum experiments to load (default: all)"),
+    ] = None,
+    rate: Annotated[
+        float,
+        typer.Option("--rate", "-r",
+                     help="Requests per second (default: 2.0)"),
+    ] = 2.0,
+    workers: Annotated[
+        int,
+        typer.Option("--workers", "-w",
+                     help="Concurrent workers (default: 1)"),
+    ] = 1,
+    files: Annotated[
+        bool,
+        typer.Option(
+            "--files/--no-files",
+            help="Fetch every diffraction frame of each experiment as a DataFile",
+        ),
+    ] = True,
+    retry_failed: Annotated[
+        bool,
+        typer.Option("--retry-failed", help="Retry previously failed entries"),
+    ] = False,
+    api_key: Annotated[
+        str | None,
+        typer.Option(
+            "--api-key",
+            help=(
+                "ANL LAMBDA API key (overrides ANL_LAMBDA_API_KEY). A key on the command "
+                "line shows up in shell history and process listings; prefer the "
+                "environment variable or --api-key-file"
+            ),
+            envvar="ANL_LAMBDA_API_KEY",
+            show_default=False,
+        ),
+    ] = None,
+    api_key_file: Annotated[
+        Path | None,
+        typer.Option(
+            "--api-key-file",
+            help="File holding the API key (default: ./anl_lambda_token)",
+            envvar="ANL_LAMBDA_API_KEY_FILE",
+            show_default=False,
+        ),
+    ] = None,
+) -> None:
+    """
+    Dump every ANL LAMBDA MX experiment that has images to a directory.
+
+    One file per experiment. Supports resume: run again after an interruption to
+    continue. The LIMS export is a single Dataset; get it with `etl anl-lambda --lims`.
+
+    Examples:
+
+        lambda-ber-schema etl dump-anl-lambda --output-dir ./anl_dump
+
+        lambda-ber-schema etl dump-anl-lambda --output-dir ./anl_dump --pi-name Joachimiak
+
+        lambda-ber-schema etl dump-anl-lambda --output-dir ./anl_dump --retry-failed
+    """
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s [%(levelname)s] %(message)s",
+        handlers=[
+            logging.StreamHandler(),
+            logging.FileHandler(output_dir / "batch.log"),
+        ],
+    )
+
+    loader = ANLLambdaLoader(api_key=api_key, api_key_file=api_key_file, include_files=files)
+    batch = BatchLoader(
+        loader=loader,
+        output_dir=output_dir,
+        requests_per_second=rate,
+        max_workers=workers,
+    )
+
+    if retry_failed:
+        typer.echo("Retrying failed entries...", err=True)
+        result = batch.retry_failed(format=format)
+        typer.echo(f"Retry complete: {result}", err=True)
+    else:
+        filters = {}
+        if protein_name:
+            filters["protein_name"] = protein_name
+        if pi_name:
+            filters["pi_name"] = pi_name
+
+        typer.echo(f"Starting ANL LAMBDA dump to {output_dir}...", err=True)
+        typer.echo(f"Rate limit: {rate} req/sec, Workers: {workers}", err=True)
+        if limit:
+            typer.echo(f"Limit: {limit} experiments", err=True)
+        if filters:
+            typer.echo(f"Filters: {filters}", err=True)
 
         result = batch.load_all(format=format, limit=limit, **filters)
         typer.echo(f"Complete: {result}", err=True)

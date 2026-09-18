@@ -179,6 +179,7 @@ prefixes:
   UO: http://purl.obolibrary.org/obo/UO_
   emsl: https://api.emsl.pnnl.gov/external/
   ssrl-mx: https://smb.slac.stanford.edu/dev/lims/lambda/
+  anl-lambda: https://sg.bio.anl.gov/lambda/
 
 imports:
   - linkml:types

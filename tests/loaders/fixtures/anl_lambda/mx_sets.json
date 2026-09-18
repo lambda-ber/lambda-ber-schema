@@ -1,0 +1,37 @@
+{
+ "api_version": "1.0",
+ "request_time": "2026-09-18T17:40:41Z",
+ "status": "success",
+ "request_id": "80000000-0000-e900-b63f-84710c7967bb",
+ "duration_ms": 12.5,
+ "page": 1,
+ "page_size": 200,
+ "total_count": 1,
+ "total_pages": 1,
+ "count": 1,
+ "links": {
+  "self": "https://sg.bio.anl.gov/api/mx/experiments/e22fc16d-4e38-43f3-ad9b-50eea6b8ac69/sets?page=1",
+  "first": "https://sg.bio.anl.gov/api/mx/experiments/e22fc16d-4e38-43f3-ad9b-50eea6b8ac69/sets?page=1",
+  "last": "https://sg.bio.anl.gov/api/mx/experiments/e22fc16d-4e38-43f3-ad9b-50eea6b8ac69/sets?page=1",
+  "next": null,
+  "prev": null
+ },
+ "data": [
+  {
+   "id": 1049,
+   "uuid": "f5c9f9be-1fa1-48da-9aa5-44f962df5393",
+   "com_projects_id": 1,
+   "status": 1,
+   "folder_uuid": "e22fc16d-4e38-43f3-ad9b-50eea6b8ac69",
+   "lam_img_types_id": 1001,
+   "img_type": "MX",
+   "img_type_description": "Macromolecular crystallography",
+   "img_format": "img",
+   "base_dir": "/backup1/globus/lambda-ber-anl01/APS_LAMBDA/MX",
+   "globus_base_dir": null,
+   "file_count": 3,
+   "tar_projects_id": null,
+   "visible_file_count": 3
+  }
+ ]
+}
