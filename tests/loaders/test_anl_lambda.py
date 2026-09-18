@@ -483,6 +483,18 @@ class TestLoadLimsDataset:
         assert ds.experiment_sample_associations[0].role == "target"
         assert ds.experiment_instrument_associations[0].role == "primary"
 
+    def test_study_sample_role_decodes_with_sample_role_enum(self):
+        # The fixture export has no studies, so build the one table that uses SampleRoleEnum.
+        body = fixture("lims_dataset.json")
+        body["data"]["studies"] = [{"id": "lims:study:S1", "title": "A study"}]
+        body["data"]["study_sample_associations"] = [
+            {"study_id": "lims:study:S1", "sample_id": "lims:sample:APC100327", "role": 1},
+        ]
+        loader = ANLLambdaLoader(client=FakeClient({"api/v1/lims/dataset": body}))
+        ds = loader.load_lims_dataset().dataset
+        assert ds.study_sample_associations[0].study_id == "anl-lambda:study/S1"
+        assert ds.study_sample_associations[0].role == "control"
+
     def test_role_enum_stops_at_the_association_row(self):
         data = {
             "experiment_sample_associations": [
