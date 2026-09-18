@@ -349,6 +349,11 @@ classes:
         range: SampleNucleicAcidAssociation
         multivalued: true
         inlined_as_list: true
+      sample_component_interactions:
+        description: "Relationships between the components of a sample: which binds, inhibits, pairs with or sits in which"
+        range: SampleComponentInteraction
+        multivalued: true
+        inlined_as_list: true
       workflow_experiment_associations:
         description: "Links between workflows and source experiments (M:N)"
         range: WorkflowExperimentAssociation
@@ -3943,6 +3948,65 @@ classes:
         range: QuantityValue
         inlined: true
 
+  SampleComponentInteraction:
+    description: >-
+      A relationship between two components of one sample: this ligand binds that protein, this
+      metal is coordinated by that enzyme, this guide RNA pairs with that DNA strand, this membrane
+      protein sits in that nanodisc. One row per ordered pair and relationship, read subject to
+      object as interaction_type is worded. Rows can say what the sample was made to test as well
+      as what the data showed: interaction_status separates the design from the result, so a
+      ligand soaked in and not seen in the density is recorded rather than silently dropped.
+    comments:
+      - "Subject and object are components of the same sample, and sample_id names that sample. Add the component rows first; the entities they point at are what the interaction is between, and the components are what it is between in this preparation."
+      - "Affinity and site may be known from prior work rather than measured here. Say which in evidence."
+    related_mappings:
+      - mmCIF:_struct_conn
+      - mmCIF:_struct_site
+      - mmCIF:_pdbx_entity_nonpoly
+    attributes:
+      sample_id:
+        description: "The sample both components belong to"
+        range: Sample
+        required: true
+      subject_id:
+        description: "The component that acts on, binds to or sits in the object"
+        range: SampleComponent
+        required: true
+      object_id:
+        description: "The component acted on, bound or hosting"
+        range: SampleComponent
+        required: true
+      interaction_type:
+        description: "What the subject does to the object"
+        range: ComponentInteractionTypeEnum
+        required: true
+      interaction_status:
+        description: "Whether the interaction is the design of the sample, expected from prior work, observed in this dataset's data, or expected and not observed"
+        range: InteractionStatusEnum
+      stoichiometry:
+        description: "Copies of subject to copies of object per assembly, written 'subject:object' ('1:1', '2:1')"
+        pattern: "^[0-9]+:[0-9]+$"
+      subject_site:
+        description: >-
+          Where on the subject the interaction takes place: residues or positions as 'D184,D186' or
+          '45-60', or a named site such as 'active site' or 'ATP-binding pocket'
+      object_site:
+        description: "Where on the object the interaction takes place, in the same form as subject_site"
+      affinity:
+        description: "Binding affinity as a quantity with its unit (e.g., 12 nanomolar); affinity_type says which constant it is"
+        range: QuantityValue
+        inlined: true
+      affinity_type:
+        description: "Which constant affinity reports: Kd, Ki, IC50, ..."
+        range: BindingAffinityTypeEnum
+      evidence:
+        description: "Kind of evidence for the interaction"
+        range: InteractionEvidenceEnum
+        multivalued: true
+      description:
+        description: "Free-text detail: the binding mode, the reference the expectation comes from, why an expected interaction was not seen"
+        range: string
+
   ExperimentInstrumentAssociation:
     description: "M:N link between ExperimentRun and Instrument"
     attributes:
@@ -5886,6 +5950,58 @@ enums:
         description: "Present unintentionally and identified after the fact"
       standard:
         description: "A reference added for calibration or as a size marker"
+
+  ComponentInteractionTypeEnum:
+    description: "What the subject of a SampleComponentInteraction does to its object. Each term reads in the direction subject to object."
+    permissible_values:
+      binds:
+        description: "Subject binds object non-covalently, where a more specific term does not apply"
+      inhibits:
+        description: "Subject inhibits object"
+      activates:
+        description: "Subject activates object"
+      is_substrate_of:
+        description: "Subject is a substrate of object, an enzyme"
+      is_product_of:
+        description: "Subject is a product of object, an enzyme"
+      is_cofactor_of:
+        description: "Subject is a cofactor, coenzyme or prosthetic group of object"
+      is_coordinated_by:
+        description: "Subject, a metal ion, is coordinated by object"
+      cleaves:
+        description: "Subject cleaves object, as a nuclease cleaves its target strand or a protease its substrate"
+      covalently_modifies:
+        description: "Subject adds a covalent modification to object, as a kinase phosphorylates its substrate"
+      covalently_linked_to:
+        description: "Subject is covalently bonded to object: a covalent inhibitor, a glycan, a lipid anchor"
+      crosslinked_to:
+        description: "Subject is joined to object by a chemical crosslinker"
+      base_pairs_with:
+        description: "Subject, a nucleic acid, is base-paired with object: the two strands of a duplex, a guide with its target"
+      embedded_in:
+        description: "Subject, a membrane protein, sits in object, a membrane mimetic"
+      solubilized_by:
+        description: "Subject is kept in solution by object, a detergent or amphipol"
+      encapsulated_in:
+        description: "Subject is enclosed by object: a genome in a capsid, a cargo in a liposome"
+      forms_complex_with:
+        description: "Subject and object are parts of one assembly, where the nature of the contact is not specified"
+      competes_with:
+        description: "Subject competes with object for the same site on a third component"
+      no_interaction:
+        description: "Subject is expected not to interact with object: a negative control pairing"
+
+  InteractionStatusEnum:
+    description: "Standing of an interaction claim: the sample's design, prior knowledge, or this dataset's result"
+    permissible_values:
+      designed:
+        description: "The pairing the sample was made to test or to capture"
+      expected:
+        description: "Known or predicted from prior work, and assumed to hold in this sample"
+      observed:
+        description: "Seen in this dataset's data: density for the ligand, a shift in the scattering curve, a crosslink"
+      not_observed:
+        description: "Designed or expected, and not seen in this dataset's data"
 
   ChemicalClassEnum:
     description: "Broad chemical kind of a SmallMolecule"
