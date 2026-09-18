@@ -1,0 +1,43 @@
+{
+ "api_version": "1.0",
+ "request_time": "2026-09-18T17:40:41Z",
+ "status": "success",
+ "request_id": "80000000-0000-e900-b63f-84710c7967bb",
+ "duration_ms": 12.5,
+ "page": 1,
+ "page_size": 1,
+ "total_count": 2,
+ "total_pages": 2,
+ "count": 1,
+ "links": {
+  "self": "https://sg.bio.anl.gov/api/mx/experiments?page=1",
+  "first": "https://sg.bio.anl.gov/api/mx/experiments?page=1",
+  "last": "https://sg.bio.anl.gov/api/mx/experiments?page=2",
+  "next": "https://sg.bio.anl.gov/api/mx/experiments?page=2",
+  "prev": null
+ },
+ "data": [
+  {
+   "experiment_id": "e22fc16d-4e38-43f3-ad9b-50eea6b8ac69",
+   "protein_names": [
+    "EspG2-Glycosyltransferase"
+   ],
+   "pi_name": "Andrzej Joachimiak",
+   "pi_institute": "Argonne National Laboratory",
+   "facility": "APS",
+   "instrument": "lambdaber:beamline_aps_19id",
+   "technique": "MX",
+   "test_date": "2014-10-18T00:00:00",
+   "rcsb_id": "5DU2",
+   "resolution": 2.7,
+   "set_count": 1,
+   "file_count": 3,
+   "file_kinds": [
+    {
+     "extension": "img",
+     "count": 3
+    }
+   ]
+  }
+ ]
+}
