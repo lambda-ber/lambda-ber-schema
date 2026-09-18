@@ -1,5 +1,5 @@
 # Auto generated from lambda_ber_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-09-18T15:40:50
+# Generation date: 2026-09-18T15:54:30
 # Schema: lambda-ber-schema
 #
 # id: http://w3id.org/lambda/
@@ -202,7 +202,7 @@ from linkml_runtime.linkml_model.types import Boolean, Curie, Date, Float, Integ
 from linkml_runtime.utils.metamodelcore import Bool, Curie, URI, URIorCURIE, XSDDate
 
 metamodel_version = "1.7.0"
-version = "0.1.2.post262.dev0+0be35f65"
+version = "0.1.2.post308.dev0+8a814589"
 
 # Namespaces
 CHEBI = CurieNamespace('CHEBI', 'http://purl.obolibrary.org/obo/CHEBI_')
@@ -7836,7 +7836,9 @@ class SampleComponentRoleEnum(EnumDefinitionImpl):
 class ComponentInteractionTypeEnum(EnumDefinitionImpl):
     """
     What the subject of a SampleComponentInteraction does to its object. Each term reads in the direction subject to
-    object.
+    object. Some relationships are symmetric - base_pairs_with, crosslinked_to, forms_complex_with, competes_with,
+    no_interaction - and the row is still ordered: write one row, not two, and put the target or the larger partner as
+    the object where there is a choice.
     """
     binds = PermissibleValue(
         text="binds",
@@ -7885,7 +7887,7 @@ class ComponentInteractionTypeEnum(EnumDefinitionImpl):
         description="Subject is enclosed by object: a genome in a capsid, a cargo in a liposome")
     forms_complex_with = PermissibleValue(
         text="forms_complex_with",
-        description="Subject and object are parts of one assembly, where the nature of the contact is not specified")
+        description="""Subject and object are parts of one assembly, where the nature of the contact is not specified. Symmetric; one row, target as object""")
     competes_with = PermissibleValue(
         text="competes_with",
         description="Subject competes with object for the same site on a third component")
@@ -7895,7 +7897,7 @@ class ComponentInteractionTypeEnum(EnumDefinitionImpl):
 
     _defn = EnumDefinition(
         name="ComponentInteractionTypeEnum",
-        description="""What the subject of a SampleComponentInteraction does to its object. Each term reads in the direction subject to object.""",
+        description="""What the subject of a SampleComponentInteraction does to its object. Each term reads in the direction subject to object. Some relationships are symmetric - base_pairs_with, crosslinked_to, forms_complex_with, competes_with, no_interaction - and the row is still ordered: write one row, not two, and put the target or the larger partner as the object where there is a choice.""",
     )
 
 class InteractionStatusEnum(EnumDefinitionImpl):
@@ -11372,7 +11374,7 @@ slots.sampleComponentInteraction__interaction_status = Slot(uri=LAMBDA.interacti
 
 slots.sampleComponentInteraction__stoichiometry = Slot(uri=LAMBDA.stoichiometry, name="sampleComponentInteraction__stoichiometry", curie=LAMBDA.curie('stoichiometry'),
                    model_uri=LAMBDA.sampleComponentInteraction__stoichiometry, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^[0-9]+:[0-9]+$'))
+                   pattern=re.compile(r'^([0-9]+(\.[0-9]+)?|n):([0-9]+(\.[0-9]+)?|n)$'))
 
 slots.sampleComponentInteraction__subject_site = Slot(uri=LAMBDA.subject_site, name="sampleComponentInteraction__subject_site", curie=LAMBDA.curie('subject_site'),
                    model_uri=LAMBDA.sampleComponentInteraction__subject_site, domain=None, range=Optional[str])

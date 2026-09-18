@@ -921,7 +921,7 @@
         },
         "ComponentInteractionEntity": {
             "additionalProperties": false,
-            "description": "One relationship between two things a specimen contains: this ligand binds that protein, this metal is coordinated by that enzyme, this guide RNA pairs with that DNA strand. Typed `[\"lambda:SampleComponentInteraction\"]` alone - the one entity in this profile with no schema.org type, because schema.org has no typed interaction. Its `bioChemInteraction` is an untyped, entity-level \"is known to interact with\", and a manifest that wants to say *which sample*, *what kind* and *whether it was seen* needs more than that. Entities MAY carry `bioChemInteraction` as well, for the generic consumer.\n`sample_id` names the `SampleEntity`; `subject_id` and `object_id` name two of the entities that sample lists in `hasBioChemEntityPart`, read subject to object as `interaction_type` is worded. The crate has no component rows, so the subject and object are the entities themselves; the (sample, entity) pair identifies the `SampleComponent` row in the fuller record, which is why `subject_id` and `object_id` are close rather than exact mappings.\nThis is the highest-value search fact about a complex - which target, which ligand, bound or not - and so it earns its place in a manifest. Affinity, site and evidence do not, and stay in the fuller record.",
+            "description": "One relationship between two things a specimen contains: this ligand binds that protein, this metal is coordinated by that enzyme, this guide RNA pairs with that DNA strand. Typed `[\"lambda:SampleComponentInteraction\"]` alone - the one entity in this profile with no schema.org type, because schema.org has no typed interaction. Its `bioChemInteraction` is an untyped, entity-level \"is known to interact with\", and a manifest that wants to say *which sample*, *what kind* and *whether it was seen* needs more than that. Entities MAY carry `bioChemInteraction` as well, for the generic consumer.\n`sample_id` names the `SampleEntity`; `subject_id` and `object_id` name two of the entities that sample lists in `hasBioChemEntityPart`, read subject to object as `interaction_type` is worded. The crate has no component rows, so the subject and object are the entities themselves; the (sample, entity) pair identifies the `SampleComponent` row in the fuller record, which is why `subject_id` and `object_id` are close rather than exact mappings.\nThis is the highest-value search fact about a complex - which target, which ligand, bound or not - and so it earns its place in a manifest. Affinity, site and evidence do not, and stay in the fuller record.\nThe cost of the lambda-only type: a consumer that walks the graph dispatching on schema.org types will not see these entities at all. That consumer still sees what the sample contains through `hasBioChemEntityPart`, and sees that two entities interact where the crate also writes `bioChemInteraction` on them. Crates that want the generic view SHOULD write it.",
             "properties": {
                 "@id": {
                     "description": "The entity's identifier - a relative path, an absolute URI, or a `#`-fragment.",
@@ -991,7 +991,7 @@
             "type": "object"
         },
         "ComponentInteractionTypeEnum": {
-            "description": "What the subject of a SampleComponentInteraction does to its object. Each term reads in the direction subject to object.",
+            "description": "What the subject of a SampleComponentInteraction does to its object. Each term reads in the direction subject to object. Some relationships are symmetric - base_pairs_with, crosslinked_to, forms_complex_with, competes_with, no_interaction - and the row is still ordered: write one row, not two, and put the target or the larger partner as the object where there is a choice.",
             "enum": [
                 "binds",
                 "inhibits",
@@ -11450,6 +11450,128 @@
         },
         "SampleComponent": {
             "additionalProperties": false,
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "component_type": {
+                                "const": "protein"
+                            }
+                        },
+                        "required": [
+                            "component_type"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "protein_id": {}
+                        },
+                        "required": [
+                            "protein_id"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "component_type": {
+                                "const": "nucleic_acid"
+                            }
+                        },
+                        "required": [
+                            "component_type"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "nucleic_acid_id": {}
+                        },
+                        "required": [
+                            "nucleic_acid_id"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "component_type": {
+                                "const": "small_molecule"
+                            }
+                        },
+                        "required": [
+                            "component_type"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "small_molecule_id": {}
+                        },
+                        "required": [
+                            "small_molecule_id"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "protein_id": {}
+                        },
+                        "required": [
+                            "protein_id"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "component_type": {
+                                "const": "protein"
+                            }
+                        },
+                        "required": [
+                            "component_type"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "nucleic_acid_id": {}
+                        },
+                        "required": [
+                            "nucleic_acid_id"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "component_type": {
+                                "const": "nucleic_acid"
+                            }
+                        },
+                        "required": [
+                            "component_type"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "small_molecule_id": {}
+                        },
+                        "required": [
+                            "small_molecule_id"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "component_type": {
+                                "const": "small_molecule"
+                            }
+                        },
+                        "required": [
+                            "component_type"
+                        ]
+                    }
+                }
+            ],
             "description": "One constituent of one sample: a protein, a nucleic acid, a small molecule, a virus particle, an organelle, a cell, a membrane mimetic. The inventory of what a sample contains, one row per kind of thing in it, so that a sample can hold any mixture and each thing in it can be named, given a role, counted and pointed at. SampleComponentInteraction rows say which components are expected or observed to act on which. Sample.sample_type remains the one-word summary; this table is the detail behind it.",
             "properties": {
                 "component_type": {
@@ -11597,8 +11719,8 @@
                     "type": "string"
                 },
                 "stoichiometry": {
-                    "description": "Copies of subject to copies of object per assembly, written 'subject:object' ('1:1', '2:1')",
-                    "pattern": "^[0-9]+:[0-9]+$",
+                    "description": "Copies of subject to copies of object per assembly, written 'subject:object': '1:1', '2:1', '3:1' for three zinc ions per finger domain. A fractional count is allowed for partial occupancy ('0.5:1'), and 'n' for a count that is many or unknown, as for the subunits of a filament ('n:1'). What n is, where known, goes in description.",
+                    "pattern": "^([0-9]+(\\.[0-9]+)?|n):([0-9]+(\\.[0-9]+)?|n)$",
                     "type": [
                         "string",
                         "null"

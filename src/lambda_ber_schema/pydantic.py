@@ -27,7 +27,7 @@ from pydantic import (
 
 
 metamodel_version = "None"
-version = "0.1.2.post262.dev0+0be35f65"
+version = "0.1.2.post308.dev0+8a814589"
 
 
 class ConfiguredBaseModel(BaseModel):
@@ -313,6 +313,8 @@ linkml_meta = LinkMLMeta({'default_prefix': 'lambda',
                              'prefix_reference': 'http://purl.obolibrary.org/obo/UBERON_'},
                   'UO': {'prefix_prefix': 'UO',
                          'prefix_reference': 'http://purl.obolibrary.org/obo/UO_'},
+                  'anl-lambda': {'prefix_prefix': 'anl-lambda',
+                                 'prefix_reference': 'https://sg.bio.anl.gov/lambda/'},
                   'chembl.compound': {'prefix_prefix': 'chembl.compound',
                                       'prefix_reference': 'https://www.ebi.ac.uk/chembl/compound_report_card/'},
                   'dcterms': {'prefix_prefix': 'dcterms',
@@ -3309,7 +3311,7 @@ class SampleComponentRoleEnum(str, Enum):
 
 class ComponentInteractionTypeEnum(str, Enum):
     """
-    What the subject of a SampleComponentInteraction does to its object. Each term reads in the direction subject to object.
+    What the subject of a SampleComponentInteraction does to its object. Each term reads in the direction subject to object. Some relationships are symmetric - base_pairs_with, crosslinked_to, forms_complex_with, competes_with, no_interaction - and the row is still ordered: write one row, not two, and put the target or the larger partner as the object where there is a choice.
     """
     binds = "binds"
     """
@@ -3373,7 +3375,7 @@ class ComponentInteractionTypeEnum(str, Enum):
     """
     forms_complex_with = "forms_complex_with"
     """
-    Subject and object are parts of one assembly, where the nature of the contact is not specified
+    Subject and object are parts of one assembly, where the nature of the contact is not specified. Symmetric; one row, target as object
     """
     competes_with = "competes_with"
     """
@@ -5336,7 +5338,42 @@ class SampleComponent(NamedThing):
                       'copy_number is set on both the component and the association, '
                       'the two must agree.'],
          'from_schema': 'http://w3id.org/lambda/',
-         'related_mappings': ['IHMCIF:_ihm_struct_assembly_details', 'mmCIF:_entity']})
+         'related_mappings': ['IHMCIF:_ihm_struct_assembly_details', 'mmCIF:_entity'],
+         'rules': [{'description': 'A protein component points at its Protein record',
+                    'postconditions': {'slot_conditions': {'protein_id': {'name': 'protein_id',
+                                                                          'required': True}}},
+                    'preconditions': {'slot_conditions': {'component_type': {'equals_string': 'protein',
+                                                                             'name': 'component_type'}}}},
+                   {'description': 'A nucleic acid component points at its NucleicAcid '
+                                   'record',
+                    'postconditions': {'slot_conditions': {'nucleic_acid_id': {'name': 'nucleic_acid_id',
+                                                                               'required': True}}},
+                    'preconditions': {'slot_conditions': {'component_type': {'equals_string': 'nucleic_acid',
+                                                                             'name': 'component_type'}}}},
+                   {'description': 'A small molecule component points at its '
+                                   'SmallMolecule record',
+                    'postconditions': {'slot_conditions': {'small_molecule_id': {'name': 'small_molecule_id',
+                                                                                 'required': True}}},
+                    'preconditions': {'slot_conditions': {'component_type': {'equals_string': 'small_molecule',
+                                                                             'name': 'component_type'}}}},
+                   {'description': 'Only a protein component points at a protein '
+                                   'record',
+                    'postconditions': {'slot_conditions': {'component_type': {'equals_string': 'protein',
+                                                                              'name': 'component_type'}}},
+                    'preconditions': {'slot_conditions': {'protein_id': {'name': 'protein_id',
+                                                                         'value_presence': 'PRESENT'}}}},
+                   {'description': 'Only a nucleic acid component points at a nucleic '
+                                   'acid record',
+                    'postconditions': {'slot_conditions': {'component_type': {'equals_string': 'nucleic_acid',
+                                                                              'name': 'component_type'}}},
+                    'preconditions': {'slot_conditions': {'nucleic_acid_id': {'name': 'nucleic_acid_id',
+                                                                              'value_presence': 'PRESENT'}}}},
+                   {'description': 'Only a small molecule component points at a small '
+                                   'molecule record',
+                    'postconditions': {'slot_conditions': {'component_type': {'equals_string': 'small_molecule',
+                                                                              'name': 'component_type'}}},
+                    'preconditions': {'slot_conditions': {'small_molecule_id': {'name': 'small_molecule_id',
+                                                                                'value_presence': 'PRESENT'}}}}]})
 
     sample_id: str = Field(default=..., description="""The sample this component is part of""", json_schema_extra = { "linkml_meta": {'alias': 'sample_id',
          'domain_of': ['SampleComponent',
@@ -7630,7 +7667,7 @@ class SampleComponentInteraction(ConfiguredBaseModel):
     interaction_type: ComponentInteractionTypeEnum = Field(default=..., description="""What the subject does to the object""", json_schema_extra = { "linkml_meta": {'alias': 'interaction_type',
          'domain_of': ['LigandInteraction', 'SampleComponentInteraction']} })
     interaction_status: Optional[InteractionStatusEnum] = Field(default=None, description="""Whether the interaction is the design of the sample, expected from prior work, observed in this dataset's data, or expected and not observed""", json_schema_extra = { "linkml_meta": {'alias': 'interaction_status', 'domain_of': ['SampleComponentInteraction']} })
-    stoichiometry: Optional[str] = Field(default=None, description="""Copies of subject to copies of object per assembly, written 'subject:object' ('1:1', '2:1')""", json_schema_extra = { "linkml_meta": {'alias': 'stoichiometry', 'domain_of': ['SampleComponentInteraction']} })
+    stoichiometry: Optional[str] = Field(default=None, description="""Copies of subject to copies of object per assembly, written 'subject:object': '1:1', '2:1', '3:1' for three zinc ions per finger domain. A fractional count is allowed for partial occupancy ('0.5:1'), and 'n' for a count that is many or unknown, as for the subunits of a filament ('n:1'). What n is, where known, goes in description.""", json_schema_extra = { "linkml_meta": {'alias': 'stoichiometry', 'domain_of': ['SampleComponentInteraction']} })
     subject_site: Optional[str] = Field(default=None, description="""Where on the subject the interaction takes place: residues or positions as 'D184,D186' or '45-60', or a named site such as 'active site' or 'ATP-binding pocket'""", json_schema_extra = { "linkml_meta": {'alias': 'subject_site', 'domain_of': ['SampleComponentInteraction']} })
     object_site: Optional[str] = Field(default=None, description="""Where on the object the interaction takes place, in the same form as subject_site""", json_schema_extra = { "linkml_meta": {'alias': 'object_site', 'domain_of': ['SampleComponentInteraction']} })
     affinity: Optional[QuantityValue] = Field(default=None, description="""Binding affinity as a quantity with its unit (e.g., 12 nanomolar); affinity_type says which constant it is""", json_schema_extra = { "linkml_meta": {'alias': 'affinity', 'domain_of': ['SampleComponentInteraction']} })
@@ -7642,7 +7679,7 @@ class SampleComponentInteraction(ConfiguredBaseModel):
 
     @field_validator('stoichiometry')
     def pattern_stoichiometry(cls, v):
-        pattern=re.compile(r"^[0-9]+:[0-9]+$")
+        pattern=re.compile(r"^([0-9]+(\.[0-9]+)?|n):([0-9]+(\.[0-9]+)?|n)$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
