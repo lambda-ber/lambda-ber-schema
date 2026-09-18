@@ -17,6 +17,7 @@ from lambda_ber_schema.loaders.anl_lambda import (
     _clean,
     _instrument_row_id,
 )
+from lambda_ber_schema.loaders.cache import ResponseCache
 from lambda_ber_schema.pydantic import (
     Dataset,
     FacilityEnum,
@@ -79,6 +80,16 @@ def loader() -> ANLLambdaLoader:
 
 
 # --------------------------------------------------------------------------- client
+
+
+def test_swapping_the_loader_cache_reaches_the_client(tmp_path):
+    loader = ANLLambdaLoader(api_key="k")
+    assert loader._cache is loader.client.cache
+    fresh = ResponseCache(cache_dir=tmp_path, enabled=True)
+    # BatchLoader installs its long-lived cache exactly this way.
+    object.__setattr__(loader, "_cache", fresh)
+    assert loader.client.cache is fresh
+    assert loader._cache is fresh
 
 
 class TestClientAuth:
