@@ -1159,6 +1159,13 @@ class ANLLambdaLoader(BaseLoader):
 
     @staticmethod
     def _dedupe_workflows(data: dict[str, Any], warnings: list[str]) -> None:
+        """
+        Keep one row per workflow id.
+
+        The export writes the structure row once per experiment that shares its PDB
+        code. When the copies differ, the first one served is kept, so the result
+        follows the server's row order; there is no better tie-break in the data.
+        """
         seen: dict[str, dict[str, Any]] = {}
         dropped: list[str] = []
         for workflow in data.get("workflow_runs") or []:
