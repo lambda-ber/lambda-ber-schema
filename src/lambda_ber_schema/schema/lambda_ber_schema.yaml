@@ -6031,7 +6031,12 @@ enums:
         description: "A reference added for calibration or as a size marker"
 
   ComponentInteractionTypeEnum:
-    description: "What the subject of a SampleComponentInteraction does to its object. Each term reads in the direction subject to object."
+    description: >-
+      What the subject of a SampleComponentInteraction does to its object. Each term reads in the
+      direction subject to object. Some relationships are symmetric - base_pairs_with,
+      crosslinked_to, forms_complex_with, competes_with, no_interaction - and the row is still
+      ordered: write one row, not two, and put the target or the larger partner as the object
+      where there is a choice.
     permissible_values:
       binds:
         description: "Subject binds object non-covalently, where a more specific term does not apply"
@@ -6064,7 +6069,7 @@ enums:
       encapsulated_in:
         description: "Subject is enclosed by object: a genome in a capsid, a cargo in a liposome"
       forms_complex_with:
-        description: "Subject and object are parts of one assembly, where the nature of the contact is not specified"
+        description: "Subject and object are parts of one assembly, where the nature of the contact is not specified. Symmetric; one row, target as object"
       competes_with:
         description: "Subject competes with object for the same site on a third component"
       no_interaction:
