@@ -873,24 +873,8 @@ class ANLLambdaLoader(BaseLoader):
             except (TypeError, ValueError):
                 warnings.append("Frame header minimal_schema_json is not valid JSON")
         pixel = minimal.get("pixel_size") or {}
-
-        osc_starts = [f["osc_start"] for f in files if f.get("osc_start") is not None]
-        increment = header.get("osc_increment")
+        sweep = self._sweep_geometry(files, total_files)
         complete = len(files) >= total_files
-        sweep_start = min(osc_starts) if osc_starts else None
-        sweep_end = None
-        if osc_starts and increment is not None:
-            if complete:
-                # The end of the last frame. A run of several sweeps with a gap between
-                # them still gets one start and one end here; the gap is not subtracted,
-                # and total_rotation counts frames, not degrees swept.
-                sweep_end = max(osc_starts) + increment
-            else:
-                # Only the first frame is in hand; take the run as one contiguous sweep.
-                sweep_end = sweep_start + total_files * increment
-        total_rotation = (
-            total_files * increment if total_files and increment is not None else None
-        )
 
         technique = TechniqueEnum.xray_crystallography
         raw_technique = _text(record.get("technique"))
@@ -916,17 +900,42 @@ class ANLLambdaLoader(BaseLoader):
             pixel_size_x=_quantity(pixel.get("x"), "µm", scale=1_000_000),
             pixel_size_y=_quantity(pixel.get("y"), "µm", scale=1_000_000),
             exposure_time=_quantity(header.get("exposure_time"), "seconds"),
-            oscillation_angle=_quantity(increment, "degrees"),
-            start_angle=_quantity(sweep_start, "degrees"),
-            sweep_start=_quantity(sweep_start, "degrees"),
-            sweep_end=_quantity(sweep_end, "degrees"),
-            total_rotation=_quantity(total_rotation, "degrees"),
+            oscillation_angle=_quantity(sweep["increment"], "degrees"),
+            start_angle=_quantity(sweep["start"], "degrees"),
+            sweep_start=_quantity(sweep["start"], "degrees"),
+            sweep_end=_quantity(sweep["end"], "degrees"),
+            total_rotation=_quantity(sweep["total_rotation"], "degrees"),
             number_of_images=_quantity(total_files or None, "images"),
             resolution=_quantity(record.get("resolution"), "Å"),
             raw_data_location=f"{base_dir}/{uuid}" if base_dir else None,
             start_time=_text(header.get("file_timestamp")),
             end_time=_text(files[-1].get("file_timestamp")) if complete and len(files) > 1 else None,
         )
+
+    @staticmethod
+    def _sweep_geometry(files: list[dict[str, Any]], total_files: int) -> dict[str, Any]:
+        """
+        Oscillation increment, sweep start and end, and total rotation, in degrees.
+
+        With every frame in hand the sweep runs from the smallest ``osc_start`` to the
+        end of the frame with the largest. A run of several sweeps with a gap between
+        them still gets one start and one end; the gap is not subtracted, and
+        total_rotation counts frames, not degrees swept. With only the first frame in
+        hand (``include_files=False``) the run is taken as one contiguous sweep of
+        ``total_files`` frames.
+        """
+        header = files[0] if files else {}
+        increment = header.get("osc_increment")
+        osc_starts = [f["osc_start"] for f in files if f.get("osc_start") is not None]
+        start = min(osc_starts) if osc_starts else None
+        end = None
+        if osc_starts and increment is not None:
+            if len(files) >= total_files:
+                end = max(osc_starts) + increment
+            else:
+                end = start + total_files * increment
+        total_rotation = total_files * increment if total_files and increment is not None else None
+        return {"increment": increment, "start": start, "end": end, "total_rotation": total_rotation}
 
     def _create_data_files(self, files: list[dict[str, Any]], experiment_id: str) -> list[DataFile]:
         data_files: list[DataFile] = []

@@ -403,6 +403,18 @@ class TestLoadExperiment:
         assert "Andrzej Joachimiak" in study.description
         assert "0000-0003-2535-6209" in study.description
 
+    def test_sweep_geometry(self):
+        geometry = ANLLambdaLoader._sweep_geometry
+        frames = [{"osc_start": s, "osc_increment": 0.5} for s in (10, 10.5, 11)]
+        assert geometry(frames, 3) == {"increment": 0.5, "start": 10, "end": 11.5, "total_rotation": 1.5}
+        # A gap between two sweeps is not subtracted.
+        frames = [{"osc_start": s, "osc_increment": 1} for s in (0, 1, 90, 91)]
+        assert geometry(frames, 4) == {"increment": 1, "start": 0, "end": 92, "total_rotation": 4}
+        # First frame only: one contiguous sweep of total_files frames.
+        assert geometry(frames[:1], 180) == {"increment": 1, "start": 0, "end": 180, "total_rotation": 180}
+        assert geometry([], 0) == {"increment": None, "start": None, "end": None, "total_rotation": None}
+        assert geometry([{"osc_start": 5}], 1)["end"] is None
+
     def test_without_files_fetches_one_frame_and_sweeps_from_the_total(self):
         # What the server gives back for page_size=1: one frame, the full total.
         one_frame = fixture("mx_files.json")
