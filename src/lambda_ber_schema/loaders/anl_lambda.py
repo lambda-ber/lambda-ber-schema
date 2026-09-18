@@ -397,7 +397,7 @@ class ANLLambdaLoader(BaseLoader):
     """
 
     source_name = "anl-lambda"
-    base_url = DEFAULT_BASE_URL
+    # base_url is set per instance in __init__, since a test server may replace it.
 
     def __init__(
         self,
