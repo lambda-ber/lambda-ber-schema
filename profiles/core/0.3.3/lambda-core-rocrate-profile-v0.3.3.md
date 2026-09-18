@@ -324,8 +324,14 @@ and at two of the entities that sample lists in `hasBioChemEntityPart` with `sub
 `object_id`, read subject to object as `interaction_type` is worded (`binds`, `inhibits`,
 `is_coordinated_by`, `base_pairs_with`, `embedded_in`, ...). `interaction_status` separates the
 sample's design from the data's verdict: `designed`, `expected`, `observed`, `not_observed`.
-Affinity, site and evidence do not travel in a manifest and stay in the fuller record. The three
-molecular entities MAY also carry `bioChemInteraction`, the generic consumer's untyped view:
+Affinity, site and evidence do not travel in a manifest and stay in the fuller record.
+
+The lambda-only type has a cost that implementers should know: a consumer that walks the graph
+dispatching on schema.org types does not see interaction entities at all. It still sees what the
+sample contains, through `hasBioChemEntityPart`. To let it see that two of those things interact,
+the three molecular entities MAY also carry `bioChemInteraction`, schema.org's untyped
+entity-level "is known to interact with", and a crate that wants the generic view SHOULD write it
+beside the typed entity:
 
 ```json
 {"@id": "#sample-zif-dna07", "@type": ["BioChemEntity", "lambda:Sample"],
