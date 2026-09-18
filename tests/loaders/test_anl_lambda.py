@@ -220,12 +220,15 @@ def test_clean_drops_empties_and_keeps_zero_and_false():
         "empty_dict": {},
         "nested": {"score": 0, "flag": False, "gone": None, "deeper": {"only": ""}},
         "rows": [{"n": 0, "x": None}, {"y": []}],
+        # A collapsed column: positions must survive so it still lines up with its siblings.
+        "uniprotid": ["P69905", None, "P68871"],
     }
     assert _clean(raw) == {
         "kept_zero": 0,
         "kept_false": False,
         "nested": {"score": 0, "flag": False},
         "rows": [{"n": 0}, {}],
+        "uniprotid": ["P69905", None, "P68871"],
     }
 
 

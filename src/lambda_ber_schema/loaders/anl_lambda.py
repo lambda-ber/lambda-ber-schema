@@ -175,6 +175,11 @@ def _clean(value: Any) -> Any:
     export; the pydantic models want them absent. Nested structures are cleaned too.
     ``0`` and ``False`` are values and are kept: the test is equality against the four
     empties, not truthiness.
+
+    Only dict entries are dropped. List items are cleaned in place and never removed,
+    because the collapsed V_LAM_XTA columns are lists aligned by position: a null in
+    ``uniprotid`` sits opposite a name in ``target_annotation``, and taking it out
+    would shift every target after it.
     """
     if isinstance(value, dict):
         cleaned = {k: _clean(v) for k, v in value.items()}
