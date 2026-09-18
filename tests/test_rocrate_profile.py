@@ -188,6 +188,8 @@ EXPECTED_FAILURE = {
     "nucleic-acid-no-identity.json": "nucleic acid with no rnacentral_id",
     "small-molecule-no-identity.json": "small molecule with no chebi_id",
     "interaction-outside-sample.json": "does not list in hasBioChemEntityPart",
+    "interaction-no-sample.json": "is not a sample in the graph",
+    "interaction-sample-not-a-sample.json": "is not a sample in the graph",
 }
 
 

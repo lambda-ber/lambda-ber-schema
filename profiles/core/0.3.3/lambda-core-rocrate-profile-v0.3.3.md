@@ -702,7 +702,7 @@ Seven conformant fixtures in `tests/data/rocrate/valid/`:
 | `sample-components.json` | the same complex with its zinc as a `SmallMolecule` entity and three interaction entities saying what binds, pairs with and coordinates what; a second sample with a fragment named by InChIKey, a detergent with its structure withheld and declared, and a soak recorded as `not_observed` (§6.2) |
 | `ssrl-mx-XA_x16-core-0.2.json` (in `legacy/`) | the published 0.2 crate, unmodified — see §15 |
 
-Fifteen negative fixtures in `tests/data/rocrate/invalid/`, each isolating one rule, with the test
+Seventeen negative fixtures in `tests/data/rocrate/invalid/`, each isolating one rule, with the test
 asserting *which* rule failed so that a fixture cannot pass for the wrong reason.
 
 ---
