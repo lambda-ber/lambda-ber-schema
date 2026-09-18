@@ -341,6 +341,12 @@ class TestCLI:
         assert "ANL LAMBDA" in result.output
         assert "--lims" in result.output
 
+    def test_etl_anl_lambda_help_steers_away_from_api_key_on_the_command_line(self):
+        for command in (["etl", "anl-lambda"], ["etl", "dump-anl-lambda"]):
+            result = runner.invoke(app, [*command, "--help"], env={"COLUMNS": "200"})
+            assert result.exit_code == 0
+            assert "shell history" in result.output, result.output
+
     def test_etl_anl_lambda_needs_exactly_one_target(self):
         result = runner.invoke(app, ["etl", "anl-lambda"])
         assert result.exit_code == 1

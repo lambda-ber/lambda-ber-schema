@@ -568,7 +568,11 @@ def etl_anl_lambda(
         str | None,
         typer.Option(
             "--api-key",
-            help="ANL LAMBDA API key (overrides ANL_LAMBDA_API_KEY)",
+            help=(
+                "ANL LAMBDA API key (overrides ANL_LAMBDA_API_KEY). A key on the command "
+                "line shows up in shell history and process listings; prefer the "
+                "environment variable or --api-key-file"
+            ),
             envvar="ANL_LAMBDA_API_KEY",
             show_default=False,
         ),
@@ -586,8 +590,9 @@ def etl_anl_lambda(
     """
     Load data from the ANL LAMBDA API (Structural Biology Center, Argonne).
 
-    Needs an API key. Pass --api-key, set ANL_LAMBDA_API_KEY, or keep the key in
-    ./anl_lambda_token (which is gitignored).
+    Needs an API key. Set ANL_LAMBDA_API_KEY or keep the key in ./anl_lambda_token
+    (which is gitignored). --api-key also works, but a key given on the command line
+    is visible in shell history and process listings.
 
     Examples:
 
@@ -1109,7 +1114,11 @@ def etl_dump_anl_lambda(
         str | None,
         typer.Option(
             "--api-key",
-            help="ANL LAMBDA API key (overrides ANL_LAMBDA_API_KEY)",
+            help=(
+                "ANL LAMBDA API key (overrides ANL_LAMBDA_API_KEY). A key on the command "
+                "line shows up in shell history and process listings; prefer the "
+                "environment variable or --api-key-file"
+            ),
             envvar="ANL_LAMBDA_API_KEY",
             show_default=False,
         ),
