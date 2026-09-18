@@ -479,11 +479,12 @@ def graph_rule_violations(crate: dict) -> list[str]:
         if classify(entity) != "ComponentInteractionEntity":
             continue
         sample_ids = refs(entity.get("sample_id"))
-        sample = by_id.get(sample_ids[0]) if sample_ids else None
+        sample_ref = sample_ids[0] if sample_ids else None
+        sample = by_id.get(sample_ref)
         if sample is None or classify(sample) != "SampleEntity":
             problems.append(
-                f"{entity.get('@id')!r} is an interaction whose sample_id "
-                f"{sample_ids[0] if sample_ids else None!r} is not a sample in the graph"
+                f"{entity.get('@id')!r} is an interaction whose sample_id {sample_ref!r} "
+                "is not a sample in the graph"
             )
             continue
         parts = set(refs(sample.get("hasBioChemEntityPart")))
