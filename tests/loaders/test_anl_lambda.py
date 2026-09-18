@@ -320,7 +320,19 @@ class TestLoadExperiment:
         assert crystallization.preparation_date == "2014-08-08"
         assert crystallization.growth_temperature_c.numeric_value == 16
         assert "MCSG-1" in crystallization.protocol_description
-        assert "cryo 10% Glycerol" in crystallization.description
+        assert crystallization.description == (
+            "Screen MCSG-1 (Anatrace); well B5; drop 200 nL protein + 200 nL reservoir; "
+            "cryo 10% Glycerol"
+        )
+
+    def test_crystallization_details_skip_empty_columns(self):
+        details = ANLLambdaLoader._crystallization_details
+        assert details({}) is None
+        assert details({"screen_name": "MCSG-1"}) == "Screen MCSG-1"
+        assert details({"screen_item": "B5", "cryo_name": "glycerol"}) == "well B5; cryo glycerol"
+        assert details({"drop_vol": 100, "drop_prot_vol": 50}) == (
+            "drop 50 nL protein + 100 nL reservoir"
+        )
 
     def test_experiment_run_reads_the_frame_headers_in_schema_units(self, loader):
         run = loader.load(UUID).dataset.experiment_runs[0]

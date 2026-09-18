@@ -801,19 +801,11 @@ class ANLLambdaLoader(BaseLoader):
         if crystallization_key or chemistry:
             screen = _text(record.get("screen_name"))
             cryo = _text(record.get("cryo_name"))
-            details = [
-                f"Screen {screen}" + (f" ({_text(record.get('screen_vendor'))})" if _text(record.get("screen_vendor")) else "")
-                if screen else None,
-                f"well {_text(record.get('screen_item'))}" if _text(record.get("screen_item")) else None,
-                f"drop {_first(record.get('drop_prot_vol'))} nL protein + {_first(record.get('drop_vol'))} nL reservoir"
-                if _first(record.get("drop_vol")) is not None else None,
-                f"cryo {cryo}" if cryo else None,
-            ]
             preparations.append(
                 SamplePreparation(
                     id=f"{self.source_name}:cryst_prep/{crystallization_key or uuid}",
                     title=_text(record.get("display_name")) or f"Crystallization {crystallization_key}",
-                    description="; ".join(d for d in details if d) or None,
+                    description=self._crystallization_details(record),
                     preparation_type=PreparationTypeEnum.xray_crystallography,
                     sample_id=sample.id,
                     preparation_date=_date(record.get("plate_setup_date")),
@@ -823,6 +815,33 @@ class ANLLambdaLoader(BaseLoader):
                 )
             )
         return preparations
+
+    @staticmethod
+    def _crystallization_details(record: dict[str, Any]) -> str | None:
+        """
+        The crystallization description: screen and vendor, well, drop volumes, cryo.
+
+        Each part is left out when its column is empty, e.g.
+        ``Screen MCSG-1 (Anatrace); well B5; drop 200 nL protein + 200 nL reservoir;
+        cryo 10% Glycerol``.
+        """
+        details: list[str] = []
+        screen = _text(record.get("screen_name"))
+        vendor = _text(record.get("screen_vendor"))
+        if screen:
+            details.append(f"Screen {screen}" + (f" ({vendor})" if vendor else ""))
+        well = _text(record.get("screen_item"))
+        if well:
+            details.append(f"well {well}")
+        drop = _first(record.get("drop_vol"))
+        if drop is not None:
+            details.append(
+                f"drop {_first(record.get('drop_prot_vol'))} nL protein + {drop} nL reservoir"
+            )
+        cryo = _text(record.get("cryo_name"))
+        if cryo:
+            details.append(f"cryo {cryo}")
+        return "; ".join(details) or None
 
     def _create_experiment_run(
         self,
