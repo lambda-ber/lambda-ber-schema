@@ -1,0 +1,99 @@
+inspection_date: '2026-09-17'
+repositories:
+- repository: TomoBabel/.github
+  commit: 3d2ec3aa0747aa1944e41a613adc4567d79d0e00
+  commit_date: '2025-08-11T20:04:54Z'
+- repository: TomoBabel/cets-aretomo3
+  commit: ca22266475036f97a481918e81a48bbea979ed6b
+  commit_date: '2026-09-09T11:04:49Z'
+- repository: TomoBabel/cets-cryoet-data-portal
+  commit: 1162528d8f96f5616d88fb759472dffcc440165b
+  commit_date: '2026-09-09T11:09:42Z'
+- repository: TomoBabel/cets-dynamo
+  commit: 21d8d8d8f5e0233634c6d85a94f53a2bf5e9a6b3
+  commit_date: '2026-08-17T10:08:30Z'
+- repository: TomoBabel/cets-empiar
+  commit: 0c3413a529b10f90c195314a858d74c7ea429b52
+  commit_date: '2026-02-10T20:04:42Z'
+- repository: TomoBabel/cets-imod
+  commit: 1f05fe0aa6c5b2bc764cf24d8682c36998b37b6d
+  commit_date: '2026-08-17T09:18:56Z'
+- repository: TomoBabel/cets-mmcif
+  commit: c99c0c339f9e518be1452f16f0c6f5e6c310b133
+  commit_date: '2026-05-20T13:12:31Z'
+- repository: TomoBabel/cets-nonrigid
+  commit: 4bf128e9f79fa6f17006b192504377612748429a
+  commit_date: '2026-09-11T01:58:40Z'
+- repository: TomoBabel/cets-relion
+  commit: e7d0ded6dda54035d915d2bb3639a630bd006522
+  commit_date: '2026-02-26T11:29:48Z'
+- repository: TomoBabel/cets-scipion
+  commit: 8e06d33a1b9bb41b422455b1c9a24446277c140c
+  commit_date: '2026-08-17T09:19:57Z'
+- repository: TomoBabel/cets-warpm
+  commit: 84e739049bd7c7988b7bc20d43afb168ae95cc9e
+  commit_date: '2026-09-09T11:03:22Z'
+- repository: cryo-et-standards/cryoet-geometry
+  commit: 81cf1da9acb87f8149dbf973350b1f20be434745
+  commit_date: '2025-01-20T18:49:08Z'
+- repository: TomoBabel/cets-data-models
+  commit: 0c8c4e3c7a2885f29caba551ffcaacde45c00101
+  commit_date: '2026-09-14T16:19:15Z'
+  role: inspected main
+- repository: TomoBabel/cets-data-models
+  commit: b415e952d309ac1ec0dee01a3a5db639cb08bba5
+  commit_date: '2026-08-19T14:50:36Z'
+  role: unmerged PR 34; converter dependency
+- repository: uermel/cryoet-alignment
+  commit: 2eebafb7ebb641b07befa8eba20958a0870c6768
+  role: uermel/cets branch; rigid profile
+- repository: chanzuckerberg/cryoet-data-portal-backend
+  commit: a991047558b09decf1a3f323adc6b24a8e8eef54
+  role: prior research baseline; core schemas re-read
+- repository: lambda-ber/lambda-ber-schema
+  commit: 11a36719a79af486d5352b72e1f669bfc41c9575
+  role: local read-only comparison; schema agrees with HEAD
+  schema_sha256: ec1e2ddf5d7e80fcca1530bf492417bf156256fd3f71ef625f94f31d6308a4e9
+scope: Pinned sources for the TomoBabel / CETS background page; excerpts are not full exchange documents.
+examples:
+- local: minimal-cets.yaml
+  kind: authored synthetic CETS Dataset
+  transformation: Copied unchanged from the investigation teaching example. Paths are fictional; physical
+    coordinates use a corner origin.
+  model_commit: 0c8c4e3c7a2885f29caba551ffcaacde45c00101
+  validated: Pydantic Dataset validation and JSON serialization/reloading
+  bytes: 2130
+  sha256: ecfb040ff0f66ef9ac683e4fa889a2c213bbf401646caf3af4b4c1acb3af8a8b
+- local: empiar-12104-tomogram.excerpt.yaml
+  kind: abridged real CETS metadata
+  source: https://github.com/TomoBabel/cets-empiar/blob/0c3413a529b10f90c195314a858d74c7ea429b52/examples/CETS_objects/EMPIAR-12104.json
+  source_bytes: 249057
+  source_sha256: 126a090194a3c25d9799a2f438775417df4e9a1280c18f9e11abbcd9d648e943
+  transformation: Selected dataset name, region ID, and complete first tomogram; reserialized from JSON
+    to YAML without changing values. Tilt series and other fields omitted.
+  limitation: Referenced tilt series omitted; original full source fails current-core validation for 50
+    missing tilt-image IDs.
+  bytes: 1480
+  sha256: 579bc3fe7e207506ba5d04d153ebb04433743364c13948b6fe7b6f08a976099d
+- local: portal-10445.excerpt.yaml
+  kind: abridged recorded portal converter input, not CETS
+  source: https://github.com/TomoBabel/cets-cryoet-data-portal/blob/1162528d8f96f5616d88fb759472dffcc440165b/tests/data/10445_TS_105_5.json
+  source_bytes: 65404
+  source_sha256: a417d58e533e0c6ae59e2654daaf6f9226a179c3b164d94b8618340a1d0e345b
+  transformation: Selected run fields, selected fields from tomogram 18954, and selected fields from annotation
+    69545 placed under annotation_excerpt; reserialized to YAML without changing scalar values.
+  limitation: Selected tomogram is at 10.012 angstrom sampling; selected annotation metadata is under
+    VoxelSpacing4.990. An image/annotation transform has not been established here.
+  bytes: 1170
+  sha256: 4705076c3731233c0bce26904552544f54716212e2e8d3da6db9f03b01f10033
+validation:
+  date: '2026-09-17'
+  evidence: validation.txt
+  reproduction: README.md#reproducing-the-local-example-checks
+  python_version: '3.12.9'
+  packages:
+    cets_data_model: '0.1.0'
+    pydantic: '2.13.5'
+    PyYAML: '6.0.3'
+  model_commit: 0c8c4e3c7a2885f29caba551ffcaacde45c00101
+  scope: Metadata validation and structural probes; no reconstruction or converter-suite validation.
