@@ -1011,7 +1011,12 @@ class ANLLambdaLoader(BaseLoader):
 
     @staticmethod
     def _decode_enums(data: dict[str, Any]) -> None:
-        """Replace positional integers with permissible value names, in place."""
+        """
+        Replace positional integers with permissible value names, in place.
+
+        The field-keyed enums apply at any depth. The role enum applies only to the rows
+        of the association table it belongs to, not to objects nested inside a row.
+        """
 
         def decode(obj: Any, role_enum: str | None) -> None:
             if isinstance(obj, list):
@@ -1031,7 +1036,7 @@ class ANLLambdaLoader(BaseLoader):
                     else:
                         del obj[key]
                 else:
-                    decode(value, role_enum)
+                    decode(value, None)
 
         for collection, value in data.items():
             decode(value, _ROLE_ENUMS.get(collection))

@@ -460,6 +460,20 @@ class TestLoadLimsDataset:
         assert ds.experiment_sample_associations[0].role == "target"
         assert ds.experiment_instrument_associations[0].role == "primary"
 
+    def test_role_enum_stops_at_the_association_row(self):
+        data = {
+            "experiment_sample_associations": [
+                {"role": 1, "nested": {"role": 1, "sample_type": 0}},
+            ],
+            "samples": [{"sample_type": 0, "database_cross_references": [{"database_name": 0}]}],
+        }
+        ANLLambdaLoader._decode_enums(data)
+        row = data["experiment_sample_associations"][0]
+        assert row["role"] == "buffer_blank"
+        assert row["nested"] == {"role": 1, "sample_type": "protein"}
+        assert data["samples"][0]["sample_type"] == "protein"
+        assert data["samples"][0]["database_cross_references"][0]["database_name"] == "uniprot"
+
     def test_ids_rewritten(self, result):
         ds = result.dataset
         assert ds.samples[0].id == "anl-lambda:sample/APC100327"
