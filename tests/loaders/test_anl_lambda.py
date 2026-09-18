@@ -14,6 +14,7 @@ from lambda_ber_schema.loaders.anl_lambda import (
     ANLLambdaClient,
     ANLLambdaLoader,
     _beamline_id,
+    _clean,
     _instrument_row_id,
 )
 from lambda_ber_schema.pydantic import (
@@ -187,6 +188,25 @@ class TestClientAuth:
 
 
 # --------------------------------------------------------------------- id helpers
+
+
+def test_clean_drops_empties_and_keeps_zero_and_false():
+    raw = {
+        "kept_zero": 0,
+        "kept_false": False,
+        "none": None,
+        "blank": "",
+        "empty_list": [],
+        "empty_dict": {},
+        "nested": {"score": 0, "flag": False, "gone": None, "deeper": {"only": ""}},
+        "rows": [{"n": 0, "x": None}, {"y": []}],
+    }
+    assert _clean(raw) == {
+        "kept_zero": 0,
+        "kept_false": False,
+        "nested": {"score": 0, "flag": False},
+        "rows": [{"n": 0}, {}],
+    }
 
 
 def test_instrument_row_id_is_the_same_from_both_views():

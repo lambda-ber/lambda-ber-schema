@@ -161,6 +161,8 @@ def _clean(value: Any) -> Any:
 
     Nulls, empty strings, empty lists and empty objects all mean "not recorded" in the
     export; the pydantic models want them absent. Nested structures are cleaned too.
+    ``0`` and ``False`` are values and are kept: the test is equality against the four
+    empties, not truthiness.
     """
     if isinstance(value, dict):
         cleaned = {k: _clean(v) for k, v in value.items()}
