@@ -554,6 +554,9 @@ classes:
       SampleProteinAssociation, so a protein studied in ten preparations is described once. The
       nucleic acid(s) it contains belong on NucleicAcid in the same way, linked through
       SampleNucleicAcidAssociation; a protein-DNA complex is one sample with one row in each.
+      Everything else it contains - ligands, ions, lipids, detergents, virus particles, organelles -
+      and the full inventory of what is in it, one row per constituent with its role, lives in
+      SampleComponent; what acts on what within the sample lives in SampleComponentInteraction.
     comments:
       - "protein_name, organism and the functional annotation collections remain here for data that arrives without a resolvable protein identity, and for search convenience. When a Protein record exists, it is the canonical source and these slots should agree with it."
     related_mappings:
@@ -565,11 +568,11 @@ classes:
         description: "Human-friendly laboratory identifier or facility code for the sample (e.g., 'ALS-12.3.1-SAMPLE-001', 'LAB-PROT-2024-01'). Used for local reference and tracking within laboratory workflows."
         required: true
       sample_type:
-        description: "Type of biological sample"
+        description: "Coarse kind of sample, a one-word summary. The detail is in SampleComponent."
         range: SampleTypeEnum
         required: true
       molecular_composition:
-        description: "Description of molecular composition including sequences, modifications, ligands"
+        description: "Free-text description of molecular composition including sequences, modifications, ligands. The structured form is the SampleComponent rows for the sample."
         range: MolecularComposition
       molecular_weight:
         description: "Molecular weight, typically specified in kilodaltons (kDa). Data providers may specify alternative units (e.g., Daltons, g/mol) by including the unit in the QuantityValue."
@@ -685,7 +688,10 @@ classes:
         exact_mappings:
           - nsls2:Expression_System
       ligand:
-        description: "Ligand or small molecule bound to sample"
+        description: >-
+          Ligand or small molecule bound to sample, as the facility recorded it. A display and
+          search field; the structured form is a SampleComponent of type small_molecule pointing
+          at a SmallMolecule record, with a SampleComponentInteraction saying what it binds.
         range: string
         exact_mappings:
           - nsls2:Ligand
@@ -2863,7 +2869,7 @@ classes:
         range: string
         multivalued: true
       ligands:
-        description: "Bound ligands or cofactors"
+        description: "Bound ligands or cofactors, as free text. The structured form is SampleComponent."
         range: string
         multivalued: true
 
@@ -3823,6 +3829,8 @@ classes:
       samples. What changes from preparation to preparation lives here: the role, the copy number,
       the residue range actually present, the modifications carried, the mass actually measured,
       and the construct it was made from.
+    comments:
+      - "A SampleComponent row of type protein for the same sample and protein is the inventory entry and the handle a SampleComponentInteraction points at; this association is the per-preparation detail. A dataset that records no interactions may carry this row alone. Where role or copy_number is set on both, they must agree."
     related_mappings:
       - IHMCIF:_ihm_struct_assembly_details
       - IHMCIF:_ihm_entity_poly_segment
@@ -3883,6 +3891,8 @@ classes:
       turns up in many samples. What changes from preparation to preparation lives here: the role,
       the copy number, the form the strand takes (single, duplex, hairpin, quadruplex), how it was
       made, the modifications it carries, and the mass actually measured.
+    comments:
+      - "A SampleComponent row of type nucleic_acid for the same sample and strand is the inventory entry and the handle a SampleComponentInteraction points at; this association is the per-preparation detail. A dataset that records no interactions may carry this row alone. Where role or copy_number is set on both, they must agree."
     related_mappings:
       - IHMCIF:_ihm_struct_assembly_details
       - IHMCIF:_ihm_entity_poly_segment
@@ -4433,20 +4443,27 @@ enums:
           - High Flux Isotope Reactor
 
   SampleTypeEnum:
-    description: "Types of biological samples"
+    description: >-
+      Coarse kind of a sample, a one-word summary for search. What the sample actually contains -
+      which proteins, strands, ligands and particles, in what roles, and which acts on which - is
+      recorded in SampleComponent and SampleComponentInteraction.
     permissible_values:
       protein:
         description: "Protein sample"
       nucleic_acid:
         description: "Nucleic acid sample (DNA or RNA)"
       complex:
-        description: "Protein-protein or protein-nucleic acid complex"
+        description: "A complex of two or more macromolecules, or of a macromolecule with its ligands; the components say which"
       membrane_protein:
         description: "Membrane protein sample"
       virus:
         description: "Viral particle"
       organelle:
         description: "Cellular organelle"
+      cell:
+        description: "Whole cell, as for cryo-electron tomography of a lamella"
+      tissue:
+        description: "Tissue or tissue section"
 
   PreparationTypeEnum:
     description: "Types of sample preparation"
