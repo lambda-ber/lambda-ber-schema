@@ -16,6 +16,7 @@ from lambda_ber_schema.loaders.anl_lambda import (
     _beamline_id,
     _clean,
     _instrument_row_id,
+    _pick,
 )
 from lambda_ber_schema.loaders.cache import ResponseCache
 from lambda_ber_schema.pydantic import (
@@ -226,6 +227,14 @@ def test_clean_drops_empties_and_keeps_zero_and_false():
         "nested": {"score": 0, "flag": False},
         "rows": [{"n": 0}, {}],
     }
+
+
+def test_pick_reads_by_position_or_shares_the_single_value():
+    assert _pick([], 1, 2) is None
+    assert _pick(["only"], 1, 2) == "only"
+    assert _pick(["a", "b"], 1, 2) == "b"
+    # After a length disagreement count is 1: the first value, whatever the length.
+    assert _pick(["a", "b", "c"], 0, 1) == "a"
 
 
 def test_instrument_row_id_is_the_same_from_both_views():

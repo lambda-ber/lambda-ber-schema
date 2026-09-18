@@ -188,6 +188,18 @@ def _first(value: Any) -> Any:
     return items[0] if items else None
 
 
+def _pick(column: list[Any], index: int, count: int) -> Any:
+    """
+    The value for target ``index`` of ``count`` from a collapsed column.
+
+    A column with one value per target is read by position. A column with a single
+    value is shared by every target. An empty column gives None.
+    """
+    if not column:
+        return None
+    return column[index] if len(column) == count else column[0]
+
+
 def _date(value: Any) -> str | None:
     """Keep the calendar date of an Oracle timestamp such as ``2014-10-18T00:00:00``."""
     value = _first(value)
@@ -659,11 +671,6 @@ class ANLLambdaLoader(BaseLoader):
             )
             count = min(count, 1)
 
-        def pick(column: list[Any], index: int) -> Any:
-            if not column:
-                return None
-            return column[index] if len(column) > index else column[0]
-
         rcsb_id = _text(record.get("rcsb_id"))
         proteins: list[Protein] = []
         constructs: list[ProteinConstruct] = []
@@ -675,23 +682,23 @@ class ANLLambdaLoader(BaseLoader):
                     f"uniprotid {accessions[index]!r} is not a UniProt accession; no Protein row"
                 )
                 continue
-            taxon = pick(taxa, index)
-            sequence = _text(pick(sequences, index))
-            seguid = _text(pick(seguids, index))
+            taxon = _pick(taxa, index, count)
+            name = _text(_pick(names, index, count))
+            sequence = _text(_pick(sequences, index, count))
+            seguid = _text(_pick(seguids, index, count))
+            length = _pick(lengths, index, count)
             proteins.append(
                 Protein(
                     id=curie,
                     uniprot_id=curie,
-                    title=_text(pick(names, index)),
-                    protein_name=_text(pick(names, index)),
-                    gene_name=_text(pick(genes, index)),
+                    title=name,
+                    protein_name=name,
+                    gene_name=_text(_pick(genes, index, count)),
                     description=f"SEGUID {seguid}" if seguid else None,
                     organism=f"NCBITaxon:{taxon}" if taxon else None,
-                    organism_name=_text(pick(species, index)),
+                    organism_name=_text(_pick(species, index, count)),
                     amino_acid_sequence=sequence,
-                    sequence_length=int(pick(lengths, index)) if pick(lengths, index) else (
-                        len(sequence) if sequence else None
-                    ),
+                    sequence_length=int(length) if length else (len(sequence) if sequence else None),
                     pdb_entries=[f"pdb:{rcsb_id}"] if rcsb_id else None,
                 )
             )
@@ -712,10 +719,7 @@ class ANLLambdaLoader(BaseLoader):
         self, record: dict[str, Any], protein_curie: str, index: int, count: int
     ) -> ProteinConstruct | None:
         def col(name: str) -> Any:
-            values = _as_list(record.get(name))
-            if not values:
-                return None
-            return values[index] if len(values) == count and count > 1 else values[0]
+            return _pick(_as_list(record.get(name)), index, count)
 
         clone_id = _text(col("clone_id"))
         construct_id = _text(col("clone_id_f")) or clone_id
