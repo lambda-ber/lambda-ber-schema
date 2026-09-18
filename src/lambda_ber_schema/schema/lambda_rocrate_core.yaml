@@ -97,6 +97,9 @@ prefixes:
   rnacentral: https://rnacentral.org/rna/
   refseq: https://www.ncbi.nlm.nih.gov/nuccore/
   insdc: https://www.ebi.ac.uk/ena/data/view/
+  # And for the chemical registries a `SmallMoleculeEntity` may be named by.
+  CHEBI: http://purl.obolibrary.org/obo/CHEBI_
+  pdb.ligand: https://www.rcsb.org/ligand/
 
 default_prefix: lambdarc
 default_range: string
@@ -375,10 +378,10 @@ classes:
         required: true
     comments:
       - >-
-        Which protein(s) and nucleic acid(s) the specimen contains is said by pointing at
-        `ProteinEntity` and `NucleicAcidEntity` records through `hasBioChemEntityPart`.
-        `protein_name` stays on the sample as the facility's own display name and the cheapest
-        search field; the accession lives on the protein entity.
+        Which protein(s), nucleic acid(s) and small molecule(s) the specimen contains is said by
+        pointing at `ProteinEntity`, `NucleicAcidEntity` and `SmallMoleculeEntity` records through
+        `hasBioChemEntityPart`. `protein_name` stays on the sample as the facility's own display
+        name and the cheapest search field; the accession lives on the protein entity.
 
   ProteinEntity:
     is_a: CrateEntity
@@ -469,6 +472,52 @@ classes:
         `sequence_accession` and `nucleotide_sequence`. A crate that has none of them - a strand
         whose sequence is withheld, say - declares one of the three in `missing`, per the rule that
         absence is stated, never implied.
+
+  SmallMoleculeEntity:
+    is_a: CrateEntity
+    class_uri: sdo:MolecularEntity
+    exact_mappings:
+      - lambda:SmallMolecule
+    description: >-
+      A small molecule as a chemical entity - a ligand, cofactor, metal ion, lipid or detergent
+      the specimen *contains*, and the counterpart of `ProteinEntity` and `NucleicAcidEntity` for
+      everything that is not a biopolymer. Typed `["MolecularEntity", "lambda:SmallMolecule"]`:
+      schema.org's `MolecularEntity` is in the RO-Crate 1.2 context, with `inChIKey`, `smiles` and
+      `molecularFormula` alongside it, so a generic consumer sees a chemical and a LAMBDA-aware
+      reader projects onto the schema's `SmallMolecule` class. One entity serves every sample in
+      the crate that contains the compound.
+
+      Where ChEBI has the compound the `@id` SHOULD be its IRI
+      (`http://purl.obolibrary.org/obo/CHEBI_30616`), with the same accession as a CURIE in
+      `chebi_id`, the two spellings of one identifier as for `ProteinEntity`. Every ligand in a
+      deposited structure has a wwPDB Chemical Component Dictionary code, carried in
+      `pdb_ligand_id` (`pdb.ligand:ATP`) and usable as the `@id` when ChEBI has no entry. A compound
+      with neither - a screening hit, say - takes a local `@id` and carries its `inChIKey` or
+      `smiles`.
+
+      Only the identity layer is here: name, accession, formula, structure. How much was added,
+      what for, and what it is bound to are per-preparation and live in the fuller record this
+      crate points at, as `SampleComponent` and `SampleComponentInteraction` rows.
+    slots:
+      - small_molecule_name
+      - chebi_id
+      - pdb_ligand_id
+      - chemical_class
+      - inchikey
+      - smiles
+      - molecular_formula
+      - missing
+    slot_usage:
+      at_id:
+        required: true
+      small_molecule_name:
+        recommended: true
+    comments:
+      - >-
+        A small molecule entity MUST say what it is: at least one of `chebi_id`, `pdb_ligand_id`,
+        `inChIKey` and `smiles`. A crate that has none of them - a compound whose structure is
+        withheld - declares one of the four in `missing`, per the rule that absence is stated, never
+        implied.
 
   InstrumentEntity:
     is_a: CrateEntity
@@ -1606,6 +1655,58 @@ slots:
       One-letter sequence, 5' to 3', as `NucleicAcid.nucleotide_sequence` carries it. The identity
       of a synthetic oligonucleotide, which has no accession.
 
+  small_molecule_name:
+    slot_uri: lambda:small_molecule_name
+    exact_mappings:
+      - lambda:small_molecule_name
+    description: Name of the compound as ChEBI, the depositor or the supplier gives it (`ATP`, `heme b`).
+
+  chebi_id:
+    slot_uri: lambda:chebi_id
+    exact_mappings:
+      - lambda:chebi_id
+    pattern: "^CHEBI:[0-9]+$"
+    description: >-
+      ChEBI identifier as a CURIE (`CHEBI:30616`), exactly as `SmallMolecule.chebi_id` carries it.
+      The `CHEBI` prefix expands to the entity's own `@id` when that is the ChEBI IRI.
+
+  pdb_ligand_id:
+    slot_uri: lambda:pdb_ligand_id
+    exact_mappings:
+      - lambda:pdb_ligand_id
+    pattern: "^pdb\\.ligand:[A-Z0-9]{1,5}$"
+    description: >-
+      wwPDB Chemical Component Dictionary code as a CURIE (`pdb.ligand:ATP`), exactly as
+      `SmallMolecule.pdb_ligand_id` carries it. The join key to the ligands of a deposited structure.
+
+  chemical_class:
+    slot_uri: lambda:chemical_class
+    range: ChemicalClassEnum
+    exact_mappings:
+      - lambda:chemical_class
+    description: Broad chemical kind, from the schema's own `ChemicalClassEnum` (`ion`, `lipid`, `detergent`, ...).
+
+  inchikey:
+    alias: inChIKey
+    slot_uri: sdo:inChIKey
+    exact_mappings:
+      - lambda:inchikey
+    pattern: "^[A-Z]{14}-[A-Z]{10}-[A-Z]$"
+    description: InChIKey of the structure, in schema.org's spelling; projects onto `SmallMolecule.inchikey`.
+
+  smiles:
+    slot_uri: sdo:smiles
+    exact_mappings:
+      - lambda:smiles
+    description: SMILES string, in schema.org's spelling; projects onto `SmallMolecule.smiles`.
+
+  molecular_formula:
+    alias: molecularFormula
+    slot_uri: sdo:molecularFormula
+    exact_mappings:
+      - lambda:molecular_formula
+    description: Molecular formula, in schema.org's spelling; projects onto `SmallMolecule.molecular_formula`.
+
   has_biochem_entity_part:
     alias: hasBioChemEntityPart
     slot_uri: sdo:hasBioChemEntityPart
@@ -1613,14 +1714,16 @@ slots:
     multivalued: true
     inlined: true
     close_mappings:
+      - lambda:SampleComponent
       - lambda:SampleProteinAssociation
       - lambda:SampleNucleicAcidAssociation
     description: >-
-      The protein and nucleic acid entities a specimen contains. schema.org's own part relation for
-      `BioChemEntity`, and in the RO-Crate 1.2 context. Projects onto one `SampleProteinAssociation`
-      per `ProteinEntity` target and one `SampleNucleicAcidAssociation` per `NucleicAcidEntity`
-      target; the role, copy number and modifications those associations can carry are left to the
-      fuller record, because a manifest says *what* is in the tube and not how much.
+      The protein, nucleic acid and small molecule entities a specimen contains. schema.org's own
+      part relation for `BioChemEntity`, and in the RO-Crate 1.2 context. Projects onto one
+      `SampleComponent` per target, and onto one `SampleProteinAssociation` per `ProteinEntity`
+      target and one `SampleNucleicAcidAssociation` per `NucleicAcidEntity` target besides; the
+      role, copy number and modifications those rows can carry are left to the fuller record,
+      because a manifest says *what* is in the tube and not how much.
 
   organism:
     slot_uri: lambda:organism
