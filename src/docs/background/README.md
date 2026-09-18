@@ -63,6 +63,7 @@ All analyzed standards are complementary to lambda-ber-schema rather than compet
 - **EMDB** provides the archive for 3D EM reconstructions with comprehensive validation
 - **EMPIAR** manages petabyte-scale raw microscopy data with expanding modality support
 - **DIALS** delivers modern crystallography data processing with extensible architecture
+- **TomoBabel / CETS** develops cryoET coordinate, alignment, and annotation-geometry interchange
 - **lambda-ber-schema** provides comprehensive workflow tracking and multi-modal integration
 
 The optimal approach involves using each standard for its strengths and building bridges between them for seamless data flow throughout the structural biology research lifecycle.

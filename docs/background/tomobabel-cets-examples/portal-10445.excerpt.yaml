@@ -22,6 +22,8 @@ tomograms:
   is_portal_standard: false
   https_mrc_file: https://files.cryoetdataportal.cziscience.com/10445/TS_105_5/Reconstructions/VoxelSpacing10.012/Tomograms/102/TS_105_5.mrc
   https_omezarr_dir: https://files.cryoetdataportal.cziscience.com/10445/TS_105_5/Reconstructions/VoxelSpacing10.012/Tomograms/102/TS_105_5.zarr
+# Author-added wrapper for selected fields from one entry in the source annotations list.
+# annotation_excerpt is not a field in the portal schema or recorded source JSON.
 annotation_excerpt:
   id: 69545
   object_name: membrane

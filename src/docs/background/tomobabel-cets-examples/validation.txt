@@ -1,6 +1,9 @@
 Date: 2026-09-17
 CETS core: 0c8c4e3c7a2885f29caba551ffcaacde45c00101
 Model: cets_data_model.models.models.Dataset
+Python: 3.12.9
+Packages: cets_data_model==0.1.0, pydantic==2.13.5, PyYAML==6.0.3
+Reproduction: README.md#reproducing-the-local-example-checks contains exact environment setup and validation commands.
 Scope: metadata only; no image downloads or converter/reconstruction validation.
 
 Published example checksums and YAML parsing: passed

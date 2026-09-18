@@ -23,7 +23,9 @@ $(PYDANTIC): $(SCHEMA)
 test-examples:
 	$(RUN) linkml-run-examples -t yaml -t json -t ttl -s $(SCHEMA) -P conf/prefixes.yaml -e tests/data/valid -d examples
 
-# Generate schema documentation to docs/elements/ and copy manual docs
+# src/docs/ is canonical for manual documentation. Edit it first, then synchronize
+# the corresponding checked-in docs/ copies; gendoc copies the full manual tree.
+# Schema documentation in docs/elements/ is generated separately below.
 gendoc: $(DOCDIR)
 	cp -pr src/docs/* $(DOCDIR)
 	mkdir -p $(DOCDIR)/profiles

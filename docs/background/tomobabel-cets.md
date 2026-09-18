@@ -83,6 +83,8 @@ p_physical = (p_array - floor(N / 2)) * spacing
 
 It then defines rotation and projection conventions. This is a **profile convention**, not a default imposed on every core CETS document. The synthetic example below deliberately uses a simpler corner origin. [Rigid profile][rigid]
 
+Here `N` is the number of samples along an axis. For odd `N`, `floor(N / 2)` equals the midpoint `(N - 1) / 2` of zero-based sample indices; for even `N`, it lies half a sample above that midpoint. For example, both centers are 2 when `N = 5`, while for `N = 4` the profile uses 2 and the index midpoint is 1.5. Preserve the profile's explicit choice when converting coordinates.
+
 Image records describe dimensions, coordinates, and paths; voxel arrays remain in external files. Tilt series and tomograms can reference even/odd products and record CTF correction. Core records do not provide a complete file-checksum or OME-Zarr multiscale model. LAMBDA's `DataFile` can supply file provenance, while a converter must preserve storage-specific axes and sampling metadata. [Image definitions][images], [image entities][image-entities], [LAMBDA][lambda]
 
 ## Annotations: geometry and biological meaning

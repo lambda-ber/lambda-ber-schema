@@ -38,9 +38,11 @@ repositories:
   commit_date: '2025-01-20T18:49:08Z'
 - repository: TomoBabel/cets-data-models
   commit: 0c8c4e3c7a2885f29caba551ffcaacde45c00101
+  commit_date: '2026-09-14T16:19:15Z'
   role: inspected main
 - repository: TomoBabel/cets-data-models
   commit: b415e952d309ac1ec0dee01a3a5db639cb08bba5
+  commit_date: '2026-08-19T14:50:36Z'
   role: unmerged PR 34; converter dependency
 - repository: uermel/cryoet-alignment
   commit: 2eebafb7ebb641b07befa8eba20958a0870c6768
@@ -82,9 +84,16 @@ examples:
     69545 placed under annotation_excerpt; reserialized to YAML without changing scalar values.
   limitation: Selected tomogram is at 10.012 angstrom sampling; selected annotation metadata is under
     VoxelSpacing4.990. An image/annotation transform has not been established here.
-  bytes: 998
-  sha256: b3fe3da1835f058c2abb2d16efce3979f1c3f355d4f4b219eb4c37085bdb235e
+  bytes: 1170
+  sha256: 4705076c3731233c0bce26904552544f54716212e2e8d3da6db9f03b01f10033
 validation:
   date: '2026-09-17'
   evidence: validation.txt
+  reproduction: README.md#reproducing-the-local-example-checks
+  python_version: '3.12.9'
+  packages:
+    cets_data_model: '0.1.0'
+    pydantic: '2.13.5'
+    PyYAML: '6.0.3'
+  model_commit: 0c8c4e3c7a2885f29caba551ffcaacde45c00101
   scope: Metadata validation and structural probes; no reconstruction or converter-suite validation.
