@@ -85,11 +85,19 @@ def loader() -> ANLLambdaLoader:
 def test_swapping_the_loader_cache_reaches_the_client(tmp_path):
     loader = ANLLambdaLoader(api_key="k")
     assert loader._cache is loader.client.cache
-    fresh = ResponseCache(cache_dir=tmp_path, enabled=True)
-    # BatchLoader installs its long-lived cache exactly this way.
-    object.__setattr__(loader, "_cache", fresh)
+
+    fresh = ResponseCache(cache_dir=tmp_path / "a", enabled=True)
+    loader._cache = fresh
     assert loader.client.cache is fresh
-    assert loader._cache is fresh
+
+    # BatchLoader installs its long-lived cache with object.__setattr__. A property is
+    # a data descriptor, so that call still goes through the setter and never leaves
+    # an instance attribute behind to shadow it.
+    batch = ResponseCache(cache_dir=tmp_path / "b", enabled=True)
+    object.__setattr__(loader, "_cache", batch)
+    assert loader.client.cache is batch
+    assert loader._cache is batch
+    assert "_cache" not in vars(loader)
 
 
 class TestClientAuth:
