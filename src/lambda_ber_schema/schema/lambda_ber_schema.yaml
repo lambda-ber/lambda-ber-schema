@@ -161,6 +161,11 @@ prefixes:
   refseq: https://www.ncbi.nlm.nih.gov/nuccore/
   insdc: https://www.ebi.ac.uk/ena/data/view/
   rfam: https://rfam.org/family/
+  CHEBI: http://purl.obolibrary.org/obo/CHEBI_
+  chembl.compound: https://www.ebi.ac.uk/chembl/compound_report_card/
+  pubchem.compound: https://pubchem.ncbi.nlm.nih.gov/compound/
+  drugbank: https://go.drugbank.com/drugs/
+  pdb.ligand: https://www.rcsb.org/ligand/
   UBERON: http://purl.obolibrary.org/obo/UBERON_
   CL: http://purl.obolibrary.org/obo/CL_
   GO: http://purl.obolibrary.org/obo/GO_
