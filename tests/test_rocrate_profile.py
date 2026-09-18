@@ -186,6 +186,8 @@ EXPECTED_FAILURE = {
     "dangling-protein-part.json": "hasBioChemEntityPart",
     "protein-no-accession.json": "no uniprot_id and no declared absence",
     "nucleic-acid-no-identity.json": "nucleic acid with no rnacentral_id",
+    "small-molecule-no-identity.json": "small molecule with no chebi_id",
+    "interaction-outside-sample.json": "does not list in hasBioChemEntityPart",
 }
 
 
