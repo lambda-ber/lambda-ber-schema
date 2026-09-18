@@ -142,3 +142,6 @@ dmypy.json
 
 # Synced external data (downloaded via just sync-gdrive)
 assets/external/
+
+# Local API credentials for the ANL LAMBDA endpoint (never commit)
+anl_lambda_token

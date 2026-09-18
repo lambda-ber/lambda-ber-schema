@@ -156,6 +156,8 @@ DISPATCH: list[tuple[str, str]] = [
     ("lambda:Sample", "SampleEntity"),
     ("lambda:Protein", "ProteinEntity"),
     ("lambda:NucleicAcid", "NucleicAcidEntity"),
+    ("lambda:SmallMolecule", "SmallMoleculeEntity"),
+    ("lambda:SampleComponentInteraction", "ComponentInteractionEntity"),
     ("lambda:Instrument", "InstrumentEntity"),
     ("lambda:ExperimentRun", "ExperimentRunAction"),
     ("lambda:WorkflowRun", "WorkflowRunAction"),
@@ -364,10 +366,15 @@ GRAPH_RULE_TERMS: dict[str, tuple[str, ...]] = {
     "SampleEntity": ("hasBioChemEntityPart",),
     "ProteinEntity": ("uniprot_id", "missing"),
     "NucleicAcidEntity": ("rnacentral_id", "sequence_accession", "nucleotide_sequence", "missing"),
+    "SmallMoleculeEntity": ("chebi_id", "pdb_ligand_id", "inChIKey", "smiles", "missing"),
+    "ComponentInteractionEntity": ("sample_id", "subject_id", "object_id"),
 }
 
 #: What identifies a nucleic acid entity: a registry accession, or the sequence itself.
 NUCLEIC_ACID_IDENTITY = ("rnacentral_id", "sequence_accession", "nucleotide_sequence")
+
+#: What identifies a small molecule entity: a registry accession, or the structure itself.
+SMALL_MOLECULE_IDENTITY = ("chebi_id", "pdb_ligand_id", "inChIKey", "smiles")
 
 #: Fragments the root's ``conformsTo`` must name (rule 7 in the profile).
 PROFILE_CONFORMANCE_FRAGMENT = "lambda/profile/core"
@@ -454,6 +461,44 @@ def graph_rule_violations(crate: dict) -> list[str]:
                 "sequence_accession or nucleotide_sequence and no declared absence - "
                 "absence is stated, never implied"
             )
+
+    # a small molecule without an accession or a structure says so
+    for entity in entities:
+        if classify(entity) != "SmallMoleculeEntity":
+            continue
+        declared = {d.get("field") for d in _missing_declarations(entity)}
+        if not any(k in entity or k in declared for k in SMALL_MOLECULE_IDENTITY):
+            problems.append(
+                f"{entity.get('@id')!r} is a small molecule with no chebi_id, pdb_ligand_id, "
+                "inChIKey or smiles and no declared absence - absence is stated, never implied"
+            )
+
+    # an interaction is between two things its sample actually contains
+    by_id = {e.get("@id"): e for e in entities}
+    for entity in entities:
+        if classify(entity) != "ComponentInteractionEntity":
+            continue
+        sample_ids = refs(entity.get("sample_id"))
+        sample_ref = sample_ids[0] if sample_ids else None
+        sample = by_id.get(sample_ref)
+        if sample is None or classify(sample) != "SampleEntity":
+            problems.append(
+                f"{entity.get('@id')!r} is an interaction whose sample_id {sample_ref!r} "
+                "is not a sample in the graph"
+            )
+            continue
+        parts = set(refs(sample.get("hasBioChemEntityPart")))
+        for key in ("subject_id", "object_id"):
+            for target in refs(entity.get(key)):
+                if target not in ids:
+                    problems.append(
+                        f"{entity.get('@id')!r} {key} {target!r}, which has no entity in the graph"
+                    )
+                elif target not in parts:
+                    problems.append(
+                        f"{entity.get('@id')!r} {key} {target!r}, which sample "
+                        f"{sample.get('@id')!r} does not list in hasBioChemEntityPart"
+                    )
 
     # a dataset part must say where its fuller metadata lives, or declare that it has none
     for entity in entities:

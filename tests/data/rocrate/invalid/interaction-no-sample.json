@@ -1,0 +1,301 @@
+{
+  "@context": [
+    "https://w3id.org/ro/crate/1.2/context",
+    {
+      "lambda": "http://w3id.org/lambda/",
+      "lambdarc": "http://w3id.org/lambda/rocrate/",
+      "uniprot": "http://purl.uniprot.org/uniprot/",
+      "rnacentral": "https://rnacentral.org/rna/",
+      "CHEBI": "http://purl.obolibrary.org/obo/CHEBI_",
+      "pdb.ligand": "https://www.rcsb.org/ligand/"
+    }
+  ],
+  "@graph": [
+    {
+      "@id": "ro-crate-metadata.json",
+      "@type": "CreativeWork",
+      "conformsTo": [
+        {
+          "@id": "https://w3id.org/ro/crate/1.2"
+        }
+      ],
+      "about": {
+        "@id": "./"
+      }
+    },
+    {
+      "@id": "./",
+      "@type": [
+        "Dataset",
+        "lambda:Dataset"
+      ],
+      "name": "Zif268 zinc finger-DNA complex with zinc (ALS 8.3.1)",
+      "description": "Invalid: an interaction names a sample_id that has no entity in the graph.",
+      "datePublished": "2026-08-12",
+      "license": {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "conformsTo": [
+        {
+          "@id": "https://w3id.org/ro/crate/1.2"
+        },
+        {
+          "@id": "https://w3id.org/lambda/profile/core/0.3.3"
+        }
+      ],
+      "facility_name": "ALS",
+      "technique": "xray_crystallography",
+      "instrumentName": "8.3.1",
+      "sample_code": "ZIF-DNA-07",
+      "packageTier": "manifest",
+      "sufficiency": {
+        "s1Findable": false,
+        "s2CoreComplete": true,
+        "s2AcquisitionComplete": false,
+        "s3Interpretable": false
+      },
+      "missing": [
+        {
+          "field": "author",
+          "reason": "not-registered",
+          "blocks": "S1",
+          "note": "PI originates in the proposal system; no Person could be resolved by this build."
+        },
+        {
+          "field": "raw_frame_series",
+          "reason": "not-deposited",
+          "blocks": "S2-acquisition"
+        }
+      ],
+      "hasPart": [
+        {
+          "@id": "reflections/zif_dna07_scaled.mtz"
+        }
+      ]
+    },
+    {
+      "@id": "reflections/zif_dna07_scaled.mtz",
+      "@type": "File",
+      "name": "zif_dna07_scaled.mtz",
+      "description": "Scaled merged reflection data.",
+      "encodingFormat": "application/x-mtz",
+      "contentSize": "2104880",
+      "sha256": "9f2b4d1c0a3e5f6789abcdef0123456789abcdef0123456789abcdef01234567",
+      "file_format": "mtz",
+      "data_type": "processed_data",
+      "processing_level": 2,
+      "isDesignated": true
+    },
+    {
+      "@id": "#sample-zif-dna07",
+      "@type": [
+        "BioChemEntity",
+        "lambda:Sample"
+      ],
+      "name": "Zif268 zinc finger domain bound to an 11-bp DNA duplex",
+      "sample_code": "ZIF-DNA-07",
+      "sample_type": "complex",
+      "protein_name": "Early growth response protein 1, zinc finger domain",
+      "hasBioChemEntityPart": [
+        {
+          "@id": "http://purl.uniprot.org/uniprot/P08046"
+        },
+        {
+          "@id": "#na-target-strand"
+        },
+        {
+          "@id": "#na-complementary-strand"
+        },
+        {
+          "@id": "http://purl.obolibrary.org/obo/CHEBI_29105"
+        }
+      ]
+    },
+    {
+      "@id": "http://purl.uniprot.org/uniprot/P08046",
+      "@type": [
+        "Protein",
+        "lambda:Protein"
+      ],
+      "name": "Early growth response protein 1",
+      "uniprot_id": "uniprot:P08046",
+      "protein_name": "Early growth response protein 1",
+      "gene_name": "Egr1",
+      "organism": "NCBITaxon:10090",
+      "pdb_entries": [
+        "pdb:1AAY"
+      ],
+      "bioChemInteraction": [
+        {
+          "@id": "#na-target-strand"
+        },
+        {
+          "@id": "http://purl.obolibrary.org/obo/CHEBI_29105"
+        }
+      ]
+    },
+    {
+      "@id": "#na-target-strand",
+      "@type": [
+        "BioChemEntity",
+        "lambda:NucleicAcid"
+      ],
+      "name": "DNA target strand, 11-mer",
+      "nucleic_acid_type": "dna",
+      "nucleic_acid_name": "DNA target strand, 11-mer",
+      "organism": "NCBITaxon:32630",
+      "pdb_entries": [
+        "pdb:1AAY"
+      ],
+      "nucleotide_sequence": "AGCGTGGGCGT"
+    },
+    {
+      "@id": "#na-complementary-strand",
+      "@type": [
+        "BioChemEntity",
+        "lambda:NucleicAcid"
+      ],
+      "name": "DNA complementary strand, 11-mer",
+      "nucleic_acid_type": "dna",
+      "nucleic_acid_name": "DNA complementary strand, 11-mer",
+      "organism": "NCBITaxon:32630",
+      "nucleotide_sequence": "TACGCCCACGC"
+    },
+    {
+      "@id": "http://purl.obolibrary.org/obo/CHEBI_29105",
+      "@type": [
+        "MolecularEntity",
+        "lambda:SmallMolecule"
+      ],
+      "name": "zinc(2+)",
+      "small_molecule_name": "zinc(2+)",
+      "chebi_id": "CHEBI:29105",
+      "pdb_ligand_id": "pdb.ligand:ZN",
+      "chemical_class": "ion",
+      "molecularFormula": "Zn"
+    },
+    {
+      "@id": "#ix-zif-binds-target",
+      "@type": [
+        "lambda:SampleComponentInteraction"
+      ],
+      "name": "Zif268 binds the target strand",
+      "sample_id": {
+        "@id": "#sample-zif-dna07"
+      },
+      "subject_id": {
+        "@id": "http://purl.uniprot.org/uniprot/P08046"
+      },
+      "object_id": {
+        "@id": "#na-target-strand"
+      },
+      "interaction_type": "binds",
+      "interaction_status": "observed"
+    },
+    {
+      "@id": "#ix-strands-pair",
+      "@type": [
+        "lambda:SampleComponentInteraction"
+      ],
+      "sample_id": {
+        "@id": "#sample-zif-dna07"
+      },
+      "subject_id": {
+        "@id": "#na-target-strand"
+      },
+      "object_id": {
+        "@id": "#na-complementary-strand"
+      },
+      "interaction_type": "base_pairs_with",
+      "interaction_status": "designed"
+    },
+    {
+      "@id": "#ix-zinc-coordinated",
+      "@type": [
+        "lambda:SampleComponentInteraction"
+      ],
+      "sample_id": {
+        "@id": "#sample-that-was-never-described"
+      },
+      "subject_id": {
+        "@id": "http://purl.obolibrary.org/obo/CHEBI_29105"
+      },
+      "object_id": {
+        "@id": "http://purl.uniprot.org/uniprot/P08046"
+      },
+      "interaction_type": "is_coordinated_by",
+      "interaction_status": "observed"
+    },
+    {
+      "@id": "#sample-zif-fragment-screen",
+      "@type": [
+        "BioChemEntity",
+        "lambda:Sample"
+      ],
+      "name": "Zif268 zinc finger domain soaked with fragment F-0417",
+      "sample_code": "ZIF-FRAG-0417",
+      "sample_type": "complex",
+      "protein_name": "Early growth response protein 1, zinc finger domain",
+      "hasBioChemEntityPart": [
+        {
+          "@id": "http://purl.uniprot.org/uniprot/P08046"
+        },
+        {
+          "@id": "#sm-fragment-f0417"
+        },
+        {
+          "@id": "#sm-detergent-withheld"
+        }
+      ]
+    },
+    {
+      "@id": "#sm-fragment-f0417",
+      "@type": [
+        "MolecularEntity",
+        "lambda:SmallMolecule"
+      ],
+      "name": "Fragment F-0417 (benzamide)",
+      "small_molecule_name": "Fragment F-0417 (benzamide)",
+      "chemical_class": "organic",
+      "inChIKey": "KXDAEFPNCMNJSK-UHFFFAOYSA-N",
+      "smiles": "NC(=O)c1ccccc1",
+      "molecularFormula": "C7H7NO"
+    },
+    {
+      "@id": "#sm-detergent-withheld",
+      "@type": [
+        "MolecularEntity",
+        "lambda:SmallMolecule"
+      ],
+      "name": "Proprietary detergent",
+      "small_molecule_name": "Proprietary detergent",
+      "chemical_class": "detergent",
+      "missing": [
+        {
+          "field": "chebi_id",
+          "reason": "embargoed",
+          "blocks": "S2-core",
+          "note": "Supplier's structure is under NDA; the compound is identified in the fuller record by lot number."
+        }
+      ]
+    },
+    {
+      "@id": "#ix-fragment-not-seen",
+      "@type": [
+        "lambda:SampleComponentInteraction"
+      ],
+      "name": "Fragment F-0417 was soaked in and not seen in the density",
+      "sample_id": {
+        "@id": "#sample-zif-fragment-screen"
+      },
+      "subject_id": {
+        "@id": "#sm-fragment-f0417"
+      },
+      "object_id": {
+        "@id": "http://purl.uniprot.org/uniprot/P08046"
+      },
+      "interaction_type": "binds",
+      "interaction_status": "not_observed"
+    }
+  ]
+}

@@ -9,6 +9,7 @@ pdb_dump_dir := "data/pdb_dump"
 sasbdb_dump_dir := "data/sasbdb_dump"
 simplescattering_dump_dir := "data/simplescattering_dump"
 ssrlmx_dump_dir := "data/ssrl_mx_dump"
+anllambda_dump_dir := "data/anl_lambda_dump"
 ssrlmx_snapshots_dir := "tests/data/raw/beamline-snapshots"
 ssrlmx_metadata := "tests/loaders/fixtures/ssrl/sample_metadata.json"
 ssrlmx_processing := "tests/loaders/fixtures/ssrl/processing_results.json"
@@ -341,3 +342,82 @@ ssrlmx-clean:
 ssrlmx-realclean:
     @echo "To confirm, manually run:"
     @echo "  rm -rf {{ssrlmx_dump_dir}} && mkdir -p {{ssrlmx_dump_dir}}"
+
+# ============================================================================
+# ANL LAMBDA (Structural Biology Center, Argonne) Ingestion
+#
+# Needs an API key: set ANL_LAMBDA_API_KEY, or keep it in ./anl_lambda_token
+# (gitignored). Two views are served: one Dataset per MX experiment, and the
+# whole LIMS export as a single Dataset.
+# ============================================================================
+
+# Load one MX experiment by uuid (e.g., just anllambda-load e22fc16d-4e38-43f3-ad9b-50eea6b8ac69)
+[group('etl')]
+anllambda-load uuid:
+    uv run lambda-ber-schema etl anl-lambda --experiment {{uuid}}
+
+# Load the whole LIMS export as one Dataset
+[group('etl')]
+anllambda-lims:
+    mkdir -p {{anllambda_dump_dir}}
+    uv run lambda-ber-schema etl anl-lambda --lims --output {{anllambda_dump_dir}}/lims_dataset.yaml
+
+# List MX experiments that have images (optionally by protein name)
+[group('etl')]
+anllambda-list protein_name="":
+    uv run lambda-ber-schema etl list anl-lambda --limit 20 {{ if protein_name != "" { "--protein-name " + protein_name } else { "" } }}
+
+# Start a full MX dump (background, 2 req/sec) - ~50 experiments with images
+[group('etl')]
+anllambda-dump-start:
+    mkdir -p {{anllambda_dump_dir}}
+    @echo "Starting ANL LAMBDA dump to {{anllambda_dump_dir}}"
+    @echo "Monitor: just anllambda-dump-status"
+    @echo "Stop: just anllambda-dump-stop"
+    nohup uv run lambda-ber-schema etl dump-anl-lambda --output-dir {{anllambda_dump_dir}} --rate 2 > {{anllambda_dump_dir}}/output.log 2>&1 &
+
+# Check ANL LAMBDA dump status
+[group('etl')]
+anllambda-dump-status:
+    #!/usr/bin/env bash
+    if pgrep -f "dump-anl-lambda" > /dev/null; then echo "✓ Running"; else echo "✗ Not running"; fi
+    tail -5 {{anllambda_dump_dir}}/output.log 2>/dev/null || true
+    if [ -f {{anllambda_dump_dir}}/progress.json ]; then
+      python3 -c "import json; d=json.load(open('{{anllambda_dump_dir}}/progress.json')); print(f'Completed: {len(d[\"completed\"])} | Failed: {len(d[\"failed\"])}')"
+    fi
+
+# Stop ANL LAMBDA dump
+[group('etl')]
+anllambda-dump-stop:
+    pkill -f "dump-anl-lambda" && echo "Stopped" || echo "Not running"
+
+# Retry failed ANL LAMBDA experiments
+[group('etl')]
+anllambda-dump-retry:
+    uv run lambda-ber-schema etl dump-anl-lambda --output-dir {{anllambda_dump_dir}} --retry-failed
+
+# ============================================================================
+# ANL LAMBDA Clean Targets - SAFE BY DEFAULT (preserves cache)
+# ============================================================================
+
+# Clean ANL LAMBDA output files (preserves cache + progress)
+[group('etl-clean')]
+anllambda-clean:
+    @echo "Cleaning output files (preserving cache + progress)"
+    find {{anllambda_dump_dir}} -maxdepth 1 -name "*.yaml" -type f -delete 2>/dev/null || true
+    rm -f {{anllambda_dump_dir}}/batch.log {{anllambda_dump_dir}}/errors.log {{anllambda_dump_dir}}/output.log
+
+# Clean ANL LAMBDA output + reset progress (preserves cache)
+[group('etl-clean')]
+anllambda-clean-progress:
+    @echo "Cleaning output + progress (preserving cache)"
+    find {{anllambda_dump_dir}} -maxdepth 1 -name "*.yaml" -type f -delete 2>/dev/null || true
+    rm -f {{anllambda_dump_dir}}/progress.json {{anllambda_dump_dir}}/batch.log {{anllambda_dump_dir}}/errors.log {{anllambda_dump_dir}}/output.log
+
+# DANGEROUS: Delete everything including the ANL LAMBDA cache
+[group('etl-clean')]
+anllambda-realclean:
+    @echo "⚠️  WARNING: This deletes the API cache"
+    @echo ""
+    @echo "To confirm, manually run:"
+    @echo "  rm -rf {{anllambda_dump_dir}} && mkdir -p {{anllambda_dump_dir}}"

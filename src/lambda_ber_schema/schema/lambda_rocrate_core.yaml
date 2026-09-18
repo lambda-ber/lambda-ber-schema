@@ -1,7 +1,7 @@
 id: http://w3id.org/lambda/rocrate/core
 name: lambda-rocrate-core
 title: LAMBDA Core RO-Crate Profile
-version: "0.3.2"
+version: "0.3.3"
 license: https://creativecommons.org/publicdomain/zero/1.0/
 description: |
   **LAMBDA Core RO-Crate profile** — the technique-neutral file-manifest contract for LAMBDA.
@@ -15,7 +15,8 @@ description: |
 
   This module *mirrors* `lambda-ber-schema`; it does not copy it. It `imports` the main schema, so
   every controlled vocabulary (`TechniqueEnum`, `FacilityEnum`, `FileFormatEnum`, `DataTypeEnum`,
-  `WorkflowTypeEnum`, `SampleTypeEnum`, …) is *referenced* from its single source. Every crate slot
+  `WorkflowTypeEnum`, `SampleTypeEnum`, `ComponentInteractionTypeEnum`, …) is *referenced* from
+  its single source. Every crate slot
   that has a counterpart in the main schema declares it with `exact_mappings`, so
   `gen-sssom` emits a machine-readable crate-term to schema-slot crosswalk instead of a
   hand-maintained table that drifts.
@@ -97,6 +98,9 @@ prefixes:
   rnacentral: https://rnacentral.org/rna/
   refseq: https://www.ncbi.nlm.nih.gov/nuccore/
   insdc: https://www.ebi.ac.uk/ena/data/view/
+  # And for the chemical registries a `SmallMoleculeEntity` may be named by.
+  CHEBI: http://purl.obolibrary.org/obo/CHEBI_
+  pdb.ligand: https://www.rcsb.org/ligand/
 
 default_prefix: lambdarc
 default_range: string
@@ -246,7 +250,7 @@ classes:
         required: true
         description: >-
           MUST include both the RO-Crate version URI and
-          `https://w3id.org/lambda/profile/core/0.3.2`. Technique extensions add their own URI
+          `https://w3id.org/lambda/profile/core/0.3.3`. Technique extensions add their own URI
           alongside, never instead.
       has_part:
         required: true
@@ -375,10 +379,12 @@ classes:
         required: true
     comments:
       - >-
-        Which protein(s) and nucleic acid(s) the specimen contains is said by pointing at
-        `ProteinEntity` and `NucleicAcidEntity` records through `hasBioChemEntityPart`.
-        `protein_name` stays on the sample as the facility's own display name and the cheapest
-        search field; the accession lives on the protein entity.
+        Which protein(s), nucleic acid(s) and small molecule(s) the specimen contains is said by
+        pointing at `ProteinEntity`, `NucleicAcidEntity` and `SmallMoleculeEntity` records through
+        `hasBioChemEntityPart`. Which of them acts on which is said by `ComponentInteractionEntity`
+        records that point back at the sample. `protein_name` stays on the sample as the
+        facility's own display name and the cheapest search field; the accession lives on the
+        protein entity.
 
   ProteinEntity:
     is_a: CrateEntity
@@ -409,6 +415,7 @@ classes:
       - gene_name
       - organism
       - pdb_entries
+      - bio_chem_interaction
       - missing
     slot_usage:
       at_id:
@@ -455,6 +462,7 @@ classes:
       - gene_name
       - organism
       - pdb_entries
+      - bio_chem_interaction
       - missing
     slot_usage:
       at_id:
@@ -469,6 +477,105 @@ classes:
         `sequence_accession` and `nucleotide_sequence`. A crate that has none of them - a strand
         whose sequence is withheld, say - declares one of the three in `missing`, per the rule that
         absence is stated, never implied.
+
+  SmallMoleculeEntity:
+    is_a: CrateEntity
+    class_uri: sdo:MolecularEntity
+    exact_mappings:
+      - lambda:SmallMolecule
+    description: >-
+      A small molecule as a chemical entity - a ligand, cofactor, metal ion, lipid or detergent
+      the specimen *contains*, and the counterpart of `ProteinEntity` and `NucleicAcidEntity` for
+      everything that is not a biopolymer. Typed `["MolecularEntity", "lambda:SmallMolecule"]`:
+      schema.org's `MolecularEntity` is in the RO-Crate 1.2 context, with `inChIKey`, `smiles` and
+      `molecularFormula` alongside it, so a generic consumer sees a chemical and a LAMBDA-aware
+      reader projects onto the schema's `SmallMolecule` class. One entity serves every sample in
+      the crate that contains the compound.
+
+      Where ChEBI has the compound the `@id` SHOULD be its IRI
+      (`http://purl.obolibrary.org/obo/CHEBI_30616`), with the same accession as a CURIE in
+      `chebi_id`, the two spellings of one identifier as for `ProteinEntity`. Every ligand in a
+      deposited structure has a wwPDB Chemical Component Dictionary code, carried in
+      `pdb_ligand_id` (`pdb.ligand:ATP`) and usable as the `@id` when ChEBI has no entry. A compound
+      with neither - a screening hit, say - takes a local `@id` and carries its `inChIKey` or
+      `smiles`.
+
+      Only the identity layer is here: name, accession, formula, structure. How much was added,
+      what for, and what it is bound to are per-preparation and live in the fuller record this
+      crate points at, as `SampleComponent` and `SampleComponentInteraction` rows.
+    slots:
+      - small_molecule_name
+      - chebi_id
+      - pdb_ligand_id
+      - chemical_class
+      - inchikey
+      - smiles
+      - molecular_formula
+      - bio_chem_interaction
+      - missing
+    slot_usage:
+      at_id:
+        required: true
+      small_molecule_name:
+        recommended: true
+    comments:
+      - >-
+        A small molecule entity MUST say what it is: at least one of `chebi_id`, `pdb_ligand_id`,
+        `inChIKey` and `smiles`. A crate that has none of them - a compound whose structure is
+        withheld - declares one of the four in `missing`, per the rule that absence is stated, never
+        implied.
+      - >-
+        The full InChI string is not carried. `SmallMolecule.inchi` holds it in the fuller record;
+        the crate carries the `inChIKey`, which is the hash of that string, fixed at 27 characters,
+        and the join key a registry lookup wants. An InChI can run to hundreds of characters and
+        adds nothing to identity that the key does not already give.
+
+  ComponentInteractionEntity:
+    is_a: CrateEntity
+    class_uri: lambda:SampleComponentInteraction
+    exact_mappings:
+      - lambda:SampleComponentInteraction
+    description: >-
+      One relationship between two things a specimen contains: this ligand binds that protein,
+      this metal is coordinated by that enzyme, this guide RNA pairs with that DNA strand. Typed
+      `["lambda:SampleComponentInteraction"]` alone - the one entity in this profile with no
+      schema.org type, because schema.org has no typed interaction. Its `bioChemInteraction` is an
+      untyped, entity-level "is known to interact with", and a manifest that wants to say *which
+      sample*, *what kind* and *whether it was seen* needs more than that. Entities MAY carry
+      `bioChemInteraction` as well, for the generic consumer.
+
+      `sample_id` names the `SampleEntity`; `subject_id` and `object_id` name two of the entities
+      that sample lists in `hasBioChemEntityPart`, read subject to object as `interaction_type` is
+      worded. The crate has no component rows, so the subject and object are the entities
+      themselves; the (sample, entity) pair identifies the `SampleComponent` row in the fuller
+      record, which is why `subject_id` and `object_id` are close rather than exact mappings.
+
+      This is the highest-value search fact about a complex - which target, which ligand, bound
+      or not - and so it earns its place in a manifest. Affinity, site and evidence do not, and
+      stay in the fuller record.
+
+      The cost of the lambda-only type: a consumer that walks the graph dispatching on schema.org
+      types will not see these entities at all. That consumer still sees what the sample contains
+      through `hasBioChemEntityPart`, and sees that two entities interact where the crate also
+      writes `bioChemInteraction` on them. Crates that want the generic view SHOULD write it.
+    slots:
+      - sample_id
+      - subject_id
+      - object_id
+      - interaction_type
+      - interaction_status
+      - missing
+    slot_usage:
+      at_id:
+        required: true
+      sample_id:
+        required: true
+      subject_id:
+        required: true
+      object_id:
+        required: true
+      interaction_type:
+        required: true
 
   InstrumentEntity:
     is_a: CrateEntity
@@ -1606,6 +1713,113 @@ slots:
       One-letter sequence, 5' to 3', as `NucleicAcid.nucleotide_sequence` carries it. The identity
       of a synthetic oligonucleotide, which has no accession.
 
+  small_molecule_name:
+    slot_uri: lambda:small_molecule_name
+    exact_mappings:
+      - lambda:small_molecule_name
+    description: Name of the compound as ChEBI, the depositor or the supplier gives it (`ATP`, `heme b`).
+
+  chebi_id:
+    slot_uri: lambda:chebi_id
+    exact_mappings:
+      - lambda:chebi_id
+    pattern: "^CHEBI:[0-9]+$"
+    description: >-
+      ChEBI identifier as a CURIE (`CHEBI:30616`), exactly as `SmallMolecule.chebi_id` carries it.
+      The `CHEBI` prefix expands to the entity's own `@id` when that is the ChEBI IRI.
+
+  pdb_ligand_id:
+    slot_uri: lambda:pdb_ligand_id
+    exact_mappings:
+      - lambda:pdb_ligand_id
+    pattern: "^pdb\\.ligand:[A-Z0-9]{1,5}$"
+    description: >-
+      wwPDB Chemical Component Dictionary code as a CURIE (`pdb.ligand:ATP`), exactly as
+      `SmallMolecule.pdb_ligand_id` carries it. The join key to the ligands of a deposited structure.
+
+  chemical_class:
+    slot_uri: lambda:chemical_class
+    range: ChemicalClassEnum
+    exact_mappings:
+      - lambda:chemical_class
+    description: Broad chemical kind, from the schema's own `ChemicalClassEnum` (`ion`, `lipid`, `detergent`, ...).
+
+  inchikey:
+    alias: inChIKey
+    slot_uri: sdo:inChIKey
+    exact_mappings:
+      - lambda:inchikey
+    pattern: "^[A-Z]{14}-[A-Z]{10}-[A-Z]$"
+    description: InChIKey of the structure, in schema.org's spelling; projects onto `SmallMolecule.inchikey`.
+
+  smiles:
+    slot_uri: sdo:smiles
+    exact_mappings:
+      - lambda:smiles
+    description: SMILES string, in schema.org's spelling; projects onto `SmallMolecule.smiles`.
+
+  molecular_formula:
+    alias: molecularFormula
+    slot_uri: sdo:molecularFormula
+    exact_mappings:
+      - lambda:molecular_formula
+    description: Molecular formula, in schema.org's spelling; projects onto `SmallMolecule.molecular_formula`.
+
+  bio_chem_interaction:
+    alias: bioChemInteraction
+    slot_uri: sdo:bioChemInteraction
+    range: EntityReference
+    multivalued: true
+    inlined_as_list: true
+    related_mappings:
+      - lambda:SampleComponentInteraction
+    description: >-
+      schema.org's untyped "is known to interact with", between two biochemical entities. For
+      the generic consumer; the typed, sample-scoped statement is a `ComponentInteractionEntity`.
+
+  sample_id:
+    slot_uri: lambda:sample_id
+    range: EntityReference
+    inlined: true
+    exact_mappings:
+      - lambda:sample_id
+    description: The `SampleEntity` an interaction belongs to.
+
+  subject_id:
+    slot_uri: lambda:subject_id
+    range: EntityReference
+    inlined: true
+    close_mappings:
+      - lambda:subject_id
+    description: >-
+      The entity that acts on, binds to or sits in the object: a `ProteinEntity`,
+      `NucleicAcidEntity` or `SmallMoleculeEntity` the sample lists in `hasBioChemEntityPart`.
+      The schema's slot names a `SampleComponent`; the crate names the entity behind it.
+
+  object_id:
+    slot_uri: lambda:object_id
+    range: EntityReference
+    inlined: true
+    close_mappings:
+      - lambda:object_id
+    description: The entity acted on, bound or hosting, under the same rule as `subject_id`.
+
+  interaction_type:
+    slot_uri: lambda:interaction_type
+    range: ComponentInteractionTypeEnum
+    exact_mappings:
+      - lambda:interaction_type
+    description: What the subject does to the object, from the schema's own `ComponentInteractionTypeEnum`.
+
+  interaction_status:
+    slot_uri: lambda:interaction_status
+    range: InteractionStatusEnum
+    exact_mappings:
+      - lambda:interaction_status
+    description: >-
+      Whether the interaction is the sample's design, expected from prior work, observed in this
+      dataset, or expected and not observed, from the schema's own `InteractionStatusEnum`.
+
   has_biochem_entity_part:
     alias: hasBioChemEntityPart
     slot_uri: sdo:hasBioChemEntityPart
@@ -1613,14 +1827,16 @@ slots:
     multivalued: true
     inlined: true
     close_mappings:
+      - lambda:SampleComponent
       - lambda:SampleProteinAssociation
       - lambda:SampleNucleicAcidAssociation
     description: >-
-      The protein and nucleic acid entities a specimen contains. schema.org's own part relation for
-      `BioChemEntity`, and in the RO-Crate 1.2 context. Projects onto one `SampleProteinAssociation`
-      per `ProteinEntity` target and one `SampleNucleicAcidAssociation` per `NucleicAcidEntity`
-      target; the role, copy number and modifications those associations can carry are left to the
-      fuller record, because a manifest says *what* is in the tube and not how much.
+      The protein, nucleic acid and small molecule entities a specimen contains. schema.org's own
+      part relation for `BioChemEntity`, and in the RO-Crate 1.2 context. Projects onto one
+      `SampleComponent` per target, and onto one `SampleProteinAssociation` per `ProteinEntity`
+      target and one `SampleNucleicAcidAssociation` per `NucleicAcidEntity` target besides; the
+      role, copy number and modifications those rows can carry are left to the fuller record,
+      because a manifest says *what* is in the tube and not how much.
 
   organism:
     slot_uri: lambda:organism

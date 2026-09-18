@@ -1,0 +1,43 @@
+{
+ "api_version": "1.0",
+ "request_time": "2026-09-18T17:40:41Z",
+ "status": "success",
+ "request_id": "80000000-0000-e900-b63f-84710c7967bb",
+ "duration_ms": 12.5,
+ "page": 2,
+ "page_size": 1,
+ "total_count": 2,
+ "total_pages": 2,
+ "count": 1,
+ "links": {
+  "self": "https://sg.bio.anl.gov/api/mx/experiments?page=2",
+  "first": "https://sg.bio.anl.gov/api/mx/experiments?page=1",
+  "last": "https://sg.bio.anl.gov/api/mx/experiments?page=2",
+  "next": null,
+  "prev": "https://sg.bio.anl.gov/api/mx/experiments?page=1"
+ },
+ "data": [
+  {
+   "experiment_id": "1215379f-cef4-449c-ae29-bf90d3d0687a",
+   "protein_names": [
+    "MCGE09_00274"
+   ],
+   "pi_name": "Andrzej Joachimiak",
+   "pi_institute": "Argonne National Laboratory",
+   "facility": "APS",
+   "instrument": "lambdaber:beamline_aps_19id",
+   "technique": "MX",
+   "test_date": "2014-08-23T00:00:00",
+   "rcsb_id": "5DS0",
+   "resolution": 2.8,
+   "set_count": 1,
+   "file_count": 180,
+   "file_kinds": [
+    {
+     "extension": "img",
+     "count": 180
+    }
+   ]
+  }
+ ]
+}

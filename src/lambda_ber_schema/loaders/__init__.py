@@ -6,6 +6,7 @@ Available loaders:
 - SimpleScatteringLoader: Simple Scattering (SEC-SAXS from SIBYLS)
 - EMSLLoader: EMSL public API transactions and metadata
 - SSRLMXLoader: SSRL macromolecular crystallography (DCSS snapshots + sidecars)
+- ANLLambdaLoader: ANL LAMBDA API (SBC MX experiments and the LIMS export; needs an API key)
 
 Example:
     >>> from lambda_ber_schema.loaders import SASBDBLoader
@@ -15,6 +16,7 @@ Example:
     'sasbdb:SASDA52'
 """
 
+from lambda_ber_schema.loaders.anl_lambda import ANLLambdaLoader
 from lambda_ber_schema.loaders.base import BaseLoader, LoaderResult
 from lambda_ber_schema.loaders.batch import BatchLoader, BatchProgress
 from lambda_ber_schema.loaders.cache import ResponseCache
@@ -25,6 +27,7 @@ from lambda_ber_schema.loaders.simplescattering import SimpleScatteringLoader
 from lambda_ber_schema.loaders.ssrl_mx import SSRLMXLoader
 
 __all__ = [
+    "ANLLambdaLoader",
     "BaseLoader",
     "BatchLoader",
     "BatchProgress",

@@ -19,29 +19,29 @@ pdb:1AAY a lambdaber:Dataset ;
     lambdaber:experiment_runs <https://www.rcsb.org/structure/1AAY/experiment> ;
     lambdaber:experiment_sample_associations [ a lambdaber:ExperimentSampleAssociation ;
             lambdaber:experiment_id <https://www.rcsb.org/structure/1AAY/experiment> ;
-            lambdaber:sample_id <https://www.rcsb.org/structure/1AAY/sample/1> ],
+            lambdaber:sample_id <https://www.rcsb.org/structure/1AAY/sample/3> ],
         [ a lambdaber:ExperimentSampleAssociation ;
             lambdaber:experiment_id <https://www.rcsb.org/structure/1AAY/experiment> ;
             lambdaber:sample_id <https://www.rcsb.org/structure/1AAY/sample/2> ],
         [ a lambdaber:ExperimentSampleAssociation ;
             lambdaber:experiment_id <https://www.rcsb.org/structure/1AAY/experiment> ;
-            lambdaber:sample_id <https://www.rcsb.org/structure/1AAY/sample/3> ] ;
+            lambdaber:sample_id <https://www.rcsb.org/structure/1AAY/sample/1> ] ;
     lambdaber:instruments <https://www.rcsb.org/structure/instrument/PDB-1AAY> ;
     lambdaber:nucleic_acids <https://www.rcsb.org/structure/1AAY/nucleic_acid/1>,
         <https://www.rcsb.org/structure/1AAY/nucleic_acid/2> ;
     lambdaber:proteins uniprot:P08046 ;
     lambdaber:sample_nucleic_acid_associations [ a lambdaber:SampleNucleicAcidAssociation ;
-            lambdaber:chain_ids "B" ;
-            lambdaber:copy_number 1 ;
-            lambdaber:nucleic_acid_id <https://www.rcsb.org/structure/1AAY/nucleic_acid/1> ;
-            lambdaber:role "binding_partner" ;
-            lambdaber:sample_id <https://www.rcsb.org/structure/1AAY/sample/1> ],
-        [ a lambdaber:SampleNucleicAcidAssociation ;
             lambdaber:chain_ids "C" ;
             lambdaber:copy_number 1 ;
             lambdaber:nucleic_acid_id <https://www.rcsb.org/structure/1AAY/nucleic_acid/2> ;
             lambdaber:role "binding_partner" ;
-            lambdaber:sample_id <https://www.rcsb.org/structure/1AAY/sample/2> ] ;
+            lambdaber:sample_id <https://www.rcsb.org/structure/1AAY/sample/2> ],
+        [ a lambdaber:SampleNucleicAcidAssociation ;
+            lambdaber:chain_ids "B" ;
+            lambdaber:copy_number 1 ;
+            lambdaber:nucleic_acid_id <https://www.rcsb.org/structure/1AAY/nucleic_acid/1> ;
+            lambdaber:role "binding_partner" ;
+            lambdaber:sample_id <https://www.rcsb.org/structure/1AAY/sample/1> ] ;
     lambdaber:sample_protein_associations [ a lambdaber:SampleProteinAssociation ;
             lambdaber:chain_ids "A" ;
             lambdaber:copy_number 1 ;
@@ -57,13 +57,13 @@ pdb:1AAY a lambdaber:Dataset ;
             lambdaber:experiment_id <https://www.rcsb.org/structure/1AAY/experiment> ;
             lambdaber:study_id <https://www.rcsb.org/structure/1AAY/study> ] ;
     lambdaber:study_sample_associations [ a lambdaber:StudySampleAssociation ;
-            lambdaber:sample_id <https://www.rcsb.org/structure/1AAY/sample/2> ;
+            lambdaber:sample_id <https://www.rcsb.org/structure/1AAY/sample/1> ;
             lambdaber:study_id <https://www.rcsb.org/structure/1AAY/study> ],
         [ a lambdaber:StudySampleAssociation ;
             lambdaber:sample_id <https://www.rcsb.org/structure/1AAY/sample/3> ;
             lambdaber:study_id <https://www.rcsb.org/structure/1AAY/study> ],
         [ a lambdaber:StudySampleAssociation ;
-            lambdaber:sample_id <https://www.rcsb.org/structure/1AAY/sample/1> ;
+            lambdaber:sample_id <https://www.rcsb.org/structure/1AAY/sample/2> ;
             lambdaber:study_id <https://www.rcsb.org/structure/1AAY/study> ] ;
     lambdaber:workflow_experiment_associations [ a lambdaber:WorkflowExperimentAssociation ;
             lambdaber:experiment_id <https://www.rcsb.org/structure/1AAY/experiment> ;

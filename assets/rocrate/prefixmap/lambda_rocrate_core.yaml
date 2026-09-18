@@ -1,9 +1,12 @@
 {
+   "CHEBI": "http://purl.obolibrary.org/obo/CHEBI_",
    "IHMCIF": "https://mmcif.wwpdb.org/dictionaries/mmcif_ihm_ext.dic/Items/",
    "ORCID": "https://orcid.org/",
    "ROR": "https://ror.org/",
    "UO": "http://purl.obolibrary.org/obo/UO_",
+   "chembl.compound": "https://www.ebi.ac.uk/chembl/compound_report_card/",
    "dcterms": "http://purl.org/dc/terms/",
+   "drugbank": "https://go.drugbank.com/drugs/",
    "imgCIF": "https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#",
    "insdc": "https://www.ebi.ac.uk/ena/data/view/",
    "ispyb": "https://ispyb.github.io/ISPyB/",
@@ -15,8 +18,10 @@
    "nmdc": "https://w3id.org/nmdc/",
    "nsls2": "https://github.com/NSLS2/BER-LAMBDA/",
    "pdb": "https://www.rcsb.org/structure/",
+   "pdb.ligand": "https://www.rcsb.org/ligand/",
    "prof": "http://www.w3.org/ns/dx/prof/",
    "prov": "http://www.w3.org/ns/prov#",
+   "pubchem.compound": "https://pubchem.ncbi.nlm.nih.gov/compound/",
    "qud": "http://qudt.org/1.1/schema/qudt#",
    "refseq": "https://www.ncbi.nlm.nih.gov/nuccore/",
    "rnacentral": "https://rnacentral.org/rna/",
@@ -56,6 +61,9 @@
    },
    "BufferComposition": {
       "@id": "lambda:BufferComposition"
+   },
+   "ComponentInteractionEntity": {
+      "@id": "lambda:SampleComponentInteraction"
    },
    "ComputeResources": {
       "@id": "lambda:ComputeResources"
@@ -261,6 +269,12 @@
    "Sample": {
       "@id": "lambda:Sample"
    },
+   "SampleComponent": {
+      "@id": "lambda:SampleComponent"
+   },
+   "SampleComponentInteraction": {
+      "@id": "lambda:SampleComponentInteraction"
+   },
    "SampleEntity": {
       "@id": "sdo:BioChemEntity"
    },
@@ -290,6 +304,12 @@
    },
    "SAXSPreparation": {
       "@id": "lambda:SAXSPreparation"
+   },
+   "SmallMolecule": {
+      "@id": "lambda:SmallMolecule"
+   },
+   "SmallMoleculeEntity": {
+      "@id": "sdo:MolecularEntity"
    },
    "SoftwareApplicationEntity": {
       "@id": "sdo:SoftwareApplication"

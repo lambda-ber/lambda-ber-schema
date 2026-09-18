@@ -1,0 +1,15 @@
+id: CHEBI:30616
+title: Adenosine 5'-triphosphate
+small_molecule_name: ATP
+chebi_id: CHEBI:30616
+pdb_ligand_id: pdb.ligand:ATP
+chemical_class: nucleotide
+molecular_formula: C10H16N5O13P3
+smiles: Nc1ncnc2n(cnc12)[C@@H]1O[C@H](COP(O)(=O)OP(O)(=O)OP(O)(O)=O)[C@@H](O)[C@H]1O
+inchikey: ZKHQWZAMYRWXGA-KQYNXXCUSA-N
+molecular_weight_theoretical:
+  unit: daltons
+  numeric_value: 507.18
+cross_references:
+- database_name: pubchem
+  database_id: '5957'
