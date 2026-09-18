@@ -1,0 +1,309 @@
+# Demonstrates SampleComponent and SampleComponentInteraction, with the SmallMolecule table
+# alongside Protein and NucleicAcid.
+#
+# Two samples. The first is the Zif268 zinc finger domain bound to its DNA site (PDB 1AAY):
+# one protein, two DNA strands and three zinc ions. The components give the inventory, one row
+# each, and the interactions say what holds the assembly together: the protein binds the target
+# strand, the two strands pair, and the zinc is coordinated by the fingers. The protein and
+# strand associations are still there, carrying the per-preparation detail; the component rows
+# repeat the role and copy number and add nothing else for the biopolymers, which is the point.
+#
+# The second is bacteriorhodopsin in a nanodisc for solution scattering. The protein was
+# solubilized in DDM and reconstituted into MSP1D1 discs; the retinal is covalently bound. The
+# nanodisc has no entity table and is named by title alone. DDM is a SmallMolecule with a PDB
+# ligand code and no ChEBI id, which is the documented fallback. The design was to strip the
+# detergent, and the scattering said some remained, so that pairing is recorded as observed
+# rather than dropped.
+id: lambdaber:dataset-sample-components
+title: Sample inventories and interactions for a protein-DNA complex and a nanodisc
+description: Worked example of the SampleComponent, SampleComponentInteraction and SmallMolecule
+  tables
+
+# ===== ENTITY TABLES (FLAT COLLECTIONS) =====
+
+studies:
+- id: lambdaber:study-sample-components
+  title: Zinc finger DNA recognition and bacteriorhodopsin nanodisc reconstitution
+
+proteins:
+- id: uniprot:P08046
+  uniprot_id: uniprot:P08046
+  protein_name: Early growth response protein 1
+  gene_name: Egr1
+  organism: NCBITaxon:10090
+  organism_name: Mus musculus
+  pdb_entries:
+  - pdb:1AAY
+- id: uniprot:P02945
+  uniprot_id: uniprot:P02945
+  protein_name: Bacteriorhodopsin
+  gene_name: bop
+  organism: NCBITaxon:2242
+  organism_name: Halobacterium salinarum
+# The membrane scaffold protein: an engineered fragment of human apolipoprotein A-I with no
+# UniProt entry of its own, so a local id.
+- id: lambdaber:protein-msp1d1
+  protein_name: Membrane scaffold protein MSP1D1
+  description: Engineered fragment of human apolipoprotein A-I lacking the first 11 residues,
+    with an N-terminal His tag
+  organism: NCBITaxon:32630
+  organism_name: synthetic construct
+
+nucleic_acids:
+- id: lambdaber:na-zif268-target-strand
+  nucleic_acid_type: dna
+  nucleic_acid_name: Zif268 target strand, 11-mer
+  organism: NCBITaxon:32630
+  organism_name: synthetic construct
+  nucleotide_sequence: AGCGTGGGCGT
+  sequence_length: 11
+  pdb_entries:
+  - pdb:1AAY
+- id: lambdaber:na-zif268-complementary-strand
+  nucleic_acid_type: dna
+  nucleic_acid_name: Zif268 complementary strand, 11-mer
+  organism: NCBITaxon:32630
+  organism_name: synthetic construct
+  nucleotide_sequence: TACGCCCACGC
+  sequence_length: 11
+  pdb_entries:
+  - pdb:1AAY
+
+small_molecules:
+# Zinc: a ChEBI id, which is the id.
+- id: CHEBI:29105
+  small_molecule_name: zinc(2+)
+  chebi_id: CHEBI:29105
+  pdb_ligand_id: pdb.ligand:ZN
+  chemical_class: ion
+  molecular_formula: Zn
+  molecular_weight_theoretical:
+    numeric_value: 65.38
+    unit: daltons
+# Retinal: named by its PDB ligand code, with the ChEBI id alongside.
+- id: CHEBI:17898
+  small_molecule_name: retinal
+  chebi_id: CHEBI:17898
+  pdb_ligand_id: pdb.ligand:RET
+  chemical_class: organic
+  molecular_formula: C20H28O
+  molecular_weight_theoretical:
+    numeric_value: 284.44
+    unit: daltons
+# DDM: no ChEBI id given, so the PDB ligand code is the id.
+- id: pdb.ligand:LMT
+  small_molecule_name: n-dodecyl beta-D-maltoside
+  pdb_ligand_id: pdb.ligand:LMT
+  chemical_class: detergent
+  molecular_formula: C24H46O11
+  molecular_weight_theoretical:
+    numeric_value: 510.62
+    unit: daltons
+
+samples:
+- id: lambdaber:sample-zif268-dna-zn
+  sample_code: ZIF-DNA-07
+  sample_type: complex
+  title: Zif268 zinc finger domain bound to an 11-bp DNA duplex
+  protein_name: Early growth response protein 1, zinc finger domain
+  ligand: zinc
+  concentration:
+    numeric_value: 8.0
+    unit: milligrams per milliliter
+  buffer_composition:
+    ph:
+      numeric_value: 7.5
+      unit: pH units
+    components:
+    - 20 mM HEPES
+    - 100 mM NaCl
+- id: lambdaber:sample-br-nanodisc
+  sample_code: BR-ND-MSP1D1-03
+  sample_type: membrane_protein
+  title: Bacteriorhodopsin reconstituted into MSP1D1 nanodiscs
+  protein_name: Bacteriorhodopsin
+  concentration:
+    numeric_value: 1.5
+    unit: milligrams per milliliter
+  buffer_composition:
+    ph:
+      numeric_value: 7.4
+      unit: pH units
+    components:
+    - 20 mM Tris-HCl
+    - 100 mM NaCl
+
+# One row per thing in each sample. Biopolymers point at their entity; so does the zinc.
+# The nanodisc has no entity and is named by title alone.
+sample_components:
+- id: lambdaber:component-zif-protein
+  sample_id: lambdaber:sample-zif268-dna-zn
+  component_type: protein
+  protein_id: uniprot:P08046
+  role: target
+  copy_number: 1
+- id: lambdaber:component-zif-target-strand
+  sample_id: lambdaber:sample-zif268-dna-zn
+  component_type: nucleic_acid
+  nucleic_acid_id: lambdaber:na-zif268-target-strand
+  role: binding_partner
+  copy_number: 1
+- id: lambdaber:component-zif-complementary-strand
+  sample_id: lambdaber:sample-zif268-dna-zn
+  component_type: nucleic_acid
+  nucleic_acid_id: lambdaber:na-zif268-complementary-strand
+  role: binding_partner
+  copy_number: 1
+- id: lambdaber:component-zif-zinc
+  sample_id: lambdaber:sample-zif268-dna-zn
+  component_type: small_molecule
+  small_molecule_id: CHEBI:29105
+  role: cofactor
+  copy_number: 3
+  concentration:
+    numeric_value: 50
+    unit: micromolar
+- id: lambdaber:component-br-protein
+  sample_id: lambdaber:sample-br-nanodisc
+  component_type: protein
+  protein_id: uniprot:P02945
+  role: target
+  copy_number: 1
+- id: lambdaber:component-br-retinal
+  sample_id: lambdaber:sample-br-nanodisc
+  component_type: small_molecule
+  small_molecule_id: CHEBI:17898
+  role: cofactor
+  copy_number: 1
+- id: lambdaber:component-br-msp1d1
+  sample_id: lambdaber:sample-br-nanodisc
+  component_type: protein
+  protein_id: lambdaber:protein-msp1d1
+  role: carrier
+  copy_number: 2
+- id: lambdaber:component-br-nanodisc
+  sample_id: lambdaber:sample-br-nanodisc
+  component_type: membrane_mimetic
+  title: MSP1D1 nanodisc with DMPC
+  description: Two MSP1D1 belts around a DMPC bilayer patch, about 10 nm across
+  role: carrier
+  copy_number: 1
+- id: lambdaber:component-br-ddm
+  sample_id: lambdaber:sample-br-nanodisc
+  component_type: small_molecule
+  small_molecule_id: pdb.ligand:LMT
+  role: additive
+  concentration:
+    numeric_value: 0.02
+    unit: percent weight per volume
+
+# ===== ASSOCIATION TABLES (M:N RELATIONSHIPS) =====
+
+study_sample_associations:
+- study_id: lambdaber:study-sample-components
+  sample_id: lambdaber:sample-zif268-dna-zn
+  role: target
+- study_id: lambdaber:study-sample-components
+  sample_id: lambdaber:sample-br-nanodisc
+  role: target
+
+# The per-preparation detail of the biopolymers. Role and copy number agree with the
+# component rows above.
+sample_protein_associations:
+- sample_id: lambdaber:sample-zif268-dna-zn
+  protein_id: uniprot:P08046
+  role: target
+  copy_number: 1
+  residue_range: 333-421
+  chain_ids:
+  - A
+- sample_id: lambdaber:sample-br-nanodisc
+  protein_id: uniprot:P02945
+  role: target
+  copy_number: 1
+- sample_id: lambdaber:sample-br-nanodisc
+  protein_id: lambdaber:protein-msp1d1
+  role: carrier
+  copy_number: 2
+  modifications:
+  - N-terminal His6 tag
+
+sample_nucleic_acid_associations:
+- sample_id: lambdaber:sample-zif268-dna-zn
+  nucleic_acid_id: lambdaber:na-zif268-target-strand
+  role: binding_partner
+  copy_number: 1
+  chain_ids:
+  - B
+  structural_form: double_stranded
+  source_method: chemical_synthesis
+- sample_id: lambdaber:sample-zif268-dna-zn
+  nucleic_acid_id: lambdaber:na-zif268-complementary-strand
+  role: binding_partner
+  copy_number: 1
+  chain_ids:
+  - C
+  structural_form: double_stranded
+  source_method: chemical_synthesis
+
+# What acts on what. Read each row subject to object.
+sample_component_interactions:
+- sample_id: lambdaber:sample-zif268-dna-zn
+  subject_id: lambdaber:component-zif-protein
+  object_id: lambdaber:component-zif-target-strand
+  interaction_type: binds
+  interaction_status: observed
+  stoichiometry: "1:1"
+  subject_site: recognition helices of fingers 1-3
+  object_site: 1-9
+  affinity:
+    numeric_value: 3
+    unit: nanomolar
+  affinity_type: kd
+  evidence:
+  - experimental
+  - physical
+- sample_id: lambdaber:sample-zif268-dna-zn
+  subject_id: lambdaber:component-zif-target-strand
+  object_id: lambdaber:component-zif-complementary-strand
+  interaction_type: base_pairs_with
+  interaction_status: designed
+  stoichiometry: "1:1"
+- sample_id: lambdaber:sample-zif268-dna-zn
+  subject_id: lambdaber:component-zif-zinc
+  object_id: lambdaber:component-zif-protein
+  interaction_type: is_coordinated_by
+  interaction_status: observed
+  stoichiometry: "3:1"
+  object_site: Cys2His2 of each finger
+  evidence:
+  - experimental
+- sample_id: lambdaber:sample-br-nanodisc
+  subject_id: lambdaber:component-br-retinal
+  object_id: lambdaber:component-br-protein
+  interaction_type: covalently_linked_to
+  interaction_status: expected
+  stoichiometry: "1:1"
+  object_site: K216
+  description: Schiff base to Lys216, from the literature; not measured here
+  evidence:
+  - experimental
+- sample_id: lambdaber:sample-br-nanodisc
+  subject_id: lambdaber:component-br-protein
+  object_id: lambdaber:component-br-nanodisc
+  interaction_type: embedded_in
+  interaction_status: designed
+  stoichiometry: "1:1"
+- sample_id: lambdaber:sample-br-nanodisc
+  subject_id: lambdaber:component-br-msp1d1
+  object_id: lambdaber:component-br-nanodisc
+  interaction_type: forms_complex_with
+  interaction_status: designed
+  stoichiometry: "2:1"
+- sample_id: lambdaber:sample-br-nanodisc
+  subject_id: lambdaber:component-br-protein
+  object_id: lambdaber:component-br-ddm
+  interaction_type: solubilized_by
+  interaction_status: observed
+  description: The detergent was meant to be removed by Bio-Beads. The scattering profile shows
+    residual micelle contribution, so it stays in the inventory.

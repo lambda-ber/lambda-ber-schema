@@ -1,0 +1,24 @@
+@base <http://example.org/> .
+@prefix chebi: <http://purl.obolibrary.org/obo/CHEBI_> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lambdaber: <http://w3id.org/lambda/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
+@prefix ns1: <http://w3id.org/lambda/functional_annotation/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+chebi:30616 a lambdaber:SmallMolecule ;
+    dcterms:title "Adenosine 5'-triphosphate" ;
+    lambdaber:chebi_id "CHEBI:30616"^^xsd:anyURI ;
+    lambdaber:chemical_class "nucleotide" ;
+    lambdaber:cross_references [ a ns1:DatabaseCrossReference ;
+            ns1:database_id "5957" ;
+            ns1:database_name "pubchem" ] ;
+    lambdaber:inchikey "ZKHQWZAMYRWXGA-KQYNXXCUSA-N" ;
+    lambdaber:molecular_formula "C10H16N5O13P3" ;
+    lambdaber:molecular_weight_theoretical [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "507.18"^^xsd:float ;
+            lambdaber:unit "daltons" ] ;
+    lambdaber:pdb_ligand_id "pdb.ligand:ATP"^^xsd:anyURI ;
+    lambdaber:small_molecule_name "ATP" ;
+    lambdaber:smiles "Nc1ncnc2n(cnc12)[C@@H]1O[C@H](COP(O)(=O)OP(O)(=O)OP(O)(O)=O)[C@@H](O)[C@H]1O" .
+

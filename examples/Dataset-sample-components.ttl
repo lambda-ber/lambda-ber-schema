@@ -1,0 +1,309 @@
+@base <http://example.org/> .
+@prefix NCBITaxon: <http://purl.obolibrary.org/obo/NCBITaxon_> .
+@prefix chebi: <http://purl.obolibrary.org/obo/CHEBI_> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lambdaber: <http://w3id.org/lambda/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
+@prefix pdb.ligand: <https://www.rcsb.org/ligand/> .
+@prefix uniprot: <http://purl.uniprot.org/uniprot/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+lambdaber:dataset-sample-components a lambdaber:Dataset ;
+    dcterms:title "Sample inventories and interactions for a protein-DNA complex and a nanodisc" ;
+    lambdaber:description "Worked example of the SampleComponent, SampleComponentInteraction and SmallMolecule tables" ;
+    lambdaber:nucleic_acids lambdaber:na-zif268-complementary-strand,
+        lambdaber:na-zif268-target-strand ;
+    lambdaber:proteins uniprot:P02945,
+        uniprot:P08046,
+        lambdaber:protein-msp1d1 ;
+    lambdaber:sample_component_interactions [ a lambdaber:SampleComponentInteraction ;
+            lambdaber:evidence "experimental" ;
+            lambdaber:interaction_status "observed" ;
+            lambdaber:interaction_type "is_coordinated_by" ;
+            lambdaber:object_id lambdaber:component-zif-protein ;
+            lambdaber:object_site "Cys2His2 of each finger" ;
+            lambdaber:sample_id lambdaber:sample-zif268-dna-zn ;
+            lambdaber:stoichiometry "3:1" ;
+            lambdaber:subject_id lambdaber:component-zif-zinc ],
+        [ a lambdaber:SampleComponentInteraction ;
+            lambdaber:interaction_status "designed" ;
+            lambdaber:interaction_type "base_pairs_with" ;
+            lambdaber:object_id lambdaber:component-zif-complementary-strand ;
+            lambdaber:sample_id lambdaber:sample-zif268-dna-zn ;
+            lambdaber:stoichiometry "1:1" ;
+            lambdaber:subject_id lambdaber:component-zif-target-strand ],
+        [ a lambdaber:SampleComponentInteraction ;
+            lambdaber:interaction_status "designed" ;
+            lambdaber:interaction_type "forms_complex_with" ;
+            lambdaber:object_id lambdaber:component-br-nanodisc ;
+            lambdaber:sample_id lambdaber:sample-br-nanodisc ;
+            lambdaber:stoichiometry "2:1" ;
+            lambdaber:subject_id lambdaber:component-br-msp1d1 ],
+        [ a lambdaber:SampleComponentInteraction ;
+            lambdaber:description "Schiff base to Lys216, from the literature; not measured here" ;
+            lambdaber:evidence "experimental" ;
+            lambdaber:interaction_status "expected" ;
+            lambdaber:interaction_type "covalently_linked_to" ;
+            lambdaber:object_id lambdaber:component-br-protein ;
+            lambdaber:object_site "K216" ;
+            lambdaber:sample_id lambdaber:sample-br-nanodisc ;
+            lambdaber:stoichiometry "1:1" ;
+            lambdaber:subject_id lambdaber:component-br-retinal ],
+        [ a lambdaber:SampleComponentInteraction ;
+            lambdaber:interaction_status "designed" ;
+            lambdaber:interaction_type "embedded_in" ;
+            lambdaber:object_id lambdaber:component-br-nanodisc ;
+            lambdaber:sample_id lambdaber:sample-br-nanodisc ;
+            lambdaber:stoichiometry "1:1" ;
+            lambdaber:subject_id lambdaber:component-br-protein ],
+        [ a lambdaber:SampleComponentInteraction ;
+            lambdaber:affinity [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "3.0"^^xsd:float ;
+                    lambdaber:unit "nanomolar" ] ;
+            lambdaber:affinity_type "kd" ;
+            lambdaber:evidence "experimental",
+                "physical" ;
+            lambdaber:interaction_status "observed" ;
+            lambdaber:interaction_type "binds" ;
+            lambdaber:object_id lambdaber:component-zif-target-strand ;
+            lambdaber:object_site "1-9" ;
+            lambdaber:sample_id lambdaber:sample-zif268-dna-zn ;
+            lambdaber:stoichiometry "1:1" ;
+            lambdaber:subject_id lambdaber:component-zif-protein ;
+            lambdaber:subject_site "recognition helices of fingers 1-3" ],
+        [ a lambdaber:SampleComponentInteraction ;
+            lambdaber:description "The detergent was meant to be removed by Bio-Beads. The scattering profile shows residual micelle contribution, so it stays in the inventory." ;
+            lambdaber:interaction_status "observed" ;
+            lambdaber:interaction_type "solubilized_by" ;
+            lambdaber:object_id lambdaber:component-br-ddm ;
+            lambdaber:sample_id lambdaber:sample-br-nanodisc ;
+            lambdaber:subject_id lambdaber:component-br-protein ] ;
+    lambdaber:sample_components lambdaber:component-br-ddm,
+        lambdaber:component-br-msp1d1,
+        lambdaber:component-br-nanodisc,
+        lambdaber:component-br-protein,
+        lambdaber:component-br-retinal,
+        lambdaber:component-zif-complementary-strand,
+        lambdaber:component-zif-protein,
+        lambdaber:component-zif-target-strand,
+        lambdaber:component-zif-zinc ;
+    lambdaber:sample_nucleic_acid_associations [ a lambdaber:SampleNucleicAcidAssociation ;
+            lambdaber:chain_ids "B" ;
+            lambdaber:copy_number 1 ;
+            lambdaber:nucleic_acid_id lambdaber:na-zif268-target-strand ;
+            lambdaber:role "binding_partner" ;
+            lambdaber:sample_id lambdaber:sample-zif268-dna-zn ;
+            lambdaber:source_method "chemical_synthesis" ;
+            lambdaber:structural_form "double_stranded" ],
+        [ a lambdaber:SampleNucleicAcidAssociation ;
+            lambdaber:chain_ids "C" ;
+            lambdaber:copy_number 1 ;
+            lambdaber:nucleic_acid_id lambdaber:na-zif268-complementary-strand ;
+            lambdaber:role "binding_partner" ;
+            lambdaber:sample_id lambdaber:sample-zif268-dna-zn ;
+            lambdaber:source_method "chemical_synthesis" ;
+            lambdaber:structural_form "double_stranded" ] ;
+    lambdaber:sample_protein_associations [ a lambdaber:SampleProteinAssociation ;
+            lambdaber:copy_number 2 ;
+            lambdaber:modifications "N-terminal His6 tag" ;
+            lambdaber:protein_id lambdaber:protein-msp1d1 ;
+            lambdaber:role "carrier" ;
+            lambdaber:sample_id lambdaber:sample-br-nanodisc ],
+        [ a lambdaber:SampleProteinAssociation ;
+            lambdaber:chain_ids "A" ;
+            lambdaber:copy_number 1 ;
+            lambdaber:protein_id uniprot:P08046 ;
+            lambdaber:residue_range "333-421" ;
+            lambdaber:role "target" ;
+            lambdaber:sample_id lambdaber:sample-zif268-dna-zn ],
+        [ a lambdaber:SampleProteinAssociation ;
+            lambdaber:copy_number 1 ;
+            lambdaber:protein_id uniprot:P02945 ;
+            lambdaber:role "target" ;
+            lambdaber:sample_id lambdaber:sample-br-nanodisc ] ;
+    lambdaber:samples lambdaber:sample-br-nanodisc,
+        lambdaber:sample-zif268-dna-zn ;
+    lambdaber:small_molecules chebi:17898,
+        chebi:29105,
+        pdb.ligand:LMT ;
+    lambdaber:studies lambdaber:study-sample-components ;
+    lambdaber:study_sample_associations [ a lambdaber:StudySampleAssociation ;
+            lambdaber:role "target" ;
+            lambdaber:sample_id lambdaber:sample-zif268-dna-zn ;
+            lambdaber:study_id lambdaber:study-sample-components ],
+        [ a lambdaber:StudySampleAssociation ;
+            lambdaber:role "target" ;
+            lambdaber:sample_id lambdaber:sample-br-nanodisc ;
+            lambdaber:study_id lambdaber:study-sample-components ] .
+
+chebi:17898 a lambdaber:SmallMolecule ;
+    lambdaber:chebi_id "CHEBI:17898"^^xsd:anyURI ;
+    lambdaber:chemical_class "organic" ;
+    lambdaber:molecular_formula "C20H28O" ;
+    lambdaber:molecular_weight_theoretical [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "284.44"^^xsd:float ;
+            lambdaber:unit "daltons" ] ;
+    lambdaber:pdb_ligand_id "pdb.ligand:RET"^^xsd:anyURI ;
+    lambdaber:small_molecule_name "retinal" .
+
+chebi:29105 a lambdaber:SmallMolecule ;
+    lambdaber:chebi_id "CHEBI:29105"^^xsd:anyURI ;
+    lambdaber:chemical_class "ion" ;
+    lambdaber:molecular_formula "Zn" ;
+    lambdaber:molecular_weight_theoretical [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "65.38"^^xsd:float ;
+            lambdaber:unit "daltons" ] ;
+    lambdaber:pdb_ligand_id "pdb.ligand:ZN"^^xsd:anyURI ;
+    lambdaber:small_molecule_name "zinc(2+)" .
+
+lambdaber:component-br-ddm a lambdaber:SampleComponent ;
+    lambdaber:component_type "small_molecule" ;
+    lambdaber:concentration [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "0.02"^^xsd:float ;
+            lambdaber:unit "percent weight per volume" ] ;
+    lambdaber:role "additive" ;
+    lambdaber:sample_id lambdaber:sample-br-nanodisc ;
+    lambdaber:small_molecule_id pdb.ligand:LMT .
+
+lambdaber:component-br-msp1d1 a lambdaber:SampleComponent ;
+    lambdaber:component_type "protein" ;
+    lambdaber:copy_number 2 ;
+    lambdaber:protein_id lambdaber:protein-msp1d1 ;
+    lambdaber:role "carrier" ;
+    lambdaber:sample_id lambdaber:sample-br-nanodisc .
+
+lambdaber:component-br-retinal a lambdaber:SampleComponent ;
+    lambdaber:component_type "small_molecule" ;
+    lambdaber:copy_number 1 ;
+    lambdaber:role "cofactor" ;
+    lambdaber:sample_id lambdaber:sample-br-nanodisc ;
+    lambdaber:small_molecule_id chebi:17898 .
+
+lambdaber:component-zif-complementary-strand a lambdaber:SampleComponent ;
+    lambdaber:component_type "nucleic_acid" ;
+    lambdaber:copy_number 1 ;
+    lambdaber:nucleic_acid_id lambdaber:na-zif268-complementary-strand ;
+    lambdaber:role "binding_partner" ;
+    lambdaber:sample_id lambdaber:sample-zif268-dna-zn .
+
+lambdaber:component-zif-zinc a lambdaber:SampleComponent ;
+    lambdaber:component_type "small_molecule" ;
+    lambdaber:concentration [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "50.0"^^xsd:float ;
+            lambdaber:unit "micromolar" ] ;
+    lambdaber:copy_number 3 ;
+    lambdaber:role "cofactor" ;
+    lambdaber:sample_id lambdaber:sample-zif268-dna-zn ;
+    lambdaber:small_molecule_id chebi:29105 .
+
+pdb.ligand:LMT a lambdaber:SmallMolecule ;
+    lambdaber:chemical_class "detergent" ;
+    lambdaber:molecular_formula "C24H46O11" ;
+    lambdaber:molecular_weight_theoretical [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "510.62"^^xsd:float ;
+            lambdaber:unit "daltons" ] ;
+    lambdaber:pdb_ligand_id "pdb.ligand:LMT"^^xsd:anyURI ;
+    lambdaber:small_molecule_name "n-dodecyl beta-D-maltoside" .
+
+uniprot:P02945 a lambdaber:Protein ;
+    lambdaber:gene_name "bop" ;
+    lambdaber:organism NCBITaxon:2242 ;
+    lambdaber:organism_name "Halobacterium salinarum" ;
+    lambdaber:protein_name "Bacteriorhodopsin" ;
+    lambdaber:uniprot_id "uniprot:P02945"^^xsd:anyURI .
+
+uniprot:P08046 a lambdaber:Protein ;
+    lambdaber:gene_name "Egr1" ;
+    lambdaber:organism NCBITaxon:10090 ;
+    lambdaber:organism_name "Mus musculus" ;
+    lambdaber:pdb_entries "pdb:1AAY"^^xsd:anyURI ;
+    lambdaber:protein_name "Early growth response protein 1" ;
+    lambdaber:uniprot_id "uniprot:P08046"^^xsd:anyURI .
+
+lambdaber:component-br-nanodisc a lambdaber:SampleComponent ;
+    dcterms:title "MSP1D1 nanodisc with DMPC" ;
+    lambdaber:component_type "membrane_mimetic" ;
+    lambdaber:copy_number 1 ;
+    lambdaber:description "Two MSP1D1 belts around a DMPC bilayer patch, about 10 nm across" ;
+    lambdaber:role "carrier" ;
+    lambdaber:sample_id lambdaber:sample-br-nanodisc .
+
+lambdaber:component-zif-protein a lambdaber:SampleComponent ;
+    lambdaber:component_type "protein" ;
+    lambdaber:copy_number 1 ;
+    lambdaber:protein_id uniprot:P08046 ;
+    lambdaber:role "target" ;
+    lambdaber:sample_id lambdaber:sample-zif268-dna-zn .
+
+lambdaber:component-zif-target-strand a lambdaber:SampleComponent ;
+    lambdaber:component_type "nucleic_acid" ;
+    lambdaber:copy_number 1 ;
+    lambdaber:nucleic_acid_id lambdaber:na-zif268-target-strand ;
+    lambdaber:role "binding_partner" ;
+    lambdaber:sample_id lambdaber:sample-zif268-dna-zn .
+
+lambdaber:na-zif268-complementary-strand a lambdaber:NucleicAcid ;
+    lambdaber:nucleic_acid_name "Zif268 complementary strand, 11-mer" ;
+    lambdaber:nucleic_acid_type "dna" ;
+    lambdaber:nucleotide_sequence "TACGCCCACGC" ;
+    lambdaber:organism NCBITaxon:32630 ;
+    lambdaber:organism_name "synthetic construct" ;
+    lambdaber:pdb_entries "pdb:1AAY"^^xsd:anyURI ;
+    lambdaber:sequence_length 11 .
+
+lambdaber:na-zif268-target-strand a lambdaber:NucleicAcid ;
+    lambdaber:nucleic_acid_name "Zif268 target strand, 11-mer" ;
+    lambdaber:nucleic_acid_type "dna" ;
+    lambdaber:nucleotide_sequence "AGCGTGGGCGT" ;
+    lambdaber:organism NCBITaxon:32630 ;
+    lambdaber:organism_name "synthetic construct" ;
+    lambdaber:pdb_entries "pdb:1AAY"^^xsd:anyURI ;
+    lambdaber:sequence_length 11 .
+
+lambdaber:protein-msp1d1 a lambdaber:Protein ;
+    lambdaber:description "Engineered fragment of human apolipoprotein A-I lacking the first 11 residues, with an N-terminal His tag" ;
+    lambdaber:organism NCBITaxon:32630 ;
+    lambdaber:organism_name "synthetic construct" ;
+    lambdaber:protein_name "Membrane scaffold protein MSP1D1" .
+
+lambdaber:study-sample-components a lambdaber:Study ;
+    dcterms:title "Zinc finger DNA recognition and bacteriorhodopsin nanodisc reconstitution" .
+
+lambdaber:component-br-protein a lambdaber:SampleComponent ;
+    lambdaber:component_type "protein" ;
+    lambdaber:copy_number 1 ;
+    lambdaber:protein_id uniprot:P02945 ;
+    lambdaber:role "target" ;
+    lambdaber:sample_id lambdaber:sample-br-nanodisc .
+
+lambdaber:sample-zif268-dna-zn a lambdaber:Sample ;
+    dcterms:title "Zif268 zinc finger domain bound to an 11-bp DNA duplex" ;
+    lambdaber:buffer_composition [ a lambdaber:BufferComposition ;
+            lambdaber:components "100 mM NaCl",
+                "20 mM HEPES" ;
+            lambdaber:ph [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "7.5"^^xsd:float ;
+                    lambdaber:unit "pH units" ] ] ;
+    lambdaber:concentration [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "8.0"^^xsd:float ;
+            lambdaber:unit "milligrams per milliliter" ] ;
+    lambdaber:ligand "zinc" ;
+    lambdaber:protein_name "Early growth response protein 1, zinc finger domain" ;
+    lambdaber:sample_code "ZIF-DNA-07" ;
+    lambdaber:sample_type "complex" .
+
+lambdaber:sample-br-nanodisc a lambdaber:Sample ;
+    dcterms:title "Bacteriorhodopsin reconstituted into MSP1D1 nanodiscs" ;
+    lambdaber:buffer_composition [ a lambdaber:BufferComposition ;
+            lambdaber:components "100 mM NaCl",
+                "20 mM Tris-HCl" ;
+            lambdaber:ph [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "7.4"^^xsd:float ;
+                    lambdaber:unit "pH units" ] ] ;
+    lambdaber:concentration [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "1.5"^^xsd:float ;
+            lambdaber:unit "milligrams per milliliter" ] ;
+    lambdaber:protein_name "Bacteriorhodopsin" ;
+    lambdaber:sample_code "BR-ND-MSP1D1-03" ;
+    lambdaber:sample_type "membrane_protein" .
+
