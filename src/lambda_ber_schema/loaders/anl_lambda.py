@@ -198,6 +198,18 @@ def _text(value: Any) -> str | None:
     return text or None
 
 
+def _operator(value: Any) -> str | None:
+    """
+    An ``operator_id`` from a V_LAM_XTA person column.
+
+    The person columns (``crystallographer``, ``platesetupby``, ``batchclone_owner``,
+    ``exp_batchclone_owner``) hold the LIMS employee number, such as ``282``, not a
+    name. The API does not resolve it and neither does this loader, so the number is
+    written as the string the slot allows for a personnel id.
+    """
+    return _text(value)
+
+
 def _quantity(value: Any, unit: str, scale: float = 1.0) -> QuantityValue | None:
     value = _first(value)
     if value is None or isinstance(value, bool):
@@ -750,7 +762,7 @@ class ANLLambdaLoader(BaseLoader):
                     preparation_type=PreparationTypeEnum.protein_expression,
                     sample_id=sample.id,
                     preparation_date=_date(record.get("epbc_experiment_date_start")),
-                    operator_id=_text(record.get("exp_batchclone_owner")),
+                    operator_id=_operator(record.get("exp_batchclone_owner")),
                     expression_system=expression_system,
                     host_strain_or_cell_line=" ".join(
                         p for p in (host, _text(record.get("exp_strain"))) if p
@@ -777,7 +789,7 @@ class ANLLambdaLoader(BaseLoader):
                     preparation_type=PreparationTypeEnum.protein_purification,
                     sample_id=sample.id,
                     preparation_date=_date(record.get("experiment_date_start")),
-                    operator_id=_text(record.get("batchclone_owner")),
+                    operator_id=_operator(record.get("batchclone_owner")),
                     protocol_description=protocol or None,
                     final_buffer=_text(record.get("buffer_content")),
                     final_concentration_mg_per_ml=_quantity(record.get("prot_conc"), "mg/mL"),
@@ -805,7 +817,7 @@ class ANLLambdaLoader(BaseLoader):
                     preparation_type=PreparationTypeEnum.xray_crystallography,
                     sample_id=sample.id,
                     preparation_date=_date(record.get("plate_setup_date")),
-                    operator_id=_text(record.get("platesetupby")),
+                    operator_id=_operator(record.get("platesetupby")),
                     protocol_description="; ".join(p for p in (screen, chemistry, cryo) if p) or None,
                     growth_temperature_c=_quantity(record.get("crystallization_temp"), "°C"),
                 )
@@ -862,7 +874,7 @@ class ANLLambdaLoader(BaseLoader):
             technique=technique,
             experimental_method=ExperimentalMethodEnum.x_ray_diffraction,
             experiment_date=_date(record.get("test_date")),
-            operator_id=_text(record.get("crystallographer")),
+            operator_id=_operator(record.get("crystallographer")),
             detector=_text(header.get("detector_type")),
             wavelength=_quantity(header.get("wavelength"), "Å"),
             detector_distance=_quantity(header.get("detector_distance"), "mm", scale=1000),
