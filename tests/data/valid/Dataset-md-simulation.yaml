@@ -1,0 +1,322 @@
+id: lambdaber:ds-md-001
+title: MD simulation of protein-ligand complex
+description: >-
+  Molecular dynamics simulation of a docked ligand-receptor complex using
+  the Amber/pmemd.cuda pipeline.  Includes system setup, equilibration,
+  and 100 ns production MD.
+
+# ===== ENTITY TABLES =====
+
+studies:
+- id: lambdaber:md-study-001
+  title: Ligand binding pose stability
+  description: Assess stability of docked pose via 100 ns MD
+
+proteins:
+- id: uniprot:P00734
+  title: Prothrombin
+  protein_name: Prothrombin
+  organism: Homo sapiens
+  gene_name: F2
+
+samples:
+- id: lambdaber:md-sample-001
+  title: Prothrombin-ligand complex
+  sample_code: PROT-LIG-001
+  sample_type: protein_ligand_complex
+
+instruments:
+- id: lambdaber:gpu-cluster-001
+  title: GPU compute node
+  description: NVIDIA V100 GPU used for pmemd.cuda MD simulation
+  instrument_code: GPU-NODE-001
+
+experiment_runs:
+- id: lambdaber:md-exp-001
+  title: 100 ns production MD
+  experiment_code: MD-RUN-001
+  technique: molecular_dynamics
+
+# ===== WORKFLOW RUNS =====
+
+workflow_runs:
+
+# Stage 1: System setup (antechamber + parmchk2 + tleap + parmed)
+- id: lambdaber:wf-md-setup-001
+  title: MD system setup
+  workflow_code: WF-MD-SETUP-001
+  workflow_type: md_system_setup
+  software_name: AmberTools
+  software_version: "24"
+  additional_software: "antechamber, parmchk2, tleap, parmed"
+  md_simulation_params:
+    simulation_engine: pmemd.cuda
+    simulation_engine_version: "24"
+    protein_force_field: ff19SB
+    ligand_force_field: GAFF2
+    water_model: OPC
+    charge_method: AM1-BCC
+    box_padding:
+      numeric_value: 8.0
+      unit: angstrom
+    box_shape: cubic
+    ion_neutralization: true
+    ion_species:
+      - "Na+"
+      - "Cl-"
+    net_charge:
+      numeric_value: 0
+    hydrogen_mass_repartitioning: true
+    simulation_stage: topology_building
+  started_at: "2026-09-01T10:00:00"
+  completed_at: "2026-09-01T10:01:30"
+
+# Stage 2: Energy minimization
+- id: lambdaber:wf-md-min-001
+  title: Two-stage energy minimization
+  workflow_code: WF-MD-MIN-001
+  workflow_type: md_minimization
+  software_name: pmemd.cuda
+  software_version: "24"
+  md_simulation_params:
+    simulation_engine: pmemd.cuda
+    simulation_stage: minimization_restrained
+    restraint_mask: "!(@H=)&!(:WAT|:ETH|@Na+=)"
+    restraint_force_constant:
+      numeric_value: 20.0
+      unit: "kcal/mol/A^2"
+    minimization_max_cycles:
+      numeric_value: 4000
+    minimization_steepest_descent_cycles:
+      numeric_value: 3000
+    nonbonded_cutoff:
+      numeric_value: 10.0
+      unit: angstrom
+  started_at: "2026-09-01T10:02:00"
+  completed_at: "2026-09-01T10:02:22"
+
+# Stage 3: Heating
+- id: lambdaber:wf-md-heat-001
+  title: Heating 0 to 298.5 K
+  workflow_code: WF-MD-HEAT-001
+  workflow_type: md_equilibration
+  software_name: pmemd.cuda
+  software_version: "24"
+  md_simulation_params:
+    simulation_engine: pmemd.cuda
+    simulation_stage: heating
+    ensemble: nvt
+    thermostat: Langevin
+    thermostat_coupling:
+      numeric_value: 1.0
+      unit: "1/ps"
+    initial_temperature:
+      numeric_value: 0.0
+      unit: kelvin
+    temperature:
+      numeric_value: 298.5
+      unit: kelvin
+    timestep:
+      numeric_value: 1.0
+      unit: femtosecond
+    constraint_algorithm: SHAKE
+    nonbonded_cutoff:
+      numeric_value: 8.0
+      unit: angstrom
+    duration_ns:
+      numeric_value: 1.0
+    heat_duration_ns:
+      numeric_value: 1.0
+    restraint_mask: "!(@H=)&!(:WAT|:ETH|@Na+=)"
+    restraint_force_constant:
+      numeric_value: 5.0
+      unit: "kcal/mol/A^2"
+  started_at: "2026-09-01T10:02:30"
+  completed_at: "2026-09-01T10:03:02"
+
+# Stage 4: NPT Equilibration (restrained + free)
+- id: lambdaber:wf-md-equil-001
+  title: NPT equilibration
+  workflow_code: WF-MD-EQUIL-001
+  workflow_type: md_equilibration
+  software_name: pmemd.cuda
+  software_version: "24"
+  md_simulation_params:
+    simulation_engine: pmemd.cuda
+    simulation_stage: equilibration_restrained
+    ensemble: npt
+    thermostat: Langevin
+    thermostat_coupling:
+      numeric_value: 1.0
+      unit: "1/ps"
+    barostat: Berendsen
+    barostat_coupling:
+      numeric_value: 1.0
+      unit: ps
+    temperature:
+      numeric_value: 298.5
+      unit: kelvin
+    pressure:
+      numeric_value: 1.0
+      unit: atm
+    timestep:
+      numeric_value: 1.0
+      unit: femtosecond
+    equil_restrained_duration_ns:
+      numeric_value: 3.0
+    equil_free_duration_ns:
+      numeric_value: 5.0
+  started_at: "2026-09-01T10:03:05"
+  completed_at: "2026-09-01T10:03:34"
+
+# Stage 5: Production MD
+- id: lambdaber:wf-md-prod-001
+  title: 100 ns production MD
+  workflow_code: WF-MD-PROD-001
+  workflow_type: md_production
+  software_name: pmemd.cuda
+  software_version: "24"
+  md_simulation_params:
+    simulation_engine: pmemd.cuda
+    simulation_stage: production
+    ensemble: npt
+    thermostat: Langevin
+    thermostat_coupling:
+      numeric_value: 1.0
+      unit: "1/ps"
+    barostat: Monte-Carlo
+    temperature:
+      numeric_value: 298.5
+      unit: kelvin
+    pressure:
+      numeric_value: 1.0
+      unit: atm
+    timestep:
+      numeric_value: 4.0
+      unit: femtosecond
+    constraint_algorithm: SHAKE
+    nonbonded_cutoff:
+      numeric_value: 8.0
+      unit: angstrom
+    hydrogen_mass_repartitioning: true
+    production_duration_ns:
+      numeric_value: 100.0
+    total_steps:
+      numeric_value: 25000000
+    trajectory_output_interval:
+      numeric_value: 25000
+  compute_resources:
+    gpu_hours:
+      numeric_value: 21.4
+  started_at: "2026-09-01T10:04:00"
+  completed_at: "2026-09-02T07:25:00"
+
+# ===== DATA FILES =====
+
+data_files:
+# Input structures
+- id: lambdaber:df-md-lig-001
+  title: Input ligand structure
+  file_name: input_ligand.pdb
+  file_format: pdb
+  data_type: model
+
+- id: lambdaber:df-md-rec-001
+  title: Input receptor structure
+  file_name: input_receptor.pdb
+  file_format: pdb
+  data_type: model
+
+# Parameterized ligand
+- id: lambdaber:df-md-ligmol2-001
+  title: Parameterized ligand (GAFF2)
+  file_name: ligand.mol2
+  file_format: mol2
+  data_type: parameterized_ligand
+
+# Topology files
+- id: lambdaber:df-md-prmtop-001
+  title: Solvated complex topology
+  file_name: complex_solvated.prmtop
+  file_format: prmtop
+  data_type: topology
+
+- id: lambdaber:df-md-hmass-001
+  title: HMR topology for production MD
+  file_name: system_hmass.top
+  file_format: prmtop
+  data_type: topology
+
+# Solvated structure
+- id: lambdaber:df-md-solv-001
+  title: Solvated complex structure
+  file_name: complex_solvated.pdb
+  file_format: pdb
+  data_type: solvated_structure
+
+# Production trajectory
+- id: lambdaber:df-md-traj-001
+  title: Production MD trajectory (100 ns)
+  file_name: md.nc
+  file_format: netcdf
+  data_type: trajectory
+
+# ===== ASSOCIATION TABLES =====
+
+study_sample_associations:
+- study_id: lambdaber:md-study-001
+  sample_id: lambdaber:md-sample-001
+  role: target
+
+study_experiment_associations:
+- study_id: lambdaber:md-study-001
+  experiment_id: lambdaber:md-exp-001
+
+sample_protein_associations:
+- sample_id: lambdaber:md-sample-001
+  protein_id: uniprot:P00734
+  role: target
+  copy_number: 1
+
+experiment_sample_associations:
+- experiment_id: lambdaber:md-exp-001
+  sample_id: lambdaber:md-sample-001
+  role: target
+
+experiment_instrument_associations:
+- experiment_id: lambdaber:md-exp-001
+  instrument_id: lambdaber:gpu-cluster-001
+  role: primary
+
+# Link workflows to experiment
+workflow_experiment_associations:
+- workflow_id: lambdaber:wf-md-setup-001
+  experiment_id: lambdaber:md-exp-001
+- workflow_id: lambdaber:wf-md-min-001
+  experiment_id: lambdaber:md-exp-001
+- workflow_id: lambdaber:wf-md-heat-001
+  experiment_id: lambdaber:md-exp-001
+- workflow_id: lambdaber:wf-md-equil-001
+  experiment_id: lambdaber:md-exp-001
+- workflow_id: lambdaber:wf-md-prod-001
+  experiment_id: lambdaber:md-exp-001
+
+# Link input files to setup workflow
+workflow_input_associations:
+- workflow_id: lambdaber:wf-md-setup-001
+  file_id: lambdaber:df-md-lig-001
+- workflow_id: lambdaber:wf-md-setup-001
+  file_id: lambdaber:df-md-rec-001
+
+# Link output files to workflows
+workflow_output_associations:
+- workflow_id: lambdaber:wf-md-setup-001
+  file_id: lambdaber:df-md-ligmol2-001
+- workflow_id: lambdaber:wf-md-setup-001
+  file_id: lambdaber:df-md-prmtop-001
+- workflow_id: lambdaber:wf-md-setup-001
+  file_id: lambdaber:df-md-hmass-001
+- workflow_id: lambdaber:wf-md-setup-001
+  file_id: lambdaber:df-md-solv-001
+- workflow_id: lambdaber:wf-md-prod-001
+  file_id: lambdaber:df-md-traj-001
