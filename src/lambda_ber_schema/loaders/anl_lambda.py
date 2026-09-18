@@ -881,6 +881,9 @@ class ANLLambdaLoader(BaseLoader):
         sweep_end = None
         if osc_starts and increment is not None:
             if complete:
+                # The end of the last frame. A run of several sweeps with a gap between
+                # them still gets one start and one end here; the gap is not subtracted,
+                # and total_rotation counts frames, not degrees swept.
                 sweep_end = max(osc_starts) + increment
             else:
                 # Only the first frame is in hand; take the run as one contiguous sweep.
