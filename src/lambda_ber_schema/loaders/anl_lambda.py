@@ -612,12 +612,12 @@ class ANLLambdaLoader(BaseLoader):
     @staticmethod
     def _pi_description(record: dict[str, Any]) -> str | None:
         parts = []
-        if _text(record.get("pi_name")):
-            parts.append(f"PI: {_text(record.get('pi_name'))}")
-        if _text(record.get("pi_institute")):
-            parts.append(_text(record.get("pi_institute")))
-        if _text(record.get("pi_orcid")):
-            parts.append(f"ORCID {_text(record.get('pi_orcid'))}")
+        if name := _text(record.get("pi_name")):
+            parts.append(f"PI: {name}")
+        if institute := _text(record.get("pi_institute")):
+            parts.append(institute)
+        if orcid := _text(record.get("pi_orcid")):
+            parts.append(f"ORCID {orcid}")
         return "; ".join(parts) or None
 
     def _create_instrument(self, record: dict[str, Any], files: list[dict[str, Any]]) -> XRayInstrument:
