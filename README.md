@@ -10,7 +10,7 @@ A comprehensive LinkML schema for representing multimodal structural biology ima
 
 A LAMBDA data package is an [RO-Crate](https://www.researchobject.org/ro-crate/) whose
 `ro-crate-metadata.json` conforms to the
-[LAMBDA Core profile](profiles/core/0.3.2/lambda-core-rocrate-profile-v0.3.2.md). One command
+[LAMBDA Core profile](profiles/core/0.3.3/lambda-core-rocrate-profile-v0.3.3.md). One command
 checks it:
 
 ```bash

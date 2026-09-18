@@ -1,5 +1,5 @@
 # Auto generated from lambda_ber_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-09-17T10:59:48
+# Generation date: 2026-09-18T15:54:30
 # Schema: lambda-ber-schema
 #
 # id: http://w3id.org/lambda/
@@ -202,9 +202,10 @@ from linkml_runtime.linkml_model.types import Boolean, Curie, Date, Float, Integ
 from linkml_runtime.utils.metamodelcore import Bool, Curie, URI, URIorCURIE, XSDDate
 
 metamodel_version = "1.7.0"
-version = "0.1.2.post231.dev0+52d03959"
+version = "0.1.2.post308.dev0+8a814589"
 
 # Namespaces
+CHEBI = CurieNamespace('CHEBI', 'http://purl.obolibrary.org/obo/CHEBI_')
 CHMO = CurieNamespace('CHMO', 'http://purl.obolibrary.org/obo/CHMO_')
 CL = CurieNamespace('CL', 'http://purl.obolibrary.org/obo/CL_')
 GO = CurieNamespace('GO', 'http://purl.obolibrary.org/obo/GO_')
@@ -214,7 +215,10 @@ PANET = CurieNamespace('PaNET', 'http://purl.org/pan-science/PaNET/PaNET')
 ROR = CurieNamespace('ROR', 'https://ror.org/')
 UBERON = CurieNamespace('UBERON', 'http://purl.obolibrary.org/obo/UBERON_')
 UO = CurieNamespace('UO', 'http://purl.obolibrary.org/obo/UO_')
+ANL_LAMBDA = CurieNamespace('anl-lambda', 'https://sg.bio.anl.gov/lambda/')
+CHEMBL_COMPOUND = CurieNamespace('chembl_compound', 'https://www.ebi.ac.uk/chembl/compound_report_card/')
 DCTERMS = CurieNamespace('dcterms', 'http://purl.org/dc/terms/')
+DRUGBANK = CurieNamespace('drugbank', 'https://go.drugbank.com/drugs/')
 EMSL = CurieNamespace('emsl', 'https://api.emsl.pnnl.gov/external/')
 IMGCIF = CurieNamespace('imgCIF', 'https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#')
 INSDC = CurieNamespace('insdc', 'https://www.ebi.ac.uk/ena/data/view/')
@@ -226,7 +230,9 @@ MMCIF = CurieNamespace('mmCIF', 'http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_
 NMDC = CurieNamespace('nmdc', 'https://w3id.org/nmdc/')
 NSLS2 = CurieNamespace('nsls2', 'https://github.com/NSLS2/BER-LAMBDA/')
 PDB = CurieNamespace('pdb', 'https://www.rcsb.org/structure/')
+PDB_LIGAND = CurieNamespace('pdb_ligand', 'https://www.rcsb.org/ligand/')
 PROV = CurieNamespace('prov', 'http://www.w3.org/ns/prov#')
+PUBCHEM_COMPOUND = CurieNamespace('pubchem_compound', 'https://pubchem.ncbi.nlm.nih.gov/compound/')
 QUD = CurieNamespace('qud', 'http://qudt.org/1.1/schema/qudt#')
 RDFS = CurieNamespace('rdfs', 'http://www.w3.org/2000/01/rdf-schema#')
 REFSEQ = CurieNamespace('refseq', 'https://www.ncbi.nlm.nih.gov/nuccore/')
@@ -295,6 +301,14 @@ class ProteinConstructId(NamedThingId):
 
 
 class NucleicAcidId(NamedThingId):
+    pass
+
+
+class SmallMoleculeId(NamedThingId):
+    pass
+
+
+class SampleComponentId(NamedThingId):
     pass
 
 
@@ -492,7 +506,9 @@ class Dataset(NamedThing):
     proteins: Optional[Union[dict[Union[str, ProteinId], Union[dict, "Protein"]], list[Union[dict, "Protein"]]]] = empty_dict()
     protein_constructs: Optional[Union[dict[Union[str, ProteinConstructId], Union[dict, "ProteinConstruct"]], list[Union[dict, "ProteinConstruct"]]]] = empty_dict()
     nucleic_acids: Optional[Union[dict[Union[str, NucleicAcidId], Union[dict, "NucleicAcid"]], list[Union[dict, "NucleicAcid"]]]] = empty_dict()
+    small_molecules: Optional[Union[dict[Union[str, SmallMoleculeId], Union[dict, "SmallMolecule"]], list[Union[dict, "SmallMolecule"]]]] = empty_dict()
     samples: Optional[Union[dict[Union[str, SampleId], Union[dict, "Sample"]], list[Union[dict, "Sample"]]]] = empty_dict()
+    sample_components: Optional[Union[dict[Union[str, SampleComponentId], Union[dict, "SampleComponent"]], list[Union[dict, "SampleComponent"]]]] = empty_dict()
     sample_preparations: Optional[Union[dict[Union[str, SamplePreparationId], Union[dict, "SamplePreparation"]], list[Union[dict, "SamplePreparation"]]]] = empty_dict()
     experiment_runs: Optional[Union[dict[Union[str, ExperimentRunId], Union[dict, "ExperimentRun"]], list[Union[dict, "ExperimentRun"]]]] = empty_dict()
     workflow_runs: Optional[Union[dict[Union[str, WorkflowRunId], Union[dict, "WorkflowRun"]], list[Union[dict, "WorkflowRun"]]]] = empty_dict()
@@ -505,6 +521,7 @@ class Dataset(NamedThing):
     experiment_instrument_associations: Optional[Union[Union[dict, "ExperimentInstrumentAssociation"], list[Union[dict, "ExperimentInstrumentAssociation"]]]] = empty_list()
     sample_protein_associations: Optional[Union[Union[dict, "SampleProteinAssociation"], list[Union[dict, "SampleProteinAssociation"]]]] = empty_list()
     sample_nucleic_acid_associations: Optional[Union[Union[dict, "SampleNucleicAcidAssociation"], list[Union[dict, "SampleNucleicAcidAssociation"]]]] = empty_list()
+    sample_component_interactions: Optional[Union[Union[dict, "SampleComponentInteraction"], list[Union[dict, "SampleComponentInteraction"]]]] = empty_list()
     workflow_experiment_associations: Optional[Union[Union[dict, "WorkflowExperimentAssociation"], list[Union[dict, "WorkflowExperimentAssociation"]]]] = empty_list()
     workflow_input_associations: Optional[Union[Union[dict, "WorkflowInputAssociation"], list[Union[dict, "WorkflowInputAssociation"]]]] = empty_list()
     workflow_output_associations: Optional[Union[Union[dict, "WorkflowOutputAssociation"], list[Union[dict, "WorkflowOutputAssociation"]]]] = empty_list()
@@ -538,7 +555,11 @@ class Dataset(NamedThing):
 
         self._normalize_inlined_as_list(slot_name="nucleic_acids", slot_type=NucleicAcid, key_name="id", keyed=True)
 
+        self._normalize_inlined_as_list(slot_name="small_molecules", slot_type=SmallMolecule, key_name="id", keyed=True)
+
         self._normalize_inlined_as_list(slot_name="samples", slot_type=Sample, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="sample_components", slot_type=SampleComponent, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="sample_preparations", slot_type=SamplePreparation, key_name="id", keyed=True)
 
@@ -577,6 +598,10 @@ class Dataset(NamedThing):
         if not isinstance(self.sample_nucleic_acid_associations, list):
             self.sample_nucleic_acid_associations = [self.sample_nucleic_acid_associations] if self.sample_nucleic_acid_associations is not None else []
         self.sample_nucleic_acid_associations = [v if isinstance(v, SampleNucleicAcidAssociation) else SampleNucleicAcidAssociation(**as_dict(v)) for v in self.sample_nucleic_acid_associations]
+
+        if not isinstance(self.sample_component_interactions, list):
+            self.sample_component_interactions = [self.sample_component_interactions] if self.sample_component_interactions is not None else []
+        self.sample_component_interactions = [v if isinstance(v, SampleComponentInteraction) else SampleComponentInteraction(**as_dict(v)) for v in self.sample_component_interactions]
 
         if not isinstance(self.workflow_experiment_associations, list):
             self.workflow_experiment_associations = [self.workflow_experiment_associations] if self.workflow_experiment_associations is not None else []
@@ -789,7 +814,10 @@ class Sample(NamedThing):
     buffer, concentration, storage, purity, the construct and tags used. The identity of the protein(s) it contains
     belongs on Protein, linked through SampleProteinAssociation, so a protein studied in ten preparations is described
     once. The nucleic acid(s) it contains belong on NucleicAcid in the same way, linked through
-    SampleNucleicAcidAssociation; a protein-DNA complex is one sample with one row in each.
+    SampleNucleicAcidAssociation; a protein-DNA complex is one sample with one row in each. Everything else it
+    contains - ligands, ions, lipids, detergents, virus particles, organelles - and the full inventory of what is in
+    it, one row per constituent with its role, lives in SampleComponent; what acts on what within the sample lives in
+    SampleComponentInteraction.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -1253,6 +1281,141 @@ class NucleicAcid(NamedThing):
         if not isinstance(self.cross_references, list):
             self.cross_references = [self.cross_references] if self.cross_references is not None else []
         self.cross_references = [v if isinstance(v, DatabaseCrossReference) else DatabaseCrossReference(**as_dict(v)) for v in self.cross_references]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class SmallMolecule(NamedThing):
+    """
+    A small molecule as a chemical entity: a ligand, drug, substrate, cofactor, metal ion, lipid, detergent, sugar or
+    crystallization additive, with its structure and identifiers. The counterpart of Protein and NucleicAcid for
+    everything in a sample that is not a biopolymer. One SmallMolecule record is shared by every Sample that contains
+    it, through SampleComponent. Facts about a particular preparation - how much was added, what it was added for,
+    what it is bound to - stay on SampleComponent and SampleComponentInteraction.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDA["SmallMolecule"]
+    class_class_curie: ClassVar[str] = "lambda:SmallMolecule"
+    class_name: ClassVar[str] = "SmallMolecule"
+    class_model_uri: ClassVar[URIRef] = LAMBDA.SmallMolecule
+
+    id: Union[str, SmallMoleculeId] = None
+    small_molecule_name: Optional[str] = None
+    chebi_id: Optional[Union[str, URIorCURIE]] = None
+    pdb_ligand_id: Optional[Union[str, URIorCURIE]] = None
+    chemical_class: Optional[Union[str, "ChemicalClassEnum"]] = None
+    molecular_formula: Optional[str] = None
+    smiles: Optional[Union[str, SmilesString]] = None
+    inchi: Optional[str] = None
+    inchikey: Optional[str] = None
+    molecular_weight_theoretical: Optional[Union[dict, "QuantityValue"]] = None
+    cross_references: Optional[Union[Union[dict, "DatabaseCrossReference"], list[Union[dict, "DatabaseCrossReference"]]]] = empty_list()
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, SmallMoleculeId):
+            self.id = SmallMoleculeId(self.id)
+
+        if self.small_molecule_name is not None and not isinstance(self.small_molecule_name, str):
+            self.small_molecule_name = str(self.small_molecule_name)
+
+        if self.chebi_id is not None and not isinstance(self.chebi_id, URIorCURIE):
+            self.chebi_id = URIorCURIE(self.chebi_id)
+
+        if self.pdb_ligand_id is not None and not isinstance(self.pdb_ligand_id, URIorCURIE):
+            self.pdb_ligand_id = URIorCURIE(self.pdb_ligand_id)
+
+        if self.chemical_class is not None and not isinstance(self.chemical_class, ChemicalClassEnum):
+            self.chemical_class = ChemicalClassEnum(self.chemical_class)
+
+        if self.molecular_formula is not None and not isinstance(self.molecular_formula, str):
+            self.molecular_formula = str(self.molecular_formula)
+
+        if self.smiles is not None and not isinstance(self.smiles, SmilesString):
+            self.smiles = SmilesString(self.smiles)
+
+        if self.inchi is not None and not isinstance(self.inchi, str):
+            self.inchi = str(self.inchi)
+
+        if self.inchikey is not None and not isinstance(self.inchikey, str):
+            self.inchikey = str(self.inchikey)
+
+        if self.molecular_weight_theoretical is not None and not isinstance(self.molecular_weight_theoretical, QuantityValue):
+            self.molecular_weight_theoretical = QuantityValue(**as_dict(self.molecular_weight_theoretical))
+
+        if not isinstance(self.cross_references, list):
+            self.cross_references = [self.cross_references] if self.cross_references is not None else []
+        self.cross_references = [v if isinstance(v, DatabaseCrossReference) else DatabaseCrossReference(**as_dict(v)) for v in self.cross_references]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class SampleComponent(NamedThing):
+    """
+    One constituent of one sample: a protein, a nucleic acid, a small molecule, a virus particle, an organelle, a
+    cell, a membrane mimetic. The inventory of what a sample contains, one row per kind of thing in it, so that a
+    sample can hold any mixture and each thing in it can be named, given a role, counted and pointed at.
+    SampleComponentInteraction rows say which components are expected or observed to act on which. Sample.sample_type
+    remains the one-word summary; this table is the detail behind it.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDA["SampleComponent"]
+    class_class_curie: ClassVar[str] = "lambda:SampleComponent"
+    class_name: ClassVar[str] = "SampleComponent"
+    class_model_uri: ClassVar[URIRef] = LAMBDA.SampleComponent
+
+    id: Union[str, SampleComponentId] = None
+    sample_id: Union[str, SampleId] = None
+    component_type: Union[str, "SampleComponentTypeEnum"] = None
+    protein_id: Optional[Union[str, ProteinId]] = None
+    nucleic_acid_id: Optional[Union[str, NucleicAcidId]] = None
+    small_molecule_id: Optional[Union[str, SmallMoleculeId]] = None
+    ontology_term: Optional[Union[str, OntologyTermId]] = None
+    role: Optional[Union[str, "SampleComponentRoleEnum"]] = None
+    copy_number: Optional[int] = None
+    concentration: Optional[Union[dict, "QuantityValue"]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, SampleComponentId):
+            self.id = SampleComponentId(self.id)
+
+        if self._is_empty(self.sample_id):
+            self.MissingRequiredField("sample_id")
+        if not isinstance(self.sample_id, SampleId):
+            self.sample_id = SampleId(self.sample_id)
+
+        if self._is_empty(self.component_type):
+            self.MissingRequiredField("component_type")
+        if not isinstance(self.component_type, SampleComponentTypeEnum):
+            self.component_type = SampleComponentTypeEnum(self.component_type)
+
+        if self.protein_id is not None and not isinstance(self.protein_id, ProteinId):
+            self.protein_id = ProteinId(self.protein_id)
+
+        if self.nucleic_acid_id is not None and not isinstance(self.nucleic_acid_id, NucleicAcidId):
+            self.nucleic_acid_id = NucleicAcidId(self.nucleic_acid_id)
+
+        if self.small_molecule_id is not None and not isinstance(self.small_molecule_id, SmallMoleculeId):
+            self.small_molecule_id = SmallMoleculeId(self.small_molecule_id)
+
+        if self.ontology_term is not None and not isinstance(self.ontology_term, OntologyTermId):
+            self.ontology_term = OntologyTermId(self.ontology_term)
+
+        if self.role is not None and not isinstance(self.role, SampleComponentRoleEnum):
+            self.role = SampleComponentRoleEnum(self.role)
+
+        if self.copy_number is not None and not isinstance(self.copy_number, int):
+            self.copy_number = int(self.copy_number)
+
+        if self.concentration is not None and not isinstance(self.concentration, QuantityValue):
+            self.concentration = QuantityValue(**as_dict(self.concentration))
 
         super().__post_init__(**kwargs)
 
@@ -4584,6 +4747,84 @@ class SampleNucleicAcidAssociation(YAMLRoot):
 
 
 @dataclass(repr=False)
+class SampleComponentInteraction(YAMLRoot):
+    """
+    A relationship between two components of one sample: this ligand binds that protein, this metal is coordinated by
+    that enzyme, this guide RNA pairs with that DNA strand, this membrane protein sits in that nanodisc. One row per
+    ordered pair and relationship, read subject to object as interaction_type is worded. Rows can say what the sample
+    was made to test as well as what the data showed: interaction_status separates the design from the result, so a
+    ligand soaked in and not seen in the density is recorded rather than silently dropped.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDA["SampleComponentInteraction"]
+    class_class_curie: ClassVar[str] = "lambda:SampleComponentInteraction"
+    class_name: ClassVar[str] = "SampleComponentInteraction"
+    class_model_uri: ClassVar[URIRef] = LAMBDA.SampleComponentInteraction
+
+    sample_id: Union[str, SampleId] = None
+    subject_id: Union[str, SampleComponentId] = None
+    object_id: Union[str, SampleComponentId] = None
+    interaction_type: Union[str, "ComponentInteractionTypeEnum"] = None
+    interaction_status: Optional[Union[str, "InteractionStatusEnum"]] = None
+    stoichiometry: Optional[str] = None
+    subject_site: Optional[str] = None
+    object_site: Optional[str] = None
+    affinity: Optional[Union[dict, "QuantityValue"]] = None
+    affinity_type: Optional[Union[str, "BindingAffinityTypeEnum"]] = None
+    evidence: Optional[Union[Union[str, "InteractionEvidenceEnum"], list[Union[str, "InteractionEvidenceEnum"]]]] = empty_list()
+    description: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.sample_id):
+            self.MissingRequiredField("sample_id")
+        if not isinstance(self.sample_id, SampleId):
+            self.sample_id = SampleId(self.sample_id)
+
+        if self._is_empty(self.subject_id):
+            self.MissingRequiredField("subject_id")
+        if not isinstance(self.subject_id, SampleComponentId):
+            self.subject_id = SampleComponentId(self.subject_id)
+
+        if self._is_empty(self.object_id):
+            self.MissingRequiredField("object_id")
+        if not isinstance(self.object_id, SampleComponentId):
+            self.object_id = SampleComponentId(self.object_id)
+
+        if self._is_empty(self.interaction_type):
+            self.MissingRequiredField("interaction_type")
+        if not isinstance(self.interaction_type, ComponentInteractionTypeEnum):
+            self.interaction_type = ComponentInteractionTypeEnum(self.interaction_type)
+
+        if self.interaction_status is not None and not isinstance(self.interaction_status, InteractionStatusEnum):
+            self.interaction_status = InteractionStatusEnum(self.interaction_status)
+
+        if self.stoichiometry is not None and not isinstance(self.stoichiometry, str):
+            self.stoichiometry = str(self.stoichiometry)
+
+        if self.subject_site is not None and not isinstance(self.subject_site, str):
+            self.subject_site = str(self.subject_site)
+
+        if self.object_site is not None and not isinstance(self.object_site, str):
+            self.object_site = str(self.object_site)
+
+        if self.affinity is not None and not isinstance(self.affinity, QuantityValue):
+            self.affinity = QuantityValue(**as_dict(self.affinity))
+
+        if self.affinity_type is not None and not isinstance(self.affinity_type, BindingAffinityTypeEnum):
+            self.affinity_type = BindingAffinityTypeEnum(self.affinity_type)
+
+        if not isinstance(self.evidence, list):
+            self.evidence = [self.evidence] if self.evidence is not None else []
+        self.evidence = [v if isinstance(v, InteractionEvidenceEnum) else InteractionEvidenceEnum(v) for v in self.evidence]
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
 class ExperimentInstrumentAssociation(YAMLRoot):
     """
     M:N link between ExperimentRun and Instrument
@@ -5958,7 +6199,9 @@ class FacilityEnum(EnumDefinitionImpl):
 
 class SampleTypeEnum(EnumDefinitionImpl):
     """
-    Types of biological samples
+    Coarse kind of a sample, a one-word summary for search. What the sample actually contains - which proteins,
+    strands, ligands and particles, in what roles, and which acts on which - is recorded in SampleComponent and
+    SampleComponentInteraction.
     """
     protein = PermissibleValue(
         text="protein",
@@ -5968,7 +6211,7 @@ class SampleTypeEnum(EnumDefinitionImpl):
         description="Nucleic acid sample (DNA or RNA)")
     complex = PermissibleValue(
         text="complex",
-        description="Protein-protein or protein-nucleic acid complex")
+        description="""A complex of two or more macromolecules, or of a macromolecule with its ligands; the components say which""")
     membrane_protein = PermissibleValue(
         text="membrane_protein",
         description="Membrane protein sample")
@@ -5978,10 +6221,16 @@ class SampleTypeEnum(EnumDefinitionImpl):
     organelle = PermissibleValue(
         text="organelle",
         description="Cellular organelle")
+    cell = PermissibleValue(
+        text="cell",
+        description="Whole cell, as for cryo-electron tomography of a lamella")
+    tissue = PermissibleValue(
+        text="tissue",
+        description="Tissue or tissue section")
 
     _defn = EnumDefinition(
         name="SampleTypeEnum",
-        description="Types of biological samples",
+        description="""Coarse kind of a sample, a one-word summary for search. What the sample actually contains - which proteins, strands, ligands and particles, in what roles, and which acts on which - is recorded in SampleComponent and SampleComponentInteraction.""",
     )
 
 class PreparationTypeEnum(EnumDefinitionImpl):
@@ -7336,6 +7585,9 @@ class SampleProteinRoleEnum(EnumDefinitionImpl):
     chaperone = PermissibleValue(
         text="chaperone",
         description="A chaperone or scaffold added to stabilize or reconstitute the target")
+    carrier = PermissibleValue(
+        text="carrier",
+        description="""A membrane scaffold protein or other protein that forms the host a membrane protein target sits in, as MSP1D1 does for a nanodisc""")
     contaminant = PermissibleValue(
         text="contaminant",
         description="A protein present unintentionally and identified after the fact")
@@ -7470,6 +7722,241 @@ class NucleicAcidSourceEnum(EnumDefinitionImpl):
     _defn = EnumDefinition(
         name="NucleicAcidSourceEnum",
         description="How a nucleic acid strand was produced for a preparation",
+    )
+
+class SampleComponentTypeEnum(EnumDefinitionImpl):
+    """
+    Kinds of thing a sample may contain. The first three are described by an entity record; the rest are named by
+    title and an ontology term.
+    """
+    protein = PermissibleValue(
+        text="protein",
+        description="A protein or peptide, described by a Protein record")
+    nucleic_acid = PermissibleValue(
+        text="nucleic_acid",
+        description="A DNA or RNA strand, described by a NucleicAcid record")
+    small_molecule = PermissibleValue(
+        text="small_molecule",
+        description="""A ligand, cofactor, metal ion, lipid, detergent, sugar or additive, described by a SmallMolecule record""")
+    virus_particle = PermissibleValue(
+        text="virus_particle",
+        description="A virion or virus-like particle, named by its NCBI Taxonomy term")
+    organelle = PermissibleValue(
+        text="organelle",
+        description="""An organelle or other cellular substructure such as a ribosome, a proteasome or a mitochondrion, named by its GO cellular component term""")
+    cell = PermissibleValue(
+        text="cell",
+        description="A whole cell, named by its Cell Ontology or NCBI Taxonomy term")
+    tissue = PermissibleValue(
+        text="tissue",
+        description="A tissue or tissue section, named by its UBERON term")
+    membrane_mimetic = PermissibleValue(
+        text="membrane_mimetic",
+        description="A nanodisc, liposome, bicelle, micelle or amphipol that hosts a membrane protein")
+    nanoparticle = PermissibleValue(
+        text="nanoparticle",
+        description="A synthetic nanoparticle or scaffold")
+    other = PermissibleValue(
+        text="other",
+        description="A component of a kind not listed, described in title and description")
+
+    _defn = EnumDefinition(
+        name="SampleComponentTypeEnum",
+        description="""Kinds of thing a sample may contain. The first three are described by an entity record; the rest are named by title and an ontology term.""",
+    )
+
+class SampleComponentRoleEnum(EnumDefinitionImpl):
+    """
+    Part a component plays in a sample. A superset of SampleProteinRoleEnum and SampleNucleicAcidRoleEnum, so a role
+    given on an association can be repeated on the component without translation.
+    """
+    target = PermissibleValue(
+        text="target",
+        description="The thing under investigation")
+    subunit = PermissibleValue(
+        text="subunit",
+        description="One subunit or strand of a complex that is the target as a whole")
+    binding_partner = PermissibleValue(
+        text="binding_partner",
+        description="""A macromolecule present for its interaction with the target: an antibody, a substrate protein, the DNA site a transcription factor binds""")
+    ligand = PermissibleValue(
+        text="ligand",
+        description="""A small molecule present for its binding to the target, where a more specific role does not apply""")
+    substrate = PermissibleValue(
+        text="substrate",
+        description="A substrate of an enzyme in the sample, including a non-hydrolysable analogue")
+    product = PermissibleValue(
+        text="product",
+        description="A product of an enzyme in the sample")
+    inhibitor = PermissibleValue(
+        text="inhibitor",
+        description="A small molecule or macromolecule that inhibits the target")
+    activator = PermissibleValue(
+        text="activator",
+        description="A small molecule or macromolecule that activates the target")
+    cofactor = PermissibleValue(
+        text="cofactor",
+        description="A cofactor, coenzyme, prosthetic group or structural metal ion of the target")
+    fusion_partner = PermissibleValue(
+        text="fusion_partner",
+        description="A solubility or affinity fusion partner left attached (e.g., MBP, GST, GFP)")
+    chaperone = PermissibleValue(
+        text="chaperone",
+        description="A chaperone or scaffold added to stabilize or reconstitute the target")
+    template = PermissibleValue(
+        text="template",
+        description="The strand a polymerase or reverse transcriptase reads")
+    primer = PermissibleValue(
+        text="primer",
+        description="The strand a polymerase extends")
+    guide = PermissibleValue(
+        text="guide",
+        description="A guide RNA or DNA that directs a nuclease or other effector to its target")
+    scaffold = PermissibleValue(
+        text="scaffold",
+        description="A structural scaffold, as in DNA origami or a nanoparticle assembly")
+    carrier = PermissibleValue(
+        text="carrier",
+        description="A nanodisc, micelle, liposome or other host that holds a membrane protein")
+    additive = PermissibleValue(
+        text="additive",
+        description="""A cryoprotectant, precipitant, reducing agent or other additive that is part of the sample rather than of the buffer""")
+    contaminant = PermissibleValue(
+        text="contaminant",
+        description="Present unintentionally and identified after the fact")
+    standard = PermissibleValue(
+        text="standard",
+        description="A reference added for calibration or as a size marker")
+
+    _defn = EnumDefinition(
+        name="SampleComponentRoleEnum",
+        description="""Part a component plays in a sample. A superset of SampleProteinRoleEnum and SampleNucleicAcidRoleEnum, so a role given on an association can be repeated on the component without translation.""",
+    )
+
+class ComponentInteractionTypeEnum(EnumDefinitionImpl):
+    """
+    What the subject of a SampleComponentInteraction does to its object. Each term reads in the direction subject to
+    object. Some relationships are symmetric - base_pairs_with, crosslinked_to, forms_complex_with, competes_with,
+    no_interaction - and the row is still ordered: write one row, not two, and put the target or the larger partner as
+    the object where there is a choice.
+    """
+    binds = PermissibleValue(
+        text="binds",
+        description="Subject binds object non-covalently, where a more specific term does not apply")
+    inhibits = PermissibleValue(
+        text="inhibits",
+        description="Subject inhibits object")
+    activates = PermissibleValue(
+        text="activates",
+        description="Subject activates object")
+    is_substrate_of = PermissibleValue(
+        text="is_substrate_of",
+        description="Subject is a substrate of object, an enzyme")
+    is_product_of = PermissibleValue(
+        text="is_product_of",
+        description="Subject is a product of object, an enzyme")
+    is_cofactor_of = PermissibleValue(
+        text="is_cofactor_of",
+        description="Subject is a cofactor, coenzyme or prosthetic group of object")
+    is_coordinated_by = PermissibleValue(
+        text="is_coordinated_by",
+        description="Subject, a metal ion, is coordinated by object")
+    cleaves = PermissibleValue(
+        text="cleaves",
+        description="Subject cleaves object, as a nuclease cleaves its target strand or a protease its substrate")
+    covalently_modifies = PermissibleValue(
+        text="covalently_modifies",
+        description="Subject adds a covalent modification to object, as a kinase phosphorylates its substrate")
+    covalently_linked_to = PermissibleValue(
+        text="covalently_linked_to",
+        description="Subject is covalently bonded to object: a covalent inhibitor, a glycan, a lipid anchor")
+    crosslinked_to = PermissibleValue(
+        text="crosslinked_to",
+        description="Subject is joined to object by a chemical crosslinker")
+    base_pairs_with = PermissibleValue(
+        text="base_pairs_with",
+        description="""Subject, a nucleic acid, is base-paired with object: the two strands of a duplex, a guide with its target""")
+    embedded_in = PermissibleValue(
+        text="embedded_in",
+        description="Subject, a membrane protein, sits in object, a membrane mimetic")
+    solubilized_by = PermissibleValue(
+        text="solubilized_by",
+        description="Subject is kept in solution by object, a detergent or amphipol")
+    encapsulated_in = PermissibleValue(
+        text="encapsulated_in",
+        description="Subject is enclosed by object: a genome in a capsid, a cargo in a liposome")
+    forms_complex_with = PermissibleValue(
+        text="forms_complex_with",
+        description="""Subject and object are parts of one assembly, where the nature of the contact is not specified. Symmetric; one row, target as object""")
+    competes_with = PermissibleValue(
+        text="competes_with",
+        description="Subject competes with object for the same site on a third component")
+    no_interaction = PermissibleValue(
+        text="no_interaction",
+        description="Subject is expected not to interact with object: a negative control pairing")
+
+    _defn = EnumDefinition(
+        name="ComponentInteractionTypeEnum",
+        description="""What the subject of a SampleComponentInteraction does to its object. Each term reads in the direction subject to object. Some relationships are symmetric - base_pairs_with, crosslinked_to, forms_complex_with, competes_with, no_interaction - and the row is still ordered: write one row, not two, and put the target or the larger partner as the object where there is a choice.""",
+    )
+
+class InteractionStatusEnum(EnumDefinitionImpl):
+    """
+    Standing of an interaction claim: the sample's design, prior knowledge, or this dataset's result
+    """
+    designed = PermissibleValue(
+        text="designed",
+        description="The pairing the sample was made to test or to capture")
+    expected = PermissibleValue(
+        text="expected",
+        description="Known or predicted from prior work, and assumed to hold in this sample")
+    observed = PermissibleValue(
+        text="observed",
+        description="""Seen in this dataset's data: density for the ligand, a shift in the scattering curve, a crosslink""")
+    not_observed = PermissibleValue(
+        text="not_observed",
+        description="Designed or expected, and not seen in this dataset's data")
+
+    _defn = EnumDefinition(
+        name="InteractionStatusEnum",
+        description="Standing of an interaction claim: the sample's design, prior knowledge, or this dataset's result",
+    )
+
+class ChemicalClassEnum(EnumDefinitionImpl):
+    """
+    Broad chemical kind of a SmallMolecule
+    """
+    ion = PermissibleValue(
+        text="ion",
+        description="A metal or other inorganic ion: Zn2+, Mg2+, Ca2+, Cl-")
+    lipid = PermissibleValue(
+        text="lipid",
+        description="A lipid: a phospholipid, sterol, fatty acid or lipid anchor")
+    detergent = PermissibleValue(
+        text="detergent",
+        description="A detergent or amphipol used to solubilize a membrane protein")
+    carbohydrate = PermissibleValue(
+        text="carbohydrate",
+        description="A sugar, glycan or glycan fragment")
+    nucleotide = PermissibleValue(
+        text="nucleotide",
+        description="A free nucleotide or nucleotide analogue: ATP, GDP, AMP-PNP, NAD")
+    amino_acid = PermissibleValue(
+        text="amino_acid",
+        description="A free amino acid or amino acid derivative")
+    organic = PermissibleValue(
+        text="organic",
+        description="""An organic small molecule in no more specific class: a drug, a fragment, a natural product, a dye""")
+    polymer = PermissibleValue(
+        text="polymer",
+        description="A synthetic polymer such as PEG")
+    other = PermissibleValue(
+        text="other",
+        description="A compound in no class listed")
+
+    _defn = EnumDefinition(
+        name="ChemicalClassEnum",
+        description="Broad chemical kind of a SmallMolecule",
     )
 
 class InstrumentRoleEnum(EnumDefinitionImpl):
@@ -8669,8 +9156,14 @@ slots.dataset__protein_constructs = Slot(uri=LAMBDA.protein_constructs, name="da
 slots.dataset__nucleic_acids = Slot(uri=LAMBDA.nucleic_acids, name="dataset__nucleic_acids", curie=LAMBDA.curie('nucleic_acids'),
                    model_uri=LAMBDA.dataset__nucleic_acids, domain=None, range=Optional[Union[dict[Union[str, NucleicAcidId], Union[dict, NucleicAcid]], list[Union[dict, NucleicAcid]]]])
 
+slots.dataset__small_molecules = Slot(uri=LAMBDA.small_molecules, name="dataset__small_molecules", curie=LAMBDA.curie('small_molecules'),
+                   model_uri=LAMBDA.dataset__small_molecules, domain=None, range=Optional[Union[dict[Union[str, SmallMoleculeId], Union[dict, SmallMolecule]], list[Union[dict, SmallMolecule]]]])
+
 slots.dataset__samples = Slot(uri=LAMBDA.samples, name="dataset__samples", curie=LAMBDA.curie('samples'),
                    model_uri=LAMBDA.dataset__samples, domain=None, range=Optional[Union[dict[Union[str, SampleId], Union[dict, Sample]], list[Union[dict, Sample]]]])
+
+slots.dataset__sample_components = Slot(uri=LAMBDA.sample_components, name="dataset__sample_components", curie=LAMBDA.curie('sample_components'),
+                   model_uri=LAMBDA.dataset__sample_components, domain=None, range=Optional[Union[dict[Union[str, SampleComponentId], Union[dict, SampleComponent]], list[Union[dict, SampleComponent]]]])
 
 slots.dataset__sample_preparations = Slot(uri=LAMBDA.sample_preparations, name="dataset__sample_preparations", curie=LAMBDA.curie('sample_preparations'),
                    model_uri=LAMBDA.dataset__sample_preparations, domain=None, range=Optional[Union[dict[Union[str, SamplePreparationId], Union[dict, SamplePreparation]], list[Union[dict, SamplePreparation]]]])
@@ -8707,6 +9200,9 @@ slots.dataset__sample_protein_associations = Slot(uri=LAMBDA.sample_protein_asso
 
 slots.dataset__sample_nucleic_acid_associations = Slot(uri=LAMBDA.sample_nucleic_acid_associations, name="dataset__sample_nucleic_acid_associations", curie=LAMBDA.curie('sample_nucleic_acid_associations'),
                    model_uri=LAMBDA.dataset__sample_nucleic_acid_associations, domain=None, range=Optional[Union[Union[dict, SampleNucleicAcidAssociation], list[Union[dict, SampleNucleicAcidAssociation]]]])
+
+slots.dataset__sample_component_interactions = Slot(uri=LAMBDA.sample_component_interactions, name="dataset__sample_component_interactions", curie=LAMBDA.curie('sample_component_interactions'),
+                   model_uri=LAMBDA.dataset__sample_component_interactions, domain=None, range=Optional[Union[Union[dict, SampleComponentInteraction], list[Union[dict, SampleComponentInteraction]]]])
 
 slots.dataset__workflow_experiment_associations = Slot(uri=LAMBDA.workflow_experiment_associations, name="dataset__workflow_experiment_associations", curie=LAMBDA.curie('workflow_experiment_associations'),
                    model_uri=LAMBDA.dataset__workflow_experiment_associations, domain=None, range=Optional[Union[Union[dict, WorkflowExperimentAssociation], list[Union[dict, WorkflowExperimentAssociation]]]])
@@ -9077,6 +9573,67 @@ slots.nucleicAcid__pdb_entries = Slot(uri=LAMBDA.pdb_entries, name="nucleicAcid_
 
 slots.nucleicAcid__cross_references = Slot(uri=LAMBDA.cross_references, name="nucleicAcid__cross_references", curie=LAMBDA.curie('cross_references'),
                    model_uri=LAMBDA.nucleicAcid__cross_references, domain=None, range=Optional[Union[Union[dict, DatabaseCrossReference], list[Union[dict, DatabaseCrossReference]]]])
+
+slots.smallMolecule__small_molecule_name = Slot(uri=LAMBDA.small_molecule_name, name="smallMolecule__small_molecule_name", curie=LAMBDA.curie('small_molecule_name'),
+                   model_uri=LAMBDA.smallMolecule__small_molecule_name, domain=None, range=Optional[str])
+
+slots.smallMolecule__chebi_id = Slot(uri=LAMBDA.chebi_id, name="smallMolecule__chebi_id", curie=LAMBDA.curie('chebi_id'),
+                   model_uri=LAMBDA.smallMolecule__chebi_id, domain=None, range=Optional[Union[str, URIorCURIE]],
+                   pattern=re.compile(r'^CHEBI:[0-9]+$'))
+
+slots.smallMolecule__pdb_ligand_id = Slot(uri=LAMBDA.pdb_ligand_id, name="smallMolecule__pdb_ligand_id", curie=LAMBDA.curie('pdb_ligand_id'),
+                   model_uri=LAMBDA.smallMolecule__pdb_ligand_id, domain=None, range=Optional[Union[str, URIorCURIE]],
+                   pattern=re.compile(r'^pdb\.ligand:[A-Z0-9]{1,5}$'))
+
+slots.smallMolecule__chemical_class = Slot(uri=LAMBDA.chemical_class, name="smallMolecule__chemical_class", curie=LAMBDA.curie('chemical_class'),
+                   model_uri=LAMBDA.smallMolecule__chemical_class, domain=None, range=Optional[Union[str, "ChemicalClassEnum"]])
+
+slots.smallMolecule__molecular_formula = Slot(uri=LAMBDA.molecular_formula, name="smallMolecule__molecular_formula", curie=LAMBDA.curie('molecular_formula'),
+                   model_uri=LAMBDA.smallMolecule__molecular_formula, domain=None, range=Optional[str])
+
+slots.smallMolecule__smiles = Slot(uri=LAMBDA.smiles, name="smallMolecule__smiles", curie=LAMBDA.curie('smiles'),
+                   model_uri=LAMBDA.smallMolecule__smiles, domain=None, range=Optional[Union[str, SmilesString]])
+
+slots.smallMolecule__inchi = Slot(uri=LAMBDA.inchi, name="smallMolecule__inchi", curie=LAMBDA.curie('inchi'),
+                   model_uri=LAMBDA.smallMolecule__inchi, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^InChI=1S?/'))
+
+slots.smallMolecule__inchikey = Slot(uri=LAMBDA.inchikey, name="smallMolecule__inchikey", curie=LAMBDA.curie('inchikey'),
+                   model_uri=LAMBDA.smallMolecule__inchikey, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^[A-Z]{14}-[A-Z]{10}-[A-Z]$'))
+
+slots.smallMolecule__molecular_weight_theoretical = Slot(uri=LAMBDA.molecular_weight_theoretical, name="smallMolecule__molecular_weight_theoretical", curie=LAMBDA.curie('molecular_weight_theoretical'),
+                   model_uri=LAMBDA.smallMolecule__molecular_weight_theoretical, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.smallMolecule__cross_references = Slot(uri=LAMBDA.cross_references, name="smallMolecule__cross_references", curie=LAMBDA.curie('cross_references'),
+                   model_uri=LAMBDA.smallMolecule__cross_references, domain=None, range=Optional[Union[Union[dict, DatabaseCrossReference], list[Union[dict, DatabaseCrossReference]]]])
+
+slots.sampleComponent__sample_id = Slot(uri=LAMBDA.sample_id, name="sampleComponent__sample_id", curie=LAMBDA.curie('sample_id'),
+                   model_uri=LAMBDA.sampleComponent__sample_id, domain=None, range=Union[str, SampleId])
+
+slots.sampleComponent__component_type = Slot(uri=LAMBDA.component_type, name="sampleComponent__component_type", curie=LAMBDA.curie('component_type'),
+                   model_uri=LAMBDA.sampleComponent__component_type, domain=None, range=Union[str, "SampleComponentTypeEnum"])
+
+slots.sampleComponent__protein_id = Slot(uri=LAMBDA.protein_id, name="sampleComponent__protein_id", curie=LAMBDA.curie('protein_id'),
+                   model_uri=LAMBDA.sampleComponent__protein_id, domain=None, range=Optional[Union[str, ProteinId]])
+
+slots.sampleComponent__nucleic_acid_id = Slot(uri=LAMBDA.nucleic_acid_id, name="sampleComponent__nucleic_acid_id", curie=LAMBDA.curie('nucleic_acid_id'),
+                   model_uri=LAMBDA.sampleComponent__nucleic_acid_id, domain=None, range=Optional[Union[str, NucleicAcidId]])
+
+slots.sampleComponent__small_molecule_id = Slot(uri=LAMBDA.small_molecule_id, name="sampleComponent__small_molecule_id", curie=LAMBDA.curie('small_molecule_id'),
+                   model_uri=LAMBDA.sampleComponent__small_molecule_id, domain=None, range=Optional[Union[str, SmallMoleculeId]])
+
+slots.sampleComponent__ontology_term = Slot(uri=LAMBDA.ontology_term, name="sampleComponent__ontology_term", curie=LAMBDA.curie('ontology_term'),
+                   model_uri=LAMBDA.sampleComponent__ontology_term, domain=None, range=Optional[Union[str, OntologyTermId]])
+
+slots.sampleComponent__role = Slot(uri=LAMBDA.role, name="sampleComponent__role", curie=LAMBDA.curie('role'),
+                   model_uri=LAMBDA.sampleComponent__role, domain=None, range=Optional[Union[str, "SampleComponentRoleEnum"]])
+
+slots.sampleComponent__copy_number = Slot(uri=LAMBDA.copy_number, name="sampleComponent__copy_number", curie=LAMBDA.curie('copy_number'),
+                   model_uri=LAMBDA.sampleComponent__copy_number, domain=None, range=Optional[int])
+
+slots.sampleComponent__concentration = Slot(uri=LAMBDA.concentration, name="sampleComponent__concentration", curie=LAMBDA.curie('concentration'),
+                   model_uri=LAMBDA.sampleComponent__concentration, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.samplePreparation__preparation_type = Slot(uri=LAMBDA.preparation_type, name="samplePreparation__preparation_type", curie=LAMBDA.curie('preparation_type'),
                    model_uri=LAMBDA.samplePreparation__preparation_type, domain=None, range=Union[str, "PreparationTypeEnum"])
@@ -10799,6 +11356,43 @@ slots.sampleNucleicAcidAssociation__modifications = Slot(uri=LAMBDA.modification
 
 slots.sampleNucleicAcidAssociation__observed_molecular_weight = Slot(uri=LAMBDA.observed_molecular_weight, name="sampleNucleicAcidAssociation__observed_molecular_weight", curie=LAMBDA.curie('observed_molecular_weight'),
                    model_uri=LAMBDA.sampleNucleicAcidAssociation__observed_molecular_weight, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.sampleComponentInteraction__sample_id = Slot(uri=LAMBDA.sample_id, name="sampleComponentInteraction__sample_id", curie=LAMBDA.curie('sample_id'),
+                   model_uri=LAMBDA.sampleComponentInteraction__sample_id, domain=None, range=Union[str, SampleId])
+
+slots.sampleComponentInteraction__subject_id = Slot(uri=LAMBDA.subject_id, name="sampleComponentInteraction__subject_id", curie=LAMBDA.curie('subject_id'),
+                   model_uri=LAMBDA.sampleComponentInteraction__subject_id, domain=None, range=Union[str, SampleComponentId])
+
+slots.sampleComponentInteraction__object_id = Slot(uri=LAMBDA.object_id, name="sampleComponentInteraction__object_id", curie=LAMBDA.curie('object_id'),
+                   model_uri=LAMBDA.sampleComponentInteraction__object_id, domain=None, range=Union[str, SampleComponentId])
+
+slots.sampleComponentInteraction__interaction_type = Slot(uri=LAMBDA.interaction_type, name="sampleComponentInteraction__interaction_type", curie=LAMBDA.curie('interaction_type'),
+                   model_uri=LAMBDA.sampleComponentInteraction__interaction_type, domain=None, range=Union[str, "ComponentInteractionTypeEnum"])
+
+slots.sampleComponentInteraction__interaction_status = Slot(uri=LAMBDA.interaction_status, name="sampleComponentInteraction__interaction_status", curie=LAMBDA.curie('interaction_status'),
+                   model_uri=LAMBDA.sampleComponentInteraction__interaction_status, domain=None, range=Optional[Union[str, "InteractionStatusEnum"]])
+
+slots.sampleComponentInteraction__stoichiometry = Slot(uri=LAMBDA.stoichiometry, name="sampleComponentInteraction__stoichiometry", curie=LAMBDA.curie('stoichiometry'),
+                   model_uri=LAMBDA.sampleComponentInteraction__stoichiometry, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^([0-9]+(\.[0-9]+)?|n):([0-9]+(\.[0-9]+)?|n)$'))
+
+slots.sampleComponentInteraction__subject_site = Slot(uri=LAMBDA.subject_site, name="sampleComponentInteraction__subject_site", curie=LAMBDA.curie('subject_site'),
+                   model_uri=LAMBDA.sampleComponentInteraction__subject_site, domain=None, range=Optional[str])
+
+slots.sampleComponentInteraction__object_site = Slot(uri=LAMBDA.object_site, name="sampleComponentInteraction__object_site", curie=LAMBDA.curie('object_site'),
+                   model_uri=LAMBDA.sampleComponentInteraction__object_site, domain=None, range=Optional[str])
+
+slots.sampleComponentInteraction__affinity = Slot(uri=LAMBDA.affinity, name="sampleComponentInteraction__affinity", curie=LAMBDA.curie('affinity'),
+                   model_uri=LAMBDA.sampleComponentInteraction__affinity, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.sampleComponentInteraction__affinity_type = Slot(uri=LAMBDA.affinity_type, name="sampleComponentInteraction__affinity_type", curie=LAMBDA.curie('affinity_type'),
+                   model_uri=LAMBDA.sampleComponentInteraction__affinity_type, domain=None, range=Optional[Union[str, "BindingAffinityTypeEnum"]])
+
+slots.sampleComponentInteraction__evidence = Slot(uri=LAMBDA.evidence, name="sampleComponentInteraction__evidence", curie=LAMBDA.curie('evidence'),
+                   model_uri=LAMBDA.sampleComponentInteraction__evidence, domain=None, range=Optional[Union[Union[str, "InteractionEvidenceEnum"], list[Union[str, "InteractionEvidenceEnum"]]]])
+
+slots.sampleComponentInteraction__description = Slot(uri=LAMBDA.description, name="sampleComponentInteraction__description", curie=LAMBDA.curie('description'),
+                   model_uri=LAMBDA.sampleComponentInteraction__description, domain=None, range=Optional[str])
 
 slots.experimentInstrumentAssociation__experiment_id = Slot(uri=LAMBDA.experiment_id, name="experimentInstrumentAssociation__experiment_id", curie=LAMBDA.curie('experiment_id'),
                    model_uri=LAMBDA.experimentInstrumentAssociation__experiment_id, domain=None, range=Union[str, ExperimentRunId])

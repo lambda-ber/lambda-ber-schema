@@ -13,16 +13,6 @@ lambdaber:dataset-hemoglobin-protein-entities a lambdaber:Dataset ;
     lambdaber:proteins uniprot:P68871,
         uniprot:P69905 ;
     lambdaber:sample_protein_associations [ a lambdaber:SampleProteinAssociation ;
-            lambdaber:chain_ids "A",
-                "C" ;
-            lambdaber:copy_number 2 ;
-            lambdaber:observed_molecular_weight [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "15.13"^^xsd:float ;
-                    lambdaber:unit "kilodaltons" ] ;
-            lambdaber:protein_id uniprot:P69905 ;
-            lambdaber:role "subunit" ;
-            lambdaber:sample_id lambdaber:sample-hba-oxy-tetramer ],
-        [ a lambdaber:SampleProteinAssociation ;
             lambdaber:chain_ids "B",
                 "D" ;
             lambdaber:copy_number 2 ;
@@ -43,7 +33,17 @@ lambdaber:dataset-hemoglobin-protein-entities a lambdaber:Dataset ;
             lambdaber:residue_range "1-100" ;
             lambdaber:role "target" ;
             lambdaber:sample_id lambdaber:sample-hba1-fragment-his6 ;
-            lambdaber:sequence_coverage "0.71"^^xsd:float ] ;
+            lambdaber:sequence_coverage "0.71"^^xsd:float ],
+        [ a lambdaber:SampleProteinAssociation ;
+            lambdaber:chain_ids "A",
+                "C" ;
+            lambdaber:copy_number 2 ;
+            lambdaber:observed_molecular_weight [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "15.13"^^xsd:float ;
+                    lambdaber:unit "kilodaltons" ] ;
+            lambdaber:protein_id uniprot:P69905 ;
+            lambdaber:role "subunit" ;
+            lambdaber:sample_id lambdaber:sample-hba-oxy-tetramer ] ;
     lambdaber:samples lambdaber:sample-hba-oxy-tetramer,
         lambdaber:sample-hba1-fragment-his6 ;
     lambdaber:studies lambdaber:study-hemoglobin ;

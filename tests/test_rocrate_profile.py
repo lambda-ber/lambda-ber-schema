@@ -186,6 +186,10 @@ EXPECTED_FAILURE = {
     "dangling-protein-part.json": "hasBioChemEntityPart",
     "protein-no-accession.json": "no uniprot_id and no declared absence",
     "nucleic-acid-no-identity.json": "nucleic acid with no rnacentral_id",
+    "small-molecule-no-identity.json": "small molecule with no chebi_id",
+    "interaction-outside-sample.json": "does not list in hasBioChemEntityPart",
+    "interaction-no-sample.json": "is not a sample in the graph",
+    "interaction-sample-not-a-sample.json": "is not a sample in the graph",
 }
 
 
@@ -225,7 +229,7 @@ def test_legacy_crate_uses_the_deprecated_vocabulary(path):
     )
 
 
-#: What stops the published SSRL 0.2 crate from conforming to Core 0.3.2. Each is a real,
+#: What stops the published SSRL 0.2 crate from conforming to Core 0.3.3. Each is a real,
 #: actionable gap rather than a naming difference - the naming differences are handled by the
 #: alias layer and do not appear here. If one of these disappears, this test fails and the
 #: entry should be removed.

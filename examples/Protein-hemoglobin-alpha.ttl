@@ -11,12 +11,12 @@ uniprot:P69905 a lambdaber:Protein ;
     dcterms:title "Hemoglobin subunit alpha (human)" ;
     lambdaber:amino_acid_sequence "VLSPADKTNVKAAWGKVGAHAGEYGAEALERMFLSFPTTKTYFPHFDLSHGSAQVKGHGKKVADALTNAVAHVDDMPNALSALSDLHAHKLRVDPVNFKLLSHCLLVTLAAHLPAEFTPAVHASLDKFLASVSTVLTSKYR" ;
     lambdaber:cross_references [ a ns1:DatabaseCrossReference ;
-            ns1:database_id "IPR000971" ;
-            ns1:database_name "interpro" ],
-        [ a ns1:DatabaseCrossReference ;
             ns1:database_id "PF00042" ;
             ns1:database_name "pfam" ;
-            ns1:database_url "https://www.ebi.ac.uk/interpro/entry/pfam/PF00042/"^^xsd:anyURI ] ;
+            ns1:database_url "https://www.ebi.ac.uk/interpro/entry/pfam/PF00042/"^^xsd:anyURI ],
+        [ a ns1:DatabaseCrossReference ;
+            ns1:database_id "IPR000971" ;
+            ns1:database_name "interpro" ] ;
     lambdaber:description "Alpha chain of adult hemoglobin A. Two copies pair with two beta chains to form the oxygen-carrying tetramer." ;
     lambdaber:function_description "Involved in oxygen transport from the lung to the various peripheral tissues." ;
     lambdaber:functional_sites lambdaber:hba1-heme-pocket ;
