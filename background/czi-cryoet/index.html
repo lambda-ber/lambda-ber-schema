@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://lambda-ber.github.io/lambda-ber-schema/background/czi-cryoet/" rel="canonical"/>
 <link href="../empiar/" rel="prev"/>
-<link href="../emdb/" rel="next"/>
+<link href="../tomobabel-cets/" rel="next"/>
 <link href="../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.6.22" name="generator"/>
 <title>CZ cryoET Data Portal - lambda-ber-schema</title>
@@ -308,6 +308,14 @@
 </li>
 </ul>
 </nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../tomobabel-cets/">
+<span class="md-ellipsis">
+    TomoBabel / CETS
+    
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../emdb/">
@@ -679,6 +687,7 @@
 <p>LAMBDA focuses on structural biology: connecting proteins and complexes to samples, experiments, and the workflows used to determine their structures. Cryo-electron tomography (cryoET) adds three-dimensional cellular context, imaging structures such as ribosomes, membranes, mitochondria, microtubules, and RubisCO complexes within frozen specimens. Linking LAMBDA's molecular and experimental records to cryoET images and spatial annotations could connect what a structure is with where it occurs and how it is organized in a cell. The <a href="https://cryoetdataportal.czscience.com/datasets/10000">yeast</a> and <a href="https://cryoetdataportal.czscience.com/datasets/10301">algal</a> examples below illustrate this opportunity.</p>
 <p>Research date: 2026-09-15. Scope: the Chan Zuckerberg cryoET Data Portal metadata and API schemas, compared with this repository's current schema. This is a design assessment, not an implemented crosswalk. Selected public metadata and small assets were inspected as described below.</p>
 <h2 id="findings">Findings</h2>
+<p>For the separate CZII-funded interchange effort, see <a href="../tomobabel-cets/">TomoBabel / CETS</a>, which covers coordinate systems, processing-tool converters, spatial annotations, and their relationship to LAMBDA and the portal.</p>
 <p>The portal is a useful reference for extending LAMBDA's cryoET support. Both projects use LinkML. LAMBDA already represents acquisition parameters, instruments, preparation, workflows, movies, and 3D images. The biggest opportunities are explicit tilt-series identity, alignment and coordinate-system provenance, and spatial annotation entities.</p>
 <p>The portal's source has several distinct schema layers; “the CZI schema” does not identify a single interchangeable serialization. The backend snapshot inspected was <code>a991047558b09decf1a3f323adc6b24a8e8eef54</code>. The local schema baseline was <code>cdb7221a57c7439cf371847fd6a2989d7cb71678</code>.</p>
 <h2 id="authoritative-sources-and-versions">Authoritative sources and versions</h2>

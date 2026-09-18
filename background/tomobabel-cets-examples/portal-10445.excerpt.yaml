@@ -1,0 +1,33 @@
+# Recorded converter INPUT, not a CETS document. Abridged; source values unchanged.
+dataset_id: 10445
+run_id: 17687
+run_name: TS_105_5
+tiltseries_id: 17489
+pixel_spacing: 1.54
+size:
+- 4096
+- 4096
+- 31
+tomograms:
+- id: 18954
+  voxel_spacing: 10.012
+  size:
+  - 630
+  - 630
+  - 184
+  processing: denoised
+  ctf_corrected: true
+  reconstruction_method: WBP
+  reconstruction_software: AreTomo3 v2.0.10
+  is_portal_standard: false
+  https_mrc_file: https://files.cryoetdataportal.cziscience.com/10445/TS_105_5/Reconstructions/VoxelSpacing10.012/Tomograms/102/TS_105_5.mrc
+  https_omezarr_dir: https://files.cryoetdataportal.cziscience.com/10445/TS_105_5/Reconstructions/VoxelSpacing10.012/Tomograms/102/TS_105_5.zarr
+# Author-added wrapper for selected fields from one entry in the source annotations list.
+# annotation_excerpt is not a field in the portal schema or recorded source JSON.
+annotation_excerpt:
+  id: 69545
+  object_name: membrane
+  object_id: GO:0016020
+  method_type: automated
+  ground_truth_status: false
+  https_metadata_path: https://files.cryoetdataportal.cziscience.com/10445/TS_105_5/Reconstructions/VoxelSpacing4.990/Annotations/100/membrane-1.0.json

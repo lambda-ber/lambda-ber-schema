@@ -1,0 +1,941 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://lambda-ber.github.io/lambda-ber-schema/background/tomobabel-cets/" rel="canonical"/>
+<link href="../czi-cryoet/" rel="prev"/>
+<link href="../emdb/" rel="next"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.22" name="generator"/>
+<title>TomoBabel / CETS - lambda-ber-schema</title>
+<link href="../../assets/stylesheets/main.84d31ad4.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="green" data-md-color-primary="amber" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#tomobabel-cets-cryoet-geometry-and-lambda-integration">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="lambda-ber-schema" class="md-header__button md-logo" data-md-component="logo" href="../.." title="lambda-ber-schema">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            lambda-ber-schema
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              TomoBabel / CETS
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="green" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="amber" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="green" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="amber" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/lambda-ber/lambda-ber-schema" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="lambda-ber-schema" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="lambda-ber-schema">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    lambda-ber-schema
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/lambda-ber/lambda-ber-schema" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    Home
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../elements/">
+<span class="md-ellipsis">
+    Schema
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Background
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            Background
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../">
+<span class="md-ellipsis">
+    Overview
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../nexus/">
+<span class="md-ellipsis">
+    NEXUS
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../mmcif/">
+<span class="md-ellipsis">
+    mmCIF
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../empiar/">
+<span class="md-ellipsis">
+    EMPIAR
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../czi-cryoet/">
+<span class="md-ellipsis">
+    CZ cryoET Data Portal
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    TomoBabel / CETS
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    TomoBabel / CETS
+    
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#what-is-tomobabel">
+<span class="md-ellipsis">
+      What is TomoBabel?
+    </span>
+</a>
+<nav aria-label="What is TomoBabel?" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#how-it-relates-to-the-portal-and-lambda">
+<span class="md-ellipsis">
+      How it relates to the portal and LAMBDA
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#versions-distinguish-core-from-converter-profiles">
+<span class="md-ellipsis">
+      Versions: distinguish core from converter profiles
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#main-entities-and-relationships">
+<span class="md-ellipsis">
+      Main entities and relationships
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#coordinates-transformations-and-image-files">
+<span class="md-ellipsis">
+      Coordinates, transformations, and image files
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#annotations-geometry-and-biological-meaning">
+<span class="md-ellipsis">
+      Annotations: geometry and biological meaning
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#yaml-examples-and-actual-image-data">
+<span class="md-ellipsis">
+      YAML examples and actual image data
+    </span>
+</a>
+<nav aria-label="YAML examples and actual image data" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-minimal-cets-document-with-a-point-annotation">
+<span class="md-ellipsis">
+      1. Minimal CETS document with a point annotation
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-empiar-12104-real-cets-metadata-and-a-tomogram">
+<span class="md-ellipsis">
+      2. EMPIAR-12104: real CETS metadata and a tomogram
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-portal-run-ts_105_5-images-and-a-go-membrane-annotation">
+<span class="md-ellipsis">
+      3. Portal run TS_105_5: images and a GO membrane annotation
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#converter-ecosystem">
+<span class="md-ellipsis">
+      Converter ecosystem
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#practical-integration-with-lambda">
+<span class="md-ellipsis">
+      Practical integration with LAMBDA
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../emdb/">
+<span class="md-ellipsis">
+    EMDB
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../dials/">
+<span class="md-ellipsis">
+    DIALS
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../sasdb/">
+<span class="md-ellipsis">
+    SASDB
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../rembi-alignment/">
+<span class="md-ellipsis">
+    REMBI
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lambda-ber-schema-data-lakehouse-strategy/">
+<span class="md-ellipsis">
+    Data Lakehouse Strategy
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../ber-doe-facilities/">
+<span class="md-ellipsis">
+    Integration with BER
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../data-quality-challenges/">
+<span class="md-ellipsis">
+    Data Quality Challenges
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Examples
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../examples/simplescattering-glurs-analysis/">
+<span class="md-ellipsis">
+    Simple Scattering GluRS Dataset
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+<span class="md-ellipsis">
+    Use Cases
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            Use Cases
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../use-cases/">
+<span class="md-ellipsis">
+    Overview
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../use-cases/01-federated-data-pull.html">
+<span class="md-ellipsis">
+    Federated Data Pull
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../use-cases/02-ask-your-data.html">
+<span class="md-ellipsis">
+    Ask Your Data
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../use-cases/03-auto-orchestrate-processing.html">
+<span class="md-ellipsis">
+    Auto-Orchestrate Processing
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../use-cases/04-cross-source-integration.html">
+<span class="md-ellipsis">
+    Cross-Source Integration
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../use-cases/05-bundle-deposit-lakehouse.html">
+<span class="md-ellipsis">
+    Bundle, Deposit, and Query
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../use-cases/06-reanalysis-triggers.html">
+<span class="md-ellipsis">
+    Reanalysis Triggers
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+<span class="md-ellipsis">
+    Profiles
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+            Profiles
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../profiles/lambda-core-rocrate-profile-v0.3.2/">
+<span class="md-ellipsis">
+    LAMBDA Core RO-Crate Profile
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+<span class="md-ellipsis">
+    Technical
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_7_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_7">
+<span class="md-nav__icon md-icon"></span>
+            Technical
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../technical/ome-mapping/">
+<span class="md-ellipsis">
+    Mapping to OME
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+<span class="md-ellipsis">
+    Slides
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_8_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_8">
+<span class="md-nav__icon md-icon"></span>
+            Slides
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../slides/overview.html">
+<span class="md-ellipsis">
+    Overview
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../slides/technical-overview.html">
+<span class="md-ellipsis">
+    Technical Deep Dive
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../slides/lambda-ro-crate-vision.html">
+<span class="md-ellipsis">
+    LAMBDA RO-Crate Vision
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#what-is-tomobabel">
+<span class="md-ellipsis">
+      What is TomoBabel?
+    </span>
+</a>
+<nav aria-label="What is TomoBabel?" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#how-it-relates-to-the-portal-and-lambda">
+<span class="md-ellipsis">
+      How it relates to the portal and LAMBDA
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#versions-distinguish-core-from-converter-profiles">
+<span class="md-ellipsis">
+      Versions: distinguish core from converter profiles
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#main-entities-and-relationships">
+<span class="md-ellipsis">
+      Main entities and relationships
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#coordinates-transformations-and-image-files">
+<span class="md-ellipsis">
+      Coordinates, transformations, and image files
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#annotations-geometry-and-biological-meaning">
+<span class="md-ellipsis">
+      Annotations: geometry and biological meaning
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#yaml-examples-and-actual-image-data">
+<span class="md-ellipsis">
+      YAML examples and actual image data
+    </span>
+</a>
+<nav aria-label="YAML examples and actual image data" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-minimal-cets-document-with-a-point-annotation">
+<span class="md-ellipsis">
+      1. Minimal CETS document with a point annotation
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-empiar-12104-real-cets-metadata-and-a-tomogram">
+<span class="md-ellipsis">
+      2. EMPIAR-12104: real CETS metadata and a tomogram
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-portal-run-ts_105_5-images-and-a-go-membrane-annotation">
+<span class="md-ellipsis">
+      3. Portal run TS_105_5: images and a GO membrane annotation
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#converter-ecosystem">
+<span class="md-ellipsis">
+      Converter ecosystem
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#practical-integration-with-lambda">
+<span class="md-ellipsis">
+      Practical integration with LAMBDA
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="tomobabel-cets-cryoet-geometry-and-lambda-integration">TomoBabel / CETS: cryoET geometry and LAMBDA integration</h1>
+<p>LAMBDA focuses on structural biology: linking proteins and complexes to specimens, experiments, and structure-determination workflows. Cryo-electron tomography (cryoET) places structures such as ribosomes, membranes, microtubules, and RubisCO complexes in their three-dimensional cellular surroundings. TomoBabel's Cryo Electron Tomography Standard (CETS) offers a way to exchange the images' coordinate systems, alignments, and spatial annotations. Connecting these to LAMBDA could help relate molecular identity to location and organization within a cell. The <a href="../czi-cryoet/#real-yaml-examples-and-associated-image-data">portal examples</a> illustrate these imaging targets.</p>
+<p><strong>Research snapshot: 2026-09-17.</strong> This page incorporates a repository investigation and executable example checks. Core CETS refers to commit <code>0c8c4e3c7a2885f29caba551ffcaacde45c00101</code>; experimental converter features are identified separately. Proposed LAMBDA mappings below are design recommendations. <a href="../tomobabel-cets-examples/provenance.yaml">Source manifest and example provenance</a></p>
+<h2 id="what-is-tomobabel">What is TomoBabel?</h2>
+<p><strong>TomoBabel is the organization; CETS is the standard under development.</strong> The project describes itself as funded by the Chan Zuckerberg Imaging Institute (CZII), with participants from CZII, CCP-EM, CSIC, and EMBL-EBI. Its repositories live under <a href="https://github.com/TomoBabel">TomoBabel</a>, outside the Chan Zuckerberg GitHub organization. <a href="https://github.com/TomoBabel/.github/blob/3d2ec3aa0747aa1944e41a613adc4567d79d0e00/profile/README.md">Project statement</a></p>
+<p>CETS builds on the earlier <code>cryo-et-standards/cryoet-geometry</code> work: merged <a href="https://github.com/TomoBabel/cets-data-models/pull/14">PR #14</a> explicitly imports its LinkML definitions with adjustments. The schema still uses <code>CETMD</code> names and <code>https://w3id.org/cetmd/</code> namespaces. <a href="https://github.com/TomoBabel/cets-data-models/blob/0c8c4e3c7a2885f29caba551ffcaacde45c00101/schema/linkml/entities.yaml">Root schema</a></p>
+<h3 id="how-it-relates-to-the-portal-and-lambda">How it relates to the portal and LAMBDA</h3>
+<table>
+<thead>
+<tr>
+<th>Project</th>
+<th>Principal role</th>
+<th>Useful contribution to an integration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>TomoBabel / CETS</strong></td>
+<td>Interchange between cryoET processing tools and archives</td>
+<td>Tilt images, coordinate frames, transforms, alignments, annotation geometry, and particle-map references</td>
+</tr>
+<tr>
+<td><strong>CZ cryoET Data Portal</strong></td>
+<td>Data publication and discovery</td>
+<td>Public volumes and annotations, biological object labels, deposition context, annotation methods and authorship</td>
+</tr>
+<tr>
+<td><strong>LAMBDA</strong></td>
+<td>Structural biology experiments and their biological context</td>
+<td>Proteins, samples, preparation, instruments, workflows, file provenance, and ontology annotations</td>
+</tr>
+</tbody>
+</table>
+<p>These roles follow from the <a href="https://github.com/TomoBabel/cets-data-models/blob/0c8c4e3c7a2885f29caba551ffcaacde45c00101/schema/linkml/entities.yaml">CETS schema</a>, <a href="https://github.com/chanzuckerberg/cryoet-data-portal-backend/blob/a991047558b09decf1a3f323adc6b24a8e8eef54/schema/core/v2.0.0/metadata.yaml">portal schema</a>, and <a href="https://github.com/lambda-ber/lambda-ber-schema/blob/11a36719a79af486d5352b72e1f669bfc41c9575/src/lambda_ber_schema/schema/lambda_ber_schema.yaml">LAMBDA schema</a>. The dedicated <a href="https://github.com/TomoBabel/cets-cryoet-data-portal/tree/1162528d8f96f5616d88fb759472dffcc440165b">portal converter</a> exports portal runs into CETS and creates draft portal-ingestion staging files in the reverse direction. It does not establish that the portal has replaced its API or published metadata schema with CETS. See the separate <a href="../czi-cryoet/">CZ cryoET Data Portal background page</a>.</p>
+<h2 id="versions-distinguish-core-from-converter-profiles">Versions: distinguish core from converter profiles</h2>
+<p>The inspected Python package declares version <strong>0.1.0</strong> and <strong>Pre-Alpha</strong> status; its eight LinkML modules declare <strong>0.0.1</strong>. Package and schema versions therefore need separate tracking. <a href="https://github.com/TomoBabel/cets-data-models/blob/0c8c4e3c7a2885f29caba551ffcaacde45c00101/pyproject.toml">Package metadata</a>, <a href="https://github.com/TomoBabel/cets-data-models/tree/0c8c4e3c7a2885f29caba551ffcaacde45c00101/schema/linkml">schema modules</a></p>
+<table>
+<thead>
+<tr>
+<th>Baseline</th>
+<th>State at inspection</th>
+<th>Why it matters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Core <code>main</code>, <code>0c8c4e3</code></td>
+<td>Snapshot used for this page's core descriptions and synthetic example</td>
+<td>Projection alignments allow at most two affine/translation steps</td>
+</tr>
+<tr>
+<td><a href="https://github.com/TomoBabel/cets-data-models/pull/34">PR #34</a>, <code>b415e95</code></td>
+<td>Open, unmerged proposal for canonical coordinates and sampling metadata</td>
+<td>Portal, AreTomo3, and Warp/M converters pin this revision; it allows three projection steps</td>
+</tr>
+<tr>
+<td><a href="https://github.com/uermel/cryoet-alignment/blob/2eebafb7ebb641b07befa8eba20958a0870c6768/docs/cets.md">Rigid converter profile</a></td>
+<td>Document identifies itself as <code>cets-rigid/0.2</code></td>
+<td>Adds conventions beyond the core; some converter READMEs still refer to <code>0.1</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/TomoBabel/cets-nonrigid/tree/4bf128e9f79fa6f17006b192504377612748429a">Non-rigid work</a></td>
+<td>Separate repository depending on a non-rigid schema branch</td>
+<td>Deformation interchange is separate from the inspected core</td>
+</tr>
+</tbody>
+</table>
+<p>The <a href="https://github.com/TomoBabel/cets-cryoet-data-portal/blob/1162528d8f96f5616d88fb759472dffcc440165b/pyproject.toml">portal dependency declaration</a> makes its PR-branch dependency explicit. An integration should record the schema commit, converter commit, profile, and companion-file version. Merely recording “CETS 0.1” would leave the coordinate contract ambiguous.</p>
+<h2 id="main-entities-and-relationships">Main entities and relationships</h2>
+<p>CETS uses a nested document. A <strong>Dataset</strong> contains <strong>Regions</strong> and <strong>Averages</strong>. A Region groups raw and processed products from one specimen region. An Average groups particle maps. LAMBDA's Dataset instead contains flat entity collections and association tables, so the shared class names do not establish equivalent meanings. <a href="https://github.com/TomoBabel/cets-data-models/blob/0c8c4e3c7a2885f29caba551ffcaacde45c00101/schema/linkml/entities.yaml">CETS entities</a>, <a href="https://github.com/lambda-ber/lambda-ber-schema/blob/11a36719a79af486d5352b72e1f669bfc41c9575/src/lambda_ber_schema/schema/lambda_ber_schema.yaml">LAMBDA</a></p>
+<div class="mermaid">flowchart TD
+    Dataset --&gt; Region
+    Dataset --&gt; Average
+    Region --&gt; MovieStackCollection
+    MovieStackCollection --&gt; MovieStackSeries
+    MovieStackSeries --&gt; MovieStack
+    MovieStack --&gt; MovieFrame
+    Region --&gt; TiltSeries
+    TiltSeries --&gt; TiltImage
+    Region --&gt; Alignment
+    Alignment --&gt; ProjectionAlignment
+    ProjectionAlignment -. tilt_image_id .-&gt; TiltImage
+    Alignment -. tilt_series_id .-&gt; TiltSeries
+    Region --&gt; Tomogram
+    Tomogram -. tilt_series_id .-&gt; TiltSeries
+    Region --&gt; Annotation
+    Annotation -. source_tomogram_id .-&gt; Tomogram
+    Average --&gt; ParticleMap
+    ParticleMap -. source_annotation_id and coord_index .-&gt; Annotation
+</div>
+<p>Solid arrows show containment; dashed arrows show selected references. This diagram does not assert required cardinalities or automatic reference validation. <a href="https://github.com/TomoBabel/cets-data-models/blob/0c8c4e3c7a2885f29caba551ffcaacde45c00101/schema/linkml/entities.yaml">Entities</a>, <a href="https://github.com/TomoBabel/cets-data-models/blob/0c8c4e3c7a2885f29caba551ffcaacde45c00101/schema/linkml/image_entities.yaml">image entities</a>, <a href="https://github.com/TomoBabel/cets-data-models/blob/0c8c4e3c7a2885f29caba551ffcaacde45c00101/schema/linkml/alignment.yaml">alignment</a>, <a href="https://github.com/TomoBabel/cets-data-models/blob/0c8c4e3c7a2885f29caba551ffcaacde45c00101/schema/linkml/annotation.yaml">annotations</a></p>
+<p>Three details affect a crosswalk:</p>
+<ul>
+<li><strong>Movie and stack terminology:</strong> a <code>MovieFrame</code> is an individual movie image. A <code>TiltImage</code> can reference its source movie and has a zero-based stack <code>section</code>.</li>
+<li><strong>Reconstruction provenance:</strong> core <code>Alignment</code> has no identifier, and <code>Tomogram</code> has no explicit alignment reference. A shared tilt-series identifier does not identify which alignment produced a volume.</li>
+<li><strong>Particle provenance:</strong> <code>ParticleMap</code> can reference a Region, an Annotation, and a zero-based <code>coord_index</code>. Those references are optional. Reordering picked coordinates can invalidate the index-based link.</li>
+</ul>
+<p>Sources: <a href="https://github.com/TomoBabel/cets-data-models/blob/0c8c4e3c7a2885f29caba551ffcaacde45c00101/schema/linkml/image_entities.yaml">image entities</a>, <a href="https://github.com/TomoBabel/cets-data-models/blob/0c8c4e3c7a2885f29caba551ffcaacde45c00101/schema/linkml/alignment.yaml">alignment</a>.</p>
+<h2 id="coordinates-transformations-and-image-files">Coordinates, transformations, and image files</h2>
+<p>Each coordinate system has a name and named axes, with units and an axis type of <code>space</code> or <code>array</code>. Transformations identify their input and output systems by name. Supported forms are identity, axis mapping, translation, scale, affine, and an ordered sequence. This can describe how array indices relate to physical positions. <a href="https://github.com/TomoBabel/cets-data-models/blob/0c8c4e3c7a2885f29caba551ffcaacde45c00101/schema/linkml/coordinate_systems.yaml">Coordinate systems</a>, <a href="https://github.com/TomoBabel/cets-data-models/blob/0c8c4e3c7a2885f29caba551ffcaacde45c00101/schema/linkml/coordinate_transforms.yaml">transformations</a></p>
+<p>Core <code>Affine</code> is constrained to a <strong>3 × 3 matrix</strong>. It cannot directly accept the portal's 4 × 4 homogeneous transform. A profile must specify how to interpret the matrix and represent translation, axis order, origin, handedness, and operation order. Accepting the correct matrix shape alone does not establish geometric equivalence. <a href="https://github.com/TomoBabel/cets-data-models/blob/0c8c4e3c7a2885f29caba551ffcaacde45c00101/schema/linkml/coordinate_transforms.yaml">Transforms</a>, <a href="https://github.com/TomoBabel/cets-data-models/blob/0c8c4e3c7a2885f29caba551ffcaacde45c00101/src/cets_data_model/models/models.py">Python models</a>, <a href="../czi-cryoet/#acquisition-reconstruction-and-coordinates">portal alignment background</a></p>
+<p>The rigid profile makes a more specific choice, converting array indices to centered physical coordinates with per-axis values:</p>
+<pre><code class="language-text">p_physical = (p_array - floor(N / 2)) * spacing
+</code></pre>
+<p>It then defines rotation and projection conventions. This is a <strong>profile convention</strong>, not a default imposed on every core CETS document. The synthetic example below deliberately uses a simpler corner origin. <a href="https://github.com/uermel/cryoet-alignment/blob/2eebafb7ebb641b07befa8eba20958a0870c6768/docs/cets.md">Rigid profile</a></p>
+<p>Here <code>N</code> is the number of samples along an axis. For odd <code>N</code>, <code>floor(N / 2)</code> equals the midpoint <code>(N - 1) / 2</code> of zero-based sample indices; for even <code>N</code>, it lies half a sample above that midpoint. For example, both centers are 2 when <code>N = 5</code>, while for <code>N = 4</code> the profile uses 2 and the index midpoint is 1.5. Preserve the profile's explicit choice when converting coordinates.</p>
+<p>Image records describe dimensions, coordinates, and paths; voxel arrays remain in external files. Tilt series and tomograms can reference even/odd products and record CTF correction. Core records do not provide a complete file-checksum or OME-Zarr multiscale model. LAMBDA's <code>DataFile</code> can supply file provenance, while a converter must preserve storage-specific axes and sampling metadata. <a href="https://github.com/TomoBabel/cets-data-models/blob/0c8c4e3c7a2885f29caba551ffcaacde45c00101/schema/linkml/image.yaml">Image definitions</a>, <a href="https://github.com/TomoBabel/cets-data-models/blob/0c8c4e3c7a2885f29caba551ffcaacde45c00101/schema/linkml/image_entities.yaml">image entities</a>, <a href="https://github.com/lambda-ber/lambda-ber-schema/blob/11a36719a79af486d5352b72e1f669bfc41c9575/src/lambda_ber_schema/schema/lambda_ber_schema.yaml">LAMBDA</a></p>
+<h2 id="annotations-geometry-and-biological-meaning">Annotations: geometry and biological meaning</h2>
+<p>CETS defines annotation types for 2D/3D points, vectors and rotations, segmentation masks and probability maps, meshes, geometric primitives, splines, and fitted density maps. A 3D point set uses <code>origin3D</code>; oriented representations can carry rotation matrices. Some representations remain sparse: the inspected <code>TriMesh</code> has no explicit vertices/faces payload. A type name alone is therefore insufficient to establish a complete exchange format. <a href="https://github.com/TomoBabel/cets-data-models/blob/0c8c4e3c7a2885f29caba551ffcaacde45c00101/schema/linkml/annotation.yaml">Annotation schema</a></p>
+<p><strong>Core CETS has no dedicated GO or UniProt classification fields</strong>, nor a full annotation method, authorship, evidence, or confidence model. Its Python models reject unknown fields, so adding <code>ontology_id</code> directly to core JSON is not a compatible extension. The portal converter preserves biological metadata and provenance in companion files. <a href="https://github.com/TomoBabel/cets-data-models/blob/0c8c4e3c7a2885f29caba551ffcaacde45c00101/schema/linkml/annotation.yaml">Annotations</a>, <a href="https://github.com/TomoBabel/cets-data-models/blob/0c8c4e3c7a2885f29caba551ffcaacde45c00101/src/cets_data_model/models/models.py">models</a>, <a href="https://github.com/TomoBabel/cets-cryoet-data-portal/tree/1162528d8f96f5616d88fb759472dffcc440165b">portal converter</a></p>
+<p>LAMBDA already has <code>ImageFeature.terms</code> containing <code>OntologyTerm</code> values, alongside protein-level GO and UniProt support. A useful extension would link these semantic assertions to explicitly identified CETS geometries and image frames. Keep three identities distinct:</p>
+<ol>
+<li><strong>Object class:</strong> for example, GO's cytosolic ribosome or membrane.</li>
+<li><strong>Observed occurrence:</strong> a particular picked point or segmented region in an image.</li>
+<li><strong>Molecular identity:</strong> a supported protein or complex assignment, potentially involving UniProt accessions.</li>
+</ol>
+<p>An annotation record's <code>id</code> identifies the record; it should not be repurposed as the GO class. A ribosome pick also does not establish every constituent protein's identity. These are integration recommendations based on <a href="https://github.com/lambda-ber/lambda-ber-schema/blob/11a36719a79af486d5352b72e1f669bfc41c9575/src/lambda_ber_schema/schema/lambda_ber_schema.yaml">LAMBDA's semantic types</a> and the <a href="../czi-cryoet/#go-cellular-component-terms-actual-usage">portal's actual GO annotations</a>.</p>
+<h2 id="yaml-examples-and-actual-image-data">YAML examples and actual image data</h2>
+<p><strong>Yes, YAML is available, but the different kinds serve different purposes.</strong> CETS itself is defined in <a href="https://github.com/TomoBabel/cets-data-models/tree/0c8c4e3c7a2885f29caba551ffcaacde45c00101/schema/linkml">LinkML YAML</a>. The EMPIAR converter supplies a <a href="https://github.com/TomoBabel/cets-empiar/blob/0c3413a529b10f90c195314a858d74c7ea429b52/definition_files/empiar/empiar_12104.yaml">YAML input configuration</a> and a <a href="https://github.com/TomoBabel/cets-empiar/blob/0c3413a529b10f90c195314a858d74c7ea429b52/examples/CETS_objects/EMPIAR-12104.json">CETS JSON output example</a>. For readability, this page includes selected real metadata reserialized as YAML, plus an authored, validated CETS teaching example. <a href="../tomobabel-cets-examples/">Example README</a></p>
+<h3 id="1-minimal-cets-document-with-a-point-annotation">1. Minimal CETS document with a point annotation</h3>
+<p>Download <a href="../tomobabel-cets-examples/minimal-cets.yaml">minimal-cets.yaml</a>. It contains a tilt series, tomogram, named voxel and physical frames, a point set, and a particle map linked to the first point. The document validates against the inspected core Python model and survives JSON serialization and reloading. Its file paths are illustrative.</p>
+<p>The following is just the annotation excerpt; the full file supplies the referenced image and frame definitions:</p>
+<pre><code class="language-yaml">annotations:
+  - id: picks_1
+    name: Example particle picks; no biological identification asserted
+    annotation_type: point_set_3D
+    source_tomogram_id: tomo_1
+    coordinate_systems:
+      - name: physical_xyz
+        axes:
+          - {name: x, axis_type: space, axis_unit: angstrom}
+          - {name: y, axis_type: space, axis_unit: angstrom}
+          - {name: z, axis_type: space, axis_unit: angstrom}
+    origin3D:
+      - [40.0, 80.0, 24.0]
+</code></pre>
+<p>With the example's 4 Å sampling and corner origin, this point corresponds to voxel coordinates <code>[10, 20, 6]</code>. The particle map references <code>picks_1</code> with <code>coord_index: 0</code>. No biological class is asserted.</p>
+<h3 id="2-empiar-12104-real-cets-metadata-and-a-tomogram">2. EMPIAR-12104: real CETS metadata and a tomogram</h3>
+<p>The upstream <a href="https://github.com/TomoBabel/cets-empiar/blob/0c3413a529b10f90c195314a858d74c7ea429b52/examples/CETS_objects/EMPIAR-12104.json">EMPIAR-12104 example</a> includes region <code>Control_TS_006</code>, a 50-image tilt series, and a tomogram. Our <a href="../tomobabel-cets-examples/empiar-12104-tomogram.excerpt.yaml">YAML excerpt</a> preserves the tomogram's values: dimensions <strong>1022 × 1440 × 500</strong>, voxel-to-physical scale <strong>13.699999809265137 Å</strong> on each axis, and a <a href="https://ftp.ebi.ac.uk/empiar/world_availability/12104/data/Control/tomograms/TS_006_aretomo.mrc">public MRC volume</a>.</p>
+<p>This is a historical example: its full original JSON fails current-core validation because 50 tilt images lack now-required IDs. The excerpt omits the referenced tilt series and is not a self-contained exchange document. It contains no biological annotations. These limitations distinguish a useful real-world illustration from a current conformance fixture. <a href="https://github.com/TomoBabel/cets-empiar/blob/0c3413a529b10f90c195314a858d74c7ea429b52/examples/CETS_objects/EMPIAR-12104.json">Upstream JSON</a>, <a href="https://github.com/TomoBabel/cets-data-models/blob/0c8c4e3c7a2885f29caba551ffcaacde45c00101/schema/linkml/image_entities.yaml">current image definitions</a></p>
+<h3 id="3-portal-run-ts_105_5-images-and-a-go-membrane-annotation">3. Portal run TS_105_5: images and a GO membrane annotation</h3>
+<p>The portal converter includes a <a href="https://github.com/TomoBabel/cets-cryoet-data-portal/blob/1162528d8f96f5616d88fb759472dffcc440165b/tests/data/10445_TS_105_5.json">recorded input fixture</a> for dataset <strong>10445</strong>, run <strong>17687 / TS_105_5</strong>. Our <a href="../tomobabel-cets-examples/portal-10445.excerpt.yaml">YAML excerpt</a> includes a denoised <strong>630 × 630 × 184</strong> reconstruction at <strong>10.012 Å</strong>, links to its MRC/OME-Zarr data, and an automated membrane annotation labeled <strong>GO:0016020</strong>. This fixture is <strong>portal converter input</strong>, not CETS output.</p>
+<p>The selected annotation metadata is under <code>VoxelSpacing4.990</code>, while that reconstruction is at <code>VoxelSpacing10.012</code>. They cannot be overlaid by assuming identical array coordinates; the applicable alignment and grid conversion must be established. For an already-inspected image/annotation pair, including a preview, ribosome points, and a membrane mask, see <a href="../czi-cryoet/#a-concrete-run-yeast-ts_026-with-images-and-annotations">yeast TS_026</a>.</p>
+<p>The linked volumes remain external; the local examples contain small metadata files. Their <a href="../tomobabel-cets-examples/provenance.yaml">provenance manifest</a> records source commits, source-payload checksums, and the transformations used to create each excerpt.</p>
+<h2 id="converter-ecosystem">Converter ecosystem</h2>
+<p>The investigation inspected implementations in the following repositories. This inventory describes implemented scope; converter suites and reconstruction equivalence were not tested.</p>
+<table>
+<thead>
+<tr>
+<th>Converter</th>
+<th>Observed scope and boundary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/TomoBabel/cets-relion/tree/e7d0ded6dda54035d915d2bb3639a630bd006522">RELION</a></td>
+<td>Project readers and reverse STAR writers; no claim of arbitrary lossless round trips</td>
+</tr>
+<tr>
+<td><a href="https://github.com/TomoBabel/cets-imod/tree/1f05fe0aa6c5b2bc764cf24d8682c36998b37b6d">IMOD</a></td>
+<td>Alignment and CTF exchange in both directions; tomogram import</td>
+</tr>
+<tr>
+<td><a href="https://github.com/TomoBabel/cets-scipion/tree/8e06d33a1b9bb41b422455b1c9a24446277c140c">Scipion</a></td>
+<td>Tilt series, CTF, tomograms, coordinates, and subtomograms</td>
+</tr>
+<tr>
+<td><a href="https://github.com/TomoBabel/cets-empiar/blob/0c3413a529b10f90c195314a858d74c7ea429b52/definition_files/empiar/empiar_12104.yaml">EMPIAR</a> / <a href="https://github.com/TomoBabel/cets-mmcif/tree/c99c0c339f9e518be1452f16f0c6f5e6c310b133">mmCIF</a></td>
+<td>Archive import examples and CETS-to-mmCIF export</td>
+</tr>
+<tr>
+<td><a href="https://github.com/TomoBabel/cets-aretomo3/tree/ca22266475036f97a481918e81a48bbea979ed6b">AreTomo3</a> / <a href="https://github.com/TomoBabel/cets-warpm/tree/84e739049bd7c7988b7bc20d43afb168ae95cc9e">Warp/M</a></td>
+<td>Rigid alignment exchange using the PR #34 model; varying local deformation requires refusal or explicit loss</td>
+</tr>
+<tr>
+<td><a href="https://github.com/TomoBabel/cets-cryoet-data-portal/tree/1162528d8f96f5616d88fb759472dffcc440165b">CZ cryoET Data Portal</a></td>
+<td>Run export and reverse ingestion staging; companions preserve information outside core CETS</td>
+</tr>
+</tbody>
+</table>
+<p>For the portal exporter, alignment and grid compatibility affect whether annotations can be included. Reverse conversion produces a draft for ingestion, not an automatic submission. Preserve converter options, skipped products, and losses as part of workflow provenance. <a href="https://github.com/TomoBabel/cets-cryoet-data-portal/tree/1162528d8f96f5616d88fb759472dffcc440165b">Converter implementation</a></p>
+<h2 id="practical-integration-with-lambda">Practical integration with LAMBDA</h2>
+<p>The following is a proposed crosswalk, not an implemented adapter:</p>
+<table>
+<thead>
+<tr>
+<th>CETS concept</th>
+<th>Existing LAMBDA support</th>
+<th>Integration work</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Region and TiltSeries</td>
+<td>ExperimentRun, Sample, experiment/sample associations</td>
+<td>Preserve imaging-location and series identity without assuming one run equals one series</td>
+</tr>
+<tr>
+<td>Tomogram and movie products</td>
+<td>Image3D, Movie, DataFile</td>
+<td>Connect image identity and file provenance to CETS geometry</td>
+</tr>
+<tr>
+<td>Coordinate systems and alignments</td>
+<td>No equivalent general transform graph</td>
+<td>Strong candidate for selective model reuse; specify frame conventions and reconstruction/alignment links</td>
+</tr>
+<tr>
+<td>Spatial annotation</td>
+<td>ImageFeature, OntologyTerm</td>
+<td>Link semantic assertions to identified geometries, source images, methods, and evidence</td>
+</tr>
+<tr>
+<td>ParticleMap references</td>
+<td>Workflow and file provenance</td>
+<td>Retain source annotation and coordinate index, and validate index stability</td>
+</tr>
+<tr>
+<td>Nested Dataset</td>
+<td>Flat Dataset collections and association tables</td>
+<td>Build an explicit crosswalk instead of equating identically named classes</td>
+</tr>
+</tbody>
+</table>
+<p>Assessment sources: <a href="https://github.com/TomoBabel/cets-data-models/blob/0c8c4e3c7a2885f29caba551ffcaacde45c00101/schema/linkml/entities.yaml">CETS entities</a>, <a href="https://github.com/TomoBabel/cets-data-models/blob/0c8c4e3c7a2885f29caba551ffcaacde45c00101/schema/linkml/image_entities.yaml">image entities</a>, <a href="https://github.com/lambda-ber/lambda-ber-schema/blob/11a36719a79af486d5352b72e1f669bfc41c9575/src/lambda_ber_schema/schema/lambda_ber_schema.yaml">LAMBDA schema</a>. Numeric fields also need semantic review: CETS <code>accumulated_dose</code> is pre-exposure, defocus U/V are in Å, and per-axis sampling may be anisotropic. They cannot automatically become an image's delivered dose, a single defocus value, or a scalar voxel size.</p>
+<p>A useful first step is an <strong>external-artifact adapter</strong>: register CETS documents, original metadata, companion files, and image products as LAMBDA <code>DataFile</code> records associated with a conversion <code>WorkflowRun</code>. Retain source IDs, exact model/converter versions, checksums, and a mapping to LAMBDA entities. This provides traceability while coordinate and annotation extensions are evaluated.</p>
+<p>Validation must go beyond loading the document. The investigation found that core models accept dangling image references, inconsistent point/vector counts, negative widths, and underspecified scale vectors. An adapter should check reference resolution, array dimensions, coordinate counts, and known coordinate conversions. The validated synthetic example demonstrates model acceptance; it does not certify every converter or a reconstructed volume's scientific correctness. <a href="https://github.com/TomoBabel/cets-data-models/blob/0c8c4e3c7a2885f29caba551ffcaacde45c00101/src/cets_data_model/models/models.py">Core models</a></p>
+</article>
+</div>
+<script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": ["content.tabs.link"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
+mermaid.initialize({});</script></body>
+</html>

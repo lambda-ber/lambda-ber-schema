@@ -1,0 +1,62 @@
+# Synthetic teaching example, validated against main commit 0c8c4e3.
+# Paths do not identify real files. This chooses a corner-origin physical frame.
+# This is NOT an instance of the stricter cets-rigid/0.2 converter profile.
+name: synthetic_cets_example
+regions:
+  - id: region_1
+    tilt_series:
+      - id: tilt_series_1
+        path: example/tilts.mrcs
+        images:
+          - id: tilt_0
+            section: 0
+            width: 64
+            height: 64
+            nominal_tilt_angle: 0.0
+            accumulated_dose: 0.0
+    tomograms:
+      - id: tomo_1
+        tilt_series_id: tilt_series_1
+        path: example/tomo.mrc
+        width: 64
+        height: 64
+        depth: 32
+        coordinate_systems:
+          - name: voxel_xyz
+            axes:
+              - {name: x, axis_type: array, axis_unit: voxel}
+              - {name: y, axis_type: array, axis_unit: voxel}
+              - {name: z, axis_type: array, axis_unit: voxel}
+          - name: physical_xyz
+            axes:
+              - {name: x, axis_type: space, axis_unit: angstrom}
+              - {name: y, axis_type: space, axis_unit: angstrom}
+              - {name: z, axis_type: space, axis_unit: angstrom}
+        coordinate_transformations:
+          - transformation_type: scale
+            input: voxel_xyz
+            output: physical_xyz
+            scale: [4.0, 4.0, 4.0]
+    annotations:
+      - id: picks_1
+        name: Example particle picks; no biological identification asserted
+        annotation_type: point_set_3D
+        source_tomogram_id: tomo_1
+        coordinate_systems:
+          - name: physical_xyz
+            axes:
+              - {name: x, axis_type: space, axis_unit: angstrom}
+              - {name: y, axis_type: space, axis_unit: angstrom}
+              - {name: z, axis_type: space, axis_unit: angstrom}
+        origin3D:
+          - [40.0, 80.0, 24.0]
+averages:
+  - name: example_particle_extraction
+    particle_maps:
+      - path: example/particle_0.mrc
+        source_region_id: region_1
+        source_annotation_id: picks_1
+        coord_index: 0
+        width: 16
+        height: 16
+        depth: 16
