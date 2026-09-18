@@ -863,6 +863,22 @@
             "title": "CTFEstimationParameters",
             "type": "object"
         },
+        "ChemicalClassEnum": {
+            "description": "Broad chemical kind of a SmallMolecule",
+            "enum": [
+                "ion",
+                "lipid",
+                "detergent",
+                "carbohydrate",
+                "nucleotide",
+                "amino_acid",
+                "organic",
+                "polymer",
+                "other"
+            ],
+            "title": "ChemicalClassEnum",
+            "type": "string"
+        },
         "ClinicalSignificanceEnum": {
             "description": "Clinical significance of variants",
             "enum": [
@@ -901,6 +917,102 @@
                 "non_obligate"
             ],
             "title": "ComplexStabilityEnum",
+            "type": "string"
+        },
+        "ComponentInteractionEntity": {
+            "additionalProperties": false,
+            "description": "One relationship between two things a specimen contains: this ligand binds that protein, this metal is coordinated by that enzyme, this guide RNA pairs with that DNA strand. Typed `[\"lambda:SampleComponentInteraction\"]` alone - the one entity in this profile with no schema.org type, because schema.org has no typed interaction. Its `bioChemInteraction` is an untyped, entity-level \"is known to interact with\", and a manifest that wants to say *which sample*, *what kind* and *whether it was seen* needs more than that. Entities MAY carry `bioChemInteraction` as well, for the generic consumer.\n`sample_id` names the `SampleEntity`; `subject_id` and `object_id` name two of the entities that sample lists in `hasBioChemEntityPart`, read subject to object as `interaction_type` is worded. The crate has no component rows, so the subject and object are the entities themselves; the (sample, entity) pair identifies the `SampleComponent` row in the fuller record, which is why `subject_id` and `object_id` are close rather than exact mappings.\nThis is the highest-value search fact about a complex - which target, which ligand, bound or not - and so it earns its place in a manifest. Affinity, site and evidence do not, and stay in the fuller record.",
+            "properties": {
+                "@id": {
+                    "description": "The entity's identifier - a relative path, an absolute URI, or a `#`-fragment.",
+                    "type": "string"
+                },
+                "@type": {
+                    "description": "One or more types. LAMBDA entities carry the RO-Crate/schema.org type *first* so that a plain RO-Crate consumer understands the crate, then the `lambda:` type for LAMBDA-aware readers.\nModelled as the set of types it semantically is. JSON-LD also permits the shorthand of a bare string for a single type, and real crates use it freely; a reader MUST expand that shorthand to a one-element list before validating or testing membership, exactly as a JSON-LD processor would. Validation here is defined against the expanded form.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "description": {
+                    "description": "Prose summary, aimed at a reader deciding whether to open the dataset.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "interaction_status": {
+                    "$ref": "#/$defs/InteractionStatusEnum",
+                    "description": "Whether the interaction is the sample's design, expected from prior work, observed in this dataset, or expected and not observed, from the schema's own `InteractionStatusEnum`."
+                },
+                "interaction_type": {
+                    "$ref": "#/$defs/ComponentInteractionTypeEnum",
+                    "description": "What the subject does to the object, from the schema's own `ComponentInteractionTypeEnum`."
+                },
+                "missing": {
+                    "description": "Declared absences. Absence is stated, never implied by omission.",
+                    "items": {
+                        "$ref": "#/$defs/MissingValueDeclaration"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "Human-readable label.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "object_id": {
+                    "$ref": "#/$defs/EntityReference",
+                    "description": "The entity acted on, bound or hosting, under the same rule as `subject_id`."
+                },
+                "sample_id": {
+                    "$ref": "#/$defs/EntityReference",
+                    "description": "The `SampleEntity` an interaction belongs to."
+                },
+                "subject_id": {
+                    "$ref": "#/$defs/EntityReference",
+                    "description": "The entity that acts on, binds to or sits in the object: a `ProteinEntity`, `NucleicAcidEntity` or `SmallMoleculeEntity` the sample lists in `hasBioChemEntityPart`. The schema's slot names a `SampleComponent`; the crate names the entity behind it."
+                }
+            },
+            "required": [
+                "sample_id",
+                "subject_id",
+                "object_id",
+                "interaction_type",
+                "@id",
+                "@type"
+            ],
+            "title": "ComponentInteractionEntity",
+            "type": "object"
+        },
+        "ComponentInteractionTypeEnum": {
+            "description": "What the subject of a SampleComponentInteraction does to its object. Each term reads in the direction subject to object.",
+            "enum": [
+                "binds",
+                "inhibits",
+                "activates",
+                "is_substrate_of",
+                "is_product_of",
+                "is_cofactor_of",
+                "is_coordinated_by",
+                "cleaves",
+                "covalently_modifies",
+                "covalently_linked_to",
+                "crosslinked_to",
+                "base_pairs_with",
+                "embedded_in",
+                "solubilized_by",
+                "encapsulated_in",
+                "forms_complex_with",
+                "competes_with",
+                "no_interaction"
+            ],
+            "title": "ComponentInteractionTypeEnum",
             "type": "string"
         },
         "ComputeResources": {
@@ -1540,7 +1652,7 @@
                     ]
                 },
                 "conformsTo": {
-                    "description": "MUST include both the RO-Crate version URI and `https://w3id.org/lambda/profile/core/0.3.2`. Technique extensions add their own URI alongside, never instead.",
+                    "description": "MUST include both the RO-Crate version URI and `https://w3id.org/lambda/profile/core/0.3.3`. Technique extensions add their own URI alongside, never instead.",
                     "items": {
                         "$ref": "#/$defs/EntityReference"
                     },
@@ -3178,6 +3290,26 @@
                         "null"
                     ]
                 },
+                "sample_component_interactions": {
+                    "description": "Relationships between the components of a sample: which binds, inhibits, pairs with or sits in which",
+                    "items": {
+                        "$ref": "#/$defs/SampleComponentInteraction"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "sample_components": {
+                    "description": "What each sample contains, one row per constituent: the inventory behind sample_type",
+                    "items": {
+                        "$ref": "#/$defs/SampleComponent"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "sample_nucleic_acid_associations": {
                     "description": "Links between samples and the nucleic acids they contain (M:N with role, copy number, structural form, source)",
                     "items": {
@@ -3212,6 +3344,16 @@
                     "description": "All samples across all studies",
                     "items": {
                         "$ref": "#/$defs/Sample"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "small_molecules": {
+                    "description": "All small molecules referenced by samples in this dataset, one record per compound",
+                    "items": {
+                        "$ref": "#/$defs/SmallMolecule"
                     },
                     "type": [
                         "array",
@@ -6313,6 +6455,17 @@
             "title": "InteractionEvidenceEnum",
             "type": "string"
         },
+        "InteractionStatusEnum": {
+            "description": "Standing of an interaction claim: the sample's design, prior knowledge, or this dataset's result",
+            "enum": [
+                "designed",
+                "expected",
+                "observed",
+                "not_observed"
+            ],
+            "title": "InteractionStatusEnum",
+            "type": "string"
+        },
         "InteractionTypeEnum": {
             "description": "Types of molecular interactions",
             "enum": [
@@ -6782,7 +6935,7 @@
                     ]
                 },
                 "ligands": {
-                    "description": "Bound ligands or cofactors",
+                    "description": "Bound ligands or cofactors, as free text. The structured form is SampleComponent.",
                     "items": {
                         "type": "string"
                     },
@@ -7513,6 +7666,16 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "bioChemInteraction": {
+                    "description": "schema.org's untyped \"is known to interact with\", between two biochemical entities. For the generic consumer; the typed, sample-scoped statement is a `ComponentInteractionEntity`.",
+                    "items": {
+                        "$ref": "#/$defs/EntityReference"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "description": {
                     "description": "Prose summary, aimed at a reader deciding whether to open the dataset.",
@@ -9372,6 +9535,16 @@
                     },
                     "type": "array"
                 },
+                "bioChemInteraction": {
+                    "description": "schema.org's untyped \"is known to interact with\", between two biochemical entities. For the generic consumer; the typed, sample-scoped statement is a `ComponentInteractionEntity`.",
+                    "items": {
+                        "$ref": "#/$defs/EntityReference"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "description": {
                     "description": "Prose summary, aimed at a reader deciding whether to open the dataset.",
                     "type": [
@@ -10979,7 +11152,7 @@
         },
         "Sample": {
             "additionalProperties": false,
-            "description": "A physical biological sample used in structural biology experiments. Records what is true of this preparation - buffer, concentration, storage, purity, the construct and tags used. The identity of the protein(s) it contains belongs on Protein, linked through SampleProteinAssociation, so a protein studied in ten preparations is described once. The nucleic acid(s) it contains belong on NucleicAcid in the same way, linked through SampleNucleicAcidAssociation; a protein-DNA complex is one sample with one row in each.",
+            "description": "A physical biological sample used in structural biology experiments. Records what is true of this preparation - buffer, concentration, storage, purity, the construct and tags used. The identity of the protein(s) it contains belongs on Protein, linked through SampleProteinAssociation, so a protein studied in ten preparations is described once. The nucleic acid(s) it contains belong on NucleicAcid in the same way, linked through SampleNucleicAcidAssociation; a protein-DNA complex is one sample with one row in each. Everything else it contains - ligands, ions, lipids, detergents, virus particles, organelles - and the full inventory of what is in it, one row per constituent with its role, lives in SampleComponent; what acts on what within the sample lives in SampleComponentInteraction.",
             "properties": {
                 "anatomy": {
                     "description": "Anatomical part or tissue (e.g., UBERON:0008945 for leaf)",
@@ -11095,7 +11268,7 @@
                     "type": "string"
                 },
                 "ligand": {
-                    "description": "Ligand or small molecule bound to sample",
+                    "description": "Ligand or small molecule bound to sample, as the facility recorded it. A display and search field; the structured form is a SampleComponent of type small_molecule pointing at a SmallMolecule record, with a SampleComponentInteraction saying what it binds.",
                     "type": [
                         "string",
                         "null"
@@ -11120,7 +11293,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Description of molecular composition including sequences, modifications, ligands"
+                    "description": "Free-text description of molecular composition including sequences, modifications, ligands. The structured form is the SampleComponent rows for the sample."
                 },
                 "molecular_weight": {
                     "anyOf": [
@@ -11229,7 +11402,7 @@
                 },
                 "sample_type": {
                     "$ref": "#/$defs/SampleTypeEnum",
-                    "description": "Type of biological sample"
+                    "description": "Coarse kind of sample, a one-word summary. The detail is in SampleComponent."
                 },
                 "storage_conditions": {
                     "anyOf": [
@@ -11274,6 +11447,226 @@
             ],
             "title": "Sample",
             "type": "object"
+        },
+        "SampleComponent": {
+            "additionalProperties": false,
+            "description": "One constituent of one sample: a protein, a nucleic acid, a small molecule, a virus particle, an organelle, a cell, a membrane mimetic. The inventory of what a sample contains, one row per kind of thing in it, so that a sample can hold any mixture and each thing in it can be named, given a role, counted and pointed at. SampleComponentInteraction rows say which components are expected or observed to act on which. Sample.sample_type remains the one-word summary; this table is the detail behind it.",
+            "properties": {
+                "component_type": {
+                    "$ref": "#/$defs/SampleComponentTypeEnum",
+                    "description": "What kind of thing this component is"
+                },
+                "concentration": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Concentration of this component in the sample as prepared (1 mM ATP, 0.02 % DDM, 5 mM MgCl2). Sample.concentration is the concentration of the sample as a whole, usually of its target."
+                },
+                "copy_number": {
+                    "description": "Copies of this component per assembly in the sample (4 for the subunits of a homotetramer, 2 for two zinc ions per monomer). Omit when unknown rather than assuming 1.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "A detailed textual description of this entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+                    "type": "string"
+                },
+                "nucleic_acid_id": {
+                    "description": "The NucleicAcid record, where component_type is nucleic_acid",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ontology_term": {
+                    "description": "Ontology term naming a component that has no entity table: the NCBI Taxonomy term for a virus particle (NCBITaxon:11676), the GO cellular component for an organelle (GO:0005840 for ribosome), the Cell Ontology term for a cell, the UBERON term for a tissue.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "protein_id": {
+                    "description": "The Protein record, where component_type is protein",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "role": {
+                    "$ref": "#/$defs/SampleComponentRoleEnum",
+                    "description": "Part this component plays in the sample"
+                },
+                "sample_id": {
+                    "description": "The sample this component is part of",
+                    "type": "string"
+                },
+                "small_molecule_id": {
+                    "description": "The SmallMolecule record, where component_type is small_molecule",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "description": "A human-readable name or title for this entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "sample_id",
+                "component_type",
+                "id"
+            ],
+            "title": "SampleComponent",
+            "type": "object"
+        },
+        "SampleComponentInteraction": {
+            "additionalProperties": false,
+            "description": "A relationship between two components of one sample: this ligand binds that protein, this metal is coordinated by that enzyme, this guide RNA pairs with that DNA strand, this membrane protein sits in that nanodisc. One row per ordered pair and relationship, read subject to object as interaction_type is worded. Rows can say what the sample was made to test as well as what the data showed: interaction_status separates the design from the result, so a ligand soaked in and not seen in the density is recorded rather than silently dropped.",
+            "properties": {
+                "affinity": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Binding affinity as a quantity with its unit (e.g., 12 nanomolar); affinity_type says which constant it is"
+                },
+                "affinity_type": {
+                    "$ref": "#/$defs/BindingAffinityTypeEnum",
+                    "description": "Which constant affinity reports: Kd, Ki, IC50, ..."
+                },
+                "description": {
+                    "description": "Free-text detail: the binding mode, the reference the expectation comes from, why an expected interaction was not seen",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "evidence": {
+                    "description": "Kind of evidence for the interaction",
+                    "items": {
+                        "$ref": "#/$defs/InteractionEvidenceEnum"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "interaction_status": {
+                    "$ref": "#/$defs/InteractionStatusEnum",
+                    "description": "Whether the interaction is the design of the sample, expected from prior work, observed in this dataset's data, or expected and not observed"
+                },
+                "interaction_type": {
+                    "$ref": "#/$defs/ComponentInteractionTypeEnum",
+                    "description": "What the subject does to the object"
+                },
+                "object_id": {
+                    "description": "The component acted on, bound or hosting",
+                    "type": "string"
+                },
+                "object_site": {
+                    "description": "Where on the object the interaction takes place, in the same form as subject_site",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "sample_id": {
+                    "description": "The sample both components belong to",
+                    "type": "string"
+                },
+                "stoichiometry": {
+                    "description": "Copies of subject to copies of object per assembly, written 'subject:object' ('1:1', '2:1')",
+                    "pattern": "^[0-9]+:[0-9]+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "subject_id": {
+                    "description": "The component that acts on, binds to or sits in the object",
+                    "type": "string"
+                },
+                "subject_site": {
+                    "description": "Where on the subject the interaction takes place: residues or positions as 'D184,D186' or '45-60', or a named site such as 'active site' or 'ATP-binding pocket'",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "sample_id",
+                "subject_id",
+                "object_id",
+                "interaction_type"
+            ],
+            "title": "SampleComponentInteraction",
+            "type": "object"
+        },
+        "SampleComponentRoleEnum": {
+            "description": "Part a component plays in a sample. A superset of SampleProteinRoleEnum and SampleNucleicAcidRoleEnum, so a role given on an association can be repeated on the component without translation.",
+            "enum": [
+                "target",
+                "subunit",
+                "binding_partner",
+                "ligand",
+                "substrate",
+                "product",
+                "inhibitor",
+                "activator",
+                "cofactor",
+                "fusion_partner",
+                "chaperone",
+                "template",
+                "primer",
+                "guide",
+                "scaffold",
+                "carrier",
+                "additive",
+                "contaminant",
+                "standard"
+            ],
+            "title": "SampleComponentRoleEnum",
+            "type": "string"
+        },
+        "SampleComponentTypeEnum": {
+            "description": "Kinds of thing a sample may contain. The first three are described by an entity record; the rest are named by title and an ontology term.",
+            "enum": [
+                "protein",
+                "nucleic_acid",
+                "small_molecule",
+                "virus_particle",
+                "organelle",
+                "cell",
+                "tissue",
+                "membrane_mimetic",
+                "nanoparticle",
+                "other"
+            ],
+            "title": "SampleComponentTypeEnum",
+            "type": "string"
         },
         "SampleEntity": {
             "additionalProperties": false,
@@ -11323,7 +11716,7 @@
                     ]
                 },
                 "hasBioChemEntityPart": {
-                    "description": "The protein and nucleic acid entities a specimen contains. schema.org's own part relation for `BioChemEntity`, and in the RO-Crate 1.2 context. Projects onto one `SampleProteinAssociation` per `ProteinEntity` target and one `SampleNucleicAcidAssociation` per `NucleicAcidEntity` target; the role, copy number and modifications those associations can carry are left to the fuller record, because a manifest says *what* is in the tube and not how much.",
+                    "description": "The protein, nucleic acid and small molecule entities a specimen contains. schema.org's own part relation for `BioChemEntity`, and in the RO-Crate 1.2 context. Projects onto one `SampleComponent` per target, and onto one `SampleProteinAssociation` per `ProteinEntity` target and one `SampleNucleicAcidAssociation` per `NucleicAcidEntity` target besides; the role, copy number and modifications those rows can carry are left to the fuller record, because a manifest says *what* is in the tube and not how much.",
                     "items": {
                         "$ref": "#/$defs/EntityReference"
                     },
@@ -11985,6 +12378,7 @@
                 "binding_partner",
                 "fusion_partner",
                 "chaperone",
+                "carrier",
                 "contaminant",
                 "standard"
             ],
@@ -12003,14 +12397,16 @@
             "type": "string"
         },
         "SampleTypeEnum": {
-            "description": "Types of biological samples",
+            "description": "Coarse kind of a sample, a one-word summary for search. What the sample actually contains - which proteins, strands, ligands and particles, in what roles, and which acts on which - is recorded in SampleComponent and SampleComponentInteraction.",
             "enum": [
                 "protein",
                 "nucleic_acid",
                 "complex",
                 "membrane_protein",
                 "virus",
-                "organelle"
+                "organelle",
+                "cell",
+                "tissue"
             ],
             "title": "SampleTypeEnum",
             "type": "string"
@@ -12056,6 +12452,220 @@
             ],
             "title": "SecondaryStructureEnum",
             "type": "string"
+        },
+        "SmallMolecule": {
+            "additionalProperties": false,
+            "description": "A small molecule as a chemical entity: a ligand, drug, substrate, cofactor, metal ion, lipid, detergent, sugar or crystallization additive, with its structure and identifiers. The counterpart of Protein and NucleicAcid for everything in a sample that is not a biopolymer. One SmallMolecule record is shared by every Sample that contains it, through SampleComponent. Facts about a particular preparation - how much was added, what it was added for, what it is bound to - stay on SampleComponent and SampleComponentInteraction.",
+            "properties": {
+                "chebi_id": {
+                    "description": "ChEBI identifier as a CURIE (CHEBI:30616). Normally identical to id.",
+                    "pattern": "^CHEBI:[0-9]+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "chemical_class": {
+                    "$ref": "#/$defs/ChemicalClassEnum",
+                    "description": "Broad chemical kind: ion, lipid, detergent, carbohydrate, nucleotide, ..."
+                },
+                "cross_references": {
+                    "description": "Cross-references to databases other than those named by chebi_id and pdb_ligand_id (ChEMBL, PubChem, DrugBank, KEGG, ...).",
+                    "items": {
+                        "$ref": "#/$defs/DatabaseCrossReference"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "A detailed textual description of this entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+                    "type": "string"
+                },
+                "inchi": {
+                    "description": "IUPAC InChI string for the structure",
+                    "pattern": "^InChI=1S?/",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "inchikey": {
+                    "description": "InChIKey hash of the InChI, the 27-character form used for exact-structure lookup",
+                    "pattern": "^[A-Z]{14}-[A-Z]{10}-[A-Z]$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "molecular_formula": {
+                    "description": "Molecular formula (e.g., C10H16N5O13P3 for ATP)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "molecular_weight_theoretical": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Mass computed from the formula, typically in daltons"
+                },
+                "pdb_ligand_id": {
+                    "description": "wwPDB Chemical Component Dictionary code as a CURIE (pdb.ligand:ATP, pdb.ligand:HEM, pdb.ligand:ZN). Every ligand in a deposited structure has one, so it is the join key between a sample's components and the ligands of the structure it produced.",
+                    "pattern": "^pdb\\.ligand:[A-Z0-9]{1,5}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "small_molecule_name": {
+                    "description": "Name as ChEBI, the depositor or the supplier gives it (e.g., 'ATP', 'heme b', 'n-dodecyl beta-D-maltoside'). Recommended, not required, so that a record seeded from an identifier alone can be enriched later.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "smiles": {
+                    "description": "SMILES string for the structure",
+                    "pattern": "^([A-Za-z0-9@+\\-\\[\\]\\(\\)\\\\/=#$%.]+)$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "description": "A human-readable name or title for this entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "SmallMolecule",
+            "type": "object"
+        },
+        "SmallMoleculeEntity": {
+            "additionalProperties": false,
+            "description": "A small molecule as a chemical entity - a ligand, cofactor, metal ion, lipid or detergent the specimen *contains*, and the counterpart of `ProteinEntity` and `NucleicAcidEntity` for everything that is not a biopolymer. Typed `[\"MolecularEntity\", \"lambda:SmallMolecule\"]`: schema.org's `MolecularEntity` is in the RO-Crate 1.2 context, with `inChIKey`, `smiles` and `molecularFormula` alongside it, so a generic consumer sees a chemical and a LAMBDA-aware reader projects onto the schema's `SmallMolecule` class. One entity serves every sample in the crate that contains the compound.\nWhere ChEBI has the compound the `@id` SHOULD be its IRI (`http://purl.obolibrary.org/obo/CHEBI_30616`), with the same accession as a CURIE in `chebi_id`, the two spellings of one identifier as for `ProteinEntity`. Every ligand in a deposited structure has a wwPDB Chemical Component Dictionary code, carried in `pdb_ligand_id` (`pdb.ligand:ATP`) and usable as the `@id` when ChEBI has no entry. A compound with neither - a screening hit, say - takes a local `@id` and carries its `inChIKey` or `smiles`.\nOnly the identity layer is here: name, accession, formula, structure. How much was added, what for, and what it is bound to are per-preparation and live in the fuller record this crate points at, as `SampleComponent` and `SampleComponentInteraction` rows.",
+            "properties": {
+                "@id": {
+                    "description": "The entity's identifier - a relative path, an absolute URI, or a `#`-fragment.",
+                    "type": "string"
+                },
+                "@type": {
+                    "description": "One or more types. LAMBDA entities carry the RO-Crate/schema.org type *first* so that a plain RO-Crate consumer understands the crate, then the `lambda:` type for LAMBDA-aware readers.\nModelled as the set of types it semantically is. JSON-LD also permits the shorthand of a bare string for a single type, and real crates use it freely; a reader MUST expand that shorthand to a one-element list before validating or testing membership, exactly as a JSON-LD processor would. Validation here is defined against the expanded form.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "bioChemInteraction": {
+                    "description": "schema.org's untyped \"is known to interact with\", between two biochemical entities. For the generic consumer; the typed, sample-scoped statement is a `ComponentInteractionEntity`.",
+                    "items": {
+                        "$ref": "#/$defs/EntityReference"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "chebi_id": {
+                    "description": "ChEBI identifier as a CURIE (`CHEBI:30616`), exactly as `SmallMolecule.chebi_id` carries it. The `CHEBI` prefix expands to the entity's own `@id` when that is the ChEBI IRI.",
+                    "pattern": "^CHEBI:[0-9]+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "chemical_class": {
+                    "$ref": "#/$defs/ChemicalClassEnum",
+                    "description": "Broad chemical kind, from the schema's own `ChemicalClassEnum` (`ion`, `lipid`, `detergent`, ...)."
+                },
+                "description": {
+                    "description": "Prose summary, aimed at a reader deciding whether to open the dataset.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "inChIKey": {
+                    "description": "InChIKey of the structure, in schema.org's spelling; projects onto `SmallMolecule.inchikey`.",
+                    "pattern": "^[A-Z]{14}-[A-Z]{10}-[A-Z]$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "missing": {
+                    "description": "Declared absences. Absence is stated, never implied by omission.",
+                    "items": {
+                        "$ref": "#/$defs/MissingValueDeclaration"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "molecularFormula": {
+                    "description": "Molecular formula, in schema.org's spelling; projects onto `SmallMolecule.molecular_formula`.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "Human-readable label.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "pdb_ligand_id": {
+                    "description": "wwPDB Chemical Component Dictionary code as a CURIE (`pdb.ligand:ATP`), exactly as `SmallMolecule.pdb_ligand_id` carries it. The join key to the ligands of a deposited structure.",
+                    "pattern": "^pdb\\.ligand:[A-Z0-9]{1,5}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "small_molecule_name": {
+                    "description": "Name of the compound as ChEBI, the depositor or the supplier gives it (`ATP`, `heme b`).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "smiles": {
+                    "description": "SMILES string, in schema.org's spelling; projects onto `SmallMolecule.smiles`.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "@id",
+                "@type"
+            ],
+            "title": "SmallMoleculeEntity",
+            "type": "object"
         },
         "SoftwareApplicationEntity": {
             "additionalProperties": false,
@@ -14397,6 +15007,6 @@
     ],
     "title": "lambda-rocrate-core",
     "type": "object",
-    "version": "0.3.2"
+    "version": "0.3.3"
 }
 
