@@ -335,6 +335,158 @@ class TestCLI:
         assert "Found 2 entries" in result.output
         assert calls["list_entries"] == {"sample_name": "apo", "limit": 2}
 
+    def test_etl_anl_lambda_help(self):
+        result = runner.invoke(app, ["etl", "anl-lambda", "--help"])
+        assert result.exit_code == 0
+        assert "ANL LAMBDA" in result.output
+        assert "--lims" in result.output
+
+    def test_etl_anl_lambda_needs_exactly_one_target(self):
+        result = runner.invoke(app, ["etl", "anl-lambda"])
+        assert result.exit_code == 1
+        assert "exactly one of --experiment UUID or --lims" in result.output
+        result = runner.invoke(app, ["etl", "anl-lambda", "--experiment", "abc", "--lims"])
+        assert result.exit_code == 1
+
+    @staticmethod
+    def _fake_result(dataset_id):
+        class _Result:
+            warnings = ["something to say"]
+
+            class _Dataset:
+                @staticmethod
+                def model_dump(exclude_none=True, mode="json"):
+                    return {"id": dataset_id}
+
+            dataset = _Dataset()
+
+        return _Result()
+
+    def test_etl_anl_lambda_experiment_routes_options(self, mocker, tmp_path):
+        calls: dict[str, object] = {}
+        fake_result = self._fake_result("anl-lambda:experiment/abc")
+
+        class FakeLoader:
+            def __init__(self, api_key=None, api_key_file=None, cache=None, include_files=True):
+                calls["init"] = {
+                    "api_key": api_key,
+                    "api_key_file": api_key_file,
+                    "include_files": include_files,
+                }
+
+            def load(self, identifier):
+                calls["load"] = identifier
+                return fake_result
+
+        mocker.patch("lambda_ber_schema.cli.ANLLambdaLoader", FakeLoader)
+        output_file = tmp_path / "anl.json"
+        result = runner.invoke(
+            app,
+            [
+                "etl", "anl-lambda",
+                "--experiment", "abc",
+                "--no-files",
+                "--api-key", "k",
+                "--format", "json",
+                "--output", str(output_file),
+            ],
+        )
+        assert result.exit_code == 0, result.output
+        assert calls["init"] == {"api_key": "k", "api_key_file": None, "include_files": False}
+        assert calls["load"] == "abc"
+        assert json.loads(output_file.read_text()) == {"id": "anl-lambda:experiment/abc"}
+        assert "Warning: something to say" in result.output
+
+    def test_etl_anl_lambda_lims(self, mocker):
+        fake_result = self._fake_result("anl-lambda:dataset/lims")
+
+        class FakeLoader:
+            def __init__(self, **kwargs):
+                pass
+
+            def load_lims_dataset(self):
+                return fake_result
+
+        mocker.patch("lambda_ber_schema.cli.ANLLambdaLoader", FakeLoader)
+        result = runner.invoke(app, ["etl", "anl-lambda", "--lims"])
+        assert result.exit_code == 0, result.output
+        assert "anl-lambda:dataset/lims" in result.output
+
+    def test_etl_anl_lambda_missing_key_is_reported(self, mocker):
+        class FakeLoader:
+            def __init__(self, **kwargs):
+                pass
+
+            def load(self, identifier):
+                raise ValueError("No ANL LAMBDA API key: pass api_key")
+
+        mocker.patch("lambda_ber_schema.cli.ANLLambdaLoader", FakeLoader)
+        result = runner.invoke(app, ["etl", "anl-lambda", "--experiment", "abc"])
+        assert result.exit_code == 2
+        assert "No ANL LAMBDA API key" in result.output
+
+    def test_etl_list_anl_lambda_routes_filters(self, mocker):
+        calls: dict[str, object] = {}
+
+        class FakeLoader:
+            def list_entries(self, protein_name=None, pi_name=None, limit=None):
+                calls["list_entries"] = {
+                    "protein_name": protein_name, "pi_name": pi_name, "limit": limit,
+                }
+                return ["abc", "def"]
+
+        mocker.patch("lambda_ber_schema.cli.ANLLambdaLoader", FakeLoader)
+        result = runner.invoke(
+            app,
+            ["etl", "list", "anl-lambda", "--protein-name", "kinase", "--pi-name", "J", "--limit", "2"],
+        )
+        assert result.exit_code == 0
+        assert "Found 2 entries" in result.output
+        assert calls["list_entries"] == {"protein_name": "kinase", "pi_name": "J", "limit": 2}
+
+    def test_etl_dump_anl_lambda_calls_load_all_with_filters(self, mocker, tmp_path):
+        calls: dict[str, object] = {}
+
+        class FakeBatchLoader:
+            def __init__(self, loader, output_dir, requests_per_second, max_workers):
+                calls["loader"] = loader
+                calls["requests_per_second"] = requests_per_second
+                calls["max_workers"] = max_workers
+
+            def load_all(self, format="yaml", limit=None, **filters):
+                calls["load_all"] = {"format": format, "limit": limit, "filters": filters}
+                return {"total_entries": 2, "successful": 2, "failed": 0}
+
+        class FakeLoader:
+            def __init__(self, api_key=None, api_key_file=None, include_files=True):
+                calls["include_files"] = include_files
+
+        mocker.patch("lambda_ber_schema.cli.ANLLambdaLoader", FakeLoader)
+        mocker.patch("lambda_ber_schema.cli.BatchLoader", FakeBatchLoader)
+        mocker.patch("lambda_ber_schema.cli.logging.FileHandler",
+                     side_effect=lambda path: logging.NullHandler())
+        mocker.patch("lambda_ber_schema.cli.logging.basicConfig")
+
+        output_dir = tmp_path / "anl_dump"
+        result = runner.invoke(
+            app,
+            [
+                "etl", "dump-anl-lambda",
+                "--output-dir", str(output_dir),
+                "--pi-name", "Joachimiak",
+                "--limit", "2",
+                "--no-files",
+                "--rate", "1.0",
+            ],
+        )
+        assert result.exit_code == 0, result.output
+        assert output_dir.exists()
+        assert calls["include_files"] is False
+        assert calls["requests_per_second"] == 1.0
+        assert calls["load_all"] == {
+            "format": "yaml", "limit": 2, "filters": {"pi_name": "Joachimiak"},
+        }
+
 
 @pytest.mark.integration
 @pytest.mark.slow
