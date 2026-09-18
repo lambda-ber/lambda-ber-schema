@@ -4,6 +4,7 @@ import json
 import logging
 
 import pytest
+import requests
 from typer.testing import CliRunner
 
 from lambda_ber_schema.cli import app
@@ -430,6 +431,23 @@ class TestCLI:
         result = runner.invoke(app, ["etl", "anl-lambda", "--experiment", "abc"])
         assert result.exit_code == 2
         assert "No ANL LAMBDA API key" in result.output
+
+    def test_etl_anl_lambda_lims_server_error_exits_1(self, mocker):
+        class FakeLoader:
+            def __init__(self, **kwargs):
+                pass
+
+            def load_lims_dataset(self):
+                response = requests.Response()
+                response.status_code = 500
+                raise requests.HTTPError(
+                    "ANL LAMBDA api/v1/lims/dataset returned HTTP 500", response=response
+                )
+
+        mocker.patch("lambda_ber_schema.cli.ANLLambdaLoader", FakeLoader)
+        result = runner.invoke(app, ["etl", "anl-lambda", "--lims"])
+        assert result.exit_code == 1
+        assert "failed to fetch the ANL LAMBDA LIMS export (HTTP 500)" in result.output
 
     def test_etl_list_anl_lambda_routes_filters(self, mocker):
         calls: dict[str, object] = {}
