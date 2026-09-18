@@ -4052,8 +4052,12 @@ classes:
         description: "Whether the interaction is the design of the sample, expected from prior work, observed in this dataset's data, or expected and not observed"
         range: InteractionStatusEnum
       stoichiometry:
-        description: "Copies of subject to copies of object per assembly, written 'subject:object' ('1:1', '2:1')"
-        pattern: "^[0-9]+:[0-9]+$"
+        description: >-
+          Copies of subject to copies of object per assembly, written 'subject:object': '1:1',
+          '2:1', '3:1' for three zinc ions per finger domain. A fractional count is allowed for
+          partial occupancy ('0.5:1'), and 'n' for a count that is many or unknown, as for the
+          subunits of a filament ('n:1'). What n is, where known, goes in description.
+        pattern: "^([0-9]+(\\.[0-9]+)?|n):([0-9]+(\\.[0-9]+)?|n)$"
       subject_site:
         description: >-
           Where on the subject the interaction takes place: residues or positions as 'D184,D186' or
