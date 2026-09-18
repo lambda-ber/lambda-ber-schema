@@ -39,8 +39,9 @@ just simplescattering-dump-start
 just anllambda-dump-start    # ANL: 2 req/sec, ~50 experiments with images
 
 # Fast mode (use when cache exists)
-just pdb-dump-start-fast     # 5 req/sec
-just sasbdb-dump-start-fast  # 5 req/sec
+just pdb-dump-start-fast               # 5 req/sec
+just sasbdb-dump-start-fast            # 5 req/sec
+just simplescattering-dump-start-fast  # 5 req/sec
 
 # Monitor
 just pdb-dump-status
