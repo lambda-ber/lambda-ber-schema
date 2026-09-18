@@ -1,0 +1,511 @@
+{
+  "@context": [
+    "https://w3id.org/ro/crate/1.2/context",
+    {
+      "lambda": "http://w3id.org/lambda/",
+      "lambdarc": "http://w3id.org/lambda/rocrate/"
+    }
+  ],
+  "@graph": [
+    {
+      "@id": "ro-crate-metadata.json",
+      "@type": "CreativeWork",
+      "conformsTo": [{ "@id": "https://w3id.org/ro/crate/1.2" }],
+      "about": { "@id": "./" }
+    },
+
+    {
+      "@id": "./",
+      "@type": ["Dataset", "lambda:Dataset"],
+      "name": "EMSL Titan Krios SerialEM single-particle cryo-EM session (fixture)",
+      "description": "Representative subset of a SerialEM SPA session from a Titan Krios at EMSL. Includes the low-magnification atlas montage, medium-magnification survey images, hole-level screening, and dose-fractionated acquisition movies. Identifying information has been genericised; binary files are zero-byte stubs.",
+      "datePublished": "2001-01-01",
+      "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" },
+      "conformsTo": [
+        { "@id": "https://w3id.org/ro/crate/1.2" },
+        { "@id": "https://w3id.org/lambda/profile/core/0.3.0" }
+      ],
+      "technique": "cryo_em",
+      "facility_name": "EMSL",
+      "instrumentName": "Titan Krios",
+      "sample_code": "Sample-grid-1",
+      "packageTier": "manifest",
+      "identifier": [
+        {
+          "@type": "PropertyValue",
+          "propertyID": "EMSL-proposal",
+          "value": "99999"
+        },
+        {
+          "@type": "PropertyValue",
+          "propertyID": "EMSL-session",
+          "value": "01-01-01"
+        }
+      ],
+      "schemaSet": [
+        { "module": "lambda-ber-schema", "version": "0.1.2" },
+        { "module": "lambda-rocrate-core", "version": "0.3.0" }
+      ],
+      "sufficiency": {
+        "s1Findable": false,
+        "s2CoreComplete": false,
+        "s2AcquisitionComplete": false,
+        "s3Interpretable": false
+      },
+      "missing": [
+        {
+          "field": "author",
+          "reason": "not-registered",
+          "blocks": "S1",
+          "note": "Names and ORCIDs were scrubbed during fixture anonymisation."
+        },
+        {
+          "field": "raw_frame_series",
+          "reason": "not-deposited",
+          "blocks": "S2-acquisition",
+          "note": "Movie files are zero-byte stubs; real frames not deposited with this fixture."
+        },
+        {
+          "field": "vitrification_settings",
+          "reason": "not-available",
+          "blocks": "S2-core",
+          "note": "vitrification_settings field in metadata.yaml is a placeholder not yet filled in."
+        }
+      ],
+      "vocabEntry": [
+        {
+          "module": "lambda-ber-schema",
+          "enum": "FileFormatEnum",
+          "key": "mdoc",
+          "note": "SerialEM metadata sidecar format (.mrc.mdoc, .tif.mdoc). Not yet in FileFormatEnum."
+        },
+        {
+          "module": "lambda-ber-schema",
+          "enum": "FileFormatEnum",
+          "key": "nav",
+          "note": "SerialEM navigator file format (.nav). Stores all acquisition targets with stage coordinates and map references."
+        },
+        {
+          "module": "lambda-ber-schema",
+          "enum": "FileFormatEnum",
+          "key": "dm4",
+          "note": "DigitalMicrograph 4 format (.dm4) used for K3 gain reference files."
+        },
+        {
+          "module": "lambda-ber-schema",
+          "enum": "FacilityEnum",
+          "key": "EMSL",
+          "note": "Environmental Molecular Sciences Laboratory (PNNL). Not yet in FacilityEnum."
+        }
+      ],
+      "hasPart": [
+        { "@id": "#instr-krios" },
+        { "@id": "#sample-grid1" },
+        { "@id": "https://ror.org/04rc0xn13" },
+        { "@id": "#exp-serialem-spa" },
+        { "@id": "frames/" },
+        { "@id": "screening/" },
+        { "@id": "metadata.yaml" },
+        { "@id": "C5_LMM_1.mrc.mdoc" },
+        { "@id": "C5_LMM_1.mrc" },
+        { "@id": "C5.nav" },
+        { "@id": "mmm1.mrc.mdoc" },
+        { "@id": "mmm1.mrc" },
+        { "@id": "mmm2.mrc.mdoc" },
+        { "@id": "mmm2.mrc" },
+        { "@id": "frames/Image_000.tif.mdoc" },
+        { "@id": "frames/Image_000.tif" },
+        { "@id": "frames/Image_001.tif.mdoc" },
+        { "@id": "frames/Image_001.tif" },
+        { "@id": "frames/Image_002.tif.mdoc" },
+        { "@id": "frames/Image_002.tif" },
+        { "@id": "frames/SuperRef_Image_000.dm4" },
+        { "@id": "frames/defects_GS_01_H_01_000.txt" },
+        { "@id": "screening/Hole_01.mrc.mdoc" },
+        { "@id": "screening/Hole_01.mrc" },
+        { "@id": "screening/Hole_01_1-1.mrc.mdoc" },
+        { "@id": "screening/Hole_01_1-1.mrc" }
+      ]
+    },
+
+    {
+      "@id": "#instr-krios",
+      "@type": ["IndividualProduct", "lambda:Instrument"],
+      "name": "Titan Krios at EMSL",
+      "instrument_code": "EMSL-KRIOS-99999",
+      "manufacturer": "ThermoFisher",
+      "model": "Titan Krios",
+      "facility_name": "EMSL",
+      "detector": "K3"
+    },
+
+    {
+      "@id": "#sample-grid1",
+      "@type": ["BioChemEntity", "lambda:Sample"],
+      "name": "Sample grid 1",
+      "sample_code": "Sample-grid-1",
+      "sample_type": "protein",
+      "concentration": "1 mg/ml",
+      "missing": [
+        {
+          "field": "protein_name",
+          "reason": "not-registered",
+          "blocks": "S2-core",
+          "note": "Sample identity scrubbed during fixture anonymisation."
+        },
+        {
+          "field": "organism",
+          "reason": "not-registered",
+          "blocks": "S2-core"
+        }
+      ]
+    },
+
+    {
+      "@id": "https://ror.org/04rc0xn13",
+      "@type": "Organization",
+      "name": "Environmental Molecular Sciences Laboratory",
+      "ror": "https://ror.org/04rc0xn13",
+      "acronym": "EMSL",
+      "organization_type": "national_laboratory",
+      "country": "USA",
+      "isDoeFacility": true
+    },
+
+    {
+      "@id": "#exp-serialem-spa",
+      "@type": ["Action", "lambda:ExperimentRun"],
+      "name": "SerialEM single-particle cryo-EM data collection at EMSL",
+      "experiment_code": "EMSL-99999-01-01-01",
+      "technique": "cryo_em",
+      "collection_mode": "single_particle",
+      "raw_data_location": "frames/",
+      "processing_status": "raw",
+      "object": [{ "@id": "#sample-grid1" }],
+      "instrument": [{ "@id": "#instr-krios" }],
+      "result": [{ "@id": "frames/" }],
+      "runParameters": {
+        "acquisitionSoftware": "SerialEM",
+        "acquisitionSoftwareVersion": "4.2.2",
+        "acceleratingVoltageKv": 300,
+        "sphericalAberrationMm": 2.7,
+        "nominalPixelSizeAngstrom": 0.34,
+        "calibratedPixelSizeAngstrom": 0.340292,
+        "totalDoseElectronsPerAngstrom2": 50,
+        "totalExposureS": 1.046,
+        "numFramesPerMovie": 49,
+        "binningFactor": 0.5,
+        "nominalMagnificationX": 130000,
+        "spotSize": 4,
+        "c2ApertureMicrons": 50,
+        "beamDiameterMicrons": 750,
+        "energyFilterSlitEv": 20,
+        "phasePlate": false,
+        "tiltingScheme": "dose_symmetric",
+        "detectorPhysicalPixelSizeUm": 5,
+        "motCorrBin": 1,
+        "topazModel": "NA",
+        "iceContamination": "none",
+        "iceQuality": "ideal_range",
+        "particleConcentration": "just_right",
+        "atlasGridColumns": 6,
+        "atlasGridRows": 8,
+        "atlasPixelSpacingAngstrom": 1332.64,
+        "surveyPixelSpacingAngstrom": 243.116
+      }
+    },
+
+    {
+      "@id": "frames/",
+      "@type": "Dataset",
+      "name": "Dose-fractionated movie series",
+      "description": "3 acquisition movies (49 frames each) at Mag=130000 with K3 gain reference and camera defect map.",
+      "partCount": 3,
+      "rawIncluded": true,
+      "missing": [
+        {
+          "field": "sha256",
+          "reason": "not-available",
+          "blocks": "S2-acquisition",
+          "note": "Binary stubs; real movie files not deposited with this fixture."
+        },
+        {
+          "field": "schemaRecord",
+          "reason": "not-applicable",
+          "note": "Per-movie metadata is carried by sidecar .tif.mdoc files alongside each stub."
+        }
+      ]
+    },
+
+    {
+      "@id": "screening/",
+      "@type": "Dataset",
+      "name": "Hole-level screening images",
+      "description": "Hole survey and high-magnification multishot screening images used to assess ice quality and particle distribution prior to data collection.",
+      "partCount": 2,
+      "rawIncluded": true,
+      "missing": [
+        {
+          "field": "sha256",
+          "reason": "not-available",
+          "blocks": "S2-acquisition",
+          "note": "Binary stubs; real screening files not deposited with this fixture."
+        },
+        {
+          "field": "schemaRecord",
+          "reason": "not-applicable",
+          "note": "Per-image metadata is carried by sidecar .mrc.mdoc files."
+        }
+      ]
+    },
+
+    {
+      "@id": "metadata.yaml",
+      "@type": "File",
+      "name": "metadata.yaml",
+      "description": "EMSL acquisition protocol sheet: proposal/session identifiers, microscope and detector settings, sample conditions, and quality assessments.",
+      "encodingFormat": "application/yaml",
+      "contentSize": "1736",
+      "sha256": "1ca5a6022d95dcd8514a8f79238de405a70585be343b7a7a906ac1ee37708146",
+      "data_type": "metadata",
+      "processing_level": 0
+    },
+
+    {
+      "@id": "C5_LMM_1.mrc.mdoc",
+      "@type": "File",
+      "name": "C5_LMM_1.mrc.mdoc",
+      "description": "SerialEM metadata sidecar for the low-magnification atlas montage. Contains one [ZValue=N] block per tile (48 tiles, Mag=135) and a [MontSection=0] summary.",
+      "encodingFormat": "text/plain",
+      "contentSize": "41561",
+      "sha256": "f0a6720a52256254afa048a89e78934746bb9a2e671225f2740c303ee07eb7a9",
+      "data_type": "metadata",
+      "processing_level": 0
+    },
+
+    {
+      "@id": "C5_LMM_1.mrc",
+      "@type": "File",
+      "name": "C5_LMM_1.mrc",
+      "description": "Low-magnification atlas montage of grid square C5 (48 tiles, Mag=135, PixelSpacing=1332.64 Å). Zero-byte fixture stub.",
+      "encodingFormat": "application/x-mrc",
+      "file_format": "mrc",
+      "data_type": "micrograph",
+      "processing_level": 0,
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+
+    {
+      "@id": "C5.nav",
+      "@type": "File",
+      "name": "C5.nav",
+      "description": "SerialEM navigator file indexing all acquisition targets as [Item=N] blocks with stage coordinates, polygon vertices, and references to map files.",
+      "encodingFormat": "text/plain",
+      "contentSize": "265037",
+      "sha256": "846a43869a207f61a50fab65a5d0654ee9b1e5deff804541e413444e15be2f8f",
+      "data_type": "metadata",
+      "processing_level": 0
+    },
+
+    {
+      "@id": "mmm1.mrc.mdoc",
+      "@type": "File",
+      "name": "mmm1.mrc.mdoc",
+      "description": "SerialEM metadata sidecar for medium-magnification survey image 1 (Mag=740, NavigatorLabel=2).",
+      "encodingFormat": "text/plain",
+      "contentSize": "997",
+      "sha256": "77e800bd243775307fa5b99fcee78e40ced0d242e0c46b2394a282c63268bf41",
+      "data_type": "metadata",
+      "processing_level": 0
+    },
+
+    {
+      "@id": "mmm1.mrc",
+      "@type": "File",
+      "name": "mmm1.mrc",
+      "description": "Medium-magnification survey image of grid area 1 (Mag=740, PixelSpacing=243.116 Å). Zero-byte fixture stub.",
+      "encodingFormat": "application/x-mrc",
+      "file_format": "mrc",
+      "data_type": "micrograph",
+      "processing_level": 0,
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+
+    {
+      "@id": "mmm2.mrc.mdoc",
+      "@type": "File",
+      "name": "mmm2.mrc.mdoc",
+      "description": "SerialEM metadata sidecar for medium-magnification survey image 2 (Mag=740, NavigatorLabel=4).",
+      "encodingFormat": "text/plain",
+      "contentSize": "998",
+      "sha256": "eda351a17ed5a2437701ad088bd2f05391161d5c9c95b1a10d4bb79aff7131d7",
+      "data_type": "metadata",
+      "processing_level": 0
+    },
+
+    {
+      "@id": "mmm2.mrc",
+      "@type": "File",
+      "name": "mmm2.mrc",
+      "description": "Medium-magnification survey image of grid area 2 (Mag=740, PixelSpacing=243.116 Å). Zero-byte fixture stub.",
+      "encodingFormat": "application/x-mrc",
+      "file_format": "mrc",
+      "data_type": "micrograph",
+      "processing_level": 0,
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+
+    {
+      "@id": "frames/Image_000.tif.mdoc",
+      "@type": "File",
+      "name": "Image_000.tif.mdoc",
+      "description": "SerialEM metadata sidecar for acquisition movie 0. [FrameSet=0] block with NumSubFrames=49, GainReference, DefectFile, NavigatorLabel=17-1.",
+      "encodingFormat": "text/plain",
+      "contentSize": "935",
+      "sha256": "8640244391a516b0d8467060fc3c1c1c1acfa23c6c5f56af9d8fb8903eee521c",
+      "data_type": "metadata",
+      "processing_level": 0
+    },
+
+    {
+      "@id": "frames/Image_000.tif",
+      "@type": "File",
+      "name": "Image_000.tif",
+      "description": "Dose-fractionated acquisition movie (49 frames, Mag=130000, PixelSpacing=0.340292 Å). Zero-byte fixture stub.",
+      "encodingFormat": "image/tiff",
+      "file_format": "tiff",
+      "data_type": "movie",
+      "processing_level": 0,
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+
+    {
+      "@id": "frames/Image_001.tif.mdoc",
+      "@type": "File",
+      "name": "Image_001.tif.mdoc",
+      "description": "SerialEM metadata sidecar for acquisition movie 1.",
+      "encodingFormat": "text/plain",
+      "contentSize": "936",
+      "sha256": "892cd65cbbf3f76c48572f3fbed84aeadf01c604c2a048cebf77816be651c389",
+      "data_type": "metadata",
+      "processing_level": 0
+    },
+
+    {
+      "@id": "frames/Image_001.tif",
+      "@type": "File",
+      "name": "Image_001.tif",
+      "description": "Dose-fractionated acquisition movie (49 frames, Mag=130000). Zero-byte fixture stub.",
+      "encodingFormat": "image/tiff",
+      "file_format": "tiff",
+      "data_type": "movie",
+      "processing_level": 0,
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+
+    {
+      "@id": "frames/Image_002.tif.mdoc",
+      "@type": "File",
+      "name": "Image_002.tif.mdoc",
+      "description": "SerialEM metadata sidecar for acquisition movie 2.",
+      "encodingFormat": "text/plain",
+      "contentSize": "935",
+      "sha256": "d296b5e44dbb48b94581328e4033ff65ecdc8e4bfe71b1f95f5f252f9e63a0cd",
+      "data_type": "metadata",
+      "processing_level": 0
+    },
+
+    {
+      "@id": "frames/Image_002.tif",
+      "@type": "File",
+      "name": "Image_002.tif",
+      "description": "Dose-fractionated acquisition movie (49 frames, Mag=130000). Zero-byte fixture stub.",
+      "encodingFormat": "image/tiff",
+      "file_format": "tiff",
+      "data_type": "movie",
+      "processing_level": 0,
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+
+    {
+      "@id": "frames/SuperRef_Image_000.dm4",
+      "@type": "File",
+      "name": "SuperRef_Image_000.dm4",
+      "description": "K3 gain reference in DigitalMicrograph 4 format. Normalises camera sensitivity; referenced by all three frame mdocs. Zero-byte fixture stub.",
+      "encodingFormat": "application/octet-stream",
+      "data_type": "metadata",
+      "processing_level": 0,
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+
+    {
+      "@id": "frames/defects_GS_01_H_01_000.txt",
+      "@type": "File",
+      "name": "defects_GS_01_H_01_000.txt",
+      "description": "Camera defect map listing bad columns and unusable pixel regions for the K3 detector. Referenced by all frame mdocs.",
+      "encodingFormat": "text/plain",
+      "file_format": "ascii",
+      "data_type": "metadata",
+      "processing_level": 0,
+      "contentSize": "224",
+      "sha256": "8ec2fdc34871326818bf5eb3fbc30b0081f5b2ce8c265d61b2c162296e9973e3"
+    },
+
+    {
+      "@id": "screening/Hole_01.mrc.mdoc",
+      "@type": "File",
+      "name": "Hole_01.mrc.mdoc",
+      "description": "SerialEM metadata sidecar for hole-level survey image at Mag=11500 (NavigatorLabel=3).",
+      "encodingFormat": "text/plain",
+      "contentSize": "1008",
+      "sha256": "1edba2fd5b4dd3136e863dd4e54be5c7a0a9c6d5e8b1f97acf7ba830ced9f17b",
+      "data_type": "metadata",
+      "processing_level": 0
+    },
+
+    {
+      "@id": "screening/Hole_01.mrc",
+      "@type": "File",
+      "name": "Hole_01.mrc",
+      "description": "Hole-level survey image at Mag=11500 (PixelSpacing=16.1085 Å) used to assess ice quality and particle distribution. Zero-byte fixture stub.",
+      "encodingFormat": "application/x-mrc",
+      "file_format": "mrc",
+      "data_type": "micrograph",
+      "processing_level": 0,
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+
+    {
+      "@id": "screening/Hole_01_1-1.mrc.mdoc",
+      "@type": "File",
+      "name": "Hole_01_1-1.mrc.mdoc",
+      "description": "SerialEM metadata sidecar for high-magnification multishot sub-position 1-1 within hole 1 (Mag=130000, MultishotHoleAndPosition=1-1).",
+      "encodingFormat": "text/plain",
+      "contentSize": "1049",
+      "sha256": "076c0bdc3a474a6d92ee058f3bc919b0702b3de734c3cc99b10be08629723afa",
+      "data_type": "metadata",
+      "processing_level": 0
+    },
+
+    {
+      "@id": "screening/Hole_01_1-1.mrc",
+      "@type": "File",
+      "name": "Hole_01_1-1.mrc",
+      "description": "High-magnification image of multishot sub-position 1-1 within hole 1 (Mag=130000, PixelSpacing=1.36117 Å). Zero-byte fixture stub.",
+      "encodingFormat": "application/x-mrc",
+      "file_format": "mrc",
+      "data_type": "micrograph",
+      "processing_level": 0,
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}
