@@ -2,7 +2,7 @@
 #mapping_set_id: http://w3id.org/lambda/rocrate/core
 #mapping_tool: https://w3id.org/linkml/
 #creator_id: linkml_user
-#mapping_date: 2026-09-18
+#mapping_date: 2026-10-04
 #curie_map: 
 # lambda: http://w3id.org/lambda/
 # lambdarc: http://w3id.org/lambda/rocrate/
@@ -84,6 +84,7 @@ lambda:TechniqueEnum#neutron_crystallography	neutron_crystallography	skos:exactM
 lambda:TechniqueEnum#fiber_diffraction	fiber_diffraction	skos:exactMatch		CHMO:0000156		skos:exactMatch	http://w3id.org/lambda/						TechniqueEnum			
 lambda:TechniqueEnum#time_resolved_crystallography	time_resolved_crystallography	skos:exactMatch		CHMO:0000156		skos:exactMatch	http://w3id.org/lambda/						TechniqueEnum			
 lambda:TechniqueEnum#xray_tomography	xray_tomography	skos:exactMatch		CHMO:0002743		skos:exactMatch	http://w3id.org/lambda/						TechniqueEnum			
+lambda:TechniqueEnum#solution_nmr	solution_nmr	skos:exactMatch		CHMO:0002397		skos:exactMatch	http://w3id.org/lambda/						TechniqueEnum			
 lambda:acronym	acronym	skos:exactMatch		lambda:acronym		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 sdo:additionalType	additional_type	skos:closeMatch		lambda:data_type		skos:closeMatch	http://w3id.org/lambda/rocrate/core									
 lambdarc:admissibility	admissibility	skos:closeMatch		lambdax:admissibility		skos:closeMatch	http://w3id.org/lambda/rocrate/core									

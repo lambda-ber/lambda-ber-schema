@@ -139,6 +139,10 @@
       "prefix_reference": "https://www.sasbdb.org/data/"
     },
     {
+      "prefix_prefix": "bmrb",
+      "prefix_reference": "https://bmrb.io/data_library/summary/index.php?bmrbId="
+    },
+    {
       "prefix_prefix": "simplescattering",
       "prefix_reference": "https://www.simplescattering.com/open_dataset/"
     },
@@ -3003,6 +3007,15 @@
             "Also known as MicroED or 3D electron diffraction (3DED)",
             "Uses an electron beam on sub-micron crystals"
           ]
+        },
+        {
+          "text": "solution_nmr",
+          "description": "Solution-state nuclear magnetic resonance spectroscopy for structure determination of molecules in solution",
+          "meaning": "CHMO:0002397",
+          "comments": [
+            "The PDB's SOLUTION NMR method; chemical shifts, restraints and spectra are deposited at BMRB",
+            "Solid-state NMR is a different technique and is not covered by this value"
+          ]
         }
       ]
     },
@@ -3230,6 +3243,10 @@
         {
           "text": "gz",
           "description": "Gzip compressed format"
+        },
+        {
+          "text": "nmr_star",
+          "description": "NMR-STAR format for NMR data (chemical shifts, restraints, sample conditions), as distributed by BMRB"
         }
       ]
     },
@@ -28862,9 +28879,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda_ber_schema.yaml",
-  "source_file_date": "2026-09-18T15:51:45",
-  "source_file_size": 264996,
-  "generation_date": "2026-09-18T15:54:10",
+  "source_file_date": "2026-10-04T21:22:44",
+  "source_file_size": 265593,
+  "generation_date": "2026-10-04T21:23:02",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda_ber_schema.context.jsonld",

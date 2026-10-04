@@ -1,5 +1,5 @@
 # Auto generated from lambda_ber_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-09-18T15:54:30
+# Generation date: 2026-10-04T21:23:11
 # Schema: lambda-ber-schema
 #
 # id: http://w3id.org/lambda/
@@ -216,6 +216,7 @@ ROR = CurieNamespace('ROR', 'https://ror.org/')
 UBERON = CurieNamespace('UBERON', 'http://purl.obolibrary.org/obo/UBERON_')
 UO = CurieNamespace('UO', 'http://purl.obolibrary.org/obo/UO_')
 ANL_LAMBDA = CurieNamespace('anl-lambda', 'https://sg.bio.anl.gov/lambda/')
+BMRB = CurieNamespace('bmrb', 'https://bmrb.io/data_library/summary/index.php?bmrbId=')
 CHEMBL_COMPOUND = CurieNamespace('chembl_compound', 'https://www.ebi.ac.uk/chembl/compound_report_card/')
 DCTERMS = CurieNamespace('dcterms', 'http://purl.org/dc/terms/')
 DRUGBANK = CurieNamespace('drugbank', 'https://go.drugbank.com/drugs/')
@@ -6867,6 +6868,10 @@ class TechniqueEnum(EnumDefinitionImpl):
     microed = PermissibleValue(
         text="microed",
         description="Micro-electron diffraction for atomic-resolution structure determination from microcrystals")
+    solution_nmr = PermissibleValue(
+        text="solution_nmr",
+        description="""Solution-state nuclear magnetic resonance spectroscopy for structure determination of molecules in solution""",
+        meaning=CHMO["0002397"])
 
     _defn = EnumDefinition(
         name="TechniqueEnum",
@@ -7047,6 +7052,9 @@ class FileFormatEnum(EnumDefinitionImpl):
     gz = PermissibleValue(
         text="gz",
         description="Gzip compressed format")
+    nmr_star = PermissibleValue(
+        text="nmr_star",
+        description="""NMR-STAR format for NMR data (chemical shifts, restraints, sample conditions), as distributed by BMRB""")
 
     _defn = EnumDefinition(
         name="FileFormatEnum",

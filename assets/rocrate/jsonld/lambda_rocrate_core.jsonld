@@ -3009,6 +3009,15 @@
             "Also known as MicroED or 3D electron diffraction (3DED)",
             "Uses an electron beam on sub-micron crystals"
           ]
+        },
+        {
+          "text": "solution_nmr",
+          "description": "Solution-state nuclear magnetic resonance spectroscopy for structure determination of molecules in solution",
+          "meaning": "CHMO:0002397",
+          "comments": [
+            "The PDB's SOLUTION NMR method; chemical shifts, restraints and spectra are deposited at BMRB",
+            "Solid-state NMR is a different technique and is not covered by this value"
+          ]
         }
       ]
     },
@@ -3236,6 +3245,10 @@
         {
           "text": "gz",
           "description": "Gzip compressed format"
+        },
+        {
+          "text": "nmr_star",
+          "description": "NMR-STAR format for NMR data (chemical shifts, restraints, sample conditions), as distributed by BMRB"
         }
       ]
     },
@@ -34457,9 +34470,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda_rocrate_core.yaml",
-  "source_file_date": "2026-09-18T15:53:38",
+  "source_file_date": "2026-10-04T19:46:42",
   "source_file_size": 86395,
-  "generation_date": "2026-09-18T15:57:24",
+  "generation_date": "2026-10-04T21:25:25",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/rocrate/jsonld/lambda_rocrate_core.context.jsonld",

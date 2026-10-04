@@ -4020,7 +4020,8 @@
                 "json",
                 "csv",
                 "ccp4",
-                "gz"
+                "gz",
+                "nmr_star"
             ],
             "title": "FileFormatEnum",
             "type": "string"
@@ -10799,7 +10800,8 @@
                 "fiber_diffraction",
                 "time_resolved_crystallography",
                 "xray_tomography",
-                "microed"
+                "microed",
+                "solution_nmr"
             ],
             "title": "TechniqueEnum",
             "type": "string"

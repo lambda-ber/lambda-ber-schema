@@ -417,6 +417,7 @@ enum FileFormatEnum
     csv
     ccp4
     gz
+    nmr_star
   }
 
 enum FunctionalEffectEnum
@@ -938,6 +939,7 @@ enum TechniqueEnum
     time_resolved_crystallography
     xray_tomography
     microed
+    solution_nmr
   }
 
 enum TiltingSchemeEnum

@@ -315,6 +315,8 @@ linkml_meta = LinkMLMeta({'default_prefix': 'lambda',
                          'prefix_reference': 'http://purl.obolibrary.org/obo/UO_'},
                   'anl-lambda': {'prefix_prefix': 'anl-lambda',
                                  'prefix_reference': 'https://sg.bio.anl.gov/lambda/'},
+                  'bmrb': {'prefix_prefix': 'bmrb',
+                           'prefix_reference': 'https://bmrb.io/data_library/summary/index.php?bmrbId='},
                   'chembl.compound': {'prefix_prefix': 'chembl.compound',
                                       'prefix_reference': 'https://www.ebi.ac.uk/chembl/compound_report_card/'},
                   'dcterms': {'prefix_prefix': 'dcterms',
@@ -2249,6 +2251,10 @@ class TechniqueEnum(str, Enum):
     """
     Micro-electron diffraction for atomic-resolution structure determination from microcrystals
     """
+    solution_nmr = "solution_nmr"
+    """
+    Solution-state nuclear magnetic resonance spectroscopy for structure determination of molecules in solution
+    """
 
 
 class ProcessingStatusEnum(str, Enum):
@@ -2466,6 +2472,10 @@ class FileFormatEnum(str, Enum):
     gz = "gz"
     """
     Gzip compressed format
+    """
+    nmr_star = "nmr_star"
+    """
+    NMR-STAR format for NMR data (chemical shifts, restraints, sample conditions), as distributed by BMRB
     """
 
 

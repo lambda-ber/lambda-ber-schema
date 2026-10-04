@@ -10,6 +10,7 @@
    "UBERON": "http://purl.obolibrary.org/obo/UBERON_",
    "UO": "http://purl.obolibrary.org/obo/UO_",
    "anl-lambda": "https://sg.bio.anl.gov/lambda/",
+   "bmrb": "https://bmrb.io/data_library/summary/index.php?bmrbId=",
    "chembl.compound": "https://www.ebi.ac.uk/chembl/compound_report_card/",
    "dcterms": "http://purl.org/dc/terms/",
    "drugbank": "https://go.drugbank.com/drugs/",
