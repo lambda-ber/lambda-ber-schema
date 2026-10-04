@@ -200,6 +200,9 @@
    "NamedThing": {
       "@id": "lambda:NamedThing"
    },
+   "NMRInstrument": {
+      "@id": "lambda:NMRInstrument"
+   },
    "NucleicAcid": {
       "@id": "lambda:NucleicAcid"
    },
@@ -251,6 +254,9 @@
    "ProteinProteinInteraction": {
       "@id": "http://w3id.org/lambda/functional_annotation/ProteinProteinInteraction"
    },
+   "Publication": {
+      "@id": "lambda:Publication"
+   },
    "QualityMetrics": {
       "@id": "lambda:QualityMetrics"
    },
@@ -262,6 +268,9 @@
    },
    "RelatedWork": {
       "@id": "sdo:CreativeWork"
+   },
+   "ResolutionShell": {
+      "@id": "lambda:ResolutionShell"
    },
    "ROCrateMetadataDocument": {
       "@id": "sdo:CreativeWork"
@@ -331,6 +340,9 @@
    },
    "StudyPersonAssociation": {
       "@id": "lambda:StudyPersonAssociation"
+   },
+   "StudyPublicationAssociation": {
+      "@id": "lambda:StudyPublicationAssociation"
    },
    "StudySampleAssociation": {
       "@id": "lambda:StudySampleAssociation"

@@ -1,0 +1,5040 @@
+{
+ "description": "Every leaf field the RCSB Data API REST endpoints can return, from the JSON schemas at https://data.rcsb.org/rest/v1/schema/<kind>. RCSB publishes no schema for interface records, so those paths are the ones observed in the test fixtures.",
+ "schema_versions": {
+  "entry": "9.1.2",
+  "polymer_entity": "10.1.2",
+  "nonpolymer_entity": "10.1.0",
+  "branched_entity": "10.1.0",
+  "chemcomp": "7.2.1",
+  "assembly": "9.1.0",
+  "interface": "observed"
+ },
+ "kinds": {
+  "entry": {
+   "audit_author[].identifier_ORCID": {
+    "type": "string"
+   },
+   "audit_author[].name": {
+    "type": "string"
+   },
+   "audit_author[].pdbx_ordinal": {
+    "type": "integer"
+   },
+   "cell.Z_PDB": {
+    "type": "integer"
+   },
+   "cell.angle_alpha": {
+    "type": "number",
+    "units": "degrees"
+   },
+   "cell.angle_beta": {
+    "type": "number",
+    "units": "degrees"
+   },
+   "cell.angle_gamma": {
+    "type": "number",
+    "units": "degrees"
+   },
+   "cell.formula_units_Z": {
+    "type": "integer"
+   },
+   "cell.length_a": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "cell.length_b": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "cell.length_c": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "cell.pdbx_unique_axis": {
+    "type": "string"
+   },
+   "cell.volume": {
+    "type": "number",
+    "units": "angstroms_cubed"
+   },
+   "citation[].book_id_ISBN": {
+    "type": "string"
+   },
+   "citation[].book_publisher": {
+    "type": "string"
+   },
+   "citation[].book_publisher_city": {
+    "type": "string"
+   },
+   "citation[].book_title": {
+    "type": "string"
+   },
+   "citation[].coordinate_linkage": {
+    "type": "string"
+   },
+   "citation[].country": {
+    "type": "string"
+   },
+   "citation[].id": {
+    "type": "string"
+   },
+   "citation[].journal_abbrev": {
+    "type": "string"
+   },
+   "citation[].journal_full": {
+    "type": "string"
+   },
+   "citation[].journal_id_ASTM": {
+    "type": "string"
+   },
+   "citation[].journal_id_CSD": {
+    "type": "string"
+   },
+   "citation[].journal_id_ISSN": {
+    "type": "string"
+   },
+   "citation[].journal_issue": {
+    "type": "string"
+   },
+   "citation[].journal_volume": {
+    "type": "string"
+   },
+   "citation[].language": {
+    "type": "string"
+   },
+   "citation[].page_first": {
+    "type": "string"
+   },
+   "citation[].page_last": {
+    "type": "string"
+   },
+   "citation[].pdbx_database_id_DOI": {
+    "type": "string"
+   },
+   "citation[].pdbx_database_id_PubMed": {
+    "type": "integer"
+   },
+   "citation[].rcsb_authors[]": {
+    "type": "string"
+   },
+   "citation[].rcsb_is_primary": {
+    "type": "string"
+   },
+   "citation[].rcsb_journal_abbrev": {
+    "type": "string"
+   },
+   "citation[].title": {
+    "type": "string"
+   },
+   "citation[].unpublished_flag": {
+    "type": "string"
+   },
+   "citation[].year": {
+    "type": "integer"
+   },
+   "database_2[].database_code": {
+    "type": "string"
+   },
+   "database_2[].database_id": {
+    "type": "string"
+   },
+   "database_2[].pdbx_DOI": {
+    "type": "string"
+   },
+   "database_2[].pdbx_database_accession": {
+    "type": "string"
+   },
+   "diffrn[].ambient_pressure": {
+    "type": "number",
+    "units": "kilopascals"
+   },
+   "diffrn[].ambient_temp": {
+    "type": "number",
+    "units": "kelvins"
+   },
+   "diffrn[].ambient_temp_details": {
+    "type": "string"
+   },
+   "diffrn[].crystal_id": {
+    "type": "string"
+   },
+   "diffrn[].crystal_support": {
+    "type": "string"
+   },
+   "diffrn[].details": {
+    "type": "string"
+   },
+   "diffrn[].id": {
+    "type": "string"
+   },
+   "diffrn[].pdbx_serial_crystal_experiment": {
+    "type": "string"
+   },
+   "diffrn_detector[].details": {
+    "type": "string"
+   },
+   "diffrn_detector[].detector": {
+    "type": "string"
+   },
+   "diffrn_detector[].diffrn_id": {
+    "type": "string"
+   },
+   "diffrn_detector[].pdbx_collection_date": {
+    "type": "string"
+   },
+   "diffrn_detector[].pdbx_frequency": {
+    "type": "number"
+   },
+   "diffrn_detector[].type": {
+    "type": "string"
+   },
+   "diffrn_radiation[].collimation": {
+    "type": "string"
+   },
+   "diffrn_radiation[].diffrn_id": {
+    "type": "string"
+   },
+   "diffrn_radiation[].monochromator": {
+    "type": "string"
+   },
+   "diffrn_radiation[].pdbx_diffrn_protocol": {
+    "type": "string"
+   },
+   "diffrn_radiation[].pdbx_monochromatic_or_laue_m_l": {
+    "type": "string"
+   },
+   "diffrn_radiation[].pdbx_scattering_type": {
+    "type": "string"
+   },
+   "diffrn_radiation[].pdbx_wavelength": {
+    "type": "string"
+   },
+   "diffrn_radiation[].pdbx_wavelength_list": {
+    "type": "string"
+   },
+   "diffrn_radiation[].type": {
+    "type": "string"
+   },
+   "diffrn_radiation[].wavelength_id": {
+    "type": "string"
+   },
+   "diffrn_source[].details": {
+    "type": "string"
+   },
+   "diffrn_source[].diffrn_id": {
+    "type": "string"
+   },
+   "diffrn_source[].pdbx_synchrotron_beamline": {
+    "type": "string"
+   },
+   "diffrn_source[].pdbx_synchrotron_site": {
+    "type": "string"
+   },
+   "diffrn_source[].pdbx_wavelength": {
+    "type": "string"
+   },
+   "diffrn_source[].pdbx_wavelength_list": {
+    "type": "string"
+   },
+   "diffrn_source[].source": {
+    "type": "string"
+   },
+   "diffrn_source[].type": {
+    "type": "string"
+   },
+   "em_2d_crystal_entity[].angle_gamma": {
+    "type": "number",
+    "units": "degrees"
+   },
+   "em_2d_crystal_entity[].c_sampling_length": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "em_2d_crystal_entity[].id": {
+    "type": "string"
+   },
+   "em_2d_crystal_entity[].image_processing_id": {
+    "type": "string"
+   },
+   "em_2d_crystal_entity[].length_a": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "em_2d_crystal_entity[].length_b": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "em_2d_crystal_entity[].length_c": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "em_2d_crystal_entity[].space_group_name_H_M": {
+    "type": "string"
+   },
+   "em_3d_crystal_entity[].angle_alpha": {
+    "type": "number",
+    "units": "degrees"
+   },
+   "em_3d_crystal_entity[].angle_beta": {
+    "type": "number",
+    "units": "degrees"
+   },
+   "em_3d_crystal_entity[].angle_gamma": {
+    "type": "number",
+    "units": "degrees"
+   },
+   "em_3d_crystal_entity[].id": {
+    "type": "string"
+   },
+   "em_3d_crystal_entity[].image_processing_id": {
+    "type": "string"
+   },
+   "em_3d_crystal_entity[].length_a": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "em_3d_crystal_entity[].length_b": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "em_3d_crystal_entity[].length_c": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "em_3d_crystal_entity[].space_group_name": {
+    "type": "string"
+   },
+   "em_3d_crystal_entity[].space_group_num": {
+    "type": "integer"
+   },
+   "em_3d_fitting[].details": {
+    "type": "string"
+   },
+   "em_3d_fitting[].id": {
+    "type": "string"
+   },
+   "em_3d_fitting[].method": {
+    "type": "string"
+   },
+   "em_3d_fitting[].overall_b_value": {
+    "type": "number"
+   },
+   "em_3d_fitting[].ref_protocol": {
+    "type": "string"
+   },
+   "em_3d_fitting[].ref_space": {
+    "type": "string"
+   },
+   "em_3d_fitting[].target_criteria": {
+    "type": "string"
+   },
+   "em_3d_fitting_list[].3d_fitting_id": {
+    "type": "string"
+   },
+   "em_3d_fitting_list[].details": {
+    "type": "string"
+   },
+   "em_3d_fitting_list[].id": {
+    "type": "string"
+   },
+   "em_3d_fitting_list[].pdb_chain_id": {
+    "type": "string"
+   },
+   "em_3d_fitting_list[].pdb_chain_residue_range": {
+    "type": "string"
+   },
+   "em_3d_fitting_list[].pdb_entry_id": {
+    "type": "string"
+   },
+   "em_3d_reconstruction[].actual_pixel_size": {
+    "type": "number"
+   },
+   "em_3d_reconstruction[].algorithm": {
+    "type": "string"
+   },
+   "em_3d_reconstruction[].details": {
+    "type": "string"
+   },
+   "em_3d_reconstruction[].id": {
+    "type": "string"
+   },
+   "em_3d_reconstruction[].image_processing_id": {
+    "type": "string"
+   },
+   "em_3d_reconstruction[].magnification_calibration": {
+    "type": "string"
+   },
+   "em_3d_reconstruction[].method": {
+    "type": "string"
+   },
+   "em_3d_reconstruction[].nominal_pixel_size": {
+    "type": "number"
+   },
+   "em_3d_reconstruction[].num_class_averages": {
+    "type": "integer"
+   },
+   "em_3d_reconstruction[].num_particles": {
+    "type": "integer"
+   },
+   "em_3d_reconstruction[].refinement_type": {
+    "type": "string"
+   },
+   "em_3d_reconstruction[].resolution": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "em_3d_reconstruction[].resolution_method": {
+    "type": "string"
+   },
+   "em_3d_reconstruction[].symmetry_type": {
+    "type": "string"
+   },
+   "em_ctf_correction[].details": {
+    "type": "string"
+   },
+   "em_ctf_correction[].em_image_processing_id": {
+    "type": "string"
+   },
+   "em_ctf_correction[].id": {
+    "type": "string"
+   },
+   "em_ctf_correction[].type": {
+    "type": "string"
+   },
+   "em_diffraction[].camera_length": {
+    "type": "number",
+    "units": "millimetres"
+   },
+   "em_diffraction[].id": {
+    "type": "string"
+   },
+   "em_diffraction[].imaging_id": {
+    "type": "string"
+   },
+   "em_diffraction[].tilt_angle_list": {
+    "type": "string"
+   },
+   "em_diffraction_shell[].em_diffraction_stats_id": {
+    "type": "string"
+   },
+   "em_diffraction_shell[].fourier_space_coverage": {
+    "type": "number"
+   },
+   "em_diffraction_shell[].high_resolution": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "em_diffraction_shell[].id": {
+    "type": "string"
+   },
+   "em_diffraction_shell[].low_resolution": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "em_diffraction_shell[].multiplicity": {
+    "type": "number"
+   },
+   "em_diffraction_shell[].num_structure_factors": {
+    "type": "integer"
+   },
+   "em_diffraction_shell[].phase_residual": {
+    "type": "number",
+    "units": "degrees"
+   },
+   "em_diffraction_stats[].details": {
+    "type": "string"
+   },
+   "em_diffraction_stats[].fourier_space_coverage": {
+    "type": "number"
+   },
+   "em_diffraction_stats[].high_resolution": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "em_diffraction_stats[].id": {
+    "type": "string"
+   },
+   "em_diffraction_stats[].image_processing_id": {
+    "type": "string"
+   },
+   "em_diffraction_stats[].num_intensities_measured": {
+    "type": "integer"
+   },
+   "em_diffraction_stats[].num_structure_factors": {
+    "type": "integer"
+   },
+   "em_diffraction_stats[].overall_phase_error": {
+    "type": "number",
+    "units": "degrees"
+   },
+   "em_diffraction_stats[].overall_phase_residual": {
+    "type": "number",
+    "units": "degrees"
+   },
+   "em_diffraction_stats[].phase_error_rejection_criteria": {
+    "type": "string"
+   },
+   "em_diffraction_stats[].r_merge": {
+    "type": "number"
+   },
+   "em_diffraction_stats[].r_sym": {
+    "type": "number"
+   },
+   "em_embedding[].details": {
+    "type": "string"
+   },
+   "em_embedding[].id": {
+    "type": "string"
+   },
+   "em_embedding[].material": {
+    "type": "string"
+   },
+   "em_embedding[].specimen_id": {
+    "type": "string"
+   },
+   "em_entity_assembly[].details": {
+    "type": "string"
+   },
+   "em_entity_assembly[].entity_id_list[]": {
+    "type": "string"
+   },
+   "em_entity_assembly[].id": {
+    "type": "string"
+   },
+   "em_entity_assembly[].name": {
+    "type": "string"
+   },
+   "em_entity_assembly[].oligomeric_details": {
+    "type": "string"
+   },
+   "em_entity_assembly[].parent_id": {
+    "type": "integer"
+   },
+   "em_entity_assembly[].source": {
+    "type": "string"
+   },
+   "em_entity_assembly[].synonym": {
+    "type": "string"
+   },
+   "em_entity_assembly[].type": {
+    "type": "string"
+   },
+   "em_experiment.aggregation_state": {
+    "type": "string"
+   },
+   "em_experiment.entity_assembly_id": {
+    "type": "string"
+   },
+   "em_experiment.id": {
+    "type": "string"
+   },
+   "em_experiment.reconstruction_method": {
+    "type": "string"
+   },
+   "em_helical_entity[].angular_rotation_per_subunit": {
+    "type": "number",
+    "units": "degrees"
+   },
+   "em_helical_entity[].axial_rise_per_subunit": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "em_helical_entity[].axial_symmetry": {
+    "type": "string"
+   },
+   "em_helical_entity[].details": {
+    "type": "string"
+   },
+   "em_helical_entity[].id": {
+    "type": "string"
+   },
+   "em_helical_entity[].image_processing_id": {
+    "type": "string"
+   },
+   "em_image_recording[].average_exposure_time": {
+    "type": "number",
+    "units": "seconds"
+   },
+   "em_image_recording[].avg_electron_dose_per_image": {
+    "type": "number",
+    "units": "electrons_angstrom_squared"
+   },
+   "em_image_recording[].details": {
+    "type": "string"
+   },
+   "em_image_recording[].detector_mode": {
+    "type": "string"
+   },
+   "em_image_recording[].film_or_detector_model": {
+    "type": "string"
+   },
+   "em_image_recording[].id": {
+    "type": "string"
+   },
+   "em_image_recording[].imaging_id": {
+    "type": "string"
+   },
+   "em_image_recording[].num_diffraction_images": {
+    "type": "integer"
+   },
+   "em_image_recording[].num_grids_imaged": {
+    "type": "integer"
+   },
+   "em_image_recording[].num_real_images": {
+    "type": "integer"
+   },
+   "em_imaging[].accelerating_voltage": {
+    "type": "integer",
+    "units": "kilovolts"
+   },
+   "em_imaging[].alignment_procedure": {
+    "type": "string"
+   },
+   "em_imaging[].astigmatism": {
+    "type": "string"
+   },
+   "em_imaging[].c2_aperture_diameter": {
+    "type": "number",
+    "units": "microns"
+   },
+   "em_imaging[].calibrated_defocus_max": {
+    "type": "number",
+    "units": "nanometres"
+   },
+   "em_imaging[].calibrated_defocus_min": {
+    "type": "number",
+    "units": "nanometres"
+   },
+   "em_imaging[].calibrated_magnification": {
+    "type": "integer"
+   },
+   "em_imaging[].cryogen": {
+    "type": "string"
+   },
+   "em_imaging[].date": {
+    "type": "string"
+   },
+   "em_imaging[].details": {
+    "type": "string"
+   },
+   "em_imaging[].detector_distance": {
+    "type": "number",
+    "units": "millimetres"
+   },
+   "em_imaging[].electron_beam_tilt_params": {
+    "type": "string"
+   },
+   "em_imaging[].electron_source": {
+    "type": "string"
+   },
+   "em_imaging[].id": {
+    "type": "string"
+   },
+   "em_imaging[].illumination_mode": {
+    "type": "string"
+   },
+   "em_imaging[].microscope_model": {
+    "type": "string"
+   },
+   "em_imaging[].mode": {
+    "type": "string"
+   },
+   "em_imaging[].nominal_cs": {
+    "type": "number",
+    "units": "millimetres"
+   },
+   "em_imaging[].nominal_defocus_max": {
+    "type": "number",
+    "units": "nanometres"
+   },
+   "em_imaging[].nominal_defocus_min": {
+    "type": "number",
+    "units": "nanometres"
+   },
+   "em_imaging[].nominal_magnification": {
+    "type": "integer"
+   },
+   "em_imaging[].recording_temperature_maximum": {
+    "type": "number",
+    "units": "kelvins"
+   },
+   "em_imaging[].recording_temperature_minimum": {
+    "type": "number",
+    "units": "kelvins"
+   },
+   "em_imaging[].residual_tilt": {
+    "type": "number",
+    "units": "milliradians"
+   },
+   "em_imaging[].specimen_holder_model": {
+    "type": "string"
+   },
+   "em_imaging[].specimen_holder_type": {
+    "type": "string"
+   },
+   "em_imaging[].specimen_id": {
+    "type": "string"
+   },
+   "em_imaging[].temperature": {
+    "type": "number",
+    "units": "kelvins"
+   },
+   "em_imaging[].tilt_angle_max": {
+    "type": "number",
+    "units": "degrees"
+   },
+   "em_imaging[].tilt_angle_min": {
+    "type": "number",
+    "units": "degrees"
+   },
+   "em_particle_selection[].details": {
+    "type": "string"
+   },
+   "em_particle_selection[].id": {
+    "type": "string"
+   },
+   "em_particle_selection[].image_processing_id": {
+    "type": "string"
+   },
+   "em_particle_selection[].num_particles_selected": {
+    "type": "integer"
+   },
+   "em_single_particle_entity[].id": {
+    "type": "integer"
+   },
+   "em_single_particle_entity[].image_processing_id": {
+    "type": "string"
+   },
+   "em_single_particle_entity[].point_symmetry": {
+    "type": "string"
+   },
+   "em_software[].category": {
+    "type": "string"
+   },
+   "em_software[].details": {
+    "type": "string"
+   },
+   "em_software[].fitting_id": {
+    "type": "string"
+   },
+   "em_software[].id": {
+    "type": "string"
+   },
+   "em_software[].image_processing_id": {
+    "type": "string"
+   },
+   "em_software[].imaging_id": {
+    "type": "string"
+   },
+   "em_software[].name": {
+    "type": "string"
+   },
+   "em_software[].version": {
+    "type": "string"
+   },
+   "em_specimen[].concentration": {
+    "type": "number",
+    "units": "mg_per_ml"
+   },
+   "em_specimen[].details": {
+    "type": "string"
+   },
+   "em_specimen[].embedding_applied": {
+    "type": "string"
+   },
+   "em_specimen[].experiment_id": {
+    "type": "string"
+   },
+   "em_specimen[].id": {
+    "type": "string"
+   },
+   "em_specimen[].shadowing_applied": {
+    "type": "string"
+   },
+   "em_specimen[].staining_applied": {
+    "type": "string"
+   },
+   "em_specimen[].vitrification_applied": {
+    "type": "string"
+   },
+   "em_staining[].details": {
+    "type": "string"
+   },
+   "em_staining[].id": {
+    "type": "string"
+   },
+   "em_staining[].material": {
+    "type": "string"
+   },
+   "em_staining[].specimen_id": {
+    "type": "string"
+   },
+   "em_staining[].type": {
+    "type": "string"
+   },
+   "em_vitrification[].chamber_temperature": {
+    "type": "number",
+    "units": "kelvins"
+   },
+   "em_vitrification[].cryogen_name": {
+    "type": "string"
+   },
+   "em_vitrification[].details": {
+    "type": "string"
+   },
+   "em_vitrification[].humidity": {
+    "type": "number"
+   },
+   "em_vitrification[].id": {
+    "type": "string"
+   },
+   "em_vitrification[].instrument": {
+    "type": "string"
+   },
+   "em_vitrification[].method": {
+    "type": "string"
+   },
+   "em_vitrification[].specimen_id": {
+    "type": "string"
+   },
+   "em_vitrification[].temp": {
+    "type": "number",
+    "units": "kelvins"
+   },
+   "em_vitrification[].time_resolved_state": {
+    "type": "string"
+   },
+   "entry.id": {
+    "type": "string"
+   },
+   "entry.ma_collection_id": {
+    "type": "string"
+   },
+   "exptl[].crystals_number": {
+    "type": "integer"
+   },
+   "exptl[].details": {
+    "type": "string"
+   },
+   "exptl[].method": {
+    "type": "string"
+   },
+   "exptl[].method_details": {
+    "type": "string"
+   },
+   "exptl_crystal[].colour": {
+    "type": "string"
+   },
+   "exptl_crystal[].density_Matthews": {
+    "type": "number",
+    "units": "angstroms_cubed_per_dalton"
+   },
+   "exptl_crystal[].density_meas": {
+    "type": "number",
+    "units": "megagrams_per_cubic_metre"
+   },
+   "exptl_crystal[].density_percent_sol": {
+    "type": "number"
+   },
+   "exptl_crystal[].description": {
+    "type": "string"
+   },
+   "exptl_crystal[].id": {
+    "type": "string"
+   },
+   "exptl_crystal[].pdbx_mosaicity": {
+    "type": "number",
+    "units": "degrees"
+   },
+   "exptl_crystal[].pdbx_mosaicity_esd": {
+    "type": "number",
+    "units": "degrees"
+   },
+   "exptl_crystal[].preparation": {
+    "type": "string"
+   },
+   "exptl_crystal_grow[].crystal_id": {
+    "type": "string"
+   },
+   "exptl_crystal_grow[].details": {
+    "type": "string"
+   },
+   "exptl_crystal_grow[].method": {
+    "type": "string"
+   },
+   "exptl_crystal_grow[].pH": {
+    "type": "number"
+   },
+   "exptl_crystal_grow[].pdbx_details": {
+    "type": "string"
+   },
+   "exptl_crystal_grow[].pdbx_pH_range": {
+    "type": "string"
+   },
+   "exptl_crystal_grow[].temp": {
+    "type": "number",
+    "units": "kelvins"
+   },
+   "exptl_crystal_grow[].temp_details": {
+    "type": "string"
+   },
+   "ihm_entry_collection_mapping[].collection_id": {
+    "type": "string"
+   },
+   "ihm_external_reference_info[].associated_url": {
+    "type": "string"
+   },
+   "ihm_external_reference_info[].reference": {
+    "type": "string"
+   },
+   "ihm_external_reference_info[].reference_provider": {
+    "type": "string"
+   },
+   "ma_data[].content_type": {
+    "type": "string"
+   },
+   "ma_data[].content_type_other_details": {
+    "type": "string"
+   },
+   "ma_data[].id": {
+    "type": "integer"
+   },
+   "ma_data[].name": {
+    "type": "string"
+   },
+   "pdbx_SG_project[].full_name_of_center": {
+    "type": "string"
+   },
+   "pdbx_SG_project[].id": {
+    "type": "integer"
+   },
+   "pdbx_SG_project[].initial_of_center": {
+    "type": "string"
+   },
+   "pdbx_SG_project[].project_name": {
+    "type": "string"
+   },
+   "pdbx_audit_revision_category[].category": {
+    "type": "string"
+   },
+   "pdbx_audit_revision_category[].data_content_type": {
+    "type": "string"
+   },
+   "pdbx_audit_revision_category[].ordinal": {
+    "type": "integer"
+   },
+   "pdbx_audit_revision_category[].revision_ordinal": {
+    "type": "integer"
+   },
+   "pdbx_audit_revision_details[].data_content_type": {
+    "type": "string"
+   },
+   "pdbx_audit_revision_details[].description": {
+    "type": "string"
+   },
+   "pdbx_audit_revision_details[].details": {
+    "type": "string"
+   },
+   "pdbx_audit_revision_details[].ordinal": {
+    "type": "integer"
+   },
+   "pdbx_audit_revision_details[].provider": {
+    "type": "string"
+   },
+   "pdbx_audit_revision_details[].revision_ordinal": {
+    "type": "integer"
+   },
+   "pdbx_audit_revision_details[].type": {
+    "type": "string"
+   },
+   "pdbx_audit_revision_group[].data_content_type": {
+    "type": "string"
+   },
+   "pdbx_audit_revision_group[].group": {
+    "type": "string"
+   },
+   "pdbx_audit_revision_group[].ordinal": {
+    "type": "integer"
+   },
+   "pdbx_audit_revision_group[].revision_ordinal": {
+    "type": "integer"
+   },
+   "pdbx_audit_revision_history[].data_content_type": {
+    "type": "string"
+   },
+   "pdbx_audit_revision_history[].major_revision": {
+    "type": "integer"
+   },
+   "pdbx_audit_revision_history[].minor_revision": {
+    "type": "integer"
+   },
+   "pdbx_audit_revision_history[].ordinal": {
+    "type": "integer"
+   },
+   "pdbx_audit_revision_history[].revision_date": {
+    "type": "string"
+   },
+   "pdbx_audit_revision_item[].data_content_type": {
+    "type": "string"
+   },
+   "pdbx_audit_revision_item[].item": {
+    "type": "string"
+   },
+   "pdbx_audit_revision_item[].ordinal": {
+    "type": "integer"
+   },
+   "pdbx_audit_revision_item[].revision_ordinal": {
+    "type": "integer"
+   },
+   "pdbx_audit_support[].country": {
+    "type": "string"
+   },
+   "pdbx_audit_support[].funding_organization": {
+    "type": "string"
+   },
+   "pdbx_audit_support[].grant_number": {
+    "type": "string"
+   },
+   "pdbx_audit_support[].ordinal": {
+    "type": "integer"
+   },
+   "pdbx_database_PDB_obs_spr[].date": {
+    "type": "string"
+   },
+   "pdbx_database_PDB_obs_spr[].details": {
+    "type": "string"
+   },
+   "pdbx_database_PDB_obs_spr[].id": {
+    "type": "string"
+   },
+   "pdbx_database_PDB_obs_spr[].pdb_id": {
+    "type": "string"
+   },
+   "pdbx_database_PDB_obs_spr[].replace_pdb_id": {
+    "type": "string"
+   },
+   "pdbx_database_related[].content_type": {
+    "type": "string"
+   },
+   "pdbx_database_related[].db_id": {
+    "type": "string"
+   },
+   "pdbx_database_related[].db_name": {
+    "type": "string"
+   },
+   "pdbx_database_related[].details": {
+    "type": "string"
+   },
+   "pdbx_database_status.SG_entry": {
+    "type": "string"
+   },
+   "pdbx_database_status.deposit_site": {
+    "type": "string"
+   },
+   "pdbx_database_status.methods_development_category": {
+    "type": "string"
+   },
+   "pdbx_database_status.pdb_format_compatible": {
+    "type": "string"
+   },
+   "pdbx_database_status.process_site": {
+    "type": "string"
+   },
+   "pdbx_database_status.recvd_initial_deposition_date": {
+    "type": "string"
+   },
+   "pdbx_database_status.status_code": {
+    "type": "string"
+   },
+   "pdbx_database_status.status_code_cs": {
+    "type": "string"
+   },
+   "pdbx_database_status.status_code_mr": {
+    "type": "string"
+   },
+   "pdbx_database_status.status_code_sf": {
+    "type": "string"
+   },
+   "pdbx_deposit_group[].group_description": {
+    "type": "string"
+   },
+   "pdbx_deposit_group[].group_id": {
+    "type": "string"
+   },
+   "pdbx_deposit_group[].group_title": {
+    "type": "string"
+   },
+   "pdbx_deposit_group[].group_type": {
+    "type": "string"
+   },
+   "pdbx_initial_refinement_model[].accession_code": {
+    "type": "string"
+   },
+   "pdbx_initial_refinement_model[].details": {
+    "type": "string"
+   },
+   "pdbx_initial_refinement_model[].entity_id_list[]": {
+    "type": "string"
+   },
+   "pdbx_initial_refinement_model[].id": {
+    "type": "integer"
+   },
+   "pdbx_initial_refinement_model[].source_name": {
+    "type": "string"
+   },
+   "pdbx_initial_refinement_model[].type": {
+    "type": "string"
+   },
+   "pdbx_molecule_features[].class": {
+    "type": "string"
+   },
+   "pdbx_molecule_features[].details": {
+    "type": "string"
+   },
+   "pdbx_molecule_features[].name": {
+    "type": "string"
+   },
+   "pdbx_molecule_features[].prd_id": {
+    "type": "string"
+   },
+   "pdbx_molecule_features[].type": {
+    "type": "string"
+   },
+   "pdbx_nmr_details.text": {
+    "type": "string"
+   },
+   "pdbx_nmr_ensemble.average_constraint_violations_per_residue": {
+    "type": "integer"
+   },
+   "pdbx_nmr_ensemble.average_constraints_per_residue": {
+    "type": "integer"
+   },
+   "pdbx_nmr_ensemble.average_distance_constraint_violation": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "pdbx_nmr_ensemble.average_torsion_angle_constraint_violation": {
+    "type": "number",
+    "units": "degrees"
+   },
+   "pdbx_nmr_ensemble.conformer_selection_criteria": {
+    "type": "string"
+   },
+   "pdbx_nmr_ensemble.conformers_calculated_total_number": {
+    "type": "integer"
+   },
+   "pdbx_nmr_ensemble.conformers_submitted_total_number": {
+    "type": "integer"
+   },
+   "pdbx_nmr_ensemble.distance_constraint_violation_method": {
+    "type": "string"
+   },
+   "pdbx_nmr_ensemble.maximum_distance_constraint_violation": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "pdbx_nmr_ensemble.maximum_lower_distance_constraint_violation": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "pdbx_nmr_ensemble.maximum_torsion_angle_constraint_violation": {
+    "type": "number",
+    "units": "degrees"
+   },
+   "pdbx_nmr_ensemble.maximum_upper_distance_constraint_violation": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "pdbx_nmr_ensemble.representative_conformer": {
+    "type": "integer"
+   },
+   "pdbx_nmr_ensemble.torsion_angle_constraint_violation_method": {
+    "type": "string"
+   },
+   "pdbx_nmr_exptl[].conditions_id": {
+    "type": "string"
+   },
+   "pdbx_nmr_exptl[].experiment_id": {
+    "type": "string"
+   },
+   "pdbx_nmr_exptl[].sample_state": {
+    "type": "string"
+   },
+   "pdbx_nmr_exptl[].solution_id": {
+    "type": "string"
+   },
+   "pdbx_nmr_exptl[].spectrometer_id": {
+    "type": "integer"
+   },
+   "pdbx_nmr_exptl[].type": {
+    "type": "string"
+   },
+   "pdbx_nmr_exptl_sample_conditions[].conditions_id": {
+    "type": "string"
+   },
+   "pdbx_nmr_exptl_sample_conditions[].details": {
+    "type": "string"
+   },
+   "pdbx_nmr_exptl_sample_conditions[].ionic_strength": {
+    "type": "string"
+   },
+   "pdbx_nmr_exptl_sample_conditions[].ionic_strength_err": {
+    "type": "number"
+   },
+   "pdbx_nmr_exptl_sample_conditions[].ionic_strength_units": {
+    "type": "string"
+   },
+   "pdbx_nmr_exptl_sample_conditions[].label": {
+    "type": "string"
+   },
+   "pdbx_nmr_exptl_sample_conditions[].pH": {
+    "type": "string"
+   },
+   "pdbx_nmr_exptl_sample_conditions[].pH_err": {
+    "type": "number"
+   },
+   "pdbx_nmr_exptl_sample_conditions[].pH_units": {
+    "type": "string"
+   },
+   "pdbx_nmr_exptl_sample_conditions[].pressure": {
+    "type": "string"
+   },
+   "pdbx_nmr_exptl_sample_conditions[].pressure_err": {
+    "type": "number"
+   },
+   "pdbx_nmr_exptl_sample_conditions[].pressure_units": {
+    "type": "string"
+   },
+   "pdbx_nmr_exptl_sample_conditions[].temperature": {
+    "type": "string"
+   },
+   "pdbx_nmr_exptl_sample_conditions[].temperature_err": {
+    "type": "number"
+   },
+   "pdbx_nmr_exptl_sample_conditions[].temperature_units": {
+    "type": "string"
+   },
+   "pdbx_nmr_refine[].details": {
+    "type": "string"
+   },
+   "pdbx_nmr_refine[].method": {
+    "type": "string"
+   },
+   "pdbx_nmr_refine[].software_ordinal": {
+    "type": "integer"
+   },
+   "pdbx_nmr_representative.conformer_id": {
+    "type": "string"
+   },
+   "pdbx_nmr_representative.selection_criteria": {
+    "type": "string"
+   },
+   "pdbx_nmr_sample_details[].contents": {
+    "type": "string"
+   },
+   "pdbx_nmr_sample_details[].details": {
+    "type": "string"
+   },
+   "pdbx_nmr_sample_details[].label": {
+    "type": "string"
+   },
+   "pdbx_nmr_sample_details[].solution_id": {
+    "type": "string"
+   },
+   "pdbx_nmr_sample_details[].solvent_system": {
+    "type": "string"
+   },
+   "pdbx_nmr_sample_details[].type": {
+    "type": "string"
+   },
+   "pdbx_nmr_software[].authors": {
+    "type": "string"
+   },
+   "pdbx_nmr_software[].classification": {
+    "type": "string"
+   },
+   "pdbx_nmr_software[].name": {
+    "type": "string"
+   },
+   "pdbx_nmr_software[].ordinal": {
+    "type": "integer"
+   },
+   "pdbx_nmr_software[].version": {
+    "type": "string"
+   },
+   "pdbx_nmr_spectrometer[].details": {
+    "type": "string"
+   },
+   "pdbx_nmr_spectrometer[].field_strength": {
+    "type": "number",
+    "units": "megahertz"
+   },
+   "pdbx_nmr_spectrometer[].manufacturer": {
+    "type": "string"
+   },
+   "pdbx_nmr_spectrometer[].model": {
+    "type": "string"
+   },
+   "pdbx_nmr_spectrometer[].spectrometer_id": {
+    "type": "string"
+   },
+   "pdbx_nmr_spectrometer[].type": {
+    "type": "string"
+   },
+   "pdbx_reflns_twin[].crystal_id": {
+    "type": "string"
+   },
+   "pdbx_reflns_twin[].diffrn_id": {
+    "type": "string"
+   },
+   "pdbx_reflns_twin[].domain_id": {
+    "type": "string"
+   },
+   "pdbx_reflns_twin[].fraction": {
+    "type": "number"
+   },
+   "pdbx_reflns_twin[].operator": {
+    "type": "string"
+   },
+   "pdbx_reflns_twin[].type": {
+    "type": "string"
+   },
+   "pdbx_related_exp_data_set[].data_reference": {
+    "type": "string"
+   },
+   "pdbx_related_exp_data_set[].data_set_type": {
+    "type": "string"
+   },
+   "pdbx_related_exp_data_set[].db_source": {
+    "type": "string"
+   },
+   "pdbx_related_exp_data_set[].details": {
+    "type": "string"
+   },
+   "pdbx_related_exp_data_set[].metadata_reference": {
+    "type": "string"
+   },
+   "pdbx_serial_crystallography_data_reduction[].crystal_hits": {
+    "type": "integer"
+   },
+   "pdbx_serial_crystallography_data_reduction[].diffrn_id": {
+    "type": "string"
+   },
+   "pdbx_serial_crystallography_data_reduction[].droplet_hits": {
+    "type": "integer"
+   },
+   "pdbx_serial_crystallography_data_reduction[].frame_hits": {
+    "type": "integer"
+   },
+   "pdbx_serial_crystallography_data_reduction[].frames_failed_index": {
+    "type": "integer"
+   },
+   "pdbx_serial_crystallography_data_reduction[].frames_indexed": {
+    "type": "integer"
+   },
+   "pdbx_serial_crystallography_data_reduction[].frames_total": {
+    "type": "integer"
+   },
+   "pdbx_serial_crystallography_data_reduction[].lattices_indexed": {
+    "type": "integer"
+   },
+   "pdbx_serial_crystallography_data_reduction[].lattices_merged": {
+    "type": "integer"
+   },
+   "pdbx_serial_crystallography_data_reduction[].xfel_pulse_events": {
+    "type": "integer"
+   },
+   "pdbx_serial_crystallography_data_reduction[].xfel_run_numbers": {
+    "type": "string"
+   },
+   "pdbx_serial_crystallography_measurement[].collection_time_total": {
+    "type": "number",
+    "units": "hours"
+   },
+   "pdbx_serial_crystallography_measurement[].collimation": {
+    "type": "string"
+   },
+   "pdbx_serial_crystallography_measurement[].diffrn_id": {
+    "type": "string"
+   },
+   "pdbx_serial_crystallography_measurement[].focal_spot_size": {
+    "type": "number",
+    "units": "micrometres_squared"
+   },
+   "pdbx_serial_crystallography_measurement[].photons_per_pulse": {
+    "type": "number",
+    "units": "teraphotons_per_pulse"
+   },
+   "pdbx_serial_crystallography_measurement[].pulse_duration": {
+    "type": "number",
+    "units": "femtoseconds"
+   },
+   "pdbx_serial_crystallography_measurement[].pulse_energy": {
+    "type": "number",
+    "units": "microjoules"
+   },
+   "pdbx_serial_crystallography_measurement[].pulse_photon_energy": {
+    "type": "number",
+    "units": "kiloelectron_volts"
+   },
+   "pdbx_serial_crystallography_measurement[].source_distance": {
+    "type": "number",
+    "units": "metres"
+   },
+   "pdbx_serial_crystallography_measurement[].source_size": {
+    "type": "number",
+    "units": "micrometres_squared"
+   },
+   "pdbx_serial_crystallography_measurement[].xfel_pulse_repetition_rate": {
+    "type": "number",
+    "units": "hertz"
+   },
+   "pdbx_serial_crystallography_sample_delivery[].description": {
+    "type": "string"
+   },
+   "pdbx_serial_crystallography_sample_delivery[].diffrn_id": {
+    "type": "string"
+   },
+   "pdbx_serial_crystallography_sample_delivery[].method": {
+    "type": "string"
+   },
+   "pdbx_serial_crystallography_sample_delivery_fixed_target[].crystals_per_unit": {
+    "type": "integer"
+   },
+   "pdbx_serial_crystallography_sample_delivery_fixed_target[].description": {
+    "type": "string"
+   },
+   "pdbx_serial_crystallography_sample_delivery_fixed_target[].details": {
+    "type": "string"
+   },
+   "pdbx_serial_crystallography_sample_delivery_fixed_target[].diffrn_id": {
+    "type": "string"
+   },
+   "pdbx_serial_crystallography_sample_delivery_fixed_target[].motion_control": {
+    "type": "string"
+   },
+   "pdbx_serial_crystallography_sample_delivery_fixed_target[].sample_dehydration_prevention": {
+    "type": "string"
+   },
+   "pdbx_serial_crystallography_sample_delivery_fixed_target[].sample_holding": {
+    "type": "string"
+   },
+   "pdbx_serial_crystallography_sample_delivery_fixed_target[].sample_solvent": {
+    "type": "string"
+   },
+   "pdbx_serial_crystallography_sample_delivery_fixed_target[].sample_unit_size": {
+    "type": "number",
+    "units": "micrometres"
+   },
+   "pdbx_serial_crystallography_sample_delivery_fixed_target[].support_base": {
+    "type": "string"
+   },
+   "pdbx_serial_crystallography_sample_delivery_fixed_target[].velocity_horizontal": {
+    "type": "number"
+   },
+   "pdbx_serial_crystallography_sample_delivery_fixed_target[].velocity_vertical": {
+    "type": "number"
+   },
+   "pdbx_serial_crystallography_sample_delivery_injection[].carrier_solvent": {
+    "type": "string"
+   },
+   "pdbx_serial_crystallography_sample_delivery_injection[].crystal_concentration": {
+    "type": "number"
+   },
+   "pdbx_serial_crystallography_sample_delivery_injection[].description": {
+    "type": "string"
+   },
+   "pdbx_serial_crystallography_sample_delivery_injection[].diffrn_id": {
+    "type": "string"
+   },
+   "pdbx_serial_crystallography_sample_delivery_injection[].filter_size": {
+    "type": "number",
+    "units": "micrometres"
+   },
+   "pdbx_serial_crystallography_sample_delivery_injection[].flow_rate": {
+    "type": "number",
+    "units": "microliters_per_min"
+   },
+   "pdbx_serial_crystallography_sample_delivery_injection[].injector_diameter": {
+    "type": "number",
+    "units": "micrometres"
+   },
+   "pdbx_serial_crystallography_sample_delivery_injection[].injector_nozzle": {
+    "type": "string"
+   },
+   "pdbx_serial_crystallography_sample_delivery_injection[].injector_pressure": {
+    "type": "number",
+    "units": "kilopascals"
+   },
+   "pdbx_serial_crystallography_sample_delivery_injection[].injector_temperature": {
+    "type": "number",
+    "units": "kelvins"
+   },
+   "pdbx_serial_crystallography_sample_delivery_injection[].jet_diameter": {
+    "type": "number",
+    "units": "micrometres"
+   },
+   "pdbx_serial_crystallography_sample_delivery_injection[].power_by": {
+    "type": "string"
+   },
+   "pdbx_serial_crystallography_sample_delivery_injection[].preparation": {
+    "type": "string"
+   },
+   "pdbx_soln_scatter[].buffer_name": {
+    "type": "string"
+   },
+   "pdbx_soln_scatter[].concentration_range": {
+    "type": "string",
+    "units": "mg_per_ml"
+   },
+   "pdbx_soln_scatter[].data_analysis_software_list": {
+    "type": "string"
+   },
+   "pdbx_soln_scatter[].data_reduction_software_list": {
+    "type": "string"
+   },
+   "pdbx_soln_scatter[].detector_specific": {
+    "type": "string"
+   },
+   "pdbx_soln_scatter[].detector_type": {
+    "type": "string"
+   },
+   "pdbx_soln_scatter[].id": {
+    "type": "string"
+   },
+   "pdbx_soln_scatter[].max_mean_cross_sectional_radii_gyration": {
+    "type": "number",
+    "units": "nanometres"
+   },
+   "pdbx_soln_scatter[].max_mean_cross_sectional_radii_gyration_esd": {
+    "type": "number",
+    "units": "nanometres"
+   },
+   "pdbx_soln_scatter[].mean_guiner_radius": {
+    "type": "number",
+    "units": "nanometres"
+   },
+   "pdbx_soln_scatter[].mean_guiner_radius_esd": {
+    "type": "number",
+    "units": "nanometres"
+   },
+   "pdbx_soln_scatter[].min_mean_cross_sectional_radii_gyration": {
+    "type": "number",
+    "units": "nanometres"
+   },
+   "pdbx_soln_scatter[].min_mean_cross_sectional_radii_gyration_esd": {
+    "type": "number",
+    "units": "nanometres"
+   },
+   "pdbx_soln_scatter[].num_time_frames": {
+    "type": "integer"
+   },
+   "pdbx_soln_scatter[].protein_length": {
+    "type": "string"
+   },
+   "pdbx_soln_scatter[].sample_pH": {
+    "type": "number"
+   },
+   "pdbx_soln_scatter[].source_beamline": {
+    "type": "string"
+   },
+   "pdbx_soln_scatter[].source_beamline_instrument": {
+    "type": "string"
+   },
+   "pdbx_soln_scatter[].source_class": {
+    "type": "string"
+   },
+   "pdbx_soln_scatter[].source_type": {
+    "type": "string"
+   },
+   "pdbx_soln_scatter[].temperature": {
+    "type": "number",
+    "units": "kelvins"
+   },
+   "pdbx_soln_scatter[].type": {
+    "type": "string"
+   },
+   "pdbx_soln_scatter_model[].conformer_selection_criteria": {
+    "type": "string"
+   },
+   "pdbx_soln_scatter_model[].details": {
+    "type": "string"
+   },
+   "pdbx_soln_scatter_model[].entry_fitting_list": {
+    "type": "string"
+   },
+   "pdbx_soln_scatter_model[].id": {
+    "type": "string"
+   },
+   "pdbx_soln_scatter_model[].method": {
+    "type": "string"
+   },
+   "pdbx_soln_scatter_model[].num_conformers_calculated": {
+    "type": "integer"
+   },
+   "pdbx_soln_scatter_model[].num_conformers_submitted": {
+    "type": "integer"
+   },
+   "pdbx_soln_scatter_model[].representative_conformer": {
+    "type": "integer"
+   },
+   "pdbx_soln_scatter_model[].scatter_id": {
+    "type": "string"
+   },
+   "pdbx_soln_scatter_model[].software_author_list": {
+    "type": "string"
+   },
+   "pdbx_soln_scatter_model[].software_list": {
+    "type": "string"
+   },
+   "pdbx_vrpt_summary.RNA_suiteness": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary.attempted_validation_steps": {
+    "type": "string"
+   },
+   "pdbx_vrpt_summary.ligands_for_buster_report": {
+    "type": "string"
+   },
+   "pdbx_vrpt_summary.report_creation_date": {
+    "type": "string"
+   },
+   "pdbx_vrpt_summary.restypes_notchecked_for_bond_angle_geometry[]": {
+    "type": "string"
+   },
+   "pdbx_vrpt_summary_diffraction[].B_factor_type": {
+    "type": "string"
+   },
+   "pdbx_vrpt_summary_diffraction[].Babinet_b": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_diffraction[].Babinet_k": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_diffraction[].CCP4_version": {
+    "type": "string"
+   },
+   "pdbx_vrpt_summary_diffraction[].DCC_R": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_diffraction[].DCC_Rfree": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_diffraction[].EDS_R": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_diffraction[].EDS_R_warning": {
+    "type": "string"
+   },
+   "pdbx_vrpt_summary_diffraction[].EDS_res_high": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "pdbx_vrpt_summary_diffraction[].EDS_res_low": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "pdbx_vrpt_summary_diffraction[].Fo_Fc_correlation": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_diffraction[].I_over_sigma": {
+    "type": "string"
+   },
+   "pdbx_vrpt_summary_diffraction[].Padilla_Yeates_L2_mean": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_diffraction[].Padilla_Yeates_L_mean": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_diffraction[].Q_score": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_diffraction[].Wilson_B_aniso": {
+    "type": "string"
+   },
+   "pdbx_vrpt_summary_diffraction[].Wilson_B_estimate": {
+    "type": "number",
+    "units": "angstroms_squared"
+   },
+   "pdbx_vrpt_summary_diffraction[].acentric_outliers": {
+    "type": "integer"
+   },
+   "pdbx_vrpt_summary_diffraction[].bulk_solvent_b": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_diffraction[].bulk_solvent_k": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_diffraction[].centric_outliers": {
+    "type": "integer"
+   },
+   "pdbx_vrpt_summary_diffraction[].data_anisotropy": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_diffraction[].data_completeness": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_diffraction[].density_fitness_version": {
+    "type": "string"
+   },
+   "pdbx_vrpt_summary_diffraction[].exp_method": {
+    "type": "string"
+   },
+   "pdbx_vrpt_summary_diffraction[].num_miller_indices": {
+    "type": "integer"
+   },
+   "pdbx_vrpt_summary_diffraction[].number_reflns_R_free": {
+    "type": "integer"
+   },
+   "pdbx_vrpt_summary_diffraction[].percent_RSRZ_outliers": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_diffraction[].percent_free_reflections": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_diffraction[].servalcat_version": {
+    "type": "string"
+   },
+   "pdbx_vrpt_summary_diffraction[].trans_NCS_details": {
+    "type": "string"
+   },
+   "pdbx_vrpt_summary_diffraction[].twin_fraction": {
+    "type": "string"
+   },
+   "pdbx_vrpt_summary_em[].Q_score": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_em[].atom_inclusion_all_atoms": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_em[].atom_inclusion_backbone": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_em[].author_provided_fsc_resolution_by_cutoff_halfbit": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_em[].author_provided_fsc_resolution_by_cutoff_onebit": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_em[].author_provided_fsc_resolution_by_cutoff_pt_143": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_em[].author_provided_fsc_resolution_by_cutoff_pt_333": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_em[].author_provided_fsc_resolution_by_cutoff_pt_5": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_em[].author_provided_fsc_resolution_by_cutoff_threesigma": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_em[].calculated_fsc_resolution_by_cutoff_halfbit": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_em[].calculated_fsc_resolution_by_cutoff_onebit": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_em[].calculated_fsc_resolution_by_cutoff_pt_143": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_em[].calculated_fsc_resolution_by_cutoff_pt_333": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_em[].calculated_fsc_resolution_by_cutoff_pt_5": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_em[].calculated_fsc_resolution_by_cutoff_threesigma": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_em[].contour_level_primary_map": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_em[].exp_method": {
+    "type": "string"
+   },
+   "pdbx_vrpt_summary_geometry[].angles_RMSZ": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_geometry[].bonds_RMSZ": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_geometry[].clashscore": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_geometry[].clashscore_full_length": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_geometry[].num_H_reduce": {
+    "type": "integer"
+   },
+   "pdbx_vrpt_summary_geometry[].num_angles_RMSZ": {
+    "type": "integer"
+   },
+   "pdbx_vrpt_summary_geometry[].num_bonds_RMSZ": {
+    "type": "integer"
+   },
+   "pdbx_vrpt_summary_geometry[].percent_ramachandran_outliers": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_geometry[].percent_ramachandran_outliers_full_length": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_geometry[].percent_rotamer_outliers": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_geometry[].percent_rotamer_outliers_full_length": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_nmr[].chemical_shift_completeness": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_nmr[].chemical_shift_completeness_full_length": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_nmr[].cyrange_error": {
+    "type": "string"
+   },
+   "pdbx_vrpt_summary_nmr[].cyrange_number_of_domains": {
+    "type": "integer"
+   },
+   "pdbx_vrpt_summary_nmr[].exp_method": {
+    "type": "string"
+   },
+   "pdbx_vrpt_summary_nmr[].medoid_model": {
+    "type": "integer"
+   },
+   "pdbx_vrpt_summary_nmr[].nmr_models_consistency_flag": {
+    "type": "string"
+   },
+   "pdbx_vrpt_summary_nmr[].nmrclust_error": {
+    "type": "string"
+   },
+   "pdbx_vrpt_summary_nmr[].nmrclust_number_of_clusters": {
+    "type": "integer"
+   },
+   "pdbx_vrpt_summary_nmr[].nmrclust_number_of_models": {
+    "type": "integer"
+   },
+   "pdbx_vrpt_summary_nmr[].nmrclust_number_of_outliers": {
+    "type": "integer"
+   },
+   "pdbx_vrpt_summary_nmr[].nmrclust_representative_model": {
+    "type": "integer"
+   },
+   "rcsb_accession_info.deposit_date": {
+    "type": "string"
+   },
+   "rcsb_accession_info.has_released_experimental_data": {
+    "type": "string"
+   },
+   "rcsb_accession_info.initial_release_date": {
+    "type": "string"
+   },
+   "rcsb_accession_info.major_revision": {
+    "type": "integer"
+   },
+   "rcsb_accession_info.minor_revision": {
+    "type": "integer"
+   },
+   "rcsb_accession_info.revision_date": {
+    "type": "string"
+   },
+   "rcsb_accession_info.status_code": {
+    "type": "string"
+   },
+   "rcsb_binding_affinity[].comp_id": {
+    "type": "string"
+   },
+   "rcsb_binding_affinity[].link": {
+    "type": "string"
+   },
+   "rcsb_binding_affinity[].provenance_code": {
+    "type": "string"
+   },
+   "rcsb_binding_affinity[].reference_sequence_identity": {
+    "type": "integer"
+   },
+   "rcsb_binding_affinity[].symbol": {
+    "type": "string"
+   },
+   "rcsb_binding_affinity[].type": {
+    "type": "string"
+   },
+   "rcsb_binding_affinity[].unit": {
+    "type": "string"
+   },
+   "rcsb_binding_affinity[].value": {
+    "type": "number"
+   },
+   "rcsb_comp_model_provenance.entry_id": {
+    "type": "string"
+   },
+   "rcsb_comp_model_provenance.source_db": {
+    "type": "string"
+   },
+   "rcsb_comp_model_provenance.source_filename": {
+    "type": "string"
+   },
+   "rcsb_comp_model_provenance.source_pae_url": {
+    "type": "string"
+   },
+   "rcsb_comp_model_provenance.source_url": {
+    "type": "string"
+   },
+   "rcsb_entry_container_identifiers.assembly_ids[]": {
+    "type": "string"
+   },
+   "rcsb_entry_container_identifiers.branched_entity_ids[]": {
+    "type": "string"
+   },
+   "rcsb_entry_container_identifiers.emdb_ids[]": {
+    "type": "string"
+   },
+   "rcsb_entry_container_identifiers.entity_ids[]": {
+    "type": "string"
+   },
+   "rcsb_entry_container_identifiers.entry_id": {
+    "type": "string"
+   },
+   "rcsb_entry_container_identifiers.model_ids[]": {
+    "type": "integer"
+   },
+   "rcsb_entry_container_identifiers.non_polymer_entity_ids[]": {
+    "type": "string"
+   },
+   "rcsb_entry_container_identifiers.polymer_entity_ids[]": {
+    "type": "string"
+   },
+   "rcsb_entry_container_identifiers.pubmed_id": {
+    "type": "integer"
+   },
+   "rcsb_entry_container_identifiers.rcsb_id": {
+    "type": "string"
+   },
+   "rcsb_entry_container_identifiers.related_emdb_ids[]": {
+    "type": "string"
+   },
+   "rcsb_entry_container_identifiers.water_entity_ids[]": {
+    "type": "string"
+   },
+   "rcsb_entry_group_membership[].aggregation_method": {
+    "type": "string"
+   },
+   "rcsb_entry_group_membership[].group_id": {
+    "type": "string"
+   },
+   "rcsb_entry_info.assembly_count": {
+    "type": "integer"
+   },
+   "rcsb_entry_info.branched_entity_count": {
+    "type": "integer"
+   },
+   "rcsb_entry_info.branched_molecular_weight_maximum": {
+    "type": "number",
+    "units": "kilodaltons"
+   },
+   "rcsb_entry_info.branched_molecular_weight_minimum": {
+    "type": "number",
+    "units": "kilodaltons"
+   },
+   "rcsb_entry_info.cis_peptide_count": {
+    "type": "integer"
+   },
+   "rcsb_entry_info.deposited_atom_count": {
+    "type": "integer"
+   },
+   "rcsb_entry_info.deposited_branched_entity_instance_count": {
+    "type": "integer"
+   },
+   "rcsb_entry_info.deposited_deuterated_water_count": {
+    "type": "integer"
+   },
+   "rcsb_entry_info.deposited_hydrogen_atom_count": {
+    "type": "integer"
+   },
+   "rcsb_entry_info.deposited_model_count": {
+    "type": "integer"
+   },
+   "rcsb_entry_info.deposited_modeled_polymer_monomer_count": {
+    "type": "integer"
+   },
+   "rcsb_entry_info.deposited_nonpolymer_entity_instance_count": {
+    "type": "integer"
+   },
+   "rcsb_entry_info.deposited_polymer_entity_instance_count": {
+    "type": "integer"
+   },
+   "rcsb_entry_info.deposited_polymer_monomer_count": {
+    "type": "integer"
+   },
+   "rcsb_entry_info.deposited_solvent_atom_count": {
+    "type": "integer"
+   },
+   "rcsb_entry_info.deposited_unmodeled_polymer_monomer_count": {
+    "type": "integer"
+   },
+   "rcsb_entry_info.diffrn_radiation_wavelength_maximum": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "rcsb_entry_info.diffrn_radiation_wavelength_minimum": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "rcsb_entry_info.diffrn_resolution_high.provenance_source": {
+    "type": "string"
+   },
+   "rcsb_entry_info.diffrn_resolution_high.value": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "rcsb_entry_info.disulfide_bond_count": {
+    "type": "integer"
+   },
+   "rcsb_entry_info.entity_count": {
+    "type": "integer"
+   },
+   "rcsb_entry_info.experimental_method": {
+    "type": "string"
+   },
+   "rcsb_entry_info.experimental_method_count": {
+    "type": "integer"
+   },
+   "rcsb_entry_info.ihm_multi_scale_flag": {
+    "type": "string"
+   },
+   "rcsb_entry_info.ihm_multi_state_flag": {
+    "type": "string"
+   },
+   "rcsb_entry_info.ihm_ordered_state_flag": {
+    "type": "string"
+   },
+   "rcsb_entry_info.ihm_structure_description": {
+    "type": "string"
+   },
+   "rcsb_entry_info.inter_mol_covalent_bond_count": {
+    "type": "integer"
+   },
+   "rcsb_entry_info.inter_mol_metalic_bond_count": {
+    "type": "integer"
+   },
+   "rcsb_entry_info.molecular_weight": {
+    "type": "number",
+    "units": "kilodaltons"
+   },
+   "rcsb_entry_info.na_polymer_entity_types": {
+    "type": "string"
+   },
+   "rcsb_entry_info.ndb_struct_conf_na_feature_combined[]": {
+    "type": "string"
+   },
+   "rcsb_entry_info.nonpolymer_bound_components[]": {
+    "type": "string"
+   },
+   "rcsb_entry_info.nonpolymer_entity_count": {
+    "type": "integer"
+   },
+   "rcsb_entry_info.nonpolymer_molecular_weight_maximum": {
+    "type": "number",
+    "units": "kilodaltons"
+   },
+   "rcsb_entry_info.nonpolymer_molecular_weight_minimum": {
+    "type": "number",
+    "units": "kilodaltons"
+   },
+   "rcsb_entry_info.polymer_composition": {
+    "type": "string"
+   },
+   "rcsb_entry_info.polymer_entity_count": {
+    "type": "integer"
+   },
+   "rcsb_entry_info.polymer_entity_count_DNA": {
+    "type": "integer"
+   },
+   "rcsb_entry_info.polymer_entity_count_RNA": {
+    "type": "integer"
+   },
+   "rcsb_entry_info.polymer_entity_count_nucleic_acid": {
+    "type": "integer"
+   },
+   "rcsb_entry_info.polymer_entity_count_nucleic_acid_hybrid": {
+    "type": "integer"
+   },
+   "rcsb_entry_info.polymer_entity_count_protein": {
+    "type": "integer"
+   },
+   "rcsb_entry_info.polymer_entity_taxonomy_count": {
+    "type": "integer"
+   },
+   "rcsb_entry_info.polymer_molecular_weight_maximum": {
+    "type": "number",
+    "units": "kilodaltons"
+   },
+   "rcsb_entry_info.polymer_molecular_weight_minimum": {
+    "type": "number",
+    "units": "kilodaltons"
+   },
+   "rcsb_entry_info.polymer_monomer_count_maximum": {
+    "type": "integer"
+   },
+   "rcsb_entry_info.polymer_monomer_count_minimum": {
+    "type": "integer"
+   },
+   "rcsb_entry_info.representative_model": {
+    "type": "integer"
+   },
+   "rcsb_entry_info.resolution_combined[]": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "rcsb_entry_info.selected_polymer_entity_types": {
+    "type": "string"
+   },
+   "rcsb_entry_info.software_programs_combined[]": {
+    "type": "string"
+   },
+   "rcsb_entry_info.solvent_entity_count": {
+    "type": "integer"
+   },
+   "rcsb_entry_info.structure_determination_methodology": {
+    "type": "string"
+   },
+   "rcsb_entry_info.structure_determination_methodology_priority": {
+    "type": "integer"
+   },
+   "rcsb_external_references[].id": {
+    "type": "string"
+   },
+   "rcsb_external_references[].link": {
+    "type": "string"
+   },
+   "rcsb_external_references[].type": {
+    "type": "string"
+   },
+   "rcsb_id": {
+    "type": "string"
+   },
+   "rcsb_ihm_dataset_list[].count": {
+    "type": "integer"
+   },
+   "rcsb_ihm_dataset_list[].name": {
+    "type": "string"
+   },
+   "rcsb_ihm_dataset_list[].type": {
+    "type": "string"
+   },
+   "rcsb_ihm_dataset_source_db_reference[].accession_code": {
+    "type": "string"
+   },
+   "rcsb_ihm_dataset_source_db_reference[].db_name": {
+    "type": "string"
+   },
+   "rcsb_ma_qa_metric_global[].ma_qa_metric_global[].description": {
+    "type": "string"
+   },
+   "rcsb_ma_qa_metric_global[].ma_qa_metric_global[].name": {
+    "type": "string"
+   },
+   "rcsb_ma_qa_metric_global[].ma_qa_metric_global[].type": {
+    "type": "string"
+   },
+   "rcsb_ma_qa_metric_global[].ma_qa_metric_global[].type_other_details": {
+    "type": "string"
+   },
+   "rcsb_ma_qa_metric_global[].ma_qa_metric_global[].value": {
+    "type": "number"
+   },
+   "rcsb_ma_qa_metric_global[].model_id": {
+    "type": "integer"
+   },
+   "rcsb_primary_citation.book_id_ISBN": {
+    "type": "string"
+   },
+   "rcsb_primary_citation.book_publisher": {
+    "type": "string"
+   },
+   "rcsb_primary_citation.book_publisher_city": {
+    "type": "string"
+   },
+   "rcsb_primary_citation.book_title": {
+    "type": "string"
+   },
+   "rcsb_primary_citation.coordinate_linkage": {
+    "type": "string"
+   },
+   "rcsb_primary_citation.country": {
+    "type": "string"
+   },
+   "rcsb_primary_citation.id": {
+    "type": "string"
+   },
+   "rcsb_primary_citation.journal_abbrev": {
+    "type": "string"
+   },
+   "rcsb_primary_citation.journal_id_ASTM": {
+    "type": "string"
+   },
+   "rcsb_primary_citation.journal_id_CSD": {
+    "type": "string"
+   },
+   "rcsb_primary_citation.journal_id_ISSN": {
+    "type": "string"
+   },
+   "rcsb_primary_citation.journal_issue": {
+    "type": "string"
+   },
+   "rcsb_primary_citation.journal_volume": {
+    "type": "string"
+   },
+   "rcsb_primary_citation.language": {
+    "type": "string"
+   },
+   "rcsb_primary_citation.page_first": {
+    "type": "string"
+   },
+   "rcsb_primary_citation.page_last": {
+    "type": "string"
+   },
+   "rcsb_primary_citation.pdbx_database_id_DOI": {
+    "type": "string"
+   },
+   "rcsb_primary_citation.pdbx_database_id_PubMed": {
+    "type": "integer"
+   },
+   "rcsb_primary_citation.rcsb_ORCID_identifiers[]": {
+    "type": "string"
+   },
+   "rcsb_primary_citation.rcsb_authors[]": {
+    "type": "string"
+   },
+   "rcsb_primary_citation.rcsb_journal_abbrev": {
+    "type": "string"
+   },
+   "rcsb_primary_citation.title": {
+    "type": "string"
+   },
+   "rcsb_primary_citation.year": {
+    "type": "integer"
+   },
+   "refine[].B_iso_max": {
+    "type": "number",
+    "units": "angstroms_squared"
+   },
+   "refine[].B_iso_mean": {
+    "type": "number",
+    "units": "angstroms_squared"
+   },
+   "refine[].B_iso_min": {
+    "type": "number",
+    "units": "angstroms_squared"
+   },
+   "refine[].aniso_B_1_1": {
+    "type": "number",
+    "units": "angstroms_squared"
+   },
+   "refine[].aniso_B_1_2": {
+    "type": "number",
+    "units": "angstroms_squared"
+   },
+   "refine[].aniso_B_1_3": {
+    "type": "number",
+    "units": "angstroms_squared"
+   },
+   "refine[].aniso_B_2_2": {
+    "type": "number",
+    "units": "angstroms_squared"
+   },
+   "refine[].aniso_B_2_3": {
+    "type": "number",
+    "units": "angstroms_squared"
+   },
+   "refine[].aniso_B_3_3": {
+    "type": "number",
+    "units": "angstroms_squared"
+   },
+   "refine[].correlation_coeff_Fo_to_Fc": {
+    "type": "number"
+   },
+   "refine[].correlation_coeff_Fo_to_Fc_free": {
+    "type": "number"
+   },
+   "refine[].details": {
+    "type": "string"
+   },
+   "refine[].ls_R_factor_R_free": {
+    "type": "number"
+   },
+   "refine[].ls_R_factor_R_free_error": {
+    "type": "number"
+   },
+   "refine[].ls_R_factor_R_free_error_details": {
+    "type": "string"
+   },
+   "refine[].ls_R_factor_R_work": {
+    "type": "number"
+   },
+   "refine[].ls_R_factor_all": {
+    "type": "number"
+   },
+   "refine[].ls_R_factor_obs": {
+    "type": "number"
+   },
+   "refine[].ls_d_res_high": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "refine[].ls_d_res_low": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "refine[].ls_matrix_type": {
+    "type": "string"
+   },
+   "refine[].ls_number_parameters": {
+    "type": "integer"
+   },
+   "refine[].ls_number_reflns_R_free": {
+    "type": "integer"
+   },
+   "refine[].ls_number_reflns_R_work": {
+    "type": "integer"
+   },
+   "refine[].ls_number_reflns_all": {
+    "type": "integer"
+   },
+   "refine[].ls_number_reflns_obs": {
+    "type": "integer"
+   },
+   "refine[].ls_number_restraints": {
+    "type": "integer"
+   },
+   "refine[].ls_percent_reflns_R_free": {
+    "type": "number"
+   },
+   "refine[].ls_percent_reflns_obs": {
+    "type": "number"
+   },
+   "refine[].ls_redundancy_reflns_all": {
+    "type": "number"
+   },
+   "refine[].ls_redundancy_reflns_obs": {
+    "type": "number"
+   },
+   "refine[].ls_wR_factor_R_free": {
+    "type": "number"
+   },
+   "refine[].ls_wR_factor_R_work": {
+    "type": "number"
+   },
+   "refine[].occupancy_max": {
+    "type": "number"
+   },
+   "refine[].occupancy_min": {
+    "type": "number"
+   },
+   "refine[].overall_FOM_free_R_set": {
+    "type": "number"
+   },
+   "refine[].overall_FOM_work_R_set": {
+    "type": "number"
+   },
+   "refine[].overall_SU_B": {
+    "type": "number"
+   },
+   "refine[].overall_SU_ML": {
+    "type": "number"
+   },
+   "refine[].overall_SU_R_Cruickshank_DPI": {
+    "type": "number"
+   },
+   "refine[].overall_SU_R_free": {
+    "type": "number"
+   },
+   "refine[].pdbx_R_Free_selection_details": {
+    "type": "string"
+   },
+   "refine[].pdbx_TLS_residual_ADP_flag": {
+    "type": "string"
+   },
+   "refine[].pdbx_average_fsc_free": {
+    "type": "number"
+   },
+   "refine[].pdbx_average_fsc_overall": {
+    "type": "number"
+   },
+   "refine[].pdbx_average_fsc_work": {
+    "type": "number"
+   },
+   "refine[].pdbx_data_cutoff_high_absF": {
+    "type": "number"
+   },
+   "refine[].pdbx_data_cutoff_high_rms_absF": {
+    "type": "number"
+   },
+   "refine[].pdbx_data_cutoff_low_absF": {
+    "type": "number"
+   },
+   "refine[].pdbx_diffrn_id[]": {
+    "type": "string"
+   },
+   "refine[].pdbx_isotropic_thermal_model": {
+    "type": "string"
+   },
+   "refine[].pdbx_ls_cross_valid_method": {
+    "type": "string"
+   },
+   "refine[].pdbx_ls_sigma_F": {
+    "type": "number"
+   },
+   "refine[].pdbx_ls_sigma_Fsqd": {
+    "type": "number"
+   },
+   "refine[].pdbx_ls_sigma_I": {
+    "type": "number"
+   },
+   "refine[].pdbx_method_to_determine_struct": {
+    "type": "string"
+   },
+   "refine[].pdbx_overall_ESU_R": {
+    "type": "number"
+   },
+   "refine[].pdbx_overall_ESU_R_Free": {
+    "type": "number"
+   },
+   "refine[].pdbx_overall_SU_R_Blow_DPI": {
+    "type": "number"
+   },
+   "refine[].pdbx_overall_SU_R_free_Blow_DPI": {
+    "type": "number"
+   },
+   "refine[].pdbx_overall_SU_R_free_Cruickshank_DPI": {
+    "type": "number"
+   },
+   "refine[].pdbx_overall_phase_error": {
+    "type": "number"
+   },
+   "refine[].pdbx_refine_id": {
+    "type": "string"
+   },
+   "refine[].pdbx_solvent_ion_probe_radii": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "refine[].pdbx_solvent_shrinkage_radii": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "refine[].pdbx_solvent_vdw_probe_radii": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "refine[].pdbx_starting_model": {
+    "type": "string"
+   },
+   "refine[].pdbx_stereochem_target_val_spec_case": {
+    "type": "string"
+   },
+   "refine[].pdbx_stereochemistry_target_values": {
+    "type": "string"
+   },
+   "refine[].solvent_model_details": {
+    "type": "string"
+   },
+   "refine[].solvent_model_param_bsol": {
+    "type": "number"
+   },
+   "refine[].solvent_model_param_ksol": {
+    "type": "number"
+   },
+   "refine_analyze[].Luzzati_coordinate_error_free": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "refine_analyze[].Luzzati_coordinate_error_obs": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "refine_analyze[].Luzzati_d_res_low_free": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "refine_analyze[].Luzzati_d_res_low_obs": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "refine_analyze[].Luzzati_sigma_a_free": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "refine_analyze[].Luzzati_sigma_a_obs": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "refine_analyze[].number_disordered_residues": {
+    "type": "number"
+   },
+   "refine_analyze[].occupancy_sum_hydrogen": {
+    "type": "number"
+   },
+   "refine_analyze[].occupancy_sum_non_hydrogen": {
+    "type": "number"
+   },
+   "refine_analyze[].pdbx_Luzzati_d_res_high_obs": {
+    "type": "number"
+   },
+   "refine_analyze[].pdbx_refine_id": {
+    "type": "string"
+   },
+   "refine_hist[].cycle_id": {
+    "type": "string"
+   },
+   "refine_hist[].d_res_high": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "refine_hist[].d_res_low": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "refine_hist[].number_atoms_solvent": {
+    "type": "integer"
+   },
+   "refine_hist[].number_atoms_total": {
+    "type": "integer"
+   },
+   "refine_hist[].pdbx_B_iso_mean_ligand": {
+    "type": "number"
+   },
+   "refine_hist[].pdbx_B_iso_mean_solvent": {
+    "type": "number"
+   },
+   "refine_hist[].pdbx_number_atoms_ligand": {
+    "type": "integer"
+   },
+   "refine_hist[].pdbx_number_atoms_nucleic_acid": {
+    "type": "integer"
+   },
+   "refine_hist[].pdbx_number_atoms_protein": {
+    "type": "integer"
+   },
+   "refine_hist[].pdbx_number_residues_total": {
+    "type": "integer"
+   },
+   "refine_hist[].pdbx_refine_id": {
+    "type": "string"
+   },
+   "refine_ls_restr[].dev_ideal": {
+    "type": "number"
+   },
+   "refine_ls_restr[].dev_ideal_target": {
+    "type": "number"
+   },
+   "refine_ls_restr[].number": {
+    "type": "integer"
+   },
+   "refine_ls_restr[].pdbx_refine_id": {
+    "type": "string"
+   },
+   "refine_ls_restr[].pdbx_restraint_function": {
+    "type": "string"
+   },
+   "refine_ls_restr[].type": {
+    "type": "string"
+   },
+   "refine_ls_restr[].weight": {
+    "type": "number"
+   },
+   "reflns[].B_iso_Wilson_estimate": {
+    "type": "number",
+    "units": "angstroms_squared"
+   },
+   "reflns[].R_free_details": {
+    "type": "string"
+   },
+   "reflns[].Rmerge_F_all": {
+    "type": "number"
+   },
+   "reflns[].Rmerge_F_obs": {
+    "type": "number"
+   },
+   "reflns[].d_resolution_high": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "reflns[].d_resolution_low": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "reflns[].data_reduction_details": {
+    "type": "string"
+   },
+   "reflns[].data_reduction_method": {
+    "type": "string"
+   },
+   "reflns[].details": {
+    "type": "string"
+   },
+   "reflns[].limit_h_max": {
+    "type": "integer"
+   },
+   "reflns[].limit_h_min": {
+    "type": "integer"
+   },
+   "reflns[].limit_k_max": {
+    "type": "integer"
+   },
+   "reflns[].limit_k_min": {
+    "type": "integer"
+   },
+   "reflns[].limit_l_max": {
+    "type": "integer"
+   },
+   "reflns[].limit_l_min": {
+    "type": "integer"
+   },
+   "reflns[].number_all": {
+    "type": "integer"
+   },
+   "reflns[].number_obs": {
+    "type": "integer"
+   },
+   "reflns[].observed_criterion": {
+    "type": "string"
+   },
+   "reflns[].observed_criterion_F_max": {
+    "type": "number"
+   },
+   "reflns[].observed_criterion_F_min": {
+    "type": "number"
+   },
+   "reflns[].observed_criterion_I_max": {
+    "type": "number"
+   },
+   "reflns[].observed_criterion_I_min": {
+    "type": "number"
+   },
+   "reflns[].observed_criterion_sigma_F": {
+    "type": "number"
+   },
+   "reflns[].observed_criterion_sigma_I": {
+    "type": "number"
+   },
+   "reflns[].pdbx_CC_half": {
+    "type": "number"
+   },
+   "reflns[].pdbx_R_split": {
+    "type": "number"
+   },
+   "reflns[].pdbx_Rmerge_I_obs": {
+    "type": "number"
+   },
+   "reflns[].pdbx_Rpim_I_all": {
+    "type": "number"
+   },
+   "reflns[].pdbx_Rrim_I_all": {
+    "type": "number"
+   },
+   "reflns[].pdbx_Rsym_value": {
+    "type": "number"
+   },
+   "reflns[].pdbx_chi_squared": {
+    "type": "number"
+   },
+   "reflns[].pdbx_diffrn_id[]": {
+    "type": "string"
+   },
+   "reflns[].pdbx_netI_over_av_sigmaI": {
+    "type": "number"
+   },
+   "reflns[].pdbx_netI_over_sigmaI": {
+    "type": "number"
+   },
+   "reflns[].pdbx_number_measured_all": {
+    "type": "integer"
+   },
+   "reflns[].pdbx_ordinal": {
+    "type": "integer"
+   },
+   "reflns[].pdbx_redundancy": {
+    "type": "number"
+   },
+   "reflns[].pdbx_scaling_rejects": {
+    "type": "integer"
+   },
+   "reflns[].percent_possible_obs": {
+    "type": "number"
+   },
+   "reflns[].phase_calculation_details": {
+    "type": "string"
+   },
+   "reflns_shell[].Rmerge_F_all": {
+    "type": "number"
+   },
+   "reflns_shell[].Rmerge_F_obs": {
+    "type": "number"
+   },
+   "reflns_shell[].Rmerge_I_all": {
+    "type": "number"
+   },
+   "reflns_shell[].Rmerge_I_obs": {
+    "type": "number"
+   },
+   "reflns_shell[].d_res_high": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "reflns_shell[].d_res_low": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "reflns_shell[].meanI_over_sigI_all": {
+    "type": "number"
+   },
+   "reflns_shell[].meanI_over_sigI_obs": {
+    "type": "number"
+   },
+   "reflns_shell[].meanI_over_uI_all": {
+    "type": "number"
+   },
+   "reflns_shell[].number_measured_all": {
+    "type": "integer"
+   },
+   "reflns_shell[].number_measured_obs": {
+    "type": "integer"
+   },
+   "reflns_shell[].number_possible": {
+    "type": "integer"
+   },
+   "reflns_shell[].number_unique_all": {
+    "type": "integer"
+   },
+   "reflns_shell[].number_unique_obs": {
+    "type": "integer"
+   },
+   "reflns_shell[].pdbx_CC_half": {
+    "type": "number"
+   },
+   "reflns_shell[].pdbx_R_split": {
+    "type": "number"
+   },
+   "reflns_shell[].pdbx_Rpim_I_all": {
+    "type": "number"
+   },
+   "reflns_shell[].pdbx_Rrim_I_all": {
+    "type": "number"
+   },
+   "reflns_shell[].pdbx_Rsym_value": {
+    "type": "number"
+   },
+   "reflns_shell[].pdbx_chi_squared": {
+    "type": "number"
+   },
+   "reflns_shell[].pdbx_diffrn_id[]": {
+    "type": "string"
+   },
+   "reflns_shell[].pdbx_netI_over_sigmaI_all": {
+    "type": "number"
+   },
+   "reflns_shell[].pdbx_netI_over_sigmaI_obs": {
+    "type": "number"
+   },
+   "reflns_shell[].pdbx_ordinal": {
+    "type": "integer"
+   },
+   "reflns_shell[].pdbx_redundancy": {
+    "type": "number"
+   },
+   "reflns_shell[].pdbx_rejects": {
+    "type": "integer"
+   },
+   "reflns_shell[].percent_possible_all": {
+    "type": "number"
+   },
+   "reflns_shell[].percent_possible_obs": {
+    "type": "number"
+   },
+   "software[].citation_id": {
+    "type": "string"
+   },
+   "software[].classification": {
+    "type": "string"
+   },
+   "software[].contact_author": {
+    "type": "string"
+   },
+   "software[].contact_author_email": {
+    "type": "string"
+   },
+   "software[].date": {
+    "type": "string"
+   },
+   "software[].description": {
+    "type": "string"
+   },
+   "software[].language": {
+    "type": "string"
+   },
+   "software[].location": {
+    "type": "string"
+   },
+   "software[].name": {
+    "type": "string"
+   },
+   "software[].os": {
+    "type": "string"
+   },
+   "software[].pdbx_ordinal": {
+    "type": "integer"
+   },
+   "software[].type": {
+    "type": "string"
+   },
+   "software[].version": {
+    "type": "string"
+   },
+   "struct.pdbx_CASP_flag": {
+    "type": "string"
+   },
+   "struct.pdbx_descriptor": {
+    "type": "string"
+   },
+   "struct.pdbx_model_details": {
+    "type": "string"
+   },
+   "struct.pdbx_model_type_details": {
+    "type": "string"
+   },
+   "struct.title": {
+    "type": "string"
+   },
+   "struct_keywords.pdbx_keywords": {
+    "type": "string"
+   },
+   "struct_keywords.text": {
+    "type": "string"
+   },
+   "symmetry.Int_Tables_number": {
+    "type": "integer"
+   },
+   "symmetry.cell_setting": {
+    "type": "string"
+   },
+   "symmetry.pdbx_full_space_group_name_H_M": {
+    "type": "string"
+   },
+   "symmetry.space_group_name_H_M": {
+    "type": "string"
+   },
+   "symmetry.space_group_name_Hall": {
+    "type": "string"
+   }
+  },
+  "polymer_entity": {
+   "entity_poly.nstd_linkage": {
+    "type": "string"
+   },
+   "entity_poly.nstd_monomer": {
+    "type": "string"
+   },
+   "entity_poly.pdbx_seq_one_letter_code": {
+    "type": "string"
+   },
+   "entity_poly.pdbx_seq_one_letter_code_can": {
+    "type": "string"
+   },
+   "entity_poly.pdbx_sequence_evidence_code": {
+    "type": "string"
+   },
+   "entity_poly.pdbx_strand_id": {
+    "type": "string"
+   },
+   "entity_poly.pdbx_target_identifier": {
+    "type": "string"
+   },
+   "entity_poly.rcsb_artifact_monomer_count": {
+    "type": "integer"
+   },
+   "entity_poly.rcsb_conflict_count": {
+    "type": "integer"
+   },
+   "entity_poly.rcsb_deletion_count": {
+    "type": "integer"
+   },
+   "entity_poly.rcsb_entity_polymer_type": {
+    "type": "string"
+   },
+   "entity_poly.rcsb_insertion_count": {
+    "type": "integer"
+   },
+   "entity_poly.rcsb_mutation_count": {
+    "type": "integer"
+   },
+   "entity_poly.rcsb_non_std_monomer_count": {
+    "type": "integer"
+   },
+   "entity_poly.rcsb_non_std_monomers[]": {
+    "type": "string"
+   },
+   "entity_poly.rcsb_prd_id": {
+    "type": "string"
+   },
+   "entity_poly.rcsb_sample_sequence_length": {
+    "type": "integer"
+   },
+   "entity_poly.type": {
+    "type": "string"
+   },
+   "entity_src_gen[].expression_system_id": {
+    "type": "string"
+   },
+   "entity_src_gen[].gene_src_common_name": {
+    "type": "string"
+   },
+   "entity_src_gen[].gene_src_details": {
+    "type": "string"
+   },
+   "entity_src_gen[].gene_src_genus": {
+    "type": "string"
+   },
+   "entity_src_gen[].gene_src_species": {
+    "type": "string"
+   },
+   "entity_src_gen[].gene_src_strain": {
+    "type": "string"
+   },
+   "entity_src_gen[].gene_src_tissue": {
+    "type": "string"
+   },
+   "entity_src_gen[].gene_src_tissue_fraction": {
+    "type": "string"
+   },
+   "entity_src_gen[].host_org_common_name": {
+    "type": "string"
+   },
+   "entity_src_gen[].host_org_details": {
+    "type": "string"
+   },
+   "entity_src_gen[].host_org_genus": {
+    "type": "string"
+   },
+   "entity_src_gen[].host_org_species": {
+    "type": "string"
+   },
+   "entity_src_gen[].pdbx_alt_source_flag": {
+    "type": "string"
+   },
+   "entity_src_gen[].pdbx_beg_seq_num": {
+    "type": "integer"
+   },
+   "entity_src_gen[].pdbx_description": {
+    "type": "string"
+   },
+   "entity_src_gen[].pdbx_end_seq_num": {
+    "type": "integer"
+   },
+   "entity_src_gen[].pdbx_gene_src_atcc": {
+    "type": "string"
+   },
+   "entity_src_gen[].pdbx_gene_src_cell": {
+    "type": "string"
+   },
+   "entity_src_gen[].pdbx_gene_src_cell_line": {
+    "type": "string"
+   },
+   "entity_src_gen[].pdbx_gene_src_cellular_location": {
+    "type": "string"
+   },
+   "entity_src_gen[].pdbx_gene_src_fragment": {
+    "type": "string"
+   },
+   "entity_src_gen[].pdbx_gene_src_gene": {
+    "type": "string"
+   },
+   "entity_src_gen[].pdbx_gene_src_ncbi_taxonomy_id": {
+    "type": "string"
+   },
+   "entity_src_gen[].pdbx_gene_src_organ": {
+    "type": "string"
+   },
+   "entity_src_gen[].pdbx_gene_src_organelle": {
+    "type": "string"
+   },
+   "entity_src_gen[].pdbx_gene_src_scientific_name": {
+    "type": "string"
+   },
+   "entity_src_gen[].pdbx_gene_src_variant": {
+    "type": "string"
+   },
+   "entity_src_gen[].pdbx_host_org_atcc": {
+    "type": "string"
+   },
+   "entity_src_gen[].pdbx_host_org_cell": {
+    "type": "string"
+   },
+   "entity_src_gen[].pdbx_host_org_cell_line": {
+    "type": "string"
+   },
+   "entity_src_gen[].pdbx_host_org_cellular_location": {
+    "type": "string"
+   },
+   "entity_src_gen[].pdbx_host_org_culture_collection": {
+    "type": "string"
+   },
+   "entity_src_gen[].pdbx_host_org_gene": {
+    "type": "string"
+   },
+   "entity_src_gen[].pdbx_host_org_ncbi_taxonomy_id": {
+    "type": "string"
+   },
+   "entity_src_gen[].pdbx_host_org_organ": {
+    "type": "string"
+   },
+   "entity_src_gen[].pdbx_host_org_organelle": {
+    "type": "string"
+   },
+   "entity_src_gen[].pdbx_host_org_scientific_name": {
+    "type": "string"
+   },
+   "entity_src_gen[].pdbx_host_org_strain": {
+    "type": "string"
+   },
+   "entity_src_gen[].pdbx_host_org_tissue": {
+    "type": "string"
+   },
+   "entity_src_gen[].pdbx_host_org_tissue_fraction": {
+    "type": "string"
+   },
+   "entity_src_gen[].pdbx_host_org_variant": {
+    "type": "string"
+   },
+   "entity_src_gen[].pdbx_host_org_vector": {
+    "type": "string"
+   },
+   "entity_src_gen[].pdbx_host_org_vector_type": {
+    "type": "string"
+   },
+   "entity_src_gen[].pdbx_seq_type": {
+    "type": "string"
+   },
+   "entity_src_gen[].pdbx_src_id": {
+    "type": "integer"
+   },
+   "entity_src_gen[].plasmid_details": {
+    "type": "string"
+   },
+   "entity_src_gen[].plasmid_name": {
+    "type": "string"
+   },
+   "entity_src_nat[].common_name": {
+    "type": "string"
+   },
+   "entity_src_nat[].details": {
+    "type": "string"
+   },
+   "entity_src_nat[].genus": {
+    "type": "string"
+   },
+   "entity_src_nat[].pdbx_alt_source_flag": {
+    "type": "string"
+   },
+   "entity_src_nat[].pdbx_atcc": {
+    "type": "string"
+   },
+   "entity_src_nat[].pdbx_beg_seq_num": {
+    "type": "integer"
+   },
+   "entity_src_nat[].pdbx_cell": {
+    "type": "string"
+   },
+   "entity_src_nat[].pdbx_cell_line": {
+    "type": "string"
+   },
+   "entity_src_nat[].pdbx_cellular_location": {
+    "type": "string"
+   },
+   "entity_src_nat[].pdbx_end_seq_num": {
+    "type": "integer"
+   },
+   "entity_src_nat[].pdbx_fragment": {
+    "type": "string"
+   },
+   "entity_src_nat[].pdbx_ncbi_taxonomy_id": {
+    "type": "string"
+   },
+   "entity_src_nat[].pdbx_organ": {
+    "type": "string"
+   },
+   "entity_src_nat[].pdbx_organelle": {
+    "type": "string"
+   },
+   "entity_src_nat[].pdbx_organism_scientific": {
+    "type": "string"
+   },
+   "entity_src_nat[].pdbx_plasmid_details": {
+    "type": "string"
+   },
+   "entity_src_nat[].pdbx_plasmid_name": {
+    "type": "string"
+   },
+   "entity_src_nat[].pdbx_secretion": {
+    "type": "string"
+   },
+   "entity_src_nat[].pdbx_src_id": {
+    "type": "integer"
+   },
+   "entity_src_nat[].pdbx_variant": {
+    "type": "string"
+   },
+   "entity_src_nat[].species": {
+    "type": "string"
+   },
+   "entity_src_nat[].strain": {
+    "type": "string"
+   },
+   "entity_src_nat[].tissue": {
+    "type": "string"
+   },
+   "entity_src_nat[].tissue_fraction": {
+    "type": "string"
+   },
+   "pdbx_entity_src_syn[].details": {
+    "type": "string"
+   },
+   "pdbx_entity_src_syn[].ncbi_taxonomy_id": {
+    "type": "string"
+   },
+   "pdbx_entity_src_syn[].organism_common_name": {
+    "type": "string"
+   },
+   "pdbx_entity_src_syn[].organism_scientific": {
+    "type": "string"
+   },
+   "pdbx_entity_src_syn[].pdbx_alt_source_flag": {
+    "type": "string"
+   },
+   "pdbx_entity_src_syn[].pdbx_beg_seq_num": {
+    "type": "integer"
+   },
+   "pdbx_entity_src_syn[].pdbx_end_seq_num": {
+    "type": "integer"
+   },
+   "pdbx_entity_src_syn[].pdbx_src_id": {
+    "type": "integer"
+   },
+   "rcsb_cluster_flexibility.avg_rmsd": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "rcsb_cluster_flexibility.label": {
+    "type": "string"
+   },
+   "rcsb_cluster_flexibility.link": {
+    "type": "string"
+   },
+   "rcsb_cluster_flexibility.max_rmsd": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "rcsb_cluster_flexibility.provenance_code": {
+    "type": "string"
+   },
+   "rcsb_cluster_membership[].cluster_id": {
+    "type": "integer"
+   },
+   "rcsb_cluster_membership[].identity": {
+    "type": "integer"
+   },
+   "rcsb_entity_host_organism[].beg_seq_num": {
+    "type": "integer"
+   },
+   "rcsb_entity_host_organism[].common_name": {
+    "type": "string"
+   },
+   "rcsb_entity_host_organism[].end_seq_num": {
+    "type": "integer"
+   },
+   "rcsb_entity_host_organism[].ncbi_common_names[]": {
+    "type": "string"
+   },
+   "rcsb_entity_host_organism[].ncbi_parent_scientific_name": {
+    "type": "string"
+   },
+   "rcsb_entity_host_organism[].ncbi_scientific_name": {
+    "type": "string"
+   },
+   "rcsb_entity_host_organism[].ncbi_taxonomy_id": {
+    "type": "integer"
+   },
+   "rcsb_entity_host_organism[].pdbx_src_id": {
+    "type": "integer"
+   },
+   "rcsb_entity_host_organism[].provenance_source": {
+    "type": "string"
+   },
+   "rcsb_entity_host_organism[].scientific_name": {
+    "type": "string"
+   },
+   "rcsb_entity_host_organism[].taxonomy_lineage[].depth": {
+    "type": "integer"
+   },
+   "rcsb_entity_host_organism[].taxonomy_lineage[].id": {
+    "type": "string"
+   },
+   "rcsb_entity_host_organism[].taxonomy_lineage[].name": {
+    "type": "string"
+   },
+   "rcsb_entity_source_organism[].beg_seq_num": {
+    "type": "integer"
+   },
+   "rcsb_entity_source_organism[].common_name": {
+    "type": "string"
+   },
+   "rcsb_entity_source_organism[].end_seq_num": {
+    "type": "integer"
+   },
+   "rcsb_entity_source_organism[].ncbi_common_names[]": {
+    "type": "string"
+   },
+   "rcsb_entity_source_organism[].ncbi_parent_scientific_name": {
+    "type": "string"
+   },
+   "rcsb_entity_source_organism[].ncbi_scientific_name": {
+    "type": "string"
+   },
+   "rcsb_entity_source_organism[].ncbi_taxonomy_id": {
+    "type": "integer"
+   },
+   "rcsb_entity_source_organism[].pdbx_src_id": {
+    "type": "integer"
+   },
+   "rcsb_entity_source_organism[].provenance_source": {
+    "type": "string"
+   },
+   "rcsb_entity_source_organism[].rcsb_gene_name[].provenance_source": {
+    "type": "string"
+   },
+   "rcsb_entity_source_organism[].rcsb_gene_name[].value": {
+    "type": "string"
+   },
+   "rcsb_entity_source_organism[].scientific_name": {
+    "type": "string"
+   },
+   "rcsb_entity_source_organism[].source_type": {
+    "type": "string"
+   },
+   "rcsb_entity_source_organism[].taxonomy_lineage[].depth": {
+    "type": "integer"
+   },
+   "rcsb_entity_source_organism[].taxonomy_lineage[].id": {
+    "type": "string"
+   },
+   "rcsb_entity_source_organism[].taxonomy_lineage[].name": {
+    "type": "string"
+   },
+   "rcsb_genomic_lineage[].depth": {
+    "type": "integer"
+   },
+   "rcsb_genomic_lineage[].id": {
+    "type": "string"
+   },
+   "rcsb_genomic_lineage[].name": {
+    "type": "string"
+   },
+   "rcsb_id": {
+    "type": "string"
+   },
+   "rcsb_latest_revision.major_revision": {
+    "type": "integer"
+   },
+   "rcsb_latest_revision.minor_revision": {
+    "type": "integer"
+   },
+   "rcsb_latest_revision.revision_date": {
+    "type": "string"
+   },
+   "rcsb_membrane_lineage[].depth": {
+    "type": "integer"
+   },
+   "rcsb_membrane_lineage[].id": {
+    "type": "string"
+   },
+   "rcsb_membrane_lineage[].name": {
+    "type": "string"
+   },
+   "rcsb_membrane_lineage_provenance_code": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity.details": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity.formula_weight": {
+    "type": "number",
+    "units": "kilodaltons"
+   },
+   "rcsb_polymer_entity.pdbx_description": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity.pdbx_ec": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity.pdbx_fragment": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity.pdbx_mutation": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity.pdbx_number_of_molecules": {
+    "type": "integer"
+   },
+   "rcsb_polymer_entity.rcsb_ec_lineage[].depth": {
+    "type": "integer"
+   },
+   "rcsb_polymer_entity.rcsb_ec_lineage[].id": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity.rcsb_ec_lineage[].name": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity.rcsb_enzyme_class_combined[].depth": {
+    "type": "integer"
+   },
+   "rcsb_polymer_entity.rcsb_enzyme_class_combined[].ec": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity.rcsb_enzyme_class_combined[].provenance_source": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity.rcsb_macromolecular_names_combined[].name": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity.rcsb_macromolecular_names_combined[].provenance_code": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity.rcsb_macromolecular_names_combined[].provenance_source": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity.rcsb_multiple_source_flag": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity.rcsb_polymer_name_combined.names[]": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity.rcsb_polymer_name_combined.provenance_source": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity.rcsb_source_part_count": {
+    "type": "integer"
+   },
+   "rcsb_polymer_entity.rcsb_source_taxonomy_count": {
+    "type": "integer"
+   },
+   "rcsb_polymer_entity.src_method": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_align[].aligned_regions[].entity_beg_seq_id": {
+    "type": "integer"
+   },
+   "rcsb_polymer_entity_align[].aligned_regions[].length": {
+    "type": "integer"
+   },
+   "rcsb_polymer_entity_align[].aligned_regions[].ref_beg_seq_id": {
+    "type": "integer"
+   },
+   "rcsb_polymer_entity_align[].provenance_source": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_align[].reference_database_accession": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_align[].reference_database_isoform": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_align[].reference_database_name": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_annotation[].additional_properties[].name": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_annotation[].additional_properties[].values[]": {
+    "type": "unknown"
+   },
+   "rcsb_polymer_entity_annotation[].annotation_id": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_annotation[].annotation_lineage[].depth": {
+    "type": "integer"
+   },
+   "rcsb_polymer_entity_annotation[].annotation_lineage[].id": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_annotation[].annotation_lineage[].name": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_annotation[].assignment_version": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_annotation[].description": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_annotation[].name": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_annotation[].provenance_source": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_annotation[].type": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_container_identifiers.asym_ids[]": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_container_identifiers.auth_asym_ids[]": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_container_identifiers.chem_comp_monomers[]": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_container_identifiers.chem_comp_nstd_monomers[]": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_container_identifiers.chem_ref_def_id": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_container_identifiers.entity_id": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_container_identifiers.entry_id": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_container_identifiers.prd_id": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_container_identifiers.rcsb_id": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_container_identifiers.reference_sequence_identifiers[].database_accession": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_container_identifiers.reference_sequence_identifiers[].database_isoform": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_container_identifiers.reference_sequence_identifiers[].database_name": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_container_identifiers.reference_sequence_identifiers[].entity_sequence_coverage": {
+    "type": "number"
+   },
+   "rcsb_polymer_entity_container_identifiers.reference_sequence_identifiers[].provenance_source": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_container_identifiers.reference_sequence_identifiers[].reference_sequence_coverage": {
+    "type": "number"
+   },
+   "rcsb_polymer_entity_container_identifiers.uniprot_ids[]": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_feature[].additional_properties[].name": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_feature[].additional_properties[].values[]": {
+    "type": "unknown"
+   },
+   "rcsb_polymer_entity_feature[].assignment_version": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_feature[].description": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_feature[].feature_id": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_feature[].feature_positions[].beg_comp_id": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_feature[].feature_positions[].beg_seq_id": {
+    "type": "integer"
+   },
+   "rcsb_polymer_entity_feature[].feature_positions[].end_seq_id": {
+    "type": "integer"
+   },
+   "rcsb_polymer_entity_feature[].feature_positions[].value": {
+    "type": "number"
+   },
+   "rcsb_polymer_entity_feature[].feature_positions[].values[]": {
+    "type": "number"
+   },
+   "rcsb_polymer_entity_feature[].name": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_feature[].provenance_source": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_feature[].reference_scheme": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_feature[].type": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_feature_summary[].count": {
+    "type": "integer"
+   },
+   "rcsb_polymer_entity_feature_summary[].coverage": {
+    "type": "number"
+   },
+   "rcsb_polymer_entity_feature_summary[].maximum_length": {
+    "type": "integer"
+   },
+   "rcsb_polymer_entity_feature_summary[].maximum_value": {
+    "type": "number"
+   },
+   "rcsb_polymer_entity_feature_summary[].minimum_length": {
+    "type": "integer"
+   },
+   "rcsb_polymer_entity_feature_summary[].minimum_value": {
+    "type": "number"
+   },
+   "rcsb_polymer_entity_feature_summary[].type": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_group_membership[].aggregation_method": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_group_membership[].aligned_regions[].entity_beg_seq_id": {
+    "type": "integer"
+   },
+   "rcsb_polymer_entity_group_membership[].aligned_regions[].length": {
+    "type": "integer"
+   },
+   "rcsb_polymer_entity_group_membership[].aligned_regions[].ref_beg_seq_id": {
+    "type": "integer"
+   },
+   "rcsb_polymer_entity_group_membership[].group_id": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_group_membership[].similarity_cutoff": {
+    "type": "number"
+   },
+   "rcsb_polymer_entity_keywords.text": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_name_com[].name": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_name_sys[].name": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_name_sys[].system": {
+    "type": "string"
+   },
+   "rcsb_related_target_references[].aligned_target[].entity_beg_seq_id": {
+    "type": "integer"
+   },
+   "rcsb_related_target_references[].aligned_target[].length": {
+    "type": "integer"
+   },
+   "rcsb_related_target_references[].aligned_target[].target_beg_seq_id": {
+    "type": "integer"
+   },
+   "rcsb_related_target_references[].related_resource_name": {
+    "type": "string"
+   },
+   "rcsb_related_target_references[].related_resource_version": {
+    "type": "string"
+   },
+   "rcsb_related_target_references[].related_target_id": {
+    "type": "string"
+   },
+   "rcsb_related_target_references[].target_taxonomy_id": {
+    "type": "integer"
+   },
+   "rcsb_target_cofactors[].binding_assay_value": {
+    "type": "number"
+   },
+   "rcsb_target_cofactors[].binding_assay_value_type": {
+    "type": "string"
+   },
+   "rcsb_target_cofactors[].cofactor_InChIKey": {
+    "type": "string"
+   },
+   "rcsb_target_cofactors[].cofactor_SMILES": {
+    "type": "string"
+   },
+   "rcsb_target_cofactors[].cofactor_chem_comp_id": {
+    "type": "string"
+   },
+   "rcsb_target_cofactors[].cofactor_description": {
+    "type": "string"
+   },
+   "rcsb_target_cofactors[].cofactor_name": {
+    "type": "string"
+   },
+   "rcsb_target_cofactors[].cofactor_prd_id": {
+    "type": "string"
+   },
+   "rcsb_target_cofactors[].cofactor_resource_id": {
+    "type": "string"
+   },
+   "rcsb_target_cofactors[].mechanism_of_action": {
+    "type": "string"
+   },
+   "rcsb_target_cofactors[].neighbor_flag": {
+    "type": "string"
+   },
+   "rcsb_target_cofactors[].patent_nos[]": {
+    "type": "string"
+   },
+   "rcsb_target_cofactors[].pubmed_ids[]": {
+    "type": "integer"
+   },
+   "rcsb_target_cofactors[].resource_name": {
+    "type": "string"
+   },
+   "rcsb_target_cofactors[].resource_version": {
+    "type": "string"
+   },
+   "rcsb_target_cofactors[].target_resource_id": {
+    "type": "string"
+   }
+  },
+  "nonpolymer_entity": {
+   "pdbx_entity_nonpoly.comp_id": {
+    "type": "string"
+   },
+   "pdbx_entity_nonpoly.entity_id": {
+    "type": "string"
+   },
+   "pdbx_entity_nonpoly.name": {
+    "type": "string"
+   },
+   "pdbx_entity_nonpoly.rcsb_prd_id": {
+    "type": "string"
+   },
+   "rcsb_id": {
+    "type": "string"
+   },
+   "rcsb_latest_revision.major_revision": {
+    "type": "integer"
+   },
+   "rcsb_latest_revision.minor_revision": {
+    "type": "integer"
+   },
+   "rcsb_latest_revision.revision_date": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_entity.details": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_entity.formula_weight": {
+    "type": "number",
+    "units": "KDa"
+   },
+   "rcsb_nonpolymer_entity.pdbx_description": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_entity.pdbx_number_of_molecules": {
+    "type": "integer"
+   },
+   "rcsb_nonpolymer_entity_annotation[].annotation_id": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_entity_annotation[].annotation_lineage[].depth": {
+    "type": "integer"
+   },
+   "rcsb_nonpolymer_entity_annotation[].annotation_lineage[].id": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_entity_annotation[].annotation_lineage[].name": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_entity_annotation[].assignment_version": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_entity_annotation[].comp_id": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_entity_annotation[].description": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_entity_annotation[].name": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_entity_annotation[].provenance_source": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_entity_annotation[].type": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_entity_container_identifiers.asym_ids[]": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_entity_container_identifiers.auth_asym_ids[]": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_entity_container_identifiers.chem_ref_def_id": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_entity_container_identifiers.entity_id": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_entity_container_identifiers.entry_id": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_entity_container_identifiers.nonpolymer_comp_id": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_entity_container_identifiers.prd_id": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_entity_container_identifiers.rcsb_id": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_entity_container_identifiers.reference_chemical_identifiers_provenance_source[]": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_entity_container_identifiers.reference_chemical_identifiers_resource_accession[]": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_entity_container_identifiers.reference_chemical_identifiers_resource_name[]": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_entity_feature[].additional_properties[].name": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_entity_feature[].additional_properties[].values[]": {
+    "type": "unknown"
+   },
+   "rcsb_nonpolymer_entity_feature[].assignment_version": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_entity_feature[].comp_id": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_entity_feature[].description": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_entity_feature[].feature_id": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_entity_feature[].name": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_entity_feature[].provenance_source": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_entity_feature[].type": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_entity_feature[].value": {
+    "type": "number"
+   },
+   "rcsb_nonpolymer_entity_feature_summary[].comp_id": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_entity_feature_summary[].count": {
+    "type": "integer"
+   },
+   "rcsb_nonpolymer_entity_feature_summary[].maximum_length": {
+    "type": "integer"
+   },
+   "rcsb_nonpolymer_entity_feature_summary[].maximum_value": {
+    "type": "number"
+   },
+   "rcsb_nonpolymer_entity_feature_summary[].minimum_length": {
+    "type": "integer"
+   },
+   "rcsb_nonpolymer_entity_feature_summary[].minimum_value": {
+    "type": "number"
+   },
+   "rcsb_nonpolymer_entity_feature_summary[].type": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_entity_keywords.text": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_entity_name_com[].name": {
+    "type": "string"
+   }
+  },
+  "branched_entity": {
+   "pdbx_entity_branch.rcsb_branched_component_count": {
+    "type": "integer"
+   },
+   "pdbx_entity_branch.type": {
+    "type": "string"
+   },
+   "pdbx_entity_branch_descriptor[].descriptor": {
+    "type": "string"
+   },
+   "pdbx_entity_branch_descriptor[].program": {
+    "type": "string"
+   },
+   "pdbx_entity_branch_descriptor[].program_version": {
+    "type": "string"
+   },
+   "pdbx_entity_branch_descriptor[].type": {
+    "type": "string"
+   },
+   "rcsb_branched_entity.details": {
+    "type": "string"
+   },
+   "rcsb_branched_entity.formula_weight": {
+    "type": "number",
+    "units": "KDa"
+   },
+   "rcsb_branched_entity.pdbx_description": {
+    "type": "string"
+   },
+   "rcsb_branched_entity.pdbx_number_of_molecules": {
+    "type": "integer"
+   },
+   "rcsb_branched_entity_annotation[].annotation_id": {
+    "type": "string"
+   },
+   "rcsb_branched_entity_annotation[].annotation_lineage[].depth": {
+    "type": "integer"
+   },
+   "rcsb_branched_entity_annotation[].annotation_lineage[].id": {
+    "type": "string"
+   },
+   "rcsb_branched_entity_annotation[].annotation_lineage[].name": {
+    "type": "string"
+   },
+   "rcsb_branched_entity_annotation[].assignment_version": {
+    "type": "string"
+   },
+   "rcsb_branched_entity_annotation[].description": {
+    "type": "string"
+   },
+   "rcsb_branched_entity_annotation[].name": {
+    "type": "string"
+   },
+   "rcsb_branched_entity_annotation[].provenance_source": {
+    "type": "string"
+   },
+   "rcsb_branched_entity_annotation[].type": {
+    "type": "string"
+   },
+   "rcsb_branched_entity_container_identifiers.asym_ids[]": {
+    "type": "string"
+   },
+   "rcsb_branched_entity_container_identifiers.auth_asym_ids[]": {
+    "type": "string"
+   },
+   "rcsb_branched_entity_container_identifiers.chem_comp_monomers[]": {
+    "type": "string"
+   },
+   "rcsb_branched_entity_container_identifiers.chem_ref_def_id": {
+    "type": "string"
+   },
+   "rcsb_branched_entity_container_identifiers.entity_id": {
+    "type": "string"
+   },
+   "rcsb_branched_entity_container_identifiers.entry_id": {
+    "type": "string"
+   },
+   "rcsb_branched_entity_container_identifiers.prd_id": {
+    "type": "string"
+   },
+   "rcsb_branched_entity_container_identifiers.rcsb_id": {
+    "type": "string"
+   },
+   "rcsb_branched_entity_container_identifiers.reference_identifiers[].provenance_source": {
+    "type": "string"
+   },
+   "rcsb_branched_entity_container_identifiers.reference_identifiers[].resource_accession": {
+    "type": "string"
+   },
+   "rcsb_branched_entity_container_identifiers.reference_identifiers[].resource_name": {
+    "type": "string"
+   },
+   "rcsb_branched_entity_feature[].additional_properties[].name": {
+    "type": "string"
+   },
+   "rcsb_branched_entity_feature[].additional_properties[].values[]": {
+    "type": "unknown"
+   },
+   "rcsb_branched_entity_feature[].assignment_version": {
+    "type": "string"
+   },
+   "rcsb_branched_entity_feature[].description": {
+    "type": "string"
+   },
+   "rcsb_branched_entity_feature[].feature_id": {
+    "type": "string"
+   },
+   "rcsb_branched_entity_feature[].feature_positions[].beg_comp_id": {
+    "type": "string"
+   },
+   "rcsb_branched_entity_feature[].feature_positions[].beg_seq_id": {
+    "type": "integer"
+   },
+   "rcsb_branched_entity_feature[].feature_positions[].end_seq_id": {
+    "type": "integer"
+   },
+   "rcsb_branched_entity_feature[].feature_positions[].value": {
+    "type": "number"
+   },
+   "rcsb_branched_entity_feature[].name": {
+    "type": "string"
+   },
+   "rcsb_branched_entity_feature[].provenance_source": {
+    "type": "string"
+   },
+   "rcsb_branched_entity_feature[].reference_scheme": {
+    "type": "string"
+   },
+   "rcsb_branched_entity_feature[].type": {
+    "type": "string"
+   },
+   "rcsb_branched_entity_feature_summary[].count": {
+    "type": "integer"
+   },
+   "rcsb_branched_entity_feature_summary[].coverage": {
+    "type": "number"
+   },
+   "rcsb_branched_entity_feature_summary[].maximum_length": {
+    "type": "integer"
+   },
+   "rcsb_branched_entity_feature_summary[].maximum_value": {
+    "type": "number"
+   },
+   "rcsb_branched_entity_feature_summary[].minimum_length": {
+    "type": "integer"
+   },
+   "rcsb_branched_entity_feature_summary[].minimum_value": {
+    "type": "number"
+   },
+   "rcsb_branched_entity_feature_summary[].type": {
+    "type": "string"
+   },
+   "rcsb_branched_entity_keywords.text": {
+    "type": "string"
+   },
+   "rcsb_branched_entity_name_com.name": {
+    "type": "string"
+   },
+   "rcsb_branched_entity_name_sys[].name": {
+    "type": "string"
+   },
+   "rcsb_branched_entity_name_sys[].system": {
+    "type": "string"
+   },
+   "rcsb_id": {
+    "type": "string"
+   },
+   "rcsb_latest_revision.major_revision": {
+    "type": "integer"
+   },
+   "rcsb_latest_revision.minor_revision": {
+    "type": "integer"
+   },
+   "rcsb_latest_revision.revision_date": {
+    "type": "string"
+   }
+  },
+  "chemcomp": {
+   "chem_comp.formula": {
+    "type": "string"
+   },
+   "chem_comp.formula_weight": {
+    "type": "number",
+    "units": "daltons"
+   },
+   "chem_comp.id": {
+    "type": "string"
+   },
+   "chem_comp.mon_nstd_parent_comp_id[]": {
+    "type": "string"
+   },
+   "chem_comp.name": {
+    "type": "string"
+   },
+   "chem_comp.one_letter_code": {
+    "type": "string"
+   },
+   "chem_comp.pdbx_ambiguous_flag": {
+    "type": "string"
+   },
+   "chem_comp.pdbx_formal_charge": {
+    "type": "integer"
+   },
+   "chem_comp.pdbx_initial_date": {
+    "type": "string"
+   },
+   "chem_comp.pdbx_modified_date": {
+    "type": "string"
+   },
+   "chem_comp.pdbx_pcm": {
+    "type": "string"
+   },
+   "chem_comp.pdbx_processing_site": {
+    "type": "string"
+   },
+   "chem_comp.pdbx_release_status": {
+    "type": "string"
+   },
+   "chem_comp.pdbx_replaced_by": {
+    "type": "string"
+   },
+   "chem_comp.pdbx_replaces": {
+    "type": "string"
+   },
+   "chem_comp.pdbx_subcomponent_list": {
+    "type": "string"
+   },
+   "chem_comp.three_letter_code": {
+    "type": "string"
+   },
+   "chem_comp.type": {
+    "type": "string"
+   },
+   "pdbx_chem_comp_audit[].action_type": {
+    "type": "string"
+   },
+   "pdbx_chem_comp_audit[].comp_id": {
+    "type": "string"
+   },
+   "pdbx_chem_comp_audit[].date": {
+    "type": "string"
+   },
+   "pdbx_chem_comp_audit[].details": {
+    "type": "string"
+   },
+   "pdbx_chem_comp_audit[].ordinal": {
+    "type": "integer"
+   },
+   "pdbx_chem_comp_descriptor[].comp_id": {
+    "type": "string"
+   },
+   "pdbx_chem_comp_descriptor[].descriptor": {
+    "type": "string"
+   },
+   "pdbx_chem_comp_descriptor[].program": {
+    "type": "string"
+   },
+   "pdbx_chem_comp_descriptor[].program_version": {
+    "type": "string"
+   },
+   "pdbx_chem_comp_descriptor[].type": {
+    "type": "string"
+   },
+   "pdbx_chem_comp_feature[].comp_id": {
+    "type": "string"
+   },
+   "pdbx_chem_comp_feature[].source": {
+    "type": "string"
+   },
+   "pdbx_chem_comp_feature[].type": {
+    "type": "string"
+   },
+   "pdbx_chem_comp_feature[].value": {
+    "type": "string"
+   },
+   "pdbx_chem_comp_identifier[].comp_id": {
+    "type": "string"
+   },
+   "pdbx_chem_comp_identifier[].identifier": {
+    "type": "string"
+   },
+   "pdbx_chem_comp_identifier[].program": {
+    "type": "string"
+   },
+   "pdbx_chem_comp_identifier[].program_version": {
+    "type": "string"
+   },
+   "pdbx_chem_comp_identifier[].type": {
+    "type": "string"
+   },
+   "pdbx_chem_comp_pcm[].category": {
+    "type": "string"
+   },
+   "pdbx_chem_comp_pcm[].comp_id_linking_atom": {
+    "type": "string"
+   },
+   "pdbx_chem_comp_pcm[].modified_residue_id": {
+    "type": "string"
+   },
+   "pdbx_chem_comp_pcm[].modified_residue_id_linking_atom": {
+    "type": "string"
+   },
+   "pdbx_chem_comp_pcm[].polypeptide_position": {
+    "type": "string"
+   },
+   "pdbx_chem_comp_pcm[].position": {
+    "type": "string"
+   },
+   "pdbx_chem_comp_pcm[].rcsb_modified_residue_id[]": {
+    "type": "string"
+   },
+   "pdbx_chem_comp_pcm[].type": {
+    "type": "string"
+   },
+   "pdbx_chem_comp_pcm[].uniprot_generic_ptm_accession": {
+    "type": "string"
+   },
+   "pdbx_chem_comp_pcm[].uniprot_specific_ptm_accession": {
+    "type": "string"
+   },
+   "pdbx_family_prd_audit[].action_type": {
+    "type": "string"
+   },
+   "pdbx_family_prd_audit[].annotator": {
+    "type": "string"
+   },
+   "pdbx_family_prd_audit[].date": {
+    "type": "string"
+   },
+   "pdbx_family_prd_audit[].details": {
+    "type": "string"
+   },
+   "pdbx_family_prd_audit[].family_prd_id": {
+    "type": "string"
+   },
+   "pdbx_family_prd_audit[].processing_site": {
+    "type": "string"
+   },
+   "pdbx_prd_audit[].action_type": {
+    "type": "string"
+   },
+   "pdbx_prd_audit[].annotator": {
+    "type": "string"
+   },
+   "pdbx_prd_audit[].date": {
+    "type": "string"
+   },
+   "pdbx_prd_audit[].details": {
+    "type": "string"
+   },
+   "pdbx_prd_audit[].prd_id": {
+    "type": "string"
+   },
+   "pdbx_prd_audit[].processing_site": {
+    "type": "string"
+   },
+   "pdbx_reference_entity_list[].component_id": {
+    "type": "integer"
+   },
+   "pdbx_reference_entity_list[].details": {
+    "type": "string"
+   },
+   "pdbx_reference_entity_list[].prd_id": {
+    "type": "string"
+   },
+   "pdbx_reference_entity_list[].ref_entity_id": {
+    "type": "string"
+   },
+   "pdbx_reference_entity_list[].type": {
+    "type": "string"
+   },
+   "pdbx_reference_entity_poly[].db_code": {
+    "type": "string"
+   },
+   "pdbx_reference_entity_poly[].db_name": {
+    "type": "string"
+   },
+   "pdbx_reference_entity_poly[].prd_id": {
+    "type": "string"
+   },
+   "pdbx_reference_entity_poly[].ref_entity_id": {
+    "type": "string"
+   },
+   "pdbx_reference_entity_poly[].type": {
+    "type": "string"
+   },
+   "pdbx_reference_entity_poly_link[].atom_id_1": {
+    "type": "string"
+   },
+   "pdbx_reference_entity_poly_link[].atom_id_2": {
+    "type": "string"
+   },
+   "pdbx_reference_entity_poly_link[].comp_id_1": {
+    "type": "string"
+   },
+   "pdbx_reference_entity_poly_link[].comp_id_2": {
+    "type": "string"
+   },
+   "pdbx_reference_entity_poly_link[].component_id": {
+    "type": "integer"
+   },
+   "pdbx_reference_entity_poly_link[].entity_seq_num_1": {
+    "type": "integer"
+   },
+   "pdbx_reference_entity_poly_link[].entity_seq_num_2": {
+    "type": "integer"
+   },
+   "pdbx_reference_entity_poly_link[].link_id": {
+    "type": "integer"
+   },
+   "pdbx_reference_entity_poly_link[].prd_id": {
+    "type": "string"
+   },
+   "pdbx_reference_entity_poly_link[].ref_entity_id": {
+    "type": "string"
+   },
+   "pdbx_reference_entity_poly_link[].value_order": {
+    "type": "string"
+   },
+   "pdbx_reference_entity_poly_seq[].hetero": {
+    "type": "string"
+   },
+   "pdbx_reference_entity_poly_seq[].mon_id": {
+    "type": "string"
+   },
+   "pdbx_reference_entity_poly_seq[].num": {
+    "type": "integer"
+   },
+   "pdbx_reference_entity_poly_seq[].observed": {
+    "type": "string"
+   },
+   "pdbx_reference_entity_poly_seq[].parent_mon_id": {
+    "type": "string"
+   },
+   "pdbx_reference_entity_poly_seq[].prd_id": {
+    "type": "string"
+   },
+   "pdbx_reference_entity_poly_seq[].ref_entity_id": {
+    "type": "string"
+   },
+   "pdbx_reference_entity_sequence[].NRP_flag": {
+    "type": "string"
+   },
+   "pdbx_reference_entity_sequence[].one_letter_codes": {
+    "type": "string"
+   },
+   "pdbx_reference_entity_sequence[].prd_id": {
+    "type": "string"
+   },
+   "pdbx_reference_entity_sequence[].ref_entity_id": {
+    "type": "string"
+   },
+   "pdbx_reference_entity_sequence[].type": {
+    "type": "string"
+   },
+   "pdbx_reference_entity_src_nat[].atcc": {
+    "type": "string"
+   },
+   "pdbx_reference_entity_src_nat[].db_code": {
+    "type": "string"
+   },
+   "pdbx_reference_entity_src_nat[].db_name": {
+    "type": "string"
+   },
+   "pdbx_reference_entity_src_nat[].ordinal": {
+    "type": "integer"
+   },
+   "pdbx_reference_entity_src_nat[].organism_scientific": {
+    "type": "string"
+   },
+   "pdbx_reference_entity_src_nat[].prd_id": {
+    "type": "string"
+   },
+   "pdbx_reference_entity_src_nat[].ref_entity_id": {
+    "type": "string"
+   },
+   "pdbx_reference_entity_src_nat[].source": {
+    "type": "string"
+   },
+   "pdbx_reference_entity_src_nat[].source_id": {
+    "type": "string"
+   },
+   "pdbx_reference_entity_src_nat[].taxid": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule.chem_comp_id": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule.class": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule.class_evidence_code": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule.compound_details": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule.description": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule.formula": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule.formula_weight": {
+    "type": "number"
+   },
+   "pdbx_reference_molecule.name": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule.prd_id": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule.release_status": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule.replaced_by": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule.replaces": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule.represent_as": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule.representative_PDB_id_code": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule.type": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule.type_evidence_code": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule_annotation[].family_prd_id": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule_annotation[].ordinal": {
+    "type": "integer"
+   },
+   "pdbx_reference_molecule_annotation[].prd_id": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule_annotation[].source": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule_annotation[].text": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule_annotation[].type": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule_details[].family_prd_id": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule_details[].ordinal": {
+    "type": "integer"
+   },
+   "pdbx_reference_molecule_details[].source": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule_details[].source_id": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule_details[].text": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule_family.family_prd_id": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule_family.name": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule_family.release_status": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule_family.replaced_by": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule_family.replaces": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule_features[].family_prd_id": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule_features[].ordinal": {
+    "type": "integer"
+   },
+   "pdbx_reference_molecule_features[].prd_id": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule_features[].source": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule_features[].source_ordinal": {
+    "type": "integer"
+   },
+   "pdbx_reference_molecule_features[].type": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule_features[].value": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule_list[].family_prd_id": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule_list[].prd_id": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule_related_structures[].citation_id": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule_related_structures[].db_accession": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule_related_structures[].db_code": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule_related_structures[].db_name": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule_related_structures[].family_prd_id": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule_related_structures[].formula": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule_related_structures[].name": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule_related_structures[].ordinal": {
+    "type": "integer"
+   },
+   "pdbx_reference_molecule_synonyms[].family_prd_id": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule_synonyms[].name": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule_synonyms[].ordinal": {
+    "type": "integer"
+   },
+   "pdbx_reference_molecule_synonyms[].prd_id": {
+    "type": "string"
+   },
+   "pdbx_reference_molecule_synonyms[].source": {
+    "type": "string"
+   },
+   "rcsb_bird_citation[].id": {
+    "type": "string"
+   },
+   "rcsb_bird_citation[].journal_abbrev": {
+    "type": "string"
+   },
+   "rcsb_bird_citation[].journal_volume": {
+    "type": "string"
+   },
+   "rcsb_bird_citation[].page_first": {
+    "type": "string"
+   },
+   "rcsb_bird_citation[].page_last": {
+    "type": "string"
+   },
+   "rcsb_bird_citation[].pdbx_database_id_DOI": {
+    "type": "string"
+   },
+   "rcsb_bird_citation[].pdbx_database_id_PubMed": {
+    "type": "integer"
+   },
+   "rcsb_bird_citation[].rcsb_authors[]": {
+    "type": "string"
+   },
+   "rcsb_bird_citation[].title": {
+    "type": "string"
+   },
+   "rcsb_bird_citation[].year": {
+    "type": "integer"
+   },
+   "rcsb_chem_comp_annotation[].annotation_id": {
+    "type": "string"
+   },
+   "rcsb_chem_comp_annotation[].annotation_lineage[].depth": {
+    "type": "integer"
+   },
+   "rcsb_chem_comp_annotation[].annotation_lineage[].id": {
+    "type": "string"
+   },
+   "rcsb_chem_comp_annotation[].annotation_lineage[].name": {
+    "type": "string"
+   },
+   "rcsb_chem_comp_annotation[].assignment_version": {
+    "type": "string"
+   },
+   "rcsb_chem_comp_annotation[].description": {
+    "type": "string"
+   },
+   "rcsb_chem_comp_annotation[].name": {
+    "type": "string"
+   },
+   "rcsb_chem_comp_annotation[].provenance_source": {
+    "type": "string"
+   },
+   "rcsb_chem_comp_annotation[].type": {
+    "type": "string"
+   },
+   "rcsb_chem_comp_container_identifiers.atc_codes[]": {
+    "type": "string"
+   },
+   "rcsb_chem_comp_container_identifiers.comp_id": {
+    "type": "string"
+   },
+   "rcsb_chem_comp_container_identifiers.drugbank_id": {
+    "type": "string"
+   },
+   "rcsb_chem_comp_container_identifiers.prd_id": {
+    "type": "string"
+   },
+   "rcsb_chem_comp_container_identifiers.rcsb_id": {
+    "type": "string"
+   },
+   "rcsb_chem_comp_container_identifiers.subcomponent_ids[]": {
+    "type": "string"
+   },
+   "rcsb_chem_comp_descriptor.InChI": {
+    "type": "string"
+   },
+   "rcsb_chem_comp_descriptor.InChIKey": {
+    "type": "string"
+   },
+   "rcsb_chem_comp_descriptor.SMILES": {
+    "type": "string"
+   },
+   "rcsb_chem_comp_descriptor.SMILES_stereo": {
+    "type": "string"
+   },
+   "rcsb_chem_comp_descriptor.comp_id": {
+    "type": "string"
+   },
+   "rcsb_chem_comp_info.atom_count": {
+    "type": "integer"
+   },
+   "rcsb_chem_comp_info.atom_count_chiral": {
+    "type": "integer"
+   },
+   "rcsb_chem_comp_info.atom_count_heavy": {
+    "type": "integer"
+   },
+   "rcsb_chem_comp_info.bond_count": {
+    "type": "integer"
+   },
+   "rcsb_chem_comp_info.bond_count_aromatic": {
+    "type": "integer"
+   },
+   "rcsb_chem_comp_info.comp_id": {
+    "type": "string"
+   },
+   "rcsb_chem_comp_info.initial_deposition_date": {
+    "type": "string"
+   },
+   "rcsb_chem_comp_info.initial_release_date": {
+    "type": "string"
+   },
+   "rcsb_chem_comp_info.release_status": {
+    "type": "string"
+   },
+   "rcsb_chem_comp_info.revision_date": {
+    "type": "string"
+   },
+   "rcsb_chem_comp_related[].comp_id": {
+    "type": "string"
+   },
+   "rcsb_chem_comp_related[].ordinal": {
+    "type": "integer"
+   },
+   "rcsb_chem_comp_related[].related_mapping_method": {
+    "type": "string"
+   },
+   "rcsb_chem_comp_related[].resource_accession_code": {
+    "type": "string"
+   },
+   "rcsb_chem_comp_related[].resource_name": {
+    "type": "string"
+   },
+   "rcsb_chem_comp_synonyms[].comp_id": {
+    "type": "string"
+   },
+   "rcsb_chem_comp_synonyms[].name": {
+    "type": "string"
+   },
+   "rcsb_chem_comp_synonyms[].ordinal": {
+    "type": "integer"
+   },
+   "rcsb_chem_comp_synonyms[].provenance_source": {
+    "type": "string"
+   },
+   "rcsb_chem_comp_synonyms[].type": {
+    "type": "string"
+   },
+   "rcsb_chem_comp_target[].comp_id": {
+    "type": "string"
+   },
+   "rcsb_chem_comp_target[].interaction_type": {
+    "type": "string"
+   },
+   "rcsb_chem_comp_target[].name": {
+    "type": "string"
+   },
+   "rcsb_chem_comp_target[].ordinal": {
+    "type": "integer"
+   },
+   "rcsb_chem_comp_target[].provenance_source": {
+    "type": "string"
+   },
+   "rcsb_chem_comp_target[].reference_database_accession_code": {
+    "type": "string"
+   },
+   "rcsb_chem_comp_target[].reference_database_name": {
+    "type": "string"
+   },
+   "rcsb_chem_comp_target[].target_actions[]": {
+    "type": "string"
+   },
+   "rcsb_id": {
+    "type": "string"
+   },
+   "rcsb_schema_container_identifiers[].collection_name": {
+    "type": "string"
+   },
+   "rcsb_schema_container_identifiers[].collection_schema_version": {
+    "type": "string"
+   },
+   "rcsb_schema_container_identifiers[].schema_name": {
+    "type": "string"
+   }
+  },
+  "assembly": {
+   "pdbx_struct_assembly.details": {
+    "type": "string"
+   },
+   "pdbx_struct_assembly.id": {
+    "type": "string"
+   },
+   "pdbx_struct_assembly.method_details": {
+    "type": "string"
+   },
+   "pdbx_struct_assembly.oligomeric_count": {
+    "type": "integer"
+   },
+   "pdbx_struct_assembly.oligomeric_details": {
+    "type": "string"
+   },
+   "pdbx_struct_assembly.rcsb_candidate_assembly": {
+    "type": "string"
+   },
+   "pdbx_struct_assembly.rcsb_details": {
+    "type": "string"
+   },
+   "pdbx_struct_assembly_auth_evidence[].assembly_id": {
+    "type": "string"
+   },
+   "pdbx_struct_assembly_auth_evidence[].details": {
+    "type": "string"
+   },
+   "pdbx_struct_assembly_auth_evidence[].experimental_support": {
+    "type": "string"
+   },
+   "pdbx_struct_assembly_auth_evidence[].id": {
+    "type": "string"
+   },
+   "pdbx_struct_assembly_gen[].assembly_id": {
+    "type": "string"
+   },
+   "pdbx_struct_assembly_gen[].asym_id_list[]": {
+    "type": "string"
+   },
+   "pdbx_struct_assembly_gen[].oper_expression": {
+    "type": "string"
+   },
+   "pdbx_struct_assembly_gen[].ordinal": {
+    "type": "integer"
+   },
+   "pdbx_struct_assembly_prop[].assembly_id": {
+    "type": "string"
+   },
+   "pdbx_struct_assembly_prop[].biol_id": {
+    "type": "string"
+   },
+   "pdbx_struct_assembly_prop[].type": {
+    "type": "string"
+   },
+   "pdbx_struct_assembly_prop[].value": {
+    "type": "string"
+   },
+   "pdbx_struct_oper_list[].id": {
+    "type": "string"
+   },
+   "pdbx_struct_oper_list[].matrix_1_1": {
+    "type": "number"
+   },
+   "pdbx_struct_oper_list[].matrix_1_2": {
+    "type": "number"
+   },
+   "pdbx_struct_oper_list[].matrix_1_3": {
+    "type": "number"
+   },
+   "pdbx_struct_oper_list[].matrix_2_1": {
+    "type": "number"
+   },
+   "pdbx_struct_oper_list[].matrix_2_2": {
+    "type": "number"
+   },
+   "pdbx_struct_oper_list[].matrix_2_3": {
+    "type": "number"
+   },
+   "pdbx_struct_oper_list[].matrix_3_1": {
+    "type": "number"
+   },
+   "pdbx_struct_oper_list[].matrix_3_2": {
+    "type": "number"
+   },
+   "pdbx_struct_oper_list[].matrix_3_3": {
+    "type": "number"
+   },
+   "pdbx_struct_oper_list[].name": {
+    "type": "string"
+   },
+   "pdbx_struct_oper_list[].symmetry_operation": {
+    "type": "string"
+   },
+   "pdbx_struct_oper_list[].type": {
+    "type": "string"
+   },
+   "pdbx_struct_oper_list[].vector_1": {
+    "type": "number"
+   },
+   "pdbx_struct_oper_list[].vector_2": {
+    "type": "number"
+   },
+   "pdbx_struct_oper_list[].vector_3": {
+    "type": "number"
+   },
+   "rcsb_assembly_annotation[].additional_properties[].name": {
+    "type": "string"
+   },
+   "rcsb_assembly_annotation[].additional_properties[].values[]": {
+    "type": "unknown"
+   },
+   "rcsb_assembly_annotation[].annotation_id": {
+    "type": "string"
+   },
+   "rcsb_assembly_annotation[].assignment_version": {
+    "type": "string"
+   },
+   "rcsb_assembly_annotation[].description": {
+    "type": "string"
+   },
+   "rcsb_assembly_annotation[].name": {
+    "type": "string"
+   },
+   "rcsb_assembly_annotation[].provenance_source": {
+    "type": "string"
+   },
+   "rcsb_assembly_annotation[].type": {
+    "type": "string"
+   },
+   "rcsb_assembly_container_identifiers.assembly_id": {
+    "type": "string"
+   },
+   "rcsb_assembly_container_identifiers.entry_id": {
+    "type": "string"
+   },
+   "rcsb_assembly_container_identifiers.interface_ids[]": {
+    "type": "string"
+   },
+   "rcsb_assembly_container_identifiers.rcsb_id": {
+    "type": "string"
+   },
+   "rcsb_assembly_feature[].additional_properties[].name": {
+    "type": "string"
+   },
+   "rcsb_assembly_feature[].additional_properties[].values[]": {
+    "type": "unknown"
+   },
+   "rcsb_assembly_feature[].assignment_version": {
+    "type": "string"
+   },
+   "rcsb_assembly_feature[].description": {
+    "type": "string"
+   },
+   "rcsb_assembly_feature[].feature_id": {
+    "type": "string"
+   },
+   "rcsb_assembly_feature[].feature_positions[].asym_id": {
+    "type": "string"
+   },
+   "rcsb_assembly_feature[].feature_positions[].beg_seq_id": {
+    "type": "integer"
+   },
+   "rcsb_assembly_feature[].feature_positions[].end_seq_id": {
+    "type": "integer"
+   },
+   "rcsb_assembly_feature[].feature_positions[].struct_oper_list[]": {
+    "type": "string"
+   },
+   "rcsb_assembly_feature[].feature_positions[].values[]": {
+    "type": "number"
+   },
+   "rcsb_assembly_feature[].name": {
+    "type": "string"
+   },
+   "rcsb_assembly_feature[].provenance_source": {
+    "type": "string"
+   },
+   "rcsb_assembly_feature[].type": {
+    "type": "string"
+   },
+   "rcsb_assembly_info.assembly_id": {
+    "type": "string"
+   },
+   "rcsb_assembly_info.atom_count": {
+    "type": "integer"
+   },
+   "rcsb_assembly_info.branched_atom_count": {
+    "type": "integer"
+   },
+   "rcsb_assembly_info.branched_entity_count": {
+    "type": "integer"
+   },
+   "rcsb_assembly_info.branched_entity_instance_count": {
+    "type": "integer"
+   },
+   "rcsb_assembly_info.deuterated_water_count": {
+    "type": "integer"
+   },
+   "rcsb_assembly_info.entry_id": {
+    "type": "string"
+   },
+   "rcsb_assembly_info.formula_weight": {
+    "type": "number",
+    "units": "kilodaltons"
+   },
+   "rcsb_assembly_info.hydrogen_atom_count": {
+    "type": "integer"
+   },
+   "rcsb_assembly_info.modeled_polymer_monomer_count": {
+    "type": "integer"
+   },
+   "rcsb_assembly_info.na_polymer_entity_types": {
+    "type": "string"
+   },
+   "rcsb_assembly_info.nonpolymer_atom_count": {
+    "type": "integer"
+   },
+   "rcsb_assembly_info.nonpolymer_entity_count": {
+    "type": "integer"
+   },
+   "rcsb_assembly_info.nonpolymer_entity_instance_count": {
+    "type": "integer"
+   },
+   "rcsb_assembly_info.num_heterologous_interface_entities": {
+    "type": "integer"
+   },
+   "rcsb_assembly_info.num_heteromeric_interface_entities": {
+    "type": "integer"
+   },
+   "rcsb_assembly_info.num_homomeric_interface_entities": {
+    "type": "integer"
+   },
+   "rcsb_assembly_info.num_interface_entities": {
+    "type": "integer"
+   },
+   "rcsb_assembly_info.num_interfaces": {
+    "type": "integer"
+   },
+   "rcsb_assembly_info.num_isologous_interface_entities": {
+    "type": "integer"
+   },
+   "rcsb_assembly_info.num_na_interface_entities": {
+    "type": "integer"
+   },
+   "rcsb_assembly_info.num_prot_na_interface_entities": {
+    "type": "integer"
+   },
+   "rcsb_assembly_info.num_protein_interface_entities": {
+    "type": "integer"
+   },
+   "rcsb_assembly_info.polymer_atom_count": {
+    "type": "integer"
+   },
+   "rcsb_assembly_info.polymer_composition": {
+    "type": "string"
+   },
+   "rcsb_assembly_info.polymer_entity_count": {
+    "type": "integer"
+   },
+   "rcsb_assembly_info.polymer_entity_count_DNA": {
+    "type": "integer"
+   },
+   "rcsb_assembly_info.polymer_entity_count_RNA": {
+    "type": "integer"
+   },
+   "rcsb_assembly_info.polymer_entity_count_nucleic_acid": {
+    "type": "integer"
+   },
+   "rcsb_assembly_info.polymer_entity_count_nucleic_acid_hybrid": {
+    "type": "integer"
+   },
+   "rcsb_assembly_info.polymer_entity_count_protein": {
+    "type": "integer"
+   },
+   "rcsb_assembly_info.polymer_entity_instance_count": {
+    "type": "integer"
+   },
+   "rcsb_assembly_info.polymer_entity_instance_count_DNA": {
+    "type": "integer"
+   },
+   "rcsb_assembly_info.polymer_entity_instance_count_RNA": {
+    "type": "integer"
+   },
+   "rcsb_assembly_info.polymer_entity_instance_count_nucleic_acid": {
+    "type": "integer"
+   },
+   "rcsb_assembly_info.polymer_entity_instance_count_nucleic_acid_hybrid": {
+    "type": "integer"
+   },
+   "rcsb_assembly_info.polymer_entity_instance_count_protein": {
+    "type": "integer"
+   },
+   "rcsb_assembly_info.polymer_monomer_count": {
+    "type": "integer"
+   },
+   "rcsb_assembly_info.selected_polymer_entity_types": {
+    "type": "string"
+   },
+   "rcsb_assembly_info.solvent_atom_count": {
+    "type": "integer"
+   },
+   "rcsb_assembly_info.solvent_entity_count": {
+    "type": "integer"
+   },
+   "rcsb_assembly_info.solvent_entity_instance_count": {
+    "type": "integer"
+   },
+   "rcsb_assembly_info.total_assembly_buried_surface_area": {
+    "type": "number"
+   },
+   "rcsb_assembly_info.total_number_interface_residues": {
+    "type": "integer"
+   },
+   "rcsb_assembly_info.unmodeled_polymer_monomer_count": {
+    "type": "integer"
+   },
+   "rcsb_id": {
+    "type": "string"
+   },
+   "rcsb_latest_revision.major_revision": {
+    "type": "integer"
+   },
+   "rcsb_latest_revision.minor_revision": {
+    "type": "integer"
+   },
+   "rcsb_latest_revision.revision_date": {
+    "type": "string"
+   },
+   "rcsb_struct_symmetry[].clusters[].avg_rmsd": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "rcsb_struct_symmetry[].clusters[].members[].asym_id": {
+    "type": "string"
+   },
+   "rcsb_struct_symmetry[].clusters[].members[].pdbx_struct_oper_list_ids[]": {
+    "type": "string"
+   },
+   "rcsb_struct_symmetry[].kind": {
+    "type": "string"
+   },
+   "rcsb_struct_symmetry[].oligomeric_state": {
+    "type": "string"
+   },
+   "rcsb_struct_symmetry[].rotation_axes[].end[]": {
+    "type": "number"
+   },
+   "rcsb_struct_symmetry[].rotation_axes[].order": {
+    "type": "integer"
+   },
+   "rcsb_struct_symmetry[].rotation_axes[].start[]": {
+    "type": "number"
+   },
+   "rcsb_struct_symmetry[].stoichiometry[]": {
+    "type": "string"
+   },
+   "rcsb_struct_symmetry[].symbol": {
+    "type": "string"
+   },
+   "rcsb_struct_symmetry[].type": {
+    "type": "string"
+   },
+   "rcsb_struct_symmetry_lineage[].depth": {
+    "type": "integer"
+   },
+   "rcsb_struct_symmetry_lineage[].id": {
+    "type": "string"
+   },
+   "rcsb_struct_symmetry_lineage[].name": {
+    "type": "string"
+   },
+   "rcsb_struct_symmetry_provenance_code": {
+    "type": "string"
+   }
+  },
+  "interface": {
+   "rcsb_id": {
+    "type": "string"
+   },
+   "rcsb_interface_container_identifiers.assembly_id": {
+    "type": "string"
+   },
+   "rcsb_interface_container_identifiers.entry_id": {
+    "type": "string"
+   },
+   "rcsb_interface_container_identifiers.interface_entity_id": {
+    "type": "string"
+   },
+   "rcsb_interface_container_identifiers.interface_id": {
+    "type": "string"
+   },
+   "rcsb_interface_container_identifiers.rcsb_id": {
+    "type": "string"
+   },
+   "rcsb_interface_info.interface_area": {
+    "type": "number"
+   },
+   "rcsb_interface_info.interface_character": {
+    "type": "string"
+   },
+   "rcsb_interface_info.num_core_interface_residues": {
+    "type": "number"
+   },
+   "rcsb_interface_info.num_interface_residues": {
+    "type": "number"
+   },
+   "rcsb_interface_info.polymer_composition": {
+    "type": "string"
+   },
+   "rcsb_interface_info.self_jaccard_contact_score": {
+    "type": "number"
+   },
+   "rcsb_interface_operator[][][]": {
+    "type": "string"
+   },
+   "rcsb_interface_partner[].interface_partner_feature[].feature_positions[].beg_seq_id": {
+    "type": "number"
+   },
+   "rcsb_interface_partner[].interface_partner_feature[].feature_positions[].end_seq_id": {
+    "type": "number"
+   },
+   "rcsb_interface_partner[].interface_partner_feature[].feature_positions[].values[]": {
+    "type": "number"
+   },
+   "rcsb_interface_partner[].interface_partner_feature[].name": {
+    "type": "string"
+   },
+   "rcsb_interface_partner[].interface_partner_feature[].provenance_source": {
+    "type": "string"
+   },
+   "rcsb_interface_partner[].interface_partner_feature[].type": {
+    "type": "string"
+   },
+   "rcsb_interface_partner[].interface_partner_identifier.asym_id": {
+    "type": "string"
+   },
+   "rcsb_interface_partner[].interface_partner_identifier.entity_id": {
+    "type": "string"
+   },
+   "rcsb_latest_revision.major_revision": {
+    "type": "number"
+   },
+   "rcsb_latest_revision.minor_revision": {
+    "type": "number"
+   }
+  }
+ }
+}

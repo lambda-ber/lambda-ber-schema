@@ -190,24 +190,46 @@ just sasbdb-dump-start
 
 ## Output Format
 
-Each entry produces a YAML file with:
-- Sample info with UniProt cross-references
-- Experiment run with quality metrics
-- Instrument details
-- Workflow runs (refinement)
-- Data files (PDB, mmCIF, structure factors)
+A PDB entry becomes one Dataset holding the deposited specimen as a single Sample, with a
+SampleComponent per entity (proteins, nucleic acids, ligands, ions, glycans) and
+SampleComponentInteraction rows for the contacts RCSB reports: which chain binds which
+(from the assembly's interfaces) and which chain each ligand or glycan sits on. Around it:
+
+- Protein rows keyed by UniProt CURIE, or `pdb:<entry>/protein/<entity>` for chains with no
+  UniProt entry (antibodies, nanobodies, designed proteins); ProteinConstruct rows with the
+  deposited sequence; SmallMolecule rows from the Chemical Component Dictionary
+- Expression, crystallization and EM grid preparations
+- One ExperimentRun per diffraction experiment, EM imaging session, NMR experiment or
+  scattering experiment, each with its instrument (XRay, CryoEM, NMR or SAXS)
+- WorkflowRuns for each processing stage the entry records (data reduction, scaling with
+  resolution shells, phasing, refinement, CTF, particle picking, reconstruction, model
+  fitting, validation), with their software
+- People, funders, publications, archive cross-references (EMDB, BMRB, ...)
+- Data files: coordinates, structure factors, NMR restraints and shifts, EMDB maps,
+  the validation report, raw data sets the entry cites
+
+Where every field RCSB returns goes is set in
+`src/lambda_ber_schema/loaders/pdb_field_map.yaml`; `tests/loaders/test_pdb_coverage.py`
+fails if any field is unclassified or a field marked as carried is missing from the output.
+Values with no named slot go to `additional_metrics` / `additional_properties`, keyed by
+their mmCIF item (`mmCIF:_refine.B_iso_max`).
 
 Example:
 ```yaml
-samples:
-  - id: pdb:1HHO/sample/1
-    sample_type: protein
-    protein_name: Hemoglobin subunit alpha
-    organism: Homo sapiens
-    database_cross_references:
-      - database_name: uniprot
-        database_id: P69905
-        database_url: https://www.uniprot.org/uniprotkb/P69905
+sample_components:
+  - id: pdb:7ZYI/component/6
+    title: GLYCOCHENODEOXYCHOLIC ACID
+    sample_id: pdb:7ZYI/sample
+    component_type: small_molecule
+    small_molecule_id: CHEBI:36274
+    role: ligand
+    copy_number: 2
+sample_component_interactions:
+  - sample_id: pdb:7ZYI/sample
+    subject_id: pdb:7ZYI/component/6
+    object_id: pdb:7ZYI/component/1
+    interaction_type: binds
+    interaction_status: observed
 ```
 
 ## Troubleshooting

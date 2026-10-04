@@ -18,7 +18,8 @@ lambda-ber-schema is a LinkML schema project for representing structural biologi
 The main schema definition is located at `src/lambda_ber_schema/schema/lambda_ber_schema.yaml`. This LinkML schema uses a **relational design** with flat entity collections and explicit association tables for M:N relationships.
 
 **Entity Tables** (flat collections in Dataset):
-- **Study**: Lightweight grouping for related experiments
+- **Study**: Lightweight grouping for related experiments; `database_cross_references` names its records in other archives
+- **Publication**: An article describing a study, identified by DOI CURIE (`doi:10.1038/...`); linked by StudyPublicationAssociation
 - **Protein**: The protein as a biological entity, identified by UniProt CURIE (`uniprot:P69905`); sequence, organism, gene, functional annotations. One row shared by every sample containing it
 - **NucleicAcid**: The DNA or RNA strand as a molecular entity; `nucleic_acid_type` required. Identified by RNAcentral, RefSeq or INSDC CURIE where one exists (`rnacentral:URS000011107D`), else a `lambda:` or `pdb:` id, since most strands in structural biology are synthetic oligos. One row shared by every sample containing it
 - **SmallMolecule**: The ligand, cofactor, metal ion, lipid or detergent as a chemical entity, identified by ChEBI CURIE (`CHEBI:30616`) where one exists, else `chembl.compound:`, `pubchem.compound:`, `drugbank:`, the wwPDB ligand code (`pdb.ligand:ATP`) or `lambda:`. One row shared by every sample containing it
@@ -39,6 +40,9 @@ The main schema definition is located at `src/lambda_ber_schema/schema/lambda_be
 - **WorkflowExperimentAssociation**, **WorkflowInputAssociation**, **WorkflowOutputAssociation**
 
 **Supporting classes**: MolecularComposition, BufferComposition, StorageConditions, ExperimentalConditions, etc.
+
+### PDB loader coverage
+`src/lambda_ber_schema/loaders/pdb_field_map.yaml` gives every field the RCSB Data API can return (listed in `pdb_rcsb_fields.json`, from RCSB's own JSON schemas) a disposition: the schema slot it goes to, a generic metric, or why it is not carried (derived, reference data, bookkeeping, ...). `tests/loaders/test_pdb_coverage.py` fails if a field is unclassified or if a value marked as carried is missing from the loader's output for the captured entries in `tests/loaders/fixtures/pdb/`. When RCSB adds fields, refresh `pdb_rcsb_fields.json` and classify them. `uv run lambda-ber-schema etl pdb-coverage <entry>` reports coverage for a live entry.
 
 ### Generated Assets
 The `assets/` directory contains auto-generated outputs from the LinkML schema:
@@ -163,3 +167,5 @@ The `tests/data/valid/` directory contains comprehensive examples covering all s
 7. **Keep per-preparation nucleic acid facts on the association**: whether a strand is paired (`structural_form`), how it was made (`source_method`), and labels or backbone chemistry (`modifications`) belong on `SampleNucleicAcidAssociation`, not on `NucleicAcid`
 8. **SampleComponent and the biopolymer associations coexist**: a protein or strand in a sample may have both a SampleComponent row (the inventory entry and the handle an interaction points at) and an association row (the per-preparation detail). Where `role` or `copy_number` is set on both, they must agree. A dataset with no interactions may carry the associations alone
 9. **Ligands are SmallMolecule rows, not strings**: `Sample.ligand` and `MolecularComposition.ligands` remain as facility display text; the structured form is a SampleComponent of type `small_molecule` pointing at a SmallMolecule, with a SampleComponentInteraction saying what it binds
+10. **Subclass rows in a shared table need their type**: `Dataset.instruments` holds every kind of instrument, so each row carries `instrument_type` (CryoEMInstrument, XRayInstrument, ...). Pydantic fills it in; hand-written YAML must set it for subclass fields to validate. Serialize a Dataset with `dataset_to_dict()` from `loaders/base.py`, which keeps subclass fields
+11. **Values with no named slot go in `additional_metrics` / `additional_properties`**, each keyed by the source item it came from (`mmCIF:_refine.B_iso_max`). Use them only after checking no named slot fits

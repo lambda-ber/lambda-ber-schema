@@ -267,7 +267,7 @@ class TestCLI:
 
                     class _Dataset:
                         @staticmethod
-                        def model_dump(exclude_none=True, mode="json"):
+                        def model_dump(exclude_none=True, mode="json", **_kwargs):
                             return {"id": "emsl:transaction_3736677"}
 
                     dataset = _Dataset()
@@ -362,7 +362,7 @@ class TestCLI:
 
             class _Dataset:
                 @staticmethod
-                def model_dump(exclude_none=True, mode="json"):
+                def model_dump(exclude_none=True, mode="json", **_kwargs):
                     return {"id": dataset_id}
 
             dataset = _Dataset()

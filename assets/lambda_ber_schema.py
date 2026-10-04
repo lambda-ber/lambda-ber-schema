@@ -1,5 +1,5 @@
 # Auto generated from lambda_ber_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-09-18T15:54:30
+# Generation date: 2026-10-04T21:04:36
 # Schema: lambda-ber-schema
 #
 # id: http://w3id.org/lambda/
@@ -218,8 +218,11 @@ UO = CurieNamespace('UO', 'http://purl.obolibrary.org/obo/UO_')
 ANL_LAMBDA = CurieNamespace('anl-lambda', 'https://sg.bio.anl.gov/lambda/')
 CHEMBL_COMPOUND = CurieNamespace('chembl_compound', 'https://www.ebi.ac.uk/chembl/compound_report_card/')
 DCTERMS = CurieNamespace('dcterms', 'http://purl.org/dc/terms/')
+DOI = CurieNamespace('doi', 'https://doi.org/')
 DRUGBANK = CurieNamespace('drugbank', 'https://go.drugbank.com/drugs/')
+EMDB = CurieNamespace('emdb', 'https://www.ebi.ac.uk/emdb/')
 EMSL = CurieNamespace('emsl', 'https://api.emsl.pnnl.gov/external/')
+GLYTOUCAN = CurieNamespace('glytoucan', 'https://glytoucan.org/Structures/Glycans/')
 IMGCIF = CurieNamespace('imgCIF', 'https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#')
 INSDC = CurieNamespace('insdc', 'https://www.ebi.ac.uk/ena/data/view/')
 ISPYB = CurieNamespace('ispyb', 'https://ispyb.github.io/ISPyB/')
@@ -231,9 +234,11 @@ NMDC = CurieNamespace('nmdc', 'https://w3id.org/nmdc/')
 NSLS2 = CurieNamespace('nsls2', 'https://github.com/NSLS2/BER-LAMBDA/')
 PDB = CurieNamespace('pdb', 'https://www.rcsb.org/structure/')
 PDB_LIGAND = CurieNamespace('pdb_ligand', 'https://www.rcsb.org/ligand/')
+PMID = CurieNamespace('pmid', 'https://pubmed.ncbi.nlm.nih.gov/')
 PROV = CurieNamespace('prov', 'http://www.w3.org/ns/prov#')
 PUBCHEM_COMPOUND = CurieNamespace('pubchem_compound', 'https://pubchem.ncbi.nlm.nih.gov/compound/')
 QUD = CurieNamespace('qud', 'http://qudt.org/1.1/schema/qudt#')
+RCSB = CurieNamespace('rcsb', 'https://data.rcsb.org/data-attributes.html#')
 RDFS = CurieNamespace('rdfs', 'http://www.w3.org/2000/01/rdf-schema#')
 REFSEQ = CurieNamespace('refseq', 'https://www.ncbi.nlm.nih.gov/nuccore/')
 RFAM = CurieNamespace('rfam', 'https://rfam.org/family/')
@@ -277,6 +282,10 @@ class DatasetId(NamedThingId):
 
 
 class StudyId(NamedThingId):
+    pass
+
+
+class PublicationId(NamedThingId):
     pass
 
 
@@ -329,6 +338,10 @@ class XRayInstrumentId(InstrumentId):
 
 
 class SANSInstrumentId(InstrumentId):
+    pass
+
+
+class NMRInstrumentId(InstrumentId):
     pass
 
 
@@ -499,9 +512,14 @@ class Dataset(NamedThing):
 
     id: Union[str, DatasetId] = None
     keywords: Optional[Union[str, list[str]]] = empty_list()
+    deposition_date: Optional[str] = None
+    release_date: Optional[str] = None
+    last_revision_date: Optional[str] = None
+    revision: Optional[str] = None
     studies: Optional[Union[dict[Union[str, StudyId], Union[dict, "Study"]], list[Union[dict, "Study"]]]] = empty_dict()
     persons: Optional[Union[dict[Union[str, PersonId], Union[dict, "Person"]], list[Union[dict, "Person"]]]] = empty_dict()
     organizations: Optional[Union[dict[Union[str, OrganizationId], Union[dict, "Organization"]], list[Union[dict, "Organization"]]]] = empty_dict()
+    publications: Optional[Union[dict[Union[str, PublicationId], Union[dict, "Publication"]], list[Union[dict, "Publication"]]]] = empty_dict()
     instruments: Optional[Union[dict[Union[str, InstrumentId], Union[dict, "Instrument"]], list[Union[dict, "Instrument"]]]] = empty_dict()
     proteins: Optional[Union[dict[Union[str, ProteinId], Union[dict, "Protein"]], list[Union[dict, "Protein"]]]] = empty_dict()
     protein_constructs: Optional[Union[dict[Union[str, ProteinConstructId], Union[dict, "ProteinConstruct"]], list[Union[dict, "ProteinConstruct"]]]] = empty_dict()
@@ -529,6 +547,7 @@ class Dataset(NamedThing):
     experiment_person_associations: Optional[Union[Union[dict, "ExperimentPersonAssociation"], list[Union[dict, "ExperimentPersonAssociation"]]]] = empty_list()
     workflow_person_associations: Optional[Union[Union[dict, "WorkflowPersonAssociation"], list[Union[dict, "WorkflowPersonAssociation"]]]] = empty_list()
     study_organization_associations: Optional[Union[Union[dict, "StudyOrganizationAssociation"], list[Union[dict, "StudyOrganizationAssociation"]]]] = empty_list()
+    study_publication_associations: Optional[Union[Union[dict, "StudyPublicationAssociation"], list[Union[dict, "StudyPublicationAssociation"]]]] = empty_list()
     person_organization_associations: Optional[Union[Union[dict, "PersonOrganizationAssociation"], list[Union[dict, "PersonOrganizationAssociation"]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -541,11 +560,25 @@ class Dataset(NamedThing):
             self.keywords = [self.keywords] if self.keywords is not None else []
         self.keywords = [v if isinstance(v, str) else str(v) for v in self.keywords]
 
+        if self.deposition_date is not None and not isinstance(self.deposition_date, str):
+            self.deposition_date = str(self.deposition_date)
+
+        if self.release_date is not None and not isinstance(self.release_date, str):
+            self.release_date = str(self.release_date)
+
+        if self.last_revision_date is not None and not isinstance(self.last_revision_date, str):
+            self.last_revision_date = str(self.last_revision_date)
+
+        if self.revision is not None and not isinstance(self.revision, str):
+            self.revision = str(self.revision)
+
         self._normalize_inlined_as_list(slot_name="studies", slot_type=Study, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="persons", slot_type=Person, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="organizations", slot_type=Organization, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="publications", slot_type=Publication, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="instruments", slot_type=Instrument, key_name="id", keyed=True)
 
@@ -631,6 +664,10 @@ class Dataset(NamedThing):
             self.study_organization_associations = [self.study_organization_associations] if self.study_organization_associations is not None else []
         self.study_organization_associations = [v if isinstance(v, StudyOrganizationAssociation) else StudyOrganizationAssociation(**as_dict(v)) for v in self.study_organization_associations]
 
+        if not isinstance(self.study_publication_associations, list):
+            self.study_publication_associations = [self.study_publication_associations] if self.study_publication_associations is not None else []
+        self.study_publication_associations = [v if isinstance(v, StudyPublicationAssociation) else StudyPublicationAssociation(**as_dict(v)) for v in self.study_publication_associations]
+
         if not isinstance(self.person_organization_associations, list):
             self.person_organization_associations = [self.person_organization_associations] if self.person_organization_associations is not None else []
         self.person_organization_associations = [v if isinstance(v, PersonOrganizationAssociation) else PersonOrganizationAssociation(**as_dict(v)) for v in self.person_organization_associations]
@@ -654,6 +691,7 @@ class Study(NamedThing):
     id: Union[str, StudyId] = None
     proposal_id: Optional[str] = None
     keywords: Optional[Union[str, list[str]]] = empty_list()
+    database_cross_references: Optional[Union[Union[dict, "DatabaseCrossReference"], list[Union[dict, "DatabaseCrossReference"]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -667,6 +705,141 @@ class Study(NamedThing):
         if not isinstance(self.keywords, list):
             self.keywords = [self.keywords] if self.keywords is not None else []
         self.keywords = [v if isinstance(v, str) else str(v) for v in self.keywords]
+
+        if not isinstance(self.database_cross_references, list):
+            self.database_cross_references = [self.database_cross_references] if self.database_cross_references is not None else []
+        self.database_cross_references = [v if isinstance(v, DatabaseCrossReference) else DatabaseCrossReference(**as_dict(v)) for v in self.database_cross_references]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Publication(NamedThing):
+    """
+    A journal article, book chapter or preprint describing a study. Identified by DOI (doi:10.1038/s41422-022-00680-4)
+    where one exists, else by PubMed id (pmid:35726088), else by an id local to the source. The inherited title is the
+    article title.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDA["Publication"]
+    class_class_curie: ClassVar[str] = "lambda:Publication"
+    class_name: ClassVar[str] = "Publication"
+    class_model_uri: ClassVar[URIRef] = LAMBDA.Publication
+
+    id: Union[str, PublicationId] = None
+    doi: Optional[Union[str, URIorCURIE]] = None
+    pubmed_id: Optional[Union[str, URIorCURIE]] = None
+    authors: Optional[Union[str, list[str]]] = empty_list()
+    journal: Optional[str] = None
+    journal_abbreviation: Optional[str] = None
+    journal_issn: Optional[str] = None
+    journal_country: Optional[str] = None
+    volume: Optional[str] = None
+    issue: Optional[str] = None
+    page_first: Optional[str] = None
+    page_last: Optional[str] = None
+    year: Optional[int] = None
+    language: Optional[str] = None
+    book_title: Optional[str] = None
+    book_publisher: Optional[str] = None
+    book_publisher_city: Optional[str] = None
+    book_isbn: Optional[str] = None
+    unpublished: Optional[Union[bool, Bool]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, PublicationId):
+            self.id = PublicationId(self.id)
+
+        if self.doi is not None and not isinstance(self.doi, URIorCURIE):
+            self.doi = URIorCURIE(self.doi)
+
+        if self.pubmed_id is not None and not isinstance(self.pubmed_id, URIorCURIE):
+            self.pubmed_id = URIorCURIE(self.pubmed_id)
+
+        if not isinstance(self.authors, list):
+            self.authors = [self.authors] if self.authors is not None else []
+        self.authors = [v if isinstance(v, str) else str(v) for v in self.authors]
+
+        if self.journal is not None and not isinstance(self.journal, str):
+            self.journal = str(self.journal)
+
+        if self.journal_abbreviation is not None and not isinstance(self.journal_abbreviation, str):
+            self.journal_abbreviation = str(self.journal_abbreviation)
+
+        if self.journal_issn is not None and not isinstance(self.journal_issn, str):
+            self.journal_issn = str(self.journal_issn)
+
+        if self.journal_country is not None and not isinstance(self.journal_country, str):
+            self.journal_country = str(self.journal_country)
+
+        if self.volume is not None and not isinstance(self.volume, str):
+            self.volume = str(self.volume)
+
+        if self.issue is not None and not isinstance(self.issue, str):
+            self.issue = str(self.issue)
+
+        if self.page_first is not None and not isinstance(self.page_first, str):
+            self.page_first = str(self.page_first)
+
+        if self.page_last is not None and not isinstance(self.page_last, str):
+            self.page_last = str(self.page_last)
+
+        if self.year is not None and not isinstance(self.year, int):
+            self.year = int(self.year)
+
+        if self.language is not None and not isinstance(self.language, str):
+            self.language = str(self.language)
+
+        if self.book_title is not None and not isinstance(self.book_title, str):
+            self.book_title = str(self.book_title)
+
+        if self.book_publisher is not None and not isinstance(self.book_publisher, str):
+            self.book_publisher = str(self.book_publisher)
+
+        if self.book_publisher_city is not None and not isinstance(self.book_publisher_city, str):
+            self.book_publisher_city = str(self.book_publisher_city)
+
+        if self.book_isbn is not None and not isinstance(self.book_isbn, str):
+            self.book_isbn = str(self.book_isbn)
+
+        if self.unpublished is not None and not isinstance(self.unpublished, Bool):
+            self.unpublished = Bool(self.unpublished)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class StudyPublicationAssociation(YAMLRoot):
+    """
+    Links a study to a publication that describes it
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDA["StudyPublicationAssociation"]
+    class_class_curie: ClassVar[str] = "lambda:StudyPublicationAssociation"
+    class_name: ClassVar[str] = "StudyPublicationAssociation"
+    class_model_uri: ClassVar[URIRef] = LAMBDA.StudyPublicationAssociation
+
+    study_id: Union[str, StudyId] = None
+    publication_id: Union[str, PublicationId] = None
+    is_primary: Optional[Union[bool, Bool]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.study_id):
+            self.MissingRequiredField("study_id")
+        if not isinstance(self.study_id, StudyId):
+            self.study_id = StudyId(self.study_id)
+
+        if self._is_empty(self.publication_id):
+            self.MissingRequiredField("publication_id")
+        if not isinstance(self.publication_id, PublicationId):
+            self.publication_id = PublicationId(self.publication_id)
+
+        if self.is_primary is not None and not isinstance(self.is_primary, Bool):
+            self.is_primary = Bool(self.is_primary)
 
         super().__post_init__(**kwargs)
 
@@ -829,6 +1002,8 @@ class Sample(NamedThing):
     id: Union[str, SampleId] = None
     sample_code: str = None
     sample_type: Union[str, "SampleTypeEnum"] = None
+    additional_metrics: Optional[Union[Union[dict, "QuantityValue"], list[Union[dict, "QuantityValue"]]]] = empty_list()
+    additional_properties: Optional[Union[Union[dict, "TextValue"], list[Union[dict, "TextValue"]]]] = empty_list()
     molecular_composition: Optional[Union[dict, "MolecularComposition"]] = None
     molecular_weight: Optional[Union[dict, "QuantityValue"]] = None
     concentration: Optional[Union[dict, "QuantityValue"]] = None
@@ -874,6 +1049,14 @@ class Sample(NamedThing):
             self.MissingRequiredField("sample_type")
         if not isinstance(self.sample_type, SampleTypeEnum):
             self.sample_type = SampleTypeEnum(self.sample_type)
+
+        if not isinstance(self.additional_metrics, list):
+            self.additional_metrics = [self.additional_metrics] if self.additional_metrics is not None else []
+        self.additional_metrics = [v if isinstance(v, QuantityValue) else QuantityValue(**as_dict(v)) for v in self.additional_metrics]
+
+        if not isinstance(self.additional_properties, list):
+            self.additional_properties = [self.additional_properties] if self.additional_properties is not None else []
+        self.additional_properties = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.additional_properties]
 
         if self.molecular_composition is not None and not isinstance(self.molecular_composition, MolecularComposition):
             self.molecular_composition = MolecularComposition(**as_dict(self.molecular_composition))
@@ -979,6 +1162,8 @@ class Protein(NamedThing):
     class_model_uri: ClassVar[URIRef] = LAMBDA.Protein
 
     id: Union[str, ProteinId] = None
+    additional_metrics: Optional[Union[Union[dict, "QuantityValue"], list[Union[dict, "QuantityValue"]]]] = empty_list()
+    additional_properties: Optional[Union[Union[dict, "TextValue"], list[Union[dict, "TextValue"]]]] = empty_list()
     uniprot_id: Optional[Union[str, URIorCURIE]] = None
     protein_name: Optional[str] = None
     gene_name: Optional[str] = None
@@ -1007,6 +1192,14 @@ class Protein(NamedThing):
             self.MissingRequiredField("id")
         if not isinstance(self.id, ProteinId):
             self.id = ProteinId(self.id)
+
+        if not isinstance(self.additional_metrics, list):
+            self.additional_metrics = [self.additional_metrics] if self.additional_metrics is not None else []
+        self.additional_metrics = [v if isinstance(v, QuantityValue) else QuantityValue(**as_dict(v)) for v in self.additional_metrics]
+
+        if not isinstance(self.additional_properties, list):
+            self.additional_properties = [self.additional_properties] if self.additional_properties is not None else []
+        self.additional_properties = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.additional_properties]
 
         if self.uniprot_id is not None and not isinstance(self.uniprot_id, URIorCURIE):
             self.uniprot_id = URIorCURIE(self.uniprot_id)
@@ -1092,6 +1285,8 @@ class ProteinConstruct(NamedThing):
 
     id: Union[str, ProteinConstructId] = None
     construct_id: str = None
+    additional_metrics: Optional[Union[Union[dict, "QuantityValue"], list[Union[dict, "QuantityValue"]]]] = empty_list()
+    additional_properties: Optional[Union[Union[dict, "TextValue"], list[Union[dict, "TextValue"]]]] = empty_list()
     protein_id: Optional[Union[str, ProteinId]] = None
     uniprot_id: Optional[Union[str, URIorCURIE]] = None
     gene_name: Optional[str] = None
@@ -1113,6 +1308,8 @@ class ProteinConstruct(NamedThing):
     sequence_file_path: Optional[str] = None
     sequence_verified_by: Optional[str] = None
     verification_notes: Optional[str] = None
+    amino_acid_sequence: Optional[str] = None
+    mutations: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -1124,6 +1321,14 @@ class ProteinConstruct(NamedThing):
             self.MissingRequiredField("construct_id")
         if not isinstance(self.construct_id, str):
             self.construct_id = str(self.construct_id)
+
+        if not isinstance(self.additional_metrics, list):
+            self.additional_metrics = [self.additional_metrics] if self.additional_metrics is not None else []
+        self.additional_metrics = [v if isinstance(v, QuantityValue) else QuantityValue(**as_dict(v)) for v in self.additional_metrics]
+
+        if not isinstance(self.additional_properties, list):
+            self.additional_properties = [self.additional_properties] if self.additional_properties is not None else []
+        self.additional_properties = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.additional_properties]
 
         if self.protein_id is not None and not isinstance(self.protein_id, ProteinId):
             self.protein_id = ProteinId(self.protein_id)
@@ -1188,6 +1393,12 @@ class ProteinConstruct(NamedThing):
         if self.verification_notes is not None and not isinstance(self.verification_notes, str):
             self.verification_notes = str(self.verification_notes)
 
+        if self.amino_acid_sequence is not None and not isinstance(self.amino_acid_sequence, str):
+            self.amino_acid_sequence = str(self.amino_acid_sequence)
+
+        if self.mutations is not None and not isinstance(self.mutations, str):
+            self.mutations = str(self.mutations)
+
         super().__post_init__(**kwargs)
 
 
@@ -1210,6 +1421,8 @@ class NucleicAcid(NamedThing):
 
     id: Union[str, NucleicAcidId] = None
     nucleic_acid_type: Union[str, "NucleicAcidTypeEnum"] = None
+    additional_metrics: Optional[Union[Union[dict, "QuantityValue"], list[Union[dict, "QuantityValue"]]]] = empty_list()
+    additional_properties: Optional[Union[Union[dict, "TextValue"], list[Union[dict, "TextValue"]]]] = empty_list()
     nucleic_acid_name: Optional[str] = None
     rnacentral_id: Optional[Union[str, URIorCURIE]] = None
     sequence_accession: Optional[Union[str, URIorCURIE]] = None
@@ -1235,6 +1448,14 @@ class NucleicAcid(NamedThing):
             self.MissingRequiredField("nucleic_acid_type")
         if not isinstance(self.nucleic_acid_type, NucleicAcidTypeEnum):
             self.nucleic_acid_type = NucleicAcidTypeEnum(self.nucleic_acid_type)
+
+        if not isinstance(self.additional_metrics, list):
+            self.additional_metrics = [self.additional_metrics] if self.additional_metrics is not None else []
+        self.additional_metrics = [v if isinstance(v, QuantityValue) else QuantityValue(**as_dict(v)) for v in self.additional_metrics]
+
+        if not isinstance(self.additional_properties, list):
+            self.additional_properties = [self.additional_properties] if self.additional_properties is not None else []
+        self.additional_properties = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.additional_properties]
 
         if self.nucleic_acid_name is not None and not isinstance(self.nucleic_acid_name, str):
             self.nucleic_acid_name = str(self.nucleic_acid_name)
@@ -1302,6 +1523,8 @@ class SmallMolecule(NamedThing):
     class_model_uri: ClassVar[URIRef] = LAMBDA.SmallMolecule
 
     id: Union[str, SmallMoleculeId] = None
+    additional_metrics: Optional[Union[Union[dict, "QuantityValue"], list[Union[dict, "QuantityValue"]]]] = empty_list()
+    additional_properties: Optional[Union[Union[dict, "TextValue"], list[Union[dict, "TextValue"]]]] = empty_list()
     small_molecule_name: Optional[str] = None
     chebi_id: Optional[Union[str, URIorCURIE]] = None
     pdb_ligand_id: Optional[Union[str, URIorCURIE]] = None
@@ -1318,6 +1541,14 @@ class SmallMolecule(NamedThing):
             self.MissingRequiredField("id")
         if not isinstance(self.id, SmallMoleculeId):
             self.id = SmallMoleculeId(self.id)
+
+        if not isinstance(self.additional_metrics, list):
+            self.additional_metrics = [self.additional_metrics] if self.additional_metrics is not None else []
+        self.additional_metrics = [v if isinstance(v, QuantityValue) else QuantityValue(**as_dict(v)) for v in self.additional_metrics]
+
+        if not isinstance(self.additional_properties, list):
+            self.additional_properties = [self.additional_properties] if self.additional_properties is not None else []
+        self.additional_properties = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.additional_properties]
 
         if self.small_molecule_name is not None and not isinstance(self.small_molecule_name, str):
             self.small_molecule_name = str(self.small_molecule_name)
@@ -1435,6 +1666,8 @@ class SamplePreparation(NamedThing):
     id: Union[str, SamplePreparationId] = None
     preparation_type: Union[str, "PreparationTypeEnum"] = None
     sample_id: str = None
+    additional_metrics: Optional[Union[Union[dict, "QuantityValue"], list[Union[dict, "QuantityValue"]]]] = empty_list()
+    additional_properties: Optional[Union[Union[dict, "TextValue"], list[Union[dict, "TextValue"]]]] = empty_list()
     preparation_date: Optional[str] = None
     operator_id: Optional[str] = None
     protocol_description: Optional[str] = None
@@ -1475,6 +1708,9 @@ class SamplePreparation(NamedThing):
     purity_by_sds_page_percent: Optional[Union[dict, "QuantityValue"]] = None
     aggregation_assessment: Optional[str] = None
     aliquoting: Optional[str] = None
+    cryoem_preparation: Optional[Union[dict, "CryoEMPreparation"]] = None
+    xray_preparation: Optional[Union[dict, "XRayPreparation"]] = None
+    saxs_preparation: Optional[Union[dict, "SAXSPreparation"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -1491,6 +1727,14 @@ class SamplePreparation(NamedThing):
             self.MissingRequiredField("sample_id")
         if not isinstance(self.sample_id, str):
             self.sample_id = str(self.sample_id)
+
+        if not isinstance(self.additional_metrics, list):
+            self.additional_metrics = [self.additional_metrics] if self.additional_metrics is not None else []
+        self.additional_metrics = [v if isinstance(v, QuantityValue) else QuantityValue(**as_dict(v)) for v in self.additional_metrics]
+
+        if not isinstance(self.additional_properties, list):
+            self.additional_properties = [self.additional_properties] if self.additional_properties is not None else []
+        self.additional_properties = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.additional_properties]
 
         if self.preparation_date is not None and not isinstance(self.preparation_date, str):
             self.preparation_date = str(self.preparation_date)
@@ -1613,6 +1857,15 @@ class SamplePreparation(NamedThing):
         if self.aliquoting is not None and not isinstance(self.aliquoting, str):
             self.aliquoting = str(self.aliquoting)
 
+        if self.cryoem_preparation is not None and not isinstance(self.cryoem_preparation, CryoEMPreparation):
+            self.cryoem_preparation = CryoEMPreparation(**as_dict(self.cryoem_preparation))
+
+        if self.xray_preparation is not None and not isinstance(self.xray_preparation, XRayPreparation):
+            self.xray_preparation = XRayPreparation(**as_dict(self.xray_preparation))
+
+        if self.saxs_preparation is not None and not isinstance(self.saxs_preparation, SAXSPreparation):
+            self.saxs_preparation = SAXSPreparation(**as_dict(self.saxs_preparation))
+
         super().__post_init__(**kwargs)
 
 
@@ -1630,6 +1883,9 @@ class Instrument(NamedThing):
 
     id: Union[str, InstrumentId] = None
     instrument_code: str = None
+    instrument_type: Optional[str] = None
+    additional_metrics: Optional[Union[Union[dict, "QuantityValue"], list[Union[dict, "QuantityValue"]]]] = empty_list()
+    additional_properties: Optional[Union[Union[dict, "TextValue"], list[Union[dict, "TextValue"]]]] = empty_list()
     instrument_registry_id: Optional[str] = None
     instrument_category: Optional[Union[str, "InstrumentCategoryEnum"]] = None
     facility_name: Optional[Union[str, "FacilityEnum"]] = None
@@ -1651,6 +1907,16 @@ class Instrument(NamedThing):
             self.MissingRequiredField("instrument_code")
         if not isinstance(self.instrument_code, str):
             self.instrument_code = str(self.instrument_code)
+
+        self.instrument_type = str(self.class_name)
+
+        if not isinstance(self.additional_metrics, list):
+            self.additional_metrics = [self.additional_metrics] if self.additional_metrics is not None else []
+        self.additional_metrics = [v if isinstance(v, QuantityValue) else QuantityValue(**as_dict(v)) for v in self.additional_metrics]
+
+        if not isinstance(self.additional_properties, list):
+            self.additional_properties = [self.additional_properties] if self.additional_properties is not None else []
+        self.additional_properties = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.additional_properties]
 
         if self.instrument_registry_id is not None and not isinstance(self.instrument_registry_id, str):
             self.instrument_registry_id = str(self.instrument_registry_id)
@@ -1683,6 +1949,23 @@ class Instrument(NamedThing):
             self.current_status = InstrumentStatusEnum(self.current_status)
 
         super().__post_init__(**kwargs)
+
+
+    def __new__(cls, *args, **kwargs):
+
+        type_designator = "instrument_type"
+        if not type_designator in kwargs:
+            return super().__new__(cls,*args,**kwargs)
+        else:
+            type_designator_value = kwargs[type_designator]
+            target_cls = cls._class_for("class_name", type_designator_value)
+
+
+            if target_cls is None:
+                raise ValueError(f"Wrong type designator value: class {cls.__name__} "
+                                 f"has no subclass with ['class_name']='{kwargs[type_designator]}'")
+            return super().__new__(target_cls,*args,**kwargs)
+
 
 
 @dataclass(repr=False)
@@ -1725,6 +2008,9 @@ class CryoEMInstrument(Instrument):
     gunlens: Optional[Union[dict, "QuantityValue"]] = None
     imaging_mode: Optional[Union[str, "ImagingModeEnum"]] = None
     tem_beam_diameter: Optional[Union[dict, "QuantityValue"]] = None
+    electron_source: Optional[str] = None
+    illumination_mode: Optional[str] = None
+    specimen_holder_model: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -1810,7 +2096,17 @@ class CryoEMInstrument(Instrument):
         if self.tem_beam_diameter is not None and not isinstance(self.tem_beam_diameter, QuantityValue):
             self.tem_beam_diameter = QuantityValue(**as_dict(self.tem_beam_diameter))
 
+        if self.electron_source is not None and not isinstance(self.electron_source, str):
+            self.electron_source = str(self.electron_source)
+
+        if self.illumination_mode is not None and not isinstance(self.illumination_mode, str):
+            self.illumination_mode = str(self.illumination_mode)
+
+        if self.specimen_holder_model is not None and not isinstance(self.specimen_holder_model, str):
+            self.specimen_holder_model = str(self.specimen_holder_model)
+
         super().__post_init__(**kwargs)
+        self.instrument_type = str(self.class_name)
 
 
 @dataclass(repr=False)
@@ -1883,6 +2179,7 @@ class XRayInstrument(Instrument):
             self.crystal_cooling_capability = Bool(self.crystal_cooling_capability)
 
         super().__post_init__(**kwargs)
+        self.instrument_type = str(self.class_name)
 
 
 @dataclass(repr=False)
@@ -2103,6 +2400,40 @@ class SANSInstrument(Instrument):
             self.environment = str(self.environment)
 
         super().__post_init__(**kwargs)
+        self.instrument_type = str(self.class_name)
+
+
+@dataclass(repr=False)
+class NMRInstrument(Instrument):
+    """
+    An NMR spectrometer
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDA["NMRInstrument"]
+    class_class_curie: ClassVar[str] = "lambda:NMRInstrument"
+    class_name: ClassVar[str] = "NMRInstrument"
+    class_model_uri: ClassVar[URIRef] = LAMBDA.NMRInstrument
+
+    id: Union[str, NMRInstrumentId] = None
+    instrument_code: str = None
+    field_strength: Optional[Union[dict, "QuantityValue"]] = None
+    spectrometer_type: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, NMRInstrumentId):
+            self.id = NMRInstrumentId(self.id)
+
+        if self.field_strength is not None and not isinstance(self.field_strength, QuantityValue):
+            self.field_strength = QuantityValue(**as_dict(self.field_strength))
+
+        if self.spectrometer_type is not None and not isinstance(self.spectrometer_type, str):
+            self.spectrometer_type = str(self.spectrometer_type)
+
+        super().__post_init__(**kwargs)
+        self.instrument_type = str(self.class_name)
 
 
 @dataclass(repr=False)
@@ -2151,6 +2482,7 @@ class SAXSInstrument(Instrument):
             self.temperature_control_range = str(self.temperature_control_range)
 
         super().__post_init__(**kwargs)
+        self.instrument_type = str(self.class_name)
 
 
 @dataclass(repr=False)
@@ -2226,6 +2558,7 @@ class BeamlineInstrument(Instrument):
             self.control_system = ControlSystemEnum(self.control_system)
 
         super().__post_init__(**kwargs)
+        self.instrument_type = str(self.class_name)
 
 
 @dataclass(repr=False)
@@ -2243,6 +2576,8 @@ class ExperimentRun(NamedThing):
     id: Union[str, ExperimentRunId] = None
     experiment_code: str = None
     technique: Union[str, "TechniqueEnum"] = None
+    additional_metrics: Optional[Union[Union[dict, "QuantityValue"], list[Union[dict, "QuantityValue"]]]] = empty_list()
+    additional_properties: Optional[Union[Union[dict, "TextValue"], list[Union[dict, "TextValue"]]]] = empty_list()
     experiment_date: Optional[str] = None
     operator_id: Optional[str] = None
     experimental_method: Optional[Union[str, "ExperimentalMethodEnum"]] = None
@@ -2329,6 +2664,14 @@ class ExperimentRun(NamedThing):
             self.MissingRequiredField("technique")
         if not isinstance(self.technique, TechniqueEnum):
             self.technique = TechniqueEnum(self.technique)
+
+        if not isinstance(self.additional_metrics, list):
+            self.additional_metrics = [self.additional_metrics] if self.additional_metrics is not None else []
+        self.additional_metrics = [v if isinstance(v, QuantityValue) else QuantityValue(**as_dict(v)) for v in self.additional_metrics]
+
+        if not isinstance(self.additional_properties, list):
+            self.additional_properties = [self.additional_properties] if self.additional_properties is not None else []
+        self.additional_properties = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.additional_properties]
 
         if self.experiment_date is not None and not isinstance(self.experiment_date, str):
             self.experiment_date = str(self.experiment_date)
@@ -2559,6 +2902,8 @@ class WorkflowRun(NamedThing):
     workflow_code: str = None
     workflow_type: Union[str, "WorkflowTypeEnum"] = None
     software_name: str = None
+    additional_metrics: Optional[Union[Union[dict, "QuantityValue"], list[Union[dict, "QuantityValue"]]]] = empty_list()
+    additional_properties: Optional[Union[Union[dict, "TextValue"], list[Union[dict, "TextValue"]]]] = empty_list()
     processing_level: Optional[Union[dict, "QuantityValue"]] = None
     software_version: Optional[str] = None
     additional_software: Optional[str] = None
@@ -2621,6 +2966,7 @@ class WorkflowRun(NamedThing):
     refinement_params: Optional[Union[dict, "RefinementParameters"]] = None
     fsc_curve: Optional[Union[dict, "FSCCurve"]] = None
     output_files: Optional[Union[Union[str, DataFileId], list[Union[str, DataFileId]]]] = empty_list()
+    resolution_shells: Optional[Union[Union[dict, "ResolutionShell"], list[Union[dict, "ResolutionShell"]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -2642,6 +2988,14 @@ class WorkflowRun(NamedThing):
             self.MissingRequiredField("software_name")
         if not isinstance(self.software_name, str):
             self.software_name = str(self.software_name)
+
+        if not isinstance(self.additional_metrics, list):
+            self.additional_metrics = [self.additional_metrics] if self.additional_metrics is not None else []
+        self.additional_metrics = [v if isinstance(v, QuantityValue) else QuantityValue(**as_dict(v)) for v in self.additional_metrics]
+
+        if not isinstance(self.additional_properties, list):
+            self.additional_properties = [self.additional_properties] if self.additional_properties is not None else []
+        self.additional_properties = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.additional_properties]
 
         if self.processing_level is not None and not isinstance(self.processing_level, QuantityValue):
             self.processing_level = QuantityValue(**as_dict(self.processing_level))
@@ -2829,6 +3183,10 @@ class WorkflowRun(NamedThing):
         if not isinstance(self.output_files, list):
             self.output_files = [self.output_files] if self.output_files is not None else []
         self.output_files = [v if isinstance(v, DataFileId) else DataFileId(v) for v in self.output_files]
+
+        if not isinstance(self.resolution_shells, list):
+            self.resolution_shells = [self.resolution_shells] if self.resolution_shells is not None else []
+        self.resolution_shells = [v if isinstance(v, ResolutionShell) else ResolutionShell(**as_dict(v)) for v in self.resolution_shells]
 
         super().__post_init__(**kwargs)
 
@@ -3577,6 +3935,10 @@ class CryoEMPreparation(TechniqueSpecificPreparation):
     sample_applied_volume: Optional[Union[dict, "QuantityValue"]] = None
     ethane_temperature: Optional[Union[dict, "QuantityValue"]] = None
     plasma_treatment: Optional[str] = None
+    cryogen: Optional[str] = None
+    stain_material: Optional[str] = None
+    stain_type: Optional[str] = None
+    embedding_material: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self.grid_type is not None and not isinstance(self.grid_type, GridTypeEnum):
@@ -3644,6 +4006,18 @@ class CryoEMPreparation(TechniqueSpecificPreparation):
 
         if self.plasma_treatment is not None and not isinstance(self.plasma_treatment, str):
             self.plasma_treatment = str(self.plasma_treatment)
+
+        if self.cryogen is not None and not isinstance(self.cryogen, str):
+            self.cryogen = str(self.cryogen)
+
+        if self.stain_material is not None and not isinstance(self.stain_material, str):
+            self.stain_material = str(self.stain_material)
+
+        if self.stain_type is not None and not isinstance(self.stain_type, str):
+            self.stain_type = str(self.stain_type)
+
+        if self.embedding_material is not None and not isinstance(self.embedding_material, str):
+            self.embedding_material = str(self.embedding_material)
 
         super().__post_init__(**kwargs)
 
@@ -3754,6 +4128,9 @@ class XRayPreparation(TechniqueSpecificPreparation):
     crystal_notes: Optional[str] = None
     loop_size: Optional[Union[dict, "QuantityValue"]] = None
     mounting_temperature: Optional[Union[dict, "QuantityValue"]] = None
+    crystallization_ph: Optional[float] = None
+    matthews_coefficient: Optional[Union[dict, "QuantityValue"]] = None
+    solvent_content_percent: Optional[float] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self.protein_concentration_mg_per_ml is not None and not isinstance(self.protein_concentration_mg_per_ml, QuantityValue):
@@ -3830,6 +4207,15 @@ class XRayPreparation(TechniqueSpecificPreparation):
 
         if self.mounting_temperature is not None and not isinstance(self.mounting_temperature, QuantityValue):
             self.mounting_temperature = QuantityValue(**as_dict(self.mounting_temperature))
+
+        if self.crystallization_ph is not None and not isinstance(self.crystallization_ph, float):
+            self.crystallization_ph = float(self.crystallization_ph)
+
+        if self.matthews_coefficient is not None and not isinstance(self.matthews_coefficient, QuantityValue):
+            self.matthews_coefficient = QuantityValue(**as_dict(self.matthews_coefficient))
+
+        if self.solvent_content_percent is not None and not isinstance(self.solvent_content_percent, float):
+            self.solvent_content_percent = float(self.solvent_content_percent)
 
         super().__post_init__(**kwargs)
 
@@ -4371,6 +4757,7 @@ class ParticlePickingParameters(AttributeGroup):
     model_name: Optional[str] = None
     model_file_path: Optional[str] = None
     model_source: Optional[str] = None
+    number_of_particles_selected: Optional[int] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self.picking_method is not None and not isinstance(self.picking_method, str):
@@ -4397,6 +4784,9 @@ class ParticlePickingParameters(AttributeGroup):
         if self.model_source is not None and not isinstance(self.model_source, str):
             self.model_source = str(self.model_source)
 
+        if self.number_of_particles_selected is not None and not isinstance(self.number_of_particles_selected, int):
+            self.number_of_particles_selected = int(self.number_of_particles_selected)
+
         super().__post_init__(**kwargs)
 
 
@@ -4420,6 +4810,10 @@ class RefinementParameters(AttributeGroup):
     resolution_0_143: Optional[Union[dict, "QuantityValue"]] = None
     resolution_0_5: Optional[Union[dict, "QuantityValue"]] = None
     map_sharpening_bfactor: Optional[Union[dict, "QuantityValue"]] = None
+    number_of_particles: Optional[int] = None
+    helical_rise: Optional[Union[dict, "QuantityValue"]] = None
+    helical_twist: Optional[Union[dict, "QuantityValue"]] = None
+    axial_symmetry: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self.symmetry is not None and not isinstance(self.symmetry, SymmetryEnum):
@@ -4445,6 +4839,80 @@ class RefinementParameters(AttributeGroup):
 
         if self.map_sharpening_bfactor is not None and not isinstance(self.map_sharpening_bfactor, QuantityValue):
             self.map_sharpening_bfactor = QuantityValue(**as_dict(self.map_sharpening_bfactor))
+
+        if self.number_of_particles is not None and not isinstance(self.number_of_particles, int):
+            self.number_of_particles = int(self.number_of_particles)
+
+        if self.helical_rise is not None and not isinstance(self.helical_rise, QuantityValue):
+            self.helical_rise = QuantityValue(**as_dict(self.helical_rise))
+
+        if self.helical_twist is not None and not isinstance(self.helical_twist, QuantityValue):
+            self.helical_twist = QuantityValue(**as_dict(self.helical_twist))
+
+        if self.axial_symmetry is not None and not isinstance(self.axial_symmetry, str):
+            self.axial_symmetry = str(self.axial_symmetry)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class ResolutionShell(AttributeGroup):
+    """
+    Data statistics within one resolution shell
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDA["ResolutionShell"]
+    class_class_curie: ClassVar[str] = "lambda:ResolutionShell"
+    class_name: ClassVar[str] = "ResolutionShell"
+    class_model_uri: ClassVar[URIRef] = LAMBDA.ResolutionShell
+
+    additional_metrics: Optional[Union[Union[dict, "QuantityValue"], list[Union[dict, "QuantityValue"]]]] = empty_list()
+    resolution_high: Optional[Union[dict, "QuantityValue"]] = None
+    resolution_low: Optional[Union[dict, "QuantityValue"]] = None
+    completeness_percent: Optional[Union[dict, "QuantityValue"]] = None
+    multiplicity: Optional[Union[dict, "QuantityValue"]] = None
+    i_over_sigma: Optional[Union[dict, "QuantityValue"]] = None
+    rmerge: Optional[Union[dict, "QuantityValue"]] = None
+    rpim: Optional[Union[dict, "QuantityValue"]] = None
+    cc_half: Optional[Union[dict, "QuantityValue"]] = None
+    n_unique: Optional[Union[dict, "QuantityValue"]] = None
+    n_observations: Optional[Union[dict, "QuantityValue"]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if not isinstance(self.additional_metrics, list):
+            self.additional_metrics = [self.additional_metrics] if self.additional_metrics is not None else []
+        self.additional_metrics = [v if isinstance(v, QuantityValue) else QuantityValue(**as_dict(v)) for v in self.additional_metrics]
+
+        if self.resolution_high is not None and not isinstance(self.resolution_high, QuantityValue):
+            self.resolution_high = QuantityValue(**as_dict(self.resolution_high))
+
+        if self.resolution_low is not None and not isinstance(self.resolution_low, QuantityValue):
+            self.resolution_low = QuantityValue(**as_dict(self.resolution_low))
+
+        if self.completeness_percent is not None and not isinstance(self.completeness_percent, QuantityValue):
+            self.completeness_percent = QuantityValue(**as_dict(self.completeness_percent))
+
+        if self.multiplicity is not None and not isinstance(self.multiplicity, QuantityValue):
+            self.multiplicity = QuantityValue(**as_dict(self.multiplicity))
+
+        if self.i_over_sigma is not None and not isinstance(self.i_over_sigma, QuantityValue):
+            self.i_over_sigma = QuantityValue(**as_dict(self.i_over_sigma))
+
+        if self.rmerge is not None and not isinstance(self.rmerge, QuantityValue):
+            self.rmerge = QuantityValue(**as_dict(self.rmerge))
+
+        if self.rpim is not None and not isinstance(self.rpim, QuantityValue):
+            self.rpim = QuantityValue(**as_dict(self.rpim))
+
+        if self.cc_half is not None and not isinstance(self.cc_half, QuantityValue):
+            self.cc_half = QuantityValue(**as_dict(self.cc_half))
+
+        if self.n_unique is not None and not isinstance(self.n_unique, QuantityValue):
+            self.n_unique = QuantityValue(**as_dict(self.n_unique))
+
+        if self.n_observations is not None and not isinstance(self.n_observations, QuantityValue):
+            self.n_observations = QuantityValue(**as_dict(self.n_observations))
 
         super().__post_init__(**kwargs)
 
@@ -6867,6 +7335,27 @@ class TechniqueEnum(EnumDefinitionImpl):
     microed = PermissibleValue(
         text="microed",
         description="Micro-electron diffraction for atomic-resolution structure determination from microcrystals")
+    solution_nmr = PermissibleValue(
+        text="solution_nmr",
+        description="Solution nuclear magnetic resonance spectroscopy")
+    solid_state_nmr = PermissibleValue(
+        text="solid_state_nmr",
+        description="Solid-state nuclear magnetic resonance spectroscopy")
+    powder_diffraction = PermissibleValue(
+        text="powder_diffraction",
+        description="Powder diffraction")
+    epr = PermissibleValue(
+        text="epr",
+        description="Electron paramagnetic resonance spectroscopy")
+    fluorescence_transfer = PermissibleValue(
+        text="fluorescence_transfer",
+        description="Fluorescence resonance energy transfer as a structural restraint")
+    infrared_spectroscopy = PermissibleValue(
+        text="infrared_spectroscopy",
+        description="Infrared spectroscopy")
+    integrative_modeling = PermissibleValue(
+        text="integrative_modeling",
+        description="Integrative or hybrid modelling from several kinds of data")
 
     _defn = EnumDefinition(
         name="TechniqueEnum",
@@ -7047,6 +7536,15 @@ class FileFormatEnum(EnumDefinitionImpl):
     gz = PermissibleValue(
         text="gz",
         description="Gzip compressed format")
+    pdf = PermissibleValue(
+        text="pdf",
+        description="Portable Document Format, as for a validation report")
+    nmr_star = PermissibleValue(
+        text="nmr_star",
+        description="NMR-STAR, the BMRB format for chemical shifts and restraints")
+    other = PermissibleValue(
+        text="other",
+        description="A format with no value of its own here; DataFile.description names it")
 
     _defn = EnumDefinition(
         name="FileFormatEnum",
@@ -7298,6 +7796,21 @@ class ExperimentalMethodEnum(EnumDefinitionImpl):
     fiber_diffraction = PermissibleValue(
         text="fiber_diffraction",
         description="Fiber diffraction")
+    single_particle_analysis = PermissibleValue(
+        text="single_particle_analysis",
+        description="Single-particle cryo-EM reconstruction")
+    helical_reconstruction = PermissibleValue(
+        text="helical_reconstruction",
+        description="Helical reconstruction of filaments")
+    subtomogram_averaging = PermissibleValue(
+        text="subtomogram_averaging",
+        description="Averaging of subvolumes extracted from electron tomograms")
+    electron_tomography = PermissibleValue(
+        text="electron_tomography",
+        description="Electron tomography of a unique object, without averaging")
+    electron_crystallography = PermissibleValue(
+        text="electron_crystallography",
+        description="Structure from 2D or 3D crystals by electron diffraction or imaging")
 
     _defn = EnumDefinition(
         name="ExperimentalMethodEnum",
@@ -9083,6 +9596,72 @@ class DatabaseNameEnum(EnumDefinitionImpl):
     modomics = PermissibleValue(
         text="modomics",
         description="MODOMICS, modified RNA nucleosides")
+    emdb = PermissibleValue(
+        text="emdb",
+        description="Electron Microscopy Data Bank")
+    empiar = PermissibleValue(
+        text="empiar",
+        description="Electron Microscopy Public Image Archive")
+    bmrb = PermissibleValue(
+        text="bmrb",
+        description="Biological Magnetic Resonance Data Bank")
+    sasbdb = PermissibleValue(
+        text="sasbdb",
+        description="Small Angle Scattering Biological Data Bank")
+    pdb_ihm = PermissibleValue(
+        text="pdb_ihm",
+        description="PDB-IHM, the archive of integrative structures")
+    nakb = PermissibleValue(
+        text="nakb",
+        description="Nucleic Acid Knowledgebase")
+    sbgrid = PermissibleValue(
+        text="sbgrid",
+        description="SBGrid Data Bank")
+    proteindiffraction = PermissibleValue(
+        text="proteindiffraction",
+        description="""Integrated Resource for Reproducibility in Macromolecular Crystallography (proteindiffraction.org)""")
+    olderado = PermissibleValue(
+        text="olderado",
+        description="OLDERADO, representative models of NMR ensembles")
+    ecod = PermissibleValue(
+        text="ecod",
+        description="ECOD, Evolutionary Classification of Protein Domains")
+    scop2 = PermissibleValue(
+        text="scop2",
+        description="SCOP2")
+    mpstruc = PermissibleValue(
+        text="mpstruc",
+        description="Membrane Proteins of Known 3D Structure")
+    opm = PermissibleValue(
+        text="opm",
+        description="Orientations of Proteins in Membranes")
+    pdbtm = PermissibleValue(
+        text="pdbtm",
+        description="Protein Data Bank of Transmembrane Proteins")
+    memprotmd = PermissibleValue(
+        text="memprotmd",
+        description="MemProtMD")
+    glytoucan = PermissibleValue(
+        text="glytoucan",
+        description="GlyTouCan glycan structure repository")
+    glygen = PermissibleValue(
+        text="glygen",
+        description="GlyGen")
+    bindingdb = PermissibleValue(
+        text="bindingdb",
+        description="BindingDB")
+    binding_moad = PermissibleValue(
+        text="binding_moad",
+        description="Binding MOAD")
+    pdbbind = PermissibleValue(
+        text="pdbbind",
+        description="PDBbind-CN")
+    atc = PermissibleValue(
+        text="atc",
+        description="WHO Anatomical Therapeutic Chemical classification")
+    other = PermissibleValue(
+        text="other",
+        description="A database with no value of its own here; DatabaseCrossReference.description names it")
 
     _defn = EnumDefinition(
         name="DatabaseNameEnum",
@@ -9092,6 +9671,15 @@ class DatabaseNameEnum(EnumDefinitionImpl):
 # Slots
 class slots:
     pass
+
+slots.instrument_type = Slot(uri=LAMBDA.instrument_type, name="instrument_type", curie=LAMBDA.curie('instrument_type'),
+                   model_uri=LAMBDA.instrument_type, domain=None, range=Optional[str])
+
+slots.additional_metrics = Slot(uri=LAMBDA.additional_metrics, name="additional_metrics", curie=LAMBDA.curie('additional_metrics'),
+                   model_uri=LAMBDA.additional_metrics, domain=None, range=Optional[Union[Union[dict, QuantityValue], list[Union[dict, QuantityValue]]]])
+
+slots.additional_properties = Slot(uri=LAMBDA.additional_properties, name="additional_properties", curie=LAMBDA.curie('additional_properties'),
+                   model_uri=LAMBDA.additional_properties, domain=None, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.attribute = Slot(uri=LAMBDA.attribute, name="attribute", curie=LAMBDA.curie('attribute'),
                    model_uri=LAMBDA.attribute, domain=None, range=Union[dict, Attribute])
@@ -9135,6 +9723,18 @@ slots.attributeGroup__description = Slot(uri=LAMBDA.description, name="attribute
 slots.dataset__keywords = Slot(uri=LAMBDA.keywords, name="dataset__keywords", curie=LAMBDA.curie('keywords'),
                    model_uri=LAMBDA.dataset__keywords, domain=None, range=Optional[Union[str, list[str]]])
 
+slots.dataset__deposition_date = Slot(uri=LAMBDA.deposition_date, name="dataset__deposition_date", curie=LAMBDA.curie('deposition_date'),
+                   model_uri=LAMBDA.dataset__deposition_date, domain=None, range=Optional[str])
+
+slots.dataset__release_date = Slot(uri=LAMBDA.release_date, name="dataset__release_date", curie=LAMBDA.curie('release_date'),
+                   model_uri=LAMBDA.dataset__release_date, domain=None, range=Optional[str])
+
+slots.dataset__last_revision_date = Slot(uri=LAMBDA.last_revision_date, name="dataset__last_revision_date", curie=LAMBDA.curie('last_revision_date'),
+                   model_uri=LAMBDA.dataset__last_revision_date, domain=None, range=Optional[str])
+
+slots.dataset__revision = Slot(uri=LAMBDA.revision, name="dataset__revision", curie=LAMBDA.curie('revision'),
+                   model_uri=LAMBDA.dataset__revision, domain=None, range=Optional[str])
+
 slots.dataset__studies = Slot(uri=LAMBDA.studies, name="dataset__studies", curie=LAMBDA.curie('studies'),
                    model_uri=LAMBDA.dataset__studies, domain=None, range=Optional[Union[dict[Union[str, StudyId], Union[dict, Study]], list[Union[dict, Study]]]])
 
@@ -9143,6 +9743,9 @@ slots.dataset__persons = Slot(uri=LAMBDA.persons, name="dataset__persons", curie
 
 slots.dataset__organizations = Slot(uri=LAMBDA.organizations, name="dataset__organizations", curie=LAMBDA.curie('organizations'),
                    model_uri=LAMBDA.dataset__organizations, domain=None, range=Optional[Union[dict[Union[str, OrganizationId], Union[dict, Organization]], list[Union[dict, Organization]]]])
+
+slots.dataset__publications = Slot(uri=LAMBDA.publications, name="dataset__publications", curie=LAMBDA.curie('publications'),
+                   model_uri=LAMBDA.dataset__publications, domain=None, range=Optional[Union[dict[Union[str, PublicationId], Union[dict, Publication]], list[Union[dict, Publication]]]])
 
 slots.dataset__instruments = Slot(uri=LAMBDA.instruments, name="dataset__instruments", curie=LAMBDA.curie('instruments'),
                    model_uri=LAMBDA.dataset__instruments, domain=None, range=Optional[Union[dict[Union[str, InstrumentId], Union[dict, Instrument]], list[Union[dict, Instrument]]]])
@@ -9225,6 +9828,9 @@ slots.dataset__workflow_person_associations = Slot(uri=LAMBDA.workflow_person_as
 slots.dataset__study_organization_associations = Slot(uri=LAMBDA.study_organization_associations, name="dataset__study_organization_associations", curie=LAMBDA.curie('study_organization_associations'),
                    model_uri=LAMBDA.dataset__study_organization_associations, domain=None, range=Optional[Union[Union[dict, StudyOrganizationAssociation], list[Union[dict, StudyOrganizationAssociation]]]])
 
+slots.dataset__study_publication_associations = Slot(uri=LAMBDA.study_publication_associations, name="dataset__study_publication_associations", curie=LAMBDA.curie('study_publication_associations'),
+                   model_uri=LAMBDA.dataset__study_publication_associations, domain=None, range=Optional[Union[Union[dict, StudyPublicationAssociation], list[Union[dict, StudyPublicationAssociation]]]])
+
 slots.dataset__person_organization_associations = Slot(uri=LAMBDA.person_organization_associations, name="dataset__person_organization_associations", curie=LAMBDA.curie('person_organization_associations'),
                    model_uri=LAMBDA.dataset__person_organization_associations, domain=None, range=Optional[Union[Union[dict, PersonOrganizationAssociation], list[Union[dict, PersonOrganizationAssociation]]]])
 
@@ -9233,6 +9839,72 @@ slots.study__proposal_id = Slot(uri=LAMBDA.proposal_id, name="study__proposal_id
 
 slots.study__keywords = Slot(uri=LAMBDA.keywords, name="study__keywords", curie=LAMBDA.curie('keywords'),
                    model_uri=LAMBDA.study__keywords, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.study__database_cross_references = Slot(uri=LAMBDA.database_cross_references, name="study__database_cross_references", curie=LAMBDA.curie('database_cross_references'),
+                   model_uri=LAMBDA.study__database_cross_references, domain=None, range=Optional[Union[Union[dict, DatabaseCrossReference], list[Union[dict, DatabaseCrossReference]]]])
+
+slots.publication__doi = Slot(uri=LAMBDA.doi, name="publication__doi", curie=LAMBDA.curie('doi'),
+                   model_uri=LAMBDA.publication__doi, domain=None, range=Optional[Union[str, URIorCURIE]])
+
+slots.publication__pubmed_id = Slot(uri=LAMBDA.pubmed_id, name="publication__pubmed_id", curie=LAMBDA.curie('pubmed_id'),
+                   model_uri=LAMBDA.publication__pubmed_id, domain=None, range=Optional[Union[str, URIorCURIE]])
+
+slots.publication__authors = Slot(uri=LAMBDA.authors, name="publication__authors", curie=LAMBDA.curie('authors'),
+                   model_uri=LAMBDA.publication__authors, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.publication__journal = Slot(uri=LAMBDA.journal, name="publication__journal", curie=LAMBDA.curie('journal'),
+                   model_uri=LAMBDA.publication__journal, domain=None, range=Optional[str])
+
+slots.publication__journal_abbreviation = Slot(uri=LAMBDA.journal_abbreviation, name="publication__journal_abbreviation", curie=LAMBDA.curie('journal_abbreviation'),
+                   model_uri=LAMBDA.publication__journal_abbreviation, domain=None, range=Optional[str])
+
+slots.publication__journal_issn = Slot(uri=LAMBDA.journal_issn, name="publication__journal_issn", curie=LAMBDA.curie('journal_issn'),
+                   model_uri=LAMBDA.publication__journal_issn, domain=None, range=Optional[str])
+
+slots.publication__journal_country = Slot(uri=LAMBDA.journal_country, name="publication__journal_country", curie=LAMBDA.curie('journal_country'),
+                   model_uri=LAMBDA.publication__journal_country, domain=None, range=Optional[str])
+
+slots.publication__volume = Slot(uri=LAMBDA.volume, name="publication__volume", curie=LAMBDA.curie('volume'),
+                   model_uri=LAMBDA.publication__volume, domain=None, range=Optional[str])
+
+slots.publication__issue = Slot(uri=LAMBDA.issue, name="publication__issue", curie=LAMBDA.curie('issue'),
+                   model_uri=LAMBDA.publication__issue, domain=None, range=Optional[str])
+
+slots.publication__page_first = Slot(uri=LAMBDA.page_first, name="publication__page_first", curie=LAMBDA.curie('page_first'),
+                   model_uri=LAMBDA.publication__page_first, domain=None, range=Optional[str])
+
+slots.publication__page_last = Slot(uri=LAMBDA.page_last, name="publication__page_last", curie=LAMBDA.curie('page_last'),
+                   model_uri=LAMBDA.publication__page_last, domain=None, range=Optional[str])
+
+slots.publication__year = Slot(uri=LAMBDA.year, name="publication__year", curie=LAMBDA.curie('year'),
+                   model_uri=LAMBDA.publication__year, domain=None, range=Optional[int])
+
+slots.publication__language = Slot(uri=LAMBDA.language, name="publication__language", curie=LAMBDA.curie('language'),
+                   model_uri=LAMBDA.publication__language, domain=None, range=Optional[str])
+
+slots.publication__book_title = Slot(uri=LAMBDA.book_title, name="publication__book_title", curie=LAMBDA.curie('book_title'),
+                   model_uri=LAMBDA.publication__book_title, domain=None, range=Optional[str])
+
+slots.publication__book_publisher = Slot(uri=LAMBDA.book_publisher, name="publication__book_publisher", curie=LAMBDA.curie('book_publisher'),
+                   model_uri=LAMBDA.publication__book_publisher, domain=None, range=Optional[str])
+
+slots.publication__book_publisher_city = Slot(uri=LAMBDA.book_publisher_city, name="publication__book_publisher_city", curie=LAMBDA.curie('book_publisher_city'),
+                   model_uri=LAMBDA.publication__book_publisher_city, domain=None, range=Optional[str])
+
+slots.publication__book_isbn = Slot(uri=LAMBDA.book_isbn, name="publication__book_isbn", curie=LAMBDA.curie('book_isbn'),
+                   model_uri=LAMBDA.publication__book_isbn, domain=None, range=Optional[str])
+
+slots.publication__unpublished = Slot(uri=LAMBDA.unpublished, name="publication__unpublished", curie=LAMBDA.curie('unpublished'),
+                   model_uri=LAMBDA.publication__unpublished, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.studyPublicationAssociation__study_id = Slot(uri=LAMBDA.study_id, name="studyPublicationAssociation__study_id", curie=LAMBDA.curie('study_id'),
+                   model_uri=LAMBDA.studyPublicationAssociation__study_id, domain=None, range=Union[str, StudyId])
+
+slots.studyPublicationAssociation__publication_id = Slot(uri=LAMBDA.publication_id, name="studyPublicationAssociation__publication_id", curie=LAMBDA.curie('publication_id'),
+                   model_uri=LAMBDA.studyPublicationAssociation__publication_id, domain=None, range=Union[str, PublicationId])
+
+slots.studyPublicationAssociation__is_primary = Slot(uri=LAMBDA.is_primary, name="studyPublicationAssociation__is_primary", curie=LAMBDA.curie('is_primary'),
+                   model_uri=LAMBDA.studyPublicationAssociation__is_primary, domain=None, range=Optional[Union[bool, Bool]])
 
 slots.person__orcid = Slot(uri=LAMBDA.orcid, name="person__orcid", curie=LAMBDA.curie('orcid'),
                    model_uri=LAMBDA.person__orcid, domain=None, range=Optional[Union[str, URIorCURIE]],
@@ -9525,6 +10197,13 @@ slots.proteinConstruct__sequence_verified_by = Slot(uri=LAMBDA.sequence_verified
 slots.proteinConstruct__verification_notes = Slot(uri=LAMBDA.verification_notes, name="proteinConstruct__verification_notes", curie=LAMBDA.curie('verification_notes'),
                    model_uri=LAMBDA.proteinConstruct__verification_notes, domain=None, range=Optional[str])
 
+slots.proteinConstruct__amino_acid_sequence = Slot(uri=LAMBDA.amino_acid_sequence, name="proteinConstruct__amino_acid_sequence", curie=LAMBDA.curie('amino_acid_sequence'),
+                   model_uri=LAMBDA.proteinConstruct__amino_acid_sequence, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^[ACDEFGHIKLMNPQRSTVWYBJOUXZ]+$'))
+
+slots.proteinConstruct__mutations = Slot(uri=LAMBDA.mutations, name="proteinConstruct__mutations", curie=LAMBDA.curie('mutations'),
+                   model_uri=LAMBDA.proteinConstruct__mutations, domain=None, range=Optional[str])
+
 slots.nucleicAcid__nucleic_acid_type = Slot(uri=LAMBDA.nucleic_acid_type, name="nucleicAcid__nucleic_acid_type", curie=LAMBDA.curie('nucleic_acid_type'),
                    model_uri=LAMBDA.nucleicAcid__nucleic_acid_type, domain=None, range=Union[str, "NucleicAcidTypeEnum"])
 
@@ -9761,6 +10440,15 @@ slots.samplePreparation__aggregation_assessment = Slot(uri=LAMBDA.aggregation_as
 slots.samplePreparation__aliquoting = Slot(uri=LAMBDA.aliquoting, name="samplePreparation__aliquoting", curie=LAMBDA.curie('aliquoting'),
                    model_uri=LAMBDA.samplePreparation__aliquoting, domain=None, range=Optional[str])
 
+slots.samplePreparation__cryoem_preparation = Slot(uri=LAMBDA.cryoem_preparation, name="samplePreparation__cryoem_preparation", curie=LAMBDA.curie('cryoem_preparation'),
+                   model_uri=LAMBDA.samplePreparation__cryoem_preparation, domain=None, range=Optional[Union[dict, CryoEMPreparation]])
+
+slots.samplePreparation__xray_preparation = Slot(uri=LAMBDA.xray_preparation, name="samplePreparation__xray_preparation", curie=LAMBDA.curie('xray_preparation'),
+                   model_uri=LAMBDA.samplePreparation__xray_preparation, domain=None, range=Optional[Union[dict, XRayPreparation]])
+
+slots.samplePreparation__saxs_preparation = Slot(uri=LAMBDA.saxs_preparation, name="samplePreparation__saxs_preparation", curie=LAMBDA.curie('saxs_preparation'),
+                   model_uri=LAMBDA.samplePreparation__saxs_preparation, domain=None, range=Optional[Union[dict, SAXSPreparation]])
+
 slots.instrument__instrument_code = Slot(uri=LAMBDA.instrument_code, name="instrument__instrument_code", curie=LAMBDA.curie('instrument_code'),
                    model_uri=LAMBDA.instrument__instrument_code, domain=None, range=str)
 
@@ -9872,6 +10560,15 @@ slots.cryoEMInstrument__imaging_mode = Slot(uri=LAMBDA.imaging_mode, name="cryoE
 
 slots.cryoEMInstrument__tem_beam_diameter = Slot(uri=LAMBDA.tem_beam_diameter, name="cryoEMInstrument__tem_beam_diameter", curie=LAMBDA.curie('tem_beam_diameter'),
                    model_uri=LAMBDA.cryoEMInstrument__tem_beam_diameter, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.cryoEMInstrument__electron_source = Slot(uri=LAMBDA.electron_source, name="cryoEMInstrument__electron_source", curie=LAMBDA.curie('electron_source'),
+                   model_uri=LAMBDA.cryoEMInstrument__electron_source, domain=None, range=Optional[str])
+
+slots.cryoEMInstrument__illumination_mode = Slot(uri=LAMBDA.illumination_mode, name="cryoEMInstrument__illumination_mode", curie=LAMBDA.curie('illumination_mode'),
+                   model_uri=LAMBDA.cryoEMInstrument__illumination_mode, domain=None, range=Optional[str])
+
+slots.cryoEMInstrument__specimen_holder_model = Slot(uri=LAMBDA.specimen_holder_model, name="cryoEMInstrument__specimen_holder_model", curie=LAMBDA.curie('specimen_holder_model'),
+                   model_uri=LAMBDA.cryoEMInstrument__specimen_holder_model, domain=None, range=Optional[str])
 
 slots.xRayInstrument__source_type = Slot(uri=LAMBDA.source_type, name="xRayInstrument__source_type", curie=LAMBDA.curie('source_type'),
                    model_uri=LAMBDA.xRayInstrument__source_type, domain=None, range=Optional[Union[str, "XRaySourceTypeEnum"]])
@@ -10016,6 +10713,12 @@ slots.sANSInstrument__configuration = Slot(uri=LAMBDA.configuration, name="sANSI
 
 slots.sANSInstrument__environment = Slot(uri=LAMBDA.environment, name="sANSInstrument__environment", curie=LAMBDA.curie('environment'),
                    model_uri=LAMBDA.sANSInstrument__environment, domain=None, range=Optional[str])
+
+slots.nMRInstrument__field_strength = Slot(uri=LAMBDA.field_strength, name="nMRInstrument__field_strength", curie=LAMBDA.curie('field_strength'),
+                   model_uri=LAMBDA.nMRInstrument__field_strength, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.nMRInstrument__spectrometer_type = Slot(uri=LAMBDA.spectrometer_type, name="nMRInstrument__spectrometer_type", curie=LAMBDA.curie('spectrometer_type'),
+                   model_uri=LAMBDA.nMRInstrument__spectrometer_type, domain=None, range=Optional[str])
 
 slots.sAXSInstrument__q_range_min = Slot(uri=LAMBDA.q_range_min, name="sAXSInstrument__q_range_min", curie=LAMBDA.curie('q_range_min'),
                    model_uri=LAMBDA.sAXSInstrument__q_range_min, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -10482,6 +11185,9 @@ slots.workflowRun__fsc_curve = Slot(uri=LAMBDA.fsc_curve, name="workflowRun__fsc
 slots.workflowRun__output_files = Slot(uri=LAMBDA.output_files, name="workflowRun__output_files", curie=LAMBDA.curie('output_files'),
                    model_uri=LAMBDA.workflowRun__output_files, domain=None, range=Optional[Union[Union[str, DataFileId], list[Union[str, DataFileId]]]])
 
+slots.workflowRun__resolution_shells = Slot(uri=LAMBDA.resolution_shells, name="workflowRun__resolution_shells", curie=LAMBDA.curie('resolution_shells'),
+                   model_uri=LAMBDA.workflowRun__resolution_shells, domain=None, range=Optional[Union[Union[dict, ResolutionShell], list[Union[dict, ResolutionShell]]]])
+
 slots.dataFile__file_name = Slot(uri=LAMBDA.file_name, name="dataFile__file_name", curie=LAMBDA.curie('file_name'),
                    model_uri=LAMBDA.dataFile__file_name, domain=None, range=str)
 
@@ -10815,6 +11521,18 @@ slots.cryoEMPreparation__ethane_temperature = Slot(uri=LAMBDA.ethane_temperature
 slots.cryoEMPreparation__plasma_treatment = Slot(uri=LAMBDA.plasma_treatment, name="cryoEMPreparation__plasma_treatment", curie=LAMBDA.curie('plasma_treatment'),
                    model_uri=LAMBDA.cryoEMPreparation__plasma_treatment, domain=None, range=Optional[str])
 
+slots.cryoEMPreparation__cryogen = Slot(uri=LAMBDA.cryogen, name="cryoEMPreparation__cryogen", curie=LAMBDA.curie('cryogen'),
+                   model_uri=LAMBDA.cryoEMPreparation__cryogen, domain=None, range=Optional[str])
+
+slots.cryoEMPreparation__stain_material = Slot(uri=LAMBDA.stain_material, name="cryoEMPreparation__stain_material", curie=LAMBDA.curie('stain_material'),
+                   model_uri=LAMBDA.cryoEMPreparation__stain_material, domain=None, range=Optional[str])
+
+slots.cryoEMPreparation__stain_type = Slot(uri=LAMBDA.stain_type, name="cryoEMPreparation__stain_type", curie=LAMBDA.curie('stain_type'),
+                   model_uri=LAMBDA.cryoEMPreparation__stain_type, domain=None, range=Optional[str])
+
+slots.cryoEMPreparation__embedding_material = Slot(uri=LAMBDA.embedding_material, name="cryoEMPreparation__embedding_material", curie=LAMBDA.curie('embedding_material'),
+                   model_uri=LAMBDA.cryoEMPreparation__embedding_material, domain=None, range=Optional[str])
+
 slots.crystallizationConditions__method = Slot(uri=LAMBDA.method, name="crystallizationConditions__method", curie=LAMBDA.curie('method'),
                    model_uri=LAMBDA.crystallizationConditions__method, domain=None, range=Optional[Union[str, "CrystallizationMethodEnum"]])
 
@@ -10928,6 +11646,15 @@ slots.xRayPreparation__loop_size = Slot(uri=LAMBDA.loop_size, name="xRayPreparat
 
 slots.xRayPreparation__mounting_temperature = Slot(uri=LAMBDA.mounting_temperature, name="xRayPreparation__mounting_temperature", curie=LAMBDA.curie('mounting_temperature'),
                    model_uri=LAMBDA.xRayPreparation__mounting_temperature, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.xRayPreparation__crystallization_ph = Slot(uri=LAMBDA.crystallization_ph, name="xRayPreparation__crystallization_ph", curie=LAMBDA.curie('crystallization_ph'),
+                   model_uri=LAMBDA.xRayPreparation__crystallization_ph, domain=None, range=Optional[float])
+
+slots.xRayPreparation__matthews_coefficient = Slot(uri=LAMBDA.matthews_coefficient, name="xRayPreparation__matthews_coefficient", curie=LAMBDA.curie('matthews_coefficient'),
+                   model_uri=LAMBDA.xRayPreparation__matthews_coefficient, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.xRayPreparation__solvent_content_percent = Slot(uri=LAMBDA.solvent_content_percent, name="xRayPreparation__solvent_content_percent", curie=LAMBDA.curie('solvent_content_percent'),
+                   model_uri=LAMBDA.xRayPreparation__solvent_content_percent, domain=None, range=Optional[float])
 
 slots.sAXSPreparation__concentration_series = Slot(uri=LAMBDA.concentration_series, name="sAXSPreparation__concentration_series", curie=LAMBDA.curie('concentration_series'),
                    model_uri=LAMBDA.sAXSPreparation__concentration_series, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -11226,6 +11953,9 @@ slots.particlePickingParameters__model_file_path = Slot(uri=LAMBDA.model_file_pa
 slots.particlePickingParameters__model_source = Slot(uri=LAMBDA.model_source, name="particlePickingParameters__model_source", curie=LAMBDA.curie('model_source'),
                    model_uri=LAMBDA.particlePickingParameters__model_source, domain=None, range=Optional[str])
 
+slots.particlePickingParameters__number_of_particles_selected = Slot(uri=LAMBDA.number_of_particles_selected, name="particlePickingParameters__number_of_particles_selected", curie=LAMBDA.curie('number_of_particles_selected'),
+                   model_uri=LAMBDA.particlePickingParameters__number_of_particles_selected, domain=None, range=Optional[int])
+
 slots.refinementParameters__symmetry = Slot(uri=LAMBDA.symmetry, name="refinementParameters__symmetry", curie=LAMBDA.curie('symmetry'),
                    model_uri=LAMBDA.refinementParameters__symmetry, domain=None, range=Optional[Union[str, "SymmetryEnum"]])
 
@@ -11249,6 +11979,48 @@ slots.refinementParameters__resolution_0_5 = Slot(uri=LAMBDA.resolution_0_5, nam
 
 slots.refinementParameters__map_sharpening_bfactor = Slot(uri=LAMBDA.map_sharpening_bfactor, name="refinementParameters__map_sharpening_bfactor", curie=LAMBDA.curie('map_sharpening_bfactor'),
                    model_uri=LAMBDA.refinementParameters__map_sharpening_bfactor, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.refinementParameters__number_of_particles = Slot(uri=LAMBDA.number_of_particles, name="refinementParameters__number_of_particles", curie=LAMBDA.curie('number_of_particles'),
+                   model_uri=LAMBDA.refinementParameters__number_of_particles, domain=None, range=Optional[int])
+
+slots.refinementParameters__helical_rise = Slot(uri=LAMBDA.helical_rise, name="refinementParameters__helical_rise", curie=LAMBDA.curie('helical_rise'),
+                   model_uri=LAMBDA.refinementParameters__helical_rise, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.refinementParameters__helical_twist = Slot(uri=LAMBDA.helical_twist, name="refinementParameters__helical_twist", curie=LAMBDA.curie('helical_twist'),
+                   model_uri=LAMBDA.refinementParameters__helical_twist, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.refinementParameters__axial_symmetry = Slot(uri=LAMBDA.axial_symmetry, name="refinementParameters__axial_symmetry", curie=LAMBDA.curie('axial_symmetry'),
+                   model_uri=LAMBDA.refinementParameters__axial_symmetry, domain=None, range=Optional[str])
+
+slots.resolutionShell__resolution_high = Slot(uri=LAMBDA.resolution_high, name="resolutionShell__resolution_high", curie=LAMBDA.curie('resolution_high'),
+                   model_uri=LAMBDA.resolutionShell__resolution_high, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.resolutionShell__resolution_low = Slot(uri=LAMBDA.resolution_low, name="resolutionShell__resolution_low", curie=LAMBDA.curie('resolution_low'),
+                   model_uri=LAMBDA.resolutionShell__resolution_low, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.resolutionShell__completeness_percent = Slot(uri=LAMBDA.completeness_percent, name="resolutionShell__completeness_percent", curie=LAMBDA.curie('completeness_percent'),
+                   model_uri=LAMBDA.resolutionShell__completeness_percent, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.resolutionShell__multiplicity = Slot(uri=LAMBDA.multiplicity, name="resolutionShell__multiplicity", curie=LAMBDA.curie('multiplicity'),
+                   model_uri=LAMBDA.resolutionShell__multiplicity, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.resolutionShell__i_over_sigma = Slot(uri=LAMBDA.i_over_sigma, name="resolutionShell__i_over_sigma", curie=LAMBDA.curie('i_over_sigma'),
+                   model_uri=LAMBDA.resolutionShell__i_over_sigma, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.resolutionShell__rmerge = Slot(uri=LAMBDA.rmerge, name="resolutionShell__rmerge", curie=LAMBDA.curie('rmerge'),
+                   model_uri=LAMBDA.resolutionShell__rmerge, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.resolutionShell__rpim = Slot(uri=LAMBDA.rpim, name="resolutionShell__rpim", curie=LAMBDA.curie('rpim'),
+                   model_uri=LAMBDA.resolutionShell__rpim, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.resolutionShell__cc_half = Slot(uri=LAMBDA.cc_half, name="resolutionShell__cc_half", curie=LAMBDA.curie('cc_half'),
+                   model_uri=LAMBDA.resolutionShell__cc_half, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.resolutionShell__n_unique = Slot(uri=LAMBDA.n_unique, name="resolutionShell__n_unique", curie=LAMBDA.curie('n_unique'),
+                   model_uri=LAMBDA.resolutionShell__n_unique, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.resolutionShell__n_observations = Slot(uri=LAMBDA.n_observations, name="resolutionShell__n_observations", curie=LAMBDA.curie('n_observations'),
+                   model_uri=LAMBDA.resolutionShell__n_observations, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.fSCCurve__resolution_angstrom = Slot(uri=LAMBDA.resolution_angstrom, name="fSCCurve__resolution_angstrom", curie=LAMBDA.curie('resolution_angstrom'),
                    model_uri=LAMBDA.fSCCurve__resolution_angstrom, domain=None, range=Optional[Union[dict, QuantityValue]])

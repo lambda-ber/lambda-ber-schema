@@ -24,6 +24,7 @@ from lambda_ber_schema.loaders import (
     SimpleScatteringLoader,
     SSRLMXLoader,
 )
+from lambda_ber_schema.loaders.base import dataset_to_dict
 
 app = typer.Typer(
     name="lambda-ber-schema",
@@ -50,7 +51,7 @@ def _serialize_dataset(dataset, format: str) -> str:
         raise typer.Exit(1)
 
     # Convert Pydantic model to dict, excluding None values
-    data = dataset.model_dump(exclude_none=True, mode="json")
+    data = dataset_to_dict(dataset)
 
     if normalized_format == "json":
         return json.dumps(data, indent=2)
@@ -291,6 +292,53 @@ def etl_pdb(
         typer.echo(f"Wrote output to: {output}", err=True)
     else:
         typer.echo(output_str)
+
+
+@etl_app.command("pdb-coverage")
+def etl_pdb_coverage(
+    entry: Annotated[
+        str,
+        typer.Option("--entry", "-e", help="PDB entry ID (e.g., 7ZYI)"),
+    ],
+    cache: Annotated[
+        bool,
+        typer.Option("--cache/--no-cache", help="Enable/disable response caching"),
+    ] = False,
+    cache_dir: Annotated[
+        Path | None,
+        typer.Option("--cache-dir", help="Cache directory (default: .cache)"),
+    ] = None,
+) -> None:
+    """
+    Report how every field RCSB returns for an entry is handled by the PDB loader.
+
+    Counts the entry's fields by disposition (carried in a named slot, carried as a metric,
+    derived, reference data, ...) and lists any field pdb_field_map.yaml does not classify.
+    Exits 1 if there is one.
+
+    Example:
+
+        lambda-ber-schema etl pdb-coverage --entry 7ZYI
+    """
+    from lambda_ber_schema.loaders.pdb_coverage import DISPOSITIONS, coverage
+
+    loader = PDBLoader(cache=ResponseCache(cache_dir=cache_dir or Path(".cache"), enabled=cache))
+    raw = _run_with_error_handling(
+        lambda: loader.fetch(entry),
+        http_error_message=lambda status_msg: f"Error: failed to fetch {entry} from pdb{status_msg}",
+        value_error_message=lambda _exc: f"Error: {entry} not found in pdb",
+        unexpected_error_message=lambda exc: f"Error: unexpected failure fetching {entry}: {exc}",
+    )
+    report = coverage(raw.by_kind())
+    for disposition in DISPOSITIONS:
+        typer.echo(f"{disposition:>13}: {report.counts.get(disposition, 0)}")
+    unclassified = sum(len(paths) for paths in report.unclassified.values())
+    typer.echo(f"{'unclassified':>13}: {unclassified}")
+    for kind, paths in sorted(report.unclassified.items()):
+        for path in sorted(paths):
+            typer.echo(f"  {kind}: {path}")
+    if unclassified:
+        raise typer.Exit(1)
 
 
 @etl_app.command("emsl")

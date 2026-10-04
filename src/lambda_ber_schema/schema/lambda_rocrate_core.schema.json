@@ -446,6 +446,26 @@
             "additionalProperties": false,
             "description": "Multi-technique synchrotron beamline that supports multiple experimental methods",
             "properties": {
+                "additional_metrics": {
+                    "description": "Numeric values the source reports that have no named slot on this class, each a QuantityValue whose attribute names the source item it came from (attribute id mmCIF:_refine.B_iso_max, label refine.B_iso_max). A loader puts a value here only after checking that no named slot fits; a value that recurs across sources should get a named slot instead.",
+                    "items": {
+                        "$ref": "#/$defs/QuantityValue"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "additional_properties": {
+                    "description": "Text values the source reports that have no named slot on this class, each a TextValue whose attribute names the source item it came from. The same rule as additional_metrics applies.",
+                    "items": {
+                        "$ref": "#/$defs/TextValue"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "beamline_id": {
                     "description": "Beamline identifier at synchrotron/neutron facility",
                     "type": [
@@ -543,6 +563,16 @@
                     ],
                     "description": "Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.",
                     "type": "string"
+                },
+                "instrument_type": {
+                    "description": "Which kind of instrument this row is: CryoEMInstrument, XRayInstrument, NMRInstrument, SAXSInstrument, SANSInstrument, BeamlineInstrument, or Instrument for one with no subclass. A Dataset lists every instrument in one table, so a row carrying fields of a subclass (accelerating_voltage, detector_model) needs this to be read back as that subclass rather than rejected as an Instrument with unknown fields.",
+                    "enum": [
+                        "BeamlineInstrument"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "lims_system": {
                     "$ref": "#/$defs/LIMSSystemEnum",
@@ -1994,6 +2024,26 @@
                     ],
                     "description": "Accelerating voltage in kV"
                 },
+                "additional_metrics": {
+                    "description": "Numeric values the source reports that have no named slot on this class, each a QuantityValue whose attribute names the source item it came from (attribute id mmCIF:_refine.B_iso_max, label refine.B_iso_max). A loader puts a value here only after checking that no named slot fits; a value that recurs across sources should get a named slot instead.",
+                    "items": {
+                        "$ref": "#/$defs/QuantityValue"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "additional_properties": {
+                    "description": "Text values the source reports that have no named slot on this class, each a TextValue whose attribute names the source item it came from. The same rule as additional_metrics applies.",
+                    "items": {
+                        "$ref": "#/$defs/TextValue"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "autoloader_capacity": {
                     "anyOf": [
                         {
@@ -2088,6 +2138,13 @@
                     "$ref": "#/$defs/DetectorTechnologyEnum",
                     "description": "Generic detector technology type"
                 },
+                "electron_source": {
+                    "description": "Electron source (FIELD EMISSION GUN, LAB6, TUNGSTEN HAIRPIN)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "energy_filter_make": {
                     "description": "Energy filter manufacturer",
                     "type": [
@@ -2154,6 +2211,13 @@
                     "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
                     "type": "string"
                 },
+                "illumination_mode": {
+                    "description": "Illumination mode (FLOOD BEAM, SPOT SCAN)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "imaging_mode": {
                     "$ref": "#/$defs/ImagingModeEnum",
                     "description": "Imaging mode for electron microscopy"
@@ -2184,6 +2248,16 @@
                     ],
                     "description": "Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.",
                     "type": "string"
+                },
+                "instrument_type": {
+                    "description": "Which kind of instrument this row is: CryoEMInstrument, XRayInstrument, NMRInstrument, SAXSInstrument, SANSInstrument, BeamlineInstrument, or Instrument for one with no subclass. A Dataset lists every instrument in one table, so a row carrying fields of a subclass (accelerating_voltage, detector_model) needs this to be read back as that subclass rather than rejected as an Instrument with unknown fields.",
+                    "enum": [
+                        "CryoEMInstrument"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "manufacturer": {
                     "description": "Instrument manufacturer",
@@ -2259,6 +2333,13 @@
                         }
                     ],
                     "description": "Physical pixel size of the detector in micrometers"
+                },
+                "specimen_holder_model": {
+                    "description": "Specimen holder model, or the autoloader for a microscope that has one",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "spotsize": {
                     "anyOf": [
@@ -2367,7 +2448,21 @@
                     ],
                     "description": "Chamber temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
+                "cryogen": {
+                    "description": "Cryogen the grid was plunged into (ETHANE, ETHANE-PROPANE, NITROGEN)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "embedding_material": {
+                    "description": "Embedding medium (trehalose, glucose, tannin, vitreous ice is not embedding)",
                     "type": [
                         "string",
                         "null"
@@ -2478,6 +2573,20 @@
                         }
                     ],
                     "description": "Volume of sample applied, typically specified in microliters. Data providers may specify alternative units by including the unit in the QuantityValue."
+                },
+                "stain_material": {
+                    "description": "Negative stain or other stain applied (uranyl acetate, ammonium molybdate)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "stain_type": {
+                    "description": "Kind of staining: NEGATIVE or POSITIVE",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "support_film": {
                     "description": "Support film type",
@@ -3130,7 +3239,29 @@
                 "mirbase",
                 "gtrnadb",
                 "ndb",
-                "modomics"
+                "modomics",
+                "emdb",
+                "empiar",
+                "bmrb",
+                "sasbdb",
+                "pdb_ihm",
+                "nakb",
+                "sbgrid",
+                "proteindiffraction",
+                "olderado",
+                "ecod",
+                "scop2",
+                "mpstruc",
+                "opm",
+                "pdbtm",
+                "memprotmd",
+                "glytoucan",
+                "glygen",
+                "bindingdb",
+                "binding_moad",
+                "pdbbind",
+                "atc",
+                "other"
             ],
             "title": "DatabaseNameEnum",
             "type": "string"
@@ -3146,6 +3277,13 @@
                     },
                     "type": [
                         "array",
+                        "null"
+                    ]
+                },
+                "deposition_date": {
+                    "description": "Date the dataset was first deposited with the archive it was loaded from (YYYY-MM-DD)",
+                    "type": [
+                        "string",
                         "null"
                     ]
                 },
@@ -3213,7 +3351,29 @@
                 "instruments": {
                     "description": "All instruments used across studies",
                     "items": {
-                        "$ref": "#/$defs/Instrument"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/Instrument"
+                            },
+                            {
+                                "$ref": "#/$defs/CryoEMInstrument"
+                            },
+                            {
+                                "$ref": "#/$defs/XRayInstrument"
+                            },
+                            {
+                                "$ref": "#/$defs/SANSInstrument"
+                            },
+                            {
+                                "$ref": "#/$defs/NMRInstrument"
+                            },
+                            {
+                                "$ref": "#/$defs/SAXSInstrument"
+                            },
+                            {
+                                "$ref": "#/$defs/BeamlineInstrument"
+                            }
+                        ]
                     },
                     "type": [
                         "array",
@@ -3227,6 +3387,13 @@
                     },
                     "type": [
                         "array",
+                        "null"
+                    ]
+                },
+                "last_revision_date": {
+                    "description": "Date of the archive's most recent revision of the dataset (YYYY-MM-DD)",
+                    "type": [
+                        "string",
                         "null"
                     ]
                 },
@@ -3287,6 +3454,30 @@
                     },
                     "type": [
                         "array",
+                        "null"
+                    ]
+                },
+                "publications": {
+                    "description": "All publications describing studies in this dataset",
+                    "items": {
+                        "$ref": "#/$defs/Publication"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "release_date": {
+                    "description": "Date the archive first made the dataset public (YYYY-MM-DD)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "revision": {
+                    "description": "The archive's version label for the dataset as loaded, so a reload can tell whether the source changed: '1.4' for a PDB entry at major revision 1, minor revision 4",
+                    "type": [
+                        "string",
                         "null"
                     ]
                 },
@@ -3394,6 +3585,16 @@
                     "description": "Links between studies and people (M:N with role) - where authorship lives",
                     "items": {
                         "$ref": "#/$defs/StudyPersonAssociation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "study_publication_associations": {
+                    "description": "Links between studies and the publications that describe them (M:N, marking the primary citation)",
+                    "items": {
+                        "$ref": "#/$defs/StudyPublicationAssociation"
                     },
                     "type": [
                         "array",
@@ -4027,6 +4228,26 @@
                     "description": "Version of acquisition software",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "additional_metrics": {
+                    "description": "Numeric values the source reports that have no named slot on this class, each a QuantityValue whose attribute names the source item it came from (attribute id mmCIF:_refine.B_iso_max, label refine.B_iso_max). A loader puts a value here only after checking that no named slot fits; a value that recurs across sources should get a named slot instead.",
+                    "items": {
+                        "$ref": "#/$defs/QuantityValue"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "additional_properties": {
+                    "description": "Text values the source reports that have no named slot on this class, each a TextValue whose attribute names the source item it came from. The same rule as additional_metrics applies.",
+                    "items": {
+                        "$ref": "#/$defs/TextValue"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
@@ -5082,7 +5303,12 @@
                 "x_ray_diffraction",
                 "neutron_diffraction",
                 "electron_diffraction",
-                "fiber_diffraction"
+                "fiber_diffraction",
+                "single_particle_analysis",
+                "helical_reconstruction",
+                "subtomogram_averaging",
+                "electron_tomography",
+                "electron_crystallography"
             ],
             "title": "ExperimentalMethodEnum",
             "type": "string"
@@ -5355,7 +5581,10 @@
                 "json",
                 "csv",
                 "ccp4",
-                "gz"
+                "gz",
+                "pdf",
+                "nmr_star",
+                "other"
             ],
             "title": "FileFormatEnum",
             "type": "string"
@@ -6213,6 +6442,26 @@
             "additionalProperties": false,
             "description": "An instrument used to collect data",
             "properties": {
+                "additional_metrics": {
+                    "description": "Numeric values the source reports that have no named slot on this class, each a QuantityValue whose attribute names the source item it came from (attribute id mmCIF:_refine.B_iso_max, label refine.B_iso_max). A loader puts a value here only after checking that no named slot fits; a value that recurs across sources should get a named slot instead.",
+                    "items": {
+                        "$ref": "#/$defs/QuantityValue"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "additional_properties": {
+                    "description": "Text values the source reports that have no named slot on this class, each a TextValue whose attribute names the source item it came from. The same rule as additional_metrics applies.",
+                    "items": {
+                        "$ref": "#/$defs/TextValue"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "beamline_id": {
                     "description": "Beamline identifier at synchrotron/neutron facility",
                     "type": [
@@ -6280,6 +6529,16 @@
                     ],
                     "description": "Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.",
                     "type": "string"
+                },
+                "instrument_type": {
+                    "description": "Which kind of instrument this row is: CryoEMInstrument, XRayInstrument, NMRInstrument, SAXSInstrument, SANSInstrument, BeamlineInstrument, or Instrument for one with no subclass. A Dataset lists every instrument in one table, so a row carrying fields of a subclass (accelerating_voltage, detector_model) needs this to be read back as that subclass rather than rejected as an Instrument with unknown fields.",
+                    "enum": [
+                        "Instrument"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "manufacturer": {
                     "description": "Instrument manufacturer",
@@ -7500,10 +7759,179 @@
             "title": "MutationTypeEnum",
             "type": "string"
         },
+        "NMRInstrument": {
+            "additionalProperties": false,
+            "description": "An NMR spectrometer",
+            "properties": {
+                "additional_metrics": {
+                    "description": "Numeric values the source reports that have no named slot on this class, each a QuantityValue whose attribute names the source item it came from (attribute id mmCIF:_refine.B_iso_max, label refine.B_iso_max). A loader puts a value here only after checking that no named slot fits; a value that recurs across sources should get a named slot instead.",
+                    "items": {
+                        "$ref": "#/$defs/QuantityValue"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "additional_properties": {
+                    "description": "Text values the source reports that have no named slot on this class, each a TextValue whose attribute names the source item it came from. The same rule as additional_metrics applies.",
+                    "items": {
+                        "$ref": "#/$defs/TextValue"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "beamline_id": {
+                    "description": "Beamline identifier at synchrotron/neutron facility",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "current_status": {
+                    "$ref": "#/$defs/InstrumentStatusEnum",
+                    "description": "Current operational status"
+                },
+                "description": {
+                    "description": "A detailed textual description of this entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "facility_name": {
+                    "$ref": "#/$defs/FacilityEnum",
+                    "description": "Name of the research facility where the instrument is located"
+                },
+                "facility_organization_id": {
+                    "description": "The Organization that operates this instrument's facility. An instrument sits at exactly one facility, so this is a direct reference rather than an association table - the same shape as Sample.parent_sample_id.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "facility_ror": {
+                    "description": "Research Organization Registry (ROR) identifier for the facility",
+                    "pattern": "^https://ror\\.org/\\w+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "field_strength": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Magnetic field strength, as the proton frequency in MHz"
+                },
+                "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+                    "type": "string"
+                },
+                "installation_date": {
+                    "description": "Date of instrument installation",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "instrument_category": {
+                    "$ref": "#/$defs/InstrumentCategoryEnum",
+                    "description": "Category distinguishing beamlines from laboratory equipment"
+                },
+                "instrument_code": {
+                    "description": "Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.",
+                    "type": "string"
+                },
+                "instrument_registry_id": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/BeamlineEnum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.",
+                    "type": "string"
+                },
+                "instrument_type": {
+                    "description": "Which kind of instrument this row is: CryoEMInstrument, XRayInstrument, NMRInstrument, SAXSInstrument, SANSInstrument, BeamlineInstrument, or Instrument for one with no subclass. A Dataset lists every instrument in one table, so a row carrying fields of a subclass (accelerating_voltage, detector_model) needs this to be read back as that subclass rather than rejected as an Instrument with unknown fields.",
+                    "enum": [
+                        "NMRInstrument"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "manufacturer": {
+                    "description": "Instrument manufacturer",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "model": {
+                    "description": "Instrument model",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "spectrometer_type": {
+                    "description": "Spectrometer type as the source records it",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "description": "A human-readable name or title for this entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "instrument_code",
+                "id"
+            ],
+            "title": "NMRInstrument",
+            "type": "object"
+        },
         "NucleicAcid": {
             "additionalProperties": false,
             "description": "A nucleic acid as a molecular entity: one DNA, RNA or hybrid strand, with its sequence, type, source and the annotations that hold for it regardless of any one preparation. The counterpart of Protein for the other biopolymer. One NucleicAcid record is shared by every Sample that contains it, through SampleNucleicAcidAssociation. A duplex of two different strands is two records; a self-complementary duplex is one record with copy_number 2 on the association. Whether the strand is paired in a given sample, how it was made, and which chemical modifications it carries are preparation facts and live on the association.",
             "properties": {
+                "additional_metrics": {
+                    "description": "Numeric values the source reports that have no named slot on this class, each a QuantityValue whose attribute names the source item it came from (attribute id mmCIF:_refine.B_iso_max, label refine.B_iso_max). A loader puts a value here only after checking that no named slot fits; a value that recurs across sources should get a named slot instead.",
+                    "items": {
+                        "$ref": "#/$defs/QuantityValue"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "additional_properties": {
+                    "description": "Text values the source reports that have no named slot on this class, each a TextValue whose attribute names the source item it came from. The same rule as additional_metrics applies.",
+                    "items": {
+                        "$ref": "#/$defs/TextValue"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "cross_references": {
                     "description": "Cross-references to external databases other than those named by rnacentral_id, sequence_accession and rfam_families (miRBase, GtRNAdb, NDB, ...).",
                     "items": {
@@ -8445,6 +8873,13 @@
                     ],
                     "description": "Normalized cross-correlation score threshold"
                 },
+                "number_of_particles_selected": {
+                    "description": "Number of particles the picking step selected",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
                 "picking_method": {
                     "description": "Method used (manual, template_matching, deep_learning, LoG, Topaz, other)",
                     "type": [
@@ -9004,6 +9439,26 @@
             "additionalProperties": false,
             "description": "A protein as a biological entity: its sequence, source organism, gene, and the functional and structural annotations that hold for it regardless of any one preparation. One Protein record is shared by every Sample that contains it, through SampleProteinAssociation. Facts about a particular preparation - buffer, concentration, tags left on, the residue range actually present, the mass actually measured - stay on Sample and on the association.",
             "properties": {
+                "additional_metrics": {
+                    "description": "Numeric values the source reports that have no named slot on this class, each a QuantityValue whose attribute names the source item it came from (attribute id mmCIF:_refine.B_iso_max, label refine.B_iso_max). A loader puts a value here only after checking that no named slot fits; a value that recurs across sources should get a named slot instead.",
+                    "items": {
+                        "$ref": "#/$defs/QuantityValue"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "additional_properties": {
+                    "description": "Text values the source reports that have no named slot on this class, each a TextValue whose attribute names the source item it came from. The same rule as additional_metrics applies.",
+                    "items": {
+                        "$ref": "#/$defs/TextValue"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "amino_acid_sequence": {
                     "description": "Canonical one-letter amino acid sequence of the protein, without tags or other construct additions. Construct-level sequence belongs on ProteinConstruct.",
                     "pattern": "^[ACDEFGHIKLMNPQRSTVWYBJOUXZ]+$",
@@ -9339,6 +9794,34 @@
             "additionalProperties": false,
             "description": "Detailed information about a protein construct including cloning and sequence design",
             "properties": {
+                "additional_metrics": {
+                    "description": "Numeric values the source reports that have no named slot on this class, each a QuantityValue whose attribute names the source item it came from (attribute id mmCIF:_refine.B_iso_max, label refine.B_iso_max). A loader puts a value here only after checking that no named slot fits; a value that recurs across sources should get a named slot instead.",
+                    "items": {
+                        "$ref": "#/$defs/QuantityValue"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "additional_properties": {
+                    "description": "Text values the source reports that have no named slot on this class, each a TextValue whose attribute names the source item it came from. The same rule as additional_metrics applies.",
+                    "items": {
+                        "$ref": "#/$defs/TextValue"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "amino_acid_sequence": {
+                    "description": "One-letter sequence of the expressed construct, tags, linkers and mutations included: the sequence of the molecule in the sample, which may differ from the canonical sequence on Protein",
+                    "pattern": "^[ACDEFGHIKLMNPQRSTVWYBJOUXZ]+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "cleavage_site": {
                     "description": "Protease cleavage site sequence",
                     "type": [
@@ -9398,6 +9881,13 @@
                 },
                 "insert_boundaries": {
                     "description": "Start and end positions of insert in vector",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "mutations": {
+                    "description": "Point mutations or other engineered changes relative to the canonical sequence, as the source states them ('C145A', 'E166Q, del 1-20')",
                     "type": [
                         "string",
                         "null"
@@ -9793,6 +10283,155 @@
                 "id"
             ],
             "title": "ProteinProteinInteraction",
+            "type": "object"
+        },
+        "Publication": {
+            "additionalProperties": false,
+            "description": "A journal article, book chapter or preprint describing a study. Identified by DOI (doi:10.1038/s41422-022-00680-4) where one exists, else by PubMed id (pmid:35726088), else by an id local to the source. The inherited title is the article title.",
+            "properties": {
+                "authors": {
+                    "description": "Author names in publication order, as the source writes them ('Liu, H.')",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "book_isbn": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "book_publisher": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "book_publisher_city": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "book_title": {
+                    "description": "For a chapter, the title of the book",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "A detailed textual description of this entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "doi": {
+                    "description": "DOI as a CURIE (doi:10.1038/s41422-022-00680-4)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+                    "type": "string"
+                },
+                "issue": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "journal": {
+                    "description": "Full journal name",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "journal_abbreviation": {
+                    "description": "Journal abbreviation as the source gives it ('Cell Res.')",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "journal_country": {
+                    "description": "Country of the journal's publisher, as the source records it",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "journal_issn": {
+                    "description": "Journal ISSN",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "language": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "page_first": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "page_last": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "pubmed_id": {
+                    "description": "PubMed id as a CURIE (pmid:35726088)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "description": "A human-readable name or title for this entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "unpublished": {
+                    "description": "True when the source records the publication as not yet published ('To be published')",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "volume": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "year": {
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "Publication",
             "type": "object"
         },
         "PurificationStepEnum": {
@@ -10272,6 +10911,13 @@
             "additionalProperties": false,
             "description": "Parameters specific to 3D refinement workflows",
             "properties": {
+                "axial_symmetry": {
+                    "description": "Point symmetry about the helical axis (C1, C3, D2)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "box_size": {
                     "anyOf": [
                         {
@@ -10296,6 +10942,28 @@
                         "null"
                     ]
                 },
+                "helical_rise": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Axial rise per subunit for a helical reconstruction, in angstroms"
+                },
+                "helical_twist": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Angular rotation per subunit for a helical reconstruction, in degrees"
+                },
                 "map_sharpening_bfactor": {
                     "anyOf": [
                         {
@@ -10306,6 +10974,13 @@
                         }
                     ],
                     "description": "B-factor used for map sharpening, typically specified in Angstroms squared (\u00c5\u00b2). Data providers may specify alternative units by including the unit in the QuantityValue."
+                },
+                "number_of_particles": {
+                    "description": "Number of particles (or subvolumes) in the final reconstruction",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
                 },
                 "pixel_size": {
                     "anyOf": [
@@ -10437,6 +11112,134 @@
                 "@type"
             ],
             "title": "RelatedWork",
+            "type": "object"
+        },
+        "ResolutionShell": {
+            "additionalProperties": false,
+            "description": "Data statistics within one resolution shell",
+            "properties": {
+                "additional_metrics": {
+                    "description": "Numeric values the source reports that have no named slot on this class, each a QuantityValue whose attribute names the source item it came from (attribute id mmCIF:_refine.B_iso_max, label refine.B_iso_max). A loader puts a value here only after checking that no named slot fits; a value that recurs across sources should get a named slot instead.",
+                    "items": {
+                        "$ref": "#/$defs/QuantityValue"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "cc_half": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "completeness_percent": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "i_over_sigma": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "multiplicity": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "n_observations": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Number of observations in the shell before merging"
+                },
+                "n_unique": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Number of unique reflections in the shell"
+                },
+                "resolution_high": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "High-resolution limit of the shell"
+                },
+                "resolution_low": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Low-resolution limit of the shell"
+                },
+                "rmerge": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "rpim": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                }
+            },
+            "title": "ResolutionShell",
             "type": "object"
         },
         "SANSConfiguration": {
@@ -10689,6 +11492,26 @@
             "additionalProperties": false,
             "description": "Small-angle neutron scattering (SANS) instrument specifications",
             "properties": {
+                "additional_metrics": {
+                    "description": "Numeric values the source reports that have no named slot on this class, each a QuantityValue whose attribute names the source item it came from (attribute id mmCIF:_refine.B_iso_max, label refine.B_iso_max). A loader puts a value here only after checking that no named slot fits; a value that recurs across sources should get a named slot instead.",
+                    "items": {
+                        "$ref": "#/$defs/QuantityValue"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "additional_properties": {
+                    "description": "Text values the source reports that have no named slot on this class, each a TextValue whose attribute names the source item it came from. The same rule as additional_metrics applies.",
+                    "items": {
+                        "$ref": "#/$defs/TextValue"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "beamline_id": {
                     "description": "Beamline identifier at synchrotron/neutron facility",
                     "type": [
@@ -10784,6 +11607,16 @@
                     ],
                     "description": "Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.",
                     "type": "string"
+                },
+                "instrument_type": {
+                    "description": "Which kind of instrument this row is: CryoEMInstrument, XRayInstrument, NMRInstrument, SAXSInstrument, SANSInstrument, BeamlineInstrument, or Instrument for one with no subclass. A Dataset lists every instrument in one table, so a row carrying fields of a subclass (accelerating_voltage, detector_model) needs this to be read back as that subclass rather than rejected as an Instrument with unknown fields.",
+                    "enum": [
+                        "SANSInstrument"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "manufacturer": {
                     "description": "Instrument manufacturer",
@@ -10934,6 +11767,26 @@
             "additionalProperties": false,
             "description": "SAXS/WAXS instrument specifications",
             "properties": {
+                "additional_metrics": {
+                    "description": "Numeric values the source reports that have no named slot on this class, each a QuantityValue whose attribute names the source item it came from (attribute id mmCIF:_refine.B_iso_max, label refine.B_iso_max). A loader puts a value here only after checking that no named slot fits; a value that recurs across sources should get a named slot instead.",
+                    "items": {
+                        "$ref": "#/$defs/QuantityValue"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "additional_properties": {
+                    "description": "Text values the source reports that have no named slot on this class, each a TextValue whose attribute names the source item it came from. The same rule as additional_metrics applies.",
+                    "items": {
+                        "$ref": "#/$defs/TextValue"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "beamline_id": {
                     "description": "Beamline identifier at synchrotron/neutron facility",
                     "type": [
@@ -11023,6 +11876,16 @@
                     ],
                     "description": "Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.",
                     "type": "string"
+                },
+                "instrument_type": {
+                    "description": "Which kind of instrument this row is: CryoEMInstrument, XRayInstrument, NMRInstrument, SAXSInstrument, SANSInstrument, BeamlineInstrument, or Instrument for one with no subclass. A Dataset lists every instrument in one table, so a row carrying fields of a subclass (accelerating_voltage, detector_model) needs this to be read back as that subclass rather than rejected as an Instrument with unknown fields.",
+                    "enum": [
+                        "SAXSInstrument"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "manufacturer": {
                     "description": "Instrument manufacturer",
@@ -11154,6 +12017,26 @@
             "additionalProperties": false,
             "description": "A physical biological sample used in structural biology experiments. Records what is true of this preparation - buffer, concentration, storage, purity, the construct and tags used. The identity of the protein(s) it contains belongs on Protein, linked through SampleProteinAssociation, so a protein studied in ten preparations is described once. The nucleic acid(s) it contains belong on NucleicAcid in the same way, linked through SampleNucleicAcidAssociation; a protein-DNA complex is one sample with one row in each. Everything else it contains - ligands, ions, lipids, detergents, virus particles, organelles - and the full inventory of what is in it, one row per constituent with its role, lives in SampleComponent; what acts on what within the sample lives in SampleComponentInteraction.",
             "properties": {
+                "additional_metrics": {
+                    "description": "Numeric values the source reports that have no named slot on this class, each a QuantityValue whose attribute names the source item it came from (attribute id mmCIF:_refine.B_iso_max, label refine.B_iso_max). A loader puts a value here only after checking that no named slot fits; a value that recurs across sources should get a named slot instead.",
+                    "items": {
+                        "$ref": "#/$defs/QuantityValue"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "additional_properties": {
+                    "description": "Text values the source reports that have no named slot on this class, each a TextValue whose attribute names the source item it came from. The same rule as additional_metrics applies.",
+                    "items": {
+                        "$ref": "#/$defs/TextValue"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "anatomy": {
                     "description": "Anatomical part or tissue (e.g., UBERON:0008945 for leaf)",
                     "type": [
@@ -12051,6 +12934,26 @@
             "additionalProperties": false,
             "description": "A process that prepares a sample for imaging",
             "properties": {
+                "additional_metrics": {
+                    "description": "Numeric values the source reports that have no named slot on this class, each a QuantityValue whose attribute names the source item it came from (attribute id mmCIF:_refine.B_iso_max, label refine.B_iso_max). A loader puts a value here only after checking that no named slot fits; a value that recurs across sources should get a named slot instead.",
+                    "items": {
+                        "$ref": "#/$defs/QuantityValue"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "additional_properties": {
+                    "description": "Text values the source reports that have no named slot on this class, each a TextValue whose attribute names the source item it came from. The same rule as additional_metrics applies.",
+                    "items": {
+                        "$ref": "#/$defs/TextValue"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "affinity_column": {
                     "description": "Affinity column specifications",
                     "type": [
@@ -12114,6 +13017,17 @@
                         "string",
                         "null"
                     ]
+                },
+                "cryoem_preparation": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/CryoEMPreparation"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Grid, vitrification, staining and embedding detail, where preparation_type is cryo_em or negative_stain"
                 },
                 "culture_volume_l": {
                     "anyOf": [
@@ -12344,6 +13258,17 @@
                     "description": "Reference to the sample being prepared",
                     "type": "string"
                 },
+                "saxs_preparation": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/SAXSPreparation"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Solution scattering sample detail, where preparation_type is saxs or sans"
+                },
                 "sec_buffer": {
                     "description": "Buffer for size-exclusion chromatography",
                     "type": [
@@ -12385,6 +13310,17 @@
                         "string",
                         "null"
                     ]
+                },
+                "xray_preparation": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/XRayPreparation"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Crystallization, crystal and mounting detail, where preparation_type is xray_crystallography"
                 },
                 "yield_mg": {
                     "anyOf": [
@@ -12579,6 +13515,26 @@
             "additionalProperties": false,
             "description": "A small molecule as a chemical entity: a ligand, drug, substrate, cofactor, metal ion, lipid, detergent, sugar or crystallization additive, with its structure and identifiers. The counterpart of Protein and NucleicAcid for everything in a sample that is not a biopolymer. One SmallMolecule record is shared by every Sample that contains it, through SampleComponent. Facts about a particular preparation - how much was added, what it was added for, what it is bound to - stay on SampleComponent and SampleComponentInteraction.",
             "properties": {
+                "additional_metrics": {
+                    "description": "Numeric values the source reports that have no named slot on this class, each a QuantityValue whose attribute names the source item it came from (attribute id mmCIF:_refine.B_iso_max, label refine.B_iso_max). A loader puts a value here only after checking that no named slot fits; a value that recurs across sources should get a named slot instead.",
+                    "items": {
+                        "$ref": "#/$defs/QuantityValue"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "additional_properties": {
+                    "description": "Text values the source reports that have no named slot on this class, each a TextValue whose attribute names the source item it came from. The same rule as additional_metrics applies.",
+                    "items": {
+                        "$ref": "#/$defs/TextValue"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "chebi_id": {
                     "description": "ChEBI identifier as a CURIE (CHEBI:30616). Normally identical to id.",
                     "pattern": "^CHEBI:[0-9]+$",
@@ -13087,6 +14043,16 @@
             "additionalProperties": false,
             "description": "A logical grouping of related experiments investigating a research question. In the relational model, Study is lightweight - all relationships are via association tables.",
             "properties": {
+                "database_cross_references": {
+                    "description": "Records for this study in other archives: the PDB entry and its DOI, the EMDB map, the BMRB chemical shifts, a SASBDB entry, an entry this one supersedes",
+                    "items": {
+                        "$ref": "#/$defs/DatabaseCrossReference"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "description": {
                     "description": "A detailed textual description of this entity",
                     "type": [
@@ -13216,6 +14182,31 @@
                 "person_id"
             ],
             "title": "StudyPersonAssociation",
+            "type": "object"
+        },
+        "StudyPublicationAssociation": {
+            "additionalProperties": false,
+            "description": "Links a study to a publication that describes it",
+            "properties": {
+                "is_primary": {
+                    "description": "Whether this is the study's primary citation",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "publication_id": {
+                    "type": "string"
+                },
+                "study_id": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "study_id",
+                "publication_id"
+            ],
+            "title": "StudyPublicationAssociation",
             "type": "object"
         },
         "StudySampleAssociation": {
@@ -13365,7 +14356,14 @@
                 "fiber_diffraction",
                 "time_resolved_crystallography",
                 "xray_tomography",
-                "microed"
+                "microed",
+                "solution_nmr",
+                "solid_state_nmr",
+                "powder_diffraction",
+                "epr",
+                "fluorescence_transfer",
+                "infrared_spectroscopy",
+                "integrative_modeling"
             ],
             "title": "TechniqueEnum",
             "type": "string"
@@ -13568,6 +14566,26 @@
             "additionalProperties": false,
             "description": "A computational processing workflow execution",
             "properties": {
+                "additional_metrics": {
+                    "description": "Numeric values the source reports that have no named slot on this class, each a QuantityValue whose attribute names the source item it came from (attribute id mmCIF:_refine.B_iso_max, label refine.B_iso_max). A loader puts a value here only after checking that no named slot fits; a value that recurs across sources should get a named slot instead.",
+                    "items": {
+                        "$ref": "#/$defs/QuantityValue"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "additional_properties": {
+                    "description": "Text values the source reports that have no named slot on this class, each a TextValue whose attribute names the source item it came from. The same rule as additional_metrics applies.",
+                    "items": {
+                        "$ref": "#/$defs/TextValue"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "additional_software": {
                     "description": "Additional software used in pipeline",
                     "type": [
@@ -13962,6 +14980,16 @@
                         }
                     ],
                     "description": "Low resolution limit, typically specified in Angstroms (\u00c5). Data providers may specify alternative units by including the unit in the QuantityValue."
+                },
+                "resolution_shells": {
+                    "description": "Statistics per resolution shell, as the data-reduction or scaling program reported them. The overall statistics stay on the run itself; a shell table adds the breakdown, of which the highest-resolution shell is the one most often quoted.",
+                    "items": {
+                        "$ref": "#/$defs/ResolutionShell"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "restraints_other": {
                     "description": "Other restraints applied during refinement",
@@ -14677,6 +15705,26 @@
             "additionalProperties": false,
             "description": "X-ray diffractometer or synchrotron beamline specifications",
             "properties": {
+                "additional_metrics": {
+                    "description": "Numeric values the source reports that have no named slot on this class, each a QuantityValue whose attribute names the source item it came from (attribute id mmCIF:_refine.B_iso_max, label refine.B_iso_max). A loader puts a value here only after checking that no named slot fits; a value that recurs across sources should get a named slot instead.",
+                    "items": {
+                        "$ref": "#/$defs/QuantityValue"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "additional_properties": {
+                    "description": "Text values the source reports that have no named slot on this class, each a TextValue whose attribute names the source item it came from. The same rule as additional_metrics applies.",
+                    "items": {
+                        "$ref": "#/$defs/TextValue"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "beam_size_max": {
                     "anyOf": [
                         {
@@ -14832,6 +15880,16 @@
                     "description": "Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.",
                     "type": "string"
                 },
+                "instrument_type": {
+                    "description": "Which kind of instrument this row is: CryoEMInstrument, XRayInstrument, NMRInstrument, SAXSInstrument, SANSInstrument, BeamlineInstrument, or Instrument for one with no subclass. A Dataset lists every instrument in one table, so a row carrying fields of a subclass (accelerating_voltage, detector_model) needs this to be read back as that subclass rather than rejected as an Instrument with unknown fields.",
+                    "enum": [
+                        "XRayInstrument"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "manufacturer": {
                     "description": "Instrument manufacturer",
                     "type": [
@@ -14930,6 +15988,13 @@
                     "$ref": "#/$defs/CrystallizationMethodEnum",
                     "description": "Method used for crystallization"
                 },
+                "crystallization_ph": {
+                    "description": "pH of the crystallization condition",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
                 "description": {
                     "type": [
                         "string",
@@ -14978,6 +16043,17 @@
                         }
                     ],
                     "description": "Loop size, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
+                },
+                "matthews_coefficient": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Matthews coefficient V_M of the crystal, in cubic angstroms per dalton"
                 },
                 "mounting_method": {
                     "description": "Crystal mounting method",
@@ -15072,6 +16148,13 @@
                     "description": "Conditions for crystal soaking",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "solvent_content_percent": {
+                    "description": "Solvent content of the crystal, as a percentage of its volume",
+                    "type": [
+                        "number",
                         "null"
                     ]
                 },

@@ -43,6 +43,9 @@ message BeamlineInstrument
   uriorcurie id = 0
   string title = 0
   string description = 0
+  string instrumentType = 0
+ repeated  quantityValue additionalMetrics = 0
+ repeated  textValue additionalProperties = 0
   string instrumentCode = 0
   string instrumentRegistryId = 0
   instrumentCategoryEnum instrumentCategory = 0
@@ -127,6 +130,9 @@ message CryoEMInstrument
   uriorcurie id = 0
   string title = 0
   string description = 0
+  string instrumentType = 0
+ repeated  quantityValue additionalMetrics = 0
+ repeated  textValue additionalProperties = 0
   string instrumentCode = 0
   string instrumentRegistryId = 0
   instrumentCategoryEnum instrumentCategory = 0
@@ -164,6 +170,9 @@ message CryoEMInstrument
   quantityValue gunlens = 0
   imagingModeEnum imagingMode = 0
   quantityValue temBeamDiameter = 0
+  string electronSource = 0
+  string illuminationMode = 0
+  string specimenHolderModel = 0
  }
 // Cryo-EM specific sample preparation
 message CryoEMPreparation
@@ -191,6 +200,10 @@ message CryoEMPreparation
   quantityValue sampleAppliedVolume = 0
   quantityValue ethaneTemperature = 0
   string plasmaTreatment = 0
+  string cryogen = 0
+  string stainMaterial = 0
+  string stainType = 0
+  string embeddingMaterial = 0
  }
 // Cryo-EM specific quality assessments recorded during or after data collection
 message CryoEMQualityMetrics
@@ -291,9 +304,14 @@ message Dataset
   string title = 0
   string description = 0
  repeated  string keywords = 0
+  string depositionDate = 0
+  string releaseDate = 0
+  string lastRevisionDate = 0
+  string revision = 0
  repeated  study studies = 0
  repeated  person persons = 0
  repeated  organization organizations = 0
+ repeated  publication publications = 0
  repeated  instrument instruments = 0
  repeated  protein proteins = 0
  repeated  proteinConstruct proteinConstructs = 0
@@ -321,6 +339,7 @@ message Dataset
  repeated  experimentPersonAssociation experimentPersonAssociations = 0
  repeated  workflowPersonAssociation workflowPersonAssociations = 0
  repeated  studyOrganizationAssociation studyOrganizationAssociations = 0
+ repeated  studyPublicationAssociation studyPublicationAssociations = 0
  repeated  personOrganizationAssociation personOrganizationAssociations = 0
  }
 // A date or date and time value.
@@ -385,6 +404,8 @@ message ExperimentRun
   uriorcurie id = 0
   string title = 0
   string description = 0
+ repeated  quantityValue additionalMetrics = 0
+ repeated  textValue additionalProperties = 0
   string experimentCode = 0
   string experimentDate = 0
   string operatorId = 0
@@ -607,6 +628,9 @@ message Instrument
   uriorcurie id = 0
   string title = 0
   string description = 0
+  string instrumentType = 0
+ repeated  quantityValue additionalMetrics = 0
+ repeated  textValue additionalProperties = 0
   string instrumentCode = 0
   string instrumentRegistryId = 0
   instrumentCategoryEnum instrumentCategory = 0
@@ -748,12 +772,37 @@ message MutationEffect
   clinicalSignificanceEnum clinicalSignificance = 0
   float alleleFrequency = 0
  }
+// An NMR spectrometer
+message NMRInstrument
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string instrumentType = 0
+ repeated  quantityValue additionalMetrics = 0
+ repeated  textValue additionalProperties = 0
+  string instrumentCode = 0
+  string instrumentRegistryId = 0
+  instrumentCategoryEnum instrumentCategory = 0
+  facilityEnum facilityName = 0
+  uriorcurie facilityRor = 0
+  organization facilityOrganizationId = 0
+  string beamlineId = 0
+  string manufacturer = 0
+  string model = 0
+  string installationDate = 0
+  instrumentStatusEnum currentStatus = 0
+  quantityValue fieldStrength = 0
+  string spectrometerType = 0
+ }
 // A nucleic acid as a molecular entity: one DNA, RNA or hybrid strand, with its sequence, type, source and the annotations that hold for it regardless of any one preparation. The counterpart of Protein for the other biopolymer. One NucleicAcid record is shared by every Sample that contains it, through SampleNucleicAcidAssociation. A duplex of two different strands is two records; a self-complementary duplex is one record with copy_number 2 on the association. Whether the strand is paired in a given sample, how it was made, and which chemical modifications it carries are preparation facts and live on the association.
 message NucleicAcid
  {
   uriorcurie id = 0
   string title = 0
   string description = 0
+ repeated  quantityValue additionalMetrics = 0
+ repeated  textValue additionalProperties = 0
   nucleicAcidTypeEnum nucleicAcidType = 0
   string nucleicAcidName = 0
   uriorcurie rnacentralId = 0
@@ -835,6 +884,7 @@ message ParticlePickingParameters
   string modelName = 0
   string modelFilePath = 0
   string modelSource = 0
+  integer numberOfParticlesSelected = 0
  }
 // A person involved in producing, processing or publishing data - a principal investigator, beamline operator, data analyst or curator. In the relational model, Person is lightweight: which study, experiment or workflow a person is attached to, and in what capacity, is carried by the person association tables in Dataset, so one person record serves every role they hold across a dataset.
 message Person
@@ -891,6 +941,8 @@ message Protein
   uriorcurie id = 0
   string title = 0
   string description = 0
+ repeated  quantityValue additionalMetrics = 0
+ repeated  textValue additionalProperties = 0
   uriorcurie uniprotId = 0
   string proteinName = 0
   string geneName = 0
@@ -937,6 +989,8 @@ message ProteinConstruct
   uriorcurie id = 0
   string title = 0
   string description = 0
+ repeated  quantityValue additionalMetrics = 0
+ repeated  textValue additionalProperties = 0
   string constructId = 0
   protein proteinId = 0
   uriorcurie uniprotId = 0
@@ -959,6 +1013,8 @@ message ProteinConstruct
   string sequenceFilePath = 0
   string sequenceVerifiedBy = 0
   string verificationNotes = 0
+  string aminoAcidSequence = 0
+  string mutations = 0
  }
 // Protein-protein interactions and interfaces
 message ProteinProteinInteraction
@@ -986,6 +1042,31 @@ message ProteinProteinInteraction
   complexStabilityEnum complexStability = 0
   boolean biologicalAssembly = 0
  repeated  interactionEvidenceEnum interactionEvidence = 0
+ }
+// A journal article, book chapter or preprint describing a study. Identified by DOI (doi:10.1038/s41422-022-00680-4) where one exists, else by PubMed id (pmid:35726088), else by an id local to the source. The inherited title is the article title.
+message Publication
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  uriorcurie doi = 0
+  uriorcurie pubmedId = 0
+ repeated  string authors = 0
+  string journal = 0
+  string journalAbbreviation = 0
+  string journalIssn = 0
+  string journalCountry = 0
+  string volume = 0
+  string issue = 0
+  string pageFirst = 0
+  string pageLast = 0
+  integer year = 0
+  string language = 0
+  string bookTitle = 0
+  string bookPublisher = 0
+  string bookPublisherCity = 0
+  string bookIsbn = 0
+  boolean unpublished = 0
  }
 // Quality metrics for experiments
 message QualityMetrics
@@ -1048,6 +1129,26 @@ message RefinementParameters
   quantityValue resolution0143 = 0
   quantityValue resolution05 = 0
   quantityValue mapSharpeningBfactor = 0
+  integer numberOfParticles = 0
+  quantityValue helicalRise = 0
+  quantityValue helicalTwist = 0
+  string axialSymmetry = 0
+ }
+// Data statistics within one resolution shell
+message ResolutionShell
+ {
+  string description = 0
+ repeated  quantityValue additionalMetrics = 0
+  quantityValue resolutionHigh = 0
+  quantityValue resolutionLow = 0
+  quantityValue completenessPercent = 0
+  quantityValue multiplicity = 0
+  quantityValue iOverSigma = 0
+  quantityValue rmerge = 0
+  quantityValue rpim = 0
+  quantityValue ccHalf = 0
+  quantityValue nUnique = 0
+  quantityValue nObservations = 0
  }
 // A physical biological sample used in structural biology experiments. Records what is true of this preparation - buffer, concentration, storage, purity, the construct and tags used. The identity of the protein(s) it contains belongs on Protein, linked through SampleProteinAssociation, so a protein studied in ten preparations is described once. The nucleic acid(s) it contains belong on NucleicAcid in the same way, linked through SampleNucleicAcidAssociation; a protein-DNA complex is one sample with one row in each. Everything else it contains - ligands, ions, lipids, detergents, virus particles, organelles - and the full inventory of what is in it, one row per constituent with its role, lives in SampleComponent; what acts on what within the sample lives in SampleComponentInteraction.
 message Sample
@@ -1055,6 +1156,8 @@ message Sample
   uriorcurie id = 0
   string title = 0
   string description = 0
+ repeated  quantityValue additionalMetrics = 0
+ repeated  textValue additionalProperties = 0
   string sampleCode = 0
   sampleTypeEnum sampleType = 0
   molecularComposition molecularComposition = 0
@@ -1140,6 +1243,8 @@ message SamplePreparation
   uriorcurie id = 0
   string title = 0
   string description = 0
+ repeated  quantityValue additionalMetrics = 0
+ repeated  textValue additionalProperties = 0
   preparationTypeEnum preparationType = 0
   string sampleId = 0
   string preparationDate = 0
@@ -1182,6 +1287,9 @@ message SamplePreparation
   quantityValue purityBySdsPagePercent = 0
   string aggregationAssessment = 0
   string aliquoting = 0
+  cryoEMPreparation cryoemPreparation = 0
+  xRayPreparation xrayPreparation = 0
+  sAXSPreparation saxsPreparation = 0
  }
 // M:N link between Sample and Protein. A sample may hold several proteins - the subunits of a complex, a target with its chaperone, a fusion partner - and one protein turns up in many samples. What changes from preparation to preparation lives here: the role, the copy number, the residue range actually present, the modifications carried, the mass actually measured, and the construct it was made from.
 message SampleProteinAssociation
@@ -1235,6 +1343,9 @@ message SANSInstrument
   uriorcurie id = 0
   string title = 0
   string description = 0
+  string instrumentType = 0
+ repeated  quantityValue additionalMetrics = 0
+ repeated  textValue additionalProperties = 0
   string instrumentCode = 0
   string instrumentRegistryId = 0
   instrumentCategoryEnum instrumentCategory = 0
@@ -1272,6 +1383,9 @@ message SAXSInstrument
   uriorcurie id = 0
   string title = 0
   string description = 0
+  string instrumentType = 0
+ repeated  quantityValue additionalMetrics = 0
+ repeated  textValue additionalProperties = 0
   string instrumentCode = 0
   string instrumentRegistryId = 0
   instrumentCategoryEnum instrumentCategory = 0
@@ -1306,6 +1420,8 @@ message SmallMolecule
   uriorcurie id = 0
   string title = 0
   string description = 0
+ repeated  quantityValue additionalMetrics = 0
+ repeated  textValue additionalProperties = 0
   string smallMoleculeName = 0
   uriorcurie chebiId = 0
   uriorcurie pdbLigandId = 0
@@ -1359,6 +1475,7 @@ message Study
   string description = 0
   string proposalId = 0
  repeated  string keywords = 0
+ repeated  databaseCrossReference databaseCrossReferences = 0
  }
 // M:N link between Study and ExperimentRun
 message StudyExperimentAssociation
@@ -1382,6 +1499,13 @@ message StudyPersonAssociation
   personRoleEnum role = 0
   integer authorPosition = 0
   boolean corresponding = 0
+ }
+// Links a study to a publication that describes it
+message StudyPublicationAssociation
+ {
+  study studyId = 0
+  publication publicationId = 0
+  boolean isPrimary = 0
  }
 // M:N link between Study and Sample with role metadata
 message StudySampleAssociation
@@ -1438,6 +1562,8 @@ message WorkflowRun
   uriorcurie id = 0
   string title = 0
   string description = 0
+ repeated  quantityValue additionalMetrics = 0
+ repeated  textValue additionalProperties = 0
   string workflowCode = 0
   workflowTypeEnum workflowType = 0
   quantityValue processingLevel = 0
@@ -1503,6 +1629,7 @@ message WorkflowRun
   refinementParameters refinementParams = 0
   fSCCurve fscCurve = 0
  repeated  dataFile outputFiles = 0
+ repeated  resolutionShell resolutionShells = 0
  }
 // X-ray diffractometer or synchrotron beamline specifications
 message XRayInstrument
@@ -1510,6 +1637,9 @@ message XRayInstrument
   uriorcurie id = 0
   string title = 0
   string description = 0
+  string instrumentType = 0
+ repeated  quantityValue additionalMetrics = 0
+ repeated  textValue additionalProperties = 0
   string instrumentCode = 0
   string instrumentRegistryId = 0
   instrumentCategoryEnum instrumentCategory = 0
@@ -1563,6 +1693,9 @@ message XRayPreparation
   string crystalNotes = 0
   quantityValue loopSize = 0
   quantityValue mountingTemperature = 0
+  float crystallizationPh = 0
+  quantityValue matthewsCoefficient = 0
+  float solventContentPercent = 0
  }
 // X-ray fluorescence (XRF) image showing elemental distribution
 message XRFImage

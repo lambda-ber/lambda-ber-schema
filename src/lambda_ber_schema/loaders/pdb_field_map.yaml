@@ -1,0 +1,906 @@
+# Where every field the RCSB Data API can return ends up in a lambda-ber-schema Dataset.
+#
+# The fields are the leaf paths in pdb_rcsb_fields.json, which lists everything RCSB's
+# published JSON schemas allow for each kind of record the PDB loader fetches. A key here
+# is a path or a path prefix; the longest key that matches a field decides its disposition.
+# A prefix matches a field when the field equals it or continues it with "." or "[]".
+#
+# Each rule has exactly one of these keys:
+#
+#   to:           the field is carried in a named schema slot, written Class.slot
+#   metric:       the field is carried in additional_metrics (numbers) or additional_properties
+#                 (text) of the named class, keyed by its mmCIF or RCSB item name; the loader
+#                 emits these generically from this file, so marking a field metric is enough
+#   derived:      the field can be recomputed from fields that are carried (the reason says how)
+#   reference:    general knowledge RCSB imports about the molecule or chemical from another
+#                 resource (UniProt, ChEMBL, DrugBank, sequence clusters, computed features), not
+#                 a fact about this deposition; reachable through the cross-reference carried
+#   linked_file:  per-atom or per-operator data held in a file the Dataset links (named)
+#   join:         an identifier used only to connect records; the loader consumes it
+#   bookkeeping:  archive housekeeping: audit trails, processing sites, schema versions
+#   out_of_scope: belongs to a kind of entry the loader does not load (the reason says which)
+#
+# A "to" rule may add "as:" when the value is transformed on the way (an enum lookup, a unit
+# label, a date trimmed to YYYY-MM-DD), which exempts it from the verbatim check in
+# tests/loaders/test_pdb_coverage.py. Every other "to" and "metric" field found in the test
+# fixtures must appear verbatim in the loader's output.
+
+entry:
+  rcsb_id: {join: "the entry id; Dataset.id is pdb:<entry id>"}
+  entry.id: {join: "same as rcsb_id"}
+  entry.ma_collection_id: {out_of_scope: "computed structure models (ModelArchive) are not experimental entries"}
+
+  # ---- the deposition ---------------------------------------------------------------
+  struct.title: {to: "Study.title"}
+  struct.pdbx_descriptor: {to: "Study.description"}
+  struct.pdbx_model_details: {to: "Study.description"}
+  struct.pdbx_model_type_details: {to: "Study.description"}
+  struct.pdbx_CASP_flag: {bookkeeping: "CASP target flag"}
+  struct_keywords.pdbx_keywords: {to: "Study.keywords"}
+  struct_keywords.text: {to: "Study.keywords", as: "split on commas"}
+  rcsb_accession_info.deposit_date: {to: "Dataset.deposition_date", as: "trimmed to YYYY-MM-DD"}
+  rcsb_accession_info.initial_release_date: {to: "Dataset.release_date", as: "trimmed to YYYY-MM-DD"}
+  rcsb_accession_info.revision_date: {to: "Dataset.last_revision_date", as: "trimmed to YYYY-MM-DD"}
+  rcsb_accession_info.major_revision: {to: "Dataset.revision", as: "written major.minor"}
+  rcsb_accession_info.minor_revision: {to: "Dataset.revision", as: "written major.minor"}
+  rcsb_accession_info.status_code: {bookkeeping: "always REL for an entry that can be loaded"}
+  rcsb_accession_info.has_released_experimental_data: {to: "DataFile.file_path", as: "decides whether the experimental data file is listed"}
+  pdbx_database_status.recvd_initial_deposition_date: {derived: "same date as rcsb_accession_info.deposit_date"}
+  pdbx_database_status.status_code: {bookkeeping: "release status of the coordinates"}
+  pdbx_database_status.status_code_sf: {to: "DataFile.file_path", as: "REL lists the structure factor file"}
+  pdbx_database_status.status_code_mr: {to: "DataFile.file_path", as: "REL lists the NMR restraint file"}
+  pdbx_database_status.status_code_cs: {to: "DataFile.file_path", as: "REL lists the chemical shift file"}
+  pdbx_database_status.pdb_format_compatible: {to: "DataFile.file_path", as: "Y lists the legacy PDB-format file"}
+  pdbx_database_status.SG_entry: {derived: "true exactly when pdbx_SG_project is present"}
+  pdbx_database_status.deposit_site: {bookkeeping: "wwPDB site that received the deposition"}
+  pdbx_database_status.process_site: {bookkeeping: "wwPDB site that annotated the entry"}
+  pdbx_database_status.methods_development_category: {to: "Study.keywords"}
+  pdbx_audit_revision_category: {bookkeeping: "revision audit trail; the latest revision is Dataset.revision"}
+  pdbx_audit_revision_details: {bookkeeping: "revision audit trail"}
+  pdbx_audit_revision_group: {bookkeeping: "revision audit trail"}
+  pdbx_audit_revision_history: {bookkeeping: "revision audit trail"}
+  pdbx_audit_revision_item: {bookkeeping: "revision audit trail"}
+  database_2: {to: "Study.database_cross_references"}
+  database_2[].pdbx_database_accession: {derived: "the extended PDB id, pdb_0000 plus the entry id"}
+  rcsb_external_references: {to: "Study.database_cross_references"}
+  pdbx_database_related: {to: "Study.database_cross_references"}
+  pdbx_database_PDB_obs_spr: {to: "Study.database_cross_references"}
+  pdbx_database_PDB_obs_spr[].id: {join: "OBSLTE or SPRSDE, written into the cross-reference description"}
+  pdbx_deposit_group: {to: "Study.database_cross_references"}
+  pdbx_related_exp_data_set: {to: "DataFile.file_path"}
+  rcsb_entry_group_membership: {reference: "RCSB grouping of entries by composition"}
+
+  rcsb_entry_container_identifiers: {join: "ids of the records fetched alongside the entry"}
+  rcsb_entry_container_identifiers.emdb_ids: {to: "Study.database_cross_references"}
+  rcsb_entry_container_identifiers.related_emdb_ids: {to: "Study.database_cross_references"}
+  rcsb_entry_container_identifiers.pubmed_id: {to: "Publication.pubmed_id", as: "written pmid:<id>"}
+  rcsb_entry_container_identifiers.water_entity_ids: {join: "water is not listed as a sample component"}
+
+  rcsb_entry_info: {derived: "counts and ranges RCSB computes over the entities, which are carried"}
+  rcsb_entry_info.molecular_weight: {to: "Sample.molecular_weight"}
+  rcsb_entry_info.resolution_combined: {to: "QualityMetrics.resolution"}
+  rcsb_entry_info.nonpolymer_bound_components: {to: "SampleComponentInteraction.interaction_type", as: "a bound ion is_coordinated_by its chain, a bound non-ion is covalently_linked_to it"}
+  rcsb_entry_info.cis_peptide_count: {linked_file: "computed from the coordinates in the mmCIF file"}
+  rcsb_entry_info.disulfide_bond_count: {linked_file: "computed from the coordinates in the mmCIF file"}
+  rcsb_entry_info.inter_mol_covalent_bond_count: {linked_file: "computed from the coordinates in the mmCIF file"}
+  rcsb_entry_info.inter_mol_metalic_bond_count: {linked_file: "computed from the coordinates in the mmCIF file"}
+  rcsb_entry_info.ndb_struct_conf_na_feature_combined: {linked_file: "nucleic acid conformation computed from the coordinates"}
+
+  # ---- people, organizations, publications ---------------------------------------------
+  audit_author[].name: {to: "Person.full_name"}
+  audit_author[].pdbx_ordinal: {to: "StudyPersonAssociation.author_position"}
+  audit_author[].identifier_ORCID: {to: "Person.orcid", as: "written https://orcid.org/<id>"}
+  citation[].id: {join: "primary marks the primary citation"}
+  citation[].rcsb_is_primary: {to: "StudyPublicationAssociation.is_primary", as: "Y becomes true"}
+  citation[].title: {to: "Publication.title"}
+  citation[].rcsb_authors: {to: "Publication.authors"}
+  citation[].journal_abbrev: {to: "Publication.journal_abbreviation"}
+  citation[].rcsb_journal_abbrev: {derived: "RCSB's normalized form of journal_abbrev"}
+  citation[].journal_full: {to: "Publication.journal"}
+  citation[].journal_id_ISSN: {to: "Publication.journal_issn"}
+  citation[].journal_id_ASTM: {derived: "legacy journal code; the journal is identified by name and ISSN"}
+  citation[].journal_id_CSD: {derived: "legacy journal code; the journal is identified by name and ISSN"}
+  citation[].journal_volume: {to: "Publication.volume"}
+  citation[].journal_issue: {to: "Publication.issue"}
+  citation[].page_first: {to: "Publication.page_first"}
+  citation[].page_last: {to: "Publication.page_last"}
+  citation[].year: {to: "Publication.year"}
+  citation[].country: {to: "Publication.journal_country"}
+  citation[].language: {to: "Publication.language"}
+  citation[].pdbx_database_id_DOI: {to: "Publication.doi", as: "written doi:<doi>"}
+  citation[].pdbx_database_id_PubMed: {to: "Publication.pubmed_id", as: "written pmid:<id>"}
+  citation[].book_title: {to: "Publication.book_title"}
+  citation[].book_publisher: {to: "Publication.book_publisher"}
+  citation[].book_publisher_city: {to: "Publication.book_publisher_city"}
+  citation[].book_id_ISBN: {to: "Publication.book_isbn"}
+  citation[].unpublished_flag: {to: "Publication.unpublished", as: "Y becomes true"}
+  citation[].coordinate_linkage: {bookkeeping: "whether the article printed coordinates"}
+  rcsb_primary_citation: {derived: "RCSB's copy of the citation row whose id is primary"}
+  rcsb_primary_citation.rcsb_ORCID_identifiers: {to: "Person.orcid", as: "written https://orcid.org/<id>, paired with rcsb_authors"}
+  pdbx_audit_support[].funding_organization: {to: "Organization.title"}
+  pdbx_audit_support[].country: {to: "Organization.country"}
+  pdbx_audit_support[].grant_number: {to: "StudyOrganizationAssociation.award_number"}
+  pdbx_audit_support[].ordinal: {join: "row order"}
+  pdbx_SG_project[].full_name_of_center: {to: "Organization.title"}
+  pdbx_SG_project[].initial_of_center: {to: "Organization.acronym"}
+  pdbx_SG_project[].project_name: {to: "Organization.description"}
+  pdbx_SG_project[].id: {join: "row order"}
+
+  # ---- methods ------------------------------------------------------------------------
+  exptl[].method: {to: "ExperimentRun.technique", as: "mapped to TechniqueEnum"}
+  exptl[].crystals_number: {metric: "ExperimentRun"}
+  exptl[].method_details: {to: "ExperimentRun.description"}
+  exptl[].details: {to: "ExperimentRun.description"}
+
+  # ---- X-ray, neutron and electron diffraction: crystals and data collection ----------
+  exptl_crystal[].id: {join: "crystal id"}
+  exptl_crystal[].density_Matthews: {to: "XRayPreparation.matthews_coefficient"}
+  exptl_crystal[].density_percent_sol: {to: "XRayPreparation.solvent_content_percent"}
+  exptl_crystal[].density_meas: {metric: "SamplePreparation"}
+  exptl_crystal[].colour: {to: "XRayPreparation.crystal_notes"}
+  exptl_crystal[].description: {to: "XRayPreparation.crystal_notes"}
+  exptl_crystal[].preparation: {to: "XRayPreparation.crystal_notes"}
+  exptl_crystal[].pdbx_mosaicity: {metric: "ExperimentRun"}
+  exptl_crystal[].pdbx_mosaicity_esd: {metric: "ExperimentRun"}
+  exptl_crystal_grow[].crystal_id: {join: "crystal id"}
+  exptl_crystal_grow[].method: {to: "XRayPreparation.description"}
+  exptl_crystal_grow[].pH: {to: "XRayPreparation.crystallization_ph"}
+  exptl_crystal_grow[].temp: {to: "XRayPreparation.temperature_c", as: "kelvin, unit K"}
+  exptl_crystal_grow[].pdbx_details: {to: "CrystallizationConditions.crystallization_conditions"}
+  exptl_crystal_grow[].details: {to: "XRayPreparation.crystal_notes"}
+  exptl_crystal_grow[].pdbx_pH_range: {metric: "SamplePreparation"}
+  exptl_crystal_grow[].temp_details: {metric: "SamplePreparation"}
+  diffrn[].id: {join: "diffraction experiment id"}
+  diffrn[].crystal_id: {join: "crystal id"}
+  diffrn[].ambient_temp: {to: "ExperimentalConditions.temperature"}
+  diffrn[].ambient_pressure: {to: "ExperimentalConditions.pressure"}
+  diffrn[].ambient_temp_details: {to: "ExperimentalConditions.description"}
+  diffrn[].crystal_support: {to: "XRayPreparation.mounting_method"}
+  diffrn[].details: {to: "ExperimentRun.description"}
+  diffrn[].pdbx_serial_crystal_experiment: {metric: "ExperimentRun"}
+  diffrn_detector[].diffrn_id: {join: "diffraction experiment id"}
+  diffrn_detector[].detector: {to: "XRayInstrument.description"}
+  diffrn_detector[].type: {to: "XRayInstrument.detector_model"}
+  diffrn_detector[].details: {to: "XRayInstrument.description"}
+  diffrn_detector[].pdbx_collection_date: {to: "ExperimentRun.experiment_date", as: "trimmed to YYYY-MM-DD"}
+  diffrn_detector[].pdbx_frequency: {metric: "ExperimentRun"}
+  diffrn_radiation[].diffrn_id: {join: "diffraction experiment id"}
+  diffrn_radiation[].wavelength_id: {join: "wavelength id"}
+  diffrn_radiation[].monochromator: {to: "XRayInstrument.monochromator_type"}
+  diffrn_radiation[].pdbx_diffrn_protocol: {to: "DataCollectionStrategy.strategy_notes"}
+  diffrn_radiation[].pdbx_scattering_type: {to: "ExperimentRun.technique", as: "neutron makes the run neutron_crystallography, electron makes it microed"}
+  diffrn_radiation[].pdbx_monochromatic_or_laue_m_l: {metric: "ExperimentRun"}
+  diffrn_radiation[].collimation: {metric: "ExperimentRun"}
+  diffrn_radiation[].type: {metric: "ExperimentRun"}
+  diffrn_radiation[].pdbx_wavelength: {metric: "ExperimentRun"}
+  diffrn_radiation[].pdbx_wavelength_list: {metric: "ExperimentRun"}
+  diffrn_source[].diffrn_id: {join: "diffraction experiment id"}
+  diffrn_source[].source: {to: "XRayInstrument.title"}
+  diffrn_source[].type: {to: "XRayInstrument.model"}
+  diffrn_source[].pdbx_synchrotron_site: {to: "XRayInstrument.title"}
+  diffrn_source[].pdbx_synchrotron_beamline: {to: "XRayInstrument.beamline_id"}
+  diffrn_source[].pdbx_wavelength: {to: "ExperimentRun.wavelength"}
+  diffrn_source[].pdbx_wavelength_list: {to: "ExperimentRun.wavelength", as: "first wavelength; the full list is kept as an additional property"}
+  diffrn_source[].details: {to: "XRayInstrument.description"}
+  cell.length_a: {to: "QualityMetrics.unit_cell_a"}
+  cell.length_b: {to: "QualityMetrics.unit_cell_b"}
+  cell.length_c: {to: "QualityMetrics.unit_cell_c"}
+  cell.angle_alpha: {to: "QualityMetrics.unit_cell_alpha"}
+  cell.angle_beta: {to: "QualityMetrics.unit_cell_beta"}
+  cell.angle_gamma: {to: "QualityMetrics.unit_cell_gamma"}
+  cell.Z_PDB: {metric: "ExperimentRun"}
+  cell.formula_units_Z: {metric: "ExperimentRun"}
+  cell.volume: {derived: "computed from the cell lengths and angles"}
+  cell.pdbx_unique_axis: {metric: "ExperimentRun"}
+  symmetry.space_group_name_H_M: {to: "QualityMetrics.space_group"}
+  symmetry.Int_Tables_number: {derived: "follows from the space group symbol"}
+  symmetry.cell_setting: {derived: "follows from the space group symbol"}
+  symmetry.pdbx_full_space_group_name_H_M: {derived: "follows from the space group symbol"}
+  symmetry.space_group_name_Hall: {derived: "follows from the space group symbol"}
+  pdbx_serial_crystallography_measurement: {metric: "ExperimentRun"}
+  pdbx_serial_crystallography_measurement[].diffrn_id: {join: "diffraction experiment id"}
+  pdbx_serial_crystallography_sample_delivery: {metric: "ExperimentRun"}
+  pdbx_serial_crystallography_sample_delivery[].diffrn_id: {join: "diffraction experiment id"}
+  pdbx_serial_crystallography_sample_delivery_fixed_target: {metric: "ExperimentRun"}
+  pdbx_serial_crystallography_sample_delivery_fixed_target[].diffrn_id: {join: "diffraction experiment id"}
+  pdbx_serial_crystallography_sample_delivery_injection: {metric: "ExperimentRun"}
+  pdbx_serial_crystallography_sample_delivery_injection[].diffrn_id: {join: "diffraction experiment id"}
+  pdbx_serial_crystallography_data_reduction: {metric: "WorkflowRun"}
+  pdbx_serial_crystallography_data_reduction[].diffrn_id: {join: "diffraction experiment id"}
+
+  # ---- diffraction data reduction and scaling --------------------------------------------
+  reflns: {metric: "WorkflowRun"}
+  reflns[].pdbx_ordinal: {join: "row order"}
+  reflns[].pdbx_diffrn_id: {join: "diffraction experiment ids"}
+  reflns[].d_resolution_high: {to: "WorkflowRun.resolution_high"}
+  reflns[].d_resolution_low: {to: "WorkflowRun.resolution_low"}
+  reflns[].pdbx_Rmerge_I_obs: {to: "WorkflowRun.rmerge"}
+  reflns[].pdbx_Rpim_I_all: {to: "WorkflowRun.rpim"}
+  reflns[].pdbx_CC_half: {to: "WorkflowRun.cc_half"}
+  reflns[].percent_possible_obs: {to: "WorkflowRun.completeness_percent"}
+  reflns[].pdbx_netI_over_sigmaI: {to: "WorkflowRun.i_over_sigma"}
+  reflns[].pdbx_redundancy: {to: "WorkflowRun.multiplicity"}
+  reflns[].B_iso_Wilson_estimate: {to: "WorkflowRun.wilson_b_factor"}
+  reflns[].number_obs: {to: "WorkflowRun.n_total_unique"}
+  reflns[].pdbx_number_measured_all: {to: "WorkflowRun.n_total_observations"}
+  reflns_shell: {metric: "ResolutionShell"}
+  reflns_shell[].pdbx_ordinal: {join: "row order"}
+  reflns_shell[].pdbx_diffrn_id: {join: "diffraction experiment ids"}
+  reflns_shell[].d_res_high: {to: "ResolutionShell.resolution_high"}
+  reflns_shell[].d_res_low: {to: "ResolutionShell.resolution_low"}
+  reflns_shell[].percent_possible_all: {to: "ResolutionShell.completeness_percent"}
+  reflns_shell[].pdbx_redundancy: {to: "ResolutionShell.multiplicity"}
+  reflns_shell[].meanI_over_sigI_obs: {to: "ResolutionShell.i_over_sigma"}
+  reflns_shell[].Rmerge_I_obs: {to: "ResolutionShell.rmerge"}
+  reflns_shell[].pdbx_Rpim_I_all: {to: "ResolutionShell.rpim"}
+  reflns_shell[].pdbx_CC_half: {to: "ResolutionShell.cc_half"}
+  reflns_shell[].number_unique_obs: {to: "ResolutionShell.n_unique"}
+  reflns_shell[].number_measured_obs: {to: "ResolutionShell.n_observations"}
+  pdbx_reflns_twin: {metric: "WorkflowRun"}
+  pdbx_reflns_twin[].crystal_id: {join: "crystal id"}
+  pdbx_reflns_twin[].diffrn_id: {join: "diffraction experiment id"}
+
+  # ---- refinement -----------------------------------------------------------------------
+  refine: {metric: "WorkflowRun"}
+  refine[].pdbx_refine_id: {join: "the method the refinement belongs to"}
+  refine[].pdbx_diffrn_id: {join: "diffraction experiment ids"}
+  refine[].ls_R_factor_R_work: {to: "WorkflowRun.rwork"}
+  refine[].ls_R_factor_R_free: {to: "WorkflowRun.rfree"}
+  refine[].ls_d_res_high: {to: "WorkflowRun.resolution_high"}
+  refine[].ls_d_res_low: {to: "WorkflowRun.resolution_low"}
+  refine[].B_iso_mean: {to: "QualityMetrics.average_b_factor_a2"}
+  refine[].pdbx_method_to_determine_struct: {to: "WorkflowRun.description"}
+  refine[].details: {to: "WorkflowRun.description"}
+  refine[].pdbx_TLS_residual_ADP_flag: {to: "WorkflowRun.tls_used", as: "a TLS flag value becomes true"}
+  refine_hist: {metric: "WorkflowRun"}
+  refine_hist[].pdbx_refine_id: {join: "the method the refinement belongs to"}
+  refine_hist[].cycle_id: {join: "refinement cycle label"}
+  refine_hist[].number_atoms_solvent: {to: "WorkflowRun.number_of_waters"}
+  refine_ls_restr: {metric: "WorkflowRun"}
+  refine_ls_restr[].pdbx_refine_id: {join: "the method the refinement belongs to"}
+  refine_ls_restr[].type: {join: "names each restraint's metrics; bond and angle deviations also fill rmsd_bonds and rmsd_angles"}
+  refine_analyze: {metric: "WorkflowRun"}
+  refine_analyze[].pdbx_refine_id: {join: "the method the refinement belongs to"}
+  pdbx_initial_refinement_model[].id: {join: "row order"}
+  pdbx_initial_refinement_model[].entity_id_list: {join: "entities the starting model covered"}
+  pdbx_initial_refinement_model[].accession_code: {to: "WorkflowRun.search_model_pdb_id"}
+  pdbx_initial_refinement_model[].source_name: {metric: "WorkflowRun"}
+  pdbx_initial_refinement_model[].type: {metric: "WorkflowRun"}
+  pdbx_initial_refinement_model[].details: {metric: "WorkflowRun"}
+  software[].name: {to: "WorkflowRun.software_name"}
+  software[].version: {to: "WorkflowRun.software_version"}
+  software[].classification: {to: "WorkflowRun.workflow_type", as: "mapped to WorkflowTypeEnum; unmapped classes go to additional_software"}
+  software[].pdbx_ordinal: {join: "row order"}
+  software[].citation_id: {join: "citation row of the program"}
+  software[].contact_author: {metric: "WorkflowRun"}
+  software[].contact_author_email: {metric: "WorkflowRun"}
+  software[].date: {metric: "WorkflowRun"}
+  software[].description: {metric: "WorkflowRun"}
+  software[].language: {metric: "WorkflowRun"}
+  software[].location: {metric: "WorkflowRun"}
+  software[].os: {metric: "WorkflowRun"}
+  software[].type: {metric: "WorkflowRun"}
+
+  # ---- model validation -----------------------------------------------------------------
+  pdbx_vrpt_summary: {metric: "WorkflowRun"}
+  pdbx_vrpt_summary.report_creation_date: {to: "WorkflowRun.completed_at"}
+  pdbx_vrpt_summary_diffraction: {metric: "WorkflowRun"}
+  pdbx_vrpt_summary_em: {metric: "WorkflowRun"}
+  pdbx_vrpt_summary_nmr: {metric: "WorkflowRun"}
+  pdbx_vrpt_summary_geometry: {metric: "WorkflowRun"}
+  pdbx_vrpt_summary_geometry[].clashscore: {to: "QualityMetrics.clashscore"}
+  pdbx_vrpt_summary_geometry[].percent_ramachandran_outliers: {to: "QualityMetrics.ramachandran_outliers_percent"}
+
+  # ---- electron microscopy ---------------------------------------------------------------
+  em_experiment.id: {join: "experiment id"}
+  em_experiment.entity_assembly_id: {join: "the assembly imaged"}
+  em_experiment.reconstruction_method: {to: "ExperimentRun.experimental_method", as: "mapped to ExperimentalMethodEnum"}
+  em_experiment.aggregation_state: {metric: "ExperimentRun"}
+  em_entity_assembly[].id: {join: "assembly id"}
+  em_entity_assembly[].parent_id: {join: "makes the assembly a child Sample of its parent"}
+  em_entity_assembly[].entity_id_list: {join: "decides which components the assembly's Sample has"}
+  em_entity_assembly[].name: {to: "Sample.title"}
+  em_entity_assembly[].type: {to: "Sample.sample_type", as: "mapped to SampleTypeEnum"}
+  em_entity_assembly[].source: {metric: "Sample"}
+  em_entity_assembly[].oligomeric_details: {to: "Sample.oligomeric_state"}
+  em_entity_assembly[].synonym: {to: "Sample.description"}
+  em_entity_assembly[].details: {to: "Sample.description"}
+  em_specimen[].id: {join: "specimen id"}
+  em_specimen[].experiment_id: {join: "experiment id"}
+  em_specimen[].concentration: {to: "Sample.concentration"}
+  em_specimen[].details: {to: "SamplePreparation.protocol_description"}
+  em_specimen[].embedding_applied: {derived: "YES exactly when em_embedding is present"}
+  em_specimen[].shadowing_applied: {metric: "SamplePreparation"}
+  em_specimen[].staining_applied: {derived: "YES exactly when em_staining is present"}
+  em_specimen[].vitrification_applied: {derived: "YES exactly when em_vitrification is present"}
+  em_vitrification[].id: {join: "row id"}
+  em_vitrification[].specimen_id: {join: "specimen id"}
+  em_vitrification[].cryogen_name: {to: "CryoEMPreparation.cryogen"}
+  em_vitrification[].humidity: {to: "CryoEMPreparation.humidity_percentage"}
+  em_vitrification[].instrument: {to: "CryoEMPreparation.vitrification_instrument"}
+  em_vitrification[].chamber_temperature: {to: "CryoEMPreparation.chamber_temperature"}
+  em_vitrification[].temp: {to: "CryoEMPreparation.ethane_temperature"}
+  em_vitrification[].method: {to: "CryoEMPreparation.description"}
+  em_vitrification[].details: {to: "CryoEMPreparation.description"}
+  em_vitrification[].time_resolved_state: {metric: "SamplePreparation"}
+  em_staining[].id: {join: "row id"}
+  em_staining[].specimen_id: {join: "specimen id"}
+  em_staining[].material: {to: "CryoEMPreparation.stain_material"}
+  em_staining[].type: {to: "CryoEMPreparation.stain_type"}
+  em_staining[].details: {to: "CryoEMPreparation.description"}
+  em_embedding[].id: {join: "row id"}
+  em_embedding[].specimen_id: {join: "specimen id"}
+  em_embedding[].material: {to: "CryoEMPreparation.embedding_material"}
+  em_embedding[].details: {to: "CryoEMPreparation.description"}
+  em_imaging[].id: {join: "imaging id"}
+  em_imaging[].specimen_id: {join: "specimen id"}
+  em_imaging[].microscope_model: {to: "CryoEMInstrument.model"}
+  em_imaging[].accelerating_voltage: {to: "CryoEMInstrument.accelerating_voltage"}
+  em_imaging[].electron_source: {to: "CryoEMInstrument.electron_source"}
+  em_imaging[].illumination_mode: {to: "CryoEMInstrument.illumination_mode"}
+  em_imaging[].nominal_cs: {to: "CryoEMInstrument.cs"}
+  em_imaging[].c2_aperture_diameter: {to: "CryoEMInstrument.c2_aperture"}
+  em_imaging[].specimen_holder_model: {to: "CryoEMInstrument.specimen_holder_model"}
+  em_imaging[].specimen_holder_type: {metric: "ExperimentRun"}
+  em_imaging[].mode: {metric: "ExperimentRun"}
+  em_imaging[].cryogen: {metric: "ExperimentRun"}
+  em_imaging[].date: {to: "ExperimentRun.experiment_date", as: "trimmed to YYYY-MM-DD"}
+  em_imaging[].details: {to: "ExperimentRun.description"}
+  em_imaging[].nominal_magnification: {to: "ExperimentRun.magnification"}
+  em_imaging[].calibrated_magnification: {metric: "ExperimentRun"}
+  em_imaging[].nominal_defocus_min: {to: "ExperimentRun.defocus_range_min"}
+  em_imaging[].nominal_defocus_max: {to: "ExperimentRun.defocus_range_max"}
+  em_imaging[].calibrated_defocus_min: {metric: "ExperimentRun"}
+  em_imaging[].calibrated_defocus_max: {metric: "ExperimentRun"}
+  em_imaging[].astigmatism: {metric: "ExperimentRun"}
+  em_imaging[].tilt_angle_min: {to: "ExperimentRun.tilt_angle_min"}
+  em_imaging[].tilt_angle_max: {to: "ExperimentRun.tilt_angle_max"}
+  em_imaging[].detector_distance: {to: "ExperimentRun.detector_distance"}
+  em_imaging[].temperature: {to: "ExperimentalConditions.temperature"}
+  em_imaging[].recording_temperature_minimum: {to: "ExperimentalConditions.temperature", as: "the range's minimum"}
+  em_imaging[].recording_temperature_maximum: {to: "ExperimentalConditions.temperature", as: "the range's maximum"}
+  em_imaging[].alignment_procedure: {metric: "ExperimentRun"}
+  em_imaging[].electron_beam_tilt_params: {metric: "ExperimentRun"}
+  em_imaging[].residual_tilt: {metric: "ExperimentRun"}
+  em_image_recording[].id: {join: "row id"}
+  em_image_recording[].imaging_id: {join: "imaging id"}
+  em_image_recording[].film_or_detector_model: {to: "CryoEMInstrument.detector_model"}
+  em_image_recording[].detector_mode: {metric: "ExperimentRun"}
+  em_image_recording[].average_exposure_time: {to: "ExperimentRun.total_exposure_time"}
+  em_image_recording[].avg_electron_dose_per_image: {to: "ExperimentRun.total_dose"}
+  em_image_recording[].num_real_images: {to: "ExperimentRun.number_of_images"}
+  em_image_recording[].num_diffraction_images: {to: "ExperimentRun.number_of_images"}
+  em_image_recording[].num_grids_imaged: {metric: "ExperimentRun"}
+  em_image_recording[].details: {to: "ExperimentRun.description"}
+  em_diffraction[].id: {join: "row id"}
+  em_diffraction[].imaging_id: {join: "imaging id"}
+  em_diffraction[].camera_length: {to: "ExperimentRun.camera_length"}
+  em_diffraction[].tilt_angle_list: {metric: "ExperimentRun"}
+  em_2d_crystal_entity[].id: {join: "row id"}
+  em_2d_crystal_entity[].image_processing_id: {join: "processing id"}
+  em_2d_crystal_entity[].length_a: {to: "QualityMetrics.unit_cell_a"}
+  em_2d_crystal_entity[].length_b: {to: "QualityMetrics.unit_cell_b"}
+  em_2d_crystal_entity[].length_c: {to: "QualityMetrics.unit_cell_c"}
+  em_2d_crystal_entity[].angle_gamma: {to: "QualityMetrics.unit_cell_gamma"}
+  em_2d_crystal_entity[].space_group_name_H_M: {to: "QualityMetrics.space_group"}
+  em_2d_crystal_entity[].c_sampling_length: {metric: "ExperimentRun"}
+  em_3d_crystal_entity[].id: {join: "row id"}
+  em_3d_crystal_entity[].image_processing_id: {join: "processing id"}
+  em_3d_crystal_entity[].length_a: {to: "QualityMetrics.unit_cell_a"}
+  em_3d_crystal_entity[].length_b: {to: "QualityMetrics.unit_cell_b"}
+  em_3d_crystal_entity[].length_c: {to: "QualityMetrics.unit_cell_c"}
+  em_3d_crystal_entity[].angle_alpha: {to: "QualityMetrics.unit_cell_alpha"}
+  em_3d_crystal_entity[].angle_beta: {to: "QualityMetrics.unit_cell_beta"}
+  em_3d_crystal_entity[].angle_gamma: {to: "QualityMetrics.unit_cell_gamma"}
+  em_3d_crystal_entity[].space_group_name: {to: "QualityMetrics.space_group"}
+  em_3d_crystal_entity[].space_group_num: {derived: "follows from the space group name"}
+  em_diffraction_stats: {metric: "WorkflowRun"}
+  em_diffraction_stats[].id: {join: "row id"}
+  em_diffraction_stats[].image_processing_id: {join: "processing id"}
+  em_diffraction_stats[].high_resolution: {to: "WorkflowRun.resolution_high"}
+  em_diffraction_stats[].r_merge: {to: "WorkflowRun.rmerge"}
+  em_diffraction_stats[].fourier_space_coverage: {to: "WorkflowRun.completeness_percent"}
+  em_diffraction_stats[].num_intensities_measured: {to: "WorkflowRun.n_total_observations"}
+  em_diffraction_stats[].num_structure_factors: {to: "WorkflowRun.n_total_unique"}
+  em_diffraction_stats[].details: {to: "WorkflowRun.description"}
+  em_diffraction_shell: {metric: "ResolutionShell"}
+  em_diffraction_shell[].id: {join: "row id"}
+  em_diffraction_shell[].em_diffraction_stats_id: {join: "statistics row"}
+  em_diffraction_shell[].high_resolution: {to: "ResolutionShell.resolution_high"}
+  em_diffraction_shell[].low_resolution: {to: "ResolutionShell.resolution_low"}
+  em_diffraction_shell[].fourier_space_coverage: {to: "ResolutionShell.completeness_percent"}
+  em_diffraction_shell[].multiplicity: {to: "ResolutionShell.multiplicity"}
+  em_diffraction_shell[].num_structure_factors: {to: "ResolutionShell.n_unique"}
+  em_software[].id: {join: "row id"}
+  em_software[].fitting_id: {join: "fitting id"}
+  em_software[].image_processing_id: {join: "processing id"}
+  em_software[].imaging_id: {join: "imaging id"}
+  em_software[].name: {to: "WorkflowRun.software_name"}
+  em_software[].version: {to: "WorkflowRun.software_version"}
+  em_software[].category: {to: "WorkflowRun.workflow_type", as: "mapped to WorkflowTypeEnum; image acquisition software goes to ExperimentRun.acquisition_software"}
+  em_software[].details: {to: "WorkflowRun.description"}
+  em_ctf_correction[].id: {join: "row id"}
+  em_ctf_correction[].em_image_processing_id: {join: "processing id"}
+  em_ctf_correction[].type: {to: "WorkflowRun.description"}
+  em_ctf_correction[].details: {to: "WorkflowRun.description"}
+  em_particle_selection[].id: {join: "row id"}
+  em_particle_selection[].image_processing_id: {join: "processing id"}
+  em_particle_selection[].num_particles_selected: {to: "ParticlePickingParameters.number_of_particles_selected"}
+  em_particle_selection[].details: {to: "WorkflowRun.description"}
+  em_3d_reconstruction[].id: {join: "row id"}
+  em_3d_reconstruction[].image_processing_id: {join: "processing id"}
+  em_3d_reconstruction[].num_particles: {to: "RefinementParameters.number_of_particles"}
+  em_3d_reconstruction[].resolution: {to: "WorkflowRun.resolution_high"}
+  em_3d_reconstruction[].actual_pixel_size: {to: "RefinementParameters.pixel_size"}
+  em_3d_reconstruction[].nominal_pixel_size: {metric: "WorkflowRun"}
+  em_3d_reconstruction[].resolution_method: {metric: "WorkflowRun"}
+  em_3d_reconstruction[].symmetry_type: {derived: "POINT, HELICAL or 2D/3D CRYSTAL follows from which symmetry category is present"}
+  em_3d_reconstruction[].algorithm: {metric: "WorkflowRun"}
+  em_3d_reconstruction[].method: {metric: "WorkflowRun"}
+  em_3d_reconstruction[].refinement_type: {metric: "WorkflowRun"}
+  em_3d_reconstruction[].magnification_calibration: {metric: "WorkflowRun"}
+  em_3d_reconstruction[].num_class_averages: {metric: "WorkflowRun"}
+  em_3d_reconstruction[].details: {to: "WorkflowRun.description"}
+  em_single_particle_entity[].id: {join: "row id"}
+  em_single_particle_entity[].image_processing_id: {join: "processing id"}
+  em_single_particle_entity[].point_symmetry: {to: "RefinementParameters.symmetry"}
+  em_helical_entity[].id: {join: "row id"}
+  em_helical_entity[].image_processing_id: {join: "processing id"}
+  em_helical_entity[].axial_rise_per_subunit: {to: "RefinementParameters.helical_rise"}
+  em_helical_entity[].angular_rotation_per_subunit: {to: "RefinementParameters.helical_twist"}
+  em_helical_entity[].axial_symmetry: {to: "RefinementParameters.axial_symmetry"}
+  em_helical_entity[].details: {to: "RefinementParameters.description"}
+  em_3d_fitting: {metric: "WorkflowRun"}
+  em_3d_fitting[].id: {join: "fitting id"}
+  em_3d_fitting[].details: {to: "WorkflowRun.description"}
+  em_3d_fitting_list[].id: {join: "row id"}
+  em_3d_fitting_list[].3d_fitting_id: {join: "fitting id"}
+  em_3d_fitting_list[].pdb_entry_id: {to: "WorkflowRun.search_model_pdb_id"}
+  em_3d_fitting_list[].pdb_chain_id: {metric: "WorkflowRun"}
+  em_3d_fitting_list[].pdb_chain_residue_range: {metric: "WorkflowRun"}
+  em_3d_fitting_list[].details: {metric: "WorkflowRun"}
+
+  # ---- NMR -----------------------------------------------------------------------------
+  pdbx_nmr_exptl[].experiment_id: {join: "experiment id"}
+  pdbx_nmr_exptl[].conditions_id: {join: "conditions row"}
+  pdbx_nmr_exptl[].solution_id: {join: "sample row"}
+  pdbx_nmr_exptl[].spectrometer_id: {join: "spectrometer row"}
+  pdbx_nmr_exptl[].type: {to: "ExperimentRun.title"}
+  pdbx_nmr_exptl[].sample_state: {metric: "ExperimentRun"}
+  pdbx_nmr_exptl_sample_conditions: {metric: "ExperimentRun"}
+  pdbx_nmr_exptl_sample_conditions[].conditions_id: {join: "conditions row"}
+  pdbx_nmr_exptl_sample_conditions[].temperature: {to: "ExperimentalConditions.temperature"}
+  pdbx_nmr_exptl_sample_conditions[].temperature_units: {to: "ExperimentalConditions.temperature", as: "the unit"}
+  pdbx_nmr_exptl_sample_conditions[].pressure: {to: "ExperimentalConditions.pressure"}
+  pdbx_nmr_exptl_sample_conditions[].pressure_units: {to: "ExperimentalConditions.pressure", as: "the unit"}
+  pdbx_nmr_exptl_sample_conditions[].details: {to: "ExperimentalConditions.description"}
+  pdbx_nmr_sample_details[].solution_id: {join: "sample row"}
+  pdbx_nmr_sample_details[].label: {to: "Sample.title"}
+  pdbx_nmr_sample_details[].contents: {to: "Sample.description"}
+  pdbx_nmr_sample_details[].details: {to: "Sample.description"}
+  pdbx_nmr_sample_details[].solvent_system: {to: "BufferComposition.components"}
+  pdbx_nmr_sample_details[].type: {metric: "Sample"}
+  pdbx_nmr_spectrometer[].spectrometer_id: {join: "spectrometer row"}
+  pdbx_nmr_spectrometer[].manufacturer: {to: "NMRInstrument.manufacturer"}
+  pdbx_nmr_spectrometer[].model: {to: "NMRInstrument.model"}
+  pdbx_nmr_spectrometer[].field_strength: {to: "NMRInstrument.field_strength"}
+  pdbx_nmr_spectrometer[].type: {to: "NMRInstrument.spectrometer_type"}
+  pdbx_nmr_spectrometer[].details: {to: "NMRInstrument.description"}
+  pdbx_nmr_software[].name: {to: "WorkflowRun.software_name"}
+  pdbx_nmr_software[].version: {to: "WorkflowRun.software_version"}
+  pdbx_nmr_software[].classification: {to: "WorkflowRun.workflow_type", as: "mapped to WorkflowTypeEnum; other classes go to additional_software"}
+  pdbx_nmr_software[].authors: {metric: "WorkflowRun"}
+  pdbx_nmr_software[].ordinal: {join: "row order"}
+  pdbx_nmr_refine[].method: {to: "WorkflowRun.description"}
+  pdbx_nmr_refine[].details: {to: "WorkflowRun.description"}
+  pdbx_nmr_refine[].software_ordinal: {join: "software row"}
+  pdbx_nmr_ensemble: {metric: "WorkflowRun"}
+  pdbx_nmr_representative: {metric: "WorkflowRun"}
+  pdbx_nmr_details.text: {to: "WorkflowRun.description"}
+
+  # ---- solution scattering ---------------------------------------------------------------
+  pdbx_soln_scatter[].id: {join: "scattering experiment id"}
+  pdbx_soln_scatter[].type: {to: "ExperimentRun.technique", as: "x-ray becomes saxs, neutron becomes sans"}
+  pdbx_soln_scatter[].source_beamline: {to: "SAXSInstrument.beamline_id"}
+  pdbx_soln_scatter[].source_beamline_instrument: {to: "SAXSInstrument.model"}
+  pdbx_soln_scatter[].source_class: {to: "SAXSInstrument.description"}
+  pdbx_soln_scatter[].source_type: {to: "SAXSInstrument.title"}
+  pdbx_soln_scatter[].detector_type: {to: "SAXSInstrument.description"}
+  pdbx_soln_scatter[].detector_specific: {to: "SAXSInstrument.description"}
+  pdbx_soln_scatter[].temperature: {to: "ExperimentalConditions.temperature"}
+  pdbx_soln_scatter[].sample_pH: {to: "BufferComposition.ph"}
+  pdbx_soln_scatter[].buffer_name: {to: "BufferComposition.components"}
+  pdbx_soln_scatter[].concentration_range: {metric: "Sample"}
+  pdbx_soln_scatter[].protein_length: {metric: "Sample"}
+  pdbx_soln_scatter[].mean_guiner_radius: {to: "QualityMetrics.rg"}
+  pdbx_soln_scatter[].mean_guiner_radius_esd: {metric: "ExperimentRun"}
+  pdbx_soln_scatter[].max_mean_cross_sectional_radii_gyration: {metric: "ExperimentRun"}
+  pdbx_soln_scatter[].max_mean_cross_sectional_radii_gyration_esd: {metric: "ExperimentRun"}
+  pdbx_soln_scatter[].min_mean_cross_sectional_radii_gyration: {metric: "ExperimentRun"}
+  pdbx_soln_scatter[].min_mean_cross_sectional_radii_gyration_esd: {metric: "ExperimentRun"}
+  pdbx_soln_scatter[].num_time_frames: {metric: "ExperimentRun"}
+  pdbx_soln_scatter[].data_reduction_software_list: {to: "WorkflowRun.software_name"}
+  pdbx_soln_scatter[].data_analysis_software_list: {to: "WorkflowRun.software_name"}
+  pdbx_soln_scatter_model: {metric: "WorkflowRun"}
+  pdbx_soln_scatter_model[].id: {join: "row id"}
+  pdbx_soln_scatter_model[].scatter_id: {join: "scattering experiment id"}
+  pdbx_soln_scatter_model[].software_list: {to: "WorkflowRun.software_name"}
+  pdbx_soln_scatter_model[].details: {to: "WorkflowRun.description"}
+
+  # ---- integrative and computed models ----------------------------------------------------
+  ihm_entry_collection_mapping[].collection_id: {to: "Study.database_cross_references"}
+  ihm_external_reference_info[].associated_url: {to: "DataFile.file_path"}
+  ihm_external_reference_info[].reference: {to: "DataFile.description"}
+  ihm_external_reference_info[].reference_provider: {to: "DataFile.description"}
+  rcsb_ihm_dataset_list: {metric: "WorkflowRun"}
+  rcsb_ihm_dataset_source_db_reference: {to: "Study.database_cross_references"}
+  ma_data: {out_of_scope: "computed structure models (ModelArchive) are not experimental entries"}
+  rcsb_comp_model_provenance: {out_of_scope: "computed structure models (AlphaFold DB, ModelArchive) are not experimental entries"}
+  rcsb_ma_qa_metric_global: {out_of_scope: "computed structure models (AlphaFold DB, ModelArchive) are not experimental entries"}
+
+  # ---- molecules and binding ------------------------------------------------------------
+  pdbx_molecule_features[].prd_id: {join: "BIRD id; the component it describes carries it"}
+  pdbx_molecule_features[].name: {to: "SampleComponent.title"}
+  pdbx_molecule_features[].class: {to: "SampleComponent.description"}
+  pdbx_molecule_features[].type: {to: "SampleComponent.description"}
+  pdbx_molecule_features[].details: {to: "SampleComponent.description"}
+  rcsb_binding_affinity[].comp_id: {join: "the ligand the affinity is for"}
+  rcsb_binding_affinity[].value: {to: "SampleComponentInteraction.affinity"}
+  rcsb_binding_affinity[].unit: {to: "SampleComponentInteraction.affinity", as: "the unit"}
+  rcsb_binding_affinity[].type: {to: "SampleComponentInteraction.affinity_type", as: "mapped to BindingAffinityTypeEnum"}
+  rcsb_binding_affinity[].symbol: {to: "SampleComponentInteraction.description"}
+  rcsb_binding_affinity[].provenance_code: {to: "SampleComponentInteraction.description"}
+  rcsb_binding_affinity[].link: {to: "SampleComponentInteraction.description"}
+  rcsb_binding_affinity[].reference_sequence_identity: {to: "SampleComponentInteraction.description"}
+
+polymer_entity:
+  rcsb_id: {join: "entry and entity id"}
+  rcsb_latest_revision: {bookkeeping: "revision of the entity record"}
+  entity_poly.type: {to: "NucleicAcid.nucleic_acid_type", as: "mapped to NucleicAcidTypeEnum; protein entities become protein components"}
+  entity_poly.rcsb_entity_polymer_type: {to: "SampleComponent.component_type", as: "mapped to SampleComponentTypeEnum"}
+  entity_poly.pdbx_seq_one_letter_code_can: {to: "ProteinConstruct.amino_acid_sequence"}
+  entity_poly.pdbx_seq_one_letter_code: {metric: "ProteinConstruct"}
+  entity_poly.pdbx_strand_id: {to: "SampleProteinAssociation.chain_ids", as: "split on commas"}
+  entity_poly.rcsb_sample_sequence_length: {to: "ProteinConstruct.sequence_length_aa"}
+  entity_poly.rcsb_non_std_monomers: {to: "SampleProteinAssociation.modifications"}
+  entity_poly.rcsb_prd_id: {to: "SampleComponent.description"}
+  entity_poly.pdbx_target_identifier: {metric: "ProteinConstruct"}
+  entity_poly.pdbx_sequence_evidence_code: {metric: "ProteinConstruct"}
+  entity_poly.nstd_linkage: {derived: "yes exactly when non-standard linkages appear in rcsb_non_std_monomers"}
+  entity_poly.nstd_monomer: {derived: "yes exactly when rcsb_non_std_monomers is not empty"}
+  entity_poly.rcsb_artifact_monomer_count: {derived: "counted by aligning the carried sequence to the carried UniProt accession"}
+  entity_poly.rcsb_conflict_count: {derived: "counted by aligning the carried sequence to the carried UniProt accession"}
+  entity_poly.rcsb_deletion_count: {derived: "counted by aligning the carried sequence to the carried UniProt accession"}
+  entity_poly.rcsb_insertion_count: {derived: "counted by aligning the carried sequence to the carried UniProt accession"}
+  entity_poly.rcsb_mutation_count: {derived: "counted by aligning the carried sequence to the carried UniProt accession"}
+  entity_poly.rcsb_non_std_monomer_count: {derived: "length of rcsb_non_std_monomers"}
+
+  rcsb_polymer_entity.pdbx_description: {to: "SampleComponent.title"}
+  rcsb_polymer_entity.pdbx_number_of_molecules: {to: "SampleComponent.copy_number"}
+  rcsb_polymer_entity.formula_weight: {metric: "ProteinConstruct"}
+  rcsb_polymer_entity.pdbx_ec: {to: "Protein.ec_numbers", as: "split on commas"}
+  rcsb_polymer_entity.pdbx_fragment: {to: "ProteinConstruct.construct_description"}
+  rcsb_polymer_entity.pdbx_mutation: {to: "ProteinConstruct.mutations"}
+  rcsb_polymer_entity.details: {to: "ProteinConstruct.construct_description"}
+  rcsb_polymer_entity.src_method: {derived: "man, nat or syn follows from which source category is present"}
+  rcsb_polymer_entity.rcsb_multiple_source_flag: {derived: "Y exactly when the entity has more than one source row"}
+  rcsb_polymer_entity.rcsb_source_part_count: {derived: "number of source rows"}
+  rcsb_polymer_entity.rcsb_source_taxonomy_count: {derived: "number of distinct source taxa"}
+  rcsb_polymer_entity.rcsb_polymer_name_combined.names: {to: "Protein.protein_name", as: "for a nucleic acid this is RCSB's case-folded copy of pdbx_description, which is carried as written"}
+  rcsb_polymer_entity.rcsb_polymer_name_combined.provenance_source: {bookkeeping: "where RCSB took the name from"}
+  rcsb_polymer_entity.rcsb_macromolecular_names_combined: {reference: "name synonyms from UniProt and the PDB dictionary"}
+  rcsb_polymer_entity.rcsb_ec_lineage: {derived: "the EC hierarchy above the carried EC numbers"}
+  rcsb_polymer_entity.rcsb_enzyme_class_combined: {derived: "the EC numbers, already carried, with their hierarchy"}
+  rcsb_polymer_entity_name_com: {metric: "ProteinConstruct"}
+  rcsb_polymer_entity_name_sys: {metric: "ProteinConstruct"}
+  rcsb_polymer_entity_keywords: {reference: "keywords RCSB attaches from external annotation"}
+
+  rcsb_polymer_entity_container_identifiers.entity_id: {join: "entity id"}
+  rcsb_polymer_entity_container_identifiers.entry_id: {join: "entry id"}
+  rcsb_polymer_entity_container_identifiers.rcsb_id: {join: "entry and entity id"}
+  rcsb_polymer_entity_container_identifiers.asym_ids: {join: "label chain ids; the author chain ids are carried"}
+  rcsb_polymer_entity_container_identifiers.auth_asym_ids: {to: "SampleProteinAssociation.chain_ids"}
+  rcsb_polymer_entity_container_identifiers.chem_comp_monomers: {derived: "the residues in the carried sequence"}
+  rcsb_polymer_entity_container_identifiers.chem_comp_nstd_monomers: {to: "SampleProteinAssociation.modifications"}
+  rcsb_polymer_entity_container_identifiers.chem_ref_def_id: {join: "chemical reference id"}
+  rcsb_polymer_entity_container_identifiers.prd_id: {to: "SampleComponent.description"}
+  rcsb_polymer_entity_container_identifiers.uniprot_ids: {to: "Protein.uniprot_id", as: "written uniprot:<accession>"}
+  rcsb_polymer_entity_container_identifiers.reference_sequence_identifiers[].database_accession: {to: "Protein.cross_references", as: "UniProt accessions become the Protein id"}
+  rcsb_polymer_entity_container_identifiers.reference_sequence_identifiers[].database_name: {to: "Protein.cross_references", as: "UniProt makes the accession the Protein id"}
+  rcsb_polymer_entity_container_identifiers.reference_sequence_identifiers[].database_isoform: {to: "Protein.uniprot_id", as: "the isoform accession is used when given"}
+  rcsb_polymer_entity_container_identifiers.reference_sequence_identifiers[].reference_sequence_coverage: {to: "SampleProteinAssociation.sequence_coverage"}
+  rcsb_polymer_entity_container_identifiers.reference_sequence_identifiers[].entity_sequence_coverage: {metric: "ProteinConstruct"}
+  rcsb_polymer_entity_container_identifiers.reference_sequence_identifiers[].provenance_source: {bookkeeping: "who made the mapping (SIFTS, PDB)"}
+
+  entity_src_gen[].pdbx_src_id: {join: "source part id"}
+  entity_src_gen[].expression_system_id: {join: "expression system id"}
+  entity_src_gen[].pdbx_alt_source_flag: {bookkeeping: "always sample for deposited entities"}
+  entity_src_gen[].pdbx_beg_seq_num: {to: "SampleProteinAssociation.residue_range", as: "written begin-end"}
+  entity_src_gen[].pdbx_end_seq_num: {to: "SampleProteinAssociation.residue_range", as: "written begin-end"}
+  entity_src_gen[].pdbx_gene_src_gene: {to: "ProteinConstruct.gene_name"}
+  entity_src_gen[].pdbx_gene_src_scientific_name: {to: "Protein.organism_name"}
+  entity_src_gen[].pdbx_gene_src_ncbi_taxonomy_id: {to: "Protein.organism", as: "written NCBITaxon:<id>"}
+  entity_src_gen[].gene_src_common_name: {derived: "follows from the source taxon"}
+  entity_src_gen[].gene_src_genus: {derived: "follows from the source taxon"}
+  entity_src_gen[].gene_src_species: {derived: "follows from the source taxon"}
+  entity_src_gen[].gene_src_strain: {metric: "ProteinConstruct"}
+  entity_src_gen[].gene_src_tissue: {metric: "ProteinConstruct"}
+  entity_src_gen[].gene_src_tissue_fraction: {metric: "ProteinConstruct"}
+  entity_src_gen[].gene_src_details: {metric: "ProteinConstruct"}
+  entity_src_gen[].pdbx_gene_src_atcc: {metric: "ProteinConstruct"}
+  entity_src_gen[].pdbx_gene_src_cell: {metric: "ProteinConstruct"}
+  entity_src_gen[].pdbx_gene_src_cell_line: {metric: "ProteinConstruct"}
+  entity_src_gen[].pdbx_gene_src_cellular_location: {metric: "ProteinConstruct"}
+  entity_src_gen[].pdbx_gene_src_fragment: {metric: "ProteinConstruct"}
+  entity_src_gen[].pdbx_gene_src_organ: {metric: "ProteinConstruct"}
+  entity_src_gen[].pdbx_gene_src_organelle: {metric: "ProteinConstruct"}
+  entity_src_gen[].pdbx_gene_src_variant: {metric: "ProteinConstruct"}
+  entity_src_gen[].pdbx_description: {metric: "ProteinConstruct"}
+  entity_src_gen[].pdbx_seq_type: {metric: "ProteinConstruct"}
+  entity_src_gen[].plasmid_name: {to: "ProteinConstruct.vector_name"}
+  entity_src_gen[].pdbx_host_org_vector: {to: "ProteinConstruct.vector_backbone"}
+  entity_src_gen[].pdbx_host_org_vector_type: {metric: "ProteinConstruct"}
+  entity_src_gen[].plasmid_details: {metric: "ProteinConstruct"}
+  entity_src_gen[].pdbx_host_org_scientific_name: {to: "SamplePreparation.description"}
+  entity_src_gen[].pdbx_host_org_ncbi_taxonomy_id: {to: "SamplePreparation.expression_system", as: "mapped to ExpressionSystemEnum; the taxon is kept as an additional property"}
+  entity_src_gen[].pdbx_host_org_strain: {to: "SamplePreparation.host_strain_or_cell_line"}
+  entity_src_gen[].pdbx_host_org_cell_line: {to: "SamplePreparation.host_strain_or_cell_line"}
+  entity_src_gen[].pdbx_host_org_cell: {to: "SamplePreparation.host_strain_or_cell_line"}
+  entity_src_gen[].host_org_common_name: {derived: "follows from the host taxon"}
+  entity_src_gen[].host_org_genus: {derived: "follows from the host taxon"}
+  entity_src_gen[].host_org_species: {derived: "follows from the host taxon"}
+  entity_src_gen[].host_org_details: {metric: "SamplePreparation"}
+  entity_src_gen[].pdbx_host_org_atcc: {metric: "SamplePreparation"}
+  entity_src_gen[].pdbx_host_org_cellular_location: {metric: "SamplePreparation"}
+  entity_src_gen[].pdbx_host_org_culture_collection: {metric: "SamplePreparation"}
+  entity_src_gen[].pdbx_host_org_gene: {metric: "SamplePreparation"}
+  entity_src_gen[].pdbx_host_org_organ: {metric: "SamplePreparation"}
+  entity_src_gen[].pdbx_host_org_organelle: {metric: "SamplePreparation"}
+  entity_src_gen[].pdbx_host_org_tissue: {metric: "SamplePreparation"}
+  entity_src_gen[].pdbx_host_org_tissue_fraction: {metric: "SamplePreparation"}
+  entity_src_gen[].pdbx_host_org_variant: {metric: "SamplePreparation"}
+  entity_src_nat[].pdbx_src_id: {join: "source part id"}
+  entity_src_nat[].pdbx_alt_source_flag: {bookkeeping: "always sample for deposited entities"}
+  entity_src_nat[].pdbx_beg_seq_num: {to: "SampleProteinAssociation.residue_range", as: "written begin-end"}
+  entity_src_nat[].pdbx_end_seq_num: {to: "SampleProteinAssociation.residue_range", as: "written begin-end"}
+  entity_src_nat[].pdbx_organism_scientific: {to: "Protein.organism_name"}
+  entity_src_nat[].pdbx_ncbi_taxonomy_id: {to: "Protein.organism", as: "written NCBITaxon:<id>"}
+  entity_src_nat[].common_name: {derived: "follows from the source taxon"}
+  entity_src_nat[].genus: {derived: "follows from the source taxon"}
+  entity_src_nat[].species: {derived: "follows from the source taxon"}
+  entity_src_nat: {metric: "SamplePreparation"}
+  pdbx_entity_src_syn[].pdbx_src_id: {join: "source part id"}
+  pdbx_entity_src_syn[].pdbx_alt_source_flag: {bookkeeping: "always sample for deposited entities"}
+  pdbx_entity_src_syn[].pdbx_beg_seq_num: {to: "SampleProteinAssociation.residue_range", as: "written begin-end"}
+  pdbx_entity_src_syn[].pdbx_end_seq_num: {to: "SampleProteinAssociation.residue_range", as: "written begin-end"}
+  pdbx_entity_src_syn[].organism_scientific: {to: "Protein.organism_name"}
+  pdbx_entity_src_syn[].ncbi_taxonomy_id: {to: "Protein.organism", as: "written NCBITaxon:<id>"}
+  pdbx_entity_src_syn[].organism_common_name: {derived: "follows from the taxon"}
+  pdbx_entity_src_syn[].details: {to: "ProteinConstruct.construct_description"}
+  rcsb_entity_source_organism: {derived: "RCSB's normalized copy of the entity_src_gen, entity_src_nat and pdbx_entity_src_syn rows"}
+  rcsb_entity_source_organism[].taxonomy_lineage: {derived: "the NCBI Taxonomy lineage of the carried taxon"}
+  rcsb_entity_source_organism[].rcsb_gene_name[].value: {to: "Protein.gene_name"}
+  rcsb_entity_source_organism[].rcsb_gene_name[].provenance_source: {bookkeeping: "where RCSB took the gene name from"}
+  rcsb_entity_host_organism: {derived: "RCSB's normalized copy of the entity_src_gen host fields"}
+
+  rcsb_polymer_entity_annotation[].type: {to: "Protein.cross_references", as: "GO annotations go to Protein.go_terms"}
+  rcsb_polymer_entity_annotation[].annotation_id: {to: "Protein.cross_references"}
+  rcsb_polymer_entity_annotation[].name: {to: "Protein.cross_references", as: "for a GO annotation the name is the term label, recoverable from the GO id in go_terms"}
+  rcsb_polymer_entity_annotation[].description: {to: "Protein.cross_references"}
+  rcsb_polymer_entity_annotation[].annotation_lineage: {reference: "the classification hierarchy above the carried annotation"}
+  rcsb_polymer_entity_annotation[].additional_properties: {reference: "annotation detail from the source resource"}
+  rcsb_polymer_entity_annotation[].assignment_version: {bookkeeping: "version of the annotation resource"}
+  rcsb_polymer_entity_annotation[].provenance_source: {bookkeeping: "where RCSB took the annotation from"}
+  rcsb_related_target_references[].related_resource_name: {to: "Protein.cross_references"}
+  rcsb_related_target_references[].related_target_id: {to: "Protein.cross_references"}
+  rcsb_related_target_references[].related_resource_version: {bookkeeping: "version of the target resource"}
+  rcsb_related_target_references[].target_taxonomy_id: {derived: "the carried source taxon"}
+  rcsb_related_target_references[].aligned_target: {reference: "alignment of the entity to the target record"}
+  rcsb_polymer_entity_align: {reference: "SIFTS alignment of the entity to its reference sequences"}
+  rcsb_polymer_entity_feature: {reference: "features computed or imported per residue (disorder, hydropathy, domains, membrane segments)"}
+  rcsb_polymer_entity_feature_summary: {reference: "summary of the per-residue features"}
+  rcsb_polymer_entity_group_membership: {reference: "RCSB sequence-identity and UniProt groupings"}
+  rcsb_cluster_membership: {reference: "RCSB sequence clusters"}
+  rcsb_cluster_flexibility: {reference: "RCSB flexibility across a sequence cluster"}
+  rcsb_membrane_lineage: {reference: "mpstruc classification, also carried as a cross-reference"}
+  rcsb_membrane_lineage_provenance_code: {bookkeeping: "provenance of the membrane classification"}
+  rcsb_genomic_lineage: {reference: "genomic location from external resources"}
+  rcsb_target_cofactors: {reference: "bioactivities of other compounds against the target, from ChEMBL and others"}
+
+nonpolymer_entity:
+  rcsb_id: {join: "entry and entity id"}
+  rcsb_latest_revision: {bookkeeping: "revision of the entity record"}
+  pdbx_entity_nonpoly.entity_id: {join: "entity id"}
+  pdbx_entity_nonpoly.comp_id: {to: "SmallMolecule.pdb_ligand_id", as: "written pdb.ligand:<code>"}
+  pdbx_entity_nonpoly.name: {to: "SampleComponent.title"}
+  pdbx_entity_nonpoly.rcsb_prd_id: {to: "SampleComponent.description"}
+  rcsb_nonpolymer_entity.pdbx_description: {to: "SampleComponent.title"}
+  rcsb_nonpolymer_entity.pdbx_number_of_molecules: {to: "SampleComponent.copy_number"}
+  rcsb_nonpolymer_entity.formula_weight: {derived: "the chemical component's formula weight, carried in daltons"}
+  rcsb_nonpolymer_entity.details: {to: "SampleComponent.description"}
+  rcsb_nonpolymer_entity_container_identifiers.entity_id: {join: "entity id"}
+  rcsb_nonpolymer_entity_container_identifiers.entry_id: {join: "entry id"}
+  rcsb_nonpolymer_entity_container_identifiers.rcsb_id: {join: "entry and entity id"}
+  rcsb_nonpolymer_entity_container_identifiers.asym_ids: {join: "label chain ids of the copies"}
+  rcsb_nonpolymer_entity_container_identifiers.auth_asym_ids: {to: "SampleComponentInteraction.object_id", as: "the polymer each copy is assigned to becomes the interaction's object"}
+  rcsb_nonpolymer_entity_container_identifiers.chem_ref_def_id: {join: "chemical component id"}
+  rcsb_nonpolymer_entity_container_identifiers.nonpolymer_comp_id: {join: "chemical component id"}
+  rcsb_nonpolymer_entity_container_identifiers.prd_id: {to: "SampleComponent.description"}
+  rcsb_nonpolymer_entity_container_identifiers.reference_chemical_identifiers_resource_name: {to: "SmallMolecule.cross_references"}
+  rcsb_nonpolymer_entity_container_identifiers.reference_chemical_identifiers_resource_accession: {to: "SmallMolecule.cross_references"}
+  rcsb_nonpolymer_entity_container_identifiers.reference_chemical_identifiers_provenance_source: {bookkeeping: "who made the mapping"}
+  rcsb_nonpolymer_entity_annotation[].type: {to: "SampleComponent.description", as: "SUBJECT_OF_INVESTIGATION also makes the role ligand"}
+  rcsb_nonpolymer_entity_annotation[].description: {to: "SampleComponent.description"}
+  rcsb_nonpolymer_entity_annotation[].name: {derived: "the component code, carried"}
+  rcsb_nonpolymer_entity_annotation[].comp_id: {derived: "the component code, carried"}
+  rcsb_nonpolymer_entity_annotation[].annotation_id: {bookkeeping: "row id"}
+  rcsb_nonpolymer_entity_annotation[].annotation_lineage: {reference: "classification hierarchy of the annotation"}
+  rcsb_nonpolymer_entity_annotation[].assignment_version: {bookkeeping: "version of the annotation"}
+  rcsb_nonpolymer_entity_annotation[].provenance_source: {bookkeeping: "where the annotation came from"}
+  rcsb_nonpolymer_entity_feature: {derived: "RCSB's feature copy of the annotations above"}
+  rcsb_nonpolymer_entity_feature_summary: {derived: "counts of the features"}
+  rcsb_nonpolymer_entity_keywords: {reference: "keywords RCSB attaches from external annotation"}
+  rcsb_nonpolymer_entity_name_com: {metric: "SmallMolecule"}
+
+branched_entity:
+  rcsb_id: {join: "entry and entity id"}
+  rcsb_latest_revision: {bookkeeping: "revision of the entity record"}
+  pdbx_entity_branch.type: {to: "SmallMolecule.chemical_class", as: "oligosaccharide becomes carbohydrate"}
+  pdbx_entity_branch.rcsb_branched_component_count: {derived: "number of residues in the carried descriptors"}
+  pdbx_entity_branch_descriptor[].descriptor: {metric: "SmallMolecule"}
+  pdbx_entity_branch_descriptor[].type: {join: "names the descriptor"}
+  pdbx_entity_branch_descriptor[].program: {join: "names the descriptor"}
+  pdbx_entity_branch_descriptor[].program_version: {join: "names the descriptor"}
+  rcsb_branched_entity.pdbx_description: {to: "SampleComponent.title"}
+  rcsb_branched_entity.pdbx_number_of_molecules: {to: "SampleComponent.copy_number"}
+  rcsb_branched_entity.formula_weight: {to: "SmallMolecule.molecular_weight_theoretical"}
+  rcsb_branched_entity.details: {to: "SampleComponent.description"}
+  rcsb_branched_entity_container_identifiers.entity_id: {join: "entity id"}
+  rcsb_branched_entity_container_identifiers.entry_id: {join: "entry id"}
+  rcsb_branched_entity_container_identifiers.rcsb_id: {join: "entry and entity id"}
+  rcsb_branched_entity_container_identifiers.asym_ids: {join: "label chain ids of the copies"}
+  rcsb_branched_entity_container_identifiers.auth_asym_ids: {to: "SampleComponentInteraction.object_id", as: "the polymer each copy is attached to becomes the interaction's object"}
+  rcsb_branched_entity_container_identifiers.chem_comp_monomers: {derived: "the residues in the carried descriptors"}
+  rcsb_branched_entity_container_identifiers.chem_ref_def_id: {join: "chemical reference id"}
+  rcsb_branched_entity_container_identifiers.prd_id: {to: "SampleComponent.description"}
+  rcsb_branched_entity_container_identifiers.reference_identifiers[].resource_name: {to: "SmallMolecule.cross_references"}
+  rcsb_branched_entity_container_identifiers.reference_identifiers[].resource_accession: {to: "SmallMolecule.cross_references"}
+  rcsb_branched_entity_container_identifiers.reference_identifiers[].provenance_source: {bookkeeping: "who made the mapping"}
+  rcsb_branched_entity_annotation: {reference: "glycan annotation from external resources"}
+  rcsb_branched_entity_feature: {reference: "per-residue glycan features"}
+  rcsb_branched_entity_feature_summary: {reference: "summary of the features"}
+  rcsb_branched_entity_keywords: {reference: "keywords RCSB attaches from external annotation"}
+  rcsb_branched_entity_name_com: {metric: "SmallMolecule"}
+  rcsb_branched_entity_name_sys: {metric: "SmallMolecule"}
+
+chemcomp:
+  rcsb_id: {join: "component code"}
+  chem_comp.id: {to: "SmallMolecule.pdb_ligand_id", as: "written pdb.ligand:<code>"}
+  chem_comp.name: {to: "SmallMolecule.small_molecule_name"}
+  chem_comp.formula: {to: "SmallMolecule.molecular_formula", as: "spaces removed"}
+  chem_comp.formula_weight: {to: "SmallMolecule.molecular_weight_theoretical"}
+  chem_comp.type: {to: "SmallMolecule.chemical_class", as: "mapped to ChemicalClassEnum with the formula"}
+  chem_comp.pdbx_formal_charge: {metric: "SmallMolecule"}
+  chem_comp.mon_nstd_parent_comp_id: {metric: "SmallMolecule"}
+  chem_comp.pdbx_subcomponent_list: {metric: "SmallMolecule"}
+  chem_comp.one_letter_code: {derived: "follows from the parent component"}
+  chem_comp.three_letter_code: {derived: "same as the component code"}
+  chem_comp.pdbx_pcm: {derived: "Y exactly when pdbx_chem_comp_pcm is present"}
+  chem_comp.pdbx_ambiguous_flag: {bookkeeping: "dictionary curation flag"}
+  chem_comp.pdbx_initial_date: {bookkeeping: "dictionary curation date"}
+  chem_comp.pdbx_modified_date: {bookkeeping: "dictionary curation date"}
+  chem_comp.pdbx_processing_site: {bookkeeping: "dictionary curation site"}
+  chem_comp.pdbx_release_status: {bookkeeping: "dictionary release status"}
+  chem_comp.pdbx_replaced_by: {bookkeeping: "dictionary curation history"}
+  chem_comp.pdbx_replaces: {bookkeeping: "dictionary curation history"}
+  rcsb_chem_comp_descriptor.SMILES_stereo: {to: "SmallMolecule.smiles"}
+  rcsb_chem_comp_descriptor.SMILES: {derived: "the stereo SMILES without stereochemistry"}
+  rcsb_chem_comp_descriptor.InChI: {to: "SmallMolecule.inchi"}
+  rcsb_chem_comp_descriptor.InChIKey: {to: "SmallMolecule.inchikey"}
+  rcsb_chem_comp_descriptor.comp_id: {join: "component code"}
+  pdbx_chem_comp_descriptor: {derived: "the same structure as SMILES or InChI written by other programs"}
+  pdbx_chem_comp_identifier[].identifier: {metric: "SmallMolecule"}
+  pdbx_chem_comp_identifier[].type: {join: "names the identifier"}
+  pdbx_chem_comp_identifier[].program: {join: "names the identifier"}
+  pdbx_chem_comp_identifier[].program_version: {join: "names the identifier"}
+  pdbx_chem_comp_identifier[].comp_id: {join: "component code"}
+  pdbx_chem_comp_feature[].value: {metric: "SmallMolecule"}
+  pdbx_chem_comp_feature[].type: {join: "names the feature"}
+  pdbx_chem_comp_feature[].source: {join: "names the feature"}
+  pdbx_chem_comp_feature[].comp_id: {join: "component code"}
+  rcsb_chem_comp_container_identifiers.comp_id: {join: "component code"}
+  rcsb_chem_comp_container_identifiers.rcsb_id: {join: "component code"}
+  rcsb_chem_comp_container_identifiers.drugbank_id: {to: "SmallMolecule.cross_references"}
+  rcsb_chem_comp_container_identifiers.atc_codes: {to: "SmallMolecule.cross_references"}
+  rcsb_chem_comp_container_identifiers.prd_id: {to: "SmallMolecule.cross_references"}
+  rcsb_chem_comp_container_identifiers.subcomponent_ids: {metric: "SmallMolecule"}
+  rcsb_chem_comp_related[].resource_name: {to: "SmallMolecule.cross_references", as: "a ChEBI id also becomes the SmallMolecule id"}
+  rcsb_chem_comp_related[].resource_accession_code: {to: "SmallMolecule.cross_references"}
+  rcsb_chem_comp_related[].related_mapping_method: {bookkeeping: "how RCSB matched the resource"}
+  rcsb_chem_comp_related[].comp_id: {join: "component code"}
+  rcsb_chem_comp_related[].ordinal: {join: "row order"}
+  rcsb_chem_comp_info: {derived: "atom and bond counts computed from the structure, carried as SMILES and InChI"}
+  rcsb_chem_comp_info.initial_deposition_date: {bookkeeping: "dictionary curation date"}
+  rcsb_chem_comp_info.initial_release_date: {bookkeeping: "dictionary curation date"}
+  rcsb_chem_comp_info.revision_date: {bookkeeping: "dictionary curation date"}
+  rcsb_chem_comp_info.release_status: {bookkeeping: "dictionary release status"}
+  rcsb_chem_comp_synonyms: {reference: "names from the Chemical Component Dictionary and other resources"}
+  rcsb_chem_comp_annotation: {reference: "drug and chemical classifications from external resources"}
+  rcsb_chem_comp_target: {reference: "DrugBank targets of the compound in general"}
+  pdbx_chem_comp_audit: {bookkeeping: "dictionary curation history"}
+  pdbx_chem_comp_pcm: {reference: "what protein modification the component represents, from the dictionary"}
+  pdbx_family_prd_audit: {bookkeeping: "BIRD curation history"}
+  pdbx_prd_audit: {bookkeeping: "BIRD curation history"}
+  pdbx_reference_entity_list: {reference: "BIRD dictionary definition of the molecule, reachable by its PRD id"}
+  pdbx_reference_entity_poly: {reference: "BIRD dictionary definition of the molecule, reachable by its PRD id"}
+  pdbx_reference_entity_poly_link: {reference: "BIRD dictionary definition of the molecule, reachable by its PRD id"}
+  pdbx_reference_entity_poly_seq: {reference: "BIRD dictionary definition of the molecule, reachable by its PRD id"}
+  pdbx_reference_entity_sequence: {reference: "BIRD dictionary definition of the molecule, reachable by its PRD id"}
+  pdbx_reference_entity_src_nat: {reference: "BIRD dictionary definition of the molecule, reachable by its PRD id"}
+  pdbx_reference_molecule: {reference: "BIRD dictionary definition of the molecule, reachable by its PRD id"}
+  pdbx_reference_molecule_annotation: {reference: "BIRD dictionary definition of the molecule, reachable by its PRD id"}
+  pdbx_reference_molecule_details: {reference: "BIRD dictionary definition of the molecule, reachable by its PRD id"}
+  pdbx_reference_molecule_family: {reference: "BIRD dictionary definition of the molecule, reachable by its PRD id"}
+  pdbx_reference_molecule_features: {reference: "BIRD dictionary definition of the molecule, reachable by its PRD id"}
+  pdbx_reference_molecule_list: {reference: "BIRD dictionary definition of the molecule, reachable by its PRD id"}
+  pdbx_reference_molecule_related_structures: {reference: "BIRD dictionary definition of the molecule, reachable by its PRD id"}
+  pdbx_reference_molecule_synonyms: {reference: "BIRD dictionary definition of the molecule, reachable by its PRD id"}
+  rcsb_bird_citation: {reference: "literature on the molecule from the BIRD dictionary"}
+  rcsb_schema_container_identifiers: {bookkeeping: "RCSB schema version"}
+
+assembly:
+  rcsb_id: {join: "entry and assembly id"}
+  rcsb_latest_revision: {bookkeeping: "revision of the assembly record"}
+  pdbx_struct_assembly.id: {join: "assembly id"}
+  pdbx_struct_assembly.oligomeric_details: {to: "Sample.oligomeric_state"}
+  pdbx_struct_assembly.oligomeric_count: {metric: "Sample"}
+  pdbx_struct_assembly.details: {metric: "Sample"}
+  pdbx_struct_assembly.method_details: {metric: "Sample"}
+  pdbx_struct_assembly.rcsb_details: {derived: "RCSB's normalized form of details"}
+  pdbx_struct_assembly.rcsb_candidate_assembly: {derived: "RCSB's choice among the assemblies"}
+  pdbx_struct_assembly_auth_evidence[].experimental_support: {metric: "Sample"}
+  pdbx_struct_assembly_auth_evidence[].details: {metric: "Sample"}
+  pdbx_struct_assembly_auth_evidence[].assembly_id: {join: "assembly id"}
+  pdbx_struct_assembly_auth_evidence[].id: {join: "row id"}
+  pdbx_struct_assembly_prop[].type: {join: "names the property"}
+  pdbx_struct_assembly_prop[].value: {metric: "Sample"}
+  pdbx_struct_assembly_prop[].assembly_id: {join: "assembly id"}
+  pdbx_struct_assembly_prop[].biol_id: {join: "assembly id"}
+  pdbx_struct_assembly_gen: {linked_file: "the chains and operators that build the assembly, in the mmCIF file"}
+  pdbx_struct_oper_list: {linked_file: "symmetry operator matrices, in the mmCIF file"}
+  rcsb_assembly_container_identifiers.assembly_id: {join: "assembly id"}
+  rcsb_assembly_container_identifiers.entry_id: {join: "entry id"}
+  rcsb_assembly_container_identifiers.rcsb_id: {join: "entry and assembly id"}
+  rcsb_assembly_container_identifiers.interface_ids: {join: "the interface records fetched for the first assembly"}
+  rcsb_assembly_info: {derived: "counts RCSB computes over the assembly from the coordinates"}
+  rcsb_struct_symmetry[].oligomeric_state: {to: "Sample.oligomeric_state", as: "the global symmetry's state; pseudo and local symmetries' states are additional properties"}
+  rcsb_struct_symmetry[].symbol: {metric: "Sample"}
+  rcsb_struct_symmetry[].stoichiometry: {metric: "Sample"}
+  rcsb_struct_symmetry[].kind: {join: "Global Symmetry is the one carried"}
+  rcsb_struct_symmetry[].type: {derived: "follows from the symmetry symbol"}
+  rcsb_struct_symmetry[].clusters: {linked_file: "chain clusters computed from the coordinates"}
+  rcsb_struct_symmetry[].rotation_axes: {linked_file: "symmetry axes computed from the coordinates"}
+  rcsb_struct_symmetry_lineage: {derived: "the symmetry hierarchy above the carried symbol"}
+  rcsb_struct_symmetry_provenance_code: {bookkeeping: "provenance of the symmetry calculation"}
+  rcsb_assembly_annotation: {reference: "annotation of the assembly from external resources"}
+  rcsb_assembly_feature: {reference: "per-residue features of the assembly"}
+
+interface:
+  rcsb_id: {join: "entry, assembly and interface id"}
+  rcsb_latest_revision: {bookkeeping: "revision of the interface record"}
+  rcsb_interface_container_identifiers: {join: "entry, assembly and interface ids"}
+  rcsb_interface_operator: {linked_file: "the operators placing the partners, in the mmCIF file"}
+  rcsb_interface_partner[].interface_partner_identifier.entity_id: {to: "SampleComponentInteraction.subject_id", as: "the two partners' components"}
+  rcsb_interface_partner[].interface_partner_identifier.asym_id: {join: "label chain id of the partner"}
+  rcsb_interface_partner[].interface_partner_feature[].feature_positions[].beg_seq_id: {to: "SampleComponentInteraction.subject_site", as: "residues whose surface the partner buries"}
+  rcsb_interface_partner[].interface_partner_feature[].feature_positions[].end_seq_id: {to: "SampleComponentInteraction.subject_site", as: "residues whose surface the partner buries"}
+  rcsb_interface_partner[].interface_partner_feature[].feature_positions[].values: {to: "SampleComponentInteraction.subject_site", as: "residues whose surface the partner buries"}
+  rcsb_interface_partner[].interface_partner_feature[].type: {join: "ASA_BOUND and ASA_UNBOUND are compared"}
+  rcsb_interface_partner[].interface_partner_feature[].name: {join: "names the feature"}
+  rcsb_interface_partner[].interface_partner_feature[].provenance_source: {bookkeeping: "program that computed the areas"}
+  rcsb_interface_info.interface_area: {to: "SampleComponentInteraction.description", as: "rounded to whole square angstroms"}
+  rcsb_interface_info.num_interface_residues: {to: "SampleComponentInteraction.description"}
+  rcsb_interface_info.num_core_interface_residues: {to: "SampleComponentInteraction.description"}
+  rcsb_interface_info.interface_character: {derived: "hetero or homo follows from the partners"}
+  rcsb_interface_info.self_jaccard_contact_score: {linked_file: "symmetry score computed from the coordinates in the mmCIF file"}
+  rcsb_interface_info.polymer_composition: {derived: "follows from the partners' types"}

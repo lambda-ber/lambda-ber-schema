@@ -319,10 +319,16 @@ linkml_meta = LinkMLMeta({'default_prefix': 'lambda',
                                       'prefix_reference': 'https://www.ebi.ac.uk/chembl/compound_report_card/'},
                   'dcterms': {'prefix_prefix': 'dcterms',
                               'prefix_reference': 'http://purl.org/dc/terms/'},
+                  'doi': {'prefix_prefix': 'doi',
+                          'prefix_reference': 'https://doi.org/'},
                   'drugbank': {'prefix_prefix': 'drugbank',
                                'prefix_reference': 'https://go.drugbank.com/drugs/'},
+                  'emdb': {'prefix_prefix': 'emdb',
+                           'prefix_reference': 'https://www.ebi.ac.uk/emdb/'},
                   'emsl': {'prefix_prefix': 'emsl',
                            'prefix_reference': 'https://api.emsl.pnnl.gov/external/'},
+                  'glytoucan': {'prefix_prefix': 'glytoucan',
+                                'prefix_reference': 'https://glytoucan.org/Structures/Glycans/'},
                   'imgCIF': {'prefix_prefix': 'imgCIF',
                              'prefix_reference': 'https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#'},
                   'insdc': {'prefix_prefix': 'insdc',
@@ -345,10 +351,14 @@ linkml_meta = LinkMLMeta({'default_prefix': 'lambda',
                           'prefix_reference': 'https://www.rcsb.org/structure/'},
                   'pdb.ligand': {'prefix_prefix': 'pdb.ligand',
                                  'prefix_reference': 'https://www.rcsb.org/ligand/'},
+                  'pmid': {'prefix_prefix': 'pmid',
+                           'prefix_reference': 'https://pubmed.ncbi.nlm.nih.gov/'},
                   'prov': {'prefix_prefix': 'prov',
                            'prefix_reference': 'http://www.w3.org/ns/prov#'},
                   'pubchem.compound': {'prefix_prefix': 'pubchem.compound',
                                        'prefix_reference': 'https://pubchem.ncbi.nlm.nih.gov/compound/'},
+                  'rcsb': {'prefix_prefix': 'rcsb',
+                           'prefix_reference': 'https://data.rcsb.org/data-attributes.html#'},
                   'rdfs': {'prefix_prefix': 'rdfs',
                            'prefix_reference': 'http://www.w3.org/2000/01/rdf-schema#'},
                   'refseq': {'prefix_prefix': 'refseq',
@@ -1481,6 +1491,94 @@ class DatabaseNameEnum(str, Enum):
     """
     MODOMICS, modified RNA nucleosides
     """
+    emdb = "emdb"
+    """
+    Electron Microscopy Data Bank
+    """
+    empiar = "empiar"
+    """
+    Electron Microscopy Public Image Archive
+    """
+    bmrb = "bmrb"
+    """
+    Biological Magnetic Resonance Data Bank
+    """
+    sasbdb = "sasbdb"
+    """
+    Small Angle Scattering Biological Data Bank
+    """
+    pdb_ihm = "pdb_ihm"
+    """
+    PDB-IHM, the archive of integrative structures
+    """
+    nakb = "nakb"
+    """
+    Nucleic Acid Knowledgebase
+    """
+    sbgrid = "sbgrid"
+    """
+    SBGrid Data Bank
+    """
+    proteindiffraction = "proteindiffraction"
+    """
+    Integrated Resource for Reproducibility in Macromolecular Crystallography (proteindiffraction.org)
+    """
+    olderado = "olderado"
+    """
+    OLDERADO, representative models of NMR ensembles
+    """
+    ecod = "ecod"
+    """
+    ECOD, Evolutionary Classification of Protein Domains
+    """
+    scop2 = "scop2"
+    """
+    SCOP2
+    """
+    mpstruc = "mpstruc"
+    """
+    Membrane Proteins of Known 3D Structure
+    """
+    opm = "opm"
+    """
+    Orientations of Proteins in Membranes
+    """
+    pdbtm = "pdbtm"
+    """
+    Protein Data Bank of Transmembrane Proteins
+    """
+    memprotmd = "memprotmd"
+    """
+    MemProtMD
+    """
+    glytoucan = "glytoucan"
+    """
+    GlyTouCan glycan structure repository
+    """
+    glygen = "glygen"
+    """
+    GlyGen
+    """
+    bindingdb = "bindingdb"
+    """
+    BindingDB
+    """
+    binding_moad = "binding_moad"
+    """
+    Binding MOAD
+    """
+    pdbbind = "pdbbind"
+    """
+    PDBbind-CN
+    """
+    atc = "atc"
+    """
+    WHO Anatomical Therapeutic Chemical classification
+    """
+    other = "other"
+    """
+    A database with no value of its own here; DatabaseCrossReference.description names it
+    """
 
 
 class FacilityEnum(str, Enum):
@@ -2249,6 +2347,34 @@ class TechniqueEnum(str, Enum):
     """
     Micro-electron diffraction for atomic-resolution structure determination from microcrystals
     """
+    solution_nmr = "solution_nmr"
+    """
+    Solution nuclear magnetic resonance spectroscopy
+    """
+    solid_state_nmr = "solid_state_nmr"
+    """
+    Solid-state nuclear magnetic resonance spectroscopy
+    """
+    powder_diffraction = "powder_diffraction"
+    """
+    Powder diffraction
+    """
+    epr = "epr"
+    """
+    Electron paramagnetic resonance spectroscopy
+    """
+    fluorescence_transfer = "fluorescence_transfer"
+    """
+    Fluorescence resonance energy transfer as a structural restraint
+    """
+    infrared_spectroscopy = "infrared_spectroscopy"
+    """
+    Infrared spectroscopy
+    """
+    integrative_modeling = "integrative_modeling"
+    """
+    Integrative or hybrid modelling from several kinds of data
+    """
 
 
 class ProcessingStatusEnum(str, Enum):
@@ -2466,6 +2592,18 @@ class FileFormatEnum(str, Enum):
     gz = "gz"
     """
     Gzip compressed format
+    """
+    pdf = "pdf"
+    """
+    Portable Document Format, as for a validation report
+    """
+    nmr_star = "nmr_star"
+    """
+    NMR-STAR, the BMRB format for chemical shifts and restraints
+    """
+    other = "other"
+    """
+    A format with no value of its own here; DataFile.description names it
     """
 
 
@@ -2748,6 +2886,26 @@ class ExperimentalMethodEnum(str, Enum):
     fiber_diffraction = "fiber_diffraction"
     """
     Fiber diffraction
+    """
+    single_particle_analysis = "single_particle_analysis"
+    """
+    Single-particle cryo-EM reconstruction
+    """
+    helical_reconstruction = "helical_reconstruction"
+    """
+    Helical reconstruction of filaments
+    """
+    subtomogram_averaging = "subtomogram_averaging"
+    """
+    Averaging of subvolumes extracted from electron tomograms
+    """
+    electron_tomography = "electron_tomography"
+    """
+    Electron tomography of a unique object, without averaging
+    """
+    electron_crystallography = "electron_crystallography"
+    """
+    Structure from 2D or 3D crystals by electron diffraction or imaging
     """
 
 
@@ -4546,7 +4704,8 @@ class AggregatedProteinView(NamedThing):
          'domain_of': ['AggregatedProteinView', 'Sample', 'Protein']} })
     ligand_interactions: Optional[list[LigandInteraction]] = Field(default=None, description="""All ligand interactions""", json_schema_extra = { "linkml_meta": {'alias': 'ligand_interactions',
          'domain_of': ['FunctionalSite', 'AggregatedProteinView', 'Sample', 'Protein']} })
-    mutations: Optional[list[MutationEffect]] = Field(default=None, description="""All mutation annotations""", json_schema_extra = { "linkml_meta": {'alias': 'mutations', 'domain_of': ['AggregatedProteinView', 'Sample']} })
+    mutations: Optional[list[MutationEffect]] = Field(default=None, description="""All mutation annotations""", json_schema_extra = { "linkml_meta": {'alias': 'mutations',
+         'domain_of': ['AggregatedProteinView', 'Sample', 'ProteinConstruct']} })
     ptms: Optional[list[PostTranslationalModification]] = Field(default=None, description="""All post-translational modifications""", json_schema_extra = { "linkml_meta": {'alias': 'ptms', 'domain_of': ['AggregatedProteinView']} })
     biophysical_properties: Optional[list[BiophysicalProperty]] = Field(default=None, description="""All biophysical properties""", json_schema_extra = { "linkml_meta": {'alias': 'biophysical_properties',
          'domain_of': ['AggregatedProteinView', 'Sample', 'Protein']} })
@@ -4687,10 +4846,17 @@ class Dataset(NamedThing):
          'tree_root': True})
 
     keywords: Optional[list[str]] = Field(default=None, description="""Keywords or tags describing the dataset for search and categorization""", json_schema_extra = { "linkml_meta": {'alias': 'keywords', 'domain_of': ['Dataset', 'Study']} })
+    deposition_date: Optional[str] = Field(default=None, description="""Date the dataset was first deposited with the archive it was loaded from (YYYY-MM-DD)""", json_schema_extra = { "linkml_meta": {'alias': 'deposition_date',
+         'domain_of': ['Dataset'],
+         'exact_mappings': ['mmCIF:_pdbx_database_status.recvd_initial_deposition_date']} })
+    release_date: Optional[str] = Field(default=None, description="""Date the archive first made the dataset public (YYYY-MM-DD)""", json_schema_extra = { "linkml_meta": {'alias': 'release_date', 'domain_of': ['Dataset']} })
+    last_revision_date: Optional[str] = Field(default=None, description="""Date of the archive's most recent revision of the dataset (YYYY-MM-DD)""", json_schema_extra = { "linkml_meta": {'alias': 'last_revision_date', 'domain_of': ['Dataset']} })
+    revision: Optional[str] = Field(default=None, description="""The archive's version label for the dataset as loaded, so a reload can tell whether the source changed: '1.4' for a PDB entry at major revision 1, minor revision 4""", json_schema_extra = { "linkml_meta": {'alias': 'revision', 'domain_of': ['Dataset']} })
     studies: Optional[list[Study]] = Field(default=None, description="""All studies in this dataset""", json_schema_extra = { "linkml_meta": {'alias': 'studies', 'domain_of': ['Dataset']} })
     persons: Optional[list[Person]] = Field(default=None, description="""All people referenced anywhere in this dataset""", json_schema_extra = { "linkml_meta": {'alias': 'persons', 'domain_of': ['Dataset']} })
     organizations: Optional[list[Organization]] = Field(default=None, description="""All organizations referenced anywhere in this dataset""", json_schema_extra = { "linkml_meta": {'alias': 'organizations', 'domain_of': ['Dataset']} })
-    instruments: Optional[list[Instrument]] = Field(default=None, description="""All instruments used across studies""", json_schema_extra = { "linkml_meta": {'alias': 'instruments', 'domain_of': ['Dataset']} })
+    publications: Optional[list[Publication]] = Field(default=None, description="""All publications describing studies in this dataset""", json_schema_extra = { "linkml_meta": {'alias': 'publications', 'domain_of': ['Dataset']} })
+    instruments: Optional[list[Union[Instrument,CryoEMInstrument,XRayInstrument,SANSInstrument,NMRInstrument,SAXSInstrument,BeamlineInstrument]]] = Field(default=None, description="""All instruments used across studies""", json_schema_extra = { "linkml_meta": {'alias': 'instruments', 'domain_of': ['Dataset']} })
     proteins: Optional[list[Protein]] = Field(default=None, description="""All proteins referenced by samples in this dataset, one record per protein""", json_schema_extra = { "linkml_meta": {'alias': 'proteins', 'domain_of': ['Dataset']} })
     protein_constructs: Optional[list[ProteinConstruct]] = Field(default=None, description="""All protein constructs""", json_schema_extra = { "linkml_meta": {'alias': 'protein_constructs', 'domain_of': ['Dataset']} })
     nucleic_acids: Optional[list[NucleicAcid]] = Field(default=None, description="""All nucleic acids referenced by samples in this dataset, one record per strand""", json_schema_extra = { "linkml_meta": {'alias': 'nucleic_acids', 'domain_of': ['Dataset']} })
@@ -4717,6 +4883,7 @@ class Dataset(NamedThing):
     experiment_person_associations: Optional[list[ExperimentPersonAssociation]] = Field(default=None, description="""Links between experiment runs and people (M:N with role)""", json_schema_extra = { "linkml_meta": {'alias': 'experiment_person_associations', 'domain_of': ['Dataset']} })
     workflow_person_associations: Optional[list[WorkflowPersonAssociation]] = Field(default=None, description="""Links between workflow runs and people (M:N with role)""", json_schema_extra = { "linkml_meta": {'alias': 'workflow_person_associations', 'domain_of': ['Dataset']} })
     study_organization_associations: Optional[list[StudyOrganizationAssociation]] = Field(default=None, description="""Links between studies and organizations (M:N with role, award number)""", json_schema_extra = { "linkml_meta": {'alias': 'study_organization_associations', 'domain_of': ['Dataset']} })
+    study_publication_associations: Optional[list[StudyPublicationAssociation]] = Field(default=None, description="""Links between studies and the publications that describe them (M:N, marking the primary citation)""", json_schema_extra = { "linkml_meta": {'alias': 'study_publication_associations', 'domain_of': ['Dataset']} })
     person_organization_associations: Optional[list[PersonOrganizationAssociation]] = Field(default=None, description="""Links between people and organizations (M:N with role and dates)""", json_schema_extra = { "linkml_meta": {'alias': 'person_organization_associations', 'domain_of': ['Dataset']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
@@ -4734,10 +4901,71 @@ class Study(NamedThing):
 
     proposal_id: Optional[str] = Field(default=None, description="""Facility proposal or project identifier associated with this study (e.g., a DOE or facility allocation ID)""", json_schema_extra = { "linkml_meta": {'alias': 'proposal_id', 'domain_of': ['Study']} })
     keywords: Optional[list[str]] = Field(default=None, description="""Keywords or tags describing the study for search and categorization""", json_schema_extra = { "linkml_meta": {'alias': 'keywords', 'domain_of': ['Dataset', 'Study']} })
+    database_cross_references: Optional[list[DatabaseCrossReference]] = Field(default=None, description="""Records for this study in other archives: the PDB entry and its DOI, the EMDB map, the BMRB chemical shifts, a SASBDB entry, an entry this one supersedes""", json_schema_extra = { "linkml_meta": {'alias': 'database_cross_references', 'domain_of': ['Study', 'Sample']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
     description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
          'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
+
+
+class Publication(NamedThing):
+    """
+    A journal article, book chapter or preprint describing a study. Identified by DOI (doi:10.1038/s41422-022-00680-4) where one exists, else by PubMed id (pmid:35726088), else by an id local to the source. The inherited title is the article title.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'exact_mappings': ['schema:ScholarlyArticle'],
+         'from_schema': 'http://w3id.org/lambda/',
+         'related_mappings': ['mmCIF:_citation']})
+
+    doi: Optional[str] = Field(default=None, description="""DOI as a CURIE (doi:10.1038/s41422-022-00680-4)""", json_schema_extra = { "linkml_meta": {'alias': 'doi',
+         'domain_of': ['Publication'],
+         'exact_mappings': ['mmCIF:_citation.pdbx_database_id_DOI']} })
+    pubmed_id: Optional[str] = Field(default=None, description="""PubMed id as a CURIE (pmid:35726088)""", json_schema_extra = { "linkml_meta": {'alias': 'pubmed_id',
+         'domain_of': ['Publication'],
+         'exact_mappings': ['mmCIF:_citation.pdbx_database_id_PubMed']} })
+    authors: Optional[list[str]] = Field(default=None, description="""Author names in publication order, as the source writes them ('Liu, H.')""", json_schema_extra = { "linkml_meta": {'alias': 'authors', 'domain_of': ['Publication']} })
+    journal: Optional[str] = Field(default=None, description="""Full journal name""", json_schema_extra = { "linkml_meta": {'alias': 'journal',
+         'domain_of': ['Publication'],
+         'exact_mappings': ['mmCIF:_citation.journal_full']} })
+    journal_abbreviation: Optional[str] = Field(default=None, description="""Journal abbreviation as the source gives it ('Cell Res.')""", json_schema_extra = { "linkml_meta": {'alias': 'journal_abbreviation',
+         'domain_of': ['Publication'],
+         'exact_mappings': ['mmCIF:_citation.journal_abbrev']} })
+    journal_issn: Optional[str] = Field(default=None, description="""Journal ISSN""", json_schema_extra = { "linkml_meta": {'alias': 'journal_issn', 'domain_of': ['Publication']} })
+    journal_country: Optional[str] = Field(default=None, description="""Country of the journal's publisher, as the source records it""", json_schema_extra = { "linkml_meta": {'alias': 'journal_country',
+         'comments': ['This is where the journal is published, not where the authors '
+                      'work'],
+         'domain_of': ['Publication']} })
+    volume: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'volume', 'domain_of': ['Publication']} })
+    issue: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'issue', 'domain_of': ['Publication']} })
+    page_first: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'page_first', 'domain_of': ['Publication']} })
+    page_last: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'page_last', 'domain_of': ['Publication']} })
+    year: Optional[int] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'year', 'domain_of': ['Publication']} })
+    language: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'language', 'domain_of': ['Publication']} })
+    book_title: Optional[str] = Field(default=None, description="""For a chapter, the title of the book""", json_schema_extra = { "linkml_meta": {'alias': 'book_title', 'domain_of': ['Publication']} })
+    book_publisher: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'book_publisher', 'domain_of': ['Publication']} })
+    book_publisher_city: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'book_publisher_city', 'domain_of': ['Publication']} })
+    book_isbn: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'book_isbn', 'domain_of': ['Publication']} })
+    unpublished: Optional[bool] = Field(default=None, description="""True when the source records the publication as not yet published ('To be published')""", json_schema_extra = { "linkml_meta": {'alias': 'unpublished', 'domain_of': ['Publication']} })
+    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
+    title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
+
+
+class StudyPublicationAssociation(ConfiguredBaseModel):
+    """
+    Links a study to a publication that describes it
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/'})
+
+    study_id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'study_id',
+         'domain_of': ['StudyPublicationAssociation',
+                       'StudySampleAssociation',
+                       'StudyExperimentAssociation',
+                       'StudyWorkflowAssociation',
+                       'StudyPersonAssociation',
+                       'StudyOrganizationAssociation']} })
+    publication_id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'publication_id', 'domain_of': ['StudyPublicationAssociation']} })
+    is_primary: Optional[bool] = Field(default=None, description="""Whether this is the study's primary citation""", json_schema_extra = { "linkml_meta": {'alias': 'is_primary', 'domain_of': ['StudyPublicationAssociation']} })
 
 
 class Person(NamedThing):
@@ -4877,6 +5105,27 @@ class Sample(NamedThing):
                               'IHMCIF:_ihm_struct_assembly_details',
                               'IHMCIF:_ihm_entity_poly_segment']})
 
+    additional_metrics: Optional[list[QuantityValue]] = Field(default=None, description="""Numeric values the source reports that have no named slot on this class, each a QuantityValue whose attribute names the source item it came from (attribute id mmCIF:_refine.B_iso_max, label refine.B_iso_max). A loader puts a value here only after checking that no named slot fits; a value that recurs across sources should get a named slot instead.""", json_schema_extra = { "linkml_meta": {'alias': 'additional_metrics',
+         'domain_of': ['Sample',
+                       'Protein',
+                       'ProteinConstruct',
+                       'NucleicAcid',
+                       'SmallMolecule',
+                       'SamplePreparation',
+                       'Instrument',
+                       'ExperimentRun',
+                       'WorkflowRun',
+                       'ResolutionShell']} })
+    additional_properties: Optional[list[TextValue]] = Field(default=None, description="""Text values the source reports that have no named slot on this class, each a TextValue whose attribute names the source item it came from. The same rule as additional_metrics applies.""", json_schema_extra = { "linkml_meta": {'alias': 'additional_properties',
+         'domain_of': ['Sample',
+                       'Protein',
+                       'ProteinConstruct',
+                       'NucleicAcid',
+                       'SmallMolecule',
+                       'SamplePreparation',
+                       'Instrument',
+                       'ExperimentRun',
+                       'WorkflowRun']} })
     sample_code: str = Field(default=..., description="""Human-friendly laboratory identifier or facility code for the sample (e.g., 'ALS-12.3.1-SAMPLE-001', 'LAB-PROT-2024-01'). Used for local reference and tracking within laboratory workflows.""", json_schema_extra = { "linkml_meta": {'alias': 'sample_code', 'domain_of': ['Sample']} })
     sample_type: SampleTypeEnum = Field(default=..., description="""Coarse kind of sample, a one-word summary. The detail is in SampleComponent.""", json_schema_extra = { "linkml_meta": {'alias': 'sample_type', 'domain_of': ['Sample']} })
     molecular_composition: Optional[MolecularComposition] = Field(default=None, description="""Free-text description of molecular composition including sequences, modifications, ligands. The structured form is the SampleComponent rows for the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'molecular_composition', 'domain_of': ['Sample']} })
@@ -4911,7 +5160,7 @@ class Sample(NamedThing):
          'domain_of': ['AggregatedProteinView', 'Sample', 'Protein']} })
     conformational_ensemble: Optional[ConformationalEnsemble] = Field(default=None, description="""Conformational states and dynamics""", json_schema_extra = { "linkml_meta": {'alias': 'conformational_ensemble',
          'domain_of': ['AggregatedProteinView', 'Sample', 'Protein']} })
-    database_cross_references: Optional[list[DatabaseCrossReference]] = Field(default=None, description="""Cross-references to external databases""", json_schema_extra = { "linkml_meta": {'alias': 'database_cross_references', 'domain_of': ['Sample']} })
+    database_cross_references: Optional[list[DatabaseCrossReference]] = Field(default=None, description="""Cross-references to external databases""", json_schema_extra = { "linkml_meta": {'alias': 'database_cross_references', 'domain_of': ['Study', 'Sample']} })
     protein_name: Optional[str] = Field(default=None, description="""Name of the protein as the facility or depositor recorded it. A display and search field; the canonical name, sequence and identifiers live on the linked Protein.""", json_schema_extra = { "linkml_meta": {'alias': 'protein_name',
          'domain_of': ['AggregatedProteinView', 'Sample', 'Protein'],
          'exact_mappings': ['nsls2:Protein_Name']} })
@@ -4920,7 +5169,7 @@ class Sample(NamedThing):
          'exact_mappings': ['nsls2:Construct']} })
     tag: Optional[str] = Field(default=None, description="""Affinity tag (e.g., His6, GST, MBP)""", json_schema_extra = { "linkml_meta": {'alias': 'tag', 'domain_of': ['Sample'], 'exact_mappings': ['nsls2:Tag']} })
     mutations: Optional[str] = Field(default=None, description="""Mutations present in the sample""", json_schema_extra = { "linkml_meta": {'alias': 'mutations',
-         'domain_of': ['AggregatedProteinView', 'Sample'],
+         'domain_of': ['AggregatedProteinView', 'Sample', 'ProteinConstruct'],
          'exact_mappings': ['nsls2:Mutations']} })
     expression_system: Optional[str] = Field(default=None, description="""Expression system used""", json_schema_extra = { "linkml_meta": {'alias': 'expression_system',
          'domain_of': ['Sample', 'SamplePreparation'],
@@ -4948,6 +5197,27 @@ class Protein(NamedThing):
          'id_prefixes': ['uniprot', 'lambda'],
          'related_mappings': ['mmCIF:_entity', 'mmCIF:_struct_ref']})
 
+    additional_metrics: Optional[list[QuantityValue]] = Field(default=None, description="""Numeric values the source reports that have no named slot on this class, each a QuantityValue whose attribute names the source item it came from (attribute id mmCIF:_refine.B_iso_max, label refine.B_iso_max). A loader puts a value here only after checking that no named slot fits; a value that recurs across sources should get a named slot instead.""", json_schema_extra = { "linkml_meta": {'alias': 'additional_metrics',
+         'domain_of': ['Sample',
+                       'Protein',
+                       'ProteinConstruct',
+                       'NucleicAcid',
+                       'SmallMolecule',
+                       'SamplePreparation',
+                       'Instrument',
+                       'ExperimentRun',
+                       'WorkflowRun',
+                       'ResolutionShell']} })
+    additional_properties: Optional[list[TextValue]] = Field(default=None, description="""Text values the source reports that have no named slot on this class, each a TextValue whose attribute names the source item it came from. The same rule as additional_metrics applies.""", json_schema_extra = { "linkml_meta": {'alias': 'additional_properties',
+         'domain_of': ['Sample',
+                       'Protein',
+                       'ProteinConstruct',
+                       'NucleicAcid',
+                       'SmallMolecule',
+                       'SamplePreparation',
+                       'Instrument',
+                       'ExperimentRun',
+                       'WorkflowRun']} })
     uniprot_id: Optional[str] = Field(default=None, description="""UniProt accession as a Bioregistry CURIE (e.g., uniprot:P69905). An isoform suffix is allowed (uniprot:P69905-2). Normally identical to id.""", json_schema_extra = { "linkml_meta": {'alias': 'uniprot_id',
          'domain_of': ['AggregatedProteinView', 'Protein', 'ProteinConstruct'],
          'exact_mappings': ['mmCIF:_struct_ref.pdbx_db_accession'],
@@ -4966,7 +5236,7 @@ class Protein(NamedThing):
          'domain_of': ['Protein', 'NucleicAcid'],
          'exact_mappings': ['mmCIF:_entity_src_gen.pdbx_gene_src_scientific_name']} })
     amino_acid_sequence: Optional[str] = Field(default=None, description="""Canonical one-letter amino acid sequence of the protein, without tags or other construct additions. Construct-level sequence belongs on ProteinConstruct.""", json_schema_extra = { "linkml_meta": {'alias': 'amino_acid_sequence',
-         'domain_of': ['Protein'],
+         'domain_of': ['Protein', 'ProteinConstruct'],
          'exact_mappings': ['mmCIF:_entity_poly.pdbx_seq_one_letter_code_can']} })
     sequence_length: Optional[int] = Field(default=None, description="""Length of the canonical sequence in residues""", json_schema_extra = { "linkml_meta": {'alias': 'sequence_length', 'domain_of': ['Protein', 'NucleicAcid']} })
     molecular_weight_theoretical: Optional[QuantityValue] = Field(default=None, description="""Mass computed from the canonical sequence, typically in kDa. A mass measured for a given preparation belongs on SampleProteinAssociation.observed_molecular_weight.""", json_schema_extra = { "linkml_meta": {'alias': 'molecular_weight_theoretical',
@@ -5054,6 +5324,27 @@ class ProteinConstruct(NamedThing):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/'})
 
+    additional_metrics: Optional[list[QuantityValue]] = Field(default=None, description="""Numeric values the source reports that have no named slot on this class, each a QuantityValue whose attribute names the source item it came from (attribute id mmCIF:_refine.B_iso_max, label refine.B_iso_max). A loader puts a value here only after checking that no named slot fits; a value that recurs across sources should get a named slot instead.""", json_schema_extra = { "linkml_meta": {'alias': 'additional_metrics',
+         'domain_of': ['Sample',
+                       'Protein',
+                       'ProteinConstruct',
+                       'NucleicAcid',
+                       'SmallMolecule',
+                       'SamplePreparation',
+                       'Instrument',
+                       'ExperimentRun',
+                       'WorkflowRun',
+                       'ResolutionShell']} })
+    additional_properties: Optional[list[TextValue]] = Field(default=None, description="""Text values the source reports that have no named slot on this class, each a TextValue whose attribute names the source item it came from. The same rule as additional_metrics applies.""", json_schema_extra = { "linkml_meta": {'alias': 'additional_properties',
+         'domain_of': ['Sample',
+                       'Protein',
+                       'ProteinConstruct',
+                       'NucleicAcid',
+                       'SmallMolecule',
+                       'SamplePreparation',
+                       'Instrument',
+                       'ExperimentRun',
+                       'WorkflowRun']} })
     construct_id: str = Field(default=..., description="""Unique identifier for this construct""", json_schema_extra = { "linkml_meta": {'alias': 'construct_id',
          'domain_of': ['ProteinConstruct', 'SampleProteinAssociation']} })
     protein_id: Optional[str] = Field(default=None, description="""The protein this construct expresses. Set whenever the dataset carries a Protein row for it; a construct that names a protein only by accession uses uniprot_id instead.""", json_schema_extra = { "linkml_meta": {'alias': 'protein_id',
@@ -5084,10 +5375,29 @@ class ProteinConstruct(NamedThing):
     sequence_file_path: Optional[str] = Field(default=None, description="""Path to sequence file""", json_schema_extra = { "linkml_meta": {'alias': 'sequence_file_path', 'domain_of': ['ProteinConstruct']} })
     sequence_verified_by: Optional[str] = Field(default=None, description="""Method or person who verified the sequence""", json_schema_extra = { "linkml_meta": {'alias': 'sequence_verified_by', 'domain_of': ['ProteinConstruct']} })
     verification_notes: Optional[str] = Field(default=None, description="""Notes from sequence verification""", json_schema_extra = { "linkml_meta": {'alias': 'verification_notes', 'domain_of': ['ProteinConstruct']} })
+    amino_acid_sequence: Optional[str] = Field(default=None, description="""One-letter sequence of the expressed construct, tags, linkers and mutations included: the sequence of the molecule in the sample, which may differ from the canonical sequence on Protein""", json_schema_extra = { "linkml_meta": {'alias': 'amino_acid_sequence',
+         'domain_of': ['Protein', 'ProteinConstruct'],
+         'exact_mappings': ['mmCIF:_entity_poly.pdbx_seq_one_letter_code_can']} })
+    mutations: Optional[str] = Field(default=None, description="""Point mutations or other engineered changes relative to the canonical sequence, as the source states them ('C145A', 'E166Q, del 1-20')""", json_schema_extra = { "linkml_meta": {'alias': 'mutations',
+         'domain_of': ['AggregatedProteinView', 'Sample', 'ProteinConstruct'],
+         'exact_mappings': ['mmCIF:_entity.pdbx_mutation']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
     description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
          'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
+
+    @field_validator('amino_acid_sequence')
+    def pattern_amino_acid_sequence(cls, v):
+        pattern=re.compile(r"^[ACDEFGHIKLMNPQRSTVWYBJOUXZ]+$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid amino_acid_sequence format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid amino_acid_sequence format: {v}"
+            raise ValueError(err_msg)
+        return v
 
 
 class NucleicAcid(NamedThing):
@@ -5112,6 +5422,27 @@ class NucleicAcid(NamedThing):
          'id_prefixes': ['rnacentral', 'refseq', 'insdc', 'lambda', 'pdb'],
          'related_mappings': ['mmCIF:_entity', 'mmCIF:_entity_poly']})
 
+    additional_metrics: Optional[list[QuantityValue]] = Field(default=None, description="""Numeric values the source reports that have no named slot on this class, each a QuantityValue whose attribute names the source item it came from (attribute id mmCIF:_refine.B_iso_max, label refine.B_iso_max). A loader puts a value here only after checking that no named slot fits; a value that recurs across sources should get a named slot instead.""", json_schema_extra = { "linkml_meta": {'alias': 'additional_metrics',
+         'domain_of': ['Sample',
+                       'Protein',
+                       'ProteinConstruct',
+                       'NucleicAcid',
+                       'SmallMolecule',
+                       'SamplePreparation',
+                       'Instrument',
+                       'ExperimentRun',
+                       'WorkflowRun',
+                       'ResolutionShell']} })
+    additional_properties: Optional[list[TextValue]] = Field(default=None, description="""Text values the source reports that have no named slot on this class, each a TextValue whose attribute names the source item it came from. The same rule as additional_metrics applies.""", json_schema_extra = { "linkml_meta": {'alias': 'additional_properties',
+         'domain_of': ['Sample',
+                       'Protein',
+                       'ProteinConstruct',
+                       'NucleicAcid',
+                       'SmallMolecule',
+                       'SamplePreparation',
+                       'Instrument',
+                       'ExperimentRun',
+                       'WorkflowRun']} })
     nucleic_acid_type: NucleicAcidTypeEnum = Field(default=..., description="""Chemical type of the polymer: DNA, RNA, a DNA/RNA hybrid, or an analogue""", json_schema_extra = { "linkml_meta": {'alias': 'nucleic_acid_type',
          'domain_of': ['NucleicAcid'],
          'exact_mappings': ['mmCIF:_entity_poly.type']} })
@@ -5234,6 +5565,27 @@ class SmallMolecule(NamedThing):
                          'lambda'],
          'related_mappings': ['mmCIF:_chem_comp', 'mmCIF:_pdbx_entity_nonpoly']})
 
+    additional_metrics: Optional[list[QuantityValue]] = Field(default=None, description="""Numeric values the source reports that have no named slot on this class, each a QuantityValue whose attribute names the source item it came from (attribute id mmCIF:_refine.B_iso_max, label refine.B_iso_max). A loader puts a value here only after checking that no named slot fits; a value that recurs across sources should get a named slot instead.""", json_schema_extra = { "linkml_meta": {'alias': 'additional_metrics',
+         'domain_of': ['Sample',
+                       'Protein',
+                       'ProteinConstruct',
+                       'NucleicAcid',
+                       'SmallMolecule',
+                       'SamplePreparation',
+                       'Instrument',
+                       'ExperimentRun',
+                       'WorkflowRun',
+                       'ResolutionShell']} })
+    additional_properties: Optional[list[TextValue]] = Field(default=None, description="""Text values the source reports that have no named slot on this class, each a TextValue whose attribute names the source item it came from. The same rule as additional_metrics applies.""", json_schema_extra = { "linkml_meta": {'alias': 'additional_properties',
+         'domain_of': ['Sample',
+                       'Protein',
+                       'ProteinConstruct',
+                       'NucleicAcid',
+                       'SmallMolecule',
+                       'SamplePreparation',
+                       'Instrument',
+                       'ExperimentRun',
+                       'WorkflowRun']} })
     small_molecule_name: Optional[str] = Field(default=None, description="""Name as ChEBI, the depositor or the supplier gives it (e.g., 'ATP', 'heme b', 'n-dodecyl beta-D-maltoside'). Recommended, not required, so that a record seeded from an identifier alone can be enriched later.""", json_schema_extra = { "linkml_meta": {'alias': 'small_molecule_name',
          'domain_of': ['SmallMolecule'],
          'exact_mappings': ['mmCIF:_chem_comp.name'],
@@ -5424,6 +5776,27 @@ class SamplePreparation(NamedThing):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/'})
 
+    additional_metrics: Optional[list[QuantityValue]] = Field(default=None, description="""Numeric values the source reports that have no named slot on this class, each a QuantityValue whose attribute names the source item it came from (attribute id mmCIF:_refine.B_iso_max, label refine.B_iso_max). A loader puts a value here only after checking that no named slot fits; a value that recurs across sources should get a named slot instead.""", json_schema_extra = { "linkml_meta": {'alias': 'additional_metrics',
+         'domain_of': ['Sample',
+                       'Protein',
+                       'ProteinConstruct',
+                       'NucleicAcid',
+                       'SmallMolecule',
+                       'SamplePreparation',
+                       'Instrument',
+                       'ExperimentRun',
+                       'WorkflowRun',
+                       'ResolutionShell']} })
+    additional_properties: Optional[list[TextValue]] = Field(default=None, description="""Text values the source reports that have no named slot on this class, each a TextValue whose attribute names the source item it came from. The same rule as additional_metrics applies.""", json_schema_extra = { "linkml_meta": {'alias': 'additional_properties',
+         'domain_of': ['Sample',
+                       'Protein',
+                       'ProteinConstruct',
+                       'NucleicAcid',
+                       'SmallMolecule',
+                       'SamplePreparation',
+                       'Instrument',
+                       'ExperimentRun',
+                       'WorkflowRun']} })
     preparation_type: PreparationTypeEnum = Field(default=..., description="""Type of sample preparation""", json_schema_extra = { "linkml_meta": {'alias': 'preparation_type', 'domain_of': ['SamplePreparation']} })
     sample_id: str = Field(default=..., description="""Reference to the sample being prepared""", json_schema_extra = { "linkml_meta": {'alias': 'sample_id',
          'domain_of': ['SampleComponent',
@@ -5474,6 +5847,9 @@ class SamplePreparation(NamedThing):
     purity_by_sds_page_percent: Optional[QuantityValue] = Field(default=None, description="""Purity percentage by SDS-PAGE""", json_schema_extra = { "linkml_meta": {'alias': 'purity_by_sds_page_percent', 'domain_of': ['SamplePreparation']} })
     aggregation_assessment: Optional[str] = Field(default=None, description="""Assessment of protein aggregation state""", json_schema_extra = { "linkml_meta": {'alias': 'aggregation_assessment', 'domain_of': ['SamplePreparation']} })
     aliquoting: Optional[str] = Field(default=None, description="""How the protein was aliquoted for storage""", json_schema_extra = { "linkml_meta": {'alias': 'aliquoting', 'domain_of': ['SamplePreparation']} })
+    cryoem_preparation: Optional[CryoEMPreparation] = Field(default=None, description="""Grid, vitrification, staining and embedding detail, where preparation_type is cryo_em or negative_stain""", json_schema_extra = { "linkml_meta": {'alias': 'cryoem_preparation', 'domain_of': ['SamplePreparation']} })
+    xray_preparation: Optional[XRayPreparation] = Field(default=None, description="""Crystallization, crystal and mounting detail, where preparation_type is xray_crystallography""", json_schema_extra = { "linkml_meta": {'alias': 'xray_preparation', 'domain_of': ['SamplePreparation']} })
+    saxs_preparation: Optional[SAXSPreparation] = Field(default=None, description="""Solution scattering sample detail, where preparation_type is saxs or sans""", json_schema_extra = { "linkml_meta": {'alias': 'saxs_preparation', 'domain_of': ['SamplePreparation']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
     description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
@@ -5486,6 +5862,30 @@ class Instrument(NamedThing):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/'})
 
+    instrument_type: Literal["Instrument"] = Field(default="Instrument", description="""Which kind of instrument this row is: CryoEMInstrument, XRayInstrument, NMRInstrument, SAXSInstrument, SANSInstrument, BeamlineInstrument, or Instrument for one with no subclass. A Dataset lists every instrument in one table, so a row carrying fields of a subclass (accelerating_voltage, detector_model) needs this to be read back as that subclass rather than rejected as an Instrument with unknown fields.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_type',
+         'designates_type': True,
+         'domain_of': ['Instrument']} })
+    additional_metrics: Optional[list[QuantityValue]] = Field(default=None, description="""Numeric values the source reports that have no named slot on this class, each a QuantityValue whose attribute names the source item it came from (attribute id mmCIF:_refine.B_iso_max, label refine.B_iso_max). A loader puts a value here only after checking that no named slot fits; a value that recurs across sources should get a named slot instead.""", json_schema_extra = { "linkml_meta": {'alias': 'additional_metrics',
+         'domain_of': ['Sample',
+                       'Protein',
+                       'ProteinConstruct',
+                       'NucleicAcid',
+                       'SmallMolecule',
+                       'SamplePreparation',
+                       'Instrument',
+                       'ExperimentRun',
+                       'WorkflowRun',
+                       'ResolutionShell']} })
+    additional_properties: Optional[list[TextValue]] = Field(default=None, description="""Text values the source reports that have no named slot on this class, each a TextValue whose attribute names the source item it came from. The same rule as additional_metrics applies.""", json_schema_extra = { "linkml_meta": {'alias': 'additional_properties',
+         'domain_of': ['Sample',
+                       'Protein',
+                       'ProteinConstruct',
+                       'NucleicAcid',
+                       'SmallMolecule',
+                       'SamplePreparation',
+                       'Instrument',
+                       'ExperimentRun',
+                       'WorkflowRun']} })
     instrument_code: str = Field(default=..., description="""Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_code', 'domain_of': ['Instrument']} })
     instrument_registry_id: Optional[BeamlineEnum] = Field(default=None, description="""Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_registry_id',
          'any_of': [{'range': 'BeamlineEnum'}],
@@ -5611,6 +6011,39 @@ class CryoEMInstrument(Instrument):
          'domain_of': ['CryoEMInstrument'],
          'exact_mappings': ['mmCIF:_em_imaging.mode']} })
     tem_beam_diameter: Optional[QuantityValue] = Field(default=None, description="""TEM beam diameter in micrometers""", json_schema_extra = { "linkml_meta": {'alias': 'tem_beam_diameter', 'domain_of': ['CryoEMInstrument']} })
+    electron_source: Optional[str] = Field(default=None, description="""Electron source (FIELD EMISSION GUN, LAB6, TUNGSTEN HAIRPIN)""", json_schema_extra = { "linkml_meta": {'alias': 'electron_source',
+         'domain_of': ['CryoEMInstrument'],
+         'exact_mappings': ['mmCIF:_em_imaging.electron_source']} })
+    illumination_mode: Optional[str] = Field(default=None, description="""Illumination mode (FLOOD BEAM, SPOT SCAN)""", json_schema_extra = { "linkml_meta": {'alias': 'illumination_mode',
+         'domain_of': ['CryoEMInstrument'],
+         'exact_mappings': ['mmCIF:_em_imaging.illumination_mode']} })
+    specimen_holder_model: Optional[str] = Field(default=None, description="""Specimen holder model, or the autoloader for a microscope that has one""", json_schema_extra = { "linkml_meta": {'alias': 'specimen_holder_model',
+         'domain_of': ['CryoEMInstrument'],
+         'exact_mappings': ['mmCIF:_em_imaging.specimen_holder_model']} })
+    instrument_type: Literal["CryoEMInstrument"] = Field(default="CryoEMInstrument", description="""Which kind of instrument this row is: CryoEMInstrument, XRayInstrument, NMRInstrument, SAXSInstrument, SANSInstrument, BeamlineInstrument, or Instrument for one with no subclass. A Dataset lists every instrument in one table, so a row carrying fields of a subclass (accelerating_voltage, detector_model) needs this to be read back as that subclass rather than rejected as an Instrument with unknown fields.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_type',
+         'designates_type': True,
+         'domain_of': ['Instrument']} })
+    additional_metrics: Optional[list[QuantityValue]] = Field(default=None, description="""Numeric values the source reports that have no named slot on this class, each a QuantityValue whose attribute names the source item it came from (attribute id mmCIF:_refine.B_iso_max, label refine.B_iso_max). A loader puts a value here only after checking that no named slot fits; a value that recurs across sources should get a named slot instead.""", json_schema_extra = { "linkml_meta": {'alias': 'additional_metrics',
+         'domain_of': ['Sample',
+                       'Protein',
+                       'ProteinConstruct',
+                       'NucleicAcid',
+                       'SmallMolecule',
+                       'SamplePreparation',
+                       'Instrument',
+                       'ExperimentRun',
+                       'WorkflowRun',
+                       'ResolutionShell']} })
+    additional_properties: Optional[list[TextValue]] = Field(default=None, description="""Text values the source reports that have no named slot on this class, each a TextValue whose attribute names the source item it came from. The same rule as additional_metrics applies.""", json_schema_extra = { "linkml_meta": {'alias': 'additional_properties',
+         'domain_of': ['Sample',
+                       'Protein',
+                       'ProteinConstruct',
+                       'NucleicAcid',
+                       'SmallMolecule',
+                       'SamplePreparation',
+                       'Instrument',
+                       'ExperimentRun',
+                       'WorkflowRun']} })
     instrument_code: str = Field(default=..., description="""Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_code', 'domain_of': ['Instrument']} })
     instrument_registry_id: Optional[BeamlineEnum] = Field(default=None, description="""Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_registry_id',
          'any_of': [{'range': 'BeamlineEnum'}],
@@ -5717,6 +6150,30 @@ class XRayInstrument(Instrument):
          'domain_of': ['XRayInstrument'],
          'exact_mappings': ['mmCIF:_diffrn_measurement.device']} })
     crystal_cooling_capability: Optional[bool] = Field(default=None, description="""Crystal cooling system available""", json_schema_extra = { "linkml_meta": {'alias': 'crystal_cooling_capability', 'domain_of': ['XRayInstrument']} })
+    instrument_type: Literal["XRayInstrument"] = Field(default="XRayInstrument", description="""Which kind of instrument this row is: CryoEMInstrument, XRayInstrument, NMRInstrument, SAXSInstrument, SANSInstrument, BeamlineInstrument, or Instrument for one with no subclass. A Dataset lists every instrument in one table, so a row carrying fields of a subclass (accelerating_voltage, detector_model) needs this to be read back as that subclass rather than rejected as an Instrument with unknown fields.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_type',
+         'designates_type': True,
+         'domain_of': ['Instrument']} })
+    additional_metrics: Optional[list[QuantityValue]] = Field(default=None, description="""Numeric values the source reports that have no named slot on this class, each a QuantityValue whose attribute names the source item it came from (attribute id mmCIF:_refine.B_iso_max, label refine.B_iso_max). A loader puts a value here only after checking that no named slot fits; a value that recurs across sources should get a named slot instead.""", json_schema_extra = { "linkml_meta": {'alias': 'additional_metrics',
+         'domain_of': ['Sample',
+                       'Protein',
+                       'ProteinConstruct',
+                       'NucleicAcid',
+                       'SmallMolecule',
+                       'SamplePreparation',
+                       'Instrument',
+                       'ExperimentRun',
+                       'WorkflowRun',
+                       'ResolutionShell']} })
+    additional_properties: Optional[list[TextValue]] = Field(default=None, description="""Text values the source reports that have no named slot on this class, each a TextValue whose attribute names the source item it came from. The same rule as additional_metrics applies.""", json_schema_extra = { "linkml_meta": {'alias': 'additional_properties',
+         'domain_of': ['Sample',
+                       'Protein',
+                       'ProteinConstruct',
+                       'NucleicAcid',
+                       'SmallMolecule',
+                       'SamplePreparation',
+                       'Instrument',
+                       'ExperimentRun',
+                       'WorkflowRun']} })
     instrument_code: str = Field(default=..., description="""Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_code', 'domain_of': ['Instrument']} })
     instrument_registry_id: Optional[BeamlineEnum] = Field(default=None, description="""Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_registry_id',
          'any_of': [{'range': 'BeamlineEnum'}],
@@ -5863,6 +6320,130 @@ class SANSInstrument(Instrument):
     source: Optional[SANSSource] = Field(default=None, description="""Source parameters for the instrument""", json_schema_extra = { "linkml_meta": {'alias': 'source', 'domain_of': ['SANSInstrument']} })
     configuration: Optional[SANSConfiguration] = Field(default=None, description="""Optical/mechanical configuration details""", json_schema_extra = { "linkml_meta": {'alias': 'configuration', 'domain_of': ['SANSInstrument']} })
     environment: Optional[str] = Field(default=None, description="""Textual description of environmental conditions""", json_schema_extra = { "linkml_meta": {'alias': 'environment', 'domain_of': ['SANSInstrument']} })
+    instrument_type: Literal["SANSInstrument"] = Field(default="SANSInstrument", description="""Which kind of instrument this row is: CryoEMInstrument, XRayInstrument, NMRInstrument, SAXSInstrument, SANSInstrument, BeamlineInstrument, or Instrument for one with no subclass. A Dataset lists every instrument in one table, so a row carrying fields of a subclass (accelerating_voltage, detector_model) needs this to be read back as that subclass rather than rejected as an Instrument with unknown fields.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_type',
+         'designates_type': True,
+         'domain_of': ['Instrument']} })
+    additional_metrics: Optional[list[QuantityValue]] = Field(default=None, description="""Numeric values the source reports that have no named slot on this class, each a QuantityValue whose attribute names the source item it came from (attribute id mmCIF:_refine.B_iso_max, label refine.B_iso_max). A loader puts a value here only after checking that no named slot fits; a value that recurs across sources should get a named slot instead.""", json_schema_extra = { "linkml_meta": {'alias': 'additional_metrics',
+         'domain_of': ['Sample',
+                       'Protein',
+                       'ProteinConstruct',
+                       'NucleicAcid',
+                       'SmallMolecule',
+                       'SamplePreparation',
+                       'Instrument',
+                       'ExperimentRun',
+                       'WorkflowRun',
+                       'ResolutionShell']} })
+    additional_properties: Optional[list[TextValue]] = Field(default=None, description="""Text values the source reports that have no named slot on this class, each a TextValue whose attribute names the source item it came from. The same rule as additional_metrics applies.""", json_schema_extra = { "linkml_meta": {'alias': 'additional_properties',
+         'domain_of': ['Sample',
+                       'Protein',
+                       'ProteinConstruct',
+                       'NucleicAcid',
+                       'SmallMolecule',
+                       'SamplePreparation',
+                       'Instrument',
+                       'ExperimentRun',
+                       'WorkflowRun']} })
+    instrument_code: str = Field(default=..., description="""Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_code', 'domain_of': ['Instrument']} })
+    instrument_registry_id: Optional[BeamlineEnum] = Field(default=None, description="""Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_registry_id',
+         'any_of': [{'range': 'BeamlineEnum'}],
+         'comments': ['Use this to link an instrument record to a known, validated '
+                      'registry entry, enabling schema-level validation against typos',
+                      'instrument_code is a free-text local label; '
+                      'instrument_registry_id is the schema-level controlled identity',
+                      'beamline_id captures the facility-local string ID (e.g., '
+                      "'19-ID'); instrument_registry_id captures the enum identity "
+                      '(e.g., APS_SBCCAT_19ID)',
+                      'Distinct from the instrument_id foreign-key slot used in '
+                      'association tables, which references an Instrument object'],
+         'domain_of': ['Instrument']} })
+    instrument_category: Optional[InstrumentCategoryEnum] = Field(default=None, description="""Category distinguishing beamlines from laboratory equipment""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_category',
+         'comments': ['Use SYNCHROTRON_BEAMLINE for synchrotron beamlines',
+                      'Use ELECTRON_MICROSCOPE for cryo-EM instruments'],
+         'domain_of': ['Instrument']} })
+    facility_name: Optional[FacilityEnum] = Field(default=None, description="""Name of the research facility where the instrument is located""", json_schema_extra = { "linkml_meta": {'alias': 'facility_name',
+         'comments': ['Select from the standardized list of major synchrotron '
+                      'facilities',
+                      'Leave empty for laboratory-based instruments'],
+         'domain_of': ['Instrument']} })
+    facility_ror: Optional[str] = Field(default=None, description="""Research Organization Registry (ROR) identifier for the facility""", json_schema_extra = { "linkml_meta": {'alias': 'facility_ror',
+         'comments': ['Persistent identifier for the facility organization',
+                      'Example: https://ror.org/02jbv0t02 (Lawrence Berkeley National '
+                      'Laboratory)',
+                      'Retained for sources that publish only a ROR. Where the '
+                      'facility is described as an entity, prefer '
+                      'facility_organization_id, which reaches its parent institution, '
+                      'type and location rather than just its identifier.'],
+         'domain_of': ['Instrument']} })
+    facility_organization_id: Optional[str] = Field(default=None, description="""The Organization that operates this instrument's facility. An instrument sits at exactly one facility, so this is a direct reference rather than an association table - the same shape as Sample.parent_sample_id.""", json_schema_extra = { "linkml_meta": {'alias': 'facility_organization_id', 'domain_of': ['Instrument']} })
+    beamline_id: Optional[str] = Field(default=None, description="""Beamline identifier at synchrotron/neutron facility""", json_schema_extra = { "linkml_meta": {'alias': 'beamline_id',
+         'comments': ['Use facility-specific naming convention',
+                      "Examples: '12.3.1' (ALS), '17-ID-1' (NSLS-II), 'I04' (Diamond)",
+                      'For a validated controlled-vocabulary identity, also set '
+                      'instrument_registry_id (e.g., APS_SBCCAT_19ID)'],
+         'domain_of': ['Instrument'],
+         'exact_mappings': ['mmCIF:_diffrn_source.pdbx_synchrotron_beamline',
+                            'nsls2:Beamline',
+                            'ispyb:BLSession.beamLineName']} })
+    manufacturer: Optional[str] = Field(default=None, description="""Instrument manufacturer""", json_schema_extra = { "linkml_meta": {'alias': 'manufacturer', 'domain_of': ['Instrument']} })
+    model: Optional[str] = Field(default=None, description="""Instrument model""", json_schema_extra = { "linkml_meta": {'alias': 'model', 'domain_of': ['Instrument']} })
+    installation_date: Optional[str] = Field(default=None, description="""Date of instrument installation""", json_schema_extra = { "linkml_meta": {'alias': 'installation_date', 'domain_of': ['Instrument']} })
+    current_status: Optional[InstrumentStatusEnum] = Field(default=None, description="""Current operational status""", json_schema_extra = { "linkml_meta": {'alias': 'current_status', 'domain_of': ['Instrument']} })
+    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
+    title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
+
+    @field_validator('facility_ror')
+    def pattern_facility_ror(cls, v):
+        pattern=re.compile(r"^https://ror\.org/\w+$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid facility_ror format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid facility_ror format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class NMRInstrument(Instrument):
+    """
+    An NMR spectrometer
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/'})
+
+    field_strength: Optional[QuantityValue] = Field(default=None, description="""Magnetic field strength, as the proton frequency in MHz""", json_schema_extra = { "linkml_meta": {'alias': 'field_strength',
+         'domain_of': ['NMRInstrument'],
+         'exact_mappings': ['mmCIF:_pdbx_nmr_spectrometer.field_strength']} })
+    spectrometer_type: Optional[str] = Field(default=None, description="""Spectrometer type as the source records it""", json_schema_extra = { "linkml_meta": {'alias': 'spectrometer_type',
+         'domain_of': ['NMRInstrument'],
+         'exact_mappings': ['mmCIF:_pdbx_nmr_spectrometer.type']} })
+    instrument_type: Literal["NMRInstrument"] = Field(default="NMRInstrument", description="""Which kind of instrument this row is: CryoEMInstrument, XRayInstrument, NMRInstrument, SAXSInstrument, SANSInstrument, BeamlineInstrument, or Instrument for one with no subclass. A Dataset lists every instrument in one table, so a row carrying fields of a subclass (accelerating_voltage, detector_model) needs this to be read back as that subclass rather than rejected as an Instrument with unknown fields.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_type',
+         'designates_type': True,
+         'domain_of': ['Instrument']} })
+    additional_metrics: Optional[list[QuantityValue]] = Field(default=None, description="""Numeric values the source reports that have no named slot on this class, each a QuantityValue whose attribute names the source item it came from (attribute id mmCIF:_refine.B_iso_max, label refine.B_iso_max). A loader puts a value here only after checking that no named slot fits; a value that recurs across sources should get a named slot instead.""", json_schema_extra = { "linkml_meta": {'alias': 'additional_metrics',
+         'domain_of': ['Sample',
+                       'Protein',
+                       'ProteinConstruct',
+                       'NucleicAcid',
+                       'SmallMolecule',
+                       'SamplePreparation',
+                       'Instrument',
+                       'ExperimentRun',
+                       'WorkflowRun',
+                       'ResolutionShell']} })
+    additional_properties: Optional[list[TextValue]] = Field(default=None, description="""Text values the source reports that have no named slot on this class, each a TextValue whose attribute names the source item it came from. The same rule as additional_metrics applies.""", json_schema_extra = { "linkml_meta": {'alias': 'additional_properties',
+         'domain_of': ['Sample',
+                       'Protein',
+                       'ProteinConstruct',
+                       'NucleicAcid',
+                       'SmallMolecule',
+                       'SamplePreparation',
+                       'Instrument',
+                       'ExperimentRun',
+                       'WorkflowRun']} })
     instrument_code: str = Field(default=..., description="""Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_code', 'domain_of': ['Instrument']} })
     instrument_registry_id: Optional[BeamlineEnum] = Field(default=None, description="""Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_registry_id',
          'any_of': [{'range': 'BeamlineEnum'}],
@@ -5942,6 +6523,30 @@ class SAXSInstrument(Instrument):
     sample_changer_capacity: Optional[QuantityValue] = Field(default=None, description="""Number of samples in automatic sample changer""", json_schema_extra = { "linkml_meta": {'alias': 'sample_changer_capacity',
          'domain_of': ['SAXSInstrument', 'BeamlineInstrument']} })
     temperature_control_range: Optional[str] = Field(default=None, description="""Temperature control range in Celsius""", json_schema_extra = { "linkml_meta": {'alias': 'temperature_control_range', 'domain_of': ['SAXSInstrument']} })
+    instrument_type: Literal["SAXSInstrument"] = Field(default="SAXSInstrument", description="""Which kind of instrument this row is: CryoEMInstrument, XRayInstrument, NMRInstrument, SAXSInstrument, SANSInstrument, BeamlineInstrument, or Instrument for one with no subclass. A Dataset lists every instrument in one table, so a row carrying fields of a subclass (accelerating_voltage, detector_model) needs this to be read back as that subclass rather than rejected as an Instrument with unknown fields.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_type',
+         'designates_type': True,
+         'domain_of': ['Instrument']} })
+    additional_metrics: Optional[list[QuantityValue]] = Field(default=None, description="""Numeric values the source reports that have no named slot on this class, each a QuantityValue whose attribute names the source item it came from (attribute id mmCIF:_refine.B_iso_max, label refine.B_iso_max). A loader puts a value here only after checking that no named slot fits; a value that recurs across sources should get a named slot instead.""", json_schema_extra = { "linkml_meta": {'alias': 'additional_metrics',
+         'domain_of': ['Sample',
+                       'Protein',
+                       'ProteinConstruct',
+                       'NucleicAcid',
+                       'SmallMolecule',
+                       'SamplePreparation',
+                       'Instrument',
+                       'ExperimentRun',
+                       'WorkflowRun',
+                       'ResolutionShell']} })
+    additional_properties: Optional[list[TextValue]] = Field(default=None, description="""Text values the source reports that have no named slot on this class, each a TextValue whose attribute names the source item it came from. The same rule as additional_metrics applies.""", json_schema_extra = { "linkml_meta": {'alias': 'additional_properties',
+         'domain_of': ['Sample',
+                       'Protein',
+                       'ProteinConstruct',
+                       'NucleicAcid',
+                       'SmallMolecule',
+                       'SamplePreparation',
+                       'Instrument',
+                       'ExperimentRun',
+                       'WorkflowRun']} })
     instrument_code: str = Field(default=..., description="""Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_code', 'domain_of': ['Instrument']} })
     instrument_registry_id: Optional[BeamlineEnum] = Field(default=None, description="""Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_registry_id',
          'any_of': [{'range': 'BeamlineEnum'}],
@@ -6038,6 +6643,30 @@ class BeamlineInstrument(Instrument):
     lims_system: Optional[LIMSSystemEnum] = Field(default=None, description="""Laboratory Information Management System used at this beamline""", json_schema_extra = { "linkml_meta": {'alias': 'lims_system', 'domain_of': ['BeamlineInstrument']} })
     daq_system: Optional[DataAcquisitionSystemEnum] = Field(default=None, description="""Data acquisition system used for experiment orchestration""", json_schema_extra = { "linkml_meta": {'alias': 'daq_system', 'domain_of': ['BeamlineInstrument', 'ExperimentRun']} })
     control_system: Optional[ControlSystemEnum] = Field(default=None, description="""Low-level control system for device communication""", json_schema_extra = { "linkml_meta": {'alias': 'control_system', 'domain_of': ['BeamlineInstrument']} })
+    instrument_type: Literal["BeamlineInstrument"] = Field(default="BeamlineInstrument", description="""Which kind of instrument this row is: CryoEMInstrument, XRayInstrument, NMRInstrument, SAXSInstrument, SANSInstrument, BeamlineInstrument, or Instrument for one with no subclass. A Dataset lists every instrument in one table, so a row carrying fields of a subclass (accelerating_voltage, detector_model) needs this to be read back as that subclass rather than rejected as an Instrument with unknown fields.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_type',
+         'designates_type': True,
+         'domain_of': ['Instrument']} })
+    additional_metrics: Optional[list[QuantityValue]] = Field(default=None, description="""Numeric values the source reports that have no named slot on this class, each a QuantityValue whose attribute names the source item it came from (attribute id mmCIF:_refine.B_iso_max, label refine.B_iso_max). A loader puts a value here only after checking that no named slot fits; a value that recurs across sources should get a named slot instead.""", json_schema_extra = { "linkml_meta": {'alias': 'additional_metrics',
+         'domain_of': ['Sample',
+                       'Protein',
+                       'ProteinConstruct',
+                       'NucleicAcid',
+                       'SmallMolecule',
+                       'SamplePreparation',
+                       'Instrument',
+                       'ExperimentRun',
+                       'WorkflowRun',
+                       'ResolutionShell']} })
+    additional_properties: Optional[list[TextValue]] = Field(default=None, description="""Text values the source reports that have no named slot on this class, each a TextValue whose attribute names the source item it came from. The same rule as additional_metrics applies.""", json_schema_extra = { "linkml_meta": {'alias': 'additional_properties',
+         'domain_of': ['Sample',
+                       'Protein',
+                       'ProteinConstruct',
+                       'NucleicAcid',
+                       'SmallMolecule',
+                       'SamplePreparation',
+                       'Instrument',
+                       'ExperimentRun',
+                       'WorkflowRun']} })
     instrument_code: str = Field(default=..., description="""Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_code', 'domain_of': ['Instrument']} })
     instrument_registry_id: Optional[BeamlineEnum] = Field(default=None, description="""Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_registry_id',
          'any_of': [{'range': 'BeamlineEnum'}],
@@ -6109,6 +6738,27 @@ class ExperimentRun(NamedThing):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/',
          'related_mappings': ['IHMCIF:_ihm_dataset_list', 'IHMCIF:_ihm_dataset_group']})
 
+    additional_metrics: Optional[list[QuantityValue]] = Field(default=None, description="""Numeric values the source reports that have no named slot on this class, each a QuantityValue whose attribute names the source item it came from (attribute id mmCIF:_refine.B_iso_max, label refine.B_iso_max). A loader puts a value here only after checking that no named slot fits; a value that recurs across sources should get a named slot instead.""", json_schema_extra = { "linkml_meta": {'alias': 'additional_metrics',
+         'domain_of': ['Sample',
+                       'Protein',
+                       'ProteinConstruct',
+                       'NucleicAcid',
+                       'SmallMolecule',
+                       'SamplePreparation',
+                       'Instrument',
+                       'ExperimentRun',
+                       'WorkflowRun',
+                       'ResolutionShell']} })
+    additional_properties: Optional[list[TextValue]] = Field(default=None, description="""Text values the source reports that have no named slot on this class, each a TextValue whose attribute names the source item it came from. The same rule as additional_metrics applies.""", json_schema_extra = { "linkml_meta": {'alias': 'additional_properties',
+         'domain_of': ['Sample',
+                       'Protein',
+                       'ProteinConstruct',
+                       'NucleicAcid',
+                       'SmallMolecule',
+                       'SamplePreparation',
+                       'Instrument',
+                       'ExperimentRun',
+                       'WorkflowRun']} })
     experiment_code: str = Field(default=..., description="""Human-friendly laboratory or facility identifier for the experiment (e.g., 'SIBYLS-2024-02-01-hetBGL', 'CRYOEM-RUN-240815-001'). Used for local tracking and cross-referencing within laboratory systems.""", json_schema_extra = { "linkml_meta": {'alias': 'experiment_code', 'domain_of': ['ExperimentRun']} })
     experiment_date: Optional[str] = Field(default=None, description="""Date of the experiment""", json_schema_extra = { "linkml_meta": {'alias': 'experiment_date', 'domain_of': ['ExperimentRun']} })
     operator_id: Optional[str] = Field(default=None, description="""Identifier or name of the person who performed the experiment data collection (e.g., 'jsmith', 'John Smith', or personnel ID)""", json_schema_extra = { "linkml_meta": {'alias': 'operator_id',
@@ -6332,6 +6982,27 @@ class WorkflowRun(NamedThing):
          'from_schema': 'http://w3id.org/lambda/',
          'related_mappings': ['IHMCIF:_ihm_modeling_post_process']})
 
+    additional_metrics: Optional[list[QuantityValue]] = Field(default=None, description="""Numeric values the source reports that have no named slot on this class, each a QuantityValue whose attribute names the source item it came from (attribute id mmCIF:_refine.B_iso_max, label refine.B_iso_max). A loader puts a value here only after checking that no named slot fits; a value that recurs across sources should get a named slot instead.""", json_schema_extra = { "linkml_meta": {'alias': 'additional_metrics',
+         'domain_of': ['Sample',
+                       'Protein',
+                       'ProteinConstruct',
+                       'NucleicAcid',
+                       'SmallMolecule',
+                       'SamplePreparation',
+                       'Instrument',
+                       'ExperimentRun',
+                       'WorkflowRun',
+                       'ResolutionShell']} })
+    additional_properties: Optional[list[TextValue]] = Field(default=None, description="""Text values the source reports that have no named slot on this class, each a TextValue whose attribute names the source item it came from. The same rule as additional_metrics applies.""", json_schema_extra = { "linkml_meta": {'alias': 'additional_properties',
+         'domain_of': ['Sample',
+                       'Protein',
+                       'ProteinConstruct',
+                       'NucleicAcid',
+                       'SmallMolecule',
+                       'SamplePreparation',
+                       'Instrument',
+                       'ExperimentRun',
+                       'WorkflowRun']} })
     workflow_code: str = Field(default=..., description="""Human-friendly identifier for the computational workflow run (e.g., 'MOTION-CORR-RUN-001', 'RELION-REFINE-240815'). Used for tracking processing pipelines and computational provenance.""", json_schema_extra = { "linkml_meta": {'alias': 'workflow_code', 'domain_of': ['WorkflowRun']} })
     workflow_type: WorkflowTypeEnum = Field(default=..., description="""Type of processing workflow""", json_schema_extra = { "linkml_meta": {'alias': 'workflow_type',
          'domain_of': ['WorkflowRun'],
@@ -6388,28 +7059,30 @@ class WorkflowRun(NamedThing):
          'domain_of': ['WorkflowRun', 'QualityMetrics'],
          'exact_mappings': ['nsls2:Unit_Cell_gamma', 'mmCIF:_cell.angle_gamma']} })
     resolution_high: Optional[QuantityValue] = Field(default=None, description="""High resolution limit, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'resolution_high',
-         'domain_of': ['WorkflowRun'],
+         'domain_of': ['WorkflowRun', 'ResolutionShell'],
          'exact_mappings': ['nsls2:Resolution_High_A',
                             'mmCIF:_reflns.d_resolution_high',
                             'ispyb:AutoProcScalingStatistics.resolutionLimitHigh']} })
     resolution_low: Optional[QuantityValue] = Field(default=None, description="""Low resolution limit, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'resolution_low',
-         'domain_of': ['WorkflowRun'],
+         'domain_of': ['WorkflowRun', 'ResolutionShell'],
          'exact_mappings': ['nsls2:Resolution_Low_A',
                             'mmCIF:_reflns.d_resolution_low',
                             'ispyb:AutoProcScalingStatistics.resolutionLimitLow']} })
-    rmerge: Optional[QuantityValue] = Field(default=None, description="""Rmerge - merge R-factor""", json_schema_extra = { "linkml_meta": {'alias': 'rmerge', 'domain_of': ['WorkflowRun']} })
-    rpim: Optional[QuantityValue] = Field(default=None, description="""Rpim - precision-indicating merging R-factor""", json_schema_extra = { "linkml_meta": {'alias': 'rpim', 'domain_of': ['WorkflowRun']} })
-    cc_half: Optional[QuantityValue] = Field(default=None, description="""Half-set correlation coefficient CC(1/2)""", json_schema_extra = { "linkml_meta": {'alias': 'cc_half', 'domain_of': ['WorkflowRun', 'QualityMetrics']} })
+    rmerge: Optional[QuantityValue] = Field(default=None, description="""Rmerge - merge R-factor""", json_schema_extra = { "linkml_meta": {'alias': 'rmerge', 'domain_of': ['WorkflowRun', 'ResolutionShell']} })
+    rpim: Optional[QuantityValue] = Field(default=None, description="""Rpim - precision-indicating merging R-factor""", json_schema_extra = { "linkml_meta": {'alias': 'rpim', 'domain_of': ['WorkflowRun', 'ResolutionShell']} })
+    cc_half: Optional[QuantityValue] = Field(default=None, description="""Half-set correlation coefficient CC(1/2)""", json_schema_extra = { "linkml_meta": {'alias': 'cc_half',
+         'domain_of': ['WorkflowRun', 'QualityMetrics', 'ResolutionShell']} })
     completeness_percent: Optional[QuantityValue] = Field(default=None, description="""Data completeness as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'completeness_percent',
-         'domain_of': ['WorkflowRun'],
+         'domain_of': ['WorkflowRun', 'ResolutionShell'],
          'exact_mappings': ['nsls2:Completeness',
                             'mmCIF:_reflns.percent_possible_obs',
                             'ispyb:AutoProcScalingStatistics.completeness']} })
-    i_over_sigma: Optional[QuantityValue] = Field(default=None, description="""Mean I/sigma(I) - signal to noise ratio""", json_schema_extra = { "linkml_meta": {'alias': 'i_over_sigma', 'domain_of': ['WorkflowRun']} })
+    i_over_sigma: Optional[QuantityValue] = Field(default=None, description="""Mean I/sigma(I) - signal to noise ratio""", json_schema_extra = { "linkml_meta": {'alias': 'i_over_sigma', 'domain_of': ['WorkflowRun', 'ResolutionShell']} })
     wilson_b_factor: Optional[QuantityValue] = Field(default=None, description="""Wilson B-factor, typically specified in Angstroms squared (Ų). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'wilson_b_factor',
          'domain_of': ['WorkflowRun'],
          'exact_mappings': ['nsls2:Wilson_B', 'mmCIF:_reflns.B_iso_Wilson_estimate']} })
-    multiplicity: Optional[QuantityValue] = Field(default=None, description="""Data multiplicity (redundancy)""", json_schema_extra = { "linkml_meta": {'alias': 'multiplicity', 'domain_of': ['WorkflowRun', 'QualityMetrics']} })
+    multiplicity: Optional[QuantityValue] = Field(default=None, description="""Data multiplicity (redundancy)""", json_schema_extra = { "linkml_meta": {'alias': 'multiplicity',
+         'domain_of': ['WorkflowRun', 'QualityMetrics', 'ResolutionShell']} })
     anomalous_completeness: Optional[QuantityValue] = Field(default=None, description="""Completeness of anomalous data as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'anomalous_completeness',
          'comments': ['Completeness of Bijvoet pairs'],
          'domain_of': ['WorkflowRun'],
@@ -6457,6 +7130,7 @@ class WorkflowRun(NamedThing):
     refinement_params: Optional[RefinementParameters] = Field(default=None, description="""3D refinement specific parameters""", json_schema_extra = { "linkml_meta": {'alias': 'refinement_params', 'domain_of': ['WorkflowRun']} })
     fsc_curve: Optional[FSCCurve] = Field(default=None, description="""Fourier Shell Correlation curve data""", json_schema_extra = { "linkml_meta": {'alias': 'fsc_curve', 'domain_of': ['WorkflowRun']} })
     output_files: Optional[list[str]] = Field(default=None, description="""Output files generated""", json_schema_extra = { "linkml_meta": {'alias': 'output_files', 'domain_of': ['WorkflowRun']} })
+    resolution_shells: Optional[list[ResolutionShell]] = Field(default=None, description="""Statistics per resolution shell, as the data-reduction or scaling program reported them. The overall statistics stay on the run itself; a shell table adds the breakdown, of which the highest-resolution shell is the one most often quoted.""", json_schema_extra = { "linkml_meta": {'alias': 'resolution_shells', 'domain_of': ['WorkflowRun']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
     description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
@@ -6926,6 +7600,18 @@ class CryoEMPreparation(TechniqueSpecificPreparation):
          'domain_of': ['CryoEMPreparation'],
          'exact_mappings': ['mmCIF:_em_vitrification.cryogen_name']} })
     plasma_treatment: Optional[str] = Field(default=None, description="""Plasma treatment details""", json_schema_extra = { "linkml_meta": {'alias': 'plasma_treatment', 'domain_of': ['CryoEMPreparation']} })
+    cryogen: Optional[str] = Field(default=None, description="""Cryogen the grid was plunged into (ETHANE, ETHANE-PROPANE, NITROGEN)""", json_schema_extra = { "linkml_meta": {'alias': 'cryogen',
+         'domain_of': ['CryoEMPreparation'],
+         'exact_mappings': ['mmCIF:_em_vitrification.cryogen_name']} })
+    stain_material: Optional[str] = Field(default=None, description="""Negative stain or other stain applied (uranyl acetate, ammonium molybdate)""", json_schema_extra = { "linkml_meta": {'alias': 'stain_material',
+         'domain_of': ['CryoEMPreparation'],
+         'exact_mappings': ['mmCIF:_em_staining.material']} })
+    stain_type: Optional[str] = Field(default=None, description="""Kind of staining: NEGATIVE or POSITIVE""", json_schema_extra = { "linkml_meta": {'alias': 'stain_type',
+         'domain_of': ['CryoEMPreparation'],
+         'exact_mappings': ['mmCIF:_em_staining.type']} })
+    embedding_material: Optional[str] = Field(default=None, description="""Embedding medium (trehalose, glucose, tannin, vitreous ice is not embedding)""", json_schema_extra = { "linkml_meta": {'alias': 'embedding_material',
+         'domain_of': ['CryoEMPreparation'],
+         'exact_mappings': ['mmCIF:_em_embedding.material']} })
     description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
          'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
@@ -7020,6 +7706,15 @@ class XRayPreparation(TechniqueSpecificPreparation):
     mounting_temperature: Optional[QuantityValue] = Field(default=None, description="""Temperature during mounting, typically specified in Kelvin. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'mounting_temperature',
          'domain_of': ['XRayPreparation'],
          'exact_mappings': ['nsls2:Temperature']} })
+    crystallization_ph: Optional[float] = Field(default=None, description="""pH of the crystallization condition""", json_schema_extra = { "linkml_meta": {'alias': 'crystallization_ph',
+         'domain_of': ['XRayPreparation'],
+         'exact_mappings': ['mmCIF:_exptl_crystal_grow.pH']} })
+    matthews_coefficient: Optional[QuantityValue] = Field(default=None, description="""Matthews coefficient V_M of the crystal, in cubic angstroms per dalton""", json_schema_extra = { "linkml_meta": {'alias': 'matthews_coefficient',
+         'domain_of': ['XRayPreparation'],
+         'exact_mappings': ['mmCIF:_exptl_crystal.density_Matthews']} })
+    solvent_content_percent: Optional[float] = Field(default=None, description="""Solvent content of the crystal, as a percentage of its volume""", json_schema_extra = { "linkml_meta": {'alias': 'solvent_content_percent',
+         'domain_of': ['XRayPreparation'],
+         'exact_mappings': ['mmCIF:_exptl_crystal.density_percent_sol']} })
     description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
          'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
@@ -7205,10 +7900,10 @@ class QualityMetrics(AttributeGroup):
          'domain_of': ['WorkflowRun', 'QualityMetrics'],
          'exact_mappings': ['mmCIF:_cell.angle_gamma']} })
     multiplicity: Optional[QuantityValue] = Field(default=None, description="""Data multiplicity (redundancy)""", json_schema_extra = { "linkml_meta": {'alias': 'multiplicity',
-         'domain_of': ['WorkflowRun', 'QualityMetrics'],
+         'domain_of': ['WorkflowRun', 'QualityMetrics', 'ResolutionShell'],
          'exact_mappings': ['mmCIF:_reflns.pdbx_redundancy']} })
     cc_half: Optional[QuantityValue] = Field(default=None, description="""Half-set correlation coefficient CC(1/2)""", json_schema_extra = { "linkml_meta": {'alias': 'cc_half',
-         'domain_of': ['WorkflowRun', 'QualityMetrics'],
+         'domain_of': ['WorkflowRun', 'QualityMetrics', 'ResolutionShell'],
          'exact_mappings': ['mmCIF:_reflns.pdbx_CC_half']} })
     r_merge: Optional[QuantityValue] = Field(default=None, description="""Rmerge - merge R-factor""", json_schema_extra = { "linkml_meta": {'alias': 'r_merge',
          'domain_of': ['QualityMetrics'],
@@ -7330,6 +8025,9 @@ class ParticlePickingParameters(AttributeGroup):
     model_name: Optional[str] = Field(default=None, description="""Name or identifier of the deep learning model (e.g., 'resnet16', 'resnet8', 'cryolo_general'). Use this for standard pretrained models. Either model_name or model_file_path should be provided when using deep learning methods.""", json_schema_extra = { "linkml_meta": {'alias': 'model_name', 'domain_of': ['ParticlePickingParameters']} })
     model_file_path: Optional[str] = Field(default=None, description="""Path to deep learning model file if using a local or custom trained model file. Use this instead of model_name when pointing to a specific file on disk. Either model_name or model_file_path should be provided when using deep learning methods.""", json_schema_extra = { "linkml_meta": {'alias': 'model_file_path', 'domain_of': ['ParticlePickingParameters']} })
     model_source: Optional[str] = Field(default=None, description="""Source or software associated with the model (e.g., 'topaz', 'cryolo', 'warp', 'custom', 'pretrained'). Helps track model provenance and should be provided alongside model_name or model_file_path to document which software/framework the model is for.""", json_schema_extra = { "linkml_meta": {'alias': 'model_source', 'domain_of': ['ParticlePickingParameters']} })
+    number_of_particles_selected: Optional[int] = Field(default=None, description="""Number of particles the picking step selected""", json_schema_extra = { "linkml_meta": {'alias': 'number_of_particles_selected',
+         'domain_of': ['ParticlePickingParameters'],
+         'exact_mappings': ['mmCIF:_em_particle_selection.num_particles_selected']} })
     description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
          'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
@@ -7357,6 +8055,70 @@ class RefinementParameters(AttributeGroup):
          'exact_mappings': ['mmCIF:_em_3d_reconstruction.resolution']} })
     resolution_0_5: Optional[QuantityValue] = Field(default=None, description="""Resolution at FSC=0.5, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'resolution_0_5', 'domain_of': ['RefinementParameters']} })
     map_sharpening_bfactor: Optional[QuantityValue] = Field(default=None, description="""B-factor used for map sharpening, typically specified in Angstroms squared (Å²). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'map_sharpening_bfactor', 'domain_of': ['RefinementParameters']} })
+    number_of_particles: Optional[int] = Field(default=None, description="""Number of particles (or subvolumes) in the final reconstruction""", json_schema_extra = { "linkml_meta": {'alias': 'number_of_particles',
+         'domain_of': ['RefinementParameters'],
+         'exact_mappings': ['mmCIF:_em_3d_reconstruction.num_particles']} })
+    helical_rise: Optional[QuantityValue] = Field(default=None, description="""Axial rise per subunit for a helical reconstruction, in angstroms""", json_schema_extra = { "linkml_meta": {'alias': 'helical_rise',
+         'domain_of': ['RefinementParameters'],
+         'exact_mappings': ['mmCIF:_em_helical_entity.axial_rise_per_subunit']} })
+    helical_twist: Optional[QuantityValue] = Field(default=None, description="""Angular rotation per subunit for a helical reconstruction, in degrees""", json_schema_extra = { "linkml_meta": {'alias': 'helical_twist',
+         'domain_of': ['RefinementParameters'],
+         'exact_mappings': ['mmCIF:_em_helical_entity.angular_rotation_per_subunit']} })
+    axial_symmetry: Optional[str] = Field(default=None, description="""Point symmetry about the helical axis (C1, C3, D2)""", json_schema_extra = { "linkml_meta": {'alias': 'axial_symmetry',
+         'domain_of': ['RefinementParameters'],
+         'exact_mappings': ['mmCIF:_em_helical_entity.axial_symmetry']} })
+    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
+
+
+class ResolutionShell(AttributeGroup):
+    """
+    Data statistics within one resolution shell
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/',
+         'related_mappings': ['mmCIF:_reflns_shell']})
+
+    additional_metrics: Optional[list[QuantityValue]] = Field(default=None, description="""Numeric values the source reports that have no named slot on this class, each a QuantityValue whose attribute names the source item it came from (attribute id mmCIF:_refine.B_iso_max, label refine.B_iso_max). A loader puts a value here only after checking that no named slot fits; a value that recurs across sources should get a named slot instead.""", json_schema_extra = { "linkml_meta": {'alias': 'additional_metrics',
+         'domain_of': ['Sample',
+                       'Protein',
+                       'ProteinConstruct',
+                       'NucleicAcid',
+                       'SmallMolecule',
+                       'SamplePreparation',
+                       'Instrument',
+                       'ExperimentRun',
+                       'WorkflowRun',
+                       'ResolutionShell']} })
+    resolution_high: Optional[QuantityValue] = Field(default=None, description="""High-resolution limit of the shell""", json_schema_extra = { "linkml_meta": {'alias': 'resolution_high',
+         'domain_of': ['WorkflowRun', 'ResolutionShell'],
+         'exact_mappings': ['mmCIF:_reflns_shell.d_res_high']} })
+    resolution_low: Optional[QuantityValue] = Field(default=None, description="""Low-resolution limit of the shell""", json_schema_extra = { "linkml_meta": {'alias': 'resolution_low',
+         'domain_of': ['WorkflowRun', 'ResolutionShell'],
+         'exact_mappings': ['mmCIF:_reflns_shell.d_res_low']} })
+    completeness_percent: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'completeness_percent',
+         'domain_of': ['WorkflowRun', 'ResolutionShell'],
+         'exact_mappings': ['mmCIF:_reflns_shell.percent_possible_all']} })
+    multiplicity: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'multiplicity',
+         'domain_of': ['WorkflowRun', 'QualityMetrics', 'ResolutionShell'],
+         'exact_mappings': ['mmCIF:_reflns_shell.pdbx_redundancy']} })
+    i_over_sigma: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'i_over_sigma',
+         'domain_of': ['WorkflowRun', 'ResolutionShell'],
+         'exact_mappings': ['mmCIF:_reflns_shell.meanI_over_sigI_obs']} })
+    rmerge: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'rmerge',
+         'domain_of': ['WorkflowRun', 'ResolutionShell'],
+         'exact_mappings': ['mmCIF:_reflns_shell.Rmerge_I_obs']} })
+    rpim: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'rpim',
+         'domain_of': ['WorkflowRun', 'ResolutionShell'],
+         'exact_mappings': ['mmCIF:_reflns_shell.pdbx_Rpim_I_all']} })
+    cc_half: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'cc_half',
+         'domain_of': ['WorkflowRun', 'QualityMetrics', 'ResolutionShell'],
+         'exact_mappings': ['mmCIF:_reflns_shell.pdbx_CC_half']} })
+    n_unique: Optional[QuantityValue] = Field(default=None, description="""Number of unique reflections in the shell""", json_schema_extra = { "linkml_meta": {'alias': 'n_unique',
+         'domain_of': ['ResolutionShell'],
+         'exact_mappings': ['mmCIF:_reflns_shell.number_unique_obs']} })
+    n_observations: Optional[QuantityValue] = Field(default=None, description="""Number of observations in the shell before merging""", json_schema_extra = { "linkml_meta": {'alias': 'n_observations',
+         'domain_of': ['ResolutionShell'],
+         'exact_mappings': ['mmCIF:_reflns_shell.number_measured_obs']} })
     description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
          'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
@@ -7384,7 +8146,8 @@ class StudySampleAssociation(ConfiguredBaseModel):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/'})
 
     study_id: str = Field(default=..., description="""Reference to the study""", json_schema_extra = { "linkml_meta": {'alias': 'study_id',
-         'domain_of': ['StudySampleAssociation',
+         'domain_of': ['StudyPublicationAssociation',
+                       'StudySampleAssociation',
                        'StudyExperimentAssociation',
                        'StudyWorkflowAssociation',
                        'StudyPersonAssociation',
@@ -7419,7 +8182,8 @@ class StudyExperimentAssociation(ConfiguredBaseModel):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/'})
 
     study_id: str = Field(default=..., description="""Reference to the study""", json_schema_extra = { "linkml_meta": {'alias': 'study_id',
-         'domain_of': ['StudySampleAssociation',
+         'domain_of': ['StudyPublicationAssociation',
+                       'StudySampleAssociation',
                        'StudyExperimentAssociation',
                        'StudyWorkflowAssociation',
                        'StudyPersonAssociation',
@@ -7439,7 +8203,8 @@ class StudyWorkflowAssociation(ConfiguredBaseModel):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/'})
 
     study_id: str = Field(default=..., description="""Reference to the study""", json_schema_extra = { "linkml_meta": {'alias': 'study_id',
-         'domain_of': ['StudySampleAssociation',
+         'domain_of': ['StudyPublicationAssociation',
+                       'StudySampleAssociation',
                        'StudyExperimentAssociation',
                        'StudyWorkflowAssociation',
                        'StudyPersonAssociation',
@@ -7785,7 +8550,8 @@ class StudyPersonAssociation(ConfiguredBaseModel):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/'})
 
     study_id: str = Field(default=..., description="""Reference to the study""", json_schema_extra = { "linkml_meta": {'alias': 'study_id',
-         'domain_of': ['StudySampleAssociation',
+         'domain_of': ['StudyPublicationAssociation',
+                       'StudySampleAssociation',
                        'StudyExperimentAssociation',
                        'StudyWorkflowAssociation',
                        'StudyPersonAssociation',
@@ -7882,7 +8648,8 @@ class StudyOrganizationAssociation(ConfiguredBaseModel):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/'})
 
     study_id: str = Field(default=..., description="""Reference to the study""", json_schema_extra = { "linkml_meta": {'alias': 'study_id',
-         'domain_of': ['StudySampleAssociation',
+         'domain_of': ['StudyPublicationAssociation',
+                       'StudySampleAssociation',
                        'StudyExperimentAssociation',
                        'StudyWorkflowAssociation',
                        'StudyPersonAssociation',
@@ -7958,6 +8725,8 @@ ConformationalState.model_rebuild()
 DatabaseCrossReference.model_rebuild()
 Dataset.model_rebuild()
 Study.model_rebuild()
+Publication.model_rebuild()
+StudyPublicationAssociation.model_rebuild()
 Person.model_rebuild()
 Organization.model_rebuild()
 Sample.model_rebuild()
@@ -7974,6 +8743,7 @@ SANSDetector.model_rebuild()
 SANSSource.model_rebuild()
 SANSConfiguration.model_rebuild()
 SANSInstrument.model_rebuild()
+NMRInstrument.model_rebuild()
 SAXSInstrument.model_rebuild()
 BeamlineInstrument.model_rebuild()
 ExperimentRun.model_rebuild()
@@ -8008,6 +8778,7 @@ MotionCorrectionParameters.model_rebuild()
 CTFEstimationParameters.model_rebuild()
 ParticlePickingParameters.model_rebuild()
 RefinementParameters.model_rebuild()
+ResolutionShell.model_rebuild()
 FSCCurve.model_rebuild()
 StudySampleAssociation.model_rebuild()
 StudyExperimentAssociation.model_rebuild()

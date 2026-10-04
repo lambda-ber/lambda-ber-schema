@@ -1,14 +1,118 @@
 id: pdb:7ZYI
 title: Structure of the human sodium/bile acid cotransporter (NTCP) in complex with
   Fab and nanobody
+keywords:
+- TRANSPORT PROTEIN
+- NTCP
+- membrane protein
+- transport
+- sodium/bile acid cotransporter
+deposition_date: '2022-05-24'
+release_date: '2022-07-13'
+last_revision_date: '2024-11-13'
+revision: '1.4'
 studies:
 - id: pdb:7ZYI/study
   title: Structure of the human sodium/bile acid cotransporter (NTCP) in complex with
     Fab and nanobody
+  keywords:
+  - TRANSPORT PROTEIN
+  - NTCP
+  - membrane protein
+  - transport
+  - sodium/bile acid cotransporter
+  database_cross_references:
+  - database_name: pdb
+    database_id: 7ZYI
+    database_url: https://doi.org/10.2210/pdb7zyi/pdb
+  - description: WWPDB identifier
+    database_name: other
+    database_id: D_1292123247
+  - description: map of this entry; EMDB; associated EM volume; Structure of the human
+      sodium/bile acid cotransporter (NTCP) in complex with Fab and nanobody
+    database_name: emdb
+    database_id: EMD-15024
+    database_url: https://www.ebi.ac.uk/emdb/EMD-15024
+  - description: EM DATA RESOURCE
+    database_name: other
+    database_id: EMD-15024
+    database_url: https://www.emdataresource.org/EMD-15024
+persons:
+- id: pdb:7ZYI/person/1
+  title: Liu, H.
+  full_name: Liu, H.
+- id: pdb:7ZYI/person/2
+  title: Irobalieva, R.N.
+  full_name: Irobalieva, R.N.
+- id: pdb:7ZYI/person/3
+  title: Bang-Sorensen, R.
+  orcid: https://orcid.org/0000-0003-4469-2339
+  full_name: Bang-Sorensen, R.
+- id: pdb:7ZYI/person/4
+  title: Nosol, K.
+  orcid: https://orcid.org/0000-0003-2865-9125
+  full_name: Nosol, K.
+- id: pdb:7ZYI/person/5
+  title: Mukherjee, S.
+  full_name: Mukherjee, S.
+- id: pdb:7ZYI/person/6
+  title: Agrawal, P.
+  full_name: Agrawal, P.
+- id: pdb:7ZYI/person/7
+  title: Stieger, B.
+  orcid: https://orcid.org/0000-0002-7190-5785
+  full_name: Stieger, B.
+- id: pdb:7ZYI/person/8
+  title: Kossiakoff, A.A.
+  full_name: Kossiakoff, A.A.
+- id: pdb:7ZYI/person/9
+  title: Locher, K.P.
+  orcid: https://orcid.org/0000-0002-8207-2889
+  full_name: Locher, K.P.
+organizations:
+- id: pdb:organization/swiss-national-science-foundation
+  title: Swiss National Science Foundation
+  organization_type: funding_agency
+  country: Switzerland
+publications:
+- id: doi:10.1038/s41422-022-00680-4
+  title: Structure of human NTCP reveals the basis of recognition and sodium-driven
+    transport of bile salts into the liver.
+  doi: doi:10.1038/s41422-022-00680-4
+  pubmed_id: pmid:35726088
+  authors:
+  - Liu, H.
+  - Irobalieva, R.N.
+  - Bang-Sorensen, R.
+  - Nosol, K.
+  - Mukherjee, S.
+  - Agrawal, P.
+  - Stieger, B.
+  - Kossiakoff, A.A.
+  - Locher, K.P.
+  journal_abbreviation: Cell Res.
+  journal_issn: 1001-0602
+  journal_country: CN
+  volume: '32'
+  page_first: '773'
+  page_last: '776'
+  year: 2022
 instruments:
-- id: pdb:instrument/PDB-7ZYI
-  title: Unknown
-  instrument_code: PDB-7ZYI
+- id: pdb:7ZYI/instrument/em-1
+  title: TFS KRIOS
+  instrument_type: CryoEMInstrument
+  instrument_code: PDB-7ZYI-EM1
+  manufacturer: Thermo Fisher Scientific
+  model: TFS KRIOS
+  accelerating_voltage:
+    numeric_value: 300.0
+    unit: kV
+  detector_technology: direct_electron_detector
+  detector_manufacturer: Gatan
+  detector_model: GATAN K3 BIOQUANTUM (6k x 4k)
+  energy_filter_present: true
+  electron_source: FIELD EMISSION GUN
+  illumination_mode: FLOOD BEAM
 proteins:
 - id: uniprot:Q14973
   title: Hepatic sodium/bile acid cotransporter
@@ -17,112 +121,955 @@ proteins:
   gene_name: SLC10A1
   organism: NCBITaxon:9606
   organism_name: Homo sapiens
+  go_terms:
+  - GO:0015125
+  - GO:0071466
+  - GO:0005886
+  - GO:0016323
+  - GO:0031667
+  - GO:0008508
+  - GO:0043627
+  - GO:0015721
+  - GO:0045471
   pdb_entries:
   - pdb:7ZYI
-samples:
-- id: pdb:7ZYI/sample/1
+  cross_references:
+  - description: Sodium Bile acid symporter family (SBF)
+    database_name: pfam
+    database_id: PF01758
+  - description: sodium taurocholate co-transporting polypeptide (NTCP) transporter
+      in complex with Fab and nanobody
+    database_name: mpstruc
+    database_id: 'TRANSMEMBRANE PROTEINS: ALPHA-HELICAL.Apical Sodium-Dependent Bile
+      Acid Transporters (ASBT).sodium taurocholate co-transporting polypeptide (NTCP)
+      transporter in complex with Fab and nanobody'
+  - description: Bile Acid:Na+ Symporter (BASS) Family
+    database_name: opm
+    database_id: Transmembrane.Alpha-helical polytopic.Monovalent cation-proton antiporter.Bile
+      Acid:Na+ Symporter (BASS) Family
+  - description: Generic PDBTM
+    database_name: pdbtm
+    database_id: Generic PDBTM
+  - description: Bile acid:sodium symporter
+    database_name: interpro
+    database_id: IPR004710
+  - description: Bile acid:sodium symporter/arsenical resistance protein Acr3
+    database_name: interpro
+    database_id: IPR002657
+  - description: Sodium/solute symporter superfamily
+    database_name: interpro
+    database_id: IPR038770
+  - description: ChEMBL; target record
+    database_name: chembl
+    database_id: CHEMBL5287
+  - description: DrugBank; target record
+    database_name: drugbank
+    database_id: Q14973
+  - description: Pharos; target record
+    database_name: other
+    database_id: '18893'
+- id: pdb:7ZYI/protein/2
+  title: heavy chain of Fab
+  protein_name: Heavy chain of fab
+  organism: NCBITaxon:10090
+  organism_name: Mus musculus
+  amino_acid_sequence: EISEVQLVESGGGLVQPGGSLRLSCAASGFNVSYSSIHWVRQAPGKGLEWVASISSSYGYTSYADSVKGRFTISADTSKNTAYLQMNSLRAEDTAVYYCARYMKQQSQMWYQRYWGFDYWGQGTLVTVSSASTKGPSVFPLAPSSKSTSGGTAALGCLVKDYFPEPVTVSWNSGALTSGVHTFPAVLQSSGLYSLSSVVTVPSSSLGTQTYICNVNHKPSNTKVDKKVEPKSCDKTHT
+  sequence_length: 238
+  pdb_entries:
+  - pdb:7ZYI
+  cross_references:
+  - description: Pharos; target record
+    database_name: other
+    database_id: '6855'
+- id: pdb:7ZYI/protein/3
+  title: light chain of Fab
+  protein_name: Light chain of fab
+  organism: NCBITaxon:10090
+  organism_name: Mus musculus
+  amino_acid_sequence: SDIQMTQSPSSLSASVGDRVTITCRASQSVSSAVAWYQQKPGKAPKLLIYSASSLYSGVPSRFSGSRSGTDFTLTISSLQPEDFATYYCQQSYWSPITFGQGTKVEIKRTVAAPSVFIFPPSDSQLKSGTASVVCLLNNFYPREAKVQWKVDNALQSGNSQESVTEQDSKDSTYSLSSTLTLSKADYEKHKVYACEVTHQGLSSPVTKSFNRGEC
+  sequence_length: 215
+  pdb_entries:
+  - pdb:7ZYI
+- id: pdb:7ZYI/protein/4
+  title: Nanobody
+  protein_name: Nanobody
+  organism: NCBITaxon:9844
+  organism_name: Lama glama
+  amino_acid_sequence: VQLQESGGGLVQPGGSLRLSCAASGRTISRYAMSWFRQAPGKEREFVAVARRSGDGAFYADSVQGRFTVSRDDAKNTVYLQMNSLKPEDTAVYYCAIDSDTFYSGSYDYWGQGTQVTVSS
+  sequence_length: 120
+  pdb_entries:
+  - pdb:7ZYI
+protein_constructs:
+- id: pdb:7ZYI/construct/1
   title: Sodium/bile acid cotransporter
-  description: 'Organism: Homo sapiens; Sequence length: 349'
-  sample_code: PDB-7ZYI-1
-  sample_type: protein
-  molecular_weight:
+  additional_metrics:
+  - attribute:
+      id: rcsb:rcsb_polymer_entity.formula_weight
+      label: rcsb_polymer_entity.formula_weight
     numeric_value: 38.15
     unit: kDa
-  organism: NCBITaxon:9606
-  database_cross_references:
-  - database_name: uniprot
-    database_id: Q14973
-    database_url: https://www.uniprot.org/uniprotkb/Q14973
-  protein_name: Sodium/bile acid cotransporter
-- id: pdb:7ZYI/sample/2
+  - attribute:
+      id: rcsb:rcsb_polymer_entity_container_identifiers.reference_sequence_identifiers.entity_sequence_coverage
+      label: rcsb_polymer_entity_container_identifiers[Q14973].reference_sequence_identifiers.entity_sequence_coverage
+    numeric_value: 1.0
+    unit: unspecified
+  additional_properties:
+  - attribute:
+      id: mmCIF:_entity_poly.pdbx_seq_one_letter_code
+      label: entity_poly.pdbx_seq_one_letter_code
+    value: MEAHNASAPFNFTLPPNFGKRPTDLALSVILVFMLFFIMLSLGCTMEFSKIKAHLWKPKGLAIALVAQYGIMPLTAFVLGKVFRLKNIEALAILVCGCSPGGNLSNVFSLAMKGDMNLSIVMTTCSTFCALGMMPLLLYIYSRGIYDGDLKDKVPYKGIVISLVLVLIPCTIGIVLKSKRPQYMRYVIKGGMIIILLCSVAVTVLSAINVGKSIMFAMTPLLIATSSLMPFIGFLLGYVLSALFCLNGRCRRTVSMETGCQNVQLCSTILNVAFPPEVIGPLFFFPLLYMIFQLGEGLLLIAIFWCYEKFKTPKDKTKMIYTAATTEETIPGALGNGTYKGEDCSPCTA
+  - attribute:
+      id: rcsb:rcsb_polymer_entity_name_com.name
+      label: rcsb_polymer_entity_name_com.name
+    value: Cell growth-inhibiting gene 29 protein,Na(+)/bile acid cotransporter,Na(+)/taurocholate
+      transport protein,Sodium/taurocholate cotransporting polypeptide,Solute carrier
+      family 10 member 1
+  - attribute:
+      id: mmCIF:_entity_src_gen.pdbx_seq_type
+      label: entity_src_gen.pdbx_seq_type
+    value: Biological sequence
+  construct_id: pdb:7ZYI/construct/1
+  protein_id: uniprot:Q14973
+  uniprot_id: uniprot:Q14973
+  gene_name: SLC10A1, NTCP, GIG29
+  ncbi_taxid: '9606'
+  sequence_length_aa:
+    numeric_value: 349.0
+    unit: residues
+  amino_acid_sequence: MEAHNASAPFNFTLPPNFGKRPTDLALSVILVFMLFFIMLSLGCTMEFSKIKAHLWKPKGLAIALVAQYGIMPLTAFVLGKVFRLKNIEALAILVCGCSPGGNLSNVFSLAMKGDMNLSIVMTTCSTFCALGMMPLLLYIYSRGIYDGDLKDKVPYKGIVISLVLVLIPCTIGIVLKSKRPQYMRYVIKGGMIIILLCSVAVTVLSAINVGKSIMFAMTPLLIATSSLMPFIGFLLGYVLSALFCLNGRCRRTVSMETGCQNVQLCSTILNVAFPPEVIGPLFFFPLLYMIFQLGEGLLLIAIFWCYEKFKTPKDKTKMIYTAATTEETIPGALGNGTYKGEDCSPCTA
+- id: pdb:7ZYI/construct/2
   title: heavy chain of Fab
-  description: 'Organism: Mus musculus; Sequence length: 238'
-  sample_code: PDB-7ZYI-2
-  sample_type: protein
-  molecular_weight:
-    numeric_value: 25.58
+  additional_metrics:
+  - attribute:
+      id: rcsb:rcsb_polymer_entity.formula_weight
+      label: rcsb_polymer_entity.formula_weight
+    numeric_value: 25.583
     unit: kDa
-  organism: NCBITaxon:10090
-  protein_name: heavy chain of Fab
-- id: pdb:7ZYI/sample/3
+  additional_properties:
+  - attribute:
+      id: mmCIF:_entity_poly.pdbx_seq_one_letter_code
+      label: entity_poly.pdbx_seq_one_letter_code
+    value: EISEVQLVESGGGLVQPGGSLRLSCAASGFNVSYSSIHWVRQAPGKGLEWVASISSSYGYTSYADSVKGRFTISADTSKNTAYLQMNSLRAEDTAVYYCARYMKQQSQMWYQRYWGFDYWGQGTLVTVSSASTKGPSVFPLAPSSKSTSGGTAALGCLVKDYFPEPVTVSWNSGALTSGVHTFPAVLQSSGLYSLSSVVTVPSSSLGTQTYICNVNHKPSNTKVDKKVEPKSCDKTHT
+  - attribute:
+      id: mmCIF:_entity_src_gen.pdbx_seq_type
+      label: entity_src_gen.pdbx_seq_type
+    value: Biological sequence
+  construct_id: pdb:7ZYI/construct/2
+  protein_id: pdb:7ZYI/protein/2
+  ncbi_taxid: '10090'
+  sequence_length_aa:
+    numeric_value: 238.0
+    unit: residues
+  amino_acid_sequence: EISEVQLVESGGGLVQPGGSLRLSCAASGFNVSYSSIHWVRQAPGKGLEWVASISSSYGYTSYADSVKGRFTISADTSKNTAYLQMNSLRAEDTAVYYCARYMKQQSQMWYQRYWGFDYWGQGTLVTVSSASTKGPSVFPLAPSSKSTSGGTAALGCLVKDYFPEPVTVSWNSGALTSGVHTFPAVLQSSGLYSLSSVVTVPSSSLGTQTYICNVNHKPSNTKVDKKVEPKSCDKTHT
+- id: pdb:7ZYI/construct/3
   title: light chain of Fab
-  description: 'Organism: Mus musculus; Sequence length: 215'
-  sample_code: PDB-7ZYI-3
-  sample_type: protein
-  molecular_weight:
-    numeric_value: 23.42
+  additional_metrics:
+  - attribute:
+      id: rcsb:rcsb_polymer_entity.formula_weight
+      label: rcsb_polymer_entity.formula_weight
+    numeric_value: 23.418
     unit: kDa
-  organism: NCBITaxon:10090
-  protein_name: light chain of Fab
-- id: pdb:7ZYI/sample/4
+  additional_properties:
+  - attribute:
+      id: mmCIF:_entity_poly.pdbx_seq_one_letter_code
+      label: entity_poly.pdbx_seq_one_letter_code
+    value: SDIQMTQSPSSLSASVGDRVTITCRASQSVSSAVAWYQQKPGKAPKLLIYSASSLYSGVPSRFSGSRSGTDFTLTISSLQPEDFATYYCQQSYWSPITFGQGTKVEIKRTVAAPSVFIFPPSDSQLKSGTASVVCLLNNFYPREAKVQWKVDNALQSGNSQESVTEQDSKDSTYSLSSTLTLSKADYEKHKVYACEVTHQGLSSPVTKSFNRGEC
+  - attribute:
+      id: mmCIF:_entity_src_gen.pdbx_seq_type
+      label: entity_src_gen.pdbx_seq_type
+    value: Biological sequence
+  construct_id: pdb:7ZYI/construct/3
+  protein_id: pdb:7ZYI/protein/3
+  ncbi_taxid: '10090'
+  sequence_length_aa:
+    numeric_value: 215.0
+    unit: residues
+  amino_acid_sequence: SDIQMTQSPSSLSASVGDRVTITCRASQSVSSAVAWYQQKPGKAPKLLIYSASSLYSGVPSRFSGSRSGTDFTLTISSLQPEDFATYYCQQSYWSPITFGQGTKVEIKRTVAAPSVFIFPPSDSQLKSGTASVVCLLNNFYPREAKVQWKVDNALQSGNSQESVTEQDSKDSTYSLSSTLTLSKADYEKHKVYACEVTHQGLSSPVTKSFNRGEC
+- id: pdb:7ZYI/construct/4
   title: Nanobody
-  description: 'Organism: Lama glama; Sequence length: 120'
-  sample_code: PDB-7ZYI-4
-  sample_type: protein
-  molecular_weight:
-    numeric_value: 13.12
+  additional_metrics:
+  - attribute:
+      id: rcsb:rcsb_polymer_entity.formula_weight
+      label: rcsb_polymer_entity.formula_weight
+    numeric_value: 13.118
     unit: kDa
-  organism: NCBITaxon:9844
-  protein_name: Nanobody
+  additional_properties:
+  - attribute:
+      id: mmCIF:_entity_poly.pdbx_seq_one_letter_code
+      label: entity_poly.pdbx_seq_one_letter_code
+    value: VQLQESGGGLVQPGGSLRLSCAASGRTISRYAMSWFRQAPGKEREFVAVARRSGDGAFYADSVQGRFTVSRDDAKNTVYLQMNSLKPEDTAVYYCAIDSDTFYSGSYDYWGQGTQVTVSS
+  - attribute:
+      id: mmCIF:_entity_src_gen.pdbx_seq_type
+      label: entity_src_gen.pdbx_seq_type
+    value: Biological sequence
+  construct_id: pdb:7ZYI/construct/4
+  protein_id: pdb:7ZYI/protein/4
+  ncbi_taxid: '9844'
+  sequence_length_aa:
+    numeric_value: 120.0
+    unit: residues
+  amino_acid_sequence: VQLQESGGGLVQPGGSLRLSCAASGRTISRYAMSWFRQAPGKEREFVAVARRSGDGAFYADSVQGRFTVSRDDAKNTVYLQMNSLKPEDTAVYYCAIDSDTFYSGSYDYWGQGTQVTVSS
+small_molecules:
+- id: pdb.ligand:CLR
+  title: CHOLESTEROL
+  additional_metrics:
+  - attribute:
+      id: mmCIF:_chem_comp.pdbx_formal_charge
+      label: chem_comp.pdbx_formal_charge
+    numeric_value: 0.0
+    unit: unspecified
+  additional_properties:
+  - attribute:
+      id: mmCIF:_pdbx_chem_comp_identifier.identifier
+      label: pdbx_chem_comp_identifier[SYSTEMATIC NAME ACDLabs].identifier
+    value: 10xi,13xi,14beta,17alpha-cholest-5-en-3beta-ol
+  - attribute:
+      id: mmCIF:_pdbx_chem_comp_identifier.identifier
+      label: pdbx_chem_comp_identifier[SYSTEMATIC NAME OpenEye OEToolkits].identifier
+    value: (3~{S},8~{S},9~{S},10~{R},13~{R},14~{S},17~{R})-10,13-dimethyl-17-[(2~{R})-6-methylheptan-2-yl]-2,3,4,7,8,9,11,12,14,15,16,17-dodecahydro-1~{H}-cyclopenta[a]phenanthren-3-ol
+  small_molecule_name: CHOLESTEROL
+  pdb_ligand_id: pdb.ligand:CLR
+  molecular_formula: C27H46O
+  smiles: C[C@H](CCCC(C)C)[C@H]1CC[C@@H]2[C@@]1(CC[C@H]3[C@H]2CC=C4[C@@]3(CC[C@@H](C4)O)C)C
+  inchi: InChI=1S/C27H46O/c1-18(2)7-6-8-19(3)23-11-12-24-22-10-9-20-17-21(28)13-15-26(20,4)25(22)14-16-27(23,24)5/h9,18-19,21-25,28H,6-8,10-17H2,1-5H3/t19-,21+,22+,23-,24+,25+,26+,27-/m1/s1
+  inchikey: HVYWMOMLDIMFJA-DPAQBDIFSA-N
+  molecular_weight_theoretical:
+    numeric_value: 386.654
+    unit: Da
+  cross_references:
+  - database_name: drugbank
+    database_id: DB04540
+  - description: COD
+    database_name: other
+    database_id: '4502852'
+  - description: COD
+    database_name: other
+    database_id: '4502851'
+  - description: COD
+    database_name: other
+    database_id: '7240212'
+  - description: COD
+    database_name: other
+    database_id: '7110257'
+  - database_name: pubchem
+    database_id: '5997'
+  - description: CAS
+    database_name: other
+    database_id: 57-88-5
+  - description: CAS
+    database_name: other
+    database_id: 80356-14-5
+  - database_name: chebi
+    database_id: CHEBI:140435
+  - database_name: chebi
+    database_id: CHEBI:16113
+  - database_name: chembl
+    database_id: CHEMBL112570
+  - description: Pharos
+    database_name: other
+    database_id: CHEMBL112570
+- id: CHEBI:36274
+  title: GLYCOCHENODEOXYCHOLIC ACID
+  additional_metrics:
+  - attribute:
+      id: mmCIF:_chem_comp.pdbx_formal_charge
+      label: chem_comp.pdbx_formal_charge
+    numeric_value: 0.0
+    unit: unspecified
+  additional_properties:
+  - attribute:
+      id: mmCIF:_pdbx_chem_comp_identifier.identifier
+      label: pdbx_chem_comp_identifier[SYSTEMATIC NAME ACDLabs].identifier
+    value: N-[(3alpha,5beta,7beta,8alpha)-3,7-dihydroxy-24-oxocholan-24-yl]glycine
+  - attribute:
+      id: mmCIF:_pdbx_chem_comp_identifier.identifier
+      label: pdbx_chem_comp_identifier[SYSTEMATIC NAME OpenEye OEToolkits].identifier
+    value: 2-[[(4R)-4-[(3R,5S,8R,9S,10S,13R,14S,17R)-10,13-dimethyl-3,7-bis(oxidanyl)-2,3,4,5,6,7,8,9,11,12,14,15,16,17-tetradecahydro-1H-cyclopenta[a]phenanthren-17-yl]pentanoyl]amino]ethanoic
+      acid
+  small_molecule_name: GLYCOCHENODEOXYCHOLIC ACID
+  chebi_id: CHEBI:36274
+  pdb_ligand_id: pdb.ligand:CHO
+  molecular_formula: C26H43NO5
+  smiles: C[C@H](CCC(=O)NCC(=O)O)[C@H]1CC[C@@H]2[C@@]1(CC[C@H]3[C@H]2C(C[C@H]4[C@@]3(CC[C@H](C4)O)C)O)C
+  inchi: InChI=1S/C26H43NO5/c1-15(4-7-22(30)27-14-23(31)32)18-5-6-19-24-20(9-11-26(18,19)3)25(2)10-8-17(28)12-16(25)13-21(24)29/h15-21,24,28-29H,4-14H2,1-3H3,(H,27,30)(H,31,32)/t15-,16+,17-,18-,19+,20+,21-,24+,25+,26-/m1/s1
+  inchikey: GHCZAUBVMUEKKP-GYPHWSFCSA-N
+  molecular_weight_theoretical:
+    numeric_value: 449.623
+    unit: Da
+  cross_references:
+  - database_name: drugbank
+    database_id: DB02123
+  - database_name: pubchem
+    database_id: '12544'
+  - database_name: chebi
+    database_id: CHEBI:36274
+  - database_name: chembl
+    database_id: CHEMBL1552
+- id: pdb.ligand:NA
+  title: SODIUM ION
+  additional_metrics:
+  - attribute:
+      id: mmCIF:_chem_comp.pdbx_formal_charge
+      label: chem_comp.pdbx_formal_charge
+    numeric_value: 1.0
+    unit: unspecified
+  additional_properties:
+  - attribute:
+      id: mmCIF:_pdbx_chem_comp_identifier.identifier
+      label: pdbx_chem_comp_identifier[SYSTEMATIC NAME ACDLabs].identifier
+    value: sodium
+  - attribute:
+      id: mmCIF:_pdbx_chem_comp_identifier.identifier
+      label: pdbx_chem_comp_identifier[SYSTEMATIC NAME OpenEye OEToolkits].identifier
+    value: sodium(+1) cation
+  small_molecule_name: SODIUM ION
+  pdb_ligand_id: pdb.ligand:NA
+  chemical_class: ion
+  molecular_formula: Na
+  smiles: '[Na+]'
+  inchi: InChI=1S/Na/q+1
+  inchikey: FKNQFGJONOIPTF-UHFFFAOYSA-N
+  molecular_weight_theoretical:
+    numeric_value: 22.99
+    unit: Da
+samples:
+- id: pdb:7ZYI/sample
+  title: sodium/bile acid cotransporter (NTCP) in complex with Fab and nanobody
+  additional_metrics:
+  - attribute:
+      id: mmCIF:_pdbx_struct_assembly.oligomeric_count
+      label: pdbx_struct_assembly.oligomeric_count
+    numeric_value: 4.0
+    unit: unspecified
+  additional_properties:
+  - attribute:
+      id: mmCIF:_em_entity_assembly.source
+      label: em_entity_assembly.source
+    value: RECOMBINANT
+  - attribute:
+      id: mmCIF:_pdbx_struct_assembly.details
+      label: pdbx_struct_assembly.details
+    value: author_defined_assembly
+  - attribute:
+      id: mmCIF:_pdbx_struct_assembly_auth_evidence.experimental_support
+      label: pdbx_struct_assembly_auth_evidence.experimental_support
+    value: electron microscopy
+  - attribute:
+      id: rcsb:rcsb_struct_symmetry.stoichiometry
+      label: rcsb_struct_symmetry[Global Symmetry].stoichiometry
+    value: A1, B1, C1, D1
+  - attribute:
+      id: rcsb:rcsb_struct_symmetry.symbol
+      label: rcsb_struct_symmetry[Global Symmetry].symbol
+    value: C1
+  - attribute:
+      id: rcsb:rcsb_struct_symmetry.stoichiometry
+      label: rcsb_struct_symmetry[Pseudo Symmetry].stoichiometry
+    value: A2, B1, C1
+  - attribute:
+      id: rcsb:rcsb_struct_symmetry.symbol
+      label: rcsb_struct_symmetry[Pseudo Symmetry].symbol
+    value: C1
+  - attribute:
+      id: rcsb:rcsb_struct_symmetry.oligomeric_state
+      label: rcsb_struct_symmetry[Pseudo Symmetry].oligomeric_state
+    value: Hetero 4-mer
+  sample_code: PDB-7ZYI
+  sample_type: complex
+  molecular_weight:
+    numeric_value: 101.99
+    unit: kDa
+  oligomeric_state: Hetero 4-mer; tetrameric
+sample_components:
+- id: pdb:7ZYI/component/1
+  title: Sodium/bile acid cotransporter
+  sample_id: pdb:7ZYI/sample
+  component_type: protein
+  protein_id: uniprot:Q14973
+  role: subunit
+  copy_number: 1
+- id: pdb:7ZYI/component/2
+  title: heavy chain of Fab
+  sample_id: pdb:7ZYI/sample
+  component_type: protein
+  protein_id: pdb:7ZYI/protein/2
+  role: subunit
+  copy_number: 1
+- id: pdb:7ZYI/component/3
+  title: light chain of Fab
+  sample_id: pdb:7ZYI/sample
+  component_type: protein
+  protein_id: pdb:7ZYI/protein/3
+  role: subunit
+  copy_number: 1
+- id: pdb:7ZYI/component/4
+  title: Nanobody
+  sample_id: pdb:7ZYI/sample
+  component_type: protein
+  protein_id: pdb:7ZYI/protein/4
+  role: subunit
+  copy_number: 1
+- id: pdb:7ZYI/component/5
+  title: CHOLESTEROL
+  sample_id: pdb:7ZYI/sample
+  component_type: small_molecule
+  small_molecule_id: pdb.ligand:CLR
+  copy_number: 2
+- id: pdb:7ZYI/component/6
+  title: GLYCOCHENODEOXYCHOLIC ACID
+  description: 'SUBJECT_OF_INVESTIGATION: Ligand targeted in this investigation'
+  sample_id: pdb:7ZYI/sample
+  component_type: small_molecule
+  small_molecule_id: CHEBI:36274
+  role: ligand
+  copy_number: 2
+- id: pdb:7ZYI/component/7
+  title: SODIUM ION
+  sample_id: pdb:7ZYI/sample
+  component_type: small_molecule
+  small_molecule_id: pdb.ligand:NA
+  copy_number: 2
+sample_preparations:
+- id: pdb:7ZYI/preparation/expression-1-1
+  title: Expression of Sodium/bile acid cotransporter
+  description: Expressed in Homo sapiens
+  additional_properties:
+  - attribute:
+      id: mmCIF:_entity_src_gen.pdbx_host_org_ncbi_taxonomy_id
+      label: entity_src_gen.pdbx_host_org_ncbi_taxonomy_id
+    value: NCBITaxon:9606
+  preparation_type: protein_expression
+  sample_id: pdb:7ZYI/sample
+  expression_system: mammalian
+  host_strain_or_cell_line: HEK293
+- id: pdb:7ZYI/preparation/expression-2-1
+  title: Expression of heavy chain of Fab
+  description: Expressed in Escherichia coli
+  additional_properties:
+  - attribute:
+      id: mmCIF:_entity_src_gen.pdbx_host_org_ncbi_taxonomy_id
+      label: entity_src_gen.pdbx_host_org_ncbi_taxonomy_id
+    value: NCBITaxon:562
+  preparation_type: protein_expression
+  sample_id: pdb:7ZYI/sample
+  expression_system: bacteria
+- id: pdb:7ZYI/preparation/expression-3-1
+  title: Expression of light chain of Fab
+  description: Expressed in Escherichia coli
+  additional_properties:
+  - attribute:
+      id: mmCIF:_entity_src_gen.pdbx_host_org_ncbi_taxonomy_id
+      label: entity_src_gen.pdbx_host_org_ncbi_taxonomy_id
+    value: NCBITaxon:562
+  preparation_type: protein_expression
+  sample_id: pdb:7ZYI/sample
+  expression_system: bacteria
+- id: pdb:7ZYI/preparation/expression-4-1
+  title: Expression of Nanobody
+  description: Expressed in Escherichia coli
+  additional_properties:
+  - attribute:
+      id: mmCIF:_entity_src_gen.pdbx_host_org_ncbi_taxonomy_id
+      label: entity_src_gen.pdbx_host_org_ncbi_taxonomy_id
+    value: NCBITaxon:562
+  preparation_type: protein_expression
+  sample_id: pdb:7ZYI/sample
+  expression_system: bacteria
+- id: pdb:7ZYI/preparation/em-specimen
+  title: EM specimen preparation
+  additional_properties:
+  - attribute:
+      id: mmCIF:_em_specimen.shadowing_applied
+      label: em_specimen.shadowing_applied
+    value: 'NO'
+  preparation_type: cryo_em
+  sample_id: pdb:7ZYI/sample
+  cryoem_preparation:
+    humidity_percentage:
+      numeric_value: 100.0
+      unit: percent
+    vitrification_instrument: FEI VITROBOT MARK IV
+    cryogen: ETHANE-PROPANE
 experiment_runs:
 - id: pdb:7ZYI/experiment
+  additional_metrics:
+  - attribute:
+      id: mmCIF:_em_image_recording.num_grids_imaged
+      label: em_image_recording.num_grids_imaged
+    numeric_value: 1.0
+    unit: unspecified
+  additional_properties:
+  - attribute:
+      id: mmCIF:_em_experiment.aggregation_state
+      label: em_experiment.aggregation_state
+    value: PARTICLE
+  - attribute:
+      id: mmCIF:_em_imaging.cryogen
+      label: em_imaging.cryogen
+    value: NITROGEN
+  - attribute:
+      id: mmCIF:_em_imaging.mode
+      label: em_imaging.mode
+    value: BRIGHT FIELD
   experiment_code: PDB-7ZYI-EXP
-  experiment_date: '2022-05-24'
   technique: cryo_em
+  experimental_method: single_particle_analysis
   quality_metrics:
     resolution:
       numeric_value: 2.88
       unit: Angstroms
+    ramachandran_outliers_percent:
+      numeric_value: 0.0
+      unit: percent
     clashscore:
       numeric_value: 8.6
       unit: dimensionless
-workflow_runs: []
+  total_exposure_time:
+    numeric_value: 2.0
+    unit: s
+  total_dose:
+    numeric_value: 64.0
+    unit: e-/Angstrom^2
+  defocus_range_min:
+    numeric_value: 600.0
+    unit: nanometers
+  defocus_range_max:
+    numeric_value: 2400.0
+    unit: nanometers
+  acquisition_software: EPU
+  acquisition_software_version: '2'
+  number_of_images:
+    numeric_value: 13208.0
+    unit: images
+workflow_runs:
+- id: pdb:7ZYI/workflow/em-model-refinement
+  title: Model refinement
+  additional_metrics:
+  - attribute:
+      id: mmCIF:_refine_ls_restr.dev_ideal
+      label: refine_ls_restr[f_bond_d].dev_ideal
+    numeric_value: 0.003
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_refine_ls_restr.number
+      label: refine_ls_restr[f_bond_d].number
+    numeric_value: 6768.0
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_refine_ls_restr.dev_ideal
+      label: refine_ls_restr[f_angle_d].dev_ideal
+    numeric_value: 0.865
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_refine_ls_restr.number
+      label: refine_ls_restr[f_angle_d].number
+    numeric_value: 9203.0
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_refine_ls_restr.dev_ideal
+      label: refine_ls_restr[f_dihedral_angle_d].dev_ideal
+    numeric_value: 7.314
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_refine_ls_restr.number
+      label: refine_ls_restr[f_dihedral_angle_d].number
+    numeric_value: 947.0
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_refine_ls_restr.dev_ideal
+      label: refine_ls_restr[f_chiral_restr].dev_ideal
+    numeric_value: 0.084
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_refine_ls_restr.number
+      label: refine_ls_restr[f_chiral_restr].number
+    numeric_value: 1062.0
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_refine_ls_restr.dev_ideal
+      label: refine_ls_restr[f_plane_restr].dev_ideal
+    numeric_value: 0.005
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_refine_ls_restr.number
+      label: refine_ls_restr[f_plane_restr].number
+    numeric_value: 1133.0
+    unit: unspecified
+  workflow_code: PDB-7ZYI-EM-MODEL-REFINEMENT
+  workflow_type: model_refinement
+  software_name: PHENIX
+  rmsd_bonds:
+    numeric_value: 0.003
+    unit: Angstroms
+  rmsd_angles:
+    numeric_value: 0.865
+    unit: degrees
+- id: pdb:7ZYI/workflow/em-ctf-estimation
+  title: CTF estimation and correction
+  description: PHASE FLIPPING AND AMPLITUDE CORRECTION
+  workflow_code: PDB-7ZYI-EM-CTF-ESTIMATION
+  workflow_type: ctf_estimation
+  software_name: Gctf
+- id: pdb:7ZYI/workflow/em-reconstruction
+  title: 3D reconstruction
+  additional_properties:
+  - attribute:
+      id: mmCIF:_em_3d_reconstruction.resolution_method
+      label: em_3d_reconstruction.resolution_method
+    value: FSC 0.143 CUT-OFF
+  workflow_code: PDB-7ZYI-EM-RECONSTRUCTION
+  workflow_type: refinement
+  software_name: RELION
+  software_version: '4'
+  resolution_high:
+    numeric_value: 2.88
+    unit: Angstroms
+  refinement_params:
+    resolution_0_143:
+      numeric_value: 2.88
+      unit: Angstroms
+    number_of_particles: 161093
+- id: pdb:7ZYI/workflow/em-model-building
+  title: Model fitting
+  workflow_code: PDB-7ZYI-EM-MODEL-BUILDING
+  workflow_type: model_building
+  software_name: Coot
+- id: pdb:7ZYI/workflow/validation
+  title: wwPDB validation report
+  additional_metrics:
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_geometry.angles_RMSZ
+      label: pdbx_vrpt_summary_geometry.angles_RMSZ
+    numeric_value: 0.36
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_geometry.bonds_RMSZ
+      label: pdbx_vrpt_summary_geometry.bonds_RMSZ
+    numeric_value: 0.17
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_geometry.num_H_reduce
+      label: pdbx_vrpt_summary_geometry.num_H_reduce
+    numeric_value: 6725.0
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_geometry.num_angles_RMSZ
+      label: pdbx_vrpt_summary_geometry.num_angles_RMSZ
+    numeric_value: 9049.0
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_geometry.num_bonds_RMSZ
+      label: pdbx_vrpt_summary_geometry.num_bonds_RMSZ
+    numeric_value: 6671.0
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_geometry.percent_rotamer_outliers
+      label: pdbx_vrpt_summary_geometry.percent_rotamer_outliers
+    numeric_value: 0.69
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_em.Q_score
+      label: pdbx_vrpt_summary_em.Q_score
+    numeric_value: 0.502
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_em.atom_inclusion_all_atoms
+      label: pdbx_vrpt_summary_em.atom_inclusion_all_atoms
+    numeric_value: 0.57
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_em.atom_inclusion_backbone
+      label: pdbx_vrpt_summary_em.atom_inclusion_backbone
+    numeric_value: 0.612
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_em.author_provided_fsc_resolution_by_cutoff_halfbit
+      label: pdbx_vrpt_summary_em.author_provided_fsc_resolution_by_cutoff_halfbit
+    numeric_value: 2.93
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_em.author_provided_fsc_resolution_by_cutoff_onebit
+      label: pdbx_vrpt_summary_em.author_provided_fsc_resolution_by_cutoff_onebit
+    numeric_value: 3.08
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_em.author_provided_fsc_resolution_by_cutoff_pt_143
+      label: pdbx_vrpt_summary_em.author_provided_fsc_resolution_by_cutoff_pt_143
+    numeric_value: 2.89
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_em.author_provided_fsc_resolution_by_cutoff_pt_333
+      label: pdbx_vrpt_summary_em.author_provided_fsc_resolution_by_cutoff_pt_333
+    numeric_value: 3.07
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_em.author_provided_fsc_resolution_by_cutoff_pt_5
+      label: pdbx_vrpt_summary_em.author_provided_fsc_resolution_by_cutoff_pt_5
+    numeric_value: 3.26
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_em.author_provided_fsc_resolution_by_cutoff_threesigma
+      label: pdbx_vrpt_summary_em.author_provided_fsc_resolution_by_cutoff_threesigma
+    numeric_value: 2.63
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_em.calculated_fsc_resolution_by_cutoff_halfbit
+      label: pdbx_vrpt_summary_em.calculated_fsc_resolution_by_cutoff_halfbit
+    numeric_value: 3.53
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_em.calculated_fsc_resolution_by_cutoff_onebit
+      label: pdbx_vrpt_summary_em.calculated_fsc_resolution_by_cutoff_onebit
+    numeric_value: 3.83
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_em.calculated_fsc_resolution_by_cutoff_pt_143
+      label: pdbx_vrpt_summary_em.calculated_fsc_resolution_by_cutoff_pt_143
+    numeric_value: 3.46
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_em.calculated_fsc_resolution_by_cutoff_pt_333
+      label: pdbx_vrpt_summary_em.calculated_fsc_resolution_by_cutoff_pt_333
+    numeric_value: 3.82
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_em.calculated_fsc_resolution_by_cutoff_pt_5
+      label: pdbx_vrpt_summary_em.calculated_fsc_resolution_by_cutoff_pt_5
+    numeric_value: 4.03
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_em.calculated_fsc_resolution_by_cutoff_threesigma
+      label: pdbx_vrpt_summary_em.calculated_fsc_resolution_by_cutoff_threesigma
+    numeric_value: 3.07
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_em.contour_level_primary_map
+      label: pdbx_vrpt_summary_em.contour_level_primary_map
+    numeric_value: 0.006
+    unit: unspecified
+  additional_properties:
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary.attempted_validation_steps
+      label: pdbx_vrpt_summary.attempted_validation_steps
+    value: visualanalysis,mogul,buster-report,molprobity,validation-pack,validation_schema,percentiles,writexml,writecif,writepdf
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary.ligands_for_buster_report
+      label: pdbx_vrpt_summary.ligands_for_buster_report
+    value: Y
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_em.exp_method
+      label: pdbx_vrpt_summary_em.exp_method
+    value: electron microscopy
+  workflow_code: PDB-7ZYI-VALIDATION
+  workflow_type: model_validation
+  software_name: wwPDB validation pipeline
+  validation_report_path: https://files.rcsb.org/pub/pdb/validation_reports/zy/7zyi/7zyi_full_validation.pdf.gz
+  completed_at: '2026-03-29T23:26:00.000+00:00'
 data_files:
 - id: pdb:7ZYI/file/pdb
   description: PDB format coordinates
   file_name: 7zyi.pdb
   file_path: https://files.rcsb.org/download/7ZYI.pdb
   file_format: pdb
+  data_type: model
 - id: pdb:7ZYI/file/mmcif
   description: mmCIF format coordinates
   file_name: 7zyi.cif
   file_path: https://files.rcsb.org/download/7ZYI.cif
   file_format: mmcif
-- id: pdb:7ZYI/file/sf
-  description: Structure factors
-  file_name: 7zyi-sf.cif
-  file_path: https://files.rcsb.org/download/7ZYI-sf.cif
-  file_format: mmcif
+  data_type: model
+- id: pdb:7ZYI/file/map-15024
+  description: EMD-15024 primary map
+  file_name: emd_15024.map.gz
+  file_path: https://files.wwpdb.org/pub/emdb/structures/EMD-15024/map/emd_15024.map.gz
+  file_format: mrc
+  data_type: volume
+- id: pdb:7ZYI/file/validation
+  description: wwPDB full validation report
+  file_name: 7zyi_full_validation.pdf.gz
+  file_path: https://files.rcsb.org/pub/pdb/validation_reports/zy/7zyi/7zyi_full_validation.pdf.gz
+  file_format: pdf
+  data_type: validation_report
 study_sample_associations:
 - study_id: pdb:7ZYI/study
-  sample_id: pdb:7ZYI/sample/1
-- study_id: pdb:7ZYI/study
-  sample_id: pdb:7ZYI/sample/2
-- study_id: pdb:7ZYI/study
-  sample_id: pdb:7ZYI/sample/3
-- study_id: pdb:7ZYI/study
-  sample_id: pdb:7ZYI/sample/4
+  sample_id: pdb:7ZYI/sample
 study_experiment_associations:
 - study_id: pdb:7ZYI/study
   experiment_id: pdb:7ZYI/experiment
+study_workflow_associations:
+- study_id: pdb:7ZYI/study
+  workflow_id: pdb:7ZYI/workflow/em-model-refinement
+- study_id: pdb:7ZYI/study
+  workflow_id: pdb:7ZYI/workflow/em-ctf-estimation
+- study_id: pdb:7ZYI/study
+  workflow_id: pdb:7ZYI/workflow/em-reconstruction
+- study_id: pdb:7ZYI/study
+  workflow_id: pdb:7ZYI/workflow/em-model-building
+- study_id: pdb:7ZYI/study
+  workflow_id: pdb:7ZYI/workflow/validation
 experiment_sample_associations:
 - experiment_id: pdb:7ZYI/experiment
-  sample_id: pdb:7ZYI/sample/1
-- experiment_id: pdb:7ZYI/experiment
-  sample_id: pdb:7ZYI/sample/2
-- experiment_id: pdb:7ZYI/experiment
-  sample_id: pdb:7ZYI/sample/3
-- experiment_id: pdb:7ZYI/experiment
-  sample_id: pdb:7ZYI/sample/4
+  sample_id: pdb:7ZYI/sample
+  preparation_id: pdb:7ZYI/preparation/em-specimen
 experiment_instrument_associations:
 - experiment_id: pdb:7ZYI/experiment
-  instrument_id: pdb:instrument/PDB-7ZYI
+  instrument_id: pdb:7ZYI/instrument/em-1
 sample_protein_associations:
-- sample_id: pdb:7ZYI/sample/1
+- sample_id: pdb:7ZYI/sample
   protein_id: uniprot:Q14973
   role: subunit
+  construct_id: pdb:7ZYI/construct/1
   copy_number: 1
+  residue_range: 1-349
   sequence_coverage: 1.0
   chain_ids:
   - A
-workflow_experiment_associations: []
+- sample_id: pdb:7ZYI/sample
+  protein_id: pdb:7ZYI/protein/2
+  role: subunit
+  construct_id: pdb:7ZYI/construct/2
+  copy_number: 1
+  residue_range: 1-238
+  chain_ids:
+  - H
+- sample_id: pdb:7ZYI/sample
+  protein_id: pdb:7ZYI/protein/3
+  role: subunit
+  construct_id: pdb:7ZYI/construct/3
+  copy_number: 1
+  residue_range: 1-215
+  chain_ids:
+  - L
+- sample_id: pdb:7ZYI/sample
+  protein_id: pdb:7ZYI/protein/4
+  role: subunit
+  construct_id: pdb:7ZYI/construct/4
+  copy_number: 1
+  residue_range: 1-120
+  chain_ids:
+  - K
+sample_component_interactions:
+- sample_id: pdb:7ZYI/sample
+  subject_id: pdb:7ZYI/component/5
+  object_id: pdb:7ZYI/component/1
+  interaction_type: binds
+  interaction_status: observed
+  evidence:
+  - experimental
+  description: Modelled on chain A in the deposited structure
+- sample_id: pdb:7ZYI/sample
+  subject_id: pdb:7ZYI/component/6
+  object_id: pdb:7ZYI/component/1
+  interaction_type: binds
+  interaction_status: observed
+  evidence:
+  - experimental
+  description: Modelled on chain A in the deposited structure
+- sample_id: pdb:7ZYI/sample
+  subject_id: pdb:7ZYI/component/7
+  object_id: pdb:7ZYI/component/1
+  interaction_type: is_coordinated_by
+  interaction_status: observed
+  evidence:
+  - experimental
+  description: Modelled on chain A in the deposited structure
+- sample_id: pdb:7ZYI/sample
+  subject_id: pdb:7ZYI/component/3
+  object_id: pdb:7ZYI/component/2
+  interaction_type: binds
+  interaction_status: observed
+  subject_site: 1-2,31-33,35,37,39,42-45,47,50-51,54,56,88,90,92-93,95-97,99-101,115-125,128,130,132,134,136,138-139,161-165,168,175-177,179,181,208,210
+  object_site: 38,40,42,46-50,60,62-65,98,102-103,112,114-122,138-144,146-148,152,154-155,158,160,181-184,186-189,196,198,200,231
+  evidence:
+  - experimental
+  description: 'Contact in the first assembly: interface 1: 1818 square angstroms
+    buried, 112 interface residues (14 core)'
+- sample_id: pdb:7ZYI/sample
+  subject_id: pdb:7ZYI/component/2
+  object_id: pdb:7ZYI/component/1
+  interaction_type: binds
+  interaction_status: observed
+  subject_site: S36,H38,S55,Y58,G59,Y60,T61,S62,Y63,K68,Y102,Q105,S107,W110,Y111,Q112,R113,W115
+  object_site: G19,K20,R21,N87,I88,G144,Y146,D147,G148,K153,N209,K212,S213,I214,F216,N271,V272,A273,F274,P275,P276,E277,V278,I279,G280,F283
+  evidence:
+  - experimental
+  description: 'Contact in the first assembly: interface 2: 823 square angstroms buried,
+    47 interface residues (2 core)'
+- sample_id: pdb:7ZYI/sample
+  subject_id: pdb:7ZYI/component/4
+  object_id: pdb:7ZYI/component/3
+  interaction_type: binds
+  interaction_status: observed
+  subject_site: A32,F36,R44,F46,V49,R51,G54,D55,G56,A57,F58,Y59,A60,D61,Q64,D98,D100,F102,Y103,S104,G105,S106,Y107,W110
+  object_site: L12,S13,K108,R109,T110,V111,Y141,P142,E144,A145,K146,T198,H199,Q200,G201,L202,S203,S204,P205
+  evidence:
+  - experimental
+  description: 'Contact in the first assembly: interface 3: 696 square angstroms buried,
+    42 interface residues (5 core)'
+- sample_id: pdb:7ZYI/sample
+  subject_id: pdb:7ZYI/component/3
+  object_id: pdb:7ZYI/component/1
+  interaction_type: binds
+  interaction_status: observed
+  subject_site: S1,I3,Q28,S29,S31,S92,Y93,W94,S95,P96
+  object_site: K86,N87,I88,E89,I214,M215,F216,A217,T219,P220,E277,V278,G280,P281
+  evidence:
+  - experimental
+  description: 'Contact in the first assembly: interface 4: 372 square angstroms buried,
+    25 interface residues (2 core)'
+workflow_experiment_associations:
+- workflow_id: pdb:7ZYI/workflow/em-model-refinement
+  experiment_id: pdb:7ZYI/experiment
+- workflow_id: pdb:7ZYI/workflow/em-ctf-estimation
+  experiment_id: pdb:7ZYI/experiment
+- workflow_id: pdb:7ZYI/workflow/em-reconstruction
+  experiment_id: pdb:7ZYI/experiment
+- workflow_id: pdb:7ZYI/workflow/em-model-building
+  experiment_id: pdb:7ZYI/experiment
+- workflow_id: pdb:7ZYI/workflow/validation
+  experiment_id: pdb:7ZYI/experiment
+study_person_associations:
+- study_id: pdb:7ZYI/study
+  person_id: pdb:7ZYI/person/1
+  role: author
+  author_position: 1
+- study_id: pdb:7ZYI/study
+  person_id: pdb:7ZYI/person/2
+  role: author
+  author_position: 2
+- study_id: pdb:7ZYI/study
+  person_id: pdb:7ZYI/person/3
+  role: author
+  author_position: 3
+- study_id: pdb:7ZYI/study
+  person_id: pdb:7ZYI/person/4
+  role: author
+  author_position: 4
+- study_id: pdb:7ZYI/study
+  person_id: pdb:7ZYI/person/5
+  role: author
+  author_position: 5
+- study_id: pdb:7ZYI/study
+  person_id: pdb:7ZYI/person/6
+  role: author
+  author_position: 6
+- study_id: pdb:7ZYI/study
+  person_id: pdb:7ZYI/person/7
+  role: author
+  author_position: 7
+- study_id: pdb:7ZYI/study
+  person_id: pdb:7ZYI/person/8
+  role: author
+  author_position: 8
+- study_id: pdb:7ZYI/study
+  person_id: pdb:7ZYI/person/9
+  role: author
+  author_position: 9
+study_organization_associations:
+- study_id: pdb:7ZYI/study
+  organization_id: pdb:organization/swiss-national-science-foundation
+  role: funder
+study_publication_associations:
+- study_id: pdb:7ZYI/study
+  publication_id: doi:10.1038/s41422-022-00680-4
+  is_primary: true

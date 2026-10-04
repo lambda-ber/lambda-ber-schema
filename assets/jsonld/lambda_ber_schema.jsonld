@@ -135,6 +135,26 @@
       "prefix_reference": "https://www.rcsb.org/structure/"
     },
     {
+      "prefix_prefix": "doi",
+      "prefix_reference": "https://doi.org/"
+    },
+    {
+      "prefix_prefix": "pmid",
+      "prefix_reference": "https://pubmed.ncbi.nlm.nih.gov/"
+    },
+    {
+      "prefix_prefix": "emdb",
+      "prefix_reference": "https://www.ebi.ac.uk/emdb/"
+    },
+    {
+      "prefix_prefix": "glytoucan",
+      "prefix_reference": "https://glytoucan.org/Structures/Glycans/"
+    },
+    {
+      "prefix_prefix": "rcsb",
+      "prefix_reference": "https://data.rcsb.org/data-attributes.html#"
+    },
+    {
       "prefix_prefix": "sasbdb",
       "prefix_reference": "https://www.sasbdb.org/data/"
     },
@@ -3003,6 +3023,37 @@
             "Also known as MicroED or 3D electron diffraction (3DED)",
             "Uses an electron beam on sub-micron crystals"
           ]
+        },
+        {
+          "text": "solution_nmr",
+          "description": "Solution nuclear magnetic resonance spectroscopy"
+        },
+        {
+          "text": "solid_state_nmr",
+          "description": "Solid-state nuclear magnetic resonance spectroscopy"
+        },
+        {
+          "text": "powder_diffraction",
+          "description": "Powder diffraction"
+        },
+        {
+          "text": "epr",
+          "description": "Electron paramagnetic resonance spectroscopy"
+        },
+        {
+          "text": "fluorescence_transfer",
+          "description": "Fluorescence resonance energy transfer as a structural restraint"
+        },
+        {
+          "text": "infrared_spectroscopy",
+          "description": "Infrared spectroscopy"
+        },
+        {
+          "text": "integrative_modeling",
+          "description": "Integrative or hybrid modelling from several kinds of data",
+          "comments": [
+            "Archived by PDB-IHM; the input data are listed on the modelling workflow"
+          ]
         }
       ]
     },
@@ -3230,6 +3281,18 @@
         {
           "text": "gz",
           "description": "Gzip compressed format"
+        },
+        {
+          "text": "pdf",
+          "description": "Portable Document Format, as for a validation report"
+        },
+        {
+          "text": "nmr_star",
+          "description": "NMR-STAR, the BMRB format for chemical shifts and restraints"
+        },
+        {
+          "text": "other",
+          "description": "A format with no value of its own here; DataFile.description names it"
         }
       ]
     },
@@ -3527,6 +3590,29 @@
         {
           "text": "fiber_diffraction",
           "description": "Fiber diffraction"
+        },
+        {
+          "text": "single_particle_analysis",
+          "description": "Single-particle cryo-EM reconstruction",
+          "exact_mappings": [
+            "mmCIF:_em_experiment.reconstruction_method"
+          ]
+        },
+        {
+          "text": "helical_reconstruction",
+          "description": "Helical reconstruction of filaments"
+        },
+        {
+          "text": "subtomogram_averaging",
+          "description": "Averaging of subvolumes extracted from electron tomograms"
+        },
+        {
+          "text": "electron_tomography",
+          "description": "Electron tomography of a unique object, without averaging"
+        },
+        {
+          "text": "electron_crystallography",
+          "description": "Structure from 2D or 3D crystals by electron diffraction or imaging"
         }
       ]
     },
@@ -5821,11 +5907,162 @@
         {
           "text": "modomics",
           "description": "MODOMICS, modified RNA nucleosides"
+        },
+        {
+          "text": "emdb",
+          "description": "Electron Microscopy Data Bank"
+        },
+        {
+          "text": "empiar",
+          "description": "Electron Microscopy Public Image Archive"
+        },
+        {
+          "text": "bmrb",
+          "description": "Biological Magnetic Resonance Data Bank"
+        },
+        {
+          "text": "sasbdb",
+          "description": "Small Angle Scattering Biological Data Bank"
+        },
+        {
+          "text": "pdb_ihm",
+          "description": "PDB-IHM, the archive of integrative structures"
+        },
+        {
+          "text": "nakb",
+          "description": "Nucleic Acid Knowledgebase"
+        },
+        {
+          "text": "sbgrid",
+          "description": "SBGrid Data Bank"
+        },
+        {
+          "text": "proteindiffraction",
+          "description": "Integrated Resource for Reproducibility in Macromolecular Crystallography (proteindiffraction.org)"
+        },
+        {
+          "text": "olderado",
+          "description": "OLDERADO, representative models of NMR ensembles"
+        },
+        {
+          "text": "ecod",
+          "description": "ECOD, Evolutionary Classification of Protein Domains"
+        },
+        {
+          "text": "scop2",
+          "description": "SCOP2"
+        },
+        {
+          "text": "mpstruc",
+          "description": "Membrane Proteins of Known 3D Structure"
+        },
+        {
+          "text": "opm",
+          "description": "Orientations of Proteins in Membranes"
+        },
+        {
+          "text": "pdbtm",
+          "description": "Protein Data Bank of Transmembrane Proteins"
+        },
+        {
+          "text": "memprotmd",
+          "description": "MemProtMD"
+        },
+        {
+          "text": "glytoucan",
+          "description": "GlyTouCan glycan structure repository"
+        },
+        {
+          "text": "glygen",
+          "description": "GlyGen"
+        },
+        {
+          "text": "bindingdb",
+          "description": "BindingDB"
+        },
+        {
+          "text": "binding_moad",
+          "description": "Binding MOAD"
+        },
+        {
+          "text": "pdbbind",
+          "description": "PDBbind-CN"
+        },
+        {
+          "text": "atc",
+          "description": "WHO Anatomical Therapeutic Chemical classification"
+        },
+        {
+          "text": "other",
+          "description": "A database with no value of its own here; DatabaseCrossReference.description names it"
         }
       ]
     }
   ],
   "slots": [
+    {
+      "name": "instrument_type",
+      "definition_uri": "http://w3id.org/lambda/instrument_type",
+      "description": "Which kind of instrument this row is: CryoEMInstrument, XRayInstrument, NMRInstrument, SAXSInstrument, SANSInstrument, BeamlineInstrument, or Instrument for one with no subclass. A Dataset lists every instrument in one table, so a row carrying fields of a subclass (accelerating_voltage, detector_model) needs this to be read back as that subclass rather than rejected as an Instrument with unknown fields.",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/instrument_type",
+      "designates_type": true,
+      "owner": "Instrument",
+      "domain_of": [
+        "Instrument"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "additional_metrics",
+      "definition_uri": "http://w3id.org/lambda/additional_metrics",
+      "description": "Numeric values the source reports that have no named slot on this class, each a QuantityValue whose attribute names the source item it came from (attribute id mmCIF:_refine.B_iso_max, label refine.B_iso_max). A loader puts a value here only after checking that no named slot fits; a value that recurs across sources should get a named slot instead.",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/additional_metrics",
+      "owner": "ResolutionShell",
+      "domain_of": [
+        "Sample",
+        "Protein",
+        "ProteinConstruct",
+        "NucleicAcid",
+        "SmallMolecule",
+        "SamplePreparation",
+        "Instrument",
+        "ExperimentRun",
+        "WorkflowRun",
+        "ResolutionShell"
+      ],
+      "range": "QuantityValue",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "additional_properties",
+      "definition_uri": "http://w3id.org/lambda/additional_properties",
+      "description": "Text values the source reports that have no named slot on this class, each a TextValue whose attribute names the source item it came from. The same rule as additional_metrics applies.",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/additional_properties",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "Sample",
+        "Protein",
+        "ProteinConstruct",
+        "NucleicAcid",
+        "SmallMolecule",
+        "SamplePreparation",
+        "Instrument",
+        "ExperimentRun",
+        "WorkflowRun"
+      ],
+      "range": "TextValue",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
     {
       "name": "attribute",
       "definition_uri": "http://w3id.org/lambda/attribute",
@@ -6025,6 +6262,61 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "dataset__deposition_date",
+      "description": "Date the dataset was first deposited with the archive it was loaded from (YYYY-MM-DD)",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_pdbx_database_status.recvd_initial_deposition_date"
+      ],
+      "slot_uri": "http://w3id.org/lambda/deposition_date",
+      "alias": "deposition_date",
+      "owner": "Dataset",
+      "domain_of": [
+        "Dataset"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataset__release_date",
+      "description": "Date the archive first made the dataset public (YYYY-MM-DD)",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/release_date",
+      "alias": "release_date",
+      "owner": "Dataset",
+      "domain_of": [
+        "Dataset"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataset__last_revision_date",
+      "description": "Date of the archive's most recent revision of the dataset (YYYY-MM-DD)",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/last_revision_date",
+      "alias": "last_revision_date",
+      "owner": "Dataset",
+      "domain_of": [
+        "Dataset"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataset__revision",
+      "description": "The archive's version label for the dataset as loaded, so a reload can tell whether the source changed: '1.4' for a PDB entry at major revision 1, minor revision 4",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/revision",
+      "alias": "revision",
+      "owner": "Dataset",
+      "domain_of": [
+        "Dataset"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "dataset__studies",
       "description": "All studies in this dataset",
       "from_schema": "http://w3id.org/lambda/",
@@ -6067,6 +6359,22 @@
         "Dataset"
       ],
       "range": "Organization",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataset__publications",
+      "description": "All publications describing studies in this dataset",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/publications",
+      "alias": "publications",
+      "owner": "Dataset",
+      "domain_of": [
+        "Dataset"
+      ],
+      "range": "Publication",
       "multivalued": true,
       "inlined": true,
       "inlined_as_list": true,
@@ -6505,6 +6813,22 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "dataset__study_publication_associations",
+      "description": "Links between studies and the publications that describe them (M:N, marking the primary citation)",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/study_publication_associations",
+      "alias": "study_publication_associations",
+      "owner": "Dataset",
+      "domain_of": [
+        "Dataset"
+      ],
+      "range": "StudyPublicationAssociation",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "dataset__person_organization_associations",
       "description": "Links between people and organizations (M:N with role and dates)",
       "from_schema": "http://w3id.org/lambda/",
@@ -6545,6 +6869,302 @@
       ],
       "range": "string",
       "multivalued": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "study__database_cross_references",
+      "description": "Records for this study in other archives: the PDB entry and its DOI, the EMDB map, the BMRB chemical shifts, a SASBDB entry, an entry this one supersedes",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/database_cross_references",
+      "alias": "database_cross_references",
+      "owner": "Study",
+      "domain_of": [
+        "Study"
+      ],
+      "range": "DatabaseCrossReference",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "publication__doi",
+      "description": "DOI as a CURIE (doi:10.1038/s41422-022-00680-4)",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_citation.pdbx_database_id_DOI"
+      ],
+      "slot_uri": "http://w3id.org/lambda/doi",
+      "alias": "doi",
+      "owner": "Publication",
+      "domain_of": [
+        "Publication"
+      ],
+      "range": "uriorcurie",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "publication__pubmed_id",
+      "description": "PubMed id as a CURIE (pmid:35726088)",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_citation.pdbx_database_id_PubMed"
+      ],
+      "slot_uri": "http://w3id.org/lambda/pubmed_id",
+      "alias": "pubmed_id",
+      "owner": "Publication",
+      "domain_of": [
+        "Publication"
+      ],
+      "range": "uriorcurie",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "publication__authors",
+      "description": "Author names in publication order, as the source writes them ('Liu, H.')",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/authors",
+      "alias": "authors",
+      "owner": "Publication",
+      "domain_of": [
+        "Publication"
+      ],
+      "range": "string",
+      "multivalued": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "publication__journal",
+      "description": "Full journal name",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_citation.journal_full"
+      ],
+      "slot_uri": "http://w3id.org/lambda/journal",
+      "alias": "journal",
+      "owner": "Publication",
+      "domain_of": [
+        "Publication"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "publication__journal_abbreviation",
+      "description": "Journal abbreviation as the source gives it ('Cell Res.')",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_citation.journal_abbrev"
+      ],
+      "slot_uri": "http://w3id.org/lambda/journal_abbreviation",
+      "alias": "journal_abbreviation",
+      "owner": "Publication",
+      "domain_of": [
+        "Publication"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "publication__journal_issn",
+      "description": "Journal ISSN",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/journal_issn",
+      "alias": "journal_issn",
+      "owner": "Publication",
+      "domain_of": [
+        "Publication"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "publication__journal_country",
+      "description": "Country of the journal's publisher, as the source records it",
+      "comments": [
+        "This is where the journal is published, not where the authors work"
+      ],
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/journal_country",
+      "alias": "journal_country",
+      "owner": "Publication",
+      "domain_of": [
+        "Publication"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "publication__volume",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/volume",
+      "alias": "volume",
+      "owner": "Publication",
+      "domain_of": [
+        "Publication"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "publication__issue",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/issue",
+      "alias": "issue",
+      "owner": "Publication",
+      "domain_of": [
+        "Publication"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "publication__page_first",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/page_first",
+      "alias": "page_first",
+      "owner": "Publication",
+      "domain_of": [
+        "Publication"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "publication__page_last",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/page_last",
+      "alias": "page_last",
+      "owner": "Publication",
+      "domain_of": [
+        "Publication"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "publication__year",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/year",
+      "alias": "year",
+      "owner": "Publication",
+      "domain_of": [
+        "Publication"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "publication__language",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/language",
+      "alias": "language",
+      "owner": "Publication",
+      "domain_of": [
+        "Publication"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "publication__book_title",
+      "description": "For a chapter, the title of the book",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/book_title",
+      "alias": "book_title",
+      "owner": "Publication",
+      "domain_of": [
+        "Publication"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "publication__book_publisher",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/book_publisher",
+      "alias": "book_publisher",
+      "owner": "Publication",
+      "domain_of": [
+        "Publication"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "publication__book_publisher_city",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/book_publisher_city",
+      "alias": "book_publisher_city",
+      "owner": "Publication",
+      "domain_of": [
+        "Publication"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "publication__book_isbn",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/book_isbn",
+      "alias": "book_isbn",
+      "owner": "Publication",
+      "domain_of": [
+        "Publication"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "publication__unpublished",
+      "description": "True when the source records the publication as not yet published ('To be published')",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/unpublished",
+      "alias": "unpublished",
+      "owner": "Publication",
+      "domain_of": [
+        "Publication"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "studyPublicationAssociation__study_id",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/study_id",
+      "alias": "study_id",
+      "owner": "StudyPublicationAssociation",
+      "domain_of": [
+        "StudyPublicationAssociation"
+      ],
+      "range": "Study",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "studyPublicationAssociation__publication_id",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/publication_id",
+      "alias": "publication_id",
+      "owner": "StudyPublicationAssociation",
+      "domain_of": [
+        "StudyPublicationAssociation"
+      ],
+      "range": "Publication",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "studyPublicationAssociation__is_primary",
+      "description": "Whether this is the study's primary citation",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/is_primary",
+      "alias": "is_primary",
+      "owner": "StudyPublicationAssociation",
+      "domain_of": [
+        "StudyPublicationAssociation"
+      ],
+      "range": "boolean",
       "@type": "SlotDefinition"
     },
     {
@@ -7921,6 +8541,39 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "proteinConstruct__amino_acid_sequence",
+      "description": "One-letter sequence of the expressed construct, tags, linkers and mutations included: the sequence of the molecule in the sample, which may differ from the canonical sequence on Protein",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_entity_poly.pdbx_seq_one_letter_code_can"
+      ],
+      "slot_uri": "http://w3id.org/lambda/amino_acid_sequence",
+      "alias": "amino_acid_sequence",
+      "owner": "ProteinConstruct",
+      "domain_of": [
+        "ProteinConstruct"
+      ],
+      "range": "string",
+      "pattern": "^[ACDEFGHIKLMNPQRSTVWYBJOUXZ]+$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "proteinConstruct__mutations",
+      "description": "Point mutations or other engineered changes relative to the canonical sequence, as the source states them ('C145A', 'E166Q, del 1-20')",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_entity.pdbx_mutation"
+      ],
+      "slot_uri": "http://w3id.org/lambda/mutations",
+      "alias": "mutations",
+      "owner": "ProteinConstruct",
+      "domain_of": [
+        "ProteinConstruct"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "nucleicAcid__nucleic_acid_type",
       "description": "Chemical type of the polymer: DNA, RNA, a DNA/RNA hybrid, or an analogue",
       "from_schema": "http://w3id.org/lambda/",
@@ -8986,6 +9639,48 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "samplePreparation__cryoem_preparation",
+      "description": "Grid, vitrification, staining and embedding detail, where preparation_type is cryo_em or negative_stain",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/cryoem_preparation",
+      "alias": "cryoem_preparation",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "CryoEMPreparation",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__xray_preparation",
+      "description": "Crystallization, crystal and mounting detail, where preparation_type is xray_crystallography",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/xray_preparation",
+      "alias": "xray_preparation",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "XRayPreparation",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__saxs_preparation",
+      "description": "Solution scattering sample detail, where preparation_type is saxs or sans",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/saxs_preparation",
+      "alias": "saxs_preparation",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "SAXSPreparation",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "instrument__instrument_code",
       "description": "Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.",
       "from_schema": "http://w3id.org/lambda/",
@@ -9555,6 +10250,54 @@
       ],
       "range": "QuantityValue",
       "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMInstrument__electron_source",
+      "description": "Electron source (FIELD EMISSION GUN, LAB6, TUNGSTEN HAIRPIN)",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_imaging.electron_source"
+      ],
+      "slot_uri": "http://w3id.org/lambda/electron_source",
+      "alias": "electron_source",
+      "owner": "CryoEMInstrument",
+      "domain_of": [
+        "CryoEMInstrument"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMInstrument__illumination_mode",
+      "description": "Illumination mode (FLOOD BEAM, SPOT SCAN)",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_imaging.illumination_mode"
+      ],
+      "slot_uri": "http://w3id.org/lambda/illumination_mode",
+      "alias": "illumination_mode",
+      "owner": "CryoEMInstrument",
+      "domain_of": [
+        "CryoEMInstrument"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMInstrument__specimen_holder_model",
+      "description": "Specimen holder model, or the autoloader for a microscope that has one",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_imaging.specimen_holder_model"
+      ],
+      "slot_uri": "http://w3id.org/lambda/specimen_holder_model",
+      "alias": "specimen_holder_model",
+      "owner": "CryoEMInstrument",
+      "domain_of": [
+        "CryoEMInstrument"
+      ],
+      "range": "string",
       "@type": "SlotDefinition"
     },
     {
@@ -10242,6 +10985,39 @@
       "owner": "SANSInstrument",
       "domain_of": [
         "SANSInstrument"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "nMRInstrument__field_strength",
+      "description": "Magnetic field strength, as the proton frequency in MHz",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_pdbx_nmr_spectrometer.field_strength"
+      ],
+      "slot_uri": "http://w3id.org/lambda/field_strength",
+      "alias": "field_strength",
+      "owner": "NMRInstrument",
+      "domain_of": [
+        "NMRInstrument"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "nMRInstrument__spectrometer_type",
+      "description": "Spectrometer type as the source records it",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_pdbx_nmr_spectrometer.type"
+      ],
+      "slot_uri": "http://w3id.org/lambda/spectrometer_type",
+      "alias": "spectrometer_type",
+      "owner": "NMRInstrument",
+      "domain_of": [
+        "NMRInstrument"
       ],
       "range": "string",
       "@type": "SlotDefinition"
@@ -12669,6 +13445,22 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "workflowRun__resolution_shells",
+      "description": "Statistics per resolution shell, as the data-reduction or scaling program reported them. The overall statistics stay on the run itself; a shell table adds the breakdown, of which the highest-resolution shell is the one most often quoted.",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/resolution_shells",
+      "alias": "resolution_shells",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "ResolutionShell",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "dataFile__file_name",
       "description": "Name of the file",
       "from_schema": "http://w3id.org/lambda/",
@@ -14250,6 +15042,70 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "cryoEMPreparation__cryogen",
+      "description": "Cryogen the grid was plunged into (ETHANE, ETHANE-PROPANE, NITROGEN)",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_vitrification.cryogen_name"
+      ],
+      "slot_uri": "http://w3id.org/lambda/cryogen",
+      "alias": "cryogen",
+      "owner": "CryoEMPreparation",
+      "domain_of": [
+        "CryoEMPreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMPreparation__stain_material",
+      "description": "Negative stain or other stain applied (uranyl acetate, ammonium molybdate)",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_staining.material"
+      ],
+      "slot_uri": "http://w3id.org/lambda/stain_material",
+      "alias": "stain_material",
+      "owner": "CryoEMPreparation",
+      "domain_of": [
+        "CryoEMPreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMPreparation__stain_type",
+      "description": "Kind of staining: NEGATIVE or POSITIVE",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_staining.type"
+      ],
+      "slot_uri": "http://w3id.org/lambda/stain_type",
+      "alias": "stain_type",
+      "owner": "CryoEMPreparation",
+      "domain_of": [
+        "CryoEMPreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMPreparation__embedding_material",
+      "description": "Embedding medium (trehalose, glucose, tannin, vitreous ice is not embedding)",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_embedding.material"
+      ],
+      "slot_uri": "http://w3id.org/lambda/embedding_material",
+      "alias": "embedding_material",
+      "owner": "CryoEMPreparation",
+      "domain_of": [
+        "CryoEMPreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "crystallizationConditions__method",
       "description": "Crystallization method used",
       "from_schema": "http://w3id.org/lambda/",
@@ -14788,6 +15644,55 @@
       ],
       "range": "QuantityValue",
       "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRayPreparation__crystallization_ph",
+      "description": "pH of the crystallization condition",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_exptl_crystal_grow.pH"
+      ],
+      "slot_uri": "http://w3id.org/lambda/crystallization_ph",
+      "alias": "crystallization_ph",
+      "owner": "XRayPreparation",
+      "domain_of": [
+        "XRayPreparation"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRayPreparation__matthews_coefficient",
+      "description": "Matthews coefficient V_M of the crystal, in cubic angstroms per dalton",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_exptl_crystal.density_Matthews"
+      ],
+      "slot_uri": "http://w3id.org/lambda/matthews_coefficient",
+      "alias": "matthews_coefficient",
+      "owner": "XRayPreparation",
+      "domain_of": [
+        "XRayPreparation"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRayPreparation__solvent_content_percent",
+      "description": "Solvent content of the crystal, as a percentage of its volume",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_exptl_crystal.density_percent_sol"
+      ],
+      "slot_uri": "http://w3id.org/lambda/solvent_content_percent",
+      "alias": "solvent_content_percent",
+      "owner": "XRayPreparation",
+      "domain_of": [
+        "XRayPreparation"
+      ],
+      "range": "float",
       "@type": "SlotDefinition"
     },
     {
@@ -16302,6 +17207,22 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "particlePickingParameters__number_of_particles_selected",
+      "description": "Number of particles the picking step selected",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_particle_selection.num_particles_selected"
+      ],
+      "slot_uri": "http://w3id.org/lambda/number_of_particles_selected",
+      "alias": "number_of_particles_selected",
+      "owner": "ParticlePickingParameters",
+      "domain_of": [
+        "ParticlePickingParameters"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "refinementParameters__symmetry",
       "description": "Symmetry applied (C1, Cn, Dn, T, O, I)",
       "from_schema": "http://w3id.org/lambda/",
@@ -16411,6 +17332,236 @@
       "owner": "RefinementParameters",
       "domain_of": [
         "RefinementParameters"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "refinementParameters__number_of_particles",
+      "description": "Number of particles (or subvolumes) in the final reconstruction",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_3d_reconstruction.num_particles"
+      ],
+      "slot_uri": "http://w3id.org/lambda/number_of_particles",
+      "alias": "number_of_particles",
+      "owner": "RefinementParameters",
+      "domain_of": [
+        "RefinementParameters"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "refinementParameters__helical_rise",
+      "description": "Axial rise per subunit for a helical reconstruction, in angstroms",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_helical_entity.axial_rise_per_subunit"
+      ],
+      "slot_uri": "http://w3id.org/lambda/helical_rise",
+      "alias": "helical_rise",
+      "owner": "RefinementParameters",
+      "domain_of": [
+        "RefinementParameters"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "refinementParameters__helical_twist",
+      "description": "Angular rotation per subunit for a helical reconstruction, in degrees",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_helical_entity.angular_rotation_per_subunit"
+      ],
+      "slot_uri": "http://w3id.org/lambda/helical_twist",
+      "alias": "helical_twist",
+      "owner": "RefinementParameters",
+      "domain_of": [
+        "RefinementParameters"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "refinementParameters__axial_symmetry",
+      "description": "Point symmetry about the helical axis (C1, C3, D2)",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_helical_entity.axial_symmetry"
+      ],
+      "slot_uri": "http://w3id.org/lambda/axial_symmetry",
+      "alias": "axial_symmetry",
+      "owner": "RefinementParameters",
+      "domain_of": [
+        "RefinementParameters"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "resolutionShell__resolution_high",
+      "description": "High-resolution limit of the shell",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns_shell.d_res_high"
+      ],
+      "slot_uri": "http://w3id.org/lambda/resolution_high",
+      "alias": "resolution_high",
+      "owner": "ResolutionShell",
+      "domain_of": [
+        "ResolutionShell"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "resolutionShell__resolution_low",
+      "description": "Low-resolution limit of the shell",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns_shell.d_res_low"
+      ],
+      "slot_uri": "http://w3id.org/lambda/resolution_low",
+      "alias": "resolution_low",
+      "owner": "ResolutionShell",
+      "domain_of": [
+        "ResolutionShell"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "resolutionShell__completeness_percent",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns_shell.percent_possible_all"
+      ],
+      "slot_uri": "http://w3id.org/lambda/completeness_percent",
+      "alias": "completeness_percent",
+      "owner": "ResolutionShell",
+      "domain_of": [
+        "ResolutionShell"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "resolutionShell__multiplicity",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns_shell.pdbx_redundancy"
+      ],
+      "slot_uri": "http://w3id.org/lambda/multiplicity",
+      "alias": "multiplicity",
+      "owner": "ResolutionShell",
+      "domain_of": [
+        "ResolutionShell"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "resolutionShell__i_over_sigma",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns_shell.meanI_over_sigI_obs"
+      ],
+      "slot_uri": "http://w3id.org/lambda/i_over_sigma",
+      "alias": "i_over_sigma",
+      "owner": "ResolutionShell",
+      "domain_of": [
+        "ResolutionShell"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "resolutionShell__rmerge",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns_shell.Rmerge_I_obs"
+      ],
+      "slot_uri": "http://w3id.org/lambda/rmerge",
+      "alias": "rmerge",
+      "owner": "ResolutionShell",
+      "domain_of": [
+        "ResolutionShell"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "resolutionShell__rpim",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns_shell.pdbx_Rpim_I_all"
+      ],
+      "slot_uri": "http://w3id.org/lambda/rpim",
+      "alias": "rpim",
+      "owner": "ResolutionShell",
+      "domain_of": [
+        "ResolutionShell"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "resolutionShell__cc_half",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns_shell.pdbx_CC_half"
+      ],
+      "slot_uri": "http://w3id.org/lambda/cc_half",
+      "alias": "cc_half",
+      "owner": "ResolutionShell",
+      "domain_of": [
+        "ResolutionShell"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "resolutionShell__n_unique",
+      "description": "Number of unique reflections in the shell",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns_shell.number_unique_obs"
+      ],
+      "slot_uri": "http://w3id.org/lambda/n_unique",
+      "alias": "n_unique",
+      "owner": "ResolutionShell",
+      "domain_of": [
+        "ResolutionShell"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "resolutionShell__n_observations",
+      "description": "Number of observations in the shell before merging",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns_shell.number_measured_obs"
+      ],
+      "slot_uri": "http://w3id.org/lambda/n_observations",
+      "alias": "n_observations",
+      "owner": "ResolutionShell",
+      "domain_of": [
+        "ResolutionShell"
       ],
       "range": "QuantityValue",
       "inlined": true,
@@ -19412,9 +20563,14 @@
         "namedThing__title",
         "namedThing__description",
         "dataset__keywords",
+        "dataset__deposition_date",
+        "dataset__release_date",
+        "dataset__last_revision_date",
+        "dataset__revision",
         "dataset__studies",
         "dataset__persons",
         "dataset__organizations",
+        "dataset__publications",
         "dataset__instruments",
         "dataset__proteins",
         "dataset__protein_constructs",
@@ -19442,6 +20598,7 @@
         "dataset__experiment_person_associations",
         "dataset__workflow_person_associations",
         "dataset__study_organization_associations",
+        "dataset__study_publication_associations",
         "dataset__person_organization_associations"
       ],
       "slot_usage": {},
@@ -19451,6 +20608,33 @@
           "description": "Keywords or tags describing the dataset for search and categorization",
           "range": "string",
           "multivalued": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "deposition_date",
+          "description": "Date the dataset was first deposited with the archive it was loaded from (YYYY-MM-DD)",
+          "exact_mappings": [
+            "mmCIF:_pdbx_database_status.recvd_initial_deposition_date"
+          ],
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "release_date",
+          "description": "Date the archive first made the dataset public (YYYY-MM-DD)",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "last_revision_date",
+          "description": "Date of the archive's most recent revision of the dataset (YYYY-MM-DD)",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "revision",
+          "description": "The archive's version label for the dataset as loaded, so a reload can tell whether the source changed: '1.4' for a PDB entry at major revision 1, minor revision 4",
+          "range": "string",
           "@type": "SlotDefinition"
         },
         {
@@ -19473,6 +20657,14 @@
           "name": "organizations",
           "description": "All organizations referenced anywhere in this dataset",
           "range": "Organization",
+          "multivalued": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "publications",
+          "description": "All publications describing studies in this dataset",
+          "range": "Publication",
           "multivalued": true,
           "inlined_as_list": true,
           "@type": "SlotDefinition"
@@ -19694,6 +20886,14 @@
           "@type": "SlotDefinition"
         },
         {
+          "name": "study_publication_associations",
+          "description": "Links between studies and the publications that describe them (M:N, marking the primary citation)",
+          "range": "StudyPublicationAssociation",
+          "multivalued": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        },
+        {
           "name": "person_organization_associations",
           "description": "Links between people and organizations (M:N with role and dates)",
           "range": "PersonOrganizationAssociation",
@@ -19721,7 +20921,8 @@
         "namedThing__title",
         "namedThing__description",
         "study__proposal_id",
-        "study__keywords"
+        "study__keywords",
+        "study__database_cross_references"
       ],
       "slot_usage": {},
       "attributes": [
@@ -19737,9 +20938,207 @@
           "range": "string",
           "multivalued": true,
           "@type": "SlotDefinition"
+        },
+        {
+          "name": "database_cross_references",
+          "description": "Records for this study in other archives: the PDB entry and its DOI, the EMDB map, the BMRB chemical shifts, a SASBDB entry, an entry this one supersedes",
+          "range": "DatabaseCrossReference",
+          "multivalued": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
         }
       ],
       "class_uri": "http://w3id.org/lambda/Study",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Publication",
+      "definition_uri": "http://w3id.org/lambda/Publication",
+      "description": "A journal article, book chapter or preprint describing a study. Identified by DOI (doi:10.1038/s41422-022-00680-4) where one exists, else by PubMed id (pmid:35726088), else by an id local to the source. The inherited title is the article title.",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "schema:ScholarlyArticle"
+      ],
+      "related_mappings": [
+        "mmCIF:_citation"
+      ],
+      "is_a": "NamedThing",
+      "slots": [
+        "namedThing__id",
+        "namedThing__title",
+        "namedThing__description",
+        "publication__doi",
+        "publication__pubmed_id",
+        "publication__authors",
+        "publication__journal",
+        "publication__journal_abbreviation",
+        "publication__journal_issn",
+        "publication__journal_country",
+        "publication__volume",
+        "publication__issue",
+        "publication__page_first",
+        "publication__page_last",
+        "publication__year",
+        "publication__language",
+        "publication__book_title",
+        "publication__book_publisher",
+        "publication__book_publisher_city",
+        "publication__book_isbn",
+        "publication__unpublished"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "doi",
+          "description": "DOI as a CURIE (doi:10.1038/s41422-022-00680-4)",
+          "exact_mappings": [
+            "mmCIF:_citation.pdbx_database_id_DOI"
+          ],
+          "range": "uriorcurie",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "pubmed_id",
+          "description": "PubMed id as a CURIE (pmid:35726088)",
+          "exact_mappings": [
+            "mmCIF:_citation.pdbx_database_id_PubMed"
+          ],
+          "range": "uriorcurie",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "authors",
+          "description": "Author names in publication order, as the source writes them ('Liu, H.')",
+          "range": "string",
+          "multivalued": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "journal",
+          "description": "Full journal name",
+          "exact_mappings": [
+            "mmCIF:_citation.journal_full"
+          ],
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "journal_abbreviation",
+          "description": "Journal abbreviation as the source gives it ('Cell Res.')",
+          "exact_mappings": [
+            "mmCIF:_citation.journal_abbrev"
+          ],
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "journal_issn",
+          "description": "Journal ISSN",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "journal_country",
+          "description": "Country of the journal's publisher, as the source records it",
+          "comments": [
+            "This is where the journal is published, not where the authors work"
+          ],
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "volume",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "issue",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "page_first",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "page_last",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "year",
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "language",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "book_title",
+          "description": "For a chapter, the title of the book",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "book_publisher",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "book_publisher_city",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "book_isbn",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "unpublished",
+          "description": "True when the source records the publication as not yet published ('To be published')",
+          "range": "boolean",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "http://w3id.org/lambda/Publication",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "StudyPublicationAssociation",
+      "definition_uri": "http://w3id.org/lambda/StudyPublicationAssociation",
+      "description": "Links a study to a publication that describes it",
+      "from_schema": "http://w3id.org/lambda/",
+      "slots": [
+        "studyPublicationAssociation__study_id",
+        "studyPublicationAssociation__publication_id",
+        "studyPublicationAssociation__is_primary"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "study_id",
+          "range": "Study",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "publication_id",
+          "range": "Publication",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "is_primary",
+          "description": "Whether this is the study's primary citation",
+          "range": "boolean",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "http://w3id.org/lambda/StudyPublicationAssociation",
       "@type": "ClassDefinition"
     },
     {
@@ -19968,6 +21367,8 @@
         "namedThing__id",
         "namedThing__title",
         "namedThing__description",
+        "additional_metrics",
+        "additional_properties",
         "sample__sample_code",
         "sample__sample_type",
         "sample__molecular_composition",
@@ -20255,6 +21656,8 @@
         "namedThing__id",
         "namedThing__title",
         "namedThing__description",
+        "additional_metrics",
+        "additional_properties",
         "protein__uniprot_id",
         "protein__protein_name",
         "protein__gene_name",
@@ -20471,6 +21874,8 @@
         "namedThing__id",
         "namedThing__title",
         "namedThing__description",
+        "additional_metrics",
+        "additional_properties",
         "proteinConstruct__construct_id",
         "proteinConstruct__protein_id",
         "proteinConstruct__uniprot_id",
@@ -20492,7 +21897,9 @@
         "proteinConstruct__insert_boundaries",
         "proteinConstruct__sequence_file_path",
         "proteinConstruct__sequence_verified_by",
-        "proteinConstruct__verification_notes"
+        "proteinConstruct__verification_notes",
+        "proteinConstruct__amino_acid_sequence",
+        "proteinConstruct__mutations"
       ],
       "slot_usage": {},
       "attributes": [
@@ -20610,6 +22017,24 @@
           "name": "verification_notes",
           "description": "Notes from sequence verification",
           "@type": "SlotDefinition"
+        },
+        {
+          "name": "amino_acid_sequence",
+          "description": "One-letter sequence of the expressed construct, tags, linkers and mutations included: the sequence of the molecule in the sample, which may differ from the canonical sequence on Protein",
+          "exact_mappings": [
+            "mmCIF:_entity_poly.pdbx_seq_one_letter_code_can"
+          ],
+          "pattern": "^[ACDEFGHIKLMNPQRSTVWYBJOUXZ]+$",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "mutations",
+          "description": "Point mutations or other engineered changes relative to the canonical sequence, as the source states them ('C145A', 'E166Q, del 1-20')",
+          "exact_mappings": [
+            "mmCIF:_entity.pdbx_mutation"
+          ],
+          "range": "string",
+          "@type": "SlotDefinition"
         }
       ],
       "class_uri": "http://w3id.org/lambda/ProteinConstruct",
@@ -20640,6 +22065,8 @@
         "namedThing__id",
         "namedThing__title",
         "namedThing__description",
+        "additional_metrics",
+        "additional_properties",
         "nucleicAcid__nucleic_acid_type",
         "nucleicAcid__nucleic_acid_name",
         "nucleicAcid__rnacentral_id",
@@ -20809,6 +22236,8 @@
         "namedThing__id",
         "namedThing__title",
         "namedThing__description",
+        "additional_metrics",
+        "additional_properties",
         "smallMolecule__small_molecule_name",
         "smallMolecule__chebi_id",
         "smallMolecule__pdb_ligand_id",
@@ -21161,6 +22590,8 @@
         "namedThing__id",
         "namedThing__title",
         "namedThing__description",
+        "additional_metrics",
+        "additional_properties",
         "samplePreparation__preparation_type",
         "samplePreparation__sample_id",
         "samplePreparation__preparation_date",
@@ -21202,7 +22633,10 @@
         "samplePreparation__yield_mg",
         "samplePreparation__purity_by_sds_page_percent",
         "samplePreparation__aggregation_assessment",
-        "samplePreparation__aliquoting"
+        "samplePreparation__aliquoting",
+        "samplePreparation__cryoem_preparation",
+        "samplePreparation__xray_preparation",
+        "samplePreparation__saxs_preparation"
       ],
       "slot_usage": {},
       "attributes": [
@@ -21444,6 +22878,27 @@
           "name": "aliquoting",
           "description": "How the protein was aliquoted for storage",
           "@type": "SlotDefinition"
+        },
+        {
+          "name": "cryoem_preparation",
+          "description": "Grid, vitrification, staining and embedding detail, where preparation_type is cryo_em or negative_stain",
+          "range": "CryoEMPreparation",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "xray_preparation",
+          "description": "Crystallization, crystal and mounting detail, where preparation_type is xray_crystallography",
+          "range": "XRayPreparation",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "saxs_preparation",
+          "description": "Solution scattering sample detail, where preparation_type is saxs or sans",
+          "range": "SAXSPreparation",
+          "inlined": true,
+          "@type": "SlotDefinition"
         }
       ],
       "class_uri": "http://w3id.org/lambda/SamplePreparation",
@@ -21459,6 +22914,9 @@
         "namedThing__id",
         "namedThing__title",
         "namedThing__description",
+        "instrument_type",
+        "additional_metrics",
+        "additional_properties",
         "instrument__instrument_code",
         "instrument__instrument_registry_id",
         "instrument__instrument_category",
@@ -21586,6 +23044,9 @@
         "namedThing__id",
         "namedThing__title",
         "namedThing__description",
+        "instrument_type",
+        "additional_metrics",
+        "additional_properties",
         "instrument__instrument_code",
         "instrument__instrument_registry_id",
         "instrument__instrument_category",
@@ -21622,7 +23083,10 @@
         "cryoEMInstrument__spotsize",
         "cryoEMInstrument__gunlens",
         "cryoEMInstrument__imaging_mode",
-        "cryoEMInstrument__tem_beam_diameter"
+        "cryoEMInstrument__tem_beam_diameter",
+        "cryoEMInstrument__electron_source",
+        "cryoEMInstrument__illumination_mode",
+        "cryoEMInstrument__specimen_holder_model"
       ],
       "slot_usage": {},
       "attributes": [
@@ -21835,6 +23299,33 @@
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
+        },
+        {
+          "name": "electron_source",
+          "description": "Electron source (FIELD EMISSION GUN, LAB6, TUNGSTEN HAIRPIN)",
+          "exact_mappings": [
+            "mmCIF:_em_imaging.electron_source"
+          ],
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "illumination_mode",
+          "description": "Illumination mode (FLOOD BEAM, SPOT SCAN)",
+          "exact_mappings": [
+            "mmCIF:_em_imaging.illumination_mode"
+          ],
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "specimen_holder_model",
+          "description": "Specimen holder model, or the autoloader for a microscope that has one",
+          "exact_mappings": [
+            "mmCIF:_em_imaging.specimen_holder_model"
+          ],
+          "range": "string",
+          "@type": "SlotDefinition"
         }
       ],
       "class_uri": "http://w3id.org/lambda/CryoEMInstrument",
@@ -21850,6 +23341,9 @@
         "namedThing__id",
         "namedThing__title",
         "namedThing__description",
+        "instrument_type",
+        "additional_metrics",
+        "additional_properties",
         "instrument__instrument_code",
         "instrument__instrument_registry_id",
         "instrument__instrument_category",
@@ -22265,6 +23759,9 @@
         "namedThing__id",
         "namedThing__title",
         "namedThing__description",
+        "instrument_type",
+        "additional_metrics",
+        "additional_properties",
         "instrument__instrument_code",
         "instrument__instrument_registry_id",
         "instrument__instrument_category",
@@ -22338,6 +23835,58 @@
       "@type": "ClassDefinition"
     },
     {
+      "name": "NMRInstrument",
+      "definition_uri": "http://w3id.org/lambda/NMRInstrument",
+      "description": "An NMR spectrometer",
+      "from_schema": "http://w3id.org/lambda/",
+      "is_a": "Instrument",
+      "slots": [
+        "namedThing__id",
+        "namedThing__title",
+        "namedThing__description",
+        "instrument_type",
+        "additional_metrics",
+        "additional_properties",
+        "instrument__instrument_code",
+        "instrument__instrument_registry_id",
+        "instrument__instrument_category",
+        "instrument__facility_name",
+        "instrument__facility_ror",
+        "instrument__facility_organization_id",
+        "instrument__beamline_id",
+        "instrument__manufacturer",
+        "instrument__model",
+        "instrument__installation_date",
+        "instrument__current_status",
+        "nMRInstrument__field_strength",
+        "nMRInstrument__spectrometer_type"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "field_strength",
+          "description": "Magnetic field strength, as the proton frequency in MHz",
+          "exact_mappings": [
+            "mmCIF:_pdbx_nmr_spectrometer.field_strength"
+          ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "spectrometer_type",
+          "description": "Spectrometer type as the source records it",
+          "exact_mappings": [
+            "mmCIF:_pdbx_nmr_spectrometer.type"
+          ],
+          "range": "string",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "http://w3id.org/lambda/NMRInstrument",
+      "@type": "ClassDefinition"
+    },
+    {
       "name": "SAXSInstrument",
       "definition_uri": "http://w3id.org/lambda/SAXSInstrument",
       "description": "SAXS/WAXS instrument specifications",
@@ -22347,6 +23896,9 @@
         "namedThing__id",
         "namedThing__title",
         "namedThing__description",
+        "instrument_type",
+        "additional_metrics",
+        "additional_properties",
         "instrument__instrument_code",
         "instrument__instrument_registry_id",
         "instrument__instrument_category",
@@ -22425,6 +23977,9 @@
         "namedThing__id",
         "namedThing__title",
         "namedThing__description",
+        "instrument_type",
+        "additional_metrics",
+        "additional_properties",
         "instrument__instrument_code",
         "instrument__instrument_registry_id",
         "instrument__instrument_category",
@@ -22552,6 +24107,8 @@
         "namedThing__id",
         "namedThing__title",
         "namedThing__description",
+        "additional_metrics",
+        "additional_properties",
         "experimentRun__experiment_code",
         "experimentRun__experiment_date",
         "experimentRun__operator_id",
@@ -23327,6 +24884,8 @@
         "namedThing__id",
         "namedThing__title",
         "namedThing__description",
+        "additional_metrics",
+        "additional_properties",
         "workflowRun__workflow_code",
         "workflowRun__workflow_type",
         "workflowRun__processing_level",
@@ -23391,7 +24950,8 @@
         "workflowRun__particle_picking_params",
         "workflowRun__refinement_params",
         "workflowRun__fsc_curve",
-        "workflowRun__output_files"
+        "workflowRun__output_files",
+        "workflowRun__resolution_shells"
       ],
       "slot_usage": {},
       "attributes": [
@@ -23900,6 +25460,14 @@
           "description": "Output files generated",
           "range": "DataFile",
           "multivalued": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "resolution_shells",
+          "description": "Statistics per resolution shell, as the data-reduction or scaling program reported them. The overall statistics stay on the run itself; a shell table adds the breakdown, of which the highest-resolution shell is the one most often quoted.",
+          "range": "ResolutionShell",
+          "multivalued": true,
+          "inlined_as_list": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -24977,7 +26545,11 @@
         "cryoEMPreparation__blotter_setting",
         "cryoEMPreparation__sample_applied_volume",
         "cryoEMPreparation__ethane_temperature",
-        "cryoEMPreparation__plasma_treatment"
+        "cryoEMPreparation__plasma_treatment",
+        "cryoEMPreparation__cryogen",
+        "cryoEMPreparation__stain_material",
+        "cryoEMPreparation__stain_type",
+        "cryoEMPreparation__embedding_material"
       ],
       "slot_usage": {},
       "attributes": [
@@ -25164,6 +26736,42 @@
           "name": "plasma_treatment",
           "description": "Plasma treatment details",
           "@type": "SlotDefinition"
+        },
+        {
+          "name": "cryogen",
+          "description": "Cryogen the grid was plunged into (ETHANE, ETHANE-PROPANE, NITROGEN)",
+          "exact_mappings": [
+            "mmCIF:_em_vitrification.cryogen_name"
+          ],
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "stain_material",
+          "description": "Negative stain or other stain applied (uranyl acetate, ammonium molybdate)",
+          "exact_mappings": [
+            "mmCIF:_em_staining.material"
+          ],
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "stain_type",
+          "description": "Kind of staining: NEGATIVE or POSITIVE",
+          "exact_mappings": [
+            "mmCIF:_em_staining.type"
+          ],
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "embedding_material",
+          "description": "Embedding medium (trehalose, glucose, tannin, vitreous ice is not embedding)",
+          "exact_mappings": [
+            "mmCIF:_em_embedding.material"
+          ],
+          "range": "string",
+          "@type": "SlotDefinition"
         }
       ],
       "class_uri": "http://w3id.org/lambda/CryoEMPreparation",
@@ -25327,7 +26935,10 @@
         "xRayPreparation__flash_cooling_method",
         "xRayPreparation__crystal_notes",
         "xRayPreparation__loop_size",
-        "xRayPreparation__mounting_temperature"
+        "xRayPreparation__mounting_temperature",
+        "xRayPreparation__crystallization_ph",
+        "xRayPreparation__matthews_coefficient",
+        "xRayPreparation__solvent_content_percent"
       ],
       "slot_usage": {},
       "attributes": [
@@ -25486,6 +27097,34 @@
           ],
           "range": "QuantityValue",
           "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "crystallization_ph",
+          "description": "pH of the crystallization condition",
+          "exact_mappings": [
+            "mmCIF:_exptl_crystal_grow.pH"
+          ],
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "matthews_coefficient",
+          "description": "Matthews coefficient V_M of the crystal, in cubic angstroms per dalton",
+          "exact_mappings": [
+            "mmCIF:_exptl_crystal.density_Matthews"
+          ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "solvent_content_percent",
+          "description": "Solvent content of the crystal, as a percentage of its volume",
+          "exact_mappings": [
+            "mmCIF:_exptl_crystal.density_percent_sol"
+          ],
+          "range": "float",
           "@type": "SlotDefinition"
         }
       ],
@@ -26500,7 +28139,8 @@
         "particlePickingParameters__ncc_score",
         "particlePickingParameters__model_name",
         "particlePickingParameters__model_file_path",
-        "particlePickingParameters__model_source"
+        "particlePickingParameters__model_source",
+        "particlePickingParameters__number_of_particles_selected"
       ],
       "slot_usage": {},
       "attributes": [
@@ -26555,6 +28195,15 @@
           "description": "Source or software associated with the model (e.g., 'topaz', 'cryolo', 'warp', 'custom', 'pretrained'). Helps track model provenance and should be provided alongside model_name or model_file_path to document which software/framework the model is for.",
           "range": "string",
           "@type": "SlotDefinition"
+        },
+        {
+          "name": "number_of_particles_selected",
+          "description": "Number of particles the picking step selected",
+          "exact_mappings": [
+            "mmCIF:_em_particle_selection.num_particles_selected"
+          ],
+          "range": "integer",
+          "@type": "SlotDefinition"
         }
       ],
       "class_uri": "http://w3id.org/lambda/ParticlePickingParameters",
@@ -26581,7 +28230,11 @@
         "refinementParameters__split_strategy",
         "refinementParameters__resolution_0_143",
         "refinementParameters__resolution_0_5",
-        "refinementParameters__map_sharpening_bfactor"
+        "refinementParameters__map_sharpening_bfactor",
+        "refinementParameters__number_of_particles",
+        "refinementParameters__helical_rise",
+        "refinementParameters__helical_twist",
+        "refinementParameters__axial_symmetry"
       ],
       "slot_usage": {},
       "attributes": [
@@ -26643,9 +28296,170 @@
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
+        },
+        {
+          "name": "number_of_particles",
+          "description": "Number of particles (or subvolumes) in the final reconstruction",
+          "exact_mappings": [
+            "mmCIF:_em_3d_reconstruction.num_particles"
+          ],
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "helical_rise",
+          "description": "Axial rise per subunit for a helical reconstruction, in angstroms",
+          "exact_mappings": [
+            "mmCIF:_em_helical_entity.axial_rise_per_subunit"
+          ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "helical_twist",
+          "description": "Angular rotation per subunit for a helical reconstruction, in degrees",
+          "exact_mappings": [
+            "mmCIF:_em_helical_entity.angular_rotation_per_subunit"
+          ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "axial_symmetry",
+          "description": "Point symmetry about the helical axis (C1, C3, D2)",
+          "exact_mappings": [
+            "mmCIF:_em_helical_entity.axial_symmetry"
+          ],
+          "range": "string",
+          "@type": "SlotDefinition"
         }
       ],
       "class_uri": "http://w3id.org/lambda/RefinementParameters",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ResolutionShell",
+      "definition_uri": "http://w3id.org/lambda/ResolutionShell",
+      "description": "Data statistics within one resolution shell",
+      "from_schema": "http://w3id.org/lambda/",
+      "related_mappings": [
+        "mmCIF:_reflns_shell"
+      ],
+      "is_a": "AttributeGroup",
+      "slots": [
+        "attributeGroup__description",
+        "additional_metrics",
+        "resolutionShell__resolution_high",
+        "resolutionShell__resolution_low",
+        "resolutionShell__completeness_percent",
+        "resolutionShell__multiplicity",
+        "resolutionShell__i_over_sigma",
+        "resolutionShell__rmerge",
+        "resolutionShell__rpim",
+        "resolutionShell__cc_half",
+        "resolutionShell__n_unique",
+        "resolutionShell__n_observations"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "resolution_high",
+          "description": "High-resolution limit of the shell",
+          "exact_mappings": [
+            "mmCIF:_reflns_shell.d_res_high"
+          ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "resolution_low",
+          "description": "Low-resolution limit of the shell",
+          "exact_mappings": [
+            "mmCIF:_reflns_shell.d_res_low"
+          ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "completeness_percent",
+          "exact_mappings": [
+            "mmCIF:_reflns_shell.percent_possible_all"
+          ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "multiplicity",
+          "exact_mappings": [
+            "mmCIF:_reflns_shell.pdbx_redundancy"
+          ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "i_over_sigma",
+          "exact_mappings": [
+            "mmCIF:_reflns_shell.meanI_over_sigI_obs"
+          ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "rmerge",
+          "exact_mappings": [
+            "mmCIF:_reflns_shell.Rmerge_I_obs"
+          ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "rpim",
+          "exact_mappings": [
+            "mmCIF:_reflns_shell.pdbx_Rpim_I_all"
+          ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "cc_half",
+          "exact_mappings": [
+            "mmCIF:_reflns_shell.pdbx_CC_half"
+          ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "n_unique",
+          "description": "Number of unique reflections in the shell",
+          "exact_mappings": [
+            "mmCIF:_reflns_shell.number_unique_obs"
+          ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "n_observations",
+          "description": "Number of observations in the shell before merging",
+          "exact_mappings": [
+            "mmCIF:_reflns_shell.number_measured_obs"
+          ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "http://w3id.org/lambda/ResolutionShell",
       "@type": "ClassDefinition"
     },
     {
@@ -28862,9 +30676,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda_ber_schema.yaml",
-  "source_file_date": "2026-09-18T15:51:45",
-  "source_file_size": 264996,
-  "generation_date": "2026-09-18T15:54:10",
+  "source_file_date": "2026-10-04T21:04:07",
+  "source_file_size": 280070,
+  "generation_date": "2026-10-04T21:04:25",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda_ber_schema.context.jsonld",

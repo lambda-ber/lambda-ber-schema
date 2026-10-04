@@ -177,6 +177,11 @@ prefixes:
   wikidata: http://www.wikidata.org/entity/
   CHMO: http://purl.obolibrary.org/obo/CHMO_
   pdb: https://www.rcsb.org/structure/
+  doi: https://doi.org/
+  pmid: https://pubmed.ncbi.nlm.nih.gov/
+  emdb: https://www.ebi.ac.uk/emdb/
+  glytoucan: https://glytoucan.org/Structures/Glycans/
+  rcsb: https://data.rcsb.org/data-attributes.html#
   sasbdb: https://www.sasbdb.org/data/
   simplescattering: https://www.simplescattering.com/open_dataset/
   ispyb: https://ispyb.github.io/ISPyB/
@@ -193,6 +198,33 @@ imports:
 
 default_range: string
 default_prefix: lambda
+
+slots:
+  instrument_type:
+    description: >-
+      Which kind of instrument this row is: CryoEMInstrument, XRayInstrument, NMRInstrument,
+      SAXSInstrument, SANSInstrument, BeamlineInstrument, or Instrument for one with no
+      subclass. A Dataset lists every instrument in one table, so a row carrying fields of a
+      subclass (accelerating_voltage, detector_model) needs this to be read back as that
+      subclass rather than rejected as an Instrument with unknown fields.
+    designates_type: true
+    range: string
+  additional_metrics:
+    description: >-
+      Numeric values the source reports that have no named slot on this class, each a QuantityValue
+      whose attribute names the source item it came from (attribute id mmCIF:_refine.B_iso_max,
+      label refine.B_iso_max). A loader puts a value here only after checking that no named slot
+      fits; a value that recurs across sources should get a named slot instead.
+    range: QuantityValue
+    multivalued: true
+    inlined_as_list: true
+  additional_properties:
+    description: >-
+      Text values the source reports that have no named slot on this class, each a TextValue whose
+      attribute names the source item it came from. The same rule as additional_metrics applies.
+    range: TextValue
+    multivalued: true
+    inlined_as_list: true
 
 types:
 
@@ -235,6 +267,22 @@ classes:
         description: "Keywords or tags describing the dataset for search and categorization"
         range: string
         multivalued: true
+      deposition_date:
+        description: "Date the dataset was first deposited with the archive it was loaded from (YYYY-MM-DD)"
+        range: string
+        exact_mappings:
+          - mmCIF:_pdbx_database_status.recvd_initial_deposition_date
+      release_date:
+        description: "Date the archive first made the dataset public (YYYY-MM-DD)"
+        range: string
+      last_revision_date:
+        description: "Date of the archive's most recent revision of the dataset (YYYY-MM-DD)"
+        range: string
+      revision:
+        description: >-
+          The archive's version label for the dataset as loaded, so a reload can tell whether the
+          source changed: '1.4' for a PDB entry at major revision 1, minor revision 4
+        range: string
 
       # ===== ENTITY TABLES (FLAT COLLECTIONS) =====
       studies:
@@ -250,6 +298,11 @@ classes:
       organizations:
         description: "All organizations referenced anywhere in this dataset"
         range: Organization
+        multivalued: true
+        inlined_as_list: true
+      publications:
+        description: "All publications describing studies in this dataset"
+        range: Publication
         multivalued: true
         inlined_as_list: true
       instruments:
@@ -389,6 +442,11 @@ classes:
         range: StudyOrganizationAssociation
         multivalued: true
         inlined_as_list: true
+      study_publication_associations:
+        description: "Links between studies and the publications that describe them (M:N, marking the primary citation)"
+        range: StudyPublicationAssociation
+        multivalued: true
+        inlined_as_list: true
       person_organization_associations:
         description: "Links between people and organizations (M:N with role and dates)"
         range: PersonOrganizationAssociation
@@ -411,7 +469,95 @@ classes:
         description: "Keywords or tags describing the study for search and categorization"
         range: string
         multivalued: true
+      database_cross_references:
+        description: >-
+          Records for this study in other archives: the PDB entry and its DOI, the EMDB map, the
+          BMRB chemical shifts, a SASBDB entry, an entry this one supersedes
+        range: DatabaseCrossReference
+        multivalued: true
+        inlined_as_list: true
       # All entity relationships removed - use association tables in Dataset
+
+  Publication:
+    is_a: NamedThing
+    description: >-
+      A journal article, book chapter or preprint describing a study. Identified by DOI
+      (doi:10.1038/s41422-022-00680-4) where one exists, else by PubMed id (pmid:35726088), else
+      by an id local to the source. The inherited title is the article title.
+    exact_mappings:
+      - schema:ScholarlyArticle
+    related_mappings:
+      - mmCIF:_citation
+    attributes:
+      doi:
+        description: "DOI as a CURIE (doi:10.1038/s41422-022-00680-4)"
+        range: uriorcurie
+        exact_mappings:
+          - mmCIF:_citation.pdbx_database_id_DOI
+      pubmed_id:
+        description: "PubMed id as a CURIE (pmid:35726088)"
+        range: uriorcurie
+        exact_mappings:
+          - mmCIF:_citation.pdbx_database_id_PubMed
+      authors:
+        description: "Author names in publication order, as the source writes them ('Liu, H.')"
+        range: string
+        multivalued: true
+      journal:
+        description: "Full journal name"
+        range: string
+        exact_mappings:
+          - mmCIF:_citation.journal_full
+      journal_abbreviation:
+        description: "Journal abbreviation as the source gives it ('Cell Res.')"
+        range: string
+        exact_mappings:
+          - mmCIF:_citation.journal_abbrev
+      journal_issn:
+        description: "Journal ISSN"
+        range: string
+      journal_country:
+        description: "Country of the journal's publisher, as the source records it"
+        range: string
+        comments:
+          - "This is where the journal is published, not where the authors work"
+      volume:
+        range: string
+      issue:
+        range: string
+      page_first:
+        range: string
+      page_last:
+        range: string
+      year:
+        range: integer
+      language:
+        range: string
+      book_title:
+        description: "For a chapter, the title of the book"
+        range: string
+      book_publisher:
+        range: string
+      book_publisher_city:
+        range: string
+      book_isbn:
+        range: string
+      unpublished:
+        description: "True when the source records the publication as not yet published ('To be published')"
+        range: boolean
+
+  StudyPublicationAssociation:
+    description: "Links a study to a publication that describes it"
+    attributes:
+      study_id:
+        range: Study
+        required: true
+      publication_id:
+        range: Publication
+        required: true
+      is_primary:
+        description: "Whether this is the study's primary citation"
+        range: boolean
 
   Person:
     is_a: NamedThing
@@ -547,6 +693,9 @@ classes:
 
   Sample:
     is_a: NamedThing
+    slots:
+      - additional_metrics
+      - additional_properties
     description: >-
       A physical biological sample used in structural biology experiments. Records what is true of
       this preparation - buffer, concentration, storage, purity, the construct and tags used. The
@@ -701,6 +850,9 @@ classes:
 
   Protein:
     is_a: NamedThing
+    slots:
+      - additional_metrics
+      - additional_properties
     description: >-
       A protein as a biological entity: its sequence, source organism, gene, and the functional and
       structural annotations that hold for it regardless of any one preparation. One Protein record
@@ -836,6 +988,9 @@ classes:
 
   ProteinConstruct:
     is_a: NamedThing
+    slots:
+      - additional_metrics
+      - additional_properties
     description: "Detailed information about a protein construct including cloning and sequence design"
     attributes:
       construct_id:
@@ -892,9 +1047,25 @@ classes:
         description: "Method or person who verified the sequence"
       verification_notes:
         description: "Notes from sequence verification"
+      amino_acid_sequence:
+        description: >-
+          One-letter sequence of the expressed construct, tags, linkers and mutations included: the
+          sequence of the molecule in the sample, which may differ from the canonical sequence on
+          Protein
+        pattern: "^[ACDEFGHIKLMNPQRSTVWYBJOUXZ]+$"
+        exact_mappings:
+          - mmCIF:_entity_poly.pdbx_seq_one_letter_code_can
+      mutations:
+        description: "Point mutations or other engineered changes relative to the canonical sequence, as the source states them ('C145A', 'E166Q, del 1-20')"
+        range: string
+        exact_mappings:
+          - mmCIF:_entity.pdbx_mutation
 
   NucleicAcid:
     is_a: NamedThing
+    slots:
+      - additional_metrics
+      - additional_properties
     description: >-
       A nucleic acid as a molecular entity: one DNA, RNA or hybrid strand, with its sequence, type,
       source and the annotations that hold for it regardless of any one preparation. The counterpart
@@ -1011,6 +1182,9 @@ classes:
 
   SmallMolecule:
     is_a: NamedThing
+    slots:
+      - additional_metrics
+      - additional_properties
     description: >-
       A small molecule as a chemical entity: a ligand, drug, substrate, cofactor, metal ion, lipid,
       detergent, sugar or crystallization additive, with its structure and identifiers. The
@@ -1317,9 +1491,28 @@ classes:
         description: "Assessment of protein aggregation state"
       aliquoting:
         description: "How the protein was aliquoted for storage"
+      cryoem_preparation:
+        description: "Grid, vitrification, staining and embedding detail, where preparation_type is cryo_em or negative_stain"
+        range: CryoEMPreparation
+        inlined: true
+      xray_preparation:
+        description: "Crystallization, crystal and mounting detail, where preparation_type is xray_crystallography"
+        range: XRayPreparation
+        inlined: true
+      saxs_preparation:
+        description: "Solution scattering sample detail, where preparation_type is saxs or sans"
+        range: SAXSPreparation
+        inlined: true
+    slots:
+      - additional_metrics
+      - additional_properties
 
   Instrument:
     is_a: NamedThing
+    slots:
+      - instrument_type
+      - additional_metrics
+      - additional_properties
     description: "An instrument used to collect data"
     attributes:
       instrument_code:
@@ -1507,6 +1700,21 @@ classes:
         description: "TEM beam diameter in micrometers"
         range: QuantityValue
         inlined: true
+      electron_source:
+        description: "Electron source (FIELD EMISSION GUN, LAB6, TUNGSTEN HAIRPIN)"
+        range: string
+        exact_mappings:
+          - mmCIF:_em_imaging.electron_source
+      illumination_mode:
+        description: "Illumination mode (FLOOD BEAM, SPOT SCAN)"
+        range: string
+        exact_mappings:
+          - mmCIF:_em_imaging.illumination_mode
+      specimen_holder_model:
+        description: "Specimen holder model, or the autoloader for a microscope that has one"
+        range: string
+        exact_mappings:
+          - mmCIF:_em_imaging.specimen_holder_model
 
   XRayInstrument:
     is_a: Instrument
@@ -1727,6 +1935,22 @@ classes:
         description: "Textual description of environmental conditions"
         range: string
 
+  NMRInstrument:
+    is_a: Instrument
+    description: "An NMR spectrometer"
+    attributes:
+      field_strength:
+        description: "Magnetic field strength, as the proton frequency in MHz"
+        range: QuantityValue
+        inlined: true
+        exact_mappings:
+          - mmCIF:_pdbx_nmr_spectrometer.field_strength
+      spectrometer_type:
+        description: "Spectrometer type as the source records it"
+        range: string
+        exact_mappings:
+          - mmCIF:_pdbx_nmr_spectrometer.type
+
   SAXSInstrument:
     is_a: Instrument
     description: "SAXS/WAXS instrument specifications"
@@ -1810,6 +2034,9 @@ classes:
 
   ExperimentRun:
     is_a: NamedThing
+    slots:
+      - additional_metrics
+      - additional_properties
     description: "An experimental data collection session"
     related_mappings:
       - IHMCIF:_ihm_dataset_list
@@ -2234,6 +2461,9 @@ classes:
 
   WorkflowRun:
     is_a: NamedThing
+    slots:
+      - additional_metrics
+      - additional_properties
     description: "A computational processing workflow execution"
     close_mappings:
       - IHMCIF:_ihm_modeling_protocol
@@ -2537,6 +2767,14 @@ classes:
         description: "Output files generated"
         range: DataFile
         multivalued: true
+      resolution_shells:
+        description: >-
+          Statistics per resolution shell, as the data-reduction or scaling program reported them.
+          The overall statistics stay on the run itself; a shell table adds the breakdown, of which
+          the highest-resolution shell is the one most often quoted.
+        range: ResolutionShell
+        multivalued: true
+        inlined_as_list: true
 
   DataFile:
     is_a: NamedThing
@@ -3078,6 +3316,26 @@ classes:
           - mmCIF:_em_vitrification.cryogen_name
       plasma_treatment:
         description: "Plasma treatment details"
+      cryogen:
+        description: "Cryogen the grid was plunged into (ETHANE, ETHANE-PROPANE, NITROGEN)"
+        range: string
+        exact_mappings:
+          - mmCIF:_em_vitrification.cryogen_name
+      stain_material:
+        description: "Negative stain or other stain applied (uranyl acetate, ammonium molybdate)"
+        range: string
+        exact_mappings:
+          - mmCIF:_em_staining.material
+      stain_type:
+        description: "Kind of staining: NEGATIVE or POSITIVE"
+        range: string
+        exact_mappings:
+          - mmCIF:_em_staining.type
+      embedding_material:
+        description: "Embedding medium (trehalose, glucose, tannin, vitreous ice is not embedding)"
+        range: string
+        exact_mappings:
+          - mmCIF:_em_embedding.material
 
   CrystallizationConditions:
     is_a: AttributeGroup
@@ -3223,6 +3481,22 @@ classes:
         inlined: true
         exact_mappings:
           - nsls2:Temperature
+      crystallization_ph:
+        description: "pH of the crystallization condition"
+        range: float
+        exact_mappings:
+          - mmCIF:_exptl_crystal_grow.pH
+      matthews_coefficient:
+        description: "Matthews coefficient V_M of the crystal, in cubic angstroms per dalton"
+        range: QuantityValue
+        inlined: true
+        exact_mappings:
+          - mmCIF:_exptl_crystal.density_Matthews
+      solvent_content_percent:
+        description: "Solvent content of the crystal, as a percentage of its volume"
+        range: float
+        exact_mappings:
+          - mmCIF:_exptl_crystal.density_percent_sol
 
   SAXSPreparation:
     is_a: TechniqueSpecificPreparation
@@ -3757,6 +4031,11 @@ classes:
       model_source:
         description: "Source or software associated with the model (e.g., 'topaz', 'cryolo', 'warp', 'custom', 'pretrained'). Helps track model provenance and should be provided alongside model_name or model_file_path to document which software/framework the model is for."
         range: string
+      number_of_particles_selected:
+        description: "Number of particles the picking step selected"
+        range: integer
+        exact_mappings:
+          - mmCIF:_em_particle_selection.num_particles_selected
 
   RefinementParameters:
     is_a: AttributeGroup
@@ -3800,6 +4079,91 @@ classes:
         description: "B-factor used for map sharpening, typically specified in Angstroms squared (Å²). Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
+      number_of_particles:
+        description: "Number of particles (or subvolumes) in the final reconstruction"
+        range: integer
+        exact_mappings:
+          - mmCIF:_em_3d_reconstruction.num_particles
+      helical_rise:
+        description: "Axial rise per subunit for a helical reconstruction, in angstroms"
+        range: QuantityValue
+        inlined: true
+        exact_mappings:
+          - mmCIF:_em_helical_entity.axial_rise_per_subunit
+      helical_twist:
+        description: "Angular rotation per subunit for a helical reconstruction, in degrees"
+        range: QuantityValue
+        inlined: true
+        exact_mappings:
+          - mmCIF:_em_helical_entity.angular_rotation_per_subunit
+      axial_symmetry:
+        description: "Point symmetry about the helical axis (C1, C3, D2)"
+        range: string
+        exact_mappings:
+          - mmCIF:_em_helical_entity.axial_symmetry
+
+  ResolutionShell:
+    is_a: AttributeGroup
+    description: "Data statistics within one resolution shell"
+    related_mappings:
+      - mmCIF:_reflns_shell
+    attributes:
+      resolution_high:
+        description: "High-resolution limit of the shell"
+        range: QuantityValue
+        inlined: true
+        exact_mappings:
+          - mmCIF:_reflns_shell.d_res_high
+      resolution_low:
+        description: "Low-resolution limit of the shell"
+        range: QuantityValue
+        inlined: true
+        exact_mappings:
+          - mmCIF:_reflns_shell.d_res_low
+      completeness_percent:
+        range: QuantityValue
+        inlined: true
+        exact_mappings:
+          - mmCIF:_reflns_shell.percent_possible_all
+      multiplicity:
+        range: QuantityValue
+        inlined: true
+        exact_mappings:
+          - mmCIF:_reflns_shell.pdbx_redundancy
+      i_over_sigma:
+        range: QuantityValue
+        inlined: true
+        exact_mappings:
+          - mmCIF:_reflns_shell.meanI_over_sigI_obs
+      rmerge:
+        range: QuantityValue
+        inlined: true
+        exact_mappings:
+          - mmCIF:_reflns_shell.Rmerge_I_obs
+      rpim:
+        range: QuantityValue
+        inlined: true
+        exact_mappings:
+          - mmCIF:_reflns_shell.pdbx_Rpim_I_all
+      cc_half:
+        range: QuantityValue
+        inlined: true
+        exact_mappings:
+          - mmCIF:_reflns_shell.pdbx_CC_half
+      n_unique:
+        description: "Number of unique reflections in the shell"
+        range: QuantityValue
+        inlined: true
+        exact_mappings:
+          - mmCIF:_reflns_shell.number_unique_obs
+      n_observations:
+        description: "Number of observations in the shell before merging"
+        range: QuantityValue
+        inlined: true
+        exact_mappings:
+          - mmCIF:_reflns_shell.number_measured_obs
+    slots:
+      - additional_metrics
 
   FSCCurve:
     is_a: AttributeGroup
@@ -5325,6 +5689,22 @@ enums:
         comments:
           - "Also known as MicroED or 3D electron diffraction (3DED)"
           - "Uses an electron beam on sub-micron crystals"
+      solution_nmr:
+        description: "Solution nuclear magnetic resonance spectroscopy"
+      solid_state_nmr:
+        description: "Solid-state nuclear magnetic resonance spectroscopy"
+      powder_diffraction:
+        description: "Powder diffraction"
+      epr:
+        description: "Electron paramagnetic resonance spectroscopy"
+      fluorescence_transfer:
+        description: "Fluorescence resonance energy transfer as a structural restraint"
+      infrared_spectroscopy:
+        description: "Infrared spectroscopy"
+      integrative_modeling:
+        description: "Integrative or hybrid modelling from several kinds of data"
+        comments:
+          - "Archived by PDB-IHM; the input data are listed on the modelling workflow"
 
   ProcessingStatusEnum:
     description: "Processing status"
@@ -5439,6 +5819,12 @@ enums:
         description: "CCP4 map format"
       gz:
         description: "Gzip compressed format"
+      pdf:
+        description: "Portable Document Format, as for a validation report"
+      nmr_star:
+        description: "NMR-STAR, the BMRB format for chemical shifts and restraints"
+      other:
+        description: "A format with no value of its own here; DataFile.description names it"
 
   DataTypeEnum:
     description: "Types of data"
@@ -5588,6 +5974,18 @@ enums:
         description: "Electron diffraction (e.g., microED)"
       fiber_diffraction:
         description: "Fiber diffraction"
+      single_particle_analysis:
+        description: "Single-particle cryo-EM reconstruction"
+        exact_mappings:
+          - mmCIF:_em_experiment.reconstruction_method
+      helical_reconstruction:
+        description: "Helical reconstruction of filaments"
+      subtomogram_averaging:
+        description: "Averaging of subvolumes extracted from electron tomograms"
+      electron_tomography:
+        description: "Electron tomography of a unique object, without averaging"
+      electron_crystallography:
+        description: "Structure from 2D or 3D crystals by electron diffraction or imaging"
 
   LIMSSystemEnum:
     description: >-

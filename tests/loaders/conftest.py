@@ -1,5 +1,6 @@
 """Shared fixtures for loader tests."""
 
+import gzip
 import json
 from pathlib import Path
 
@@ -22,33 +23,51 @@ def simplescattering_xsbhevph_html() -> str:
     return fixture_path.read_text()
 
 
-@pytest.fixture
-def pdb_1hho_entry_response() -> dict:
-    """Load mocked PDB 1HHO entry API response."""
-    fixture_path = FIXTURES_DIR / "pdb_1HHO_entry.json"
-    return json.loads(fixture_path.read_text())
+#: Real RCSB Data API responses, one gzipped file per record, named after the request path:
+#: entry_7ZYI, polymer_entity_7ZYI_1, chemcomp_CHO, interface_7ZYI_1_2 and so on.
+PDB_FIXTURES_DIR = FIXTURES_DIR / "pdb"
+
+#: The entries captured, chosen so that between them every kind of PDB entry is exercised.
+PDB_FIXTURE_ENTRIES = (
+    "7ZYI",  # cryo-EM single particle, membrane protein, Fab, nanobody, ligands
+    "6LU7",  # X-ray, synchrotron, peptide-like covalent inhibitor
+    "6BOC",  # X-ray, LCP crystallization, grants, ORCIDs, binding affinity
+    "1AAY",  # X-ray, protein-DNA complex
+    "1HHO",  # X-ray, 1980s entry, heme
+    "1D3Z",  # solution NMR
+    "6VXX",  # cryo-EM, glycosylated
+    "6MB3",  # cryo-EM with sub-assemblies
+    "6TUQ",  # cryo-EM helical
+    "4BZJ",  # cryo-EM subtomogram averaging
+    "6UOU",  # MicroED
+    "7S4R",  # serial femtosecond crystallography
+    "6D4L",  # joint X-ray and neutron
+    "1W2R",  # solution scattering
+    "2C8I",  # negative stain and cryo-EM, virus
+    "1WKX",  # protein from a natural source
+)
+
+
+def read_pdb_fixture(path: str) -> dict | None:
+    """The fixture for a Data API path such as 'core/entry/7ZYI', or None if not captured."""
+    parts = path.split("/")[1:]
+    name = parts[0] + ("_" + "_".join(parts[1:]) if len(parts) > 1 else "")
+    fixture = PDB_FIXTURES_DIR / f"{name}.json.gz"
+    if not fixture.exists():
+        return None
+    return json.loads(gzip.decompress(fixture.read_bytes()))
 
 
 @pytest.fixture
-def pdb_1hho_polymer_entities() -> list[dict]:
-    """Load mocked PDB 1HHO polymer entity responses."""
-    entity1 = json.loads((FIXTURES_DIR / "pdb_1HHO_entity1.json").read_text())
-    entity2 = json.loads((FIXTURES_DIR / "pdb_1HHO_entity2.json").read_text())
-    return [entity1, entity2]
+def pdb_loader():
+    """A PDBLoader that answers from the captured fixtures instead of the network."""
+    from lambda_ber_schema.loaders.pdb import PDBLoader
 
+    class FixturePDBLoader(PDBLoader):
+        def _get(self, path, cache_key=None):
+            return read_pdb_fixture(path)
 
-@pytest.fixture
-def pdb_1aay_entry_response() -> dict:
-    """Load mocked PDB 1AAY entry API response (Zif268 zinc finger bound to DNA)."""
-    return json.loads((FIXTURES_DIR / "pdb_1AAY_entry.json").read_text())
-
-
-@pytest.fixture
-def pdb_1aay_polymer_entities() -> list[dict]:
-    """Load mocked PDB 1AAY polymer entity responses: two DNA strands, then the protein."""
-    return [
-        json.loads((FIXTURES_DIR / f"pdb_1AAY_entity{n}.json").read_text()) for n in (1, 2, 3)
-    ]
+    return FixturePDBLoader()
 
 
 @pytest.fixture

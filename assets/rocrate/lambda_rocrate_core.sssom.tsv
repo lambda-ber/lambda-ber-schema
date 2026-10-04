@@ -2,7 +2,7 @@
 #mapping_set_id: http://w3id.org/lambda/rocrate/core
 #mapping_tool: https://w3id.org/linkml/
 #creator_id: linkml_user
-#mapping_date: 2026-09-18
+#mapping_date: 2026-10-04
 #curie_map: 
 # lambda: http://w3id.org/lambda/
 # lambdarc: http://w3id.org/lambda/rocrate/
@@ -128,11 +128,16 @@ lambda:cs_corrector	cryoEMInstrument__cs_corrector	skos:exactMatch		mmCIF:_em_im
 lambda:detector_mode	cryoEMInstrument__detector_mode	skos:exactMatch		mmCIF:_em_image_recording.detector_mode		skos:exactMatch	http://w3id.org/lambda/									
 lambda:detector_model	cryoEMInstrument__detector_model	skos:exactMatch		mmCIF:_em_image_recording.film_or_detector_model		skos:exactMatch	http://w3id.org/lambda/									
 lambda:detector_technology	cryoEMInstrument__detector_technology	skos:exactMatch		mmCIF:_em_image_recording.film_or_detector_model		skos:exactMatch	http://w3id.org/lambda/									
+lambda:electron_source	cryoEMInstrument__electron_source	skos:exactMatch		mmCIF:_em_imaging.electron_source		skos:exactMatch	http://w3id.org/lambda/									
 lambda:energy_filter_slit_width	cryoEMInstrument__energy_filter_slit_width	skos:exactMatch		mmCIF:_em_imaging.energy_filter_slit_width		skos:exactMatch	http://w3id.org/lambda/									
+lambda:illumination_mode	cryoEMInstrument__illumination_mode	skos:exactMatch		mmCIF:_em_imaging.illumination_mode		skos:exactMatch	http://w3id.org/lambda/									
 lambda:imaging_mode	cryoEMInstrument__imaging_mode	skos:exactMatch		mmCIF:_em_imaging.mode		skos:exactMatch	http://w3id.org/lambda/									
+lambda:specimen_holder_model	cryoEMInstrument__specimen_holder_model	skos:exactMatch		mmCIF:_em_imaging.specimen_holder_model		skos:exactMatch	http://w3id.org/lambda/									
 lambda:spotsize	cryoEMInstrument__spotsize	skos:exactMatch		mmCIF:_em_imaging.detector_spot_size		skos:exactMatch	http://w3id.org/lambda/									
 lambda:blot_time	cryoEMPreparation__blot_time	skos:exactMatch		mmCIF:_em_vitrification.time_resolved_state		skos:exactMatch	http://w3id.org/lambda/									
 lambda:chamber_temperature	cryoEMPreparation__chamber_temperature	skos:exactMatch		mmCIF:_em_vitrification.chamber_temperature		skos:exactMatch	http://w3id.org/lambda/									
+lambda:cryogen	cryoEMPreparation__cryogen	skos:exactMatch		mmCIF:_em_vitrification.cryogen_name		skos:exactMatch	http://w3id.org/lambda/									
+lambda:embedding_material	cryoEMPreparation__embedding_material	skos:exactMatch		mmCIF:_em_embedding.material		skos:exactMatch	http://w3id.org/lambda/									
 lambda:ethane_temperature	cryoEMPreparation__ethane_temperature	skos:exactMatch		mmCIF:_em_vitrification.cryogen_name		skos:exactMatch	http://w3id.org/lambda/									
 lambda:glow_discharge_applied	cryoEMPreparation__glow_discharge_applied	skos:exactMatch		mmCIF:_em_sample_support.pretreatment_type		skos:exactMatch	http://w3id.org/lambda/									
 lambda:glow_discharge_atmosphere	cryoEMPreparation__glow_discharge_atmosphere	skos:exactMatch		mmCIF:_em_sample_support.pretreatment_atmosphere		skos:exactMatch	http://w3id.org/lambda/									
@@ -141,6 +146,8 @@ lambda:glow_discharge_time	cryoEMPreparation__glow_discharge_time	skos:exactMatc
 lambda:grid_material	cryoEMPreparation__grid_material	skos:exactMatch		mmCIF:_em_sample_support.grid_material		skos:exactMatch	http://w3id.org/lambda/									
 lambda:grid_type	cryoEMPreparation__grid_type	skos:exactMatch		mmCIF:_em_sample_support.grid_type		skos:exactMatch	http://w3id.org/lambda/									
 lambda:humidity_percentage	cryoEMPreparation__humidity_percentage	skos:exactMatch		mmCIF:_em_vitrification.chamber_humidity		skos:exactMatch	http://w3id.org/lambda/									
+lambda:stain_material	cryoEMPreparation__stain_material	skos:exactMatch		mmCIF:_em_staining.material		skos:exactMatch	http://w3id.org/lambda/									
+lambda:stain_type	cryoEMPreparation__stain_type	skos:exactMatch		mmCIF:_em_staining.type		skos:exactMatch	http://w3id.org/lambda/									
 lambda:support_film	cryoEMPreparation__support_film	skos:exactMatch		mmCIF:_em_sample_support.grid_support_film		skos:exactMatch	http://w3id.org/lambda/									
 lambda:vitrification_instrument	cryoEMPreparation__vitrification_instrument	skos:exactMatch		mmCIF:_em_vitrification.instrument		skos:exactMatch	http://w3id.org/lambda/									
 lambda:vitrification_method	cryoEMPreparation__vitrification_method	skos:exactMatch		mmCIF:_em_vitrification.method		skos:exactMatch	http://w3id.org/lambda/									
@@ -174,6 +181,7 @@ lambda:file_size_bytes	dataFile__file_size_bytes	skos:closeMatch		IHMCIF:_ihm_ex
 lambda:related_entity	dataFile__related_entity	skos:relatedMatch		IHMCIF:_ihm_dataset_list.id		skos:relatedMatch	http://w3id.org/lambda/									
 lambda:storage_uri	dataFile__storage_uri	skos:relatedMatch		IHMCIF:_ihm_external_reference_info.associated_url		skos:relatedMatch	http://w3id.org/lambda/									
 lambda:storage_uri	dataFile__storage_uri	skos:relatedMatch		IHMCIF:_ihm_external_files.file_path		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:deposition_date	dataset__deposition_date	skos:exactMatch		mmCIF:_pdbx_database_status.recvd_initial_deposition_date		skos:exactMatch	http://w3id.org/lambda/									
 sdo:name	DefinedTermEntity_name	skos:exactMatch		lambda:title		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambdarc:definition	definition	skos:closeMatch		lambdax:definition		skos:closeMatch	http://w3id.org/lambda/rocrate/core									
 lambdarc:derived	derived	skos:closeMatch		lambdax:derived		skos:closeMatch	http://w3id.org/lambda/rocrate/core									
@@ -292,6 +300,8 @@ lambdarc:missing	missing	skos:closeMatch		lambdax:missing		skos:closeMatch	http:
 lambda:model	model	skos:exactMatch		lambda:model		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 sdo:molecularFormula	molecular_formula	skos:exactMatch		lambda:molecular_formula		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 sdo:name	name	skos:exactMatch		lambda:title		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
+lambda:field_strength	nMRInstrument__field_strength	skos:exactMatch		mmCIF:_pdbx_nmr_spectrometer.field_strength		skos:exactMatch	http://w3id.org/lambda/									
+lambda:spectrometer_type	nMRInstrument__spectrometer_type	skos:exactMatch		mmCIF:_pdbx_nmr_spectrometer.type		skos:exactMatch	http://w3id.org/lambda/									
 lambda:nucleic_acid_name	nucleic_acid_name	skos:exactMatch		lambda:nucleic_acid_name		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:nucleic_acid_type	nucleic_acid_type	skos:exactMatch		lambda:nucleic_acid_type		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:gene_name	nucleicAcid__gene_name	skos:exactMatch		mmCIF:_entity_src_gen.pdbx_gene_src_gene		skos:exactMatch	http://w3id.org/lambda/									
@@ -312,6 +322,7 @@ sdo:roleName	organization_role	skos:closeMatch		lambda:role		skos:closeMatch	htt
 lambda:organization_type	organization_type	skos:exactMatch		lambda:organization_type		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 sdo:name	OrganizationEntity_name	skos:exactMatch		lambda:title		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 sdo:parentOrganization	parent_organization	skos:exactMatch		lambda:parent_organization_id		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
+lambda:number_of_particles_selected	particlePickingParameters__number_of_particles_selected	skos:exactMatch		mmCIF:_em_particle_selection.num_particles_selected		skos:exactMatch	http://w3id.org/lambda/									
 lambdarc:pdbCode	pdb_code	skos:closeMatch		lambda:pdb_id		skos:closeMatch	http://w3id.org/lambda/rocrate/core									
 lambda:pdb_entries	pdb_entries	skos:exactMatch		lambda:pdb_entries		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:pdb_ligand_id	pdb_ligand_id	skos:exactMatch		lambda:pdb_ligand_id		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
@@ -331,7 +342,13 @@ lambda:protein_name	protein__protein_name	skos:relatedMatch		mmCIF:_entity.pdbx_
 lambda:uniprot_id	protein__uniprot_id	skos:exactMatch		mmCIF:_struct_ref.pdbx_db_accession		skos:exactMatch	http://w3id.org/lambda/									
 lambda:protein_name	protein_name	skos:exactMatch		lambda:protein_name		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambdarc:proteinName	protein_name_camel	skos:exactMatch		lambda:protein_name		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
+lambda:amino_acid_sequence	proteinConstruct__amino_acid_sequence	skos:exactMatch		mmCIF:_entity_poly.pdbx_seq_one_letter_code_can		skos:exactMatch	http://w3id.org/lambda/									
+lambda:mutations	proteinConstruct__mutations	skos:exactMatch		mmCIF:_entity.pdbx_mutation		skos:exactMatch	http://w3id.org/lambda/									
 lambda:uniprot_id	ProteinEntity_uniprot_id	skos:exactMatch		lambda:uniprot_id		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
+lambda:doi	publication__doi	skos:exactMatch		mmCIF:_citation.pdbx_database_id_DOI		skos:exactMatch	http://w3id.org/lambda/									
+lambda:journal	publication__journal	skos:exactMatch		mmCIF:_citation.journal_full		skos:exactMatch	http://w3id.org/lambda/									
+lambda:journal_abbreviation	publication__journal_abbreviation	skos:exactMatch		mmCIF:_citation.journal_abbrev		skos:exactMatch	http://w3id.org/lambda/									
+lambda:pubmed_id	publication__pubmed_id	skos:exactMatch		mmCIF:_citation.pdbx_database_id_PubMed		skos:exactMatch	http://w3id.org/lambda/									
 lambda:anom_corr	qualityMetrics__anom_corr	skos:exactMatch		mmCIF:_reflns.pdbx_CC_half_anomalous		skos:exactMatch	http://w3id.org/lambda/									
 lambda:average_b_factor_a2	qualityMetrics__average_b_factor_a2	skos:exactMatch		mmCIF:_refine.B_iso_mean		skos:exactMatch	http://w3id.org/lambda/									
 lambda:cc_half	qualityMetrics__cc_half	skos:exactMatch		mmCIF:_reflns.pdbx_CC_half		skos:exactMatch	http://w3id.org/lambda/									
@@ -354,9 +371,23 @@ lambda:unit_cell_gamma	qualityMetrics__unit_cell_gamma	skos:exactMatch		mmCIF:_c
 lambda:wilson_b_factor_a2	qualityMetrics__wilson_b_factor_a2	skos:exactMatch		mmCIF:_reflns.B_iso_Wilson_estimate		skos:exactMatch	http://w3id.org/lambda/									
 lambda:raw_data_location	raw_data_location	skos:exactMatch		lambda:raw_data_location		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambdarc:rawUnitId	raw_unit_id	skos:relatedMatch		sdo:identifier		skos:relatedMatch	http://w3id.org/lambda/rocrate/core									
+lambda:axial_symmetry	refinementParameters__axial_symmetry	skos:exactMatch		mmCIF:_em_helical_entity.axial_symmetry		skos:exactMatch	http://w3id.org/lambda/									
+lambda:helical_rise	refinementParameters__helical_rise	skos:exactMatch		mmCIF:_em_helical_entity.axial_rise_per_subunit		skos:exactMatch	http://w3id.org/lambda/									
+lambda:helical_twist	refinementParameters__helical_twist	skos:exactMatch		mmCIF:_em_helical_entity.angular_rotation_per_subunit		skos:exactMatch	http://w3id.org/lambda/									
+lambda:number_of_particles	refinementParameters__number_of_particles	skos:exactMatch		mmCIF:_em_3d_reconstruction.num_particles		skos:exactMatch	http://w3id.org/lambda/									
 lambda:resolution_0_143	refinementParameters__resolution_0_143	skos:exactMatch		mmCIF:_em_3d_reconstruction.resolution		skos:exactMatch	http://w3id.org/lambda/									
 lambda:symmetry	refinementParameters__symmetry	skos:exactMatch		mmCIF:_em_3d_reconstruction.symmetry_type		skos:exactMatch	http://w3id.org/lambda/									
 lambdarc:resolutionAngstrom	resolution_angstrom	skos:closeMatch		lambda:resolution		skos:closeMatch	http://w3id.org/lambda/rocrate/core									
+lambda:cc_half	resolutionShell__cc_half	skos:exactMatch		mmCIF:_reflns_shell.pdbx_CC_half		skos:exactMatch	http://w3id.org/lambda/									
+lambda:completeness_percent	resolutionShell__completeness_percent	skos:exactMatch		mmCIF:_reflns_shell.percent_possible_all		skos:exactMatch	http://w3id.org/lambda/									
+lambda:i_over_sigma	resolutionShell__i_over_sigma	skos:exactMatch		mmCIF:_reflns_shell.meanI_over_sigI_obs		skos:exactMatch	http://w3id.org/lambda/									
+lambda:multiplicity	resolutionShell__multiplicity	skos:exactMatch		mmCIF:_reflns_shell.pdbx_redundancy		skos:exactMatch	http://w3id.org/lambda/									
+lambda:n_observations	resolutionShell__n_observations	skos:exactMatch		mmCIF:_reflns_shell.number_measured_obs		skos:exactMatch	http://w3id.org/lambda/									
+lambda:n_unique	resolutionShell__n_unique	skos:exactMatch		mmCIF:_reflns_shell.number_unique_obs		skos:exactMatch	http://w3id.org/lambda/									
+lambda:resolution_high	resolutionShell__resolution_high	skos:exactMatch		mmCIF:_reflns_shell.d_res_high		skos:exactMatch	http://w3id.org/lambda/									
+lambda:resolution_low	resolutionShell__resolution_low	skos:exactMatch		mmCIF:_reflns_shell.d_res_low		skos:exactMatch	http://w3id.org/lambda/									
+lambda:rmerge	resolutionShell__rmerge	skos:exactMatch		mmCIF:_reflns_shell.Rmerge_I_obs		skos:exactMatch	http://w3id.org/lambda/									
+lambda:rpim	resolutionShell__rpim	skos:exactMatch		mmCIF:_reflns_shell.pdbx_Rpim_I_all		skos:exactMatch	http://w3id.org/lambda/									
 lambdarc:resultSummary	result_summary	skos:closeMatch		lambdax:summary		skos:closeMatch	http://w3id.org/lambda/rocrate/core									
 lambda:rnacentral_id	rnacentral_id	skos:exactMatch		lambda:rnacentral_id		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 sdo:roleName	role	skos:closeMatch		lambda:role		skos:closeMatch	http://w3id.org/lambda/rocrate/core									
@@ -462,9 +493,12 @@ lambda:goniometer_type	xRayInstrument__goniometer_type	skos:exactMatch		mmCIF:_d
 lambda:monochromator_type	xRayInstrument__monochromator_type	skos:exactMatch		mmCIF:_diffrn_source.monochromator		skos:exactMatch	http://w3id.org/lambda/									
 lambda:source_type	xRayInstrument__source_type	skos:exactMatch		mmCIF:_diffrn_source.source		skos:exactMatch	http://w3id.org/lambda/									
 lambda:crystallization_method	xRayPreparation__crystallization_method	skos:exactMatch		mmCIF:_exptl_crystal_grow.method		skos:exactMatch	http://w3id.org/lambda/									
+lambda:crystallization_ph	xRayPreparation__crystallization_ph	skos:exactMatch		mmCIF:_exptl_crystal_grow.pH		skos:exactMatch	http://w3id.org/lambda/									
 lambda:loop_size	xRayPreparation__loop_size	skos:exactMatch		nsls2:Loop_Size		skos:exactMatch	http://w3id.org/lambda/									
+lambda:matthews_coefficient	xRayPreparation__matthews_coefficient	skos:exactMatch		mmCIF:_exptl_crystal.density_Matthews		skos:exactMatch	http://w3id.org/lambda/									
 lambda:mounting_method	xRayPreparation__mounting_method	skos:exactMatch		nsls2:Mount_Type		skos:exactMatch	http://w3id.org/lambda/									
 lambda:mounting_temperature	xRayPreparation__mounting_temperature	skos:exactMatch		nsls2:Temperature		skos:exactMatch	http://w3id.org/lambda/									
+lambda:solvent_content_percent	xRayPreparation__solvent_content_percent	skos:exactMatch		mmCIF:_exptl_crystal.density_percent_sol		skos:exactMatch	http://w3id.org/lambda/									
 lambda:temperature_c	xRayPreparation__temperature_c	skos:exactMatch		mmCIF:_exptl_crystal_grow.temp		skos:exactMatch	http://w3id.org/lambda/									
 lambda:SampleComponentInteraction	ComponentInteractionEntity	skos:exactMatch		lambda:SampleComponentInteraction		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 sdo:Dataset	CrateDatasetPart	skos:closeMatch		lambda:RawUnit		skos:closeMatch	http://w3id.org/lambda/rocrate/core									
@@ -495,6 +529,8 @@ sdo:Person	PersonEntity	skos:exactMatch		lambda:Person		skos:exactMatch	http://w
 lambda:Protein	Protein	skos:relatedMatch		mmCIF:_entity		skos:relatedMatch	http://w3id.org/lambda/									
 lambda:Protein	Protein	skos:relatedMatch		mmCIF:_struct_ref		skos:relatedMatch	http://w3id.org/lambda/									
 sdo:Protein	ProteinEntity	skos:exactMatch		lambda:Protein		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
+lambda:Publication	Publication	skos:relatedMatch		mmCIF:_citation		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:Publication	Publication	skos:exactMatch		schema:ScholarlyArticle		skos:exactMatch	http://w3id.org/lambda/									
 lambda:QualityMetrics	QualityMetrics	skos:relatedMatch		IHMCIF:_ihm_ensemble_info		skos:relatedMatch	http://w3id.org/lambda/									
 lambda:QualityMetrics	QualityMetrics	skos:relatedMatch		IHMCIF:_ihm_sas_restraint		skos:relatedMatch	http://w3id.org/lambda/									
 lambda:QualityMetrics	QualityMetrics	skos:relatedMatch		IHMCIF:_ihm_3dem_restraint		skos:relatedMatch	http://w3id.org/lambda/									
@@ -502,6 +538,7 @@ lambda:RefinementParameters	RefinementParameters	skos:relatedMatch		IHMCIF:_ihm_
 lambda:RefinementParameters	RefinementParameters	skos:relatedMatch		IHMCIF:_ihm_model_representation_details		skos:relatedMatch	http://w3id.org/lambda/									
 lambda:RefinementParameters	RefinementParameters	skos:relatedMatch		IHMCIF:_ihm_model_list		skos:relatedMatch	http://w3id.org/lambda/									
 lambda:RefinementParameters	RefinementParameters	skos:relatedMatch		IHMCIF:_ihm_ensemble_info		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:ResolutionShell	ResolutionShell	skos:relatedMatch		mmCIF:_reflns_shell		skos:relatedMatch	http://w3id.org/lambda/									
 lambda:Sample	Sample	skos:relatedMatch		IHMCIF:_ihm_struct_assembly		skos:relatedMatch	http://w3id.org/lambda/									
 lambda:Sample	Sample	skos:relatedMatch		IHMCIF:_ihm_struct_assembly_details		skos:relatedMatch	http://w3id.org/lambda/									
 lambda:Sample	Sample	skos:relatedMatch		IHMCIF:_ihm_entity_poly_segment		skos:relatedMatch	http://w3id.org/lambda/									

@@ -1139,3 +1139,50 @@ enums:
         description: "Nucleic Acid Database"
       modomics:
         description: "MODOMICS, modified RNA nucleosides"
+      # Structure archives and their satellites, for Study.database_cross_references
+      emdb:
+        description: "Electron Microscopy Data Bank"
+      empiar:
+        description: "Electron Microscopy Public Image Archive"
+      bmrb:
+        description: "Biological Magnetic Resonance Data Bank"
+      sasbdb:
+        description: "Small Angle Scattering Biological Data Bank"
+      pdb_ihm:
+        description: "PDB-IHM, the archive of integrative structures"
+      nakb:
+        description: "Nucleic Acid Knowledgebase"
+      sbgrid:
+        description: "SBGrid Data Bank"
+      proteindiffraction:
+        description: "Integrated Resource for Reproducibility in Macromolecular Crystallography (proteindiffraction.org)"
+      olderado:
+        description: "OLDERADO, representative models of NMR ensembles"
+      # Structural and membrane classifications, for Protein.cross_references
+      ecod:
+        description: "ECOD, Evolutionary Classification of Protein Domains"
+      scop2:
+        description: "SCOP2"
+      mpstruc:
+        description: "Membrane Proteins of Known 3D Structure"
+      opm:
+        description: "Orientations of Proteins in Membranes"
+      pdbtm:
+        description: "Protein Data Bank of Transmembrane Proteins"
+      memprotmd:
+        description: "MemProtMD"
+      # Glycan and affinity resources
+      glytoucan:
+        description: "GlyTouCan glycan structure repository"
+      glygen:
+        description: "GlyGen"
+      bindingdb:
+        description: "BindingDB"
+      binding_moad:
+        description: "Binding MOAD"
+      pdbbind:
+        description: "PDBbind-CN"
+      atc:
+        description: "WHO Anatomical Therapeutic Chemical classification"
+      other:
+        description: "A database with no value of its own here; DatabaseCrossReference.description names it"

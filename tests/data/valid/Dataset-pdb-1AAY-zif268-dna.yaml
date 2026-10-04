@@ -1,13 +1,88 @@
 id: pdb:1AAY
 title: ZIF268 ZINC FINGER-DNA COMPLEX
+keywords:
+- TRANSCRIPTION/DNA
+- ZINC FINGER
+- DNA-BINDING PROTEIN
+- COMPLEX (ZINC FINGER-DNA)
+- TRANSCRIPTION-DNA COMPLEX
+deposition_date: '1997-01-18'
+release_date: '1997-04-21'
+last_revision_date: '2023-08-02'
+revision: '1.3'
 studies:
 - id: pdb:1AAY/study
   title: ZIF268 ZINC FINGER-DNA COMPLEX
+  keywords:
+  - TRANSCRIPTION/DNA
+  - ZINC FINGER
+  - DNA-BINDING PROTEIN
+  - COMPLEX (ZINC FINGER-DNA)
+  - TRANSCRIPTION-DNA COMPLEX
+  database_cross_references:
+  - database_name: pdb
+    database_id: 1AAY
+    database_url: https://doi.org/10.2210/pdb1aay/pdb
+  - description: RCSB identifier
+    database_name: other
+    database_id: PDT039
+  - description: WWPDB identifier
+    database_name: other
+    database_id: D_1000170604
+  - description: NAKB
+    database_name: nakb
+    database_id: 1AAY
+    database_url: https://nakb.org/atlas=1AAY
+persons:
+- id: pdb:1AAY/person/1
+  title: Elrod-Erickson, M.
+  full_name: Elrod-Erickson, M.
+- id: pdb:1AAY/person/2
+  title: Rould, M.A.
+  full_name: Rould, M.A.
+- id: pdb:1AAY/person/3
+  title: Pabo, C.O.
+  full_name: Pabo, C.O.
+publications:
+- id: doi:10.1016/S0969-2126(96)00125-6
+  title: 'Zif268 protein-DNA complex refined at 1.6 A: a model system for understanding
+    zinc finger-DNA interactions.'
+  doi: doi:10.1016/S0969-2126(96)00125-6
+  pubmed_id: pmid:8939742
+  authors:
+  - Elrod-Erickson, M.
+  - Rould, M.A.
+  - Nekludova, L.
+  - Pabo, C.O.
+  journal_abbreviation: Structure
+  journal_issn: 0969-2126
+  journal_country: UK
+  volume: '4'
+  page_first: '1171'
+  page_last: '1180'
+  year: 1996
+- id: pdb:1AAY/citation/1
+  title: 'Zinc Finger-DNA Recognition: Crystal Structure of a Zif268-DNA Complex at
+    2.1 A'
+  authors:
+  - Pavletich, N.P.
+  - Pabo, C.O.
+  journal_abbreviation: Science
+  journal_issn: 0036-8075
+  journal_country: US
+  volume: '252'
+  page_first: '809'
+  year: 1991
 instruments:
-- id: pdb:instrument/PDB-1AAY
+- id: pdb:1AAY/instrument/diffrn-1
   title: ROTATING ANODE
-  description: 'Detector: RIGAKU RAXIS IIC'
-  instrument_code: PDB-1AAY
+  description: 'Detector: IMAGE PLATE; YALE MIRRORS; ROTATING ANODE'
+  instrument_type: XRayInstrument
+  instrument_code: PDB-1AAY-D1
+  model: RIGAKU RU200
+  source_type: rotating_anode
+  detector_technology: imaging_plate
+  detector_model: RIGAKU RAXIS IIC
 proteins:
 - id: uniprot:P08046
   title: Early growth response protein 1
@@ -15,65 +90,309 @@ proteins:
   protein_name: Early growth response protein 1
   organism: NCBITaxon:10090
   organism_name: Mus musculus
+  go_terms:
+  - GO:1901875
+  - GO:0000976
+  - GO:0044849
+  - GO:0010628
+  - GO:0002931
+  - GO:0090090
+  - GO:0043525
+  - GO:0042981
+  - GO:0046886
+  - GO:0005737
+  - GO:0072110
+  - GO:0014911
+  - GO:2000182
+  - GO:0035914
+  - GO:0043565
+  - GO:0030217
+  - GO:1902895
+  - GO:0000785
+  - GO:0032922
+  - GO:0044029
+  - GO:1990841
+  - GO:0032731
+  - GO:0003677
+  - GO:0048169
+  - GO:0000981
+  - GO:0032722
+  - GO:0006355
+  - GO:0048661
+  - GO:0001666
+  - GO:0045475
+  - GO:0071504
+  - GO:0060086
+  - GO:0000122
+  - GO:0000979
+  - GO:0044729
+  - GO:0045944
+  - GO:1990837
+  - GO:0072303
+  - GO:0001228
+  - GO:0098759
+  - GO:0030509
+  - GO:0010385
+  - GO:0071480
+  - GO:0000978
+  - GO:0043523
+  - GO:0003700
+  - GO:0009749
+  - GO:0005654
+  - GO:0000977
+  - GO:0007616
+  - GO:0003690
+  - GO:0035035
+  - GO:0032868
+  - GO:0007611
+  - GO:0045893
+  - GO:0071506
+  - GO:0070498
+  - GO:0006357
+  - GO:0008270
+  - GO:0019899
+  - GO:0033233
+  - GO:0005634
   pdb_entries:
   - pdb:1AAY
+  cross_references:
+  - description: Zinc finger, C2H2 type (zf-C2H2)
+    database_name: pfam
+    database_id: PF00096
+  - description: Zinc finger C2H2-type
+    database_name: interpro
+    database_id: IPR013087
+  - description: Early growth response, N-terminal
+    database_name: interpro
+    database_id: IPR021849
+  - description: Zinc finger C2H2 superfamily
+    database_name: interpro
+    database_id: IPR036236
+  - description: Early growth response protein 1, C-terminal
+    database_name: interpro
+    database_id: IPR021839
+  - description: ChEMBL; target record
+    database_name: chembl
+    database_id: CHEMBL3616355
+  - description: Pharos; target record
+    database_name: other
+    database_id: '975'
+protein_constructs:
+- id: pdb:1AAY/construct/3
+  title: PROTEIN (ZIF268 ZINC FINGER PEPTIDE)
+  additional_metrics:
+  - attribute:
+      id: rcsb:rcsb_polymer_entity.formula_weight
+      label: rcsb_polymer_entity.formula_weight
+    numeric_value: 10.853
+    unit: kDa
+  - attribute:
+      id: rcsb:rcsb_polymer_entity_container_identifiers.reference_sequence_identifiers.entity_sequence_coverage
+      label: rcsb_polymer_entity_container_identifiers[P08046].reference_sequence_identifiers.entity_sequence_coverage
+    numeric_value: 0.9888888888888889
+    unit: unspecified
+  additional_properties:
+  - attribute:
+      id: mmCIF:_entity_poly.pdbx_seq_one_letter_code
+      label: entity_poly.pdbx_seq_one_letter_code
+    value: MERPYACPVESCDRRFSRSDELTRHIRIHTGQKPFQCRICMRNFSRSDHLTTHIRTHTGEKPFACDICGRKFARSDERKRHTKIHLRQKD
+  construct_id: pdb:1AAY/construct/3
+  protein_id: uniprot:P08046
+  uniprot_id: uniprot:P08046
+  ncbi_taxid: '10090'
+  sequence_length_aa:
+    numeric_value: 90.0
+    unit: residues
+  vector_name: PZIF89
+  amino_acid_sequence: MERPYACPVESCDRRFSRSDELTRHIRIHTGQKPFQCRICMRNFSRSDHLTTHIRTHTGEKPFACDICGRKFARSDERKRHTKIHLRQKD
 nucleic_acids:
 - id: pdb:1AAY/nucleic_acid/1
   title: DNA (5'-D(*AP*GP*CP*GP*TP*GP*GP*GP*CP*GP*T)-3')
+  additional_metrics:
+  - attribute:
+      id: rcsb:rcsb_polymer_entity.formula_weight
+      label: rcsb_polymer_entity.formula_weight
+    numeric_value: 3.43
+    unit: kDa
+  additional_properties:
+  - attribute:
+      id: mmCIF:_entity_poly.pdbx_seq_one_letter_code
+      label: entity_poly.pdbx_seq_one_letter_code
+    value: (DA)(DG)(DC)(DG)(DT)(DG)(DG)(DG)(DC)(DG)(DT)
   nucleic_acid_type: dna
   nucleic_acid_name: DNA (5'-D(*AP*GP*CP*GP*TP*GP*GP*GP*CP*GP*T)-3')
   nucleotide_sequence: AGCGTGGGCGT
   sequence_length: 11
+  molecular_weight_theoretical:
+    numeric_value: 3.43
+    unit: kDa
   pdb_entries:
   - pdb:1AAY
 - id: pdb:1AAY/nucleic_acid/2
   title: DNA (5'-D(*TP*AP*CP*GP*CP*CP*CP*AP*CP*GP*C)-3')
+  additional_metrics:
+  - attribute:
+      id: rcsb:rcsb_polymer_entity.formula_weight
+      label: rcsb_polymer_entity.formula_weight
+    numeric_value: 3.279
+    unit: kDa
+  additional_properties:
+  - attribute:
+      id: mmCIF:_entity_poly.pdbx_seq_one_letter_code
+      label: entity_poly.pdbx_seq_one_letter_code
+    value: (DT)(DA)(DC)(DG)(DC)(DC)(DC)(DA)(DC)(DG)(DC)
   nucleic_acid_type: dna
   nucleic_acid_name: DNA (5'-D(*TP*AP*CP*GP*CP*CP*CP*AP*CP*GP*C)-3')
   nucleotide_sequence: TACGCCCACGC
   sequence_length: 11
+  molecular_weight_theoretical:
+    numeric_value: 3.279
+    unit: kDa
   pdb_entries:
   - pdb:1AAY
+small_molecules:
+- id: pdb.ligand:ZN
+  title: ZINC ION
+  additional_metrics:
+  - attribute:
+      id: mmCIF:_chem_comp.pdbx_formal_charge
+      label: chem_comp.pdbx_formal_charge
+    numeric_value: 2.0
+    unit: unspecified
+  additional_properties:
+  - attribute:
+      id: mmCIF:_pdbx_chem_comp_identifier.identifier
+      label: pdbx_chem_comp_identifier[SYSTEMATIC NAME ACDLabs].identifier
+    value: zinc
+  - attribute:
+      id: mmCIF:_pdbx_chem_comp_identifier.identifier
+      label: pdbx_chem_comp_identifier[SYSTEMATIC NAME OpenEye OEToolkits].identifier
+    value: zinc(+2) cation
+  small_molecule_name: ZINC ION
+  pdb_ligand_id: pdb.ligand:ZN
+  chemical_class: ion
+  molecular_formula: Zn
+  smiles: '[Zn+2]'
+  inchi: InChI=1S/Zn/q+2
+  inchikey: PTFCDOFLOPIGGS-UHFFFAOYSA-N
+  molecular_weight_theoretical:
+    numeric_value: 65.409
+    unit: Da
 samples:
-- id: pdb:1AAY/sample/1
+- id: pdb:1AAY/sample
+  title: ZIF268 ZINC FINGER-DNA COMPLEX
+  additional_metrics:
+  - attribute:
+      id: mmCIF:_pdbx_struct_assembly.oligomeric_count
+      label: pdbx_struct_assembly.oligomeric_count
+    numeric_value: 3.0
+    unit: unspecified
+  additional_properties:
+  - attribute:
+      id: mmCIF:_pdbx_struct_assembly.details
+      label: pdbx_struct_assembly.details
+    value: author_defined_assembly
+  - attribute:
+      id: rcsb:rcsb_struct_symmetry.stoichiometry
+      label: rcsb_struct_symmetry[Global Symmetry].stoichiometry
+    value: A1
+  - attribute:
+      id: rcsb:rcsb_struct_symmetry.symbol
+      label: rcsb_struct_symmetry[Global Symmetry].symbol
+    value: C1
+  sample_code: PDB-1AAY
+  sample_type: complex
+  molecular_weight:
+    numeric_value: 17.76
+    unit: kDa
+  oligomeric_state: Monomer; trimeric
+sample_components:
+- id: pdb:1AAY/component/1
   title: DNA (5'-D(*AP*GP*CP*GP*TP*GP*GP*GP*CP*GP*T)-3')
-  description: 'Sequence length: 11'
-  sample_code: PDB-1AAY-1
-  sample_type: nucleic_acid
-  molecular_weight:
-    numeric_value: 3.43
-    unit: kDa
-- id: pdb:1AAY/sample/2
+  sample_id: pdb:1AAY/sample
+  component_type: nucleic_acid
+  nucleic_acid_id: pdb:1AAY/nucleic_acid/1
+  role: binding_partner
+  copy_number: 1
+- id: pdb:1AAY/component/2
   title: DNA (5'-D(*TP*AP*CP*GP*CP*CP*CP*AP*CP*GP*C)-3')
-  description: 'Sequence length: 11'
-  sample_code: PDB-1AAY-2
-  sample_type: nucleic_acid
-  molecular_weight:
-    numeric_value: 3.28
-    unit: kDa
-- id: pdb:1AAY/sample/3
+  sample_id: pdb:1AAY/sample
+  component_type: nucleic_acid
+  nucleic_acid_id: pdb:1AAY/nucleic_acid/2
+  role: binding_partner
+  copy_number: 1
+- id: pdb:1AAY/component/3
   title: PROTEIN (ZIF268 ZINC FINGER PEPTIDE)
-  description: 'Organism: Mus musculus; Sequence length: 90'
-  sample_code: PDB-1AAY-3
-  sample_type: protein
-  molecular_weight:
-    numeric_value: 10.85
-    unit: kDa
-  organism: NCBITaxon:10090
-  database_cross_references:
-  - database_name: uniprot
-    database_id: P08046
-    database_url: https://www.uniprot.org/uniprotkb/P08046
-  protein_name: PROTEIN (ZIF268 ZINC FINGER PEPTIDE)
+  sample_id: pdb:1AAY/sample
+  component_type: protein
+  protein_id: uniprot:P08046
+  role: target
+  copy_number: 1
+- id: pdb:1AAY/component/4
+  title: ZINC ION
+  sample_id: pdb:1AAY/sample
+  component_type: small_molecule
+  small_molecule_id: pdb.ligand:ZN
+  copy_number: 3
+sample_preparations:
+- id: pdb:1AAY/preparation/expression-3-1
+  title: Expression of PROTEIN (ZIF268 ZINC FINGER PEPTIDE)
+  description: Expressed in Escherichia coli BL21(DE3)
+  additional_properties:
+  - attribute:
+      id: mmCIF:_entity_src_gen.pdbx_host_org_ncbi_taxonomy_id
+      label: entity_src_gen.pdbx_host_org_ncbi_taxonomy_id
+    value: NCBITaxon:469008
+  preparation_type: protein_expression
+  sample_id: pdb:1AAY/sample
+  expression_system: bacteria
+  host_strain_or_cell_line: BL21 (DE3)
+- id: pdb:1AAY/preparation/crystal-1
+  title: Crystal 1
+  preparation_type: xray_crystallography
+  sample_id: pdb:1AAY/sample
+  xray_preparation:
+    description: VAPOR DIFFUSION, HANGING DROP
+    crystallization_method: vapor_diffusion_hanging
+    crystallization_conditions:
+      crystallization_conditions: 2.5-5% PEG 400; 500-700MM NACL; 25MM BIS-TRIS PROPANE,
+        PH 8.0, VAPOR DIFFUSION, HANGING DROP
+      crystal_id: '1'
+    crystallization_ph: 8.0
+    matthews_coefficient:
+      numeric_value: 2.4
+      unit: Angstroms^3/Da
+    solvent_content_percent: 55.3
 experiment_runs:
 - id: pdb:1AAY/experiment
+  additional_metrics:
+  - attribute:
+      id: mmCIF:_exptl.crystals_number
+      label: exptl.crystals_number
+    numeric_value: 3.0
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_cell.Z_PDB
+      label: cell.Z_PDB
+    numeric_value: 8.0
+    unit: unspecified
+  additional_properties:
+  - attribute:
+      id: mmCIF:_diffrn_radiation.pdbx_monochromatic_or_laue_m_l
+      label: diffrn_radiation.pdbx_monochromatic_or_laue_m_l
+    value: M
   experiment_code: PDB-1AAY-EXP
-  experiment_date: '1997-01-18'
+  experiment_date: '1994-08-01'
   technique: xray_crystallography
+  experimental_conditions:
+    temperature:
+      numeric_value: 295.0
+      unit: K
   quality_metrics:
     resolution:
       numeric_value: 1.6
       unit: Angstroms
+    space_group: C 2 2 21
     unit_cell_a:
       numeric_value: 45.4
       unit: Angstroms
@@ -92,66 +411,508 @@ experiment_runs:
     unit_cell_gamma:
       numeric_value: 90.0
       unit: degrees
+    r_work:
+      numeric_value: 0.195
+      unit: dimensionless
+    r_free:
+      numeric_value: 0.242
+      unit: dimensionless
+    ramachandran_outliers_percent:
+      numeric_value: 0.0
+      unit: percent
     clashscore:
       numeric_value: 6.0
       unit: dimensionless
+    average_b_factor_a2:
+      numeric_value: 30.0
+      unit: Angstroms^2
 workflow_runs:
 - id: pdb:1AAY/workflow/refinement
-  workflow_code: PDB-1AAY-REFINE
+  title: Refinement against x-ray diffraction
+  description: MOLECULAR REPLACEMENT
+  additional_metrics:
+  - attribute:
+      id: mmCIF:_refine.ls_R_factor_all
+      label: refine.ls_R_factor_all
+    numeric_value: 0.203
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_refine.ls_R_factor_obs
+      label: refine.ls_R_factor_obs
+    numeric_value: 0.195
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_refine.ls_number_reflns_R_free
+      label: refine.ls_number_reflns_R_free
+    numeric_value: 2312.0
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_refine.ls_number_reflns_obs
+      label: refine.ls_number_reflns_obs
+    numeric_value: 19207.0
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_refine.ls_percent_reflns_R_free
+      label: refine.ls_percent_reflns_R_free
+    numeric_value: 12.0
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_refine.ls_percent_reflns_obs
+      label: refine.ls_percent_reflns_obs
+    numeric_value: 87.0
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_refine.pdbx_data_cutoff_high_absF
+      label: refine.pdbx_data_cutoff_high_absF
+    numeric_value: 100000.0
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_refine.pdbx_data_cutoff_low_absF
+      label: refine.pdbx_data_cutoff_low_absF
+    numeric_value: 0.01
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_refine.pdbx_ls_sigma_F
+      label: refine.pdbx_ls_sigma_F
+    numeric_value: 2.0
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_refine_hist.d_res_high
+      label: refine_hist[LAST].d_res_high
+    numeric_value: 1.6
+    unit: Angstroms
+  - attribute:
+      id: mmCIF:_refine_hist.d_res_low
+      label: refine_hist[LAST].d_res_low
+    numeric_value: 6.0
+    unit: Angstroms
+  - attribute:
+      id: mmCIF:_refine_hist.number_atoms_total
+      label: refine_hist[LAST].number_atoms_total
+    numeric_value: 1330.0
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_refine_hist.pdbx_number_atoms_ligand
+      label: refine_hist[LAST].pdbx_number_atoms_ligand
+    numeric_value: 3.0
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_refine_hist.pdbx_number_atoms_nucleic_acid
+      label: refine_hist[LAST].pdbx_number_atoms_nucleic_acid
+    numeric_value: 445.0
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_refine_hist.pdbx_number_atoms_protein
+      label: refine_hist[LAST].pdbx_number_atoms_protein
+    numeric_value: 734.0
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_refine_ls_restr.dev_ideal
+      label: refine_ls_restr[x_bond_d].dev_ideal
+    numeric_value: 0.007
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_refine_ls_restr.dev_ideal
+      label: refine_ls_restr[x_bond_d_na].dev_ideal
+    numeric_value: 0.009
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_refine_ls_restr.dev_ideal
+      label: refine_ls_restr[x_angle_deg].dev_ideal
+    numeric_value: 1.29
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_refine_ls_restr.dev_ideal
+      label: refine_ls_restr[x_angle_deg_na].dev_ideal
+    numeric_value: 3.02
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_refine_ls_restr.dev_ideal
+      label: refine_ls_restr[x_dihedral_angle_d].dev_ideal
+    numeric_value: 22.8
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_refine_ls_restr.dev_ideal
+      label: refine_ls_restr[x_dihedral_angle_d_na].dev_ideal
+    numeric_value: 29.8
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_refine_ls_restr.dev_ideal
+      label: refine_ls_restr[x_improper_angle_d].dev_ideal
+    numeric_value: 1.23
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_refine_ls_restr.dev_ideal
+      label: refine_ls_restr[x_improper_angle_d_na].dev_ideal
+    numeric_value: 0.6
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_refine_ls_restr.dev_ideal
+      label: refine_ls_restr[x_mcbond_it].dev_ideal
+    numeric_value: 1.46
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_refine_ls_restr.dev_ideal_target
+      label: refine_ls_restr[x_mcbond_it].dev_ideal_target
+    numeric_value: 1.0
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_refine_ls_restr.dev_ideal
+      label: refine_ls_restr[x_mcangle_it].dev_ideal
+    numeric_value: 2.38
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_refine_ls_restr.dev_ideal_target
+      label: refine_ls_restr[x_mcangle_it].dev_ideal_target
+    numeric_value: 1.5
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_refine_ls_restr.dev_ideal
+      label: refine_ls_restr[x_scbond_it].dev_ideal
+    numeric_value: 2.03
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_refine_ls_restr.dev_ideal_target
+      label: refine_ls_restr[x_scbond_it].dev_ideal_target
+    numeric_value: 1.0
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_refine_ls_restr.dev_ideal
+      label: refine_ls_restr[x_scangle_it].dev_ideal
+    numeric_value: 3.3
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_refine_ls_restr.dev_ideal_target
+      label: refine_ls_restr[x_scangle_it].dev_ideal_target
+    numeric_value: 1.5
+    unit: unspecified
+  additional_properties:
+  - attribute:
+      id: mmCIF:_refine.pdbx_R_Free_selection_details
+      label: refine.pdbx_R_Free_selection_details
+    value: RANDOM
+  - attribute:
+      id: mmCIF:_refine.pdbx_isotropic_thermal_model
+      label: refine.pdbx_isotropic_thermal_model
+    value: RESTRAINED INDIVIDUAL
+  - attribute:
+      id: mmCIF:_refine.pdbx_ls_cross_valid_method
+      label: refine.pdbx_ls_cross_valid_method
+    value: THROUGOUT
+  - attribute:
+      id: mmCIF:_refine.pdbx_starting_model
+      label: refine.pdbx_starting_model
+    value: PDB ENTRY 1ZAA, WITHOUT WATERS
+  - attribute:
+      id: mmCIF:_pdbx_initial_refinement_model.details
+      label: pdbx_initial_refinement_model[1].details
+    value: PDB ENTRY 1ZAA, WITHOUT WATERS
+  - attribute:
+      id: mmCIF:_pdbx_initial_refinement_model.source_name
+      label: pdbx_initial_refinement_model[1].source_name
+    value: PDB
+  - attribute:
+      id: mmCIF:_pdbx_initial_refinement_model.type
+      label: pdbx_initial_refinement_model[1].type
+    value: experimental model
+  workflow_code: PDB-1AAY-REFINEMENT
   workflow_type: refinement
   software_name: X-PLOR
+  phasing_method: molecular_replacement
+  search_model_pdb_id: 1ZAA
+  number_of_waters:
+    numeric_value: 148.0
+    unit: molecules
+  refinement_resolution_a:
+    numeric_value: 1.6
+    unit: Angstroms
+  resolution_high:
+    numeric_value: 1.6
+    unit: Angstroms
+  resolution_low:
+    numeric_value: 6.0
+    unit: Angstroms
+  rwork:
+    numeric_value: 0.195
+    unit: dimensionless
+  rfree:
+    numeric_value: 0.242
+    unit: dimensionless
+  rmsd_bonds:
+    numeric_value: 0.007
+    unit: Angstroms
+  rmsd_angles:
+    numeric_value: 1.29
+    unit: degrees
+- id: pdb:1AAY/workflow/scaling
+  title: Data scaling and merging
+  additional_metrics:
+  - attribute:
+      id: mmCIF:_reflns.observed_criterion_sigma_F
+      label: reflns.observed_criterion_sigma_F
+    numeric_value: -2.0
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_reflns.observed_criterion_sigma_I
+      label: reflns.observed_criterion_sigma_I
+    numeric_value: -2.0
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_reflns.pdbx_Rsym_value
+      label: reflns.pdbx_Rsym_value
+    numeric_value: 0.025
+    unit: unspecified
+  workflow_code: PDB-1AAY-SCALING
+  workflow_type: scaling
+  software_name: SCALEPACK
+  resolution_high:
+    numeric_value: 1.6
+    unit: Angstroms
+  resolution_low:
+    numeric_value: 20.0
+    unit: Angstroms
+  rmerge:
+    numeric_value: 0.062
+    unit: dimensionless
+  completeness_percent:
+    numeric_value: 96.6
+    unit: percent
+  i_over_sigma:
+    numeric_value: 34.5
+    unit: dimensionless
+  multiplicity:
+    numeric_value: 6.5
+    unit: dimensionless
+  n_total_unique:
+    numeric_value: 22749.0
+    unit: reflections
+  resolution_shells:
+  - additional_metrics:
+    - attribute:
+        id: mmCIF:_reflns_shell.pdbx_Rsym_value
+        label: reflns_shell.pdbx_Rsym_value
+      numeric_value: 0.223
+      unit: unspecified
+    resolution_high:
+      numeric_value: 1.6
+      unit: Angstroms
+    resolution_low:
+      numeric_value: 1.66
+      unit: Angstroms
+    completeness_percent:
+      numeric_value: 92.8
+      unit: percent
+    multiplicity:
+      numeric_value: 4.0
+      unit: dimensionless
+    i_over_sigma:
+      numeric_value: 2.0
+      unit: dimensionless
+    rmerge:
+      numeric_value: 0.534
+      unit: dimensionless
+- id: pdb:1AAY/workflow/model_building
+  title: Model building
+  workflow_code: PDB-1AAY-MODEL_BUILDING
+  workflow_type: model_building
+  software_name: X-PLOR
+- id: pdb:1AAY/workflow/integration
+  title: Data reduction
+  workflow_code: PDB-1AAY-INTEGRATION
+  workflow_type: integration
+  software_name: DENZO
+- id: pdb:1AAY/workflow/phasing
+  title: Phasing
+  workflow_code: PDB-1AAY-PHASING
+  workflow_type: phasing
+  software_name: X-PLOR
+  phasing_method: molecular_replacement
+- id: pdb:1AAY/workflow/validation
+  title: wwPDB validation report
+  additional_metrics:
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_geometry.angles_RMSZ
+      label: pdbx_vrpt_summary_geometry.angles_RMSZ
+    numeric_value: 1.18
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_geometry.bonds_RMSZ
+      label: pdbx_vrpt_summary_geometry.bonds_RMSZ
+    numeric_value: 0.48
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_geometry.num_H_reduce
+      label: pdbx_vrpt_summary_geometry.num_H_reduce
+    numeric_value: 986.0
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_geometry.num_angles_RMSZ
+      label: pdbx_vrpt_summary_geometry.num_angles_RMSZ
+    numeric_value: 1795.0
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_geometry.num_bonds_RMSZ
+      label: pdbx_vrpt_summary_geometry.num_bonds_RMSZ
+    numeric_value: 1269.0
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_geometry.percent_rotamer_outliers
+      label: pdbx_vrpt_summary_geometry.percent_rotamer_outliers
+    numeric_value: 2.53
+    unit: unspecified
+  additional_properties:
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary.attempted_validation_steps
+      label: pdbx_vrpt_summary.attempted_validation_steps
+    value: molprobity,validation-pack,mogul,validation_schema,percentiles,writexml,writecif,writepdf
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary.ligands_for_buster_report
+      label: pdbx_vrpt_summary.ligands_for_buster_report
+    value: N
+  workflow_code: PDB-1AAY-VALIDATION
+  workflow_type: model_validation
+  software_name: wwPDB validation pipeline
+  validation_report_path: https://files.rcsb.org/pub/pdb/validation_reports/aa/1aay/1aay_full_validation.pdf.gz
+  completed_at: '2026-03-09T12:35:00.000+00:00'
 data_files:
 - id: pdb:1AAY/file/pdb
   description: PDB format coordinates
   file_name: 1aay.pdb
   file_path: https://files.rcsb.org/download/1AAY.pdb
   file_format: pdb
+  data_type: model
 - id: pdb:1AAY/file/mmcif
   description: mmCIF format coordinates
   file_name: 1aay.cif
   file_path: https://files.rcsb.org/download/1AAY.cif
   file_format: mmcif
+  data_type: model
+- id: pdb:1AAY/file/validation
+  description: wwPDB full validation report
+  file_name: 1aay_full_validation.pdf.gz
+  file_path: https://files.rcsb.org/pub/pdb/validation_reports/aa/1aay/1aay_full_validation.pdf.gz
+  file_format: pdf
+  data_type: validation_report
 study_sample_associations:
 - study_id: pdb:1AAY/study
-  sample_id: pdb:1AAY/sample/1
-- study_id: pdb:1AAY/study
-  sample_id: pdb:1AAY/sample/2
-- study_id: pdb:1AAY/study
-  sample_id: pdb:1AAY/sample/3
+  sample_id: pdb:1AAY/sample
 study_experiment_associations:
 - study_id: pdb:1AAY/study
   experiment_id: pdb:1AAY/experiment
+study_workflow_associations:
+- study_id: pdb:1AAY/study
+  workflow_id: pdb:1AAY/workflow/refinement
+- study_id: pdb:1AAY/study
+  workflow_id: pdb:1AAY/workflow/scaling
+- study_id: pdb:1AAY/study
+  workflow_id: pdb:1AAY/workflow/model_building
+- study_id: pdb:1AAY/study
+  workflow_id: pdb:1AAY/workflow/integration
+- study_id: pdb:1AAY/study
+  workflow_id: pdb:1AAY/workflow/phasing
+- study_id: pdb:1AAY/study
+  workflow_id: pdb:1AAY/workflow/validation
 experiment_sample_associations:
 - experiment_id: pdb:1AAY/experiment
-  sample_id: pdb:1AAY/sample/1
-- experiment_id: pdb:1AAY/experiment
-  sample_id: pdb:1AAY/sample/2
-- experiment_id: pdb:1AAY/experiment
-  sample_id: pdb:1AAY/sample/3
+  sample_id: pdb:1AAY/sample
+  preparation_id: pdb:1AAY/preparation/crystal-1
 experiment_instrument_associations:
 - experiment_id: pdb:1AAY/experiment
-  instrument_id: pdb:instrument/PDB-1AAY
+  instrument_id: pdb:1AAY/instrument/diffrn-1
 sample_protein_associations:
-- sample_id: pdb:1AAY/sample/3
+- sample_id: pdb:1AAY/sample
   protein_id: uniprot:P08046
   role: target
+  construct_id: pdb:1AAY/construct/3
   copy_number: 1
-  sequence_coverage: 0.167
+  sequence_coverage: 0.1669793621013133
   chain_ids:
   - A
 sample_nucleic_acid_associations:
-- sample_id: pdb:1AAY/sample/1
+- sample_id: pdb:1AAY/sample
   nucleic_acid_id: pdb:1AAY/nucleic_acid/1
   role: binding_partner
   copy_number: 1
   chain_ids:
   - B
-- sample_id: pdb:1AAY/sample/2
+- sample_id: pdb:1AAY/sample
   nucleic_acid_id: pdb:1AAY/nucleic_acid/2
   role: binding_partner
   copy_number: 1
   chain_ids:
   - C
+sample_component_interactions:
+- sample_id: pdb:1AAY/sample
+  subject_id: pdb:1AAY/component/4
+  object_id: pdb:1AAY/component/3
+  interaction_type: is_coordinated_by
+  interaction_status: observed
+  evidence:
+  - experimental
+  description: Modelled on chain A in the deposited structure
+- sample_id: pdb:1AAY/sample
+  subject_id: pdb:1AAY/component/1
+  object_id: pdb:1AAY/component/3
+  interaction_type: binds
+  interaction_status: observed
+  subject_site: A1,G2,C3,G4,T5,G6,G7,G8,C9,G10,T11
+  object_site: R3,R14,F16,S17,R18,D20,E21,R24,H25,I28,K33,R42,N43,F44,S45,R46,H49,T52,H53,T56,K61,R70,F72,A73,R74,D76,E77,R80
+  evidence:
+  - experimental
+  description: 'Contact in the first assembly: interface 1: 967 square angstroms buried,
+    40 interface residues (1 core)'
+- sample_id: pdb:1AAY/sample
+  subject_id: pdb:1AAY/component/2
+  object_id: pdb:1AAY/component/3
+  interaction_type: binds
+  interaction_status: observed
+  subject_site: T1,A2,C3,G4,C5,C6,C7,A8,C9,G10,C11
+  object_site: R18,S19,D20,T23,R24,R27,F35,R46,S47,D48,H49,T51,R55,F63,R74,S75,D76,R78,K79,R80
+  evidence:
+  - experimental
+  description: 'Contact in the first assembly: interface 2: 519 square angstroms buried,
+    31 interface residues (0 core)'
+- sample_id: pdb:1AAY/sample
+  subject_id: pdb:1AAY/component/2
+  object_id: pdb:1AAY/component/1
+  interaction_type: binds
+  interaction_status: observed
+  subject_site: T1,A2,C3,G4,C5,C6,C7,A8,C9,G10,C11
+  object_site: A1,G2,C3,G4,T5,G6,G7,G8,C9,G10,T11
+  evidence:
+  - experimental
+  description: 'Contact in the first assembly: interface 3: 484 square angstroms buried,
+    22 interface residues (0 core)'
 workflow_experiment_associations:
 - workflow_id: pdb:1AAY/workflow/refinement
   experiment_id: pdb:1AAY/experiment
+- workflow_id: pdb:1AAY/workflow/scaling
+  experiment_id: pdb:1AAY/experiment
+- workflow_id: pdb:1AAY/workflow/model_building
+  experiment_id: pdb:1AAY/experiment
+- workflow_id: pdb:1AAY/workflow/integration
+  experiment_id: pdb:1AAY/experiment
+- workflow_id: pdb:1AAY/workflow/phasing
+  experiment_id: pdb:1AAY/experiment
+- workflow_id: pdb:1AAY/workflow/validation
+  experiment_id: pdb:1AAY/experiment
+study_person_associations:
+- study_id: pdb:1AAY/study
+  person_id: pdb:1AAY/person/1
+  role: author
+  author_position: 1
+- study_id: pdb:1AAY/study
+  person_id: pdb:1AAY/person/2
+  role: author
+  author_position: 2
+- study_id: pdb:1AAY/study
+  person_id: pdb:1AAY/person/3
+  role: author
+  author_position: 3
+study_publication_associations:
+- study_id: pdb:1AAY/study
+  publication_id: doi:10.1016/S0969-2126(96)00125-6
+  is_primary: true
+- study_id: pdb:1AAY/study
+  publication_id: pdb:1AAY/citation/1
+  is_primary: false

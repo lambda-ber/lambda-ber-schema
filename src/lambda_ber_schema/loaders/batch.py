@@ -20,7 +20,7 @@ from typing import Any
 
 import yaml
 
-from lambda_ber_schema.loaders.base import BaseLoader, LoaderResult
+from lambda_ber_schema.loaders.base import BaseLoader, LoaderResult, dataset_to_dict
 from lambda_ber_schema.loaders.cache import ResponseCache
 
 logger = logging.getLogger(__name__)
@@ -268,7 +268,7 @@ class BatchLoader:
 
     def _serialize(self, result: LoaderResult, format: str) -> str:
         """Serialize dataset to requested format."""
-        data = result.dataset.model_dump(exclude_none=True, mode="json")
+        data = dataset_to_dict(result.dataset)
 
         if format == "json":
             return json.dumps(data, indent=2)

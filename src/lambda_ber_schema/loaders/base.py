@@ -52,6 +52,18 @@ def uniprot_curie(accession: str) -> str | None:
     return f"uniprot:{accession}"
 
 
+def dataset_to_dict(dataset: Dataset) -> dict[str, Any]:
+    """
+    A Dataset as plain JSON-ready data, None values left out.
+
+    A list typed as a base class (Dataset.instruments holds Instrument) may hold subclass
+    rows (CryoEMInstrument, XRayInstrument). Pydantic serializes by the declared type unless
+    told otherwise, which would silently drop every subclass field, so this asks it to
+    serialize each row as what it is.
+    """
+    return dataset.model_dump(exclude_none=True, mode="json", serialize_as_any=True)
+
+
 #: Letters the schema's NucleicAcid.nucleotide_sequence pattern accepts: the four bases of
 #: each polymer, the IUPAC ambiguity codes, and I for inosine.
 NUCLEOTIDE_LETTERS = frozenset("ACGTURYKMSWBDHVNI")
