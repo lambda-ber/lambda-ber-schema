@@ -1,0 +1,128 @@
+id: pdb:7ZYI
+title: Structure of the human sodium/bile acid cotransporter (NTCP) in complex with
+  Fab and nanobody
+studies:
+- id: pdb:7ZYI/study
+  title: Structure of the human sodium/bile acid cotransporter (NTCP) in complex with
+    Fab and nanobody
+instruments:
+- id: pdb:instrument/PDB-7ZYI
+  title: Unknown
+  instrument_code: PDB-7ZYI
+proteins:
+- id: uniprot:Q14973
+  title: Hepatic sodium/bile acid cotransporter
+  uniprot_id: uniprot:Q14973
+  protein_name: Hepatic sodium/bile acid cotransporter
+  gene_name: SLC10A1
+  organism: NCBITaxon:9606
+  organism_name: Homo sapiens
+  pdb_entries:
+  - pdb:7ZYI
+samples:
+- id: pdb:7ZYI/sample/1
+  title: Sodium/bile acid cotransporter
+  description: 'Organism: Homo sapiens; Sequence length: 349'
+  sample_code: PDB-7ZYI-1
+  sample_type: protein
+  molecular_weight:
+    numeric_value: 38.15
+    unit: kDa
+  organism: NCBITaxon:9606
+  database_cross_references:
+  - database_name: uniprot
+    database_id: Q14973
+    database_url: https://www.uniprot.org/uniprotkb/Q14973
+  protein_name: Sodium/bile acid cotransporter
+- id: pdb:7ZYI/sample/2
+  title: heavy chain of Fab
+  description: 'Organism: Mus musculus; Sequence length: 238'
+  sample_code: PDB-7ZYI-2
+  sample_type: protein
+  molecular_weight:
+    numeric_value: 25.58
+    unit: kDa
+  organism: NCBITaxon:10090
+  protein_name: heavy chain of Fab
+- id: pdb:7ZYI/sample/3
+  title: light chain of Fab
+  description: 'Organism: Mus musculus; Sequence length: 215'
+  sample_code: PDB-7ZYI-3
+  sample_type: protein
+  molecular_weight:
+    numeric_value: 23.42
+    unit: kDa
+  organism: NCBITaxon:10090
+  protein_name: light chain of Fab
+- id: pdb:7ZYI/sample/4
+  title: Nanobody
+  description: 'Organism: Lama glama; Sequence length: 120'
+  sample_code: PDB-7ZYI-4
+  sample_type: protein
+  molecular_weight:
+    numeric_value: 13.12
+    unit: kDa
+  organism: NCBITaxon:9844
+  protein_name: Nanobody
+experiment_runs:
+- id: pdb:7ZYI/experiment
+  experiment_code: PDB-7ZYI-EXP
+  experiment_date: '2022-05-24'
+  technique: cryo_em
+  quality_metrics:
+    resolution:
+      numeric_value: 2.88
+      unit: Angstroms
+    clashscore:
+      numeric_value: 8.6
+      unit: dimensionless
+workflow_runs: []
+data_files:
+- id: pdb:7ZYI/file/pdb
+  description: PDB format coordinates
+  file_name: 7zyi.pdb
+  file_path: https://files.rcsb.org/download/7ZYI.pdb
+  file_format: pdb
+- id: pdb:7ZYI/file/mmcif
+  description: mmCIF format coordinates
+  file_name: 7zyi.cif
+  file_path: https://files.rcsb.org/download/7ZYI.cif
+  file_format: mmcif
+- id: pdb:7ZYI/file/sf
+  description: Structure factors
+  file_name: 7zyi-sf.cif
+  file_path: https://files.rcsb.org/download/7ZYI-sf.cif
+  file_format: mmcif
+study_sample_associations:
+- study_id: pdb:7ZYI/study
+  sample_id: pdb:7ZYI/sample/1
+- study_id: pdb:7ZYI/study
+  sample_id: pdb:7ZYI/sample/2
+- study_id: pdb:7ZYI/study
+  sample_id: pdb:7ZYI/sample/3
+- study_id: pdb:7ZYI/study
+  sample_id: pdb:7ZYI/sample/4
+study_experiment_associations:
+- study_id: pdb:7ZYI/study
+  experiment_id: pdb:7ZYI/experiment
+experiment_sample_associations:
+- experiment_id: pdb:7ZYI/experiment
+  sample_id: pdb:7ZYI/sample/1
+- experiment_id: pdb:7ZYI/experiment
+  sample_id: pdb:7ZYI/sample/2
+- experiment_id: pdb:7ZYI/experiment
+  sample_id: pdb:7ZYI/sample/3
+- experiment_id: pdb:7ZYI/experiment
+  sample_id: pdb:7ZYI/sample/4
+experiment_instrument_associations:
+- experiment_id: pdb:7ZYI/experiment
+  instrument_id: pdb:instrument/PDB-7ZYI
+sample_protein_associations:
+- sample_id: pdb:7ZYI/sample/1
+  protein_id: uniprot:Q14973
+  role: subunit
+  copy_number: 1
+  sequence_coverage: 1.0
+  chain_ids:
+  - A
+workflow_experiment_associations: []
