@@ -1,5 +1,5 @@
 # Auto generated from lambda_ber_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-10-04T21:04:36
+# Generation date: 2026-10-04T22:07:53
 # Schema: lambda-ber-schema
 #
 # id: http://w3id.org/lambda/
@@ -1603,6 +1603,8 @@ class SampleComponent(NamedThing):
     id: Union[str, SampleComponentId] = None
     sample_id: Union[str, SampleId] = None
     component_type: Union[str, "SampleComponentTypeEnum"] = None
+    additional_metrics: Optional[Union[Union[dict, "QuantityValue"], list[Union[dict, "QuantityValue"]]]] = empty_list()
+    additional_properties: Optional[Union[Union[dict, "TextValue"], list[Union[dict, "TextValue"]]]] = empty_list()
     protein_id: Optional[Union[str, ProteinId]] = None
     nucleic_acid_id: Optional[Union[str, NucleicAcidId]] = None
     small_molecule_id: Optional[Union[str, SmallMoleculeId]] = None
@@ -1626,6 +1628,14 @@ class SampleComponent(NamedThing):
             self.MissingRequiredField("component_type")
         if not isinstance(self.component_type, SampleComponentTypeEnum):
             self.component_type = SampleComponentTypeEnum(self.component_type)
+
+        if not isinstance(self.additional_metrics, list):
+            self.additional_metrics = [self.additional_metrics] if self.additional_metrics is not None else []
+        self.additional_metrics = [v if isinstance(v, QuantityValue) else QuantityValue(**as_dict(v)) for v in self.additional_metrics]
+
+        if not isinstance(self.additional_properties, list):
+            self.additional_properties = [self.additional_properties] if self.additional_properties is not None else []
+        self.additional_properties = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.additional_properties]
 
         if self.protein_id is not None and not isinstance(self.protein_id, ProteinId):
             self.protein_id = ProteinId(self.protein_id)

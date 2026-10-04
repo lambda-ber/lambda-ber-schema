@@ -2236,6 +2236,8 @@ type SampleComponent
     id: Uriorcurie!
     title: String
     description: String
+    additionalMetrics: [QuantityValue]
+    additionalProperties: [TextValue]
     sampleId: Sample!
     componentType: SampleComponentTypeEnum!
     proteinId: Protein

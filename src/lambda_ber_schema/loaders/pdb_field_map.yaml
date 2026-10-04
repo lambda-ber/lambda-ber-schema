@@ -904,3 +904,89 @@ interface:
   rcsb_interface_info.interface_character: {derived: "hetero or homo follows from the partners"}
   rcsb_interface_info.self_jaccard_contact_score: {linked_file: "symmetry score computed from the coordinates in the mmCIF file"}
   rcsb_interface_info.polymer_composition: {derived: "follows from the partners' types"}
+
+nonpolymer_entity_instance:
+  rcsb_id: {join: "entry and label chain id of the copy"}
+  rcsb_latest_revision: {bookkeeping: "revision of the instance record"}
+  struct_asym: {join: "label chain id of the copy"}
+  rcsb_nonpolymer_entity_instance_container_identifiers: {join: "ids of the copy and its entity"}
+  rcsb_nonpolymer_entity_instance_container_identifiers.auth_asym_id: {to: "SampleComponentInteraction.description", as: "written into the copy's label, as CHO A 401"}
+  rcsb_nonpolymer_entity_instance_container_identifiers.auth_seq_id: {to: "SampleComponentInteraction.description", as: "written into the copy's label, as CHO A 401"}
+  rcsb_target_neighbors[].target_entity_id: {to: "SampleComponentInteraction.object_id", as: "each polymer the copy touches becomes the object of one interaction"}
+  rcsb_target_neighbors[].target_comp_id: {to: "SampleComponentInteraction.object_site", as: "written with the residue number as Y58"}
+  rcsb_target_neighbors[].target_seq_id: {to: "SampleComponentInteraction.object_site", as: "written with the residue's one-letter code as Y58"}
+  rcsb_target_neighbors[].target_auth_seq_id: {derived: "the author number of the residue carried by target_seq_id"}
+  rcsb_target_neighbors[].comp_id: {derived: "the component code, carried"}
+  rcsb_target_neighbors[].target_asym_id: {join: "label chain id of the residue"}
+  rcsb_target_neighbors[].target_model_id: {join: "model number"}
+  rcsb_target_neighbors[].target_is_bound: {derived: "Y exactly when a struct_conn bond joins the pair, carried as the interaction type"}
+  rcsb_target_neighbors[].atom_id: {linked_file: "atom-level contacts, in the mmCIF coordinates"}
+  rcsb_target_neighbors[].target_atom_id: {linked_file: "atom-level contacts, in the mmCIF coordinates"}
+  rcsb_target_neighbors[].distance: {linked_file: "atom-level contacts, in the mmCIF coordinates"}
+  rcsb_target_neighbors[].alt_id: {linked_file: "alternate conformer ids, in the mmCIF coordinates"}
+  rcsb_nonpolymer_struct_conn[].connect_type: {to: "SampleComponentInteraction.interaction_type", as: "metal coordination becomes is_coordinated_by, a covalent bond covalently_linked_to"}
+  rcsb_nonpolymer_struct_conn[].connect_target.label_comp_id: {to: "SampleComponentInteraction.object_site", as: "written with the residue number as Q68"}
+  rcsb_nonpolymer_struct_conn[].connect_target.label_seq_id: {to: "SampleComponentInteraction.object_site", as: "written with the residue's one-letter code as Q68"}
+  rcsb_nonpolymer_struct_conn[].connect_target.label_asym_id: {join: "label chain id of the bonded residue"}
+  rcsb_nonpolymer_struct_conn[].connect_target.auth_asym_id: {join: "author chain id of the bonded residue"}
+  rcsb_nonpolymer_struct_conn[].connect_target.auth_seq_id: {derived: "the author number of the residue carried by label_seq_id"}
+  rcsb_nonpolymer_struct_conn[].connect_target.label_atom_id: {linked_file: "the bonded atom, in the mmCIF coordinates"}
+  rcsb_nonpolymer_struct_conn[].connect_target.label_alt_id: {linked_file: "alternate conformer id, in the mmCIF coordinates"}
+  rcsb_nonpolymer_struct_conn[].connect_target.symmetry: {linked_file: "symmetry operator of the partner, in the mmCIF coordinates"}
+  rcsb_nonpolymer_struct_conn[].connect_partner: {join: "the copy itself"}
+  rcsb_nonpolymer_struct_conn[].dist_value: {linked_file: "bond length, in the mmCIF coordinates"}
+  rcsb_nonpolymer_struct_conn[].value_order: {linked_file: "bond order, in the mmCIF coordinates"}
+  rcsb_nonpolymer_struct_conn[].id: {join: "bond id"}
+  rcsb_nonpolymer_struct_conn[].ordinal_id: {join: "bond row order"}
+  rcsb_nonpolymer_struct_conn[].role: {to: "SampleComponentInteraction.description"}
+  rcsb_nonpolymer_struct_conn[].description: {to: "SampleComponentInteraction.description"}
+  rcsb_nonpolymer_instance_validation_score: {metric: "SampleComponent"}
+  rcsb_nonpolymer_instance_validation_score[].is_subject_of_investigation: {to: "SampleComponent.role", as: "Y makes the component's role ligand"}
+  rcsb_nonpolymer_instance_validation_score[].type: {join: "names the score set"}
+  rcsb_nonpolymer_instance_validation_score[].alt_id: {join: "alternate conformer the scores are for"}
+  pdbx_vrpt_summary_entity_geometry: {metric: "SampleComponent"}
+  pdbx_vrpt_summary_entity_geometry[].PDB_model_num: {join: "model number"}
+  pdbx_struct_special_symmetry: {linked_file: "atoms on special positions, in the mmCIF coordinates"}
+  rcsb_nonpolymer_instance_annotation: {derived: "per-copy copy of the entity annotations, carried"}
+  rcsb_nonpolymer_instance_feature: {linked_file: "per-atom geometry and fit outliers, in the validation report"}
+  rcsb_nonpolymer_instance_feature_summary: {derived: "counts of the features"}
+
+polymer_entity_instance:
+  rcsb_id: {join: "entry and label chain id of the chain"}
+  rcsb_latest_revision: {bookkeeping: "revision of the instance record"}
+  struct_asym: {join: "label chain id of the chain"}
+  rcsb_polymer_entity_instance_container_identifiers: {join: "ids of the chain and its entity"}
+  rcsb_polymer_entity_instance_container_identifiers.auth_to_entity_poly_seq_mapping: {linked_file: "author-to-sequence residue numbering, in the mmCIF coordinates"}
+  rcsb_polymer_struct_conn: {to: "SampleComponentInteraction.interaction_type", as: "a bond between two polymer entities becomes a covalently_linked_to interaction with its residues as sites; bonds within one chain, and the ligand bonds also listed on the ligand side, are in the mmCIF coordinates"}
+  rcsb_ligand_neighbors: {derived: "the same contacts as rcsb_target_neighbors on the ligand copy, carried from that side"}
+  pdbx_modification_feature[].type: {to: "SampleProteinAssociation.modifications", as: "written with the residue as N-Glycosylation N61"}
+  pdbx_modification_feature[].category: {to: "SampleProteinAssociation.modifications"}
+  pdbx_modification_feature[].modified_residue_label_comp_id: {to: "SampleProteinAssociation.modifications", as: "written with the residue as N-Glycosylation N61"}
+  pdbx_modification_feature[].modified_residue_label_seq_id: {to: "SampleProteinAssociation.modifications", as: "written with the residue as N-Glycosylation N61"}
+  pdbx_modification_feature[].label_comp_id: {to: "SampleProteinAssociation.modifications", as: "the attached group, written after the residue"}
+  pdbx_modification_feature: {linked_file: "atoms and operators of the modification, in the mmCIF coordinates"}
+  pdbx_vrpt_summary_entity_fit_to_map: {metric: "SampleComponent"}
+  pdbx_vrpt_summary_entity_fit_to_map[].PDB_model_num: {join: "model number"}
+  pdbx_vrpt_summary_entity_geometry: {metric: "SampleComponent"}
+  pdbx_vrpt_summary_entity_geometry[].PDB_model_num: {join: "model number"}
+  pdbx_struct_special_symmetry: {linked_file: "atoms on special positions, in the mmCIF coordinates"}
+  rcsb_polymer_instance_annotation: {reference: "domain classifications (CATH, SCOP, ECOD) of the chain, from external resources"}
+  rcsb_polymer_instance_feature: {linked_file: "per-residue features computed from the coordinates: secondary structure, unmodelled residues, validation outliers, membrane segments"}
+  rcsb_polymer_instance_feature_summary: {derived: "counts of the features"}
+  rcsb_polymer_instance_info: {linked_file: "modelled residue count, computed from the coordinates"}
+
+branched_entity_instance:
+  rcsb_id: {join: "entry and label chain id of the copy"}
+  rcsb_latest_revision: {bookkeeping: "revision of the instance record"}
+  struct_asym: {join: "label chain id of the copy"}
+  rcsb_branched_entity_instance_container_identifiers: {join: "ids of the copy and its entity"}
+  rcsb_branched_entity_instance_container_identifiers.auth_asym_id: {to: "SampleComponentInteraction.description", as: "written into the copy's label, as CHO A 401"}
+  rcsb_branched_struct_conn: {linked_file: "bonds within the glycan and their atoms, in the mmCIF coordinates"}
+  rcsb_branched_struct_conn[].connect_type: {to: "SampleComponentInteraction.interaction_type", as: "a covalent bond to a polymer residue becomes covalently_linked_to"}
+  rcsb_branched_struct_conn[].connect_target.label_comp_id: {to: "SampleComponentInteraction.object_site", as: "the polymer residue the glycan is attached to, written as N61"}
+  rcsb_branched_struct_conn[].connect_target.label_seq_id: {to: "SampleComponentInteraction.object_site", as: "the polymer residue the glycan is attached to, written as N61"}
+  rcsb_ligand_neighbors: {linked_file: "contacts of the glycan with other ligands, computed from the coordinates"}
+  pdbx_struct_special_symmetry: {linked_file: "atoms on special positions, in the mmCIF coordinates"}
+  rcsb_branched_instance_annotation: {reference: "glycan annotation from external resources"}
+  rcsb_branched_instance_feature: {linked_file: "per-residue validation and geometry of the glycan, in the validation report"}
+  rcsb_branched_instance_feature_summary: {derived: "counts of the features"}

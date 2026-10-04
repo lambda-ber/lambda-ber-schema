@@ -309,6 +309,27 @@ samples:
 sample_components:
 - id: pdb:1AAY/component/1
   title: DNA (5'-D(*AP*GP*CP*GP*TP*GP*GP*GP*CP*GP*T)-3')
+  additional_metrics:
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_entity_geometry.angles_RMSZ
+      label: pdbx_vrpt_summary_entity_geometry[A].angles_RMSZ
+    numeric_value: 1.27
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_entity_geometry.bonds_RMSZ
+      label: pdbx_vrpt_summary_entity_geometry[A].bonds_RMSZ
+    numeric_value: 0.53
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_entity_geometry.num_angles_RMSZ
+      label: pdbx_vrpt_summary_entity_geometry[A].num_angles_RMSZ
+    numeric_value: 395.0
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_entity_geometry.num_bonds_RMSZ
+      label: pdbx_vrpt_summary_entity_geometry[A].num_bonds_RMSZ
+    numeric_value: 256.0
+    unit: unspecified
   sample_id: pdb:1AAY/sample
   component_type: nucleic_acid
   nucleic_acid_id: pdb:1AAY/nucleic_acid/1
@@ -316,6 +337,27 @@ sample_components:
   copy_number: 1
 - id: pdb:1AAY/component/2
   title: DNA (5'-D(*TP*AP*CP*GP*CP*CP*CP*AP*CP*GP*C)-3')
+  additional_metrics:
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_entity_geometry.angles_RMSZ
+      label: pdbx_vrpt_summary_entity_geometry[B].angles_RMSZ
+    numeric_value: 1.41
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_entity_geometry.bonds_RMSZ
+      label: pdbx_vrpt_summary_entity_geometry[B].bonds_RMSZ
+    numeric_value: 0.57
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_entity_geometry.num_angles_RMSZ
+      label: pdbx_vrpt_summary_entity_geometry[B].num_angles_RMSZ
+    numeric_value: 370.0
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_entity_geometry.num_bonds_RMSZ
+      label: pdbx_vrpt_summary_entity_geometry[B].num_bonds_RMSZ
+    numeric_value: 242.0
+    unit: unspecified
   sample_id: pdb:1AAY/sample
   component_type: nucleic_acid
   nucleic_acid_id: pdb:1AAY/nucleic_acid/2
@@ -323,6 +365,27 @@ sample_components:
   copy_number: 1
 - id: pdb:1AAY/component/3
   title: PROTEIN (ZIF268 ZINC FINGER PEPTIDE)
+  additional_metrics:
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_entity_geometry.angles_RMSZ
+      label: pdbx_vrpt_summary_entity_geometry[C].angles_RMSZ
+    numeric_value: 1.05
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_entity_geometry.bonds_RMSZ
+      label: pdbx_vrpt_summary_entity_geometry[C].bonds_RMSZ
+    numeric_value: 0.43
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_entity_geometry.num_angles_RMSZ
+      label: pdbx_vrpt_summary_entity_geometry[C].num_angles_RMSZ
+    numeric_value: 1030.0
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_entity_geometry.num_bonds_RMSZ
+      label: pdbx_vrpt_summary_entity_geometry[C].num_bonds_RMSZ
+    numeric_value: 771.0
+    unit: unspecified
   sample_id: pdb:1AAY/sample
   component_type: protein
   protein_id: uniprot:P08046
@@ -330,6 +393,95 @@ sample_components:
   copy_number: 1
 - id: pdb:1AAY/component/4
   title: ZINC ION
+  additional_metrics:
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.completeness
+      label: rcsb_nonpolymer_instance_validation_score[D].completeness
+    numeric_value: 1.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.intermolecular_clashes
+      label: rcsb_nonpolymer_instance_validation_score[D].intermolecular_clashes
+    numeric_value: 0.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.mogul_angle_outliers
+      label: rcsb_nonpolymer_instance_validation_score[D].mogul_angle_outliers
+    numeric_value: 0.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.mogul_bond_outliers
+      label: rcsb_nonpolymer_instance_validation_score[D].mogul_bond_outliers
+    numeric_value: 0.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.stereo_outliers
+      label: rcsb_nonpolymer_instance_validation_score[D].stereo_outliers
+    numeric_value: 0.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.completeness
+      label: rcsb_nonpolymer_instance_validation_score[E].completeness
+    numeric_value: 1.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.intermolecular_clashes
+      label: rcsb_nonpolymer_instance_validation_score[E].intermolecular_clashes
+    numeric_value: 0.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.mogul_angle_outliers
+      label: rcsb_nonpolymer_instance_validation_score[E].mogul_angle_outliers
+    numeric_value: 0.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.mogul_bond_outliers
+      label: rcsb_nonpolymer_instance_validation_score[E].mogul_bond_outliers
+    numeric_value: 0.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.stereo_outliers
+      label: rcsb_nonpolymer_instance_validation_score[E].stereo_outliers
+    numeric_value: 0.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.completeness
+      label: rcsb_nonpolymer_instance_validation_score[F].completeness
+    numeric_value: 1.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.intermolecular_clashes
+      label: rcsb_nonpolymer_instance_validation_score[F].intermolecular_clashes
+    numeric_value: 0.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.mogul_angle_outliers
+      label: rcsb_nonpolymer_instance_validation_score[F].mogul_angle_outliers
+    numeric_value: 0.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.mogul_bond_outliers
+      label: rcsb_nonpolymer_instance_validation_score[F].mogul_bond_outliers
+    numeric_value: 0.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.stereo_outliers
+      label: rcsb_nonpolymer_instance_validation_score[F].stereo_outliers
+    numeric_value: 0.0
+    unit: unspecified
+  additional_properties:
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.is_best_instance
+      label: rcsb_nonpolymer_instance_validation_score[D].is_best_instance
+    value: N
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.is_best_instance
+      label: rcsb_nonpolymer_instance_validation_score[E].is_best_instance
+    value: N
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.is_best_instance
+      label: rcsb_nonpolymer_instance_validation_score[F].is_best_instance
+    value: Y
   sample_id: pdb:1AAY/sample
   component_type: small_molecule
   small_molecule_id: pdb.ligand:ZN
@@ -847,9 +999,44 @@ sample_component_interactions:
   object_id: pdb:1AAY/component/3
   interaction_type: is_coordinated_by
   interaction_status: observed
+  stoichiometry: '1:1'
+  object_site: C7,C12,H25,H29
   evidence:
   - experimental
-  description: Modelled on chain A in the deposited structure
+  description: Copy ZN A 201 (label chain D) in the deposited model; site residues
+    are those within contact distance; bonded to C12, C7, H25, H29
+- sample_id: pdb:1AAY/sample
+  subject_id: pdb:1AAY/component/4
+  object_id: pdb:1AAY/component/3
+  interaction_type: is_coordinated_by
+  interaction_status: observed
+  stoichiometry: '1:1'
+  object_site: C37,C40,H53,H57
+  evidence:
+  - experimental
+  description: Copy ZN A 202 (label chain E) in the deposited model; site residues
+    are those within contact distance; bonded to C37, C40, H53, H57
+- sample_id: pdb:1AAY/sample
+  subject_id: pdb:1AAY/component/4
+  object_id: pdb:1AAY/component/3
+  interaction_type: is_coordinated_by
+  interaction_status: observed
+  stoichiometry: '1:1'
+  object_site: C65,C68,H81,H85
+  evidence:
+  - experimental
+  description: Copy ZN A 203 (label chain F) in the deposited model; site residues
+    are those within contact distance; bonded to C65, C68, H81, H85
+- sample_id: pdb:1AAY/sample
+  subject_id: pdb:1AAY/component/2
+  object_id: pdb:1AAY/component/1
+  interaction_type: covalently_linked_to
+  interaction_status: observed
+  subject_site: A2,C3,G4,C5,C6,C7,A8,C9,G10,C11
+  object_site: G2,C3,G4,T5,G6,G7,G8,C9,G10,T11
+  evidence:
+  - experimental
+  description: hydrogen bond between the chains in the deposited model
 - sample_id: pdb:1AAY/sample
   subject_id: pdb:1AAY/component/1
   object_id: pdb:1AAY/component/3

@@ -483,6 +483,37 @@ samples:
 sample_components:
 - id: pdb:7ZYI/component/1
   title: Sodium/bile acid cotransporter
+  additional_metrics:
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_entity_fit_to_map.Q_score
+      label: pdbx_vrpt_summary_entity_fit_to_map[A].Q_score
+    numeric_value: 0.54
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_entity_fit_to_map.average_residue_inclusion
+      label: pdbx_vrpt_summary_entity_fit_to_map[A].average_residue_inclusion
+    numeric_value: 0.7311
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_entity_geometry.angles_RMSZ
+      label: pdbx_vrpt_summary_entity_geometry[A].angles_RMSZ
+    numeric_value: 0.42
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_entity_geometry.bonds_RMSZ
+      label: pdbx_vrpt_summary_entity_geometry[A].bonds_RMSZ
+    numeric_value: 0.21
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_entity_geometry.num_angles_RMSZ
+      label: pdbx_vrpt_summary_entity_geometry[A].num_angles_RMSZ
+    numeric_value: 3105.0
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_entity_geometry.num_bonds_RMSZ
+      label: pdbx_vrpt_summary_entity_geometry[A].num_bonds_RMSZ
+    numeric_value: 2295.0
+    unit: unspecified
   sample_id: pdb:7ZYI/sample
   component_type: protein
   protein_id: uniprot:Q14973
@@ -490,6 +521,37 @@ sample_components:
   copy_number: 1
 - id: pdb:7ZYI/component/2
   title: heavy chain of Fab
+  additional_metrics:
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_entity_fit_to_map.Q_score
+      label: pdbx_vrpt_summary_entity_fit_to_map[B].Q_score
+    numeric_value: 0.514
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_entity_fit_to_map.average_residue_inclusion
+      label: pdbx_vrpt_summary_entity_fit_to_map[B].average_residue_inclusion
+    numeric_value: 0.6062
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_entity_geometry.angles_RMSZ
+      label: pdbx_vrpt_summary_entity_geometry[B].angles_RMSZ
+    numeric_value: 0.37
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_entity_geometry.bonds_RMSZ
+      label: pdbx_vrpt_summary_entity_geometry[B].bonds_RMSZ
+    numeric_value: 0.17
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_entity_geometry.num_angles_RMSZ
+      label: pdbx_vrpt_summary_entity_geometry[B].num_angles_RMSZ
+    numeric_value: 2396.0
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_entity_geometry.num_bonds_RMSZ
+      label: pdbx_vrpt_summary_entity_geometry[B].num_bonds_RMSZ
+    numeric_value: 1759.0
+    unit: unspecified
   sample_id: pdb:7ZYI/sample
   component_type: protein
   protein_id: pdb:7ZYI/protein/2
@@ -497,6 +559,37 @@ sample_components:
   copy_number: 1
 - id: pdb:7ZYI/component/3
   title: light chain of Fab
+  additional_metrics:
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_entity_fit_to_map.Q_score
+      label: pdbx_vrpt_summary_entity_fit_to_map[C].Q_score
+    numeric_value: 0.517
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_entity_fit_to_map.average_residue_inclusion
+      label: pdbx_vrpt_summary_entity_fit_to_map[C].average_residue_inclusion
+    numeric_value: 0.576
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_entity_geometry.angles_RMSZ
+      label: pdbx_vrpt_summary_entity_geometry[C].angles_RMSZ
+    numeric_value: 0.31
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_entity_geometry.bonds_RMSZ
+      label: pdbx_vrpt_summary_entity_geometry[C].bonds_RMSZ
+    numeric_value: 0.14
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_entity_geometry.num_angles_RMSZ
+      label: pdbx_vrpt_summary_entity_geometry[C].num_angles_RMSZ
+    numeric_value: 2258.0
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_entity_geometry.num_bonds_RMSZ
+      label: pdbx_vrpt_summary_entity_geometry[C].num_bonds_RMSZ
+    numeric_value: 1662.0
+    unit: unspecified
   sample_id: pdb:7ZYI/sample
   component_type: protein
   protein_id: pdb:7ZYI/protein/3
@@ -504,6 +597,37 @@ sample_components:
   copy_number: 1
 - id: pdb:7ZYI/component/4
   title: Nanobody
+  additional_metrics:
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_entity_fit_to_map.Q_score
+      label: pdbx_vrpt_summary_entity_fit_to_map[D].Q_score
+    numeric_value: 0.357
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_entity_fit_to_map.average_residue_inclusion
+      label: pdbx_vrpt_summary_entity_fit_to_map[D].average_residue_inclusion
+    numeric_value: 0.1116
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_entity_geometry.angles_RMSZ
+      label: pdbx_vrpt_summary_entity_geometry[D].angles_RMSZ
+    numeric_value: 0.19
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_entity_geometry.bonds_RMSZ
+      label: pdbx_vrpt_summary_entity_geometry[D].bonds_RMSZ
+    numeric_value: 0.06
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_entity_geometry.num_angles_RMSZ
+      label: pdbx_vrpt_summary_entity_geometry[D].num_angles_RMSZ
+    numeric_value: 1290.0
+    unit: unspecified
+  - attribute:
+      id: mmCIF:_pdbx_vrpt_summary_entity_geometry.num_bonds_RMSZ
+      label: pdbx_vrpt_summary_entity_geometry[D].num_bonds_RMSZ
+    numeric_value: 955.0
+    unit: unspecified
   sample_id: pdb:7ZYI/sample
   component_type: protein
   protein_id: pdb:7ZYI/protein/4
@@ -511,6 +635,136 @@ sample_components:
   copy_number: 1
 - id: pdb:7ZYI/component/5
   title: CHOLESTEROL
+  additional_metrics:
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.Q_score
+      label: rcsb_nonpolymer_instance_validation_score[E].Q_score
+    numeric_value: 0.499
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.completeness
+      label: rcsb_nonpolymer_instance_validation_score[E].completeness
+    numeric_value: 1.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.intermolecular_clashes
+      label: rcsb_nonpolymer_instance_validation_score[E].intermolecular_clashes
+    numeric_value: 6.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.mogul_angle_outliers
+      label: rcsb_nonpolymer_instance_validation_score[E].mogul_angle_outliers
+    numeric_value: 0.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.mogul_angles_RMSZ
+      label: rcsb_nonpolymer_instance_validation_score[E].mogul_angles_RMSZ
+    numeric_value: 0.57
+    unit: degrees
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.mogul_bond_outliers
+      label: rcsb_nonpolymer_instance_validation_score[E].mogul_bond_outliers
+    numeric_value: 0.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.mogul_bonds_RMSZ
+      label: rcsb_nonpolymer_instance_validation_score[E].mogul_bonds_RMSZ
+    numeric_value: 0.32
+    unit: Angstroms
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.num_mogul_angles_RMSZ
+      label: rcsb_nonpolymer_instance_validation_score[E].num_mogul_angles_RMSZ
+    numeric_value: 48.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.num_mogul_bonds_RMSZ
+      label: rcsb_nonpolymer_instance_validation_score[E].num_mogul_bonds_RMSZ
+    numeric_value: 31.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.ranking_model_geometry
+      label: rcsb_nonpolymer_instance_validation_score[E].ranking_model_geometry
+    numeric_value: 0.7365
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.score_model_geometry
+      label: rcsb_nonpolymer_instance_validation_score[E].score_model_geometry
+    numeric_value: -1.0061
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.stereo_outliers
+      label: rcsb_nonpolymer_instance_validation_score[E].stereo_outliers
+    numeric_value: 0.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.Q_score
+      label: rcsb_nonpolymer_instance_validation_score[H].Q_score
+    numeric_value: 0.34
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.completeness
+      label: rcsb_nonpolymer_instance_validation_score[H].completeness
+    numeric_value: 1.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.intermolecular_clashes
+      label: rcsb_nonpolymer_instance_validation_score[H].intermolecular_clashes
+    numeric_value: 42.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.mogul_angle_outliers
+      label: rcsb_nonpolymer_instance_validation_score[H].mogul_angle_outliers
+    numeric_value: 3.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.mogul_angles_RMSZ
+      label: rcsb_nonpolymer_instance_validation_score[H].mogul_angles_RMSZ
+    numeric_value: 0.99
+    unit: degrees
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.mogul_bond_outliers
+      label: rcsb_nonpolymer_instance_validation_score[H].mogul_bond_outliers
+    numeric_value: 0.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.mogul_bonds_RMSZ
+      label: rcsb_nonpolymer_instance_validation_score[H].mogul_bonds_RMSZ
+    numeric_value: 0.32
+    unit: Angstroms
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.num_mogul_angles_RMSZ
+      label: rcsb_nonpolymer_instance_validation_score[H].num_mogul_angles_RMSZ
+    numeric_value: 48.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.num_mogul_bonds_RMSZ
+      label: rcsb_nonpolymer_instance_validation_score[H].num_mogul_bonds_RMSZ
+    numeric_value: 31.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.ranking_model_geometry
+      label: rcsb_nonpolymer_instance_validation_score[H].ranking_model_geometry
+    numeric_value: 0.6036
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.score_model_geometry
+      label: rcsb_nonpolymer_instance_validation_score[H].score_model_geometry
+    numeric_value: -0.6646
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.stereo_outliers
+      label: rcsb_nonpolymer_instance_validation_score[H].stereo_outliers
+    numeric_value: 0.0
+    unit: unspecified
+  additional_properties:
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.is_best_instance
+      label: rcsb_nonpolymer_instance_validation_score[E].is_best_instance
+    value: N
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.is_best_instance
+      label: rcsb_nonpolymer_instance_validation_score[H].is_best_instance
+    value: Y
   sample_id: pdb:7ZYI/sample
   component_type: small_molecule
   small_molecule_id: pdb.ligand:CLR
@@ -518,6 +772,144 @@ sample_components:
 - id: pdb:7ZYI/component/6
   title: GLYCOCHENODEOXYCHOLIC ACID
   description: 'SUBJECT_OF_INVESTIGATION: Ligand targeted in this investigation'
+  additional_metrics:
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.Q_score
+      label: rcsb_nonpolymer_instance_validation_score[F].Q_score
+    numeric_value: 0.41
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.completeness
+      label: rcsb_nonpolymer_instance_validation_score[F].completeness
+    numeric_value: 1.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.intermolecular_clashes
+      label: rcsb_nonpolymer_instance_validation_score[F].intermolecular_clashes
+    numeric_value: 12.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.mogul_angle_outliers
+      label: rcsb_nonpolymer_instance_validation_score[F].mogul_angle_outliers
+    numeric_value: 19.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.mogul_angles_RMSZ
+      label: rcsb_nonpolymer_instance_validation_score[F].mogul_angles_RMSZ
+    numeric_value: 2.25
+    unit: degrees
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.mogul_bond_outliers
+      label: rcsb_nonpolymer_instance_validation_score[F].mogul_bond_outliers
+    numeric_value: 18.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.mogul_bonds_RMSZ
+      label: rcsb_nonpolymer_instance_validation_score[F].mogul_bonds_RMSZ
+    numeric_value: 6.6
+    unit: Angstroms
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.num_mogul_angles_RMSZ
+      label: rcsb_nonpolymer_instance_validation_score[F].num_mogul_angles_RMSZ
+    numeric_value: 54.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.num_mogul_bonds_RMSZ
+      label: rcsb_nonpolymer_instance_validation_score[F].num_mogul_bonds_RMSZ
+    numeric_value: 35.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.ranking_model_geometry
+      label: rcsb_nonpolymer_instance_validation_score[F].ranking_model_geometry
+    numeric_value: 0.0059
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.score_model_geometry
+      label: rcsb_nonpolymer_instance_validation_score[F].score_model_geometry
+    numeric_value: 5.1147
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.stereo_outliers
+      label: rcsb_nonpolymer_instance_validation_score[F].stereo_outliers
+    numeric_value: 0.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.Q_score
+      label: rcsb_nonpolymer_instance_validation_score[G].Q_score
+    numeric_value: 0.471
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.completeness
+      label: rcsb_nonpolymer_instance_validation_score[G].completeness
+    numeric_value: 1.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.intermolecular_clashes
+      label: rcsb_nonpolymer_instance_validation_score[G].intermolecular_clashes
+    numeric_value: 14.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.mogul_angle_outliers
+      label: rcsb_nonpolymer_instance_validation_score[G].mogul_angle_outliers
+    numeric_value: 18.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.mogul_angles_RMSZ
+      label: rcsb_nonpolymer_instance_validation_score[G].mogul_angles_RMSZ
+    numeric_value: 2.27
+    unit: degrees
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.mogul_bond_outliers
+      label: rcsb_nonpolymer_instance_validation_score[G].mogul_bond_outliers
+    numeric_value: 19.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.mogul_bonds_RMSZ
+      label: rcsb_nonpolymer_instance_validation_score[G].mogul_bonds_RMSZ
+    numeric_value: 6.57
+    unit: Angstroms
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.num_mogul_angles_RMSZ
+      label: rcsb_nonpolymer_instance_validation_score[G].num_mogul_angles_RMSZ
+    numeric_value: 54.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.num_mogul_bonds_RMSZ
+      label: rcsb_nonpolymer_instance_validation_score[G].num_mogul_bonds_RMSZ
+    numeric_value: 35.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.ranking_model_geometry
+      label: rcsb_nonpolymer_instance_validation_score[G].ranking_model_geometry
+    numeric_value: 0.0059
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.score_model_geometry
+      label: rcsb_nonpolymer_instance_validation_score[G].score_model_geometry
+    numeric_value: 5.1082
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.stereo_outliers
+      label: rcsb_nonpolymer_instance_validation_score[G].stereo_outliers
+    numeric_value: 0.0
+    unit: unspecified
+  additional_properties:
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.is_best_instance
+      label: rcsb_nonpolymer_instance_validation_score[F].is_best_instance
+    value: N
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.is_subject_of_investigation_provenance
+      label: rcsb_nonpolymer_instance_validation_score[F].is_subject_of_investigation_provenance
+    value: Author
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.is_best_instance
+      label: rcsb_nonpolymer_instance_validation_score[G].is_best_instance
+    value: Y
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.is_subject_of_investigation_provenance
+      label: rcsb_nonpolymer_instance_validation_score[G].is_subject_of_investigation_provenance
+    value: Author
   sample_id: pdb:7ZYI/sample
   component_type: small_molecule
   small_molecule_id: CHEBI:36274
@@ -525,6 +917,76 @@ sample_components:
   copy_number: 2
 - id: pdb:7ZYI/component/7
   title: SODIUM ION
+  additional_metrics:
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.Q_score
+      label: rcsb_nonpolymer_instance_validation_score[I].Q_score
+    numeric_value: 0.737
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.completeness
+      label: rcsb_nonpolymer_instance_validation_score[I].completeness
+    numeric_value: 1.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.intermolecular_clashes
+      label: rcsb_nonpolymer_instance_validation_score[I].intermolecular_clashes
+    numeric_value: 0.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.mogul_angle_outliers
+      label: rcsb_nonpolymer_instance_validation_score[I].mogul_angle_outliers
+    numeric_value: 0.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.mogul_bond_outliers
+      label: rcsb_nonpolymer_instance_validation_score[I].mogul_bond_outliers
+    numeric_value: 0.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.stereo_outliers
+      label: rcsb_nonpolymer_instance_validation_score[I].stereo_outliers
+    numeric_value: 0.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.Q_score
+      label: rcsb_nonpolymer_instance_validation_score[J].Q_score
+    numeric_value: 0.716
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.completeness
+      label: rcsb_nonpolymer_instance_validation_score[J].completeness
+    numeric_value: 1.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.intermolecular_clashes
+      label: rcsb_nonpolymer_instance_validation_score[J].intermolecular_clashes
+    numeric_value: 0.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.mogul_angle_outliers
+      label: rcsb_nonpolymer_instance_validation_score[J].mogul_angle_outliers
+    numeric_value: 0.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.mogul_bond_outliers
+      label: rcsb_nonpolymer_instance_validation_score[J].mogul_bond_outliers
+    numeric_value: 0.0
+    unit: unspecified
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.stereo_outliers
+      label: rcsb_nonpolymer_instance_validation_score[J].stereo_outliers
+    numeric_value: 0.0
+    unit: unspecified
+  additional_properties:
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.is_best_instance
+      label: rcsb_nonpolymer_instance_validation_score[I].is_best_instance
+    value: N
+  - attribute:
+      id: rcsb:rcsb_nonpolymer_instance_validation_score.is_best_instance
+      label: rcsb_nonpolymer_instance_validation_score[J].is_best_instance
+    value: Y
   sample_id: pdb:7ZYI/sample
   component_type: small_molecule
   small_molecule_id: pdb.ligand:NA
@@ -932,6 +1394,9 @@ sample_protein_associations:
   residue_range: 1-238
   chain_ids:
   - H
+  modifications:
+  - 'Disulfide bridge: C99'
+  - 'Disulfide bridge: C213'
 - sample_id: pdb:7ZYI/sample
   protein_id: pdb:7ZYI/protein/3
   role: subunit
@@ -940,6 +1405,8 @@ sample_protein_associations:
   residue_range: 1-215
   chain_ids:
   - L
+  modifications:
+  - 'Disulfide bridge: C89'
 - sample_id: pdb:7ZYI/sample
   protein_id: pdb:7ZYI/protein/4
   role: subunit
@@ -954,25 +1421,67 @@ sample_component_interactions:
   object_id: pdb:7ZYI/component/1
   interaction_type: binds
   interaction_status: observed
+  stoichiometry: '1:1'
+  object_site: S206,A207,V210,M215,F216,A217,M218,F284,L287,L288,I291
   evidence:
   - experimental
-  description: Modelled on chain A in the deposited structure
+  description: Copy CLR A 701 (label chain E) in the deposited model; site residues
+    are those within contact distance
+- sample_id: pdb:7ZYI/sample
+  subject_id: pdb:7ZYI/component/5
+  object_id: pdb:7ZYI/component/1
+  interaction_type: binds
+  interaction_status: observed
+  stoichiometry: '1:1'
+  object_site: F231,L235,Y238,G248,R251,R252,L300,I303,F304,Y307
+  evidence:
+  - experimental
+  description: Copy CLR A 704 (label chain H) in the deposited model; site residues
+    are those within contact distance
 - sample_id: pdb:7ZYI/sample
   subject_id: pdb:7ZYI/component/6
   object_id: pdb:7ZYI/component/1
   interaction_type: binds
   interaction_status: observed
+  stoichiometry: '1:1'
+  object_site: L27,L31,S199,V202,T203,S206,Q264,S267,L287,M290,I291,L294
   evidence:
   - experimental
-  description: Modelled on chain A in the deposited structure
+  description: Copy CHO A 702 (label chain F) in the deposited model; site residues
+    are those within contact distance
+- sample_id: pdb:7ZYI/sample
+  subject_id: pdb:7ZYI/component/6
+  object_id: pdb:7ZYI/component/1
+  interaction_type: binds
+  interaction_status: observed
+  stoichiometry: '1:1'
+  object_site: L31,V32,M34,L35,I38,N103,L104,V107,I195,S199,N262,Q264,M290,L294
+  evidence:
+  - experimental
+  description: Copy CHO A 703 (label chain G) in the deposited model; site residues
+    are those within contact distance
 - sample_id: pdb:7ZYI/sample
   subject_id: pdb:7ZYI/component/7
   object_id: pdb:7ZYI/component/1
   interaction_type: is_coordinated_by
   interaction_status: observed
+  stoichiometry: '1:1'
+  object_site: Q68,G97,S99,Q261
   evidence:
   - experimental
-  description: Modelled on chain A in the deposited structure
+  description: Copy NA A 705 (label chain I) in the deposited model; site residues
+    are those within contact distance; bonded to Q68
+- sample_id: pdb:7ZYI/sample
+  subject_id: pdb:7ZYI/component/7
+  object_id: pdb:7ZYI/component/1
+  interaction_type: is_coordinated_by
+  interaction_status: observed
+  stoichiometry: '1:1'
+  object_site: S105,S119,T123,E257
+  evidence:
+  - experimental
+  description: Copy NA A 706 (label chain J) in the deposited model; site residues
+    are those within contact distance; bonded to E257, S105, T123
 - sample_id: pdb:7ZYI/sample
   subject_id: pdb:7ZYI/component/3
   object_id: pdb:7ZYI/component/2

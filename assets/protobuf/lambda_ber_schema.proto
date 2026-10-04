@@ -1196,6 +1196,8 @@ message SampleComponent
   uriorcurie id = 0
   string title = 0
   string description = 0
+ repeated  quantityValue additionalMetrics = 0
+ repeated  textValue additionalProperties = 0
   sample sampleId = 0
   sampleComponentTypeEnum componentType = 0
   protein proteinId = 0

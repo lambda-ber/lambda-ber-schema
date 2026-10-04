@@ -7,7 +7,10 @@
   "branched_entity": "10.1.0",
   "chemcomp": "7.2.1",
   "assembly": "9.1.0",
-  "interface": "observed"
+  "interface": "observed",
+  "polymer_entity_instance": "10.1.3",
+  "nonpolymer_entity_instance": "10.1.3",
+  "branched_entity_instance": "9.1.0"
  },
  "kinds": {
   "entry": {
@@ -5034,6 +5037,971 @@
    },
    "rcsb_latest_revision.minor_revision": {
     "type": "number"
+   }
+  },
+  "polymer_entity_instance": {
+   "pdbx_modification_feature[].category": {
+    "type": "string"
+   },
+   "pdbx_modification_feature[].comp_id_linking_atom": {
+    "type": "string"
+   },
+   "pdbx_modification_feature[].label_asym_id": {
+    "type": "string"
+   },
+   "pdbx_modification_feature[].label_comp_id": {
+    "type": "string"
+   },
+   "pdbx_modification_feature[].label_seq_id": {
+    "type": "integer"
+   },
+   "pdbx_modification_feature[].modified_residue_id": {
+    "type": "string"
+   },
+   "pdbx_modification_feature[].modified_residue_id_linking_atom": {
+    "type": "string"
+   },
+   "pdbx_modification_feature[].modified_residue_label_asym_id": {
+    "type": "string"
+   },
+   "pdbx_modification_feature[].modified_residue_label_comp_id": {
+    "type": "string"
+   },
+   "pdbx_modification_feature[].modified_residue_label_seq_id": {
+    "type": "integer"
+   },
+   "pdbx_modification_feature[].modified_residue_symmetry": {
+    "type": "string"
+   },
+   "pdbx_modification_feature[].rcsb_modified_residue_id[]": {
+    "type": "string"
+   },
+   "pdbx_modification_feature[].symmetry": {
+    "type": "string"
+   },
+   "pdbx_modification_feature[].type": {
+    "type": "string"
+   },
+   "pdbx_struct_special_symmetry[].PDB_model_num": {
+    "type": "integer"
+   },
+   "pdbx_struct_special_symmetry[].auth_seq_id": {
+    "type": "string"
+   },
+   "pdbx_struct_special_symmetry[].id": {
+    "type": "integer"
+   },
+   "pdbx_struct_special_symmetry[].label_asym_id": {
+    "type": "string"
+   },
+   "pdbx_struct_special_symmetry[].label_comp_id": {
+    "type": "string"
+   },
+   "pdbx_vrpt_summary_entity_fit_to_map[].PDB_model_num": {
+    "type": "integer"
+   },
+   "pdbx_vrpt_summary_entity_fit_to_map[].Q_score": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_entity_fit_to_map[].average_residue_inclusion": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_entity_geometry[].PDB_model_num": {
+    "type": "integer"
+   },
+   "pdbx_vrpt_summary_entity_geometry[].angles_RMSZ": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_entity_geometry[].average_residue_inclusion": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_entity_geometry[].bonds_RMSZ": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_entity_geometry[].num_angles_RMSZ": {
+    "type": "integer"
+   },
+   "pdbx_vrpt_summary_entity_geometry[].num_bonds_RMSZ": {
+    "type": "integer"
+   },
+   "rcsb_id": {
+    "type": "string"
+   },
+   "rcsb_latest_revision.major_revision": {
+    "type": "integer"
+   },
+   "rcsb_latest_revision.minor_revision": {
+    "type": "integer"
+   },
+   "rcsb_latest_revision.revision_date": {
+    "type": "string"
+   },
+   "rcsb_ligand_neighbors[].alt_id": {
+    "type": "string"
+   },
+   "rcsb_ligand_neighbors[].atom_id": {
+    "type": "string"
+   },
+   "rcsb_ligand_neighbors[].auth_seq_id": {
+    "type": "integer"
+   },
+   "rcsb_ligand_neighbors[].comp_id": {
+    "type": "string"
+   },
+   "rcsb_ligand_neighbors[].distance": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "rcsb_ligand_neighbors[].ligand_alt_id": {
+    "type": "string"
+   },
+   "rcsb_ligand_neighbors[].ligand_asym_id": {
+    "type": "string"
+   },
+   "rcsb_ligand_neighbors[].ligand_atom_id": {
+    "type": "string"
+   },
+   "rcsb_ligand_neighbors[].ligand_comp_id": {
+    "type": "string"
+   },
+   "rcsb_ligand_neighbors[].ligand_entity_id": {
+    "type": "string"
+   },
+   "rcsb_ligand_neighbors[].ligand_is_bound": {
+    "type": "string"
+   },
+   "rcsb_ligand_neighbors[].ligand_model_id": {
+    "type": "integer"
+   },
+   "rcsb_ligand_neighbors[].seq_id": {
+    "type": "integer"
+   },
+   "rcsb_polymer_entity_instance_container_identifiers.asym_id": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_instance_container_identifiers.auth_asym_id": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_instance_container_identifiers.auth_to_entity_poly_seq_mapping[]": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_instance_container_identifiers.entity_id": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_instance_container_identifiers.entry_id": {
+    "type": "string"
+   },
+   "rcsb_polymer_entity_instance_container_identifiers.rcsb_id": {
+    "type": "string"
+   },
+   "rcsb_polymer_instance_annotation[].annotation_id": {
+    "type": "string"
+   },
+   "rcsb_polymer_instance_annotation[].annotation_lineage[].depth": {
+    "type": "integer"
+   },
+   "rcsb_polymer_instance_annotation[].annotation_lineage[].id": {
+    "type": "string"
+   },
+   "rcsb_polymer_instance_annotation[].annotation_lineage[].name": {
+    "type": "string"
+   },
+   "rcsb_polymer_instance_annotation[].assignment_version": {
+    "type": "string"
+   },
+   "rcsb_polymer_instance_annotation[].description": {
+    "type": "string"
+   },
+   "rcsb_polymer_instance_annotation[].name": {
+    "type": "string"
+   },
+   "rcsb_polymer_instance_annotation[].ordinal": {
+    "type": "integer"
+   },
+   "rcsb_polymer_instance_annotation[].provenance_source": {
+    "type": "string"
+   },
+   "rcsb_polymer_instance_annotation[].type": {
+    "type": "string"
+   },
+   "rcsb_polymer_instance_feature[].additional_properties[].name": {
+    "type": "string"
+   },
+   "rcsb_polymer_instance_feature[].additional_properties[].values[]": {
+    "type": "unknown"
+   },
+   "rcsb_polymer_instance_feature[].assignment_version": {
+    "type": "string"
+   },
+   "rcsb_polymer_instance_feature[].description": {
+    "type": "string"
+   },
+   "rcsb_polymer_instance_feature[].feature_id": {
+    "type": "string"
+   },
+   "rcsb_polymer_instance_feature[].feature_positions[].beg_comp_id": {
+    "type": "string"
+   },
+   "rcsb_polymer_instance_feature[].feature_positions[].beg_seq_id": {
+    "type": "integer"
+   },
+   "rcsb_polymer_instance_feature[].feature_positions[].end_seq_id": {
+    "type": "integer"
+   },
+   "rcsb_polymer_instance_feature[].feature_positions[].value": {
+    "type": "number"
+   },
+   "rcsb_polymer_instance_feature[].feature_positions[].values[]": {
+    "type": "number"
+   },
+   "rcsb_polymer_instance_feature[].name": {
+    "type": "string"
+   },
+   "rcsb_polymer_instance_feature[].ordinal": {
+    "type": "integer"
+   },
+   "rcsb_polymer_instance_feature[].provenance_source": {
+    "type": "string"
+   },
+   "rcsb_polymer_instance_feature[].reference_scheme": {
+    "type": "string"
+   },
+   "rcsb_polymer_instance_feature[].type": {
+    "type": "string"
+   },
+   "rcsb_polymer_instance_feature_summary[].count": {
+    "type": "integer"
+   },
+   "rcsb_polymer_instance_feature_summary[].coverage": {
+    "type": "number"
+   },
+   "rcsb_polymer_instance_feature_summary[].maximum_length": {
+    "type": "integer"
+   },
+   "rcsb_polymer_instance_feature_summary[].maximum_value": {
+    "type": "number"
+   },
+   "rcsb_polymer_instance_feature_summary[].minimum_length": {
+    "type": "integer"
+   },
+   "rcsb_polymer_instance_feature_summary[].minimum_value": {
+    "type": "number"
+   },
+   "rcsb_polymer_instance_feature_summary[].type": {
+    "type": "string"
+   },
+   "rcsb_polymer_instance_info.modeled_residue_count": {
+    "type": "integer"
+   },
+   "rcsb_polymer_struct_conn[].connect_partner.label_alt_id": {
+    "type": "string"
+   },
+   "rcsb_polymer_struct_conn[].connect_partner.label_asym_id": {
+    "type": "string"
+   },
+   "rcsb_polymer_struct_conn[].connect_partner.label_atom_id": {
+    "type": "string"
+   },
+   "rcsb_polymer_struct_conn[].connect_partner.label_comp_id": {
+    "type": "string"
+   },
+   "rcsb_polymer_struct_conn[].connect_partner.label_seq_id": {
+    "type": "integer"
+   },
+   "rcsb_polymer_struct_conn[].connect_partner.symmetry": {
+    "type": "string"
+   },
+   "rcsb_polymer_struct_conn[].connect_target.auth_asym_id": {
+    "type": "string"
+   },
+   "rcsb_polymer_struct_conn[].connect_target.auth_seq_id": {
+    "type": "string"
+   },
+   "rcsb_polymer_struct_conn[].connect_target.label_alt_id": {
+    "type": "string"
+   },
+   "rcsb_polymer_struct_conn[].connect_target.label_asym_id": {
+    "type": "string"
+   },
+   "rcsb_polymer_struct_conn[].connect_target.label_atom_id": {
+    "type": "string"
+   },
+   "rcsb_polymer_struct_conn[].connect_target.label_comp_id": {
+    "type": "string"
+   },
+   "rcsb_polymer_struct_conn[].connect_target.label_seq_id": {
+    "type": "integer"
+   },
+   "rcsb_polymer_struct_conn[].connect_target.symmetry": {
+    "type": "string"
+   },
+   "rcsb_polymer_struct_conn[].connect_type": {
+    "type": "string"
+   },
+   "rcsb_polymer_struct_conn[].description": {
+    "type": "string"
+   },
+   "rcsb_polymer_struct_conn[].dist_value": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "rcsb_polymer_struct_conn[].id": {
+    "type": "string"
+   },
+   "rcsb_polymer_struct_conn[].ordinal_id": {
+    "type": "integer"
+   },
+   "rcsb_polymer_struct_conn[].role": {
+    "type": "string"
+   },
+   "rcsb_polymer_struct_conn[].value_order": {
+    "type": "string"
+   },
+   "struct_asym.pdbx_PDB_id": {
+    "type": "string"
+   },
+   "struct_asym.pdbx_alt_id": {
+    "type": "string"
+   },
+   "struct_asym.pdbx_order": {
+    "type": "integer"
+   },
+   "struct_asym.pdbx_type": {
+    "type": "string"
+   }
+  },
+  "nonpolymer_entity_instance": {
+   "pdbx_struct_special_symmetry[].PDB_model_num": {
+    "type": "integer"
+   },
+   "pdbx_struct_special_symmetry[].auth_seq_id": {
+    "type": "string"
+   },
+   "pdbx_struct_special_symmetry[].id": {
+    "type": "integer"
+   },
+   "pdbx_struct_special_symmetry[].label_asym_id": {
+    "type": "string"
+   },
+   "pdbx_struct_special_symmetry[].label_comp_id": {
+    "type": "string"
+   },
+   "pdbx_vrpt_summary_entity_geometry[].PDB_model_num": {
+    "type": "integer"
+   },
+   "pdbx_vrpt_summary_entity_geometry[].angles_RMSZ": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_entity_geometry[].average_residue_inclusion": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_entity_geometry[].bonds_RMSZ": {
+    "type": "number"
+   },
+   "pdbx_vrpt_summary_entity_geometry[].num_angles_RMSZ": {
+    "type": "integer"
+   },
+   "pdbx_vrpt_summary_entity_geometry[].num_bonds_RMSZ": {
+    "type": "integer"
+   },
+   "rcsb_id": {
+    "type": "string"
+   },
+   "rcsb_latest_revision.major_revision": {
+    "type": "integer"
+   },
+   "rcsb_latest_revision.minor_revision": {
+    "type": "integer"
+   },
+   "rcsb_latest_revision.revision_date": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_entity_instance_container_identifiers.asym_id": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_entity_instance_container_identifiers.auth_asym_id": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_entity_instance_container_identifiers.auth_seq_id": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_entity_instance_container_identifiers.comp_id": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_entity_instance_container_identifiers.entity_id": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_entity_instance_container_identifiers.entry_id": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_entity_instance_container_identifiers.rcsb_id": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_instance_annotation[].annotation_id": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_instance_annotation[].annotation_lineage[].depth": {
+    "type": "integer"
+   },
+   "rcsb_nonpolymer_instance_annotation[].annotation_lineage[].id": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_instance_annotation[].annotation_lineage[].name": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_instance_annotation[].assignment_version": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_instance_annotation[].comp_id": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_instance_annotation[].description": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_instance_annotation[].name": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_instance_annotation[].ordinal": {
+    "type": "integer"
+   },
+   "rcsb_nonpolymer_instance_annotation[].provenance_source": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_instance_annotation[].type": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_instance_feature[].additional_properties[].name": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_instance_feature[].additional_properties[].values[]": {
+    "type": "unknown"
+   },
+   "rcsb_nonpolymer_instance_feature[].assignment_version": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_instance_feature[].comp_id": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_instance_feature[].description": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_instance_feature[].feature_id": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_instance_feature[].feature_value[].comp_id": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_instance_feature[].feature_value[].details": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_instance_feature[].feature_value[].reference": {
+    "type": "number"
+   },
+   "rcsb_nonpolymer_instance_feature[].feature_value[].reported": {
+    "type": "number"
+   },
+   "rcsb_nonpolymer_instance_feature[].feature_value[].uncertainty_estimate": {
+    "type": "number"
+   },
+   "rcsb_nonpolymer_instance_feature[].feature_value[].uncertainty_estimate_type": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_instance_feature[].name": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_instance_feature[].ordinal": {
+    "type": "integer"
+   },
+   "rcsb_nonpolymer_instance_feature[].provenance_source": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_instance_feature[].type": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_instance_feature_summary[].comp_id": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_instance_feature_summary[].count": {
+    "type": "integer"
+   },
+   "rcsb_nonpolymer_instance_feature_summary[].coverage": {
+    "type": "number"
+   },
+   "rcsb_nonpolymer_instance_feature_summary[].maximum_length": {
+    "type": "integer"
+   },
+   "rcsb_nonpolymer_instance_feature_summary[].maximum_value": {
+    "type": "number"
+   },
+   "rcsb_nonpolymer_instance_feature_summary[].minimum_length": {
+    "type": "integer"
+   },
+   "rcsb_nonpolymer_instance_feature_summary[].minimum_value": {
+    "type": "number"
+   },
+   "rcsb_nonpolymer_instance_feature_summary[].type": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_instance_validation_score[].Q_score": {
+    "type": "number"
+   },
+   "rcsb_nonpolymer_instance_validation_score[].RSCC": {
+    "type": "number"
+   },
+   "rcsb_nonpolymer_instance_validation_score[].RSR": {
+    "type": "number"
+   },
+   "rcsb_nonpolymer_instance_validation_score[].alt_id": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_instance_validation_score[].average_occupancy": {
+    "type": "number"
+   },
+   "rcsb_nonpolymer_instance_validation_score[].completeness": {
+    "type": "number"
+   },
+   "rcsb_nonpolymer_instance_validation_score[].intermolecular_clashes": {
+    "type": "integer"
+   },
+   "rcsb_nonpolymer_instance_validation_score[].is_best_instance": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_instance_validation_score[].is_subject_of_investigation": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_instance_validation_score[].is_subject_of_investigation_provenance": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_instance_validation_score[].mogul_angle_outliers": {
+    "type": "integer"
+   },
+   "rcsb_nonpolymer_instance_validation_score[].mogul_angles_RMSZ": {
+    "type": "number",
+    "units": "degrees"
+   },
+   "rcsb_nonpolymer_instance_validation_score[].mogul_bond_outliers": {
+    "type": "integer"
+   },
+   "rcsb_nonpolymer_instance_validation_score[].mogul_bonds_RMSZ": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "rcsb_nonpolymer_instance_validation_score[].natoms_eds": {
+    "type": "integer"
+   },
+   "rcsb_nonpolymer_instance_validation_score[].num_mogul_angles_RMSZ": {
+    "type": "integer"
+   },
+   "rcsb_nonpolymer_instance_validation_score[].num_mogul_bonds_RMSZ": {
+    "type": "integer"
+   },
+   "rcsb_nonpolymer_instance_validation_score[].ranking_model_fit": {
+    "type": "number"
+   },
+   "rcsb_nonpolymer_instance_validation_score[].ranking_model_geometry": {
+    "type": "number"
+   },
+   "rcsb_nonpolymer_instance_validation_score[].score_model_fit": {
+    "type": "number"
+   },
+   "rcsb_nonpolymer_instance_validation_score[].score_model_geometry": {
+    "type": "number"
+   },
+   "rcsb_nonpolymer_instance_validation_score[].stereo_outliers": {
+    "type": "integer"
+   },
+   "rcsb_nonpolymer_instance_validation_score[].type": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_struct_conn[].connect_partner.label_alt_id": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_struct_conn[].connect_partner.label_asym_id": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_struct_conn[].connect_partner.label_atom_id": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_struct_conn[].connect_partner.label_comp_id": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_struct_conn[].connect_partner.label_seq_id": {
+    "type": "integer"
+   },
+   "rcsb_nonpolymer_struct_conn[].connect_partner.symmetry": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_struct_conn[].connect_target.auth_asym_id": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_struct_conn[].connect_target.auth_seq_id": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_struct_conn[].connect_target.label_alt_id": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_struct_conn[].connect_target.label_asym_id": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_struct_conn[].connect_target.label_atom_id": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_struct_conn[].connect_target.label_comp_id": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_struct_conn[].connect_target.label_seq_id": {
+    "type": "integer"
+   },
+   "rcsb_nonpolymer_struct_conn[].connect_target.symmetry": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_struct_conn[].connect_type": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_struct_conn[].description": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_struct_conn[].dist_value": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "rcsb_nonpolymer_struct_conn[].id": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_struct_conn[].ordinal_id": {
+    "type": "integer"
+   },
+   "rcsb_nonpolymer_struct_conn[].role": {
+    "type": "string"
+   },
+   "rcsb_nonpolymer_struct_conn[].value_order": {
+    "type": "string"
+   },
+   "rcsb_target_neighbors[].alt_id": {
+    "type": "string"
+   },
+   "rcsb_target_neighbors[].atom_id": {
+    "type": "string"
+   },
+   "rcsb_target_neighbors[].comp_id": {
+    "type": "string"
+   },
+   "rcsb_target_neighbors[].distance": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "rcsb_target_neighbors[].target_asym_id": {
+    "type": "string"
+   },
+   "rcsb_target_neighbors[].target_atom_id": {
+    "type": "string"
+   },
+   "rcsb_target_neighbors[].target_auth_seq_id": {
+    "type": "integer"
+   },
+   "rcsb_target_neighbors[].target_comp_id": {
+    "type": "string"
+   },
+   "rcsb_target_neighbors[].target_entity_id": {
+    "type": "string"
+   },
+   "rcsb_target_neighbors[].target_is_bound": {
+    "type": "string"
+   },
+   "rcsb_target_neighbors[].target_model_id": {
+    "type": "integer"
+   },
+   "rcsb_target_neighbors[].target_seq_id": {
+    "type": "integer"
+   },
+   "struct_asym.pdbx_PDB_id": {
+    "type": "string"
+   },
+   "struct_asym.pdbx_alt_id": {
+    "type": "string"
+   },
+   "struct_asym.pdbx_order": {
+    "type": "integer"
+   },
+   "struct_asym.pdbx_type": {
+    "type": "string"
+   }
+  },
+  "branched_entity_instance": {
+   "pdbx_struct_special_symmetry[].PDB_model_num": {
+    "type": "integer"
+   },
+   "pdbx_struct_special_symmetry[].auth_seq_id": {
+    "type": "string"
+   },
+   "pdbx_struct_special_symmetry[].id": {
+    "type": "integer"
+   },
+   "pdbx_struct_special_symmetry[].label_asym_id": {
+    "type": "string"
+   },
+   "pdbx_struct_special_symmetry[].label_comp_id": {
+    "type": "string"
+   },
+   "rcsb_branched_entity_instance_container_identifiers.asym_id": {
+    "type": "string"
+   },
+   "rcsb_branched_entity_instance_container_identifiers.auth_asym_id": {
+    "type": "string"
+   },
+   "rcsb_branched_entity_instance_container_identifiers.entity_id": {
+    "type": "string"
+   },
+   "rcsb_branched_entity_instance_container_identifiers.entry_id": {
+    "type": "string"
+   },
+   "rcsb_branched_entity_instance_container_identifiers.rcsb_id": {
+    "type": "string"
+   },
+   "rcsb_branched_instance_annotation[].annotation_id": {
+    "type": "string"
+   },
+   "rcsb_branched_instance_annotation[].annotation_lineage[].depth": {
+    "type": "integer"
+   },
+   "rcsb_branched_instance_annotation[].annotation_lineage[].id": {
+    "type": "string"
+   },
+   "rcsb_branched_instance_annotation[].annotation_lineage[].name": {
+    "type": "string"
+   },
+   "rcsb_branched_instance_annotation[].assignment_version": {
+    "type": "string"
+   },
+   "rcsb_branched_instance_annotation[].comp_id": {
+    "type": "string"
+   },
+   "rcsb_branched_instance_annotation[].description": {
+    "type": "string"
+   },
+   "rcsb_branched_instance_annotation[].name": {
+    "type": "string"
+   },
+   "rcsb_branched_instance_annotation[].ordinal": {
+    "type": "integer"
+   },
+   "rcsb_branched_instance_annotation[].provenance_source": {
+    "type": "string"
+   },
+   "rcsb_branched_instance_annotation[].type": {
+    "type": "string"
+   },
+   "rcsb_branched_instance_feature[].additional_properties[].name": {
+    "type": "string"
+   },
+   "rcsb_branched_instance_feature[].additional_properties[].values[]": {
+    "type": "unknown"
+   },
+   "rcsb_branched_instance_feature[].assignment_version": {
+    "type": "string"
+   },
+   "rcsb_branched_instance_feature[].description": {
+    "type": "string"
+   },
+   "rcsb_branched_instance_feature[].feature_id": {
+    "type": "string"
+   },
+   "rcsb_branched_instance_feature[].feature_positions[].beg_comp_id": {
+    "type": "string"
+   },
+   "rcsb_branched_instance_feature[].feature_positions[].beg_seq_id": {
+    "type": "integer"
+   },
+   "rcsb_branched_instance_feature[].feature_positions[].end_seq_id": {
+    "type": "integer"
+   },
+   "rcsb_branched_instance_feature[].feature_positions[].value": {
+    "type": "number"
+   },
+   "rcsb_branched_instance_feature[].feature_positions[].values[]": {
+    "type": "number"
+   },
+   "rcsb_branched_instance_feature[].feature_value[].comp_id": {
+    "type": "string"
+   },
+   "rcsb_branched_instance_feature[].feature_value[].details": {
+    "type": "string"
+   },
+   "rcsb_branched_instance_feature[].feature_value[].reference": {
+    "type": "number"
+   },
+   "rcsb_branched_instance_feature[].feature_value[].reported": {
+    "type": "number"
+   },
+   "rcsb_branched_instance_feature[].feature_value[].uncertainty_estimate": {
+    "type": "number"
+   },
+   "rcsb_branched_instance_feature[].feature_value[].uncertainty_estimate_type": {
+    "type": "string"
+   },
+   "rcsb_branched_instance_feature[].name": {
+    "type": "string"
+   },
+   "rcsb_branched_instance_feature[].ordinal": {
+    "type": "integer"
+   },
+   "rcsb_branched_instance_feature[].provenance_source": {
+    "type": "string"
+   },
+   "rcsb_branched_instance_feature[].reference_scheme": {
+    "type": "string"
+   },
+   "rcsb_branched_instance_feature[].type": {
+    "type": "string"
+   },
+   "rcsb_branched_instance_feature_summary[].count": {
+    "type": "integer"
+   },
+   "rcsb_branched_instance_feature_summary[].coverage": {
+    "type": "number"
+   },
+   "rcsb_branched_instance_feature_summary[].maximum_length": {
+    "type": "integer"
+   },
+   "rcsb_branched_instance_feature_summary[].maximum_value": {
+    "type": "number"
+   },
+   "rcsb_branched_instance_feature_summary[].minimum_length": {
+    "type": "integer"
+   },
+   "rcsb_branched_instance_feature_summary[].minimum_value": {
+    "type": "number"
+   },
+   "rcsb_branched_instance_feature_summary[].type": {
+    "type": "string"
+   },
+   "rcsb_branched_struct_conn[].connect_partner.label_alt_id": {
+    "type": "string"
+   },
+   "rcsb_branched_struct_conn[].connect_partner.label_asym_id": {
+    "type": "string"
+   },
+   "rcsb_branched_struct_conn[].connect_partner.label_atom_id": {
+    "type": "string"
+   },
+   "rcsb_branched_struct_conn[].connect_partner.label_comp_id": {
+    "type": "string"
+   },
+   "rcsb_branched_struct_conn[].connect_partner.label_seq_id": {
+    "type": "integer"
+   },
+   "rcsb_branched_struct_conn[].connect_partner.symmetry": {
+    "type": "string"
+   },
+   "rcsb_branched_struct_conn[].connect_target.auth_asym_id": {
+    "type": "string"
+   },
+   "rcsb_branched_struct_conn[].connect_target.auth_seq_id": {
+    "type": "string"
+   },
+   "rcsb_branched_struct_conn[].connect_target.label_alt_id": {
+    "type": "string"
+   },
+   "rcsb_branched_struct_conn[].connect_target.label_asym_id": {
+    "type": "string"
+   },
+   "rcsb_branched_struct_conn[].connect_target.label_atom_id": {
+    "type": "string"
+   },
+   "rcsb_branched_struct_conn[].connect_target.label_comp_id": {
+    "type": "string"
+   },
+   "rcsb_branched_struct_conn[].connect_target.label_seq_id": {
+    "type": "integer"
+   },
+   "rcsb_branched_struct_conn[].connect_target.symmetry": {
+    "type": "string"
+   },
+   "rcsb_branched_struct_conn[].connect_type": {
+    "type": "string"
+   },
+   "rcsb_branched_struct_conn[].description": {
+    "type": "string"
+   },
+   "rcsb_branched_struct_conn[].dist_value": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "rcsb_branched_struct_conn[].id": {
+    "type": "string"
+   },
+   "rcsb_branched_struct_conn[].ordinal_id": {
+    "type": "integer"
+   },
+   "rcsb_branched_struct_conn[].role": {
+    "type": "string"
+   },
+   "rcsb_branched_struct_conn[].value_order": {
+    "type": "string"
+   },
+   "rcsb_id": {
+    "type": "string"
+   },
+   "rcsb_latest_revision.major_revision": {
+    "type": "integer"
+   },
+   "rcsb_latest_revision.minor_revision": {
+    "type": "integer"
+   },
+   "rcsb_latest_revision.revision_date": {
+    "type": "string"
+   },
+   "rcsb_ligand_neighbors[].alt_id": {
+    "type": "string"
+   },
+   "rcsb_ligand_neighbors[].atom_id": {
+    "type": "string"
+   },
+   "rcsb_ligand_neighbors[].auth_seq_id": {
+    "type": "integer"
+   },
+   "rcsb_ligand_neighbors[].comp_id": {
+    "type": "string"
+   },
+   "rcsb_ligand_neighbors[].distance": {
+    "type": "number",
+    "units": "angstroms"
+   },
+   "rcsb_ligand_neighbors[].ligand_alt_id": {
+    "type": "string"
+   },
+   "rcsb_ligand_neighbors[].ligand_asym_id": {
+    "type": "string"
+   },
+   "rcsb_ligand_neighbors[].ligand_atom_id": {
+    "type": "string"
+   },
+   "rcsb_ligand_neighbors[].ligand_comp_id": {
+    "type": "string"
+   },
+   "rcsb_ligand_neighbors[].ligand_entity_id": {
+    "type": "string"
+   },
+   "rcsb_ligand_neighbors[].ligand_is_bound": {
+    "type": "string"
+   },
+   "rcsb_ligand_neighbors[].ligand_model_id": {
+    "type": "integer"
+   },
+   "rcsb_ligand_neighbors[].seq_id": {
+    "type": "integer"
+   },
+   "struct_asym.pdbx_PDB_id": {
+    "type": "string"
+   },
+   "struct_asym.pdbx_alt_id": {
+    "type": "string"
+   },
+   "struct_asym.pdbx_order": {
+    "type": "integer"
+   },
+   "struct_asym.pdbx_type": {
+    "type": "string"
    }
   }
  }

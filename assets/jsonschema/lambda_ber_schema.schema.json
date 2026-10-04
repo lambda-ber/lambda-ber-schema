@@ -10281,6 +10281,26 @@
             ],
             "description": "One constituent of one sample: a protein, a nucleic acid, a small molecule, a virus particle, an organelle, a cell, a membrane mimetic. The inventory of what a sample contains, one row per kind of thing in it, so that a sample can hold any mixture and each thing in it can be named, given a role, counted and pointed at. SampleComponentInteraction rows say which components are expected or observed to act on which. Sample.sample_type remains the one-word summary; this table is the detail behind it.",
             "properties": {
+                "additional_metrics": {
+                    "description": "Numeric values the source reports that have no named slot on this class, each a QuantityValue whose attribute names the source item it came from (attribute id mmCIF:_refine.B_iso_max, label refine.B_iso_max). A loader puts a value here only after checking that no named slot fits; a value that recurs across sources should get a named slot instead.",
+                    "items": {
+                        "$ref": "#/$defs/QuantityValue"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "additional_properties": {
+                    "description": "Text values the source reports that have no named slot on this class, each a TextValue whose attribute names the source item it came from. The same rule as additional_metrics applies.",
+                    "items": {
+                        "$ref": "#/$defs/TextValue"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "component_type": {
                     "$ref": "#/$defs/SampleComponentTypeEnum",
                     "description": "What kind of thing this component is"

@@ -282,6 +282,14 @@ _DATABASE_NAMES = {
     "go": "go",
 }
 
+#: Residue codes to one letter, for writing sites as Y58. Others are written in full (MSE12).
+_ONE_LETTER = {
+    "ALA": "A", "ARG": "R", "ASN": "N", "ASP": "D", "CYS": "C", "GLN": "Q", "GLU": "E", "GLY": "G",
+    "HIS": "H", "ILE": "I", "LEU": "L", "LYS": "K", "MET": "M", "PHE": "F", "PRO": "P", "SER": "S",
+    "THR": "T", "TRP": "W", "TYR": "Y", "VAL": "V", "SEC": "U", "PYL": "O",
+    "DA": "A", "DC": "C", "DG": "G", "DT": "T", "DU": "U", "A": "A", "C": "C", "G": "G", "U": "U",
+}
+
 #: Patterns the schema puts on slots the loader fills from free text.
 _AMINO_ACIDS = re.compile(r"^[ACDEFGHIKLMNPQRSTVWYBJOUXZ]+$")
 _ORCID = re.compile(r"(\d{4}-\d{4}-\d{4}-\d{3}[0-9X])$")
@@ -399,6 +407,9 @@ class RawPDBEntry:
     chemcomps: dict[str, dict[str, Any]] = field(default_factory=dict)
     assemblies: list[dict[str, Any]] = field(default_factory=list)
     interfaces: list[dict[str, Any]] = field(default_factory=list)
+    polymer_instances: list[dict[str, Any]] = field(default_factory=list)
+    nonpolymer_instances: list[dict[str, Any]] = field(default_factory=list)
+    branched_instances: list[dict[str, Any]] = field(default_factory=list)
 
     def by_kind(self) -> dict[str, list[dict[str, Any]]]:
         """The records keyed by the kind names pdb_coverage uses."""
@@ -410,6 +421,9 @@ class RawPDBEntry:
             "chemcomp": list(self.chemcomps.values()),
             "assembly": self.assemblies,
             "interface": self.interfaces,
+            "polymer_entity_instance": self.polymer_instances,
+            "nonpolymer_entity_instance": self.nonpolymer_instances,
+            "branched_entity_instance": self.branched_instances,
         }
 
 
@@ -434,6 +448,9 @@ class PDBLoader(BaseLoader):
 
     #: Interfaces fetched per entry at most; a virus capsid has thousands.
     max_interfaces = 60
+
+    #: Instance records (one per chain or ligand copy) fetched per kind at most.
+    max_instances = 150
 
     def __init__(self, cache: ResponseCache | None = None):
         """
@@ -501,6 +518,27 @@ class PDBLoader(BaseLoader):
             record = self._get(f"core/branched_entity/{entry_id}/{eid}")
             if record is not None:
                 raw.branched_entities.append(record)
+        # One record per chain, ligand copy and glycan copy: contacts, bonds, per-copy validation
+        for kind, entities, target in (
+            ("polymer_entity", raw.polymer_entities, raw.polymer_instances),
+            ("nonpolymer_entity", raw.nonpolymer_entities, raw.nonpolymer_instances),
+            ("branched_entity", raw.branched_entities, raw.branched_instances),
+        ):
+            asym_ids = [
+                asym
+                for entity in entities
+                for key, value in entity.items() if key.endswith("_container_identifiers")
+                for asym in (value.get("asym_ids") or [])
+            ]
+            if len(asym_ids) > self.max_instances:
+                warnings.append(
+                    f"{len(asym_ids)} {kind.replace('_', ' ')} copies; only the first "
+                    f"{self.max_instances} were fetched"
+                )
+            for asym in asym_ids[: self.max_instances]:
+                record = self._get(f"core/{kind}_instance/{entry_id}/{asym}")
+                if record is not None:
+                    target.append(record)
         for n, aid in enumerate(ids.get("assembly_ids") or []):
             assembly = self._get(f"core/assembly/{entry_id}/{aid}")
             if assembly is None:
@@ -657,12 +695,23 @@ class _DatasetBuilder:
         self.study_organizations: list[dict] = []
         self.study_publications: list[dict] = []
 
-        # entity id -> component id on the main sample, and author chain -> entity id
+        # entity id -> component id on the main sample, author chain -> polymer entity id,
+        # and label chain (asym) id -> entity id for every entity
         self.component_by_entity: dict[str, str] = {}
         self.entity_by_chain: dict[str, str] = {}
+        self.entity_by_asym: dict[str, str] = {}
+        for entity in raw.polymer_entities + raw.nonpolymer_entities + raw.branched_entities:
+            for key, value in entity.items():
+                if key.endswith("_container_identifiers"):
+                    for asym in value.get("asym_ids") or []:
+                        self.entity_by_asym[asym] = str(value.get("entity_id"))
         self.entity_weight: dict[str, float] = {}
         self.entity_sequence: dict[str, str] = {}
         self.methods = [row.get("method", "").upper() for row in _rows(self.entry, "exptl")]
+        self.polymer_entity_ids = {
+            str(e.get("rcsb_polymer_entity_container_identifiers", {}).get("entity_id"))
+            for e in raw.polymer_entities
+        }
 
     # ---- helpers -------------------------------------------------------------------
 
@@ -1415,7 +1464,8 @@ class _DatasetBuilder:
             interaction_type = "is_coordinated_by" if molecule.get("chemical_class") == "ion" else "covalently_linked_to"
         else:
             interaction_type = "binds"
-        self.chain_interactions(component, ids.get("auth_asym_ids") or [], interaction_type)
+        if not self.copy_interactions(component, eid, "nonpolymer", interaction_type):
+            self.chain_interactions(component, ids.get("auth_asym_ids") or [], interaction_type)
         self.add_affinities(component, comp_id)
 
     def add_branched(self, entity: dict) -> None:
@@ -1454,7 +1504,98 @@ class _DatasetBuilder:
             copy_number=record.get("pdbx_number_of_molecules"),
             description=_text(branch.get("type"), record.get("details"), ids.get("prd_id")),
         )
-        self.chain_interactions(component, ids.get("auth_asym_ids") or [], "covalently_linked_to")
+        if not self.copy_interactions(component, eid, "branched", "covalently_linked_to"):
+            self.chain_interactions(component, ids.get("auth_asym_ids") or [], "covalently_linked_to")
+
+    @staticmethod
+    def residue(comp_id: Any, seq_id: Any) -> str:
+        """A residue written as a site: Y58, or the full code for a non-standard one (MSE12)."""
+        code = str(comp_id or "X")
+        return f"{_ONE_LETTER.get(code.upper(), code)}{seq_id}"
+
+    @staticmethod
+    def sort_sites(sites: set[tuple[int, str]]) -> str:
+        return ",".join(text for _, text in sorted(sites))
+
+    def copy_interactions(self, component: dict, eid: str, kind: str, default_type: str) -> bool:
+        """
+        One interaction per copy of a ligand or glycan and per polymer it touches.
+
+        RCSB's instance records list, for each copy, the polymer residues within contact
+        distance and the bonds it makes (metal coordination, covalent links). A bond decides the
+        interaction type; contacts alone leave the default. Two copies of one ligand in two
+        different sites (the S_out and S_in bile salts of 7ZYI) so become two rows, each with its
+        own residues. Returns False when no copy record was fetched.
+        """
+        records = self.raw.nonpolymer_instances if kind == "nonpolymer" else self.raw.branched_instances
+        ids_key = f"rcsb_{kind}_entity_instance_container_identifiers"
+        copies = [r for r in records if str(r.get(ids_key, {}).get("entity_id")) == eid]
+        if not copies:
+            return False
+        for record in copies:
+            ids = record.get(ids_key, {})
+            asym = ids.get("asym_id")
+            label = _text(ids.get("comp_id"), ids.get("auth_asym_id"), ids.get("auth_seq_id"), sep=" ")
+            targets: dict[str, dict[str, Any]] = {}
+            others: set[str] = set()
+            for conn in record.get(f"rcsb_{kind}_struct_conn") or []:
+                target = conn.get("connect_target") or {}
+                partner = conn.get("connect_partner") or {}
+                # The copy may sit on either end of the bond
+                far = target if self.entity_by_asym.get(str(target.get("label_asym_id"))) != eid else partner
+                target_eid = self.entity_by_asym.get(str(far.get("label_asym_id")))
+                if not target_eid or target_eid == eid:
+                    continue
+                if target_eid not in self.polymer_entity_ids:
+                    others.add(str(far.get("label_comp_id")))
+                    continue
+                if target_eid not in self.component_by_entity:
+                    continue
+                connect_type = (conn.get("connect_type") or "").lower()
+                info = targets.setdefault(target_eid, {"sites": set(), "bonded": set(), "type": None, "notes": []})
+                info["type"] = "is_coordinated_by" if "metal" in connect_type else "covalently_linked_to"
+                site = (far.get("label_seq_id") or 0, self.residue(far.get("label_comp_id"), far.get("label_seq_id")))
+                info["sites"].add(site)
+                info["bonded"].add(site[1])
+                info["notes"] += [conn.get("role"), conn.get("description")]
+            for neighbor in record.get("rcsb_target_neighbors") or []:
+                target_eid = str(neighbor.get("target_entity_id"))
+                if target_eid == eid:
+                    continue
+                if target_eid not in self.polymer_entity_ids:
+                    others.add(str(neighbor.get("target_comp_id")))
+                    continue
+                info = targets.setdefault(target_eid, {"sites": set(), "bonded": set(), "type": None, "notes": []})
+                seq = neighbor.get("target_seq_id")
+                info["sites"].add((seq or 0, self.residue(neighbor.get("target_comp_id"), seq)))
+            for target_eid, info in targets.items():
+                bonded = f"; bonded to {', '.join(sorted(info['bonded']))}" if info["bonded"] else ""
+                near = f"; also near {', '.join(sorted(others))}" if others else ""
+                self.interactions.append({
+                    "sample_id": self.sample_id,
+                    "subject_id": component["id"],
+                    "object_id": self.component_by_entity[target_eid],
+                    "interaction_type": info["type"] or default_type,
+                    "interaction_status": "observed",
+                    "evidence": ["experimental"],
+                    "stoichiometry": "1:1",
+                    "object_site": self.sort_sites(info["sites"]) or None,
+                    "description": _text(
+                        f"Copy {label} (label chain {asym}) in the deposited model; site residues are "
+                        f"those within contact distance{bonded}{near}",
+                        *info["notes"],
+                    ),
+                })
+            if kind == "nonpolymer":
+                for row in record.get("rcsb_nonpolymer_instance_validation_score") or []:
+                    self.extras(component, "nonpolymer_entity_instance", row,
+                                "rcsb_nonpolymer_instance_validation_score[]", qualifier=asym)
+                    if row.get("is_subject_of_investigation") == "Y":
+                        component["role"] = "ligand"
+                for row in record.get("pdbx_vrpt_summary_entity_geometry") or []:
+                    self.extras(component, "nonpolymer_entity_instance", row,
+                                "pdbx_vrpt_summary_entity_geometry[]", qualifier=asym)
+        return True
 
     def chain_interactions(self, component: dict, chains: list[str], interaction_type: str) -> None:
         """One interaction from a ligand or glycan to each polymer whose chain it is assigned to."""
@@ -1637,7 +1778,67 @@ class _DatasetBuilder:
 
     # ---- interactions between polymers ----------------------------------------------
 
+    def polymer_copies(self) -> None:
+        """Per-chain records: bonds between different polymers, modified residues, map fit."""
+        bonds: dict[tuple[str, str], dict[str, Any]] = {}
+        seen: set[tuple] = set()
+        for record in self.raw.polymer_instances:
+            ids = record.get("rcsb_polymer_entity_instance_container_identifiers", {})
+            eid, asym = str(ids.get("entity_id")), ids.get("asym_id")
+            component_id = self.component_by_entity.get(eid)
+            component = next((c for c in self.components if c["id"] == component_id), None)
+            if component is not None:
+                for category in ("pdbx_vrpt_summary_entity_fit_to_map", "pdbx_vrpt_summary_entity_geometry"):
+                    for row in record.get(category) or []:
+                        self.extras(component, "polymer_entity_instance", row, f"{category}[]", qualifier=asym)
+            for conn in record.get("rcsb_polymer_struct_conn") or []:
+                target = conn.get("connect_target") or {}
+                partner = conn.get("connect_partner") or {}
+                partner_eid = self.entity_by_asym.get(str(partner.get("label_asym_id")))
+                if partner_eid is None or partner_eid == eid or partner_eid not in self.polymer_entity_ids:
+                    continue
+                ends = sorted([(eid, target.get("label_comp_id"), target.get("label_seq_id")),
+                               (partner_eid, partner.get("label_comp_id"), partner.get("label_seq_id"))],
+                              key=lambda end: self.entity_weight.get(end[0], 0))
+                key = (conn.get("connect_type"), tuple(ends))
+                if key in seen:
+                    continue
+                seen.add(key)
+                pair = bonds.setdefault((ends[0][0], ends[1][0]), {
+                    "types": set(), "subject": set(), "object": set(),
+                })
+                pair["types"].add(conn.get("connect_type") or "bond")
+                pair["subject"].add((ends[0][2] or 0, self.residue(ends[0][1], ends[0][2])))
+                pair["object"].add((ends[1][2] or 0, self.residue(ends[1][1], ends[1][2])))
+            for row in record.get("pdbx_modification_feature") or []:
+                association = next((a for a in self.sample_protein if a.get("construct_id") == f"{self.base}/construct/{eid}"), None)
+                if association is None:
+                    continue
+                residue_comp = row.get("modified_residue_label_comp_id")
+                group = row.get("label_comp_id")
+                text = _text(
+                    _text(row.get("category"), row.get("type") if row.get("type") != "None" else None, sep=", "),
+                    _text(
+                        self.residue(residue_comp, row.get("modified_residue_label_seq_id")),
+                        f"({group})" if group and group != residue_comp else None, sep=" "),
+                    sep=": ")
+                if text and text not in (association.get("modifications") or []):
+                    association["modifications"] = (association.get("modifications") or []) + [text]
+        for (subject, obj), pair in bonds.items():
+            self.interactions.append({
+                "sample_id": self.sample_id,
+                "subject_id": self.component_by_entity[subject],
+                "object_id": self.component_by_entity[obj],
+                "interaction_type": "covalently_linked_to",
+                "interaction_status": "observed",
+                "evidence": ["experimental"],
+                "subject_site": self.sort_sites(pair["subject"]),
+                "object_site": self.sort_sites(pair["object"]),
+                "description": f"{', '.join(sorted(pair['types']))} between the chains in the deposited model",
+            })
+
     def build_interactions(self) -> None:
+        self.polymer_copies()
         pairs: dict[tuple[str, str], dict] = {}
         for interface in self.raw.interfaces:
             partners = interface.get("rcsb_interface_partner") or []

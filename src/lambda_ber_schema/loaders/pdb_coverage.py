@@ -51,6 +51,9 @@ KINDS = (
     "chemcomp",
     "assembly",
     "interface",
+    "polymer_entity_instance",
+    "nonpolymer_entity_instance",
+    "branched_entity_instance",
 )
 
 #: Leading path components that are RCSB's own derived categories rather than mmCIF categories.

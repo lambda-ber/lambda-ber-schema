@@ -227,6 +227,34 @@ class TestInteractions:
         assert "Y58" in contact.subject_site
         assert "823 square angstroms" in contact.description
 
+    def test_each_ligand_copy_gets_its_own_site(self, pdb_loader):
+        """7ZYI models two GCDC molecules in two places; each copy is a row with its contact residues."""
+        ds = pdb_loader.load("7ZYI").dataset
+        gcdc = [i for s, t, o, i in _interactions(ds) if s == "GLYCOCHENODEOXYCHOLIC ACID"]
+        assert len(gcdc) == 2
+        assert all(i.stoichiometry == "1:1" for i in gcdc)
+        assert all("Q264" in i.object_site for i in gcdc)
+        assert gcdc[0].object_site != gcdc[1].object_site
+
+    def test_sodium_sites_come_from_the_deposited_coordination_bonds(self, pdb_loader):
+        """The PDB's metal coordination bonds name the residues of each sodium site."""
+        ds = pdb_loader.load("7ZYI").dataset
+        sites = {i.object_site for s, t, o, i in _interactions(ds) if s == "SODIUM ION"}
+        assert sites == {"Q68,G97,S99,Q261", "S105,S119,T123,E257"}
+
+    def test_ligand_fit_scores_are_kept_per_copy(self, pdb_loader):
+        ds = pdb_loader.load("7ZYI").dataset
+        gcdc = next(c for c in ds.sample_components if c.title == "GLYCOCHENODEOXYCHOLIC ACID")
+        scores = {m.attribute.label: m.numeric_value for m in gcdc.additional_metrics}
+        assert scores["rcsb_nonpolymer_instance_validation_score[F].Q_score"] == 0.41
+
+    def test_glycans_are_attached_to_named_asparagines(self, pdb_loader):
+        ds = pdb_loader.load("6VXX").dataset
+        linked = [i for _, t, _, i in _interactions(ds) if t == "covalently_linked_to"]
+        assert any(i.object_site and i.object_site.startswith("N") for i in linked)
+        modifications = ds.sample_protein_associations[0].modifications
+        assert any(m.startswith("Carbohydrate, N-Glycosylation: N") for m in modifications)
+
     def test_binding_affinity(self, pdb_loader):
         ds = pdb_loader.load("6BOC").dataset
         measured = [i for _, _, _, i in _interactions(ds) if i.affinity is not None]
@@ -407,6 +435,7 @@ def test_raw_data_is_keyed_by_record_kind(pdb_loader):
     raw = pdb_loader.load("7ZYI").raw_data
     assert set(raw) == {
         "entry", "polymer_entity", "nonpolymer_entity", "branched_entity", "chemcomp", "assembly", "interface",
+        "polymer_entity_instance", "nonpolymer_entity_instance", "branched_entity_instance",
     }
     assert len(raw["interface"]) == 4
 

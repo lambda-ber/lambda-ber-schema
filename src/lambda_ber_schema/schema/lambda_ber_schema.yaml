@@ -1259,6 +1259,9 @@ classes:
 
   SampleComponent:
     is_a: NamedThing
+    slots:
+      - additional_metrics
+      - additional_properties
     description: >-
       One constituent of one sample: a protein, a nucleic acid, a small molecule, a virus particle,
       an organelle, a cell, a membrane mimetic. The inventory of what a sample contains, one row per
