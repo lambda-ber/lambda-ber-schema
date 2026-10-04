@@ -1,0 +1,467 @@
+# One solved RNA structure held in three archives.
+#
+# The solution NMR structure of human pre-miR-31 (Ma et al., PNAS 2023) was deposited three ways:
+#   PDB 8FCS      - the 20-model NMR ensemble (coordinates, restraints)
+#   BMRB 31061    - the NMR data behind it (chemical shifts, sample conditions), NMR-STAR
+#   SASBDB SASDRF9 - SEC-SAXS data on the same RNA, with the 8FCS ensemble fitted against it
+# The PDB entry names the BMRB entry; the SASBDB entry names the PDB entry, marking its model
+# "identical" to 8FCS. Nothing in the PDB entry points to SASBDB.
+#
+# The RNA is one NucleicAcid row shared by every sample, named by its RNAcentral CURIE: the
+# 71-nt construct is exactly the natural hsa-mir-31 stem-loop (miRBase MI0000089), so it is not a
+# synthetic sequence that would need a lambda id. The NMR and SAXS samples are different
+# preparations - different buffer, temperature and isotope labelling - so each is its own Sample,
+# and what differs per preparation sits on SampleNucleicAcidAssociation.
+#
+# The deposited model file is the hinge between the two techniques: it is the output of the NMR
+# refinement and the input of the SAXS fit. SASBDB serves its own copy of it; the coordinates of
+# all 20 models match 8FCS exactly, but the header predates the PDB's 2024 revision of the entry,
+# so the two files have different checksums. Both are recorded to show how a copy held by a second
+# archive can be traced to the original. Checksums are of the files as downloaded on 2026-10-04.
+id: lambdaber:dataset_pre_mir_31
+title: pre-miR-31 solution structure across PDB, BMRB and SASBDB
+description: >-
+  Solution NMR structure of human precursor microRNA 31 (PDB 8FCS, BMRB 31061) with SEC-SAXS data
+  on the same RNA (SASBDB SASDRF9) fitted against the NMR ensemble.
+keywords:
+- RNA
+- pre-miRNA
+- solution NMR
+- SAXS
+- cross-archive
+
+# ===== ENTITY TABLES =====
+
+studies:
+- id: lambdaber:study_pre_mir_31
+  title: Structure of pre-miR-31 reveals an active role in Dicer-TRBP complex processing
+  description: >-
+    Ma S, Kotar A, Hall I, Grote S, Rouskin S, Keane SC. Proc Natl Acad Sci U S A 2023,
+    doi:10.1073/pnas.2300527120, PMID 37725636. The PDB entry cites the bioRxiv preprint of the
+    same work (doi:10.1101/2023.01.03.519659) under a slightly different title.
+  keywords:
+  - pre-miRNA
+  - Dicer processing
+  - apical loop
+
+persons:
+- id: lambdaber:person_sarah_keane
+  title: Sarah C. Keane
+  orcid: https://orcid.org/0000-0003-3206-9048
+  given_name: Sarah
+  family_name: Keane
+  affiliation: University of Michigan
+  affiliation_ror: https://ror.org/00jmfr291
+- id: lambdaber:person_sicong_ma
+  title: Sicong Ma
+  affiliation: University of Michigan
+  affiliation_ror: https://ror.org/00jmfr291
+- id: lambdaber:person_anita_kotar
+  title: Anita Kotar
+  orcid: https://orcid.org/0000-0001-7576-7490
+  affiliation: University of Michigan
+  affiliation_ror: https://ror.org/00jmfr291
+- id: lambdaber:person_ian_hall
+  title: Ian Hall
+  orcid: https://orcid.org/0000-0002-2536-4025
+  affiliation: University of Michigan
+  affiliation_ror: https://ror.org/00jmfr291
+
+instruments:
+# The PDB entry records the spectrometers but not where they are, so no facility is given.
+- id: lambdaber:instrument_bruker_avance_neo_600_8fcs
+  title: Bruker AVANCE NEO 600 MHz
+  description: 600 MHz NMR spectrometer, as recorded for PDB 8FCS (spectrometer 1)
+  instrument_code: 8FCS-NMR-600
+  instrument_category: SPECTROMETER
+  manufacturer: Bruker
+  model: AVANCE NEO
+- id: lambdaber:instrument_bruker_avance_neo_800_8fcs
+  title: Bruker AVANCE NEO 800 MHz
+  description: 800 MHz NMR spectrometer, as recorded for PDB 8FCS (spectrometer 2)
+  instrument_code: 8FCS-NMR-800
+  instrument_category: SPECTROMETER
+  manufacturer: Bruker
+  model: AVANCE NEO
+- id: lambdaber:instrument_aps_biocat_18id
+  title: APS BioCAT 18-ID
+  description: 'SEC-SAXS beamline. Detector: Pilatus 100K'
+  instrument_code: APS-18-ID-BioCAT
+  instrument_registry_id: APS_BIOCAT_18ID
+  instrument_category: SYNCHROTRON_BEAMLINE
+  facility_name: APS
+  beamline_id: 18-ID
+
+nucleic_acids:
+- id: rnacentral:URS0000001EB3_9606
+  title: Human precursor microRNA 31
+  description: >-
+    The hsa-mir-31 stem-loop, 71 nucleotides. RNAcentral lists PDB 8FCS chain A among its
+    cross-references, so the archive link runs both ways for the molecule even though it does not
+    for the SAXS entry.
+  nucleic_acid_type: rna
+  nucleic_acid_name: pre-miR-31
+  rnacentral_id: rnacentral:URS0000001EB3_9606
+  sequence_accession: refseq:NR_029505.1
+  rfam_families:
+  - rfam:RF00661
+  gene_name: MIR31
+  organism: NCBITaxon:9606
+  organism_name: Homo sapiens
+  nucleotide_sequence: GGAGAGGAGGCAAGAUGCUGGCAUAGCUGUUGAACUGGGAACCUGCUAUGCCAACAUAUUGCCAUCUUUCC
+  sequence_length: 71
+  molecular_weight_theoretical:
+    numeric_value: 22.873
+    unit: kDa
+  function_description: Precursor of miR-31, processed by Dicer to the mature microRNA.
+  pdb_entries:
+  - pdb:8FCS
+  cross_references:
+  - database_name: mirbase
+    database_id: MI0000089
+    database_url: https://www.mirbase.org/hairpin/MI0000089
+
+samples:
+# NMR solution 1 of 8FCS: natural abundance, in D2O for the NOESY and TOCSY spectra
+- id: bmrb:31061/sample/1
+  title: pre-miR-31, unlabelled, D2O
+  description: 'NMR sample, solution 1 of PDB 8FCS. Solvent 100% D2O; pD 7.5.'
+  sample_code: 8FCS-NMR-SOLN-1
+  sample_type: nucleic_acid
+  concentration:
+    numeric_value: 0.5
+    unit: mM
+  buffer_composition:
+    ph:
+      numeric_value: 7.5
+      unit: pD
+    components:
+    - 50 mM potassium phosphate
+    - 1 mM MgCl2
+    - 100% D2O
+# NMR solution 6 of 8FCS: one of the nine isotope-labelled preparations; the others differ only in
+# labelling scheme and are left out
+- id: bmrb:31061/sample/6
+  title: pre-miR-31, 13C/15N-labelled A and G, D2O
+  description: 'NMR sample, solution 6 of PDB 8FCS. Solvent 100% D2O; pD 7.5.'
+  sample_code: 8FCS-NMR-SOLN-6
+  sample_type: nucleic_acid
+  concentration:
+    numeric_value: 0.48
+    unit: mM
+  buffer_composition:
+    ph:
+      numeric_value: 7.5
+      unit: pD
+    components:
+    - 50 mM potassium phosphate
+    - 1 mM MgCl2
+    - 100% D2O
+- id: sasbdb:SASDRF9/sample
+  title: pre-miR-31 for SEC-SAXS
+  description: Loaded on a size-exclusion column in line with the beamline; concentration is the loaded maximum.
+  sample_code: SASBDB-SASDRF9
+  sample_type: nucleic_acid
+  concentration:
+    numeric_value: 2.31
+    unit: mg/mL
+  buffer_composition:
+    ph:
+      numeric_value: 7.5
+      unit: pH
+    components:
+    - 50 mM potassium phosphate
+    - 50 mM NaCl
+    - 1 mM MgCl2
+  storage_conditions:
+    temperature:
+      numeric_value: 4
+      unit: Celsius
+  oligomeric_state: monomer
+
+experiment_runs:
+- id: pdb:8FCS/experiment
+  title: pre-miR-31 solution NMR
+  description: >-
+    Twelve experiments across the labelled samples: 2D 1H-1H NOESY and TOCSY, 1H-13C and 1H-15N
+    HSQC, BEST-sellr HNN-COSY for base pairing, and 1H-13C IPAP-HSQC in isotropic and aligned
+    media for residual dipolar couplings. Collected with Bruker TopSpin.
+  experiment_code: 8FCS-NMR
+  technique: solution_nmr
+  experimental_conditions:
+    temperature:
+      numeric_value: 310
+      unit: K
+    pressure:
+      numeric_value: 1
+      unit: atm
+  acquisition_software: TopSpin
+- id: sasbdb:SASDRF9/experiment
+  title: pre-miR-31 SEC-SAXS
+  description: >-
+    SEC-SAXS, 2248 frames. s range 0.027-4.157 nm-1. Guinier Rg 2.877 nm; P(r) Rg 3.05 nm,
+    Dmax 10.6 nm; Porod volume 31.0 nm3.
+  experiment_code: SASBDB-SASDRF9-EXP
+  experiment_date: '2023-03-19'
+  technique: saxs
+  experimental_conditions:
+    temperature:
+      numeric_value: 20
+      unit: Celsius
+  wavelength:
+    numeric_value: 1.033
+    unit: Angstroms
+  detector_distance:
+    numeric_value: 3688
+    unit: mm
+  exposure_time:
+    numeric_value: 0.2
+    unit: s
+  number_of_images:
+    numeric_value: 2248
+    unit: frames
+  quality_metrics:
+    i_zero:
+      numeric_value: 0.012135
+      unit: arbitrary
+    rg:
+      numeric_value: 2.877
+      unit: nm
+
+workflow_runs:
+# NMR side: CYANA structure calculation, then Amber refinement; 640 conformers calculated, the 20
+# lowest-energy deposited. Assignment (NMRViewJ 9.2.0-b24) and processing (NMRFx) precede these.
+- id: pdb:8FCS/workflow/structure_calculation
+  title: Structure calculation
+  description: CYANA, from NOE distance, base-pairing and RDC restraints. 640 conformers calculated.
+  workflow_code: 8FCS-CYANA
+  workflow_type: model_building
+  software_name: CYANA
+  additional_software: NMRFx (processing); NMRViewJ 9.2.0-b24 (assignment)
+- id: pdb:8FCS/workflow/refinement
+  title: Refinement
+  description: Amber simulated annealing; the 20 lowest-energy structures deposited.
+  workflow_code: 8FCS-AMBER
+  workflow_type: model_refinement
+  software_name: Amber
+  deposited_to_pdb: true
+  pdb_id: 8FCS
+# SAXS side
+- id: sasbdb:SASDRF9/workflow/pddf
+  title: Pair distance distribution
+  description: Rg 3.05 nm, Dmax 10.6 nm, I(0) 0.01227
+  workflow_code: SASBDB-SASDRF9-PDDF
+  workflow_type: saxs_analysis
+  software_name: ATSAS GNOM
+  software_version: '5.0'
+- id: sasbdb:SASDRF9/workflow/denss
+  title: Electron density reconstruction
+  workflow_code: SASBDB-SASDRF9-DENSS
+  workflow_type: saxs_analysis
+  software_name: DENSS
+- id: sasbdb:SASDRF9/workflow/fit1
+  title: Fit of the 8FCS ensemble to the SAXS curve
+  description: 'Chi-square 0.912, p-value 0.0002. The model is the 8FCS ensemble, unchanged.'
+  workflow_code: SASBDB-SASDRF9-FIT1
+  workflow_type: saxs_analysis
+  software_name: FoXS
+
+data_files:
+# PDB
+- id: pdb:8FCS/file/mmcif
+  title: 8FCS coordinates (mmCIF)
+  file_name: 8FCS.cif
+  file_path: https://files.rcsb.org/download/8FCS.cif
+  file_format: mmcif
+  data_type: model
+- id: pdb:8FCS/file/pdb
+  title: 8FCS coordinates (PDB format)
+  file_name: 8FCS.pdb
+  file_path: https://files.rcsb.org/download/8FCS.pdb
+  file_format: pdb
+  data_type: model
+  checksum: 9ebc097ea8d4cd36259583f730df6d086a1e4b8008bb38ec7eaf2307112c16d5
+- id: pdb:8FCS/file/restraints
+  title: 8FCS NMR restraints
+  file_name: 8FCS.mr
+  file_path: https://files.rcsb.org/download/8FCS.mr
+  file_format: ascii
+  data_type: processed_data
+# BMRB
+- id: bmrb:31061/file/nmr_star
+  title: BMRB 31061 entry (NMR-STAR 3)
+  description: Chemical shifts, sample contents and conditions, spectrometers and software for 8FCS.
+  file_name: bmr31061_3.str
+  file_path: https://bmrb.io/ftp/pub/bmrb/entry_directories/bmr31061/bmr31061_3.str
+  file_format: nmr_star
+  data_type: processed_data
+# SASBDB
+- id: sasbdb:SASDRF9/file/intensities
+  title: Scattering intensities
+  file_name: SASDRF9.dat
+  file_path: https://www.sasbdb.org/media/intensities_files/SASDRF9.dat
+  file_format: ascii
+  data_type: scattering
+- id: sasbdb:SASDRF9/file/pddf
+  title: GNOM P(r) output
+  file_name: SASDRF9.out
+  file_path: https://www.sasbdb.org/media/p_of_R_files/SASDRF9.out
+  file_format: ascii
+  data_type: processed_data
+- id: sasbdb:SASDRF9/file/fit1_density
+  title: DENSS electron density
+  file_name: SASDRF9_fit1_model1.mrc
+  file_path: https://www.sasbdb.org/media/pdb_file/SASDRF9_fit1_model1.mrc
+  file_format: mrc
+  data_type: volume
+- id: sasbdb:SASDRF9/file/fit1_model
+  title: SASBDB copy of the 8FCS ensemble
+  description: >-
+    SASBDB marks this model "identical" to PDB 8FCS. All 20 models match the coordinates in
+    8FCS.pdb atom for atom; only the header differs, because the copy was taken before the PDB's
+    2024 revision of the entry, so the checksum differs from pdb:8FCS/file/pdb.
+  file_name: SASDRF9_fit1_model2.pdb
+  file_path: https://www.sasbdb.org/media/pdb_file/SASDRF9_fit1_model2.pdb
+  file_format: pdb
+  data_type: model
+  checksum: 6f7566d8e41898fac7f7f4d7a3195e087ad4973a05e762efbb819003d810de23
+- id: sasbdb:SASDRF9/file/fit1
+  title: FoXS fit to the scattering curve
+  file_name: SASDRF9_fit1.fit
+  file_path: https://www.sasbdb.org/media/fitting_files/SASDRF9_fit1.fit
+  file_format: ascii
+  data_type: processed_data
+
+# ===== ASSOCIATION TABLES =====
+
+study_sample_associations:
+- study_id: lambdaber:study_pre_mir_31
+  sample_id: bmrb:31061/sample/1
+- study_id: lambdaber:study_pre_mir_31
+  sample_id: bmrb:31061/sample/6
+- study_id: lambdaber:study_pre_mir_31
+  sample_id: sasbdb:SASDRF9/sample
+
+study_experiment_associations:
+- study_id: lambdaber:study_pre_mir_31
+  experiment_id: pdb:8FCS/experiment
+- study_id: lambdaber:study_pre_mir_31
+  experiment_id: sasbdb:SASDRF9/experiment
+
+experiment_sample_associations:
+- experiment_id: pdb:8FCS/experiment
+  sample_id: bmrb:31061/sample/1
+- experiment_id: pdb:8FCS/experiment
+  sample_id: bmrb:31061/sample/6
+- experiment_id: sasbdb:SASDRF9/experiment
+  sample_id: sasbdb:SASDRF9/sample
+
+experiment_instrument_associations:
+- experiment_id: pdb:8FCS/experiment
+  instrument_id: lambdaber:instrument_bruker_avance_neo_600_8fcs
+- experiment_id: pdb:8FCS/experiment
+  instrument_id: lambdaber:instrument_bruker_avance_neo_800_8fcs
+- experiment_id: sasbdb:SASDRF9/experiment
+  instrument_id: lambdaber:instrument_aps_biocat_18id
+
+# The same strand in every sample; what changes is the preparation. Selective deuteration and
+# nucleotide-specific 13C/15N labelling need labelled NTPs, so the NMR RNA was transcribed in vitro.
+sample_nucleic_acid_associations:
+- sample_id: bmrb:31061/sample/1
+  nucleic_acid_id: rnacentral:URS0000001EB3_9606
+  role: target
+  copy_number: 1
+  structural_form: hairpin
+  source_method: in_vitro_transcription
+- sample_id: bmrb:31061/sample/6
+  nucleic_acid_id: rnacentral:URS0000001EB3_9606
+  role: target
+  copy_number: 1
+  structural_form: hairpin
+  source_method: in_vitro_transcription
+  modifications:
+  - uniform 13C/15N in all A and G nucleotides
+- sample_id: sasbdb:SASDRF9/sample
+  nucleic_acid_id: rnacentral:URS0000001EB3_9606
+  role: target
+  copy_number: 1
+  structural_form: hairpin
+  observed_molecular_weight:
+    numeric_value: 25.5
+    unit: kDa
+
+workflow_experiment_associations:
+- workflow_id: pdb:8FCS/workflow/structure_calculation
+  experiment_id: pdb:8FCS/experiment
+- workflow_id: pdb:8FCS/workflow/refinement
+  experiment_id: pdb:8FCS/experiment
+- workflow_id: sasbdb:SASDRF9/workflow/pddf
+  experiment_id: sasbdb:SASDRF9/experiment
+- workflow_id: sasbdb:SASDRF9/workflow/denss
+  experiment_id: sasbdb:SASDRF9/experiment
+- workflow_id: sasbdb:SASDRF9/workflow/fit1
+  experiment_id: sasbdb:SASDRF9/experiment
+
+workflow_input_associations:
+- workflow_id: pdb:8FCS/workflow/structure_calculation
+  file_id: bmrb:31061/file/nmr_star
+  input_type: raw_data
+- workflow_id: pdb:8FCS/workflow/structure_calculation
+  file_id: pdb:8FCS/file/restraints
+- workflow_id: sasbdb:SASDRF9/workflow/pddf
+  file_id: sasbdb:SASDRF9/file/intensities
+  input_type: raw_data
+- workflow_id: sasbdb:SASDRF9/workflow/denss
+  file_id: sasbdb:SASDRF9/file/pddf
+- workflow_id: sasbdb:SASDRF9/workflow/fit1
+  file_id: sasbdb:SASDRF9/file/intensities
+  input_type: raw_data
+# The NMR ensemble, as SASBDB holds it, is what the SAXS curve was fitted against
+- workflow_id: sasbdb:SASDRF9/workflow/fit1
+  file_id: sasbdb:SASDRF9/file/fit1_model
+  input_type: reference
+
+workflow_output_associations:
+- workflow_id: pdb:8FCS/workflow/refinement
+  file_id: pdb:8FCS/file/mmcif
+  output_type: model
+- workflow_id: pdb:8FCS/workflow/refinement
+  file_id: pdb:8FCS/file/pdb
+  output_type: model
+- workflow_id: sasbdb:SASDRF9/workflow/pddf
+  file_id: sasbdb:SASDRF9/file/pddf
+  output_type: processed_data
+- workflow_id: sasbdb:SASDRF9/workflow/denss
+  file_id: sasbdb:SASDRF9/file/fit1_density
+  output_type: map
+- workflow_id: sasbdb:SASDRF9/workflow/fit1
+  file_id: sasbdb:SASDRF9/file/fit1
+  output_type: statistics
+
+study_person_associations:
+- study_id: lambdaber:study_pre_mir_31
+  person_id: lambdaber:person_sicong_ma
+  role: author
+  author_position: 1
+- study_id: lambdaber:study_pre_mir_31
+  person_id: lambdaber:person_anita_kotar
+  role: author
+  author_position: 2
+- study_id: lambdaber:study_pre_mir_31
+  person_id: lambdaber:person_ian_hall
+  role: author
+  author_position: 3
+- study_id: lambdaber:study_pre_mir_31
+  person_id: lambdaber:person_sarah_keane
+  role: principal_investigator
+  author_position: 6
+
+# Depositors as each archive records them
+workflow_person_associations:
+- workflow_id: pdb:8FCS/workflow/refinement
+  person_id: lambdaber:person_anita_kotar
+  role: data_curator
+experiment_person_associations:
+- experiment_id: sasbdb:SASDRF9/experiment
+  person_id: lambdaber:person_ian_hall
+  role: data_curator

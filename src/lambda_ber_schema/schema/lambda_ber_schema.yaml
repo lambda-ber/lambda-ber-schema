@@ -178,6 +178,7 @@ prefixes:
   CHMO: http://purl.obolibrary.org/obo/CHMO_
   pdb: https://www.rcsb.org/structure/
   sasbdb: https://www.sasbdb.org/data/
+  bmrb: https://bmrb.io/data_library/summary/index.php?bmrbId=
   simplescattering: https://www.simplescattering.com/open_dataset/
   ispyb: https://ispyb.github.io/ISPyB/
   PaNET: http://purl.org/pan-science/PaNET/PaNET
@@ -5325,6 +5326,12 @@ enums:
         comments:
           - "Also known as MicroED or 3D electron diffraction (3DED)"
           - "Uses an electron beam on sub-micron crystals"
+      solution_nmr:
+        description: "Solution-state nuclear magnetic resonance spectroscopy for structure determination of molecules in solution"
+        meaning: CHMO:0002397
+        comments:
+          - "The PDB's SOLUTION NMR method; chemical shifts, restraints and spectra are deposited at BMRB"
+          - "Solid-state NMR is a different technique and is not covered by this value"
 
   ProcessingStatusEnum:
     description: "Processing status"
@@ -5439,6 +5446,8 @@ enums:
         description: "CCP4 map format"
       gz:
         description: "Gzip compressed format"
+      nmr_star:
+        description: "NMR-STAR format for NMR data (chemical shifts, restraints, sample conditions), as distributed by BMRB"
 
   DataTypeEnum:
     description: "Types of data"
