@@ -60,10 +60,10 @@ def interaction(subject, obj, itype, status, description, **extra):
     return row
 
 inter = d['sample_component_interactions']
-# The loader writes one row per sodium and per bile salt copy, with the residues the deposited
-# model puts in contact or in coordination. The paper names the sites; it also lists one more
-# residue per sodium site than the deposited coordination bonds do. Both are kept: the PDB's
-# residues in object_site, the paper's reading in the description.
+# The loader writes one row per sodium and per bile salt copy, with the residues RCSB finds
+# within contact distance of that copy in the deposited model, and names the declared bonds.
+# The paper names the sites and lists one residue more per sodium site than the contacts do
+# (C98, N106). Both are kept: RCSB's residues in object_site, the paper's in the description.
 paper_na = {"Q68,G97,S99,Q261": ("Na2", "Q68,G97,C98,S99,Q261"), "S105,S119,T123,E257": ("Na1", "S105,N106,S119,T123,E257")}
 for i in inter:
     if i['subject_id'] == NA and i.get('object_site') in paper_na:

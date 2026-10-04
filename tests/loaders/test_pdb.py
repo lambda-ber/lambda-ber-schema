@@ -236,11 +236,14 @@ class TestInteractions:
         assert all("Q264" in i.object_site for i in gcdc)
         assert gcdc[0].object_site != gcdc[1].object_site
 
-    def test_sodium_sites_come_from_the_deposited_coordination_bonds(self, pdb_loader):
-        """The PDB's metal coordination bonds name the residues of each sodium site."""
+    def test_sodium_sites_are_contacts_and_bonds_from_the_deposition(self, pdb_loader):
+        """Each sodium's site is the residues within contact distance; the declared bonds are named."""
         ds = pdb_loader.load("7ZYI").dataset
-        sites = {i.object_site for s, t, o, i in _interactions(ds) if s == "SODIUM ION"}
-        assert sites == {"Q68,G97,S99,Q261", "S105,S119,T123,E257"}
+        rows = {i.object_site: i for s, t, o, i in _interactions(ds) if s == "SODIUM ION"}
+        assert set(rows) == {"Q68,G97,S99,Q261", "S105,S119,T123,E257"}
+        assert "bonded to Q68" in rows["Q68,G97,S99,Q261"].description
+        assert "bonded to E257, S105, T123" in rows["S105,S119,T123,E257"].description
+        assert all(i.interaction_type == "is_coordinated_by" for i in rows.values())
 
     def test_ligand_fit_scores_are_kept_per_copy(self, pdb_loader):
         ds = pdb_loader.load("7ZYI").dataset

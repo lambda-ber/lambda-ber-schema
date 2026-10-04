@@ -40,6 +40,7 @@ nav:
     - Data Quality Challenges: background/data-quality-challenges.md
   - Examples:
     - Simple Scattering GluRS Dataset: examples/simplescattering-glurs-analysis.md
+    - "PDB 7ZYI (NTCP): archive to paper": examples/pdb-7zyi-ntcp-case-study.md
   - Use Cases:
     - Overview: use-cases/index.html
     - Federated Data Pull: use-cases/01-federated-data-pull.html
