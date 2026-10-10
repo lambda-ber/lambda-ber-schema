@@ -2,7 +2,7 @@
 #mapping_set_id: http://w3id.org/lambda/rocrate/core
 #mapping_tool: https://w3id.org/linkml/
 #creator_id: linkml_user
-#mapping_date: 2026-09-18
+#mapping_date: 2026-10-10
 #curie_map: 
 # lambda: http://w3id.org/lambda/
 # lambdarc: http://w3id.org/lambda/rocrate/
@@ -409,12 +409,16 @@ lambdarc:vocabEntry	vocab_entry	skos:closeMatch		lambdax:vocabEntry		skos:closeM
 lambda:workflow_code	workflow_code	skos:exactMatch		lambda:workflow_code		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambdarc:workflowRunId	workflow_run_id	skos:relatedMatch		lambda:workflow_code		skos:relatedMatch	http://w3id.org/lambda/rocrate/core									
 lambda:workflow_type	workflow_type	skos:exactMatch		lambda:workflow_type		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
+lambda:conformational_state	workflowOutputAssociation__conformational_state	skos:relatedMatch		IHMCIF:_ihm_ensemble_info.ensemble_name		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:conformational_state	workflowOutputAssociation__conformational_state	skos:relatedMatch		IHMCIF:_ihm_model_group.name		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:number_of_particles	workflowOutputAssociation__number_of_particles	skos:relatedMatch		mmCIF:_em_3d_reconstruction.num_particles		skos:relatedMatch	http://w3id.org/lambda/									
 lambda:anomalous_completeness	workflowRun__anomalous_completeness	skos:exactMatch		ispyb:AutoProcScalingStatistics.anomalousCompleteness		skos:exactMatch	http://w3id.org/lambda/									
 lambda:completeness_percent	workflowRun__completeness_percent	skos:exactMatch		nsls2:Completeness		skos:exactMatch	http://w3id.org/lambda/									
 lambda:completeness_percent	workflowRun__completeness_percent	skos:exactMatch		mmCIF:_reflns.percent_possible_obs		skos:exactMatch	http://w3id.org/lambda/									
 lambda:completeness_percent	workflowRun__completeness_percent	skos:exactMatch		ispyb:AutoProcScalingStatistics.completeness		skos:exactMatch	http://w3id.org/lambda/									
 lambda:n_total_observations	workflowRun__n_total_observations	skos:exactMatch		mmCIF:_reflns.number_all		skos:exactMatch	http://w3id.org/lambda/									
 lambda:n_total_unique	workflowRun__n_total_unique	skos:exactMatch		mmCIF:_reflns.number_obs		skos:exactMatch	http://w3id.org/lambda/									
+lambda:number_of_particles	workflowRun__number_of_particles	skos:exactMatch		mmCIF:_em_3d_reconstruction.num_particles		skos:exactMatch	http://w3id.org/lambda/									
 lambda:parameters_file_path	workflowRun__parameters_file_path	skos:relatedMatch		IHMCIF:_ihm_modeling_protocol_details.script_file_id		skos:relatedMatch	http://w3id.org/lambda/									
 lambda:parameters_file_path	workflowRun__parameters_file_path	skos:relatedMatch		IHMCIF:_ihm_external_files.file_path		skos:relatedMatch	http://w3id.org/lambda/									
 lambda:processing_parameters	workflowRun__processing_parameters	skos:relatedMatch		IHMCIF:_ihm_modeling_protocol_details.description		skos:relatedMatch	http://w3id.org/lambda/									

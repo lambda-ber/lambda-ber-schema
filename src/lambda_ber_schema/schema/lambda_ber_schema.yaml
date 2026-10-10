@@ -1,6 +1,6 @@
 id: http://w3id.org/lambda/
 name: lambda-ber-schema
-version: "0.1.2.post308.dev0+8a814589" # Managed by uv-dynamic-versioning
+version: "0.0.0.post409.dev0+543ae40" # Managed by uv-dynamic-versioning
 description: |
   lambda-ber-schema is a comprehensive schema for representing multimodal structural biology imaging data, 
   from atomic-resolution structures to tissue-level organization. It supports diverse experimental 
@@ -2533,6 +2533,17 @@ classes:
       fsc_curve:
         description: "Fourier Shell Correlation curve data"
         range: FSCCurve
+      number_of_particles:
+        description: >-
+          Number of particle images the workflow used. For a reconstruction, a heterogeneity analysis
+          or a model inferred from particles, count the particles that went into the result, not the
+          stack it was drawn from: a run that used 1,000 of 374,814 deposited particles records 1,000.
+        range: integer
+        minimum_value: 0
+        exact_mappings:
+          - mmCIF:_em_3d_reconstruction.num_particles
+        comments:
+          - "Where a run yields one output per conformational state or class, the per-state counts go on WorkflowOutputAssociation.number_of_particles and this field holds their total"
       output_files:
         description: "Output files generated"
         range: DataFile
@@ -4144,6 +4155,24 @@ classes:
       output_type:
         description: "Type of output from the workflow"
         range: OutputTypeEnum
+      conformational_state:
+        description: >-
+          Label of the conformational state or class this output describes, for a workflow that
+          resolves more than one (e.g., 'state A', 'activated E2P', 'class 3'). Outputs of one run that
+          share a label describe the same state, so a state's map, model and particle subset can be
+          read together.
+        related_mappings:
+          - IHMCIF:_ihm_ensemble_info.ensemble_name
+          - IHMCIF:_ihm_model_group.name
+      number_of_particles:
+        description: >-
+          Number of particles assigned to the state or class this output describes. Set it only where
+          the output is one of several per-state results; a single-state run records its count on
+          WorkflowRun.number_of_particles.
+        range: integer
+        minimum_value: 0
+        related_mappings:
+          - mmCIF:_em_3d_reconstruction.num_particles
 
   StudyPersonAssociation:
     description: >-
@@ -5391,6 +5420,17 @@ enums:
         description: "Atomic model refinement"
       model_validation:
         description: "Model validation and quality assessment"
+      structure_prediction:
+        description: "Prediction of an atomic model from sequence, with no experimental data (e.g., AlphaFold, RoseTTAFold, Boltz)"
+        comments:
+          - "Its predicted model, linked as a WorkflowInputAssociation with input_type structure_prior, is how a later run records that it started from a prediction"
+      heterogeneity_analysis:
+        description: "Analysis of conformational or compositional heterogeneity across particles, discrete or continuous, that assigns particles to states or places them on a latent space (e.g., cryoDRGN, RECOVAR, 3DVA)"
+      particle_to_model_inference:
+        description: "An atomic model inferred directly from particle images, with no reconstructed map in between, usually guided by a structure-prediction prior and refining particle poses as it goes (e.g., Fold'EM)"
+        comments:
+          - "Distinct from model_building, which fits a model into a map that an earlier refinement produced"
+          - "Record the particles as input_type particles, the prior as input_type structure_prior, and one output per state with conformational_state set"
 
   FileFormatEnum:
     description: "File formats"
@@ -5477,6 +5517,10 @@ enums:
         description: "Half-map for gold-standard refinement"
       validation_report:
         description: "Validation report"
+      predicted_model:
+        description: "Atomic model predicted from sequence and not fitted to experimental data"
+      particle_assignments:
+        description: "Per-particle poses, state or class assignments, and confidence scores"
 
   CollectionModeEnum:
     description: "Data collection modes"
@@ -6130,6 +6174,10 @@ enums:
         description: "Processing parameters file"
       mask:
         description: "Mask or selection file"
+      particles:
+        description: "Particle images, with or without poses, that the workflow fits or reconstructs from"
+      structure_prior:
+        description: "A predicted or previously determined structure the workflow starts from and lets the data move, as opposed to a fixed reference it is compared or aligned against"
 
   OutputTypeEnum:
     description: "Types of outputs from computational workflows"
@@ -6152,6 +6200,8 @@ enums:
         description: "Processed or derived data files"
       log:
         description: "Processing log files"
+      particle_assignments:
+        description: "Per-particle poses, state or class assignments, and confidence scores"
 
   IceContaminationEnum:
     description: "Assessment of ice contamination level on a cryo-EM grid"

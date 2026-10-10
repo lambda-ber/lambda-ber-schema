@@ -3140,6 +3140,25 @@
         {
           "text": "model_validation",
           "description": "Model validation and quality assessment"
+        },
+        {
+          "text": "structure_prediction",
+          "description": "Prediction of an atomic model from sequence, with no experimental data (e.g., AlphaFold, RoseTTAFold, Boltz)",
+          "comments": [
+            "Its predicted model, linked as a WorkflowInputAssociation with input_type structure_prior, is how a later run records that it started from a prediction"
+          ]
+        },
+        {
+          "text": "heterogeneity_analysis",
+          "description": "Analysis of conformational or compositional heterogeneity across particles, discrete or continuous, that assigns particles to states or places them on a latent space (e.g., cryoDRGN, RECOVAR, 3DVA)"
+        },
+        {
+          "text": "particle_to_model_inference",
+          "description": "An atomic model inferred directly from particle images, with no reconstructed map in between, usually guided by a structure-prediction prior and refining particle poses as it goes (e.g., Fold'EM)",
+          "comments": [
+            "Distinct from model_building, which fits a model into a map that an earlier refinement produced",
+            "Record the particles as input_type particles, the prior as input_type structure_prior, and one output per state with conformational_state set"
+          ]
         }
       ]
     },
@@ -3312,6 +3331,14 @@
         {
           "text": "validation_report",
           "description": "Validation report"
+        },
+        {
+          "text": "predicted_model",
+          "description": "Atomic model predicted from sequence and not fitted to experimental data"
+        },
+        {
+          "text": "particle_assignments",
+          "description": "Per-particle poses, state or class assignments, and confidence scores"
         }
       ]
     },
@@ -4520,6 +4547,14 @@
         {
           "text": "mask",
           "description": "Mask or selection file"
+        },
+        {
+          "text": "particles",
+          "description": "Particle images, with or without poses, that the workflow fits or reconstructs from"
+        },
+        {
+          "text": "structure_prior",
+          "description": "A predicted or previously determined structure the workflow starts from and lets the data move, as opposed to a fixed reference it is compared or aligned against"
         }
       ]
     },
@@ -4564,6 +4599,10 @@
         {
           "text": "log",
           "description": "Processing log files"
+        },
+        {
+          "text": "particle_assignments",
+          "description": "Per-particle poses, state or class assignments, and confidence scores"
         }
       ]
     },
@@ -16165,6 +16204,26 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "workflowRun__number_of_particles",
+      "description": "Number of particle images the workflow used. For a reconstruction, a heterogeneity analysis or a model inferred from particles, count the particles that went into the result, not the stack it was drawn from: a run that used 1,000 of 374,814 deposited particles records 1,000.",
+      "comments": [
+        "Where a run yields one output per conformational state or class, the per-state counts go on WorkflowOutputAssociation.number_of_particles and this field holds their total"
+      ],
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_3d_reconstruction.num_particles"
+      ],
+      "slot_uri": "http://w3id.org/lambda/number_of_particles",
+      "alias": "number_of_particles",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "integer",
+      "minimum_value": 0,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "workflowRun__output_files",
       "description": "Output files generated",
       "from_schema": "http://w3id.org/lambda/",
@@ -20737,6 +20796,40 @@
         "WorkflowOutputAssociation"
       ],
       "range": "OutputTypeEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowOutputAssociation__conformational_state",
+      "description": "Label of the conformational state or class this output describes, for a workflow that resolves more than one (e.g., 'state A', 'activated E2P', 'class 3'). Outputs of one run that share a label describe the same state, so a state's map, model and particle subset can be read together.",
+      "from_schema": "http://w3id.org/lambda/",
+      "related_mappings": [
+        "https://mmcif.wwpdb.org/dictionaries/mmcif_ihm_ext.dic/Items/_ihm_ensemble_info.ensemble_name",
+        "https://mmcif.wwpdb.org/dictionaries/mmcif_ihm_ext.dic/Items/_ihm_model_group.name"
+      ],
+      "slot_uri": "http://w3id.org/lambda/conformational_state",
+      "alias": "conformational_state",
+      "owner": "WorkflowOutputAssociation",
+      "domain_of": [
+        "WorkflowOutputAssociation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowOutputAssociation__number_of_particles",
+      "description": "Number of particles assigned to the state or class this output describes. Set it only where the output is one of several per-state results; a single-state run records its count on WorkflowRun.number_of_particles.",
+      "from_schema": "http://w3id.org/lambda/",
+      "related_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_3d_reconstruction.num_particles"
+      ],
+      "slot_uri": "http://w3id.org/lambda/number_of_particles",
+      "alias": "number_of_particles",
+      "owner": "WorkflowOutputAssociation",
+      "domain_of": [
+        "WorkflowOutputAssociation"
+      ],
+      "range": "integer",
+      "minimum_value": 0,
       "@type": "SlotDefinition"
     },
     {
@@ -28986,6 +29079,7 @@
         "workflowRun__particle_picking_params",
         "workflowRun__refinement_params",
         "workflowRun__fsc_curve",
+        "workflowRun__number_of_particles",
         "workflowRun__output_files"
       ],
       "slot_usage": {},
@@ -29488,6 +29582,19 @@
           "name": "fsc_curve",
           "description": "Fourier Shell Correlation curve data",
           "range": "FSCCurve",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "number_of_particles",
+          "description": "Number of particle images the workflow used. For a reconstruction, a heterogeneity analysis or a model inferred from particles, count the particles that went into the result, not the stack it was drawn from: a run that used 1,000 of 374,814 deposited particles records 1,000.",
+          "comments": [
+            "Where a run yields one output per conformational state or class, the per-state counts go on WorkflowOutputAssociation.number_of_particles and this field holds their total"
+          ],
+          "exact_mappings": [
+            "mmCIF:_em_3d_reconstruction.num_particles"
+          ],
+          "range": "integer",
+          "minimum_value": 0,
           "@type": "SlotDefinition"
         },
         {
@@ -32864,7 +32971,9 @@
       "slots": [
         "workflowOutputAssociation__workflow_id",
         "workflowOutputAssociation__file_id",
-        "workflowOutputAssociation__output_type"
+        "workflowOutputAssociation__output_type",
+        "workflowOutputAssociation__conformational_state",
+        "workflowOutputAssociation__number_of_particles"
       ],
       "slot_usage": {},
       "attributes": [
@@ -32886,6 +32995,25 @@
           "name": "output_type",
           "description": "Type of output from the workflow",
           "range": "OutputTypeEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "conformational_state",
+          "description": "Label of the conformational state or class this output describes, for a workflow that resolves more than one (e.g., 'state A', 'activated E2P', 'class 3'). Outputs of one run that share a label describe the same state, so a state's map, model and particle subset can be read together.",
+          "related_mappings": [
+            "IHMCIF:_ihm_ensemble_info.ensemble_name",
+            "IHMCIF:_ihm_model_group.name"
+          ],
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "number_of_particles",
+          "description": "Number of particles assigned to the state or class this output describes. Set it only where the output is one of several per-state results; a single-state run records its count on WorkflowRun.number_of_particles.",
+          "related_mappings": [
+            "mmCIF:_em_3d_reconstruction.num_particles"
+          ],
+          "range": "integer",
+          "minimum_value": 0,
           "@type": "SlotDefinition"
         }
       ],
@@ -34457,9 +34585,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda_rocrate_core.yaml",
-  "source_file_date": "2026-09-18T15:53:38",
+  "source_file_date": "2026-10-10T18:36:01",
   "source_file_size": 86395,
-  "generation_date": "2026-09-18T15:57:24",
+  "generation_date": "2026-10-10T18:46:44",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/rocrate/jsonld/lambda_rocrate_core.context.jsonld",

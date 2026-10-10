@@ -2156,7 +2156,9 @@
                 "class_averages",
                 "fsc_curve",
                 "map_half",
-                "validation_report"
+                "validation_report",
+                "predicted_model",
+                "particle_assignments"
             ],
             "title": "DataTypeEnum",
             "type": "string"
@@ -4869,7 +4871,9 @@
                 "raw_data",
                 "reference",
                 "parameters",
-                "mask"
+                "mask",
+                "particles",
+                "structure_prior"
             ],
             "title": "InputTypeEnum",
             "type": "string"
@@ -6555,7 +6559,8 @@
                 "metadata",
                 "statistics",
                 "processed_data",
-                "log"
+                "log",
+                "particle_assignments"
             ],
             "title": "OutputTypeEnum",
             "type": "string"
@@ -10913,9 +10918,24 @@
             "additionalProperties": false,
             "description": "Links output DataFiles to WorkflowRun",
             "properties": {
+                "conformational_state": {
+                    "description": "Label of the conformational state or class this output describes, for a workflow that resolves more than one (e.g., 'state A', 'activated E2P', 'class 3'). Outputs of one run that share a label describe the same state, so a state's map, model and particle subset can be read together.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "file_id": {
                     "description": "Reference to the output data file",
                     "type": "string"
+                },
+                "number_of_particles": {
+                    "description": "Number of particles assigned to the state or class this output describes. Set it only where the output is one of several per-state results; a single-state run records its count on WorkflowRun.number_of_particles.",
+                    "minimum": 0,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
                 },
                 "output_type": {
                     "$ref": "#/$defs/OutputTypeEnum",
@@ -11194,6 +11214,14 @@
                     "description": "Whether Non-Crystallographic Symmetry restraints were used",
                     "type": [
                         "boolean",
+                        "null"
+                    ]
+                },
+                "number_of_particles": {
+                    "description": "Number of particle images the workflow used. For a reconstruction, a heterogeneity analysis or a model inferred from particles, count the particles that went into the result, not the stack it was drawn from: a run that used 1,000 of 374,814 deposited particles records 1,000.",
+                    "minimum": 0,
+                    "type": [
+                        "integer",
                         "null"
                     ]
                 },
@@ -11619,7 +11647,10 @@
                 "postprocessing",
                 "map_validation",
                 "model_refinement",
-                "model_validation"
+                "model_validation",
+                "structure_prediction",
+                "heterogeneity_analysis",
+                "particle_to_model_inference"
             ],
             "title": "WorkflowTypeEnum",
             "type": "string"
@@ -12597,5 +12628,5 @@
     ],
     "title": "lambda-ber-schema",
     "type": "object",
-    "version": "0.1.2.post308.dev0+8a814589"
+    "version": "0.0.0.post409.dev0+543ae40"
 }

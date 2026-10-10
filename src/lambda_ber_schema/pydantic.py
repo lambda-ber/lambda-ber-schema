@@ -27,7 +27,7 @@ from pydantic import (
 
 
 metamodel_version = "None"
-version = "0.1.2.post308.dev0+8a814589"
+version = "0.0.0.post409.dev0+543ae40"
 
 
 class ConfiguredBaseModel(BaseModel):
@@ -2373,6 +2373,18 @@ class WorkflowTypeEnum(str, Enum):
     """
     Model validation and quality assessment
     """
+    structure_prediction = "structure_prediction"
+    """
+    Prediction of an atomic model from sequence, with no experimental data (e.g., AlphaFold, RoseTTAFold, Boltz)
+    """
+    heterogeneity_analysis = "heterogeneity_analysis"
+    """
+    Analysis of conformational or compositional heterogeneity across particles, discrete or continuous, that assigns particles to states or places them on a latent space (e.g., cryoDRGN, RECOVAR, 3DVA)
+    """
+    particle_to_model_inference = "particle_to_model_inference"
+    """
+    An atomic model inferred directly from particle images, with no reconstructed map in between, usually guided by a structure-prediction prior and refining particle poses as it goes (e.g., Fold'EM)
+    """
 
 
 class FileFormatEnum(str, Enum):
@@ -2540,6 +2552,14 @@ class DataTypeEnum(str, Enum):
     validation_report = "validation_report"
     """
     Validation report
+    """
+    predicted_model = "predicted_model"
+    """
+    Atomic model predicted from sequence and not fitted to experimental data
+    """
+    particle_assignments = "particle_assignments"
+    """
+    Per-particle poses, state or class assignments, and confidence scores
     """
 
 
@@ -3489,6 +3509,14 @@ class InputTypeEnum(str, Enum):
     """
     Mask or selection file
     """
+    particles = "particles"
+    """
+    Particle images, with or without poses, that the workflow fits or reconstructs from
+    """
+    structure_prior = "structure_prior"
+    """
+    A predicted or previously determined structure the workflow starts from and lets the data move, as opposed to a fixed reference it is compared or aligned against
+    """
 
 
 class OutputTypeEnum(str, Enum):
@@ -3530,6 +3558,10 @@ class OutputTypeEnum(str, Enum):
     log = "log"
     """
     Processing log files
+    """
+    particle_assignments = "particle_assignments"
+    """
+    Per-particle poses, state or class assignments, and confidence scores
     """
 
 
@@ -3945,7 +3977,8 @@ class StructuralFeature(ProteinAnnotation):
     solvent_accessibility: Optional[float] = Field(default=None, description="""Relative solvent accessible surface area (range: 0-1)""", ge=0, le=1, json_schema_extra = { "linkml_meta": {'alias': 'solvent_accessibility', 'domain_of': ['StructuralFeature']} })
     backbone_flexibility: Optional[float] = Field(default=None, description="""B-factor or flexibility measure""", json_schema_extra = { "linkml_meta": {'alias': 'backbone_flexibility', 'domain_of': ['StructuralFeature']} })
     disorder_probability: Optional[float] = Field(default=None, description="""Probability of disorder (range: 0-1)""", ge=0, le=1, json_schema_extra = { "linkml_meta": {'alias': 'disorder_probability', 'domain_of': ['StructuralFeature']} })
-    conformational_state: Optional[ConformationalStateEnum] = Field(default=None, description="""Conformational state descriptor""", json_schema_extra = { "linkml_meta": {'alias': 'conformational_state', 'domain_of': ['StructuralFeature']} })
+    conformational_state: Optional[ConformationalStateEnum] = Field(default=None, description="""Conformational state descriptor""", json_schema_extra = { "linkml_meta": {'alias': 'conformational_state',
+         'domain_of': ['StructuralFeature', 'WorkflowOutputAssociation']} })
     structural_motif: Optional[str] = Field(default=None, description="""Known structural motif""", json_schema_extra = { "linkml_meta": {'alias': 'structural_motif', 'domain_of': ['StructuralFeature']} })
     domain_assignment: Optional[str] = Field(default=None, description="""Domain database assignment (CATH, SCOP, Pfam)""", json_schema_extra = { "linkml_meta": {'alias': 'domain_assignment', 'domain_of': ['StructuralFeature']} })
     domain_id: Optional[str] = Field(default=None, description="""Domain identifier from domain database""", json_schema_extra = { "linkml_meta": {'alias': 'domain_id', 'domain_of': ['StructuralFeature']} })
@@ -6456,6 +6489,13 @@ class WorkflowRun(NamedThing):
     particle_picking_params: Optional[ParticlePickingParameters] = Field(default=None, description="""Particle picking specific parameters""", json_schema_extra = { "linkml_meta": {'alias': 'particle_picking_params', 'domain_of': ['WorkflowRun']} })
     refinement_params: Optional[RefinementParameters] = Field(default=None, description="""3D refinement specific parameters""", json_schema_extra = { "linkml_meta": {'alias': 'refinement_params', 'domain_of': ['WorkflowRun']} })
     fsc_curve: Optional[FSCCurve] = Field(default=None, description="""Fourier Shell Correlation curve data""", json_schema_extra = { "linkml_meta": {'alias': 'fsc_curve', 'domain_of': ['WorkflowRun']} })
+    number_of_particles: Optional[int] = Field(default=None, description="""Number of particle images the workflow used. For a reconstruction, a heterogeneity analysis or a model inferred from particles, count the particles that went into the result, not the stack it was drawn from: a run that used 1,000 of 374,814 deposited particles records 1,000.""", ge=0, json_schema_extra = { "linkml_meta": {'alias': 'number_of_particles',
+         'comments': ['Where a run yields one output per conformational state or '
+                      'class, the per-state counts go on '
+                      'WorkflowOutputAssociation.number_of_particles and this field '
+                      'holds their total'],
+         'domain_of': ['WorkflowRun', 'WorkflowOutputAssociation'],
+         'exact_mappings': ['mmCIF:_em_3d_reconstruction.num_particles']} })
     output_files: Optional[list[str]] = Field(default=None, description="""Output files generated""", json_schema_extra = { "linkml_meta": {'alias': 'output_files', 'domain_of': ['WorkflowRun']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
@@ -7776,6 +7816,13 @@ class WorkflowOutputAssociation(ConfiguredBaseModel):
     file_id: str = Field(default=..., description="""Reference to the output data file""", json_schema_extra = { "linkml_meta": {'alias': 'file_id',
          'domain_of': ['WorkflowInputAssociation', 'WorkflowOutputAssociation']} })
     output_type: Optional[OutputTypeEnum] = Field(default=None, description="""Type of output from the workflow""", json_schema_extra = { "linkml_meta": {'alias': 'output_type', 'domain_of': ['WorkflowOutputAssociation']} })
+    conformational_state: Optional[str] = Field(default=None, description="""Label of the conformational state or class this output describes, for a workflow that resolves more than one (e.g., 'state A', 'activated E2P', 'class 3'). Outputs of one run that share a label describe the same state, so a state's map, model and particle subset can be read together.""", json_schema_extra = { "linkml_meta": {'alias': 'conformational_state',
+         'domain_of': ['StructuralFeature', 'WorkflowOutputAssociation'],
+         'related_mappings': ['IHMCIF:_ihm_ensemble_info.ensemble_name',
+                              'IHMCIF:_ihm_model_group.name']} })
+    number_of_particles: Optional[int] = Field(default=None, description="""Number of particles assigned to the state or class this output describes. Set it only where the output is one of several per-state results; a single-state run records its count on WorkflowRun.number_of_particles.""", ge=0, json_schema_extra = { "linkml_meta": {'alias': 'number_of_particles',
+         'domain_of': ['WorkflowRun', 'WorkflowOutputAssociation'],
+         'related_mappings': ['mmCIF:_em_3d_reconstruction.num_particles']} })
 
 
 class StudyPersonAssociation(ConfiguredBaseModel):

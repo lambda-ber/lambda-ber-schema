@@ -1,5 +1,5 @@
 # Auto generated from lambda_ber_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-09-18T15:54:30
+# Generation date: 2026-10-10T18:43:31
 # Schema: lambda-ber-schema
 #
 # id: http://w3id.org/lambda/
@@ -202,7 +202,7 @@ from linkml_runtime.linkml_model.types import Boolean, Curie, Date, Float, Integ
 from linkml_runtime.utils.metamodelcore import Bool, Curie, URI, URIorCURIE, XSDDate
 
 metamodel_version = "1.7.0"
-version = "0.1.2.post308.dev0+8a814589"
+version = "0.0.0.post409.dev0+543ae40"
 
 # Namespaces
 CHEBI = CurieNamespace('CHEBI', 'http://purl.obolibrary.org/obo/CHEBI_')
@@ -2620,6 +2620,7 @@ class WorkflowRun(NamedThing):
     particle_picking_params: Optional[Union[dict, "ParticlePickingParameters"]] = None
     refinement_params: Optional[Union[dict, "RefinementParameters"]] = None
     fsc_curve: Optional[Union[dict, "FSCCurve"]] = None
+    number_of_particles: Optional[int] = None
     output_files: Optional[Union[Union[str, DataFileId], list[Union[str, DataFileId]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -2825,6 +2826,9 @@ class WorkflowRun(NamedThing):
 
         if self.fsc_curve is not None and not isinstance(self.fsc_curve, FSCCurve):
             self.fsc_curve = FSCCurve(**as_dict(self.fsc_curve))
+
+        if self.number_of_particles is not None and not isinstance(self.number_of_particles, int):
+            self.number_of_particles = int(self.number_of_particles)
 
         if not isinstance(self.output_files, list):
             self.output_files = [self.output_files] if self.output_files is not None else []
@@ -4934,6 +4938,8 @@ class WorkflowOutputAssociation(YAMLRoot):
     workflow_id: Union[str, WorkflowRunId] = None
     file_id: Union[str, DataFileId] = None
     output_type: Optional[Union[str, "OutputTypeEnum"]] = None
+    conformational_state: Optional[str] = None
+    number_of_particles: Optional[int] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.workflow_id):
@@ -4948,6 +4954,12 @@ class WorkflowOutputAssociation(YAMLRoot):
 
         if self.output_type is not None and not isinstance(self.output_type, OutputTypeEnum):
             self.output_type = OutputTypeEnum(self.output_type)
+
+        if self.conformational_state is not None and not isinstance(self.conformational_state, str):
+            self.conformational_state = str(self.conformational_state)
+
+        if self.number_of_particles is not None and not isinstance(self.number_of_particles, int):
+            self.number_of_particles = int(self.number_of_particles)
 
         super().__post_init__(**kwargs)
 
@@ -6971,6 +6983,15 @@ class WorkflowTypeEnum(EnumDefinitionImpl):
     model_validation = PermissibleValue(
         text="model_validation",
         description="Model validation and quality assessment")
+    structure_prediction = PermissibleValue(
+        text="structure_prediction",
+        description="""Prediction of an atomic model from sequence, with no experimental data (e.g., AlphaFold, RoseTTAFold, Boltz)""")
+    heterogeneity_analysis = PermissibleValue(
+        text="heterogeneity_analysis",
+        description="""Analysis of conformational or compositional heterogeneity across particles, discrete or continuous, that assigns particles to states or places them on a latent space (e.g., cryoDRGN, RECOVAR, 3DVA)""")
+    particle_to_model_inference = PermissibleValue(
+        text="particle_to_model_inference",
+        description="""An atomic model inferred directly from particle images, with no reconstructed map in between, usually guided by a structure-prediction prior and refining particle poses as it goes (e.g., Fold'EM)""")
 
     _defn = EnumDefinition(
         name="WorkflowTypeEnum",
@@ -7108,6 +7129,12 @@ class DataTypeEnum(EnumDefinitionImpl):
     validation_report = PermissibleValue(
         text="validation_report",
         description="Validation report")
+    predicted_model = PermissibleValue(
+        text="predicted_model",
+        description="Atomic model predicted from sequence and not fitted to experimental data")
+    particle_assignments = PermissibleValue(
+        text="particle_assignments",
+        description="Per-particle poses, state or class assignments, and confidence scores")
 
     _defn = EnumDefinition(
         name="DataTypeEnum",
@@ -7994,6 +8021,12 @@ class InputTypeEnum(EnumDefinitionImpl):
     mask = PermissibleValue(
         text="mask",
         description="Mask or selection file")
+    particles = PermissibleValue(
+        text="particles",
+        description="Particle images, with or without poses, that the workflow fits or reconstructs from")
+    structure_prior = PermissibleValue(
+        text="structure_prior",
+        description="""A predicted or previously determined structure the workflow starts from and lets the data move, as opposed to a fixed reference it is compared or aligned against""")
 
     _defn = EnumDefinition(
         name="InputTypeEnum",
@@ -8031,6 +8064,9 @@ class OutputTypeEnum(EnumDefinitionImpl):
     log = PermissibleValue(
         text="log",
         description="Processing log files")
+    particle_assignments = PermissibleValue(
+        text="particle_assignments",
+        description="Per-particle poses, state or class assignments, and confidence scores")
 
     _defn = EnumDefinition(
         name="OutputTypeEnum",
@@ -10479,6 +10515,9 @@ slots.workflowRun__refinement_params = Slot(uri=LAMBDA.refinement_params, name="
 slots.workflowRun__fsc_curve = Slot(uri=LAMBDA.fsc_curve, name="workflowRun__fsc_curve", curie=LAMBDA.curie('fsc_curve'),
                    model_uri=LAMBDA.workflowRun__fsc_curve, domain=None, range=Optional[Union[dict, FSCCurve]])
 
+slots.workflowRun__number_of_particles = Slot(uri=LAMBDA.number_of_particles, name="workflowRun__number_of_particles", curie=LAMBDA.curie('number_of_particles'),
+                   model_uri=LAMBDA.workflowRun__number_of_particles, domain=None, range=Optional[int])
+
 slots.workflowRun__output_files = Slot(uri=LAMBDA.output_files, name="workflowRun__output_files", curie=LAMBDA.curie('output_files'),
                    model_uri=LAMBDA.workflowRun__output_files, domain=None, range=Optional[Union[Union[str, DataFileId], list[Union[str, DataFileId]]]])
 
@@ -11426,6 +11465,12 @@ slots.workflowOutputAssociation__file_id = Slot(uri=LAMBDA.file_id, name="workfl
 
 slots.workflowOutputAssociation__output_type = Slot(uri=LAMBDA.output_type, name="workflowOutputAssociation__output_type", curie=LAMBDA.curie('output_type'),
                    model_uri=LAMBDA.workflowOutputAssociation__output_type, domain=None, range=Optional[Union[str, "OutputTypeEnum"]])
+
+slots.workflowOutputAssociation__conformational_state = Slot(uri=LAMBDA.conformational_state, name="workflowOutputAssociation__conformational_state", curie=LAMBDA.curie('conformational_state'),
+                   model_uri=LAMBDA.workflowOutputAssociation__conformational_state, domain=None, range=Optional[str])
+
+slots.workflowOutputAssociation__number_of_particles = Slot(uri=LAMBDA.number_of_particles, name="workflowOutputAssociation__number_of_particles", curie=LAMBDA.curie('number_of_particles'),
+                   model_uri=LAMBDA.workflowOutputAssociation__number_of_particles, domain=None, range=Optional[int])
 
 slots.studyPersonAssociation__study_id = Slot(uri=LAMBDA.study_id, name="studyPersonAssociation__study_id", curie=LAMBDA.curie('study_id'),
                    model_uri=LAMBDA.studyPersonAssociation__study_id, domain=None, range=Union[str, StudyId])

@@ -1,0 +1,12 @@
+{
+  "id": "lambdaber:workflow_foldem_integrin_abinitio",
+  "title": "Fold'EM ab initio inference of integrin a5b1-BIIG2 Fab",
+  "description": "Atomic model of integrin a5b1 bound to the BIIG2 Fab inferred from 1,000 particles drawn from EMPIAR-12552, with poses estimated ab initio and AlphaFold3 as the prior. The deposited reconstruction (PDB 9B9J) used 374,814 particles.",
+  "workflow_code": "WF-FOLDEM-9B9J-1K",
+  "workflow_type": "particle_to_model_inference",
+  "software_name": "Fold'EM",
+  "additional_software": "AlphaFold3",
+  "processing_parameters": "ab initio poses; guidance on intermediate Pairformer states; particle-level likelihood",
+  "number_of_particles": 1000,
+  "@type": "WorkflowRun"
+}

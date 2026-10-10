@@ -1,0 +1,257 @@
+{
+  "id": "lambdaber:dataset-foldem-integrin-fab",
+  "title": "Integrin a5b1-BIIG2 Fab - atomic model from 1,000 particles",
+  "description": "Worked example of particle_to_model_inference: a model inferred from a small subset of the EMPIAR-12552 particles with an AlphaFold3 prior, beside the deposited full-stack reconstruction.",
+  "keywords": [
+    "cryo-EM",
+    "structure prediction",
+    "integrin"
+  ],
+  "studies": [
+    {
+      "id": "lambdaber:study-foldem-integrin",
+      "title": "Fold'EM benchmark on integrin a5b1-BIIG2 Fab",
+      "description": "Low-particle-count structure inference against the deposited 9B9J reconstruction"
+    }
+  ],
+  "proteins": [
+    {
+      "id": "uniprot:P08648",
+      "uniprot_id": "uniprot:P08648",
+      "protein_name": "Integrin alpha-5",
+      "gene_name": "ITGA5",
+      "organism": "NCBITaxon:9606",
+      "organism_name": "Homo sapiens",
+      "pdb_entries": [
+        "pdb:9B9J"
+      ]
+    },
+    {
+      "id": "uniprot:P05556",
+      "uniprot_id": "uniprot:P05556",
+      "protein_name": "Integrin beta-1",
+      "gene_name": "ITGB1",
+      "organism": "NCBITaxon:9606",
+      "organism_name": "Homo sapiens",
+      "pdb_entries": [
+        "pdb:9B9J"
+      ]
+    },
+    {
+      "id": "lambdaber:protein-biig2-fab-heavy",
+      "protein_name": "BIIG2 Fab heavy chain",
+      "pdb_entries": [
+        "pdb:9B9J"
+      ]
+    },
+    {
+      "id": "lambdaber:protein-biig2-fab-light",
+      "protein_name": "BIIG2 Fab light chain",
+      "pdb_entries": [
+        "pdb:9B9J"
+      ]
+    }
+  ],
+  "samples": [
+    {
+      "id": "lambdaber:sample-integrin-a5b1-biig2",
+      "title": "Integrin a5b1 headpiece bound to BIIG2 Fab",
+      "sample_code": "ITGA5B1-BIIG2-001",
+      "sample_type": "complex"
+    }
+  ],
+  "experiment_runs": [
+    {
+      "id": "lambdaber:exp-empiar-12552",
+      "title": "Single-particle cryo-EM of integrin a5b1-BIIG2 Fab",
+      "experiment_code": "EMPIAR-12552",
+      "technique": "cryo_em",
+      "raw_data_location": "https://www.ebi.ac.uk/empiar/EMPIAR-12552/"
+    }
+  ],
+  "workflow_runs": [
+    {
+      "id": "lambdaber:workflow-9b9j-deposited-refinement",
+      "title": "Deposited reconstruction of 9B9J",
+      "workflow_code": "WF-9B9J-REFINE",
+      "workflow_type": "refinement",
+      "software_name": "RELION",
+      "deposited_to_pdb": true,
+      "pdb_id": "9B9J",
+      "refinement_params": {
+        "resolution_0_143": {
+          "unit": "Angstroms",
+          "numeric_value": 2.6
+        }
+      },
+      "number_of_particles": 374814
+    },
+    {
+      "id": "lambdaber:workflow-af3-integrin-fab",
+      "title": "AlphaFold3 prediction of integrin a5b1-BIIG2 Fab",
+      "description": "Prediction from sequence alone. Both components are predicted, but the Fab is placed at the wrong site (TM-score 0.78 against 9B9J); antibody-antigen pairs carry little coevolutionary signal.",
+      "workflow_code": "WF-AF3-9B9J",
+      "workflow_type": "structure_prediction",
+      "software_name": "AlphaFold3"
+    },
+    {
+      "id": "lambdaber:workflow_foldem_integrin_abinitio",
+      "title": "Fold'EM ab initio inference of integrin a5b1-BIIG2 Fab",
+      "description": "Model inferred from 1,000 particles (0.26% of the deposited stack) with ab initio poses and the AlphaFold3 prediction as prior. Against 9B9J: RMSD 2.49 A, TM-score 0.956, FSC 3.52 A. Variable loops at the interface are not recovered at atomic accuracy.",
+      "workflow_code": "WF-FOLDEM-9B9J-1K",
+      "workflow_type": "particle_to_model_inference",
+      "software_name": "Fold'EM",
+      "additional_software": "AlphaFold3",
+      "processing_parameters": "ab initio poses; guidance on intermediate Pairformer states; particle-level likelihood",
+      "number_of_particles": 1000
+    }
+  ],
+  "data_files": [
+    {
+      "id": "lambdaber:file-empiar-12552-particles",
+      "title": "EMPIAR-12552 particle stack",
+      "file_name": "integrin_biig2_particles.mrcs",
+      "file_format": "mrcs",
+      "data_type": "particles"
+    },
+    {
+      "id": "lambdaber:file-9b9j-map",
+      "title": "Deposited 9B9J map",
+      "file_name": "9b9j_map.mrc",
+      "file_format": "mrc",
+      "data_type": "volume"
+    },
+    {
+      "id": "lambdaber:file-af3-integrin-fab-model",
+      "title": "AlphaFold3 model of integrin a5b1-BIIG2 Fab",
+      "file_name": "af3_integrin_biig2_model.cif",
+      "file_format": "mmcif",
+      "data_type": "predicted_model"
+    },
+    {
+      "id": "lambdaber:file-foldem-integrin-fab-model",
+      "title": "Fold'EM model of integrin a5b1-BIIG2 Fab",
+      "description": "RMSD 2.49 A and TM-score 0.956 against 9B9J",
+      "file_name": "foldem_integrin_biig2_1k.cif",
+      "file_format": "mmcif",
+      "data_type": "model"
+    },
+    {
+      "id": "lambdaber:file-foldem-integrin-fab-poses",
+      "title": "Fold'EM per-particle poses",
+      "file_name": "foldem_integrin_biig2_1k_poses.star",
+      "file_format": "star",
+      "data_type": "particle_assignments"
+    }
+  ],
+  "study_sample_associations": [
+    {
+      "study_id": "lambdaber:study-foldem-integrin",
+      "sample_id": "lambdaber:sample-integrin-a5b1-biig2",
+      "role": "target"
+    }
+  ],
+  "study_experiment_associations": [
+    {
+      "study_id": "lambdaber:study-foldem-integrin",
+      "experiment_id": "lambdaber:exp-empiar-12552"
+    }
+  ],
+  "study_workflow_associations": [
+    {
+      "study_id": "lambdaber:study-foldem-integrin",
+      "workflow_id": "lambdaber:workflow-9b9j-deposited-refinement"
+    },
+    {
+      "study_id": "lambdaber:study-foldem-integrin",
+      "workflow_id": "lambdaber:workflow-af3-integrin-fab"
+    },
+    {
+      "study_id": "lambdaber:study-foldem-integrin",
+      "workflow_id": "lambdaber:workflow_foldem_integrin_abinitio"
+    }
+  ],
+  "experiment_sample_associations": [
+    {
+      "experiment_id": "lambdaber:exp-empiar-12552",
+      "sample_id": "lambdaber:sample-integrin-a5b1-biig2",
+      "role": "target"
+    }
+  ],
+  "sample_protein_associations": [
+    {
+      "sample_id": "lambdaber:sample-integrin-a5b1-biig2",
+      "protein_id": "uniprot:P08648",
+      "role": "subunit",
+      "copy_number": 1
+    },
+    {
+      "sample_id": "lambdaber:sample-integrin-a5b1-biig2",
+      "protein_id": "uniprot:P05556",
+      "role": "subunit",
+      "copy_number": 1
+    },
+    {
+      "sample_id": "lambdaber:sample-integrin-a5b1-biig2",
+      "protein_id": "lambdaber:protein-biig2-fab-heavy",
+      "role": "binding_partner",
+      "copy_number": 1
+    },
+    {
+      "sample_id": "lambdaber:sample-integrin-a5b1-biig2",
+      "protein_id": "lambdaber:protein-biig2-fab-light",
+      "role": "binding_partner",
+      "copy_number": 1
+    }
+  ],
+  "workflow_experiment_associations": [
+    {
+      "workflow_id": "lambdaber:workflow-9b9j-deposited-refinement",
+      "experiment_id": "lambdaber:exp-empiar-12552"
+    },
+    {
+      "workflow_id": "lambdaber:workflow_foldem_integrin_abinitio",
+      "experiment_id": "lambdaber:exp-empiar-12552"
+    }
+  ],
+  "workflow_input_associations": [
+    {
+      "workflow_id": "lambdaber:workflow-9b9j-deposited-refinement",
+      "file_id": "lambdaber:file-empiar-12552-particles",
+      "input_type": "particles"
+    },
+    {
+      "workflow_id": "lambdaber:workflow_foldem_integrin_abinitio",
+      "file_id": "lambdaber:file-empiar-12552-particles",
+      "input_type": "particles"
+    },
+    {
+      "workflow_id": "lambdaber:workflow_foldem_integrin_abinitio",
+      "file_id": "lambdaber:file-af3-integrin-fab-model",
+      "input_type": "structure_prior"
+    }
+  ],
+  "workflow_output_associations": [
+    {
+      "workflow_id": "lambdaber:workflow-9b9j-deposited-refinement",
+      "file_id": "lambdaber:file-9b9j-map",
+      "output_type": "map"
+    },
+    {
+      "workflow_id": "lambdaber:workflow-af3-integrin-fab",
+      "file_id": "lambdaber:file-af3-integrin-fab-model",
+      "output_type": "model"
+    },
+    {
+      "workflow_id": "lambdaber:workflow_foldem_integrin_abinitio",
+      "file_id": "lambdaber:file-foldem-integrin-fab-model",
+      "output_type": "model"
+    },
+    {
+      "workflow_id": "lambdaber:workflow_foldem_integrin_abinitio",
+      "file_id": "lambdaber:file-foldem-integrin-fab-poses",
+      "output_type": "particle_assignments"
+    }
+  ],
+  "@type": "Dataset"
+}

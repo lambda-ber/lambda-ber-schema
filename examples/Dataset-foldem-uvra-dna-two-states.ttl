@@ -1,0 +1,155 @@
+@base <http://example.org/> .
+@prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lambdaber: <http://w3id.org/lambda/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+lambdaber:dataset-foldem-uvra-dna-two-states a lambdaber:Dataset ;
+    dcterms:title "UvrA-DNA - two conformational states from 2,000 particles" ;
+    lambdaber:data_files lambdaber:file-af3-uvra-model,
+        lambdaber:file-brecovar-uvra-assignments,
+        lambdaber:file-empiar-13396-particles,
+        lambdaber:file-foldem-uvra-9gxq,
+        lambdaber:file-foldem-uvra-9gxr ;
+    lambdaber:description "Worked example of WorkflowOutputAssociation.conformational_state and number_of_particles: one particle_to_model_inference run whose two output models describe two states of UvrA on damaged DNA." ;
+    lambdaber:experiment_runs lambdaber:exp-empiar-13396 ;
+    lambdaber:experiment_sample_associations [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id lambdaber:exp-empiar-13396 ;
+            lambdaber:role "target" ;
+            lambdaber:sample_id lambdaber:sample-uvra-abasic-dna ] ;
+    lambdaber:keywords "DNA repair",
+        "conformational heterogeneity",
+        "cryo-EM" ;
+    lambdaber:samples lambdaber:sample-uvra-abasic-dna ;
+    lambdaber:studies lambdaber:study-foldem-uvra ;
+    lambdaber:study_experiment_associations [ a lambdaber:StudyExperimentAssociation ;
+            lambdaber:experiment_id lambdaber:exp-empiar-13396 ;
+            lambdaber:study_id lambdaber:study-foldem-uvra ] ;
+    lambdaber:study_sample_associations [ a lambdaber:StudySampleAssociation ;
+            lambdaber:role "target" ;
+            lambdaber:sample_id lambdaber:sample-uvra-abasic-dna ;
+            lambdaber:study_id lambdaber:study-foldem-uvra ] ;
+    lambdaber:study_workflow_associations [ a lambdaber:StudyWorkflowAssociation ;
+            lambdaber:study_id lambdaber:study-foldem-uvra ;
+            lambdaber:workflow_id lambdaber:workflow-af3-uvra-dna ],
+        [ a lambdaber:StudyWorkflowAssociation ;
+            lambdaber:study_id lambdaber:study-foldem-uvra ;
+            lambdaber:workflow_id lambdaber:workflow-foldem-uvra-two-state ],
+        [ a lambdaber:StudyWorkflowAssociation ;
+            lambdaber:study_id lambdaber:study-foldem-uvra ;
+            lambdaber:workflow_id lambdaber:workflow-brecovar-uvra ] ;
+    lambdaber:workflow_experiment_associations [ a lambdaber:WorkflowExperimentAssociation ;
+            lambdaber:experiment_id lambdaber:exp-empiar-13396 ;
+            lambdaber:workflow_id lambdaber:workflow-brecovar-uvra ],
+        [ a lambdaber:WorkflowExperimentAssociation ;
+            lambdaber:experiment_id lambdaber:exp-empiar-13396 ;
+            lambdaber:workflow_id lambdaber:workflow-foldem-uvra-two-state ] ;
+    lambdaber:workflow_input_associations [ a lambdaber:WorkflowInputAssociation ;
+            lambdaber:file_id lambdaber:file-af3-uvra-model ;
+            lambdaber:input_type "structure_prior" ;
+            lambdaber:workflow_id lambdaber:workflow-foldem-uvra-two-state ],
+        [ a lambdaber:WorkflowInputAssociation ;
+            lambdaber:file_id lambdaber:file-empiar-13396-particles ;
+            lambdaber:input_type "particles" ;
+            lambdaber:workflow_id lambdaber:workflow-brecovar-uvra ],
+        [ a lambdaber:WorkflowInputAssociation ;
+            lambdaber:file_id lambdaber:file-brecovar-uvra-assignments ;
+            lambdaber:input_type "parameters" ;
+            lambdaber:workflow_id lambdaber:workflow-foldem-uvra-two-state ],
+        [ a lambdaber:WorkflowInputAssociation ;
+            lambdaber:file_id lambdaber:file-empiar-13396-particles ;
+            lambdaber:input_type "particles" ;
+            lambdaber:workflow_id lambdaber:workflow-foldem-uvra-two-state ] ;
+    lambdaber:workflow_output_associations [ a lambdaber:WorkflowOutputAssociation ;
+            lambdaber:file_id lambdaber:file-brecovar-uvra-assignments ;
+            lambdaber:output_type "particle_assignments" ;
+            lambdaber:workflow_id lambdaber:workflow-brecovar-uvra ],
+        [ a lambdaber:WorkflowOutputAssociation ;
+            lambdaber:conformational_state "9GXR state" ;
+            lambdaber:file_id lambdaber:file-foldem-uvra-9gxr ;
+            lambdaber:number_of_particles 1000 ;
+            lambdaber:output_type "model" ;
+            lambdaber:workflow_id lambdaber:workflow-foldem-uvra-two-state ],
+        [ a lambdaber:WorkflowOutputAssociation ;
+            lambdaber:conformational_state "9GXQ state" ;
+            lambdaber:file_id lambdaber:file-foldem-uvra-9gxq ;
+            lambdaber:number_of_particles 1000 ;
+            lambdaber:output_type "model" ;
+            lambdaber:workflow_id lambdaber:workflow-foldem-uvra-two-state ],
+        [ a lambdaber:WorkflowOutputAssociation ;
+            lambdaber:file_id lambdaber:file-af3-uvra-model ;
+            lambdaber:output_type "model" ;
+            lambdaber:workflow_id lambdaber:workflow-af3-uvra-dna ] ;
+    lambdaber:workflow_runs lambdaber:workflow-af3-uvra-dna,
+        lambdaber:workflow-brecovar-uvra,
+        lambdaber:workflow-foldem-uvra-two-state .
+
+lambdaber:file-foldem-uvra-9gxq a lambdaber:DataFile ;
+    dcterms:title "Fold'EM model, 9GXQ state" ;
+    lambdaber:data_type "model" ;
+    lambdaber:file_format "mmcif" ;
+    lambdaber:file_name "foldem_uvra_9gxq.cif" .
+
+lambdaber:file-foldem-uvra-9gxr a lambdaber:DataFile ;
+    dcterms:title "Fold'EM model, 9GXR state" ;
+    lambdaber:data_type "model" ;
+    lambdaber:file_format "mmcif" ;
+    lambdaber:file_name "foldem_uvra_9gxr.cif" .
+
+lambdaber:file-af3-uvra-model a lambdaber:DataFile ;
+    dcterms:title "AlphaFold3 model of UvrA-DNA" ;
+    lambdaber:data_type "predicted_model" ;
+    lambdaber:file_format "mmcif" ;
+    lambdaber:file_name "af3_uvra_dna_model.cif" .
+
+lambdaber:file-brecovar-uvra-assignments a lambdaber:DataFile ;
+    dcterms:title "B-RECOVAR state assignments and confidences" ;
+    lambdaber:data_type "particle_assignments" ;
+    lambdaber:file_format "star" ;
+    lambdaber:file_name "uvra_brecovar_assignments.star" .
+
+lambdaber:file-empiar-13396-particles a lambdaber:DataFile ;
+    dcterms:title "EMPIAR-13396 particle subset" ;
+    lambdaber:data_type "particles" ;
+    lambdaber:file_format "mrcs" ;
+    lambdaber:file_name "uvra_dna_particles_2k.mrcs" .
+
+lambdaber:sample-uvra-abasic-dna a lambdaber:Sample ;
+    dcterms:title "UvrA bound to DNA carrying an abasic site" ;
+    lambdaber:sample_code "UVRA-AP-DNA-001" ;
+    lambdaber:sample_type "complex" .
+
+lambdaber:workflow-af3-uvra-dna a lambdaber:WorkflowRun ;
+    dcterms:title "AlphaFold3 prediction of UvrA-DNA" ;
+    lambdaber:description "One prediction from sequence. It matches 9GXR (3.54 A, TM-score 0.886) but not 9GXQ (11.69 A, TM-score 0.734). The abasic site was given as intact DNA." ;
+    lambdaber:software_name "AlphaFold3" ;
+    lambdaber:workflow_code "WF-AF3-UVRA" ;
+    lambdaber:workflow_type "structure_prediction" .
+
+lambdaber:exp-empiar-13396 a lambdaber:ExperimentRun ;
+    dcterms:title "Single-particle cryo-EM of UvrA-DNA" ;
+    lambdaber:experiment_code "EMPIAR-13396" ;
+    lambdaber:raw_data_location "https://www.ebi.ac.uk/empiar/EMPIAR-13396/" ;
+    lambdaber:technique CHMO:0002413 .
+
+lambdaber:workflow-brecovar-uvra a lambdaber:WorkflowRun ;
+    dcterms:title "B-RECOVAR label-free state assignment" ;
+    lambdaber:description "Bootstrapped residual-subspace estimate that assigns each particle to a state and gives it a confidence score, so low-confidence particles can be dropped before model inference." ;
+    lambdaber:number_of_particles 2000 ;
+    lambdaber:software_name "B-RECOVAR" ;
+    lambdaber:workflow_code "WF-BRECOVAR-UVRA" ;
+    lambdaber:workflow_type "heterogeneity_analysis" .
+
+lambdaber:study-foldem-uvra a lambdaber:Study ;
+    dcterms:title "Fold'EM two-state benchmark on UvrA-DNA" .
+
+lambdaber:workflow-foldem-uvra-two-state a lambdaber:WorkflowRun ;
+    dcterms:title "Fold'EM two-state inference of UvrA-DNA" ;
+    lambdaber:additional_software "AlphaFold3" ;
+    lambdaber:description "Both states inferred from the same prior, 1,000 particles each, poses known. Reported resolutions 3.09 A (9GXQ) and 2.95 A (9GXR), against 4.34 and 4.41 A for cryoDRGN." ;
+    lambdaber:number_of_particles 2000 ;
+    lambdaber:processing_parameters "known poses; two states; particle-level likelihood" ;
+    lambdaber:software_name "Fold'EM" ;
+    lambdaber:workflow_code "WF-FOLDEM-UVRA-2S" ;
+    lambdaber:workflow_type "particle_to_model_inference" .
+
