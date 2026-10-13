@@ -96,12 +96,6 @@
           "enum": "FileFormatEnum",
           "key": "dm4",
           "note": "DigitalMicrograph 4 format (.dm4) used for K3 gain reference files."
-        },
-        {
-          "module": "lambda-ber-schema",
-          "enum": "FacilityEnum",
-          "key": "EMSL",
-          "note": "Environmental Molecular Sciences Laboratory (PNNL). Not yet in FacilityEnum."
         }
       ],
       "hasPart": [
