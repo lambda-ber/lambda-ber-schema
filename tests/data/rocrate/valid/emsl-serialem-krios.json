@@ -101,7 +101,7 @@
       "hasPart": [
         { "@id": "#instr-krios" },
         { "@id": "#sample-grid1" },
-        { "@id": "https://ror.org/04rc0xn13" },
+        { "@id": "https://ror.org/05h992307" },
         { "@id": "#exp-serialem-spa" },
         { "@id": "frames/" },
         { "@id": "screening/" },
@@ -162,10 +162,10 @@
     },
 
     {
-      "@id": "https://ror.org/04rc0xn13",
+      "@id": "https://ror.org/05h992307",
       "@type": "Organization",
       "name": "Environmental Molecular Sciences Laboratory",
-      "ror": "https://ror.org/04rc0xn13",
+      "ror": "https://ror.org/05h992307",
       "acronym": "EMSL",
       "organization_type": "national_laboratory",
       "country": "USA",
