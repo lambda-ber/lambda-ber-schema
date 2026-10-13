@@ -1,7 +1,7 @@
 # RO-Crate Mapping: emsl-serialem-krios
 
 **Crate file:** `tests/data/rocrate/valid/emsl-serialem-krios.json`  
-**Schema version:** lambda-rocrate-core 0.3.0 / lambda-ber-schema 0.1.2  
+**Schema version:** lambda-rocrate-core 0.3.3 / lambda-ber-schema 0.1.2
 **Fixture version:** hackathon branch (SerialEM SPA, Titan Krios at EMSL)  
 **Status:** All 4 validation layers pass.
 
