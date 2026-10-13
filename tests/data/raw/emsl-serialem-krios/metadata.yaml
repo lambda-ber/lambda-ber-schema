@@ -24,7 +24,7 @@ metadata:
     nominal_magnification: 130  # (kx) or null
     nominal_camera_Length: null  # (cm) or null
     binning_factor: 0.5  # (0.5, 1, 2, 4, etc.)
-    tilting_mode: 1  # 0 = none, 1 = dose symmetric, 2 = linear, 3 = continuous
+    tilting_mode: 0  # 0 = none; this is an SPA session, not tomography
     fiducial_size: null  # (Angstrom) or null
     tilt_angle_increment: null  # (degrees) or null
     rotation_rate: null  # (degrees/s) or null

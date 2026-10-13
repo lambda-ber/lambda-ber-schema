@@ -23,7 +23,7 @@
 | `total_exposure: 1.046` | `runParameters.totalExposureS` | seconds |
 | `binning_factor: 0.5` | `runParameters.binningFactor` | |
 | `nominal_magnification: 130` | `runParameters.nominalMagnificationX` | stored as 130000 (kx → x) |
-| `tilting_mode: 1` | `runParameters.tiltingScheme: "dose_symmetric"` | 0=none, 1=dose_symmetric, 2=linear, 3=continuous |
+| `tilting_mode: 0` | `runParameters.tiltingScheme: "none"` | No stage tilting for this SPA session |
 | `c2_aperture: 50` | `runParameters.c2ApertureMicrons` | µm |
 | `spot_size: 4` | `runParameters.spotSize` | |
 | `beam_diameter: 750` | `runParameters.beamDiameterMicrons` | µm |
@@ -62,9 +62,8 @@ These values are used in the crate but not yet in their respective enums. All ar
 | `mdoc` | `FileFormatEnum` | High | SerialEM sidecar is ubiquitous in the cryo-EM community; add alongside `mrc`. |
 | `nav` | `FileFormatEnum` | Medium | SerialEM navigator; less widely exchanged than mdoc, still important for reproducibility. |
 | `dm4` | `FileFormatEnum` | Low | DigitalMicrograph format for gain references; could alternatively map to `hdf5` or `application/octet-stream` only. |
-| `EMSL` | `FacilityEnum` | High | Major DOE user facility; should be a first-class FacilityEnum entry like ALS, SSRL, etc. |
 
-**Note on `collection_mode`:** The crate uses `"single_particle"`. Verify this is the exact enum value in `CollectionModeEnum` — if it is `spa` or `SPA`, update the crate and this doc.
+**Note on `collection_mode`:** The crate uses `"single_particle"`, a valid value in `CollectionModeEnum`.
 
 ---
 
@@ -167,7 +166,7 @@ The `XXXXXXX` token in mdoc headers is a different real identifier than the `999
 
 | # | Question | Impact | Recommendation |
 |---|---|---|---|
-| OQ-1 | Is `collection_mode: "single_particle"` the exact enum value, or is it `spa`? | Layer 2 validation could re-fail if wrong | Grep CollectionModeEnum in main schema and verify |
+| OQ-1 | Is `collection_mode: "single_particle"` the exact enum value, or is it `spa`? | Resolved: `single_particle` is in `CollectionModeEnum` | No change needed |
 | OQ-2 | What licence applies to EMSL fixture data for public distribution? | `license` field on root currently set to CC-BY 4.0 | Confirm with EMSL/data team before publishing |
 | OQ-3 | Should `s1Findable: true` require a resolvable identifier? With fake `proposal_id: 99999`, the fixture arguably fails findability. | sufficiency block | Change to `false` or add a note field to sufficiency; current crate uses `false` already |
 | OQ-4 | Atlas and survey `.mrc` stubs are `data_type: "micrograph"`. Is this correct for navigational low-mag images, or should a new term (e.g. `atlas_tile`, `survey_image`) be added? | FileFormatEnum / data_type enum | Discuss with schema team; `micrograph` is defensible but imprecise |
