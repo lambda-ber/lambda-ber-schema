@@ -23,7 +23,7 @@
       "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" },
       "conformsTo": [
         { "@id": "https://w3id.org/ro/crate/1.2" },
-        { "@id": "https://w3id.org/lambda/profile/core/0.3.0" }
+        { "@id": "https://w3id.org/lambda/profile/core/0.3.3" }
       ],
       "technique": "cryo_em",
       "facility_name": "EMSL",
