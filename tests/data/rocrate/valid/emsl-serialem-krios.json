@@ -19,7 +19,7 @@
       "@type": ["Dataset", "lambda:Dataset"],
       "name": "EMSL Titan Krios SerialEM single-particle cryo-EM session (fixture)",
       "description": "Representative subset of a SerialEM SPA session from a Titan Krios at EMSL. Includes the low-magnification atlas montage, medium-magnification survey images, hole-level screening, and dose-fractionated acquisition movies. Identifying information has been genericised; binary files are zero-byte stubs.",
-      "datePublished": "2001-01-01",
+      "collectionDate": "2001-01-01/2001-01-02",
       "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" },
       "conformsTo": [
         { "@id": "https://w3id.org/ro/crate/1.2" },
@@ -53,6 +53,12 @@
         "s3Interpretable": false
       },
       "missing": [
+        {
+          "field": "datePublished",
+          "reason": "not-available",
+          "blocks": "S1",
+          "note": "The fixture does not include a crate publication date."
+        },
         {
           "field": "author",
           "reason": "not-registered",
