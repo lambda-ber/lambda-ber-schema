@@ -10,6 +10,7 @@ are zero-byte stubs; all sidecar text files (`.mdoc`, `.nav`, `.txt`) are real c
 ```
 emsl-serialem-krios/
 │
+│  ro-crate-metadata.json  LAMBDA Core RO-Crate for this package; checked by tests/test_rocrate_profile.py
 │  metadata.yaml         real  EMSL acquisition protocol sheet: proposal/session IDs, microscope settings, sample conditions, quality assessments
 │  C5_LMM_1.mrc          stub  Low-magnification atlas montage of grid square C5 (48 tiles, Mag=135)
 │  C5_LMM_1.mrc.mdoc     real  Per-tile metadata for the atlas; one [ZValue=N] block per tile

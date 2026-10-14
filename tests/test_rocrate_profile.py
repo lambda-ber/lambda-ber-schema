@@ -30,6 +30,7 @@ from lambda_ber_schema.rocrate.validation import (
 
 REPO = Path(__file__).resolve().parent.parent
 CRATES = REPO / "tests" / "data" / "rocrate"
+RAW = REPO / "tests" / "data" / "raw"
 GENERATED_SCHEMA = REPO / "assets" / "rocrate" / "jsonschema" / "lambda_rocrate_core.schema.json"
 
 
@@ -49,11 +50,18 @@ def json_schema() -> dict:
     return v.generate_schema()
 
 
+def _crate_id(path: Path) -> str:
+    """Test id for a crate: its file name, or its directory's for a ro-crate-metadata.json."""
+    return path.parent.name if path.name == "ro-crate-metadata.json" else path.name
+
+
 def _crates(subdir: str) -> list[Path]:
     return sorted((CRATES / subdir).glob("*.json"))
 
 
-VALID = _crates("valid")
+# A crate shipped with its payload sits beside it as ro-crate-metadata.json, so its relative
+# @ids resolve to real files; those are valid fixtures too.
+VALID = _crates("valid") + sorted(RAW.glob("*/ro-crate-metadata.json"))
 INVALID = _crates("invalid")
 LEGACY = _crates("legacy")
 
@@ -67,7 +75,7 @@ def load(path: Path) -> dict:
 # --------------------------------------------------------------------------------------
 
 
-@pytest.mark.parametrize("path", VALID + LEGACY, ids=lambda p: p.name)
+@pytest.mark.parametrize("path", VALID + LEGACY, ids=_crate_id)
 def test_document_shape(json_schema, path):
     """Every crate, including the legacy one, is a well-formed RO-Crate metadata document."""
     errors = v.document_violations(json_schema, load(path))
@@ -104,13 +112,13 @@ def test_load_schema_defaults_to_packaged_copy():
 # --------------------------------------------------------------------------------------
 
 
-@pytest.mark.parametrize("path", VALID, ids=lambda p: p.name)
+@pytest.mark.parametrize("path", VALID, ids=_crate_id)
 def test_entities_conform(json_schema, path):
     problems = entity_violations(json_schema, load(path))
     assert not problems, f"{path.name} has non-conformant entities:\n" + "\n".join(problems)
 
 
-@pytest.mark.parametrize("path", VALID, ids=lambda p: p.name)
+@pytest.mark.parametrize("path", VALID, ids=_crate_id)
 def test_every_entity_is_classifiable(path):
     """A reader must be able to tell what each entity is from its @type alone."""
     unclassified = [e.get("@id") for e in v.graph(load(path)) if classify(e) is None]
@@ -146,7 +154,7 @@ def test_graph_rule_keys_are_profile_terms(json_schema):
         )
 
 
-@pytest.mark.parametrize("path", VALID, ids=lambda p: p.name)
+@pytest.mark.parametrize("path", VALID, ids=_crate_id)
 def test_graph_rules(path):
     problems = graph_rule_violations(load(path))
     assert not problems, f"{path.name} breaks graph rules:\n" + "\n".join(problems)
@@ -193,7 +201,7 @@ EXPECTED_FAILURE = {
 }
 
 
-@pytest.mark.parametrize("path", INVALID, ids=lambda p: p.name)
+@pytest.mark.parametrize("path", INVALID, ids=_crate_id)
 def test_invalid_crates_are_rejected(json_schema, path):
     crate = load(path)
     problems = entity_violations(json_schema, crate) + graph_rule_violations(crate)
@@ -217,7 +225,7 @@ def test_every_invalid_fixture_is_accounted_for():
 # --------------------------------------------------------------------------------------
 
 
-@pytest.mark.parametrize("path", LEGACY, ids=lambda p: p.name)
+@pytest.mark.parametrize("path", LEGACY, ids=_crate_id)
 def test_legacy_crate_uses_the_deprecated_vocabulary(path):
     """The 0.2 spelling still classifies. This is the alias layer doing its job."""
     crate = load(path)
@@ -243,7 +251,7 @@ LEGACY_KNOWN_GAPS = {
 }
 
 
-@pytest.mark.parametrize("path", LEGACY, ids=lambda p: p.name)
+@pytest.mark.parametrize("path", LEGACY, ids=_crate_id)
 def test_legacy_crate_gaps_are_exactly_the_known_ones(json_schema, path):
     crate = load(path)
     problems = entity_violations(json_schema, crate) + graph_rule_violations(crate)
