@@ -136,6 +136,14 @@
     },
 
     {
+      "@id": "#sw-serialem",
+      "@type": "SoftwareApplication",
+      "name": "SerialEM",
+      "version": "4.2.2",
+      "url": "https://bio3d.colorado.edu/SerialEM/"
+    },
+
+    {
       "@id": "#sample-grid1",
       "@type": ["BioChemEntity", "lambda:Sample"],
       "name": "Sample grid 1",
@@ -178,36 +186,52 @@
       "raw_data_location": "frames/",
       "processing_status": "raw",
       "object": [{ "@id": "#sample-grid1" }],
-      "instrument": [{ "@id": "#instr-krios" }],
+      "instrument": [{ "@id": "#instr-krios" }, { "@id": "#sw-serialem" }],
       "result": [{ "@id": "frames/" }],
       "runParameters": {
-        "acquisitionSoftware": "SerialEM",
-        "acquisitionSoftwareVersion": "4.2.2",
-        "acceleratingVoltageKv": 300,
-        "sphericalAberrationMm": 2.7,
-        "nominalPixelSizeAngstrom": 0.34,
-        "calibratedPixelSizeAngstrom": 0.340292,
-        "totalDoseElectronsPerAngstrom2": 50,
-        "totalExposureS": 1.046,
-        "numFramesPerMovie": 49,
-        "binningFactor": 0.5,
-        "nominalMagnificationX": 130000,
-        "spotSize": 4,
-        "c2ApertureMicrons": 50,
-        "beamDiameterMicrons": 750,
-        "energyFilterSlitEv": 20,
-        "phasePlate": false,
-        "tiltingScheme": "none",
-        "detectorPhysicalPixelSizeUm": 5,
-        "motCorrBin": 1,
-        "topazModel": "NA",
-        "iceContamination": "none",
-        "iceQuality": "ideal_range",
-        "particleConcentration": "just_right",
-        "atlasGridColumns": 6,
-        "atlasGridRows": 8,
-        "atlasPixelSpacingAngstrom": 1332.64,
-        "surveyPixelSpacingAngstrom": 243.116
+        "conditions": {
+          "sample_mg/ml": "1mg/ml",
+          "sample_buffer": "1xTBS",
+          "vitrification_settings": " insert setting here "
+        },
+        "metadata": {
+          "program": {
+            "proposal_id": 99999,
+            "short_sample_name": "Sample grid 1",
+            "session_id": "01-01-01",
+            "instrument_id": 99999,
+            "voltage": 300,
+            "cs": 2.7,
+            "nominal_pixel_size": 0.34,
+            "total_dose": 50,
+            "nominal_dose_rate_eps": null,
+            "frames_per_second": null,
+            "total_exposure": 1.046,
+            "processing_scheme": 1,
+            "detector_id": "K3",
+            "detector_physical_pixel_size": 5,
+            "nominal_magnification": 130,
+            "nominal_camera_Length": null,
+            "binning_factor": 0.5,
+            "tilting_mode": 0,
+            "fiducial_size": null,
+            "tilt_angle_increment": null,
+            "rotation_rate": null,
+            "c2_aperture": 50,
+            "spot_size": 4,
+            "beam_diameter": 750,
+            "energy_filter_slit": 20,
+            "phase_plate": false,
+            "topaz_model": "NA",
+            "motCorr_bin": 1
+          }
+        },
+        "assessments": {
+          "ice_contamination": 1,
+          "ice_quality": 1,
+          "particle_concentration": 1
+        },
+        "notes": "\nmultiline comments can be inserted here "
       }
     },
 
@@ -283,7 +307,7 @@
       "@id": "C5_LMM_1.mrc",
       "@type": "File",
       "name": "C5_LMM_1.mrc",
-      "description": "Low-magnification atlas montage of grid square C5 (48 tiles, Mag=135, PixelSpacing=1332.64 Å). Zero-byte fixture stub.",
+      "description": "Low-magnification atlas montage of grid square C5 (6 x 8 = 48 tiles, Mag=135, PixelSpacing=1332.64 Å). Zero-byte fixture stub.",
       "encodingFormat": "application/x-mrc",
       "file_format": "mrc",
       "data_type": "micrograph",

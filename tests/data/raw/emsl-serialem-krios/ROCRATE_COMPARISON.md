@@ -9,38 +9,28 @@
 
 ## 1. Resolved Mappings
 
-### Root entity (`./`)
+### Facility record and typed slots
 
-| Source | Mapped to | Notes |
+`metadata.yaml` is copied verbatim into `#exp-serialem-spa.runParameters`: same keys, same
+values, same nesting, nulls kept. The profile defines `runParameters` as the facility's own
+parameter block, left opaque so a reader can always recover the source record. A few values
+are also projected onto typed crate slots:
+
+| Source | Typed slot | Notes |
 |---|---|---|
-| `proposal_id: 99999` | `identifier[0].value` (propertyID=EMSL-proposal) | Anonymous fixture value |
-| `session_id: 01-01-01` | `identifier[1].value` (propertyID=EMSL-session) | Anonymous fixture value |
-| `short_sample_name: Sample grid 1` | `sample_code: "Sample-grid-1"` on root + on SampleEntity | |
-| `instrument_id: 99999` | Instrument serial in `#instr-krios.instrument_code` | EMSL resource ID (not chassis serial) |
-| `voltage: 300` | `runParameters.acceleratingVoltageKv` | kV |
-| `nominal_pixel_size: 0.34` | `runParameters.nominalPixelSizeAngstrom` | Å |
-| `total_dose: 50` | `runParameters.totalDoseElectronsPerAngstrom2` | e⁻/Å² |
-| `total_exposure: 1.046` | `runParameters.totalExposureS` | seconds |
-| `binning_factor: 0.5` | `runParameters.binningFactor` | |
-| `nominal_magnification: 130` | `runParameters.nominalMagnificationX` | stored as 130000 (kx → x) |
-| `tilting_mode: 0` | `runParameters.tiltingScheme: "none"` | No stage tilting for this SPA session |
-| `c2_aperture: 50` | `runParameters.c2ApertureMicrons` | µm |
-| `spot_size: 4` | `runParameters.spotSize` | |
-| `beam_diameter: 750` | `runParameters.beamDiameterMicrons` | µm |
-| `energy_filter_slit: 20` | `runParameters.energyFilterSlitEv` | eV; also implies Falcon/BioQuantum filter present |
-| `phase_plate: false` | `runParameters.phasePlate` | |
-| `topaz_model: NA` | `runParameters.topazModel` | Post-processing hint; not a WorkflowRun param |
-| `motCorr_bin: 1` | `runParameters.motCorrBin` | Binning during MotionCor2; not a WorkflowRun param |
-| `detector_id: K3` | `InstrumentEntity.detector: "K3"` | |
-| `detector_physical_pixel_size: 5` | `runParameters.detectorPhysicalPixelSizeUm` | µm; K3 physical pixel |
-| `processing_scheme: 1` | `collection_mode: "single_particle"` on ExperimentRunAction | 1=SPA, 2=tomo, 3=microED |
-| `ice_contamination: 1` | `runParameters.iceContamination: "none"` | Folded into runParameters; see §3 |
-| `ice_quality: 1` | `runParameters.iceQuality: "ideal_range"` | |
-| `particle_concentration: 1` | `runParameters.particleConcentration: "just_right"` | |
-| `sample_mg/ml: 1mg/ml` | `SampleEntity.concentration: "1 mg/ml"` | |
-| Atlas params (mdoc header) | `runParameters.atlasGridColumns/Rows/PixelSpacingAngstrom` | Atlas is one of 3 magnification tiers in session |
-| Survey params (mmm1/2 mdoc) | `runParameters.surveyPixelSpacingAngstrom` | |
-| `XXXXXXX` (mdoc instrument serial) | `InstrumentEntity.instrument_code` as `EMSL-KRIOS-99999` | See §5: two separate anonymisation tokens |
+| `proposal_id: 99999` | root `identifier[0].value` (propertyID=EMSL-proposal) | Anonymous fixture value |
+| `session_id: 01-01-01` | root `identifier[1].value` (propertyID=EMSL-session) | Anonymous fixture value |
+| `short_sample_name: Sample grid 1` | `sample_code: "Sample-grid-1"` on root and on `#sample-grid1` | |
+| `instrument_id: 99999` | `#instr-krios.instrument_code` as `EMSL-KRIOS-99999` | EMSL resource ID (not chassis serial); see §5 |
+| `detector_id: K3` | `#instr-krios.detector` | |
+| `processing_scheme: 1` | `collection_mode: "single_particle"` on `#exp-serialem-spa` | 1=SPA, 2=tomo, 3=microED |
+| `sample_mg/ml: 1mg/ml` | `#sample-grid1.concentration: "1 mg/ml"` | |
+| SerialEM version (mdoc headers) | `#sw-serialem` (`SoftwareApplication`), named in the run's `instrument` | 4.2.2 |
+
+Values that exist only in the mdoc sidecars (calibrated pixel size 0.340292 Å, 49 frames per
+movie, the 6 x 8 atlas grid, survey and screening pixel spacings) are not in the sheet, so they
+are not in `runParameters`. They stay in the sidecar files, which the crate carries, and the
+main ones are quoted in each image file's `description`.
 
 ### File entities
 
@@ -73,25 +63,17 @@ Fields present in the source data that have no direct slot in the current rocrat
 
 ### 3a. `quality_metrics` / `grid_quality` — no ExperimentRunAction slot
 
-`quality_metrics` is a well-defined field in the main `lambda_ber_schema` (`CryoEMExperimentRun`) but does not appear as an allowed slot on `ExperimentRunAction` in `lambda_rocrate_core`. The three quality assessments from `metadata.yaml` were therefore folded into `runParameters`:
-
-```yaml
-iceContamination: "none"
-iceQuality: "ideal_range"
-particleConcentration: "just_right"
-```
+`quality_metrics` is a well-defined field in the main `lambda_ber_schema` (`CryoEMExperimentRun`) but does not appear as an allowed slot on `ExperimentRunAction` in `lambda_rocrate_core`. The three quality assessments are therefore only in `runParameters.assessments`, as the sheet's numeric codes.
 
 **Recommendation:** Add a `quality_metrics` slot to `ExperimentRunAction` in `lambda_rocrate_core` that accepts the same nested object as the main schema. This is the most data-rich part of a cryo-EM session report and belongs in the crate manifest.
 
 ### 3b. `acquisition_software` — no ExperimentRunAction slot
 
-The rocrate `ExperimentRunAction` does not have an `acquisition_software` slot (unlike some earlier drafts). Folded into `runParameters.acquisitionSoftware`.
-
-**Recommendation:** Add `acquisition_software` (string) to `ExperimentRunAction`; it is a critical provenance field for cryo-EM reproducibility. Alternatively, a `SoftwareApplicationEntity` could be added and referenced via `instrument` or a new `software` slot.
+The rocrate `ExperimentRunAction` does not have an `acquisition_software` slot. Resolved without one: SerialEM 4.2.2 is a `SoftwareApplication` entity (`#sw-serialem`) named in the run's `instrument` list, which schema.org defines to cover both equipment and software.
 
 ### 3c. `cs` (spherical aberration) — no InstrumentEntity slot
 
-The rocrate `InstrumentEntity` has no slot for spherical aberration Cs (2.7 mm for Krios FEG). This is used in CTF estimation and affects resolution limits. Stored in `runParameters.sphericalAberrationMm`.
+The rocrate `InstrumentEntity` has no slot for spherical aberration Cs (2.7 mm for Krios FEG). This is used in CTF estimation and affects resolution limits. Present only as `runParameters.metadata.program.cs`.
 
 **Recommendation:** Add `spherical_aberration_mm` to `InstrumentEntity` (or `CryoEMInstrumentEntity` if a specialised subtype is introduced).
 
