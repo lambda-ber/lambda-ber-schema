@@ -151,12 +151,31 @@
     {
       "@id": "https://ror.org/05h992307",
       "@type": "Organization",
-      "name": "Environmental Molecular Sciences Laboratory",
+      "name": "Pacific Northwest National Laboratory",
       "ror": "https://ror.org/05h992307",
-      "acronym": "EMSL",
+      "acronym": "PNNL",
       "organization_type": "national_laboratory",
+      "location": "Richland, Washington, USA",
       "country": "USA",
       "isDoeFacility": true,
+      "doe_office": "Office of Science",
+      "organizationRole": "operating_institution"
+    },
+
+    {
+      "@id": "https://ror.org/04rc0xn13",
+      "@type": "Organization",
+      "name": "Environmental Molecular Sciences Laboratory",
+      "description": "A DOE user facility within PNNL, with a ROR of its own (a child of PNNL's). As in the other Core fixtures, facility_ror on the root and instrument names the operating laboratory, PNNL, matching FacilityEnum and the EMSL loader.",
+      "ror": "https://ror.org/04rc0xn13",
+      "acronym": "EMSL",
+      "facility_code": "EMSL",
+      "facility_type": "CRYOEM_CENTER",
+      "parentOrganization": { "@id": "https://ror.org/05h992307" },
+      "location": "Richland, Washington, USA",
+      "country": "USA",
+      "isDoeFacility": true,
+      "doe_office": "Office of Science - Biological and Environmental Research",
       "organizationRole": "operating_institution"
     },
 
