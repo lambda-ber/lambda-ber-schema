@@ -2,6 +2,7 @@
 
 import json
 import logging
+import re
 
 import pytest
 import requests
@@ -10,6 +11,18 @@ from typer.testing import CliRunner
 from lambda_ber_schema.cli import app
 
 runner = CliRunner()
+
+_ANSI = re.compile(r"\x1b\[[0-9;]*m")
+
+
+def plain(output: str) -> str:
+    """Help text without ANSI styling.
+
+    Rich colors option names when it decides the terminal supports it, which on GitHub Actions it
+    does, and the escape codes then split a string like ``--sample`` so a plain substring check
+    fails there while passing locally.
+    """
+    return _ANSI.sub("", output)
 
 
 class TestCLI:
@@ -59,7 +72,7 @@ class TestCLI:
         """Test EMSL ETL command help."""
         result = runner.invoke(app, ["etl", "emsl", "--help"])
         assert result.exit_code == 0
-        assert "--sample" in result.output
+        assert "--sample" in plain(result.output)
 
     def test_etl_dump_pdb_calls_load_all_with_filters(self, mocker, tmp_path):
         """Test dump-pdb invokes BatchLoader.load_all with expected options."""
