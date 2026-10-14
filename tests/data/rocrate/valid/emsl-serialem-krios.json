@@ -261,8 +261,8 @@
       "name": "metadata.yaml",
       "description": "EMSL acquisition protocol sheet: proposal/session identifiers, microscope and detector settings, sample conditions, and quality assessments.",
       "encodingFormat": "application/yaml",
-      "contentSize": "1736",
-      "sha256": "1ca5a6022d95dcd8514a8f79238de405a70585be343b7a7a906ac1ee37708146",
+      "contentSize": "1729",
+      "sha256": "ccb5869ca4c095807193c144059e733df28f7d728ff94a683e0ef1405758407a",
       "data_type": "metadata",
       "processing_level": 0
     },
