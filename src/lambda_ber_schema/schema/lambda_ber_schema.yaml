@@ -5439,6 +5439,14 @@ enums:
         description: "CCP4 map format"
       gz:
         description: "Gzip compressed format"
+      yaml:
+        description: "YAML text format (e.g., a facility acquisition protocol sheet)"
+      mdoc:
+        description: "SerialEM autodoc metadata sidecar (.mdoc): per-image or per-tile acquisition parameters for an MRC or TIFF file"
+      nav:
+        description: "SerialEM navigator file (.nav): acquisition targets with stage coordinates and the maps they were picked from"
+      dm4:
+        description: "Gatan DigitalMicrograph 4 image format (.dm4), commonly used for K2/K3 gain references"
 
   DataTypeEnum:
     description: "Types of data"
@@ -5477,6 +5485,14 @@ enums:
         description: "Half-map for gold-standard refinement"
       validation_report:
         description: "Validation report"
+      gain_reference:
+        description: "Detector gain reference image, used to normalise per-pixel sensitivity of raw movie frames"
+      defect_map:
+        description: "Detector defect map listing bad pixels, columns or rows to exclude or interpolate over"
+      atlas:
+        description: "Low-magnification grid or grid-square map (often a montage) used to navigate and choose targets, not for reconstruction"
+      screening_image:
+        description: "Medium- or high-magnification image taken to choose targets or assess ice and particle quality, not for reconstruction"
 
   CollectionModeEnum:
     description: "Data collection modes"
