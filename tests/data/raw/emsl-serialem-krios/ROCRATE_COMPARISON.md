@@ -45,12 +45,13 @@ All files listed in `README.md` are present in the crate as `@graph` entities wi
 
 ## 2. Vocabulary Gaps
 
-These values are used in the crate but not yet in their respective enums. All are declared via `vocabEntry` on the root entity.
+These values are real formats of files in the crate but are not yet in `FileFormatEnum`. `file_format` is checked against that enum and `CrateFile` has no `vocabEntry` slot, so the files carry no `file_format`; each gap is declared via `vocabEntry` on the root, with its note naming the files it covers. Letting `CrateFile` carry `vocabEntry` would put each declaration on the file it describes.
 
 | Value | Enum | Priority | Recommendation |
 |---|---|---|---|
 | `mdoc` | `FileFormatEnum` | High | SerialEM sidecar is ubiquitous in the cryo-EM community; add alongside `mrc`. |
 | `nav` | `FileFormatEnum` | Medium | SerialEM navigator; less widely exchanged than mdoc, still important for reproducibility. |
+| `yaml` | `FileFormatEnum` | Medium | Facility protocol sheets and LAMBDA's own records are YAML; `json` is already present. |
 | `dm4` | `FileFormatEnum` | Low | DigitalMicrograph format for gain references; could alternatively map to `hdf5` or `application/octet-stream` only. |
 
 **Note on `collection_mode`:** The crate uses `"single_particle"`, a valid value in `CollectionModeEnum`.

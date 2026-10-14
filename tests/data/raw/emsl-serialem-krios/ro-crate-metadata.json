@@ -93,19 +93,25 @@
           "module": "lambda-ber-schema",
           "enum": "FileFormatEnum",
           "key": "mdoc",
-          "note": "SerialEM metadata sidecar format (.mrc.mdoc, .tif.mdoc). Not yet in FileFormatEnum."
+          "note": "SerialEM metadata sidecar format. Carried by all eight .mdoc files in this crate (C5_LMM_1.mrc.mdoc, mmm1.mrc.mdoc, mmm2.mrc.mdoc, frames/Image_00[0-2].tif.mdoc, screening/Hole_01.mrc.mdoc, screening/Hole_01_1-1.mrc.mdoc), which therefore have no file_format."
         },
         {
           "module": "lambda-ber-schema",
           "enum": "FileFormatEnum",
           "key": "nav",
-          "note": "SerialEM navigator file format (.nav). Stores all acquisition targets with stage coordinates and map references."
+          "note": "SerialEM navigator file format. Stores all acquisition targets with stage coordinates and map references. Carried by C5.nav, which therefore has no file_format."
         },
         {
           "module": "lambda-ber-schema",
           "enum": "FileFormatEnum",
           "key": "dm4",
-          "note": "DigitalMicrograph 4 format (.dm4) used for K3 gain reference files."
+          "note": "DigitalMicrograph 4 format, used for K3 gain references. Carried by frames/SuperRef_Image_000.dm4, which therefore has no file_format."
+        },
+        {
+          "module": "lambda-ber-schema",
+          "enum": "FileFormatEnum",
+          "key": "yaml",
+          "note": "YAML. Carried by metadata.yaml (the EMSL acquisition protocol sheet), which therefore has no file_format."
         }
       ],
       "hasPart": [
