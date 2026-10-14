@@ -1,7 +1,7 @@
  syntax="proto3";
  package
 // metamodel_version: 1.7.0
-// version: 0.1.2.post308.dev0+8a814589
+// version: 0.0.0.post409.dev0+543ae40
 // Aggregated view of all structural and functional data for a protein
 message AggregatedProteinView
  {
@@ -1424,6 +1424,8 @@ message WorkflowOutputAssociation
   workflowRun workflowId = 0
   dataFile fileId = 0
   outputTypeEnum outputType = 0
+  string conformationalState = 0
+  integer numberOfParticles = 0
  }
 // M:N link between WorkflowRun and Person with role metadata - who ran the processing, and who made the judgement calls it required.
 message WorkflowPersonAssociation
@@ -1502,6 +1504,7 @@ message WorkflowRun
   particlePickingParameters particlePickingParams = 0
   refinementParameters refinementParams = 0
   fSCCurve fscCurve = 0
+  integer numberOfParticles = 0
  repeated  dataFile outputFiles = 0
  }
 // X-ray diffractometer or synchrotron beamline specifications
