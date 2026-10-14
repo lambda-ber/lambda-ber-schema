@@ -10,8 +10,11 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import typing
+
 import pytest
 import yaml
+from linkml_runtime.utils.schemaview import SchemaView
 
 from lambda_ber_schema import pydantic as model
 
@@ -22,14 +25,8 @@ EMSL_RECORD = REPO / "tests" / "data" / "valid" / "Dataset-emsl-serialem-krios.y
 #: The fields each class requires beyond Instrument's own.
 REQUIRED_EXTRAS = {"BeamlineInstrument": {"techniques_supported": ["saxs"]}}
 
-INSTRUMENT_CLASSES = [
-    "Instrument",
-    "CryoEMInstrument",
-    "XRayInstrument",
-    "SANSInstrument",
-    "SAXSInstrument",
-    "BeamlineInstrument",
-]
+#: Instrument and every subclass, read from the schema so a new subclass is covered automatically.
+INSTRUMENT_CLASSES = sorted(SchemaView(str(SCHEMA)).class_descendants("Instrument"))
 
 
 def emsl_record() -> dict:
@@ -48,8 +45,6 @@ def test_designator_is_a_schema_wide_slot():
     assignment and the RDF dump then fails (linkml/linkml#2107, #3663). Moving it back would pass
     every Pydantic test below and break only ``make test``, so it is pinned here as well.
     """
-    from linkml_runtime.utils.schemaview import SchemaView
-
     view = SchemaView(str(SCHEMA))
     assert "instrument_type" in view.schema.slots
     assert view.get_slot("instrument_type").designates_type
@@ -69,6 +64,26 @@ def test_objects_built_in_code_name_their_own_class(class_name):
     extras = REQUIRED_EXTRAS.get(class_name, {})
     instrument = cls(id=f"lambdaber:{class_name}", instrument_code="X", **extras)
     assert instrument.instrument_type == class_name
+
+
+def test_pydantic_dataset_instruments_admits_every_subclass():
+    """The union is generated from the schema, so it is only stale if pydantic.py was not rebuilt.
+
+    Adding an Instrument subclass without regenerating would leave Dataset.instruments unable to
+    hold it; this is where that shows up.
+    """
+
+    def class_names(annotation) -> set[str]:
+        args = typing.get_args(annotation)
+        if not args:
+            return {annotation.__name__} if isinstance(annotation, type) else set()
+        return set().union(*(class_names(a) for a in args))
+
+    admitted = class_names(model.Dataset.model_fields["instruments"].annotation)
+    missing = sorted(set(INSTRUMENT_CLASSES) - admitted)
+    assert not missing, (
+        f"Dataset.instruments does not admit {missing}; regenerate src/lambda_ber_schema/pydantic.py"
+    )
 
 
 def test_dataset_loads_a_cryoem_instrument_with_its_fields():
@@ -117,7 +132,6 @@ def test_dataclasses_load_and_dump_rdf_without_a_stray_slot(dataclasses):
     """The failure #128 was opened for: ``No such slot unknown_instrument_type``."""
     from linkml_runtime.dumpers import rdflib_dumper
     from linkml_runtime.loaders import yaml_loader
-    from linkml_runtime.utils.schemaview import SchemaView
 
     dataset = yaml_loader.load(str(EMSL_RECORD), target_class=dataclasses.Dataset)
     (krios,) = dataset.instruments
