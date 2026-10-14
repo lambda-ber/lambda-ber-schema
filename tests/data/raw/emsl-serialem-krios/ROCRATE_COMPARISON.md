@@ -25,7 +25,7 @@ are also projected onto typed crate slots:
 | `instrument_id: 99999` | `#instr-krios.instrument_code` as `EMSL-KRIOS-99999` | EMSL resource ID (not chassis serial); see §5 |
 | `detector_id: K3` | `#instr-krios.detector` | |
 | `processing_scheme: 1` | `collection_mode: "single_particle"` on `#exp-serialem-spa` | 1=SPA, 2=tomo, 3=microED |
-| `sample_mg/ml: 1mg/ml` | `#sample-grid1.concentration: "1 mg/ml"` | |
+| `sample_mg/ml: 1mg/ml` | `#sample-grid1.concentration`, `{numeric_value: 1, unit: "milligrams per milliliter"}` | A quantity object, as the profile defines `concentration` and as the Dataset record writes it |
 | SerialEM version (mdoc headers) | `#sw-serialem` (`SoftwareApplication`), named in the run's `instrument` | 4.2.2 |
 
 The session settings themselves are typed on `#exp-serialem-spa` (Core 0.3.4), each the

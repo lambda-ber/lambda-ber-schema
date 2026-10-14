@@ -132,7 +132,7 @@
       "name": "Sample grid 1",
       "sample_code": "Sample-grid-1",
       "sample_type": "protein",
-      "concentration": "1 mg/ml",
+      "concentration": { "numeric_value": 1, "unit": "milligrams per milliliter" },
       "missing": [
         {
           "field": "protein_name",
