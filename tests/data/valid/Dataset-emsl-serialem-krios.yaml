@@ -1,0 +1,361 @@
+id: emsl:session_99999_01-01-01_dataset
+title: EMSL Titan Krios SerialEM single-particle session (fixture)
+description: Lambda-ber-schema record for the anonymised SerialEM single-particle session in tests/data/raw/emsl-serialem-krios/,
+  built from its metadata.yaml acquisition sheet and mdoc sidecars. The RO-Crate in that directory is
+  the manifest view of the same session.
+keywords:
+- EMSL
+- cryo-EM
+- SerialEM
+- single particle
+studies:
+- id: emsl:project_99999
+  proposal_id: '99999'
+  title: EMSL proposal 99999 (anonymised fixture)
+  keywords:
+  - EMSL
+instruments:
+- id: emsl:resource_99999
+  title: Titan Krios at EMSL
+  instrument_code: EMSL-KRIOS-99999
+  instrument_category: ELECTRON_MICROSCOPE
+  facility_name: EMSL
+  facility_ror: https://ror.org/05h992307
+  manufacturer: Thermo Fisher Scientific
+  model: Titan Krios
+samples:
+- id: emsl:sample_grid_1_99999
+  title: Sample grid 1
+  sample_code: Sample-grid-1
+  sample_type: protein
+  concentration:
+    numeric_value: 1
+    unit: milligrams per milliliter
+  buffer_composition:
+    components:
+    - 1x TBS
+experiment_runs:
+- id: emsl:session_99999_01-01-01
+  title: SerialEM single-particle data collection at EMSL
+  experiment_code: EMSL-99999-01-01-01
+  experiment_date: '2001-01-01'
+  technique: cryo_em
+  raw_data_location: 99999/01-01-01/C5/frames
+  processing_status: collected
+  data_collection_strategy:
+    collection_mode: single_particle
+  acquisition_software: SerialEM
+  acquisition_software_version: 4.2.2
+  accelerating_voltage:
+    numeric_value: 300
+    unit: kilovolts
+  cs:
+    numeric_value: 2.7
+    unit: millimeters
+  detector: K3
+  magnification:
+    numeric_value: 130000
+    unit: x
+  nominal_pixel_size:
+    numeric_value: 0.34
+    unit: Angstroms per pixel
+  calibrated_pixel_size:
+    numeric_value: 0.340292
+    unit: Angstroms per pixel
+  camera_binning:
+    numeric_value: 0.5
+    unit: factor
+  frames_per_movie:
+    numeric_value: 49
+    unit: frames
+  total_exposure_time:
+    numeric_value: 1.046
+    unit: seconds
+  total_dose:
+    numeric_value: 50
+    unit: electrons per Angstrom squared
+  spot_size:
+    numeric_value: 4
+    unit: index
+  c2_aperture:
+    numeric_value: 50
+    unit: micrometers
+  beam_diameter:
+    numeric_value: 750
+    unit: micrometers
+  energy_filter_slit_width:
+    numeric_value: 20
+    unit: electronvolts
+  phase_plate_used: false
+  tilting_scheme: none
+  quality_metrics:
+    grid_quality:
+      ice_contamination: none
+      ice_quality: ideal
+      particle_concentration: optimal
+data_files:
+- id: emsl:file_metadata_yaml
+  file_name: metadata.yaml
+  file_path: 99999/01-01-01/C5/metadata.yaml
+  file_format: yaml
+  file_size_bytes:
+    numeric_value: 1729
+    unit: bytes
+  checksum: ccb5869ca4c095807193c144059e733df28f7d728ff94a683e0ef1405758407a
+  data_type: metadata
+  related_entity: emsl:session_99999_01-01-01
+  file_role: metadata
+  description: 'EMSL acquisition protocol sheet: proposal/session identifiers, microscope and detector
+    settings, sample conditions, and quality assessments.'
+- id: emsl:file_C5_LMM_1_mrc_mdoc
+  file_name: C5_LMM_1.mrc.mdoc
+  file_path: 99999/01-01-01/C5/C5_LMM_1.mrc.mdoc
+  file_format: mdoc
+  file_size_bytes:
+    numeric_value: 41561
+    unit: bytes
+  checksum: f0a6720a52256254afa048a89e78934746bb9a2e671225f2740c303ee07eb7a9
+  data_type: metadata
+  related_entity: emsl:session_99999_01-01-01
+  file_role: metadata
+  description: SerialEM metadata sidecar for the low-magnification atlas montage. Contains one [ZValue=N]
+    block per tile (48 tiles, Mag=135) and a [MontSection=0] summary.
+- id: emsl:file_C5_LMM_1_mrc
+  file_name: C5_LMM_1.mrc
+  file_path: 99999/01-01-01/C5/C5_LMM_1.mrc
+  file_format: mrc
+  file_size_bytes:
+    numeric_value: 0
+    unit: bytes
+  checksum: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  data_type: atlas
+  related_entity: emsl:session_99999_01-01-01
+  file_role: diagnostic
+  description: Low-magnification atlas montage of grid square C5 (6 x 8 = 48 tiles, Mag=135, PixelSpacing=1332.64
+    Å). Zero-byte fixture stub.
+- id: emsl:file_C5_nav
+  file_name: C5.nav
+  file_path: 99999/01-01-01/C5/C5.nav
+  file_format: nav
+  file_size_bytes:
+    numeric_value: 265037
+    unit: bytes
+  checksum: 846a43869a207f61a50fab65a5d0654ee9b1e5deff804541e413444e15be2f8f
+  data_type: metadata
+  related_entity: emsl:session_99999_01-01-01
+  file_role: metadata
+  description: SerialEM navigator file indexing all acquisition targets as [Item=N] blocks with stage
+    coordinates, polygon vertices, and references to map files.
+- id: emsl:file_mmm1_mrc_mdoc
+  file_name: mmm1.mrc.mdoc
+  file_path: 99999/01-01-01/C5/mmm1.mrc.mdoc
+  file_format: mdoc
+  file_size_bytes:
+    numeric_value: 997
+    unit: bytes
+  checksum: 77e800bd243775307fa5b99fcee78e40ced0d242e0c46b2394a282c63268bf41
+  data_type: metadata
+  related_entity: emsl:session_99999_01-01-01
+  file_role: metadata
+  description: SerialEM metadata sidecar for medium-magnification survey image 1 (Mag=740, NavigatorLabel=2).
+- id: emsl:file_mmm1_mrc
+  file_name: mmm1.mrc
+  file_path: 99999/01-01-01/C5/mmm1.mrc
+  file_format: mrc
+  file_size_bytes:
+    numeric_value: 0
+    unit: bytes
+  checksum: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  data_type: screening_image
+  related_entity: emsl:session_99999_01-01-01
+  file_role: diagnostic
+  description: Medium-magnification survey image of grid area 1 (Mag=740, PixelSpacing=243.116 Å). Zero-byte
+    fixture stub.
+- id: emsl:file_mmm2_mrc_mdoc
+  file_name: mmm2.mrc.mdoc
+  file_path: 99999/01-01-01/C5/mmm2.mrc.mdoc
+  file_format: mdoc
+  file_size_bytes:
+    numeric_value: 998
+    unit: bytes
+  checksum: eda351a17ed5a2437701ad088bd2f05391161d5c9c95b1a10d4bb79aff7131d7
+  data_type: metadata
+  related_entity: emsl:session_99999_01-01-01
+  file_role: metadata
+  description: SerialEM metadata sidecar for medium-magnification survey image 2 (Mag=740, NavigatorLabel=4).
+- id: emsl:file_mmm2_mrc
+  file_name: mmm2.mrc
+  file_path: 99999/01-01-01/C5/mmm2.mrc
+  file_format: mrc
+  file_size_bytes:
+    numeric_value: 0
+    unit: bytes
+  checksum: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  data_type: screening_image
+  related_entity: emsl:session_99999_01-01-01
+  file_role: diagnostic
+  description: Medium-magnification survey image of grid area 2 (Mag=740, PixelSpacing=243.116 Å). Zero-byte
+    fixture stub.
+- id: emsl:file_frames_Image_000_tif_mdoc
+  file_name: Image_000.tif.mdoc
+  file_path: 99999/01-01-01/C5/frames/Image_000.tif.mdoc
+  file_format: mdoc
+  file_size_bytes:
+    numeric_value: 935
+    unit: bytes
+  checksum: 8640244391a516b0d8467060fc3c1c1c1acfa23c6c5f56af9d8fb8903eee521c
+  data_type: metadata
+  related_entity: emsl:session_99999_01-01-01
+  file_role: metadata
+  description: SerialEM metadata sidecar for acquisition movie 0. [FrameSet=0] block with NumSubFrames=49,
+    GainReference, DefectFile, NavigatorLabel=17-1.
+- id: emsl:file_frames_Image_000_tif
+  file_name: Image_000.tif
+  file_path: 99999/01-01-01/C5/frames/Image_000.tif
+  file_format: tiff
+  file_size_bytes:
+    numeric_value: 0
+    unit: bytes
+  checksum: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  data_type: movie
+  related_entity: emsl:session_99999_01-01-01
+  file_role: raw
+  description: Dose-fractionated acquisition movie (49 frames, Mag=130000, PixelSpacing=0.340292 Å). Zero-byte
+    fixture stub.
+- id: emsl:file_frames_Image_001_tif_mdoc
+  file_name: Image_001.tif.mdoc
+  file_path: 99999/01-01-01/C5/frames/Image_001.tif.mdoc
+  file_format: mdoc
+  file_size_bytes:
+    numeric_value: 936
+    unit: bytes
+  checksum: 892cd65cbbf3f76c48572f3fbed84aeadf01c604c2a048cebf77816be651c389
+  data_type: metadata
+  related_entity: emsl:session_99999_01-01-01
+  file_role: metadata
+  description: SerialEM metadata sidecar for acquisition movie 1.
+- id: emsl:file_frames_Image_001_tif
+  file_name: Image_001.tif
+  file_path: 99999/01-01-01/C5/frames/Image_001.tif
+  file_format: tiff
+  file_size_bytes:
+    numeric_value: 0
+    unit: bytes
+  checksum: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  data_type: movie
+  related_entity: emsl:session_99999_01-01-01
+  file_role: raw
+  description: Dose-fractionated acquisition movie (49 frames, Mag=130000). Zero-byte fixture stub.
+- id: emsl:file_frames_Image_002_tif_mdoc
+  file_name: Image_002.tif.mdoc
+  file_path: 99999/01-01-01/C5/frames/Image_002.tif.mdoc
+  file_format: mdoc
+  file_size_bytes:
+    numeric_value: 935
+    unit: bytes
+  checksum: d296b5e44dbb48b94581328e4033ff65ecdc8e4bfe71b1f95f5f252f9e63a0cd
+  data_type: metadata
+  related_entity: emsl:session_99999_01-01-01
+  file_role: metadata
+  description: SerialEM metadata sidecar for acquisition movie 2.
+- id: emsl:file_frames_Image_002_tif
+  file_name: Image_002.tif
+  file_path: 99999/01-01-01/C5/frames/Image_002.tif
+  file_format: tiff
+  file_size_bytes:
+    numeric_value: 0
+    unit: bytes
+  checksum: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  data_type: movie
+  related_entity: emsl:session_99999_01-01-01
+  file_role: raw
+  description: Dose-fractionated acquisition movie (49 frames, Mag=130000). Zero-byte fixture stub.
+- id: emsl:file_frames_SuperRef_Image_000_dm4
+  file_name: SuperRef_Image_000.dm4
+  file_path: 99999/01-01-01/C5/frames/SuperRef_Image_000.dm4
+  file_format: dm4
+  file_size_bytes:
+    numeric_value: 0
+    unit: bytes
+  checksum: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  data_type: gain_reference
+  related_entity: emsl:session_99999_01-01-01
+  file_role: raw
+  description: K3 gain reference in DigitalMicrograph 4 format. Normalises camera sensitivity; referenced
+    by all three frame mdocs. Zero-byte fixture stub.
+- id: emsl:file_frames_defects_GS_01_H_01_000_txt
+  file_name: defects_GS_01_H_01_000.txt
+  file_path: 99999/01-01-01/C5/frames/defects_GS_01_H_01_000.txt
+  file_format: ascii
+  file_size_bytes:
+    numeric_value: 224
+    unit: bytes
+  checksum: 8ec2fdc34871326818bf5eb3fbc30b0081f5b2ce8c265d61b2c162296e9973e3
+  data_type: defect_map
+  related_entity: emsl:session_99999_01-01-01
+  file_role: raw
+  description: Camera defect map listing bad columns and unusable pixel regions for the K3 detector. Referenced
+    by all frame mdocs.
+- id: emsl:file_screening_Hole_01_mrc_mdoc
+  file_name: Hole_01.mrc.mdoc
+  file_path: 99999/01-01-01/C5/screening/Hole_01.mrc.mdoc
+  file_format: mdoc
+  file_size_bytes:
+    numeric_value: 1008
+    unit: bytes
+  checksum: 1edba2fd5b4dd3136e863dd4e54be5c7a0a9c6d5e8b1f97acf7ba830ced9f17b
+  data_type: metadata
+  related_entity: emsl:session_99999_01-01-01
+  file_role: metadata
+  description: SerialEM metadata sidecar for hole-level survey image at Mag=11500 (NavigatorLabel=3).
+- id: emsl:file_screening_Hole_01_mrc
+  file_name: Hole_01.mrc
+  file_path: 99999/01-01-01/C5/screening/Hole_01.mrc
+  file_format: mrc
+  file_size_bytes:
+    numeric_value: 0
+    unit: bytes
+  checksum: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  data_type: screening_image
+  related_entity: emsl:session_99999_01-01-01
+  file_role: diagnostic
+  description: Hole-level survey image at Mag=11500 (PixelSpacing=16.1085 Å) used to assess ice quality
+    and particle distribution. Zero-byte fixture stub.
+- id: emsl:file_screening_Hole_01_1-1_mrc_mdoc
+  file_name: Hole_01_1-1.mrc.mdoc
+  file_path: 99999/01-01-01/C5/screening/Hole_01_1-1.mrc.mdoc
+  file_format: mdoc
+  file_size_bytes:
+    numeric_value: 1049
+    unit: bytes
+  checksum: 076c0bdc3a474a6d92ee058f3bc919b0702b3de734c3cc99b10be08629723afa
+  data_type: metadata
+  related_entity: emsl:session_99999_01-01-01
+  file_role: metadata
+  description: SerialEM metadata sidecar for high-magnification multishot sub-position 1-1 within hole
+    1 (Mag=130000, MultishotHoleAndPosition=1-1).
+- id: emsl:file_screening_Hole_01_1-1_mrc
+  file_name: Hole_01_1-1.mrc
+  file_path: 99999/01-01-01/C5/screening/Hole_01_1-1.mrc
+  file_format: mrc
+  file_size_bytes:
+    numeric_value: 0
+    unit: bytes
+  checksum: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  data_type: screening_image
+  related_entity: emsl:session_99999_01-01-01
+  file_role: diagnostic
+  description: High-magnification image of multishot sub-position 1-1 within hole 1 (Mag=130000, PixelSpacing=1.36117
+    Å). Zero-byte fixture stub.
+study_sample_associations:
+- study_id: emsl:project_99999
+  sample_id: emsl:sample_grid_1_99999
+study_experiment_associations:
+- study_id: emsl:project_99999
+  experiment_id: emsl:session_99999_01-01-01
+experiment_sample_associations:
+- experiment_id: emsl:session_99999_01-01-01
+  sample_id: emsl:sample_grid_1_99999
+experiment_instrument_associations:
+- experiment_id: emsl:session_99999_01-01-01
+  instrument_id: emsl:resource_99999
