@@ -106,6 +106,7 @@ lambda:TechniqueEnum#neutron_crystallography	neutron_crystallography	skos:exactM
 lambda:TechniqueEnum#fiber_diffraction	fiber_diffraction	skos:exactMatch		CHMO:0000156		skos:exactMatch	http://w3id.org/lambda/						TechniqueEnum			
 lambda:TechniqueEnum#time_resolved_crystallography	time_resolved_crystallography	skos:exactMatch		CHMO:0000156		skos:exactMatch	http://w3id.org/lambda/						TechniqueEnum			
 lambda:TechniqueEnum#xray_tomography	xray_tomography	skos:exactMatch		CHMO:0002743		skos:exactMatch	http://w3id.org/lambda/						TechniqueEnum			
+lambda:TechniqueEnum#molecular_dynamics	molecular_dynamics	skos:exactMatch		sio:000983		skos:exactMatch	http://w3id.org/lambda/						TechniqueEnum			
 lambda:xbeam	beamCenterPixels__xbeam	skos:exactMatch		nsls2:Beam_xy_x		skos:exactMatch	http://w3id.org/lambda/									
 lambda:xbeam	beamCenterPixels__xbeam	skos:exactMatch		imgCIF:_diffrn_detector.beam_center_x		skos:exactMatch	http://w3id.org/lambda/									
 lambda:xbeam	beamCenterPixels__xbeam	skos:exactMatch		mmCIF:_diffrn_detector.beam_center_x		skos:exactMatch	http://w3id.org/lambda/									
