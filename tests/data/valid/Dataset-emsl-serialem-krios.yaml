@@ -16,6 +16,7 @@ studies:
   - EMSL
 instruments:
 - id: emsl:resource_99999
+  instrument_type: CryoEMInstrument
   title: Titan Krios at EMSL
   instrument_code: EMSL-KRIOS-99999
   instrument_category: ELECTRON_MICROSCOPE
@@ -23,6 +24,20 @@ instruments:
   facility_ror: https://ror.org/05h992307
   manufacturer: Thermo Fisher Scientific
   model: Titan Krios
+  accelerating_voltage:
+    numeric_value: 300
+    unit: kilovolts
+  cs:
+    numeric_value: 2.7
+    unit: millimeters
+  detector_manufacturer: Gatan
+  detector_model: K3
+  pixel_size_physical_um:
+    numeric_value: 5
+    unit: micrometers
+  energy_filter_present: true
+  microscope_software: SerialEM
+  microscope_software_version: 4.2.2
 samples:
 - id: emsl:sample_grid_1_99999
   title: Sample grid 1
