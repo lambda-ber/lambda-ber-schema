@@ -141,3 +141,22 @@ def test_dataclasses_reject_subclass_fields_without_the_designator(dataclasses):
     del record["instruments"][0]["instrument_type"]
     with pytest.raises(TypeError, match="unexpected keyword argument"):
         yaml_loader.load_any(record, target_class=dataclasses.Dataset)
+
+
+def test_pydantic_rejects_another_subclass_fields():
+    """The designator picks one class; fields of a sibling class are not quietly accepted."""
+    from pydantic import ValidationError
+
+    record = emsl_record()
+    record["instruments"][0]["techniques_supported"] = ["cryo_em"]  # a BeamlineInstrument field
+    with pytest.raises(ValidationError, match="techniques_supported"):
+        model.Dataset(**record)
+
+
+def test_dataclasses_reject_another_subclass_fields(dataclasses):
+    from linkml_runtime.loaders import yaml_loader
+
+    record = emsl_record()
+    record["instruments"][0]["techniques_supported"] = ["cryo_em"]
+    with pytest.raises(TypeError, match="techniques_supported"):
+        yaml_loader.load_any(record, target_class=dataclasses.Dataset)
