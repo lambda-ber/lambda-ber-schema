@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://lambda-ber.github.io/lambda-ber-schema/profiles/lambda-core-rocrate-profile-v0.3.3/">
+        <link rel="canonical" href="https://lambda-ber.github.io/lambda-ber-schema/profiles/lambda-core-rocrate-profile-v0.3.4/">
       
       
         <link rel="prev" href="../../use-cases/06-reanalysis-triggers.html">
@@ -2019,14 +2019,31 @@
 
 
 <h1 id="lambda-core-ro-crate-profile">LAMBDA Core RO-Crate Profile</h1>
-<p><strong>Version 0.3.3</strong> · Technique-neutral · Normative specification</p>
+<p><strong>Version 0.3.4</strong> · Technique-neutral · Normative specification</p>
 <p>Binds <code>lambda-ber-schema</code> (LinkML) to RO-Crate 1.2 as a <strong>file manifest</strong> contract. A crate carries
 the highest-level details a program needs to decide whether a dataset is worth opening, and then
 <em>points</em> at the fuller record instead of restating it. It is a search-and-handoff surface, not a
 second copy of the schema.</p>
-<p>Profile URI: <code>https://w3id.org/lambda/profile/core/0.3.3</code>
+<p>Profile URI: <code>https://w3id.org/lambda/profile/core/0.3.4</code>
 Machine-readable source: <a href="../../../src/lambda_ber_schema/schema/lambda_rocrate_core.yaml"><code>lambda_rocrate_core.yaml</code></a>
 Generated artifacts: <code>assets/rocrate/</code> (JSON Schema, JSON-LD context, OWL, prefix map, SSSOM crosswalk)</p>
+<p><strong>Changes in 0.3.4.</strong> Adds the cryo-EM session settings to <code>ExperimentRunAction</code> as <code>lambda:</code>
+terms, each the <code>ExperimentRun</code> slot of the same name: the optics (<code>accelerating_voltage</code>, <code>cs</code>,
+<code>spot_size</code>, <code>c2_aperture</code>, <code>beam_diameter</code>, <code>energy_filter_slit_width</code>, <code>phase_plate_used</code>), the
+imaging (<code>detector</code>, <code>magnification</code>, <code>nominal_pixel_size</code>, <code>calibrated_pixel_size</code>,
+<code>camera_binning</code>), dose and timing (<code>frames_per_movie</code>, <code>frames_per_second</code>,
+<code>exposure_time_per_frame</code>, <code>total_exposure_time</code>, <code>total_dose</code>, <code>dose_rate</code>), the tomography and
+MicroED settings (<code>tilting_scheme</code>, <code>tilt_angle_increment</code>, <code>fiducial_size</code>, <code>rotation_rate</code>,
+<code>camera_length</code>), and <code>quality_metrics</code> for the facility's grid assessment (§6.2). Quantities are
+the schema's own <code>QuantityValue</code> objects. These are in Core rather than a cryo-EM extension because
+they are slots <code>lambda-ber-schema</code> already defines on <code>ExperimentRun</code>, so the projection is an
+identity mapping, and because they are what a facility records for every session; result quantities
+with estimators remain extension territory (§17). The schema's <code>FileFormatEnum</code> and <code>DataTypeEnum</code>
+gained the SerialEM and detector-calibration terms they need (<code>mdoc</code>, <code>nav</code>, <code>dm4</code>, <code>yaml</code>;
+<code>gain_reference</code>, <code>defect_map</code>, <code>atlas</code>, <code>screening_image</code>), which Core references and does not
+restate. Additive: every crate that conformed to 0.3.3 conforms to 0.3.4 unchanged. Crates SHOULD
+claim <code>https://w3id.org/lambda/profile/core/0.3.4</code>; the 0.3.3, 0.3.2, 0.3.1 and 0.3.0 URIs remain
+valid for what they said.</p>
 <p><strong>Changes in 0.3.3.</strong> Adds <code>SmallMoleculeEntity</code>, the chemical counterpart of <code>ProteinEntity</code>
 and <code>NucleicAcidEntity</code> for ligands, cofactors, metal ions, lipids and detergents, reached from a
 sample through the same <code>hasBioChemEntityPart</code> (§6.2), with <code>lambda:chebi_id</code>,
@@ -2152,7 +2169,7 @@ gate filters rather than silently returning crates that cannot answer them.</p>
 profile:</p>
 <pre><code class="language-json">&quot;conformsTo&quot;: [
   {&quot;@id&quot;: &quot;https://w3id.org/ro/crate/1.2&quot;},
-  {&quot;@id&quot;: &quot;https://w3id.org/lambda/profile/core/0.3.3&quot;}
+  {&quot;@id&quot;: &quot;https://w3id.org/lambda/profile/core/0.3.4&quot;}
 ]
 </code></pre>
 <p>A technique extension appends its own URI; it never replaces the Core URI. The metadata descriptor
@@ -2378,6 +2395,32 @@ beside the typed entity:</p>
 themselves, and the (sample, entity) pair identifies the <code>SampleComponent</code> row in the fuller
 record. Crates that write <code>chebi_id</code> or <code>pdb_ligand_id</code> SHOULD bind <code>CHEBI</code> and <code>pdb.ligand</code> in
 their context, as they bind <code>uniprot</code>.</p>
+<p><strong>The run carries the settings it was collected with.</strong> An <code>ExperimentRunAction</code> names its sample
+(<code>object</code>), its equipment and software (<code>instrument</code>) and what it produced (<code>result</code>). For cryo-EM it
+also carries the settings a facility records for every session, each the <code>ExperimentRun</code> slot of the
+same name: optics (<code>accelerating_voltage</code>, <code>cs</code>, <code>spot_size</code>, <code>c2_aperture</code>, <code>beam_diameter</code>,
+<code>energy_filter_slit_width</code>, <code>phase_plate_used</code>), imaging (<code>detector</code>, <code>magnification</code>,
+<code>nominal_pixel_size</code>, <code>calibrated_pixel_size</code>, <code>camera_binning</code>), dose and timing
+(<code>frames_per_movie</code>, <code>frames_per_second</code>, <code>exposure_time_per_frame</code>, <code>total_exposure_time</code>,
+<code>total_dose</code>, <code>dose_rate</code>), tomography and MicroED (<code>tilting_scheme</code>, <code>tilt_angle_increment</code>,
+<code>fiducial_size</code>, <code>rotation_rate</code>, <code>camera_length</code>), and <code>quality_metrics</code>, whose <code>grid_quality</code>
+holds the facility's ice and particle assessment. Quantities are the schema's <code>QuantityValue</code>
+objects, never bare numbers, so the unit travels with the value. These belong on the run and not on
+the <code>InstrumentEntity</code>: the instrument says what the microscope can do, the run says what it was
+set to, and the closed <code>InstrumentEntity</code> rejects a session setting. <code>runParameters</code> keeps the
+facility's own parameter block verbatim beside them.</p>
+<pre><code class="language-json">{&quot;@id&quot;: &quot;#exp-serialem-spa&quot;, &quot;@type&quot;: [&quot;Action&quot;, &quot;lambda:ExperimentRun&quot;],
+ &quot;experiment_code&quot;: &quot;EMSL-99999-01-01-01&quot;, &quot;technique&quot;: &quot;cryo_em&quot;,
+ &quot;collection_mode&quot;: &quot;single_particle&quot;,
+ &quot;object&quot;: [{&quot;@id&quot;: &quot;#sample-grid1&quot;}], &quot;instrument&quot;: [{&quot;@id&quot;: &quot;#instr-krios&quot;}, {&quot;@id&quot;: &quot;#sw-serialem&quot;}],
+ &quot;accelerating_voltage&quot;: {&quot;numeric_value&quot;: 300, &quot;unit&quot;: &quot;kilovolts&quot;},
+ &quot;calibrated_pixel_size&quot;: {&quot;numeric_value&quot;: 0.340292, &quot;unit&quot;: &quot;Angstroms per pixel&quot;},
+ &quot;total_dose&quot;: {&quot;numeric_value&quot;: 50, &quot;unit&quot;: &quot;electrons per Angstrom squared&quot;},
+ &quot;spot_size&quot;: {&quot;numeric_value&quot;: 4, &quot;unit&quot;: &quot;index&quot;},
+ &quot;quality_metrics&quot;: {&quot;grid_quality&quot;: {&quot;ice_contamination&quot;: &quot;none&quot;, &quot;ice_quality&quot;: &quot;ideal&quot;,
+                                      &quot;particle_concentration&quot;: &quot;optimal&quot;}},
+ &quot;runParameters&quot;: {&quot;metadata&quot;: {&quot;program&quot;: {&quot;voltage&quot;: 300, &quot;spot_size&quot;: 4, &quot;...&quot;: &quot;...&quot;}}}}
+</code></pre>
 <p>Facility and technique SHOULD be carried as <code>DefinedTerm</code> entities rather than bare strings — this
 is what lets a federated index join across crates, and the SSRL 0.2 crates already do it.</p>
 <h3 id="63-value-objects-nest">6.3 Value objects nest</h3>
@@ -2411,7 +2454,7 @@ crate.</p>
   &quot;@id&quot;: &quot;saxs/&quot;,
   &quot;@type&quot;: &quot;Dataset&quot;,
   &quot;name&quot;: &quot;SEC-SAXS-MALS of GluRS (ALS SIBYLS 12.3.1)&quot;,
-  &quot;conformsTo&quot;: [{&quot;@id&quot;: &quot;https://w3id.org/lambda/profile/core/0.3.3&quot;},
+  &quot;conformsTo&quot;: [{&quot;@id&quot;: &quot;https://w3id.org/lambda/profile/core/0.3.4&quot;},
                  {&quot;@id&quot;: &quot;https://w3id.org/lambda/profile/saxs/0.3.0&quot;}],
   &quot;hasPart&quot;: [{&quot;@id&quot;: &quot;saxs/ro-crate-metadata.json&quot;}]
 }
@@ -2647,6 +2690,10 @@ a number that only means something in one pipeline.</p>
 <td style="text-align: left;"><code>lambda:nucleic_acid_type</code>, <code>lambda:rnacentral_id</code>, <code>lambda:sequence_accession</code> or <code>lambda:nucleotide_sequence</code> on the <code>NucleicAcid</code> entities the sample points at with <code>hasBioChemEntityPart</code></td>
 </tr>
 <tr>
+<td style="text-align: left;">acquisition</td>
+<td style="text-align: left;">the session terms on the <code>ExperimentRunAction</code> (<code>accelerating_voltage</code>, <code>magnification</code>, <code>calibrated_pixel_size</code>, <code>total_dose</code>, <code>quality_metrics</code>, …; §6.2)</td>
+</tr>
+<tr>
 <td style="text-align: left;">dates</td>
 <td style="text-align: left;"><code>datePublished</code>, <code>lambda:collectionDate</code></td>
 </tr>
@@ -2725,7 +2772,7 @@ instances, so a single JSON object is walked key by key, and <code>--legacy-mode
 <code>gen-python</code>, which cannot represent <code>@</code>-keyword aliases (§16.7).</p>
 <hr />
 <h2 id="13-worked-examples">13. Worked examples</h2>
-<p>Seven conformant fixtures in <code>tests/data/rocrate/valid/</code>:</p>
+<p>Seven conformant fixtures in <code>tests/data/rocrate/valid/</code>, and one crate stored with its payload:</p>
 <table>
 <thead>
 <tr>
@@ -2740,7 +2787,7 @@ instances, so a single JSON object is walked key by key, and <code>--legacy-mode
 </tr>
 <tr>
 <td style="text-align: left;"><code>ssrl-mx-XA_x16.json</code></td>
-<td style="text-align: left;">a real SSRL MX package brought to Core 0.3.3, with MX quantities nested in <code>resultSummary</code></td>
+<td style="text-align: left;">a real SSRL MX package brought to Core 0.3.4, with MX quantities nested in <code>resultSummary</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>saxs-glurs.json</code></td>
@@ -2763,12 +2810,16 @@ instances, so a single JSON object is walked key by key, and <code>--legacy-mode
 <td style="text-align: left;">the same complex with its zinc as a <code>SmallMolecule</code> entity and three interaction entities saying what binds, pairs with and coordinates what; a second sample with a fragment named by InChIKey, a detergent with its structure withheld and declared, and a soak recorded as <code>not_observed</code> (§6.2)</td>
 </tr>
 <tr>
+<td style="text-align: left;"><code>tests/data/raw/emsl-serialem-krios/ro-crate-metadata.json</code></td>
+<td style="text-align: left;">an EMSL SerialEM single-particle session as an attached crate beside its files: the acquisition sheet verbatim in <code>runParameters</code>, the session settings and grid assessment typed on the run (§6.2), gain reference, defect map, atlas and screening images typed by <code>DataTypeEnum</code>; its full record is <code>tests/data/valid/Dataset-emsl-serialem-krios.yaml</code></td>
+</tr>
+<tr>
 <td style="text-align: left;"><code>ssrl-mx-XA_x16-core-0.2.json</code> (in <code>legacy/</code>)</td>
 <td style="text-align: left;">the published 0.2 crate, unmodified — see §15</td>
 </tr>
 </tbody>
 </table>
-<p>Seventeen negative fixtures in <code>tests/data/rocrate/invalid/</code>, each isolating one rule, with the test
+<p>Twenty negative fixtures in <code>tests/data/rocrate/invalid/</code>, each isolating one rule, with the test
 asserting <em>which</em> rule failed so that a fixture cannot pass for the wrong reason.</p>
 <hr />
 <h2 id="14-crosswalk-to-lambda-ber-schema">14. Crosswalk to <code>lambda-ber-schema</code></h2>
@@ -2913,13 +2964,13 @@ carries the schema's own <code>snake_case</code> slot name, so <code>lambda:file
 <p>SSRL publishes crates conforming to <code>https://w3id.org/lambda/profile/core/0.2</code> — a URI with no
 written specification — using <code>lambda:Experiment</code> / <code>lambda:RawUnit</code> / <code>lambda:DerivedProduct</code> /
 <code>lambda:AuxiliaryMetadataItem</code> and camelCase terms under
-<code>https://w3id.org/lambda/terms/0.2/</code>. Those crates exist and a loader consumes them, so Core 0.3.3
+<code>https://w3id.org/lambda/terms/0.2/</code>. Those crates exist and a loader consumes them, so Core 0.3.4
 accepts the 0.2 spellings and marks them deprecated rather than breaking them.</p>
 <table>
 <thead>
 <tr>
 <th style="text-align: left;">0.2 spelling</th>
-<th style="text-align: left;">Core 0.3.3</th>
+<th style="text-align: left;">Core 0.3.4</th>
 </tr>
 </thead>
 <tbody>
@@ -3125,7 +3176,9 @@ change requests already cover them.</p>
 <ol>
 <li>gives <code>lambdarc:resultSummary</code> a shape — its quantity register, method-tagged and estimator-bearing;</li>
 <li>binds its artefacts to the sufficiency tiers (which file is S2-core, which is S2-acquisition);</li>
-<li>adds technique acquisition terms to <code>ExperimentRunAction</code>;</li>
+<li>adds technique acquisition terms to <code>ExperimentRunAction</code> beyond those Core already carries
+   (Core carries the <code>ExperimentRun</code> session settings <code>lambda-ber-schema</code> defines, such as the
+   cryo-EM optics in §6.2);</li>
 <li>declares its own profile URI alongside Core's in <code>conformsTo</code>;</li>
 <li>generates its own JSON Schema, against which its crates validate. A Core-only schema will reject
    extension terms at layer 2, by design — validate a crate against the most specific profile it

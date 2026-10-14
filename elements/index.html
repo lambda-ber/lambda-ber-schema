@@ -1094,7 +1094,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../profiles/lambda-core-rocrate-profile-v0.3.3/" class="md-nav__link">
+      <a href="../profiles/lambda-core-rocrate-profile-v0.3.4/" class="md-nav__link">
         
   
   
@@ -2149,6 +2149,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="beam_center_y_px/">beam_center_y_px</a></td>
 <td>Beam center Y coordinate in pixels</td>
+</tr>
+<tr>
+<td><a href="beam_diameter/">beam_diameter</a></td>
+<td>Illuminated beam diameter at the specimen used for this session, typically sp...</td>
 </tr>
 <tr>
 <td><a href="beam_energy/">beam_energy</a></td>
@@ -3615,6 +3619,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Nominal defocus value, typically specified in micrometers</td>
 </tr>
 <tr>
+<td><a href="nominal_pixel_size/">nominal_pixel_size</a></td>
+<td>Nominal pixel size at the specimen for the chosen magnification and binning, ...</td>
+</tr>
+<tr>
 <td><a href="nucleic_acid_id/">nucleic_acid_id</a></td>
 <td>The NucleicAcid record, where component_type is nucleic_acid</td>
 </tr>
@@ -3845,6 +3853,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="phase_plate_type/">phase_plate_type</a></td>
 <td>Type of phase plate if present</td>
+</tr>
+<tr>
+<td><a href="phase_plate_used/">phase_plate_used</a></td>
+<td>Whether a phase plate was in the beam path for this session</td>
 </tr>
 <tr>
 <td><a href="phasing_method/">phasing_method</a></td>
@@ -4487,6 +4499,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Strategy for data splitting</td>
 </tr>
 <tr>
+<td><a href="spot_size/">spot_size</a></td>
+<td>Condenser spot size setting used for this session (a dimensionless index on t...</td>
+</tr>
+<tr>
 <td><a href="spotsize/">spotsize</a></td>
 <td>Electron beam spot size setting</td>
 </tr>
@@ -4700,7 +4716,7 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 </tr>
 <tr>
 <td><a href="tilting_scheme/">tilting_scheme</a></td>
-<td>Tilt scheme used during tomographic data collection</td>
+<td>Stage tilting scheme used during data collection</td>
 </tr>
 <tr>
 <td><a href="timestamp/">timestamp</a></td>
@@ -5211,7 +5227,7 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 </tr>
 <tr>
 <td><a href="TiltingSchemeEnum/">TiltingSchemeEnum</a></td>
-<td>Tilt scheme used during tomographic or continuous-rotation data collection</td>
+<td>Stage tilting scheme used during data collection, including <code>none</code> for untilt...</td>
 </tr>
 <tr>
 <td><a href="VitrificationMethodEnum/">VitrificationMethodEnum</a></td>

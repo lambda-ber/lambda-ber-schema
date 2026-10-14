@@ -952,7 +952,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.3/" class="md-nav__link">
+      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.4/" class="md-nav__link">
         
   
   
@@ -1202,6 +1202,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comments
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -1289,6 +1298,10 @@ Alias: spotsize</p>
 <ul>
 <li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
+<h2 id="comments">Comments</h2>
+<ul>
+<li>This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.spot_size.</li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -1322,6 +1335,9 @@ Alias: spotsize</p>
 
 <pre><code class="language-yaml">name: spotsize
 description: Electron beam spot size setting
+comments:
+- This is the instrument's capability or default. Record the value actually used in
+  a session on ExperimentRun.spot_size.
 from_schema: http://w3id.org/lambda/
 exact_mappings:
 - mmCIF:_em_imaging.detector_spot_size

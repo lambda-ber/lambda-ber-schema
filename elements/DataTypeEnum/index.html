@@ -952,7 +952,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.3/" class="md-nav__link">
+      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.4/" class="md-nav__link">
         
   
   
@@ -1351,6 +1351,26 @@
 <td>None</td>
 <td>Validation report</td>
 </tr>
+<tr>
+<td>gain_reference</td>
+<td>None</td>
+<td>Detector gain reference image, used to normalise per-pixel sensitivity of raw...</td>
+</tr>
+<tr>
+<td>defect_map</td>
+<td>None</td>
+<td>Detector defect map listing bad pixels, columns or rows to exclude or interpo...</td>
+</tr>
+<tr>
+<td>atlas</td>
+<td>None</td>
+<td>Low-magnification grid or grid-square map (often a montage) used to navigate ...</td>
+</tr>
+<tr>
+<td>screening_image</td>
+<td>None</td>
+<td>Medium- or high-magnification image taken to choose targets or assess ice and...</td>
+</tr>
 </tbody>
 </table>
 <h2 id="slots">Slots</h2>
@@ -1432,6 +1452,22 @@ permissible_values:
   validation_report:
     text: validation_report
     description: Validation report
+  gain_reference:
+    text: gain_reference
+    description: Detector gain reference image, used to normalise per-pixel sensitivity
+      of raw movie frames
+  defect_map:
+    text: defect_map
+    description: Detector defect map listing bad pixels, columns or rows to exclude
+      or interpolate over
+  atlas:
+    text: atlas
+    description: Low-magnification grid or grid-square map (often a montage) used
+      to navigate and choose targets, not for reconstruction
+  screening_image:
+    text: screening_image
+    description: Medium- or high-magnification image taken to choose targets or assess
+      ice and particle quality, not for reconstruction
 
 </code></pre>
 

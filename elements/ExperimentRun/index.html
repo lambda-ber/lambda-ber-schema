@@ -382,7 +382,7 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../profiles/lambda-core-rocrate-profile-v0.3.3/">
+<a class="md-nav__link" href="../../profiles/lambda-core-rocrate-profile-v0.3.4/">
 <span class="md-ellipsis">
     LAMBDA Core RO-Crate Profile
     
@@ -561,6 +561,17 @@
       NamedThing &lt;|-- ExperimentRun
         click NamedThing href "../NamedThing/"
 
+      ExperimentRun : accelerating_voltage
+
+
+
+
+
+        ExperimentRun --&gt; "0..1" QuantityValue : accelerating_voltage
+        click QuantityValue href "../QuantityValue/"
+
+
+
       ExperimentRun : acquisition_software
 
       ExperimentRun : acquisition_software_version
@@ -611,6 +622,28 @@
 
 
 
+      ExperimentRun : beam_diameter
+
+
+
+
+
+        ExperimentRun --&gt; "0..1" QuantityValue : beam_diameter
+        click QuantityValue href "../QuantityValue/"
+
+
+
+      ExperimentRun : c2_aperture
+
+
+
+
+
+        ExperimentRun --&gt; "0..1" QuantityValue : c2_aperture
+        click QuantityValue href "../QuantityValue/"
+
+
+
       ExperimentRun : calibrated_pixel_size
 
 
@@ -651,6 +684,17 @@
 
 
         ExperimentRun --&gt; "0..1" QuantityValue : coma
+        click QuantityValue href "../QuantityValue/"
+
+
+
+      ExperimentRun : cs
+
+
+
+
+
+        ExperimentRun --&gt; "0..1" QuantityValue : cs
         click QuantityValue href "../QuantityValue/"
 
 
@@ -778,6 +822,17 @@
 
 
         ExperimentRun --&gt; "0..1" QuantityValue : energy
+        click QuantityValue href "../QuantityValue/"
+
+
+
+      ExperimentRun : energy_filter_slit_width
+
+
+
+
+
+        ExperimentRun --&gt; "0..1" QuantityValue : energy_filter_slit_width
         click QuantityValue href "../QuantityValue/"
 
 
@@ -931,6 +986,17 @@
 
 
 
+      ExperimentRun : nominal_pixel_size
+
+
+
+
+
+        ExperimentRun --&gt; "0..1" QuantityValue : nominal_pixel_size
+        click QuantityValue href "../QuantityValue/"
+
+
+
       ExperimentRun : number_of_images
 
 
@@ -965,6 +1031,8 @@
         click QuantityValue href "../QuantityValue/"
 
 
+
+      ExperimentRun : phase_plate_used
 
       ExperimentRun : pixel_size_x
 
@@ -1074,6 +1142,17 @@
 
 
         ExperimentRun --&gt; "0..1" QuantityValue : slit_gap_vertical
+        click QuantityValue href "../QuantityValue/"
+
+
+
+      ExperimentRun : spot_size
+
+
+
+
+
+        ExperimentRun --&gt; "0..1" QuantityValue : spot_size
         click QuantityValue href "../QuantityValue/"
 
 
@@ -1347,9 +1426,27 @@
 <td>direct</td>
 </tr>
 <tr>
+<td><a href="../accelerating_voltage/">accelerating_voltage</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Accelerating voltage used for this session, typically specified in kV</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../cs/">cs</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Nominal spherical aberration (Cs) of the objective lens in effect for this se...</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../magnification/">magnification</a></td>
 <td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>Magnification used during data collection</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../nominal_pixel_size/">nominal_pixel_size</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Nominal pixel size at the specimen for the chosen magnification and binning, ...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -1392,6 +1489,36 @@
 <td><a href="../dose_rate/">dose_rate</a></td>
 <td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>Dose rate, typically specified in e-/pixel/s or e-/Angstrom^2/s</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../spot_size/">spot_size</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Condenser spot size setting used for this session (a dimensionless index on t...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../c2_aperture/">c2_aperture</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>C2 condenser aperture diameter used for this session, typically specified in ...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../beam_diameter/">beam_diameter</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Illuminated beam diameter at the specimen used for this session, typically sp...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../energy_filter_slit_width/">energy_filter_slit_width</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Energy filter slit width used for this session, typically specified in eV</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../phase_plate_used/">phase_plate_used</a></td>
+<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
+<td>Whether a phase plate was in the beam path for this session</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -1439,7 +1566,7 @@
 <tr>
 <td><a href="../tilting_scheme/">tilting_scheme</a></td>
 <td>0..1 <br/> <a href="../TiltingSchemeEnum/">TiltingSchemeEnum</a></td>
-<td>Tilt scheme used during tomographic data collection</td>
+<td>Stage tilting scheme used during data collection</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -1920,6 +2047,35 @@ attributes:
     - BeamlineInstrument
     - ExperimentRun
     range: DataAcquisitionSystemEnum
+  accelerating_voltage:
+    name: accelerating_voltage
+    description: Accelerating voltage used for this session, typically specified in
+      kV. Data providers may specify alternative units by including the unit in the
+      QuantityValue.
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_imaging.accelerating_voltage
+    domain_of:
+    - CryoEMInstrument
+    - ExperimentRun
+    range: QuantityValue
+    inlined: true
+  cs:
+    name: cs
+    description: Nominal spherical aberration (Cs) of the objective lens in effect
+      for this session, typically specified in millimeters. Data providers may specify
+      alternative units by including the unit in the QuantityValue.
+    comments:
+    - Fixed for a given microscope, but recorded per imaging session by mmCIF and
+      by facility acquisition sheets, and needed with the run's data for CTF estimation.
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_imaging.nominal_cs
+    domain_of:
+    - CryoEMInstrument
+    - ExperimentRun
+    range: QuantityValue
+    inlined: true
   magnification:
     name: magnification
     description: Magnification used during data collection
@@ -1930,6 +2086,20 @@ attributes:
     domain_of:
     - ExperimentRun
     - OpticalImage
+    range: QuantityValue
+    inlined: true
+  nominal_pixel_size:
+    name: nominal_pixel_size
+    description: Nominal pixel size at the specimen for the chosen magnification and
+      binning, as set at the microscope, typically specified in Angstroms per pixel.
+      Data providers may specify alternative units by including the unit in the QuantityValue.
+    comments:
+    - Use calibrated_pixel_size for the value measured against a standard; the two
+      commonly differ by a fraction of a percent.
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    domain_of:
+    - ExperimentRun
     range: QuantityValue
     inlined: true
   calibrated_pixel_size:
@@ -2010,6 +2180,61 @@ attributes:
     - ExperimentRun
     range: QuantityValue
     inlined: true
+  spot_size:
+    name: spot_size
+    description: Condenser spot size setting used for this session (a dimensionless
+      index on the microscope, e.g. 4)
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    range: QuantityValue
+    inlined: true
+  c2_aperture:
+    name: c2_aperture
+    description: C2 condenser aperture diameter used for this session, typically specified
+      in micrometers. Data providers may specify alternative units by including the
+      unit in the QuantityValue.
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_imaging.c2_aperture_diameter
+    domain_of:
+    - CryoEMInstrument
+    - ExperimentRun
+    range: QuantityValue
+    inlined: true
+  beam_diameter:
+    name: beam_diameter
+    description: Illuminated beam diameter at the specimen used for this session,
+      typically specified in micrometers. Data providers may specify alternative units
+      by including the unit in the QuantityValue.
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    range: QuantityValue
+    inlined: true
+  energy_filter_slit_width:
+    name: energy_filter_slit_width
+    description: Energy filter slit width used for this session, typically specified
+      in eV. Omit when no energy filter was used. Data providers may specify alternative
+      units by including the unit in the QuantityValue.
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_imaging_optics.energyfilter_slit_width
+    domain_of:
+    - CryoEMInstrument
+    - ExperimentRun
+    range: QuantityValue
+    inlined: true
+  phase_plate_used:
+    name: phase_plate_used
+    description: Whether a phase plate was in the beam path for this session
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    range: boolean
   defocus_target:
     name: defocus_target
     description: Target defocus value, typically specified in micrometers. Data providers
@@ -2090,7 +2315,9 @@ attributes:
     inlined: true
   tilting_scheme:
     name: tilting_scheme
-    description: Tilt scheme used during tomographic data collection
+    description: Stage tilting scheme used during data collection. Use `none` for
+      untilted acquisitions such as single-particle collection; the other values describe
+      tomographic and continuous-rotation (MicroED) collection.
     from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
@@ -2811,6 +3038,39 @@ attributes:
     - BeamlineInstrument
     - ExperimentRun
     range: DataAcquisitionSystemEnum
+  accelerating_voltage:
+    name: accelerating_voltage
+    description: Accelerating voltage used for this session, typically specified in
+      kV. Data providers may specify alternative units by including the unit in the
+      QuantityValue.
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_imaging.accelerating_voltage
+    alias: accelerating_voltage
+    owner: ExperimentRun
+    domain_of:
+    - CryoEMInstrument
+    - ExperimentRun
+    range: QuantityValue
+    inlined: true
+  cs:
+    name: cs
+    description: Nominal spherical aberration (Cs) of the objective lens in effect
+      for this session, typically specified in millimeters. Data providers may specify
+      alternative units by including the unit in the QuantityValue.
+    comments:
+    - Fixed for a given microscope, but recorded per imaging session by mmCIF and
+      by facility acquisition sheets, and needed with the run's data for CTF estimation.
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_imaging.nominal_cs
+    alias: cs
+    owner: ExperimentRun
+    domain_of:
+    - CryoEMInstrument
+    - ExperimentRun
+    range: QuantityValue
+    inlined: true
   magnification:
     name: magnification
     description: Magnification used during data collection
@@ -2823,6 +3083,22 @@ attributes:
     domain_of:
     - ExperimentRun
     - OpticalImage
+    range: QuantityValue
+    inlined: true
+  nominal_pixel_size:
+    name: nominal_pixel_size
+    description: Nominal pixel size at the specimen for the chosen magnification and
+      binning, as set at the microscope, typically specified in Angstroms per pixel.
+      Data providers may specify alternative units by including the unit in the QuantityValue.
+    comments:
+    - Use calibrated_pixel_size for the value measured against a standard; the two
+      commonly differ by a fraction of a percent.
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    alias: nominal_pixel_size
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
     range: QuantityValue
     inlined: true
   calibrated_pixel_size:
@@ -2917,6 +3193,71 @@ attributes:
     - ExperimentRun
     range: QuantityValue
     inlined: true
+  spot_size:
+    name: spot_size
+    description: Condenser spot size setting used for this session (a dimensionless
+      index on the microscope, e.g. 4)
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    alias: spot_size
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: QuantityValue
+    inlined: true
+  c2_aperture:
+    name: c2_aperture
+    description: C2 condenser aperture diameter used for this session, typically specified
+      in micrometers. Data providers may specify alternative units by including the
+      unit in the QuantityValue.
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_imaging.c2_aperture_diameter
+    alias: c2_aperture
+    owner: ExperimentRun
+    domain_of:
+    - CryoEMInstrument
+    - ExperimentRun
+    range: QuantityValue
+    inlined: true
+  beam_diameter:
+    name: beam_diameter
+    description: Illuminated beam diameter at the specimen used for this session,
+      typically specified in micrometers. Data providers may specify alternative units
+      by including the unit in the QuantityValue.
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    alias: beam_diameter
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: QuantityValue
+    inlined: true
+  energy_filter_slit_width:
+    name: energy_filter_slit_width
+    description: Energy filter slit width used for this session, typically specified
+      in eV. Omit when no energy filter was used. Data providers may specify alternative
+      units by including the unit in the QuantityValue.
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_em_imaging_optics.energyfilter_slit_width
+    alias: energy_filter_slit_width
+    owner: ExperimentRun
+    domain_of:
+    - CryoEMInstrument
+    - ExperimentRun
+    range: QuantityValue
+    inlined: true
+  phase_plate_used:
+    name: phase_plate_used
+    description: Whether a phase plate was in the beam path for this session
+    from_schema: http://w3id.org/lambda/
+    rank: 1000
+    alias: phase_plate_used
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: boolean
   defocus_target:
     name: defocus_target
     description: Target defocus value, typically specified in micrometers. Data providers
@@ -3011,7 +3352,9 @@ attributes:
     inlined: true
   tilting_scheme:
     name: tilting_scheme
-    description: Tilt scheme used during tomographic data collection
+    description: Stage tilting scheme used during data collection. Use `none` for
+      untilted acquisitions such as single-particle collection; the other values describe
+      tomographic and continuous-rotation (MicroED) collection.
     from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: tilting_scheme
