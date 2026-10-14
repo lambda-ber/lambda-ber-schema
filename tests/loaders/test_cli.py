@@ -239,8 +239,10 @@ class TestCLI:
         calls: dict[str, object] = {}
 
         class FakeLoader:
-            def __init__(self, cache):
+            def __init__(self, cache, jwt_token=None, epu_timeout=None):
                 calls["cache"] = cache
+                calls["jwt_token"] = jwt_token
+                calls["epu_timeout"] = epu_timeout
 
             def load_by_sample(
                 self,
@@ -309,6 +311,9 @@ class TestCLI:
             "similarity_threshold": None,
             "limit": 10,
         }
+        # without --extract-epu no token reaches the loader, even if EMSL_JWT is set
+        assert calls["jwt_token"] is None
+        assert calls["epu_timeout"] == 1800.0
 
     def test_etl_list_emsl_requires_sample(self):
         """EMSL listing should require --sample."""
