@@ -1,5 +1,5 @@
 # Auto generated from lambda_ber_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-10-10T18:43:31
+# Generation date: 2026-10-14T10:28:57
 # Schema: lambda-ber-schema
 #
 # id: http://w3id.org/lambda/
@@ -8027,6 +8027,9 @@ class InputTypeEnum(EnumDefinitionImpl):
     structure_prior = PermissibleValue(
         text="structure_prior",
         description="""A predicted or previously determined structure the workflow starts from and lets the data move, as opposed to a fixed reference it is compared or aligned against""")
+    particle_assignments = PermissibleValue(
+        text="particle_assignments",
+        description="""Per-particle poses, state or class assignments, or confidence scores produced by an earlier run, used to select or split particles""")
 
     _defn = EnumDefinition(
         name="InputTypeEnum",

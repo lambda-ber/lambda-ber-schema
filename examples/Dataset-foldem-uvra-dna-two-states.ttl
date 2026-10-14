@@ -6,7 +6,8 @@
 
 lambdaber:dataset-foldem-uvra-dna-two-states a lambdaber:Dataset ;
     dcterms:title "UvrA-DNA - two conformational states from 2,000 particles" ;
-    lambdaber:data_files lambdaber:file-af3-uvra-model,
+    lambdaber:data_files lambdaber:file-af3-uvra-job,
+        lambdaber:file-af3-uvra-model,
         lambdaber:file-brecovar-uvra-assignments,
         lambdaber:file-empiar-13396-particles,
         lambdaber:file-foldem-uvra-9gxq,
@@ -31,13 +32,13 @@ lambdaber:dataset-foldem-uvra-dna-two-states a lambdaber:Dataset ;
             lambdaber:study_id lambdaber:study-foldem-uvra ] ;
     lambdaber:study_workflow_associations [ a lambdaber:StudyWorkflowAssociation ;
             lambdaber:study_id lambdaber:study-foldem-uvra ;
+            lambdaber:workflow_id lambdaber:workflow-brecovar-uvra ],
+        [ a lambdaber:StudyWorkflowAssociation ;
+            lambdaber:study_id lambdaber:study-foldem-uvra ;
             lambdaber:workflow_id lambdaber:workflow-af3-uvra-dna ],
         [ a lambdaber:StudyWorkflowAssociation ;
             lambdaber:study_id lambdaber:study-foldem-uvra ;
-            lambdaber:workflow_id lambdaber:workflow-foldem-uvra-two-state ],
-        [ a lambdaber:StudyWorkflowAssociation ;
-            lambdaber:study_id lambdaber:study-foldem-uvra ;
-            lambdaber:workflow_id lambdaber:workflow-brecovar-uvra ] ;
+            lambdaber:workflow_id lambdaber:workflow-foldem-uvra-two-state ] ;
     lambdaber:workflow_experiment_associations [ a lambdaber:WorkflowExperimentAssociation ;
             lambdaber:experiment_id lambdaber:exp-empiar-13396 ;
             lambdaber:workflow_id lambdaber:workflow-brecovar-uvra ],
@@ -45,16 +46,20 @@ lambdaber:dataset-foldem-uvra-dna-two-states a lambdaber:Dataset ;
             lambdaber:experiment_id lambdaber:exp-empiar-13396 ;
             lambdaber:workflow_id lambdaber:workflow-foldem-uvra-two-state ] ;
     lambdaber:workflow_input_associations [ a lambdaber:WorkflowInputAssociation ;
-            lambdaber:file_id lambdaber:file-af3-uvra-model ;
-            lambdaber:input_type "structure_prior" ;
+            lambdaber:file_id lambdaber:file-brecovar-uvra-assignments ;
+            lambdaber:input_type "particle_assignments" ;
             lambdaber:workflow_id lambdaber:workflow-foldem-uvra-two-state ],
         [ a lambdaber:WorkflowInputAssociation ;
             lambdaber:file_id lambdaber:file-empiar-13396-particles ;
             lambdaber:input_type "particles" ;
             lambdaber:workflow_id lambdaber:workflow-brecovar-uvra ],
         [ a lambdaber:WorkflowInputAssociation ;
-            lambdaber:file_id lambdaber:file-brecovar-uvra-assignments ;
+            lambdaber:file_id lambdaber:file-af3-uvra-job ;
             lambdaber:input_type "parameters" ;
+            lambdaber:workflow_id lambdaber:workflow-af3-uvra-dna ],
+        [ a lambdaber:WorkflowInputAssociation ;
+            lambdaber:file_id lambdaber:file-af3-uvra-model ;
+            lambdaber:input_type "structure_prior" ;
             lambdaber:workflow_id lambdaber:workflow-foldem-uvra-two-state ],
         [ a lambdaber:WorkflowInputAssociation ;
             lambdaber:file_id lambdaber:file-empiar-13396-particles ;
@@ -71,18 +76,25 @@ lambdaber:dataset-foldem-uvra-dna-two-states a lambdaber:Dataset ;
             lambdaber:output_type "model" ;
             lambdaber:workflow_id lambdaber:workflow-foldem-uvra-two-state ],
         [ a lambdaber:WorkflowOutputAssociation ;
+            lambdaber:file_id lambdaber:file-af3-uvra-model ;
+            lambdaber:output_type "model" ;
+            lambdaber:workflow_id lambdaber:workflow-af3-uvra-dna ],
+        [ a lambdaber:WorkflowOutputAssociation ;
             lambdaber:conformational_state "9GXQ state" ;
             lambdaber:file_id lambdaber:file-foldem-uvra-9gxq ;
             lambdaber:number_of_particles 1000 ;
             lambdaber:output_type "model" ;
-            lambdaber:workflow_id lambdaber:workflow-foldem-uvra-two-state ],
-        [ a lambdaber:WorkflowOutputAssociation ;
-            lambdaber:file_id lambdaber:file-af3-uvra-model ;
-            lambdaber:output_type "model" ;
-            lambdaber:workflow_id lambdaber:workflow-af3-uvra-dna ] ;
+            lambdaber:workflow_id lambdaber:workflow-foldem-uvra-two-state ] ;
     lambdaber:workflow_runs lambdaber:workflow-af3-uvra-dna,
         lambdaber:workflow-brecovar-uvra,
         lambdaber:workflow-foldem-uvra-two-state .
+
+lambdaber:file-af3-uvra-job a lambdaber:DataFile ;
+    dcterms:title "AlphaFold3 job input for UvrA-DNA" ;
+    lambdaber:data_type "metadata" ;
+    lambdaber:description "UvrA and both DNA strands, the abasic site given as an intact nucleotide" ;
+    lambdaber:file_format "json" ;
+    lambdaber:file_name "af3_uvra_dna_job.json" .
 
 lambdaber:file-foldem-uvra-9gxq a lambdaber:DataFile ;
     dcterms:title "Fold'EM model, 9GXQ state" ;

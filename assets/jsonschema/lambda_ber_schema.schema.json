@@ -4873,7 +4873,8 @@
                 "parameters",
                 "mask",
                 "particles",
-                "structure_prior"
+                "structure_prior",
+                "particle_assignments"
             ],
             "title": "InputTypeEnum",
             "type": "string"

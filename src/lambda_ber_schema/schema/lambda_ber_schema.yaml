@@ -6178,6 +6178,8 @@ enums:
         description: "Particle images, with or without poses, that the workflow fits or reconstructs from"
       structure_prior:
         description: "A predicted or previously determined structure the workflow starts from and lets the data move, as opposed to a fixed reference it is compared or aligned against"
+      particle_assignments:
+        description: "Per-particle poses, state or class assignments, or confidence scores produced by an earlier run, used to select or split particles"
 
   OutputTypeEnum:
     description: "Types of outputs from computational workflows"

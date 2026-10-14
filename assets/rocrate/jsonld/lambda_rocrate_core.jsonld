@@ -4555,6 +4555,10 @@
         {
           "text": "structure_prior",
           "description": "A predicted or previously determined structure the workflow starts from and lets the data move, as opposed to a fixed reference it is compared or aligned against"
+        },
+        {
+          "text": "particle_assignments",
+          "description": "Per-particle poses, state or class assignments, or confidence scores produced by an earlier run, used to select or split particles"
         }
       ]
     },
@@ -34587,7 +34591,7 @@
   "source_file": "lambda_rocrate_core.yaml",
   "source_file_date": "2026-10-10T18:36:01",
   "source_file_size": 86395,
-  "generation_date": "2026-10-10T18:46:44",
+  "generation_date": "2026-10-14T10:31:19",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/rocrate/jsonld/lambda_rocrate_core.context.jsonld",

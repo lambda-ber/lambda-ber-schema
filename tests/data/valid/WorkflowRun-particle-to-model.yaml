@@ -3,7 +3,7 @@
 # likelihood. The particles and the predicted prior are linked as inputs through
 # WorkflowInputAssociation (input_type particles and structure_prior); see
 # Dataset-foldem-integrin-fab.yaml for the whole chain.
-id: lambdaber:workflow_foldem_integrin_abinitio
+id: lambdaber:workflow-foldem-integrin-abinitio
 title: Fold'EM ab initio inference of integrin a5b1-BIIG2 Fab
 description: >-
   Atomic model of integrin a5b1 bound to the BIIG2 Fab inferred from 1,000 particles drawn from

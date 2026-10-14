@@ -512,6 +512,7 @@ enum InputTypeEnum
     mask
     particles
     structure_prior
+    particle_assignments
   }
 
 enum InstrumentCategoryEnum

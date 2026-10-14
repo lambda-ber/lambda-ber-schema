@@ -3,7 +3,7 @@
 @prefix lambdaber: <http://w3id.org/lambda/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-lambdaber:workflow_foldem_integrin_abinitio a lambdaber:WorkflowRun ;
+lambdaber:workflow-foldem-integrin-abinitio a lambdaber:WorkflowRun ;
     dcterms:title "Fold'EM ab initio inference of integrin a5b1-BIIG2 Fab" ;
     lambdaber:additional_software "AlphaFold3" ;
     lambdaber:description "Atomic model of integrin a5b1 bound to the BIIG2 Fab inferred from 1,000 particles drawn from EMPIAR-12552, with poses estimated ab initio and AlphaFold3 as the prior. The deposited reconstruction (PDB 9B9J) used 374,814 particles." ;

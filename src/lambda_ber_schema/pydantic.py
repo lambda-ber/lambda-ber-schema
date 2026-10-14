@@ -3517,6 +3517,10 @@ class InputTypeEnum(str, Enum):
     """
     A predicted or previously determined structure the workflow starts from and lets the data move, as opposed to a fixed reference it is compared or aligned against
     """
+    particle_assignments = "particle_assignments"
+    """
+    Per-particle poses, state or class assignments, or confidence scores produced by an earlier run, used to select or split particles
+    """
 
 
 class OutputTypeEnum(str, Enum):

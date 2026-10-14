@@ -1,4 +1,4 @@
-id: lambdaber:workflow_foldem_integrin_abinitio
+id: lambdaber:workflow-foldem-integrin-abinitio
 title: Fold'EM ab initio inference of integrin a5b1-BIIG2 Fab
 description: Atomic model of integrin a5b1 bound to the BIIG2 Fab inferred from 1,000
   particles drawn from EMPIAR-12552, with poses estimated ab initio and AlphaFold3

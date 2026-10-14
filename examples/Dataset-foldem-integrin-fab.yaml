@@ -68,7 +68,7 @@ workflow_runs:
   workflow_code: WF-AF3-9B9J
   workflow_type: structure_prediction
   software_name: AlphaFold3
-- id: lambdaber:workflow_foldem_integrin_abinitio
+- id: lambdaber:workflow-foldem-integrin-abinitio
   title: Fold'EM ab initio inference of integrin a5b1-BIIG2 Fab
   description: 'Model inferred from 1,000 particles (0.26% of the deposited stack)
     with ab initio poses and the AlphaFold3 prediction as prior. Against 9B9J: RMSD
@@ -92,6 +92,12 @@ data_files:
   file_name: 9b9j_map.mrc
   file_format: mrc
   data_type: volume
+- id: lambdaber:file-af3-integrin-fab-job
+  title: AlphaFold3 job input for integrin a5b1-BIIG2 Fab
+  description: Sequences of the four chains, no templates
+  file_name: af3_integrin_biig2_job.json
+  file_format: json
+  data_type: metadata
 - id: lambdaber:file-af3-integrin-fab-model
   title: AlphaFold3 model of integrin a5b1-BIIG2 Fab
   file_name: af3_integrin_biig2_model.cif
@@ -121,7 +127,7 @@ study_workflow_associations:
 - study_id: lambdaber:study-foldem-integrin
   workflow_id: lambdaber:workflow-af3-integrin-fab
 - study_id: lambdaber:study-foldem-integrin
-  workflow_id: lambdaber:workflow_foldem_integrin_abinitio
+  workflow_id: lambdaber:workflow-foldem-integrin-abinitio
 experiment_sample_associations:
 - experiment_id: lambdaber:exp-empiar-12552
   sample_id: lambdaber:sample-integrin-a5b1-biig2
@@ -146,16 +152,19 @@ sample_protein_associations:
 workflow_experiment_associations:
 - workflow_id: lambdaber:workflow-9b9j-deposited-refinement
   experiment_id: lambdaber:exp-empiar-12552
-- workflow_id: lambdaber:workflow_foldem_integrin_abinitio
+- workflow_id: lambdaber:workflow-foldem-integrin-abinitio
   experiment_id: lambdaber:exp-empiar-12552
 workflow_input_associations:
+- workflow_id: lambdaber:workflow-af3-integrin-fab
+  file_id: lambdaber:file-af3-integrin-fab-job
+  input_type: parameters
 - workflow_id: lambdaber:workflow-9b9j-deposited-refinement
   file_id: lambdaber:file-empiar-12552-particles
   input_type: particles
-- workflow_id: lambdaber:workflow_foldem_integrin_abinitio
+- workflow_id: lambdaber:workflow-foldem-integrin-abinitio
   file_id: lambdaber:file-empiar-12552-particles
   input_type: particles
-- workflow_id: lambdaber:workflow_foldem_integrin_abinitio
+- workflow_id: lambdaber:workflow-foldem-integrin-abinitio
   file_id: lambdaber:file-af3-integrin-fab-model
   input_type: structure_prior
 workflow_output_associations:
@@ -165,9 +174,9 @@ workflow_output_associations:
 - workflow_id: lambdaber:workflow-af3-integrin-fab
   file_id: lambdaber:file-af3-integrin-fab-model
   output_type: model
-- workflow_id: lambdaber:workflow_foldem_integrin_abinitio
+- workflow_id: lambdaber:workflow-foldem-integrin-abinitio
   file_id: lambdaber:file-foldem-integrin-fab-model
   output_type: model
-- workflow_id: lambdaber:workflow_foldem_integrin_abinitio
+- workflow_id: lambdaber:workflow-foldem-integrin-abinitio
   file_id: lambdaber:file-foldem-integrin-fab-poses
   output_type: particle_assignments

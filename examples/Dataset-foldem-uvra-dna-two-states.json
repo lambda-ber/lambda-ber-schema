@@ -76,6 +76,14 @@
       "data_type": "particle_assignments"
     },
     {
+      "id": "lambdaber:file-af3-uvra-job",
+      "title": "AlphaFold3 job input for UvrA-DNA",
+      "description": "UvrA and both DNA strands, the abasic site given as an intact nucleotide",
+      "file_name": "af3_uvra_dna_job.json",
+      "file_format": "json",
+      "data_type": "metadata"
+    },
+    {
       "id": "lambdaber:file-af3-uvra-model",
       "title": "AlphaFold3 model of UvrA-DNA",
       "file_name": "af3_uvra_dna_model.cif",
@@ -143,6 +151,11 @@
   ],
   "workflow_input_associations": [
     {
+      "workflow_id": "lambdaber:workflow-af3-uvra-dna",
+      "file_id": "lambdaber:file-af3-uvra-job",
+      "input_type": "parameters"
+    },
+    {
       "workflow_id": "lambdaber:workflow-brecovar-uvra",
       "file_id": "lambdaber:file-empiar-13396-particles",
       "input_type": "particles"
@@ -155,7 +168,7 @@
     {
       "workflow_id": "lambdaber:workflow-foldem-uvra-two-state",
       "file_id": "lambdaber:file-brecovar-uvra-assignments",
-      "input_type": "parameters"
+      "input_type": "particle_assignments"
     },
     {
       "workflow_id": "lambdaber:workflow-foldem-uvra-two-state",

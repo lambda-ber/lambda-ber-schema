@@ -79,6 +79,13 @@ data_files:
   file_name: uvra_brecovar_assignments.star
   file_format: star
   data_type: particle_assignments
+# AlphaFold3 reads its sequences from a JSON job file.
+- id: lambdaber:file-af3-uvra-job
+  title: AlphaFold3 job input for UvrA-DNA
+  description: UvrA and both DNA strands, the abasic site given as an intact nucleotide
+  file_name: af3_uvra_dna_job.json
+  file_format: json
+  data_type: metadata
 - id: lambdaber:file-af3-uvra-model
   title: AlphaFold3 model of UvrA-DNA
   file_name: af3_uvra_dna_model.cif
@@ -119,6 +126,7 @@ experiment_sample_associations:
   sample_id: lambdaber:sample-uvra-abasic-dna
   role: target
 
+# The AlphaFold3 run has no row here: it works from sequence, not from the experiment.
 workflow_experiment_associations:
 - workflow_id: lambdaber:workflow-brecovar-uvra
   experiment_id: lambdaber:exp-empiar-13396
@@ -126,6 +134,9 @@ workflow_experiment_associations:
   experiment_id: lambdaber:exp-empiar-13396
 
 workflow_input_associations:
+- workflow_id: lambdaber:workflow-af3-uvra-dna
+  file_id: lambdaber:file-af3-uvra-job
+  input_type: parameters
 - workflow_id: lambdaber:workflow-brecovar-uvra
   file_id: lambdaber:file-empiar-13396-particles
   input_type: particles
@@ -134,7 +145,7 @@ workflow_input_associations:
   input_type: particles
 - workflow_id: lambdaber:workflow-foldem-uvra-two-state
   file_id: lambdaber:file-brecovar-uvra-assignments
-  input_type: parameters
+  input_type: particle_assignments
 - workflow_id: lambdaber:workflow-foldem-uvra-two-state
   file_id: lambdaber:file-af3-uvra-model
   input_type: structure_prior
@@ -147,6 +158,8 @@ workflow_output_associations:
   file_id: lambdaber:file-af3-uvra-model
   output_type: model
 # One run, two states: each model carries its state label and the particles behind it.
+# The labels name the deposited entries because this is a benchmark against them; data with no
+# deposited counterpart would use a descriptive label such as 'open' or 'DNA-engaged'.
 - workflow_id: lambdaber:workflow-foldem-uvra-two-state
   file_id: lambdaber:file-foldem-uvra-9gxq
   output_type: model
