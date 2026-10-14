@@ -3621,7 +3621,7 @@ class ParticleConcentrationEnum(str, Enum):
 
 class TiltingSchemeEnum(str, Enum):
     """
-    Tilt scheme used during tomographic or continuous-rotation data collection
+    Stage tilting scheme used during data collection, including `none` for untilted acquisitions
     """
     none = "none"
     """
@@ -6235,7 +6235,7 @@ class ExperimentRun(NamedThing):
          'comments': ['For a tilt series, use tilt_angle_min, tilt_angle_max, and '
                       'tilt_angle_increment rather than this slot.'],
          'domain_of': ['ExperimentRun']} })
-    tilting_scheme: Optional[TiltingSchemeEnum] = Field(default=None, description="""Tilt scheme used during tomographic data collection""", json_schema_extra = { "linkml_meta": {'alias': 'tilting_scheme', 'domain_of': ['ExperimentRun']} })
+    tilting_scheme: Optional[TiltingSchemeEnum] = Field(default=None, description="""Stage tilting scheme used during data collection. Use `none` for untilted acquisitions such as single-particle collection; the other values describe tomographic and continuous-rotation (MicroED) collection.""", json_schema_extra = { "linkml_meta": {'alias': 'tilting_scheme', 'domain_of': ['ExperimentRun']} })
     tilt_angle_min: Optional[QuantityValue] = Field(default=None, description="""Lowest (most negative) tilt angle in the tilt series, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'tilt_angle_min',
          'domain_of': ['ExperimentRun'],
          'exact_mappings': ['mmCIF:_em_imaging.tilt_angle_min',

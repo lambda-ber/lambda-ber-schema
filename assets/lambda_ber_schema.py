@@ -1,5 +1,5 @@
 # Auto generated from lambda_ber_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-10-14T12:08:31
+# Generation date: 2026-10-14T12:41:14
 # Schema: lambda-ber-schema
 #
 # id: http://w3id.org/lambda/
@@ -8152,7 +8152,7 @@ class ParticleConcentrationEnum(EnumDefinitionImpl):
 
 class TiltingSchemeEnum(EnumDefinitionImpl):
     """
-    Tilt scheme used during tomographic or continuous-rotation data collection
+    Stage tilting scheme used during data collection, including `none` for untilted acquisitions
     """
     none = PermissibleValue(
         text="none",
@@ -8169,7 +8169,7 @@ class TiltingSchemeEnum(EnumDefinitionImpl):
 
     _defn = EnumDefinition(
         name="TiltingSchemeEnum",
-        description="Tilt scheme used during tomographic or continuous-rotation data collection",
+        description="Stage tilting scheme used during data collection, including `none` for untilted acquisitions",
     )
 
 class FunctionalSiteTypeEnum(EnumDefinitionImpl):
