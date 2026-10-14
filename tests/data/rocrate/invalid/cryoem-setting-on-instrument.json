@@ -1,0 +1,115 @@
+{
+  "@context": [
+    "https://w3id.org/ro/crate/1.2/context",
+    {
+      "lambda": "http://w3id.org/lambda/",
+      "lambdarc": "http://w3id.org/lambda/rocrate/"
+    }
+  ],
+  "@graph": [
+    {
+      "@id": "ro-crate-metadata.json",
+      "@type": "CreativeWork",
+      "conformsTo": [
+        {
+          "@id": "https://w3id.org/ro/crate/1.2"
+        }
+      ],
+      "about": {
+        "@id": "./"
+      }
+    },
+    {
+      "@id": "./",
+      "@type": [
+        "Dataset",
+        "lambda:Dataset"
+      ],
+      "name": "Apoferritin single-particle session",
+      "description": "A cryo-EM session setting written on the instrument. Spot size is chosen per session, so Core carries it on the experiment run, and the closed InstrumentEntity rejects it.",
+      "datePublished": "2026-10-14",
+      "license": {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "conformsTo": [
+        {
+          "@id": "https://w3id.org/ro/crate/1.2"
+        },
+        {
+          "@id": "https://w3id.org/lambda/profile/core/0.3.4"
+        }
+      ],
+      "facility_name": "EMSL",
+      "technique": "cryo_em",
+      "instrumentName": "Titan Krios",
+      "sample_code": "APOF-01",
+      "packageTier": "manifest",
+      "missing": [
+        {
+          "field": "author",
+          "reason": "not-registered",
+          "blocks": "S1"
+        }
+      ],
+      "hasPart": [
+        {
+          "@id": "movies/apof_0001.tif"
+        }
+      ]
+    },
+    {
+      "@id": "#krios",
+      "@type": [
+        "IndividualProduct",
+        "lambda:Instrument"
+      ],
+      "name": "Titan Krios",
+      "instrument_code": "KRIOS-1",
+      "detector": "K3",
+      "spot_size": {
+        "numeric_value": 4,
+        "unit": "index"
+      }
+    },
+    {
+      "@id": "#run",
+      "@type": [
+        "Action",
+        "lambda:ExperimentRun"
+      ],
+      "experiment_code": "APOF-RUN-1",
+      "technique": "cryo_em",
+      "instrument": [
+        {
+          "@id": "#krios"
+        }
+      ],
+      "result": [
+        {
+          "@id": "movies/apof_0001.tif"
+        }
+      ],
+      "accelerating_voltage": {
+        "numeric_value": 300,
+        "unit": "kilovolts"
+      },
+      "quality_metrics": {
+        "grid_quality": {
+          "ice_contamination": "none",
+          "ice_quality": "ideal",
+          "particle_concentration": "optimal"
+        }
+      }
+    },
+    {
+      "@id": "movies/apof_0001.tif",
+      "@type": "File",
+      "name": "apof_0001.tif",
+      "encodingFormat": "image/tiff",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "file_format": "tiff",
+      "data_type": "movie"
+    }
+  ]
+}

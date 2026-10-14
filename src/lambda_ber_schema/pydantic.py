@@ -2467,6 +2467,22 @@ class FileFormatEnum(str, Enum):
     """
     Gzip compressed format
     """
+    yaml = "yaml"
+    """
+    YAML text format (e.g., a facility acquisition protocol sheet)
+    """
+    mdoc = "mdoc"
+    """
+    SerialEM autodoc metadata sidecar (.mdoc): per-image or per-tile acquisition parameters for an MRC or TIFF file
+    """
+    nav = "nav"
+    """
+    SerialEM navigator file (.nav): acquisition targets with stage coordinates and the maps they were picked from
+    """
+    dm4 = "dm4"
+    """
+    Gatan DigitalMicrograph 4 image format (.dm4), commonly used for K2/K3 gain references
+    """
 
 
 class DataTypeEnum(str, Enum):
@@ -2540,6 +2556,22 @@ class DataTypeEnum(str, Enum):
     validation_report = "validation_report"
     """
     Validation report
+    """
+    gain_reference = "gain_reference"
+    """
+    Detector gain reference image, used to normalise per-pixel sensitivity of raw movie frames
+    """
+    defect_map = "defect_map"
+    """
+    Detector defect map listing bad pixels, columns or rows to exclude or interpolate over
+    """
+    atlas = "atlas"
+    """
+    Low-magnification grid or grid-square map (often a montage) used to navigate and choose targets, not for reconstruction
+    """
+    screening_image = "screening_image"
+    """
+    Medium- or high-magnification image taken to choose targets or assess ice and particle quality, not for reconstruction
     """
 
 
@@ -3589,7 +3621,7 @@ class ParticleConcentrationEnum(str, Enum):
 
 class TiltingSchemeEnum(str, Enum):
     """
-    Tilt scheme used during tomographic or continuous-rotation data collection
+    Stage tilting scheme used during data collection, including `none` for untilted acquisitions
     """
     none = "none"
     """
@@ -5557,12 +5589,19 @@ class CryoEMInstrument(Instrument):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/'})
 
     accelerating_voltage: Optional[QuantityValue] = Field(default=None, description="""Accelerating voltage in kV""", json_schema_extra = { "linkml_meta": {'alias': 'accelerating_voltage',
-         'domain_of': ['CryoEMInstrument'],
+         'comments': ["This is the instrument's capability or default. Record the "
+                      'value actually used in a session on '
+                      'ExperimentRun.accelerating_voltage.'],
+         'domain_of': ['CryoEMInstrument', 'ExperimentRun'],
          'exact_mappings': ['mmCIF:_em_imaging.accelerating_voltage']} })
     cs_corrector: Optional[bool] = Field(default=None, description="""Spherical aberration corrector present""", json_schema_extra = { "linkml_meta": {'alias': 'cs_corrector',
          'domain_of': ['CryoEMInstrument'],
          'exact_mappings': ['mmCIF:_em_imaging.alignment_procedure']} })
-    phase_plate: Optional[bool] = Field(default=None, description="""Phase plate available""", json_schema_extra = { "linkml_meta": {'alias': 'phase_plate', 'domain_of': ['CryoEMInstrument']} })
+    phase_plate: Optional[bool] = Field(default=None, description="""Phase plate available""", json_schema_extra = { "linkml_meta": {'alias': 'phase_plate',
+         'comments': ["This is the instrument's capability or default. Record the "
+                      'value actually used in a session on '
+                      'ExperimentRun.phase_plate_used.'],
+         'domain_of': ['CryoEMInstrument']} })
     detector_technology: Optional[DetectorTechnologyEnum] = Field(default=None, description="""Generic detector technology type""", json_schema_extra = { "linkml_meta": {'alias': 'detector_technology',
          'comments': ['Use this for technology classification (e.g., '
                       'direct_electron_detector, ccd)',
@@ -5587,10 +5626,14 @@ class CryoEMInstrument(Instrument):
     pixel_size_physical_um: Optional[QuantityValue] = Field(default=None, description="""Physical pixel size of the detector in micrometers""", json_schema_extra = { "linkml_meta": {'alias': 'pixel_size_physical_um', 'domain_of': ['CryoEMInstrument']} })
     autoloader_capacity: Optional[QuantityValue] = Field(default=None, description="""Number of grids the autoloader can hold""", json_schema_extra = { "linkml_meta": {'alias': 'autoloader_capacity', 'domain_of': ['CryoEMInstrument']} })
     cs: Optional[QuantityValue] = Field(default=None, description="""Spherical aberration (Cs) in millimeters""", json_schema_extra = { "linkml_meta": {'alias': 'cs',
-         'domain_of': ['CryoEMInstrument'],
+         'comments': ["This is the instrument's capability or default. Record the "
+                      'value actually used in a session on ExperimentRun.cs.'],
+         'domain_of': ['CryoEMInstrument', 'ExperimentRun'],
          'exact_mappings': ['mmCIF:_em_imaging.nominal_cs']} })
     c2_aperture: Optional[QuantityValue] = Field(default=None, description="""C2 aperture size in micrometers""", json_schema_extra = { "linkml_meta": {'alias': 'c2_aperture',
-         'domain_of': ['CryoEMInstrument'],
+         'comments': ["This is the instrument's capability or default. Record the "
+                      'value actually used in a session on ExperimentRun.c2_aperture.'],
+         'domain_of': ['CryoEMInstrument', 'ExperimentRun'],
          'exact_mappings': ['mmCIF:_em_imaging.c2_aperture_diameter']} })
     objective_aperture: Optional[QuantityValue] = Field(default=None, description="""Objective aperture size in micrometers""", json_schema_extra = { "linkml_meta": {'alias': 'objective_aperture', 'domain_of': ['CryoEMInstrument']} })
     phase_plate_type: Optional[str] = Field(default=None, description="""Type of phase plate if present""", json_schema_extra = { "linkml_meta": {'alias': 'phase_plate_type', 'domain_of': ['CryoEMInstrument']} })
@@ -5598,19 +5641,28 @@ class CryoEMInstrument(Instrument):
     energy_filter_make: Optional[str] = Field(default=None, description="""Energy filter manufacturer""", json_schema_extra = { "linkml_meta": {'alias': 'energy_filter_make', 'domain_of': ['CryoEMInstrument']} })
     energy_filter_model: Optional[str] = Field(default=None, description="""Energy filter model""", json_schema_extra = { "linkml_meta": {'alias': 'energy_filter_model', 'domain_of': ['CryoEMInstrument']} })
     energy_filter_slit_width: Optional[QuantityValue] = Field(default=None, description="""Energy filter slit width in eV""", json_schema_extra = { "linkml_meta": {'alias': 'energy_filter_slit_width',
-         'domain_of': ['CryoEMInstrument'],
+         'comments': ["This is the instrument's capability or default. Record the "
+                      'value actually used in a session on '
+                      'ExperimentRun.energy_filter_slit_width.'],
+         'domain_of': ['CryoEMInstrument', 'ExperimentRun'],
          'exact_mappings': ['mmCIF:_em_imaging.energy_filter_slit_width']} })
     pixel_size_physical: Optional[QuantityValue] = Field(default=None, description="""Physical pixel size in micrometers""", json_schema_extra = { "linkml_meta": {'alias': 'pixel_size_physical', 'domain_of': ['CryoEMInstrument']} })
     microscope_software: Optional[str] = Field(default=None, description="""Microscope control software (e.g., SerialEM, EPU, Leginon)""", json_schema_extra = { "linkml_meta": {'alias': 'microscope_software', 'domain_of': ['CryoEMInstrument']} })
     microscope_software_version: Optional[str] = Field(default=None, description="""Software version""", json_schema_extra = { "linkml_meta": {'alias': 'microscope_software_version', 'domain_of': ['CryoEMInstrument']} })
     spotsize: Optional[QuantityValue] = Field(default=None, description="""Electron beam spot size setting""", json_schema_extra = { "linkml_meta": {'alias': 'spotsize',
+         'comments': ["This is the instrument's capability or default. Record the "
+                      'value actually used in a session on ExperimentRun.spot_size.'],
          'domain_of': ['CryoEMInstrument'],
          'exact_mappings': ['mmCIF:_em_imaging.detector_spot_size']} })
     gunlens: Optional[QuantityValue] = Field(default=None, description="""Gun lens setting""", json_schema_extra = { "linkml_meta": {'alias': 'gunlens', 'domain_of': ['CryoEMInstrument']} })
     imaging_mode: Optional[ImagingModeEnum] = Field(default=None, description="""Imaging mode for electron microscopy""", json_schema_extra = { "linkml_meta": {'alias': 'imaging_mode',
          'domain_of': ['CryoEMInstrument'],
          'exact_mappings': ['mmCIF:_em_imaging.mode']} })
-    tem_beam_diameter: Optional[QuantityValue] = Field(default=None, description="""TEM beam diameter in micrometers""", json_schema_extra = { "linkml_meta": {'alias': 'tem_beam_diameter', 'domain_of': ['CryoEMInstrument']} })
+    tem_beam_diameter: Optional[QuantityValue] = Field(default=None, description="""TEM beam diameter in micrometers""", json_schema_extra = { "linkml_meta": {'alias': 'tem_beam_diameter',
+         'comments': ["This is the instrument's capability or default. Record the "
+                      'value actually used in a session on '
+                      'ExperimentRun.beam_diameter.'],
+         'domain_of': ['CryoEMInstrument']} })
     instrument_code: str = Field(default=..., description="""Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_code', 'domain_of': ['Instrument']} })
     instrument_registry_id: Optional[BeamlineEnum] = Field(default=None, description="""Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_registry_id',
          'any_of': [{'range': 'BeamlineEnum'}],
@@ -6129,9 +6181,22 @@ class ExperimentRun(NamedThing):
     raw_data_location: Optional[str] = Field(default=None, description="""Location of raw data files""", json_schema_extra = { "linkml_meta": {'alias': 'raw_data_location', 'domain_of': ['ExperimentRun']} })
     processing_status: Optional[ProcessingStatusEnum] = Field(default=None, description="""Current processing status""", json_schema_extra = { "linkml_meta": {'alias': 'processing_status', 'domain_of': ['ExperimentRun']} })
     daq_system: Optional[DataAcquisitionSystemEnum] = Field(default=None, description="""Data acquisition system used to collect this experiment""", json_schema_extra = { "linkml_meta": {'alias': 'daq_system', 'domain_of': ['BeamlineInstrument', 'ExperimentRun']} })
+    accelerating_voltage: Optional[QuantityValue] = Field(default=None, description="""Accelerating voltage used for this session, typically specified in kV. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'accelerating_voltage',
+         'domain_of': ['CryoEMInstrument', 'ExperimentRun'],
+         'exact_mappings': ['mmCIF:_em_imaging.accelerating_voltage']} })
+    cs: Optional[QuantityValue] = Field(default=None, description="""Nominal spherical aberration (Cs) of the objective lens in effect for this session, typically specified in millimeters. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'cs',
+         'comments': ['Fixed for a given microscope, but recorded per imaging session '
+                      'by mmCIF and by facility acquisition sheets, and needed with '
+                      "the run's data for CTF estimation."],
+         'domain_of': ['CryoEMInstrument', 'ExperimentRun'],
+         'exact_mappings': ['mmCIF:_em_imaging.nominal_cs']} })
     magnification: Optional[QuantityValue] = Field(default=None, description="""Magnification used during data collection""", json_schema_extra = { "linkml_meta": {'alias': 'magnification',
          'domain_of': ['ExperimentRun', 'OpticalImage'],
          'exact_mappings': ['mmCIF:_em_imaging.nominal_magnification']} })
+    nominal_pixel_size: Optional[QuantityValue] = Field(default=None, description="""Nominal pixel size at the specimen for the chosen magnification and binning, as set at the microscope, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'nominal_pixel_size',
+         'comments': ['Use calibrated_pixel_size for the value measured against a '
+                      'standard; the two commonly differ by a fraction of a percent.'],
+         'domain_of': ['ExperimentRun']} })
     calibrated_pixel_size: Optional[QuantityValue] = Field(default=None, description="""Calibrated pixel size, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'calibrated_pixel_size',
          'domain_of': ['ExperimentRun'],
          'exact_mappings': ['mmCIF:_em_image_recording.calibrated_pixel_size']} })
@@ -6147,6 +6212,15 @@ class ExperimentRun(NamedThing):
          'domain_of': ['ExperimentRun', 'DataCollectionStrategy'],
          'exact_mappings': ['mmCIF:_em_image_recording.avg_electron_dose_per_image']} })
     dose_rate: Optional[QuantityValue] = Field(default=None, description="""Dose rate, typically specified in e-/pixel/s or e-/Angstrom^2/s. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'dose_rate', 'domain_of': ['ExperimentRun']} })
+    spot_size: Optional[QuantityValue] = Field(default=None, description="""Condenser spot size setting used for this session (a dimensionless index on the microscope, e.g. 4)""", json_schema_extra = { "linkml_meta": {'alias': 'spot_size', 'domain_of': ['ExperimentRun']} })
+    c2_aperture: Optional[QuantityValue] = Field(default=None, description="""C2 condenser aperture diameter used for this session, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'c2_aperture',
+         'domain_of': ['CryoEMInstrument', 'ExperimentRun'],
+         'exact_mappings': ['mmCIF:_em_imaging.c2_aperture_diameter']} })
+    beam_diameter: Optional[QuantityValue] = Field(default=None, description="""Illuminated beam diameter at the specimen used for this session, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'beam_diameter', 'domain_of': ['ExperimentRun']} })
+    energy_filter_slit_width: Optional[QuantityValue] = Field(default=None, description="""Energy filter slit width used for this session, typically specified in eV. Omit when no energy filter was used. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'energy_filter_slit_width',
+         'domain_of': ['CryoEMInstrument', 'ExperimentRun'],
+         'exact_mappings': ['mmCIF:_em_imaging_optics.energyfilter_slit_width']} })
+    phase_plate_used: Optional[bool] = Field(default=None, description="""Whether a phase plate was in the beam path for this session""", json_schema_extra = { "linkml_meta": {'alias': 'phase_plate_used', 'domain_of': ['ExperimentRun']} })
     defocus_target: Optional[QuantityValue] = Field(default=None, description="""Target defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'defocus_target', 'domain_of': ['ExperimentRun']} })
     defocus_range_min: Optional[QuantityValue] = Field(default=None, description="""Minimum defocus range, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'defocus_range_min',
          'domain_of': ['ExperimentRun'],
@@ -6161,7 +6235,7 @@ class ExperimentRun(NamedThing):
          'comments': ['For a tilt series, use tilt_angle_min, tilt_angle_max, and '
                       'tilt_angle_increment rather than this slot.'],
          'domain_of': ['ExperimentRun']} })
-    tilting_scheme: Optional[TiltingSchemeEnum] = Field(default=None, description="""Tilt scheme used during tomographic data collection""", json_schema_extra = { "linkml_meta": {'alias': 'tilting_scheme', 'domain_of': ['ExperimentRun']} })
+    tilting_scheme: Optional[TiltingSchemeEnum] = Field(default=None, description="""Stage tilting scheme used during data collection. Use `none` for untilted acquisitions such as single-particle collection; the other values describe tomographic and continuous-rotation (MicroED) collection.""", json_schema_extra = { "linkml_meta": {'alias': 'tilting_scheme', 'domain_of': ['ExperimentRun']} })
     tilt_angle_min: Optional[QuantityValue] = Field(default=None, description="""Lowest (most negative) tilt angle in the tilt series, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'tilt_angle_min',
          'domain_of': ['ExperimentRun'],
          'exact_mappings': ['mmCIF:_em_imaging.tilt_angle_min',

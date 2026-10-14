@@ -3,7 +3,7 @@
   "description": "**LAMBDA Core RO-Crate profile** \u2014 the technique-neutral file-manifest contract for LAMBDA.\n\nA LAMBDA crate is a machine-readable *manifest*: it carries the highest-level details a program\nneeds in order to decide whether a dataset is worth opening, and then **points** at the fuller\nrecord rather than restating it. The fuller record may be another RO-Crate, a complete\n`lambda-ber-schema` document, or a remote registration (DOI / archive accession).\n\n## Relationship to `lambda-ber-schema`\n\nThis module *mirrors* `lambda-ber-schema`; it does not copy it. It `imports` the main schema, so\nevery controlled vocabulary (`TechniqueEnum`, `FacilityEnum`, `FileFormatEnum`, `DataTypeEnum`,\n`WorkflowTypeEnum`, `SampleTypeEnum`, `ComponentInteractionTypeEnum`, \u2026) is *referenced* from\nits single source. Every crate slot\nthat has a counterpart in the main schema declares it with `exact_mappings`, so\n`gen-sssom` emits a machine-readable crate-term to schema-slot crosswalk instead of a\nhand-maintained table that drifts.\n\n## Term layers\n\nThree namespaces, by design (the two-layer discipline of the LAMBDA SAXS profile, plus RO-Crate's\nown base):\n\n- `sdo:` (schema.org) \u2014 identity, access and packaging. Anything RO-Crate/schema.org already\n  names (`name`, `datePublished`, `license`, `author`, `hasPart`, `encodingFormat`,\n  `contentSize`, \u2026) uses the schema.org term, in schema.org's own camelCase. Note the **http**\n  form of the namespace, and see the prefix comment below for why it is not called `schema:`\n  here. Crate authors never write this prefix \u2014 RO-Crate's context resolves the bare terms.\n- `lambda:` \u2014 terms that project onto a `lambda-ber-schema` slot. These deliberately keep the\n  schema's `snake_case` slot names, so `lambda:file_format` in a crate *is* the `DataFile.file_format`\n  slot IRI and the projection is an identity mapping rather than a lookup.\n- `lambdarc:` \u2014 profile-local machinery with no schema counterpart yet (declared absence,\n  sufficiency tiers, designation, estimators). camelCase, following the SAXS profile's style.\n  Each of these is a standing change request against `lambda-ber-schema`.\n\n## Namespace note\n\nCrates MUST bind `lambda:` to `http://w3id.org/lambda/` \u2014 the main schema's own base \u2014 so that\n`lambda:Dataset` and `lambda:file_format` in a crate resolve to the actual LinkML class and slot\nIRIs. Earlier SSRL crates bound `lambda:` to `https://w3id.org/lambda/terms/0.2/`, whose terms\nresolve to nothing in the schema; see the deprecated-alias notes on individual elements.\n\n## Validation model\n\nThree layers, because a flat RO-Crate `@graph` is an open world and no single tool covers it:\n\n1. **JSON Schema** (`gen-json-schema --top-class ROCrateMetadataDocument`) checks document shape.\n   `@graph` is deliberately permissive at the document level so that crates carrying technique\n   extension terms still validate as documents.\n2. **Per-entity classes** \u2014 dispatch a graph entity on its `@type` and validate it against the\n   matching class here (`linkml-validate -C CrateFile`, \u2026). These classes are closed, so an\n   undeclared term is caught. This is where the profile actually bites.\n3. **Graph rules** for the cross-entity constraints neither of the above can state, because they\n   are about relationships between entities rather than the shape of any one of them: does every\n   `hasPart` target resolve to an entity? does each dataset part carry a metadata pointer or\n   declare that it has none? is any field both present and declared missing? These live in\n   `tests/test_rocrate_profile.py`.\n\n   SHACL shapes would be the natural home for this layer, since RDF validation dispatches on\n   `rdf:type` properly. They are *not* generated: `gen-shacl` raises\n   `KeyError('lambda-ber-schema')` for classes whose slots come from an imported schema\n   (`shaclgen.py::_build_ignored_properties`). Worth revisiting when that is fixed upstream.\n\nTwo normalizations a reader MUST apply before validating, both of them things a JSON-LD processor\ndoes and neither of them a change of meaning: expand a single value where the profile declares a\nset (`\"instrument\": {\"@id\": \"#x\"}` means a one-element list), and compact an explicitly prefixed\nkey to the profile's own term (`\"lambda:protein_name\"` and a context-mapped `\"protein_name\"` are\nthe same IRI, and real crates mix the two spellings within one entity).\n",
   "title": "LAMBDA Core RO-Crate Profile",
   "id": "http://w3id.org/lambda/rocrate/core",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "imports": [
     "linkml:types",
     "lambda_ber_schema",
@@ -3236,6 +3236,22 @@
         {
           "text": "gz",
           "description": "Gzip compressed format"
+        },
+        {
+          "text": "yaml",
+          "description": "YAML text format (e.g., a facility acquisition protocol sheet)"
+        },
+        {
+          "text": "mdoc",
+          "description": "SerialEM autodoc metadata sidecar (.mdoc): per-image or per-tile acquisition parameters for an MRC or TIFF file"
+        },
+        {
+          "text": "nav",
+          "description": "SerialEM navigator file (.nav): acquisition targets with stage coordinates and the maps they were picked from"
+        },
+        {
+          "text": "dm4",
+          "description": "Gatan DigitalMicrograph 4 image format (.dm4), commonly used for K2/K3 gain references"
         }
       ]
     },
@@ -3312,6 +3328,22 @@
         {
           "text": "validation_report",
           "description": "Validation report"
+        },
+        {
+          "text": "gain_reference",
+          "description": "Detector gain reference image, used to normalise per-pixel sensitivity of raw movie frames"
+        },
+        {
+          "text": "defect_map",
+          "description": "Detector defect map listing bad pixels, columns or rows to exclude or interpolate over"
+        },
+        {
+          "text": "atlas",
+          "description": "Low-magnification grid or grid-square map (often a montage) used to navigate and choose targets, not for reconstruction"
+        },
+        {
+          "text": "screening_image",
+          "description": "Medium- or high-magnification image taken to choose targets or assess ice and particle quality, not for reconstruction"
         }
       ]
     },
@@ -4630,7 +4662,7 @@
     {
       "name": "TiltingSchemeEnum",
       "definition_uri": "http://w3id.org/lambda/TiltingSchemeEnum",
-      "description": "Tilt scheme used during tomographic or continuous-rotation data collection",
+      "description": "Stage tilting scheme used during data collection, including `none` for untilted acquisitions",
       "from_schema": "http://w3id.org/lambda/",
       "permissible_values": [
         {
@@ -7224,7 +7256,7 @@
     {
       "name": "detector",
       "definition_uri": "http://w3id.org/lambda/rocrate/detector",
-      "description": "Detector in use, where the crate names it on the instrument.",
+      "description": "Detector in use: on an instrument, the detector it carries; on an experiment run, the one used for that session, as `ExperimentRun.detector`.",
       "from_schema": "http://w3id.org/lambda/rocrate/core",
       "mappings": [
         "http://w3id.org/lambda/detector"
@@ -7233,9 +7265,10 @@
         "http://w3id.org/lambda/detector"
       ],
       "slot_uri": "http://w3id.org/lambda/detector",
-      "owner": "InstrumentEntity",
+      "owner": "ExperimentRunAction",
       "domain_of": [
-        "InstrumentEntity"
+        "InstrumentEntity",
+        "ExperimentRunAction"
       ],
       "range": "string",
       "@type": "SlotDefinition"
@@ -7373,6 +7406,464 @@
         "ExperimentRunAction"
       ],
       "range": "ProcessingStatusEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "accelerating_voltage",
+      "definition_uri": "http://w3id.org/lambda/rocrate/accelerating_voltage",
+      "description": "Accelerating voltage used for the session, typically in kV. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/accelerating_voltage"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/accelerating_voltage"
+      ],
+      "slot_uri": "http://w3id.org/lambda/accelerating_voltage",
+      "owner": "ExperimentRunAction",
+      "domain_of": [
+        "ExperimentRunAction"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cs",
+      "definition_uri": "http://w3id.org/lambda/rocrate/cs",
+      "description": "Nominal spherical aberration (Cs) in effect for the session, typically in mm. Needed with the data for CTF estimation. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/cs"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/cs"
+      ],
+      "slot_uri": "http://w3id.org/lambda/cs",
+      "owner": "ExperimentRunAction",
+      "domain_of": [
+        "ExperimentRunAction"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "magnification",
+      "definition_uri": "http://w3id.org/lambda/rocrate/magnification",
+      "description": "Nominal magnification of the data-collection images (not the atlas or screening images). A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/magnification"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/magnification"
+      ],
+      "slot_uri": "http://w3id.org/lambda/magnification",
+      "owner": "ExperimentRunAction",
+      "domain_of": [
+        "ExperimentRunAction"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "nominal_pixel_size",
+      "definition_uri": "http://w3id.org/lambda/rocrate/nominal_pixel_size",
+      "description": "Pixel size at the specimen as set at the microscope, typically in Angstroms per pixel. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/nominal_pixel_size"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/nominal_pixel_size"
+      ],
+      "slot_uri": "http://w3id.org/lambda/nominal_pixel_size",
+      "owner": "ExperimentRunAction",
+      "domain_of": [
+        "ExperimentRunAction"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "calibrated_pixel_size",
+      "definition_uri": "http://w3id.org/lambda/rocrate/calibrated_pixel_size",
+      "description": "Pixel size measured against a standard, typically in Angstroms per pixel. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/calibrated_pixel_size"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/calibrated_pixel_size"
+      ],
+      "slot_uri": "http://w3id.org/lambda/calibrated_pixel_size",
+      "owner": "ExperimentRunAction",
+      "domain_of": [
+        "ExperimentRunAction"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "camera_binning",
+      "definition_uri": "http://w3id.org/lambda/rocrate/camera_binning",
+      "description": "Camera binning factor. Below 1 for super-resolution collection, e.g. 0.5. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/camera_binning"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/camera_binning"
+      ],
+      "slot_uri": "http://w3id.org/lambda/camera_binning",
+      "owner": "ExperimentRunAction",
+      "domain_of": [
+        "ExperimentRunAction"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "frames_per_movie",
+      "definition_uri": "http://w3id.org/lambda/rocrate/frames_per_movie",
+      "description": "Number of frames in each dose-fractionated movie. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/frames_per_movie"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/frames_per_movie"
+      ],
+      "slot_uri": "http://w3id.org/lambda/frames_per_movie",
+      "owner": "ExperimentRunAction",
+      "domain_of": [
+        "ExperimentRunAction"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "frames_per_second",
+      "definition_uri": "http://w3id.org/lambda/rocrate/frames_per_second",
+      "description": "Frame acquisition rate. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/frames_per_second"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/frames_per_second"
+      ],
+      "slot_uri": "http://w3id.org/lambda/frames_per_second",
+      "owner": "ExperimentRunAction",
+      "domain_of": [
+        "ExperimentRunAction"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "exposure_time_per_frame",
+      "definition_uri": "http://w3id.org/lambda/rocrate/exposure_time_per_frame",
+      "description": "Exposure time of one frame, typically in ms. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/exposure_time_per_frame"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/exposure_time_per_frame"
+      ],
+      "slot_uri": "http://w3id.org/lambda/exposure_time_per_frame",
+      "owner": "ExperimentRunAction",
+      "domain_of": [
+        "ExperimentRunAction"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "total_exposure_time",
+      "definition_uri": "http://w3id.org/lambda/rocrate/total_exposure_time",
+      "description": "Total exposure time of one movie, typically in s. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/total_exposure_time"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/total_exposure_time"
+      ],
+      "slot_uri": "http://w3id.org/lambda/total_exposure_time",
+      "owner": "ExperimentRunAction",
+      "domain_of": [
+        "ExperimentRunAction"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "total_dose",
+      "definition_uri": "http://w3id.org/lambda/rocrate/total_dose",
+      "description": "Total electron dose per movie, typically in e-/Angstrom^2. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/total_dose"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/total_dose"
+      ],
+      "slot_uri": "http://w3id.org/lambda/total_dose",
+      "owner": "ExperimentRunAction",
+      "domain_of": [
+        "ExperimentRunAction"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dose_rate",
+      "definition_uri": "http://w3id.org/lambda/rocrate/dose_rate",
+      "description": "Dose rate, typically in e-/pixel/s or e-/Angstrom^2/s. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/dose_rate"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/dose_rate"
+      ],
+      "slot_uri": "http://w3id.org/lambda/dose_rate",
+      "owner": "ExperimentRunAction",
+      "domain_of": [
+        "ExperimentRunAction"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "spot_size",
+      "definition_uri": "http://w3id.org/lambda/rocrate/spot_size",
+      "description": "Condenser spot size setting (a dimensionless index on the microscope). A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/spot_size"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/spot_size"
+      ],
+      "slot_uri": "http://w3id.org/lambda/spot_size",
+      "owner": "ExperimentRunAction",
+      "domain_of": [
+        "ExperimentRunAction"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "c2_aperture",
+      "definition_uri": "http://w3id.org/lambda/rocrate/c2_aperture",
+      "description": "C2 condenser aperture diameter used, typically in micrometers. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/c2_aperture"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/c2_aperture"
+      ],
+      "slot_uri": "http://w3id.org/lambda/c2_aperture",
+      "owner": "ExperimentRunAction",
+      "domain_of": [
+        "ExperimentRunAction"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "beam_diameter",
+      "definition_uri": "http://w3id.org/lambda/rocrate/beam_diameter",
+      "description": "Illuminated beam diameter at the specimen, typically in micrometers. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/beam_diameter"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/beam_diameter"
+      ],
+      "slot_uri": "http://w3id.org/lambda/beam_diameter",
+      "owner": "ExperimentRunAction",
+      "domain_of": [
+        "ExperimentRunAction"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "energy_filter_slit_width",
+      "definition_uri": "http://w3id.org/lambda/rocrate/energy_filter_slit_width",
+      "description": "Energy filter slit width used, typically in eV. Omit when no filter was used. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/energy_filter_slit_width"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/energy_filter_slit_width"
+      ],
+      "slot_uri": "http://w3id.org/lambda/energy_filter_slit_width",
+      "owner": "ExperimentRunAction",
+      "domain_of": [
+        "ExperimentRunAction"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "tilt_angle_increment",
+      "definition_uri": "http://w3id.org/lambda/rocrate/tilt_angle_increment",
+      "description": "Tilt step between successive images of a tilt series, typically in degrees. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/tilt_angle_increment"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/tilt_angle_increment"
+      ],
+      "slot_uri": "http://w3id.org/lambda/tilt_angle_increment",
+      "owner": "ExperimentRunAction",
+      "domain_of": [
+        "ExperimentRunAction"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "fiducial_size",
+      "definition_uri": "http://w3id.org/lambda/rocrate/fiducial_size",
+      "description": "Size of the fiducial markers used for tomographic alignment. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/fiducial_size"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/fiducial_size"
+      ],
+      "slot_uri": "http://w3id.org/lambda/fiducial_size",
+      "owner": "ExperimentRunAction",
+      "domain_of": [
+        "ExperimentRunAction"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "rotation_rate",
+      "definition_uri": "http://w3id.org/lambda/rocrate/rotation_rate",
+      "description": "Continuous rotation rate during collection (MicroED). A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/rotation_rate"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/rotation_rate"
+      ],
+      "slot_uri": "http://w3id.org/lambda/rotation_rate",
+      "owner": "ExperimentRunAction",
+      "domain_of": [
+        "ExperimentRunAction"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "camera_length",
+      "definition_uri": "http://w3id.org/lambda/rocrate/camera_length",
+      "description": "Camera length for electron diffraction (MicroED). A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/camera_length"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/camera_length"
+      ],
+      "slot_uri": "http://w3id.org/lambda/camera_length",
+      "owner": "ExperimentRunAction",
+      "domain_of": [
+        "ExperimentRunAction"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "phase_plate_used",
+      "definition_uri": "http://w3id.org/lambda/rocrate/phase_plate_used",
+      "description": "Whether a phase plate was in the beam path for the session.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/phase_plate_used"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/phase_plate_used"
+      ],
+      "slot_uri": "http://w3id.org/lambda/phase_plate_used",
+      "owner": "ExperimentRunAction",
+      "domain_of": [
+        "ExperimentRunAction"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "tilting_scheme",
+      "definition_uri": "http://w3id.org/lambda/rocrate/tilting_scheme",
+      "description": "Stage tilting during collection, from the schema's own `TiltingSchemeEnum`; `none` for single-particle collection.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/tilting_scheme"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/tilting_scheme"
+      ],
+      "slot_uri": "http://w3id.org/lambda/tilting_scheme",
+      "owner": "ExperimentRunAction",
+      "domain_of": [
+        "ExperimentRunAction"
+      ],
+      "range": "TiltingSchemeEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "quality_metrics",
+      "definition_uri": "http://w3id.org/lambda/rocrate/quality_metrics",
+      "description": "Quality assessments of the run, as the schema's `QualityMetrics` object. For cryo-EM, the facility's grid assessment goes in `grid_quality` (ice contamination, ice quality, particle concentration).",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/quality_metrics"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/quality_metrics"
+      ],
+      "slot_uri": "http://w3id.org/lambda/quality_metrics",
+      "owner": "ExperimentRunAction",
+      "domain_of": [
+        "ExperimentRunAction"
+      ],
+      "range": "QualityMetrics",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -12678,6 +13169,9 @@
     {
       "name": "cryoEMInstrument__accelerating_voltage",
       "description": "Accelerating voltage in kV",
+      "comments": [
+        "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.accelerating_voltage."
+      ],
       "from_schema": "http://w3id.org/lambda/",
       "exact_mappings": [
         "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_imaging.accelerating_voltage"
@@ -12711,6 +13205,9 @@
     {
       "name": "cryoEMInstrument__phase_plate",
       "description": "Phase plate available",
+      "comments": [
+        "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.phase_plate_used."
+      ],
       "from_schema": "http://w3id.org/lambda/",
       "slot_uri": "http://w3id.org/lambda/phase_plate",
       "alias": "phase_plate",
@@ -12852,6 +13349,9 @@
     {
       "name": "cryoEMInstrument__cs",
       "description": "Spherical aberration (Cs) in millimeters",
+      "comments": [
+        "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.cs."
+      ],
       "from_schema": "http://w3id.org/lambda/",
       "exact_mappings": [
         "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_imaging.nominal_cs"
@@ -12869,6 +13369,9 @@
     {
       "name": "cryoEMInstrument__c2_aperture",
       "description": "C2 aperture size in micrometers",
+      "comments": [
+        "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.c2_aperture."
+      ],
       "from_schema": "http://w3id.org/lambda/",
       "exact_mappings": [
         "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_imaging.c2_aperture_diameter"
@@ -12952,6 +13455,9 @@
     {
       "name": "cryoEMInstrument__energy_filter_slit_width",
       "description": "Energy filter slit width in eV",
+      "comments": [
+        "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.energy_filter_slit_width."
+      ],
       "from_schema": "http://w3id.org/lambda/",
       "exact_mappings": [
         "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_imaging.energy_filter_slit_width"
@@ -13009,6 +13515,9 @@
     {
       "name": "cryoEMInstrument__spotsize",
       "description": "Electron beam spot size setting",
+      "comments": [
+        "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.spot_size."
+      ],
       "from_schema": "http://w3id.org/lambda/",
       "exact_mappings": [
         "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_imaging.detector_spot_size"
@@ -13056,6 +13565,9 @@
     {
       "name": "cryoEMInstrument__tem_beam_diameter",
       "description": "TEM beam diameter in micrometers",
+      "comments": [
+        "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.beam_diameter."
+      ],
       "from_schema": "http://w3id.org/lambda/",
       "slot_uri": "http://w3id.org/lambda/tem_beam_diameter",
       "alias": "tem_beam_diameter",
@@ -14161,6 +14673,43 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "experimentRun__accelerating_voltage",
+      "description": "Accelerating voltage used for this session, typically specified in kV. Data providers may specify alternative units by including the unit in the QuantityValue.",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_imaging.accelerating_voltage"
+      ],
+      "slot_uri": "http://w3id.org/lambda/accelerating_voltage",
+      "alias": "accelerating_voltage",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__cs",
+      "description": "Nominal spherical aberration (Cs) of the objective lens in effect for this session, typically specified in millimeters. Data providers may specify alternative units by including the unit in the QuantityValue.",
+      "comments": [
+        "Fixed for a given microscope, but recorded per imaging session by mmCIF and by facility acquisition sheets, and needed with the run's data for CTF estimation."
+      ],
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_imaging.nominal_cs"
+      ],
+      "slot_uri": "http://w3id.org/lambda/cs",
+      "alias": "cs",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "experimentRun__magnification",
       "description": "Magnification used during data collection",
       "from_schema": "http://w3id.org/lambda/",
@@ -14169,6 +14718,23 @@
       ],
       "slot_uri": "http://w3id.org/lambda/magnification",
       "alias": "magnification",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__nominal_pixel_size",
+      "description": "Nominal pixel size at the specimen for the chosen magnification and binning, as set at the microscope, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue.",
+      "comments": [
+        "Use calibrated_pixel_size for the value measured against a standard; the two commonly differ by a fraction of a percent."
+      ],
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/nominal_pixel_size",
+      "alias": "nominal_pixel_size",
       "owner": "ExperimentRun",
       "domain_of": [
         "ExperimentRun"
@@ -14288,6 +14854,81 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "experimentRun__spot_size",
+      "description": "Condenser spot size setting used for this session (a dimensionless index on the microscope, e.g. 4)",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/spot_size",
+      "alias": "spot_size",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__c2_aperture",
+      "description": "C2 condenser aperture diameter used for this session, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_imaging.c2_aperture_diameter"
+      ],
+      "slot_uri": "http://w3id.org/lambda/c2_aperture",
+      "alias": "c2_aperture",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__beam_diameter",
+      "description": "Illuminated beam diameter at the specimen used for this session, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/beam_diameter",
+      "alias": "beam_diameter",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__energy_filter_slit_width",
+      "description": "Energy filter slit width used for this session, typically specified in eV. Omit when no energy filter was used. Data providers may specify alternative units by including the unit in the QuantityValue.",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_imaging_optics.energyfilter_slit_width"
+      ],
+      "slot_uri": "http://w3id.org/lambda/energy_filter_slit_width",
+      "alias": "energy_filter_slit_width",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__phase_plate_used",
+      "description": "Whether a phase plate was in the beam path for this session",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/phase_plate_used",
+      "alias": "phase_plate_used",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "experimentRun__defocus_target",
       "description": "Target defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
@@ -14396,7 +15037,7 @@
     },
     {
       "name": "experimentRun__tilting_scheme",
-      "description": "Tilt scheme used during tomographic data collection",
+      "description": "Stage tilting scheme used during data collection. Use `none` for untilted acquisitions such as single-particle collection; the other values describe tomographic and continuous-rotation (MicroED) collection.",
       "from_schema": "http://w3id.org/lambda/",
       "slot_uri": "http://w3id.org/lambda/tilting_scheme",
       "alias": "tilting_scheme",
@@ -22913,7 +23554,7 @@
     {
       "name": "CrateRoot_conforms_to",
       "definition_uri": "http://w3id.org/lambda/rocrate/conforms_to",
-      "description": "MUST include both the RO-Crate version URI and `https://w3id.org/lambda/profile/core/0.3.3`. Technique extensions add their own URI alongside, never instead.",
+      "description": "MUST include both the RO-Crate version URI and `https://w3id.org/lambda/profile/core/0.3.4`. Technique extensions add their own URI alongside, never instead.",
       "from_schema": "http://w3id.org/lambda/rocrate/core",
       "mappings": [
         "http://purl.org/dc/terms/conformsTo"
@@ -24567,6 +25208,30 @@
         "run_parameters",
         "raw_data_location",
         "processing_status",
+        "detector",
+        "accelerating_voltage",
+        "cs",
+        "magnification",
+        "nominal_pixel_size",
+        "calibrated_pixel_size",
+        "camera_binning",
+        "frames_per_movie",
+        "frames_per_second",
+        "exposure_time_per_frame",
+        "total_exposure_time",
+        "total_dose",
+        "dose_rate",
+        "spot_size",
+        "c2_aperture",
+        "beam_diameter",
+        "energy_filter_slit_width",
+        "phase_plate_used",
+        "tilting_scheme",
+        "tilt_angle_increment",
+        "fiducial_size",
+        "rotation_rate",
+        "camera_length",
+        "quality_metrics",
         "missing",
         "ExperimentRunAction_at_id"
       ],
@@ -27224,6 +27889,9 @@
         {
           "name": "accelerating_voltage",
           "description": "Accelerating voltage in kV",
+          "comments": [
+            "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.accelerating_voltage."
+          ],
           "exact_mappings": [
             "mmCIF:_em_imaging.accelerating_voltage"
           ],
@@ -27243,6 +27911,9 @@
         {
           "name": "phase_plate",
           "description": "Phase plate available",
+          "comments": [
+            "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.phase_plate_used."
+          ],
           "range": "boolean",
           "@type": "SlotDefinition"
         },
@@ -27321,6 +27992,9 @@
         {
           "name": "cs",
           "description": "Spherical aberration (Cs) in millimeters",
+          "comments": [
+            "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.cs."
+          ],
           "exact_mappings": [
             "mmCIF:_em_imaging.nominal_cs"
           ],
@@ -27331,6 +28005,9 @@
         {
           "name": "c2_aperture",
           "description": "C2 aperture size in micrometers",
+          "comments": [
+            "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.c2_aperture."
+          ],
           "exact_mappings": [
             "mmCIF:_em_imaging.c2_aperture_diameter"
           ],
@@ -27372,6 +28049,9 @@
         {
           "name": "energy_filter_slit_width",
           "description": "Energy filter slit width in eV",
+          "comments": [
+            "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.energy_filter_slit_width."
+          ],
           "exact_mappings": [
             "mmCIF:_em_imaging.energy_filter_slit_width"
           ],
@@ -27401,6 +28081,9 @@
         {
           "name": "spotsize",
           "description": "Electron beam spot size setting",
+          "comments": [
+            "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.spot_size."
+          ],
           "exact_mappings": [
             "mmCIF:_em_imaging.detector_spot_size"
           ],
@@ -27427,6 +28110,9 @@
         {
           "name": "tem_beam_diameter",
           "description": "TEM beam diameter in micrometers",
+          "comments": [
+            "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.beam_diameter."
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -28158,7 +28844,10 @@
         "experimentRun__raw_data_location",
         "experimentRun__processing_status",
         "experimentRun__daq_system",
+        "experimentRun__accelerating_voltage",
+        "experimentRun__cs",
         "experimentRun__magnification",
+        "experimentRun__nominal_pixel_size",
         "experimentRun__calibrated_pixel_size",
         "experimentRun__camera_binning",
         "experimentRun__exposure_time_per_frame",
@@ -28166,6 +28855,11 @@
         "experimentRun__total_exposure_time",
         "experimentRun__total_dose",
         "experimentRun__dose_rate",
+        "experimentRun__spot_size",
+        "experimentRun__c2_aperture",
+        "experimentRun__beam_diameter",
+        "experimentRun__energy_filter_slit_width",
+        "experimentRun__phase_plate_used",
         "experimentRun__defocus_target",
         "experimentRun__defocus_range_min",
         "experimentRun__defocus_range_max",
@@ -28295,10 +28989,43 @@
           "@type": "SlotDefinition"
         },
         {
+          "name": "accelerating_voltage",
+          "description": "Accelerating voltage used for this session, typically specified in kV. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "exact_mappings": [
+            "mmCIF:_em_imaging.accelerating_voltage"
+          ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "cs",
+          "description": "Nominal spherical aberration (Cs) of the objective lens in effect for this session, typically specified in millimeters. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "comments": [
+            "Fixed for a given microscope, but recorded per imaging session by mmCIF and by facility acquisition sheets, and needed with the run's data for CTF estimation."
+          ],
+          "exact_mappings": [
+            "mmCIF:_em_imaging.nominal_cs"
+          ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
           "name": "magnification",
           "description": "Magnification used during data collection",
           "exact_mappings": [
             "mmCIF:_em_imaging.nominal_magnification"
+          ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "nominal_pixel_size",
+          "description": "Nominal pixel size at the specimen for the chosen magnification and binning, as set at the microscope, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "comments": [
+            "Use calibrated_pixel_size for the value measured against a standard; the two commonly differ by a fraction of a percent."
           ],
           "range": "QuantityValue",
           "inlined": true,
@@ -28366,6 +29093,46 @@
           "@type": "SlotDefinition"
         },
         {
+          "name": "spot_size",
+          "description": "Condenser spot size setting used for this session (a dimensionless index on the microscope, e.g. 4)",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "c2_aperture",
+          "description": "C2 condenser aperture diameter used for this session, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "exact_mappings": [
+            "mmCIF:_em_imaging.c2_aperture_diameter"
+          ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "beam_diameter",
+          "description": "Illuminated beam diameter at the specimen used for this session, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "energy_filter_slit_width",
+          "description": "Energy filter slit width used for this session, typically specified in eV. Omit when no energy filter was used. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "exact_mappings": [
+            "mmCIF:_em_imaging_optics.energyfilter_slit_width"
+          ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "phase_plate_used",
+          "description": "Whether a phase plate was in the beam path for this session",
+          "range": "boolean",
+          "@type": "SlotDefinition"
+        },
+        {
           "name": "defocus_target",
           "description": "Target defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
           "range": "QuantityValue",
@@ -28425,7 +29192,7 @@
         },
         {
           "name": "tilting_scheme",
-          "description": "Tilt scheme used during tomographic data collection",
+          "description": "Stage tilting scheme used during data collection. Use `none` for untilted acquisitions such as single-particle collection; the other values describe tomographic and continuous-rotation (MicroED) collection.",
           "range": "TiltingSchemeEnum",
           "@type": "SlotDefinition"
         },
@@ -34457,9 +35224,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda_rocrate_core.yaml",
-  "source_file_date": "2026-09-18T15:53:38",
-  "source_file_size": 86395,
-  "generation_date": "2026-09-18T15:57:24",
+  "source_file_date": "2026-10-14T12:04:20",
+  "source_file_size": 94503,
+  "generation_date": "2026-10-14T12:43:48",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/rocrate/jsonld/lambda_rocrate_core.context.jsonld",

@@ -2,7 +2,7 @@
 #mapping_set_id: http://w3id.org/lambda/rocrate/core
 #mapping_tool: https://w3id.org/linkml/
 #creator_id: linkml_user
-#mapping_date: 2026-09-18
+#mapping_date: 2026-10-14
 #curie_map: 
 # lambda: http://w3id.org/lambda/
 # lambdarc: http://w3id.org/lambda/rocrate/
@@ -84,6 +84,7 @@ lambda:TechniqueEnum#neutron_crystallography	neutron_crystallography	skos:exactM
 lambda:TechniqueEnum#fiber_diffraction	fiber_diffraction	skos:exactMatch		CHMO:0000156		skos:exactMatch	http://w3id.org/lambda/						TechniqueEnum			
 lambda:TechniqueEnum#time_resolved_crystallography	time_resolved_crystallography	skos:exactMatch		CHMO:0000156		skos:exactMatch	http://w3id.org/lambda/						TechniqueEnum			
 lambda:TechniqueEnum#xray_tomography	xray_tomography	skos:exactMatch		CHMO:0002743		skos:exactMatch	http://w3id.org/lambda/						TechniqueEnum			
+lambda:accelerating_voltage	accelerating_voltage	skos:exactMatch		lambda:accelerating_voltage		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:acronym	acronym	skos:exactMatch		lambda:acronym		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 sdo:additionalType	additional_type	skos:closeMatch		lambda:data_type		skos:closeMatch	http://w3id.org/lambda/rocrate/core									
 lambdarc:admissibility	admissibility	skos:closeMatch		lambdax:admissibility		skos:closeMatch	http://w3id.org/lambda/rocrate/core									
@@ -91,6 +92,7 @@ sdo:affiliation	affiliation	skos:exactMatch		lambda:affiliation		skos:exactMatch
 lambda:affiliation_ror	affiliation_ror	skos:exactMatch		lambda:affiliation_ror		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:author_position	author_position	skos:exactMatch		lambda:author_position		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:award_number	award_number	skos:exactMatch		lambda:award_number		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
+lambda:beam_diameter	beam_diameter	skos:exactMatch		lambda:beam_diameter		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:xbeam	beamCenterPixels__xbeam	skos:exactMatch		nsls2:Beam_xy_x		skos:exactMatch	http://w3id.org/lambda/									
 lambda:xbeam	beamCenterPixels__xbeam	skos:exactMatch		imgCIF:_diffrn_detector.beam_center_x		skos:exactMatch	http://w3id.org/lambda/									
 lambda:xbeam	beamCenterPixels__xbeam	skos:exactMatch		mmCIF:_diffrn_detector.beam_center_x		skos:exactMatch	http://w3id.org/lambda/									
@@ -101,6 +103,10 @@ lambda:ybeam	beamCenterPixels__ybeam	skos:exactMatch		mmCIF:_diffrn_detector.bea
 lambda:ybeam	beamCenterPixels__ybeam	skos:exactMatch		ispyb:DataCollection.yBeam		skos:exactMatch	http://w3id.org/lambda/									
 lambda:beamline_id	beamline_id	skos:exactMatch		lambda:beamline_id		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 sdo:bioChemInteraction	bio_chem_interaction	skos:relatedMatch		lambda:SampleComponentInteraction		skos:relatedMatch	http://w3id.org/lambda/rocrate/core									
+lambda:c2_aperture	c2_aperture	skos:exactMatch		lambda:c2_aperture		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
+lambda:calibrated_pixel_size	calibrated_pixel_size	skos:exactMatch		lambda:calibrated_pixel_size		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
+lambda:camera_binning	camera_binning	skos:exactMatch		lambda:camera_binning		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
+lambda:camera_length	camera_length	skos:exactMatch		lambda:camera_length		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:chebi_id	chebi_id	skos:exactMatch		lambda:chebi_id		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:chemical_class	chemical_class	skos:exactMatch		lambda:chemical_class		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambdarc:collectionDate	collection_date	skos:closeMatch		lambda:experiment_date		skos:closeMatch	http://w3id.org/lambda/rocrate/core									
@@ -152,6 +158,7 @@ lambda:crystallization_conditions	crystallizationConditions__crystallization_con
 lambda:drop_volume	crystallizationConditions__drop_volume	skos:exactMatch		nsls2:Drop_Volume		skos:exactMatch	http://w3id.org/lambda/									
 lambda:method	crystallizationConditions__method	skos:exactMatch		nsls2:Method		skos:exactMatch	http://w3id.org/lambda/									
 lambda:method	crystallizationConditions__method	skos:exactMatch		mmCIF:_exptl_crystal_grow.method		skos:exactMatch	http://w3id.org/lambda/									
+lambda:cs	cs	skos:exactMatch		lambda:cs		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:data_type	data_type	skos:exactMatch		lambda:data_type		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:beam_center_x_px	dataCollectionStrategy__beam_center_x_px	skos:exactMatch		mmCIF:_diffrn_detector.beam_center_x		skos:exactMatch	http://w3id.org/lambda/									
 lambda:beam_center_y_px	dataCollectionStrategy__beam_center_y_px	skos:exactMatch		mmCIF:_diffrn_detector.beam_center_y		skos:exactMatch	http://w3id.org/lambda/									
@@ -181,15 +188,18 @@ sdo:description	description	skos:exactMatch		lambda:description		skos:exactMatch
 lambdarc:isDesignated	designated_flag	skos:closeMatch		lambdax:designated		skos:closeMatch	http://w3id.org/lambda/rocrate/core									
 lambda:detector	detector	skos:exactMatch		lambda:detector		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:doe_office	doe_office	skos:exactMatch		lambda:doe_office		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
+lambda:dose_rate	dose_rate	skos:exactMatch		lambda:dose_rate		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 sdo:email	email	skos:exactMatch		lambda:email		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 sdo:encodingFormat	encoding_format	skos:closeMatch		lambda:file_format		skos:closeMatch	http://w3id.org/lambda/rocrate/core									
 sdo:endTime	end_time	skos:exactMatch		lambda:end_time		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 prov:endedAtTime	ended_at_time	skos:exactMatch		lambda:completed_at		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
+lambda:energy_filter_slit_width	energy_filter_slit_width	skos:exactMatch		lambda:energy_filter_slit_width		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambdarc:estimator	estimator	skos:closeMatch		lambdax:estimator		skos:closeMatch	http://w3id.org/lambda/rocrate/core									
 lambdarc:admissibility	EstimatorDescriptor_admissibility	skos:closeMatch		lambdax:admissibility		skos:closeMatch	http://w3id.org/lambda/rocrate/core									
 lambdarc:definition	EstimatorDescriptor_definition	skos:closeMatch		lambdax:definition		skos:closeMatch	http://w3id.org/lambda/rocrate/core									
 lambda:experiment_code	experiment_code	skos:exactMatch		lambda:experiment_code		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:experiment_date	experiment_date	skos:exactMatch		lambda:experiment_date		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
+lambda:accelerating_voltage	experimentRun__accelerating_voltage	skos:exactMatch		mmCIF:_em_imaging.accelerating_voltage		skos:exactMatch	http://w3id.org/lambda/									
 lambda:beam_center_x	experimentRun__beam_center_x	skos:exactMatch		nsls2:Beam_xy_x		skos:exactMatch	http://w3id.org/lambda/									
 lambda:beam_center_x	experimentRun__beam_center_x	skos:exactMatch		imgCIF:_diffrn_detector.beam_centre_x		skos:exactMatch	http://w3id.org/lambda/									
 lambda:beam_center_x	experimentRun__beam_center_x	skos:exactMatch		mmCIF:_diffrn_detector.beam_center_x		skos:exactMatch	http://w3id.org/lambda/									
@@ -198,7 +208,9 @@ lambda:beam_center_y	experimentRun__beam_center_y	skos:exactMatch		nsls2:Beam_xy
 lambda:beam_center_y	experimentRun__beam_center_y	skos:exactMatch		imgCIF:_diffrn_detector.beam_centre_y		skos:exactMatch	http://w3id.org/lambda/									
 lambda:beam_center_y	experimentRun__beam_center_y	skos:exactMatch		mmCIF:_diffrn_detector.beam_center_y		skos:exactMatch	http://w3id.org/lambda/									
 lambda:beam_center_y	experimentRun__beam_center_y	skos:exactMatch		ispyb:DataCollection.yBeam		skos:exactMatch	http://w3id.org/lambda/									
+lambda:c2_aperture	experimentRun__c2_aperture	skos:exactMatch		mmCIF:_em_imaging.c2_aperture_diameter		skos:exactMatch	http://w3id.org/lambda/									
 lambda:calibrated_pixel_size	experimentRun__calibrated_pixel_size	skos:exactMatch		mmCIF:_em_image_recording.calibrated_pixel_size		skos:exactMatch	http://w3id.org/lambda/									
+lambda:cs	experimentRun__cs	skos:exactMatch		mmCIF:_em_imaging.nominal_cs		skos:exactMatch	http://w3id.org/lambda/									
 lambda:defocus_range_max	experimentRun__defocus_range_max	skos:exactMatch		mmCIF:_em_imaging.nominal_defocus_max		skos:exactMatch	http://w3id.org/lambda/									
 lambda:defocus_range_min	experimentRun__defocus_range_min	skos:exactMatch		mmCIF:_em_imaging.nominal_defocus_min		skos:exactMatch	http://w3id.org/lambda/									
 lambda:detector_distance	experimentRun__detector_distance	skos:exactMatch		nsls2:Detector_distance		skos:exactMatch	http://w3id.org/lambda/									
@@ -210,6 +222,7 @@ lambda:dual_tilt_axis_rotation	experimentRun__dual_tilt_axis_rotation	skos:exact
 lambda:end_time	experimentRun__end_time	skos:exactMatch		ispyb:DataCollection.endTime		skos:exactMatch	http://w3id.org/lambda/									
 lambda:energy	experimentRun__energy	skos:exactMatch		nsls2:Energy		skos:exactMatch	http://w3id.org/lambda/									
 lambda:energy	experimentRun__energy	skos:exactMatch		ispyb:DataCollection.energy		skos:exactMatch	http://w3id.org/lambda/									
+lambda:energy_filter_slit_width	experimentRun__energy_filter_slit_width	skos:exactMatch		mmCIF:_em_imaging_optics.energyfilter_slit_width		skos:exactMatch	http://w3id.org/lambda/									
 lambda:exposure_time	experimentRun__exposure_time	skos:exactMatch		nsls2:Exposure_time		skos:exactMatch	http://w3id.org/lambda/									
 lambda:exposure_time	experimentRun__exposure_time	skos:exactMatch		ispyb:DataCollection.exposureTime		skos:exactMatch	http://w3id.org/lambda/									
 lambda:exposure_time_per_frame	experimentRun__exposure_time_per_frame	skos:exactMatch		mmCIF:_em_image_recording.average_exposure_time		skos:exactMatch	http://w3id.org/lambda/									
@@ -253,6 +266,7 @@ lambda:wavelength	experimentRun__wavelength	skos:exactMatch		mmCIF:_diffrn_radia
 lambda:wavelength	experimentRun__wavelength	skos:exactMatch		ispyb:DataCollection.wavelength		skos:exactMatch	http://w3id.org/lambda/									
 lambda:experiment_code	ExperimentRunAction_experiment_code	skos:exactMatch		lambda:experiment_code		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:technique	ExperimentRunAction_technique	skos:exactMatch		lambda:technique		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
+lambda:exposure_time_per_frame	exposure_time_per_frame	skos:exactMatch		lambda:exposure_time_per_frame		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:expression_system	expression_system	skos:exactMatch		lambda:expression_system		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambdarc:facility	facility	skos:closeMatch		lambda:facility_name		skos:closeMatch	http://w3id.org/lambda/rocrate/core									
 lambdarc:facility	facility	skos:closeMatch		lambdax:facility		skos:closeMatch	http://w3id.org/lambda/rocrate/core									
@@ -261,8 +275,11 @@ lambda:facility_name	facility_name	skos:exactMatch		lambda:facility_name		skos:e
 lambda:facility_ror	facility_ror	skos:exactMatch		lambda:facility_ror		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:facility_type	facility_type	skos:exactMatch		lambda:facility_type		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 sdo:familyName	family_name	skos:exactMatch		lambda:family_name		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
+lambda:fiducial_size	fiducial_size	skos:exactMatch		lambda:fiducial_size		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:file_format	file_format	skos:exactMatch		lambda:file_format		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:file_role	file_role	skos:exactMatch		lambda:file_role		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
+lambda:frames_per_movie	frames_per_movie	skos:exactMatch		lambda:frames_per_movie		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
+lambda:frames_per_second	frames_per_second	skos:exactMatch		lambda:frames_per_second		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:full_name	full_name	skos:exactMatch		lambda:full_name		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:gene_name	gene_name	skos:exactMatch		lambda:gene_name		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 sdo:givenName	given_name	skos:exactMatch		lambda:given_name		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
@@ -285,6 +302,7 @@ lambda:interaction_type	interaction_type	skos:exactMatch		lambda:interaction_typ
 lambda:is_doe_facility	is_doe_facility	skos:exactMatch		lambda:is_doe_facility		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 sdo:keywords	keywords	skos:exactMatch		lambda:keywords		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:location	location	skos:exactMatch		lambda:location		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
+lambda:magnification	magnification	skos:exactMatch		lambda:magnification		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:manufacturer	manufacturer	skos:exactMatch		lambda:manufacturer		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 sdo:measurementTechnique	measurement_technique	skos:closeMatch		lambda:technique		skos:closeMatch	http://w3id.org/lambda/rocrate/core									
 lambdarc:mimeType	mime_type	skos:exactMatch		sdo:encodingFormat		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
@@ -292,6 +310,7 @@ lambdarc:missing	missing	skos:closeMatch		lambdax:missing		skos:closeMatch	http:
 lambda:model	model	skos:exactMatch		lambda:model		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 sdo:molecularFormula	molecular_formula	skos:exactMatch		lambda:molecular_formula		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 sdo:name	name	skos:exactMatch		lambda:title		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
+lambda:nominal_pixel_size	nominal_pixel_size	skos:exactMatch		lambda:nominal_pixel_size		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:nucleic_acid_name	nucleic_acid_name	skos:exactMatch		lambda:nucleic_acid_name		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:nucleic_acid_type	nucleic_acid_type	skos:exactMatch		lambda:nucleic_acid_type		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:gene_name	nucleicAcid__gene_name	skos:exactMatch		mmCIF:_entity_src_gen.pdbx_gene_src_gene		skos:exactMatch	http://w3id.org/lambda/									
@@ -316,6 +335,7 @@ lambdarc:pdbCode	pdb_code	skos:closeMatch		lambda:pdb_id		skos:closeMatch	http:/
 lambda:pdb_entries	pdb_entries	skos:exactMatch		lambda:pdb_entries		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:pdb_ligand_id	pdb_ligand_id	skos:exactMatch		lambda:pdb_ligand_id		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:full_name	person__full_name	skos:closeMatch		lambda:title		skos:closeMatch	http://w3id.org/lambda/									
+lambda:phase_plate_used	phase_plate_used	skos:exactMatch		lambda:phase_plate_used		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:processing_level	processing_level	skos:closeMatch		lambdax:processing_level		skos:closeMatch	http://w3id.org/lambda/rocrate/core									
 lambda:processing_level	processing_level	skos:exactMatch		lambda:processing_level		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:processing_status	processing_status	skos:exactMatch		lambda:processing_status		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
@@ -332,6 +352,7 @@ lambda:uniprot_id	protein__uniprot_id	skos:exactMatch		mmCIF:_struct_ref.pdbx_db
 lambda:protein_name	protein_name	skos:exactMatch		lambda:protein_name		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambdarc:proteinName	protein_name_camel	skos:exactMatch		lambda:protein_name		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:uniprot_id	ProteinEntity_uniprot_id	skos:exactMatch		lambda:uniprot_id		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
+lambda:quality_metrics	quality_metrics	skos:exactMatch		lambda:quality_metrics		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:anom_corr	qualityMetrics__anom_corr	skos:exactMatch		mmCIF:_reflns.pdbx_CC_half_anomalous		skos:exactMatch	http://w3id.org/lambda/									
 lambda:average_b_factor_a2	qualityMetrics__average_b_factor_a2	skos:exactMatch		mmCIF:_refine.B_iso_mean		skos:exactMatch	http://w3id.org/lambda/									
 lambda:cc_half	qualityMetrics__cc_half	skos:exactMatch		mmCIF:_reflns.pdbx_CC_half		skos:exactMatch	http://w3id.org/lambda/									
@@ -361,6 +382,7 @@ lambdarc:resultSummary	result_summary	skos:closeMatch		lambdax:summary		skos:clo
 lambda:rnacentral_id	rnacentral_id	skos:exactMatch		lambda:rnacentral_id		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 sdo:roleName	role	skos:closeMatch		lambda:role		skos:closeMatch	http://w3id.org/lambda/rocrate/core									
 lambda:ror	ror	skos:exactMatch		lambda:ror		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
+lambda:rotation_rate	rotation_rate	skos:exactMatch		lambda:rotation_rate		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambdarc:runDefinition	run_definition	skos:exactMatch		lambda:runParameters		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambdarc:s2AcquisitionComplete	s2_acquisition_complete	skos:closeMatch		lambdax:s2_acquisition_complete		skos:closeMatch	http://w3id.org/lambda/rocrate/core									
 lambda:construct	sample__construct	skos:exactMatch		nsls2:Construct		skos:exactMatch	http://w3id.org/lambda/									
@@ -398,11 +420,16 @@ lambda:software_name	software_name	skos:exactMatch		lambda:software_name		skos:e
 lambda:software_version	software_version	skos:exactMatch		lambda:software_version		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 sdo:name	SoftwareApplicationEntity_name	skos:exactMatch		lambda:title		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambdarc:sourceField	source_field	skos:closeMatch		lambdax:sourceField		skos:closeMatch	http://w3id.org/lambda/rocrate/core									
+lambda:spot_size	spot_size	skos:exactMatch		lambda:spot_size		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 sdo:startTime	start_time	skos:exactMatch		lambda:start_time		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 prov:startedAtTime	started_at_time	skos:exactMatch		lambda:started_at		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:storage_uri	storage_uri	skos:exactMatch		lambda:storage_uri		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:subject_id	subject_id	skos:closeMatch		lambda:subject_id		skos:closeMatch	http://w3id.org/lambda/rocrate/core									
 lambda:technique	technique	skos:exactMatch		lambda:technique		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
+lambda:tilt_angle_increment	tilt_angle_increment	skos:exactMatch		lambda:tilt_angle_increment		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
+lambda:tilting_scheme	tilting_scheme	skos:exactMatch		lambda:tilting_scheme		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
+lambda:total_dose	total_dose	skos:exactMatch		lambda:total_dose		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
+lambda:total_exposure_time	total_exposure_time	skos:exactMatch		lambda:total_exposure_time		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:uniprot_id	uniprot_id	skos:exactMatch		lambda:uniprot_id		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambdarc:uniprotId	uniprot_id_camel	skos:closeMatch		lambda:uniprot_id		skos:closeMatch	http://w3id.org/lambda/rocrate/core									
 lambdarc:vocabEntry	vocab_entry	skos:closeMatch		lambdax:vocabEntry		skos:closeMatch	http://w3id.org/lambda/rocrate/core									

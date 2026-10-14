@@ -1,5 +1,5 @@
 # Auto generated from lambda_ber_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-09-18T15:54:30
+# Generation date: 2026-10-14T12:41:14
 # Schema: lambda-ber-schema
 #
 # id: http://w3id.org/lambda/
@@ -2252,7 +2252,10 @@ class ExperimentRun(NamedThing):
     raw_data_location: Optional[str] = None
     processing_status: Optional[Union[str, "ProcessingStatusEnum"]] = None
     daq_system: Optional[Union[str, "DataAcquisitionSystemEnum"]] = None
+    accelerating_voltage: Optional[Union[dict, "QuantityValue"]] = None
+    cs: Optional[Union[dict, "QuantityValue"]] = None
     magnification: Optional[Union[dict, "QuantityValue"]] = None
+    nominal_pixel_size: Optional[Union[dict, "QuantityValue"]] = None
     calibrated_pixel_size: Optional[Union[dict, "QuantityValue"]] = None
     camera_binning: Optional[Union[dict, "QuantityValue"]] = None
     exposure_time_per_frame: Optional[Union[dict, "QuantityValue"]] = None
@@ -2260,6 +2263,11 @@ class ExperimentRun(NamedThing):
     total_exposure_time: Optional[Union[dict, "QuantityValue"]] = None
     total_dose: Optional[Union[dict, "QuantityValue"]] = None
     dose_rate: Optional[Union[dict, "QuantityValue"]] = None
+    spot_size: Optional[Union[dict, "QuantityValue"]] = None
+    c2_aperture: Optional[Union[dict, "QuantityValue"]] = None
+    beam_diameter: Optional[Union[dict, "QuantityValue"]] = None
+    energy_filter_slit_width: Optional[Union[dict, "QuantityValue"]] = None
+    phase_plate_used: Optional[Union[bool, Bool]] = None
     defocus_target: Optional[Union[dict, "QuantityValue"]] = None
     defocus_range_min: Optional[Union[dict, "QuantityValue"]] = None
     defocus_range_max: Optional[Union[dict, "QuantityValue"]] = None
@@ -2357,8 +2365,17 @@ class ExperimentRun(NamedThing):
         if self.daq_system is not None and not isinstance(self.daq_system, DataAcquisitionSystemEnum):
             self.daq_system = DataAcquisitionSystemEnum(self.daq_system)
 
+        if self.accelerating_voltage is not None and not isinstance(self.accelerating_voltage, QuantityValue):
+            self.accelerating_voltage = QuantityValue(**as_dict(self.accelerating_voltage))
+
+        if self.cs is not None and not isinstance(self.cs, QuantityValue):
+            self.cs = QuantityValue(**as_dict(self.cs))
+
         if self.magnification is not None and not isinstance(self.magnification, QuantityValue):
             self.magnification = QuantityValue(**as_dict(self.magnification))
+
+        if self.nominal_pixel_size is not None and not isinstance(self.nominal_pixel_size, QuantityValue):
+            self.nominal_pixel_size = QuantityValue(**as_dict(self.nominal_pixel_size))
 
         if self.calibrated_pixel_size is not None and not isinstance(self.calibrated_pixel_size, QuantityValue):
             self.calibrated_pixel_size = QuantityValue(**as_dict(self.calibrated_pixel_size))
@@ -2380,6 +2397,21 @@ class ExperimentRun(NamedThing):
 
         if self.dose_rate is not None and not isinstance(self.dose_rate, QuantityValue):
             self.dose_rate = QuantityValue(**as_dict(self.dose_rate))
+
+        if self.spot_size is not None and not isinstance(self.spot_size, QuantityValue):
+            self.spot_size = QuantityValue(**as_dict(self.spot_size))
+
+        if self.c2_aperture is not None and not isinstance(self.c2_aperture, QuantityValue):
+            self.c2_aperture = QuantityValue(**as_dict(self.c2_aperture))
+
+        if self.beam_diameter is not None and not isinstance(self.beam_diameter, QuantityValue):
+            self.beam_diameter = QuantityValue(**as_dict(self.beam_diameter))
+
+        if self.energy_filter_slit_width is not None and not isinstance(self.energy_filter_slit_width, QuantityValue):
+            self.energy_filter_slit_width = QuantityValue(**as_dict(self.energy_filter_slit_width))
+
+        if self.phase_plate_used is not None and not isinstance(self.phase_plate_used, Bool):
+            self.phase_plate_used = Bool(self.phase_plate_used)
 
         if self.defocus_target is not None and not isinstance(self.defocus_target, QuantityValue):
             self.defocus_target = QuantityValue(**as_dict(self.defocus_target))
@@ -7047,6 +7079,18 @@ class FileFormatEnum(EnumDefinitionImpl):
     gz = PermissibleValue(
         text="gz",
         description="Gzip compressed format")
+    yaml = PermissibleValue(
+        text="yaml",
+        description="YAML text format (e.g., a facility acquisition protocol sheet)")
+    mdoc = PermissibleValue(
+        text="mdoc",
+        description="""SerialEM autodoc metadata sidecar (.mdoc): per-image or per-tile acquisition parameters for an MRC or TIFF file""")
+    nav = PermissibleValue(
+        text="nav",
+        description="""SerialEM navigator file (.nav): acquisition targets with stage coordinates and the maps they were picked from""")
+    dm4 = PermissibleValue(
+        text="dm4",
+        description="Gatan DigitalMicrograph 4 image format (.dm4), commonly used for K2/K3 gain references")
 
     _defn = EnumDefinition(
         name="FileFormatEnum",
@@ -7108,6 +7152,18 @@ class DataTypeEnum(EnumDefinitionImpl):
     validation_report = PermissibleValue(
         text="validation_report",
         description="Validation report")
+    gain_reference = PermissibleValue(
+        text="gain_reference",
+        description="Detector gain reference image, used to normalise per-pixel sensitivity of raw movie frames")
+    defect_map = PermissibleValue(
+        text="defect_map",
+        description="Detector defect map listing bad pixels, columns or rows to exclude or interpolate over")
+    atlas = PermissibleValue(
+        text="atlas",
+        description="""Low-magnification grid or grid-square map (often a montage) used to navigate and choose targets, not for reconstruction""")
+    screening_image = PermissibleValue(
+        text="screening_image",
+        description="""Medium- or high-magnification image taken to choose targets or assess ice and particle quality, not for reconstruction""")
 
     _defn = EnumDefinition(
         name="DataTypeEnum",
@@ -8096,7 +8152,7 @@ class ParticleConcentrationEnum(EnumDefinitionImpl):
 
 class TiltingSchemeEnum(EnumDefinitionImpl):
     """
-    Tilt scheme used during tomographic or continuous-rotation data collection
+    Stage tilting scheme used during data collection, including `none` for untilted acquisitions
     """
     none = PermissibleValue(
         text="none",
@@ -8113,7 +8169,7 @@ class TiltingSchemeEnum(EnumDefinitionImpl):
 
     _defn = EnumDefinition(
         name="TiltingSchemeEnum",
-        description="Tilt scheme used during tomographic or continuous-rotation data collection",
+        description="Stage tilting scheme used during data collection, including `none` for untilted acquisitions",
     )
 
 class FunctionalSiteTypeEnum(EnumDefinitionImpl):
@@ -10104,8 +10160,17 @@ slots.experimentRun__processing_status = Slot(uri=LAMBDA.processing_status, name
 slots.experimentRun__daq_system = Slot(uri=LAMBDA.daq_system, name="experimentRun__daq_system", curie=LAMBDA.curie('daq_system'),
                    model_uri=LAMBDA.experimentRun__daq_system, domain=None, range=Optional[Union[str, "DataAcquisitionSystemEnum"]])
 
+slots.experimentRun__accelerating_voltage = Slot(uri=LAMBDA.accelerating_voltage, name="experimentRun__accelerating_voltage", curie=LAMBDA.curie('accelerating_voltage'),
+                   model_uri=LAMBDA.experimentRun__accelerating_voltage, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.experimentRun__cs = Slot(uri=LAMBDA.cs, name="experimentRun__cs", curie=LAMBDA.curie('cs'),
+                   model_uri=LAMBDA.experimentRun__cs, domain=None, range=Optional[Union[dict, QuantityValue]])
+
 slots.experimentRun__magnification = Slot(uri=LAMBDA.magnification, name="experimentRun__magnification", curie=LAMBDA.curie('magnification'),
                    model_uri=LAMBDA.experimentRun__magnification, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.experimentRun__nominal_pixel_size = Slot(uri=LAMBDA.nominal_pixel_size, name="experimentRun__nominal_pixel_size", curie=LAMBDA.curie('nominal_pixel_size'),
+                   model_uri=LAMBDA.experimentRun__nominal_pixel_size, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentRun__calibrated_pixel_size = Slot(uri=LAMBDA.calibrated_pixel_size, name="experimentRun__calibrated_pixel_size", curie=LAMBDA.curie('calibrated_pixel_size'),
                    model_uri=LAMBDA.experimentRun__calibrated_pixel_size, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -10127,6 +10192,21 @@ slots.experimentRun__total_dose = Slot(uri=LAMBDA.total_dose, name="experimentRu
 
 slots.experimentRun__dose_rate = Slot(uri=LAMBDA.dose_rate, name="experimentRun__dose_rate", curie=LAMBDA.curie('dose_rate'),
                    model_uri=LAMBDA.experimentRun__dose_rate, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.experimentRun__spot_size = Slot(uri=LAMBDA.spot_size, name="experimentRun__spot_size", curie=LAMBDA.curie('spot_size'),
+                   model_uri=LAMBDA.experimentRun__spot_size, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.experimentRun__c2_aperture = Slot(uri=LAMBDA.c2_aperture, name="experimentRun__c2_aperture", curie=LAMBDA.curie('c2_aperture'),
+                   model_uri=LAMBDA.experimentRun__c2_aperture, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.experimentRun__beam_diameter = Slot(uri=LAMBDA.beam_diameter, name="experimentRun__beam_diameter", curie=LAMBDA.curie('beam_diameter'),
+                   model_uri=LAMBDA.experimentRun__beam_diameter, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.experimentRun__energy_filter_slit_width = Slot(uri=LAMBDA.energy_filter_slit_width, name="experimentRun__energy_filter_slit_width", curie=LAMBDA.curie('energy_filter_slit_width'),
+                   model_uri=LAMBDA.experimentRun__energy_filter_slit_width, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.experimentRun__phase_plate_used = Slot(uri=LAMBDA.phase_plate_used, name="experimentRun__phase_plate_used", curie=LAMBDA.curie('phase_plate_used'),
+                   model_uri=LAMBDA.experimentRun__phase_plate_used, domain=None, range=Optional[Union[bool, Bool]])
 
 slots.experimentRun__defocus_target = Slot(uri=LAMBDA.defocus_target, name="experimentRun__defocus_target", curie=LAMBDA.curie('defocus_target'),
                    model_uri=LAMBDA.experimentRun__defocus_target, domain=None, range=Optional[Union[dict, QuantityValue]])

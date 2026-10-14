@@ -1,0 +1,10 @@
+#defects_XXXX.txt
+CameraSizeX 11520
+CameraSizeY 8184
+RotationAndFlip 6
+WasScaled 1
+K2Type 1
+FalconType 0
+NumToAvgSuperRes 0
+UsableArea 0 0 0 0
+BadColumns 2300 2301 2302 2303 2304 2305 2306 2307 2308 2309 2310 2311

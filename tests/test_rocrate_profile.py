@@ -30,6 +30,7 @@ from lambda_ber_schema.rocrate.validation import (
 
 REPO = Path(__file__).resolve().parent.parent
 CRATES = REPO / "tests" / "data" / "rocrate"
+RAW = REPO / "tests" / "data" / "raw"
 GENERATED_SCHEMA = REPO / "assets" / "rocrate" / "jsonschema" / "lambda_rocrate_core.schema.json"
 
 
@@ -49,11 +50,18 @@ def json_schema() -> dict:
     return v.generate_schema()
 
 
+def _crate_id(path: Path) -> str:
+    """Test id for a crate: its file name, or its directory's for a ro-crate-metadata.json."""
+    return path.parent.name if path.name == "ro-crate-metadata.json" else path.name
+
+
 def _crates(subdir: str) -> list[Path]:
     return sorted((CRATES / subdir).glob("*.json"))
 
 
-VALID = _crates("valid")
+# A crate shipped with its payload sits beside it as ro-crate-metadata.json, so its relative
+# @ids resolve to real files; those are valid fixtures too.
+VALID = _crates("valid") + sorted(RAW.glob("*/ro-crate-metadata.json"))
 INVALID = _crates("invalid")
 LEGACY = _crates("legacy")
 
@@ -67,7 +75,7 @@ def load(path: Path) -> dict:
 # --------------------------------------------------------------------------------------
 
 
-@pytest.mark.parametrize("path", VALID + LEGACY, ids=lambda p: p.name)
+@pytest.mark.parametrize("path", VALID + LEGACY, ids=_crate_id)
 def test_document_shape(json_schema, path):
     """Every crate, including the legacy one, is a well-formed RO-Crate metadata document."""
     errors = v.document_violations(json_schema, load(path))
@@ -104,13 +112,13 @@ def test_load_schema_defaults_to_packaged_copy():
 # --------------------------------------------------------------------------------------
 
 
-@pytest.mark.parametrize("path", VALID, ids=lambda p: p.name)
+@pytest.mark.parametrize("path", VALID, ids=_crate_id)
 def test_entities_conform(json_schema, path):
     problems = entity_violations(json_schema, load(path))
     assert not problems, f"{path.name} has non-conformant entities:\n" + "\n".join(problems)
 
 
-@pytest.mark.parametrize("path", VALID, ids=lambda p: p.name)
+@pytest.mark.parametrize("path", VALID, ids=_crate_id)
 def test_every_entity_is_classifiable(path):
     """A reader must be able to tell what each entity is from its @type alone."""
     unclassified = [e.get("@id") for e in v.graph(load(path)) if classify(e) is None]
@@ -146,10 +154,63 @@ def test_graph_rule_keys_are_profile_terms(json_schema):
         )
 
 
-@pytest.mark.parametrize("path", VALID, ids=lambda p: p.name)
+@pytest.mark.parametrize("path", VALID, ids=_crate_id)
 def test_graph_rules(path):
     problems = graph_rule_violations(load(path))
     assert not problems, f"{path.name} breaks graph rules:\n" + "\n".join(problems)
+
+
+#: Profile class -> the schema class its ``lambda:`` terms project onto.
+PROJECTED_CLASSES = {
+    "ExperimentRunAction": "ExperimentRun",
+    "WorkflowRunAction": "WorkflowRun",
+    "InstrumentEntity": "Instrument",
+    "SampleEntity": "Sample",
+    "CrateFile": "DataFile",
+}
+
+#: ``lambda:`` terms that deliberately surface a slot from a neighbouring schema class, with where
+#: the slot really lives. Anything else must be a slot of the class its entity projects onto.
+CROSS_CLASS_TERMS = {
+    ("ExperimentRunAction", "collection_mode"),  # ExperimentRun.data_collection_strategy
+    ("ExperimentRunAction", "beamline_id"),  # Instrument
+    ("InstrumentEntity", "detector"),  # ExperimentRun; CryoEMInstrument has detector_model
+    ("CrateFile", "processing_level"),  # WorkflowRun
+}
+
+
+@pytest.fixture(scope="session")
+def schema_views():
+    from linkml_runtime.utils.schemaview import SchemaView
+
+    schema_dir = REPO / "src" / "lambda_ber_schema" / "schema"
+    return (
+        SchemaView(str(schema_dir / "lambda_rocrate_core.yaml")),
+        SchemaView(str(schema_dir / "lambda_ber_schema.yaml")),
+    )
+
+
+@pytest.mark.parametrize("profile_class", sorted(PROJECTED_CLASSES))
+def test_lambda_terms_are_slots_of_the_projected_class(schema_views, profile_class):
+    """A ``lambda:`` term is the schema slot IRI, so projecting it is an identity mapping.
+
+    That only holds if the slot exists on the class the entity projects onto. This is what keeps a
+    new term (the 0.3.4 cryo-EM session settings, say) from naming a slot that lives elsewhere or
+    nowhere, which would leave a projector with a value and no place to write it.
+    """
+    profile, schema = schema_views
+    target = {s.name for s in schema.class_induced_slots(PROJECTED_CLASSES[profile_class])}
+    stranded = []
+    for name in profile.class_slots(profile_class):
+        uri = profile.induced_slot(name, profile_class).slot_uri or ""
+        term = uri.removeprefix("lambda:")
+        if uri.startswith("lambda:") and term not in target:
+            if (profile_class, term) not in CROSS_CLASS_TERMS:
+                stranded.append(term)
+    assert not stranded, (
+        f"{profile_class} carries lambda: terms that are not slots of "
+        f"{PROJECTED_CLASSES[profile_class]}: {stranded}"
+    )
 
 
 def test_root_must_declare_profile_conformance():
@@ -190,10 +251,13 @@ EXPECTED_FAILURE = {
     "interaction-outside-sample.json": "does not list in hasBioChemEntityPart",
     "interaction-no-sample.json": "is not a sample in the graph",
     "interaction-sample-not-a-sample.json": "is not a sample in the graph",
+    "cryoem-bare-quantity.json": "accelerating_voltage: 300 is not of type 'object'",
+    "cryoem-setting-on-instrument.json": "'spot_size' was unexpected",
+    "cryoem-grid-quality-not-in-enum.json": "'ideal_range' is not one of",
 }
 
 
-@pytest.mark.parametrize("path", INVALID, ids=lambda p: p.name)
+@pytest.mark.parametrize("path", INVALID, ids=_crate_id)
 def test_invalid_crates_are_rejected(json_schema, path):
     crate = load(path)
     problems = entity_violations(json_schema, crate) + graph_rule_violations(crate)
@@ -217,7 +281,7 @@ def test_every_invalid_fixture_is_accounted_for():
 # --------------------------------------------------------------------------------------
 
 
-@pytest.mark.parametrize("path", LEGACY, ids=lambda p: p.name)
+@pytest.mark.parametrize("path", LEGACY, ids=_crate_id)
 def test_legacy_crate_uses_the_deprecated_vocabulary(path):
     """The 0.2 spelling still classifies. This is the alias layer doing its job."""
     crate = load(path)
@@ -229,7 +293,7 @@ def test_legacy_crate_uses_the_deprecated_vocabulary(path):
     )
 
 
-#: What stops the published SSRL 0.2 crate from conforming to Core 0.3.3. Each is a real,
+#: What stops the published SSRL 0.2 crate from conforming to Core 0.3.4. Each is a real,
 #: actionable gap rather than a naming difference - the naming differences are handled by the
 #: alias layer and do not appear here. If one of these disappears, this test fails and the
 #: entry should be removed.
@@ -243,7 +307,7 @@ LEGACY_KNOWN_GAPS = {
 }
 
 
-@pytest.mark.parametrize("path", LEGACY, ids=lambda p: p.name)
+@pytest.mark.parametrize("path", LEGACY, ids=_crate_id)
 def test_legacy_crate_gaps_are_exactly_the_known_ones(json_schema, path):
     crate = load(path)
     problems = entity_violations(json_schema, crate) + graph_rule_violations(crate)

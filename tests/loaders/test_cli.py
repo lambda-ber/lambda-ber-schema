@@ -2,6 +2,7 @@
 
 import json
 import logging
+import re
 
 import pytest
 import requests
@@ -10,6 +11,18 @@ from typer.testing import CliRunner
 from lambda_ber_schema.cli import app
 
 runner = CliRunner()
+
+_ANSI = re.compile(r"\x1b\[[0-9;]*m")
+
+
+def plain(output: str) -> str:
+    """Help text without ANSI styling.
+
+    Rich colors option names when it decides the terminal supports it, which on GitHub Actions it
+    does, and the escape codes then split a string like ``--sample`` so a plain substring check
+    fails there while passing locally.
+    """
+    return _ANSI.sub("", output)
 
 
 class TestCLI:
@@ -59,7 +72,7 @@ class TestCLI:
         """Test EMSL ETL command help."""
         result = runner.invoke(app, ["etl", "emsl", "--help"])
         assert result.exit_code == 0
-        assert "--sample" in result.output
+        assert "--sample" in plain(result.output)
 
     def test_etl_dump_pdb_calls_load_all_with_filters(self, mocker, tmp_path):
         """Test dump-pdb invokes BatchLoader.load_all with expected options."""
@@ -239,8 +252,10 @@ class TestCLI:
         calls: dict[str, object] = {}
 
         class FakeLoader:
-            def __init__(self, cache):
+            def __init__(self, cache, jwt_token=None, epu_timeout=None):
                 calls["cache"] = cache
+                calls["jwt_token"] = jwt_token
+                calls["epu_timeout"] = epu_timeout
 
             def load_by_sample(
                 self,
@@ -309,6 +324,9 @@ class TestCLI:
             "similarity_threshold": None,
             "limit": 10,
         }
+        # without --extract-epu no token reaches the loader, even if EMSL_JWT is set
+        assert calls["jwt_token"] is None
+        assert calls["epu_timeout"] == 1800.0
 
     def test_etl_list_emsl_requires_sample(self):
         """EMSL listing should require --sample."""
@@ -339,8 +357,8 @@ class TestCLI:
     def test_etl_anl_lambda_help(self):
         result = runner.invoke(app, ["etl", "anl-lambda", "--help"])
         assert result.exit_code == 0
-        assert "ANL LAMBDA" in result.output
-        assert "--lims" in result.output
+        assert "ANL LAMBDA" in plain(result.output)
+        assert "--lims" in plain(result.output)
 
     def test_etl_anl_lambda_help_steers_away_from_api_key_on_the_command_line(self):
         for command in (["etl", "anl-lambda"], ["etl", "dump-anl-lambda"]):

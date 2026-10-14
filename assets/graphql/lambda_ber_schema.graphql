@@ -297,6 +297,10 @@ enum DataTypeEnum
     fsc_curve
     map_half
     validation_report
+    gain_reference
+    defect_map
+    atlas
+    screening_image
   }
 
 enum DetectorModeEnum
@@ -417,6 +421,10 @@ enum FileFormatEnum
     csv
     ccp4
     gz
+    yaml
+    mdoc
+    nav
+    dm4
   }
 
 enum FunctionalEffectEnum
@@ -1397,7 +1405,10 @@ type ExperimentRun
     rawDataLocation: String
     processingStatus: ProcessingStatusEnum
     daqSystem: DataAcquisitionSystemEnum
+    acceleratingVoltage: QuantityValue
+    cs: QuantityValue
     magnification: QuantityValue
+    nominalPixelSize: QuantityValue
     calibratedPixelSize: QuantityValue
     cameraBinning: QuantityValue
     exposureTimePerFrame: QuantityValue
@@ -1405,6 +1416,11 @@ type ExperimentRun
     totalExposureTime: QuantityValue
     totalDose: QuantityValue
     doseRate: QuantityValue
+    spotSize: QuantityValue
+    c2Aperture: QuantityValue
+    beamDiameter: QuantityValue
+    energyFilterSlitWidth: QuantityValue
+    phasePlateUsed: Boolean
     defocusTarget: QuantityValue
     defocusRangeMin: QuantityValue
     defocusRangeMax: QuantityValue
