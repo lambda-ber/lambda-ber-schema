@@ -261,15 +261,19 @@
       "@type": "Dataset",
       "name": "Dose-fractionated movie series",
       "description": "3 acquisition movies (49 frames each) at Mag=130000 with K3 gain reference and camera defect map.",
-      "partCount": 3,
+      "partCount": 8,
+      "hasPart": [
+        { "@id": "frames/Image_000.tif" },
+        { "@id": "frames/Image_000.tif.mdoc" },
+        { "@id": "frames/Image_001.tif" },
+        { "@id": "frames/Image_001.tif.mdoc" },
+        { "@id": "frames/Image_002.tif" },
+        { "@id": "frames/Image_002.tif.mdoc" },
+        { "@id": "frames/SuperRef_Image_000.dm4" },
+        { "@id": "frames/defects_GS_01_H_01_000.txt" }
+      ],
       "rawIncluded": false,
       "missing": [
-        {
-          "field": "sha256",
-          "reason": "not-available",
-          "blocks": "S2-acquisition",
-          "note": "Binary stubs; real movie files not deposited with this fixture."
-        },
         {
           "field": "schemaRecord",
           "reason": "not-applicable",
@@ -283,15 +287,15 @@
       "@type": "Dataset",
       "name": "Hole-level screening images",
       "description": "Hole survey and high-magnification multishot screening images used to assess ice quality and particle distribution prior to data collection.",
-      "partCount": 2,
+      "partCount": 4,
+      "hasPart": [
+        { "@id": "screening/Hole_01.mrc" },
+        { "@id": "screening/Hole_01.mrc.mdoc" },
+        { "@id": "screening/Hole_01_1-1.mrc" },
+        { "@id": "screening/Hole_01_1-1.mrc.mdoc" }
+      ],
       "rawIncluded": false,
       "missing": [
-        {
-          "field": "sha256",
-          "reason": "not-available",
-          "blocks": "S2-acquisition",
-          "note": "Binary stubs; real screening files not deposited with this fixture."
-        },
         {
           "field": "schemaRecord",
           "reason": "not-applicable",

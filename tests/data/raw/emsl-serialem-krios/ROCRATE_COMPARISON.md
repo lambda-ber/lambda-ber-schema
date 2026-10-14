@@ -114,7 +114,7 @@ The rocrate `InstrumentEntity` is intentionally narrow — it carries only ident
 
 ### 4b. Folder dataset entities (`frames/`, `screening/`)
 
-Both are modeled as `Dataset` entities representing groups of related files. They carry `missing` declarations for `sha256` (binary stubs) and `schemaRecord` (metadata carried by sidecar mdocs). Each individual file within the folder also has its own `CrateFile` entity — the dataset entity is a navigational grouping, not a replacement.
+Both are modeled as `Dataset` entities representing groups of related files. Each lists its files in `hasPart`, with `partCount` equal to that list (8 and 4), and declares `schemaRecord` as `not-applicable` (metadata carried by sidecar mdocs). Each file also has its own `CrateFile` entity with its own `sha256`, so the folders declare no checksum gap; that the movies are stubs is declared once on the root (`raw_frame_series`, `not-deposited`).
 
 ### 4c. Multiple magnification tiers
 
