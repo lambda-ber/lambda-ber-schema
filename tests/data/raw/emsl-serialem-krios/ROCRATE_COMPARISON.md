@@ -1,6 +1,7 @@
 # RO-Crate Mapping: emsl-serialem-krios
 
 **Crate file:** `tests/data/raw/emsl-serialem-krios/ro-crate-metadata.json`  
+**Full record:** `tests/data/valid/Dataset-emsl-serialem-krios.yaml` (lambda-ber-schema `Dataset`)  
 **Schema version:** lambda-rocrate-core 0.3.4 / lambda-ber-schema 0.1.2
 **Fixture version:** hackathon branch (SerialEM SPA, Titan Krios at EMSL)  
 **Status:** All 4 validation layers pass.
@@ -27,10 +28,34 @@ are also projected onto typed crate slots:
 | `sample_mg/ml: 1mg/ml` | `#sample-grid1.concentration: "1 mg/ml"` | |
 | SerialEM version (mdoc headers) | `#sw-serialem` (`SoftwareApplication`), named in the run's `instrument` | 4.2.2 |
 
-Values that exist only in the mdoc sidecars (calibrated pixel size 0.340292 Å, 49 frames per
-movie, the 6 x 8 atlas grid, survey and screening pixel spacings) are not in the sheet, so they
-are not in `runParameters`. They stay in the sidecar files, which the crate carries, and the
-main ones are quoted in each image file's `description`.
+The session settings themselves are typed on `#exp-serialem-spa` (Core 0.3.4), each the
+`ExperimentRun` slot of the same name and a `{numeric_value, unit}` quantity:
+
+| Source (sheet or mdoc) | Typed slot on `#exp-serialem-spa` |
+|---|---|
+| `detector_id: K3` | `detector` (also on `#instr-krios`) |
+| `voltage: 300` | `accelerating_voltage` (kilovolts) |
+| `cs: 2.7` | `cs` (millimeters) |
+| `nominal_magnification: 130` (kx) | `magnification` 130000 |
+| `nominal_pixel_size: 0.34` | `nominal_pixel_size` (Angstroms per pixel) |
+| mdoc `PixelSpacing` 0.340292 | `calibrated_pixel_size` (Angstroms per pixel) |
+| `binning_factor: 0.5` | `camera_binning` |
+| mdoc `NumSubFrames` 49 | `frames_per_movie` |
+| `total_exposure: 1.046` | `total_exposure_time` (seconds) |
+| `total_dose: 50` | `total_dose` (electrons per Angstrom squared) |
+| `spot_size: 4` | `spot_size` |
+| `c2_aperture: 50` | `c2_aperture` (micrometers) |
+| `beam_diameter: 750` | `beam_diameter` (micrometers) |
+| `energy_filter_slit: 20` | `energy_filter_slit_width` (electronvolts) |
+| `phase_plate: false` | `phase_plate_used` |
+| `tilting_mode: 0` | `tilting_scheme: none` |
+| `assessments` (1, 1, 1) | `quality_metrics.grid_quality`: `none`, `ideal`, `optimal` |
+
+Not typed: `topaz_model` and `motCorr_bin`, which configure EMSL's downstream processing rather
+than describe the collection (the schema's `ParticlePickingParameters` and
+`MotionCorrectionParameters` would hold them on a `WorkflowRun` once one exists), and the sheet's
+null fields. Both stay in `runParameters`. The 6 x 8 atlas grid and the survey and screening pixel
+spacings stay in the mdoc sidecars and the image files' descriptions.
 
 ### File entities
 
@@ -43,16 +68,20 @@ All files listed in `README.md` are present in the crate as `@graph` entities wi
 
 ---
 
-## 2. Vocabulary Gaps
+## 2. Vocabulary Gaps (resolved)
 
-These values are real formats of files in the crate but are not yet in `FileFormatEnum`. `file_format` is checked against that enum and `CrateFile` has no `vocabEntry` slot, so the files carry no `file_format`; each gap is declared via `vocabEntry` on the root, with its note naming the files it covers. Letting `CrateFile` carry `vocabEntry` would put each declaration on the file it describes.
+lambda-ber-schema now has every term this crate needs, so the crate declares no `vocabEntry`:
 
-| Value | Enum | Priority | Recommendation |
-|---|---|---|---|
-| `mdoc` | `FileFormatEnum` | High | SerialEM sidecar is ubiquitous in the cryo-EM community; add alongside `mrc`. |
-| `nav` | `FileFormatEnum` | Medium | SerialEM navigator; less widely exchanged than mdoc, still important for reproducibility. |
-| `yaml` | `FileFormatEnum` | Medium | Facility protocol sheets and LAMBDA's own records are YAML; `json` is already present. |
-| `dm4` | `FileFormatEnum` | Low | DigitalMicrograph format for gain references; could alternatively map to `hdf5` or `application/octet-stream` only. |
+| Value | Enum | Used by |
+|---|---|---|
+| `mdoc` | `FileFormatEnum` | the eight `.mdoc` sidecars |
+| `nav` | `FileFormatEnum` | `C5.nav` |
+| `dm4` | `FileFormatEnum` | `frames/SuperRef_Image_000.dm4` |
+| `yaml` | `FileFormatEnum` | `metadata.yaml` |
+| `gain_reference` | `DataTypeEnum` | `frames/SuperRef_Image_000.dm4` |
+| `defect_map` | `DataTypeEnum` | `frames/defects_GS_01_H_01_000.txt` |
+| `atlas` | `DataTypeEnum` | `C5_LMM_1.mrc` |
+| `screening_image` | `DataTypeEnum` | `mmm1.mrc`, `mmm2.mrc`, `screening/Hole_01.mrc`, `screening/Hole_01_1-1.mrc` |
 
 **Note on `collection_mode`:** The crate uses `"single_particle"`, a valid value in `CollectionModeEnum`.
 
@@ -60,35 +89,43 @@ These values are real formats of files in the crate but are not yet in `FileForm
 
 ## 3. Schema Gaps
 
-Fields present in the source data that have no direct slot in the current rocrate schema.
+Fields in the source data that had no slot. Status as of lambda-rocrate-core 0.3.4.
 
-### 3a. `quality_metrics` / `grid_quality` — no ExperimentRunAction slot
+### 3a. `quality_metrics` / `grid_quality` — resolved
 
-`quality_metrics` is a well-defined field in the main `lambda_ber_schema` (`CryoEMExperimentRun`) but does not appear as an allowed slot on `ExperimentRunAction` in `lambda_rocrate_core`. The three quality assessments are in `runParameters.assessments` as the sheet's numeric codes, and decoded on the root's `resultSummary.quality_metrics` using the main schema's enum values (`IceContaminationEnum: none`, `IceQualityEnum: ideal`, `ParticleConcentrationEnum: optimal`). The sheet's three-point scales map one to one onto those enums.
+`ExperimentRunAction` now takes `quality_metrics`, the schema's `QualityMetrics` object. The grid
+assessment is in `quality_metrics.grid_quality` with the main schema's enum values
+(`IceContaminationEnum: none`, `IceQualityEnum: ideal`, `ParticleConcentrationEnum: optimal`); the
+sheet's three-point scales map one to one onto those enums. The raw codes stay in
+`runParameters.assessments`.
 
-**Recommendation:** Add a `quality_metrics` slot to `ExperimentRunAction` in `lambda_rocrate_core` that accepts the same nested object as the main schema. This is the most data-rich part of a cryo-EM session report and belongs in the crate manifest.
+### 3b. `acquisition_software` — resolved without a slot
 
-### 3b. `acquisition_software` — no ExperimentRunAction slot
+SerialEM 4.2.2 is a `SoftwareApplication` entity (`#sw-serialem`) named in the run's `instrument`
+list, which schema.org defines to cover both equipment and software. The full record uses
+`ExperimentRun.acquisition_software` and `acquisition_software_version`.
 
-The rocrate `ExperimentRunAction` does not have an `acquisition_software` slot. Resolved without one: SerialEM 4.2.2 is a `SoftwareApplication` entity (`#sw-serialem`) named in the run's `instrument` list, which schema.org defines to cover both equipment and software.
+### 3c. Per-session optics and Cs — resolved
 
-### 3c. `cs` (spherical aberration) — no InstrumentEntity slot
+Accelerating voltage, Cs, spot size, C2 aperture, beam diameter, energy filter slit width and phase
+plate use existed in lambda-ber-schema only on `CryoEMInstrument`, one record shared by every
+session on the microscope. They are now `ExperimentRun` slots too (`CryoEMInstrument` keeps them as
+capabilities and defaults), and Core 0.3.4 carries them on `ExperimentRunAction`. mmCIF records Cs
+per imaging session as well (`_em_imaging.nominal_cs`).
 
-The rocrate `InstrumentEntity` has no slot for spherical aberration Cs (2.7 mm for Krios FEG). This is used in CTF estimation and affects resolution limits. Present only as `runParameters.metadata.program.cs`.
+### 3d. Instrument-level detail — open
 
-**Recommendation:** Add `spherical_aberration_mm` to `InstrumentEntity` (or `CryoEMInstrumentEntity` if a specialised subtype is introduced).
+Energy filter presence and model, the detector's physical pixel size (5 µm, sheet field
+`detector_physical_pixel_size`) and other `CryoEMInstrument` fields have no `InstrumentEntity` slot,
+and cannot appear in a `Dataset` record either: `Dataset.instruments` is typed `Instrument`, and
+`linkml-run-examples` loads entries as plain `Instrument`. A type designator on `Instrument` would
+fix the Dataset side, but linkml-runtime then files the designator under `unknown_instrument_type`
+and the Turtle dump fails. The physical pixel size is in `runParameters`.
 
-### 3d. `energy_filter_present` — no InstrumentEntity slot
+### 3e. `sample_buffer: 1xTBS` — in the full record only
 
-The rocrate `InstrumentEntity` has no boolean slot for energy filter presence or model (Selectris, BioQuantum, GIF). Presence is implied here by `energy_filter_slit` in runParameters, but is not declared on the instrument.
-
-**Recommendation:** Add `energy_filter` (string, name/model) to `InstrumentEntity`.
-
-### 3e. `sample_buffer: 1xTBS` — no SampleEntity slot
-
-Buffer composition (1x TBS) is in `metadata.yaml` but `SampleEntity` in the rocrate profile has no `buffer_composition` slot.
-
-**Recommendation:** Add `buffer_composition` (free-text or controlled) to `SampleEntity` in the rocrate profile.
+`SampleEntity` deliberately carries only the searchable identity layer; the profile puts buffer
+detail in the fuller record. The Dataset record has it as `Sample.buffer_composition`.
 
 ### 3f. `vitrification_settings` — missing and out of scope
 
@@ -106,11 +143,12 @@ The last two (`rotation_rate`, `nominal_camera_Length`) are only relevant for to
 
 ## 4. Structural Decisions
 
-### 4a. InstrumentEntity is restricted vs main schema
+### 4a. InstrumentEntity stays narrow; the run carries the settings
 
-The rocrate `InstrumentEntity` is intentionally narrow — it carries only identity and affiliation fields, not acquisition parameters. Fields like `accelerating_voltage`, `detector_manufacturer`, `cs_corrector`, `pixel_size_physical_um`, and `phase_plate` exist on `CryoEMInstrument` in the main schema but are not allowed on the rocrate `InstrumentEntity`.
-
-**Decision:** All cryo-EM-specific acquisition parameters are in `runParameters`. This is consistent with the rocrate profile design intent. If per-instrument parameters are needed, they belong in a linked instrument record, not the crate manifest.
+The rocrate `InstrumentEntity` carries identity and affiliation, not acquisition parameters,
+consistent with the profile's rule that capabilities belong on the instrument and the values used
+belong on the run. The settings EMSL records per session are typed on `#exp-serialem-spa`
+(Section 1); the sheet itself is in `runParameters`, verbatim.
 
 ### 4b. Folder dataset entities (`frames/`, `screening/`)
 
@@ -118,7 +156,7 @@ Both are modeled as `Dataset` entities representing groups of related files. Eac
 
 ### 4c. Multiple magnification tiers
 
-A single SerialEM session typically spans 3–4 magnification tiers (atlas ~135x, survey ~740x, screening ~11500x, acquisition ~130000x). The schema has one `magnification` slot on `ExperimentRun` — used here for the acquisition magnification (130000x, the science-relevant tier). Lower magnification images are included as files but their magnification is captured only in their mdoc sidecars and in `runParameters`.
+A single SerialEM session typically spans 3–4 magnification tiers (atlas ~135x, survey ~740x, screening ~11500x, acquisition ~130000x). The schema has one `magnification` slot on `ExperimentRun`, which the crate's run carries for the acquisition magnification (130000x, the science-relevant tier). Lower-magnification images are typed `atlas` or `screening_image`, and their magnification is in their mdoc sidecars and file descriptions.
 
 **Recommendation:** Consider a `magnification_tiers` list or per-file `magnification` slot on `CrateFile` for multi-mag sessions.
 
@@ -152,10 +190,10 @@ The `XXXXXXX` token in mdoc headers is a different real identifier than the `999
 | OQ-1 | Is `collection_mode: "single_particle"` the exact enum value, or is it `spa`? | Resolved: `single_particle` is in `CollectionModeEnum` | No change needed |
 | OQ-2 | What licence applies to EMSL fixture data for public distribution? | `license` field on root currently set to CC-BY 4.0 | Confirm with EMSL/data team before publishing |
 | OQ-3 | Should `s1Findable: true` require a resolvable identifier? With fake `proposal_id: 99999`, the fixture arguably fails findability. | sufficiency block | Change to `false` or add a note field to sufficiency; current crate uses `false` already |
-| OQ-4 | Atlas and survey `.mrc` stubs are `data_type: "micrograph"`. Is this correct for navigational low-mag images, or should a new term (e.g. `atlas_tile`, `survey_image`) be added? | FileFormatEnum / data_type enum | Discuss with schema team; `micrograph` is defensible but imprecise |
+| OQ-4 | Atlas and survey `.mrc` stubs were `data_type: "micrograph"`. Is this correct for navigational low-mag images? | DataTypeEnum | Resolved: `DataTypeEnum` gained `atlas` and `screening_image`, and the crate uses them |
 | OQ-5 | The `assesments` typo in `metadata.yaml` (one 's') — should the fixture preserve source fidelity or be corrected? | Source fidelity vs correctness | Fix the typo since we control the fixture; done in this branch |
 | OQ-6 | EPU equivalent: EPU sessions have Atlas/GridSquare/FoilHole nested folders. Would the crate structure differ? | Future fixture scope | Yes — EPU would use nested `Dataset` entities. SerialEM's flat-by-type structure is simpler to map. |
-| OQ-7 | `calibratedPixelSizeAngstrom: 0.340292` appears in mdoc headers but not in metadata.yaml. Should it be a CrateFile-level annotation or stay in runParameters? | Data discovery | Consider adding `calibrated_pixel_size` as a slot on CrateFile for micrograph/movie files |
+| OQ-7 | `calibratedPixelSizeAngstrom: 0.340292` appears in mdoc headers but not in metadata.yaml. Where should it go? | Data discovery | Resolved: `calibrated_pixel_size` on the run (Core 0.3.4), beside `nominal_pixel_size` from the sheet |
 
 ---
 

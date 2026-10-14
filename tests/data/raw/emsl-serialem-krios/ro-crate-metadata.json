@@ -32,14 +32,6 @@
       "instrumentName": "Titan Krios",
       "sample_code": "Sample-grid-1",
       "packageTier": "manifest",
-      "resultSummary": {
-        "note": "Grid assessments from metadata.yaml, decoded from the sheet's 1-3 codes to the lambda-ber-schema CryoEMQualityMetrics enums. Opaque to core.",
-        "quality_metrics": {
-          "ice_contamination": "none",
-          "ice_quality": "ideal",
-          "particle_concentration": "optimal"
-        }
-      },
       "identifier": [
         {
           "@type": "PropertyValue",
@@ -86,32 +78,6 @@
           "reason": "not-available",
           "blocks": "S2-core",
           "note": "vitrification_settings field in metadata.yaml is a placeholder not yet filled in."
-        }
-      ],
-      "vocabEntry": [
-        {
-          "module": "lambda-ber-schema",
-          "enum": "FileFormatEnum",
-          "key": "mdoc",
-          "note": "SerialEM metadata sidecar format. Carried by all eight .mdoc files in this crate (C5_LMM_1.mrc.mdoc, mmm1.mrc.mdoc, mmm2.mrc.mdoc, frames/Image_00[0-2].tif.mdoc, screening/Hole_01.mrc.mdoc, screening/Hole_01_1-1.mrc.mdoc), which therefore have no file_format."
-        },
-        {
-          "module": "lambda-ber-schema",
-          "enum": "FileFormatEnum",
-          "key": "nav",
-          "note": "SerialEM navigator file format. Stores all acquisition targets with stage coordinates and map references. Carried by C5.nav, which therefore has no file_format."
-        },
-        {
-          "module": "lambda-ber-schema",
-          "enum": "FileFormatEnum",
-          "key": "dm4",
-          "note": "DigitalMicrograph 4 format, used for K3 gain references. Carried by frames/SuperRef_Image_000.dm4, which therefore has no file_format."
-        },
-        {
-          "module": "lambda-ber-schema",
-          "enum": "FileFormatEnum",
-          "key": "yaml",
-          "note": "YAML. Carried by metadata.yaml (the EMSL acquisition protocol sheet), which therefore has no file_format."
         }
       ],
       "hasPart": [
@@ -206,6 +172,23 @@
       "endTime": "2001-01-02T15:51:29",
       "raw_data_location": "frames/",
       "processing_status": "raw",
+      "detector": "K3",
+      "accelerating_voltage": { "numeric_value": 300, "unit": "kilovolts" },
+      "cs": { "numeric_value": 2.7, "unit": "millimeters" },
+      "magnification": { "numeric_value": 130000, "unit": "x" },
+      "nominal_pixel_size": { "numeric_value": 0.34, "unit": "Angstroms per pixel" },
+      "calibrated_pixel_size": { "numeric_value": 0.340292, "unit": "Angstroms per pixel" },
+      "camera_binning": { "numeric_value": 0.5, "unit": "factor" },
+      "frames_per_movie": { "numeric_value": 49, "unit": "frames" },
+      "total_exposure_time": { "numeric_value": 1.046, "unit": "seconds" },
+      "total_dose": { "numeric_value": 50, "unit": "electrons per Angstrom squared" },
+      "spot_size": { "numeric_value": 4, "unit": "index" },
+      "c2_aperture": { "numeric_value": 50, "unit": "micrometers" },
+      "beam_diameter": { "numeric_value": 750, "unit": "micrometers" },
+      "energy_filter_slit_width": { "numeric_value": 20, "unit": "electronvolts" },
+      "phase_plate_used": false,
+      "tilting_scheme": "none",
+      "quality_metrics": { "grid_quality": { "ice_contamination": "none", "ice_quality": "ideal", "particle_concentration": "optimal" } },
       "object": [{ "@id": "#sample-grid1" }],
       "instrument": [{ "@id": "#instr-krios" }, { "@id": "#sw-serialem" }],
       "result": [{ "@id": "frames/" }],
@@ -310,6 +293,7 @@
       "name": "metadata.yaml",
       "description": "EMSL acquisition protocol sheet: proposal/session identifiers, microscope and detector settings, sample conditions, and quality assessments.",
       "encodingFormat": "application/yaml",
+      "file_format": "yaml",
       "contentSize": "1729",
       "sha256": "ccb5869ca4c095807193c144059e733df28f7d728ff94a683e0ef1405758407a",
       "data_type": "metadata",
@@ -322,6 +306,7 @@
       "name": "C5_LMM_1.mrc.mdoc",
       "description": "SerialEM metadata sidecar for the low-magnification atlas montage. Contains one [ZValue=N] block per tile (48 tiles, Mag=135) and a [MontSection=0] summary.",
       "encodingFormat": "text/plain",
+      "file_format": "mdoc",
       "contentSize": "41561",
       "sha256": "f0a6720a52256254afa048a89e78934746bb9a2e671225f2740c303ee07eb7a9",
       "data_type": "metadata",
@@ -335,7 +320,7 @@
       "description": "Low-magnification atlas montage of grid square C5 (6 x 8 = 48 tiles, Mag=135, PixelSpacing=1332.64 Å). Zero-byte fixture stub.",
       "encodingFormat": "application/x-mrc",
       "file_format": "mrc",
-      "data_type": "micrograph",
+      "data_type": "atlas",
       "processing_level": 0,
       "contentSize": "0",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
@@ -347,6 +332,7 @@
       "name": "C5.nav",
       "description": "SerialEM navigator file indexing all acquisition targets as [Item=N] blocks with stage coordinates, polygon vertices, and references to map files.",
       "encodingFormat": "text/plain",
+      "file_format": "nav",
       "contentSize": "265037",
       "sha256": "846a43869a207f61a50fab65a5d0654ee9b1e5deff804541e413444e15be2f8f",
       "data_type": "metadata",
@@ -359,6 +345,7 @@
       "name": "mmm1.mrc.mdoc",
       "description": "SerialEM metadata sidecar for medium-magnification survey image 1 (Mag=740, NavigatorLabel=2).",
       "encodingFormat": "text/plain",
+      "file_format": "mdoc",
       "contentSize": "997",
       "sha256": "77e800bd243775307fa5b99fcee78e40ced0d242e0c46b2394a282c63268bf41",
       "data_type": "metadata",
@@ -372,7 +359,7 @@
       "description": "Medium-magnification survey image of grid area 1 (Mag=740, PixelSpacing=243.116 Å). Zero-byte fixture stub.",
       "encodingFormat": "application/x-mrc",
       "file_format": "mrc",
-      "data_type": "micrograph",
+      "data_type": "screening_image",
       "processing_level": 0,
       "contentSize": "0",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
@@ -384,6 +371,7 @@
       "name": "mmm2.mrc.mdoc",
       "description": "SerialEM metadata sidecar for medium-magnification survey image 2 (Mag=740, NavigatorLabel=4).",
       "encodingFormat": "text/plain",
+      "file_format": "mdoc",
       "contentSize": "998",
       "sha256": "eda351a17ed5a2437701ad088bd2f05391161d5c9c95b1a10d4bb79aff7131d7",
       "data_type": "metadata",
@@ -397,7 +385,7 @@
       "description": "Medium-magnification survey image of grid area 2 (Mag=740, PixelSpacing=243.116 Å). Zero-byte fixture stub.",
       "encodingFormat": "application/x-mrc",
       "file_format": "mrc",
-      "data_type": "micrograph",
+      "data_type": "screening_image",
       "processing_level": 0,
       "contentSize": "0",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
@@ -409,6 +397,7 @@
       "name": "Image_000.tif.mdoc",
       "description": "SerialEM metadata sidecar for acquisition movie 0. [FrameSet=0] block with NumSubFrames=49, GainReference, DefectFile, NavigatorLabel=17-1.",
       "encodingFormat": "text/plain",
+      "file_format": "mdoc",
       "contentSize": "935",
       "sha256": "8640244391a516b0d8467060fc3c1c1c1acfa23c6c5f56af9d8fb8903eee521c",
       "data_type": "metadata",
@@ -434,6 +423,7 @@
       "name": "Image_001.tif.mdoc",
       "description": "SerialEM metadata sidecar for acquisition movie 1.",
       "encodingFormat": "text/plain",
+      "file_format": "mdoc",
       "contentSize": "936",
       "sha256": "892cd65cbbf3f76c48572f3fbed84aeadf01c604c2a048cebf77816be651c389",
       "data_type": "metadata",
@@ -459,6 +449,7 @@
       "name": "Image_002.tif.mdoc",
       "description": "SerialEM metadata sidecar for acquisition movie 2.",
       "encodingFormat": "text/plain",
+      "file_format": "mdoc",
       "contentSize": "935",
       "sha256": "d296b5e44dbb48b94581328e4033ff65ecdc8e4bfe71b1f95f5f252f9e63a0cd",
       "data_type": "metadata",
@@ -484,7 +475,8 @@
       "name": "SuperRef_Image_000.dm4",
       "description": "K3 gain reference in DigitalMicrograph 4 format. Normalises camera sensitivity; referenced by all three frame mdocs. Zero-byte fixture stub.",
       "encodingFormat": "application/octet-stream",
-      "data_type": "metadata",
+      "file_format": "dm4",
+      "data_type": "gain_reference",
       "processing_level": 0,
       "contentSize": "0",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
@@ -497,7 +489,7 @@
       "description": "Camera defect map listing bad columns and unusable pixel regions for the K3 detector. Referenced by all frame mdocs.",
       "encodingFormat": "text/plain",
       "file_format": "ascii",
-      "data_type": "metadata",
+      "data_type": "defect_map",
       "processing_level": 0,
       "contentSize": "224",
       "sha256": "8ec2fdc34871326818bf5eb3fbc30b0081f5b2ce8c265d61b2c162296e9973e3"
@@ -509,6 +501,7 @@
       "name": "Hole_01.mrc.mdoc",
       "description": "SerialEM metadata sidecar for hole-level survey image at Mag=11500 (NavigatorLabel=3).",
       "encodingFormat": "text/plain",
+      "file_format": "mdoc",
       "contentSize": "1008",
       "sha256": "1edba2fd5b4dd3136e863dd4e54be5c7a0a9c6d5e8b1f97acf7ba830ced9f17b",
       "data_type": "metadata",
@@ -522,7 +515,7 @@
       "description": "Hole-level survey image at Mag=11500 (PixelSpacing=16.1085 Å) used to assess ice quality and particle distribution. Zero-byte fixture stub.",
       "encodingFormat": "application/x-mrc",
       "file_format": "mrc",
-      "data_type": "micrograph",
+      "data_type": "screening_image",
       "processing_level": 0,
       "contentSize": "0",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
@@ -534,6 +527,7 @@
       "name": "Hole_01_1-1.mrc.mdoc",
       "description": "SerialEM metadata sidecar for high-magnification multishot sub-position 1-1 within hole 1 (Mag=130000, MultishotHoleAndPosition=1-1).",
       "encodingFormat": "text/plain",
+      "file_format": "mdoc",
       "contentSize": "1049",
       "sha256": "076c0bdc3a474a6d92ee058f3bc919b0702b3de734c3cc99b10be08629723afa",
       "data_type": "metadata",
@@ -547,7 +541,7 @@
       "description": "High-magnification image of multishot sub-position 1-1 within hole 1 (Mag=130000, PixelSpacing=1.36117 Å). Zero-byte fixture stub.",
       "encodingFormat": "application/x-mrc",
       "file_format": "mrc",
-      "data_type": "micrograph",
+      "data_type": "screening_image",
       "processing_level": 0,
       "contentSize": "0",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
