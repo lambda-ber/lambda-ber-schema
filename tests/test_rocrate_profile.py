@@ -160,6 +160,59 @@ def test_graph_rules(path):
     assert not problems, f"{path.name} breaks graph rules:\n" + "\n".join(problems)
 
 
+#: Profile class -> the schema class its ``lambda:`` terms project onto.
+PROJECTED_CLASSES = {
+    "ExperimentRunAction": "ExperimentRun",
+    "WorkflowRunAction": "WorkflowRun",
+    "InstrumentEntity": "Instrument",
+    "SampleEntity": "Sample",
+    "CrateFile": "DataFile",
+}
+
+#: ``lambda:`` terms that deliberately surface a slot from a neighbouring schema class, with where
+#: the slot really lives. Anything else must be a slot of the class its entity projects onto.
+CROSS_CLASS_TERMS = {
+    ("ExperimentRunAction", "collection_mode"),  # ExperimentRun.data_collection_strategy
+    ("ExperimentRunAction", "beamline_id"),  # Instrument
+    ("InstrumentEntity", "detector"),  # ExperimentRun; CryoEMInstrument has detector_model
+    ("CrateFile", "processing_level"),  # WorkflowRun
+}
+
+
+@pytest.fixture(scope="session")
+def schema_views():
+    from linkml_runtime.utils.schemaview import SchemaView
+
+    schema_dir = REPO / "src" / "lambda_ber_schema" / "schema"
+    return (
+        SchemaView(str(schema_dir / "lambda_rocrate_core.yaml")),
+        SchemaView(str(schema_dir / "lambda_ber_schema.yaml")),
+    )
+
+
+@pytest.mark.parametrize("profile_class", sorted(PROJECTED_CLASSES))
+def test_lambda_terms_are_slots_of_the_projected_class(schema_views, profile_class):
+    """A ``lambda:`` term is the schema slot IRI, so projecting it is an identity mapping.
+
+    That only holds if the slot exists on the class the entity projects onto. This is what keeps a
+    new term (the 0.3.4 cryo-EM session settings, say) from naming a slot that lives elsewhere or
+    nowhere, which would leave a projector with a value and no place to write it.
+    """
+    profile, schema = schema_views
+    target = {s.name for s in schema.class_induced_slots(PROJECTED_CLASSES[profile_class])}
+    stranded = []
+    for name in profile.class_slots(profile_class):
+        uri = profile.induced_slot(name, profile_class).slot_uri or ""
+        term = uri.removeprefix("lambda:")
+        if uri.startswith("lambda:") and term not in target:
+            if (profile_class, term) not in CROSS_CLASS_TERMS:
+                stranded.append(term)
+    assert not stranded, (
+        f"{profile_class} carries lambda: terms that are not slots of "
+        f"{PROJECTED_CLASSES[profile_class]}: {stranded}"
+    )
+
+
 def test_root_must_declare_profile_conformance():
     """A crate that does not claim the profile cannot be checked against it (rule 7)."""
     crate = load(CRATES / "valid" / "minimal-manifest.json")
@@ -198,6 +251,9 @@ EXPECTED_FAILURE = {
     "interaction-outside-sample.json": "does not list in hasBioChemEntityPart",
     "interaction-no-sample.json": "is not a sample in the graph",
     "interaction-sample-not-a-sample.json": "is not a sample in the graph",
+    "cryoem-bare-quantity.json": "accelerating_voltage: 300 is not of type 'object'",
+    "cryoem-setting-on-instrument.json": "'spot_size' was unexpected",
+    "cryoem-grid-quality-not-in-enum.json": "'ideal_range' is not one of",
 }
 
 
