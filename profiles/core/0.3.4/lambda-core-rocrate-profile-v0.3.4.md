@@ -1,15 +1,33 @@
 # LAMBDA Core RO-Crate Profile
 
-**Version 0.3.3** · Technique-neutral · Normative specification
+**Version 0.3.4** · Technique-neutral · Normative specification
 
 Binds `lambda-ber-schema` (LinkML) to RO-Crate 1.2 as a **file manifest** contract. A crate carries
 the highest-level details a program needs to decide whether a dataset is worth opening, and then
 *points* at the fuller record instead of restating it. It is a search-and-handoff surface, not a
 second copy of the schema.
 
-Profile URI: `https://w3id.org/lambda/profile/core/0.3.3`
+Profile URI: `https://w3id.org/lambda/profile/core/0.3.4`
 Machine-readable source: [`lambda_rocrate_core.yaml`](../../../src/lambda_ber_schema/schema/lambda_rocrate_core.yaml)
 Generated artifacts: `assets/rocrate/` (JSON Schema, JSON-LD context, OWL, prefix map, SSSOM crosswalk)
+
+**Changes in 0.3.4.** Adds the cryo-EM session settings to `ExperimentRunAction` as `lambda:`
+terms, each the `ExperimentRun` slot of the same name: the optics (`accelerating_voltage`, `cs`,
+`spot_size`, `c2_aperture`, `beam_diameter`, `energy_filter_slit_width`, `phase_plate_used`), the
+imaging (`detector`, `magnification`, `nominal_pixel_size`, `calibrated_pixel_size`,
+`camera_binning`), dose and timing (`frames_per_movie`, `frames_per_second`,
+`exposure_time_per_frame`, `total_exposure_time`, `total_dose`, `dose_rate`), the tomography and
+MicroED settings (`tilting_scheme`, `tilt_angle_increment`, `fiducial_size`, `rotation_rate`,
+`camera_length`), and `quality_metrics` for the facility's grid assessment (§6.2). Quantities are
+the schema's own `QuantityValue` objects. These are in Core rather than a cryo-EM extension because
+they are slots `lambda-ber-schema` already defines on `ExperimentRun`, so the projection is an
+identity mapping, and because they are what a facility records for every session; result quantities
+with estimators remain extension territory (§17). The schema's `FileFormatEnum` and `DataTypeEnum`
+gained the SerialEM and detector-calibration terms they need (`mdoc`, `nav`, `dm4`, `yaml`;
+`gain_reference`, `defect_map`, `atlas`, `screening_image`), which Core references and does not
+restate. Additive: every crate that conformed to 0.3.3 conforms to 0.3.4 unchanged. Crates SHOULD
+claim `https://w3id.org/lambda/profile/core/0.3.4`; the 0.3.3, 0.3.2, 0.3.1 and 0.3.0 URIs remain
+valid for what they said.
 
 **Changes in 0.3.3.** Adds `SmallMoleculeEntity`, the chemical counterpart of `ProteinEntity`
 and `NucleicAcidEntity` for ligands, cofactors, metal ions, lipids and detergents, reached from a
@@ -138,7 +156,7 @@ profile:
 ```json
 "conformsTo": [
   {"@id": "https://w3id.org/ro/crate/1.2"},
-  {"@id": "https://w3id.org/lambda/profile/core/0.3.3"}
+  {"@id": "https://w3id.org/lambda/profile/core/0.3.4"}
 ]
 ```
 
@@ -401,7 +419,7 @@ crate.
   "@id": "saxs/",
   "@type": "Dataset",
   "name": "SEC-SAXS-MALS of GluRS (ALS SIBYLS 12.3.1)",
-  "conformsTo": [{"@id": "https://w3id.org/lambda/profile/core/0.3.3"},
+  "conformsTo": [{"@id": "https://w3id.org/lambda/profile/core/0.3.4"},
                  {"@id": "https://w3id.org/lambda/profile/saxs/0.3.0"}],
   "hasPart": [{"@id": "saxs/ro-crate-metadata.json"}]
 }
@@ -700,7 +718,7 @@ Seven conformant fixtures in `tests/data/rocrate/valid/`:
 | Fixture | Shows |
 | :---- | :---- |
 | `minimal-manifest.json` | the smallest conformant crate — the thing to hand a new facility |
-| `ssrl-mx-XA_x16.json` | a real SSRL MX package brought to Core 0.3.3, with MX quantities nested in `resultSummary` |
+| `ssrl-mx-XA_x16.json` | a real SSRL MX package brought to Core 0.3.4, with MX quantities nested in `resultSummary` |
 | `saxs-glurs.json` | the SAXS GluRS dataset reduced to Core terms — the extension boundary made concrete; its sample points at a `Protein` entity (§6.2) |
 | `nested-pointers.json` | one manifest using all three pointer mechanisms at once |
 | `detached-crate.json` | a crate whose root `@id` is an absolute URI, stored apart from its payload |
@@ -805,10 +823,10 @@ carries the schema's own `snake_case` slot name, so `lambda:file_format` in a cr
 SSRL publishes crates conforming to `https://w3id.org/lambda/profile/core/0.2` — a URI with no
 written specification — using `lambda:Experiment` / `lambda:RawUnit` / `lambda:DerivedProduct` /
 `lambda:AuxiliaryMetadataItem` and camelCase terms under
-`https://w3id.org/lambda/terms/0.2/`. Those crates exist and a loader consumes them, so Core 0.3.3
+`https://w3id.org/lambda/terms/0.2/`. Those crates exist and a loader consumes them, so Core 0.3.4
 accepts the 0.2 spellings and marks them deprecated rather than breaking them.
 
-| 0.2 spelling | Core 0.3.3 |
+| 0.2 spelling | Core 0.3.4 |
 | :---- | :---- |
 | `lambda:Experiment` (root type) | `lambda:Dataset` |
 | `lambda:RawUnit`, `lambda:DerivedProduct` | `Dataset` part → `CrateDatasetPart` |
