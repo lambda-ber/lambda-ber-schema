@@ -1395,6 +1395,8 @@ classes:
         inlined: true
         exact_mappings:
           - mmCIF:_em_imaging.accelerating_voltage
+        comments:
+          - "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.accelerating_voltage."
       cs_corrector:
         description: "Spherical aberration corrector present"
         range: boolean
@@ -1403,6 +1405,8 @@ classes:
       phase_plate:
         description: "Phase plate available"
         range: boolean
+        comments:
+          - "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.phase_plate_used."
       detector_technology:
         description: "Generic detector technology type"
         range: DetectorTechnologyEnum
@@ -1456,6 +1460,8 @@ classes:
         inlined: true
         exact_mappings:
           - mmCIF:_em_imaging.c2_aperture_diameter
+        comments:
+          - "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.c2_aperture."
       objective_aperture:
         description: "Objective aperture size in micrometers"
         range: QuantityValue
@@ -1478,6 +1484,8 @@ classes:
         inlined: true
         exact_mappings:
           - mmCIF:_em_imaging.energy_filter_slit_width
+        comments:
+          - "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.energy_filter_slit_width."
       pixel_size_physical:
         description: "Physical pixel size in micrometers"
         range: QuantityValue
@@ -1494,6 +1502,8 @@ classes:
         inlined: true
         exact_mappings:
           - mmCIF:_em_imaging.detector_spot_size
+        comments:
+          - "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.spot_size."
       gunlens:
         description: "Gun lens setting"
         range: QuantityValue
@@ -1507,6 +1517,8 @@ classes:
         description: "TEM beam diameter in micrometers"
         range: QuantityValue
         inlined: true
+        comments:
+          - "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.beam_diameter."
 
   XRayInstrument:
     is_a: Instrument
@@ -1857,12 +1869,26 @@ classes:
         description: "Data acquisition system used to collect this experiment"
         range: DataAcquisitionSystemEnum
       # Cryo-EM specific acquisition session metadata
+      # The optical settings below are chosen per session; CryoEMInstrument carries the
+      # instrument's capabilities and defaults under similar names.
+      accelerating_voltage:
+        description: "Accelerating voltage used for this session, typically specified in kV. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
+        exact_mappings:
+          - mmCIF:_em_imaging.accelerating_voltage
       magnification:
         description: "Magnification used during data collection"
         range: QuantityValue
         inlined: true
         exact_mappings:
           - mmCIF:_em_imaging.nominal_magnification
+      nominal_pixel_size:
+        description: "Nominal pixel size at the specimen for the chosen magnification and binning, as set at the microscope, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
+        comments:
+          - "Use calibrated_pixel_size for the value measured against a standard; the two commonly differ by a fraction of a percent."
       calibrated_pixel_size:
         description: "Calibrated pixel size, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
@@ -1899,6 +1925,29 @@ classes:
         description: "Dose rate, typically specified in e-/pixel/s or e-/Angstrom^2/s. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
+      spot_size:
+        description: "Condenser spot size setting used for this session (a dimensionless index on the microscope, e.g. 4)"
+        range: QuantityValue
+        inlined: true
+      c2_aperture:
+        description: "C2 condenser aperture diameter used for this session, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
+        exact_mappings:
+          - mmCIF:_em_imaging.c2_aperture_diameter
+      beam_diameter:
+        description: "Illuminated beam diameter at the specimen used for this session, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
+      energy_filter_slit_width:
+        description: "Energy filter slit width used for this session, typically specified in eV. Omit when no energy filter was used. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
+        exact_mappings:
+          - mmCIF:_em_imaging_optics.energyfilter_slit_width
+      phase_plate_used:
+        description: "Whether a phase plate was in the beam path for this session"
+        range: boolean
       defocus_target:
         description: "Target defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
