@@ -63,7 +63,7 @@ Fields present in the source data that have no direct slot in the current rocrat
 
 ### 3a. `quality_metrics` / `grid_quality` — no ExperimentRunAction slot
 
-`quality_metrics` is a well-defined field in the main `lambda_ber_schema` (`CryoEMExperimentRun`) but does not appear as an allowed slot on `ExperimentRunAction` in `lambda_rocrate_core`. The three quality assessments are therefore only in `runParameters.assessments`, as the sheet's numeric codes.
+`quality_metrics` is a well-defined field in the main `lambda_ber_schema` (`CryoEMExperimentRun`) but does not appear as an allowed slot on `ExperimentRunAction` in `lambda_rocrate_core`. The three quality assessments are in `runParameters.assessments` as the sheet's numeric codes, and decoded on the root's `resultSummary.quality_metrics` using the main schema's enum values (`IceContaminationEnum: none`, `IceQualityEnum: ideal`, `ParticleConcentrationEnum: optimal`). The sheet's three-point scales map one to one onto those enums.
 
 **Recommendation:** Add a `quality_metrics` slot to `ExperimentRunAction` in `lambda_rocrate_core` that accepts the same nested object as the main schema. This is the most data-rich part of a cryo-EM session report and belongs in the crate manifest.
 

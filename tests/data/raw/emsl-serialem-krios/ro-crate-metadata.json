@@ -30,6 +30,14 @@
       "instrumentName": "Titan Krios",
       "sample_code": "Sample-grid-1",
       "packageTier": "manifest",
+      "resultSummary": {
+        "note": "Grid assessments from metadata.yaml, decoded from the sheet's 1-3 codes to the lambda-ber-schema CryoEMQualityMetrics enums. Opaque to core.",
+        "quality_metrics": {
+          "ice_contamination": "none",
+          "ice_quality": "ideal",
+          "particle_concentration": "optimal"
+        }
+      },
       "identifier": [
         {
           "@type": "PropertyValue",
