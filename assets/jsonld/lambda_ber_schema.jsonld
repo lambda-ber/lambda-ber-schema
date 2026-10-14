@@ -3230,6 +3230,22 @@
         {
           "text": "gz",
           "description": "Gzip compressed format"
+        },
+        {
+          "text": "yaml",
+          "description": "YAML text format (e.g., a facility acquisition protocol sheet)"
+        },
+        {
+          "text": "mdoc",
+          "description": "SerialEM autodoc metadata sidecar (.mdoc): per-image or per-tile acquisition parameters for an MRC or TIFF file"
+        },
+        {
+          "text": "nav",
+          "description": "SerialEM navigator file (.nav): acquisition targets with stage coordinates and the maps they were picked from"
+        },
+        {
+          "text": "dm4",
+          "description": "Gatan DigitalMicrograph 4 image format (.dm4), commonly used for K2/K3 gain references"
         }
       ]
     },
@@ -3306,6 +3322,22 @@
         {
           "text": "validation_report",
           "description": "Validation report"
+        },
+        {
+          "text": "gain_reference",
+          "description": "Detector gain reference image, used to normalise per-pixel sensitivity of raw movie frames"
+        },
+        {
+          "text": "defect_map",
+          "description": "Detector defect map listing bad pixels, columns or rows to exclude or interpolate over"
+        },
+        {
+          "text": "atlas",
+          "description": "Low-magnification grid or grid-square map (often a montage) used to navigate and choose targets, not for reconstruction"
+        },
+        {
+          "text": "screening_image",
+          "description": "Medium- or high-magnification image taken to choose targets or assess ice and particle quality, not for reconstruction"
         }
       ]
     },
@@ -9168,6 +9200,9 @@
     {
       "name": "cryoEMInstrument__accelerating_voltage",
       "description": "Accelerating voltage in kV",
+      "comments": [
+        "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.accelerating_voltage."
+      ],
       "from_schema": "http://w3id.org/lambda/",
       "exact_mappings": [
         "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_imaging.accelerating_voltage"
@@ -9201,6 +9236,9 @@
     {
       "name": "cryoEMInstrument__phase_plate",
       "description": "Phase plate available",
+      "comments": [
+        "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.phase_plate_used."
+      ],
       "from_schema": "http://w3id.org/lambda/",
       "slot_uri": "http://w3id.org/lambda/phase_plate",
       "alias": "phase_plate",
@@ -9342,6 +9380,9 @@
     {
       "name": "cryoEMInstrument__cs",
       "description": "Spherical aberration (Cs) in millimeters",
+      "comments": [
+        "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.cs."
+      ],
       "from_schema": "http://w3id.org/lambda/",
       "exact_mappings": [
         "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_imaging.nominal_cs"
@@ -9359,6 +9400,9 @@
     {
       "name": "cryoEMInstrument__c2_aperture",
       "description": "C2 aperture size in micrometers",
+      "comments": [
+        "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.c2_aperture."
+      ],
       "from_schema": "http://w3id.org/lambda/",
       "exact_mappings": [
         "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_imaging.c2_aperture_diameter"
@@ -9442,6 +9486,9 @@
     {
       "name": "cryoEMInstrument__energy_filter_slit_width",
       "description": "Energy filter slit width in eV",
+      "comments": [
+        "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.energy_filter_slit_width."
+      ],
       "from_schema": "http://w3id.org/lambda/",
       "exact_mappings": [
         "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_imaging.energy_filter_slit_width"
@@ -9499,6 +9546,9 @@
     {
       "name": "cryoEMInstrument__spotsize",
       "description": "Electron beam spot size setting",
+      "comments": [
+        "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.spot_size."
+      ],
       "from_schema": "http://w3id.org/lambda/",
       "exact_mappings": [
         "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_imaging.detector_spot_size"
@@ -9546,6 +9596,9 @@
     {
       "name": "cryoEMInstrument__tem_beam_diameter",
       "description": "TEM beam diameter in micrometers",
+      "comments": [
+        "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.beam_diameter."
+      ],
       "from_schema": "http://w3id.org/lambda/",
       "slot_uri": "http://w3id.org/lambda/tem_beam_diameter",
       "alias": "tem_beam_diameter",
@@ -10651,6 +10704,43 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "experimentRun__accelerating_voltage",
+      "description": "Accelerating voltage used for this session, typically specified in kV. Data providers may specify alternative units by including the unit in the QuantityValue.",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_imaging.accelerating_voltage"
+      ],
+      "slot_uri": "http://w3id.org/lambda/accelerating_voltage",
+      "alias": "accelerating_voltage",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__cs",
+      "description": "Nominal spherical aberration (Cs) of the objective lens in effect for this session, typically specified in millimeters. Data providers may specify alternative units by including the unit in the QuantityValue.",
+      "comments": [
+        "Fixed for a given microscope, but recorded per imaging session by mmCIF and by facility acquisition sheets, and needed with the run's data for CTF estimation."
+      ],
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_imaging.nominal_cs"
+      ],
+      "slot_uri": "http://w3id.org/lambda/cs",
+      "alias": "cs",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "experimentRun__magnification",
       "description": "Magnification used during data collection",
       "from_schema": "http://w3id.org/lambda/",
@@ -10659,6 +10749,23 @@
       ],
       "slot_uri": "http://w3id.org/lambda/magnification",
       "alias": "magnification",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__nominal_pixel_size",
+      "description": "Nominal pixel size at the specimen for the chosen magnification and binning, as set at the microscope, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue.",
+      "comments": [
+        "Use calibrated_pixel_size for the value measured against a standard; the two commonly differ by a fraction of a percent."
+      ],
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/nominal_pixel_size",
+      "alias": "nominal_pixel_size",
       "owner": "ExperimentRun",
       "domain_of": [
         "ExperimentRun"
@@ -10775,6 +10882,81 @@
       ],
       "range": "QuantityValue",
       "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__spot_size",
+      "description": "Condenser spot size setting used for this session (a dimensionless index on the microscope, e.g. 4)",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/spot_size",
+      "alias": "spot_size",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__c2_aperture",
+      "description": "C2 condenser aperture diameter used for this session, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_imaging.c2_aperture_diameter"
+      ],
+      "slot_uri": "http://w3id.org/lambda/c2_aperture",
+      "alias": "c2_aperture",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__beam_diameter",
+      "description": "Illuminated beam diameter at the specimen used for this session, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/beam_diameter",
+      "alias": "beam_diameter",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__energy_filter_slit_width",
+      "description": "Energy filter slit width used for this session, typically specified in eV. Omit when no energy filter was used. Data providers may specify alternative units by including the unit in the QuantityValue.",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_imaging_optics.energyfilter_slit_width"
+      ],
+      "slot_uri": "http://w3id.org/lambda/energy_filter_slit_width",
+      "alias": "energy_filter_slit_width",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__phase_plate_used",
+      "description": "Whether a phase plate was in the beam path for this session",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/phase_plate_used",
+      "alias": "phase_plate_used",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "boolean",
       "@type": "SlotDefinition"
     },
     {
@@ -21629,6 +21811,9 @@
         {
           "name": "accelerating_voltage",
           "description": "Accelerating voltage in kV",
+          "comments": [
+            "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.accelerating_voltage."
+          ],
           "exact_mappings": [
             "mmCIF:_em_imaging.accelerating_voltage"
           ],
@@ -21648,6 +21833,9 @@
         {
           "name": "phase_plate",
           "description": "Phase plate available",
+          "comments": [
+            "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.phase_plate_used."
+          ],
           "range": "boolean",
           "@type": "SlotDefinition"
         },
@@ -21726,6 +21914,9 @@
         {
           "name": "cs",
           "description": "Spherical aberration (Cs) in millimeters",
+          "comments": [
+            "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.cs."
+          ],
           "exact_mappings": [
             "mmCIF:_em_imaging.nominal_cs"
           ],
@@ -21736,6 +21927,9 @@
         {
           "name": "c2_aperture",
           "description": "C2 aperture size in micrometers",
+          "comments": [
+            "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.c2_aperture."
+          ],
           "exact_mappings": [
             "mmCIF:_em_imaging.c2_aperture_diameter"
           ],
@@ -21777,6 +21971,9 @@
         {
           "name": "energy_filter_slit_width",
           "description": "Energy filter slit width in eV",
+          "comments": [
+            "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.energy_filter_slit_width."
+          ],
           "exact_mappings": [
             "mmCIF:_em_imaging.energy_filter_slit_width"
           ],
@@ -21806,6 +22003,9 @@
         {
           "name": "spotsize",
           "description": "Electron beam spot size setting",
+          "comments": [
+            "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.spot_size."
+          ],
           "exact_mappings": [
             "mmCIF:_em_imaging.detector_spot_size"
           ],
@@ -21832,6 +22032,9 @@
         {
           "name": "tem_beam_diameter",
           "description": "TEM beam diameter in micrometers",
+          "comments": [
+            "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.beam_diameter."
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -22563,7 +22766,10 @@
         "experimentRun__raw_data_location",
         "experimentRun__processing_status",
         "experimentRun__daq_system",
+        "experimentRun__accelerating_voltage",
+        "experimentRun__cs",
         "experimentRun__magnification",
+        "experimentRun__nominal_pixel_size",
         "experimentRun__calibrated_pixel_size",
         "experimentRun__camera_binning",
         "experimentRun__exposure_time_per_frame",
@@ -22571,6 +22777,11 @@
         "experimentRun__total_exposure_time",
         "experimentRun__total_dose",
         "experimentRun__dose_rate",
+        "experimentRun__spot_size",
+        "experimentRun__c2_aperture",
+        "experimentRun__beam_diameter",
+        "experimentRun__energy_filter_slit_width",
+        "experimentRun__phase_plate_used",
         "experimentRun__defocus_target",
         "experimentRun__defocus_range_min",
         "experimentRun__defocus_range_max",
@@ -22700,10 +22911,43 @@
           "@type": "SlotDefinition"
         },
         {
+          "name": "accelerating_voltage",
+          "description": "Accelerating voltage used for this session, typically specified in kV. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "exact_mappings": [
+            "mmCIF:_em_imaging.accelerating_voltage"
+          ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "cs",
+          "description": "Nominal spherical aberration (Cs) of the objective lens in effect for this session, typically specified in millimeters. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "comments": [
+            "Fixed for a given microscope, but recorded per imaging session by mmCIF and by facility acquisition sheets, and needed with the run's data for CTF estimation."
+          ],
+          "exact_mappings": [
+            "mmCIF:_em_imaging.nominal_cs"
+          ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
           "name": "magnification",
           "description": "Magnification used during data collection",
           "exact_mappings": [
             "mmCIF:_em_imaging.nominal_magnification"
+          ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "nominal_pixel_size",
+          "description": "Nominal pixel size at the specimen for the chosen magnification and binning, as set at the microscope, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "comments": [
+            "Use calibrated_pixel_size for the value measured against a standard; the two commonly differ by a fraction of a percent."
           ],
           "range": "QuantityValue",
           "inlined": true,
@@ -22768,6 +23012,46 @@
           "description": "Dose rate, typically specified in e-/pixel/s or e-/Angstrom^2/s. Data providers may specify alternative units by including the unit in the QuantityValue.",
           "range": "QuantityValue",
           "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "spot_size",
+          "description": "Condenser spot size setting used for this session (a dimensionless index on the microscope, e.g. 4)",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "c2_aperture",
+          "description": "C2 condenser aperture diameter used for this session, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "exact_mappings": [
+            "mmCIF:_em_imaging.c2_aperture_diameter"
+          ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "beam_diameter",
+          "description": "Illuminated beam diameter at the specimen used for this session, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "energy_filter_slit_width",
+          "description": "Energy filter slit width used for this session, typically specified in eV. Omit when no energy filter was used. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "exact_mappings": [
+            "mmCIF:_em_imaging_optics.energyfilter_slit_width"
+          ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "phase_plate_used",
+          "description": "Whether a phase plate was in the beam path for this session",
+          "range": "boolean",
           "@type": "SlotDefinition"
         },
         {
@@ -28862,9 +29146,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda_ber_schema.yaml",
-  "source_file_date": "2026-09-18T15:51:45",
-  "source_file_size": 264996,
-  "generation_date": "2026-09-18T15:54:10",
+  "source_file_date": "2026-10-14T12:01:26",
+  "source_file_size": 270063,
+  "generation_date": "2026-10-14T12:08:23",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda_ber_schema.context.jsonld",

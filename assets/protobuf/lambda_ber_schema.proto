@@ -396,7 +396,10 @@ message ExperimentRun
   string rawDataLocation = 0
   processingStatusEnum processingStatus = 0
   dataAcquisitionSystemEnum daqSystem = 0
+  quantityValue acceleratingVoltage = 0
+  quantityValue cs = 0
   quantityValue magnification = 0
+  quantityValue nominalPixelSize = 0
   quantityValue calibratedPixelSize = 0
   quantityValue cameraBinning = 0
   quantityValue exposureTimePerFrame = 0
@@ -404,6 +407,11 @@ message ExperimentRun
   quantityValue totalExposureTime = 0
   quantityValue totalDose = 0
   quantityValue doseRate = 0
+  quantityValue spotSize = 0
+  quantityValue c2Aperture = 0
+  quantityValue beamDiameter = 0
+  quantityValue energyFilterSlitWidth = 0
+  boolean phasePlateUsed = 0
   quantityValue defocusTarget = 0
   quantityValue defocusRangeMin = 0
   quantityValue defocusRangeMax = 0

@@ -1652,7 +1652,7 @@
                     ]
                 },
                 "conformsTo": {
-                    "description": "MUST include both the RO-Crate version URI and `https://w3id.org/lambda/profile/core/0.3.3`. Technique extensions add their own URI alongside, never instead.",
+                    "description": "MUST include both the RO-Crate version URI and `https://w3id.org/lambda/profile/core/0.3.4`. Technique extensions add their own URI alongside, never instead.",
                     "items": {
                         "$ref": "#/$defs/EntityReference"
                     },
@@ -3055,7 +3055,11 @@
                 "class_averages",
                 "fsc_curve",
                 "map_half",
-                "validation_report"
+                "validation_report",
+                "gain_reference",
+                "defect_map",
+                "atlas",
+                "screening_image"
             ],
             "title": "DataTypeEnum",
             "type": "string"
@@ -4016,6 +4020,17 @@
             "additionalProperties": false,
             "description": "An experimental data collection session",
             "properties": {
+                "accelerating_voltage": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Accelerating voltage used for this session, typically specified in kV. Data providers may specify alternative units by including the unit in the QuantityValue."
+                },
                 "acquisition_software": {
                     "description": "Acquisition software used (e.g., SerialEM, EPU, Leginon)",
                     "type": [
@@ -4081,6 +4096,28 @@
                     ],
                     "description": "Beam center Y coordinate, typically specified in pixels ([px]). Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
+                "beam_diameter": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Illuminated beam diameter at the specimen used for this session, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
+                },
+                "c2_aperture": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "C2 condenser aperture diameter used for this session, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
+                },
                 "calibrated_pixel_size": {
                     "anyOf": [
                         {
@@ -4124,6 +4161,17 @@
                         }
                     ],
                     "description": "Coma aberration, typically specified in nanometers. Data providers may specify alternative units by including the unit in the QuantityValue."
+                },
+                "cs": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Nominal spherical aberration (Cs) of the objective lens in effect for this session, typically specified in millimeters. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "daq_system": {
                     "$ref": "#/$defs/DataAcquisitionSystemEnum",
@@ -4259,6 +4307,17 @@
                         }
                     ],
                     "description": "X-ray beam energy for this run. Data providers may specify eV, keV, or another appropriate energy unit in the QuantityValue."
+                },
+                "energy_filter_slit_width": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Energy filter slit width used for this session, typically specified in eV. Omit when no energy filter was used. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "experiment_code": {
                     "description": "Human-friendly laboratory or facility identifier for the experiment (e.g., 'SIBYLS-2024-02-01-hetBGL', 'CRYOEM-RUN-240815-001'). Used for local tracking and cross-referencing within laboratory systems.",
@@ -4411,6 +4470,17 @@
                     ],
                     "description": "Magnification used during data collection"
                 },
+                "nominal_pixel_size": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Nominal pixel size at the specimen for the chosen magnification and binning, as set at the microscope, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue."
+                },
                 "number_of_images": {
                     "anyOf": [
                         {
@@ -4450,6 +4520,13 @@
                         }
                     ],
                     "description": "Oscillation angle per image, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue."
+                },
+                "phase_plate_used": {
+                    "description": "Whether a phase plate was in the beam path for this session",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
                 },
                 "pixel_size_x": {
                     "anyOf": [
@@ -4560,6 +4637,17 @@
                         }
                     ],
                     "description": "Vertical slit gap aperture, typically specified in micrometers (\u00b5m). Data providers may specify alternative units by including the unit in the QuantityValue."
+                },
+                "spot_size": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Condenser spot size setting used for this session (a dimensionless index on the microscope, e.g. 4)"
                 },
                 "stage_tilt": {
                     "anyOf": [
@@ -4768,6 +4856,17 @@
                     },
                     "type": "array"
                 },
+                "accelerating_voltage": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Accelerating voltage used for the session, typically in kV. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`."
+                },
                 "agent": {
                     "description": "Who ran the action.",
                     "items": {
@@ -4778,6 +4877,17 @@
                         "null"
                     ]
                 },
+                "beam_diameter": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Illuminated beam diameter at the specimen, typically in micrometers. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`."
+                },
                 "beamline_id": {
                     "description": "Beamline identifier within a facility, e.g. `12.3.1`.",
                     "type": [
@@ -4785,9 +4895,64 @@
                         "null"
                     ]
                 },
+                "c2_aperture": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "C2 condenser aperture diameter used, typically in micrometers. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`."
+                },
+                "calibrated_pixel_size": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Pixel size measured against a standard, typically in Angstroms per pixel. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`."
+                },
+                "camera_binning": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Camera binning factor. Below 1 for super-resolution collection, e.g. 0.5. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`."
+                },
+                "camera_length": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Camera length for electron diffraction (MicroED). A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`."
+                },
                 "collection_mode": {
                     "$ref": "#/$defs/CollectionModeEnum",
                     "description": "How the data was collected, from the schema's own `CollectionModeEnum`. Worth surfacing on the root so a federated index can filter on mode without parsing results."
+                },
+                "cs": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Nominal spherical aberration (Cs) in effect for the session, typically in mm. Needed with the data for CTF estimation. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`."
                 },
                 "description": {
                     "description": "Prose summary, aimed at a reader deciding whether to open the dataset.",
@@ -4796,12 +4961,41 @@
                         "null"
                     ]
                 },
+                "detector": {
+                    "description": "Detector in use: on an instrument, the detector it carries; on an experiment run, the one used for that session, as `ExperimentRun.detector`.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "dose_rate": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Dose rate, typically in e-/pixel/s or e-/Angstrom^2/s. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`."
+                },
                 "endTime": {
                     "description": "When the action ended.",
                     "type": [
                         "string",
                         "null"
                     ]
+                },
+                "energy_filter_slit_width": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Energy filter slit width used, typically in eV. Omit when no filter was used. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`."
                 },
                 "experiment_code": {
                     "description": "Facility-facing identifier for the collection session, e.g. `GluRS_1`.",
@@ -4814,6 +5008,50 @@
                         "null"
                     ]
                 },
+                "exposure_time_per_frame": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Exposure time of one frame, typically in ms. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`."
+                },
+                "fiducial_size": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Size of the fiducial markers used for tomographic alignment. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`."
+                },
+                "frames_per_movie": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Number of frames in each dose-fractionated movie. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`."
+                },
+                "frames_per_second": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Frame acquisition rate. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`."
+                },
                 "instrument": {
                     "description": "What an action used - equipment for a collection, software for a workflow. schema.org's `instrument` covers both senses.",
                     "items": {
@@ -4823,6 +5061,17 @@
                         "array",
                         "null"
                     ]
+                },
+                "magnification": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Nominal magnification of the data-collection images (not the atlas or screening images). A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`."
                 },
                 "missing": {
                     "description": "Declared absences. Absence is stated, never implied by omission.",
@@ -4841,6 +5090,17 @@
                         "null"
                     ]
                 },
+                "nominal_pixel_size": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Pixel size at the specimen as set at the microscope, typically in Angstroms per pixel. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`."
+                },
                 "object": {
                     "description": "What an action consumed - the sample for a collection, the inputs for a workflow.",
                     "items": {
@@ -4848,6 +5108,13 @@
                     },
                     "type": [
                         "array",
+                        "null"
+                    ]
+                },
+                "phase_plate_used": {
+                    "description": "Whether a phase plate was in the beam path for the session.",
+                    "type": [
+                        "boolean",
                         "null"
                     ]
                 },
@@ -4909,6 +5176,17 @@
                         "null"
                     ]
                 },
+                "quality_metrics": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QualityMetrics"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Quality assessments of the run, as the schema's `QualityMetrics` object. For cryo-EM, the facility's grid assessment goes in `grid_quality` (ice contamination, ice quality, particle concentration)."
+                },
                 "raw_data_location": {
                     "description": "Where the raw payload lives, whether or not it travels with the crate.",
                     "type": [
@@ -4926,6 +5204,17 @@
                         "null"
                     ]
                 },
+                "rotation_rate": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Continuous rotation rate during collection (MicroED). A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`."
+                },
                 "runParameters": {
                     "anyOf": [
                         {
@@ -4937,6 +5226,17 @@
                     ],
                     "description": "The acquisition or processing parameter block as published by the facility, verbatim. Kept opaque on purpose: it is the un-projected source record, and the typed slots on `ExperimentRun` are what a consumer should read."
                 },
+                "spot_size": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Condenser spot size setting (a dimensionless index on the microscope). A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`."
+                },
                 "startTime": {
                     "description": "When the action began.",
                     "type": [
@@ -4947,6 +5247,43 @@
                 "technique": {
                     "$ref": "#/$defs/TechniqueEnum",
                     "description": "Technique, from the schema's own `TechniqueEnum`. Extensions add a PaNET IRI beside it."
+                },
+                "tilt_angle_increment": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Tilt step between successive images of a tilt series, typically in degrees. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`."
+                },
+                "tilting_scheme": {
+                    "$ref": "#/$defs/TiltingSchemeEnum",
+                    "description": "Stage tilting during collection, from the schema's own `TiltingSchemeEnum`; `none` for single-particle collection."
+                },
+                "total_dose": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Total electron dose per movie, typically in e-/Angstrom^2. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`."
+                },
+                "total_exposure_time": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Total exposure time of one movie, typically in s. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`."
                 }
             },
             "required": [
@@ -5355,7 +5692,11 @@
                 "json",
                 "csv",
                 "ccp4",
-                "gz"
+                "gz",
+                "yaml",
+                "mdoc",
+                "nav",
+                "dm4"
             ],
             "title": "FileFormatEnum",
             "type": "string"
@@ -6354,7 +6695,7 @@
                     ]
                 },
                 "detector": {
-                    "description": "Detector in use, where the crate names it on the instrument.",
+                    "description": "Detector in use: on an instrument, the detector it carries; on an experiment run, the one used for that session, as `ExperimentRun.detector`.",
                     "type": [
                         "string",
                         "null"
@@ -15129,6 +15470,6 @@
     ],
     "title": "lambda-rocrate-core",
     "type": "object",
-    "version": "0.3.3"
+    "version": "0.3.4"
 }
 

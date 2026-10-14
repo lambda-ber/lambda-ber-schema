@@ -2156,7 +2156,11 @@
                 "class_averages",
                 "fsc_curve",
                 "map_half",
-                "validation_report"
+                "validation_report",
+                "gain_reference",
+                "defect_map",
+                "atlas",
+                "screening_image"
             ],
             "title": "DataTypeEnum",
             "type": "string"
@@ -2886,6 +2890,17 @@
             "additionalProperties": false,
             "description": "An experimental data collection session",
             "properties": {
+                "accelerating_voltage": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Accelerating voltage used for this session, typically specified in kV. Data providers may specify alternative units by including the unit in the QuantityValue."
+                },
                 "acquisition_software": {
                     "description": "Acquisition software used (e.g., SerialEM, EPU, Leginon)",
                     "type": [
@@ -2951,6 +2966,28 @@
                     ],
                     "description": "Beam center Y coordinate, typically specified in pixels ([px]). Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
+                "beam_diameter": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Illuminated beam diameter at the specimen used for this session, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
+                },
+                "c2_aperture": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "C2 condenser aperture diameter used for this session, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
+                },
                 "calibrated_pixel_size": {
                     "anyOf": [
                         {
@@ -2994,6 +3031,17 @@
                         }
                     ],
                     "description": "Coma aberration, typically specified in nanometers. Data providers may specify alternative units by including the unit in the QuantityValue."
+                },
+                "cs": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Nominal spherical aberration (Cs) of the objective lens in effect for this session, typically specified in millimeters. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "daq_system": {
                     "$ref": "#/$defs/DataAcquisitionSystemEnum",
@@ -3129,6 +3177,17 @@
                         }
                     ],
                     "description": "X-ray beam energy for this run. Data providers may specify eV, keV, or another appropriate energy unit in the QuantityValue."
+                },
+                "energy_filter_slit_width": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Energy filter slit width used for this session, typically specified in eV. Omit when no energy filter was used. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "experiment_code": {
                     "description": "Human-friendly laboratory or facility identifier for the experiment (e.g., 'SIBYLS-2024-02-01-hetBGL', 'CRYOEM-RUN-240815-001'). Used for local tracking and cross-referencing within laboratory systems.",
@@ -3281,6 +3340,17 @@
                     ],
                     "description": "Magnification used during data collection"
                 },
+                "nominal_pixel_size": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Nominal pixel size at the specimen for the chosen magnification and binning, as set at the microscope, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue."
+                },
                 "number_of_images": {
                     "anyOf": [
                         {
@@ -3320,6 +3390,13 @@
                         }
                     ],
                     "description": "Oscillation angle per image, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue."
+                },
+                "phase_plate_used": {
+                    "description": "Whether a phase plate was in the beam path for this session",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
                 },
                 "pixel_size_x": {
                     "anyOf": [
@@ -3430,6 +3507,17 @@
                         }
                     ],
                     "description": "Vertical slit gap aperture, typically specified in micrometers (\u00b5m). Data providers may specify alternative units by including the unit in the QuantityValue."
+                },
+                "spot_size": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Condenser spot size setting used for this session (a dimensionless index on the microscope, e.g. 4)"
                 },
                 "stage_tilt": {
                     "anyOf": [
@@ -4020,7 +4108,11 @@
                 "json",
                 "csv",
                 "ccp4",
-                "gz"
+                "gz",
+                "yaml",
+                "mdoc",
+                "nav",
+                "dm4"
             ],
             "title": "FileFormatEnum",
             "type": "string"
