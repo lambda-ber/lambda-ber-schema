@@ -630,6 +630,32 @@ classes:
       - run_parameters
       - raw_data_location
       - processing_status
+      # cryo-EM session settings and grid assessment, each the ExperimentRun slot of the same
+      # name; quantities are {numeric_value, unit} objects as in lambda-ber-schema
+      - detector
+      - accelerating_voltage
+      - cs
+      - magnification
+      - nominal_pixel_size
+      - calibrated_pixel_size
+      - camera_binning
+      - frames_per_movie
+      - frames_per_second
+      - exposure_time_per_frame
+      - total_exposure_time
+      - total_dose
+      - dose_rate
+      - spot_size
+      - c2_aperture
+      - beam_diameter
+      - energy_filter_slit_width
+      - phase_plate_used
+      - tilting_scheme
+      - tilt_angle_increment
+      - fiducial_size
+      - rotation_rate
+      - camera_length
+      - quality_metrics
       - missing
     slot_usage:
       at_id:
@@ -1518,7 +1544,9 @@ slots:
     slot_uri: lambda:detector
     exact_mappings:
       - lambda:detector
-    description: Detector in use, where the crate names it on the instrument.
+    description: >-
+      Detector in use: on an instrument, the detector it carries; on an experiment run, the one
+      used for that session, as `ExperimentRun.detector`.
 
   technique:
     slot_uri: lambda:technique
@@ -1567,6 +1595,219 @@ slots:
     exact_mappings:
       - lambda:processing_status
     description: How far processing has got, from the schema's own `ProcessingStatusEnum`.
+
+  # ----- cryo-EM session (ExperimentRun) ------------------------------------------------
+  # Each of these is the lambda-ber-schema ExperimentRun slot of the same name, carried on
+  # ExperimentRunAction so that the settings a facility records for every session are
+  # searchable without opening the fuller record. runParameters keeps the facility's own
+  # block verbatim beside them.
+
+  accelerating_voltage:
+    slot_uri: lambda:accelerating_voltage
+    range: QuantityValue
+    inlined: true
+    exact_mappings:
+      - lambda:accelerating_voltage
+    description: >-
+      Accelerating voltage used for the session, typically in kV. A quantity object, `{"numeric_value": ..., "unit": ...}`.
+
+  cs:
+    slot_uri: lambda:cs
+    range: QuantityValue
+    inlined: true
+    exact_mappings:
+      - lambda:cs
+    description: >-
+      Nominal spherical aberration (Cs) in effect for the session, typically in mm. Needed with the data for CTF estimation. A quantity object, `{"numeric_value": ..., "unit": ...}`.
+
+  magnification:
+    slot_uri: lambda:magnification
+    range: QuantityValue
+    inlined: true
+    exact_mappings:
+      - lambda:magnification
+    description: >-
+      Nominal magnification of the data-collection images (not the atlas or screening images). A quantity object, `{"numeric_value": ..., "unit": ...}`.
+
+  nominal_pixel_size:
+    slot_uri: lambda:nominal_pixel_size
+    range: QuantityValue
+    inlined: true
+    exact_mappings:
+      - lambda:nominal_pixel_size
+    description: >-
+      Pixel size at the specimen as set at the microscope, typically in Angstroms per pixel. A quantity object, `{"numeric_value": ..., "unit": ...}`.
+
+  calibrated_pixel_size:
+    slot_uri: lambda:calibrated_pixel_size
+    range: QuantityValue
+    inlined: true
+    exact_mappings:
+      - lambda:calibrated_pixel_size
+    description: >-
+      Pixel size measured against a standard, typically in Angstroms per pixel. A quantity object, `{"numeric_value": ..., "unit": ...}`.
+
+  camera_binning:
+    slot_uri: lambda:camera_binning
+    range: QuantityValue
+    inlined: true
+    exact_mappings:
+      - lambda:camera_binning
+    description: >-
+      Camera binning factor. Below 1 for super-resolution collection, e.g. 0.5. A quantity object, `{"numeric_value": ..., "unit": ...}`.
+
+  frames_per_movie:
+    slot_uri: lambda:frames_per_movie
+    range: QuantityValue
+    inlined: true
+    exact_mappings:
+      - lambda:frames_per_movie
+    description: >-
+      Number of frames in each dose-fractionated movie. A quantity object, `{"numeric_value": ..., "unit": ...}`.
+
+  frames_per_second:
+    slot_uri: lambda:frames_per_second
+    range: QuantityValue
+    inlined: true
+    exact_mappings:
+      - lambda:frames_per_second
+    description: >-
+      Frame acquisition rate. A quantity object, `{"numeric_value": ..., "unit": ...}`.
+
+  exposure_time_per_frame:
+    slot_uri: lambda:exposure_time_per_frame
+    range: QuantityValue
+    inlined: true
+    exact_mappings:
+      - lambda:exposure_time_per_frame
+    description: >-
+      Exposure time of one frame, typically in ms. A quantity object, `{"numeric_value": ..., "unit": ...}`.
+
+  total_exposure_time:
+    slot_uri: lambda:total_exposure_time
+    range: QuantityValue
+    inlined: true
+    exact_mappings:
+      - lambda:total_exposure_time
+    description: >-
+      Total exposure time of one movie, typically in s. A quantity object, `{"numeric_value": ..., "unit": ...}`.
+
+  total_dose:
+    slot_uri: lambda:total_dose
+    range: QuantityValue
+    inlined: true
+    exact_mappings:
+      - lambda:total_dose
+    description: >-
+      Total electron dose per movie, typically in e-/Angstrom^2. A quantity object, `{"numeric_value": ..., "unit": ...}`.
+
+  dose_rate:
+    slot_uri: lambda:dose_rate
+    range: QuantityValue
+    inlined: true
+    exact_mappings:
+      - lambda:dose_rate
+    description: >-
+      Dose rate, typically in e-/pixel/s or e-/Angstrom^2/s. A quantity object, `{"numeric_value": ..., "unit": ...}`.
+
+  spot_size:
+    slot_uri: lambda:spot_size
+    range: QuantityValue
+    inlined: true
+    exact_mappings:
+      - lambda:spot_size
+    description: >-
+      Condenser spot size setting (a dimensionless index on the microscope). A quantity object, `{"numeric_value": ..., "unit": ...}`.
+
+  c2_aperture:
+    slot_uri: lambda:c2_aperture
+    range: QuantityValue
+    inlined: true
+    exact_mappings:
+      - lambda:c2_aperture
+    description: >-
+      C2 condenser aperture diameter used, typically in micrometers. A quantity object, `{"numeric_value": ..., "unit": ...}`.
+
+  beam_diameter:
+    slot_uri: lambda:beam_diameter
+    range: QuantityValue
+    inlined: true
+    exact_mappings:
+      - lambda:beam_diameter
+    description: >-
+      Illuminated beam diameter at the specimen, typically in micrometers. A quantity object, `{"numeric_value": ..., "unit": ...}`.
+
+  energy_filter_slit_width:
+    slot_uri: lambda:energy_filter_slit_width
+    range: QuantityValue
+    inlined: true
+    exact_mappings:
+      - lambda:energy_filter_slit_width
+    description: >-
+      Energy filter slit width used, typically in eV. Omit when no filter was used. A quantity object, `{"numeric_value": ..., "unit": ...}`.
+
+  tilt_angle_increment:
+    slot_uri: lambda:tilt_angle_increment
+    range: QuantityValue
+    inlined: true
+    exact_mappings:
+      - lambda:tilt_angle_increment
+    description: >-
+      Tilt step between successive images of a tilt series, typically in degrees. A quantity object, `{"numeric_value": ..., "unit": ...}`.
+
+  fiducial_size:
+    slot_uri: lambda:fiducial_size
+    range: QuantityValue
+    inlined: true
+    exact_mappings:
+      - lambda:fiducial_size
+    description: >-
+      Size of the fiducial markers used for tomographic alignment. A quantity object, `{"numeric_value": ..., "unit": ...}`.
+
+  rotation_rate:
+    slot_uri: lambda:rotation_rate
+    range: QuantityValue
+    inlined: true
+    exact_mappings:
+      - lambda:rotation_rate
+    description: >-
+      Continuous rotation rate during collection (MicroED). A quantity object, `{"numeric_value": ..., "unit": ...}`.
+
+  camera_length:
+    slot_uri: lambda:camera_length
+    range: QuantityValue
+    inlined: true
+    exact_mappings:
+      - lambda:camera_length
+    description: >-
+      Camera length for electron diffraction (MicroED). A quantity object, `{"numeric_value": ..., "unit": ...}`.
+
+  phase_plate_used:
+    slot_uri: lambda:phase_plate_used
+    range: boolean
+    exact_mappings:
+      - lambda:phase_plate_used
+    description: Whether a phase plate was in the beam path for the session.
+
+  tilting_scheme:
+    slot_uri: lambda:tilting_scheme
+    range: TiltingSchemeEnum
+    exact_mappings:
+      - lambda:tilting_scheme
+    description: >-
+      Stage tilting during collection, from the schema's own `TiltingSchemeEnum`; `none` for
+      single-particle collection.
+
+  quality_metrics:
+    slot_uri: lambda:quality_metrics
+    range: QualityMetrics
+    inlined: true
+    exact_mappings:
+      - lambda:quality_metrics
+    description: >-
+      Quality assessments of the run, as the schema's `QualityMetrics` object. For cryo-EM, the
+      facility's grid assessment goes in `grid_quality` (ice contamination, ice quality,
+      particle concentration).
 
   workflow_code:
     slot_uri: lambda:workflow_code
