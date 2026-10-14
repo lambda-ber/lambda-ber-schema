@@ -203,7 +203,7 @@
       "total_dose": { "numeric_value": 50, "unit": "electrons per Angstrom squared" },
       "spot_size": { "numeric_value": 4, "unit": "index" },
       "c2_aperture": { "numeric_value": 50, "unit": "micrometers" },
-      "beam_diameter": { "numeric_value": 750, "unit": "micrometers" },
+      "beam_diameter": { "numeric_value": 750, "unit": "nanometers" },
       "energy_filter_slit_width": { "numeric_value": 20, "unit": "electronvolts" },
       "phase_plate_used": false,
       "tilting_scheme": "none",

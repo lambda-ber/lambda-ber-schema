@@ -45,11 +45,18 @@ The session settings themselves are typed on `#exp-serialem-spa` (Core 0.3.4), e
 | `total_dose: 50` | `total_dose` (electrons per Angstrom squared) |
 | `spot_size: 4` | `spot_size` |
 | `c2_aperture: 50` | `c2_aperture` (micrometers) |
-| `beam_diameter: 750` | `beam_diameter` (micrometers) |
+| `beam_diameter: 750` | `beam_diameter` (nanometers; see note below) |
 | `energy_filter_slit: 20` | `energy_filter_slit_width` (electronvolts) |
 | `phase_plate: false` | `phase_plate_used` |
 | `tilting_mode: 0` | `tilting_scheme: none` |
 | `assessments` (1, 1, 1) | `quality_metrics.grid_quality`: `none`, `ideal`, `optimal` |
+
+**`beam_diameter` is 750 nm, not 750 µm.** The sheet's template comment says `# (microns)`, and
+the field is usually reported in micrometers, but EMSL confirmed this session's value is in
+nanometers (an illuminated area of 0.75 µm; 750 µm would not be plausible at 130,000x). The typed
+slot says so with its unit, `{numeric_value: 750, unit: "nanometers"}`, as any `QuantityValue`
+does when a value departs from the slot's usual unit. `metadata.yaml` and the verbatim copy in
+`runParameters` keep EMSL's `750` and comment unchanged.
 
 Not typed: `topaz_model` and `motCorr_bin`, which configure EMSL's downstream processing rather
 than describe the collection (the schema's `ParticlePickingParameters` and

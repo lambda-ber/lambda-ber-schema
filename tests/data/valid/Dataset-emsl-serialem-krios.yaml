@@ -82,7 +82,7 @@ experiment_runs:
     unit: micrometers
   beam_diameter:
     numeric_value: 750
-    unit: micrometers
+    unit: nanometers
   energy_filter_slit_width:
     numeric_value: 20
     unit: electronvolts
