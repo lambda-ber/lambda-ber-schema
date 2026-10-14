@@ -123,7 +123,7 @@ A single SerialEM session typically spans 3–4 magnification tiers (atlas ~135x
 
 ### 4d. `experiment_date` not in ExperimentRunAction
 
-The compiled schema exposes `experiment_date` on `ExperimentRunAction` (and `collectionDate` on the root), so this is not a schema gap. The crate currently omits those slots even though the mdoc `DateTime` fields carry an anonymised session date.
+The compiled schema exposes `experiment_date` on `ExperimentRunAction` (and `collectionDate` on the root), so this is not a schema gap. The crate sets `experiment_date` to the session's first day and `startTime`/`endTime` to the first and last mdoc `DateTime` values (anonymised, 2001-01-01T19:14:12 to 2001-01-02T15:51:29).
 
 ---
 

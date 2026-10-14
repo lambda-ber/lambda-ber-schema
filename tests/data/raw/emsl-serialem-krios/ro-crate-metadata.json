@@ -27,6 +27,8 @@
       ],
       "technique": "cryo_em",
       "facility_name": "EMSL",
+      "facility_ror": "https://ror.org/05h992307",
+      "publisher": { "@id": "https://ror.org/05h992307" },
       "instrumentName": "Titan Krios",
       "sample_code": "Sample-grid-1",
       "packageTier": "manifest",
@@ -140,6 +142,7 @@
       "manufacturer": "ThermoFisher",
       "model": "Titan Krios",
       "facility_name": "EMSL",
+      "facility_ror": "https://ror.org/05h992307",
       "detector": "K3"
     },
 
@@ -181,7 +184,8 @@
       "acronym": "EMSL",
       "organization_type": "national_laboratory",
       "country": "USA",
-      "isDoeFacility": true
+      "isDoeFacility": true,
+      "organizationRole": "operating_institution"
     },
 
     {
@@ -191,6 +195,9 @@
       "experiment_code": "EMSL-99999-01-01-01",
       "technique": "cryo_em",
       "collection_mode": "single_particle",
+      "experiment_date": "2001-01-01",
+      "startTime": "2001-01-01T19:14:12",
+      "endTime": "2001-01-02T15:51:29",
       "raw_data_location": "frames/",
       "processing_status": "raw",
       "object": [{ "@id": "#sample-grid1" }],
