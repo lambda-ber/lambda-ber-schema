@@ -372,6 +372,35 @@ themselves, and the (sample, entity) pair identifies the `SampleComponent` row i
 record. Crates that write `chebi_id` or `pdb_ligand_id` SHOULD bind `CHEBI` and `pdb.ligand` in
 their context, as they bind `uniprot`.
 
+**The run carries the settings it was collected with.** An `ExperimentRunAction` names its sample
+(`object`), its equipment and software (`instrument`) and what it produced (`result`). For cryo-EM it
+also carries the settings a facility records for every session, each the `ExperimentRun` slot of the
+same name: optics (`accelerating_voltage`, `cs`, `spot_size`, `c2_aperture`, `beam_diameter`,
+`energy_filter_slit_width`, `phase_plate_used`), imaging (`detector`, `magnification`,
+`nominal_pixel_size`, `calibrated_pixel_size`, `camera_binning`), dose and timing
+(`frames_per_movie`, `frames_per_second`, `exposure_time_per_frame`, `total_exposure_time`,
+`total_dose`, `dose_rate`), tomography and MicroED (`tilting_scheme`, `tilt_angle_increment`,
+`fiducial_size`, `rotation_rate`, `camera_length`), and `quality_metrics`, whose `grid_quality`
+holds the facility's ice and particle assessment. Quantities are the schema's `QuantityValue`
+objects, never bare numbers, so the unit travels with the value. These belong on the run and not on
+the `InstrumentEntity`: the instrument says what the microscope can do, the run says what it was
+set to, and the closed `InstrumentEntity` rejects a session setting. `runParameters` keeps the
+facility's own parameter block verbatim beside them.
+
+```json
+{"@id": "#exp-serialem-spa", "@type": ["Action", "lambda:ExperimentRun"],
+ "experiment_code": "EMSL-99999-01-01-01", "technique": "cryo_em",
+ "collection_mode": "single_particle",
+ "object": [{"@id": "#sample-grid1"}], "instrument": [{"@id": "#instr-krios"}, {"@id": "#sw-serialem"}],
+ "accelerating_voltage": {"numeric_value": 300, "unit": "kilovolts"},
+ "calibrated_pixel_size": {"numeric_value": 0.340292, "unit": "Angstroms per pixel"},
+ "total_dose": {"numeric_value": 50, "unit": "electrons per Angstrom squared"},
+ "spot_size": {"numeric_value": 4, "unit": "index"},
+ "quality_metrics": {"grid_quality": {"ice_contamination": "none", "ice_quality": "ideal",
+                                      "particle_concentration": "optimal"}},
+ "runParameters": {"metadata": {"program": {"voltage": 300, "spot_size": 4, "...": "..."}}}}
+```
+
 Facility and technique SHOULD be carried as `DefinedTerm` entities rather than bare strings — this
 is what lets a federated index join across crates, and the SSRL 0.2 crates already do it.
 
@@ -637,6 +666,7 @@ A LAMBDA federated search projects from the root alone, without opening parts:
 | specimen | `lambda:sample_code`, `lambda:protein_name`, `lambda:organism` |
 | protein | `lambda:uniprot_id`, `lambda:gene_name` on the `Protein` entities the sample points at with `hasBioChemEntityPart` |
 | nucleic acid | `lambda:nucleic_acid_type`, `lambda:rnacentral_id`, `lambda:sequence_accession` or `lambda:nucleotide_sequence` on the `NucleicAcid` entities the sample points at with `hasBioChemEntityPart` |
+| acquisition | the session terms on the `ExperimentRunAction` (`accelerating_voltage`, `magnification`, `calibrated_pixel_size`, `total_dose`, `quality_metrics`, …; §6.2) |
 | dates | `datePublished`, `lambda:collectionDate` |
 | people | `author` / `agent` → `Person` entities, by ORCID where known; `role` gives the capacity |
 | access | `conditionsOfAccess`, `license` |
@@ -713,7 +743,7 @@ instances, so a single JSON object is walked key by key, and `--legacy-mode` rou
 
 ## 13. Worked examples
 
-Seven conformant fixtures in `tests/data/rocrate/valid/`:
+Seven conformant fixtures in `tests/data/rocrate/valid/`, and one crate stored with its payload:
 
 | Fixture | Shows |
 | :---- | :---- |
@@ -724,9 +754,10 @@ Seven conformant fixtures in `tests/data/rocrate/valid/`:
 | `detached-crate.json` | a crate whose root `@id` is an absolute URI, stored apart from its payload |
 | `nucleic-acid-entities.json` | a protein-DNA complex whose sample points at a `Protein` entity and two `NucleicAcid` entities, one with its sequence withheld and declared, plus a natural RNA named by its RNAcentral IRI (§6.2) |
 | `sample-components.json` | the same complex with its zinc as a `SmallMolecule` entity and three interaction entities saying what binds, pairs with and coordinates what; a second sample with a fragment named by InChIKey, a detergent with its structure withheld and declared, and a soak recorded as `not_observed` (§6.2) |
+| `tests/data/raw/emsl-serialem-krios/ro-crate-metadata.json` | an EMSL SerialEM single-particle session as an attached crate beside its files: the acquisition sheet verbatim in `runParameters`, the session settings and grid assessment typed on the run (§6.2), gain reference, defect map, atlas and screening images typed by `DataTypeEnum`; its full record is `tests/data/valid/Dataset-emsl-serialem-krios.yaml` |
 | `ssrl-mx-XA_x16-core-0.2.json` (in `legacy/`) | the published 0.2 crate, unmodified — see §15 |
 
-Seventeen negative fixtures in `tests/data/rocrate/invalid/`, each isolating one rule, with the test
+Twenty negative fixtures in `tests/data/rocrate/invalid/`, each isolating one rule, with the test
 asserting *which* rule failed so that a fixture cannot pass for the wrong reason.
 
 ---
@@ -974,7 +1005,9 @@ A technique extension imports this module and:
 
 1. gives `lambdarc:resultSummary` a shape — its quantity register, method-tagged and estimator-bearing;
 2. binds its artefacts to the sufficiency tiers (which file is S2-core, which is S2-acquisition);
-3. adds technique acquisition terms to `ExperimentRunAction`;
+3. adds technique acquisition terms to `ExperimentRunAction` beyond those Core already carries
+   (Core carries the `ExperimentRun` session settings `lambda-ber-schema` defines, such as the
+   cryo-EM optics in §6.2);
 4. declares its own profile URI alongside Core's in `conformsTo`;
 5. generates its own JSON Schema, against which its crates validate. A Core-only schema will reject
    extension terms at layer 2, by design — validate a crate against the most specific profile it
