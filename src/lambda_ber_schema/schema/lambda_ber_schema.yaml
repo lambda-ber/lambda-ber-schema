@@ -1454,6 +1454,8 @@ classes:
         inlined: true
         exact_mappings:
           - mmCIF:_em_imaging.nominal_cs
+        comments:
+          - "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.cs."
       c2_aperture:
         description: "C2 aperture size in micrometers"
         range: QuantityValue
@@ -1877,6 +1879,14 @@ classes:
         inlined: true
         exact_mappings:
           - mmCIF:_em_imaging.accelerating_voltage
+      cs:
+        description: "Nominal spherical aberration (Cs) of the objective lens in effect for this session, typically specified in millimeters. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
+        exact_mappings:
+          - mmCIF:_em_imaging.nominal_cs
+        comments:
+          - "Fixed for a given microscope, but recorded per imaging session by mmCIF and by facility acquisition sheets, and needed with the run's data for CTF estimation."
       magnification:
         description: "Magnification used during data collection"
         range: QuantityValue
