@@ -207,6 +207,7 @@
 --     * Slot: yield_mg_id Description: Total yield in milligrams
 --     * Slot: purity_by_sds_page_percent_id Description: Purity percentage by SDS-PAGE
 -- # Class: Instrument Description: An instrument used to collect data
+--     * Slot: instrument_type Description: Which Instrument class this record is: Instrument, CryoEMInstrument, XRayInstrument, SAXSInstrument, SANSInstrument or BeamlineInstrument. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.
 --     * Slot: instrument_code Description: Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.
 --     * Slot: instrument_registry_id Description: Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.
 --     * Slot: instrument_category Description: Category distinguishing beamlines from laboratory equipment
@@ -238,6 +239,7 @@
 --     * Slot: microscope_software Description: Microscope control software (e.g., SerialEM, EPU, Leginon)
 --     * Slot: microscope_software_version Description: Software version
 --     * Slot: imaging_mode Description: Imaging mode for electron microscopy
+--     * Slot: instrument_type Description: Which Instrument class this record is: Instrument, CryoEMInstrument, XRayInstrument, SAXSInstrument, SANSInstrument or BeamlineInstrument. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.
 --     * Slot: instrument_code Description: Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.
 --     * Slot: instrument_registry_id Description: Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.
 --     * Slot: instrument_category Description: Category distinguishing beamlines from laboratory equipment
@@ -271,6 +273,7 @@
 --     * Slot: monochromator_type Description: Type of monochromator
 --     * Slot: goniometer_type Description: Type of goniometer
 --     * Slot: crystal_cooling_capability Description: Crystal cooling system available
+--     * Slot: instrument_type Description: Which Instrument class this record is: Instrument, CryoEMInstrument, XRayInstrument, SAXSInstrument, SANSInstrument or BeamlineInstrument. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.
 --     * Slot: instrument_code Description: Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.
 --     * Slot: instrument_registry_id Description: Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.
 --     * Slot: instrument_category Description: Category distinguishing beamlines from laboratory equipment
@@ -332,6 +335,7 @@
 -- # Class: SANSInstrument Description: Small-angle neutron scattering (SANS) instrument specifications
 --     * Slot: technique Description: Primary technique (should always be sans for this class)
 --     * Slot: environment Description: Textual description of environmental conditions
+--     * Slot: instrument_type Description: Which Instrument class this record is: Instrument, CryoEMInstrument, XRayInstrument, SAXSInstrument, SANSInstrument or BeamlineInstrument. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.
 --     * Slot: instrument_code Description: Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.
 --     * Slot: instrument_registry_id Description: Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.
 --     * Slot: instrument_category Description: Category distinguishing beamlines from laboratory equipment
@@ -352,6 +356,7 @@
 --     * Slot: configuration_id Description: Optical/mechanical configuration details
 -- # Class: SAXSInstrument Description: SAXS/WAXS instrument specifications
 --     * Slot: temperature_control_range Description: Temperature control range in Celsius
+--     * Slot: instrument_type Description: Which Instrument class this record is: Instrument, CryoEMInstrument, XRayInstrument, SAXSInstrument, SANSInstrument or BeamlineInstrument. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.
 --     * Slot: instrument_code Description: Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.
 --     * Slot: instrument_registry_id Description: Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.
 --     * Slot: instrument_category Description: Category distinguishing beamlines from laboratory equipment
@@ -378,6 +383,7 @@
 --     * Slot: lims_system Description: Laboratory Information Management System used at this beamline
 --     * Slot: daq_system Description: Data acquisition system used for experiment orchestration
 --     * Slot: control_system Description: Low-level control system for device communication
+--     * Slot: instrument_type Description: Which Instrument class this record is: Instrument, CryoEMInstrument, XRayInstrument, SAXSInstrument, SANSInstrument or BeamlineInstrument. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.
 --     * Slot: instrument_code Description: Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.
 --     * Slot: instrument_registry_id Description: Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.
 --     * Slot: instrument_category Description: Category distinguishing beamlines from laboratory equipment
@@ -1714,7 +1720,7 @@ CREATE TABLE "MolecularComposition_modifications" (
 	modifications TEXT,
 	PRIMARY KEY ("MolecularComposition_id", modifications),
 	FOREIGN KEY("MolecularComposition_id") REFERENCES "MolecularComposition" (id)
-);CREATE INDEX "ix_MolecularComposition_modifications_MolecularComposition_id" ON "MolecularComposition_modifications" ("MolecularComposition_id");CREATE INDEX "ix_MolecularComposition_modifications_modifications" ON "MolecularComposition_modifications" (modifications);
+);CREATE INDEX "ix_MolecularComposition_modifications_modifications" ON "MolecularComposition_modifications" (modifications);CREATE INDEX "ix_MolecularComposition_modifications_MolecularComposition_id" ON "MolecularComposition_modifications" ("MolecularComposition_id");
 CREATE TABLE "MolecularComposition_ligands" (
 	"MolecularComposition_id" INTEGER,
 	ligands TEXT,
@@ -1726,7 +1732,7 @@ CREATE TABLE "ProteinAnnotation_publication_ids" (
 	publication_ids TEXT,
 	PRIMARY KEY ("ProteinAnnotation_id", publication_ids),
 	FOREIGN KEY("ProteinAnnotation_id") REFERENCES "ProteinAnnotation" (id)
-);CREATE INDEX "ix_ProteinAnnotation_publication_ids_ProteinAnnotation_id" ON "ProteinAnnotation_publication_ids" ("ProteinAnnotation_id");CREATE INDEX "ix_ProteinAnnotation_publication_ids_publication_ids" ON "ProteinAnnotation_publication_ids" (publication_ids);
+);CREATE INDEX "ix_ProteinAnnotation_publication_ids_publication_ids" ON "ProteinAnnotation_publication_ids" (publication_ids);CREATE INDEX "ix_ProteinAnnotation_publication_ids_ProteinAnnotation_id" ON "ProteinAnnotation_publication_ids" ("ProteinAnnotation_id");
 CREATE TABLE "ConformationalEnsemble_principal_motions" (
 	"ConformationalEnsemble_id" TEXT,
 	principal_motions TEXT,
@@ -1744,7 +1750,7 @@ CREATE TABLE "EvolutionaryConservation_variable_residues" (
 	variable_residues TEXT,
 	PRIMARY KEY ("EvolutionaryConservation_id", variable_residues),
 	FOREIGN KEY("EvolutionaryConservation_id") REFERENCES "EvolutionaryConservation" (id)
-);CREATE INDEX "ix_EvolutionaryConservation_variable_residues_EvolutionaryConservation_id" ON "EvolutionaryConservation_variable_residues" ("EvolutionaryConservation_id");CREATE INDEX "ix_EvolutionaryConservation_variable_residues_variable_residues" ON "EvolutionaryConservation_variable_residues" (variable_residues);
+);CREATE INDEX "ix_EvolutionaryConservation_variable_residues_variable_residues" ON "EvolutionaryConservation_variable_residues" (variable_residues);CREATE INDEX "ix_EvolutionaryConservation_variable_residues_EvolutionaryConservation_id" ON "EvolutionaryConservation_variable_residues" ("EvolutionaryConservation_id");
 CREATE TABLE "EvolutionaryConservation_coevolved_residues" (
 	"EvolutionaryConservation_id" TEXT,
 	coevolved_residues TEXT,
@@ -1879,6 +1885,7 @@ CREATE TABLE "SamplePreparation" (
 	FOREIGN KEY(purity_by_sds_page_percent_id) REFERENCES "QuantityValue" (id)
 );CREATE INDEX "ix_SamplePreparation_id" ON "SamplePreparation" (id);
 CREATE TABLE "Instrument" (
+	instrument_type TEXT,
 	instrument_code TEXT NOT NULL,
 	instrument_registry_id TEXT,
 	instrument_category VARCHAR(20),
@@ -1914,6 +1921,7 @@ CREATE TABLE "CryoEMInstrument" (
 	microscope_software TEXT,
 	microscope_software_version TEXT,
 	imaging_mode VARCHAR(5),
+	instrument_type TEXT,
 	instrument_code TEXT NOT NULL,
 	instrument_registry_id TEXT,
 	instrument_category VARCHAR(20),
@@ -1961,6 +1969,7 @@ CREATE TABLE "XRayInstrument" (
 	monochromator_type TEXT,
 	goniometer_type TEXT,
 	crystal_cooling_capability BOOLEAN,
+	instrument_type TEXT,
 	instrument_code TEXT NOT NULL,
 	instrument_registry_id TEXT,
 	instrument_category VARCHAR(20),
@@ -2033,6 +2042,7 @@ CREATE TABLE "SANSConfiguration" (
 );CREATE INDEX "ix_SANSConfiguration_id" ON "SANSConfiguration" (id);
 CREATE TABLE "SAXSInstrument" (
 	temperature_control_range TEXT,
+	instrument_type TEXT,
 	instrument_code TEXT NOT NULL,
 	instrument_registry_id TEXT,
 	instrument_category VARCHAR(20),
@@ -2067,6 +2077,7 @@ CREATE TABLE "BeamlineInstrument" (
 	lims_system VARCHAR(13),
 	daq_system VARCHAR(10),
 	control_system VARCHAR(7),
+	instrument_type TEXT,
 	instrument_code TEXT NOT NULL,
 	instrument_registry_id TEXT,
 	instrument_category VARCHAR(20),
@@ -2718,7 +2729,7 @@ CREATE TABLE "ConformationalState_characteristic_features" (
 	characteristic_features TEXT,
 	PRIMARY KEY ("ConformationalState_id", characteristic_features),
 	FOREIGN KEY("ConformationalState_id") REFERENCES "ConformationalState" (id)
-);CREATE INDEX "ix_ConformationalState_characteristic_features_ConformationalState_id" ON "ConformationalState_characteristic_features" ("ConformationalState_id");CREATE INDEX "ix_ConformationalState_characteristic_features_characteristic_features" ON "ConformationalState_characteristic_features" (characteristic_features);
+);CREATE INDEX "ix_ConformationalState_characteristic_features_characteristic_features" ON "ConformationalState_characteristic_features" (characteristic_features);CREATE INDEX "ix_ConformationalState_characteristic_features_ConformationalState_id" ON "ConformationalState_characteristic_features" ("ConformationalState_id");
 CREATE TABLE "AggregatedProteinView_pdb_entries" (
 	"AggregatedProteinView_id" TEXT,
 	pdb_entries TEXT,
@@ -2803,6 +2814,7 @@ CREATE TABLE "ProteinConstruct" (
 CREATE TABLE "SANSInstrument" (
 	technique VARCHAR(29),
 	environment TEXT,
+	instrument_type TEXT,
 	instrument_code TEXT NOT NULL,
 	instrument_registry_id TEXT,
 	instrument_category VARCHAR(20),
@@ -3032,13 +3044,13 @@ CREATE TABLE "Protein_ec_numbers" (
 	ec_numbers TEXT,
 	PRIMARY KEY ("Protein_id", ec_numbers),
 	FOREIGN KEY("Protein_id") REFERENCES "Protein" (id)
-);CREATE INDEX "ix_Protein_ec_numbers_ec_numbers" ON "Protein_ec_numbers" (ec_numbers);CREATE INDEX "ix_Protein_ec_numbers_Protein_id" ON "Protein_ec_numbers" ("Protein_id");
+);CREATE INDEX "ix_Protein_ec_numbers_Protein_id" ON "Protein_ec_numbers" ("Protein_id");CREATE INDEX "ix_Protein_ec_numbers_ec_numbers" ON "Protein_ec_numbers" (ec_numbers);
 CREATE TABLE "Protein_go_terms" (
 	"Protein_id" TEXT,
 	go_terms TEXT,
 	PRIMARY KEY ("Protein_id", go_terms),
 	FOREIGN KEY("Protein_id") REFERENCES "Protein" (id)
-);CREATE INDEX "ix_Protein_go_terms_Protein_id" ON "Protein_go_terms" ("Protein_id");CREATE INDEX "ix_Protein_go_terms_go_terms" ON "Protein_go_terms" (go_terms);
+);CREATE INDEX "ix_Protein_go_terms_go_terms" ON "Protein_go_terms" (go_terms);CREATE INDEX "ix_Protein_go_terms_Protein_id" ON "Protein_go_terms" ("Protein_id");
 CREATE TABLE "Protein_pdb_entries" (
 	"Protein_id" TEXT,
 	pdb_entries TEXT,
@@ -3062,7 +3074,7 @@ CREATE TABLE "NucleicAcid_pdb_entries" (
 	pdb_entries TEXT,
 	PRIMARY KEY ("NucleicAcid_id", pdb_entries),
 	FOREIGN KEY("NucleicAcid_id") REFERENCES "NucleicAcid" (id)
-);CREATE INDEX "ix_NucleicAcid_pdb_entries_NucleicAcid_id" ON "NucleicAcid_pdb_entries" ("NucleicAcid_id");CREATE INDEX "ix_NucleicAcid_pdb_entries_pdb_entries" ON "NucleicAcid_pdb_entries" (pdb_entries);
+);CREATE INDEX "ix_NucleicAcid_pdb_entries_pdb_entries" ON "NucleicAcid_pdb_entries" (pdb_entries);CREATE INDEX "ix_NucleicAcid_pdb_entries_NucleicAcid_id" ON "NucleicAcid_pdb_entries" ("NucleicAcid_id");
 CREATE TABLE "SamplePreparation_purification_steps" (
 	"SamplePreparation_id" TEXT,
 	purification_steps VARCHAR(23),
@@ -3074,7 +3086,7 @@ CREATE TABLE "BeamlineInstrument_techniques_supported" (
 	techniques_supported VARCHAR(29) NOT NULL,
 	PRIMARY KEY ("BeamlineInstrument_id", techniques_supported),
 	FOREIGN KEY("BeamlineInstrument_id") REFERENCES "BeamlineInstrument" (id)
-);CREATE INDEX "ix_BeamlineInstrument_techniques_supported_techniques_supported" ON "BeamlineInstrument_techniques_supported" (techniques_supported);CREATE INDEX "ix_BeamlineInstrument_techniques_supported_BeamlineInstrument_id" ON "BeamlineInstrument_techniques_supported" ("BeamlineInstrument_id");
+);CREATE INDEX "ix_BeamlineInstrument_techniques_supported_BeamlineInstrument_id" ON "BeamlineInstrument_techniques_supported" ("BeamlineInstrument_id");CREATE INDEX "ix_BeamlineInstrument_techniques_supported_techniques_supported" ON "BeamlineInstrument_techniques_supported" (techniques_supported);
 CREATE TABLE "FTIRImage_molecular_signatures" (
 	"FTIRImage_id" TEXT,
 	molecular_signatures TEXT,
@@ -3700,13 +3712,13 @@ CREATE TABLE "SampleProteinAssociation_chain_ids" (
 	chain_ids TEXT,
 	PRIMARY KEY ("SampleProteinAssociation_id", chain_ids),
 	FOREIGN KEY("SampleProteinAssociation_id") REFERENCES "SampleProteinAssociation" (id)
-);CREATE INDEX "ix_SampleProteinAssociation_chain_ids_SampleProteinAssociation_id" ON "SampleProteinAssociation_chain_ids" ("SampleProteinAssociation_id");CREATE INDEX "ix_SampleProteinAssociation_chain_ids_chain_ids" ON "SampleProteinAssociation_chain_ids" (chain_ids);
+);CREATE INDEX "ix_SampleProteinAssociation_chain_ids_chain_ids" ON "SampleProteinAssociation_chain_ids" (chain_ids);CREATE INDEX "ix_SampleProteinAssociation_chain_ids_SampleProteinAssociation_id" ON "SampleProteinAssociation_chain_ids" ("SampleProteinAssociation_id");
 CREATE TABLE "SampleProteinAssociation_modifications" (
 	"SampleProteinAssociation_id" INTEGER,
 	modifications TEXT,
 	PRIMARY KEY ("SampleProteinAssociation_id", modifications),
 	FOREIGN KEY("SampleProteinAssociation_id") REFERENCES "SampleProteinAssociation" (id)
-);CREATE INDEX "ix_SampleProteinAssociation_modifications_modifications" ON "SampleProteinAssociation_modifications" (modifications);CREATE INDEX "ix_SampleProteinAssociation_modifications_SampleProteinAssociation_id" ON "SampleProteinAssociation_modifications" ("SampleProteinAssociation_id");
+);CREATE INDEX "ix_SampleProteinAssociation_modifications_SampleProteinAssociation_id" ON "SampleProteinAssociation_modifications" ("SampleProteinAssociation_id");CREATE INDEX "ix_SampleProteinAssociation_modifications_modifications" ON "SampleProteinAssociation_modifications" (modifications);
 CREATE TABLE "SampleNucleicAcidAssociation_chain_ids" (
 	"SampleNucleicAcidAssociation_id" INTEGER,
 	chain_ids TEXT,
@@ -3736,7 +3748,7 @@ CREATE TABLE "FunctionalSite_publication_ids" (
 	publication_ids TEXT,
 	PRIMARY KEY ("FunctionalSite_id", publication_ids),
 	FOREIGN KEY("FunctionalSite_id") REFERENCES "FunctionalSite" (id)
-);CREATE INDEX "ix_FunctionalSite_publication_ids_publication_ids" ON "FunctionalSite_publication_ids" (publication_ids);CREATE INDEX "ix_FunctionalSite_publication_ids_FunctionalSite_id" ON "FunctionalSite_publication_ids" ("FunctionalSite_id");
+);CREATE INDEX "ix_FunctionalSite_publication_ids_FunctionalSite_id" ON "FunctionalSite_publication_ids" ("FunctionalSite_id");CREATE INDEX "ix_FunctionalSite_publication_ids_publication_ids" ON "FunctionalSite_publication_ids" (publication_ids);
 CREATE TABLE "StructuralFeature_publication_ids" (
 	"StructuralFeature_id" TEXT,
 	publication_ids TEXT,
@@ -3760,7 +3772,7 @@ CREATE TABLE "ProteinProteinInteraction_interaction_evidence" (
 	interaction_evidence VARCHAR(14),
 	PRIMARY KEY ("ProteinProteinInteraction_id", interaction_evidence),
 	FOREIGN KEY("ProteinProteinInteraction_id") REFERENCES "ProteinProteinInteraction" (id)
-);CREATE INDEX "ix_ProteinProteinInteraction_interaction_evidence_ProteinProteinInteraction_id" ON "ProteinProteinInteraction_interaction_evidence" ("ProteinProteinInteraction_id");CREATE INDEX "ix_ProteinProteinInteraction_interaction_evidence_interaction_evidence" ON "ProteinProteinInteraction_interaction_evidence" (interaction_evidence);
+);CREATE INDEX "ix_ProteinProteinInteraction_interaction_evidence_interaction_evidence" ON "ProteinProteinInteraction_interaction_evidence" (interaction_evidence);CREATE INDEX "ix_ProteinProteinInteraction_interaction_evidence_ProteinProteinInteraction_id" ON "ProteinProteinInteraction_interaction_evidence" ("ProteinProteinInteraction_id");
 CREATE TABLE "ProteinProteinInteraction_publication_ids" (
 	"ProteinProteinInteraction_id" TEXT,
 	publication_ids TEXT,
@@ -3784,7 +3796,7 @@ CREATE TABLE "SampleComponentInteraction_evidence" (
 	evidence VARCHAR(14),
 	PRIMARY KEY ("SampleComponentInteraction_id", evidence),
 	FOREIGN KEY("SampleComponentInteraction_id") REFERENCES "SampleComponentInteraction" (id)
-);CREATE INDEX "ix_SampleComponentInteraction_evidence_evidence" ON "SampleComponentInteraction_evidence" (evidence);CREATE INDEX "ix_SampleComponentInteraction_evidence_SampleComponentInteraction_id" ON "SampleComponentInteraction_evidence" ("SampleComponentInteraction_id");
+);CREATE INDEX "ix_SampleComponentInteraction_evidence_SampleComponentInteraction_id" ON "SampleComponentInteraction_evidence" ("SampleComponentInteraction_id");CREATE INDEX "ix_SampleComponentInteraction_evidence_evidence" ON "SampleComponentInteraction_evidence" (evidence);
 CREATE TABLE "LigandInteraction_binding_site_residues" (
 	"LigandInteraction_id" INTEGER,
 	binding_site_residues TEXT,

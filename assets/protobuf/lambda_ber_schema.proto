@@ -43,6 +43,7 @@ message BeamlineInstrument
   uriorcurie id = 0
   string title = 0
   string description = 0
+  string instrumentType = 0
   string instrumentCode = 0
   string instrumentRegistryId = 0
   instrumentCategoryEnum instrumentCategory = 0
@@ -127,6 +128,7 @@ message CryoEMInstrument
   uriorcurie id = 0
   string title = 0
   string description = 0
+  string instrumentType = 0
   string instrumentCode = 0
   string instrumentRegistryId = 0
   instrumentCategoryEnum instrumentCategory = 0
@@ -615,6 +617,7 @@ message Instrument
   uriorcurie id = 0
   string title = 0
   string description = 0
+  string instrumentType = 0
   string instrumentCode = 0
   string instrumentRegistryId = 0
   instrumentCategoryEnum instrumentCategory = 0
@@ -1243,6 +1246,7 @@ message SANSInstrument
   uriorcurie id = 0
   string title = 0
   string description = 0
+  string instrumentType = 0
   string instrumentCode = 0
   string instrumentRegistryId = 0
   instrumentCategoryEnum instrumentCategory = 0
@@ -1280,6 +1284,7 @@ message SAXSInstrument
   uriorcurie id = 0
   string title = 0
   string description = 0
+  string instrumentType = 0
   string instrumentCode = 0
   string instrumentRegistryId = 0
   instrumentCategoryEnum instrumentCategory = 0
@@ -1518,6 +1523,7 @@ message XRayInstrument
   uriorcurie id = 0
   string title = 0
   string description = 0
+  string instrumentType = 0
   string instrumentCode = 0
   string instrumentRegistryId = 0
   instrumentCategoryEnum instrumentCategory = 0

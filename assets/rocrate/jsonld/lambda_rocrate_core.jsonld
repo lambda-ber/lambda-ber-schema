@@ -9828,6 +9828,26 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "instrument_type",
+      "definition_uri": "http://w3id.org/lambda/instrument_type",
+      "description": "Which Instrument class this record is: Instrument, CryoEMInstrument, XRayInstrument, SAXSInstrument, SANSInstrument or BeamlineInstrument. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.",
+      "comments": [
+        "Write it whenever an instrument record uses fields of an Instrument subclass, e.g. `instrument_type: CryoEMInstrument` for an instrument with `cs` or `detector_model`. A record without it loads as a plain Instrument, and the Python loader then rejects the subclass fields.",
+        "Code that builds an instrument object need not set it: the generated classes fill it in from the class.",
+        "Defined here rather than as an Instrument attribute because LinkML's Python generator mishandles a type designator declared as an attribute: it emits a stray `unknown_instrument_type` assignment, and the RDF dumper then fails (linkml/linkml#2107, #3663; still present in linkml 1.12.1).",
+        "The value is the class name, not a CURIE: a `uriorcurie` designator does not round-trip between the Pydantic and Python generators (linkml/linkml#3836)."
+      ],
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/instrument_type",
+      "designates_type": true,
+      "owner": "Instrument",
+      "domain_of": [
+        "Instrument"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "attribute",
       "definition_uri": "http://w3id.org/lambda/attribute",
       "description": "The attribute being represented.",
@@ -27719,6 +27739,7 @@
         "namedThing__id",
         "namedThing__title",
         "namedThing__description",
+        "instrument_type",
         "instrument__instrument_code",
         "instrument__instrument_registry_id",
         "instrument__instrument_category",
@@ -27846,6 +27867,7 @@
         "namedThing__id",
         "namedThing__title",
         "namedThing__description",
+        "instrument_type",
         "instrument__instrument_code",
         "instrument__instrument_registry_id",
         "instrument__instrument_category",
@@ -28131,6 +28153,7 @@
         "namedThing__id",
         "namedThing__title",
         "namedThing__description",
+        "instrument_type",
         "instrument__instrument_code",
         "instrument__instrument_registry_id",
         "instrument__instrument_category",
@@ -28546,6 +28569,7 @@
         "namedThing__id",
         "namedThing__title",
         "namedThing__description",
+        "instrument_type",
         "instrument__instrument_code",
         "instrument__instrument_registry_id",
         "instrument__instrument_category",
@@ -28628,6 +28652,7 @@
         "namedThing__id",
         "namedThing__title",
         "namedThing__description",
+        "instrument_type",
         "instrument__instrument_code",
         "instrument__instrument_registry_id",
         "instrument__instrument_category",
@@ -28706,6 +28731,7 @@
         "namedThing__id",
         "namedThing__title",
         "namedThing__description",
+        "instrument_type",
         "instrument__instrument_code",
         "instrument__instrument_registry_id",
         "instrument__instrument_category",
@@ -35224,9 +35250,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda_rocrate_core.yaml",
-  "source_file_date": "2026-10-14T12:04:20",
+  "source_file_date": "2026-10-14T15:21:11",
   "source_file_size": 94503,
-  "generation_date": "2026-10-14T12:43:48",
+  "generation_date": "2026-10-14T15:28:38",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/rocrate/jsonld/lambda_rocrate_core.context.jsonld",

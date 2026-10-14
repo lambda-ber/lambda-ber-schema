@@ -4722,7 +4722,7 @@ class Dataset(NamedThing):
     studies: Optional[list[Study]] = Field(default=None, description="""All studies in this dataset""", json_schema_extra = { "linkml_meta": {'alias': 'studies', 'domain_of': ['Dataset']} })
     persons: Optional[list[Person]] = Field(default=None, description="""All people referenced anywhere in this dataset""", json_schema_extra = { "linkml_meta": {'alias': 'persons', 'domain_of': ['Dataset']} })
     organizations: Optional[list[Organization]] = Field(default=None, description="""All organizations referenced anywhere in this dataset""", json_schema_extra = { "linkml_meta": {'alias': 'organizations', 'domain_of': ['Dataset']} })
-    instruments: Optional[list[Instrument]] = Field(default=None, description="""All instruments used across studies""", json_schema_extra = { "linkml_meta": {'alias': 'instruments', 'domain_of': ['Dataset']} })
+    instruments: Optional[list[Union[Instrument,CryoEMInstrument,XRayInstrument,SANSInstrument,SAXSInstrument,BeamlineInstrument]]] = Field(default=None, description="""All instruments used across studies""", json_schema_extra = { "linkml_meta": {'alias': 'instruments', 'domain_of': ['Dataset']} })
     proteins: Optional[list[Protein]] = Field(default=None, description="""All proteins referenced by samples in this dataset, one record per protein""", json_schema_extra = { "linkml_meta": {'alias': 'proteins', 'domain_of': ['Dataset']} })
     protein_constructs: Optional[list[ProteinConstruct]] = Field(default=None, description="""All protein constructs""", json_schema_extra = { "linkml_meta": {'alias': 'protein_constructs', 'domain_of': ['Dataset']} })
     nucleic_acids: Optional[list[NucleicAcid]] = Field(default=None, description="""All nucleic acids referenced by samples in this dataset, one record per strand""", json_schema_extra = { "linkml_meta": {'alias': 'nucleic_acids', 'domain_of': ['Dataset']} })
@@ -5518,6 +5518,24 @@ class Instrument(NamedThing):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/'})
 
+    instrument_type: Literal["Instrument"] = Field(default="Instrument", description="""Which Instrument class this record is: Instrument, CryoEMInstrument, XRayInstrument, SAXSInstrument, SANSInstrument or BeamlineInstrument. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_type',
+         'comments': ['Write it whenever an instrument record uses fields of an '
+                      'Instrument subclass, e.g. `instrument_type: CryoEMInstrument` '
+                      'for an instrument with `cs` or `detector_model`. A record '
+                      'without it loads as a plain Instrument, and the Python loader '
+                      'then rejects the subclass fields.',
+                      'Code that builds an instrument object need not set it: the '
+                      'generated classes fill it in from the class.',
+                      'Defined here rather than as an Instrument attribute because '
+                      "LinkML's Python generator mishandles a type designator declared "
+                      'as an attribute: it emits a stray `unknown_instrument_type` '
+                      'assignment, and the RDF dumper then fails (linkml/linkml#2107, '
+                      '#3663; still present in linkml 1.12.1).',
+                      'The value is the class name, not a CURIE: a `uriorcurie` '
+                      'designator does not round-trip between the Pydantic and Python '
+                      'generators (linkml/linkml#3836).'],
+         'designates_type': True,
+         'domain_of': ['Instrument']} })
     instrument_code: str = Field(default=..., description="""Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_code', 'domain_of': ['Instrument']} })
     instrument_registry_id: Optional[BeamlineEnum] = Field(default=None, description="""Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_registry_id',
          'any_of': [{'range': 'BeamlineEnum'}],
@@ -5663,6 +5681,24 @@ class CryoEMInstrument(Instrument):
                       'value actually used in a session on '
                       'ExperimentRun.beam_diameter.'],
          'domain_of': ['CryoEMInstrument']} })
+    instrument_type: Literal["CryoEMInstrument"] = Field(default="CryoEMInstrument", description="""Which Instrument class this record is: Instrument, CryoEMInstrument, XRayInstrument, SAXSInstrument, SANSInstrument or BeamlineInstrument. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_type',
+         'comments': ['Write it whenever an instrument record uses fields of an '
+                      'Instrument subclass, e.g. `instrument_type: CryoEMInstrument` '
+                      'for an instrument with `cs` or `detector_model`. A record '
+                      'without it loads as a plain Instrument, and the Python loader '
+                      'then rejects the subclass fields.',
+                      'Code that builds an instrument object need not set it: the '
+                      'generated classes fill it in from the class.',
+                      'Defined here rather than as an Instrument attribute because '
+                      "LinkML's Python generator mishandles a type designator declared "
+                      'as an attribute: it emits a stray `unknown_instrument_type` '
+                      'assignment, and the RDF dumper then fails (linkml/linkml#2107, '
+                      '#3663; still present in linkml 1.12.1).',
+                      'The value is the class name, not a CURIE: a `uriorcurie` '
+                      'designator does not round-trip between the Pydantic and Python '
+                      'generators (linkml/linkml#3836).'],
+         'designates_type': True,
+         'domain_of': ['Instrument']} })
     instrument_code: str = Field(default=..., description="""Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_code', 'domain_of': ['Instrument']} })
     instrument_registry_id: Optional[BeamlineEnum] = Field(default=None, description="""Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_registry_id',
          'any_of': [{'range': 'BeamlineEnum'}],
@@ -5769,6 +5805,24 @@ class XRayInstrument(Instrument):
          'domain_of': ['XRayInstrument'],
          'exact_mappings': ['mmCIF:_diffrn_measurement.device']} })
     crystal_cooling_capability: Optional[bool] = Field(default=None, description="""Crystal cooling system available""", json_schema_extra = { "linkml_meta": {'alias': 'crystal_cooling_capability', 'domain_of': ['XRayInstrument']} })
+    instrument_type: Literal["XRayInstrument"] = Field(default="XRayInstrument", description="""Which Instrument class this record is: Instrument, CryoEMInstrument, XRayInstrument, SAXSInstrument, SANSInstrument or BeamlineInstrument. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_type',
+         'comments': ['Write it whenever an instrument record uses fields of an '
+                      'Instrument subclass, e.g. `instrument_type: CryoEMInstrument` '
+                      'for an instrument with `cs` or `detector_model`. A record '
+                      'without it loads as a plain Instrument, and the Python loader '
+                      'then rejects the subclass fields.',
+                      'Code that builds an instrument object need not set it: the '
+                      'generated classes fill it in from the class.',
+                      'Defined here rather than as an Instrument attribute because '
+                      "LinkML's Python generator mishandles a type designator declared "
+                      'as an attribute: it emits a stray `unknown_instrument_type` '
+                      'assignment, and the RDF dumper then fails (linkml/linkml#2107, '
+                      '#3663; still present in linkml 1.12.1).',
+                      'The value is the class name, not a CURIE: a `uriorcurie` '
+                      'designator does not round-trip between the Pydantic and Python '
+                      'generators (linkml/linkml#3836).'],
+         'designates_type': True,
+         'domain_of': ['Instrument']} })
     instrument_code: str = Field(default=..., description="""Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_code', 'domain_of': ['Instrument']} })
     instrument_registry_id: Optional[BeamlineEnum] = Field(default=None, description="""Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_registry_id',
          'any_of': [{'range': 'BeamlineEnum'}],
@@ -5915,6 +5969,24 @@ class SANSInstrument(Instrument):
     source: Optional[SANSSource] = Field(default=None, description="""Source parameters for the instrument""", json_schema_extra = { "linkml_meta": {'alias': 'source', 'domain_of': ['SANSInstrument']} })
     configuration: Optional[SANSConfiguration] = Field(default=None, description="""Optical/mechanical configuration details""", json_schema_extra = { "linkml_meta": {'alias': 'configuration', 'domain_of': ['SANSInstrument']} })
     environment: Optional[str] = Field(default=None, description="""Textual description of environmental conditions""", json_schema_extra = { "linkml_meta": {'alias': 'environment', 'domain_of': ['SANSInstrument']} })
+    instrument_type: Literal["SANSInstrument"] = Field(default="SANSInstrument", description="""Which Instrument class this record is: Instrument, CryoEMInstrument, XRayInstrument, SAXSInstrument, SANSInstrument or BeamlineInstrument. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_type',
+         'comments': ['Write it whenever an instrument record uses fields of an '
+                      'Instrument subclass, e.g. `instrument_type: CryoEMInstrument` '
+                      'for an instrument with `cs` or `detector_model`. A record '
+                      'without it loads as a plain Instrument, and the Python loader '
+                      'then rejects the subclass fields.',
+                      'Code that builds an instrument object need not set it: the '
+                      'generated classes fill it in from the class.',
+                      'Defined here rather than as an Instrument attribute because '
+                      "LinkML's Python generator mishandles a type designator declared "
+                      'as an attribute: it emits a stray `unknown_instrument_type` '
+                      'assignment, and the RDF dumper then fails (linkml/linkml#2107, '
+                      '#3663; still present in linkml 1.12.1).',
+                      'The value is the class name, not a CURIE: a `uriorcurie` '
+                      'designator does not round-trip between the Pydantic and Python '
+                      'generators (linkml/linkml#3836).'],
+         'designates_type': True,
+         'domain_of': ['Instrument']} })
     instrument_code: str = Field(default=..., description="""Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_code', 'domain_of': ['Instrument']} })
     instrument_registry_id: Optional[BeamlineEnum] = Field(default=None, description="""Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_registry_id',
          'any_of': [{'range': 'BeamlineEnum'}],
@@ -5994,6 +6066,24 @@ class SAXSInstrument(Instrument):
     sample_changer_capacity: Optional[QuantityValue] = Field(default=None, description="""Number of samples in automatic sample changer""", json_schema_extra = { "linkml_meta": {'alias': 'sample_changer_capacity',
          'domain_of': ['SAXSInstrument', 'BeamlineInstrument']} })
     temperature_control_range: Optional[str] = Field(default=None, description="""Temperature control range in Celsius""", json_schema_extra = { "linkml_meta": {'alias': 'temperature_control_range', 'domain_of': ['SAXSInstrument']} })
+    instrument_type: Literal["SAXSInstrument"] = Field(default="SAXSInstrument", description="""Which Instrument class this record is: Instrument, CryoEMInstrument, XRayInstrument, SAXSInstrument, SANSInstrument or BeamlineInstrument. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_type',
+         'comments': ['Write it whenever an instrument record uses fields of an '
+                      'Instrument subclass, e.g. `instrument_type: CryoEMInstrument` '
+                      'for an instrument with `cs` or `detector_model`. A record '
+                      'without it loads as a plain Instrument, and the Python loader '
+                      'then rejects the subclass fields.',
+                      'Code that builds an instrument object need not set it: the '
+                      'generated classes fill it in from the class.',
+                      'Defined here rather than as an Instrument attribute because '
+                      "LinkML's Python generator mishandles a type designator declared "
+                      'as an attribute: it emits a stray `unknown_instrument_type` '
+                      'assignment, and the RDF dumper then fails (linkml/linkml#2107, '
+                      '#3663; still present in linkml 1.12.1).',
+                      'The value is the class name, not a CURIE: a `uriorcurie` '
+                      'designator does not round-trip between the Pydantic and Python '
+                      'generators (linkml/linkml#3836).'],
+         'designates_type': True,
+         'domain_of': ['Instrument']} })
     instrument_code: str = Field(default=..., description="""Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_code', 'domain_of': ['Instrument']} })
     instrument_registry_id: Optional[BeamlineEnum] = Field(default=None, description="""Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_registry_id',
          'any_of': [{'range': 'BeamlineEnum'}],
@@ -6090,6 +6180,24 @@ class BeamlineInstrument(Instrument):
     lims_system: Optional[LIMSSystemEnum] = Field(default=None, description="""Laboratory Information Management System used at this beamline""", json_schema_extra = { "linkml_meta": {'alias': 'lims_system', 'domain_of': ['BeamlineInstrument']} })
     daq_system: Optional[DataAcquisitionSystemEnum] = Field(default=None, description="""Data acquisition system used for experiment orchestration""", json_schema_extra = { "linkml_meta": {'alias': 'daq_system', 'domain_of': ['BeamlineInstrument', 'ExperimentRun']} })
     control_system: Optional[ControlSystemEnum] = Field(default=None, description="""Low-level control system for device communication""", json_schema_extra = { "linkml_meta": {'alias': 'control_system', 'domain_of': ['BeamlineInstrument']} })
+    instrument_type: Literal["BeamlineInstrument"] = Field(default="BeamlineInstrument", description="""Which Instrument class this record is: Instrument, CryoEMInstrument, XRayInstrument, SAXSInstrument, SANSInstrument or BeamlineInstrument. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_type',
+         'comments': ['Write it whenever an instrument record uses fields of an '
+                      'Instrument subclass, e.g. `instrument_type: CryoEMInstrument` '
+                      'for an instrument with `cs` or `detector_model`. A record '
+                      'without it loads as a plain Instrument, and the Python loader '
+                      'then rejects the subclass fields.',
+                      'Code that builds an instrument object need not set it: the '
+                      'generated classes fill it in from the class.',
+                      'Defined here rather than as an Instrument attribute because '
+                      "LinkML's Python generator mishandles a type designator declared "
+                      'as an attribute: it emits a stray `unknown_instrument_type` '
+                      'assignment, and the RDF dumper then fails (linkml/linkml#2107, '
+                      '#3663; still present in linkml 1.12.1).',
+                      'The value is the class name, not a CURIE: a `uriorcurie` '
+                      'designator does not round-trip between the Pydantic and Python '
+                      'generators (linkml/linkml#3836).'],
+         'designates_type': True,
+         'domain_of': ['Instrument']} })
     instrument_code: str = Field(default=..., description="""Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_code', 'domain_of': ['Instrument']} })
     instrument_registry_id: Optional[BeamlineEnum] = Field(default=None, description="""Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_registry_id',
          'any_of': [{'range': 'BeamlineEnum'}],
