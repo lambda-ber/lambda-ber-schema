@@ -1,5 +1,5 @@
 # metamodel_version: 1.7.0
-# version: 0.1.2.post308.dev0+8a814589
+# version: 0.1.2.post368.dev0+c63f3e26
 enum AffinityUnitEnum
   {
     molar
@@ -301,6 +301,20 @@ enum DataTypeEnum
     defect_map
     atlas
     screening_image
+    topology
+    trajectory
+    restart
+    force_field_params
+    solvated_structure
+    parameterized_ligand
+    md_rmsd
+    md_rmsf
+    md_clustering
+    md_hbond
+    md_interaction_fingerprint
+    md_event_detection
+    md_dihedral_entropy
+    md_energy
   }
 
 enum DetectorModeEnum
@@ -425,6 +439,19 @@ enum FileFormatEnum
     mdoc
     nav
     dm4
+    mol2
+    sdf
+    frcmod
+    prmtop
+    inpcrd
+    rst7
+    netcdf
+    dcd
+    xtc
+    trr
+    gro
+    top
+    lib
   }
 
 enum FunctionalEffectEnum
@@ -586,6 +613,26 @@ enum LIMSSystemEnum
     mxlive
     mxcube_lims
     user_office
+  }
+
+enum MDEnsembleEnum
+  {
+    nve
+    nvt
+    npt
+  }
+
+enum MDStageEnum
+  {
+    parameterization
+    topology_building
+    hydrogen_mass_repartitioning
+    minimization_restrained
+    minimization_unrestrained
+    heating
+    equilibration_restrained
+    equilibration_unrestrained
+    production
   }
 
 enum MutationTypeEnum
@@ -946,6 +993,7 @@ enum TechniqueEnum
     time_resolved_crystallography
     xray_tomography
     microed
+    molecular_dynamics
   }
 
 enum TiltingSchemeEnum
@@ -987,6 +1035,11 @@ enum WorkflowTypeEnum
     map_validation
     model_refinement
     model_validation
+    md_system_setup
+    md_minimization
+    md_equilibration
+    md_production
+    md_analysis
   }
 
 enum XRaySourceTypeEnum
@@ -1651,6 +1704,46 @@ type LigandInteraction
     isDrugLike: Boolean
     druggabilityScore: Float
     interactionDistance: Float
+  }
+
+type MDSimulationParameters
+  {
+    description: String
+    simulationEngine: String
+    simulationEngineVersion: String
+    proteinForceField: String
+    ligandForceField: String
+    waterModel: String
+    chargeMethod: String
+    boxPadding: QuantityValue
+    boxShape: String
+    ionNeutralization: Boolean
+    ionSpecies: [String]
+    netCharge: QuantityValue
+    hydrogenMassRepartitioning: Boolean
+    ensemble: MDEnsembleEnum
+    thermostat: String
+    thermostatCoupling: QuantityValue
+    barostat: String
+    barostatCoupling: QuantityValue
+    temperature: QuantityValue
+    pressure: QuantityValue
+    timestep: QuantityValue
+    constraintAlgorithm: String
+    nonbondedCutoff: QuantityValue
+    simulationStage: MDStageEnum
+    durationNs: QuantityValue
+    totalSteps: QuantityValue
+    trajectoryOutputInterval: QuantityValue
+    restraintMask: String
+    restraintForceConstant: QuantityValue
+    minimizationMaxCycles: QuantityValue
+    minimizationSteepestDescentCycles: QuantityValue
+    initialTemperature: QuantityValue
+    heatDurationNs: QuantityValue
+    equilRestrainedDurationNs: QuantityValue
+    equilFreeDurationNs: QuantityValue
+    productionDurationNs: QuantityValue
   }
 
 type MeasurementConditions
@@ -2529,6 +2622,7 @@ type WorkflowRun
     motionCorrectionParams: MotionCorrectionParameters
     ctfEstimationParams: CTFEstimationParameters
     particlePickingParams: ParticlePickingParameters
+    mdSimulationParams: MDSimulationParameters
     refinementParams: RefinementParameters
     fscCurve: FSCCurve
     outputFiles: [DataFile]

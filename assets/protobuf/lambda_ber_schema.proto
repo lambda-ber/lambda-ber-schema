@@ -1,7 +1,7 @@
  syntax="proto3";
  package
 // metamodel_version: 1.7.0
-// version: 0.1.2.post308.dev0+8a814589
+// version: 0.1.2.post368.dev0+c63f3e26
 // Aggregated view of all structural and functional data for a protein
 message AggregatedProteinView
  {
@@ -646,6 +646,46 @@ message LigandInteraction
   boolean isDrugLike = 0
   float druggabilityScore = 0
   float interactionDistance = 0
+ }
+// Parameters for a molecular dynamics simulation workflow. Captures force field selection, simulation conditions, integration settings, solvation setup, and the multi-stage pipeline (minimization, heating, equilibration, production).
+message MDSimulationParameters
+ {
+  string description = 0
+  string simulationEngine = 0
+  string simulationEngineVersion = 0
+  string proteinForceField = 0
+  string ligandForceField = 0
+  string waterModel = 0
+  string chargeMethod = 0
+  quantityValue boxPadding = 0
+  string boxShape = 0
+  boolean ionNeutralization = 0
+ repeated  string ionSpecies = 0
+  quantityValue netCharge = 0
+  boolean hydrogenMassRepartitioning = 0
+  mDEnsembleEnum ensemble = 0
+  string thermostat = 0
+  quantityValue thermostatCoupling = 0
+  string barostat = 0
+  quantityValue barostatCoupling = 0
+  quantityValue temperature = 0
+  quantityValue pressure = 0
+  quantityValue timestep = 0
+  string constraintAlgorithm = 0
+  quantityValue nonbondedCutoff = 0
+  mDStageEnum simulationStage = 0
+  quantityValue durationNs = 0
+  quantityValue totalSteps = 0
+  quantityValue trajectoryOutputInterval = 0
+  string restraintMask = 0
+  quantityValue restraintForceConstant = 0
+  quantityValue minimizationMaxCycles = 0
+  quantityValue minimizationSteepestDescentCycles = 0
+  quantityValue initialTemperature = 0
+  quantityValue heatDurationNs = 0
+  quantityValue equilRestrainedDurationNs = 0
+  quantityValue equilFreeDurationNs = 0
+  quantityValue productionDurationNs = 0
  }
 // Conditions under which biophysical measurements were made
 message MeasurementConditions
@@ -1513,6 +1553,7 @@ message WorkflowRun
   motionCorrectionParameters motionCorrectionParams = 0
   cTFEstimationParameters ctfEstimationParams = 0
   particlePickingParameters particlePickingParams = 0
+  mDSimulationParameters mdSimulationParams = 0
   refinementParameters refinementParams = 0
   fSCCurve fscCurve = 0
  repeated  dataFile outputFiles = 0

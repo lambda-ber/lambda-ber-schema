@@ -3079,7 +3079,21 @@
                 "gain_reference",
                 "defect_map",
                 "atlas",
-                "screening_image"
+                "screening_image",
+                "topology",
+                "trajectory",
+                "restart",
+                "force_field_params",
+                "solvated_structure",
+                "parameterized_ligand",
+                "md_rmsd",
+                "md_rmsf",
+                "md_clustering",
+                "md_hbond",
+                "md_interaction_fingerprint",
+                "md_event_detection",
+                "md_dihedral_entropy",
+                "md_energy"
             ],
             "title": "DataTypeEnum",
             "type": "string"
@@ -5735,7 +5749,20 @@
                 "yaml",
                 "mdoc",
                 "nav",
-                "dm4"
+                "dm4",
+                "mol2",
+                "sdf",
+                "frcmod",
+                "prmtop",
+                "inpcrd",
+                "rst7",
+                "netcdf",
+                "dcd",
+                "xtc",
+                "trr",
+                "gro",
+                "top",
+                "lib"
             ],
             "title": "FileFormatEnum",
             "type": "string"
@@ -6978,6 +7005,364 @@
             ],
             "title": "LigandInteraction",
             "type": "object"
+        },
+        "MDEnsembleEnum": {
+            "description": "Thermodynamic ensemble for MD simulation",
+            "enum": [
+                "nve",
+                "nvt",
+                "npt"
+            ],
+            "title": "MDEnsembleEnum",
+            "type": "string"
+        },
+        "MDSimulationParameters": {
+            "additionalProperties": false,
+            "description": "Parameters for a molecular dynamics simulation workflow. Captures force field selection, simulation conditions, integration settings, solvation setup, and the multi-stage pipeline (minimization, heating, equilibration, production).",
+            "properties": {
+                "barostat": {
+                    "description": "Barostat algorithm (e.g., Berendsen, Monte-Carlo, Parrinello-Rahman)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "barostat_coupling": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Barostat coupling constant (taup), typically in ps"
+                },
+                "box_padding": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Minimum distance from solute to box edge, typically in Angstroms"
+                },
+                "box_shape": {
+                    "description": "Simulation box geometry (e.g., cubic, truncated_octahedron, rhombic_dodecahedron)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "charge_method": {
+                    "description": "Method used to assign partial charges to the ligand (e.g., AM1-BCC, RESP, HF/6-31G*)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "constraint_algorithm": {
+                    "description": "Bond constraint algorithm (e.g., SHAKE, LINCS, SETTLE)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "duration_ns": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Duration of this simulation stage in nanoseconds"
+                },
+                "ensemble": {
+                    "$ref": "#/$defs/MDEnsembleEnum",
+                    "description": "Thermodynamic ensemble for the simulation stage"
+                },
+                "equil_free_duration_ns": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Duration of unrestrained equilibration in nanoseconds"
+                },
+                "equil_restrained_duration_ns": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Duration of restrained equilibration in nanoseconds"
+                },
+                "heat_duration_ns": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Duration of the heating phase in nanoseconds"
+                },
+                "hydrogen_mass_repartitioning": {
+                    "description": "Whether hydrogen mass repartitioning (HMR) was applied to enable larger timesteps",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "initial_temperature": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Starting temperature for heating stage in Kelvin"
+                },
+                "ion_neutralization": {
+                    "description": "Whether counterions were added to neutralize the system",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "ion_species": {
+                    "description": "Ion species added (e.g., Na+, Cl-, K+, Mg2+)",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "ligand_force_field": {
+                    "description": "Force field for small-molecule ligand (e.g., GAFF2, GAFF, CGenFF, OPLS)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "minimization_max_cycles": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Maximum number of minimization cycles"
+                },
+                "minimization_steepest_descent_cycles": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Number of initial steepest-descent cycles before switching to conjugate gradient"
+                },
+                "net_charge": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Target net charge of the system after ion addition"
+                },
+                "nonbonded_cutoff": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Cutoff for non-bonded interactions, typically in Angstroms"
+                },
+                "pressure": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Target simulation pressure, typically in atm"
+                },
+                "production_duration_ns": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Duration of production MD in nanoseconds"
+                },
+                "protein_force_field": {
+                    "description": "Force field for protein (e.g., ff19SB, ff14SB, CHARMM36m, OPLS-AA)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "restraint_force_constant": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Restraint force constant, typically in kcal/mol/A^2"
+                },
+                "restraint_mask": {
+                    "description": "Atom selection mask for positional restraints (Amber mask syntax or equivalent)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "simulation_engine": {
+                    "description": "MD simulation engine used (e.g., pmemd.cuda, GROMACS, NAMD, OpenMM)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "simulation_engine_version": {
+                    "description": "Version of the simulation engine",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "simulation_stage": {
+                    "$ref": "#/$defs/MDStageEnum",
+                    "description": "Stage of the MD workflow this run represents"
+                },
+                "temperature": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Target simulation temperature in Kelvin"
+                },
+                "thermostat": {
+                    "description": "Thermostat algorithm (e.g., Langevin, Nose-Hoover, Berendsen, velocity-rescale)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "thermostat_coupling": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Thermostat coupling constant (gamma_ln for Langevin), typically in 1/ps"
+                },
+                "timestep": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Integration timestep, typically in femtoseconds"
+                },
+                "total_steps": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Total number of integration steps"
+                },
+                "trajectory_output_interval": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Interval between saved trajectory frames in steps"
+                },
+                "water_model": {
+                    "description": "Explicit solvent water model (e.g., OPC, TIP3P, SPC/E, TIP4P-Ew)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "MDSimulationParameters",
+            "type": "object"
+        },
+        "MDStageEnum": {
+            "description": "Stage within a multi-step MD simulation pipeline",
+            "enum": [
+                "parameterization",
+                "topology_building",
+                "hydrogen_mass_repartitioning",
+                "minimization_restrained",
+                "minimization_unrestrained",
+                "heating",
+                "equilibration_restrained",
+                "equilibration_unrestrained",
+                "production"
+            ],
+            "title": "MDStageEnum",
+            "type": "string"
         },
         "MeasurementConditions": {
             "additionalProperties": false,
@@ -13775,7 +14160,8 @@
                 "fiber_diffraction",
                 "time_resolved_crystallography",
                 "xray_tomography",
-                "microed"
+                "microed",
+                "molecular_dynamics"
             ],
             "title": "TechniqueEnum",
             "type": "string"
@@ -14162,6 +14548,17 @@
                         "string",
                         "null"
                     ]
+                },
+                "md_simulation_params": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/MDSimulationParameters"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Molecular dynamics simulation parameters"
                 },
                 "motion_correction_params": {
                     "anyOf": [
@@ -14884,7 +15281,12 @@
                 "postprocessing",
                 "map_validation",
                 "model_refinement",
-                "model_validation"
+                "model_validation",
+                "md_system_setup",
+                "md_minimization",
+                "md_equilibration",
+                "md_production",
+                "md_analysis"
             ],
             "title": "WorkflowTypeEnum",
             "type": "string"
