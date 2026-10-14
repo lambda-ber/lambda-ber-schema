@@ -357,8 +357,8 @@ class TestCLI:
     def test_etl_anl_lambda_help(self):
         result = runner.invoke(app, ["etl", "anl-lambda", "--help"])
         assert result.exit_code == 0
-        assert "ANL LAMBDA" in result.output
-        assert "--lims" in result.output
+        assert "ANL LAMBDA" in plain(result.output)
+        assert "--lims" in plain(result.output)
 
     def test_etl_anl_lambda_help_steers_away_from_api_key_on_the_command_line(self):
         for command in (["etl", "anl-lambda"], ["etl", "dump-anl-lambda"]):
