@@ -120,14 +120,17 @@ session on the microscope. They are now `ExperimentRun` slots too (`CryoEMInstru
 capabilities and defaults), and Core 0.3.4 carries them on `ExperimentRunAction`. mmCIF records Cs
 per imaging session as well (`_em_imaging.nominal_cs`).
 
-### 3d. Instrument-level detail — open
+### 3d. Instrument-level detail — resolved in the full record; crate open
 
-Energy filter presence and model, the detector's physical pixel size (5 µm, sheet field
-`detector_physical_pixel_size`) and other `CryoEMInstrument` fields have no `InstrumentEntity` slot,
-and cannot appear in a `Dataset` record either: `Dataset.instruments` is typed `Instrument`, and
-`linkml-run-examples` loads entries as plain `Instrument`. A type designator on `Instrument` would
-fix the Dataset side, but linkml-runtime then files the designator under `unknown_instrument_type`
-and the Turtle dump fails. The physical pixel size is in `runParameters`.
+Energy filter presence, the detector's make, model and physical pixel size (5 µm, sheet field
+`detector_physical_pixel_size`), Cs and the control software are `CryoEMInstrument` fields. The
+Dataset record now carries them: `Instrument` has a type designator, `instrument_type`, so its
+entry in `Dataset.instruments` is written `instrument_type: CryoEMInstrument` and loads as that
+class (#128). The designator is a schema-wide slot rather than an attribute because LinkML's Python
+generator mishandles an attribute designator (linkml/linkml#2107, #3663).
+
+The crate is unchanged: `InstrumentEntity` has no slots for these, so they stay in `runParameters`
+here and in the Dataset record.
 
 ### 3e. `sample_buffer: 1xTBS` — in the full record only
 
