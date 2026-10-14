@@ -1,5 +1,5 @@
 # Auto generated from lambda_ber_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-10-14T12:41:14
+# Generation date: 2026-10-14T15:57:11
 # Schema: lambda-ber-schema
 #
 # id: http://w3id.org/lambda/
@@ -1630,6 +1630,7 @@ class Instrument(NamedThing):
 
     id: Union[str, InstrumentId] = None
     instrument_code: str = None
+    instrument_type: Optional[str] = None
     instrument_registry_id: Optional[str] = None
     instrument_category: Optional[Union[str, "InstrumentCategoryEnum"]] = None
     facility_name: Optional[Union[str, "FacilityEnum"]] = None
@@ -1651,6 +1652,8 @@ class Instrument(NamedThing):
             self.MissingRequiredField("instrument_code")
         if not isinstance(self.instrument_code, str):
             self.instrument_code = str(self.instrument_code)
+
+        self.instrument_type = str(self.class_name)
 
         if self.instrument_registry_id is not None and not isinstance(self.instrument_registry_id, str):
             self.instrument_registry_id = str(self.instrument_registry_id)
@@ -1683,6 +1686,23 @@ class Instrument(NamedThing):
             self.current_status = InstrumentStatusEnum(self.current_status)
 
         super().__post_init__(**kwargs)
+
+
+    def __new__(cls, *args, **kwargs):
+
+        type_designator = "instrument_type"
+        if not type_designator in kwargs:
+            return super().__new__(cls,*args,**kwargs)
+        else:
+            type_designator_value = kwargs[type_designator]
+            target_cls = cls._class_for("class_name", type_designator_value)
+
+
+            if target_cls is None:
+                raise ValueError(f"Wrong type designator value: class {cls.__name__} "
+                                 f"has no subclass with ['class_name']='{kwargs[type_designator]}'")
+            return super().__new__(target_cls,*args,**kwargs)
+
 
 
 @dataclass(repr=False)
@@ -1811,6 +1831,7 @@ class CryoEMInstrument(Instrument):
             self.tem_beam_diameter = QuantityValue(**as_dict(self.tem_beam_diameter))
 
         super().__post_init__(**kwargs)
+        self.instrument_type = str(self.class_name)
 
 
 @dataclass(repr=False)
@@ -1883,6 +1904,7 @@ class XRayInstrument(Instrument):
             self.crystal_cooling_capability = Bool(self.crystal_cooling_capability)
 
         super().__post_init__(**kwargs)
+        self.instrument_type = str(self.class_name)
 
 
 @dataclass(repr=False)
@@ -2103,6 +2125,7 @@ class SANSInstrument(Instrument):
             self.environment = str(self.environment)
 
         super().__post_init__(**kwargs)
+        self.instrument_type = str(self.class_name)
 
 
 @dataclass(repr=False)
@@ -2151,6 +2174,7 @@ class SAXSInstrument(Instrument):
             self.temperature_control_range = str(self.temperature_control_range)
 
         super().__post_init__(**kwargs)
+        self.instrument_type = str(self.class_name)
 
 
 @dataclass(repr=False)
@@ -2226,6 +2250,7 @@ class BeamlineInstrument(Instrument):
             self.control_system = ControlSystemEnum(self.control_system)
 
         super().__post_init__(**kwargs)
+        self.instrument_type = str(self.class_name)
 
 
 @dataclass(repr=False)
@@ -9148,6 +9173,9 @@ class DatabaseNameEnum(EnumDefinitionImpl):
 # Slots
 class slots:
     pass
+
+slots.instrument_type = Slot(uri=LAMBDA.instrument_type, name="instrument_type", curie=LAMBDA.curie('instrument_type'),
+                   model_uri=LAMBDA.instrument_type, domain=None, range=Optional[str])
 
 slots.attribute = Slot(uri=LAMBDA.attribute, name="attribute", curie=LAMBDA.curie('attribute'),
                    model_uri=LAMBDA.attribute, domain=None, range=Union[dict, Attribute])

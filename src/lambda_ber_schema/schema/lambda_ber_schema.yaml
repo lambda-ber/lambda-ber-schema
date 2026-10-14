@@ -196,6 +196,22 @@ default_prefix: lambda
 
 types:
 
+# Almost every slot in this schema is a class attribute. The exceptions are here, as schema-wide
+# slots, because a generator treats them differently when they are attributes.
+slots:
+
+  instrument_type:
+    description: >-
+      Which Instrument class this record is: `Instrument` or the name of one of its subclasses, such
+      as `CryoEMInstrument`. A loader uses it to pick the class, so an entry in a collection typed
+      Instrument (Dataset.instruments) can carry the subclass's fields.
+    designates_type: true
+    range: string
+    comments:
+      - "Write it whenever an instrument record uses fields of an Instrument subclass, e.g. `instrument_type: CryoEMInstrument` for an instrument with `cs` or `detector_model`. A record without it loads as a plain Instrument, and the Python loader then rejects the subclass fields."
+      - "Code that builds an instrument object need not set it: the generated classes fill it in from the class."
+      - "Defined here rather than as an Instrument attribute because LinkML's Python generator mishandles a type designator declared as an attribute: it emits a stray `unknown_instrument_type` assignment, and the RDF dumper then fails (linkml/linkml#2107, #3663; still present in linkml 1.12.1)."
+      - "The value is the class name, not a CURIE: a `uriorcurie` designator does not round-trip between the Pydantic and Python generators (linkml/linkml#3836)."
 
 classes:
 
@@ -1321,6 +1337,8 @@ classes:
   Instrument:
     is_a: NamedThing
     description: "An instrument used to collect data"
+    slots:
+      - instrument_type
     attributes:
       instrument_code:
         description: "Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking."

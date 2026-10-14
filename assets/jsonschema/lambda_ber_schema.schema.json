@@ -438,6 +438,16 @@
                     "description": "Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.",
                     "type": "string"
                 },
+                "instrument_type": {
+                    "description": "Which Instrument class this record is: `Instrument` or the name of one of its subclasses, such as `CryoEMInstrument`. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.",
+                    "enum": [
+                        "BeamlineInstrument"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "lims_system": {
                     "$ref": "#/$defs/LIMSSystemEnum",
                     "description": "Laboratory Information Management System used at this beamline"
@@ -1285,6 +1295,16 @@
                     ],
                     "description": "Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.",
                     "type": "string"
+                },
+                "instrument_type": {
+                    "description": "Which Instrument class this record is: `Instrument` or the name of one of its subclasses, such as `CryoEMInstrument`. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.",
+                    "enum": [
+                        "CryoEMInstrument"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "manufacturer": {
                     "description": "Instrument manufacturer",
@@ -2318,7 +2338,26 @@
                 "instruments": {
                     "description": "All instruments used across studies",
                     "items": {
-                        "$ref": "#/$defs/Instrument"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/Instrument"
+                            },
+                            {
+                                "$ref": "#/$defs/CryoEMInstrument"
+                            },
+                            {
+                                "$ref": "#/$defs/XRayInstrument"
+                            },
+                            {
+                                "$ref": "#/$defs/SANSInstrument"
+                            },
+                            {
+                                "$ref": "#/$defs/SAXSInstrument"
+                            },
+                            {
+                                "$ref": "#/$defs/BeamlineInstrument"
+                            }
+                        ]
                     },
                     "type": [
                         "array",
@@ -5037,6 +5076,16 @@
                     ],
                     "description": "Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.",
                     "type": "string"
+                },
+                "instrument_type": {
+                    "description": "Which Instrument class this record is: `Instrument` or the name of one of its subclasses, such as `CryoEMInstrument`. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.",
+                    "enum": [
+                        "Instrument"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "manufacturer": {
                     "description": "Instrument manufacturer",
@@ -8701,6 +8750,16 @@
                     "description": "Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.",
                     "type": "string"
                 },
+                "instrument_type": {
+                    "description": "Which Instrument class this record is: `Instrument` or the name of one of its subclasses, such as `CryoEMInstrument`. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.",
+                    "enum": [
+                        "SANSInstrument"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "manufacturer": {
                     "description": "Instrument manufacturer",
                     "type": [
@@ -8939,6 +8998,16 @@
                     ],
                     "description": "Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.",
                     "type": "string"
+                },
+                "instrument_type": {
+                    "description": "Which Instrument class this record is: `Instrument` or the name of one of its subclasses, such as `CryoEMInstrument`. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.",
+                    "enum": [
+                        "SAXSInstrument"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "manufacturer": {
                     "description": "Instrument manufacturer",
@@ -12069,6 +12138,16 @@
                     "description": "Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.",
                     "type": "string"
                 },
+                "instrument_type": {
+                    "description": "Which Instrument class this record is: `Instrument` or the name of one of its subclasses, such as `CryoEMInstrument`. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.",
+                    "enum": [
+                        "XRayInstrument"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "manufacturer": {
                     "description": "Instrument manufacturer",
                     "type": [
@@ -12419,7 +12498,26 @@
         "instruments": {
             "description": "All instruments used across studies",
             "items": {
-                "$ref": "#/$defs/Instrument"
+                "anyOf": [
+                    {
+                        "$ref": "#/$defs/Instrument"
+                    },
+                    {
+                        "$ref": "#/$defs/CryoEMInstrument"
+                    },
+                    {
+                        "$ref": "#/$defs/XRayInstrument"
+                    },
+                    {
+                        "$ref": "#/$defs/SANSInstrument"
+                    },
+                    {
+                        "$ref": "#/$defs/SAXSInstrument"
+                    },
+                    {
+                        "$ref": "#/$defs/BeamlineInstrument"
+                    }
+                ]
             },
             "type": [
                 "array",

@@ -1052,6 +1052,7 @@ type BeamlineInstrument
     id: Uriorcurie!
     title: String
     description: String
+    instrumentType: String
     instrumentCode: String!
     instrumentRegistryId: String
     instrumentCategory: InstrumentCategoryEnum
@@ -1136,6 +1137,7 @@ type CryoEMInstrument
     id: Uriorcurie!
     title: String
     description: String
+    instrumentType: String
     instrumentCode: String!
     instrumentRegistryId: String
     instrumentCategory: InstrumentCategoryEnum
@@ -1620,6 +1622,7 @@ type Instrument
     id: Uriorcurie!
     title: String
     description: String
+    instrumentType: String
     instrumentCode: String!
     instrumentRegistryId: String
     instrumentCategory: InstrumentCategoryEnum
@@ -2254,6 +2257,7 @@ type SANSInstrument
     id: Uriorcurie!
     title: String
     description: String
+    instrumentType: String
     instrumentCode: String!
     instrumentRegistryId: String
     instrumentCategory: InstrumentCategoryEnum
@@ -2291,6 +2295,7 @@ type SAXSInstrument
     id: Uriorcurie!
     title: String
     description: String
+    instrumentType: String
     instrumentCode: String!
     instrumentRegistryId: String
     instrumentCategory: InstrumentCategoryEnum
@@ -2534,6 +2539,7 @@ type XRayInstrument
     id: Uriorcurie!
     title: String
     description: String
+    instrumentType: String
     instrumentCode: String!
     instrumentRegistryId: String
     instrumentCategory: InstrumentCategoryEnum
