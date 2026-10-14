@@ -9830,7 +9830,7 @@
     {
       "name": "instrument_type",
       "definition_uri": "http://w3id.org/lambda/instrument_type",
-      "description": "Which Instrument class this record is: Instrument, CryoEMInstrument, XRayInstrument, SAXSInstrument, SANSInstrument or BeamlineInstrument. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.",
+      "description": "Which Instrument class this record is: `Instrument` or the name of one of its subclasses, such as `CryoEMInstrument`. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.",
       "comments": [
         "Write it whenever an instrument record uses fields of an Instrument subclass, e.g. `instrument_type: CryoEMInstrument` for an instrument with `cs` or `detector_model`. A record without it loads as a plain Instrument, and the Python loader then rejects the subclass fields.",
         "Code that builds an instrument object need not set it: the generated classes fill it in from the class.",
@@ -35250,9 +35250,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda_rocrate_core.yaml",
-  "source_file_date": "2026-10-14T15:21:11",
+  "source_file_date": "2026-10-14T15:53:53",
   "source_file_size": 94503,
-  "generation_date": "2026-10-14T15:28:38",
+  "generation_date": "2026-10-14T15:59:22",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/rocrate/jsonld/lambda_rocrate_core.context.jsonld",

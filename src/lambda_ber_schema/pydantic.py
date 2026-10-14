@@ -5518,7 +5518,7 @@ class Instrument(NamedThing):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/'})
 
-    instrument_type: Literal["Instrument"] = Field(default="Instrument", description="""Which Instrument class this record is: Instrument, CryoEMInstrument, XRayInstrument, SAXSInstrument, SANSInstrument or BeamlineInstrument. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_type',
+    instrument_type: Literal["Instrument"] = Field(default="Instrument", description="""Which Instrument class this record is: `Instrument` or the name of one of its subclasses, such as `CryoEMInstrument`. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_type',
          'comments': ['Write it whenever an instrument record uses fields of an '
                       'Instrument subclass, e.g. `instrument_type: CryoEMInstrument` '
                       'for an instrument with `cs` or `detector_model`. A record '
@@ -5681,7 +5681,7 @@ class CryoEMInstrument(Instrument):
                       'value actually used in a session on '
                       'ExperimentRun.beam_diameter.'],
          'domain_of': ['CryoEMInstrument']} })
-    instrument_type: Literal["CryoEMInstrument"] = Field(default="CryoEMInstrument", description="""Which Instrument class this record is: Instrument, CryoEMInstrument, XRayInstrument, SAXSInstrument, SANSInstrument or BeamlineInstrument. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_type',
+    instrument_type: Literal["CryoEMInstrument"] = Field(default="CryoEMInstrument", description="""Which Instrument class this record is: `Instrument` or the name of one of its subclasses, such as `CryoEMInstrument`. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_type',
          'comments': ['Write it whenever an instrument record uses fields of an '
                       'Instrument subclass, e.g. `instrument_type: CryoEMInstrument` '
                       'for an instrument with `cs` or `detector_model`. A record '
@@ -5805,7 +5805,7 @@ class XRayInstrument(Instrument):
          'domain_of': ['XRayInstrument'],
          'exact_mappings': ['mmCIF:_diffrn_measurement.device']} })
     crystal_cooling_capability: Optional[bool] = Field(default=None, description="""Crystal cooling system available""", json_schema_extra = { "linkml_meta": {'alias': 'crystal_cooling_capability', 'domain_of': ['XRayInstrument']} })
-    instrument_type: Literal["XRayInstrument"] = Field(default="XRayInstrument", description="""Which Instrument class this record is: Instrument, CryoEMInstrument, XRayInstrument, SAXSInstrument, SANSInstrument or BeamlineInstrument. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_type',
+    instrument_type: Literal["XRayInstrument"] = Field(default="XRayInstrument", description="""Which Instrument class this record is: `Instrument` or the name of one of its subclasses, such as `CryoEMInstrument`. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_type',
          'comments': ['Write it whenever an instrument record uses fields of an '
                       'Instrument subclass, e.g. `instrument_type: CryoEMInstrument` '
                       'for an instrument with `cs` or `detector_model`. A record '
@@ -5969,7 +5969,7 @@ class SANSInstrument(Instrument):
     source: Optional[SANSSource] = Field(default=None, description="""Source parameters for the instrument""", json_schema_extra = { "linkml_meta": {'alias': 'source', 'domain_of': ['SANSInstrument']} })
     configuration: Optional[SANSConfiguration] = Field(default=None, description="""Optical/mechanical configuration details""", json_schema_extra = { "linkml_meta": {'alias': 'configuration', 'domain_of': ['SANSInstrument']} })
     environment: Optional[str] = Field(default=None, description="""Textual description of environmental conditions""", json_schema_extra = { "linkml_meta": {'alias': 'environment', 'domain_of': ['SANSInstrument']} })
-    instrument_type: Literal["SANSInstrument"] = Field(default="SANSInstrument", description="""Which Instrument class this record is: Instrument, CryoEMInstrument, XRayInstrument, SAXSInstrument, SANSInstrument or BeamlineInstrument. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_type',
+    instrument_type: Literal["SANSInstrument"] = Field(default="SANSInstrument", description="""Which Instrument class this record is: `Instrument` or the name of one of its subclasses, such as `CryoEMInstrument`. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_type',
          'comments': ['Write it whenever an instrument record uses fields of an '
                       'Instrument subclass, e.g. `instrument_type: CryoEMInstrument` '
                       'for an instrument with `cs` or `detector_model`. A record '
@@ -6066,7 +6066,7 @@ class SAXSInstrument(Instrument):
     sample_changer_capacity: Optional[QuantityValue] = Field(default=None, description="""Number of samples in automatic sample changer""", json_schema_extra = { "linkml_meta": {'alias': 'sample_changer_capacity',
          'domain_of': ['SAXSInstrument', 'BeamlineInstrument']} })
     temperature_control_range: Optional[str] = Field(default=None, description="""Temperature control range in Celsius""", json_schema_extra = { "linkml_meta": {'alias': 'temperature_control_range', 'domain_of': ['SAXSInstrument']} })
-    instrument_type: Literal["SAXSInstrument"] = Field(default="SAXSInstrument", description="""Which Instrument class this record is: Instrument, CryoEMInstrument, XRayInstrument, SAXSInstrument, SANSInstrument or BeamlineInstrument. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_type',
+    instrument_type: Literal["SAXSInstrument"] = Field(default="SAXSInstrument", description="""Which Instrument class this record is: `Instrument` or the name of one of its subclasses, such as `CryoEMInstrument`. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_type',
          'comments': ['Write it whenever an instrument record uses fields of an '
                       'Instrument subclass, e.g. `instrument_type: CryoEMInstrument` '
                       'for an instrument with `cs` or `detector_model`. A record '
@@ -6180,7 +6180,7 @@ class BeamlineInstrument(Instrument):
     lims_system: Optional[LIMSSystemEnum] = Field(default=None, description="""Laboratory Information Management System used at this beamline""", json_schema_extra = { "linkml_meta": {'alias': 'lims_system', 'domain_of': ['BeamlineInstrument']} })
     daq_system: Optional[DataAcquisitionSystemEnum] = Field(default=None, description="""Data acquisition system used for experiment orchestration""", json_schema_extra = { "linkml_meta": {'alias': 'daq_system', 'domain_of': ['BeamlineInstrument', 'ExperimentRun']} })
     control_system: Optional[ControlSystemEnum] = Field(default=None, description="""Low-level control system for device communication""", json_schema_extra = { "linkml_meta": {'alias': 'control_system', 'domain_of': ['BeamlineInstrument']} })
-    instrument_type: Literal["BeamlineInstrument"] = Field(default="BeamlineInstrument", description="""Which Instrument class this record is: Instrument, CryoEMInstrument, XRayInstrument, SAXSInstrument, SANSInstrument or BeamlineInstrument. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_type',
+    instrument_type: Literal["BeamlineInstrument"] = Field(default="BeamlineInstrument", description="""Which Instrument class this record is: `Instrument` or the name of one of its subclasses, such as `CryoEMInstrument`. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_type',
          'comments': ['Write it whenever an instrument record uses fields of an '
                       'Instrument subclass, e.g. `instrument_type: CryoEMInstrument` '
                       'for an instrument with `cs` or `detector_model`. A record '

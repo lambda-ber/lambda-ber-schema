@@ -439,7 +439,7 @@
                     "type": "string"
                 },
                 "instrument_type": {
-                    "description": "Which Instrument class this record is: Instrument, CryoEMInstrument, XRayInstrument, SAXSInstrument, SANSInstrument or BeamlineInstrument. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.",
+                    "description": "Which Instrument class this record is: `Instrument` or the name of one of its subclasses, such as `CryoEMInstrument`. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.",
                     "enum": [
                         "BeamlineInstrument"
                     ],
@@ -1297,7 +1297,7 @@
                     "type": "string"
                 },
                 "instrument_type": {
-                    "description": "Which Instrument class this record is: Instrument, CryoEMInstrument, XRayInstrument, SAXSInstrument, SANSInstrument or BeamlineInstrument. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.",
+                    "description": "Which Instrument class this record is: `Instrument` or the name of one of its subclasses, such as `CryoEMInstrument`. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.",
                     "enum": [
                         "CryoEMInstrument"
                     ],
@@ -5078,7 +5078,7 @@
                     "type": "string"
                 },
                 "instrument_type": {
-                    "description": "Which Instrument class this record is: Instrument, CryoEMInstrument, XRayInstrument, SAXSInstrument, SANSInstrument or BeamlineInstrument. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.",
+                    "description": "Which Instrument class this record is: `Instrument` or the name of one of its subclasses, such as `CryoEMInstrument`. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.",
                     "enum": [
                         "Instrument"
                     ],
@@ -8751,7 +8751,7 @@
                     "type": "string"
                 },
                 "instrument_type": {
-                    "description": "Which Instrument class this record is: Instrument, CryoEMInstrument, XRayInstrument, SAXSInstrument, SANSInstrument or BeamlineInstrument. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.",
+                    "description": "Which Instrument class this record is: `Instrument` or the name of one of its subclasses, such as `CryoEMInstrument`. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.",
                     "enum": [
                         "SANSInstrument"
                     ],
@@ -9000,7 +9000,7 @@
                     "type": "string"
                 },
                 "instrument_type": {
-                    "description": "Which Instrument class this record is: Instrument, CryoEMInstrument, XRayInstrument, SAXSInstrument, SANSInstrument or BeamlineInstrument. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.",
+                    "description": "Which Instrument class this record is: `Instrument` or the name of one of its subclasses, such as `CryoEMInstrument`. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.",
                     "enum": [
                         "SAXSInstrument"
                     ],
@@ -12139,7 +12139,7 @@
                     "type": "string"
                 },
                 "instrument_type": {
-                    "description": "Which Instrument class this record is: Instrument, CryoEMInstrument, XRayInstrument, SAXSInstrument, SANSInstrument or BeamlineInstrument. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.",
+                    "description": "Which Instrument class this record is: `Instrument` or the name of one of its subclasses, such as `CryoEMInstrument`. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.",
                     "enum": [
                         "XRayInstrument"
                     ],

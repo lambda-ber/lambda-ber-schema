@@ -207,7 +207,7 @@
 --     * Slot: yield_mg_id Description: Total yield in milligrams
 --     * Slot: purity_by_sds_page_percent_id Description: Purity percentage by SDS-PAGE
 -- # Class: Instrument Description: An instrument used to collect data
---     * Slot: instrument_type Description: Which Instrument class this record is: Instrument, CryoEMInstrument, XRayInstrument, SAXSInstrument, SANSInstrument or BeamlineInstrument. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.
+--     * Slot: instrument_type Description: Which Instrument class this record is: `Instrument` or the name of one of its subclasses, such as `CryoEMInstrument`. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.
 --     * Slot: instrument_code Description: Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.
 --     * Slot: instrument_registry_id Description: Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.
 --     * Slot: instrument_category Description: Category distinguishing beamlines from laboratory equipment
@@ -239,7 +239,7 @@
 --     * Slot: microscope_software Description: Microscope control software (e.g., SerialEM, EPU, Leginon)
 --     * Slot: microscope_software_version Description: Software version
 --     * Slot: imaging_mode Description: Imaging mode for electron microscopy
---     * Slot: instrument_type Description: Which Instrument class this record is: Instrument, CryoEMInstrument, XRayInstrument, SAXSInstrument, SANSInstrument or BeamlineInstrument. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.
+--     * Slot: instrument_type Description: Which Instrument class this record is: `Instrument` or the name of one of its subclasses, such as `CryoEMInstrument`. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.
 --     * Slot: instrument_code Description: Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.
 --     * Slot: instrument_registry_id Description: Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.
 --     * Slot: instrument_category Description: Category distinguishing beamlines from laboratory equipment
@@ -273,7 +273,7 @@
 --     * Slot: monochromator_type Description: Type of monochromator
 --     * Slot: goniometer_type Description: Type of goniometer
 --     * Slot: crystal_cooling_capability Description: Crystal cooling system available
---     * Slot: instrument_type Description: Which Instrument class this record is: Instrument, CryoEMInstrument, XRayInstrument, SAXSInstrument, SANSInstrument or BeamlineInstrument. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.
+--     * Slot: instrument_type Description: Which Instrument class this record is: `Instrument` or the name of one of its subclasses, such as `CryoEMInstrument`. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.
 --     * Slot: instrument_code Description: Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.
 --     * Slot: instrument_registry_id Description: Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.
 --     * Slot: instrument_category Description: Category distinguishing beamlines from laboratory equipment
@@ -335,7 +335,7 @@
 -- # Class: SANSInstrument Description: Small-angle neutron scattering (SANS) instrument specifications
 --     * Slot: technique Description: Primary technique (should always be sans for this class)
 --     * Slot: environment Description: Textual description of environmental conditions
---     * Slot: instrument_type Description: Which Instrument class this record is: Instrument, CryoEMInstrument, XRayInstrument, SAXSInstrument, SANSInstrument or BeamlineInstrument. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.
+--     * Slot: instrument_type Description: Which Instrument class this record is: `Instrument` or the name of one of its subclasses, such as `CryoEMInstrument`. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.
 --     * Slot: instrument_code Description: Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.
 --     * Slot: instrument_registry_id Description: Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.
 --     * Slot: instrument_category Description: Category distinguishing beamlines from laboratory equipment
@@ -356,7 +356,7 @@
 --     * Slot: configuration_id Description: Optical/mechanical configuration details
 -- # Class: SAXSInstrument Description: SAXS/WAXS instrument specifications
 --     * Slot: temperature_control_range Description: Temperature control range in Celsius
---     * Slot: instrument_type Description: Which Instrument class this record is: Instrument, CryoEMInstrument, XRayInstrument, SAXSInstrument, SANSInstrument or BeamlineInstrument. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.
+--     * Slot: instrument_type Description: Which Instrument class this record is: `Instrument` or the name of one of its subclasses, such as `CryoEMInstrument`. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.
 --     * Slot: instrument_code Description: Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.
 --     * Slot: instrument_registry_id Description: Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.
 --     * Slot: instrument_category Description: Category distinguishing beamlines from laboratory equipment
@@ -383,7 +383,7 @@
 --     * Slot: lims_system Description: Laboratory Information Management System used at this beamline
 --     * Slot: daq_system Description: Data acquisition system used for experiment orchestration
 --     * Slot: control_system Description: Low-level control system for device communication
---     * Slot: instrument_type Description: Which Instrument class this record is: Instrument, CryoEMInstrument, XRayInstrument, SAXSInstrument, SANSInstrument or BeamlineInstrument. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.
+--     * Slot: instrument_type Description: Which Instrument class this record is: `Instrument` or the name of one of its subclasses, such as `CryoEMInstrument`. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.
 --     * Slot: instrument_code Description: Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.
 --     * Slot: instrument_registry_id Description: Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.
 --     * Slot: instrument_category Description: Category distinguishing beamlines from laboratory equipment
