@@ -26,6 +26,7 @@ nav:
   - Schema: elements/index.md
   - Background:
     - Overview: background/index.md
+    - Tiled: background/tiled.md
     - NEXUS: background/nexus.md
     - mmCIF: background/mmcif.md
     - EMPIAR: background/empiar.md

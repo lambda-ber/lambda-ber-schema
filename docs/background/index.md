@@ -6,6 +6,10 @@ This directory contains alignment analyses and comparisons between lambda-ber-sc
 
 ## Available Analyses
 
+### [Tiled](tiled.md)
+
+Scientific data access in the Bluesky ecosystem: BNL/NSLS-II origins, verified usage, architecture, and proposed LAMBDA/LinkML and BRIDGE integration, with a bounded pilot recommendation.
+
 ### [NeXus Alignment](nexus.md)
 Analysis of how lambda-ber-schema aligns with the NeXus data format, the international standard for neutron, X-ray, and muon science. This document covers:
 - Structural mapping between NeXus and lambda-ber-schema concepts
