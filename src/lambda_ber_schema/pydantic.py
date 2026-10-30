@@ -27,7 +27,7 @@ from pydantic import (
 
 
 metamodel_version = "None"
-version = "0.1.2.post308.dev0+8a814589"
+version = "0.1.2.post368.dev0+c63f3e26"
 
 
 class ConfiguredBaseModel(BaseModel):
@@ -2249,6 +2249,70 @@ class TechniqueEnum(str, Enum):
     """
     Micro-electron diffraction for atomic-resolution structure determination from microcrystals
     """
+    molecular_dynamics = "molecular_dynamics"
+    """
+    Molecular dynamics simulation
+    """
+
+
+class MDEnsembleEnum(str, Enum):
+    """
+    Thermodynamic ensemble for MD simulation
+    """
+    nve = "nve"
+    """
+    Microcanonical ensemble (constant energy, volume, particle number)
+    """
+    nvt = "nvt"
+    """
+    Canonical ensemble (constant temperature, volume, particle number)
+    """
+    npt = "npt"
+    """
+    Isothermal-isobaric ensemble (constant temperature, pressure, particle number)
+    """
+
+
+class MDStageEnum(str, Enum):
+    """
+    Stage within a multi-step MD simulation pipeline
+    """
+    parameterization = "parameterization"
+    """
+    Ligand parameterization and charge assignment (e.g., antechamber, parmchk2)
+    """
+    topology_building = "topology_building"
+    """
+    System topology construction and solvation (e.g., tleap, pdb2gmx)
+    """
+    hydrogen_mass_repartitioning = "hydrogen_mass_repartitioning"
+    """
+    Hydrogen mass repartitioning for larger timesteps (parmed HMR)
+    """
+    minimization_restrained = "minimization_restrained"
+    """
+    Energy minimization with positional restraints on solute
+    """
+    minimization_unrestrained = "minimization_unrestrained"
+    """
+    Energy minimization without restraints
+    """
+    heating = "heating"
+    """
+    Gradual heating from low temperature to target temperature (NVT)
+    """
+    equilibration_restrained = "equilibration_restrained"
+    """
+    NPT equilibration with positional restraints
+    """
+    equilibration_unrestrained = "equilibration_unrestrained"
+    """
+    NPT equilibration without restraints
+    """
+    production = "production"
+    """
+    Production MD data collection
+    """
 
 
 class ProcessingStatusEnum(str, Enum):
@@ -2373,6 +2437,26 @@ class WorkflowTypeEnum(str, Enum):
     """
     Model validation and quality assessment
     """
+    md_system_setup = "md_system_setup"
+    """
+    MD system preparation - parameterization, solvation, topology building
+    """
+    md_minimization = "md_minimization"
+    """
+    Energy minimization prior to MD simulation
+    """
+    md_equilibration = "md_equilibration"
+    """
+    MD equilibration - heating and NPT/NVT equilibration phases
+    """
+    md_production = "md_production"
+    """
+    Production molecular dynamics simulation
+    """
+    md_analysis = "md_analysis"
+    """
+    Post-simulation trajectory analysis (RMSD, RMSF, clustering, etc.)
+    """
 
 
 class FileFormatEnum(str, Enum):
@@ -2483,6 +2567,58 @@ class FileFormatEnum(str, Enum):
     """
     Gatan DigitalMicrograph 4 image format (.dm4), commonly used for K2/K3 gain references
     """
+    mol2 = "mol2"
+    """
+    Tripos MOL2 format for parameterized small molecules
+    """
+    sdf = "sdf"
+    """
+    Structure-Data File format for chemical structures
+    """
+    frcmod = "frcmod"
+    """
+    Amber force field modification file
+    """
+    prmtop = "prmtop"
+    """
+    Amber topology (parameter/topology) file
+    """
+    inpcrd = "inpcrd"
+    """
+    Amber initial coordinates file
+    """
+    rst7 = "rst7"
+    """
+    Amber restart file (ASCII coordinates/velocities)
+    """
+    netcdf = "netcdf"
+    """
+    NetCDF trajectory format (Amber mdcrd binary)
+    """
+    dcd = "dcd"
+    """
+    DCD trajectory format (CHARMM/NAMD)
+    """
+    xtc = "xtc"
+    """
+    XTC compressed trajectory format (GROMACS)
+    """
+    trr = "trr"
+    """
+    TRR full-precision trajectory format (GROMACS)
+    """
+    gro = "gro"
+    """
+    GROMACS coordinate file format
+    """
+    top = "top"
+    """
+    GROMACS topology file format
+    """
+    lib = "lib"
+    """
+    Amber residue library file
+    """
 
 
 class DataTypeEnum(str, Enum):
@@ -2572,6 +2708,62 @@ class DataTypeEnum(str, Enum):
     screening_image = "screening_image"
     """
     Medium- or high-magnification image taken to choose targets or assess ice and particle quality, not for reconstruction
+    """
+    topology = "topology"
+    """
+    MD system topology (atom types, bonds, charges, force field parameters)
+    """
+    trajectory = "trajectory"
+    """
+    MD trajectory (time series of atomic coordinates)
+    """
+    restart = "restart"
+    """
+    MD restart/checkpoint file for resuming simulations
+    """
+    force_field_params = "force_field_params"
+    """
+    Force field parameter or modification file
+    """
+    solvated_structure = "solvated_structure"
+    """
+    Solvated system structure (protein + solvent + ions)
+    """
+    parameterized_ligand = "parameterized_ligand"
+    """
+    Small molecule with assigned force field parameters
+    """
+    md_rmsd = "md_rmsd"
+    """
+    Root mean square deviation time series
+    """
+    md_rmsf = "md_rmsf"
+    """
+    Root mean square fluctuation per atom or residue
+    """
+    md_clustering = "md_clustering"
+    """
+    Trajectory pose clustering results
+    """
+    md_hbond = "md_hbond"
+    """
+    Hydrogen bond analysis results
+    """
+    md_interaction_fingerprint = "md_interaction_fingerprint"
+    """
+    Protein-ligand interaction fingerprint (e.g. ProLIF)
+    """
+    md_event_detection = "md_event_detection"
+    """
+    Change-point or event detection results from trajectory analysis
+    """
+    md_dihedral_entropy = "md_dihedral_entropy"
+    """
+    Configurational (dihedral) entropy analysis
+    """
+    md_energy = "md_energy"
+    """
+    Energy terms from MD simulation output
     """
 
 
@@ -4610,7 +4802,8 @@ class MeasurementConditions(NamedThing):
     temperature: Optional[QuantityValue] = Field(default=None, description="""Temperature during measurement, typically specified in Kelvin. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'temperature',
          'domain_of': ['MeasurementConditions',
                        'StorageConditions',
-                       'ExperimentalConditions']} })
+                       'ExperimentalConditions',
+                       'MDSimulationParameters']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
     description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
@@ -6636,6 +6829,7 @@ class WorkflowRun(NamedThing):
     motion_correction_params: Optional[MotionCorrectionParameters] = Field(default=None, description="""Motion correction specific parameters""", json_schema_extra = { "linkml_meta": {'alias': 'motion_correction_params', 'domain_of': ['WorkflowRun']} })
     ctf_estimation_params: Optional[CTFEstimationParameters] = Field(default=None, description="""CTF estimation specific parameters""", json_schema_extra = { "linkml_meta": {'alias': 'ctf_estimation_params', 'domain_of': ['WorkflowRun']} })
     particle_picking_params: Optional[ParticlePickingParameters] = Field(default=None, description="""Particle picking specific parameters""", json_schema_extra = { "linkml_meta": {'alias': 'particle_picking_params', 'domain_of': ['WorkflowRun']} })
+    md_simulation_params: Optional[MDSimulationParameters] = Field(default=None, description="""Molecular dynamics simulation parameters""", json_schema_extra = { "linkml_meta": {'alias': 'md_simulation_params', 'domain_of': ['WorkflowRun']} })
     refinement_params: Optional[RefinementParameters] = Field(default=None, description="""3D refinement specific parameters""", json_schema_extra = { "linkml_meta": {'alias': 'refinement_params', 'domain_of': ['WorkflowRun']} })
     fsc_curve: Optional[FSCCurve] = Field(default=None, description="""Fourier Shell Correlation curve data""", json_schema_extra = { "linkml_meta": {'alias': 'fsc_curve', 'domain_of': ['WorkflowRun']} })
     output_files: Optional[list[str]] = Field(default=None, description="""Output files generated""", json_schema_extra = { "linkml_meta": {'alias': 'output_files', 'domain_of': ['WorkflowRun']} })
@@ -7036,7 +7230,8 @@ class StorageConditions(AttributeGroup):
     temperature: Optional[QuantityValue] = Field(default=None, description="""Storage temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'temperature',
          'domain_of': ['MeasurementConditions',
                        'StorageConditions',
-                       'ExperimentalConditions']} })
+                       'ExperimentalConditions',
+                       'MDSimulationParameters']} })
     duration: Optional[str] = Field(default=None, description="""Storage duration""", json_schema_extra = { "linkml_meta": {'alias': 'duration', 'domain_of': ['StorageConditions']} })
     atmosphere: Optional[str] = Field(default=None, description="""Storage atmosphere conditions""", json_schema_extra = { "linkml_meta": {'alias': 'atmosphere',
          'domain_of': ['StorageConditions', 'ExperimentalConditions']} })
@@ -7231,9 +7426,11 @@ class ExperimentalConditions(AttributeGroup):
     temperature: Optional[QuantityValue] = Field(default=None, description="""Temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'temperature',
          'domain_of': ['MeasurementConditions',
                        'StorageConditions',
-                       'ExperimentalConditions']} })
+                       'ExperimentalConditions',
+                       'MDSimulationParameters']} })
     humidity: Optional[QuantityValue] = Field(default=None, description="""Humidity, typically specified as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'humidity', 'domain_of': ['ExperimentalConditions']} })
-    pressure: Optional[QuantityValue] = Field(default=None, description="""Pressure, typically specified in kilopascals (kPa). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'pressure', 'domain_of': ['ExperimentalConditions']} })
+    pressure: Optional[QuantityValue] = Field(default=None, description="""Pressure, typically specified in kilopascals (kPa). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'pressure',
+         'domain_of': ['ExperimentalConditions', 'MDSimulationParameters']} })
     atmosphere: Optional[str] = Field(default=None, description="""Atmosphere composition""", json_schema_extra = { "linkml_meta": {'alias': 'atmosphere',
          'domain_of': ['StorageConditions', 'ExperimentalConditions']} })
     beam_energy: Optional[QuantityValue] = Field(default=None, description="""Beam energy, typically specified in kiloelectronvolts (keV). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'beam_energy', 'domain_of': ['XRFImage', 'ExperimentalConditions']} })
@@ -7539,6 +7736,61 @@ class RefinementParameters(AttributeGroup):
          'exact_mappings': ['mmCIF:_em_3d_reconstruction.resolution']} })
     resolution_0_5: Optional[QuantityValue] = Field(default=None, description="""Resolution at FSC=0.5, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'resolution_0_5', 'domain_of': ['RefinementParameters']} })
     map_sharpening_bfactor: Optional[QuantityValue] = Field(default=None, description="""B-factor used for map sharpening, typically specified in Angstroms squared (Å²). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'map_sharpening_bfactor', 'domain_of': ['RefinementParameters']} })
+    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
+
+
+class MDSimulationParameters(AttributeGroup):
+    """
+    Parameters for a molecular dynamics simulation workflow. Captures force field selection, simulation conditions, integration settings, solvation setup, and the multi-stage pipeline (minimization, heating, equilibration, production).
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'comments': ['Modeled after the Amber/pmemd.cuda pipeline used in BraveDock',
+                      'Generalizes to GROMACS, NAMD, OpenMM, and other MD engines'],
+         'from_schema': 'http://w3id.org/lambda/'})
+
+    simulation_engine: Optional[str] = Field(default=None, description="""MD simulation engine used (e.g., pmemd.cuda, GROMACS, NAMD, OpenMM)""", json_schema_extra = { "linkml_meta": {'alias': 'simulation_engine', 'domain_of': ['MDSimulationParameters']} })
+    simulation_engine_version: Optional[str] = Field(default=None, description="""Version of the simulation engine""", json_schema_extra = { "linkml_meta": {'alias': 'simulation_engine_version', 'domain_of': ['MDSimulationParameters']} })
+    protein_force_field: Optional[str] = Field(default=None, description="""Force field for protein (e.g., ff19SB, ff14SB, CHARMM36m, OPLS-AA)""", json_schema_extra = { "linkml_meta": {'alias': 'protein_force_field', 'domain_of': ['MDSimulationParameters']} })
+    ligand_force_field: Optional[str] = Field(default=None, description="""Force field for small-molecule ligand (e.g., GAFF2, GAFF, CGenFF, OPLS)""", json_schema_extra = { "linkml_meta": {'alias': 'ligand_force_field', 'domain_of': ['MDSimulationParameters']} })
+    water_model: Optional[str] = Field(default=None, description="""Explicit solvent water model (e.g., OPC, TIP3P, SPC/E, TIP4P-Ew)""", json_schema_extra = { "linkml_meta": {'alias': 'water_model', 'domain_of': ['MDSimulationParameters']} })
+    charge_method: Optional[str] = Field(default=None, description="""Method used to assign partial charges to the ligand (e.g., AM1-BCC, RESP, HF/6-31G*)""", json_schema_extra = { "linkml_meta": {'alias': 'charge_method', 'domain_of': ['MDSimulationParameters']} })
+    box_padding: Optional[QuantityValue] = Field(default=None, description="""Minimum distance from solute to box edge, typically in Angstroms""", json_schema_extra = { "linkml_meta": {'alias': 'box_padding', 'domain_of': ['MDSimulationParameters']} })
+    box_shape: Optional[str] = Field(default=None, description="""Simulation box geometry (e.g., cubic, truncated_octahedron, rhombic_dodecahedron)""", json_schema_extra = { "linkml_meta": {'alias': 'box_shape', 'domain_of': ['MDSimulationParameters']} })
+    ion_neutralization: Optional[bool] = Field(default=None, description="""Whether counterions were added to neutralize the system""", json_schema_extra = { "linkml_meta": {'alias': 'ion_neutralization', 'domain_of': ['MDSimulationParameters']} })
+    ion_species: Optional[list[str]] = Field(default=None, description="""Ion species added (e.g., Na+, Cl-, K+, Mg2+)""", json_schema_extra = { "linkml_meta": {'alias': 'ion_species', 'domain_of': ['MDSimulationParameters']} })
+    net_charge: Optional[QuantityValue] = Field(default=None, description="""Target net charge of the system after ion addition""", json_schema_extra = { "linkml_meta": {'alias': 'net_charge', 'domain_of': ['MDSimulationParameters']} })
+    hydrogen_mass_repartitioning: Optional[bool] = Field(default=None, description="""Whether hydrogen mass repartitioning (HMR) was applied to enable larger timesteps""", json_schema_extra = { "linkml_meta": {'alias': 'hydrogen_mass_repartitioning',
+         'domain_of': ['MDSimulationParameters']} })
+    ensemble: Optional[MDEnsembleEnum] = Field(default=None, description="""Thermodynamic ensemble for the simulation stage""", json_schema_extra = { "linkml_meta": {'alias': 'ensemble', 'domain_of': ['MDSimulationParameters']} })
+    thermostat: Optional[str] = Field(default=None, description="""Thermostat algorithm (e.g., Langevin, Nose-Hoover, Berendsen, velocity-rescale)""", json_schema_extra = { "linkml_meta": {'alias': 'thermostat', 'domain_of': ['MDSimulationParameters']} })
+    thermostat_coupling: Optional[QuantityValue] = Field(default=None, description="""Thermostat coupling constant (gamma_ln for Langevin), typically in 1/ps""", json_schema_extra = { "linkml_meta": {'alias': 'thermostat_coupling', 'domain_of': ['MDSimulationParameters']} })
+    barostat: Optional[str] = Field(default=None, description="""Barostat algorithm (e.g., Berendsen, Monte-Carlo, Parrinello-Rahman)""", json_schema_extra = { "linkml_meta": {'alias': 'barostat', 'domain_of': ['MDSimulationParameters']} })
+    barostat_coupling: Optional[QuantityValue] = Field(default=None, description="""Barostat coupling constant (taup), typically in ps""", json_schema_extra = { "linkml_meta": {'alias': 'barostat_coupling', 'domain_of': ['MDSimulationParameters']} })
+    temperature: Optional[QuantityValue] = Field(default=None, description="""Target simulation temperature in Kelvin""", json_schema_extra = { "linkml_meta": {'alias': 'temperature',
+         'domain_of': ['MeasurementConditions',
+                       'StorageConditions',
+                       'ExperimentalConditions',
+                       'MDSimulationParameters']} })
+    pressure: Optional[QuantityValue] = Field(default=None, description="""Target simulation pressure, typically in atm""", json_schema_extra = { "linkml_meta": {'alias': 'pressure',
+         'domain_of': ['ExperimentalConditions', 'MDSimulationParameters']} })
+    timestep: Optional[QuantityValue] = Field(default=None, description="""Integration timestep, typically in femtoseconds""", json_schema_extra = { "linkml_meta": {'alias': 'timestep', 'domain_of': ['MDSimulationParameters']} })
+    constraint_algorithm: Optional[str] = Field(default=None, description="""Bond constraint algorithm (e.g., SHAKE, LINCS, SETTLE)""", json_schema_extra = { "linkml_meta": {'alias': 'constraint_algorithm', 'domain_of': ['MDSimulationParameters']} })
+    nonbonded_cutoff: Optional[QuantityValue] = Field(default=None, description="""Cutoff for non-bonded interactions, typically in Angstroms""", json_schema_extra = { "linkml_meta": {'alias': 'nonbonded_cutoff', 'domain_of': ['MDSimulationParameters']} })
+    simulation_stage: Optional[MDStageEnum] = Field(default=None, description="""Stage of the MD workflow this run represents""", json_schema_extra = { "linkml_meta": {'alias': 'simulation_stage', 'domain_of': ['MDSimulationParameters']} })
+    duration_ns: Optional[QuantityValue] = Field(default=None, description="""Duration of this simulation stage in nanoseconds""", json_schema_extra = { "linkml_meta": {'alias': 'duration_ns', 'domain_of': ['MDSimulationParameters']} })
+    total_steps: Optional[QuantityValue] = Field(default=None, description="""Total number of integration steps""", json_schema_extra = { "linkml_meta": {'alias': 'total_steps', 'domain_of': ['MDSimulationParameters']} })
+    trajectory_output_interval: Optional[QuantityValue] = Field(default=None, description="""Interval between saved trajectory frames in steps""", json_schema_extra = { "linkml_meta": {'alias': 'trajectory_output_interval', 'domain_of': ['MDSimulationParameters']} })
+    restraint_mask: Optional[str] = Field(default=None, description="""Atom selection mask for positional restraints (Amber mask syntax or equivalent)""", json_schema_extra = { "linkml_meta": {'alias': 'restraint_mask', 'domain_of': ['MDSimulationParameters']} })
+    restraint_force_constant: Optional[QuantityValue] = Field(default=None, description="""Restraint force constant, typically in kcal/mol/A^2""", json_schema_extra = { "linkml_meta": {'alias': 'restraint_force_constant', 'domain_of': ['MDSimulationParameters']} })
+    minimization_max_cycles: Optional[QuantityValue] = Field(default=None, description="""Maximum number of minimization cycles""", json_schema_extra = { "linkml_meta": {'alias': 'minimization_max_cycles', 'domain_of': ['MDSimulationParameters']} })
+    minimization_steepest_descent_cycles: Optional[QuantityValue] = Field(default=None, description="""Number of initial steepest-descent cycles before switching to conjugate gradient""", json_schema_extra = { "linkml_meta": {'alias': 'minimization_steepest_descent_cycles',
+         'domain_of': ['MDSimulationParameters']} })
+    initial_temperature: Optional[QuantityValue] = Field(default=None, description="""Starting temperature for heating stage in Kelvin""", json_schema_extra = { "linkml_meta": {'alias': 'initial_temperature', 'domain_of': ['MDSimulationParameters']} })
+    heat_duration_ns: Optional[QuantityValue] = Field(default=None, description="""Duration of the heating phase in nanoseconds""", json_schema_extra = { "linkml_meta": {'alias': 'heat_duration_ns', 'domain_of': ['MDSimulationParameters']} })
+    equil_restrained_duration_ns: Optional[QuantityValue] = Field(default=None, description="""Duration of restrained equilibration in nanoseconds""", json_schema_extra = { "linkml_meta": {'alias': 'equil_restrained_duration_ns',
+         'domain_of': ['MDSimulationParameters']} })
+    equil_free_duration_ns: Optional[QuantityValue] = Field(default=None, description="""Duration of unrestrained equilibration in nanoseconds""", json_schema_extra = { "linkml_meta": {'alias': 'equil_free_duration_ns', 'domain_of': ['MDSimulationParameters']} })
+    production_duration_ns: Optional[QuantityValue] = Field(default=None, description="""Duration of production MD in nanoseconds""", json_schema_extra = { "linkml_meta": {'alias': 'production_duration_ns', 'domain_of': ['MDSimulationParameters']} })
     description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
          'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
@@ -8190,6 +8442,7 @@ MotionCorrectionParameters.model_rebuild()
 CTFEstimationParameters.model_rebuild()
 ParticlePickingParameters.model_rebuild()
 RefinementParameters.model_rebuild()
+MDSimulationParameters.model_rebuild()
 FSCCurve.model_rebuild()
 StudySampleAssociation.model_rebuild()
 StudyExperimentAssociation.model_rebuild()

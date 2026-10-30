@@ -2,7 +2,7 @@
   "name": "lambda-ber-schema",
   "description": "lambda-ber-schema is a comprehensive schema for representing multimodal structural biology imaging data, \nfrom atomic-resolution structures to tissue-level organization. It supports diverse experimental \ntechniques including cryo-EM, X-ray crystallography, SAXS/SANS, fluorescence microscopy, and \nspectroscopic imaging.\n\n## Schema Organization\n\nThe schema follows a **relational design** with flat entity collections and explicit association\ntables for many-to-many relationships. This maps cleanly to SQL databases while supporting\nflexible data reuse across studies.\n\nThe top-level entity is a [Dataset](Dataset.md), which serves as a container for related research.\nA dataset might represent all data from a specific grant, collaboration, or publication.\n\n### Entity Tables\n\nAll entities are stored in flat collections at the Dataset level:\n\n**Biological Materials**\n- [Proteins](Protein.md): The protein as a biological entity - sequence, source organism, gene,\n  and the functional and structural annotations that hold for it in every preparation. Identified\n  by UniProt accession as a CURIE (`uniprot:P69905`) wherever one exists. One record serves every\n  sample that contains the protein; what varies between preparations lives on the sample and on\n  the sample-protein association.\n\n- [Nucleic Acids](NucleicAcid.md): The DNA or RNA strand as a molecular entity - sequence, type,\n  source organism, gene - shared by every sample that contains it, as Protein is for proteins.\n  Identified by RNAcentral, RefSeq or INSDC accession where one exists; a synthetic\n  oligonucleotide, which is most of what structural biology sees, gets a local id.\n\n- [Samples](Sample.md): The physical specimens being studied (proteins, nucleic acids, complexes,\n  cells, tissues). Each sample records the preparation-specific facts - buffer conditions,\n  concentration, storage, purity - and links to the proteins and nucleic acids it contains through\n  [SampleProteinAssociation](SampleProteinAssociation.md) and\n  [SampleNucleicAcidAssociation](SampleNucleicAcidAssociation.md).\n\n- [Protein Constructs](ProteinConstruct.md): How a protein was cloned and expressed - vector,\n  tags, cleavage sites, codon optimization. A construct realizes one protein and may feed many samples.\n\n- [Sample Preparations](SamplePreparation.md): How samples were prepared for specific techniques.\n  This includes cryo-EM grid preparation (vitrification parameters), crystallization conditions for\n  X-ray studies, or staining protocols for fluorescence microscopy.\n\n**Data Collection**\n- [Instruments](Instrument.md): The equipment used, from Titan Krios microscopes to synchrotron\n  beamlines. Each instrument type ([CryoEMInstrument](CryoEMInstrument.md),\n  [XRayInstrument](XRayInstrument.md), [SANSInstrument](SANSInstrument.md),\n  [SAXSInstrument](SAXSInstrument.md)) has specific parameters like accelerating voltage,\n  detector type, or beam energy.\n\n- [Experiment Runs](ExperimentRun.md): Individual data collection sessions. An experiment run\n  captures when, how, and under what conditions data was collected, including quality metrics\n  like resolution and completeness.\n\n**Data Processing**\n- [Workflow Runs](WorkflowRun.md): Computational processing steps applied to raw data. This includes\n  motion correction for cryo-EM movies, 3D reconstruction, model building, or phase determination\n  for crystallography. Each workflow tracks the software used, parameters, and computational resources.\n\n**Data Products**\n- [Data Files](DataFile.md): Any files generated or used, from raw data to final models. Each file\n  is tracked with checksums for data integrity and typed (micrograph, particles, volume, model).\n\n- [Images](Image.md): Specialized classes for different imaging modalities:\n  - [Image2D](Image2D.md): Micrographs, diffraction patterns\n  - [Image3D](Image3D.md): 3D reconstructions, tomograms\n  - [FTIRImage](FTIRImage.md): Molecular composition maps from infrared spectroscopy\n  - [FluorescenceImage](FluorescenceImage.md): Fluorophore-labeled cellular components\n  - [OpticalImage](OpticalImage.md): Brightfield/phase contrast microscopy\n  - [XRFImage](XRFImage.md): Elemental distribution maps\n\n**Logical Groupings**\n- [Studies](Study.md): Lightweight groupings representing focused investigations of specific\n  biological questions. For example, a study might investigate \"Heat stress response in Arabidopsis\"\n  or \"Structure of the human ribosome under different conditions.\"\n\n**People and organizations**\n- [Persons](Person.md): People involved in producing, processing or publishing the data - principal\n  investigators, beamline operators, analysts, curators. Identified by ORCID where available. Which\n  work a person is attached to, and in what capacity, is carried by the person association tables,\n  so one record serves every role a person holds across the dataset.\n\n- [Organizations](Organization.md): Institutions, facilities and funding bodies, identified by ROR.\n  The structured home for organizational identity that would otherwise live as free text on\n  instruments, on people, and in FacilityEnum's annotations - so a parent institution is stated\n  once rather than restated by everything that refers to it.\n\n### Association Tables\n\nMany-to-many relationships are represented via explicit association tables, which can carry\nrelationship metadata (e.g., the role of a sample in an experiment):\n\n- **StudySampleAssociation**: Links samples to studies (with role: target, control, reference)\n- **StudyExperimentAssociation**: Links experiments to studies\n- **StudyWorkflowAssociation**: Links workflows to studies\n- **ExperimentSampleAssociation**: Links samples to experiments (with role and preparation used)\n- **SampleProteinAssociation**: Links proteins to samples (with role, copy number, residue range,\n  modifications, observed mass, and the construct used)\n- **SampleNucleicAcidAssociation**: Links nucleic acids to samples (with role, copy number,\n  structural form, how the strand was made, modifications, and observed mass)\n- **ExperimentInstrumentAssociation**: Links instruments to experiments (with role: primary, detector)\n- **WorkflowExperimentAssociation**: Links source experiments to workflows\n- **WorkflowInputAssociation**: Links input files to workflows\n- **WorkflowOutputAssociation**: Links output files to workflows\n- **StudyPersonAssociation**: Links people to studies (with role, author position, corresponding flag)\n- **ExperimentPersonAssociation**: Links people to experiment runs (with role: operator, local contact)\n- **WorkflowPersonAssociation**: Links people to workflow runs (with role: analyst, reviewer)\n- **StudyOrganizationAssociation**: Links organizations to studies (with role and award number)\n- **PersonOrganizationAssociation**: Links people to organizations (with role and affiliation dates)\n\nThis relational design enables:\n- **Sample reuse**: The same sample can be used in multiple studies and experiments\n- **Protein reuse**: The same protein is described once and linked from every sample that contains it\n- **Nucleic acid reuse**: Likewise for a DNA or RNA strand - one record, linked from every sample it is in\n- **Multi-instrument experiments**: An experiment can use multiple instruments with different roles\n- **Integrative workflows**: A workflow can combine data from multiple experiments\n\n## Example Usage\n\nA typical cryo-EM study of a protein complex would include:\n1. Sample records for the purified complex with molecular weight and buffer composition\n2. Grid preparation details with vitrification parameters\n3. Microscope specifications and data collection parameters\n4. Processing workflows from motion correction through 3D refinement\n5. Final reconstructed volumes and fitted atomic models\n\nA multimodal plant imaging study might combine:\n1. Whole plant optical imaging for morphology\n2. XRF imaging to map nutrient distribution\n3. FTIR spectroscopy to identify stress-related molecular changes\n4. Fluorescence microscopy to track specific protein responses\n5. Cryo-EM of isolated organelles for ultrastructural details\n\n## Key Features\n\n- **Relational design**: Flat entity tables with explicit association tables for M:N relationships\n- **SQL-friendly**: Maps directly to normalized database tables\n- **Technique-agnostic core**: The same schema handles data from any structural biology method\n- **Rich metadata**: Comprehensive tracking from sample to structure\n- **Workflow provenance**: Complete computational reproducibility\n- **Multimodal support**: Seamlessly integrate data across scales and techniques\n- **Standards-compliant**: Follows FAIR principles and integrates with existing ontologies\n",
   "id": "http://w3id.org/lambda/",
-  "version": "0.1.2.post308.dev0+8a814589",
+  "version": "0.1.2.post368.dev0+c63f3e26",
   "imports": [
     "linkml:types",
     "lambda_ber_types",
@@ -3003,6 +3003,79 @@
             "Also known as MicroED or 3D electron diffraction (3DED)",
             "Uses an electron beam on sub-micron crystals"
           ]
+        },
+        {
+          "text": "molecular_dynamics",
+          "description": "Molecular dynamics simulation",
+          "meaning": "sio:000983",
+          "comments": [
+            "Computational technique simulating atomic motion over time",
+            "Used for protein-ligand binding, conformational sampling, ensemble generation"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MDEnsembleEnum",
+      "definition_uri": "http://w3id.org/lambda/MDEnsembleEnum",
+      "description": "Thermodynamic ensemble for MD simulation",
+      "from_schema": "http://w3id.org/lambda/",
+      "permissible_values": [
+        {
+          "text": "nve",
+          "description": "Microcanonical ensemble (constant energy, volume, particle number)"
+        },
+        {
+          "text": "nvt",
+          "description": "Canonical ensemble (constant temperature, volume, particle number)"
+        },
+        {
+          "text": "npt",
+          "description": "Isothermal-isobaric ensemble (constant temperature, pressure, particle number)"
+        }
+      ]
+    },
+    {
+      "name": "MDStageEnum",
+      "definition_uri": "http://w3id.org/lambda/MDStageEnum",
+      "description": "Stage within a multi-step MD simulation pipeline",
+      "from_schema": "http://w3id.org/lambda/",
+      "permissible_values": [
+        {
+          "text": "parameterization",
+          "description": "Ligand parameterization and charge assignment (e.g., antechamber, parmchk2)"
+        },
+        {
+          "text": "topology_building",
+          "description": "System topology construction and solvation (e.g., tleap, pdb2gmx)"
+        },
+        {
+          "text": "hydrogen_mass_repartitioning",
+          "description": "Hydrogen mass repartitioning for larger timesteps (parmed HMR)"
+        },
+        {
+          "text": "minimization_restrained",
+          "description": "Energy minimization with positional restraints on solute"
+        },
+        {
+          "text": "minimization_unrestrained",
+          "description": "Energy minimization without restraints"
+        },
+        {
+          "text": "heating",
+          "description": "Gradual heating from low temperature to target temperature (NVT)"
+        },
+        {
+          "text": "equilibration_restrained",
+          "description": "NPT equilibration with positional restraints"
+        },
+        {
+          "text": "equilibration_unrestrained",
+          "description": "NPT equilibration without restraints"
+        },
+        {
+          "text": "production",
+          "description": "Production MD data collection"
         }
       ]
     },
@@ -3134,6 +3207,32 @@
         {
           "text": "model_validation",
           "description": "Model validation and quality assessment"
+        },
+        {
+          "text": "md_system_setup",
+          "description": "MD system preparation - parameterization, solvation, topology building",
+          "comments": [
+            "Includes antechamber, parmchk2, tleap, parmed stages"
+          ]
+        },
+        {
+          "text": "md_minimization",
+          "description": "Energy minimization prior to MD simulation"
+        },
+        {
+          "text": "md_equilibration",
+          "description": "MD equilibration - heating and NPT/NVT equilibration phases"
+        },
+        {
+          "text": "md_production",
+          "description": "Production molecular dynamics simulation"
+        },
+        {
+          "text": "md_analysis",
+          "description": "Post-simulation trajectory analysis (RMSD, RMSF, clustering, etc.)",
+          "comments": [
+            "Analysis parameter class to be added in a future revision"
+          ]
         }
       ]
     },
@@ -3246,6 +3345,61 @@
         {
           "text": "dm4",
           "description": "Gatan DigitalMicrograph 4 image format (.dm4), commonly used for K2/K3 gain references"
+        },
+        {
+          "text": "mol2",
+          "description": "Tripos MOL2 format for parameterized small molecules"
+        },
+        {
+          "text": "sdf",
+          "description": "Structure-Data File format for chemical structures"
+        },
+        {
+          "text": "frcmod",
+          "description": "Amber force field modification file"
+        },
+        {
+          "text": "prmtop",
+          "description": "Amber topology (parameter/topology) file"
+        },
+        {
+          "text": "inpcrd",
+          "description": "Amber initial coordinates file"
+        },
+        {
+          "text": "rst7",
+          "description": "Amber restart file (ASCII coordinates/velocities)"
+        },
+        {
+          "text": "netcdf",
+          "description": "NetCDF trajectory format (Amber mdcrd binary)",
+          "comments": [
+            "Standard binary trajectory format for Amber MD simulations"
+          ]
+        },
+        {
+          "text": "dcd",
+          "description": "DCD trajectory format (CHARMM/NAMD)"
+        },
+        {
+          "text": "xtc",
+          "description": "XTC compressed trajectory format (GROMACS)"
+        },
+        {
+          "text": "trr",
+          "description": "TRR full-precision trajectory format (GROMACS)"
+        },
+        {
+          "text": "gro",
+          "description": "GROMACS coordinate file format"
+        },
+        {
+          "text": "top",
+          "description": "GROMACS topology file format"
+        },
+        {
+          "text": "lib",
+          "description": "Amber residue library file"
         }
       ]
     },
@@ -3338,6 +3492,62 @@
         {
           "text": "screening_image",
           "description": "Medium- or high-magnification image taken to choose targets or assess ice and particle quality, not for reconstruction"
+        },
+        {
+          "text": "topology",
+          "description": "MD system topology (atom types, bonds, charges, force field parameters)"
+        },
+        {
+          "text": "trajectory",
+          "description": "MD trajectory (time series of atomic coordinates)"
+        },
+        {
+          "text": "restart",
+          "description": "MD restart/checkpoint file for resuming simulations"
+        },
+        {
+          "text": "force_field_params",
+          "description": "Force field parameter or modification file"
+        },
+        {
+          "text": "solvated_structure",
+          "description": "Solvated system structure (protein + solvent + ions)"
+        },
+        {
+          "text": "parameterized_ligand",
+          "description": "Small molecule with assigned force field parameters"
+        },
+        {
+          "text": "md_rmsd",
+          "description": "Root mean square deviation time series"
+        },
+        {
+          "text": "md_rmsf",
+          "description": "Root mean square fluctuation per atom or residue"
+        },
+        {
+          "text": "md_clustering",
+          "description": "Trajectory pose clustering results"
+        },
+        {
+          "text": "md_hbond",
+          "description": "Hydrogen bond analysis results"
+        },
+        {
+          "text": "md_interaction_fingerprint",
+          "description": "Protein-ligand interaction fingerprint (e.g. ProLIF)"
+        },
+        {
+          "text": "md_event_detection",
+          "description": "Change-point or event detection results from trajectory analysis"
+        },
+        {
+          "text": "md_dihedral_entropy",
+          "description": "Configurational (dihedral) entropy analysis"
+        },
+        {
+          "text": "md_energy",
+          "description": "Energy terms from MD simulation output"
         }
       ]
     },
@@ -12829,6 +13039,20 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "workflowRun__md_simulation_params",
+      "description": "Molecular dynamics simulation parameters",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/md_simulation_params",
+      "alias": "md_simulation_params",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "MDSimulationParameters",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "workflowRun__refinement_params",
       "description": "3D refinement specific parameters",
       "from_schema": "http://w3id.org/lambda/",
@@ -16613,6 +16837,481 @@
       "owner": "RefinementParameters",
       "domain_of": [
         "RefinementParameters"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__simulation_engine",
+      "description": "MD simulation engine used (e.g., pmemd.cuda, GROMACS, NAMD, OpenMM)",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/simulation_engine",
+      "alias": "simulation_engine",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__simulation_engine_version",
+      "description": "Version of the simulation engine",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/simulation_engine_version",
+      "alias": "simulation_engine_version",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__protein_force_field",
+      "description": "Force field for protein (e.g., ff19SB, ff14SB, CHARMM36m, OPLS-AA)",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/protein_force_field",
+      "alias": "protein_force_field",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__ligand_force_field",
+      "description": "Force field for small-molecule ligand (e.g., GAFF2, GAFF, CGenFF, OPLS)",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/ligand_force_field",
+      "alias": "ligand_force_field",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__water_model",
+      "description": "Explicit solvent water model (e.g., OPC, TIP3P, SPC/E, TIP4P-Ew)",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/water_model",
+      "alias": "water_model",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__charge_method",
+      "description": "Method used to assign partial charges to the ligand (e.g., AM1-BCC, RESP, HF/6-31G*)",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/charge_method",
+      "alias": "charge_method",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__box_padding",
+      "description": "Minimum distance from solute to box edge, typically in Angstroms",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/box_padding",
+      "alias": "box_padding",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__box_shape",
+      "description": "Simulation box geometry (e.g., cubic, truncated_octahedron, rhombic_dodecahedron)",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/box_shape",
+      "alias": "box_shape",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__ion_neutralization",
+      "description": "Whether counterions were added to neutralize the system",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/ion_neutralization",
+      "alias": "ion_neutralization",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__ion_species",
+      "description": "Ion species added (e.g., Na+, Cl-, K+, Mg2+)",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/ion_species",
+      "alias": "ion_species",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "string",
+      "multivalued": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__net_charge",
+      "description": "Target net charge of the system after ion addition",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/net_charge",
+      "alias": "net_charge",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__hydrogen_mass_repartitioning",
+      "description": "Whether hydrogen mass repartitioning (HMR) was applied to enable larger timesteps",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/hydrogen_mass_repartitioning",
+      "alias": "hydrogen_mass_repartitioning",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__ensemble",
+      "description": "Thermodynamic ensemble for the simulation stage",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/ensemble",
+      "alias": "ensemble",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "MDEnsembleEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__thermostat",
+      "description": "Thermostat algorithm (e.g., Langevin, Nose-Hoover, Berendsen, velocity-rescale)",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/thermostat",
+      "alias": "thermostat",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__thermostat_coupling",
+      "description": "Thermostat coupling constant (gamma_ln for Langevin), typically in 1/ps",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/thermostat_coupling",
+      "alias": "thermostat_coupling",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__barostat",
+      "description": "Barostat algorithm (e.g., Berendsen, Monte-Carlo, Parrinello-Rahman)",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/barostat",
+      "alias": "barostat",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__barostat_coupling",
+      "description": "Barostat coupling constant (taup), typically in ps",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/barostat_coupling",
+      "alias": "barostat_coupling",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__temperature",
+      "description": "Target simulation temperature in Kelvin",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/temperature",
+      "alias": "temperature",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__pressure",
+      "description": "Target simulation pressure, typically in atm",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/pressure",
+      "alias": "pressure",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__timestep",
+      "description": "Integration timestep, typically in femtoseconds",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/timestep",
+      "alias": "timestep",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__constraint_algorithm",
+      "description": "Bond constraint algorithm (e.g., SHAKE, LINCS, SETTLE)",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/constraint_algorithm",
+      "alias": "constraint_algorithm",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__nonbonded_cutoff",
+      "description": "Cutoff for non-bonded interactions, typically in Angstroms",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/nonbonded_cutoff",
+      "alias": "nonbonded_cutoff",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__simulation_stage",
+      "description": "Stage of the MD workflow this run represents",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/simulation_stage",
+      "alias": "simulation_stage",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "MDStageEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__duration_ns",
+      "description": "Duration of this simulation stage in nanoseconds",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/duration_ns",
+      "alias": "duration_ns",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__total_steps",
+      "description": "Total number of integration steps",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/total_steps",
+      "alias": "total_steps",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__trajectory_output_interval",
+      "description": "Interval between saved trajectory frames in steps",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/trajectory_output_interval",
+      "alias": "trajectory_output_interval",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__restraint_mask",
+      "description": "Atom selection mask for positional restraints (Amber mask syntax or equivalent)",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/restraint_mask",
+      "alias": "restraint_mask",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__restraint_force_constant",
+      "description": "Restraint force constant, typically in kcal/mol/A^2",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/restraint_force_constant",
+      "alias": "restraint_force_constant",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__minimization_max_cycles",
+      "description": "Maximum number of minimization cycles",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/minimization_max_cycles",
+      "alias": "minimization_max_cycles",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__minimization_steepest_descent_cycles",
+      "description": "Number of initial steepest-descent cycles before switching to conjugate gradient",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/minimization_steepest_descent_cycles",
+      "alias": "minimization_steepest_descent_cycles",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__initial_temperature",
+      "description": "Starting temperature for heating stage in Kelvin",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/initial_temperature",
+      "alias": "initial_temperature",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__heat_duration_ns",
+      "description": "Duration of the heating phase in nanoseconds",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/heat_duration_ns",
+      "alias": "heat_duration_ns",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__equil_restrained_duration_ns",
+      "description": "Duration of restrained equilibration in nanoseconds",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/equil_restrained_duration_ns",
+      "alias": "equil_restrained_duration_ns",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__equil_free_duration_ns",
+      "description": "Duration of unrestrained equilibration in nanoseconds",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/equil_free_duration_ns",
+      "alias": "equil_free_duration_ns",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__production_duration_ns",
+      "description": "Duration of production MD in nanoseconds",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/production_duration_ns",
+      "alias": "production_duration_ns",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
       ],
       "range": "QuantityValue",
       "inlined": true,
@@ -23699,6 +24398,7 @@
         "workflowRun__motion_correction_params",
         "workflowRun__ctf_estimation_params",
         "workflowRun__particle_picking_params",
+        "workflowRun__md_simulation_params",
         "workflowRun__refinement_params",
         "workflowRun__fsc_curve",
         "workflowRun__output_files"
@@ -24191,6 +24891,12 @@
           "name": "particle_picking_params",
           "description": "Particle picking specific parameters",
           "range": "ParticlePickingParameters",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "md_simulation_params",
+          "description": "Molecular dynamics simulation parameters",
+          "range": "MDSimulationParameters",
           "@type": "SlotDefinition"
         },
         {
@@ -26959,6 +27665,278 @@
       "@type": "ClassDefinition"
     },
     {
+      "name": "MDSimulationParameters",
+      "definition_uri": "http://w3id.org/lambda/MDSimulationParameters",
+      "description": "Parameters for a molecular dynamics simulation workflow. Captures force field selection, simulation conditions, integration settings, solvation setup, and the multi-stage pipeline (minimization, heating, equilibration, production).",
+      "comments": [
+        "Modeled after the Amber/pmemd.cuda pipeline used in BraveDock",
+        "Generalizes to GROMACS, NAMD, OpenMM, and other MD engines"
+      ],
+      "from_schema": "http://w3id.org/lambda/",
+      "is_a": "AttributeGroup",
+      "slots": [
+        "attributeGroup__description",
+        "mDSimulationParameters__simulation_engine",
+        "mDSimulationParameters__simulation_engine_version",
+        "mDSimulationParameters__protein_force_field",
+        "mDSimulationParameters__ligand_force_field",
+        "mDSimulationParameters__water_model",
+        "mDSimulationParameters__charge_method",
+        "mDSimulationParameters__box_padding",
+        "mDSimulationParameters__box_shape",
+        "mDSimulationParameters__ion_neutralization",
+        "mDSimulationParameters__ion_species",
+        "mDSimulationParameters__net_charge",
+        "mDSimulationParameters__hydrogen_mass_repartitioning",
+        "mDSimulationParameters__ensemble",
+        "mDSimulationParameters__thermostat",
+        "mDSimulationParameters__thermostat_coupling",
+        "mDSimulationParameters__barostat",
+        "mDSimulationParameters__barostat_coupling",
+        "mDSimulationParameters__temperature",
+        "mDSimulationParameters__pressure",
+        "mDSimulationParameters__timestep",
+        "mDSimulationParameters__constraint_algorithm",
+        "mDSimulationParameters__nonbonded_cutoff",
+        "mDSimulationParameters__simulation_stage",
+        "mDSimulationParameters__duration_ns",
+        "mDSimulationParameters__total_steps",
+        "mDSimulationParameters__trajectory_output_interval",
+        "mDSimulationParameters__restraint_mask",
+        "mDSimulationParameters__restraint_force_constant",
+        "mDSimulationParameters__minimization_max_cycles",
+        "mDSimulationParameters__minimization_steepest_descent_cycles",
+        "mDSimulationParameters__initial_temperature",
+        "mDSimulationParameters__heat_duration_ns",
+        "mDSimulationParameters__equil_restrained_duration_ns",
+        "mDSimulationParameters__equil_free_duration_ns",
+        "mDSimulationParameters__production_duration_ns"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "simulation_engine",
+          "description": "MD simulation engine used (e.g., pmemd.cuda, GROMACS, NAMD, OpenMM)",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "simulation_engine_version",
+          "description": "Version of the simulation engine",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "protein_force_field",
+          "description": "Force field for protein (e.g., ff19SB, ff14SB, CHARMM36m, OPLS-AA)",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "ligand_force_field",
+          "description": "Force field for small-molecule ligand (e.g., GAFF2, GAFF, CGenFF, OPLS)",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "water_model",
+          "description": "Explicit solvent water model (e.g., OPC, TIP3P, SPC/E, TIP4P-Ew)",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "charge_method",
+          "description": "Method used to assign partial charges to the ligand (e.g., AM1-BCC, RESP, HF/6-31G*)",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "box_padding",
+          "description": "Minimum distance from solute to box edge, typically in Angstroms",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "box_shape",
+          "description": "Simulation box geometry (e.g., cubic, truncated_octahedron, rhombic_dodecahedron)",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "ion_neutralization",
+          "description": "Whether counterions were added to neutralize the system",
+          "range": "boolean",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "ion_species",
+          "description": "Ion species added (e.g., Na+, Cl-, K+, Mg2+)",
+          "multivalued": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "net_charge",
+          "description": "Target net charge of the system after ion addition",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "hydrogen_mass_repartitioning",
+          "description": "Whether hydrogen mass repartitioning (HMR) was applied to enable larger timesteps",
+          "range": "boolean",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "ensemble",
+          "description": "Thermodynamic ensemble for the simulation stage",
+          "range": "MDEnsembleEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "thermostat",
+          "description": "Thermostat algorithm (e.g., Langevin, Nose-Hoover, Berendsen, velocity-rescale)",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "thermostat_coupling",
+          "description": "Thermostat coupling constant (gamma_ln for Langevin), typically in 1/ps",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "barostat",
+          "description": "Barostat algorithm (e.g., Berendsen, Monte-Carlo, Parrinello-Rahman)",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "barostat_coupling",
+          "description": "Barostat coupling constant (taup), typically in ps",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "temperature",
+          "description": "Target simulation temperature in Kelvin",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "pressure",
+          "description": "Target simulation pressure, typically in atm",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "timestep",
+          "description": "Integration timestep, typically in femtoseconds",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "constraint_algorithm",
+          "description": "Bond constraint algorithm (e.g., SHAKE, LINCS, SETTLE)",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "nonbonded_cutoff",
+          "description": "Cutoff for non-bonded interactions, typically in Angstroms",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "simulation_stage",
+          "description": "Stage of the MD workflow this run represents",
+          "range": "MDStageEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "duration_ns",
+          "description": "Duration of this simulation stage in nanoseconds",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "total_steps",
+          "description": "Total number of integration steps",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "trajectory_output_interval",
+          "description": "Interval between saved trajectory frames in steps",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "restraint_mask",
+          "description": "Atom selection mask for positional restraints (Amber mask syntax or equivalent)",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "restraint_force_constant",
+          "description": "Restraint force constant, typically in kcal/mol/A^2",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "minimization_max_cycles",
+          "description": "Maximum number of minimization cycles",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "minimization_steepest_descent_cycles",
+          "description": "Number of initial steepest-descent cycles before switching to conjugate gradient",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "initial_temperature",
+          "description": "Starting temperature for heating stage in Kelvin",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "heat_duration_ns",
+          "description": "Duration of the heating phase in nanoseconds",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "equil_restrained_duration_ns",
+          "description": "Duration of restrained equilibration in nanoseconds",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "equil_free_duration_ns",
+          "description": "Duration of unrestrained equilibration in nanoseconds",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "production_duration_ns",
+          "description": "Duration of production MD in nanoseconds",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "http://w3id.org/lambda/MDSimulationParameters",
+      "@type": "ClassDefinition"
+    },
+    {
       "name": "FSCCurve",
       "definition_uri": "http://w3id.org/lambda/FSCCurve",
       "description": "Fourier Shell Correlation curve data.\n\nThe `resolution_angstrom` and `fsc_value` arrays must be of equal length, with each value at index i in `resolution_angstrom`\ncorresponding to the value at index i in `fsc_value`. Both arrays should not exceed 10,000 elements.\n",
@@ -29172,9 +30150,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda_ber_schema.yaml",
-  "source_file_date": "2026-10-14T15:56:51",
-  "source_file_size": 271681,
-  "generation_date": "2026-10-14T15:57:02",
+  "source_file_date": "2026-10-14T16:13:56",
+  "source_file_size": 282439,
+  "generation_date": "2026-10-14T16:14:13",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda_ber_schema.context.jsonld",
