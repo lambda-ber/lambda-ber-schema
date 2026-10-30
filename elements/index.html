@@ -499,6 +499,29 @@
   
   
     <li class="md-nav__item">
+      <a href="../background/tiled/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tiled
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../background/nexus/" class="md-nav__link">
         
   
@@ -1656,6 +1679,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Small molecule/ligand interactions with proteins</td>
 </tr>
 <tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MDSimulationParameters/">MDSimulationParameters</a></td>
+<td>Parameters for a molecular dynamics simulation workflow</td>
+</tr>
+<tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MolecularComposition/">MolecularComposition</a></td>
 <td>Molecular composition of a sample</td>
 </tr>
@@ -2131,6 +2158,14 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Method used for background correction</td>
 </tr>
 <tr>
+<td><a href="barostat/">barostat</a></td>
+<td>Barostat algorithm (e</td>
+</tr>
+<tr>
+<td><a href="barostat_coupling/">barostat_coupling</a></td>
+<td>Barostat coupling constant (taup), typically in ps</td>
+</tr>
+<tr>
 <td><a href="beam_center_pixels/">beam_center_pixels</a></td>
 <td>Combined beam center pixel coordinates as reported by systems such as NSLS-II...</td>
 </tr>
@@ -2255,6 +2290,14 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Blotter setting value</td>
 </tr>
 <tr>
+<td><a href="box_padding/">box_padding</a></td>
+<td>Minimum distance from solute to box edge, typically in Angstroms</td>
+</tr>
+<tr>
+<td><a href="box_shape/">box_shape</a></td>
+<td>Simulation box geometry (e</td>
+</tr>
+<tr>
 <td><a href="box_size/">box_size</a></td>
 <td>Particle box size in pixels</td>
 </tr>
@@ -2321,6 +2364,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="characteristic_features/">characteristic_features</a></td>
 <td>Key features of this conformation</td>
+</tr>
+<tr>
+<td><a href="charge_method/">charge_method</a></td>
+<td>Method used to assign partial charges to the ligand (e</td>
 </tr>
 <tr>
 <td><a href="chebi_id/">chebi_id</a></td>
@@ -2457,6 +2504,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="conserved_residues/">conserved_residues</a></td>
 <td>Highly conserved residues</td>
+</tr>
+<tr>
+<td><a href="constraint_algorithm/">constraint_algorithm</a></td>
+<td>Bond constraint algorithm (e</td>
 </tr>
 <tr>
 <td><a href="construct/">construct</a></td>
@@ -2803,6 +2854,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Storage duration</td>
 </tr>
 <tr>
+<td><a href="duration_ns/">duration_ns</a></td>
+<td>Duration of this simulation stage in nanoseconds</td>
+</tr>
+<tr>
 <td><a href="dwell_time/">dwell_time</a></td>
 <td>Dwell time per pixel, typically specified in milliseconds</td>
 </tr>
@@ -2883,12 +2938,24 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Minimum X-ray energy in keV</td>
 </tr>
 <tr>
+<td><a href="ensemble/">ensemble</a></td>
+<td>Thermodynamic ensemble for the simulation stage</td>
+</tr>
+<tr>
 <td><a href="environment/">environment</a></td>
 <td>Textual description of environmental conditions</td>
 </tr>
 <tr>
 <td><a href="enzyme/">enzyme</a></td>
 <td>Enzyme responsible for modification</td>
+</tr>
+<tr>
+<td><a href="equil_free_duration_ns/">equil_free_duration_ns</a></td>
+<td>Duration of unrestrained equilibration in nanoseconds</td>
+</tr>
+<tr>
+<td><a href="equil_restrained_duration_ns/">equil_restrained_duration_ns</a></td>
+<td>Duration of restrained equilibration in nanoseconds</td>
 </tr>
 <tr>
 <td><a href="error/">error</a></td>
@@ -3191,6 +3258,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Time point when cells were harvested</td>
 </tr>
 <tr>
+<td><a href="heat_duration_ns/">heat_duration_ns</a></td>
+<td>Duration of the heating phase in nanoseconds</td>
+</tr>
+<tr>
 <td><a href="hic_column/">hic_column</a></td>
 <td>Hydrophobic interaction column used</td>
 </tr>
@@ -3217,6 +3288,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="humidity_percentage/">humidity_percentage</a></td>
 <td>Chamber humidity during vitrification (range: 0-100), typically specified as ...</td>
+</tr>
+<tr>
+<td><a href="hydrogen_mass_repartitioning/">hydrogen_mass_repartitioning</a></td>
+<td>Whether hydrogen mass repartitioning (HMR) was applied to enable larger times...</td>
 </tr>
 <tr>
 <td><a href="i_over_sigma/">i_over_sigma</a></td>
@@ -3291,6 +3366,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Description of initial crystallization hit condition</td>
 </tr>
 <tr>
+<td><a href="initial_temperature/">initial_temperature</a></td>
+<td>Starting temperature for heating stage in Kelvin</td>
+</tr>
+<tr>
 <td><a href="input_type/">input_type</a></td>
 <td>Type of input for the workflow</td>
 </tr>
@@ -3317,6 +3396,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="instrument_registry_id/">instrument_registry_id</a></td>
 <td>Controlled-vocabulary identifier linking this instrument to its canonical ent...</td>
+</tr>
+<tr>
+<td><a href="instrument_type/">instrument_type</a></td>
+<td>Which Instrument class this record is: <code>Instrument</code> or the name of one of its...</td>
 </tr>
 <tr>
 <td><a href="instruments/">instruments</a></td>
@@ -3349,6 +3432,14 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="interface_residues/">interface_residues</a></td>
 <td>Residues at the interaction interface</td>
+</tr>
+<tr>
+<td><a href="ion_neutralization/">ion_neutralization</a></td>
+<td>Whether counterions were added to neutralize the system</td>
+</tr>
+<tr>
+<td><a href="ion_species/">ion_species</a></td>
+<td>Ion species added (e</td>
 </tr>
 <tr>
 <td><a href="ionic_strength/">ionic_strength</a></td>
@@ -3401,6 +3492,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="ligand/">ligand</a></td>
 <td>Ligand or small molecule bound to sample, as the facility recorded it</td>
+</tr>
+<tr>
+<td><a href="ligand_force_field/">ligand_force_field</a></td>
+<td>Force field for small-molecule ligand (e</td>
 </tr>
 <tr>
 <td><a href="ligand_id/">ligand_id</a></td>
@@ -3471,6 +3566,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>The maximum value part, expressed as a number, of the quantity value when the...</td>
 </tr>
 <tr>
+<td><a href="md_simulation_params/">md_simulation_params</a></td>
+<td>Molecular dynamics simulation parameters</td>
+</tr>
+<tr>
 <td><a href="mean_i_over_sigma_i/">mean_i_over_sigma_i</a></td>
 <td>Mean I/sigma(I)</td>
 </tr>
@@ -3497,6 +3596,14 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="microscope_software_version/">microscope_software_version</a></td>
 <td>Software version</td>
+</tr>
+<tr>
+<td><a href="minimization_max_cycles/">minimization_max_cycles</a></td>
+<td>Maximum number of minimization cycles</td>
+</tr>
+<tr>
+<td><a href="minimization_steepest_descent_cycles/">minimization_steepest_descent_cycles</a></td>
+<td>Number of initial steepest-descent cycles before switching to conjugate gradi...</td>
 </tr>
 <tr>
 <td><a href="minimum_numeric_value/">minimum_numeric_value</a></td>
@@ -3615,12 +3722,20 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Whether Non-Crystallographic Symmetry restraints were used</td>
 </tr>
 <tr>
+<td><a href="net_charge/">net_charge</a></td>
+<td>Target net charge of the system after ion addition</td>
+</tr>
+<tr>
 <td><a href="nominal_defocus/">nominal_defocus</a></td>
 <td>Nominal defocus value, typically specified in micrometers</td>
 </tr>
 <tr>
 <td><a href="nominal_pixel_size/">nominal_pixel_size</a></td>
 <td>Nominal pixel size at the specimen for the chosen magnification and binning, ...</td>
+</tr>
+<tr>
+<td><a href="nonbonded_cutoff/">nonbonded_cutoff</a></td>
+<td>Cutoff for non-bonded interactions, typically in Angstroms</td>
 </tr>
 <tr>
 <td><a href="nucleic_acid_id/">nucleic_acid_id</a></td>
@@ -3951,6 +4066,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Current processing status</td>
 </tr>
 <tr>
+<td><a href="production_duration_ns/">production_duration_ns</a></td>
+<td>Duration of production MD in nanoseconds</td>
+</tr>
+<tr>
 <td><a href="promoter/">promoter</a></td>
 <td>Promoter used for expression</td>
 </tr>
@@ -3989,6 +4108,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="protein_constructs/">protein_constructs</a></td>
 <td>All protein constructs</td>
+</tr>
+<tr>
+<td><a href="protein_force_field/">protein_force_field</a></td>
+<td>Force field for protein (e</td>
 </tr>
 <tr>
 <td><a href="protein_id/">protein_id</a></td>
@@ -4181,6 +4304,14 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="resolution_low_a/">resolution_low_a</a></td>
 <td>Low resolution limit, typically specified in Angstroms</td>
+</tr>
+<tr>
+<td><a href="restraint_force_constant/">restraint_force_constant</a></td>
+<td>Restraint force constant, typically in kcal/mol/A^2</td>
+</tr>
+<tr>
+<td><a href="restraint_mask/">restraint_mask</a></td>
+<td>Atom selection mask for positional restraints (Amber mask syntax or equivalen...</td>
 </tr>
 <tr>
 <td><a href="restraints_other/">restraints_other</a></td>
@@ -4397,6 +4528,18 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="signal_to_noise/">signal_to_noise</a></td>
 <td>Signal to noise ratio</td>
+</tr>
+<tr>
+<td><a href="simulation_engine/">simulation_engine</a></td>
+<td>MD simulation engine used (e</td>
+</tr>
+<tr>
+<td><a href="simulation_engine_version/">simulation_engine_version</a></td>
+<td>Version of the simulation engine</td>
+</tr>
+<tr>
+<td><a href="simulation_stage/">simulation_stage</a></td>
+<td>Stage of the MD workflow this run represents</td>
 </tr>
 <tr>
 <td><a href="site_name/">site_name</a></td>
@@ -4695,6 +4838,14 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Ontology terms describing features identified in the image</td>
 </tr>
 <tr>
+<td><a href="thermostat/">thermostat</a></td>
+<td>Thermostat algorithm (e</td>
+</tr>
+<tr>
+<td><a href="thermostat_coupling/">thermostat_coupling</a></td>
+<td>Thermostat coupling constant (gamma_ln for Langevin), typically in 1/ps</td>
+</tr>
+<tr>
 <td><a href="threshold/">threshold</a></td>
 <td>Picking threshold</td>
 </tr>
@@ -4723,6 +4874,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Acquisition timestamp</td>
 </tr>
 <tr>
+<td><a href="timestep/">timestep</a></td>
+<td>Integration timestep, typically in femtoseconds</td>
+</tr>
+<tr>
 <td><a href="title/">title</a></td>
 <td>A human-readable name or title for this entity</td>
 </tr>
@@ -4749,6 +4904,14 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="total_rotation_deg/">total_rotation_deg</a></td>
 <td>Total rotation range, typically specified in degrees</td>
+</tr>
+<tr>
+<td><a href="total_steps/">total_steps</a></td>
+<td>Total number of integration steps</td>
+</tr>
+<tr>
+<td><a href="trajectory_output_interval/">trajectory_output_interval</a></td>
+<td>Interval between saved trajectory frames in steps</td>
 </tr>
 <tr>
 <td><a href="transition_pathways/">transition_pathways</a></td>
@@ -4853,6 +5016,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="wash_buffer/">wash_buffer</a></td>
 <td>Buffer composition for washing</td>
+</tr>
+<tr>
+<td><a href="water_model/">water_model</a></td>
+<td>Explicit solvent water model (e</td>
 </tr>
 <tr>
 <td><a href="wavelength/">wavelength</a></td>
@@ -5124,6 +5291,14 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="LIMSSystemEnum/">LIMSSystemEnum</a></td>
 <td>Laboratory Information Management Systems (LIMS) used at structural biology f...</td>
+</tr>
+<tr>
+<td><a href="MDEnsembleEnum/">MDEnsembleEnum</a></td>
+<td>Thermodynamic ensemble for MD simulation</td>
+</tr>
+<tr>
+<td><a href="MDStageEnum/">MDStageEnum</a></td>
+<td>Stage within a multi-step MD simulation pipeline</td>
 </tr>
 <tr>
 <td><a href="MutationTypeEnum/">MutationTypeEnum</a></td>

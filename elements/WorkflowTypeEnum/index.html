@@ -357,6 +357,29 @@
   
   
     <li class="md-nav__item">
+      <a href="../../background/tiled/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tiled
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../background/nexus/" class="md-nav__link">
         
   
@@ -1376,6 +1399,31 @@
 <td>None</td>
 <td>Model validation and quality assessment</td>
 </tr>
+<tr>
+<td>md_system_setup</td>
+<td>None</td>
+<td>MD system preparation - parameterization, solvation, topology building</td>
+</tr>
+<tr>
+<td>md_minimization</td>
+<td>None</td>
+<td>Energy minimization prior to MD simulation</td>
+</tr>
+<tr>
+<td>md_equilibration</td>
+<td>None</td>
+<td>MD equilibration - heating and NPT/NVT equilibration phases</td>
+</tr>
+<tr>
+<td>md_production</td>
+<td>None</td>
+<td>Production molecular dynamics simulation</td>
+</tr>
+<tr>
+<td>md_analysis</td>
+<td>None</td>
+<td>Post-simulation trajectory analysis (RMSD, RMSF, clustering, etc</td>
+</tr>
 </tbody>
 </table>
 <h2 id="slots">Slots</h2>
@@ -1474,6 +1522,25 @@ permissible_values:
   model_validation:
     text: model_validation
     description: Model validation and quality assessment
+  md_system_setup:
+    text: md_system_setup
+    description: MD system preparation - parameterization, solvation, topology building
+    comments:
+    - Includes antechamber, parmchk2, tleap, parmed stages
+  md_minimization:
+    text: md_minimization
+    description: Energy minimization prior to MD simulation
+  md_equilibration:
+    text: md_equilibration
+    description: MD equilibration - heating and NPT/NVT equilibration phases
+  md_production:
+    text: md_production
+    description: Production molecular dynamics simulation
+  md_analysis:
+    text: md_analysis
+    description: Post-simulation trajectory analysis (RMSD, RMSF, clustering, etc.)
+    comments:
+    - Analysis parameter class to be added in a future revision
 
 </code></pre>
 

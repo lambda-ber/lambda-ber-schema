@@ -357,6 +357,29 @@
   
   
     <li class="md-nav__item">
+      <a href="../../background/tiled/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tiled
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../background/nexus/" class="md-nav__link">
         
   
@@ -1371,6 +1394,76 @@
 <td>None</td>
 <td>Medium- or high-magnification image taken to choose targets or assess ice and...</td>
 </tr>
+<tr>
+<td>topology</td>
+<td>None</td>
+<td>MD system topology (atom types, bonds, charges, force field parameters)</td>
+</tr>
+<tr>
+<td>trajectory</td>
+<td>None</td>
+<td>MD trajectory (time series of atomic coordinates)</td>
+</tr>
+<tr>
+<td>restart</td>
+<td>None</td>
+<td>MD restart/checkpoint file for resuming simulations</td>
+</tr>
+<tr>
+<td>force_field_params</td>
+<td>None</td>
+<td>Force field parameter or modification file</td>
+</tr>
+<tr>
+<td>solvated_structure</td>
+<td>None</td>
+<td>Solvated system structure (protein + solvent + ions)</td>
+</tr>
+<tr>
+<td>parameterized_ligand</td>
+<td>None</td>
+<td>Small molecule with assigned force field parameters</td>
+</tr>
+<tr>
+<td>md_rmsd</td>
+<td>None</td>
+<td>Root mean square deviation time series</td>
+</tr>
+<tr>
+<td>md_rmsf</td>
+<td>None</td>
+<td>Root mean square fluctuation per atom or residue</td>
+</tr>
+<tr>
+<td>md_clustering</td>
+<td>None</td>
+<td>Trajectory pose clustering results</td>
+</tr>
+<tr>
+<td>md_hbond</td>
+<td>None</td>
+<td>Hydrogen bond analysis results</td>
+</tr>
+<tr>
+<td>md_interaction_fingerprint</td>
+<td>None</td>
+<td>Protein-ligand interaction fingerprint (e</td>
+</tr>
+<tr>
+<td>md_event_detection</td>
+<td>None</td>
+<td>Change-point or event detection results from trajectory analysis</td>
+</tr>
+<tr>
+<td>md_dihedral_entropy</td>
+<td>None</td>
+<td>Configurational (dihedral) entropy analysis</td>
+</tr>
+<tr>
+<td>md_energy</td>
+<td>None</td>
+<td>Energy terms from MD simulation output</td>
+</tr>
 </tbody>
 </table>
 <h2 id="slots">Slots</h2>
@@ -1468,6 +1561,48 @@ permissible_values:
     text: screening_image
     description: Medium- or high-magnification image taken to choose targets or assess
       ice and particle quality, not for reconstruction
+  topology:
+    text: topology
+    description: MD system topology (atom types, bonds, charges, force field parameters)
+  trajectory:
+    text: trajectory
+    description: MD trajectory (time series of atomic coordinates)
+  restart:
+    text: restart
+    description: MD restart/checkpoint file for resuming simulations
+  force_field_params:
+    text: force_field_params
+    description: Force field parameter or modification file
+  solvated_structure:
+    text: solvated_structure
+    description: Solvated system structure (protein + solvent + ions)
+  parameterized_ligand:
+    text: parameterized_ligand
+    description: Small molecule with assigned force field parameters
+  md_rmsd:
+    text: md_rmsd
+    description: Root mean square deviation time series
+  md_rmsf:
+    text: md_rmsf
+    description: Root mean square fluctuation per atom or residue
+  md_clustering:
+    text: md_clustering
+    description: Trajectory pose clustering results
+  md_hbond:
+    text: md_hbond
+    description: Hydrogen bond analysis results
+  md_interaction_fingerprint:
+    text: md_interaction_fingerprint
+    description: Protein-ligand interaction fingerprint (e.g. ProLIF)
+  md_event_detection:
+    text: md_event_detection
+    description: Change-point or event detection results from trajectory analysis
+  md_dihedral_entropy:
+    text: md_dihedral_entropy
+    description: Configurational (dihedral) entropy analysis
+  md_energy:
+    text: md_energy
+    description: Energy terms from MD simulation output
 
 </code></pre>
 
