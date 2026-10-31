@@ -176,6 +176,9 @@
    "LigandInteraction": {
       "@id": "http://w3id.org/lambda/functional_annotation/LigandInteraction"
    },
+   "MDSimulationParameters": {
+      "@id": "lambda:MDSimulationParameters"
+   },
    "MeasurementConditions": {
       "@id": "http://w3id.org/lambda/functional_annotation/MeasurementConditions"
    },

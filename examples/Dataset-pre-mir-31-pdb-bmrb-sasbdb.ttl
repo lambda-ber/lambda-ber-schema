@@ -22,14 +22,14 @@ lambdaber:dataset_pre_mir_31 a lambdaber:Dataset ;
         <https://www.sasbdb.org/data/SASDRF9/file/pddf> ;
     lambdaber:description "Solution NMR structure of human precursor microRNA 31 (PDB 8FCS, BMRB 31061) with SEC-SAXS data on the same RNA (SASBDB SASDRF9) fitted against the NMR ensemble." ;
     lambdaber:experiment_instrument_associations [ a lambdaber:ExperimentInstrumentAssociation ;
-            lambdaber:experiment_id <https://www.sasbdb.org/data/SASDRF9/experiment> ;
-            lambdaber:instrument_id lambdaber:instrument_aps_biocat_18id ],
-        [ a lambdaber:ExperimentInstrumentAssociation ;
             lambdaber:experiment_id <https://www.rcsb.org/structure/8FCS/experiment> ;
             lambdaber:instrument_id lambdaber:instrument_bruker_avance_neo_600_8fcs ],
         [ a lambdaber:ExperimentInstrumentAssociation ;
             lambdaber:experiment_id <https://www.rcsb.org/structure/8FCS/experiment> ;
-            lambdaber:instrument_id lambdaber:instrument_bruker_avance_neo_800_8fcs ] ;
+            lambdaber:instrument_id lambdaber:instrument_bruker_avance_neo_800_8fcs ],
+        [ a lambdaber:ExperimentInstrumentAssociation ;
+            lambdaber:experiment_id <https://www.sasbdb.org/data/SASDRF9/experiment> ;
+            lambdaber:instrument_id lambdaber:instrument_aps_biocat_18id ] ;
     lambdaber:experiment_person_associations [ a lambdaber:ExperimentPersonAssociation ;
             lambdaber:experiment_id <https://www.sasbdb.org/data/SASDRF9/experiment> ;
             lambdaber:person_id lambdaber:person_ian_hall ;
@@ -38,10 +38,10 @@ lambdaber:dataset_pre_mir_31 a lambdaber:Dataset ;
         <https://www.sasbdb.org/data/SASDRF9/experiment> ;
     lambdaber:experiment_sample_associations [ a lambdaber:ExperimentSampleAssociation ;
             lambdaber:experiment_id <https://www.rcsb.org/structure/8FCS/experiment> ;
-            lambdaber:sample_id <https://bmrb.io/data_library/summary/index.php?bmrbId=31061/sample/1> ],
+            lambdaber:sample_id <https://bmrb.io/data_library/summary/index.php?bmrbId=31061/sample/6> ],
         [ a lambdaber:ExperimentSampleAssociation ;
             lambdaber:experiment_id <https://www.rcsb.org/structure/8FCS/experiment> ;
-            lambdaber:sample_id <https://bmrb.io/data_library/summary/index.php?bmrbId=31061/sample/6> ],
+            lambdaber:sample_id <https://bmrb.io/data_library/summary/index.php?bmrbId=31061/sample/1> ],
         [ a lambdaber:ExperimentSampleAssociation ;
             lambdaber:experiment_id <https://www.sasbdb.org/data/SASDRF9/experiment> ;
             lambdaber:sample_id <https://www.sasbdb.org/data/SASDRF9/sample> ] ;
@@ -60,12 +60,11 @@ lambdaber:dataset_pre_mir_31 a lambdaber:Dataset ;
         lambdaber:person_sicong_ma ;
     lambdaber:sample_nucleic_acid_associations [ a lambdaber:SampleNucleicAcidAssociation ;
             lambdaber:copy_number 1 ;
+            lambdaber:modifications "uniform 13C/15N in all A and G nucleotides" ;
             lambdaber:nucleic_acid_id rnacentral:URS0000001EB3_9606 ;
-            lambdaber:observed_molecular_weight [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "25.5"^^xsd:float ;
-                    lambdaber:unit "kDa" ] ;
             lambdaber:role "target" ;
-            lambdaber:sample_id <https://www.sasbdb.org/data/SASDRF9/sample> ;
+            lambdaber:sample_id <https://bmrb.io/data_library/summary/index.php?bmrbId=31061/sample/6> ;
+            lambdaber:source_method "in_vitro_transcription" ;
             lambdaber:structural_form "hairpin" ],
         [ a lambdaber:SampleNucleicAcidAssociation ;
             lambdaber:copy_number 1 ;
@@ -76,11 +75,12 @@ lambdaber:dataset_pre_mir_31 a lambdaber:Dataset ;
             lambdaber:structural_form "hairpin" ],
         [ a lambdaber:SampleNucleicAcidAssociation ;
             lambdaber:copy_number 1 ;
-            lambdaber:modifications "uniform 13C/15N in all A and G nucleotides" ;
             lambdaber:nucleic_acid_id rnacentral:URS0000001EB3_9606 ;
+            lambdaber:observed_molecular_weight [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "25.5"^^xsd:float ;
+                    lambdaber:unit "kDa" ] ;
             lambdaber:role "target" ;
-            lambdaber:sample_id <https://bmrb.io/data_library/summary/index.php?bmrbId=31061/sample/6> ;
-            lambdaber:source_method "in_vitro_transcription" ;
+            lambdaber:sample_id <https://www.sasbdb.org/data/SASDRF9/sample> ;
             lambdaber:structural_form "hairpin" ] ;
     lambdaber:samples <https://bmrb.io/data_library/summary/index.php?bmrbId=31061/sample/1>,
         <https://bmrb.io/data_library/summary/index.php?bmrbId=31061/sample/6>,
@@ -98,14 +98,14 @@ lambdaber:dataset_pre_mir_31 a lambdaber:Dataset ;
             lambdaber:role "author" ;
             lambdaber:study_id lambdaber:study_pre_mir_31 ],
         [ a lambdaber:StudyPersonAssociation ;
-            lambdaber:author_position 6 ;
-            lambdaber:person_id lambdaber:person_sarah_keane ;
-            lambdaber:role "principal_investigator" ;
-            lambdaber:study_id lambdaber:study_pre_mir_31 ],
-        [ a lambdaber:StudyPersonAssociation ;
             lambdaber:author_position 3 ;
             lambdaber:person_id lambdaber:person_ian_hall ;
             lambdaber:role "author" ;
+            lambdaber:study_id lambdaber:study_pre_mir_31 ],
+        [ a lambdaber:StudyPersonAssociation ;
+            lambdaber:author_position 6 ;
+            lambdaber:person_id lambdaber:person_sarah_keane ;
+            lambdaber:role "principal_investigator" ;
             lambdaber:study_id lambdaber:study_pre_mir_31 ],
         [ a lambdaber:StudyPersonAssociation ;
             lambdaber:author_position 1 ;
@@ -122,51 +122,43 @@ lambdaber:dataset_pre_mir_31 a lambdaber:Dataset ;
             lambdaber:sample_id <https://bmrb.io/data_library/summary/index.php?bmrbId=31061/sample/6> ;
             lambdaber:study_id lambdaber:study_pre_mir_31 ] ;
     lambdaber:workflow_experiment_associations [ a lambdaber:WorkflowExperimentAssociation ;
-            lambdaber:experiment_id <https://www.sasbdb.org/data/SASDRF9/experiment> ;
-            lambdaber:workflow_id <https://www.sasbdb.org/data/SASDRF9/workflow/denss> ],
-        [ a lambdaber:WorkflowExperimentAssociation ;
             lambdaber:experiment_id <https://www.rcsb.org/structure/8FCS/experiment> ;
-            lambdaber:workflow_id <https://www.rcsb.org/structure/8FCS/workflow/refinement> ],
-        [ a lambdaber:WorkflowExperimentAssociation ;
-            lambdaber:experiment_id <https://www.sasbdb.org/data/SASDRF9/experiment> ;
-            lambdaber:workflow_id <https://www.sasbdb.org/data/SASDRF9/workflow/pddf> ],
+            lambdaber:workflow_id <https://www.rcsb.org/structure/8FCS/workflow/structure_calculation> ],
         [ a lambdaber:WorkflowExperimentAssociation ;
             lambdaber:experiment_id <https://www.sasbdb.org/data/SASDRF9/experiment> ;
             lambdaber:workflow_id <https://www.sasbdb.org/data/SASDRF9/workflow/fit1> ],
         [ a lambdaber:WorkflowExperimentAssociation ;
-            lambdaber:experiment_id <https://www.rcsb.org/structure/8FCS/experiment> ;
-            lambdaber:workflow_id <https://www.rcsb.org/structure/8FCS/workflow/structure_calculation> ] ;
-    lambdaber:workflow_input_associations [ a lambdaber:WorkflowInputAssociation ;
-            lambdaber:file_id <https://www.sasbdb.org/data/SASDRF9/file/pddf> ;
+            lambdaber:experiment_id <https://www.sasbdb.org/data/SASDRF9/experiment> ;
             lambdaber:workflow_id <https://www.sasbdb.org/data/SASDRF9/workflow/denss> ],
+        [ a lambdaber:WorkflowExperimentAssociation ;
+            lambdaber:experiment_id <https://www.sasbdb.org/data/SASDRF9/experiment> ;
+            lambdaber:workflow_id <https://www.sasbdb.org/data/SASDRF9/workflow/pddf> ],
+        [ a lambdaber:WorkflowExperimentAssociation ;
+            lambdaber:experiment_id <https://www.rcsb.org/structure/8FCS/experiment> ;
+            lambdaber:workflow_id <https://www.rcsb.org/structure/8FCS/workflow/refinement> ] ;
+    lambdaber:workflow_input_associations [ a lambdaber:WorkflowInputAssociation ;
+            lambdaber:file_id <https://www.sasbdb.org/data/SASDRF9/file/intensities> ;
+            lambdaber:input_type "raw_data" ;
+            lambdaber:workflow_id <https://www.sasbdb.org/data/SASDRF9/workflow/pddf> ],
         [ a lambdaber:WorkflowInputAssociation ;
             lambdaber:file_id <https://bmrb.io/data_library/summary/index.php?bmrbId=31061/file/nmr_star> ;
             lambdaber:input_type "raw_data" ;
             lambdaber:workflow_id <https://www.rcsb.org/structure/8FCS/workflow/structure_calculation> ],
         [ a lambdaber:WorkflowInputAssociation ;
-            lambdaber:file_id <https://www.rcsb.org/structure/8FCS/file/restraints> ;
-            lambdaber:workflow_id <https://www.rcsb.org/structure/8FCS/workflow/structure_calculation> ],
-        [ a lambdaber:WorkflowInputAssociation ;
-            lambdaber:file_id <https://www.sasbdb.org/data/SASDRF9/file/intensities> ;
-            lambdaber:input_type "raw_data" ;
-            lambdaber:workflow_id <https://www.sasbdb.org/data/SASDRF9/workflow/pddf> ],
-        [ a lambdaber:WorkflowInputAssociation ;
             lambdaber:file_id <https://www.sasbdb.org/data/SASDRF9/file/fit1_model> ;
             lambdaber:input_type "reference" ;
             lambdaber:workflow_id <https://www.sasbdb.org/data/SASDRF9/workflow/fit1> ],
         [ a lambdaber:WorkflowInputAssociation ;
+            lambdaber:file_id <https://www.sasbdb.org/data/SASDRF9/file/pddf> ;
+            lambdaber:workflow_id <https://www.sasbdb.org/data/SASDRF9/workflow/denss> ],
+        [ a lambdaber:WorkflowInputAssociation ;
             lambdaber:file_id <https://www.sasbdb.org/data/SASDRF9/file/intensities> ;
             lambdaber:input_type "raw_data" ;
-            lambdaber:workflow_id <https://www.sasbdb.org/data/SASDRF9/workflow/fit1> ] ;
-    lambdaber:workflow_output_associations [ a lambdaber:WorkflowOutputAssociation ;
-            lambdaber:file_id <https://www.sasbdb.org/data/SASDRF9/file/fit1_density> ;
-            lambdaber:output_type "map" ;
-            lambdaber:workflow_id <https://www.sasbdb.org/data/SASDRF9/workflow/denss> ],
-        [ a lambdaber:WorkflowOutputAssociation ;
-            lambdaber:file_id <https://www.sasbdb.org/data/SASDRF9/file/fit1> ;
-            lambdaber:output_type "statistics" ;
             lambdaber:workflow_id <https://www.sasbdb.org/data/SASDRF9/workflow/fit1> ],
-        [ a lambdaber:WorkflowOutputAssociation ;
+        [ a lambdaber:WorkflowInputAssociation ;
+            lambdaber:file_id <https://www.rcsb.org/structure/8FCS/file/restraints> ;
+            lambdaber:workflow_id <https://www.rcsb.org/structure/8FCS/workflow/structure_calculation> ] ;
+    lambdaber:workflow_output_associations [ a lambdaber:WorkflowOutputAssociation ;
             lambdaber:file_id <https://www.rcsb.org/structure/8FCS/file/mmcif> ;
             lambdaber:output_type "model" ;
             lambdaber:workflow_id <https://www.rcsb.org/structure/8FCS/workflow/refinement> ],
@@ -175,9 +167,17 @@ lambdaber:dataset_pre_mir_31 a lambdaber:Dataset ;
             lambdaber:output_type "processed_data" ;
             lambdaber:workflow_id <https://www.sasbdb.org/data/SASDRF9/workflow/pddf> ],
         [ a lambdaber:WorkflowOutputAssociation ;
+            lambdaber:file_id <https://www.sasbdb.org/data/SASDRF9/file/fit1> ;
+            lambdaber:output_type "statistics" ;
+            lambdaber:workflow_id <https://www.sasbdb.org/data/SASDRF9/workflow/fit1> ],
+        [ a lambdaber:WorkflowOutputAssociation ;
             lambdaber:file_id <https://www.rcsb.org/structure/8FCS/file/pdb> ;
             lambdaber:output_type "model" ;
-            lambdaber:workflow_id <https://www.rcsb.org/structure/8FCS/workflow/refinement> ] ;
+            lambdaber:workflow_id <https://www.rcsb.org/structure/8FCS/workflow/refinement> ],
+        [ a lambdaber:WorkflowOutputAssociation ;
+            lambdaber:file_id <https://www.sasbdb.org/data/SASDRF9/file/fit1_density> ;
+            lambdaber:output_type "map" ;
+            lambdaber:workflow_id <https://www.sasbdb.org/data/SASDRF9/workflow/denss> ] ;
     lambdaber:workflow_person_associations [ a lambdaber:WorkflowPersonAssociation ;
             lambdaber:person_id lambdaber:person_anita_kotar ;
             lambdaber:role "data_curator" ;
@@ -188,28 +188,28 @@ lambdaber:dataset_pre_mir_31 a lambdaber:Dataset ;
         <https://www.sasbdb.org/data/SASDRF9/workflow/fit1>,
         <https://www.sasbdb.org/data/SASDRF9/workflow/pddf> .
 
-lambdaber:instrument_aps_biocat_18id a lambdaber:Instrument ;
-    dcterms:title "APS BioCAT 18-ID" ;
+lambdaber:instrument_aps_biocat_18id dcterms:title "APS BioCAT 18-ID" ;
     lambdaber:beamline_id "18-ID" ;
     lambdaber:description "SEC-SAXS beamline. Detector: Pilatus 100K" ;
     lambdaber:facility_name ROR:05gvnxz63 ;
     lambdaber:instrument_category CHMO:0001084 ;
     lambdaber:instrument_code "APS-18-ID-BioCAT" ;
-    lambdaber:instrument_registry_id "APS_BIOCAT_18ID" .
+    lambdaber:instrument_registry_id "APS_BIOCAT_18ID" ;
+    lambdaber:instrument_type "Instrument" .
 
-lambdaber:instrument_bruker_avance_neo_600_8fcs a lambdaber:Instrument ;
-    dcterms:title "Bruker AVANCE NEO 600 MHz" ;
+lambdaber:instrument_bruker_avance_neo_600_8fcs dcterms:title "Bruker AVANCE NEO 600 MHz" ;
     lambdaber:description "600 MHz NMR spectrometer, as recorded for PDB 8FCS (spectrometer 1)" ;
     lambdaber:instrument_category "SPECTROMETER" ;
     lambdaber:instrument_code "8FCS-NMR-600" ;
+    lambdaber:instrument_type "Instrument" ;
     lambdaber:manufacturer "Bruker" ;
     lambdaber:model "AVANCE NEO" .
 
-lambdaber:instrument_bruker_avance_neo_800_8fcs a lambdaber:Instrument ;
-    dcterms:title "Bruker AVANCE NEO 800 MHz" ;
+lambdaber:instrument_bruker_avance_neo_800_8fcs dcterms:title "Bruker AVANCE NEO 800 MHz" ;
     lambdaber:description "800 MHz NMR spectrometer, as recorded for PDB 8FCS (spectrometer 2)" ;
     lambdaber:instrument_category "SPECTROMETER" ;
     lambdaber:instrument_code "8FCS-NMR-800" ;
+    lambdaber:instrument_type "Instrument" ;
     lambdaber:manufacturer "Bruker" ;
     lambdaber:model "AVANCE NEO" .
 

@@ -6,6 +6,10 @@ This directory contains alignment analyses and comparisons between lambda-ber-sc
 
 ## Available Analyses
 
+### [Tiled](tiled.md)
+
+Scientific data access in the Bluesky ecosystem: BNL/NSLS-II origins, verified usage, architecture, and proposed LAMBDA/LinkML and BRIDGE integration, with a bounded pilot recommendation.
+
 ### [TomoBabel / CETS](tomobabel-cets.md)
 
 CryoET geometry and processing interchange, with YAML examples, links to real images and GO annotations, converter/version boundaries, and proposed LAMBDA integration.

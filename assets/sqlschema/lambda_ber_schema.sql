@@ -207,6 +207,7 @@
 --     * Slot: yield_mg_id Description: Total yield in milligrams
 --     * Slot: purity_by_sds_page_percent_id Description: Purity percentage by SDS-PAGE
 -- # Class: Instrument Description: An instrument used to collect data
+--     * Slot: instrument_type Description: Which Instrument class this record is: `Instrument` or the name of one of its subclasses, such as `CryoEMInstrument`. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.
 --     * Slot: instrument_code Description: Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.
 --     * Slot: instrument_registry_id Description: Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.
 --     * Slot: instrument_category Description: Category distinguishing beamlines from laboratory equipment
@@ -238,6 +239,7 @@
 --     * Slot: microscope_software Description: Microscope control software (e.g., SerialEM, EPU, Leginon)
 --     * Slot: microscope_software_version Description: Software version
 --     * Slot: imaging_mode Description: Imaging mode for electron microscopy
+--     * Slot: instrument_type Description: Which Instrument class this record is: `Instrument` or the name of one of its subclasses, such as `CryoEMInstrument`. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.
 --     * Slot: instrument_code Description: Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.
 --     * Slot: instrument_registry_id Description: Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.
 --     * Slot: instrument_category Description: Category distinguishing beamlines from laboratory equipment
@@ -271,6 +273,7 @@
 --     * Slot: monochromator_type Description: Type of monochromator
 --     * Slot: goniometer_type Description: Type of goniometer
 --     * Slot: crystal_cooling_capability Description: Crystal cooling system available
+--     * Slot: instrument_type Description: Which Instrument class this record is: `Instrument` or the name of one of its subclasses, such as `CryoEMInstrument`. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.
 --     * Slot: instrument_code Description: Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.
 --     * Slot: instrument_registry_id Description: Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.
 --     * Slot: instrument_category Description: Category distinguishing beamlines from laboratory equipment
@@ -332,6 +335,7 @@
 -- # Class: SANSInstrument Description: Small-angle neutron scattering (SANS) instrument specifications
 --     * Slot: technique Description: Primary technique (should always be sans for this class)
 --     * Slot: environment Description: Textual description of environmental conditions
+--     * Slot: instrument_type Description: Which Instrument class this record is: `Instrument` or the name of one of its subclasses, such as `CryoEMInstrument`. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.
 --     * Slot: instrument_code Description: Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.
 --     * Slot: instrument_registry_id Description: Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.
 --     * Slot: instrument_category Description: Category distinguishing beamlines from laboratory equipment
@@ -352,6 +356,7 @@
 --     * Slot: configuration_id Description: Optical/mechanical configuration details
 -- # Class: SAXSInstrument Description: SAXS/WAXS instrument specifications
 --     * Slot: temperature_control_range Description: Temperature control range in Celsius
+--     * Slot: instrument_type Description: Which Instrument class this record is: `Instrument` or the name of one of its subclasses, such as `CryoEMInstrument`. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.
 --     * Slot: instrument_code Description: Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.
 --     * Slot: instrument_registry_id Description: Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.
 --     * Slot: instrument_category Description: Category distinguishing beamlines from laboratory equipment
@@ -378,6 +383,7 @@
 --     * Slot: lims_system Description: Laboratory Information Management System used at this beamline
 --     * Slot: daq_system Description: Data acquisition system used for experiment orchestration
 --     * Slot: control_system Description: Low-level control system for device communication
+--     * Slot: instrument_type Description: Which Instrument class this record is: `Instrument` or the name of one of its subclasses, such as `CryoEMInstrument`. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.
 --     * Slot: instrument_code Description: Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.
 --     * Slot: instrument_registry_id Description: Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.
 --     * Slot: instrument_category Description: Category distinguishing beamlines from laboratory equipment
@@ -406,7 +412,8 @@
 --     * Slot: raw_data_location Description: Location of raw data files
 --     * Slot: processing_status Description: Current processing status
 --     * Slot: daq_system Description: Data acquisition system used to collect this experiment
---     * Slot: tilting_scheme Description: Tilt scheme used during tomographic data collection
+--     * Slot: phase_plate_used Description: Whether a phase plate was in the beam path for this session
+--     * Slot: tilting_scheme Description: Stage tilting scheme used during data collection. Use `none` for untilted acquisitions such as single-particle collection; the other values describe tomographic and continuous-rotation (MicroED) collection.
 --     * Slot: autoloader_slot Description: Autoloader slot identifier
 --     * Slot: acquisition_software Description: Acquisition software used (e.g., SerialEM, EPU, Leginon)
 --     * Slot: acquisition_software_version Description: Version of acquisition software
@@ -421,7 +428,10 @@
 --     * Slot: experimental_conditions_id Description: Environmental and experimental conditions
 --     * Slot: data_collection_strategy_id Description: Strategy for data collection
 --     * Slot: quality_metrics_id Description: Quality metrics for the experiment
+--     * Slot: accelerating_voltage_id Description: Accelerating voltage used for this session, typically specified in kV. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: cs_id Description: Nominal spherical aberration (Cs) of the objective lens in effect for this session, typically specified in millimeters. Data providers may specify alternative units by including the unit in the QuantityValue.
 --     * Slot: magnification_id Description: Magnification used during data collection
+--     * Slot: nominal_pixel_size_id Description: Nominal pixel size at the specimen for the chosen magnification and binning, as set at the microscope, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue.
 --     * Slot: calibrated_pixel_size_id Description: Calibrated pixel size, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue.
 --     * Slot: camera_binning_id Description: Camera binning factor. This must be a positive float value (e.g., 1, 1.5, 2, 3).
 --     * Slot: exposure_time_per_frame_id Description: Exposure time per frame, typically specified in milliseconds. Data providers may specify alternative units by including the unit in the QuantityValue.
@@ -429,6 +439,10 @@
 --     * Slot: total_exposure_time_id Description: Total exposure time. Data providers may specify alternative units (e.g., seconds, milliseconds) by including the unit in the QuantityValue.
 --     * Slot: total_dose_id Description: Total electron dose, typically specified in e-/Angstrom^2. Data providers may specify alternative units by including the unit in the QuantityValue.
 --     * Slot: dose_rate_id Description: Dose rate, typically specified in e-/pixel/s or e-/Angstrom^2/s. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: spot_size_id Description: Condenser spot size setting used for this session (a dimensionless index on the microscope, e.g. 4)
+--     * Slot: c2_aperture_id Description: C2 condenser aperture diameter used for this session, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: beam_diameter_id Description: Illuminated beam diameter at the specimen used for this session, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: energy_filter_slit_width_id Description: Energy filter slit width used for this session, typically specified in eV. Omit when no energy filter was used. Data providers may specify alternative units by including the unit in the QuantityValue.
 --     * Slot: defocus_target_id Description: Target defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
 --     * Slot: defocus_range_min_id Description: Minimum defocus range, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
 --     * Slot: defocus_range_max_id Description: Maximum defocus range, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
@@ -541,6 +555,7 @@
 --     * Slot: motion_correction_params_id Description: Motion correction specific parameters
 --     * Slot: ctf_estimation_params_id Description: CTF estimation specific parameters
 --     * Slot: particle_picking_params_id Description: Particle picking specific parameters
+--     * Slot: md_simulation_params_id Description: Molecular dynamics simulation parameters
 --     * Slot: refinement_params_id Description: 3D refinement specific parameters
 --     * Slot: fsc_curve_id Description: Fourier Shell Correlation curve data
 -- # Class: DataFile Description: A data file generated or used in the study
@@ -959,6 +974,43 @@
 --     * Slot: resolution_0_143_id Description: Resolution at FSC=0.143, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
 --     * Slot: resolution_0_5_id Description: Resolution at FSC=0.5, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
 --     * Slot: map_sharpening_bfactor_id Description: B-factor used for map sharpening, typically specified in Angstroms squared (Å²). Data providers may specify alternative units by including the unit in the QuantityValue.
+-- # Class: MDSimulationParameters Description: Parameters for a molecular dynamics simulation workflow. Captures force field selection, simulation conditions, integration settings, solvation setup, and the multi-stage pipeline (minimization, heating, equilibration, production).
+--     * Slot: id
+--     * Slot: simulation_engine Description: MD simulation engine used (e.g., pmemd.cuda, GROMACS, NAMD, OpenMM)
+--     * Slot: simulation_engine_version Description: Version of the simulation engine
+--     * Slot: protein_force_field Description: Force field for protein (e.g., ff19SB, ff14SB, CHARMM36m, OPLS-AA)
+--     * Slot: ligand_force_field Description: Force field for small-molecule ligand (e.g., GAFF2, GAFF, CGenFF, OPLS)
+--     * Slot: water_model Description: Explicit solvent water model (e.g., OPC, TIP3P, SPC/E, TIP4P-Ew)
+--     * Slot: charge_method Description: Method used to assign partial charges to the ligand (e.g., AM1-BCC, RESP, HF/6-31G*)
+--     * Slot: box_shape Description: Simulation box geometry (e.g., cubic, truncated_octahedron, rhombic_dodecahedron)
+--     * Slot: ion_neutralization Description: Whether counterions were added to neutralize the system
+--     * Slot: hydrogen_mass_repartitioning Description: Whether hydrogen mass repartitioning (HMR) was applied to enable larger timesteps
+--     * Slot: ensemble Description: Thermodynamic ensemble for the simulation stage
+--     * Slot: thermostat Description: Thermostat algorithm (e.g., Langevin, Nose-Hoover, Berendsen, velocity-rescale)
+--     * Slot: barostat Description: Barostat algorithm (e.g., Berendsen, Monte-Carlo, Parrinello-Rahman)
+--     * Slot: constraint_algorithm Description: Bond constraint algorithm (e.g., SHAKE, LINCS, SETTLE)
+--     * Slot: simulation_stage Description: Stage of the MD workflow this run represents
+--     * Slot: restraint_mask Description: Atom selection mask for positional restraints (Amber mask syntax or equivalent)
+--     * Slot: description
+--     * Slot: box_padding_id Description: Minimum distance from solute to box edge, typically in Angstroms
+--     * Slot: net_charge_id Description: Target net charge of the system after ion addition
+--     * Slot: thermostat_coupling_id Description: Thermostat coupling constant (gamma_ln for Langevin), typically in 1/ps
+--     * Slot: barostat_coupling_id Description: Barostat coupling constant (taup), typically in ps
+--     * Slot: temperature_id Description: Target simulation temperature in Kelvin
+--     * Slot: pressure_id Description: Target simulation pressure, typically in atm
+--     * Slot: timestep_id Description: Integration timestep, typically in femtoseconds
+--     * Slot: nonbonded_cutoff_id Description: Cutoff for non-bonded interactions, typically in Angstroms
+--     * Slot: duration_ns_id Description: Duration of this simulation stage in nanoseconds
+--     * Slot: total_steps_id Description: Total number of integration steps
+--     * Slot: trajectory_output_interval_id Description: Interval between saved trajectory frames in steps
+--     * Slot: restraint_force_constant_id Description: Restraint force constant, typically in kcal/mol/A^2
+--     * Slot: minimization_max_cycles_id Description: Maximum number of minimization cycles
+--     * Slot: minimization_steepest_descent_cycles_id Description: Number of initial steepest-descent cycles before switching to conjugate gradient
+--     * Slot: initial_temperature_id Description: Starting temperature for heating stage in Kelvin
+--     * Slot: heat_duration_ns_id Description: Duration of the heating phase in nanoseconds
+--     * Slot: equil_restrained_duration_ns_id Description: Duration of restrained equilibration in nanoseconds
+--     * Slot: equil_free_duration_ns_id Description: Duration of unrestrained equilibration in nanoseconds
+--     * Slot: production_duration_ns_id Description: Duration of production MD in nanoseconds
 -- # Class: FSCCurve Description: Fourier Shell Correlation curve data.The `resolution_angstrom` and `fsc_value` arrays must be of equal length, with each value at index i in `resolution_angstrom`corresponding to the value at index i in `fsc_value`. Both arrays should not exceed 10,000 elements.
 --     * Slot: id
 --     * Slot: description
@@ -1397,6 +1449,9 @@
 -- # Class: BufferComposition_additives
 --     * Slot: BufferComposition_id Description: Autocreated FK slot
 --     * Slot: additives Description: Additional additives in the buffer
+-- # Class: MDSimulationParameters_ion_species
+--     * Slot: MDSimulationParameters_id Description: Autocreated FK slot
+--     * Slot: ion_species Description: Ion species added (e.g., Na+, Cl-, K+, Mg2+)
 -- # Class: SampleProteinAssociation_chain_ids
 --     * Slot: SampleProteinAssociation_id Description: Autocreated FK slot
 --     * Slot: chain_ids Description: Chain identifiers this protein occupies in the deposited structure, where the sample is a PDB entity
@@ -1700,7 +1755,7 @@ CREATE TABLE "MolecularComposition_sequences" (
 	sequences TEXT,
 	PRIMARY KEY ("MolecularComposition_id", sequences),
 	FOREIGN KEY("MolecularComposition_id") REFERENCES "MolecularComposition" (id)
-);CREATE INDEX "ix_MolecularComposition_sequences_MolecularComposition_id" ON "MolecularComposition_sequences" ("MolecularComposition_id");CREATE INDEX "ix_MolecularComposition_sequences_sequences" ON "MolecularComposition_sequences" (sequences);
+);CREATE INDEX "ix_MolecularComposition_sequences_sequences" ON "MolecularComposition_sequences" (sequences);CREATE INDEX "ix_MolecularComposition_sequences_MolecularComposition_id" ON "MolecularComposition_sequences" ("MolecularComposition_id");
 CREATE TABLE "MolecularComposition_modifications" (
 	"MolecularComposition_id" INTEGER,
 	modifications TEXT,
@@ -1712,7 +1767,7 @@ CREATE TABLE "MolecularComposition_ligands" (
 	ligands TEXT,
 	PRIMARY KEY ("MolecularComposition_id", ligands),
 	FOREIGN KEY("MolecularComposition_id") REFERENCES "MolecularComposition" (id)
-);CREATE INDEX "ix_MolecularComposition_ligands_ligands" ON "MolecularComposition_ligands" (ligands);CREATE INDEX "ix_MolecularComposition_ligands_MolecularComposition_id" ON "MolecularComposition_ligands" ("MolecularComposition_id");
+);CREATE INDEX "ix_MolecularComposition_ligands_MolecularComposition_id" ON "MolecularComposition_ligands" ("MolecularComposition_id");CREATE INDEX "ix_MolecularComposition_ligands_ligands" ON "MolecularComposition_ligands" (ligands);
 CREATE TABLE "ProteinAnnotation_publication_ids" (
 	"ProteinAnnotation_id" TEXT,
 	publication_ids TEXT,
@@ -1730,25 +1785,25 @@ CREATE TABLE "EvolutionaryConservation_conserved_residues" (
 	conserved_residues TEXT,
 	PRIMARY KEY ("EvolutionaryConservation_id", conserved_residues),
 	FOREIGN KEY("EvolutionaryConservation_id") REFERENCES "EvolutionaryConservation" (id)
-);CREATE INDEX "ix_EvolutionaryConservation_conserved_residues_EvolutionaryConservation_id" ON "EvolutionaryConservation_conserved_residues" ("EvolutionaryConservation_id");CREATE INDEX "ix_EvolutionaryConservation_conserved_residues_conserved_residues" ON "EvolutionaryConservation_conserved_residues" (conserved_residues);
+);CREATE INDEX "ix_EvolutionaryConservation_conserved_residues_conserved_residues" ON "EvolutionaryConservation_conserved_residues" (conserved_residues);CREATE INDEX "ix_EvolutionaryConservation_conserved_residues_EvolutionaryConservation_id" ON "EvolutionaryConservation_conserved_residues" ("EvolutionaryConservation_id");
 CREATE TABLE "EvolutionaryConservation_variable_residues" (
 	"EvolutionaryConservation_id" TEXT,
 	variable_residues TEXT,
 	PRIMARY KEY ("EvolutionaryConservation_id", variable_residues),
 	FOREIGN KEY("EvolutionaryConservation_id") REFERENCES "EvolutionaryConservation" (id)
-);CREATE INDEX "ix_EvolutionaryConservation_variable_residues_EvolutionaryConservation_id" ON "EvolutionaryConservation_variable_residues" ("EvolutionaryConservation_id");CREATE INDEX "ix_EvolutionaryConservation_variable_residues_variable_residues" ON "EvolutionaryConservation_variable_residues" (variable_residues);
+);CREATE INDEX "ix_EvolutionaryConservation_variable_residues_variable_residues" ON "EvolutionaryConservation_variable_residues" (variable_residues);CREATE INDEX "ix_EvolutionaryConservation_variable_residues_EvolutionaryConservation_id" ON "EvolutionaryConservation_variable_residues" ("EvolutionaryConservation_id");
 CREATE TABLE "EvolutionaryConservation_coevolved_residues" (
 	"EvolutionaryConservation_id" TEXT,
 	coevolved_residues TEXT,
 	PRIMARY KEY ("EvolutionaryConservation_id", coevolved_residues),
 	FOREIGN KEY("EvolutionaryConservation_id") REFERENCES "EvolutionaryConservation" (id)
-);CREATE INDEX "ix_EvolutionaryConservation_coevolved_residues_EvolutionaryConservation_id" ON "EvolutionaryConservation_coevolved_residues" ("EvolutionaryConservation_id");CREATE INDEX "ix_EvolutionaryConservation_coevolved_residues_coevolved_residues" ON "EvolutionaryConservation_coevolved_residues" (coevolved_residues);
+);CREATE INDEX "ix_EvolutionaryConservation_coevolved_residues_coevolved_residues" ON "EvolutionaryConservation_coevolved_residues" (coevolved_residues);CREATE INDEX "ix_EvolutionaryConservation_coevolved_residues_EvolutionaryConservation_id" ON "EvolutionaryConservation_coevolved_residues" ("EvolutionaryConservation_id");
 CREATE TABLE "EvolutionaryConservation_publication_ids" (
 	"EvolutionaryConservation_id" TEXT,
 	publication_ids TEXT,
 	PRIMARY KEY ("EvolutionaryConservation_id", publication_ids),
 	FOREIGN KEY("EvolutionaryConservation_id") REFERENCES "EvolutionaryConservation" (id)
-);CREATE INDEX "ix_EvolutionaryConservation_publication_ids_EvolutionaryConservation_id" ON "EvolutionaryConservation_publication_ids" ("EvolutionaryConservation_id");CREATE INDEX "ix_EvolutionaryConservation_publication_ids_publication_ids" ON "EvolutionaryConservation_publication_ids" (publication_ids);
+);CREATE INDEX "ix_EvolutionaryConservation_publication_ids_publication_ids" ON "EvolutionaryConservation_publication_ids" (publication_ids);CREATE INDEX "ix_EvolutionaryConservation_publication_ids_EvolutionaryConservation_id" ON "EvolutionaryConservation_publication_ids" ("EvolutionaryConservation_id");
 CREATE TABLE "Protein" (
 	uniprot_id TEXT,
 	protein_name TEXT,
@@ -1871,6 +1926,7 @@ CREATE TABLE "SamplePreparation" (
 	FOREIGN KEY(purity_by_sds_page_percent_id) REFERENCES "QuantityValue" (id)
 );CREATE INDEX "ix_SamplePreparation_id" ON "SamplePreparation" (id);
 CREATE TABLE "Instrument" (
+	instrument_type TEXT,
 	instrument_code TEXT NOT NULL,
 	instrument_registry_id TEXT,
 	instrument_category VARCHAR(20),
@@ -1906,6 +1962,7 @@ CREATE TABLE "CryoEMInstrument" (
 	microscope_software TEXT,
 	microscope_software_version TEXT,
 	imaging_mode VARCHAR(5),
+	instrument_type TEXT,
 	instrument_code TEXT NOT NULL,
 	instrument_registry_id TEXT,
 	instrument_category VARCHAR(20),
@@ -1953,6 +2010,7 @@ CREATE TABLE "XRayInstrument" (
 	monochromator_type TEXT,
 	goniometer_type TEXT,
 	crystal_cooling_capability BOOLEAN,
+	instrument_type TEXT,
 	instrument_code TEXT NOT NULL,
 	instrument_registry_id TEXT,
 	instrument_category VARCHAR(20),
@@ -2025,6 +2083,7 @@ CREATE TABLE "SANSConfiguration" (
 );CREATE INDEX "ix_SANSConfiguration_id" ON "SANSConfiguration" (id);
 CREATE TABLE "SAXSInstrument" (
 	temperature_control_range TEXT,
+	instrument_type TEXT,
 	instrument_code TEXT NOT NULL,
 	instrument_registry_id TEXT,
 	instrument_category VARCHAR(20),
@@ -2059,6 +2118,7 @@ CREATE TABLE "BeamlineInstrument" (
 	lims_system VARCHAR(13),
 	daq_system VARCHAR(10),
 	control_system VARCHAR(7),
+	instrument_type TEXT,
 	instrument_code TEXT NOT NULL,
 	instrument_registry_id TEXT,
 	instrument_category VARCHAR(20),
@@ -2092,7 +2152,7 @@ CREATE TABLE "DataFile" (
 	file_format VARCHAR(10) NOT NULL,
 	checksum TEXT,
 	creation_date TEXT,
-	data_type VARCHAR(20),
+	data_type VARCHAR(26),
 	storage_uri TEXT,
 	related_entity TEXT,
 	file_role TEXT,
@@ -2646,6 +2706,64 @@ CREATE TABLE "RefinementParameters" (
 	FOREIGN KEY(resolution_0_5_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(map_sharpening_bfactor_id) REFERENCES "QuantityValue" (id)
 );CREATE INDEX "ix_RefinementParameters_id" ON "RefinementParameters" (id);
+CREATE TABLE "MDSimulationParameters" (
+	id INTEGER NOT NULL,
+	simulation_engine TEXT,
+	simulation_engine_version TEXT,
+	protein_force_field TEXT,
+	ligand_force_field TEXT,
+	water_model TEXT,
+	charge_method TEXT,
+	box_shape TEXT,
+	ion_neutralization BOOLEAN,
+	hydrogen_mass_repartitioning BOOLEAN,
+	ensemble VARCHAR(3),
+	thermostat TEXT,
+	barostat TEXT,
+	constraint_algorithm TEXT,
+	simulation_stage VARCHAR(28),
+	restraint_mask TEXT,
+	description TEXT,
+	box_padding_id INTEGER,
+	net_charge_id INTEGER,
+	thermostat_coupling_id INTEGER,
+	barostat_coupling_id INTEGER,
+	temperature_id INTEGER,
+	pressure_id INTEGER,
+	timestep_id INTEGER,
+	nonbonded_cutoff_id INTEGER,
+	duration_ns_id INTEGER,
+	total_steps_id INTEGER,
+	trajectory_output_interval_id INTEGER,
+	restraint_force_constant_id INTEGER,
+	minimization_max_cycles_id INTEGER,
+	minimization_steepest_descent_cycles_id INTEGER,
+	initial_temperature_id INTEGER,
+	heat_duration_ns_id INTEGER,
+	equil_restrained_duration_ns_id INTEGER,
+	equil_free_duration_ns_id INTEGER,
+	production_duration_ns_id INTEGER,
+	PRIMARY KEY (id),
+	FOREIGN KEY(box_padding_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(net_charge_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(thermostat_coupling_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(barostat_coupling_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(temperature_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(pressure_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(timestep_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(nonbonded_cutoff_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(duration_ns_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(total_steps_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(trajectory_output_interval_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(restraint_force_constant_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(minimization_max_cycles_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(minimization_steepest_descent_cycles_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(initial_temperature_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(heat_duration_ns_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(equil_restrained_duration_ns_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(equil_free_duration_ns_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(production_duration_ns_id) REFERENCES "QuantityValue" (id)
+);CREATE INDEX "ix_MDSimulationParameters_id" ON "MDSimulationParameters" (id);
 CREATE TABLE "FSCCurve" (
 	id INTEGER NOT NULL,
 	description TEXT,
@@ -2698,19 +2816,19 @@ CREATE TABLE "Study_keywords" (
 	keywords TEXT,
 	PRIMARY KEY ("Study_id", keywords),
 	FOREIGN KEY("Study_id") REFERENCES "Study" (id)
-);CREATE INDEX "ix_Study_keywords_Study_id" ON "Study_keywords" ("Study_id");CREATE INDEX "ix_Study_keywords_keywords" ON "Study_keywords" (keywords);
+);CREATE INDEX "ix_Study_keywords_keywords" ON "Study_keywords" (keywords);CREATE INDEX "ix_Study_keywords_Study_id" ON "Study_keywords" ("Study_id");
 CREATE TABLE "ConformationalState_pdb_entries" (
 	"ConformationalState_id" INTEGER,
 	pdb_entries TEXT,
 	PRIMARY KEY ("ConformationalState_id", pdb_entries),
 	FOREIGN KEY("ConformationalState_id") REFERENCES "ConformationalState" (id)
-);CREATE INDEX "ix_ConformationalState_pdb_entries_ConformationalState_id" ON "ConformationalState_pdb_entries" ("ConformationalState_id");CREATE INDEX "ix_ConformationalState_pdb_entries_pdb_entries" ON "ConformationalState_pdb_entries" (pdb_entries);
+);CREATE INDEX "ix_ConformationalState_pdb_entries_pdb_entries" ON "ConformationalState_pdb_entries" (pdb_entries);CREATE INDEX "ix_ConformationalState_pdb_entries_ConformationalState_id" ON "ConformationalState_pdb_entries" ("ConformationalState_id");
 CREATE TABLE "ConformationalState_characteristic_features" (
 	"ConformationalState_id" INTEGER,
 	characteristic_features TEXT,
 	PRIMARY KEY ("ConformationalState_id", characteristic_features),
 	FOREIGN KEY("ConformationalState_id") REFERENCES "ConformationalState" (id)
-);CREATE INDEX "ix_ConformationalState_characteristic_features_ConformationalState_id" ON "ConformationalState_characteristic_features" ("ConformationalState_id");CREATE INDEX "ix_ConformationalState_characteristic_features_characteristic_features" ON "ConformationalState_characteristic_features" (characteristic_features);
+);CREATE INDEX "ix_ConformationalState_characteristic_features_characteristic_features" ON "ConformationalState_characteristic_features" (characteristic_features);CREATE INDEX "ix_ConformationalState_characteristic_features_ConformationalState_id" ON "ConformationalState_characteristic_features" ("ConformationalState_id");
 CREATE TABLE "AggregatedProteinView_pdb_entries" (
 	"AggregatedProteinView_id" TEXT,
 	pdb_entries TEXT,
@@ -2795,6 +2913,7 @@ CREATE TABLE "ProteinConstruct" (
 CREATE TABLE "SANSInstrument" (
 	technique VARCHAR(29),
 	environment TEXT,
+	instrument_type TEXT,
 	instrument_code TEXT NOT NULL,
 	instrument_registry_id TEXT,
 	instrument_category VARCHAR(20),
@@ -2887,6 +3006,7 @@ CREATE TABLE "WorkflowRun" (
 	motion_correction_params_id INTEGER,
 	ctf_estimation_params_id INTEGER,
 	particle_picking_params_id INTEGER,
+	md_simulation_params_id INTEGER,
 	refinement_params_id INTEGER,
 	fsc_curve_id INTEGER,
 	PRIMARY KEY (id),
@@ -2929,6 +3049,7 @@ CREATE TABLE "WorkflowRun" (
 	FOREIGN KEY(motion_correction_params_id) REFERENCES "MotionCorrectionParameters" (id),
 	FOREIGN KEY(ctf_estimation_params_id) REFERENCES "CTFEstimationParameters" (id),
 	FOREIGN KEY(particle_picking_params_id) REFERENCES "ParticlePickingParameters" (id),
+	FOREIGN KEY(md_simulation_params_id) REFERENCES "MDSimulationParameters" (id),
 	FOREIGN KEY(refinement_params_id) REFERENCES "RefinementParameters" (id),
 	FOREIGN KEY(fsc_curve_id) REFERENCES "FSCCurve" (id)
 );CREATE INDEX "ix_WorkflowRun_id" ON "WorkflowRun" (id);
@@ -3030,13 +3151,13 @@ CREATE TABLE "Protein_go_terms" (
 	go_terms TEXT,
 	PRIMARY KEY ("Protein_id", go_terms),
 	FOREIGN KEY("Protein_id") REFERENCES "Protein" (id)
-);CREATE INDEX "ix_Protein_go_terms_Protein_id" ON "Protein_go_terms" ("Protein_id");CREATE INDEX "ix_Protein_go_terms_go_terms" ON "Protein_go_terms" (go_terms);
+);CREATE INDEX "ix_Protein_go_terms_go_terms" ON "Protein_go_terms" (go_terms);CREATE INDEX "ix_Protein_go_terms_Protein_id" ON "Protein_go_terms" ("Protein_id");
 CREATE TABLE "Protein_pdb_entries" (
 	"Protein_id" TEXT,
 	pdb_entries TEXT,
 	PRIMARY KEY ("Protein_id", pdb_entries),
 	FOREIGN KEY("Protein_id") REFERENCES "Protein" (id)
-);CREATE INDEX "ix_Protein_pdb_entries_Protein_id" ON "Protein_pdb_entries" ("Protein_id");CREATE INDEX "ix_Protein_pdb_entries_pdb_entries" ON "Protein_pdb_entries" (pdb_entries);
+);CREATE INDEX "ix_Protein_pdb_entries_pdb_entries" ON "Protein_pdb_entries" (pdb_entries);CREATE INDEX "ix_Protein_pdb_entries_Protein_id" ON "Protein_pdb_entries" ("Protein_id");
 CREATE TABLE "NucleicAcid_rfam_families" (
 	"NucleicAcid_id" TEXT,
 	rfam_families TEXT,
@@ -3054,31 +3175,31 @@ CREATE TABLE "NucleicAcid_pdb_entries" (
 	pdb_entries TEXT,
 	PRIMARY KEY ("NucleicAcid_id", pdb_entries),
 	FOREIGN KEY("NucleicAcid_id") REFERENCES "NucleicAcid" (id)
-);CREATE INDEX "ix_NucleicAcid_pdb_entries_NucleicAcid_id" ON "NucleicAcid_pdb_entries" ("NucleicAcid_id");CREATE INDEX "ix_NucleicAcid_pdb_entries_pdb_entries" ON "NucleicAcid_pdb_entries" (pdb_entries);
+);CREATE INDEX "ix_NucleicAcid_pdb_entries_pdb_entries" ON "NucleicAcid_pdb_entries" (pdb_entries);CREATE INDEX "ix_NucleicAcid_pdb_entries_NucleicAcid_id" ON "NucleicAcid_pdb_entries" ("NucleicAcid_id");
 CREATE TABLE "SamplePreparation_purification_steps" (
 	"SamplePreparation_id" TEXT,
 	purification_steps VARCHAR(23),
 	PRIMARY KEY ("SamplePreparation_id", purification_steps),
 	FOREIGN KEY("SamplePreparation_id") REFERENCES "SamplePreparation" (id)
-);CREATE INDEX "ix_SamplePreparation_purification_steps_purification_steps" ON "SamplePreparation_purification_steps" (purification_steps);CREATE INDEX "ix_SamplePreparation_purification_steps_SamplePreparation_id" ON "SamplePreparation_purification_steps" ("SamplePreparation_id");
+);CREATE INDEX "ix_SamplePreparation_purification_steps_SamplePreparation_id" ON "SamplePreparation_purification_steps" ("SamplePreparation_id");CREATE INDEX "ix_SamplePreparation_purification_steps_purification_steps" ON "SamplePreparation_purification_steps" (purification_steps);
 CREATE TABLE "BeamlineInstrument_techniques_supported" (
 	"BeamlineInstrument_id" TEXT,
 	techniques_supported VARCHAR(29) NOT NULL,
 	PRIMARY KEY ("BeamlineInstrument_id", techniques_supported),
 	FOREIGN KEY("BeamlineInstrument_id") REFERENCES "BeamlineInstrument" (id)
-);CREATE INDEX "ix_BeamlineInstrument_techniques_supported_BeamlineInstrument_id" ON "BeamlineInstrument_techniques_supported" ("BeamlineInstrument_id");CREATE INDEX "ix_BeamlineInstrument_techniques_supported_techniques_supported" ON "BeamlineInstrument_techniques_supported" (techniques_supported);
+);CREATE INDEX "ix_BeamlineInstrument_techniques_supported_techniques_supported" ON "BeamlineInstrument_techniques_supported" (techniques_supported);CREATE INDEX "ix_BeamlineInstrument_techniques_supported_BeamlineInstrument_id" ON "BeamlineInstrument_techniques_supported" ("BeamlineInstrument_id");
 CREATE TABLE "FTIRImage_molecular_signatures" (
 	"FTIRImage_id" TEXT,
 	molecular_signatures TEXT,
 	PRIMARY KEY ("FTIRImage_id", molecular_signatures),
 	FOREIGN KEY("FTIRImage_id") REFERENCES "FTIRImage" (id)
-);CREATE INDEX "ix_FTIRImage_molecular_signatures_FTIRImage_id" ON "FTIRImage_molecular_signatures" ("FTIRImage_id");CREATE INDEX "ix_FTIRImage_molecular_signatures_molecular_signatures" ON "FTIRImage_molecular_signatures" (molecular_signatures);
+);CREATE INDEX "ix_FTIRImage_molecular_signatures_molecular_signatures" ON "FTIRImage_molecular_signatures" (molecular_signatures);CREATE INDEX "ix_FTIRImage_molecular_signatures_FTIRImage_id" ON "FTIRImage_molecular_signatures" ("FTIRImage_id");
 CREATE TABLE "OpticalImage_color_channels" (
 	"OpticalImage_id" TEXT,
 	color_channels TEXT,
 	PRIMARY KEY ("OpticalImage_id", color_channels),
 	FOREIGN KEY("OpticalImage_id") REFERENCES "OpticalImage" (id)
-);CREATE INDEX "ix_OpticalImage_color_channels_OpticalImage_id" ON "OpticalImage_color_channels" ("OpticalImage_id");CREATE INDEX "ix_OpticalImage_color_channels_color_channels" ON "OpticalImage_color_channels" (color_channels);
+);CREATE INDEX "ix_OpticalImage_color_channels_color_channels" ON "OpticalImage_color_channels" (color_channels);CREATE INDEX "ix_OpticalImage_color_channels_OpticalImage_id" ON "OpticalImage_color_channels" ("OpticalImage_id");
 CREATE TABLE "XRFImage_elements_measured" (
 	"XRFImage_id" TEXT,
 	elements_measured TEXT,
@@ -3096,7 +3217,13 @@ CREATE TABLE "BufferComposition_additives" (
 	additives TEXT,
 	PRIMARY KEY ("BufferComposition_id", additives),
 	FOREIGN KEY("BufferComposition_id") REFERENCES "BufferComposition" (id)
-);CREATE INDEX "ix_BufferComposition_additives_BufferComposition_id" ON "BufferComposition_additives" ("BufferComposition_id");CREATE INDEX "ix_BufferComposition_additives_additives" ON "BufferComposition_additives" (additives);
+);CREATE INDEX "ix_BufferComposition_additives_additives" ON "BufferComposition_additives" (additives);CREATE INDEX "ix_BufferComposition_additives_BufferComposition_id" ON "BufferComposition_additives" ("BufferComposition_id");
+CREATE TABLE "MDSimulationParameters_ion_species" (
+	"MDSimulationParameters_id" INTEGER,
+	ion_species TEXT,
+	PRIMARY KEY ("MDSimulationParameters_id", ion_species),
+	FOREIGN KEY("MDSimulationParameters_id") REFERENCES "MDSimulationParameters" (id)
+);CREATE INDEX "ix_MDSimulationParameters_ion_species_ion_species" ON "MDSimulationParameters_ion_species" (ion_species);CREATE INDEX "ix_MDSimulationParameters_ion_species_MDSimulationParameters_id" ON "MDSimulationParameters_ion_species" ("MDSimulationParameters_id");
 CREATE TABLE "SampleComponent" (
 	sample_id TEXT NOT NULL,
 	component_type VARCHAR(16) NOT NULL,
@@ -3152,6 +3279,7 @@ CREATE TABLE "ExperimentRun" (
 	raw_data_location TEXT,
 	processing_status VARCHAR(13),
 	daq_system VARCHAR(10),
+	phase_plate_used BOOLEAN,
 	tilting_scheme VARCHAR(14),
 	autoloader_slot TEXT,
 	acquisition_software TEXT,
@@ -3167,7 +3295,10 @@ CREATE TABLE "ExperimentRun" (
 	experimental_conditions_id INTEGER,
 	data_collection_strategy_id INTEGER,
 	quality_metrics_id INTEGER,
+	accelerating_voltage_id INTEGER,
+	cs_id INTEGER,
 	magnification_id INTEGER,
+	nominal_pixel_size_id INTEGER,
 	calibrated_pixel_size_id INTEGER,
 	camera_binning_id INTEGER,
 	exposure_time_per_frame_id INTEGER,
@@ -3175,6 +3306,10 @@ CREATE TABLE "ExperimentRun" (
 	total_exposure_time_id INTEGER,
 	total_dose_id INTEGER,
 	dose_rate_id INTEGER,
+	spot_size_id INTEGER,
+	c2_aperture_id INTEGER,
+	beam_diameter_id INTEGER,
+	energy_filter_slit_width_id INTEGER,
 	defocus_target_id INTEGER,
 	defocus_range_min_id INTEGER,
 	defocus_range_max_id INTEGER,
@@ -3225,7 +3360,10 @@ CREATE TABLE "ExperimentRun" (
 	FOREIGN KEY(experimental_conditions_id) REFERENCES "ExperimentalConditions" (id),
 	FOREIGN KEY(data_collection_strategy_id) REFERENCES "DataCollectionStrategy" (id),
 	FOREIGN KEY(quality_metrics_id) REFERENCES "QualityMetrics" (id),
+	FOREIGN KEY(accelerating_voltage_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(cs_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(magnification_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(nominal_pixel_size_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(calibrated_pixel_size_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(camera_binning_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(exposure_time_per_frame_id) REFERENCES "QuantityValue" (id),
@@ -3233,6 +3371,10 @@ CREATE TABLE "ExperimentRun" (
 	FOREIGN KEY(total_exposure_time_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(total_dose_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(dose_rate_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(spot_size_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(c2_aperture_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(beam_diameter_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(energy_filter_slit_width_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(defocus_target_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(defocus_range_min_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(defocus_range_max_id) REFERENCES "QuantityValue" (id),
@@ -3555,7 +3697,7 @@ CREATE TABLE "WorkflowRun_output_files" (
 	PRIMARY KEY ("WorkflowRun_id", output_files_id),
 	FOREIGN KEY("WorkflowRun_id") REFERENCES "WorkflowRun" (id),
 	FOREIGN KEY(output_files_id) REFERENCES "DataFile" (id)
-);CREATE INDEX "ix_WorkflowRun_output_files_output_files_id" ON "WorkflowRun_output_files" (output_files_id);CREATE INDEX "ix_WorkflowRun_output_files_WorkflowRun_id" ON "WorkflowRun_output_files" ("WorkflowRun_id");
+);CREATE INDEX "ix_WorkflowRun_output_files_WorkflowRun_id" ON "WorkflowRun_output_files" ("WorkflowRun_id");CREATE INDEX "ix_WorkflowRun_output_files_output_files_id" ON "WorkflowRun_output_files" (output_files_id);
 CREATE TABLE "StudyExperimentAssociation" (
 	id INTEGER NOT NULL,
 	study_id TEXT NOT NULL,
@@ -3683,7 +3825,7 @@ CREATE TABLE "SampleProteinAssociation_modifications" (
 	modifications TEXT,
 	PRIMARY KEY ("SampleProteinAssociation_id", modifications),
 	FOREIGN KEY("SampleProteinAssociation_id") REFERENCES "SampleProteinAssociation" (id)
-);CREATE INDEX "ix_SampleProteinAssociation_modifications_modifications" ON "SampleProteinAssociation_modifications" (modifications);CREATE INDEX "ix_SampleProteinAssociation_modifications_SampleProteinAssociation_id" ON "SampleProteinAssociation_modifications" ("SampleProteinAssociation_id");
+);CREATE INDEX "ix_SampleProteinAssociation_modifications_SampleProteinAssociation_id" ON "SampleProteinAssociation_modifications" ("SampleProteinAssociation_id");CREATE INDEX "ix_SampleProteinAssociation_modifications_modifications" ON "SampleProteinAssociation_modifications" (modifications);
 CREATE TABLE "SampleNucleicAcidAssociation_chain_ids" (
 	"SampleNucleicAcidAssociation_id" INTEGER,
 	chain_ids TEXT,
@@ -3719,7 +3861,7 @@ CREATE TABLE "StructuralFeature_publication_ids" (
 	publication_ids TEXT,
 	PRIMARY KEY ("StructuralFeature_id", publication_ids),
 	FOREIGN KEY("StructuralFeature_id") REFERENCES "StructuralFeature" (id)
-);CREATE INDEX "ix_StructuralFeature_publication_ids_StructuralFeature_id" ON "StructuralFeature_publication_ids" ("StructuralFeature_id");CREATE INDEX "ix_StructuralFeature_publication_ids_publication_ids" ON "StructuralFeature_publication_ids" (publication_ids);
+);CREATE INDEX "ix_StructuralFeature_publication_ids_publication_ids" ON "StructuralFeature_publication_ids" (publication_ids);CREATE INDEX "ix_StructuralFeature_publication_ids_StructuralFeature_id" ON "StructuralFeature_publication_ids" ("StructuralFeature_id");
 CREATE TABLE "ProteinProteinInteraction_interface_residues" (
 	"ProteinProteinInteraction_id" TEXT,
 	interface_residues TEXT,
@@ -3731,7 +3873,7 @@ CREATE TABLE "ProteinProteinInteraction_partner_interface_residues" (
 	partner_interface_residues TEXT,
 	PRIMARY KEY ("ProteinProteinInteraction_id", partner_interface_residues),
 	FOREIGN KEY("ProteinProteinInteraction_id") REFERENCES "ProteinProteinInteraction" (id)
-);CREATE INDEX "ix_ProteinProteinInteraction_partner_interface_residues_ProteinProteinInteraction_id" ON "ProteinProteinInteraction_partner_interface_residues" ("ProteinProteinInteraction_id");CREATE INDEX "ix_ProteinProteinInteraction_partner_interface_residues_partner_interface_residues" ON "ProteinProteinInteraction_partner_interface_residues" (partner_interface_residues);
+);CREATE INDEX "ix_ProteinProteinInteraction_partner_interface_residues_partner_interface_residues" ON "ProteinProteinInteraction_partner_interface_residues" (partner_interface_residues);CREATE INDEX "ix_ProteinProteinInteraction_partner_interface_residues_ProteinProteinInteraction_id" ON "ProteinProteinInteraction_partner_interface_residues" ("ProteinProteinInteraction_id");
 CREATE TABLE "ProteinProteinInteraction_interaction_evidence" (
 	"ProteinProteinInteraction_id" TEXT,
 	interaction_evidence VARCHAR(14),
@@ -3743,13 +3885,13 @@ CREATE TABLE "ProteinProteinInteraction_publication_ids" (
 	publication_ids TEXT,
 	PRIMARY KEY ("ProteinProteinInteraction_id", publication_ids),
 	FOREIGN KEY("ProteinProteinInteraction_id") REFERENCES "ProteinProteinInteraction" (id)
-);CREATE INDEX "ix_ProteinProteinInteraction_publication_ids_ProteinProteinInteraction_id" ON "ProteinProteinInteraction_publication_ids" ("ProteinProteinInteraction_id");CREATE INDEX "ix_ProteinProteinInteraction_publication_ids_publication_ids" ON "ProteinProteinInteraction_publication_ids" (publication_ids);
+);CREATE INDEX "ix_ProteinProteinInteraction_publication_ids_publication_ids" ON "ProteinProteinInteraction_publication_ids" (publication_ids);CREATE INDEX "ix_ProteinProteinInteraction_publication_ids_ProteinProteinInteraction_id" ON "ProteinProteinInteraction_publication_ids" ("ProteinProteinInteraction_id");
 CREATE TABLE "MutationEffect_publication_ids" (
 	"MutationEffect_id" TEXT,
 	publication_ids TEXT,
 	PRIMARY KEY ("MutationEffect_id", publication_ids),
 	FOREIGN KEY("MutationEffect_id") REFERENCES "MutationEffect" (id)
-);CREATE INDEX "ix_MutationEffect_publication_ids_MutationEffect_id" ON "MutationEffect_publication_ids" ("MutationEffect_id");CREATE INDEX "ix_MutationEffect_publication_ids_publication_ids" ON "MutationEffect_publication_ids" (publication_ids);
+);CREATE INDEX "ix_MutationEffect_publication_ids_publication_ids" ON "MutationEffect_publication_ids" (publication_ids);CREATE INDEX "ix_MutationEffect_publication_ids_MutationEffect_id" ON "MutationEffect_publication_ids" ("MutationEffect_id");
 CREATE TABLE "PostTranslationalModification_publication_ids" (
 	"PostTranslationalModification_id" TEXT,
 	publication_ids TEXT,
@@ -3761,7 +3903,7 @@ CREATE TABLE "SampleComponentInteraction_evidence" (
 	evidence VARCHAR(14),
 	PRIMARY KEY ("SampleComponentInteraction_id", evidence),
 	FOREIGN KEY("SampleComponentInteraction_id") REFERENCES "SampleComponentInteraction" (id)
-);CREATE INDEX "ix_SampleComponentInteraction_evidence_SampleComponentInteraction_id" ON "SampleComponentInteraction_evidence" ("SampleComponentInteraction_id");CREATE INDEX "ix_SampleComponentInteraction_evidence_evidence" ON "SampleComponentInteraction_evidence" (evidence);
+);CREATE INDEX "ix_SampleComponentInteraction_evidence_evidence" ON "SampleComponentInteraction_evidence" (evidence);CREATE INDEX "ix_SampleComponentInteraction_evidence_SampleComponentInteraction_id" ON "SampleComponentInteraction_evidence" ("SampleComponentInteraction_id");
 CREATE TABLE "LigandInteraction_binding_site_residues" (
 	"LigandInteraction_id" INTEGER,
 	binding_site_residues TEXT,

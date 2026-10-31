@@ -47,6 +47,7 @@ instruments:
   title: Bruker AVANCE NEO 600 MHz
   description: 600 MHz NMR spectrometer, as recorded for PDB 8FCS (spectrometer 1)
   instrument_code: 8FCS-NMR-600
+  instrument_type: Instrument
   instrument_category: SPECTROMETER
   manufacturer: Bruker
   model: AVANCE NEO
@@ -54,6 +55,7 @@ instruments:
   title: Bruker AVANCE NEO 800 MHz
   description: 800 MHz NMR spectrometer, as recorded for PDB 8FCS (spectrometer 2)
   instrument_code: 8FCS-NMR-800
+  instrument_type: Instrument
   instrument_category: SPECTROMETER
   manufacturer: Bruker
   model: AVANCE NEO
@@ -61,6 +63,7 @@ instruments:
   title: APS BioCAT 18-ID
   description: 'SEC-SAXS beamline. Detector: Pilatus 100K'
   instrument_code: APS-18-ID-BioCAT
+  instrument_type: Instrument
   instrument_registry_id: APS_BIOCAT_18ID
   instrument_category: SYNCHROTRON_BEAMLINE
   facility_name: APS

@@ -1,0 +1,326 @@
+@base <http://example.org/> .
+@prefix NCBITaxon: <http://purl.obolibrary.org/obo/NCBITaxon_> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lambdaber: <http://w3id.org/lambda/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
+@prefix sio: <http://semanticscience.org/resource/> .
+@prefix uniprot: <http://purl.uniprot.org/uniprot/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+lambdaber:ds-md-001 a lambdaber:Dataset ;
+    dcterms:title "MD simulation of protein-ligand complex" ;
+    lambdaber:data_files lambdaber:df-md-hmass-001,
+        lambdaber:df-md-lig-001,
+        lambdaber:df-md-ligmol2-001,
+        lambdaber:df-md-prmtop-001,
+        lambdaber:df-md-rec-001,
+        lambdaber:df-md-solv-001,
+        lambdaber:df-md-traj-001 ;
+    lambdaber:description "Molecular dynamics simulation of a docked ligand-receptor complex using the Amber/pmemd.cuda pipeline.  Includes system setup, equilibration, and 100 ns production MD." ;
+    lambdaber:experiment_instrument_associations [ a lambdaber:ExperimentInstrumentAssociation ;
+            lambdaber:experiment_id lambdaber:md-exp-001 ;
+            lambdaber:instrument_id lambdaber:gpu-cluster-001 ;
+            lambdaber:role "primary" ] ;
+    lambdaber:experiment_runs lambdaber:md-exp-001 ;
+    lambdaber:experiment_sample_associations [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id lambdaber:md-exp-001 ;
+            lambdaber:role "target" ;
+            lambdaber:sample_id lambdaber:md-sample-001 ] ;
+    lambdaber:instruments lambdaber:gpu-cluster-001 ;
+    lambdaber:proteins uniprot:P00734 ;
+    lambdaber:sample_protein_associations [ a lambdaber:SampleProteinAssociation ;
+            lambdaber:copy_number 1 ;
+            lambdaber:protein_id uniprot:P00734 ;
+            lambdaber:role "target" ;
+            lambdaber:sample_id lambdaber:md-sample-001 ] ;
+    lambdaber:samples lambdaber:md-sample-001 ;
+    lambdaber:studies lambdaber:md-study-001 ;
+    lambdaber:study_experiment_associations [ a lambdaber:StudyExperimentAssociation ;
+            lambdaber:experiment_id lambdaber:md-exp-001 ;
+            lambdaber:study_id lambdaber:md-study-001 ] ;
+    lambdaber:study_sample_associations [ a lambdaber:StudySampleAssociation ;
+            lambdaber:role "target" ;
+            lambdaber:sample_id lambdaber:md-sample-001 ;
+            lambdaber:study_id lambdaber:md-study-001 ] ;
+    lambdaber:workflow_experiment_associations [ a lambdaber:WorkflowExperimentAssociation ;
+            lambdaber:experiment_id lambdaber:md-exp-001 ;
+            lambdaber:workflow_id lambdaber:wf-md-heat-001 ],
+        [ a lambdaber:WorkflowExperimentAssociation ;
+            lambdaber:experiment_id lambdaber:md-exp-001 ;
+            lambdaber:workflow_id lambdaber:wf-md-prod-001 ],
+        [ a lambdaber:WorkflowExperimentAssociation ;
+            lambdaber:experiment_id lambdaber:md-exp-001 ;
+            lambdaber:workflow_id lambdaber:wf-md-setup-001 ],
+        [ a lambdaber:WorkflowExperimentAssociation ;
+            lambdaber:experiment_id lambdaber:md-exp-001 ;
+            lambdaber:workflow_id lambdaber:wf-md-equil-001 ],
+        [ a lambdaber:WorkflowExperimentAssociation ;
+            lambdaber:experiment_id lambdaber:md-exp-001 ;
+            lambdaber:workflow_id lambdaber:wf-md-min-001 ] ;
+    lambdaber:workflow_input_associations [ a lambdaber:WorkflowInputAssociation ;
+            lambdaber:file_id lambdaber:df-md-rec-001 ;
+            lambdaber:workflow_id lambdaber:wf-md-setup-001 ],
+        [ a lambdaber:WorkflowInputAssociation ;
+            lambdaber:file_id lambdaber:df-md-lig-001 ;
+            lambdaber:workflow_id lambdaber:wf-md-setup-001 ] ;
+    lambdaber:workflow_output_associations [ a lambdaber:WorkflowOutputAssociation ;
+            lambdaber:file_id lambdaber:df-md-prmtop-001 ;
+            lambdaber:workflow_id lambdaber:wf-md-setup-001 ],
+        [ a lambdaber:WorkflowOutputAssociation ;
+            lambdaber:file_id lambdaber:df-md-traj-001 ;
+            lambdaber:workflow_id lambdaber:wf-md-prod-001 ],
+        [ a lambdaber:WorkflowOutputAssociation ;
+            lambdaber:file_id lambdaber:df-md-hmass-001 ;
+            lambdaber:workflow_id lambdaber:wf-md-setup-001 ],
+        [ a lambdaber:WorkflowOutputAssociation ;
+            lambdaber:file_id lambdaber:df-md-solv-001 ;
+            lambdaber:workflow_id lambdaber:wf-md-setup-001 ],
+        [ a lambdaber:WorkflowOutputAssociation ;
+            lambdaber:file_id lambdaber:df-md-ligmol2-001 ;
+            lambdaber:workflow_id lambdaber:wf-md-setup-001 ] ;
+    lambdaber:workflow_runs lambdaber:wf-md-equil-001,
+        lambdaber:wf-md-heat-001,
+        lambdaber:wf-md-min-001,
+        lambdaber:wf-md-prod-001,
+        lambdaber:wf-md-setup-001 .
+
+uniprot:P00734 a lambdaber:Protein ;
+    dcterms:title "Prothrombin" ;
+    lambdaber:gene_name "F2" ;
+    lambdaber:organism NCBITaxon:9606 ;
+    lambdaber:organism_name "Homo sapiens" ;
+    lambdaber:protein_name "Prothrombin" .
+
+lambdaber:df-md-hmass-001 a lambdaber:DataFile ;
+    dcterms:title "HMR topology for production MD" ;
+    lambdaber:data_type "topology" ;
+    lambdaber:file_format "prmtop" ;
+    lambdaber:file_name "system_hmass.top" .
+
+lambdaber:df-md-lig-001 a lambdaber:DataFile ;
+    dcterms:title "Input ligand structure" ;
+    lambdaber:data_type "model" ;
+    lambdaber:file_format "pdb" ;
+    lambdaber:file_name "input_ligand.pdb" .
+
+lambdaber:df-md-ligmol2-001 a lambdaber:DataFile ;
+    dcterms:title "Parameterized ligand (GAFF2)" ;
+    lambdaber:data_type "parameterized_ligand" ;
+    lambdaber:file_format "mol2" ;
+    lambdaber:file_name "ligand.mol2" .
+
+lambdaber:df-md-prmtop-001 a lambdaber:DataFile ;
+    dcterms:title "Solvated complex topology" ;
+    lambdaber:data_type "topology" ;
+    lambdaber:file_format "prmtop" ;
+    lambdaber:file_name "complex_solvated.prmtop" .
+
+lambdaber:df-md-rec-001 a lambdaber:DataFile ;
+    dcterms:title "Input receptor structure" ;
+    lambdaber:data_type "model" ;
+    lambdaber:file_format "pdb" ;
+    lambdaber:file_name "input_receptor.pdb" .
+
+lambdaber:df-md-solv-001 a lambdaber:DataFile ;
+    dcterms:title "Solvated complex structure" ;
+    lambdaber:data_type "solvated_structure" ;
+    lambdaber:file_format "pdb" ;
+    lambdaber:file_name "complex_solvated.pdb" .
+
+lambdaber:df-md-traj-001 a lambdaber:DataFile ;
+    dcterms:title "Production MD trajectory (100 ns)" ;
+    lambdaber:data_type "trajectory" ;
+    lambdaber:file_format "netcdf" ;
+    lambdaber:file_name "md.nc" .
+
+lambdaber:gpu-cluster-001 dcterms:title "GPU compute node" ;
+    lambdaber:description "NVIDIA V100 GPU used for pmemd.cuda MD simulation" ;
+    lambdaber:instrument_code "GPU-NODE-001" ;
+    lambdaber:instrument_type "Instrument" .
+
+lambdaber:wf-md-equil-001 a lambdaber:WorkflowRun ;
+    dcterms:title "NPT equilibration" ;
+    lambdaber:completed_at "2026-09-01T10:03:34" ;
+    lambdaber:md_simulation_params [ a lambdaber:MDSimulationParameters ;
+            lambdaber:barostat "Berendsen" ;
+            lambdaber:barostat_coupling [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "1.0"^^xsd:float ;
+                    lambdaber:unit "ps" ] ;
+            lambdaber:ensemble "npt" ;
+            lambdaber:equil_free_duration_ns [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "5.0"^^xsd:float ;
+                    lambdaber:unit "ns" ] ;
+            lambdaber:equil_restrained_duration_ns [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "3.0"^^xsd:float ;
+                    lambdaber:unit "ns" ] ;
+            lambdaber:pressure [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "1.0"^^xsd:float ;
+                    lambdaber:unit "atm" ] ;
+            lambdaber:simulation_engine "pmemd.cuda" ;
+            lambdaber:simulation_stage "equilibration_restrained" ;
+            lambdaber:temperature [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "298.5"^^xsd:float ;
+                    lambdaber:unit "kelvin" ] ;
+            lambdaber:thermostat "Langevin" ;
+            lambdaber:thermostat_coupling [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "1.0"^^xsd:float ;
+                    lambdaber:unit "1/ps" ] ;
+            lambdaber:timestep [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "1.0"^^xsd:float ;
+                    lambdaber:unit "femtosecond" ] ] ;
+    lambdaber:software_name "pmemd.cuda" ;
+    lambdaber:software_version "24" ;
+    lambdaber:started_at "2026-09-01T10:03:05" ;
+    lambdaber:workflow_code "WF-MD-EQUIL-001" ;
+    lambdaber:workflow_type "md_equilibration" .
+
+lambdaber:wf-md-heat-001 a lambdaber:WorkflowRun ;
+    dcterms:title "Heating 0 to 298.5 K" ;
+    lambdaber:completed_at "2026-09-01T10:03:02" ;
+    lambdaber:md_simulation_params [ a lambdaber:MDSimulationParameters ;
+            lambdaber:constraint_algorithm "SHAKE" ;
+            lambdaber:ensemble "nvt" ;
+            lambdaber:heat_duration_ns [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "1.0"^^xsd:float ;
+                    lambdaber:unit "ns" ] ;
+            lambdaber:initial_temperature [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "0.0"^^xsd:float ;
+                    lambdaber:unit "kelvin" ] ;
+            lambdaber:nonbonded_cutoff [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "8.0"^^xsd:float ;
+                    lambdaber:unit "angstrom" ] ;
+            lambdaber:restraint_force_constant [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "5.0"^^xsd:float ;
+                    lambdaber:unit "kcal/mol/A^2" ] ;
+            lambdaber:restraint_mask "!(@H=)&!(:WAT|:ETH|@Na+=)" ;
+            lambdaber:simulation_engine "pmemd.cuda" ;
+            lambdaber:simulation_stage "heating" ;
+            lambdaber:temperature [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "298.5"^^xsd:float ;
+                    lambdaber:unit "kelvin" ] ;
+            lambdaber:thermostat "Langevin" ;
+            lambdaber:thermostat_coupling [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "1.0"^^xsd:float ;
+                    lambdaber:unit "1/ps" ] ;
+            lambdaber:timestep [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "1.0"^^xsd:float ;
+                    lambdaber:unit "femtosecond" ] ] ;
+    lambdaber:software_name "pmemd.cuda" ;
+    lambdaber:software_version "24" ;
+    lambdaber:started_at "2026-09-01T10:02:30" ;
+    lambdaber:workflow_code "WF-MD-HEAT-001" ;
+    lambdaber:workflow_type "md_equilibration" .
+
+lambdaber:wf-md-min-001 a lambdaber:WorkflowRun ;
+    dcterms:title "Two-stage energy minimization" ;
+    lambdaber:completed_at "2026-09-01T10:02:22" ;
+    lambdaber:md_simulation_params [ a lambdaber:MDSimulationParameters ;
+            lambdaber:minimization_max_cycles [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "4000.0"^^xsd:float ;
+                    lambdaber:unit "cycles" ] ;
+            lambdaber:minimization_steepest_descent_cycles [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "3000.0"^^xsd:float ;
+                    lambdaber:unit "cycles" ] ;
+            lambdaber:nonbonded_cutoff [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "10.0"^^xsd:float ;
+                    lambdaber:unit "angstrom" ] ;
+            lambdaber:restraint_force_constant [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "20.0"^^xsd:float ;
+                    lambdaber:unit "kcal/mol/A^2" ] ;
+            lambdaber:restraint_mask "!(@H=)&!(:WAT|:ETH|@Na+=)" ;
+            lambdaber:simulation_engine "pmemd.cuda" ;
+            lambdaber:simulation_stage "minimization_restrained" ] ;
+    lambdaber:software_name "pmemd.cuda" ;
+    lambdaber:software_version "24" ;
+    lambdaber:started_at "2026-09-01T10:02:00" ;
+    lambdaber:workflow_code "WF-MD-MIN-001" ;
+    lambdaber:workflow_type "md_minimization" .
+
+lambdaber:md-study-001 a lambdaber:Study ;
+    dcterms:title "Ligand binding pose stability" ;
+    lambdaber:description "Assess stability of docked pose via 100 ns MD" .
+
+lambdaber:wf-md-prod-001 a lambdaber:WorkflowRun ;
+    dcterms:title "100 ns production MD" ;
+    lambdaber:completed_at "2026-09-02T07:25:00" ;
+    lambdaber:compute_resources [ a lambdaber:ComputeResources ;
+            lambdaber:gpu_hours [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "21.4"^^xsd:float ;
+                    lambdaber:unit "hours" ] ] ;
+    lambdaber:md_simulation_params [ a lambdaber:MDSimulationParameters ;
+            lambdaber:barostat "Monte-Carlo" ;
+            lambdaber:constraint_algorithm "SHAKE" ;
+            lambdaber:ensemble "npt" ;
+            lambdaber:hydrogen_mass_repartitioning true ;
+            lambdaber:nonbonded_cutoff [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "8.0"^^xsd:float ;
+                    lambdaber:unit "angstrom" ] ;
+            lambdaber:pressure [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "1.0"^^xsd:float ;
+                    lambdaber:unit "atm" ] ;
+            lambdaber:production_duration_ns [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "100.0"^^xsd:float ;
+                    lambdaber:unit "ns" ] ;
+            lambdaber:simulation_engine "pmemd.cuda" ;
+            lambdaber:simulation_stage "production" ;
+            lambdaber:temperature [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "298.5"^^xsd:float ;
+                    lambdaber:unit "kelvin" ] ;
+            lambdaber:thermostat "Langevin" ;
+            lambdaber:thermostat_coupling [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "1.0"^^xsd:float ;
+                    lambdaber:unit "1/ps" ] ;
+            lambdaber:timestep [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "4.0"^^xsd:float ;
+                    lambdaber:unit "femtosecond" ] ;
+            lambdaber:total_steps [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "25000000.0"^^xsd:float ;
+                    lambdaber:unit "steps" ] ;
+            lambdaber:trajectory_output_interval [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "25000.0"^^xsd:float ;
+                    lambdaber:unit "steps" ] ] ;
+    lambdaber:software_name "pmemd.cuda" ;
+    lambdaber:software_version "24" ;
+    lambdaber:started_at "2026-09-01T10:04:00" ;
+    lambdaber:workflow_code "WF-MD-PROD-001" ;
+    lambdaber:workflow_type "md_production" .
+
+lambdaber:md-sample-001 a lambdaber:Sample ;
+    dcterms:title "Prothrombin-ligand complex" ;
+    lambdaber:sample_code "PROT-LIG-001" ;
+    lambdaber:sample_type "complex" .
+
+lambdaber:wf-md-setup-001 a lambdaber:WorkflowRun ;
+    dcterms:title "MD system setup" ;
+    lambdaber:additional_software "antechamber, parmchk2, tleap, parmed" ;
+    lambdaber:completed_at "2026-09-01T10:01:30" ;
+    lambdaber:md_simulation_params [ a lambdaber:MDSimulationParameters ;
+            lambdaber:box_padding [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "8.0"^^xsd:float ;
+                    lambdaber:unit "angstrom" ] ;
+            lambdaber:box_shape "cubic" ;
+            lambdaber:charge_method "AM1-BCC" ;
+            lambdaber:hydrogen_mass_repartitioning true ;
+            lambdaber:ion_neutralization true ;
+            lambdaber:ion_species "Cl-",
+                "Na+" ;
+            lambdaber:ligand_force_field "GAFF2" ;
+            lambdaber:net_charge [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "0.0"^^xsd:float ;
+                    lambdaber:unit "e" ] ;
+            lambdaber:protein_force_field "ff19SB" ;
+            lambdaber:simulation_engine "pmemd.cuda" ;
+            lambdaber:simulation_engine_version "24" ;
+            lambdaber:simulation_stage "topology_building" ;
+            lambdaber:water_model "OPC" ] ;
+    lambdaber:software_name "AmberTools" ;
+    lambdaber:software_version "24" ;
+    lambdaber:started_at "2026-09-01T10:00:00" ;
+    lambdaber:workflow_code "WF-MD-SETUP-001" ;
+    lambdaber:workflow_type "md_system_setup" .
+
+lambdaber:md-exp-001 a lambdaber:ExperimentRun ;
+    dcterms:title "100 ns production MD" ;
+    lambdaber:experiment_code "MD-RUN-001" ;
+    lambdaber:technique sio:000983 .
+
