@@ -4162,6 +4162,7 @@
                 "csv",
                 "ccp4",
                 "gz",
+                "nmr_star",
                 "yaml",
                 "mdoc",
                 "nav",
@@ -11346,6 +11347,7 @@
                 "time_resolved_crystallography",
                 "xray_tomography",
                 "microed",
+                "solution_nmr",
                 "molecular_dynamics"
             ],
             "title": "TechniqueEnum",

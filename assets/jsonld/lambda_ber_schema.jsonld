@@ -139,6 +139,10 @@
       "prefix_reference": "https://www.sasbdb.org/data/"
     },
     {
+      "prefix_prefix": "bmrb",
+      "prefix_reference": "https://bmrb.io/data_library/summary/index.php?bmrbId="
+    },
+    {
       "prefix_prefix": "simplescattering",
       "prefix_reference": "https://www.simplescattering.com/open_dataset/"
     },
@@ -3005,6 +3009,15 @@
           ]
         },
         {
+          "text": "solution_nmr",
+          "description": "Solution-state nuclear magnetic resonance spectroscopy for structure determination of molecules in solution",
+          "meaning": "CHMO:0002397",
+          "comments": [
+            "The PDB's SOLUTION NMR method; chemical shifts, restraints and spectra are deposited at BMRB",
+            "Solid-state NMR is a different technique and is not covered by this value"
+          ]
+        },
+        {
           "text": "molecular_dynamics",
           "description": "Molecular dynamics simulation",
           "meaning": "sio:000983",
@@ -3329,6 +3342,10 @@
         {
           "text": "gz",
           "description": "Gzip compressed format"
+        },
+        {
+          "text": "nmr_star",
+          "description": "NMR-STAR format for NMR data (chemical shifts, restraints, sample conditions), as distributed by BMRB"
         },
         {
           "text": "yaml",
@@ -30150,9 +30167,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda_ber_schema.yaml",
-  "source_file_date": "2026-10-14T16:13:56",
-  "source_file_size": 282439,
-  "generation_date": "2026-10-14T16:14:13",
+  "source_file_date": "2026-10-31T20:51:08",
+  "source_file_size": 283037,
+  "generation_date": "2026-10-31T20:51:26",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda_ber_schema.context.jsonld",

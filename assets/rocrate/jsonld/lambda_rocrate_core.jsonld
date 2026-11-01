@@ -3011,6 +3011,15 @@
           ]
         },
         {
+          "text": "solution_nmr",
+          "description": "Solution-state nuclear magnetic resonance spectroscopy for structure determination of molecules in solution",
+          "meaning": "CHMO:0002397",
+          "comments": [
+            "The PDB's SOLUTION NMR method; chemical shifts, restraints and spectra are deposited at BMRB",
+            "Solid-state NMR is a different technique and is not covered by this value"
+          ]
+        },
+        {
           "text": "molecular_dynamics",
           "description": "Molecular dynamics simulation",
           "meaning": "sio:000983",
@@ -3335,6 +3344,10 @@
         {
           "text": "gz",
           "description": "Gzip compressed format"
+        },
+        {
+          "text": "nmr_star",
+          "description": "NMR-STAR format for NMR data (chemical shifts, restraints, sample conditions), as distributed by BMRB"
         },
         {
           "text": "yaml",
@@ -36228,9 +36241,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda_rocrate_core.yaml",
-  "source_file_date": "2026-10-14T16:06:03",
+  "source_file_date": "2026-10-31T20:50:56",
   "source_file_size": 94503,
-  "generation_date": "2026-10-14T16:16:25",
+  "generation_date": "2026-10-31T20:54:00",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/rocrate/jsonld/lambda_rocrate_core.context.jsonld",
