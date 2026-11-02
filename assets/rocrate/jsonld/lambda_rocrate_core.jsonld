@@ -3,7 +3,7 @@
   "description": "**LAMBDA Core RO-Crate profile** \u2014 the technique-neutral file-manifest contract for LAMBDA.\n\nA LAMBDA crate is a machine-readable *manifest*: it carries the highest-level details a program\nneeds in order to decide whether a dataset is worth opening, and then **points** at the fuller\nrecord rather than restating it. The fuller record may be another RO-Crate, a complete\n`lambda-ber-schema` document, or a remote registration (DOI / archive accession).\n\n## Relationship to `lambda-ber-schema`\n\nThis module *mirrors* `lambda-ber-schema`; it does not copy it. It `imports` the main schema, so\nevery controlled vocabulary (`TechniqueEnum`, `FacilityEnum`, `FileFormatEnum`, `DataTypeEnum`,\n`WorkflowTypeEnum`, `SampleTypeEnum`, `ComponentInteractionTypeEnum`, \u2026) is *referenced* from\nits single source. Every crate slot\nthat has a counterpart in the main schema declares it with `exact_mappings`, so\n`gen-sssom` emits a machine-readable crate-term to schema-slot crosswalk instead of a\nhand-maintained table that drifts.\n\n## Term layers\n\nThree namespaces, by design (the two-layer discipline of the LAMBDA SAXS profile, plus RO-Crate's\nown base):\n\n- `sdo:` (schema.org) \u2014 identity, access and packaging. Anything RO-Crate/schema.org already\n  names (`name`, `datePublished`, `license`, `author`, `hasPart`, `encodingFormat`,\n  `contentSize`, \u2026) uses the schema.org term, in schema.org's own camelCase. Note the **http**\n  form of the namespace, and see the prefix comment below for why it is not called `schema:`\n  here. Crate authors never write this prefix \u2014 RO-Crate's context resolves the bare terms.\n- `lambda:` \u2014 terms that project onto a `lambda-ber-schema` slot. These deliberately keep the\n  schema's `snake_case` slot names, so `lambda:file_format` in a crate *is* the `DataFile.file_format`\n  slot IRI and the projection is an identity mapping rather than a lookup.\n- `lambdarc:` \u2014 profile-local machinery with no schema counterpart yet (declared absence,\n  sufficiency tiers, designation, estimators). camelCase, following the SAXS profile's style.\n  Each of these is a standing change request against `lambda-ber-schema`.\n\n## Namespace note\n\nCrates MUST bind `lambda:` to `http://w3id.org/lambda/` \u2014 the main schema's own base \u2014 so that\n`lambda:Dataset` and `lambda:file_format` in a crate resolve to the actual LinkML class and slot\nIRIs. Earlier SSRL crates bound `lambda:` to `https://w3id.org/lambda/terms/0.2/`, whose terms\nresolve to nothing in the schema; see the deprecated-alias notes on individual elements.\n\n## Validation model\n\nThree layers, because a flat RO-Crate `@graph` is an open world and no single tool covers it:\n\n1. **JSON Schema** (`gen-json-schema --top-class ROCrateMetadataDocument`) checks document shape.\n   `@graph` is deliberately permissive at the document level so that crates carrying technique\n   extension terms still validate as documents.\n2. **Per-entity classes** \u2014 dispatch a graph entity on its `@type` and validate it against the\n   matching class here (`linkml-validate -C CrateFile`, \u2026). These classes are closed, so an\n   undeclared term is caught. This is where the profile actually bites.\n3. **Graph rules** for the cross-entity constraints neither of the above can state, because they\n   are about relationships between entities rather than the shape of any one of them: does every\n   `hasPart` target resolve to an entity? does each dataset part carry a metadata pointer or\n   declare that it has none? is any field both present and declared missing? These live in\n   `tests/test_rocrate_profile.py`.\n\n   SHACL shapes would be the natural home for this layer, since RDF validation dispatches on\n   `rdf:type` properly. They are *not* generated: `gen-shacl` raises\n   `KeyError('lambda-ber-schema')` for classes whose slots come from an imported schema\n   (`shaclgen.py::_build_ignored_properties`). Worth revisiting when that is fixed upstream.\n\nTwo normalizations a reader MUST apply before validating, both of them things a JSON-LD processor\ndoes and neither of them a change of meaning: expand a single value where the profile declares a\nset (`\"instrument\": {\"@id\": \"#x\"}` means a one-element list), and compact an explicitly prefixed\nkey to the profile's own term (`\"lambda:protein_name\"` and a context-mapped `\"protein_name\"` are\nthe same IRI, and real crates mix the two spellings within one entity).\n",
   "title": "LAMBDA Core RO-Crate Profile",
   "id": "http://w3id.org/lambda/rocrate/core",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "imports": [
     "linkml:types",
     "lambda_ber_schema",
@@ -3009,6 +3009,88 @@
             "Also known as MicroED or 3D electron diffraction (3DED)",
             "Uses an electron beam on sub-micron crystals"
           ]
+        },
+        {
+          "text": "solution_nmr",
+          "description": "Solution-state nuclear magnetic resonance spectroscopy for structure determination of molecules in solution",
+          "meaning": "CHMO:0002397",
+          "comments": [
+            "The PDB's SOLUTION NMR method; chemical shifts, restraints and spectra are deposited at BMRB",
+            "Solid-state NMR is a different technique and is not covered by this value"
+          ]
+        },
+        {
+          "text": "molecular_dynamics",
+          "description": "Molecular dynamics simulation",
+          "meaning": "sio:000983",
+          "comments": [
+            "Computational technique simulating atomic motion over time",
+            "Used for protein-ligand binding, conformational sampling, ensemble generation"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MDEnsembleEnum",
+      "definition_uri": "http://w3id.org/lambda/MDEnsembleEnum",
+      "description": "Thermodynamic ensemble for MD simulation",
+      "from_schema": "http://w3id.org/lambda/",
+      "permissible_values": [
+        {
+          "text": "nve",
+          "description": "Microcanonical ensemble (constant energy, volume, particle number)"
+        },
+        {
+          "text": "nvt",
+          "description": "Canonical ensemble (constant temperature, volume, particle number)"
+        },
+        {
+          "text": "npt",
+          "description": "Isothermal-isobaric ensemble (constant temperature, pressure, particle number)"
+        }
+      ]
+    },
+    {
+      "name": "MDStageEnum",
+      "definition_uri": "http://w3id.org/lambda/MDStageEnum",
+      "description": "Stage within a multi-step MD simulation pipeline",
+      "from_schema": "http://w3id.org/lambda/",
+      "permissible_values": [
+        {
+          "text": "parameterization",
+          "description": "Ligand parameterization and charge assignment (e.g., antechamber, parmchk2)"
+        },
+        {
+          "text": "topology_building",
+          "description": "System topology construction and solvation (e.g., tleap, pdb2gmx)"
+        },
+        {
+          "text": "hydrogen_mass_repartitioning",
+          "description": "Hydrogen mass repartitioning for larger timesteps (parmed HMR)"
+        },
+        {
+          "text": "minimization_restrained",
+          "description": "Energy minimization with positional restraints on solute"
+        },
+        {
+          "text": "minimization_unrestrained",
+          "description": "Energy minimization without restraints"
+        },
+        {
+          "text": "heating",
+          "description": "Gradual heating from low temperature to target temperature (NVT)"
+        },
+        {
+          "text": "equilibration_restrained",
+          "description": "NPT equilibration with positional restraints"
+        },
+        {
+          "text": "equilibration_unrestrained",
+          "description": "NPT equilibration without restraints"
+        },
+        {
+          "text": "production",
+          "description": "Production MD data collection"
         }
       ]
     },
@@ -3159,6 +3241,32 @@
             "Distinct from model_building, which fits a model into a map that an earlier refinement produced",
             "Record the particles as input_type particles, the prior as input_type structure_prior, and one output per state with conformational_state set"
           ]
+        },
+        {
+          "text": "md_system_setup",
+          "description": "MD system preparation - parameterization, solvation, topology building",
+          "comments": [
+            "Includes antechamber, parmchk2, tleap, parmed stages"
+          ]
+        },
+        {
+          "text": "md_minimization",
+          "description": "Energy minimization prior to MD simulation"
+        },
+        {
+          "text": "md_equilibration",
+          "description": "MD equilibration - heating and NPT/NVT equilibration phases"
+        },
+        {
+          "text": "md_production",
+          "description": "Production molecular dynamics simulation"
+        },
+        {
+          "text": "md_analysis",
+          "description": "Post-simulation trajectory analysis (RMSD, RMSF, clustering, etc.)",
+          "comments": [
+            "Analysis parameter class to be added in a future revision"
+          ]
         }
       ]
     },
@@ -3255,6 +3363,81 @@
         {
           "text": "gz",
           "description": "Gzip compressed format"
+        },
+        {
+          "text": "nmr_star",
+          "description": "NMR-STAR format for NMR data (chemical shifts, restraints, sample conditions), as distributed by BMRB"
+        },
+        {
+          "text": "yaml",
+          "description": "YAML text format (e.g., a facility acquisition protocol sheet)"
+        },
+        {
+          "text": "mdoc",
+          "description": "SerialEM autodoc metadata sidecar (.mdoc): per-image or per-tile acquisition parameters for an MRC or TIFF file"
+        },
+        {
+          "text": "nav",
+          "description": "SerialEM navigator file (.nav): acquisition targets with stage coordinates and the maps they were picked from"
+        },
+        {
+          "text": "dm4",
+          "description": "Gatan DigitalMicrograph 4 image format (.dm4), commonly used for K2/K3 gain references"
+        },
+        {
+          "text": "mol2",
+          "description": "Tripos MOL2 format for parameterized small molecules"
+        },
+        {
+          "text": "sdf",
+          "description": "Structure-Data File format for chemical structures"
+        },
+        {
+          "text": "frcmod",
+          "description": "Amber force field modification file"
+        },
+        {
+          "text": "prmtop",
+          "description": "Amber topology (parameter/topology) file"
+        },
+        {
+          "text": "inpcrd",
+          "description": "Amber initial coordinates file"
+        },
+        {
+          "text": "rst7",
+          "description": "Amber restart file (ASCII coordinates/velocities)"
+        },
+        {
+          "text": "netcdf",
+          "description": "NetCDF trajectory format (Amber mdcrd binary)",
+          "comments": [
+            "Standard binary trajectory format for Amber MD simulations"
+          ]
+        },
+        {
+          "text": "dcd",
+          "description": "DCD trajectory format (CHARMM/NAMD)"
+        },
+        {
+          "text": "xtc",
+          "description": "XTC compressed trajectory format (GROMACS)"
+        },
+        {
+          "text": "trr",
+          "description": "TRR full-precision trajectory format (GROMACS)"
+        },
+        {
+          "text": "gro",
+          "description": "GROMACS coordinate file format"
+        },
+        {
+          "text": "top",
+          "description": "GROMACS topology file format"
+        },
+        {
+          "text": "lib",
+          "description": "Amber residue library file"
         }
       ]
     },
@@ -3339,6 +3522,78 @@
         {
           "text": "particle_assignments",
           "description": "Per-particle poses, state or class assignments, and confidence scores"
+        },
+        {
+          "text": "gain_reference",
+          "description": "Detector gain reference image, used to normalise per-pixel sensitivity of raw movie frames"
+        },
+        {
+          "text": "defect_map",
+          "description": "Detector defect map listing bad pixels, columns or rows to exclude or interpolate over"
+        },
+        {
+          "text": "atlas",
+          "description": "Low-magnification grid or grid-square map (often a montage) used to navigate and choose targets, not for reconstruction"
+        },
+        {
+          "text": "screening_image",
+          "description": "Medium- or high-magnification image taken to choose targets or assess ice and particle quality, not for reconstruction"
+        },
+        {
+          "text": "topology",
+          "description": "MD system topology (atom types, bonds, charges, force field parameters)"
+        },
+        {
+          "text": "trajectory",
+          "description": "MD trajectory (time series of atomic coordinates)"
+        },
+        {
+          "text": "restart",
+          "description": "MD restart/checkpoint file for resuming simulations"
+        },
+        {
+          "text": "force_field_params",
+          "description": "Force field parameter or modification file"
+        },
+        {
+          "text": "solvated_structure",
+          "description": "Solvated system structure (protein + solvent + ions)"
+        },
+        {
+          "text": "parameterized_ligand",
+          "description": "Small molecule with assigned force field parameters"
+        },
+        {
+          "text": "md_rmsd",
+          "description": "Root mean square deviation time series"
+        },
+        {
+          "text": "md_rmsf",
+          "description": "Root mean square fluctuation per atom or residue"
+        },
+        {
+          "text": "md_clustering",
+          "description": "Trajectory pose clustering results"
+        },
+        {
+          "text": "md_hbond",
+          "description": "Hydrogen bond analysis results"
+        },
+        {
+          "text": "md_interaction_fingerprint",
+          "description": "Protein-ligand interaction fingerprint (e.g. ProLIF)"
+        },
+        {
+          "text": "md_event_detection",
+          "description": "Change-point or event detection results from trajectory analysis"
+        },
+        {
+          "text": "md_dihedral_entropy",
+          "description": "Configurational (dihedral) entropy analysis"
+        },
+        {
+          "text": "md_energy",
+          "description": "Energy terms from MD simulation output"
         }
       ]
     },
@@ -4673,7 +4928,7 @@
     {
       "name": "TiltingSchemeEnum",
       "definition_uri": "http://w3id.org/lambda/TiltingSchemeEnum",
-      "description": "Tilt scheme used during tomographic or continuous-rotation data collection",
+      "description": "Stage tilting scheme used during data collection, including `none` for untilted acquisitions",
       "from_schema": "http://w3id.org/lambda/",
       "permissible_values": [
         {
@@ -7267,7 +7522,7 @@
     {
       "name": "detector",
       "definition_uri": "http://w3id.org/lambda/rocrate/detector",
-      "description": "Detector in use, where the crate names it on the instrument.",
+      "description": "Detector in use: on an instrument, the detector it carries; on an experiment run, the one used for that session, as `ExperimentRun.detector`.",
       "from_schema": "http://w3id.org/lambda/rocrate/core",
       "mappings": [
         "http://w3id.org/lambda/detector"
@@ -7276,9 +7531,10 @@
         "http://w3id.org/lambda/detector"
       ],
       "slot_uri": "http://w3id.org/lambda/detector",
-      "owner": "InstrumentEntity",
+      "owner": "ExperimentRunAction",
       "domain_of": [
-        "InstrumentEntity"
+        "InstrumentEntity",
+        "ExperimentRunAction"
       ],
       "range": "string",
       "@type": "SlotDefinition"
@@ -7416,6 +7672,464 @@
         "ExperimentRunAction"
       ],
       "range": "ProcessingStatusEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "accelerating_voltage",
+      "definition_uri": "http://w3id.org/lambda/rocrate/accelerating_voltage",
+      "description": "Accelerating voltage used for the session, typically in kV. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/accelerating_voltage"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/accelerating_voltage"
+      ],
+      "slot_uri": "http://w3id.org/lambda/accelerating_voltage",
+      "owner": "ExperimentRunAction",
+      "domain_of": [
+        "ExperimentRunAction"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cs",
+      "definition_uri": "http://w3id.org/lambda/rocrate/cs",
+      "description": "Nominal spherical aberration (Cs) in effect for the session, typically in mm. Needed with the data for CTF estimation. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/cs"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/cs"
+      ],
+      "slot_uri": "http://w3id.org/lambda/cs",
+      "owner": "ExperimentRunAction",
+      "domain_of": [
+        "ExperimentRunAction"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "magnification",
+      "definition_uri": "http://w3id.org/lambda/rocrate/magnification",
+      "description": "Nominal magnification of the data-collection images (not the atlas or screening images). A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/magnification"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/magnification"
+      ],
+      "slot_uri": "http://w3id.org/lambda/magnification",
+      "owner": "ExperimentRunAction",
+      "domain_of": [
+        "ExperimentRunAction"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "nominal_pixel_size",
+      "definition_uri": "http://w3id.org/lambda/rocrate/nominal_pixel_size",
+      "description": "Pixel size at the specimen as set at the microscope, typically in Angstroms per pixel. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/nominal_pixel_size"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/nominal_pixel_size"
+      ],
+      "slot_uri": "http://w3id.org/lambda/nominal_pixel_size",
+      "owner": "ExperimentRunAction",
+      "domain_of": [
+        "ExperimentRunAction"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "calibrated_pixel_size",
+      "definition_uri": "http://w3id.org/lambda/rocrate/calibrated_pixel_size",
+      "description": "Pixel size measured against a standard, typically in Angstroms per pixel. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/calibrated_pixel_size"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/calibrated_pixel_size"
+      ],
+      "slot_uri": "http://w3id.org/lambda/calibrated_pixel_size",
+      "owner": "ExperimentRunAction",
+      "domain_of": [
+        "ExperimentRunAction"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "camera_binning",
+      "definition_uri": "http://w3id.org/lambda/rocrate/camera_binning",
+      "description": "Camera binning factor. Below 1 for super-resolution collection, e.g. 0.5. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/camera_binning"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/camera_binning"
+      ],
+      "slot_uri": "http://w3id.org/lambda/camera_binning",
+      "owner": "ExperimentRunAction",
+      "domain_of": [
+        "ExperimentRunAction"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "frames_per_movie",
+      "definition_uri": "http://w3id.org/lambda/rocrate/frames_per_movie",
+      "description": "Number of frames in each dose-fractionated movie. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/frames_per_movie"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/frames_per_movie"
+      ],
+      "slot_uri": "http://w3id.org/lambda/frames_per_movie",
+      "owner": "ExperimentRunAction",
+      "domain_of": [
+        "ExperimentRunAction"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "frames_per_second",
+      "definition_uri": "http://w3id.org/lambda/rocrate/frames_per_second",
+      "description": "Frame acquisition rate. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/frames_per_second"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/frames_per_second"
+      ],
+      "slot_uri": "http://w3id.org/lambda/frames_per_second",
+      "owner": "ExperimentRunAction",
+      "domain_of": [
+        "ExperimentRunAction"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "exposure_time_per_frame",
+      "definition_uri": "http://w3id.org/lambda/rocrate/exposure_time_per_frame",
+      "description": "Exposure time of one frame, typically in ms. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/exposure_time_per_frame"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/exposure_time_per_frame"
+      ],
+      "slot_uri": "http://w3id.org/lambda/exposure_time_per_frame",
+      "owner": "ExperimentRunAction",
+      "domain_of": [
+        "ExperimentRunAction"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "total_exposure_time",
+      "definition_uri": "http://w3id.org/lambda/rocrate/total_exposure_time",
+      "description": "Total exposure time of one movie, typically in s. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/total_exposure_time"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/total_exposure_time"
+      ],
+      "slot_uri": "http://w3id.org/lambda/total_exposure_time",
+      "owner": "ExperimentRunAction",
+      "domain_of": [
+        "ExperimentRunAction"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "total_dose",
+      "definition_uri": "http://w3id.org/lambda/rocrate/total_dose",
+      "description": "Total electron dose per movie, typically in e-/Angstrom^2. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/total_dose"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/total_dose"
+      ],
+      "slot_uri": "http://w3id.org/lambda/total_dose",
+      "owner": "ExperimentRunAction",
+      "domain_of": [
+        "ExperimentRunAction"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dose_rate",
+      "definition_uri": "http://w3id.org/lambda/rocrate/dose_rate",
+      "description": "Dose rate, typically in e-/pixel/s or e-/Angstrom^2/s. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/dose_rate"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/dose_rate"
+      ],
+      "slot_uri": "http://w3id.org/lambda/dose_rate",
+      "owner": "ExperimentRunAction",
+      "domain_of": [
+        "ExperimentRunAction"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "spot_size",
+      "definition_uri": "http://w3id.org/lambda/rocrate/spot_size",
+      "description": "Condenser spot size setting (a dimensionless index on the microscope). A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/spot_size"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/spot_size"
+      ],
+      "slot_uri": "http://w3id.org/lambda/spot_size",
+      "owner": "ExperimentRunAction",
+      "domain_of": [
+        "ExperimentRunAction"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "c2_aperture",
+      "definition_uri": "http://w3id.org/lambda/rocrate/c2_aperture",
+      "description": "C2 condenser aperture diameter used, typically in micrometers. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/c2_aperture"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/c2_aperture"
+      ],
+      "slot_uri": "http://w3id.org/lambda/c2_aperture",
+      "owner": "ExperimentRunAction",
+      "domain_of": [
+        "ExperimentRunAction"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "beam_diameter",
+      "definition_uri": "http://w3id.org/lambda/rocrate/beam_diameter",
+      "description": "Illuminated beam diameter at the specimen, typically in micrometers. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/beam_diameter"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/beam_diameter"
+      ],
+      "slot_uri": "http://w3id.org/lambda/beam_diameter",
+      "owner": "ExperimentRunAction",
+      "domain_of": [
+        "ExperimentRunAction"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "energy_filter_slit_width",
+      "definition_uri": "http://w3id.org/lambda/rocrate/energy_filter_slit_width",
+      "description": "Energy filter slit width used, typically in eV. Omit when no filter was used. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/energy_filter_slit_width"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/energy_filter_slit_width"
+      ],
+      "slot_uri": "http://w3id.org/lambda/energy_filter_slit_width",
+      "owner": "ExperimentRunAction",
+      "domain_of": [
+        "ExperimentRunAction"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "tilt_angle_increment",
+      "definition_uri": "http://w3id.org/lambda/rocrate/tilt_angle_increment",
+      "description": "Tilt step between successive images of a tilt series, typically in degrees. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/tilt_angle_increment"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/tilt_angle_increment"
+      ],
+      "slot_uri": "http://w3id.org/lambda/tilt_angle_increment",
+      "owner": "ExperimentRunAction",
+      "domain_of": [
+        "ExperimentRunAction"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "fiducial_size",
+      "definition_uri": "http://w3id.org/lambda/rocrate/fiducial_size",
+      "description": "Size of the fiducial markers used for tomographic alignment. A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/fiducial_size"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/fiducial_size"
+      ],
+      "slot_uri": "http://w3id.org/lambda/fiducial_size",
+      "owner": "ExperimentRunAction",
+      "domain_of": [
+        "ExperimentRunAction"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "rotation_rate",
+      "definition_uri": "http://w3id.org/lambda/rocrate/rotation_rate",
+      "description": "Continuous rotation rate during collection (MicroED). A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/rotation_rate"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/rotation_rate"
+      ],
+      "slot_uri": "http://w3id.org/lambda/rotation_rate",
+      "owner": "ExperimentRunAction",
+      "domain_of": [
+        "ExperimentRunAction"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "camera_length",
+      "definition_uri": "http://w3id.org/lambda/rocrate/camera_length",
+      "description": "Camera length for electron diffraction (MicroED). A quantity object, `{\"numeric_value\": ..., \"unit\": ...}`.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/camera_length"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/camera_length"
+      ],
+      "slot_uri": "http://w3id.org/lambda/camera_length",
+      "owner": "ExperimentRunAction",
+      "domain_of": [
+        "ExperimentRunAction"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "phase_plate_used",
+      "definition_uri": "http://w3id.org/lambda/rocrate/phase_plate_used",
+      "description": "Whether a phase plate was in the beam path for the session.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/phase_plate_used"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/phase_plate_used"
+      ],
+      "slot_uri": "http://w3id.org/lambda/phase_plate_used",
+      "owner": "ExperimentRunAction",
+      "domain_of": [
+        "ExperimentRunAction"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "tilting_scheme",
+      "definition_uri": "http://w3id.org/lambda/rocrate/tilting_scheme",
+      "description": "Stage tilting during collection, from the schema's own `TiltingSchemeEnum`; `none` for single-particle collection.",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/tilting_scheme"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/tilting_scheme"
+      ],
+      "slot_uri": "http://w3id.org/lambda/tilting_scheme",
+      "owner": "ExperimentRunAction",
+      "domain_of": [
+        "ExperimentRunAction"
+      ],
+      "range": "TiltingSchemeEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "quality_metrics",
+      "definition_uri": "http://w3id.org/lambda/rocrate/quality_metrics",
+      "description": "Quality assessments of the run, as the schema's `QualityMetrics` object. For cryo-EM, the facility's grid assessment goes in `grid_quality` (ice contamination, ice quality, particle concentration).",
+      "from_schema": "http://w3id.org/lambda/rocrate/core",
+      "mappings": [
+        "http://w3id.org/lambda/quality_metrics"
+      ],
+      "exact_mappings": [
+        "http://w3id.org/lambda/quality_metrics"
+      ],
+      "slot_uri": "http://w3id.org/lambda/quality_metrics",
+      "owner": "ExperimentRunAction",
+      "domain_of": [
+        "ExperimentRunAction"
+      ],
+      "range": "QualityMetrics",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -9377,6 +10091,26 @@
       ],
       "range": "Any",
       "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "instrument_type",
+      "definition_uri": "http://w3id.org/lambda/instrument_type",
+      "description": "Which Instrument class this record is: `Instrument` or the name of one of its subclasses, such as `CryoEMInstrument`. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.",
+      "comments": [
+        "Write it whenever an instrument record uses fields of an Instrument subclass, e.g. `instrument_type: CryoEMInstrument` for an instrument with `cs` or `detector_model`. A record without it loads as a plain Instrument, and the Python loader then rejects the subclass fields.",
+        "Code that builds an instrument object need not set it: the generated classes fill it in from the class.",
+        "Defined here rather than as an Instrument attribute because LinkML's Python generator mishandles a type designator declared as an attribute: it emits a stray `unknown_instrument_type` assignment, and the RDF dumper then fails (linkml/linkml#2107, #3663; still present in linkml 1.12.1).",
+        "The value is the class name, not a CURIE: a `uriorcurie` designator does not round-trip between the Pydantic and Python generators (linkml/linkml#3836)."
+      ],
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/instrument_type",
+      "designates_type": true,
+      "owner": "Instrument",
+      "domain_of": [
+        "Instrument"
+      ],
+      "range": "string",
       "@type": "SlotDefinition"
     },
     {
@@ -12721,6 +13455,9 @@
     {
       "name": "cryoEMInstrument__accelerating_voltage",
       "description": "Accelerating voltage in kV",
+      "comments": [
+        "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.accelerating_voltage."
+      ],
       "from_schema": "http://w3id.org/lambda/",
       "exact_mappings": [
         "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_imaging.accelerating_voltage"
@@ -12754,6 +13491,9 @@
     {
       "name": "cryoEMInstrument__phase_plate",
       "description": "Phase plate available",
+      "comments": [
+        "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.phase_plate_used."
+      ],
       "from_schema": "http://w3id.org/lambda/",
       "slot_uri": "http://w3id.org/lambda/phase_plate",
       "alias": "phase_plate",
@@ -12895,6 +13635,9 @@
     {
       "name": "cryoEMInstrument__cs",
       "description": "Spherical aberration (Cs) in millimeters",
+      "comments": [
+        "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.cs."
+      ],
       "from_schema": "http://w3id.org/lambda/",
       "exact_mappings": [
         "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_imaging.nominal_cs"
@@ -12912,6 +13655,9 @@
     {
       "name": "cryoEMInstrument__c2_aperture",
       "description": "C2 aperture size in micrometers",
+      "comments": [
+        "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.c2_aperture."
+      ],
       "from_schema": "http://w3id.org/lambda/",
       "exact_mappings": [
         "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_imaging.c2_aperture_diameter"
@@ -12995,6 +13741,9 @@
     {
       "name": "cryoEMInstrument__energy_filter_slit_width",
       "description": "Energy filter slit width in eV",
+      "comments": [
+        "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.energy_filter_slit_width."
+      ],
       "from_schema": "http://w3id.org/lambda/",
       "exact_mappings": [
         "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_imaging.energy_filter_slit_width"
@@ -13052,6 +13801,9 @@
     {
       "name": "cryoEMInstrument__spotsize",
       "description": "Electron beam spot size setting",
+      "comments": [
+        "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.spot_size."
+      ],
       "from_schema": "http://w3id.org/lambda/",
       "exact_mappings": [
         "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_imaging.detector_spot_size"
@@ -13099,6 +13851,9 @@
     {
       "name": "cryoEMInstrument__tem_beam_diameter",
       "description": "TEM beam diameter in micrometers",
+      "comments": [
+        "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.beam_diameter."
+      ],
       "from_schema": "http://w3id.org/lambda/",
       "slot_uri": "http://w3id.org/lambda/tem_beam_diameter",
       "alias": "tem_beam_diameter",
@@ -14204,6 +14959,43 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "experimentRun__accelerating_voltage",
+      "description": "Accelerating voltage used for this session, typically specified in kV. Data providers may specify alternative units by including the unit in the QuantityValue.",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_imaging.accelerating_voltage"
+      ],
+      "slot_uri": "http://w3id.org/lambda/accelerating_voltage",
+      "alias": "accelerating_voltage",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__cs",
+      "description": "Nominal spherical aberration (Cs) of the objective lens in effect for this session, typically specified in millimeters. Data providers may specify alternative units by including the unit in the QuantityValue.",
+      "comments": [
+        "Fixed for a given microscope, but recorded per imaging session by mmCIF and by facility acquisition sheets, and needed with the run's data for CTF estimation."
+      ],
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_imaging.nominal_cs"
+      ],
+      "slot_uri": "http://w3id.org/lambda/cs",
+      "alias": "cs",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "experimentRun__magnification",
       "description": "Magnification used during data collection",
       "from_schema": "http://w3id.org/lambda/",
@@ -14212,6 +15004,23 @@
       ],
       "slot_uri": "http://w3id.org/lambda/magnification",
       "alias": "magnification",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__nominal_pixel_size",
+      "description": "Nominal pixel size at the specimen for the chosen magnification and binning, as set at the microscope, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue.",
+      "comments": [
+        "Use calibrated_pixel_size for the value measured against a standard; the two commonly differ by a fraction of a percent."
+      ],
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/nominal_pixel_size",
+      "alias": "nominal_pixel_size",
       "owner": "ExperimentRun",
       "domain_of": [
         "ExperimentRun"
@@ -14331,6 +15140,81 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "experimentRun__spot_size",
+      "description": "Condenser spot size setting used for this session (a dimensionless index on the microscope, e.g. 4)",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/spot_size",
+      "alias": "spot_size",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__c2_aperture",
+      "description": "C2 condenser aperture diameter used for this session, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_imaging.c2_aperture_diameter"
+      ],
+      "slot_uri": "http://w3id.org/lambda/c2_aperture",
+      "alias": "c2_aperture",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__beam_diameter",
+      "description": "Illuminated beam diameter at the specimen used for this session, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/beam_diameter",
+      "alias": "beam_diameter",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__energy_filter_slit_width",
+      "description": "Energy filter slit width used for this session, typically specified in eV. Omit when no energy filter was used. Data providers may specify alternative units by including the unit in the QuantityValue.",
+      "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_imaging_optics.energyfilter_slit_width"
+      ],
+      "slot_uri": "http://w3id.org/lambda/energy_filter_slit_width",
+      "alias": "energy_filter_slit_width",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__phase_plate_used",
+      "description": "Whether a phase plate was in the beam path for this session",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/phase_plate_used",
+      "alias": "phase_plate_used",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "experimentRun__defocus_target",
       "description": "Target defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
@@ -14439,7 +15323,7 @@
     },
     {
       "name": "experimentRun__tilting_scheme",
-      "description": "Tilt scheme used during tomographic data collection",
+      "description": "Stage tilting scheme used during data collection. Use `none` for untilted acquisitions such as single-particle collection; the other values describe tomographic and continuous-rotation (MicroED) collection.",
       "from_schema": "http://w3id.org/lambda/",
       "slot_uri": "http://w3id.org/lambda/tilting_scheme",
       "alias": "tilting_scheme",
@@ -16176,6 +17060,20 @@
         "WorkflowRun"
       ],
       "range": "ParticlePickingParameters",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__md_simulation_params",
+      "description": "Molecular dynamics simulation parameters",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/md_simulation_params",
+      "alias": "md_simulation_params",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "MDSimulationParameters",
       "inlined": true,
       "@type": "SlotDefinition"
     },
@@ -19990,6 +20888,481 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "mDSimulationParameters__simulation_engine",
+      "description": "MD simulation engine used (e.g., pmemd.cuda, GROMACS, NAMD, OpenMM)",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/simulation_engine",
+      "alias": "simulation_engine",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__simulation_engine_version",
+      "description": "Version of the simulation engine",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/simulation_engine_version",
+      "alias": "simulation_engine_version",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__protein_force_field",
+      "description": "Force field for protein (e.g., ff19SB, ff14SB, CHARMM36m, OPLS-AA)",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/protein_force_field",
+      "alias": "protein_force_field",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__ligand_force_field",
+      "description": "Force field for small-molecule ligand (e.g., GAFF2, GAFF, CGenFF, OPLS)",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/ligand_force_field",
+      "alias": "ligand_force_field",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__water_model",
+      "description": "Explicit solvent water model (e.g., OPC, TIP3P, SPC/E, TIP4P-Ew)",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/water_model",
+      "alias": "water_model",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__charge_method",
+      "description": "Method used to assign partial charges to the ligand (e.g., AM1-BCC, RESP, HF/6-31G*)",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/charge_method",
+      "alias": "charge_method",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__box_padding",
+      "description": "Minimum distance from solute to box edge, typically in Angstroms",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/box_padding",
+      "alias": "box_padding",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__box_shape",
+      "description": "Simulation box geometry (e.g., cubic, truncated_octahedron, rhombic_dodecahedron)",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/box_shape",
+      "alias": "box_shape",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__ion_neutralization",
+      "description": "Whether counterions were added to neutralize the system",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/ion_neutralization",
+      "alias": "ion_neutralization",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__ion_species",
+      "description": "Ion species added (e.g., Na+, Cl-, K+, Mg2+)",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/ion_species",
+      "alias": "ion_species",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "string",
+      "multivalued": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__net_charge",
+      "description": "Target net charge of the system after ion addition",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/net_charge",
+      "alias": "net_charge",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__hydrogen_mass_repartitioning",
+      "description": "Whether hydrogen mass repartitioning (HMR) was applied to enable larger timesteps",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/hydrogen_mass_repartitioning",
+      "alias": "hydrogen_mass_repartitioning",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__ensemble",
+      "description": "Thermodynamic ensemble for the simulation stage",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/ensemble",
+      "alias": "ensemble",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "MDEnsembleEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__thermostat",
+      "description": "Thermostat algorithm (e.g., Langevin, Nose-Hoover, Berendsen, velocity-rescale)",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/thermostat",
+      "alias": "thermostat",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__thermostat_coupling",
+      "description": "Thermostat coupling constant (gamma_ln for Langevin), typically in 1/ps",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/thermostat_coupling",
+      "alias": "thermostat_coupling",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__barostat",
+      "description": "Barostat algorithm (e.g., Berendsen, Monte-Carlo, Parrinello-Rahman)",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/barostat",
+      "alias": "barostat",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__barostat_coupling",
+      "description": "Barostat coupling constant (taup), typically in ps",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/barostat_coupling",
+      "alias": "barostat_coupling",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__temperature",
+      "description": "Target simulation temperature in Kelvin",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/temperature",
+      "alias": "temperature",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__pressure",
+      "description": "Target simulation pressure, typically in atm",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/pressure",
+      "alias": "pressure",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__timestep",
+      "description": "Integration timestep, typically in femtoseconds",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/timestep",
+      "alias": "timestep",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__constraint_algorithm",
+      "description": "Bond constraint algorithm (e.g., SHAKE, LINCS, SETTLE)",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/constraint_algorithm",
+      "alias": "constraint_algorithm",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__nonbonded_cutoff",
+      "description": "Cutoff for non-bonded interactions, typically in Angstroms",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/nonbonded_cutoff",
+      "alias": "nonbonded_cutoff",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__simulation_stage",
+      "description": "Stage of the MD workflow this run represents",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/simulation_stage",
+      "alias": "simulation_stage",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "MDStageEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__duration_ns",
+      "description": "Duration of this simulation stage in nanoseconds",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/duration_ns",
+      "alias": "duration_ns",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__total_steps",
+      "description": "Total number of integration steps",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/total_steps",
+      "alias": "total_steps",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__trajectory_output_interval",
+      "description": "Interval between saved trajectory frames in steps",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/trajectory_output_interval",
+      "alias": "trajectory_output_interval",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__restraint_mask",
+      "description": "Atom selection mask for positional restraints (Amber mask syntax or equivalent)",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/restraint_mask",
+      "alias": "restraint_mask",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__restraint_force_constant",
+      "description": "Restraint force constant, typically in kcal/mol/A^2",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/restraint_force_constant",
+      "alias": "restraint_force_constant",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__minimization_max_cycles",
+      "description": "Maximum number of minimization cycles",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/minimization_max_cycles",
+      "alias": "minimization_max_cycles",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__minimization_steepest_descent_cycles",
+      "description": "Number of initial steepest-descent cycles before switching to conjugate gradient",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/minimization_steepest_descent_cycles",
+      "alias": "minimization_steepest_descent_cycles",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__initial_temperature",
+      "description": "Starting temperature for heating stage in Kelvin",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/initial_temperature",
+      "alias": "initial_temperature",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__heat_duration_ns",
+      "description": "Duration of the heating phase in nanoseconds",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/heat_duration_ns",
+      "alias": "heat_duration_ns",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__equil_restrained_duration_ns",
+      "description": "Duration of restrained equilibration in nanoseconds",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/equil_restrained_duration_ns",
+      "alias": "equil_restrained_duration_ns",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__equil_free_duration_ns",
+      "description": "Duration of unrestrained equilibration in nanoseconds",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/equil_free_duration_ns",
+      "alias": "equil_free_duration_ns",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mDSimulationParameters__production_duration_ns",
+      "description": "Duration of production MD in nanoseconds",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/production_duration_ns",
+      "alias": "production_duration_ns",
+      "owner": "MDSimulationParameters",
+      "domain_of": [
+        "MDSimulationParameters"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "fSCCurve__resolution_angstrom",
       "description": "Resolution values in Angstroms",
       "from_schema": "http://w3id.org/lambda/",
@@ -23010,7 +24383,7 @@
     {
       "name": "CrateRoot_conforms_to",
       "definition_uri": "http://w3id.org/lambda/rocrate/conforms_to",
-      "description": "MUST include both the RO-Crate version URI and `https://w3id.org/lambda/profile/core/0.3.3`. Technique extensions add their own URI alongside, never instead.",
+      "description": "MUST include both the RO-Crate version URI and `https://w3id.org/lambda/profile/core/0.3.4`. Technique extensions add their own URI alongside, never instead.",
       "from_schema": "http://w3id.org/lambda/rocrate/core",
       "mappings": [
         "http://purl.org/dc/terms/conformsTo"
@@ -24664,6 +26037,30 @@
         "run_parameters",
         "raw_data_location",
         "processing_status",
+        "detector",
+        "accelerating_voltage",
+        "cs",
+        "magnification",
+        "nominal_pixel_size",
+        "calibrated_pixel_size",
+        "camera_binning",
+        "frames_per_movie",
+        "frames_per_second",
+        "exposure_time_per_frame",
+        "total_exposure_time",
+        "total_dose",
+        "dose_rate",
+        "spot_size",
+        "c2_aperture",
+        "beam_diameter",
+        "energy_filter_slit_width",
+        "phase_plate_used",
+        "tilting_scheme",
+        "tilt_angle_increment",
+        "fiducial_size",
+        "rotation_rate",
+        "camera_length",
+        "quality_metrics",
         "missing",
         "ExperimentRunAction_at_id"
       ],
@@ -27151,6 +28548,7 @@
         "namedThing__id",
         "namedThing__title",
         "namedThing__description",
+        "instrument_type",
         "instrument__instrument_code",
         "instrument__instrument_registry_id",
         "instrument__instrument_category",
@@ -27278,6 +28676,7 @@
         "namedThing__id",
         "namedThing__title",
         "namedThing__description",
+        "instrument_type",
         "instrument__instrument_code",
         "instrument__instrument_registry_id",
         "instrument__instrument_category",
@@ -27321,6 +28720,9 @@
         {
           "name": "accelerating_voltage",
           "description": "Accelerating voltage in kV",
+          "comments": [
+            "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.accelerating_voltage."
+          ],
           "exact_mappings": [
             "mmCIF:_em_imaging.accelerating_voltage"
           ],
@@ -27340,6 +28742,9 @@
         {
           "name": "phase_plate",
           "description": "Phase plate available",
+          "comments": [
+            "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.phase_plate_used."
+          ],
           "range": "boolean",
           "@type": "SlotDefinition"
         },
@@ -27418,6 +28823,9 @@
         {
           "name": "cs",
           "description": "Spherical aberration (Cs) in millimeters",
+          "comments": [
+            "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.cs."
+          ],
           "exact_mappings": [
             "mmCIF:_em_imaging.nominal_cs"
           ],
@@ -27428,6 +28836,9 @@
         {
           "name": "c2_aperture",
           "description": "C2 aperture size in micrometers",
+          "comments": [
+            "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.c2_aperture."
+          ],
           "exact_mappings": [
             "mmCIF:_em_imaging.c2_aperture_diameter"
           ],
@@ -27469,6 +28880,9 @@
         {
           "name": "energy_filter_slit_width",
           "description": "Energy filter slit width in eV",
+          "comments": [
+            "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.energy_filter_slit_width."
+          ],
           "exact_mappings": [
             "mmCIF:_em_imaging.energy_filter_slit_width"
           ],
@@ -27498,6 +28912,9 @@
         {
           "name": "spotsize",
           "description": "Electron beam spot size setting",
+          "comments": [
+            "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.spot_size."
+          ],
           "exact_mappings": [
             "mmCIF:_em_imaging.detector_spot_size"
           ],
@@ -27524,6 +28941,9 @@
         {
           "name": "tem_beam_diameter",
           "description": "TEM beam diameter in micrometers",
+          "comments": [
+            "This is the instrument's capability or default. Record the value actually used in a session on ExperimentRun.beam_diameter."
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -27542,6 +28962,7 @@
         "namedThing__id",
         "namedThing__title",
         "namedThing__description",
+        "instrument_type",
         "instrument__instrument_code",
         "instrument__instrument_registry_id",
         "instrument__instrument_category",
@@ -27957,6 +29378,7 @@
         "namedThing__id",
         "namedThing__title",
         "namedThing__description",
+        "instrument_type",
         "instrument__instrument_code",
         "instrument__instrument_registry_id",
         "instrument__instrument_category",
@@ -28039,6 +29461,7 @@
         "namedThing__id",
         "namedThing__title",
         "namedThing__description",
+        "instrument_type",
         "instrument__instrument_code",
         "instrument__instrument_registry_id",
         "instrument__instrument_category",
@@ -28117,6 +29540,7 @@
         "namedThing__id",
         "namedThing__title",
         "namedThing__description",
+        "instrument_type",
         "instrument__instrument_code",
         "instrument__instrument_registry_id",
         "instrument__instrument_category",
@@ -28255,7 +29679,10 @@
         "experimentRun__raw_data_location",
         "experimentRun__processing_status",
         "experimentRun__daq_system",
+        "experimentRun__accelerating_voltage",
+        "experimentRun__cs",
         "experimentRun__magnification",
+        "experimentRun__nominal_pixel_size",
         "experimentRun__calibrated_pixel_size",
         "experimentRun__camera_binning",
         "experimentRun__exposure_time_per_frame",
@@ -28263,6 +29690,11 @@
         "experimentRun__total_exposure_time",
         "experimentRun__total_dose",
         "experimentRun__dose_rate",
+        "experimentRun__spot_size",
+        "experimentRun__c2_aperture",
+        "experimentRun__beam_diameter",
+        "experimentRun__energy_filter_slit_width",
+        "experimentRun__phase_plate_used",
         "experimentRun__defocus_target",
         "experimentRun__defocus_range_min",
         "experimentRun__defocus_range_max",
@@ -28392,10 +29824,43 @@
           "@type": "SlotDefinition"
         },
         {
+          "name": "accelerating_voltage",
+          "description": "Accelerating voltage used for this session, typically specified in kV. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "exact_mappings": [
+            "mmCIF:_em_imaging.accelerating_voltage"
+          ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "cs",
+          "description": "Nominal spherical aberration (Cs) of the objective lens in effect for this session, typically specified in millimeters. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "comments": [
+            "Fixed for a given microscope, but recorded per imaging session by mmCIF and by facility acquisition sheets, and needed with the run's data for CTF estimation."
+          ],
+          "exact_mappings": [
+            "mmCIF:_em_imaging.nominal_cs"
+          ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
           "name": "magnification",
           "description": "Magnification used during data collection",
           "exact_mappings": [
             "mmCIF:_em_imaging.nominal_magnification"
+          ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "nominal_pixel_size",
+          "description": "Nominal pixel size at the specimen for the chosen magnification and binning, as set at the microscope, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "comments": [
+            "Use calibrated_pixel_size for the value measured against a standard; the two commonly differ by a fraction of a percent."
           ],
           "range": "QuantityValue",
           "inlined": true,
@@ -28463,6 +29928,46 @@
           "@type": "SlotDefinition"
         },
         {
+          "name": "spot_size",
+          "description": "Condenser spot size setting used for this session (a dimensionless index on the microscope, e.g. 4)",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "c2_aperture",
+          "description": "C2 condenser aperture diameter used for this session, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "exact_mappings": [
+            "mmCIF:_em_imaging.c2_aperture_diameter"
+          ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "beam_diameter",
+          "description": "Illuminated beam diameter at the specimen used for this session, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "energy_filter_slit_width",
+          "description": "Energy filter slit width used for this session, typically specified in eV. Omit when no energy filter was used. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "exact_mappings": [
+            "mmCIF:_em_imaging_optics.energyfilter_slit_width"
+          ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "phase_plate_used",
+          "description": "Whether a phase plate was in the beam path for this session",
+          "range": "boolean",
+          "@type": "SlotDefinition"
+        },
+        {
           "name": "defocus_target",
           "description": "Target defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
           "range": "QuantityValue",
@@ -28522,7 +30027,7 @@
         },
         {
           "name": "tilting_scheme",
-          "description": "Tilt scheme used during tomographic data collection",
+          "description": "Stage tilting scheme used during data collection. Use `none` for untilted acquisitions such as single-particle collection; the other values describe tomographic and continuous-rotation (MicroED) collection.",
           "range": "TiltingSchemeEnum",
           "@type": "SlotDefinition"
         },
@@ -29081,6 +30586,7 @@
         "workflowRun__motion_correction_params",
         "workflowRun__ctf_estimation_params",
         "workflowRun__particle_picking_params",
+        "workflowRun__md_simulation_params",
         "workflowRun__refinement_params",
         "workflowRun__fsc_curve",
         "workflowRun__number_of_particles",
@@ -29574,6 +31080,12 @@
           "name": "particle_picking_params",
           "description": "Particle picking specific parameters",
           "range": "ParticlePickingParameters",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "md_simulation_params",
+          "description": "Molecular dynamics simulation parameters",
+          "range": "MDSimulationParameters",
           "@type": "SlotDefinition"
         },
         {
@@ -32355,6 +33867,278 @@
       "@type": "ClassDefinition"
     },
     {
+      "name": "MDSimulationParameters",
+      "definition_uri": "http://w3id.org/lambda/MDSimulationParameters",
+      "description": "Parameters for a molecular dynamics simulation workflow. Captures force field selection, simulation conditions, integration settings, solvation setup, and the multi-stage pipeline (minimization, heating, equilibration, production).",
+      "comments": [
+        "Modeled after the Amber/pmemd.cuda pipeline used in BraveDock",
+        "Generalizes to GROMACS, NAMD, OpenMM, and other MD engines"
+      ],
+      "from_schema": "http://w3id.org/lambda/",
+      "is_a": "AttributeGroup",
+      "slots": [
+        "attributeGroup__description",
+        "mDSimulationParameters__simulation_engine",
+        "mDSimulationParameters__simulation_engine_version",
+        "mDSimulationParameters__protein_force_field",
+        "mDSimulationParameters__ligand_force_field",
+        "mDSimulationParameters__water_model",
+        "mDSimulationParameters__charge_method",
+        "mDSimulationParameters__box_padding",
+        "mDSimulationParameters__box_shape",
+        "mDSimulationParameters__ion_neutralization",
+        "mDSimulationParameters__ion_species",
+        "mDSimulationParameters__net_charge",
+        "mDSimulationParameters__hydrogen_mass_repartitioning",
+        "mDSimulationParameters__ensemble",
+        "mDSimulationParameters__thermostat",
+        "mDSimulationParameters__thermostat_coupling",
+        "mDSimulationParameters__barostat",
+        "mDSimulationParameters__barostat_coupling",
+        "mDSimulationParameters__temperature",
+        "mDSimulationParameters__pressure",
+        "mDSimulationParameters__timestep",
+        "mDSimulationParameters__constraint_algorithm",
+        "mDSimulationParameters__nonbonded_cutoff",
+        "mDSimulationParameters__simulation_stage",
+        "mDSimulationParameters__duration_ns",
+        "mDSimulationParameters__total_steps",
+        "mDSimulationParameters__trajectory_output_interval",
+        "mDSimulationParameters__restraint_mask",
+        "mDSimulationParameters__restraint_force_constant",
+        "mDSimulationParameters__minimization_max_cycles",
+        "mDSimulationParameters__minimization_steepest_descent_cycles",
+        "mDSimulationParameters__initial_temperature",
+        "mDSimulationParameters__heat_duration_ns",
+        "mDSimulationParameters__equil_restrained_duration_ns",
+        "mDSimulationParameters__equil_free_duration_ns",
+        "mDSimulationParameters__production_duration_ns"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "simulation_engine",
+          "description": "MD simulation engine used (e.g., pmemd.cuda, GROMACS, NAMD, OpenMM)",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "simulation_engine_version",
+          "description": "Version of the simulation engine",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "protein_force_field",
+          "description": "Force field for protein (e.g., ff19SB, ff14SB, CHARMM36m, OPLS-AA)",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "ligand_force_field",
+          "description": "Force field for small-molecule ligand (e.g., GAFF2, GAFF, CGenFF, OPLS)",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "water_model",
+          "description": "Explicit solvent water model (e.g., OPC, TIP3P, SPC/E, TIP4P-Ew)",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "charge_method",
+          "description": "Method used to assign partial charges to the ligand (e.g., AM1-BCC, RESP, HF/6-31G*)",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "box_padding",
+          "description": "Minimum distance from solute to box edge, typically in Angstroms",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "box_shape",
+          "description": "Simulation box geometry (e.g., cubic, truncated_octahedron, rhombic_dodecahedron)",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "ion_neutralization",
+          "description": "Whether counterions were added to neutralize the system",
+          "range": "boolean",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "ion_species",
+          "description": "Ion species added (e.g., Na+, Cl-, K+, Mg2+)",
+          "multivalued": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "net_charge",
+          "description": "Target net charge of the system after ion addition",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "hydrogen_mass_repartitioning",
+          "description": "Whether hydrogen mass repartitioning (HMR) was applied to enable larger timesteps",
+          "range": "boolean",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "ensemble",
+          "description": "Thermodynamic ensemble for the simulation stage",
+          "range": "MDEnsembleEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "thermostat",
+          "description": "Thermostat algorithm (e.g., Langevin, Nose-Hoover, Berendsen, velocity-rescale)",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "thermostat_coupling",
+          "description": "Thermostat coupling constant (gamma_ln for Langevin), typically in 1/ps",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "barostat",
+          "description": "Barostat algorithm (e.g., Berendsen, Monte-Carlo, Parrinello-Rahman)",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "barostat_coupling",
+          "description": "Barostat coupling constant (taup), typically in ps",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "temperature",
+          "description": "Target simulation temperature in Kelvin",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "pressure",
+          "description": "Target simulation pressure, typically in atm",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "timestep",
+          "description": "Integration timestep, typically in femtoseconds",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "constraint_algorithm",
+          "description": "Bond constraint algorithm (e.g., SHAKE, LINCS, SETTLE)",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "nonbonded_cutoff",
+          "description": "Cutoff for non-bonded interactions, typically in Angstroms",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "simulation_stage",
+          "description": "Stage of the MD workflow this run represents",
+          "range": "MDStageEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "duration_ns",
+          "description": "Duration of this simulation stage in nanoseconds",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "total_steps",
+          "description": "Total number of integration steps",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "trajectory_output_interval",
+          "description": "Interval between saved trajectory frames in steps",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "restraint_mask",
+          "description": "Atom selection mask for positional restraints (Amber mask syntax or equivalent)",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "restraint_force_constant",
+          "description": "Restraint force constant, typically in kcal/mol/A^2",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "minimization_max_cycles",
+          "description": "Maximum number of minimization cycles",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "minimization_steepest_descent_cycles",
+          "description": "Number of initial steepest-descent cycles before switching to conjugate gradient",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "initial_temperature",
+          "description": "Starting temperature for heating stage in Kelvin",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "heat_duration_ns",
+          "description": "Duration of the heating phase in nanoseconds",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "equil_restrained_duration_ns",
+          "description": "Duration of restrained equilibration in nanoseconds",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "equil_free_duration_ns",
+          "description": "Duration of unrestrained equilibration in nanoseconds",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "production_duration_ns",
+          "description": "Duration of production MD in nanoseconds",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "http://w3id.org/lambda/MDSimulationParameters",
+      "@type": "ClassDefinition"
+    },
+    {
       "name": "FSCCurve",
       "definition_uri": "http://w3id.org/lambda/FSCCurve",
       "description": "Fourier Shell Correlation curve data.\n\nThe `resolution_angstrom` and `fsc_value` arrays must be of equal length, with each value at index i in `resolution_angstrom`\ncorresponding to the value at index i in `fsc_value`. Both arrays should not exceed 10,000 elements.\n",
@@ -34589,9 +36373,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda_rocrate_core.yaml",
-  "source_file_date": "2026-10-10T18:36:01",
-  "source_file_size": 86395,
-  "generation_date": "2026-10-14T10:31:19",
+  "source_file_date": "2026-11-02T17:15:15",
+  "source_file_size": 94503,
+  "generation_date": "2026-11-02T17:18:48",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/rocrate/jsonld/lambda_rocrate_core.context.jsonld",

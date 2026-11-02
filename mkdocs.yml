@@ -26,6 +26,7 @@ nav:
   - Schema: elements/index.md
   - Background:
     - Overview: background/index.md
+    - Tiled: background/tiled.md
     - NEXUS: background/nexus.md
     - mmCIF: background/mmcif.md
     - EMPIAR: background/empiar.md
@@ -49,7 +50,7 @@ nav:
     - Bundle, Deposit, and Query: use-cases/05-bundle-deposit-lakehouse.html
     - Reanalysis Triggers: use-cases/06-reanalysis-triggers.html
   - Profiles:
-    - LAMBDA Core RO-Crate Profile: profiles/lambda-core-rocrate-profile-v0.3.3.md
+    - LAMBDA Core RO-Crate Profile: profiles/lambda-core-rocrate-profile-v0.3.4.md
   - Technical:
     - Mapping to OME: technical/ome-mapping.md
   - Slides:

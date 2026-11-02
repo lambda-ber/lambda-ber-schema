@@ -1,7 +1,7 @@
  syntax="proto3";
  package
 // metamodel_version: 1.7.0
-// version: 0.0.0.post409.dev0+543ae40
+// version: 0.0.0.post387.dev0+32c846d
 // Aggregated view of all structural and functional data for a protein
 message AggregatedProteinView
  {
@@ -43,6 +43,7 @@ message BeamlineInstrument
   uriorcurie id = 0
   string title = 0
   string description = 0
+  string instrumentType = 0
   string instrumentCode = 0
   string instrumentRegistryId = 0
   instrumentCategoryEnum instrumentCategory = 0
@@ -127,6 +128,7 @@ message CryoEMInstrument
   uriorcurie id = 0
   string title = 0
   string description = 0
+  string instrumentType = 0
   string instrumentCode = 0
   string instrumentRegistryId = 0
   instrumentCategoryEnum instrumentCategory = 0
@@ -396,7 +398,10 @@ message ExperimentRun
   string rawDataLocation = 0
   processingStatusEnum processingStatus = 0
   dataAcquisitionSystemEnum daqSystem = 0
+  quantityValue acceleratingVoltage = 0
+  quantityValue cs = 0
   quantityValue magnification = 0
+  quantityValue nominalPixelSize = 0
   quantityValue calibratedPixelSize = 0
   quantityValue cameraBinning = 0
   quantityValue exposureTimePerFrame = 0
@@ -404,6 +409,11 @@ message ExperimentRun
   quantityValue totalExposureTime = 0
   quantityValue totalDose = 0
   quantityValue doseRate = 0
+  quantityValue spotSize = 0
+  quantityValue c2Aperture = 0
+  quantityValue beamDiameter = 0
+  quantityValue energyFilterSlitWidth = 0
+  boolean phasePlateUsed = 0
   quantityValue defocusTarget = 0
   quantityValue defocusRangeMin = 0
   quantityValue defocusRangeMax = 0
@@ -607,6 +617,7 @@ message Instrument
   uriorcurie id = 0
   string title = 0
   string description = 0
+  string instrumentType = 0
   string instrumentCode = 0
   string instrumentRegistryId = 0
   instrumentCategoryEnum instrumentCategory = 0
@@ -635,6 +646,46 @@ message LigandInteraction
   boolean isDrugLike = 0
   float druggabilityScore = 0
   float interactionDistance = 0
+ }
+// Parameters for a molecular dynamics simulation workflow. Captures force field selection, simulation conditions, integration settings, solvation setup, and the multi-stage pipeline (minimization, heating, equilibration, production).
+message MDSimulationParameters
+ {
+  string description = 0
+  string simulationEngine = 0
+  string simulationEngineVersion = 0
+  string proteinForceField = 0
+  string ligandForceField = 0
+  string waterModel = 0
+  string chargeMethod = 0
+  quantityValue boxPadding = 0
+  string boxShape = 0
+  boolean ionNeutralization = 0
+ repeated  string ionSpecies = 0
+  quantityValue netCharge = 0
+  boolean hydrogenMassRepartitioning = 0
+  mDEnsembleEnum ensemble = 0
+  string thermostat = 0
+  quantityValue thermostatCoupling = 0
+  string barostat = 0
+  quantityValue barostatCoupling = 0
+  quantityValue temperature = 0
+  quantityValue pressure = 0
+  quantityValue timestep = 0
+  string constraintAlgorithm = 0
+  quantityValue nonbondedCutoff = 0
+  mDStageEnum simulationStage = 0
+  quantityValue durationNs = 0
+  quantityValue totalSteps = 0
+  quantityValue trajectoryOutputInterval = 0
+  string restraintMask = 0
+  quantityValue restraintForceConstant = 0
+  quantityValue minimizationMaxCycles = 0
+  quantityValue minimizationSteepestDescentCycles = 0
+  quantityValue initialTemperature = 0
+  quantityValue heatDurationNs = 0
+  quantityValue equilRestrainedDurationNs = 0
+  quantityValue equilFreeDurationNs = 0
+  quantityValue productionDurationNs = 0
  }
 // Conditions under which biophysical measurements were made
 message MeasurementConditions
@@ -1235,6 +1286,7 @@ message SANSInstrument
   uriorcurie id = 0
   string title = 0
   string description = 0
+  string instrumentType = 0
   string instrumentCode = 0
   string instrumentRegistryId = 0
   instrumentCategoryEnum instrumentCategory = 0
@@ -1272,6 +1324,7 @@ message SAXSInstrument
   uriorcurie id = 0
   string title = 0
   string description = 0
+  string instrumentType = 0
   string instrumentCode = 0
   string instrumentRegistryId = 0
   instrumentCategoryEnum instrumentCategory = 0
@@ -1502,6 +1555,7 @@ message WorkflowRun
   motionCorrectionParameters motionCorrectionParams = 0
   cTFEstimationParameters ctfEstimationParams = 0
   particlePickingParameters particlePickingParams = 0
+  mDSimulationParameters mdSimulationParams = 0
   refinementParameters refinementParams = 0
   fSCCurve fscCurve = 0
   integer numberOfParticles = 0
@@ -1513,6 +1567,7 @@ message XRayInstrument
   uriorcurie id = 0
   string title = 0
   string description = 0
+  string instrumentType = 0
   string instrumentCode = 0
   string instrumentRegistryId = 0
   instrumentCategoryEnum instrumentCategory = 0

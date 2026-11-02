@@ -27,7 +27,7 @@ from pydantic import (
 
 
 metamodel_version = "None"
-version = "0.0.0.post409.dev0+543ae40"
+version = "0.0.0.post387.dev0+32c846d"
 
 
 class ConfiguredBaseModel(BaseModel):
@@ -315,6 +315,8 @@ linkml_meta = LinkMLMeta({'default_prefix': 'lambda',
                          'prefix_reference': 'http://purl.obolibrary.org/obo/UO_'},
                   'anl-lambda': {'prefix_prefix': 'anl-lambda',
                                  'prefix_reference': 'https://sg.bio.anl.gov/lambda/'},
+                  'bmrb': {'prefix_prefix': 'bmrb',
+                           'prefix_reference': 'https://bmrb.io/data_library/summary/index.php?bmrbId='},
                   'chembl.compound': {'prefix_prefix': 'chembl.compound',
                                       'prefix_reference': 'https://www.ebi.ac.uk/chembl/compound_report_card/'},
                   'dcterms': {'prefix_prefix': 'dcterms',
@@ -2249,6 +2251,74 @@ class TechniqueEnum(str, Enum):
     """
     Micro-electron diffraction for atomic-resolution structure determination from microcrystals
     """
+    solution_nmr = "solution_nmr"
+    """
+    Solution-state nuclear magnetic resonance spectroscopy for structure determination of molecules in solution
+    """
+    molecular_dynamics = "molecular_dynamics"
+    """
+    Molecular dynamics simulation
+    """
+
+
+class MDEnsembleEnum(str, Enum):
+    """
+    Thermodynamic ensemble for MD simulation
+    """
+    nve = "nve"
+    """
+    Microcanonical ensemble (constant energy, volume, particle number)
+    """
+    nvt = "nvt"
+    """
+    Canonical ensemble (constant temperature, volume, particle number)
+    """
+    npt = "npt"
+    """
+    Isothermal-isobaric ensemble (constant temperature, pressure, particle number)
+    """
+
+
+class MDStageEnum(str, Enum):
+    """
+    Stage within a multi-step MD simulation pipeline
+    """
+    parameterization = "parameterization"
+    """
+    Ligand parameterization and charge assignment (e.g., antechamber, parmchk2)
+    """
+    topology_building = "topology_building"
+    """
+    System topology construction and solvation (e.g., tleap, pdb2gmx)
+    """
+    hydrogen_mass_repartitioning = "hydrogen_mass_repartitioning"
+    """
+    Hydrogen mass repartitioning for larger timesteps (parmed HMR)
+    """
+    minimization_restrained = "minimization_restrained"
+    """
+    Energy minimization with positional restraints on solute
+    """
+    minimization_unrestrained = "minimization_unrestrained"
+    """
+    Energy minimization without restraints
+    """
+    heating = "heating"
+    """
+    Gradual heating from low temperature to target temperature (NVT)
+    """
+    equilibration_restrained = "equilibration_restrained"
+    """
+    NPT equilibration with positional restraints
+    """
+    equilibration_unrestrained = "equilibration_unrestrained"
+    """
+    NPT equilibration without restraints
+    """
+    production = "production"
+    """
+    Production MD data collection
+    """
 
 
 class ProcessingStatusEnum(str, Enum):
@@ -2385,6 +2455,26 @@ class WorkflowTypeEnum(str, Enum):
     """
     An atomic model inferred directly from particle images, with no reconstructed map in between, usually guided by a structure-prediction prior and refining particle poses as it goes (e.g., Fold'EM)
     """
+    md_system_setup = "md_system_setup"
+    """
+    MD system preparation - parameterization, solvation, topology building
+    """
+    md_minimization = "md_minimization"
+    """
+    Energy minimization prior to MD simulation
+    """
+    md_equilibration = "md_equilibration"
+    """
+    MD equilibration - heating and NPT/NVT equilibration phases
+    """
+    md_production = "md_production"
+    """
+    Production molecular dynamics simulation
+    """
+    md_analysis = "md_analysis"
+    """
+    Post-simulation trajectory analysis (RMSD, RMSF, clustering, etc.)
+    """
 
 
 class FileFormatEnum(str, Enum):
@@ -2479,6 +2569,78 @@ class FileFormatEnum(str, Enum):
     """
     Gzip compressed format
     """
+    nmr_star = "nmr_star"
+    """
+    NMR-STAR format for NMR data (chemical shifts, restraints, sample conditions), as distributed by BMRB
+    """
+    yaml = "yaml"
+    """
+    YAML text format (e.g., a facility acquisition protocol sheet)
+    """
+    mdoc = "mdoc"
+    """
+    SerialEM autodoc metadata sidecar (.mdoc): per-image or per-tile acquisition parameters for an MRC or TIFF file
+    """
+    nav = "nav"
+    """
+    SerialEM navigator file (.nav): acquisition targets with stage coordinates and the maps they were picked from
+    """
+    dm4 = "dm4"
+    """
+    Gatan DigitalMicrograph 4 image format (.dm4), commonly used for K2/K3 gain references
+    """
+    mol2 = "mol2"
+    """
+    Tripos MOL2 format for parameterized small molecules
+    """
+    sdf = "sdf"
+    """
+    Structure-Data File format for chemical structures
+    """
+    frcmod = "frcmod"
+    """
+    Amber force field modification file
+    """
+    prmtop = "prmtop"
+    """
+    Amber topology (parameter/topology) file
+    """
+    inpcrd = "inpcrd"
+    """
+    Amber initial coordinates file
+    """
+    rst7 = "rst7"
+    """
+    Amber restart file (ASCII coordinates/velocities)
+    """
+    netcdf = "netcdf"
+    """
+    NetCDF trajectory format (Amber mdcrd binary)
+    """
+    dcd = "dcd"
+    """
+    DCD trajectory format (CHARMM/NAMD)
+    """
+    xtc = "xtc"
+    """
+    XTC compressed trajectory format (GROMACS)
+    """
+    trr = "trr"
+    """
+    TRR full-precision trajectory format (GROMACS)
+    """
+    gro = "gro"
+    """
+    GROMACS coordinate file format
+    """
+    top = "top"
+    """
+    GROMACS topology file format
+    """
+    lib = "lib"
+    """
+    Amber residue library file
+    """
 
 
 class DataTypeEnum(str, Enum):
@@ -2560,6 +2722,78 @@ class DataTypeEnum(str, Enum):
     particle_assignments = "particle_assignments"
     """
     Per-particle poses, state or class assignments, and confidence scores
+    """
+    gain_reference = "gain_reference"
+    """
+    Detector gain reference image, used to normalise per-pixel sensitivity of raw movie frames
+    """
+    defect_map = "defect_map"
+    """
+    Detector defect map listing bad pixels, columns or rows to exclude or interpolate over
+    """
+    atlas = "atlas"
+    """
+    Low-magnification grid or grid-square map (often a montage) used to navigate and choose targets, not for reconstruction
+    """
+    screening_image = "screening_image"
+    """
+    Medium- or high-magnification image taken to choose targets or assess ice and particle quality, not for reconstruction
+    """
+    topology = "topology"
+    """
+    MD system topology (atom types, bonds, charges, force field parameters)
+    """
+    trajectory = "trajectory"
+    """
+    MD trajectory (time series of atomic coordinates)
+    """
+    restart = "restart"
+    """
+    MD restart/checkpoint file for resuming simulations
+    """
+    force_field_params = "force_field_params"
+    """
+    Force field parameter or modification file
+    """
+    solvated_structure = "solvated_structure"
+    """
+    Solvated system structure (protein + solvent + ions)
+    """
+    parameterized_ligand = "parameterized_ligand"
+    """
+    Small molecule with assigned force field parameters
+    """
+    md_rmsd = "md_rmsd"
+    """
+    Root mean square deviation time series
+    """
+    md_rmsf = "md_rmsf"
+    """
+    Root mean square fluctuation per atom or residue
+    """
+    md_clustering = "md_clustering"
+    """
+    Trajectory pose clustering results
+    """
+    md_hbond = "md_hbond"
+    """
+    Hydrogen bond analysis results
+    """
+    md_interaction_fingerprint = "md_interaction_fingerprint"
+    """
+    Protein-ligand interaction fingerprint (e.g. ProLIF)
+    """
+    md_event_detection = "md_event_detection"
+    """
+    Change-point or event detection results from trajectory analysis
+    """
+    md_dihedral_entropy = "md_dihedral_entropy"
+    """
+    Configurational (dihedral) entropy analysis
+    """
+    md_energy = "md_energy"
+    """
+    Energy terms from MD simulation output
     """
 
 
@@ -3625,7 +3859,7 @@ class ParticleConcentrationEnum(str, Enum):
 
 class TiltingSchemeEnum(str, Enum):
     """
-    Tilt scheme used during tomographic or continuous-rotation data collection
+    Stage tilting scheme used during data collection, including `none` for untilted acquisitions
     """
     none = "none"
     """
@@ -4615,7 +4849,8 @@ class MeasurementConditions(NamedThing):
     temperature: Optional[QuantityValue] = Field(default=None, description="""Temperature during measurement, typically specified in Kelvin. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'temperature',
          'domain_of': ['MeasurementConditions',
                        'StorageConditions',
-                       'ExperimentalConditions']} })
+                       'ExperimentalConditions',
+                       'MDSimulationParameters']} })
     id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
     title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
     description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
@@ -4727,7 +4962,7 @@ class Dataset(NamedThing):
     studies: Optional[list[Study]] = Field(default=None, description="""All studies in this dataset""", json_schema_extra = { "linkml_meta": {'alias': 'studies', 'domain_of': ['Dataset']} })
     persons: Optional[list[Person]] = Field(default=None, description="""All people referenced anywhere in this dataset""", json_schema_extra = { "linkml_meta": {'alias': 'persons', 'domain_of': ['Dataset']} })
     organizations: Optional[list[Organization]] = Field(default=None, description="""All organizations referenced anywhere in this dataset""", json_schema_extra = { "linkml_meta": {'alias': 'organizations', 'domain_of': ['Dataset']} })
-    instruments: Optional[list[Instrument]] = Field(default=None, description="""All instruments used across studies""", json_schema_extra = { "linkml_meta": {'alias': 'instruments', 'domain_of': ['Dataset']} })
+    instruments: Optional[list[Union[Instrument,CryoEMInstrument,XRayInstrument,SANSInstrument,SAXSInstrument,BeamlineInstrument]]] = Field(default=None, description="""All instruments used across studies""", json_schema_extra = { "linkml_meta": {'alias': 'instruments', 'domain_of': ['Dataset']} })
     proteins: Optional[list[Protein]] = Field(default=None, description="""All proteins referenced by samples in this dataset, one record per protein""", json_schema_extra = { "linkml_meta": {'alias': 'proteins', 'domain_of': ['Dataset']} })
     protein_constructs: Optional[list[ProteinConstruct]] = Field(default=None, description="""All protein constructs""", json_schema_extra = { "linkml_meta": {'alias': 'protein_constructs', 'domain_of': ['Dataset']} })
     nucleic_acids: Optional[list[NucleicAcid]] = Field(default=None, description="""All nucleic acids referenced by samples in this dataset, one record per strand""", json_schema_extra = { "linkml_meta": {'alias': 'nucleic_acids', 'domain_of': ['Dataset']} })
@@ -5523,6 +5758,24 @@ class Instrument(NamedThing):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/'})
 
+    instrument_type: Literal["Instrument"] = Field(default="Instrument", description="""Which Instrument class this record is: `Instrument` or the name of one of its subclasses, such as `CryoEMInstrument`. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_type',
+         'comments': ['Write it whenever an instrument record uses fields of an '
+                      'Instrument subclass, e.g. `instrument_type: CryoEMInstrument` '
+                      'for an instrument with `cs` or `detector_model`. A record '
+                      'without it loads as a plain Instrument, and the Python loader '
+                      'then rejects the subclass fields.',
+                      'Code that builds an instrument object need not set it: the '
+                      'generated classes fill it in from the class.',
+                      'Defined here rather than as an Instrument attribute because '
+                      "LinkML's Python generator mishandles a type designator declared "
+                      'as an attribute: it emits a stray `unknown_instrument_type` '
+                      'assignment, and the RDF dumper then fails (linkml/linkml#2107, '
+                      '#3663; still present in linkml 1.12.1).',
+                      'The value is the class name, not a CURIE: a `uriorcurie` '
+                      'designator does not round-trip between the Pydantic and Python '
+                      'generators (linkml/linkml#3836).'],
+         'designates_type': True,
+         'domain_of': ['Instrument']} })
     instrument_code: str = Field(default=..., description="""Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_code', 'domain_of': ['Instrument']} })
     instrument_registry_id: Optional[BeamlineEnum] = Field(default=None, description="""Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_registry_id',
          'any_of': [{'range': 'BeamlineEnum'}],
@@ -5594,12 +5847,19 @@ class CryoEMInstrument(Instrument):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://w3id.org/lambda/'})
 
     accelerating_voltage: Optional[QuantityValue] = Field(default=None, description="""Accelerating voltage in kV""", json_schema_extra = { "linkml_meta": {'alias': 'accelerating_voltage',
-         'domain_of': ['CryoEMInstrument'],
+         'comments': ["This is the instrument's capability or default. Record the "
+                      'value actually used in a session on '
+                      'ExperimentRun.accelerating_voltage.'],
+         'domain_of': ['CryoEMInstrument', 'ExperimentRun'],
          'exact_mappings': ['mmCIF:_em_imaging.accelerating_voltage']} })
     cs_corrector: Optional[bool] = Field(default=None, description="""Spherical aberration corrector present""", json_schema_extra = { "linkml_meta": {'alias': 'cs_corrector',
          'domain_of': ['CryoEMInstrument'],
          'exact_mappings': ['mmCIF:_em_imaging.alignment_procedure']} })
-    phase_plate: Optional[bool] = Field(default=None, description="""Phase plate available""", json_schema_extra = { "linkml_meta": {'alias': 'phase_plate', 'domain_of': ['CryoEMInstrument']} })
+    phase_plate: Optional[bool] = Field(default=None, description="""Phase plate available""", json_schema_extra = { "linkml_meta": {'alias': 'phase_plate',
+         'comments': ["This is the instrument's capability or default. Record the "
+                      'value actually used in a session on '
+                      'ExperimentRun.phase_plate_used.'],
+         'domain_of': ['CryoEMInstrument']} })
     detector_technology: Optional[DetectorTechnologyEnum] = Field(default=None, description="""Generic detector technology type""", json_schema_extra = { "linkml_meta": {'alias': 'detector_technology',
          'comments': ['Use this for technology classification (e.g., '
                       'direct_electron_detector, ccd)',
@@ -5624,10 +5884,14 @@ class CryoEMInstrument(Instrument):
     pixel_size_physical_um: Optional[QuantityValue] = Field(default=None, description="""Physical pixel size of the detector in micrometers""", json_schema_extra = { "linkml_meta": {'alias': 'pixel_size_physical_um', 'domain_of': ['CryoEMInstrument']} })
     autoloader_capacity: Optional[QuantityValue] = Field(default=None, description="""Number of grids the autoloader can hold""", json_schema_extra = { "linkml_meta": {'alias': 'autoloader_capacity', 'domain_of': ['CryoEMInstrument']} })
     cs: Optional[QuantityValue] = Field(default=None, description="""Spherical aberration (Cs) in millimeters""", json_schema_extra = { "linkml_meta": {'alias': 'cs',
-         'domain_of': ['CryoEMInstrument'],
+         'comments': ["This is the instrument's capability or default. Record the "
+                      'value actually used in a session on ExperimentRun.cs.'],
+         'domain_of': ['CryoEMInstrument', 'ExperimentRun'],
          'exact_mappings': ['mmCIF:_em_imaging.nominal_cs']} })
     c2_aperture: Optional[QuantityValue] = Field(default=None, description="""C2 aperture size in micrometers""", json_schema_extra = { "linkml_meta": {'alias': 'c2_aperture',
-         'domain_of': ['CryoEMInstrument'],
+         'comments': ["This is the instrument's capability or default. Record the "
+                      'value actually used in a session on ExperimentRun.c2_aperture.'],
+         'domain_of': ['CryoEMInstrument', 'ExperimentRun'],
          'exact_mappings': ['mmCIF:_em_imaging.c2_aperture_diameter']} })
     objective_aperture: Optional[QuantityValue] = Field(default=None, description="""Objective aperture size in micrometers""", json_schema_extra = { "linkml_meta": {'alias': 'objective_aperture', 'domain_of': ['CryoEMInstrument']} })
     phase_plate_type: Optional[str] = Field(default=None, description="""Type of phase plate if present""", json_schema_extra = { "linkml_meta": {'alias': 'phase_plate_type', 'domain_of': ['CryoEMInstrument']} })
@@ -5635,19 +5899,46 @@ class CryoEMInstrument(Instrument):
     energy_filter_make: Optional[str] = Field(default=None, description="""Energy filter manufacturer""", json_schema_extra = { "linkml_meta": {'alias': 'energy_filter_make', 'domain_of': ['CryoEMInstrument']} })
     energy_filter_model: Optional[str] = Field(default=None, description="""Energy filter model""", json_schema_extra = { "linkml_meta": {'alias': 'energy_filter_model', 'domain_of': ['CryoEMInstrument']} })
     energy_filter_slit_width: Optional[QuantityValue] = Field(default=None, description="""Energy filter slit width in eV""", json_schema_extra = { "linkml_meta": {'alias': 'energy_filter_slit_width',
-         'domain_of': ['CryoEMInstrument'],
+         'comments': ["This is the instrument's capability or default. Record the "
+                      'value actually used in a session on '
+                      'ExperimentRun.energy_filter_slit_width.'],
+         'domain_of': ['CryoEMInstrument', 'ExperimentRun'],
          'exact_mappings': ['mmCIF:_em_imaging.energy_filter_slit_width']} })
     pixel_size_physical: Optional[QuantityValue] = Field(default=None, description="""Physical pixel size in micrometers""", json_schema_extra = { "linkml_meta": {'alias': 'pixel_size_physical', 'domain_of': ['CryoEMInstrument']} })
     microscope_software: Optional[str] = Field(default=None, description="""Microscope control software (e.g., SerialEM, EPU, Leginon)""", json_schema_extra = { "linkml_meta": {'alias': 'microscope_software', 'domain_of': ['CryoEMInstrument']} })
     microscope_software_version: Optional[str] = Field(default=None, description="""Software version""", json_schema_extra = { "linkml_meta": {'alias': 'microscope_software_version', 'domain_of': ['CryoEMInstrument']} })
     spotsize: Optional[QuantityValue] = Field(default=None, description="""Electron beam spot size setting""", json_schema_extra = { "linkml_meta": {'alias': 'spotsize',
+         'comments': ["This is the instrument's capability or default. Record the "
+                      'value actually used in a session on ExperimentRun.spot_size.'],
          'domain_of': ['CryoEMInstrument'],
          'exact_mappings': ['mmCIF:_em_imaging.detector_spot_size']} })
     gunlens: Optional[QuantityValue] = Field(default=None, description="""Gun lens setting""", json_schema_extra = { "linkml_meta": {'alias': 'gunlens', 'domain_of': ['CryoEMInstrument']} })
     imaging_mode: Optional[ImagingModeEnum] = Field(default=None, description="""Imaging mode for electron microscopy""", json_schema_extra = { "linkml_meta": {'alias': 'imaging_mode',
          'domain_of': ['CryoEMInstrument'],
          'exact_mappings': ['mmCIF:_em_imaging.mode']} })
-    tem_beam_diameter: Optional[QuantityValue] = Field(default=None, description="""TEM beam diameter in micrometers""", json_schema_extra = { "linkml_meta": {'alias': 'tem_beam_diameter', 'domain_of': ['CryoEMInstrument']} })
+    tem_beam_diameter: Optional[QuantityValue] = Field(default=None, description="""TEM beam diameter in micrometers""", json_schema_extra = { "linkml_meta": {'alias': 'tem_beam_diameter',
+         'comments': ["This is the instrument's capability or default. Record the "
+                      'value actually used in a session on '
+                      'ExperimentRun.beam_diameter.'],
+         'domain_of': ['CryoEMInstrument']} })
+    instrument_type: Literal["CryoEMInstrument"] = Field(default="CryoEMInstrument", description="""Which Instrument class this record is: `Instrument` or the name of one of its subclasses, such as `CryoEMInstrument`. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_type',
+         'comments': ['Write it whenever an instrument record uses fields of an '
+                      'Instrument subclass, e.g. `instrument_type: CryoEMInstrument` '
+                      'for an instrument with `cs` or `detector_model`. A record '
+                      'without it loads as a plain Instrument, and the Python loader '
+                      'then rejects the subclass fields.',
+                      'Code that builds an instrument object need not set it: the '
+                      'generated classes fill it in from the class.',
+                      'Defined here rather than as an Instrument attribute because '
+                      "LinkML's Python generator mishandles a type designator declared "
+                      'as an attribute: it emits a stray `unknown_instrument_type` '
+                      'assignment, and the RDF dumper then fails (linkml/linkml#2107, '
+                      '#3663; still present in linkml 1.12.1).',
+                      'The value is the class name, not a CURIE: a `uriorcurie` '
+                      'designator does not round-trip between the Pydantic and Python '
+                      'generators (linkml/linkml#3836).'],
+         'designates_type': True,
+         'domain_of': ['Instrument']} })
     instrument_code: str = Field(default=..., description="""Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_code', 'domain_of': ['Instrument']} })
     instrument_registry_id: Optional[BeamlineEnum] = Field(default=None, description="""Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_registry_id',
          'any_of': [{'range': 'BeamlineEnum'}],
@@ -5754,6 +6045,24 @@ class XRayInstrument(Instrument):
          'domain_of': ['XRayInstrument'],
          'exact_mappings': ['mmCIF:_diffrn_measurement.device']} })
     crystal_cooling_capability: Optional[bool] = Field(default=None, description="""Crystal cooling system available""", json_schema_extra = { "linkml_meta": {'alias': 'crystal_cooling_capability', 'domain_of': ['XRayInstrument']} })
+    instrument_type: Literal["XRayInstrument"] = Field(default="XRayInstrument", description="""Which Instrument class this record is: `Instrument` or the name of one of its subclasses, such as `CryoEMInstrument`. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_type',
+         'comments': ['Write it whenever an instrument record uses fields of an '
+                      'Instrument subclass, e.g. `instrument_type: CryoEMInstrument` '
+                      'for an instrument with `cs` or `detector_model`. A record '
+                      'without it loads as a plain Instrument, and the Python loader '
+                      'then rejects the subclass fields.',
+                      'Code that builds an instrument object need not set it: the '
+                      'generated classes fill it in from the class.',
+                      'Defined here rather than as an Instrument attribute because '
+                      "LinkML's Python generator mishandles a type designator declared "
+                      'as an attribute: it emits a stray `unknown_instrument_type` '
+                      'assignment, and the RDF dumper then fails (linkml/linkml#2107, '
+                      '#3663; still present in linkml 1.12.1).',
+                      'The value is the class name, not a CURIE: a `uriorcurie` '
+                      'designator does not round-trip between the Pydantic and Python '
+                      'generators (linkml/linkml#3836).'],
+         'designates_type': True,
+         'domain_of': ['Instrument']} })
     instrument_code: str = Field(default=..., description="""Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_code', 'domain_of': ['Instrument']} })
     instrument_registry_id: Optional[BeamlineEnum] = Field(default=None, description="""Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_registry_id',
          'any_of': [{'range': 'BeamlineEnum'}],
@@ -5900,6 +6209,24 @@ class SANSInstrument(Instrument):
     source: Optional[SANSSource] = Field(default=None, description="""Source parameters for the instrument""", json_schema_extra = { "linkml_meta": {'alias': 'source', 'domain_of': ['SANSInstrument']} })
     configuration: Optional[SANSConfiguration] = Field(default=None, description="""Optical/mechanical configuration details""", json_schema_extra = { "linkml_meta": {'alias': 'configuration', 'domain_of': ['SANSInstrument']} })
     environment: Optional[str] = Field(default=None, description="""Textual description of environmental conditions""", json_schema_extra = { "linkml_meta": {'alias': 'environment', 'domain_of': ['SANSInstrument']} })
+    instrument_type: Literal["SANSInstrument"] = Field(default="SANSInstrument", description="""Which Instrument class this record is: `Instrument` or the name of one of its subclasses, such as `CryoEMInstrument`. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_type',
+         'comments': ['Write it whenever an instrument record uses fields of an '
+                      'Instrument subclass, e.g. `instrument_type: CryoEMInstrument` '
+                      'for an instrument with `cs` or `detector_model`. A record '
+                      'without it loads as a plain Instrument, and the Python loader '
+                      'then rejects the subclass fields.',
+                      'Code that builds an instrument object need not set it: the '
+                      'generated classes fill it in from the class.',
+                      'Defined here rather than as an Instrument attribute because '
+                      "LinkML's Python generator mishandles a type designator declared "
+                      'as an attribute: it emits a stray `unknown_instrument_type` '
+                      'assignment, and the RDF dumper then fails (linkml/linkml#2107, '
+                      '#3663; still present in linkml 1.12.1).',
+                      'The value is the class name, not a CURIE: a `uriorcurie` '
+                      'designator does not round-trip between the Pydantic and Python '
+                      'generators (linkml/linkml#3836).'],
+         'designates_type': True,
+         'domain_of': ['Instrument']} })
     instrument_code: str = Field(default=..., description="""Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_code', 'domain_of': ['Instrument']} })
     instrument_registry_id: Optional[BeamlineEnum] = Field(default=None, description="""Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_registry_id',
          'any_of': [{'range': 'BeamlineEnum'}],
@@ -5979,6 +6306,24 @@ class SAXSInstrument(Instrument):
     sample_changer_capacity: Optional[QuantityValue] = Field(default=None, description="""Number of samples in automatic sample changer""", json_schema_extra = { "linkml_meta": {'alias': 'sample_changer_capacity',
          'domain_of': ['SAXSInstrument', 'BeamlineInstrument']} })
     temperature_control_range: Optional[str] = Field(default=None, description="""Temperature control range in Celsius""", json_schema_extra = { "linkml_meta": {'alias': 'temperature_control_range', 'domain_of': ['SAXSInstrument']} })
+    instrument_type: Literal["SAXSInstrument"] = Field(default="SAXSInstrument", description="""Which Instrument class this record is: `Instrument` or the name of one of its subclasses, such as `CryoEMInstrument`. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_type',
+         'comments': ['Write it whenever an instrument record uses fields of an '
+                      'Instrument subclass, e.g. `instrument_type: CryoEMInstrument` '
+                      'for an instrument with `cs` or `detector_model`. A record '
+                      'without it loads as a plain Instrument, and the Python loader '
+                      'then rejects the subclass fields.',
+                      'Code that builds an instrument object need not set it: the '
+                      'generated classes fill it in from the class.',
+                      'Defined here rather than as an Instrument attribute because '
+                      "LinkML's Python generator mishandles a type designator declared "
+                      'as an attribute: it emits a stray `unknown_instrument_type` '
+                      'assignment, and the RDF dumper then fails (linkml/linkml#2107, '
+                      '#3663; still present in linkml 1.12.1).',
+                      'The value is the class name, not a CURIE: a `uriorcurie` '
+                      'designator does not round-trip between the Pydantic and Python '
+                      'generators (linkml/linkml#3836).'],
+         'designates_type': True,
+         'domain_of': ['Instrument']} })
     instrument_code: str = Field(default=..., description="""Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_code', 'domain_of': ['Instrument']} })
     instrument_registry_id: Optional[BeamlineEnum] = Field(default=None, description="""Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_registry_id',
          'any_of': [{'range': 'BeamlineEnum'}],
@@ -6075,6 +6420,24 @@ class BeamlineInstrument(Instrument):
     lims_system: Optional[LIMSSystemEnum] = Field(default=None, description="""Laboratory Information Management System used at this beamline""", json_schema_extra = { "linkml_meta": {'alias': 'lims_system', 'domain_of': ['BeamlineInstrument']} })
     daq_system: Optional[DataAcquisitionSystemEnum] = Field(default=None, description="""Data acquisition system used for experiment orchestration""", json_schema_extra = { "linkml_meta": {'alias': 'daq_system', 'domain_of': ['BeamlineInstrument', 'ExperimentRun']} })
     control_system: Optional[ControlSystemEnum] = Field(default=None, description="""Low-level control system for device communication""", json_schema_extra = { "linkml_meta": {'alias': 'control_system', 'domain_of': ['BeamlineInstrument']} })
+    instrument_type: Literal["BeamlineInstrument"] = Field(default="BeamlineInstrument", description="""Which Instrument class this record is: `Instrument` or the name of one of its subclasses, such as `CryoEMInstrument`. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_type',
+         'comments': ['Write it whenever an instrument record uses fields of an '
+                      'Instrument subclass, e.g. `instrument_type: CryoEMInstrument` '
+                      'for an instrument with `cs` or `detector_model`. A record '
+                      'without it loads as a plain Instrument, and the Python loader '
+                      'then rejects the subclass fields.',
+                      'Code that builds an instrument object need not set it: the '
+                      'generated classes fill it in from the class.',
+                      'Defined here rather than as an Instrument attribute because '
+                      "LinkML's Python generator mishandles a type designator declared "
+                      'as an attribute: it emits a stray `unknown_instrument_type` '
+                      'assignment, and the RDF dumper then fails (linkml/linkml#2107, '
+                      '#3663; still present in linkml 1.12.1).',
+                      'The value is the class name, not a CURIE: a `uriorcurie` '
+                      'designator does not round-trip between the Pydantic and Python '
+                      'generators (linkml/linkml#3836).'],
+         'designates_type': True,
+         'domain_of': ['Instrument']} })
     instrument_code: str = Field(default=..., description="""Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_code', 'domain_of': ['Instrument']} })
     instrument_registry_id: Optional[BeamlineEnum] = Field(default=None, description="""Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_registry_id',
          'any_of': [{'range': 'BeamlineEnum'}],
@@ -6166,9 +6529,22 @@ class ExperimentRun(NamedThing):
     raw_data_location: Optional[str] = Field(default=None, description="""Location of raw data files""", json_schema_extra = { "linkml_meta": {'alias': 'raw_data_location', 'domain_of': ['ExperimentRun']} })
     processing_status: Optional[ProcessingStatusEnum] = Field(default=None, description="""Current processing status""", json_schema_extra = { "linkml_meta": {'alias': 'processing_status', 'domain_of': ['ExperimentRun']} })
     daq_system: Optional[DataAcquisitionSystemEnum] = Field(default=None, description="""Data acquisition system used to collect this experiment""", json_schema_extra = { "linkml_meta": {'alias': 'daq_system', 'domain_of': ['BeamlineInstrument', 'ExperimentRun']} })
+    accelerating_voltage: Optional[QuantityValue] = Field(default=None, description="""Accelerating voltage used for this session, typically specified in kV. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'accelerating_voltage',
+         'domain_of': ['CryoEMInstrument', 'ExperimentRun'],
+         'exact_mappings': ['mmCIF:_em_imaging.accelerating_voltage']} })
+    cs: Optional[QuantityValue] = Field(default=None, description="""Nominal spherical aberration (Cs) of the objective lens in effect for this session, typically specified in millimeters. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'cs',
+         'comments': ['Fixed for a given microscope, but recorded per imaging session '
+                      'by mmCIF and by facility acquisition sheets, and needed with '
+                      "the run's data for CTF estimation."],
+         'domain_of': ['CryoEMInstrument', 'ExperimentRun'],
+         'exact_mappings': ['mmCIF:_em_imaging.nominal_cs']} })
     magnification: Optional[QuantityValue] = Field(default=None, description="""Magnification used during data collection""", json_schema_extra = { "linkml_meta": {'alias': 'magnification',
          'domain_of': ['ExperimentRun', 'OpticalImage'],
          'exact_mappings': ['mmCIF:_em_imaging.nominal_magnification']} })
+    nominal_pixel_size: Optional[QuantityValue] = Field(default=None, description="""Nominal pixel size at the specimen for the chosen magnification and binning, as set at the microscope, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'nominal_pixel_size',
+         'comments': ['Use calibrated_pixel_size for the value measured against a '
+                      'standard; the two commonly differ by a fraction of a percent.'],
+         'domain_of': ['ExperimentRun']} })
     calibrated_pixel_size: Optional[QuantityValue] = Field(default=None, description="""Calibrated pixel size, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'calibrated_pixel_size',
          'domain_of': ['ExperimentRun'],
          'exact_mappings': ['mmCIF:_em_image_recording.calibrated_pixel_size']} })
@@ -6184,6 +6560,15 @@ class ExperimentRun(NamedThing):
          'domain_of': ['ExperimentRun', 'DataCollectionStrategy'],
          'exact_mappings': ['mmCIF:_em_image_recording.avg_electron_dose_per_image']} })
     dose_rate: Optional[QuantityValue] = Field(default=None, description="""Dose rate, typically specified in e-/pixel/s or e-/Angstrom^2/s. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'dose_rate', 'domain_of': ['ExperimentRun']} })
+    spot_size: Optional[QuantityValue] = Field(default=None, description="""Condenser spot size setting used for this session (a dimensionless index on the microscope, e.g. 4)""", json_schema_extra = { "linkml_meta": {'alias': 'spot_size', 'domain_of': ['ExperimentRun']} })
+    c2_aperture: Optional[QuantityValue] = Field(default=None, description="""C2 condenser aperture diameter used for this session, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'c2_aperture',
+         'domain_of': ['CryoEMInstrument', 'ExperimentRun'],
+         'exact_mappings': ['mmCIF:_em_imaging.c2_aperture_diameter']} })
+    beam_diameter: Optional[QuantityValue] = Field(default=None, description="""Illuminated beam diameter at the specimen used for this session, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'beam_diameter', 'domain_of': ['ExperimentRun']} })
+    energy_filter_slit_width: Optional[QuantityValue] = Field(default=None, description="""Energy filter slit width used for this session, typically specified in eV. Omit when no energy filter was used. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'energy_filter_slit_width',
+         'domain_of': ['CryoEMInstrument', 'ExperimentRun'],
+         'exact_mappings': ['mmCIF:_em_imaging_optics.energyfilter_slit_width']} })
+    phase_plate_used: Optional[bool] = Field(default=None, description="""Whether a phase plate was in the beam path for this session""", json_schema_extra = { "linkml_meta": {'alias': 'phase_plate_used', 'domain_of': ['ExperimentRun']} })
     defocus_target: Optional[QuantityValue] = Field(default=None, description="""Target defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'defocus_target', 'domain_of': ['ExperimentRun']} })
     defocus_range_min: Optional[QuantityValue] = Field(default=None, description="""Minimum defocus range, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'defocus_range_min',
          'domain_of': ['ExperimentRun'],
@@ -6198,7 +6583,7 @@ class ExperimentRun(NamedThing):
          'comments': ['For a tilt series, use tilt_angle_min, tilt_angle_max, and '
                       'tilt_angle_increment rather than this slot.'],
          'domain_of': ['ExperimentRun']} })
-    tilting_scheme: Optional[TiltingSchemeEnum] = Field(default=None, description="""Tilt scheme used during tomographic data collection""", json_schema_extra = { "linkml_meta": {'alias': 'tilting_scheme', 'domain_of': ['ExperimentRun']} })
+    tilting_scheme: Optional[TiltingSchemeEnum] = Field(default=None, description="""Stage tilting scheme used during data collection. Use `none` for untilted acquisitions such as single-particle collection; the other values describe tomographic and continuous-rotation (MicroED) collection.""", json_schema_extra = { "linkml_meta": {'alias': 'tilting_scheme', 'domain_of': ['ExperimentRun']} })
     tilt_angle_min: Optional[QuantityValue] = Field(default=None, description="""Lowest (most negative) tilt angle in the tilt series, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'tilt_angle_min',
          'domain_of': ['ExperimentRun'],
          'exact_mappings': ['mmCIF:_em_imaging.tilt_angle_min',
@@ -6491,6 +6876,7 @@ class WorkflowRun(NamedThing):
     motion_correction_params: Optional[MotionCorrectionParameters] = Field(default=None, description="""Motion correction specific parameters""", json_schema_extra = { "linkml_meta": {'alias': 'motion_correction_params', 'domain_of': ['WorkflowRun']} })
     ctf_estimation_params: Optional[CTFEstimationParameters] = Field(default=None, description="""CTF estimation specific parameters""", json_schema_extra = { "linkml_meta": {'alias': 'ctf_estimation_params', 'domain_of': ['WorkflowRun']} })
     particle_picking_params: Optional[ParticlePickingParameters] = Field(default=None, description="""Particle picking specific parameters""", json_schema_extra = { "linkml_meta": {'alias': 'particle_picking_params', 'domain_of': ['WorkflowRun']} })
+    md_simulation_params: Optional[MDSimulationParameters] = Field(default=None, description="""Molecular dynamics simulation parameters""", json_schema_extra = { "linkml_meta": {'alias': 'md_simulation_params', 'domain_of': ['WorkflowRun']} })
     refinement_params: Optional[RefinementParameters] = Field(default=None, description="""3D refinement specific parameters""", json_schema_extra = { "linkml_meta": {'alias': 'refinement_params', 'domain_of': ['WorkflowRun']} })
     fsc_curve: Optional[FSCCurve] = Field(default=None, description="""Fourier Shell Correlation curve data""", json_schema_extra = { "linkml_meta": {'alias': 'fsc_curve', 'domain_of': ['WorkflowRun']} })
     number_of_particles: Optional[int] = Field(default=None, description="""Number of particle images the workflow used. For a reconstruction, a heterogeneity analysis or a model inferred from particles, count the particles that went into the result, not the stack it was drawn from: a run that used 1,000 of 374,814 deposited particles records 1,000.""", ge=0, json_schema_extra = { "linkml_meta": {'alias': 'number_of_particles',
@@ -6898,7 +7284,8 @@ class StorageConditions(AttributeGroup):
     temperature: Optional[QuantityValue] = Field(default=None, description="""Storage temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'temperature',
          'domain_of': ['MeasurementConditions',
                        'StorageConditions',
-                       'ExperimentalConditions']} })
+                       'ExperimentalConditions',
+                       'MDSimulationParameters']} })
     duration: Optional[str] = Field(default=None, description="""Storage duration""", json_schema_extra = { "linkml_meta": {'alias': 'duration', 'domain_of': ['StorageConditions']} })
     atmosphere: Optional[str] = Field(default=None, description="""Storage atmosphere conditions""", json_schema_extra = { "linkml_meta": {'alias': 'atmosphere',
          'domain_of': ['StorageConditions', 'ExperimentalConditions']} })
@@ -7093,9 +7480,11 @@ class ExperimentalConditions(AttributeGroup):
     temperature: Optional[QuantityValue] = Field(default=None, description="""Temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'temperature',
          'domain_of': ['MeasurementConditions',
                        'StorageConditions',
-                       'ExperimentalConditions']} })
+                       'ExperimentalConditions',
+                       'MDSimulationParameters']} })
     humidity: Optional[QuantityValue] = Field(default=None, description="""Humidity, typically specified as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'humidity', 'domain_of': ['ExperimentalConditions']} })
-    pressure: Optional[QuantityValue] = Field(default=None, description="""Pressure, typically specified in kilopascals (kPa). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'pressure', 'domain_of': ['ExperimentalConditions']} })
+    pressure: Optional[QuantityValue] = Field(default=None, description="""Pressure, typically specified in kilopascals (kPa). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'pressure',
+         'domain_of': ['ExperimentalConditions', 'MDSimulationParameters']} })
     atmosphere: Optional[str] = Field(default=None, description="""Atmosphere composition""", json_schema_extra = { "linkml_meta": {'alias': 'atmosphere',
          'domain_of': ['StorageConditions', 'ExperimentalConditions']} })
     beam_energy: Optional[QuantityValue] = Field(default=None, description="""Beam energy, typically specified in kiloelectronvolts (keV). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'beam_energy', 'domain_of': ['XRFImage', 'ExperimentalConditions']} })
@@ -7401,6 +7790,61 @@ class RefinementParameters(AttributeGroup):
          'exact_mappings': ['mmCIF:_em_3d_reconstruction.resolution']} })
     resolution_0_5: Optional[QuantityValue] = Field(default=None, description="""Resolution at FSC=0.5, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'resolution_0_5', 'domain_of': ['RefinementParameters']} })
     map_sharpening_bfactor: Optional[QuantityValue] = Field(default=None, description="""B-factor used for map sharpening, typically specified in Angstroms squared (Å²). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'map_sharpening_bfactor', 'domain_of': ['RefinementParameters']} })
+    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
+
+
+class MDSimulationParameters(AttributeGroup):
+    """
+    Parameters for a molecular dynamics simulation workflow. Captures force field selection, simulation conditions, integration settings, solvation setup, and the multi-stage pipeline (minimization, heating, equilibration, production).
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'comments': ['Modeled after the Amber/pmemd.cuda pipeline used in BraveDock',
+                      'Generalizes to GROMACS, NAMD, OpenMM, and other MD engines'],
+         'from_schema': 'http://w3id.org/lambda/'})
+
+    simulation_engine: Optional[str] = Field(default=None, description="""MD simulation engine used (e.g., pmemd.cuda, GROMACS, NAMD, OpenMM)""", json_schema_extra = { "linkml_meta": {'alias': 'simulation_engine', 'domain_of': ['MDSimulationParameters']} })
+    simulation_engine_version: Optional[str] = Field(default=None, description="""Version of the simulation engine""", json_schema_extra = { "linkml_meta": {'alias': 'simulation_engine_version', 'domain_of': ['MDSimulationParameters']} })
+    protein_force_field: Optional[str] = Field(default=None, description="""Force field for protein (e.g., ff19SB, ff14SB, CHARMM36m, OPLS-AA)""", json_schema_extra = { "linkml_meta": {'alias': 'protein_force_field', 'domain_of': ['MDSimulationParameters']} })
+    ligand_force_field: Optional[str] = Field(default=None, description="""Force field for small-molecule ligand (e.g., GAFF2, GAFF, CGenFF, OPLS)""", json_schema_extra = { "linkml_meta": {'alias': 'ligand_force_field', 'domain_of': ['MDSimulationParameters']} })
+    water_model: Optional[str] = Field(default=None, description="""Explicit solvent water model (e.g., OPC, TIP3P, SPC/E, TIP4P-Ew)""", json_schema_extra = { "linkml_meta": {'alias': 'water_model', 'domain_of': ['MDSimulationParameters']} })
+    charge_method: Optional[str] = Field(default=None, description="""Method used to assign partial charges to the ligand (e.g., AM1-BCC, RESP, HF/6-31G*)""", json_schema_extra = { "linkml_meta": {'alias': 'charge_method', 'domain_of': ['MDSimulationParameters']} })
+    box_padding: Optional[QuantityValue] = Field(default=None, description="""Minimum distance from solute to box edge, typically in Angstroms""", json_schema_extra = { "linkml_meta": {'alias': 'box_padding', 'domain_of': ['MDSimulationParameters']} })
+    box_shape: Optional[str] = Field(default=None, description="""Simulation box geometry (e.g., cubic, truncated_octahedron, rhombic_dodecahedron)""", json_schema_extra = { "linkml_meta": {'alias': 'box_shape', 'domain_of': ['MDSimulationParameters']} })
+    ion_neutralization: Optional[bool] = Field(default=None, description="""Whether counterions were added to neutralize the system""", json_schema_extra = { "linkml_meta": {'alias': 'ion_neutralization', 'domain_of': ['MDSimulationParameters']} })
+    ion_species: Optional[list[str]] = Field(default=None, description="""Ion species added (e.g., Na+, Cl-, K+, Mg2+)""", json_schema_extra = { "linkml_meta": {'alias': 'ion_species', 'domain_of': ['MDSimulationParameters']} })
+    net_charge: Optional[QuantityValue] = Field(default=None, description="""Target net charge of the system after ion addition""", json_schema_extra = { "linkml_meta": {'alias': 'net_charge', 'domain_of': ['MDSimulationParameters']} })
+    hydrogen_mass_repartitioning: Optional[bool] = Field(default=None, description="""Whether hydrogen mass repartitioning (HMR) was applied to enable larger timesteps""", json_schema_extra = { "linkml_meta": {'alias': 'hydrogen_mass_repartitioning',
+         'domain_of': ['MDSimulationParameters']} })
+    ensemble: Optional[MDEnsembleEnum] = Field(default=None, description="""Thermodynamic ensemble for the simulation stage""", json_schema_extra = { "linkml_meta": {'alias': 'ensemble', 'domain_of': ['MDSimulationParameters']} })
+    thermostat: Optional[str] = Field(default=None, description="""Thermostat algorithm (e.g., Langevin, Nose-Hoover, Berendsen, velocity-rescale)""", json_schema_extra = { "linkml_meta": {'alias': 'thermostat', 'domain_of': ['MDSimulationParameters']} })
+    thermostat_coupling: Optional[QuantityValue] = Field(default=None, description="""Thermostat coupling constant (gamma_ln for Langevin), typically in 1/ps""", json_schema_extra = { "linkml_meta": {'alias': 'thermostat_coupling', 'domain_of': ['MDSimulationParameters']} })
+    barostat: Optional[str] = Field(default=None, description="""Barostat algorithm (e.g., Berendsen, Monte-Carlo, Parrinello-Rahman)""", json_schema_extra = { "linkml_meta": {'alias': 'barostat', 'domain_of': ['MDSimulationParameters']} })
+    barostat_coupling: Optional[QuantityValue] = Field(default=None, description="""Barostat coupling constant (taup), typically in ps""", json_schema_extra = { "linkml_meta": {'alias': 'barostat_coupling', 'domain_of': ['MDSimulationParameters']} })
+    temperature: Optional[QuantityValue] = Field(default=None, description="""Target simulation temperature in Kelvin""", json_schema_extra = { "linkml_meta": {'alias': 'temperature',
+         'domain_of': ['MeasurementConditions',
+                       'StorageConditions',
+                       'ExperimentalConditions',
+                       'MDSimulationParameters']} })
+    pressure: Optional[QuantityValue] = Field(default=None, description="""Target simulation pressure, typically in atm""", json_schema_extra = { "linkml_meta": {'alias': 'pressure',
+         'domain_of': ['ExperimentalConditions', 'MDSimulationParameters']} })
+    timestep: Optional[QuantityValue] = Field(default=None, description="""Integration timestep, typically in femtoseconds""", json_schema_extra = { "linkml_meta": {'alias': 'timestep', 'domain_of': ['MDSimulationParameters']} })
+    constraint_algorithm: Optional[str] = Field(default=None, description="""Bond constraint algorithm (e.g., SHAKE, LINCS, SETTLE)""", json_schema_extra = { "linkml_meta": {'alias': 'constraint_algorithm', 'domain_of': ['MDSimulationParameters']} })
+    nonbonded_cutoff: Optional[QuantityValue] = Field(default=None, description="""Cutoff for non-bonded interactions, typically in Angstroms""", json_schema_extra = { "linkml_meta": {'alias': 'nonbonded_cutoff', 'domain_of': ['MDSimulationParameters']} })
+    simulation_stage: Optional[MDStageEnum] = Field(default=None, description="""Stage of the MD workflow this run represents""", json_schema_extra = { "linkml_meta": {'alias': 'simulation_stage', 'domain_of': ['MDSimulationParameters']} })
+    duration_ns: Optional[QuantityValue] = Field(default=None, description="""Duration of this simulation stage in nanoseconds""", json_schema_extra = { "linkml_meta": {'alias': 'duration_ns', 'domain_of': ['MDSimulationParameters']} })
+    total_steps: Optional[QuantityValue] = Field(default=None, description="""Total number of integration steps""", json_schema_extra = { "linkml_meta": {'alias': 'total_steps', 'domain_of': ['MDSimulationParameters']} })
+    trajectory_output_interval: Optional[QuantityValue] = Field(default=None, description="""Interval between saved trajectory frames in steps""", json_schema_extra = { "linkml_meta": {'alias': 'trajectory_output_interval', 'domain_of': ['MDSimulationParameters']} })
+    restraint_mask: Optional[str] = Field(default=None, description="""Atom selection mask for positional restraints (Amber mask syntax or equivalent)""", json_schema_extra = { "linkml_meta": {'alias': 'restraint_mask', 'domain_of': ['MDSimulationParameters']} })
+    restraint_force_constant: Optional[QuantityValue] = Field(default=None, description="""Restraint force constant, typically in kcal/mol/A^2""", json_schema_extra = { "linkml_meta": {'alias': 'restraint_force_constant', 'domain_of': ['MDSimulationParameters']} })
+    minimization_max_cycles: Optional[QuantityValue] = Field(default=None, description="""Maximum number of minimization cycles""", json_schema_extra = { "linkml_meta": {'alias': 'minimization_max_cycles', 'domain_of': ['MDSimulationParameters']} })
+    minimization_steepest_descent_cycles: Optional[QuantityValue] = Field(default=None, description="""Number of initial steepest-descent cycles before switching to conjugate gradient""", json_schema_extra = { "linkml_meta": {'alias': 'minimization_steepest_descent_cycles',
+         'domain_of': ['MDSimulationParameters']} })
+    initial_temperature: Optional[QuantityValue] = Field(default=None, description="""Starting temperature for heating stage in Kelvin""", json_schema_extra = { "linkml_meta": {'alias': 'initial_temperature', 'domain_of': ['MDSimulationParameters']} })
+    heat_duration_ns: Optional[QuantityValue] = Field(default=None, description="""Duration of the heating phase in nanoseconds""", json_schema_extra = { "linkml_meta": {'alias': 'heat_duration_ns', 'domain_of': ['MDSimulationParameters']} })
+    equil_restrained_duration_ns: Optional[QuantityValue] = Field(default=None, description="""Duration of restrained equilibration in nanoseconds""", json_schema_extra = { "linkml_meta": {'alias': 'equil_restrained_duration_ns',
+         'domain_of': ['MDSimulationParameters']} })
+    equil_free_duration_ns: Optional[QuantityValue] = Field(default=None, description="""Duration of unrestrained equilibration in nanoseconds""", json_schema_extra = { "linkml_meta": {'alias': 'equil_free_duration_ns', 'domain_of': ['MDSimulationParameters']} })
+    production_duration_ns: Optional[QuantityValue] = Field(default=None, description="""Duration of production MD in nanoseconds""", json_schema_extra = { "linkml_meta": {'alias': 'production_duration_ns', 'domain_of': ['MDSimulationParameters']} })
     description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description',
          'domain_of': ['NamedThing', 'AttributeGroup', 'SampleComponentInteraction']} })
 
@@ -8059,6 +8503,7 @@ MotionCorrectionParameters.model_rebuild()
 CTFEstimationParameters.model_rebuild()
 ParticlePickingParameters.model_rebuild()
 RefinementParameters.model_rebuild()
+MDSimulationParameters.model_rebuild()
 FSCCurve.model_rebuild()
 StudySampleAssociation.model_rebuild()
 StudyExperimentAssociation.model_rebuild()

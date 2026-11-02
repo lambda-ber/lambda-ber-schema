@@ -50,3 +50,8 @@ jobs:
 
       - name: Run validations on examples
         run: just test-examples
+
+      # Tests marked integration call live external services (SASBDB, PDB, Simple Scattering,
+      # EMSL) and fail when those are slow or refuse requests, so they stay out of CI.
+      - name: Run tests
+        run: uv run pytest -m "not integration"

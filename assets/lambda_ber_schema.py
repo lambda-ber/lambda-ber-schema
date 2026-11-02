@@ -1,5 +1,5 @@
 # Auto generated from lambda_ber_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-10-14T10:28:57
+# Generation date: 2026-11-02T17:16:01
 # Schema: lambda-ber-schema
 #
 # id: http://w3id.org/lambda/
@@ -202,7 +202,7 @@ from linkml_runtime.linkml_model.types import Boolean, Curie, Date, Float, Integ
 from linkml_runtime.utils.metamodelcore import Bool, Curie, URI, URIorCURIE, XSDDate
 
 metamodel_version = "1.7.0"
-version = "0.0.0.post409.dev0+543ae40"
+version = "0.0.0.post387.dev0+32c846d"
 
 # Namespaces
 CHEBI = CurieNamespace('CHEBI', 'http://purl.obolibrary.org/obo/CHEBI_')
@@ -216,6 +216,7 @@ ROR = CurieNamespace('ROR', 'https://ror.org/')
 UBERON = CurieNamespace('UBERON', 'http://purl.obolibrary.org/obo/UBERON_')
 UO = CurieNamespace('UO', 'http://purl.obolibrary.org/obo/UO_')
 ANL_LAMBDA = CurieNamespace('anl-lambda', 'https://sg.bio.anl.gov/lambda/')
+BMRB = CurieNamespace('bmrb', 'https://bmrb.io/data_library/summary/index.php?bmrbId=')
 CHEMBL_COMPOUND = CurieNamespace('chembl_compound', 'https://www.ebi.ac.uk/chembl/compound_report_card/')
 DCTERMS = CurieNamespace('dcterms', 'http://purl.org/dc/terms/')
 DRUGBANK = CurieNamespace('drugbank', 'https://go.drugbank.com/drugs/')
@@ -1630,6 +1631,7 @@ class Instrument(NamedThing):
 
     id: Union[str, InstrumentId] = None
     instrument_code: str = None
+    instrument_type: Optional[str] = None
     instrument_registry_id: Optional[str] = None
     instrument_category: Optional[Union[str, "InstrumentCategoryEnum"]] = None
     facility_name: Optional[Union[str, "FacilityEnum"]] = None
@@ -1651,6 +1653,8 @@ class Instrument(NamedThing):
             self.MissingRequiredField("instrument_code")
         if not isinstance(self.instrument_code, str):
             self.instrument_code = str(self.instrument_code)
+
+        self.instrument_type = str(self.class_name)
 
         if self.instrument_registry_id is not None and not isinstance(self.instrument_registry_id, str):
             self.instrument_registry_id = str(self.instrument_registry_id)
@@ -1683,6 +1687,23 @@ class Instrument(NamedThing):
             self.current_status = InstrumentStatusEnum(self.current_status)
 
         super().__post_init__(**kwargs)
+
+
+    def __new__(cls, *args, **kwargs):
+
+        type_designator = "instrument_type"
+        if not type_designator in kwargs:
+            return super().__new__(cls,*args,**kwargs)
+        else:
+            type_designator_value = kwargs[type_designator]
+            target_cls = cls._class_for("class_name", type_designator_value)
+
+
+            if target_cls is None:
+                raise ValueError(f"Wrong type designator value: class {cls.__name__} "
+                                 f"has no subclass with ['class_name']='{kwargs[type_designator]}'")
+            return super().__new__(target_cls,*args,**kwargs)
+
 
 
 @dataclass(repr=False)
@@ -1811,6 +1832,7 @@ class CryoEMInstrument(Instrument):
             self.tem_beam_diameter = QuantityValue(**as_dict(self.tem_beam_diameter))
 
         super().__post_init__(**kwargs)
+        self.instrument_type = str(self.class_name)
 
 
 @dataclass(repr=False)
@@ -1883,6 +1905,7 @@ class XRayInstrument(Instrument):
             self.crystal_cooling_capability = Bool(self.crystal_cooling_capability)
 
         super().__post_init__(**kwargs)
+        self.instrument_type = str(self.class_name)
 
 
 @dataclass(repr=False)
@@ -2103,6 +2126,7 @@ class SANSInstrument(Instrument):
             self.environment = str(self.environment)
 
         super().__post_init__(**kwargs)
+        self.instrument_type = str(self.class_name)
 
 
 @dataclass(repr=False)
@@ -2151,6 +2175,7 @@ class SAXSInstrument(Instrument):
             self.temperature_control_range = str(self.temperature_control_range)
 
         super().__post_init__(**kwargs)
+        self.instrument_type = str(self.class_name)
 
 
 @dataclass(repr=False)
@@ -2226,6 +2251,7 @@ class BeamlineInstrument(Instrument):
             self.control_system = ControlSystemEnum(self.control_system)
 
         super().__post_init__(**kwargs)
+        self.instrument_type = str(self.class_name)
 
 
 @dataclass(repr=False)
@@ -2252,7 +2278,10 @@ class ExperimentRun(NamedThing):
     raw_data_location: Optional[str] = None
     processing_status: Optional[Union[str, "ProcessingStatusEnum"]] = None
     daq_system: Optional[Union[str, "DataAcquisitionSystemEnum"]] = None
+    accelerating_voltage: Optional[Union[dict, "QuantityValue"]] = None
+    cs: Optional[Union[dict, "QuantityValue"]] = None
     magnification: Optional[Union[dict, "QuantityValue"]] = None
+    nominal_pixel_size: Optional[Union[dict, "QuantityValue"]] = None
     calibrated_pixel_size: Optional[Union[dict, "QuantityValue"]] = None
     camera_binning: Optional[Union[dict, "QuantityValue"]] = None
     exposure_time_per_frame: Optional[Union[dict, "QuantityValue"]] = None
@@ -2260,6 +2289,11 @@ class ExperimentRun(NamedThing):
     total_exposure_time: Optional[Union[dict, "QuantityValue"]] = None
     total_dose: Optional[Union[dict, "QuantityValue"]] = None
     dose_rate: Optional[Union[dict, "QuantityValue"]] = None
+    spot_size: Optional[Union[dict, "QuantityValue"]] = None
+    c2_aperture: Optional[Union[dict, "QuantityValue"]] = None
+    beam_diameter: Optional[Union[dict, "QuantityValue"]] = None
+    energy_filter_slit_width: Optional[Union[dict, "QuantityValue"]] = None
+    phase_plate_used: Optional[Union[bool, Bool]] = None
     defocus_target: Optional[Union[dict, "QuantityValue"]] = None
     defocus_range_min: Optional[Union[dict, "QuantityValue"]] = None
     defocus_range_max: Optional[Union[dict, "QuantityValue"]] = None
@@ -2357,8 +2391,17 @@ class ExperimentRun(NamedThing):
         if self.daq_system is not None and not isinstance(self.daq_system, DataAcquisitionSystemEnum):
             self.daq_system = DataAcquisitionSystemEnum(self.daq_system)
 
+        if self.accelerating_voltage is not None and not isinstance(self.accelerating_voltage, QuantityValue):
+            self.accelerating_voltage = QuantityValue(**as_dict(self.accelerating_voltage))
+
+        if self.cs is not None and not isinstance(self.cs, QuantityValue):
+            self.cs = QuantityValue(**as_dict(self.cs))
+
         if self.magnification is not None and not isinstance(self.magnification, QuantityValue):
             self.magnification = QuantityValue(**as_dict(self.magnification))
+
+        if self.nominal_pixel_size is not None and not isinstance(self.nominal_pixel_size, QuantityValue):
+            self.nominal_pixel_size = QuantityValue(**as_dict(self.nominal_pixel_size))
 
         if self.calibrated_pixel_size is not None and not isinstance(self.calibrated_pixel_size, QuantityValue):
             self.calibrated_pixel_size = QuantityValue(**as_dict(self.calibrated_pixel_size))
@@ -2380,6 +2423,21 @@ class ExperimentRun(NamedThing):
 
         if self.dose_rate is not None and not isinstance(self.dose_rate, QuantityValue):
             self.dose_rate = QuantityValue(**as_dict(self.dose_rate))
+
+        if self.spot_size is not None and not isinstance(self.spot_size, QuantityValue):
+            self.spot_size = QuantityValue(**as_dict(self.spot_size))
+
+        if self.c2_aperture is not None and not isinstance(self.c2_aperture, QuantityValue):
+            self.c2_aperture = QuantityValue(**as_dict(self.c2_aperture))
+
+        if self.beam_diameter is not None and not isinstance(self.beam_diameter, QuantityValue):
+            self.beam_diameter = QuantityValue(**as_dict(self.beam_diameter))
+
+        if self.energy_filter_slit_width is not None and not isinstance(self.energy_filter_slit_width, QuantityValue):
+            self.energy_filter_slit_width = QuantityValue(**as_dict(self.energy_filter_slit_width))
+
+        if self.phase_plate_used is not None and not isinstance(self.phase_plate_used, Bool):
+            self.phase_plate_used = Bool(self.phase_plate_used)
 
         if self.defocus_target is not None and not isinstance(self.defocus_target, QuantityValue):
             self.defocus_target = QuantityValue(**as_dict(self.defocus_target))
@@ -2618,6 +2676,7 @@ class WorkflowRun(NamedThing):
     motion_correction_params: Optional[Union[dict, "MotionCorrectionParameters"]] = None
     ctf_estimation_params: Optional[Union[dict, "CTFEstimationParameters"]] = None
     particle_picking_params: Optional[Union[dict, "ParticlePickingParameters"]] = None
+    md_simulation_params: Optional[Union[dict, "MDSimulationParameters"]] = None
     refinement_params: Optional[Union[dict, "RefinementParameters"]] = None
     fsc_curve: Optional[Union[dict, "FSCCurve"]] = None
     number_of_particles: Optional[int] = None
@@ -2820,6 +2879,9 @@ class WorkflowRun(NamedThing):
 
         if self.particle_picking_params is not None and not isinstance(self.particle_picking_params, ParticlePickingParameters):
             self.particle_picking_params = ParticlePickingParameters(**as_dict(self.particle_picking_params))
+
+        if self.md_simulation_params is not None and not isinstance(self.md_simulation_params, MDSimulationParameters):
+            self.md_simulation_params = MDSimulationParameters(**as_dict(self.md_simulation_params))
 
         if self.refinement_params is not None and not isinstance(self.refinement_params, RefinementParameters):
             self.refinement_params = RefinementParameters(**as_dict(self.refinement_params))
@@ -4449,6 +4511,166 @@ class RefinementParameters(AttributeGroup):
 
         if self.map_sharpening_bfactor is not None and not isinstance(self.map_sharpening_bfactor, QuantityValue):
             self.map_sharpening_bfactor = QuantityValue(**as_dict(self.map_sharpening_bfactor))
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class MDSimulationParameters(AttributeGroup):
+    """
+    Parameters for a molecular dynamics simulation workflow. Captures force field selection, simulation conditions,
+    integration settings, solvation setup, and the multi-stage pipeline (minimization, heating, equilibration,
+    production).
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDA["MDSimulationParameters"]
+    class_class_curie: ClassVar[str] = "lambda:MDSimulationParameters"
+    class_name: ClassVar[str] = "MDSimulationParameters"
+    class_model_uri: ClassVar[URIRef] = LAMBDA.MDSimulationParameters
+
+    simulation_engine: Optional[str] = None
+    simulation_engine_version: Optional[str] = None
+    protein_force_field: Optional[str] = None
+    ligand_force_field: Optional[str] = None
+    water_model: Optional[str] = None
+    charge_method: Optional[str] = None
+    box_padding: Optional[Union[dict, "QuantityValue"]] = None
+    box_shape: Optional[str] = None
+    ion_neutralization: Optional[Union[bool, Bool]] = None
+    ion_species: Optional[Union[str, list[str]]] = empty_list()
+    net_charge: Optional[Union[dict, "QuantityValue"]] = None
+    hydrogen_mass_repartitioning: Optional[Union[bool, Bool]] = None
+    ensemble: Optional[Union[str, "MDEnsembleEnum"]] = None
+    thermostat: Optional[str] = None
+    thermostat_coupling: Optional[Union[dict, "QuantityValue"]] = None
+    barostat: Optional[str] = None
+    barostat_coupling: Optional[Union[dict, "QuantityValue"]] = None
+    temperature: Optional[Union[dict, "QuantityValue"]] = None
+    pressure: Optional[Union[dict, "QuantityValue"]] = None
+    timestep: Optional[Union[dict, "QuantityValue"]] = None
+    constraint_algorithm: Optional[str] = None
+    nonbonded_cutoff: Optional[Union[dict, "QuantityValue"]] = None
+    simulation_stage: Optional[Union[str, "MDStageEnum"]] = None
+    duration_ns: Optional[Union[dict, "QuantityValue"]] = None
+    total_steps: Optional[Union[dict, "QuantityValue"]] = None
+    trajectory_output_interval: Optional[Union[dict, "QuantityValue"]] = None
+    restraint_mask: Optional[str] = None
+    restraint_force_constant: Optional[Union[dict, "QuantityValue"]] = None
+    minimization_max_cycles: Optional[Union[dict, "QuantityValue"]] = None
+    minimization_steepest_descent_cycles: Optional[Union[dict, "QuantityValue"]] = None
+    initial_temperature: Optional[Union[dict, "QuantityValue"]] = None
+    heat_duration_ns: Optional[Union[dict, "QuantityValue"]] = None
+    equil_restrained_duration_ns: Optional[Union[dict, "QuantityValue"]] = None
+    equil_free_duration_ns: Optional[Union[dict, "QuantityValue"]] = None
+    production_duration_ns: Optional[Union[dict, "QuantityValue"]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self.simulation_engine is not None and not isinstance(self.simulation_engine, str):
+            self.simulation_engine = str(self.simulation_engine)
+
+        if self.simulation_engine_version is not None and not isinstance(self.simulation_engine_version, str):
+            self.simulation_engine_version = str(self.simulation_engine_version)
+
+        if self.protein_force_field is not None and not isinstance(self.protein_force_field, str):
+            self.protein_force_field = str(self.protein_force_field)
+
+        if self.ligand_force_field is not None and not isinstance(self.ligand_force_field, str):
+            self.ligand_force_field = str(self.ligand_force_field)
+
+        if self.water_model is not None and not isinstance(self.water_model, str):
+            self.water_model = str(self.water_model)
+
+        if self.charge_method is not None and not isinstance(self.charge_method, str):
+            self.charge_method = str(self.charge_method)
+
+        if self.box_padding is not None and not isinstance(self.box_padding, QuantityValue):
+            self.box_padding = QuantityValue(**as_dict(self.box_padding))
+
+        if self.box_shape is not None and not isinstance(self.box_shape, str):
+            self.box_shape = str(self.box_shape)
+
+        if self.ion_neutralization is not None and not isinstance(self.ion_neutralization, Bool):
+            self.ion_neutralization = Bool(self.ion_neutralization)
+
+        if not isinstance(self.ion_species, list):
+            self.ion_species = [self.ion_species] if self.ion_species is not None else []
+        self.ion_species = [v if isinstance(v, str) else str(v) for v in self.ion_species]
+
+        if self.net_charge is not None and not isinstance(self.net_charge, QuantityValue):
+            self.net_charge = QuantityValue(**as_dict(self.net_charge))
+
+        if self.hydrogen_mass_repartitioning is not None and not isinstance(self.hydrogen_mass_repartitioning, Bool):
+            self.hydrogen_mass_repartitioning = Bool(self.hydrogen_mass_repartitioning)
+
+        if self.ensemble is not None and not isinstance(self.ensemble, MDEnsembleEnum):
+            self.ensemble = MDEnsembleEnum(self.ensemble)
+
+        if self.thermostat is not None and not isinstance(self.thermostat, str):
+            self.thermostat = str(self.thermostat)
+
+        if self.thermostat_coupling is not None and not isinstance(self.thermostat_coupling, QuantityValue):
+            self.thermostat_coupling = QuantityValue(**as_dict(self.thermostat_coupling))
+
+        if self.barostat is not None and not isinstance(self.barostat, str):
+            self.barostat = str(self.barostat)
+
+        if self.barostat_coupling is not None and not isinstance(self.barostat_coupling, QuantityValue):
+            self.barostat_coupling = QuantityValue(**as_dict(self.barostat_coupling))
+
+        if self.temperature is not None and not isinstance(self.temperature, QuantityValue):
+            self.temperature = QuantityValue(**as_dict(self.temperature))
+
+        if self.pressure is not None and not isinstance(self.pressure, QuantityValue):
+            self.pressure = QuantityValue(**as_dict(self.pressure))
+
+        if self.timestep is not None and not isinstance(self.timestep, QuantityValue):
+            self.timestep = QuantityValue(**as_dict(self.timestep))
+
+        if self.constraint_algorithm is not None and not isinstance(self.constraint_algorithm, str):
+            self.constraint_algorithm = str(self.constraint_algorithm)
+
+        if self.nonbonded_cutoff is not None and not isinstance(self.nonbonded_cutoff, QuantityValue):
+            self.nonbonded_cutoff = QuantityValue(**as_dict(self.nonbonded_cutoff))
+
+        if self.simulation_stage is not None and not isinstance(self.simulation_stage, MDStageEnum):
+            self.simulation_stage = MDStageEnum(self.simulation_stage)
+
+        if self.duration_ns is not None and not isinstance(self.duration_ns, QuantityValue):
+            self.duration_ns = QuantityValue(**as_dict(self.duration_ns))
+
+        if self.total_steps is not None and not isinstance(self.total_steps, QuantityValue):
+            self.total_steps = QuantityValue(**as_dict(self.total_steps))
+
+        if self.trajectory_output_interval is not None and not isinstance(self.trajectory_output_interval, QuantityValue):
+            self.trajectory_output_interval = QuantityValue(**as_dict(self.trajectory_output_interval))
+
+        if self.restraint_mask is not None and not isinstance(self.restraint_mask, str):
+            self.restraint_mask = str(self.restraint_mask)
+
+        if self.restraint_force_constant is not None and not isinstance(self.restraint_force_constant, QuantityValue):
+            self.restraint_force_constant = QuantityValue(**as_dict(self.restraint_force_constant))
+
+        if self.minimization_max_cycles is not None and not isinstance(self.minimization_max_cycles, QuantityValue):
+            self.minimization_max_cycles = QuantityValue(**as_dict(self.minimization_max_cycles))
+
+        if self.minimization_steepest_descent_cycles is not None and not isinstance(self.minimization_steepest_descent_cycles, QuantityValue):
+            self.minimization_steepest_descent_cycles = QuantityValue(**as_dict(self.minimization_steepest_descent_cycles))
+
+        if self.initial_temperature is not None and not isinstance(self.initial_temperature, QuantityValue):
+            self.initial_temperature = QuantityValue(**as_dict(self.initial_temperature))
+
+        if self.heat_duration_ns is not None and not isinstance(self.heat_duration_ns, QuantityValue):
+            self.heat_duration_ns = QuantityValue(**as_dict(self.heat_duration_ns))
+
+        if self.equil_restrained_duration_ns is not None and not isinstance(self.equil_restrained_duration_ns, QuantityValue):
+            self.equil_restrained_duration_ns = QuantityValue(**as_dict(self.equil_restrained_duration_ns))
+
+        if self.equil_free_duration_ns is not None and not isinstance(self.equil_free_duration_ns, QuantityValue):
+            self.equil_free_duration_ns = QuantityValue(**as_dict(self.equil_free_duration_ns))
+
+        if self.production_duration_ns is not None and not isinstance(self.production_duration_ns, QuantityValue):
+            self.production_duration_ns = QuantityValue(**as_dict(self.production_duration_ns))
 
         super().__post_init__(**kwargs)
 
@@ -6879,10 +7101,74 @@ class TechniqueEnum(EnumDefinitionImpl):
     microed = PermissibleValue(
         text="microed",
         description="Micro-electron diffraction for atomic-resolution structure determination from microcrystals")
+    solution_nmr = PermissibleValue(
+        text="solution_nmr",
+        description="""Solution-state nuclear magnetic resonance spectroscopy for structure determination of molecules in solution""",
+        meaning=CHMO["0002397"])
+    molecular_dynamics = PermissibleValue(
+        text="molecular_dynamics",
+        description="Molecular dynamics simulation",
+        meaning=SIO["000983"])
 
     _defn = EnumDefinition(
         name="TechniqueEnum",
         description="Structural biology techniques",
+    )
+
+class MDEnsembleEnum(EnumDefinitionImpl):
+    """
+    Thermodynamic ensemble for MD simulation
+    """
+    nve = PermissibleValue(
+        text="nve",
+        description="Microcanonical ensemble (constant energy, volume, particle number)")
+    nvt = PermissibleValue(
+        text="nvt",
+        description="Canonical ensemble (constant temperature, volume, particle number)")
+    npt = PermissibleValue(
+        text="npt",
+        description="Isothermal-isobaric ensemble (constant temperature, pressure, particle number)")
+
+    _defn = EnumDefinition(
+        name="MDEnsembleEnum",
+        description="Thermodynamic ensemble for MD simulation",
+    )
+
+class MDStageEnum(EnumDefinitionImpl):
+    """
+    Stage within a multi-step MD simulation pipeline
+    """
+    parameterization = PermissibleValue(
+        text="parameterization",
+        description="Ligand parameterization and charge assignment (e.g., antechamber, parmchk2)")
+    topology_building = PermissibleValue(
+        text="topology_building",
+        description="System topology construction and solvation (e.g., tleap, pdb2gmx)")
+    hydrogen_mass_repartitioning = PermissibleValue(
+        text="hydrogen_mass_repartitioning",
+        description="Hydrogen mass repartitioning for larger timesteps (parmed HMR)")
+    minimization_restrained = PermissibleValue(
+        text="minimization_restrained",
+        description="Energy minimization with positional restraints on solute")
+    minimization_unrestrained = PermissibleValue(
+        text="minimization_unrestrained",
+        description="Energy minimization without restraints")
+    heating = PermissibleValue(
+        text="heating",
+        description="Gradual heating from low temperature to target temperature (NVT)")
+    equilibration_restrained = PermissibleValue(
+        text="equilibration_restrained",
+        description="NPT equilibration with positional restraints")
+    equilibration_unrestrained = PermissibleValue(
+        text="equilibration_unrestrained",
+        description="NPT equilibration without restraints")
+    production = PermissibleValue(
+        text="production",
+        description="Production MD data collection")
+
+    _defn = EnumDefinition(
+        name="MDStageEnum",
+        description="Stage within a multi-step MD simulation pipeline",
     )
 
 class ProcessingStatusEnum(EnumDefinitionImpl):
@@ -6992,6 +7278,21 @@ class WorkflowTypeEnum(EnumDefinitionImpl):
     particle_to_model_inference = PermissibleValue(
         text="particle_to_model_inference",
         description="""An atomic model inferred directly from particle images, with no reconstructed map in between, usually guided by a structure-prediction prior and refining particle poses as it goes (e.g., Fold'EM)""")
+    md_system_setup = PermissibleValue(
+        text="md_system_setup",
+        description="MD system preparation - parameterization, solvation, topology building")
+    md_minimization = PermissibleValue(
+        text="md_minimization",
+        description="Energy minimization prior to MD simulation")
+    md_equilibration = PermissibleValue(
+        text="md_equilibration",
+        description="MD equilibration - heating and NPT/NVT equilibration phases")
+    md_production = PermissibleValue(
+        text="md_production",
+        description="Production molecular dynamics simulation")
+    md_analysis = PermissibleValue(
+        text="md_analysis",
+        description="Post-simulation trajectory analysis (RMSD, RMSF, clustering, etc.)")
 
     _defn = EnumDefinition(
         name="WorkflowTypeEnum",
@@ -7068,6 +7369,60 @@ class FileFormatEnum(EnumDefinitionImpl):
     gz = PermissibleValue(
         text="gz",
         description="Gzip compressed format")
+    nmr_star = PermissibleValue(
+        text="nmr_star",
+        description="""NMR-STAR format for NMR data (chemical shifts, restraints, sample conditions), as distributed by BMRB""")
+    yaml = PermissibleValue(
+        text="yaml",
+        description="YAML text format (e.g., a facility acquisition protocol sheet)")
+    mdoc = PermissibleValue(
+        text="mdoc",
+        description="""SerialEM autodoc metadata sidecar (.mdoc): per-image or per-tile acquisition parameters for an MRC or TIFF file""")
+    nav = PermissibleValue(
+        text="nav",
+        description="""SerialEM navigator file (.nav): acquisition targets with stage coordinates and the maps they were picked from""")
+    dm4 = PermissibleValue(
+        text="dm4",
+        description="Gatan DigitalMicrograph 4 image format (.dm4), commonly used for K2/K3 gain references")
+    mol2 = PermissibleValue(
+        text="mol2",
+        description="Tripos MOL2 format for parameterized small molecules")
+    sdf = PermissibleValue(
+        text="sdf",
+        description="Structure-Data File format for chemical structures")
+    frcmod = PermissibleValue(
+        text="frcmod",
+        description="Amber force field modification file")
+    prmtop = PermissibleValue(
+        text="prmtop",
+        description="Amber topology (parameter/topology) file")
+    inpcrd = PermissibleValue(
+        text="inpcrd",
+        description="Amber initial coordinates file")
+    rst7 = PermissibleValue(
+        text="rst7",
+        description="Amber restart file (ASCII coordinates/velocities)")
+    netcdf = PermissibleValue(
+        text="netcdf",
+        description="NetCDF trajectory format (Amber mdcrd binary)")
+    dcd = PermissibleValue(
+        text="dcd",
+        description="DCD trajectory format (CHARMM/NAMD)")
+    xtc = PermissibleValue(
+        text="xtc",
+        description="XTC compressed trajectory format (GROMACS)")
+    trr = PermissibleValue(
+        text="trr",
+        description="TRR full-precision trajectory format (GROMACS)")
+    gro = PermissibleValue(
+        text="gro",
+        description="GROMACS coordinate file format")
+    top = PermissibleValue(
+        text="top",
+        description="GROMACS topology file format")
+    lib = PermissibleValue(
+        text="lib",
+        description="Amber residue library file")
 
     _defn = EnumDefinition(
         name="FileFormatEnum",
@@ -7135,6 +7490,60 @@ class DataTypeEnum(EnumDefinitionImpl):
     particle_assignments = PermissibleValue(
         text="particle_assignments",
         description="Per-particle poses, state or class assignments, and confidence scores")
+    gain_reference = PermissibleValue(
+        text="gain_reference",
+        description="Detector gain reference image, used to normalise per-pixel sensitivity of raw movie frames")
+    defect_map = PermissibleValue(
+        text="defect_map",
+        description="Detector defect map listing bad pixels, columns or rows to exclude or interpolate over")
+    atlas = PermissibleValue(
+        text="atlas",
+        description="""Low-magnification grid or grid-square map (often a montage) used to navigate and choose targets, not for reconstruction""")
+    screening_image = PermissibleValue(
+        text="screening_image",
+        description="""Medium- or high-magnification image taken to choose targets or assess ice and particle quality, not for reconstruction""")
+    topology = PermissibleValue(
+        text="topology",
+        description="MD system topology (atom types, bonds, charges, force field parameters)")
+    trajectory = PermissibleValue(
+        text="trajectory",
+        description="MD trajectory (time series of atomic coordinates)")
+    restart = PermissibleValue(
+        text="restart",
+        description="MD restart/checkpoint file for resuming simulations")
+    force_field_params = PermissibleValue(
+        text="force_field_params",
+        description="Force field parameter or modification file")
+    solvated_structure = PermissibleValue(
+        text="solvated_structure",
+        description="Solvated system structure (protein + solvent + ions)")
+    parameterized_ligand = PermissibleValue(
+        text="parameterized_ligand",
+        description="Small molecule with assigned force field parameters")
+    md_rmsd = PermissibleValue(
+        text="md_rmsd",
+        description="Root mean square deviation time series")
+    md_rmsf = PermissibleValue(
+        text="md_rmsf",
+        description="Root mean square fluctuation per atom or residue")
+    md_clustering = PermissibleValue(
+        text="md_clustering",
+        description="Trajectory pose clustering results")
+    md_hbond = PermissibleValue(
+        text="md_hbond",
+        description="Hydrogen bond analysis results")
+    md_interaction_fingerprint = PermissibleValue(
+        text="md_interaction_fingerprint",
+        description="Protein-ligand interaction fingerprint (e.g. ProLIF)")
+    md_event_detection = PermissibleValue(
+        text="md_event_detection",
+        description="Change-point or event detection results from trajectory analysis")
+    md_dihedral_entropy = PermissibleValue(
+        text="md_dihedral_entropy",
+        description="Configurational (dihedral) entropy analysis")
+    md_energy = PermissibleValue(
+        text="md_energy",
+        description="Energy terms from MD simulation output")
 
     _defn = EnumDefinition(
         name="DataTypeEnum",
@@ -8135,7 +8544,7 @@ class ParticleConcentrationEnum(EnumDefinitionImpl):
 
 class TiltingSchemeEnum(EnumDefinitionImpl):
     """
-    Tilt scheme used during tomographic or continuous-rotation data collection
+    Stage tilting scheme used during data collection, including `none` for untilted acquisitions
     """
     none = PermissibleValue(
         text="none",
@@ -8152,7 +8561,7 @@ class TiltingSchemeEnum(EnumDefinitionImpl):
 
     _defn = EnumDefinition(
         name="TiltingSchemeEnum",
-        description="Tilt scheme used during tomographic or continuous-rotation data collection",
+        description="Stage tilting scheme used during data collection, including `none` for untilted acquisitions",
     )
 
 class FunctionalSiteTypeEnum(EnumDefinitionImpl):
@@ -9131,6 +9540,9 @@ class DatabaseNameEnum(EnumDefinitionImpl):
 # Slots
 class slots:
     pass
+
+slots.instrument_type = Slot(uri=LAMBDA.instrument_type, name="instrument_type", curie=LAMBDA.curie('instrument_type'),
+                   model_uri=LAMBDA.instrument_type, domain=None, range=Optional[str])
 
 slots.attribute = Slot(uri=LAMBDA.attribute, name="attribute", curie=LAMBDA.curie('attribute'),
                    model_uri=LAMBDA.attribute, domain=None, range=Union[dict, Attribute])
@@ -10143,8 +10555,17 @@ slots.experimentRun__processing_status = Slot(uri=LAMBDA.processing_status, name
 slots.experimentRun__daq_system = Slot(uri=LAMBDA.daq_system, name="experimentRun__daq_system", curie=LAMBDA.curie('daq_system'),
                    model_uri=LAMBDA.experimentRun__daq_system, domain=None, range=Optional[Union[str, "DataAcquisitionSystemEnum"]])
 
+slots.experimentRun__accelerating_voltage = Slot(uri=LAMBDA.accelerating_voltage, name="experimentRun__accelerating_voltage", curie=LAMBDA.curie('accelerating_voltage'),
+                   model_uri=LAMBDA.experimentRun__accelerating_voltage, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.experimentRun__cs = Slot(uri=LAMBDA.cs, name="experimentRun__cs", curie=LAMBDA.curie('cs'),
+                   model_uri=LAMBDA.experimentRun__cs, domain=None, range=Optional[Union[dict, QuantityValue]])
+
 slots.experimentRun__magnification = Slot(uri=LAMBDA.magnification, name="experimentRun__magnification", curie=LAMBDA.curie('magnification'),
                    model_uri=LAMBDA.experimentRun__magnification, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.experimentRun__nominal_pixel_size = Slot(uri=LAMBDA.nominal_pixel_size, name="experimentRun__nominal_pixel_size", curie=LAMBDA.curie('nominal_pixel_size'),
+                   model_uri=LAMBDA.experimentRun__nominal_pixel_size, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentRun__calibrated_pixel_size = Slot(uri=LAMBDA.calibrated_pixel_size, name="experimentRun__calibrated_pixel_size", curie=LAMBDA.curie('calibrated_pixel_size'),
                    model_uri=LAMBDA.experimentRun__calibrated_pixel_size, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -10166,6 +10587,21 @@ slots.experimentRun__total_dose = Slot(uri=LAMBDA.total_dose, name="experimentRu
 
 slots.experimentRun__dose_rate = Slot(uri=LAMBDA.dose_rate, name="experimentRun__dose_rate", curie=LAMBDA.curie('dose_rate'),
                    model_uri=LAMBDA.experimentRun__dose_rate, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.experimentRun__spot_size = Slot(uri=LAMBDA.spot_size, name="experimentRun__spot_size", curie=LAMBDA.curie('spot_size'),
+                   model_uri=LAMBDA.experimentRun__spot_size, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.experimentRun__c2_aperture = Slot(uri=LAMBDA.c2_aperture, name="experimentRun__c2_aperture", curie=LAMBDA.curie('c2_aperture'),
+                   model_uri=LAMBDA.experimentRun__c2_aperture, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.experimentRun__beam_diameter = Slot(uri=LAMBDA.beam_diameter, name="experimentRun__beam_diameter", curie=LAMBDA.curie('beam_diameter'),
+                   model_uri=LAMBDA.experimentRun__beam_diameter, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.experimentRun__energy_filter_slit_width = Slot(uri=LAMBDA.energy_filter_slit_width, name="experimentRun__energy_filter_slit_width", curie=LAMBDA.curie('energy_filter_slit_width'),
+                   model_uri=LAMBDA.experimentRun__energy_filter_slit_width, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.experimentRun__phase_plate_used = Slot(uri=LAMBDA.phase_plate_used, name="experimentRun__phase_plate_used", curie=LAMBDA.curie('phase_plate_used'),
+                   model_uri=LAMBDA.experimentRun__phase_plate_used, domain=None, range=Optional[Union[bool, Bool]])
 
 slots.experimentRun__defocus_target = Slot(uri=LAMBDA.defocus_target, name="experimentRun__defocus_target", curie=LAMBDA.curie('defocus_target'),
                    model_uri=LAMBDA.experimentRun__defocus_target, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -10511,6 +10947,9 @@ slots.workflowRun__ctf_estimation_params = Slot(uri=LAMBDA.ctf_estimation_params
 
 slots.workflowRun__particle_picking_params = Slot(uri=LAMBDA.particle_picking_params, name="workflowRun__particle_picking_params", curie=LAMBDA.curie('particle_picking_params'),
                    model_uri=LAMBDA.workflowRun__particle_picking_params, domain=None, range=Optional[Union[dict, ParticlePickingParameters]])
+
+slots.workflowRun__md_simulation_params = Slot(uri=LAMBDA.md_simulation_params, name="workflowRun__md_simulation_params", curie=LAMBDA.curie('md_simulation_params'),
+                   model_uri=LAMBDA.workflowRun__md_simulation_params, domain=None, range=Optional[Union[dict, MDSimulationParameters]])
 
 slots.workflowRun__refinement_params = Slot(uri=LAMBDA.refinement_params, name="workflowRun__refinement_params", curie=LAMBDA.curie('refinement_params'),
                    model_uri=LAMBDA.workflowRun__refinement_params, domain=None, range=Optional[Union[dict, RefinementParameters]])
@@ -11291,6 +11730,111 @@ slots.refinementParameters__resolution_0_5 = Slot(uri=LAMBDA.resolution_0_5, nam
 
 slots.refinementParameters__map_sharpening_bfactor = Slot(uri=LAMBDA.map_sharpening_bfactor, name="refinementParameters__map_sharpening_bfactor", curie=LAMBDA.curie('map_sharpening_bfactor'),
                    model_uri=LAMBDA.refinementParameters__map_sharpening_bfactor, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.mDSimulationParameters__simulation_engine = Slot(uri=LAMBDA.simulation_engine, name="mDSimulationParameters__simulation_engine", curie=LAMBDA.curie('simulation_engine'),
+                   model_uri=LAMBDA.mDSimulationParameters__simulation_engine, domain=None, range=Optional[str])
+
+slots.mDSimulationParameters__simulation_engine_version = Slot(uri=LAMBDA.simulation_engine_version, name="mDSimulationParameters__simulation_engine_version", curie=LAMBDA.curie('simulation_engine_version'),
+                   model_uri=LAMBDA.mDSimulationParameters__simulation_engine_version, domain=None, range=Optional[str])
+
+slots.mDSimulationParameters__protein_force_field = Slot(uri=LAMBDA.protein_force_field, name="mDSimulationParameters__protein_force_field", curie=LAMBDA.curie('protein_force_field'),
+                   model_uri=LAMBDA.mDSimulationParameters__protein_force_field, domain=None, range=Optional[str])
+
+slots.mDSimulationParameters__ligand_force_field = Slot(uri=LAMBDA.ligand_force_field, name="mDSimulationParameters__ligand_force_field", curie=LAMBDA.curie('ligand_force_field'),
+                   model_uri=LAMBDA.mDSimulationParameters__ligand_force_field, domain=None, range=Optional[str])
+
+slots.mDSimulationParameters__water_model = Slot(uri=LAMBDA.water_model, name="mDSimulationParameters__water_model", curie=LAMBDA.curie('water_model'),
+                   model_uri=LAMBDA.mDSimulationParameters__water_model, domain=None, range=Optional[str])
+
+slots.mDSimulationParameters__charge_method = Slot(uri=LAMBDA.charge_method, name="mDSimulationParameters__charge_method", curie=LAMBDA.curie('charge_method'),
+                   model_uri=LAMBDA.mDSimulationParameters__charge_method, domain=None, range=Optional[str])
+
+slots.mDSimulationParameters__box_padding = Slot(uri=LAMBDA.box_padding, name="mDSimulationParameters__box_padding", curie=LAMBDA.curie('box_padding'),
+                   model_uri=LAMBDA.mDSimulationParameters__box_padding, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.mDSimulationParameters__box_shape = Slot(uri=LAMBDA.box_shape, name="mDSimulationParameters__box_shape", curie=LAMBDA.curie('box_shape'),
+                   model_uri=LAMBDA.mDSimulationParameters__box_shape, domain=None, range=Optional[str])
+
+slots.mDSimulationParameters__ion_neutralization = Slot(uri=LAMBDA.ion_neutralization, name="mDSimulationParameters__ion_neutralization", curie=LAMBDA.curie('ion_neutralization'),
+                   model_uri=LAMBDA.mDSimulationParameters__ion_neutralization, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.mDSimulationParameters__ion_species = Slot(uri=LAMBDA.ion_species, name="mDSimulationParameters__ion_species", curie=LAMBDA.curie('ion_species'),
+                   model_uri=LAMBDA.mDSimulationParameters__ion_species, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.mDSimulationParameters__net_charge = Slot(uri=LAMBDA.net_charge, name="mDSimulationParameters__net_charge", curie=LAMBDA.curie('net_charge'),
+                   model_uri=LAMBDA.mDSimulationParameters__net_charge, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.mDSimulationParameters__hydrogen_mass_repartitioning = Slot(uri=LAMBDA.hydrogen_mass_repartitioning, name="mDSimulationParameters__hydrogen_mass_repartitioning", curie=LAMBDA.curie('hydrogen_mass_repartitioning'),
+                   model_uri=LAMBDA.mDSimulationParameters__hydrogen_mass_repartitioning, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.mDSimulationParameters__ensemble = Slot(uri=LAMBDA.ensemble, name="mDSimulationParameters__ensemble", curie=LAMBDA.curie('ensemble'),
+                   model_uri=LAMBDA.mDSimulationParameters__ensemble, domain=None, range=Optional[Union[str, "MDEnsembleEnum"]])
+
+slots.mDSimulationParameters__thermostat = Slot(uri=LAMBDA.thermostat, name="mDSimulationParameters__thermostat", curie=LAMBDA.curie('thermostat'),
+                   model_uri=LAMBDA.mDSimulationParameters__thermostat, domain=None, range=Optional[str])
+
+slots.mDSimulationParameters__thermostat_coupling = Slot(uri=LAMBDA.thermostat_coupling, name="mDSimulationParameters__thermostat_coupling", curie=LAMBDA.curie('thermostat_coupling'),
+                   model_uri=LAMBDA.mDSimulationParameters__thermostat_coupling, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.mDSimulationParameters__barostat = Slot(uri=LAMBDA.barostat, name="mDSimulationParameters__barostat", curie=LAMBDA.curie('barostat'),
+                   model_uri=LAMBDA.mDSimulationParameters__barostat, domain=None, range=Optional[str])
+
+slots.mDSimulationParameters__barostat_coupling = Slot(uri=LAMBDA.barostat_coupling, name="mDSimulationParameters__barostat_coupling", curie=LAMBDA.curie('barostat_coupling'),
+                   model_uri=LAMBDA.mDSimulationParameters__barostat_coupling, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.mDSimulationParameters__temperature = Slot(uri=LAMBDA.temperature, name="mDSimulationParameters__temperature", curie=LAMBDA.curie('temperature'),
+                   model_uri=LAMBDA.mDSimulationParameters__temperature, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.mDSimulationParameters__pressure = Slot(uri=LAMBDA.pressure, name="mDSimulationParameters__pressure", curie=LAMBDA.curie('pressure'),
+                   model_uri=LAMBDA.mDSimulationParameters__pressure, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.mDSimulationParameters__timestep = Slot(uri=LAMBDA.timestep, name="mDSimulationParameters__timestep", curie=LAMBDA.curie('timestep'),
+                   model_uri=LAMBDA.mDSimulationParameters__timestep, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.mDSimulationParameters__constraint_algorithm = Slot(uri=LAMBDA.constraint_algorithm, name="mDSimulationParameters__constraint_algorithm", curie=LAMBDA.curie('constraint_algorithm'),
+                   model_uri=LAMBDA.mDSimulationParameters__constraint_algorithm, domain=None, range=Optional[str])
+
+slots.mDSimulationParameters__nonbonded_cutoff = Slot(uri=LAMBDA.nonbonded_cutoff, name="mDSimulationParameters__nonbonded_cutoff", curie=LAMBDA.curie('nonbonded_cutoff'),
+                   model_uri=LAMBDA.mDSimulationParameters__nonbonded_cutoff, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.mDSimulationParameters__simulation_stage = Slot(uri=LAMBDA.simulation_stage, name="mDSimulationParameters__simulation_stage", curie=LAMBDA.curie('simulation_stage'),
+                   model_uri=LAMBDA.mDSimulationParameters__simulation_stage, domain=None, range=Optional[Union[str, "MDStageEnum"]])
+
+slots.mDSimulationParameters__duration_ns = Slot(uri=LAMBDA.duration_ns, name="mDSimulationParameters__duration_ns", curie=LAMBDA.curie('duration_ns'),
+                   model_uri=LAMBDA.mDSimulationParameters__duration_ns, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.mDSimulationParameters__total_steps = Slot(uri=LAMBDA.total_steps, name="mDSimulationParameters__total_steps", curie=LAMBDA.curie('total_steps'),
+                   model_uri=LAMBDA.mDSimulationParameters__total_steps, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.mDSimulationParameters__trajectory_output_interval = Slot(uri=LAMBDA.trajectory_output_interval, name="mDSimulationParameters__trajectory_output_interval", curie=LAMBDA.curie('trajectory_output_interval'),
+                   model_uri=LAMBDA.mDSimulationParameters__trajectory_output_interval, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.mDSimulationParameters__restraint_mask = Slot(uri=LAMBDA.restraint_mask, name="mDSimulationParameters__restraint_mask", curie=LAMBDA.curie('restraint_mask'),
+                   model_uri=LAMBDA.mDSimulationParameters__restraint_mask, domain=None, range=Optional[str])
+
+slots.mDSimulationParameters__restraint_force_constant = Slot(uri=LAMBDA.restraint_force_constant, name="mDSimulationParameters__restraint_force_constant", curie=LAMBDA.curie('restraint_force_constant'),
+                   model_uri=LAMBDA.mDSimulationParameters__restraint_force_constant, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.mDSimulationParameters__minimization_max_cycles = Slot(uri=LAMBDA.minimization_max_cycles, name="mDSimulationParameters__minimization_max_cycles", curie=LAMBDA.curie('minimization_max_cycles'),
+                   model_uri=LAMBDA.mDSimulationParameters__minimization_max_cycles, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.mDSimulationParameters__minimization_steepest_descent_cycles = Slot(uri=LAMBDA.minimization_steepest_descent_cycles, name="mDSimulationParameters__minimization_steepest_descent_cycles", curie=LAMBDA.curie('minimization_steepest_descent_cycles'),
+                   model_uri=LAMBDA.mDSimulationParameters__minimization_steepest_descent_cycles, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.mDSimulationParameters__initial_temperature = Slot(uri=LAMBDA.initial_temperature, name="mDSimulationParameters__initial_temperature", curie=LAMBDA.curie('initial_temperature'),
+                   model_uri=LAMBDA.mDSimulationParameters__initial_temperature, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.mDSimulationParameters__heat_duration_ns = Slot(uri=LAMBDA.heat_duration_ns, name="mDSimulationParameters__heat_duration_ns", curie=LAMBDA.curie('heat_duration_ns'),
+                   model_uri=LAMBDA.mDSimulationParameters__heat_duration_ns, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.mDSimulationParameters__equil_restrained_duration_ns = Slot(uri=LAMBDA.equil_restrained_duration_ns, name="mDSimulationParameters__equil_restrained_duration_ns", curie=LAMBDA.curie('equil_restrained_duration_ns'),
+                   model_uri=LAMBDA.mDSimulationParameters__equil_restrained_duration_ns, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.mDSimulationParameters__equil_free_duration_ns = Slot(uri=LAMBDA.equil_free_duration_ns, name="mDSimulationParameters__equil_free_duration_ns", curie=LAMBDA.curie('equil_free_duration_ns'),
+                   model_uri=LAMBDA.mDSimulationParameters__equil_free_duration_ns, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.mDSimulationParameters__production_duration_ns = Slot(uri=LAMBDA.production_duration_ns, name="mDSimulationParameters__production_duration_ns", curie=LAMBDA.curie('production_duration_ns'),
+                   model_uri=LAMBDA.mDSimulationParameters__production_duration_ns, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.fSCCurve__resolution_angstrom = Slot(uri=LAMBDA.resolution_angstrom, name="fSCCurve__resolution_angstrom", curie=LAMBDA.curie('resolution_angstrom'),
                    model_uri=LAMBDA.fSCCurve__resolution_angstrom, domain=None, range=Optional[Union[dict, QuantityValue]])

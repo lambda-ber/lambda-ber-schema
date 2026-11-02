@@ -438,6 +438,16 @@
                     "description": "Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.",
                     "type": "string"
                 },
+                "instrument_type": {
+                    "description": "Which Instrument class this record is: `Instrument` or the name of one of its subclasses, such as `CryoEMInstrument`. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.",
+                    "enum": [
+                        "BeamlineInstrument"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "lims_system": {
                     "$ref": "#/$defs/LIMSSystemEnum",
                     "description": "Laboratory Information Management System used at this beamline"
@@ -1285,6 +1295,16 @@
                     ],
                     "description": "Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.",
                     "type": "string"
+                },
+                "instrument_type": {
+                    "description": "Which Instrument class this record is: `Instrument` or the name of one of its subclasses, such as `CryoEMInstrument`. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.",
+                    "enum": [
+                        "CryoEMInstrument"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "manufacturer": {
                     "description": "Instrument manufacturer",
@@ -2158,7 +2178,25 @@
                 "map_half",
                 "validation_report",
                 "predicted_model",
-                "particle_assignments"
+                "particle_assignments",
+                "gain_reference",
+                "defect_map",
+                "atlas",
+                "screening_image",
+                "topology",
+                "trajectory",
+                "restart",
+                "force_field_params",
+                "solvated_structure",
+                "parameterized_ligand",
+                "md_rmsd",
+                "md_rmsf",
+                "md_clustering",
+                "md_hbond",
+                "md_interaction_fingerprint",
+                "md_event_detection",
+                "md_dihedral_entropy",
+                "md_energy"
             ],
             "title": "DataTypeEnum",
             "type": "string"
@@ -2316,7 +2354,26 @@
                 "instruments": {
                     "description": "All instruments used across studies",
                     "items": {
-                        "$ref": "#/$defs/Instrument"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/Instrument"
+                            },
+                            {
+                                "$ref": "#/$defs/CryoEMInstrument"
+                            },
+                            {
+                                "$ref": "#/$defs/XRayInstrument"
+                            },
+                            {
+                                "$ref": "#/$defs/SANSInstrument"
+                            },
+                            {
+                                "$ref": "#/$defs/SAXSInstrument"
+                            },
+                            {
+                                "$ref": "#/$defs/BeamlineInstrument"
+                            }
+                        ]
                     },
                     "type": [
                         "array",
@@ -2888,6 +2945,17 @@
             "additionalProperties": false,
             "description": "An experimental data collection session",
             "properties": {
+                "accelerating_voltage": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Accelerating voltage used for this session, typically specified in kV. Data providers may specify alternative units by including the unit in the QuantityValue."
+                },
                 "acquisition_software": {
                     "description": "Acquisition software used (e.g., SerialEM, EPU, Leginon)",
                     "type": [
@@ -2953,6 +3021,28 @@
                     ],
                     "description": "Beam center Y coordinate, typically specified in pixels ([px]). Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
+                "beam_diameter": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Illuminated beam diameter at the specimen used for this session, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
+                },
+                "c2_aperture": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "C2 condenser aperture diameter used for this session, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
+                },
                 "calibrated_pixel_size": {
                     "anyOf": [
                         {
@@ -2996,6 +3086,17 @@
                         }
                     ],
                     "description": "Coma aberration, typically specified in nanometers. Data providers may specify alternative units by including the unit in the QuantityValue."
+                },
+                "cs": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Nominal spherical aberration (Cs) of the objective lens in effect for this session, typically specified in millimeters. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "daq_system": {
                     "$ref": "#/$defs/DataAcquisitionSystemEnum",
@@ -3131,6 +3232,17 @@
                         }
                     ],
                     "description": "X-ray beam energy for this run. Data providers may specify eV, keV, or another appropriate energy unit in the QuantityValue."
+                },
+                "energy_filter_slit_width": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Energy filter slit width used for this session, typically specified in eV. Omit when no energy filter was used. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "experiment_code": {
                     "description": "Human-friendly laboratory or facility identifier for the experiment (e.g., 'SIBYLS-2024-02-01-hetBGL', 'CRYOEM-RUN-240815-001'). Used for local tracking and cross-referencing within laboratory systems.",
@@ -3283,6 +3395,17 @@
                     ],
                     "description": "Magnification used during data collection"
                 },
+                "nominal_pixel_size": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Nominal pixel size at the specimen for the chosen magnification and binning, as set at the microscope, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue."
+                },
                 "number_of_images": {
                     "anyOf": [
                         {
@@ -3322,6 +3445,13 @@
                         }
                     ],
                     "description": "Oscillation angle per image, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue."
+                },
+                "phase_plate_used": {
+                    "description": "Whether a phase plate was in the beam path for this session",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
                 },
                 "pixel_size_x": {
                     "anyOf": [
@@ -3433,6 +3563,17 @@
                     ],
                     "description": "Vertical slit gap aperture, typically specified in micrometers (\u00b5m). Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
+                "spot_size": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Condenser spot size setting used for this session (a dimensionless index on the microscope, e.g. 4)"
+                },
                 "stage_tilt": {
                     "anyOf": [
                         {
@@ -3541,7 +3682,7 @@
                 },
                 "tilting_scheme": {
                     "$ref": "#/$defs/TiltingSchemeEnum",
-                    "description": "Tilt scheme used during tomographic data collection"
+                    "description": "Stage tilting scheme used during data collection. Use `none` for untilted acquisitions such as single-particle collection; the other values describe tomographic and continuous-rotation (MicroED) collection."
                 },
                 "title": {
                     "description": "A human-readable name or title for this entity",
@@ -4022,7 +4163,25 @@
                 "json",
                 "csv",
                 "ccp4",
-                "gz"
+                "gz",
+                "nmr_star",
+                "yaml",
+                "mdoc",
+                "nav",
+                "dm4",
+                "mol2",
+                "sdf",
+                "frcmod",
+                "prmtop",
+                "inpcrd",
+                "rst7",
+                "netcdf",
+                "dcd",
+                "xtc",
+                "trr",
+                "gro",
+                "top",
+                "lib"
             ],
             "title": "FileFormatEnum",
             "type": "string"
@@ -4951,6 +5110,16 @@
                     "description": "Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.",
                     "type": "string"
                 },
+                "instrument_type": {
+                    "description": "Which Instrument class this record is: `Instrument` or the name of one of its subclasses, such as `CryoEMInstrument`. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.",
+                    "enum": [
+                        "Instrument"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "manufacturer": {
                     "description": "Instrument manufacturer",
                     "type": [
@@ -5163,6 +5332,364 @@
             ],
             "title": "LigandInteraction",
             "type": "object"
+        },
+        "MDEnsembleEnum": {
+            "description": "Thermodynamic ensemble for MD simulation",
+            "enum": [
+                "nve",
+                "nvt",
+                "npt"
+            ],
+            "title": "MDEnsembleEnum",
+            "type": "string"
+        },
+        "MDSimulationParameters": {
+            "additionalProperties": false,
+            "description": "Parameters for a molecular dynamics simulation workflow. Captures force field selection, simulation conditions, integration settings, solvation setup, and the multi-stage pipeline (minimization, heating, equilibration, production).",
+            "properties": {
+                "barostat": {
+                    "description": "Barostat algorithm (e.g., Berendsen, Monte-Carlo, Parrinello-Rahman)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "barostat_coupling": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Barostat coupling constant (taup), typically in ps"
+                },
+                "box_padding": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Minimum distance from solute to box edge, typically in Angstroms"
+                },
+                "box_shape": {
+                    "description": "Simulation box geometry (e.g., cubic, truncated_octahedron, rhombic_dodecahedron)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "charge_method": {
+                    "description": "Method used to assign partial charges to the ligand (e.g., AM1-BCC, RESP, HF/6-31G*)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "constraint_algorithm": {
+                    "description": "Bond constraint algorithm (e.g., SHAKE, LINCS, SETTLE)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "duration_ns": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Duration of this simulation stage in nanoseconds"
+                },
+                "ensemble": {
+                    "$ref": "#/$defs/MDEnsembleEnum",
+                    "description": "Thermodynamic ensemble for the simulation stage"
+                },
+                "equil_free_duration_ns": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Duration of unrestrained equilibration in nanoseconds"
+                },
+                "equil_restrained_duration_ns": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Duration of restrained equilibration in nanoseconds"
+                },
+                "heat_duration_ns": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Duration of the heating phase in nanoseconds"
+                },
+                "hydrogen_mass_repartitioning": {
+                    "description": "Whether hydrogen mass repartitioning (HMR) was applied to enable larger timesteps",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "initial_temperature": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Starting temperature for heating stage in Kelvin"
+                },
+                "ion_neutralization": {
+                    "description": "Whether counterions were added to neutralize the system",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "ion_species": {
+                    "description": "Ion species added (e.g., Na+, Cl-, K+, Mg2+)",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "ligand_force_field": {
+                    "description": "Force field for small-molecule ligand (e.g., GAFF2, GAFF, CGenFF, OPLS)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "minimization_max_cycles": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Maximum number of minimization cycles"
+                },
+                "minimization_steepest_descent_cycles": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Number of initial steepest-descent cycles before switching to conjugate gradient"
+                },
+                "net_charge": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Target net charge of the system after ion addition"
+                },
+                "nonbonded_cutoff": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Cutoff for non-bonded interactions, typically in Angstroms"
+                },
+                "pressure": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Target simulation pressure, typically in atm"
+                },
+                "production_duration_ns": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Duration of production MD in nanoseconds"
+                },
+                "protein_force_field": {
+                    "description": "Force field for protein (e.g., ff19SB, ff14SB, CHARMM36m, OPLS-AA)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "restraint_force_constant": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Restraint force constant, typically in kcal/mol/A^2"
+                },
+                "restraint_mask": {
+                    "description": "Atom selection mask for positional restraints (Amber mask syntax or equivalent)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "simulation_engine": {
+                    "description": "MD simulation engine used (e.g., pmemd.cuda, GROMACS, NAMD, OpenMM)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "simulation_engine_version": {
+                    "description": "Version of the simulation engine",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "simulation_stage": {
+                    "$ref": "#/$defs/MDStageEnum",
+                    "description": "Stage of the MD workflow this run represents"
+                },
+                "temperature": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Target simulation temperature in Kelvin"
+                },
+                "thermostat": {
+                    "description": "Thermostat algorithm (e.g., Langevin, Nose-Hoover, Berendsen, velocity-rescale)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "thermostat_coupling": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Thermostat coupling constant (gamma_ln for Langevin), typically in 1/ps"
+                },
+                "timestep": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Integration timestep, typically in femtoseconds"
+                },
+                "total_steps": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Total number of integration steps"
+                },
+                "trajectory_output_interval": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Interval between saved trajectory frames in steps"
+                },
+                "water_model": {
+                    "description": "Explicit solvent water model (e.g., OPC, TIP3P, SPC/E, TIP4P-Ew)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "MDSimulationParameters",
+            "type": "object"
+        },
+        "MDStageEnum": {
+            "description": "Stage within a multi-step MD simulation pipeline",
+            "enum": [
+                "parameterization",
+                "topology_building",
+                "hydrogen_mass_repartitioning",
+                "minimization_restrained",
+                "minimization_unrestrained",
+                "heating",
+                "equilibration_restrained",
+                "equilibration_unrestrained",
+                "production"
+            ],
+            "title": "MDStageEnum",
+            "type": "string"
         },
         "MeasurementConditions": {
             "additionalProperties": false,
@@ -8615,6 +9142,16 @@
                     "description": "Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.",
                     "type": "string"
                 },
+                "instrument_type": {
+                    "description": "Which Instrument class this record is: `Instrument` or the name of one of its subclasses, such as `CryoEMInstrument`. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.",
+                    "enum": [
+                        "SANSInstrument"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "manufacturer": {
                     "description": "Instrument manufacturer",
                     "type": [
@@ -8853,6 +9390,16 @@
                     ],
                     "description": "Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.",
                     "type": "string"
+                },
+                "instrument_type": {
+                    "description": "Which Instrument class this record is: `Instrument` or the name of one of its subclasses, such as `CryoEMInstrument`. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.",
+                    "enum": [
+                        "SAXSInstrument"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "manufacturer": {
                     "description": "Instrument manufacturer",
@@ -10805,7 +11352,9 @@
                 "fiber_diffraction",
                 "time_resolved_crystallography",
                 "xray_tomography",
-                "microed"
+                "microed",
+                "solution_nmr",
+                "molecular_dynamics"
             ],
             "title": "TechniqueEnum",
             "type": "string"
@@ -10851,7 +11400,7 @@
             "type": "object"
         },
         "TiltingSchemeEnum": {
-            "description": "Tilt scheme used during tomographic or continuous-rotation data collection",
+            "description": "Stage tilting scheme used during data collection, including `none` for untilted acquisitions",
             "enum": [
                 "none",
                 "dose_symmetric",
@@ -11166,6 +11715,17 @@
                         "string",
                         "null"
                     ]
+                },
+                "md_simulation_params": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/MDSimulationParameters"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Molecular dynamics simulation parameters"
                 },
                 "motion_correction_params": {
                     "anyOf": [
@@ -11651,7 +12211,12 @@
                 "model_validation",
                 "structure_prediction",
                 "heterogeneity_analysis",
-                "particle_to_model_inference"
+                "particle_to_model_inference",
+                "md_system_setup",
+                "md_minimization",
+                "md_equilibration",
+                "md_production",
+                "md_analysis"
             ],
             "title": "WorkflowTypeEnum",
             "type": "string"
@@ -12009,6 +12574,16 @@
                     "description": "Controlled-vocabulary identifier linking this instrument to its canonical entry in a registry enum appropriate to the instrument type. For beamlines, use a value from BeamlineEnum; additional instrument-type registries may be referenced here as they are introduced.",
                     "type": "string"
                 },
+                "instrument_type": {
+                    "description": "Which Instrument class this record is: `Instrument` or the name of one of its subclasses, such as `CryoEMInstrument`. A loader uses it to pick the class, so an entry in a collection typed Instrument (Dataset.instruments) can carry the subclass's fields.",
+                    "enum": [
+                        "XRayInstrument"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "manufacturer": {
                     "description": "Instrument manufacturer",
                     "type": [
@@ -12359,7 +12934,26 @@
         "instruments": {
             "description": "All instruments used across studies",
             "items": {
-                "$ref": "#/$defs/Instrument"
+                "anyOf": [
+                    {
+                        "$ref": "#/$defs/Instrument"
+                    },
+                    {
+                        "$ref": "#/$defs/CryoEMInstrument"
+                    },
+                    {
+                        "$ref": "#/$defs/XRayInstrument"
+                    },
+                    {
+                        "$ref": "#/$defs/SANSInstrument"
+                    },
+                    {
+                        "$ref": "#/$defs/SAXSInstrument"
+                    },
+                    {
+                        "$ref": "#/$defs/BeamlineInstrument"
+                    }
+                ]
             },
             "type": [
                 "array",
@@ -12629,5 +13223,5 @@
     ],
     "title": "lambda-ber-schema",
     "type": "object",
-    "version": "0.0.0.post409.dev0+543ae40"
+    "version": "0.0.0.post387.dev0+32c846d"
 }
