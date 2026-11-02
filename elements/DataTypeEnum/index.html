@@ -975,7 +975,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.4/" class="md-nav__link">
+      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.5/" class="md-nav__link">
         
   
   
@@ -1375,6 +1375,16 @@
 <td>Validation report</td>
 </tr>
 <tr>
+<td>predicted_model</td>
+<td>None</td>
+<td>Atomic model predicted from sequence and not fitted to experimental data</td>
+</tr>
+<tr>
+<td>particle_assignments</td>
+<td>None</td>
+<td>Per-particle poses, state or class assignments, and confidence scores</td>
+</tr>
+<tr>
 <td>gain_reference</td>
 <td>None</td>
 <td>Detector gain reference image, used to normalise per-pixel sensitivity of raw...</td>
@@ -1545,6 +1555,13 @@ permissible_values:
   validation_report:
     text: validation_report
     description: Validation report
+  predicted_model:
+    text: predicted_model
+    description: Atomic model predicted from sequence and not fitted to experimental
+      data
+  particle_assignments:
+    text: particle_assignments
+    description: Per-particle poses, state or class assignments, and confidence scores
   gain_reference:
     text: gain_reference
     description: Detector gain reference image, used to normalise per-pixel sensitivity

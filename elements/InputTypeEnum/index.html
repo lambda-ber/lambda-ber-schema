@@ -975,7 +975,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.4/" class="md-nav__link">
+      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.5/" class="md-nav__link">
         
   
   
@@ -1309,6 +1309,21 @@
 <td>None</td>
 <td>Mask or selection file</td>
 </tr>
+<tr>
+<td>particles</td>
+<td>None</td>
+<td>Particle images, with or without poses, that the workflow fits or reconstruct...</td>
+</tr>
+<tr>
+<td>structure_prior</td>
+<td>None</td>
+<td>A predicted or previously determined structure the workflow starts from and l...</td>
+</tr>
+<tr>
+<td>particle_assignments</td>
+<td>None</td>
+<td>Per-particle poses, state or class assignments, or confidence scores produced...</td>
+</tr>
 </tbody>
 </table>
 <h2 id="slots">Slots</h2>
@@ -1351,6 +1366,19 @@ permissible_values:
   mask:
     text: mask
     description: Mask or selection file
+  particles:
+    text: particles
+    description: Particle images, with or without poses, that the workflow fits or
+      reconstructs from
+  structure_prior:
+    text: structure_prior
+    description: A predicted or previously determined structure the workflow starts
+      from and lets the data move, as opposed to a fixed reference it is compared
+      or aligned against
+  particle_assignments:
+    text: particle_assignments
+    description: Per-particle poses, state or class assignments, or confidence scores
+      produced by an earlier run, used to select or split particles
 
 </code></pre>
 

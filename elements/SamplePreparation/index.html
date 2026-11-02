@@ -390,7 +390,7 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../profiles/lambda-core-rocrate-profile-v0.3.4/">
+<a class="md-nav__link" href="../../profiles/lambda-core-rocrate-profile-v0.3.5/">
 <span class="md-ellipsis">
     LAMBDA Core RO-Crate Profile
     
@@ -729,6 +729,8 @@
 
       SamplePreparation : protocol_description
 
+      SamplePreparation : protocol_references
+
       SamplePreparation : purification_steps
 
 
@@ -824,6 +826,12 @@
 <td><a href="../protocol_description/">protocol_description</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>Detailed protocol description</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../protocol_references/">protocol_references</a></td>
+<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>Where the protocol this preparation followed is published or hosted, as a DOI...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -1173,6 +1181,28 @@ attributes:
     rank: 1000
     domain_of:
     - SamplePreparation
+  protocol_references:
+    name: protocol_references
+    description: Where the protocol this preparation followed is published or hosted,
+      as a DOI CURIE (doi:10.17504/protocols.io.n2bvj3dexlk5/v1 for a protocols.io
+      protocol, doi:10.1038/nprot.2007.452 for a methods paper) or a URL (a lab wiki
+      page, a facility SOP). protocol_description says what was done; this says where
+      the authoritative version lives.
+    comments:
+    - 'Prefer the DOI CURIE when one exists: protocols.io, Nature Protocols, STAR
+      Protocols, Bio-protocol and MethodsX all issue DOIs, and a DOI outlives the
+      URL it resolves to'
+    - List each protocol the preparation followed, e.g. a protocols.io expression
+      protocol and the methods paper it adapts. Record departures from a cited protocol
+      in protocol_description
+    from_schema: http://w3id.org/lambda/
+    related_mappings:
+    - prov:hadPlan
+    rank: 1000
+    domain_of:
+    - SamplePreparation
+    range: uriorcurie
+    multivalued: true
   expression_system:
     name: expression_system
     description: Expression system used for recombinant protein production
@@ -1533,6 +1563,30 @@ attributes:
     domain_of:
     - SamplePreparation
     range: string
+  protocol_references:
+    name: protocol_references
+    description: Where the protocol this preparation followed is published or hosted,
+      as a DOI CURIE (doi:10.17504/protocols.io.n2bvj3dexlk5/v1 for a protocols.io
+      protocol, doi:10.1038/nprot.2007.452 for a methods paper) or a URL (a lab wiki
+      page, a facility SOP). protocol_description says what was done; this says where
+      the authoritative version lives.
+    comments:
+    - 'Prefer the DOI CURIE when one exists: protocols.io, Nature Protocols, STAR
+      Protocols, Bio-protocol and MethodsX all issue DOIs, and a DOI outlives the
+      URL it resolves to'
+    - List each protocol the preparation followed, e.g. a protocols.io expression
+      protocol and the methods paper it adapts. Record departures from a cited protocol
+      in protocol_description
+    from_schema: http://w3id.org/lambda/
+    related_mappings:
+    - prov:hadPlan
+    rank: 1000
+    alias: protocol_references
+    owner: SamplePreparation
+    domain_of:
+    - SamplePreparation
+    range: uriorcurie
+    multivalued: true
   expression_system:
     name: expression_system
     description: Expression system used for recombinant protein production

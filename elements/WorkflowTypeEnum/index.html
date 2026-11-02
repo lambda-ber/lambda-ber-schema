@@ -975,7 +975,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.4/" class="md-nav__link">
+      <a href="../../profiles/lambda-core-rocrate-profile-v0.3.5/" class="md-nav__link">
         
   
   
@@ -1400,6 +1400,21 @@
 <td>Model validation and quality assessment</td>
 </tr>
 <tr>
+<td>structure_prediction</td>
+<td>None</td>
+<td>Prediction of an atomic model from sequence, with no experimental data (e</td>
+</tr>
+<tr>
+<td>heterogeneity_analysis</td>
+<td>None</td>
+<td>Analysis of conformational or compositional heterogeneity across particles, d...</td>
+</tr>
+<tr>
+<td>particle_to_model_inference</td>
+<td>None</td>
+<td>An atomic model inferred directly from particle images, with no reconstructed...</td>
+</tr>
+<tr>
 <td>md_system_setup</td>
 <td>None</td>
 <td>MD system preparation - parameterization, solvation, topology building</td>
@@ -1522,6 +1537,28 @@ permissible_values:
   model_validation:
     text: model_validation
     description: Model validation and quality assessment
+  structure_prediction:
+    text: structure_prediction
+    description: Prediction of an atomic model from sequence, with no experimental
+      data (e.g., AlphaFold, RoseTTAFold, Boltz)
+    comments:
+    - Its predicted model, linked as a WorkflowInputAssociation with input_type structure_prior,
+      is how a later run records that it started from a prediction
+  heterogeneity_analysis:
+    text: heterogeneity_analysis
+    description: Analysis of conformational or compositional heterogeneity across
+      particles, discrete or continuous, that assigns particles to states or places
+      them on a latent space (e.g., cryoDRGN, RECOVAR, 3DVA)
+  particle_to_model_inference:
+    text: particle_to_model_inference
+    description: An atomic model inferred directly from particle images, with no reconstructed
+      map in between, usually guided by a structure-prediction prior and refining
+      particle poses as it goes (e.g., Fold'EM)
+    comments:
+    - Distinct from model_building, which fits a model into a map that an earlier
+      refinement produced
+    - Record the particles as input_type particles, the prior as input_type structure_prior,
+      and one output per state with conformational_state set
   md_system_setup:
     text: md_system_setup
     description: MD system preparation - parameterization, solvation, topology building

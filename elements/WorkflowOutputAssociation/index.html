@@ -390,7 +390,7 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../profiles/lambda-core-rocrate-profile-v0.3.4/">
+<a class="md-nav__link" href="../../profiles/lambda-core-rocrate-profile-v0.3.5/">
 <span class="md-ellipsis">
     LAMBDA Core RO-Crate Profile
     
@@ -559,6 +559,8 @@
 <div class="mermaid"> classDiagram
     class WorkflowOutputAssociation
     click WorkflowOutputAssociation href "../WorkflowOutputAssociation/"
+      WorkflowOutputAssociation : conformational_state
+
       WorkflowOutputAssociation : file_id
 
 
@@ -569,6 +571,8 @@
         click DataFile href "../DataFile/"
 
 
+
+      WorkflowOutputAssociation : number_of_particles
 
       WorkflowOutputAssociation : output_type
 
@@ -622,6 +626,18 @@
 <td><a href="../output_type/">output_type</a></td>
 <td>0..1 <br/> <a href="../OutputTypeEnum/">OutputTypeEnum</a></td>
 <td>Type of output from the workflow</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../conformational_state/">conformational_state</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Label of the conformational state or class this output describes, for a workf...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../number_of_particles/">number_of_particles</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>Number of particles assigned to the state or class this output describes</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -714,6 +730,38 @@ attributes:
     domain_of:
     - WorkflowOutputAssociation
     range: OutputTypeEnum
+  conformational_state:
+    name: conformational_state
+    description: Label of the conformational state or class this output describes,
+      for a workflow that resolves more than one (e.g., 'state A', 'activated E2P',
+      'class 3'). Outputs of one run that share a label describe the same state, so
+      a state's map, model and particle subset can be read together.
+    comments:
+    - Free text, because state labels are specific to each study. Not the same field
+      as StructuralFeature.conformational_state in functional_annotation.yaml, which
+      takes a ConformationalStateEnum value (open, closed, intermediate, ...) and
+      describes a protein feature, not a workflow output
+    from_schema: http://w3id.org/lambda/
+    related_mappings:
+    - IHMCIF:_ihm_ensemble_info.ensemble_name
+    - IHMCIF:_ihm_model_group.name
+    rank: 1000
+    domain_of:
+    - WorkflowOutputAssociation
+    - StructuralFeature
+  number_of_particles:
+    name: number_of_particles
+    description: Number of particles assigned to the state or class this output describes.
+      Set it only where the output is one of several per-state results; a single-state
+      run records its count on WorkflowRun.number_of_particles.
+    from_schema: http://w3id.org/lambda/
+    related_mappings:
+    - mmCIF:_em_3d_reconstruction.num_particles
+    domain_of:
+    - WorkflowRun
+    - WorkflowOutputAssociation
+    range: integer
+    minimum_value: 0
 
 </code></pre>
 </details>
@@ -762,6 +810,43 @@ attributes:
     domain_of:
     - WorkflowOutputAssociation
     range: OutputTypeEnum
+  conformational_state:
+    name: conformational_state
+    description: Label of the conformational state or class this output describes,
+      for a workflow that resolves more than one (e.g., 'state A', 'activated E2P',
+      'class 3'). Outputs of one run that share a label describe the same state, so
+      a state's map, model and particle subset can be read together.
+    comments:
+    - Free text, because state labels are specific to each study. Not the same field
+      as StructuralFeature.conformational_state in functional_annotation.yaml, which
+      takes a ConformationalStateEnum value (open, closed, intermediate, ...) and
+      describes a protein feature, not a workflow output
+    from_schema: http://w3id.org/lambda/
+    related_mappings:
+    - IHMCIF:_ihm_ensemble_info.ensemble_name
+    - IHMCIF:_ihm_model_group.name
+    rank: 1000
+    alias: conformational_state
+    owner: WorkflowOutputAssociation
+    domain_of:
+    - WorkflowOutputAssociation
+    - StructuralFeature
+    range: string
+  number_of_particles:
+    name: number_of_particles
+    description: Number of particles assigned to the state or class this output describes.
+      Set it only where the output is one of several per-state results; a single-state
+      run records its count on WorkflowRun.number_of_particles.
+    from_schema: http://w3id.org/lambda/
+    related_mappings:
+    - mmCIF:_em_3d_reconstruction.num_particles
+    alias: number_of_particles
+    owner: WorkflowOutputAssociation
+    domain_of:
+    - WorkflowRun
+    - WorkflowOutputAssociation
+    range: integer
+    minimum_value: 0
 
 </code></pre>
 </details>

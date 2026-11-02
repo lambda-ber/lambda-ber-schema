@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://lambda-ber.github.io/lambda-ber-schema/profiles/lambda-core-rocrate-profile-v0.3.4/">
+        <link rel="canonical" href="https://lambda-ber.github.io/lambda-ber-schema/profiles/lambda-core-rocrate-profile-v0.3.5/">
       
       
         <link rel="prev" href="../../use-cases/06-reanalysis-triggers.html">
@@ -2042,14 +2042,24 @@
 
 
 <h1 id="lambda-core-ro-crate-profile">LAMBDA Core RO-Crate Profile</h1>
-<p><strong>Version 0.3.4</strong> · Technique-neutral · Normative specification</p>
+<p><strong>Version 0.3.5</strong> · Technique-neutral · Normative specification</p>
 <p>Binds <code>lambda-ber-schema</code> (LinkML) to RO-Crate 1.2 as a <strong>file manifest</strong> contract. A crate carries
 the highest-level details a program needs to decide whether a dataset is worth opening, and then
 <em>points</em> at the fuller record instead of restating it. It is a search-and-handoff surface, not a
 second copy of the schema.</p>
-<p>Profile URI: <code>https://w3id.org/lambda/profile/core/0.3.4</code>
+<p>Profile URI: <code>https://w3id.org/lambda/profile/core/0.3.5</code>
 Machine-readable source: <a href="../../../src/lambda_ber_schema/schema/lambda_rocrate_core.yaml"><code>lambda_rocrate_core.yaml</code></a>
 Generated artifacts: <code>assets/rocrate/</code> (JSON Schema, JSON-LD context, OWL, prefix map, SSSOM crosswalk)</p>
+<p><strong>Changes in 0.3.5.</strong> An instrument may be typed by its kind: <code>lambda:CryoEMInstrument</code>,
+<code>lambda:XRayInstrument</code>, <code>lambda:SAXSInstrument</code>, <code>lambda:SANSInstrument</code> or
+<code>lambda:BeamlineInstrument</code>, in place of or beside <code>lambda:Instrument</code>, is now an <code>InstrumentEntity</code>
+(§6.2). Each token is the schema class of the same name, so a projector reads the record's
+<code>instrument_type</code> straight off the <code>@type</code>. Adds graph rule 14 (§12): an instrument names at most one
+kind, because a record takes one <code>instrument_type</code>. <code>InstrumentEntity</code>'s slots are unchanged; whether
+it should also carry the kind's capabilities (Cs, detector pixel size, energy filter) is open
+(lambda-ber/lambda-ber-schema#131). Additive: every crate that conformed to 0.3.4 conforms to 0.3.5
+unchanged. Crates SHOULD claim <code>https://w3id.org/lambda/profile/core/0.3.5</code>; the 0.3.4, 0.3.3, 0.3.2,
+0.3.1 and 0.3.0 URIs remain valid for what they said.</p>
 <p><strong>Changes in 0.3.4.</strong> Adds the cryo-EM session settings to <code>ExperimentRunAction</code> as <code>lambda:</code>
 terms, each the <code>ExperimentRun</code> slot of the same name: the optics (<code>accelerating_voltage</code>, <code>cs</code>,
 <code>spot_size</code>, <code>c2_aperture</code>, <code>beam_diameter</code>, <code>energy_filter_slit_width</code>, <code>phase_plate_used</code>), the
@@ -2192,7 +2202,7 @@ gate filters rather than silently returning crates that cannot answer them.</p>
 profile:</p>
 <pre><code class="language-json">&quot;conformsTo&quot;: [
   {&quot;@id&quot;: &quot;https://w3id.org/ro/crate/1.2&quot;},
-  {&quot;@id&quot;: &quot;https://w3id.org/lambda/profile/core/0.3.4&quot;}
+  {&quot;@id&quot;: &quot;https://w3id.org/lambda/profile/core/0.3.5&quot;}
 ]
 </code></pre>
 <p>A technique extension appends its own URI; it never replaces the Core URI. The metadata descriptor
@@ -2418,6 +2428,20 @@ beside the typed entity:</p>
 themselves, and the (sample, entity) pair identifies the <code>SampleComponent</code> row in the fuller
 record. Crates that write <code>chebi_id</code> or <code>pdb_ligand_id</code> SHOULD bind <code>CHEBI</code> and <code>pdb.ligand</code> in
 their context, as they bind <code>uniprot</code>.</p>
+<p><strong>An instrument may say what kind it is.</strong> An <code>InstrumentEntity</code> is typed
+<code>["IndividualProduct", "lambda:Instrument"]</code>, or names its kind with the schema's subclass in place of
+<code>lambda:Instrument</code>: <code>lambda:CryoEMInstrument</code>, <code>lambda:XRayInstrument</code>, <code>lambda:SAXSInstrument</code>,
+<code>lambda:SANSInstrument</code> or <code>lambda:BeamlineInstrument</code>. Writing both is allowed and means the same.
+The token is the class a projector writes as the record's <code>instrument_type</code>
+(<code>lambda:CryoEMInstrument</code> → <code>instrument_type: CryoEMInstrument</code>), and an instrument typed only
+<code>lambda:Instrument</code> projects as a plain <code>Instrument</code>. Because a record has one <code>instrument_type</code>, an
+instrument names at most one kind (graph rule 14). The kind adds no terms: <code>InstrumentEntity</code> is the
+same closed class whatever its kind, so <code>cs</code> or <code>energy_filter_present</code> on an instrument is still
+rejected.</p>
+<pre><code class="language-json">{&quot;@id&quot;: &quot;#instr-krios&quot;, &quot;@type&quot;: [&quot;IndividualProduct&quot;, &quot;lambda:CryoEMInstrument&quot;],
+ &quot;name&quot;: &quot;Titan Krios at EMSL&quot;, &quot;instrument_code&quot;: &quot;EMSL-KRIOS-99999&quot;,
+ &quot;manufacturer&quot;: &quot;ThermoFisher&quot;, &quot;model&quot;: &quot;Titan Krios&quot;, &quot;detector&quot;: &quot;K3&quot;}
+</code></pre>
 <p><strong>The run carries the settings it was collected with.</strong> An <code>ExperimentRunAction</code> names its sample
 (<code>object</code>), its equipment and software (<code>instrument</code>) and what it produced (<code>result</code>). For cryo-EM it
 also carries the settings a facility records for every session, each the <code>ExperimentRun</code> slot of the
@@ -2477,7 +2501,7 @@ crate.</p>
   &quot;@id&quot;: &quot;saxs/&quot;,
   &quot;@type&quot;: &quot;Dataset&quot;,
   &quot;name&quot;: &quot;SEC-SAXS-MALS of GluRS (ALS SIBYLS 12.3.1)&quot;,
-  &quot;conformsTo&quot;: [{&quot;@id&quot;: &quot;https://w3id.org/lambda/profile/core/0.3.4&quot;},
+  &quot;conformsTo&quot;: [{&quot;@id&quot;: &quot;https://w3id.org/lambda/profile/core/0.3.5&quot;},
                  {&quot;@id&quot;: &quot;https://w3id.org/lambda/profile/saxs/0.3.0&quot;}],
   &quot;hasPart&quot;: [{&quot;@id&quot;: &quot;saxs/ro-crate-metadata.json&quot;}]
 }
@@ -2785,6 +2809,9 @@ checker:</p>
 <li>A <code>ComponentInteractionEntity</code>'s <code>sample_id</code> resolves to a <code>SampleEntity</code> in the graph, and its
    <code>subject_id</code> and <code>object_id</code> each resolve to an entity that sample lists in
    <code>hasBioChemEntityPart</code> (§6.2). An interaction is between two things its sample actually holds.</li>
+<li>An <code>InstrumentEntity</code> names at most one instrument kind in its <code>@type</code> (§6.2), so that the
+   record's <code>instrument_type</code> can be read from it. <code>lambda:Instrument</code> beside a kind is not a second
+   kind.</li>
 </ol>
 <p>SHACL shapes would be the natural home for layer 3, since RDF validation dispatches on <code>rdf:type</code>
 properly. They are <strong>not</strong> generated: <code>gen-shacl</code> raises <code>KeyError('lambda-ber-schema')</code> for classes
@@ -2810,7 +2837,7 @@ instances, so a single JSON object is walked key by key, and <code>--legacy-mode
 </tr>
 <tr>
 <td style="text-align: left;"><code>ssrl-mx-XA_x16.json</code></td>
-<td style="text-align: left;">a real SSRL MX package brought to Core 0.3.4, with MX quantities nested in <code>resultSummary</code></td>
+<td style="text-align: left;">a real SSRL MX package brought to Core 0.3.5, with MX quantities nested in <code>resultSummary</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>saxs-glurs.json</code></td>
@@ -2904,8 +2931,8 @@ migration would be prose a reader has to transcribe by hand.</p>
 </tr>
 <tr>
 <td style="text-align: left;"><code>InstrumentEntity</code></td>
-<td style="text-align: left;"><code>["IndividualProduct", "lambda:Instrument"]</code></td>
-<td style="text-align: left;"><code>Instrument</code></td>
+<td style="text-align: left;"><code>["IndividualProduct", "lambda:Instrument"]</code>, or <code>lambda:&lt;Kind&gt;Instrument</code> for the kind</td>
+<td style="text-align: left;"><code>Instrument</code>, or the subclass the token names, as <code>instrument_type</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ExperimentRunAction</code></td>
@@ -2987,13 +3014,13 @@ carries the schema's own <code>snake_case</code> slot name, so <code>lambda:file
 <p>SSRL publishes crates conforming to <code>https://w3id.org/lambda/profile/core/0.2</code> — a URI with no
 written specification — using <code>lambda:Experiment</code> / <code>lambda:RawUnit</code> / <code>lambda:DerivedProduct</code> /
 <code>lambda:AuxiliaryMetadataItem</code> and camelCase terms under
-<code>https://w3id.org/lambda/terms/0.2/</code>. Those crates exist and a loader consumes them, so Core 0.3.4
+<code>https://w3id.org/lambda/terms/0.2/</code>. Those crates exist and a loader consumes them, so Core 0.3.5
 accepts the 0.2 spellings and marks them deprecated rather than breaking them.</p>
 <table>
 <thead>
 <tr>
 <th style="text-align: left;">0.2 spelling</th>
-<th style="text-align: left;">Core 0.3.4</th>
+<th style="text-align: left;">Core 0.3.5</th>
 </tr>
 </thead>
 <tbody>
