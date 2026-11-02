@@ -18213,6 +18213,9 @@
     {
       "name": "workflowOutputAssociation__conformational_state",
       "description": "Label of the conformational state or class this output describes, for a workflow that resolves more than one (e.g., 'state A', 'activated E2P', 'class 3'). Outputs of one run that share a label describe the same state, so a state's map, model and particle subset can be read together.",
+      "comments": [
+        "Free text, because state labels are specific to each study. Not the same field as StructuralFeature.conformational_state in functional_annotation.yaml, which takes a ConformationalStateEnum value (open, closed, intermediate, ...) and describes a protein feature, not a workflow output"
+      ],
       "from_schema": "http://w3id.org/lambda/",
       "related_mappings": [
         "https://mmcif.wwpdb.org/dictionaries/mmcif_ihm_ext.dic/Items/_ihm_ensemble_info.ensemble_name",
@@ -28714,6 +28717,9 @@
         {
           "name": "conformational_state",
           "description": "Label of the conformational state or class this output describes, for a workflow that resolves more than one (e.g., 'state A', 'activated E2P', 'class 3'). Outputs of one run that share a label describe the same state, so a state's map, model and particle subset can be read together.",
+          "comments": [
+            "Free text, because state labels are specific to each study. Not the same field as StructuralFeature.conformational_state in functional_annotation.yaml, which takes a ConformationalStateEnum value (open, closed, intermediate, ...) and describes a protein feature, not a workflow output"
+          ],
           "related_mappings": [
             "IHMCIF:_ihm_ensemble_info.ensemble_name",
             "IHMCIF:_ihm_model_group.name"
@@ -30299,9 +30305,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda_ber_schema.yaml",
-  "source_file_date": "2026-11-02T17:15:38",
-  "source_file_size": 286648,
-  "generation_date": "2026-11-02T17:15:46",
+  "source_file_date": "2026-11-02T17:25:08",
+  "source_file_size": 286965,
+  "generation_date": "2026-11-02T17:25:20",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda_ber_schema.context.jsonld",

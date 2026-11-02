@@ -3,17 +3,20 @@
 #
 # Values are from Fold'EM (Maddipatla et al., arXiv:2610.01358v2) on integrin a5b1 bound to the
 # BIIG2 Fab (PDB 9B9J, EMPIAR-12552). Three workflows share the dataset's particle stack:
-#   1. the deposited RELION-style refinement: 374,814 particles, a 2.6 A map
+#   1. the deposited cryoSPARC reconstruction: 317,066 particles, a 2.6 A map
 #   2. an AlphaFold3 prediction from sequence alone, which places the Fab at the wrong site
-#   3. Fold'EM, which starts from that prediction and fits 1,000 particles (0.26%) to a model at
+#   3. Fold'EM, which starts from that prediction and fits 1,000 particles to a model at
 #      FSC 3.52 A with no map in between
+# The paper's 374,814 is the size of the EMPIAR-12552 particle set (its Table A1, "number of
+# particles in original dataset"). The deposited map used 317,066 of them (EMD-44386,
+# _em_3d_reconstruction.num_particles), and number_of_particles counts what went into the result.
 # The prediction is an output of (2) and an input of (3), typed structure_prior, so a reader can
 # tell a prior the data moved from a fixed reference.
 id: lambdaber:dataset-foldem-integrin-fab
 title: Integrin a5b1-BIIG2 Fab - atomic model from 1,000 particles
 description: >-
   Worked example of particle_to_model_inference: a model inferred from a small subset of the
-  EMPIAR-12552 particles with an AlphaFold3 prior, beside the deposited full-stack reconstruction.
+  EMPIAR-12552 particles with an AlphaFold3 prior, beside the deposited reconstruction.
 keywords:
 - cryo-EM
 - structure prediction
@@ -71,8 +74,8 @@ workflow_runs:
   title: Deposited reconstruction of 9B9J
   workflow_code: WF-9B9J-REFINE
   workflow_type: refinement
-  software_name: RELION
-  number_of_particles: 374814
+  software_name: cryoSPARC
+  number_of_particles: 317066
   refinement_params:
     resolution_0_143:
       numeric_value: 2.6
@@ -90,8 +93,8 @@ workflow_runs:
 - id: lambdaber:workflow-foldem-integrin-abinitio
   title: Fold'EM ab initio inference of integrin a5b1-BIIG2 Fab
   description: >-
-    Model inferred from 1,000 particles (0.26% of the deposited stack) with ab initio poses and the
-    AlphaFold3 prediction as prior. Against 9B9J: RMSD 2.49 A, TM-score 0.956, FSC 3.52 A. Variable
+    Model inferred from 1,000 of the 374,814 particles in EMPIAR-12552 (0.27%) with ab initio
+    poses and the AlphaFold3 prediction as prior. Against 9B9J: RMSD 2.49 A, TM-score 0.956, FSC 3.52 A. Variable
     loops at the interface are not recovered at atomic accuracy.
   workflow_code: WF-FOLDEM-9B9J-1K
   workflow_type: particle_to_model_inference

@@ -15,7 +15,7 @@ lambdaber:dataset-foldem-integrin-fab a lambdaber:Dataset ;
         lambdaber:file-empiar-12552-particles,
         lambdaber:file-foldem-integrin-fab-model,
         lambdaber:file-foldem-integrin-fab-poses ;
-    lambdaber:description "Worked example of particle_to_model_inference: a model inferred from a small subset of the EMPIAR-12552 particles with an AlphaFold3 prior, beside the deposited full-stack reconstruction." ;
+    lambdaber:description "Worked example of particle_to_model_inference: a model inferred from a small subset of the EMPIAR-12552 particles with an AlphaFold3 prior, beside the deposited reconstruction." ;
     lambdaber:experiment_runs lambdaber:exp-empiar-12552 ;
     lambdaber:experiment_sample_associations [ a lambdaber:ExperimentSampleAssociation ;
             lambdaber:experiment_id lambdaber:exp-empiar-12552 ;
@@ -35,8 +35,8 @@ lambdaber:dataset-foldem-integrin-fab a lambdaber:Dataset ;
             lambdaber:sample_id lambdaber:sample-integrin-a5b1-biig2 ],
         [ a lambdaber:SampleProteinAssociation ;
             lambdaber:copy_number 1 ;
-            lambdaber:protein_id uniprot:P05556 ;
-            lambdaber:role "subunit" ;
+            lambdaber:protein_id lambdaber:protein-biig2-fab-light ;
+            lambdaber:role "binding_partner" ;
             lambdaber:sample_id lambdaber:sample-integrin-a5b1-biig2 ],
         [ a lambdaber:SampleProteinAssociation ;
             lambdaber:copy_number 1 ;
@@ -45,8 +45,8 @@ lambdaber:dataset-foldem-integrin-fab a lambdaber:Dataset ;
             lambdaber:sample_id lambdaber:sample-integrin-a5b1-biig2 ],
         [ a lambdaber:SampleProteinAssociation ;
             lambdaber:copy_number 1 ;
-            lambdaber:protein_id lambdaber:protein-biig2-fab-light ;
-            lambdaber:role "binding_partner" ;
+            lambdaber:protein_id uniprot:P05556 ;
+            lambdaber:role "subunit" ;
             lambdaber:sample_id lambdaber:sample-integrin-a5b1-biig2 ] ;
     lambdaber:samples lambdaber:sample-integrin-a5b1-biig2 ;
     lambdaber:studies lambdaber:study-foldem-integrin ;
@@ -59,13 +59,13 @@ lambdaber:dataset-foldem-integrin-fab a lambdaber:Dataset ;
             lambdaber:study_id lambdaber:study-foldem-integrin ] ;
     lambdaber:study_workflow_associations [ a lambdaber:StudyWorkflowAssociation ;
             lambdaber:study_id lambdaber:study-foldem-integrin ;
-            lambdaber:workflow_id lambdaber:workflow-af3-integrin-fab ],
-        [ a lambdaber:StudyWorkflowAssociation ;
-            lambdaber:study_id lambdaber:study-foldem-integrin ;
             lambdaber:workflow_id lambdaber:workflow-9b9j-deposited-refinement ],
         [ a lambdaber:StudyWorkflowAssociation ;
             lambdaber:study_id lambdaber:study-foldem-integrin ;
-            lambdaber:workflow_id lambdaber:workflow-foldem-integrin-abinitio ] ;
+            lambdaber:workflow_id lambdaber:workflow-foldem-integrin-abinitio ],
+        [ a lambdaber:StudyWorkflowAssociation ;
+            lambdaber:study_id lambdaber:study-foldem-integrin ;
+            lambdaber:workflow_id lambdaber:workflow-af3-integrin-fab ] ;
     lambdaber:workflow_experiment_associations [ a lambdaber:WorkflowExperimentAssociation ;
             lambdaber:experiment_id lambdaber:exp-empiar-12552 ;
             lambdaber:workflow_id lambdaber:workflow-9b9j-deposited-refinement ],
@@ -75,11 +75,7 @@ lambdaber:dataset-foldem-integrin-fab a lambdaber:Dataset ;
     lambdaber:workflow_input_associations [ a lambdaber:WorkflowInputAssociation ;
             lambdaber:file_id lambdaber:file-empiar-12552-particles ;
             lambdaber:input_type "particles" ;
-            lambdaber:workflow_id lambdaber:workflow-foldem-integrin-abinitio ],
-        [ a lambdaber:WorkflowInputAssociation ;
-            lambdaber:file_id lambdaber:file-af3-integrin-fab-model ;
-            lambdaber:input_type "structure_prior" ;
-            lambdaber:workflow_id lambdaber:workflow-foldem-integrin-abinitio ],
+            lambdaber:workflow_id lambdaber:workflow-9b9j-deposited-refinement ],
         [ a lambdaber:WorkflowInputAssociation ;
             lambdaber:file_id lambdaber:file-af3-integrin-fab-job ;
             lambdaber:input_type "parameters" ;
@@ -87,23 +83,27 @@ lambdaber:dataset-foldem-integrin-fab a lambdaber:Dataset ;
         [ a lambdaber:WorkflowInputAssociation ;
             lambdaber:file_id lambdaber:file-empiar-12552-particles ;
             lambdaber:input_type "particles" ;
-            lambdaber:workflow_id lambdaber:workflow-9b9j-deposited-refinement ] ;
-    lambdaber:workflow_output_associations [ a lambdaber:WorkflowOutputAssociation ;
-            lambdaber:file_id lambdaber:file-foldem-integrin-fab-poses ;
-            lambdaber:output_type "particle_assignments" ;
             lambdaber:workflow_id lambdaber:workflow-foldem-integrin-abinitio ],
-        [ a lambdaber:WorkflowOutputAssociation ;
+        [ a lambdaber:WorkflowInputAssociation ;
+            lambdaber:file_id lambdaber:file-af3-integrin-fab-model ;
+            lambdaber:input_type "structure_prior" ;
+            lambdaber:workflow_id lambdaber:workflow-foldem-integrin-abinitio ] ;
+    lambdaber:workflow_output_associations [ a lambdaber:WorkflowOutputAssociation ;
             lambdaber:file_id lambdaber:file-foldem-integrin-fab-model ;
             lambdaber:output_type "model" ;
             lambdaber:workflow_id lambdaber:workflow-foldem-integrin-abinitio ],
         [ a lambdaber:WorkflowOutputAssociation ;
-            lambdaber:file_id lambdaber:file-9b9j-map ;
-            lambdaber:output_type "map" ;
-            lambdaber:workflow_id lambdaber:workflow-9b9j-deposited-refinement ],
+            lambdaber:file_id lambdaber:file-foldem-integrin-fab-poses ;
+            lambdaber:output_type "particle_assignments" ;
+            lambdaber:workflow_id lambdaber:workflow-foldem-integrin-abinitio ],
         [ a lambdaber:WorkflowOutputAssociation ;
             lambdaber:file_id lambdaber:file-af3-integrin-fab-model ;
             lambdaber:output_type "model" ;
-            lambdaber:workflow_id lambdaber:workflow-af3-integrin-fab ] ;
+            lambdaber:workflow_id lambdaber:workflow-af3-integrin-fab ],
+        [ a lambdaber:WorkflowOutputAssociation ;
+            lambdaber:file_id lambdaber:file-9b9j-map ;
+            lambdaber:output_type "map" ;
+            lambdaber:workflow_id lambdaber:workflow-9b9j-deposited-refinement ] ;
     lambdaber:workflow_runs lambdaber:workflow-9b9j-deposited-refinement,
         lambdaber:workflow-af3-integrin-fab,
         lambdaber:workflow-foldem-integrin-abinitio .
@@ -186,13 +186,13 @@ lambdaber:exp-empiar-12552 a lambdaber:ExperimentRun ;
 lambdaber:workflow-9b9j-deposited-refinement a lambdaber:WorkflowRun ;
     dcterms:title "Deposited reconstruction of 9B9J" ;
     lambdaber:deposited_to_pdb true ;
-    lambdaber:number_of_particles 374814 ;
+    lambdaber:number_of_particles 317066 ;
     lambdaber:pdb_id "9B9J" ;
     lambdaber:refinement_params [ a lambdaber:RefinementParameters ;
             lambdaber:resolution_0_143 [ a nmdc:QuantityValue ;
                     lambdaber:numeric_value "2.6"^^xsd:float ;
                     lambdaber:unit "Angstroms" ] ] ;
-    lambdaber:software_name "RELION" ;
+    lambdaber:software_name "cryoSPARC" ;
     lambdaber:workflow_code "WF-9B9J-REFINE" ;
     lambdaber:workflow_type "refinement" .
 
@@ -208,7 +208,7 @@ lambdaber:sample-integrin-a5b1-biig2 a lambdaber:Sample ;
 lambdaber:workflow-foldem-integrin-abinitio a lambdaber:WorkflowRun ;
     dcterms:title "Fold'EM ab initio inference of integrin a5b1-BIIG2 Fab" ;
     lambdaber:additional_software "AlphaFold3" ;
-    lambdaber:description "Model inferred from 1,000 particles (0.26% of the deposited stack) with ab initio poses and the AlphaFold3 prediction as prior. Against 9B9J: RMSD 2.49 A, TM-score 0.956, FSC 3.52 A. Variable loops at the interface are not recovered at atomic accuracy." ;
+    lambdaber:description "Model inferred from 1,000 of the 374,814 particles in EMPIAR-12552 (0.27%) with ab initio poses and the AlphaFold3 prediction as prior. Against 9B9J: RMSD 2.49 A, TM-score 0.956, FSC 3.52 A. Variable loops at the interface are not recovered at atomic accuracy." ;
     lambdaber:number_of_particles 1000 ;
     lambdaber:processing_parameters "ab initio poses; guidance on intermediate Pairformer states; particle-level likelihood" ;
     lambdaber:software_name "Fold'EM" ;

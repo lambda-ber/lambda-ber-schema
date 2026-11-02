@@ -22178,6 +22178,9 @@
     {
       "name": "workflowOutputAssociation__conformational_state",
       "description": "Label of the conformational state or class this output describes, for a workflow that resolves more than one (e.g., 'state A', 'activated E2P', 'class 3'). Outputs of one run that share a label describe the same state, so a state's map, model and particle subset can be read together.",
+      "comments": [
+        "Free text, because state labels are specific to each study. Not the same field as StructuralFeature.conformational_state in functional_annotation.yaml, which takes a ConformationalStateEnum value (open, closed, intermediate, ...) and describes a protein feature, not a workflow output"
+      ],
       "from_schema": "http://w3id.org/lambda/",
       "related_mappings": [
         "https://mmcif.wwpdb.org/dictionaries/mmcif_ihm_ext.dic/Items/_ihm_ensemble_info.ensemble_name",
@@ -34788,6 +34791,9 @@
         {
           "name": "conformational_state",
           "description": "Label of the conformational state or class this output describes, for a workflow that resolves more than one (e.g., 'state A', 'activated E2P', 'class 3'). Outputs of one run that share a label describe the same state, so a state's map, model and particle subset can be read together.",
+          "comments": [
+            "Free text, because state labels are specific to each study. Not the same field as StructuralFeature.conformational_state in functional_annotation.yaml, which takes a ConformationalStateEnum value (open, closed, intermediate, ...) and describes a protein feature, not a workflow output"
+          ],
           "related_mappings": [
             "IHMCIF:_ihm_ensemble_info.ensemble_name",
             "IHMCIF:_ihm_model_group.name"
@@ -36375,7 +36381,7 @@
   "source_file": "lambda_rocrate_core.yaml",
   "source_file_date": "2026-11-02T17:15:15",
   "source_file_size": 94503,
-  "generation_date": "2026-11-02T17:18:48",
+  "generation_date": "2026-11-02T17:28:49",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/rocrate/jsonld/lambda_rocrate_core.context.jsonld",

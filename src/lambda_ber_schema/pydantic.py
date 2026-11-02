@@ -8265,6 +8265,11 @@ class WorkflowOutputAssociation(ConfiguredBaseModel):
          'domain_of': ['WorkflowInputAssociation', 'WorkflowOutputAssociation']} })
     output_type: Optional[OutputTypeEnum] = Field(default=None, description="""Type of output from the workflow""", json_schema_extra = { "linkml_meta": {'alias': 'output_type', 'domain_of': ['WorkflowOutputAssociation']} })
     conformational_state: Optional[str] = Field(default=None, description="""Label of the conformational state or class this output describes, for a workflow that resolves more than one (e.g., 'state A', 'activated E2P', 'class 3'). Outputs of one run that share a label describe the same state, so a state's map, model and particle subset can be read together.""", json_schema_extra = { "linkml_meta": {'alias': 'conformational_state',
+         'comments': ['Free text, because state labels are specific to each study. Not '
+                      'the same field as StructuralFeature.conformational_state in '
+                      'functional_annotation.yaml, which takes a '
+                      'ConformationalStateEnum value (open, closed, intermediate, ...) '
+                      'and describes a protein feature, not a workflow output'],
          'domain_of': ['StructuralFeature', 'WorkflowOutputAssociation'],
          'related_mappings': ['IHMCIF:_ihm_ensemble_info.ensemble_name',
                               'IHMCIF:_ihm_model_group.name']} })

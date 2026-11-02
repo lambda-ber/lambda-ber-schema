@@ -8,7 +8,7 @@ title: Fold'EM ab initio inference of integrin a5b1-BIIG2 Fab
 description: >-
   Atomic model of integrin a5b1 bound to the BIIG2 Fab inferred from 1,000 particles drawn from
   EMPIAR-12552, with poses estimated ab initio and AlphaFold3 as the prior. The deposited
-  reconstruction (PDB 9B9J) used 374,814 particles.
+  reconstruction (PDB 9B9J, EMD-44386) used 317,066.
 workflow_code: WF-FOLDEM-9B9J-1K
 workflow_type: particle_to_model_inference
 software_name: Fold'EM
