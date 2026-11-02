@@ -1,15 +1,26 @@
 # LAMBDA Core RO-Crate Profile
 
-**Version 0.3.4** · Technique-neutral · Normative specification
+**Version 0.3.5** · Technique-neutral · Normative specification
 
 Binds `lambda-ber-schema` (LinkML) to RO-Crate 1.2 as a **file manifest** contract. A crate carries
 the highest-level details a program needs to decide whether a dataset is worth opening, and then
 *points* at the fuller record instead of restating it. It is a search-and-handoff surface, not a
 second copy of the schema.
 
-Profile URI: `https://w3id.org/lambda/profile/core/0.3.4`
+Profile URI: `https://w3id.org/lambda/profile/core/0.3.5`
 Machine-readable source: [`lambda_rocrate_core.yaml`](../../../src/lambda_ber_schema/schema/lambda_rocrate_core.yaml)
 Generated artifacts: `assets/rocrate/` (JSON Schema, JSON-LD context, OWL, prefix map, SSSOM crosswalk)
+
+**Changes in 0.3.5.** An instrument may be typed by its kind: `lambda:CryoEMInstrument`,
+`lambda:XRayInstrument`, `lambda:SAXSInstrument`, `lambda:SANSInstrument` or
+`lambda:BeamlineInstrument`, in place of or beside `lambda:Instrument`, is now an `InstrumentEntity`
+(§6.2). Each token is the schema class of the same name, so a projector reads the record's
+`instrument_type` straight off the `@type`. Adds graph rule 14 (§12): an instrument names at most one
+kind, because a record takes one `instrument_type`. `InstrumentEntity`'s slots are unchanged; whether
+it should also carry the kind's capabilities (Cs, detector pixel size, energy filter) is open
+(lambda-ber/lambda-ber-schema#131). Additive: every crate that conformed to 0.3.4 conforms to 0.3.5
+unchanged. Crates SHOULD claim `https://w3id.org/lambda/profile/core/0.3.5`; the 0.3.4, 0.3.3, 0.3.2,
+0.3.1 and 0.3.0 URIs remain valid for what they said.
 
 **Changes in 0.3.4.** Adds the cryo-EM session settings to `ExperimentRunAction` as `lambda:`
 terms, each the `ExperimentRun` slot of the same name: the optics (`accelerating_voltage`, `cs`,
@@ -156,7 +167,7 @@ profile:
 ```json
 "conformsTo": [
   {"@id": "https://w3id.org/ro/crate/1.2"},
-  {"@id": "https://w3id.org/lambda/profile/core/0.3.4"}
+  {"@id": "https://w3id.org/lambda/profile/core/0.3.5"}
 ]
 ```
 
@@ -372,6 +383,23 @@ themselves, and the (sample, entity) pair identifies the `SampleComponent` row i
 record. Crates that write `chebi_id` or `pdb_ligand_id` SHOULD bind `CHEBI` and `pdb.ligand` in
 their context, as they bind `uniprot`.
 
+**An instrument may say what kind it is.** An `InstrumentEntity` is typed
+`["IndividualProduct", "lambda:Instrument"]`, or names its kind with the schema's subclass in place of
+`lambda:Instrument`: `lambda:CryoEMInstrument`, `lambda:XRayInstrument`, `lambda:SAXSInstrument`,
+`lambda:SANSInstrument` or `lambda:BeamlineInstrument`. Writing both is allowed and means the same.
+The token is the class a projector writes as the record's `instrument_type`
+(`lambda:CryoEMInstrument` → `instrument_type: CryoEMInstrument`), and an instrument typed only
+`lambda:Instrument` projects as a plain `Instrument`. Because a record has one `instrument_type`, an
+instrument names at most one kind (graph rule 14). The kind adds no terms: `InstrumentEntity` is the
+same closed class whatever its kind, so `cs` or `energy_filter_present` on an instrument is still
+rejected.
+
+```json
+{"@id": "#instr-krios", "@type": ["IndividualProduct", "lambda:CryoEMInstrument"],
+ "name": "Titan Krios at EMSL", "instrument_code": "EMSL-KRIOS-99999",
+ "manufacturer": "ThermoFisher", "model": "Titan Krios", "detector": "K3"}
+```
+
 **The run carries the settings it was collected with.** An `ExperimentRunAction` names its sample
 (`object`), its equipment and software (`instrument`) and what it produced (`result`). For cryo-EM it
 also carries the settings a facility records for every session, each the `ExperimentRun` slot of the
@@ -448,7 +476,7 @@ crate.
   "@id": "saxs/",
   "@type": "Dataset",
   "name": "SEC-SAXS-MALS of GluRS (ALS SIBYLS 12.3.1)",
-  "conformsTo": [{"@id": "https://w3id.org/lambda/profile/core/0.3.4"},
+  "conformsTo": [{"@id": "https://w3id.org/lambda/profile/core/0.3.5"},
                  {"@id": "https://w3id.org/lambda/profile/saxs/0.3.0"}],
   "hasPart": [{"@id": "saxs/ro-crate-metadata.json"}]
 }
@@ -729,6 +757,9 @@ checker:
 13. A `ComponentInteractionEntity`'s `sample_id` resolves to a `SampleEntity` in the graph, and its
    `subject_id` and `object_id` each resolve to an entity that sample lists in
    `hasBioChemEntityPart` (§6.2). An interaction is between two things its sample actually holds.
+14. An `InstrumentEntity` names at most one instrument kind in its `@type` (§6.2), so that the
+   record's `instrument_type` can be read from it. `lambda:Instrument` beside a kind is not a second
+   kind.
 
 SHACL shapes would be the natural home for layer 3, since RDF validation dispatches on `rdf:type`
 properly. They are **not** generated: `gen-shacl` raises `KeyError('lambda-ber-schema')` for classes
@@ -748,7 +779,7 @@ Seven conformant fixtures in `tests/data/rocrate/valid/`, and one crate stored w
 | Fixture | Shows |
 | :---- | :---- |
 | `minimal-manifest.json` | the smallest conformant crate — the thing to hand a new facility |
-| `ssrl-mx-XA_x16.json` | a real SSRL MX package brought to Core 0.3.4, with MX quantities nested in `resultSummary` |
+| `ssrl-mx-XA_x16.json` | a real SSRL MX package brought to Core 0.3.5, with MX quantities nested in `resultSummary` |
 | `saxs-glurs.json` | the SAXS GluRS dataset reduced to Core terms — the extension boundary made concrete; its sample points at a `Protein` entity (§6.2) |
 | `nested-pointers.json` | one manifest using all three pointer mechanisms at once |
 | `detached-crate.json` | a crate whose root `@id` is an absolute URI, stored apart from its payload |
@@ -788,7 +819,7 @@ Class-level projection:
 | `NucleicAcidEntity` | `["BioChemEntity", "lambda:NucleicAcid"]` | `NucleicAcid` |
 | `SmallMoleculeEntity` | `["MolecularEntity", "lambda:SmallMolecule"]` | `SmallMolecule` |
 | `ComponentInteractionEntity` | `["lambda:SampleComponentInteraction"]` | `SampleComponentInteraction` |
-| `InstrumentEntity` | `["IndividualProduct", "lambda:Instrument"]` | `Instrument` |
+| `InstrumentEntity` | `["IndividualProduct", "lambda:Instrument"]`, or `lambda:<Kind>Instrument` for the kind | `Instrument`, or the subclass the token names, as `instrument_type` |
 | `ExperimentRunAction` | `["Action", "lambda:ExperimentRun"]` | `ExperimentRun` |
 | `WorkflowRunAction` | `["CreateAction", "lambda:WorkflowRun"]` | `WorkflowRun` |
 | `PersonEntity` | `Person` | `Person` |
@@ -854,10 +885,10 @@ carries the schema's own `snake_case` slot name, so `lambda:file_format` in a cr
 SSRL publishes crates conforming to `https://w3id.org/lambda/profile/core/0.2` — a URI with no
 written specification — using `lambda:Experiment` / `lambda:RawUnit` / `lambda:DerivedProduct` /
 `lambda:AuxiliaryMetadataItem` and camelCase terms under
-`https://w3id.org/lambda/terms/0.2/`. Those crates exist and a loader consumes them, so Core 0.3.4
+`https://w3id.org/lambda/terms/0.2/`. Those crates exist and a loader consumes them, so Core 0.3.5
 accepts the 0.2 spellings and marks them deprecated rather than breaking them.
 
-| 0.2 spelling | Core 0.3.4 |
+| 0.2 spelling | Core 0.3.5 |
 | :---- | :---- |
 | `lambda:Experiment` (root type) | `lambda:Dataset` |
 | `lambda:RawUnit`, `lambda:DerivedProduct` | `Dataset` part → `CrateDatasetPart` |

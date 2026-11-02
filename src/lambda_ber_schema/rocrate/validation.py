@@ -148,6 +148,18 @@ def _errors(validator, instance) -> list[str]:
 # @type dispatch - the rule a reader applies to decide what an entity is
 # --------------------------------------------------------------------------------------
 
+#: The schema's ``Instrument`` subclasses as ``@type`` tokens (§6.2). Each makes an entity an
+#: ``InstrumentEntity``, in place of or beside ``lambda:Instrument``, and names the class a projector
+#: writes as the record's ``instrument_type``. ``tests/test_rocrate_profile.py`` checks this against
+#: the schema, so a new subclass cannot be left out.
+INSTRUMENT_KINDS: tuple[str, ...] = (
+    "lambda:BeamlineInstrument",
+    "lambda:CryoEMInstrument",
+    "lambda:SANSInstrument",
+    "lambda:SAXSInstrument",
+    "lambda:XRayInstrument",
+)
+
 #: Checked in order: the first matching type wins, so the specific ``lambda:`` types are
 #: consulted before the generic RO-Crate ones an entity also carries.
 DISPATCH: list[tuple[str, str]] = [
@@ -159,6 +171,7 @@ DISPATCH: list[tuple[str, str]] = [
     ("lambda:SmallMolecule", "SmallMoleculeEntity"),
     ("lambda:SampleComponentInteraction", "ComponentInteractionEntity"),
     ("lambda:Instrument", "InstrumentEntity"),
+    *((kind, "InstrumentEntity") for kind in INSTRUMENT_KINDS),
     ("lambda:ExperimentRun", "ExperimentRunAction"),
     ("lambda:WorkflowRun", "WorkflowRunAction"),
     ("CreateAction", "WorkflowRunAction"),
@@ -200,6 +213,27 @@ def classify(entity: dict) -> str | None:
         if type_token in types:
             return class_name
     return None
+
+
+def instrument_kinds(entity: dict) -> list[str]:
+    """The instrument kinds an entity's ``@type`` names, in ``INSTRUMENT_KINDS`` order."""
+    types = entity_types(entity)
+    return [kind for kind in INSTRUMENT_KINDS if kind in types]
+
+
+def instrument_type(entity: dict) -> str | None:
+    """The ``instrument_type`` a projector writes for an instrument entity.
+
+    The subclass its ``@type`` names (``lambda:CryoEMInstrument`` gives ``CryoEMInstrument``), or
+    ``Instrument`` when it names none. ``None`` when the entity is not an instrument, or names more
+    than one kind, which graph rule 14 rejects because a record has one ``instrument_type``.
+    """
+    if classify(entity) != "InstrumentEntity":
+        return None
+    kinds = instrument_kinds(entity)
+    if len(kinds) > 1:
+        return None
+    return kinds[0].removeprefix("lambda:") if kinds else "Instrument"
 
 
 def graph(crate: dict) -> list[dict]:
@@ -499,6 +533,17 @@ def graph_rule_violations(crate: dict) -> list[str]:
                         f"{entity.get('@id')!r} {key} {target!r}, which sample "
                         f"{sample.get('@id')!r} does not list in hasBioChemEntityPart"
                     )
+
+    # an instrument names one kind, so its record's instrument_type can be read off its @type
+    for entity in entities:
+        if classify(entity) != "InstrumentEntity":
+            continue
+        kinds = instrument_kinds(entity)
+        if len(kinds) > 1:
+            problems.append(
+                f"{entity.get('@id')!r} is an instrument typed as more than one kind {kinds} - "
+                "a record has one instrument_type"
+            )
 
     # a dataset part must say where its fuller metadata lives, or declare that it has none
     for entity in entities:

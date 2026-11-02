@@ -19,10 +19,12 @@ from typer.testing import CliRunner
 from lambda_ber_schema.rocrate import validation as v
 from lambda_ber_schema.rocrate.validation import (
     GRAPH_RULE_TERMS,
+    INSTRUMENT_KINDS,
     classify,
     entity_types,
     entity_violations,
     graph_rule_violations,
+    instrument_type,
     root_of,
     validate_crate,
     validate_path,
@@ -130,6 +132,54 @@ def test_classify_descriptor_branches():
     assert classify({"@id": "ro-crate-metadata.json"}) == "MetadataDescriptor"
     assert classify({"@id": "https://x/ro-crate-metadata.json", "about": {}}) == "MetadataDescriptor"
     assert classify({"@id": "saxs/ro-crate-metadata.json", "@type": "File"}) == "CrateFile"
+
+
+@pytest.mark.parametrize("kind", INSTRUMENT_KINDS)
+def test_an_instrument_may_be_typed_by_its_kind(kind):
+    """lambda:CryoEMInstrument and its siblings are InstrumentEntity, alone or beside lambda:Instrument."""
+    expected = kind.removeprefix("lambda:")
+    for types in (["IndividualProduct", kind], ["IndividualProduct", "lambda:Instrument", kind]):
+        entity = {"@id": "#i", "@type": types}
+        assert classify(entity) == "InstrumentEntity"
+        assert instrument_type(entity) == expected
+
+
+def test_instrument_type_of_a_plain_or_ambiguous_instrument():
+    assert instrument_type({"@id": "#i", "@type": ["IndividualProduct", "lambda:Instrument"]}) == (
+        "Instrument"
+    )
+    two = {"@id": "#i", "@type": ["lambda:SAXSInstrument", "lambda:XRayInstrument"]}
+    assert classify(two) == "InstrumentEntity"
+    assert instrument_type(two) is None
+    assert instrument_type({"@id": "#s", "@type": ["BioChemEntity", "lambda:Sample"]}) is None
+
+
+def test_instrument_kinds_are_the_schema_subclasses(schema_views):
+    """Every Instrument subclass is a kind, so adding one to the schema without the crate side fails here."""
+    _, schema = schema_views
+    subclasses = set(schema.class_descendants("Instrument", reflexive=False))
+    assert {k.removeprefix("lambda:") for k in INSTRUMENT_KINDS} == subclasses
+
+
+def test_an_instrument_kind_adds_no_terms(json_schema):
+    """The kind is in the @type only: a capability on a precisely typed instrument is still rejected."""
+    crate = load(RAW / "emsl-serialem-krios" / "ro-crate-metadata.json")
+    krios = next(e for e in crate["@graph"] if e.get("@id") == "#instr-krios")
+    assert "lambda:CryoEMInstrument" in entity_types(krios)
+    krios["cs"] = {"numeric_value": 2.7, "unit": "millimeters"}
+    problems = entity_violations(json_schema, crate)
+    assert any("'cs' was unexpected" in p for p in problems), problems
+
+
+def test_two_kinds_fail_only_the_graph_rule(json_schema):
+    """The two-kinds fixture is otherwise conformant, so rule 14 is the one thing it shows."""
+    crate = load(CRATES / "invalid" / "instrument-two-kinds.json")
+    assert not v.document_violations(json_schema, crate)
+    assert not entity_violations(json_schema, crate)
+    assert graph_rule_violations(crate) == [
+        "'#sibyls' is an instrument typed as more than one kind "
+        "['lambda:SAXSInstrument', 'lambda:XRayInstrument'] - a record has one instrument_type"
+    ]
 
 
 # --------------------------------------------------------------------------------------
@@ -254,6 +304,7 @@ EXPECTED_FAILURE = {
     "cryoem-bare-quantity.json": "accelerating_voltage: 300 is not of type 'object'",
     "cryoem-setting-on-instrument.json": "'spot_size' was unexpected",
     "cryoem-grid-quality-not-in-enum.json": "'ideal_range' is not one of",
+    "instrument-two-kinds.json": "typed as more than one kind",
 }
 
 
@@ -293,7 +344,7 @@ def test_legacy_crate_uses_the_deprecated_vocabulary(path):
     )
 
 
-#: What stops the published SSRL 0.2 crate from conforming to Core 0.3.4. Each is a real,
+#: What stops the published SSRL 0.2 crate from conforming to Core 0.3.5. Each is a real,
 #: actionable gap rather than a naming difference - the naming differences are handled by the
 #: alias layer and do not appear here. If one of these disappears, this test fails and the
 #: entry should be removed.

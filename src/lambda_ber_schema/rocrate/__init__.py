@@ -3,6 +3,7 @@
 from lambda_ber_schema.rocrate.validation import (
     DISPATCH,
     GRAPH_RULE_TERMS,
+    INSTRUMENT_KINDS,
     LAYERS,
     Finding,
     SchemaNotAvailable,
@@ -13,6 +14,7 @@ from lambda_ber_schema.rocrate.validation import (
     entity_violations,
     generate_schema,
     graph_rule_violations,
+    instrument_type,
     load_schema,
     normalize,
     packaged_schema_path,
@@ -25,6 +27,7 @@ from lambda_ber_schema.rocrate.validation import (
 __all__ = [
     "DISPATCH",
     "GRAPH_RULE_TERMS",
+    "INSTRUMENT_KINDS",
     "LAYERS",
     "Finding",
     "SchemaNotAvailable",
@@ -35,6 +38,7 @@ __all__ = [
     "entity_violations",
     "generate_schema",
     "graph_rule_violations",
+    "instrument_type",
     "load_schema",
     "normalize",
     "packaged_schema_path",
