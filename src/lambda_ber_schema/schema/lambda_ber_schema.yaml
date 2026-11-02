@@ -1,6 +1,6 @@
 id: http://w3id.org/lambda/
 name: lambda-ber-schema
-version: "0.0.0.post448.dev0+2e816ba" # Managed by uv-dynamic-versioning
+version: "0.0.0.post451.dev0+abe4841" # Managed by uv-dynamic-versioning
 description: |
   lambda-ber-schema is a comprehensive schema for representing multimodal structural biology imaging data, 
   from atomic-resolution structures to tissue-level organization. It supports diverse experimental 
@@ -174,6 +174,7 @@ prefixes:
   mmCIF: http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/
   IHMCIF: https://mmcif.wwpdb.org/dictionaries/mmcif_ihm_ext.dic/Items/
   ROR: https://ror.org/
+  doi: https://doi.org/
   wikidata: http://www.wikidata.org/entity/
   CHMO: http://purl.obolibrary.org/obo/CHMO_
   pdb: https://www.rcsb.org/structure/
@@ -1234,6 +1235,19 @@ classes:
         range: string
       protocol_description:
         description: "Detailed protocol description"
+      protocol_references:
+        description: >-
+          Where the protocol this preparation followed is published or hosted, as a DOI CURIE
+          (doi:10.17504/protocols.io.n2bvj3dexlk5/v1 for a protocols.io protocol,
+          doi:10.1038/nprot.2007.452 for a methods paper) or a URL (a lab wiki page, a facility SOP).
+          protocol_description says what was done; this says where the authoritative version lives.
+        range: uriorcurie
+        multivalued: true
+        related_mappings:
+          - prov:hadPlan
+        comments:
+          - "Prefer the DOI CURIE when one exists: protocols.io, Nature Protocols, STAR Protocols, Bio-protocol and MethodsX all issue DOIs, and a DOI outlives the URL it resolves to"
+          - "List each protocol the preparation followed, e.g. a protocols.io expression protocol and the methods paper it adapts. Record departures from a cited protocol in protocol_description"
       # Expression parameters
       expression_system:
         description: "Expression system used for recombinant protein production"

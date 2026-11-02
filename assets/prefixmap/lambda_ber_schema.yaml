@@ -13,6 +13,7 @@
    "bmrb": "https://bmrb.io/data_library/summary/index.php?bmrbId=",
    "chembl.compound": "https://www.ebi.ac.uk/chembl/compound_report_card/",
    "dcterms": "http://purl.org/dc/terms/",
+   "doi": "https://doi.org/",
    "drugbank": "https://go.drugbank.com/drugs/",
    "emsl": "https://api.emsl.pnnl.gov/external/",
    "imgCIF": "https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#",

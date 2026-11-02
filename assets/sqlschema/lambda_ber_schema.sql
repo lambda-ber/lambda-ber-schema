@@ -1419,6 +1419,9 @@
 -- # Class: NucleicAcid_pdb_entries
 --     * Slot: NucleicAcid_id Description: Autocreated FK slot
 --     * Slot: pdb_entries Description: PDB entries containing this nucleic acid, as CURIEs (e.g., pdb:1AAY)
+-- # Class: SamplePreparation_protocol_references
+--     * Slot: SamplePreparation_id Description: Autocreated FK slot
+--     * Slot: protocol_references Description: Where the protocol this preparation followed is published or hosted, as a DOI CURIE (doi:10.17504/protocols.io.n2bvj3dexlk5/v1 for a protocols.io protocol, doi:10.1038/nprot.2007.452 for a methods paper) or a URL (a lab wiki page, a facility SOP). protocol_description says what was done; this says where the authoritative version lives.
 -- # Class: SamplePreparation_purification_steps
 --     * Slot: SamplePreparation_id Description: Autocreated FK slot
 --     * Slot: purification_steps Description: Ordered list of purification steps performed
@@ -1758,13 +1761,13 @@ CREATE TABLE "MolecularComposition_sequences" (
 	sequences TEXT,
 	PRIMARY KEY ("MolecularComposition_id", sequences),
 	FOREIGN KEY("MolecularComposition_id") REFERENCES "MolecularComposition" (id)
-);CREATE INDEX "ix_MolecularComposition_sequences_sequences" ON "MolecularComposition_sequences" (sequences);CREATE INDEX "ix_MolecularComposition_sequences_MolecularComposition_id" ON "MolecularComposition_sequences" ("MolecularComposition_id");
+);CREATE INDEX "ix_MolecularComposition_sequences_MolecularComposition_id" ON "MolecularComposition_sequences" ("MolecularComposition_id");CREATE INDEX "ix_MolecularComposition_sequences_sequences" ON "MolecularComposition_sequences" (sequences);
 CREATE TABLE "MolecularComposition_modifications" (
 	"MolecularComposition_id" INTEGER,
 	modifications TEXT,
 	PRIMARY KEY ("MolecularComposition_id", modifications),
 	FOREIGN KEY("MolecularComposition_id") REFERENCES "MolecularComposition" (id)
-);CREATE INDEX "ix_MolecularComposition_modifications_modifications" ON "MolecularComposition_modifications" (modifications);CREATE INDEX "ix_MolecularComposition_modifications_MolecularComposition_id" ON "MolecularComposition_modifications" ("MolecularComposition_id");
+);CREATE INDEX "ix_MolecularComposition_modifications_MolecularComposition_id" ON "MolecularComposition_modifications" ("MolecularComposition_id");CREATE INDEX "ix_MolecularComposition_modifications_modifications" ON "MolecularComposition_modifications" (modifications);
 CREATE TABLE "MolecularComposition_ligands" (
 	"MolecularComposition_id" INTEGER,
 	ligands TEXT,
@@ -3180,6 +3183,12 @@ CREATE TABLE "NucleicAcid_pdb_entries" (
 	PRIMARY KEY ("NucleicAcid_id", pdb_entries),
 	FOREIGN KEY("NucleicAcid_id") REFERENCES "NucleicAcid" (id)
 );CREATE INDEX "ix_NucleicAcid_pdb_entries_NucleicAcid_id" ON "NucleicAcid_pdb_entries" ("NucleicAcid_id");CREATE INDEX "ix_NucleicAcid_pdb_entries_pdb_entries" ON "NucleicAcid_pdb_entries" (pdb_entries);
+CREATE TABLE "SamplePreparation_protocol_references" (
+	"SamplePreparation_id" TEXT,
+	protocol_references TEXT,
+	PRIMARY KEY ("SamplePreparation_id", protocol_references),
+	FOREIGN KEY("SamplePreparation_id") REFERENCES "SamplePreparation" (id)
+);CREATE INDEX "ix_SamplePreparation_protocol_references_protocol_references" ON "SamplePreparation_protocol_references" (protocol_references);CREATE INDEX "ix_SamplePreparation_protocol_references_SamplePreparation_id" ON "SamplePreparation_protocol_references" ("SamplePreparation_id");
 CREATE TABLE "SamplePreparation_purification_steps" (
 	"SamplePreparation_id" TEXT,
 	purification_steps VARCHAR(23),
@@ -3843,7 +3852,7 @@ CREATE TABLE "SampleNucleicAcidAssociation_modifications" (
 	modifications TEXT,
 	PRIMARY KEY ("SampleNucleicAcidAssociation_id", modifications),
 	FOREIGN KEY("SampleNucleicAcidAssociation_id") REFERENCES "SampleNucleicAcidAssociation" (id)
-);CREATE INDEX "ix_SampleNucleicAcidAssociation_modifications_SampleNucleicAcidAssociation_id" ON "SampleNucleicAcidAssociation_modifications" ("SampleNucleicAcidAssociation_id");CREATE INDEX "ix_SampleNucleicAcidAssociation_modifications_modifications" ON "SampleNucleicAcidAssociation_modifications" (modifications);
+);CREATE INDEX "ix_SampleNucleicAcidAssociation_modifications_modifications" ON "SampleNucleicAcidAssociation_modifications" (modifications);CREATE INDEX "ix_SampleNucleicAcidAssociation_modifications_SampleNucleicAcidAssociation_id" ON "SampleNucleicAcidAssociation_modifications" ("SampleNucleicAcidAssociation_id");
 CREATE TABLE "FunctionalSite_residues" (
 	"FunctionalSite_id" TEXT,
 	residues TEXT,
@@ -3873,7 +3882,7 @@ CREATE TABLE "ProteinProteinInteraction_interface_residues" (
 	interface_residues TEXT,
 	PRIMARY KEY ("ProteinProteinInteraction_id", interface_residues),
 	FOREIGN KEY("ProteinProteinInteraction_id") REFERENCES "ProteinProteinInteraction" (id)
-);CREATE INDEX "ix_ProteinProteinInteraction_interface_residues_interface_residues" ON "ProteinProteinInteraction_interface_residues" (interface_residues);CREATE INDEX "ix_ProteinProteinInteraction_interface_residues_ProteinProteinInteraction_id" ON "ProteinProteinInteraction_interface_residues" ("ProteinProteinInteraction_id");
+);CREATE INDEX "ix_ProteinProteinInteraction_interface_residues_ProteinProteinInteraction_id" ON "ProteinProteinInteraction_interface_residues" ("ProteinProteinInteraction_id");CREATE INDEX "ix_ProteinProteinInteraction_interface_residues_interface_residues" ON "ProteinProteinInteraction_interface_residues" (interface_residues);
 CREATE TABLE "ProteinProteinInteraction_partner_interface_residues" (
 	"ProteinProteinInteraction_id" TEXT,
 	partner_interface_residues TEXT,
@@ -3903,7 +3912,7 @@ CREATE TABLE "PostTranslationalModification_publication_ids" (
 	publication_ids TEXT,
 	PRIMARY KEY ("PostTranslationalModification_id", publication_ids),
 	FOREIGN KEY("PostTranslationalModification_id") REFERENCES "PostTranslationalModification" (id)
-);CREATE INDEX "ix_PostTranslationalModification_publication_ids_PostTranslationalModification_id" ON "PostTranslationalModification_publication_ids" ("PostTranslationalModification_id");CREATE INDEX "ix_PostTranslationalModification_publication_ids_publication_ids" ON "PostTranslationalModification_publication_ids" (publication_ids);
+);CREATE INDEX "ix_PostTranslationalModification_publication_ids_publication_ids" ON "PostTranslationalModification_publication_ids" (publication_ids);CREATE INDEX "ix_PostTranslationalModification_publication_ids_PostTranslationalModification_id" ON "PostTranslationalModification_publication_ids" ("PostTranslationalModification_id");
 CREATE TABLE "SampleComponentInteraction_evidence" (
 	"SampleComponentInteraction_id" INTEGER,
 	evidence VARCHAR(14),

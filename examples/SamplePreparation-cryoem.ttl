@@ -1,6 +1,7 @@
 @base <http://example.org/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix lambdaber: <http://w3id.org/lambda/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 lambdaber:sample_prep_001 a lambdaber:SamplePreparation ;
     dcterms:title "Cryo-EM grid preparation for HIV-1 capsid" ;
@@ -9,5 +10,8 @@ lambdaber:sample_prep_001 a lambdaber:SamplePreparation ;
     lambdaber:preparation_date "2024-01-15" ;
     lambdaber:preparation_type "cryo_em" ;
     lambdaber:protocol_description "Sample applied to glow-discharged Quantifoil R1.2/1.3 grids and vitrified using Vitrobot Mark IV" ;
+    lambdaber:protocol_references "doi:10.1038/nprot.2007.452"^^xsd:anyURI,
+        "doi:10.17504/protocols.io.n2bvj3dexlk5/v1"^^xsd:anyURI,
+        "https://example.org/cryoem-facility/sop/vitrobot-mark-iv"^^xsd:anyURI ;
     lambdaber:sample_id "lambdaber:sample_hiv_ca_001" .
 

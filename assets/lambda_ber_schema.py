@@ -1,5 +1,5 @@
 # Auto generated from lambda_ber_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-11-02T17:25:35
+# Generation date: 2026-11-02T18:05:01
 # Schema: lambda-ber-schema
 #
 # id: http://w3id.org/lambda/
@@ -202,7 +202,7 @@ from linkml_runtime.linkml_model.types import Boolean, Curie, Date, Float, Integ
 from linkml_runtime.utils.metamodelcore import Bool, Curie, URI, URIorCURIE, XSDDate
 
 metamodel_version = "1.7.0"
-version = "0.0.0.post387.dev0+32c846d"
+version = "0.0.0.post448.dev0+2e816ba"
 
 # Namespaces
 CHEBI = CurieNamespace('CHEBI', 'http://purl.obolibrary.org/obo/CHEBI_')
@@ -219,6 +219,7 @@ ANL_LAMBDA = CurieNamespace('anl-lambda', 'https://sg.bio.anl.gov/lambda/')
 BMRB = CurieNamespace('bmrb', 'https://bmrb.io/data_library/summary/index.php?bmrbId=')
 CHEMBL_COMPOUND = CurieNamespace('chembl_compound', 'https://www.ebi.ac.uk/chembl/compound_report_card/')
 DCTERMS = CurieNamespace('dcterms', 'http://purl.org/dc/terms/')
+DOI = CurieNamespace('doi', 'https://doi.org/')
 DRUGBANK = CurieNamespace('drugbank', 'https://go.drugbank.com/drugs/')
 EMSL = CurieNamespace('emsl', 'https://api.emsl.pnnl.gov/external/')
 IMGCIF = CurieNamespace('imgCIF', 'https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#')
@@ -1439,6 +1440,7 @@ class SamplePreparation(NamedThing):
     preparation_date: Optional[str] = None
     operator_id: Optional[str] = None
     protocol_description: Optional[str] = None
+    protocol_references: Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]] = empty_list()
     expression_system: Optional[Union[str, "ExpressionSystemEnum"]] = None
     host_strain_or_cell_line: Optional[str] = None
     culture_volume_l: Optional[Union[dict, "QuantityValue"]] = None
@@ -1501,6 +1503,10 @@ class SamplePreparation(NamedThing):
 
         if self.protocol_description is not None and not isinstance(self.protocol_description, str):
             self.protocol_description = str(self.protocol_description)
+
+        if not isinstance(self.protocol_references, list):
+            self.protocol_references = [self.protocol_references] if self.protocol_references is not None else []
+        self.protocol_references = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.protocol_references]
 
         if self.expression_system is not None and not isinstance(self.expression_system, ExpressionSystemEnum):
             self.expression_system = ExpressionSystemEnum(self.expression_system)
@@ -10100,6 +10106,9 @@ slots.samplePreparation__operator_id = Slot(uri=LAMBDA.operator_id, name="sample
 
 slots.samplePreparation__protocol_description = Slot(uri=LAMBDA.protocol_description, name="samplePreparation__protocol_description", curie=LAMBDA.curie('protocol_description'),
                    model_uri=LAMBDA.samplePreparation__protocol_description, domain=None, range=Optional[str])
+
+slots.samplePreparation__protocol_references = Slot(uri=LAMBDA.protocol_references, name="samplePreparation__protocol_references", curie=LAMBDA.curie('protocol_references'),
+                   model_uri=LAMBDA.samplePreparation__protocol_references, domain=None, range=Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]])
 
 slots.samplePreparation__expression_system = Slot(uri=LAMBDA.expression_system, name="samplePreparation__expression_system", curie=LAMBDA.curie('expression_system'),
                    model_uri=LAMBDA.samplePreparation__expression_system, domain=None, range=Optional[Union[str, "ExpressionSystemEnum"]])

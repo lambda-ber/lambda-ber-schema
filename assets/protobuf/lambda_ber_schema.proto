@@ -1,7 +1,7 @@
  syntax="proto3";
  package
 // metamodel_version: 1.7.0
-// version: 0.0.0.post387.dev0+32c846d
+// version: 0.0.0.post448.dev0+2e816ba
 // Aggregated view of all structural and functional data for a protein
 message AggregatedProteinView
  {
@@ -1196,6 +1196,7 @@ message SamplePreparation
   string preparationDate = 0
   string operatorId = 0
   string protocolDescription = 0
+ repeated  uriorcurie protocolReferences = 0
   expressionSystemEnum expressionSystem = 0
   string hostStrainOrCellLine = 0
   quantityValue cultureVolumeL = 0
