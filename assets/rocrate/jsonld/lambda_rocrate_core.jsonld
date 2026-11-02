@@ -12781,6 +12781,27 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "samplePreparation__protocol_references",
+      "description": "Where the protocol this preparation followed is published or hosted, as a DOI CURIE (doi:10.17504/protocols.io.n2bvj3dexlk5/v1 for a protocols.io protocol, doi:10.1038/nprot.2007.452 for a methods paper) or a URL (a lab wiki page, a facility SOP). protocol_description says what was done; this says where the authoritative version lives.",
+      "comments": [
+        "Prefer the DOI CURIE when one exists: protocols.io, Nature Protocols, STAR Protocols, Bio-protocol and MethodsX all issue DOIs, and a DOI outlives the URL it resolves to",
+        "List each protocol the preparation followed, e.g. a protocols.io expression protocol and the methods paper it adapts. Record departures from a cited protocol in protocol_description"
+      ],
+      "from_schema": "http://w3id.org/lambda/",
+      "related_mappings": [
+        "http://www.w3.org/ns/prov#hadPlan"
+      ],
+      "slot_uri": "http://w3id.org/lambda/protocol_references",
+      "alias": "protocol_references",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "uriorcurie",
+      "multivalued": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "samplePreparation__expression_system",
       "description": "Expression system used for recombinant protein production",
       "from_schema": "http://w3id.org/lambda/",
@@ -28258,6 +28279,7 @@
         "samplePreparation__preparation_date",
         "samplePreparation__operator_id",
         "samplePreparation__protocol_description",
+        "samplePreparation__protocol_references",
         "samplePreparation__expression_system",
         "samplePreparation__host_strain_or_cell_line",
         "samplePreparation__culture_volume_l",
@@ -28326,6 +28348,20 @@
         {
           "name": "protocol_description",
           "description": "Detailed protocol description",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "protocol_references",
+          "description": "Where the protocol this preparation followed is published or hosted, as a DOI CURIE (doi:10.17504/protocols.io.n2bvj3dexlk5/v1 for a protocols.io protocol, doi:10.1038/nprot.2007.452 for a methods paper) or a URL (a lab wiki page, a facility SOP). protocol_description says what was done; this says where the authoritative version lives.",
+          "comments": [
+            "Prefer the DOI CURIE when one exists: protocols.io, Nature Protocols, STAR Protocols, Bio-protocol and MethodsX all issue DOIs, and a DOI outlives the URL it resolves to",
+            "List each protocol the preparation followed, e.g. a protocols.io expression protocol and the methods paper it adapts. Record departures from a cited protocol in protocol_description"
+          ],
+          "related_mappings": [
+            "prov:hadPlan"
+          ],
+          "range": "uriorcurie",
+          "multivalued": true,
           "@type": "SlotDefinition"
         },
         {
@@ -36381,7 +36417,7 @@
   "source_file": "lambda_rocrate_core.yaml",
   "source_file_date": "2026-11-02T17:15:15",
   "source_file_size": 94503,
-  "generation_date": "2026-11-02T17:28:49",
+  "generation_date": "2026-11-02T18:07:33",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/rocrate/jsonld/lambda_rocrate_core.context.jsonld",

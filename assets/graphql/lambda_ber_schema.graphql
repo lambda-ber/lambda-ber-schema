@@ -1,5 +1,5 @@
 # metamodel_version: 1.7.0
-# version: 0.0.0.post387.dev0+32c846d
+# version: 0.0.0.post448.dev0+2e816ba
 enum AffinityUnitEnum
   {
     molar
@@ -2271,6 +2271,7 @@ type SamplePreparation
     preparationDate: String
     operatorId: String
     protocolDescription: String
+    protocolReferences: [Uriorcurie]
     expressionSystem: ExpressionSystemEnum
     hostStrainOrCellLine: String
     cultureVolumeL: QuantityValue

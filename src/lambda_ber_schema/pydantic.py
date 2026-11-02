@@ -27,7 +27,7 @@ from pydantic import (
 
 
 metamodel_version = "None"
-version = "0.0.0.post387.dev0+32c846d"
+version = "0.0.0.post448.dev0+2e816ba"
 
 
 class ConfiguredBaseModel(BaseModel):
@@ -321,6 +321,8 @@ linkml_meta = LinkMLMeta({'default_prefix': 'lambda',
                                       'prefix_reference': 'https://www.ebi.ac.uk/chembl/compound_report_card/'},
                   'dcterms': {'prefix_prefix': 'dcterms',
                               'prefix_reference': 'http://purl.org/dc/terms/'},
+                  'doi': {'prefix_prefix': 'doi',
+                          'prefix_reference': 'https://doi.org/'},
                   'drugbank': {'prefix_prefix': 'drugbank',
                                'prefix_reference': 'https://go.drugbank.com/drugs/'},
                   'emsl': {'prefix_prefix': 'emsl',
@@ -5708,6 +5710,16 @@ class SamplePreparation(NamedThing):
     preparation_date: Optional[str] = Field(default=None, description="""Date of sample preparation""", json_schema_extra = { "linkml_meta": {'alias': 'preparation_date', 'domain_of': ['SamplePreparation']} })
     operator_id: Optional[str] = Field(default=None, description="""Identifier or name of the person who performed the sample preparation (e.g., 'jsmith', 'John Smith', or personnel ID)""", json_schema_extra = { "linkml_meta": {'alias': 'operator_id', 'domain_of': ['SamplePreparation', 'ExperimentRun']} })
     protocol_description: Optional[str] = Field(default=None, description="""Detailed protocol description""", json_schema_extra = { "linkml_meta": {'alias': 'protocol_description', 'domain_of': ['SamplePreparation']} })
+    protocol_references: Optional[list[str]] = Field(default=None, description="""Where the protocol this preparation followed is published or hosted, as a DOI CURIE (doi:10.17504/protocols.io.n2bvj3dexlk5/v1 for a protocols.io protocol, doi:10.1038/nprot.2007.452 for a methods paper) or a URL (a lab wiki page, a facility SOP). protocol_description says what was done; this says where the authoritative version lives.""", json_schema_extra = { "linkml_meta": {'alias': 'protocol_references',
+         'comments': ['Prefer the DOI CURIE when one exists: protocols.io, Nature '
+                      'Protocols, STAR Protocols, Bio-protocol and MethodsX all issue '
+                      'DOIs, and a DOI outlives the URL it resolves to',
+                      'List each protocol the preparation followed, e.g. a '
+                      'protocols.io expression protocol and the methods paper it '
+                      'adapts. Record departures from a cited protocol in '
+                      'protocol_description'],
+         'domain_of': ['SamplePreparation'],
+         'related_mappings': ['prov:hadPlan']} })
     expression_system: Optional[ExpressionSystemEnum] = Field(default=None, description="""Expression system used for recombinant protein production""", json_schema_extra = { "linkml_meta": {'alias': 'expression_system', 'domain_of': ['Sample', 'SamplePreparation']} })
     host_strain_or_cell_line: Optional[str] = Field(default=None, description="""Specific strain or cell line used (e.g., BL21(DE3), Sf9, HEK293F)""", json_schema_extra = { "linkml_meta": {'alias': 'host_strain_or_cell_line', 'domain_of': ['SamplePreparation']} })
     culture_volume_l: Optional[QuantityValue] = Field(default=None, description="""Culture volume, typically specified in liters (L). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'culture_volume_l', 'domain_of': ['SamplePreparation']} })

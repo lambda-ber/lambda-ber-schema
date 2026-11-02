@@ -13121,6 +13121,16 @@
                         "null"
                     ]
                 },
+                "protocol_references": {
+                    "description": "Where the protocol this preparation followed is published or hosted, as a DOI CURIE (doi:10.17504/protocols.io.n2bvj3dexlk5/v1 for a protocols.io protocol, doi:10.1038/nprot.2007.452 for a methods paper) or a URL (a lab wiki page, a facility SOP). protocol_description says what was done; this says where the authoritative version lives.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "purification_steps": {
                     "description": "Ordered list of purification steps performed",
                     "items": {
