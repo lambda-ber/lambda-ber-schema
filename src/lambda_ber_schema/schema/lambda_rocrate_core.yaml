@@ -1,7 +1,7 @@
 id: http://w3id.org/lambda/rocrate/core
 name: lambda-rocrate-core
 title: LAMBDA Core RO-Crate Profile
-version: "0.3.4"
+version: "0.3.5"
 license: https://creativecommons.org/publicdomain/zero/1.0/
 description: |
   **LAMBDA Core RO-Crate profile** — the technique-neutral file-manifest contract for LAMBDA.
@@ -250,7 +250,7 @@ classes:
         required: true
         description: >-
           MUST include both the RO-Crate version URI and
-          `https://w3id.org/lambda/profile/core/0.3.4`. Technique extensions add their own URI
+          `https://w3id.org/lambda/profile/core/0.3.5`. Technique extensions add their own URI
           alongside, never instead.
       has_part:
         required: true
@@ -582,9 +582,18 @@ classes:
     class_uri: sdo:IndividualProduct
     exact_mappings:
       - lambda:Instrument
+    narrow_mappings:
+      - lambda:BeamlineInstrument
+      - lambda:CryoEMInstrument
+      - lambda:SANSInstrument
+      - lambda:SAXSInstrument
+      - lambda:XRayInstrument
     description: >-
       The equipment that produced the data. Instrument *capabilities* belong here; the values
-      actually measured belong on the experiment run or the result summary.
+      actually measured belong on the experiment run or the result summary. Typed
+      `["IndividualProduct", "lambda:Instrument"]`, or with the schema subclass naming its kind
+      (`lambda:CryoEMInstrument`) in place of or beside `lambda:Instrument`; that token is the
+      record's `instrument_type`. At most one kind (graph rule 14).
     slots:
       - instrument_code
       - instrument_category

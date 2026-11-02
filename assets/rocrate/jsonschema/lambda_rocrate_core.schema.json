@@ -1662,7 +1662,7 @@
                     ]
                 },
                 "conformsTo": {
-                    "description": "MUST include both the RO-Crate version URI and `https://w3id.org/lambda/profile/core/0.3.4`. Technique extensions add their own URI alongside, never instead.",
+                    "description": "MUST include both the RO-Crate version URI and `https://w3id.org/lambda/profile/core/0.3.5`. Technique extensions add their own URI alongside, never instead.",
                     "items": {
                         "$ref": "#/$defs/EntityReference"
                     },
@@ -6749,7 +6749,7 @@
         },
         "InstrumentEntity": {
             "additionalProperties": false,
-            "description": "The equipment that produced the data. Instrument *capabilities* belong here; the values actually measured belong on the experiment run or the result summary.",
+            "description": "The equipment that produced the data. Instrument *capabilities* belong here; the values actually measured belong on the experiment run or the result summary. Typed `[\"IndividualProduct\", \"lambda:Instrument\"]`, or with the schema subclass naming its kind (`lambda:CryoEMInstrument`) in place of or beside `lambda:Instrument`; that token is the record's `instrument_type`. At most one kind (graph rule 14).",
             "properties": {
                 "@id": {
                     "description": "The entity's identifier - a relative path, an absolute URI, or a `#`-fragment.",
@@ -15995,6 +15995,6 @@
     ],
     "title": "lambda-rocrate-core",
     "type": "object",
-    "version": "0.3.4"
+    "version": "0.3.5"
 }
 

@@ -516,6 +516,11 @@ lambda:ExperimentRun	ExperimentRun	skos:relatedMatch		IHMCIF:_ihm_dataset_group	
 sdo:Action	ExperimentRunAction	skos:exactMatch		lambda:ExperimentRun		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:Image3D	Image3D	skos:relatedMatch		IHMCIF:_ihm_3dem_restraint		skos:relatedMatch	http://w3id.org/lambda/									
 lambda:Image3D	Image3D	skos:relatedMatch		IHMCIF:_ihm_localization_density_files		skos:relatedMatch	http://w3id.org/lambda/									
+sdo:IndividualProduct	InstrumentEntity	skos:narrowMatch		lambda:BeamlineInstrument		skos:narrowMatch	http://w3id.org/lambda/rocrate/core									
+sdo:IndividualProduct	InstrumentEntity	skos:narrowMatch		lambda:CryoEMInstrument		skos:narrowMatch	http://w3id.org/lambda/rocrate/core									
+sdo:IndividualProduct	InstrumentEntity	skos:narrowMatch		lambda:SANSInstrument		skos:narrowMatch	http://w3id.org/lambda/rocrate/core									
+sdo:IndividualProduct	InstrumentEntity	skos:narrowMatch		lambda:SAXSInstrument		skos:narrowMatch	http://w3id.org/lambda/rocrate/core									
+sdo:IndividualProduct	InstrumentEntity	skos:narrowMatch		lambda:XRayInstrument		skos:narrowMatch	http://w3id.org/lambda/rocrate/core									
 sdo:IndividualProduct	InstrumentEntity	skos:exactMatch		lambda:Instrument		skos:exactMatch	http://w3id.org/lambda/rocrate/core									
 lambda:MolecularComposition	MolecularComposition	skos:relatedMatch		IHMCIF:_ihm_entity_poly_segment		skos:relatedMatch	http://w3id.org/lambda/									
 lambda:MolecularComposition	MolecularComposition	skos:relatedMatch		IHMCIF:_ihm_struct_assembly_details		skos:relatedMatch	http://w3id.org/lambda/									

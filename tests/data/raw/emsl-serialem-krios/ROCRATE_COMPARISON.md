@@ -2,7 +2,7 @@
 
 **Crate file:** `tests/data/raw/emsl-serialem-krios/ro-crate-metadata.json`  
 **Full record:** `tests/data/valid/Dataset-emsl-serialem-krios.yaml` (lambda-ber-schema `Dataset`)  
-**Schema version:** lambda-rocrate-core 0.3.4 / lambda-ber-schema 0.1.2
+**Schema version:** lambda-rocrate-core 0.3.5 / lambda-ber-schema 0.1.2
 **Fixture version:** hackathon branch (SerialEM SPA, Titan Krios at EMSL)  
 **Status:** All 4 validation layers pass.
 
@@ -96,7 +96,7 @@ lambda-ber-schema now has every term this crate needs, so the crate declares no 
 
 ## 3. Schema Gaps
 
-Fields in the source data that had no slot. Status as of lambda-rocrate-core 0.3.4.
+Fields in the source data that had no slot. Status as of lambda-rocrate-core 0.3.5.
 
 ### 3a. `quality_metrics` / `grid_quality` — resolved
 
@@ -120,7 +120,7 @@ session on the microscope. They are now `ExperimentRun` slots too (`CryoEMInstru
 capabilities and defaults), and Core 0.3.4 carries them on `ExperimentRunAction`. mmCIF records Cs
 per imaging session as well (`_em_imaging.nominal_cs`).
 
-### 3d. Instrument-level detail — resolved in the full record; crate open
+### 3d. Instrument-level detail — resolved in the full record; crate types the kind, capabilities open
 
 Energy filter presence, the detector's make, model and physical pixel size (5 µm, sheet field
 `detector_physical_pixel_size`), Cs and the control software are `CryoEMInstrument` fields. The
@@ -129,8 +129,11 @@ entry in `Dataset.instruments` is written `instrument_type: CryoEMInstrument` an
 class (#128). The designator is a schema-wide slot rather than an attribute because LinkML's Python
 generator mishandles an attribute designator (linkml/linkml#2107, #3663).
 
-The crate is unchanged: `InstrumentEntity` has no slots for these, so they stay in `runParameters`
-here and in the Dataset record.
+In the crate the Krios is typed `["IndividualProduct", "lambda:CryoEMInstrument"]` (Core 0.3.5), the
+same class as the record's `instrument_type`, so a reader can tell a microscope from a beamline
+without opening the record. The capabilities themselves are still not in the crate:
+`InstrumentEntity` has no slots for them, so they stay in `runParameters` here and in the Dataset
+record. Whether the crate should carry them is open (#131).
 
 ### 3e. `sample_buffer: 1xTBS` — in the full record only
 
