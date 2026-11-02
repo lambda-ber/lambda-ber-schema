@@ -30,6 +30,7 @@ from lambda_ber_schema.pydantic import (
     Protein,
     QualityMetrics,
     QuantityValue,
+    RefinementParameters,
     Sample,
     SampleNucleicAcidAssociation,
     SampleNucleicAcidRoleEnum,
@@ -910,6 +911,78 @@ class PDBLoader(BaseLoader):
                         if ref.get("ls_dres_high")
                         else None
                     ),
+                )
+            )
+
+        workflows.extend(self._create_em_reconstruction_runs(entry_data, entry_id, warnings))
+
+        return workflows
+
+    def _create_em_reconstruction_runs(
+        self, entry_data: dict[str, Any], entry_id: str, warnings: list[str]
+    ) -> list[WorkflowRun]:
+        """Create one WorkflowRun per em_3d_reconstruction row of a cryo-EM entry.
+
+        ``num_particles`` is the count that went into the deposited map, which is what
+        WorkflowRun.number_of_particles records. It is not the size of the picked stack
+        (``em_particle_selection.num_particles_selected``) nor of the EMPIAR particle set.
+        """
+        reconstructions = entry_data.get("em_3d_reconstruction") or []
+        software = entry_data.get("em_software") or []
+        workflows = []
+
+        for rec in reconstructions:
+            rec_id = rec.get("id") or str(len(workflows) + 1)
+            processing_id = rec.get("image_processing_id")
+            # Prefer the reconstruction software of the same image-processing step
+            candidates = [
+                s for s in software
+                if s.get("category") == "RECONSTRUCTION" and s.get("name")
+            ]
+            recon_software = next(
+                (s for s in candidates if s.get("image_processing_id") == processing_id),
+                candidates[0] if candidates else {},
+            )
+
+            number_of_particles = rec.get("num_particles")
+            if number_of_particles is not None and (
+                not isinstance(number_of_particles, int) or number_of_particles < 0
+            ):
+                warnings.append(
+                    f"{entry_id}: em_3d_reconstruction {rec_id} has num_particles "
+                    f"{number_of_particles!r}, which is not a count; left unset"
+                )
+                number_of_particles = None
+
+            resolution = rec.get("resolution")
+            method = rec.get("resolution_method") or ""
+            refinement_params = None
+            if resolution is not None and "0.143" in method:
+                refinement_params = RefinementParameters(
+                    resolution_0_143=QuantityValue(
+                        numeric_value=resolution, unit="Angstroms")
+                )
+
+            description = None
+            if resolution is not None:
+                description = f"3D reconstruction to {resolution} Å"
+                if method:
+                    description += f" ({method})"
+                if number_of_particles is not None:
+                    description += f" from {number_of_particles:,} particles"
+
+            workflows.append(
+                WorkflowRun(
+                    id=f"pdb:{entry_id}/workflow/reconstruction/{rec_id}",
+                    workflow_code=f"PDB-{entry_id}-RECON-{rec_id}",
+                    workflow_type=WorkflowTypeEnum.refinement,
+                    software_name=recon_software.get("name", "Unknown"),
+                    software_version=recon_software.get("version"),
+                    description=description,
+                    number_of_particles=number_of_particles,
+                    refinement_params=refinement_params,
+                    deposited_to_pdb=True,
+                    pdb_id=entry_id,
                 )
             )
 

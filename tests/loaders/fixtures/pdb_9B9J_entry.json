@@ -1,0 +1,682 @@
+{
+  "audit_author": [
+    {
+      "identifier_ORCID": "0000-0002-2030-2861",
+      "name": "Nguyen, A.",
+      "pdbx_ordinal": 1
+    },
+    {
+      "identifier_ORCID": "0000-0002-3484-9921",
+      "name": "Azumaya, C.M.",
+      "pdbx_ordinal": 2
+    },
+    {
+      "identifier_ORCID": "0000-0003-1909-5751",
+      "name": "Campbell, M.G.",
+      "pdbx_ordinal": 3
+    }
+  ],
+  "citation": [
+    {
+      "country": "US",
+      "id": "primary",
+      "journal_abbrev": "Biorxiv",
+      "journal_id_ISSN": "2692-8205",
+      "pdbx_database_id_DOI": "10.1101/2025.01.08.631572",
+      "pdbx_database_id_PubMed": 39829743,
+      "rcsb_authors": [
+        "Nguyen, A.",
+        "Heim, J.B.",
+        "Cordara, G.",
+        "Chan, M.C.",
+        "Johannesen, H.",
+        "Charlesworth, C.",
+        "Li, M.",
+        "Azumaya, C.M.",
+        "Madden, B.",
+        "Krengel, U.",
+        "Meves, A.",
+        "Campbell, M.G."
+      ],
+      "rcsb_is_primary": "Y",
+      "rcsb_journal_abbrev": "bioRxiv",
+      "title": "Shared ligand-blocking mechanism but distinct conformational modulation by alpha 5-targeting antibodies BIIG2 and MINT1526A.",
+      "year": 2025
+    }
+  ],
+  "database_2": [
+    {
+      "database_code": "9B9J",
+      "database_id": "PDB",
+      "pdbx_DOI": "10.2210/pdb9b9j/pdb",
+      "pdbx_database_accession": "pdb_00009b9j"
+    },
+    {
+      "database_code": "D_1000278799",
+      "database_id": "WWPDB"
+    },
+    {
+      "database_code": "EMD-44386",
+      "database_id": "EMDB"
+    }
+  ],
+  "em_3d_fitting": [
+    {
+      "details": "Initial local fitting was done using ChimeraX and then Phenix, ISOLDE and COOT for flexible fitting and modeling.",
+      "id": "1",
+      "overall_b_value": 93.0,
+      "ref_protocol": "RIGID BODY FIT",
+      "ref_space": "REAL",
+      "target_criteria": "Cross-correlation coefficient"
+    }
+  ],
+  "em_3d_fitting_list": [
+    {
+      "3d_fitting_id": "1",
+      "id": "1",
+      "pdb_chain_id": "A",
+      "pdb_entry_id": "3VI3"
+    },
+    {
+      "3d_fitting_id": "1",
+      "id": "2",
+      "pdb_chain_id": "B",
+      "pdb_entry_id": "3VI3"
+    }
+  ],
+  "em_3d_reconstruction": [
+    {
+      "id": "1",
+      "image_processing_id": "1",
+      "num_particles": 317066,
+      "resolution": 2.6,
+      "resolution_method": "FSC 0.143 CUT-OFF",
+      "symmetry_type": "POINT"
+    }
+  ],
+  "em_ctf_correction": [
+    {
+      "em_image_processing_id": "1",
+      "id": "1",
+      "type": "PHASE FLIPPING AND AMPLITUDE CORRECTION"
+    }
+  ],
+  "em_entity_assembly": [
+    {
+      "entity_id_list": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "id": "1",
+      "name": "Protein complex of integrin alpha-5 beta-1 with BIIG2 Fab",
+      "parent_id": 0,
+      "source": "RECOMBINANT",
+      "type": "COMPLEX"
+    }
+  ],
+  "em_experiment": {
+    "aggregation_state": "PARTICLE",
+    "entity_assembly_id": "1",
+    "id": "1",
+    "reconstruction_method": "SINGLE PARTICLE"
+  },
+  "em_image_recording": [
+    {
+      "avg_electron_dose_per_image": 50.0,
+      "film_or_detector_model": "GATAN K3 (6k x 4k)",
+      "id": "1",
+      "imaging_id": "1",
+      "num_grids_imaged": 1,
+      "num_real_images": 3656
+    }
+  ],
+  "em_imaging": [
+    {
+      "accelerating_voltage": 200,
+      "cryogen": "NITROGEN",
+      "electron_source": "FIELD EMISSION GUN",
+      "id": "1",
+      "illumination_mode": "FLOOD BEAM",
+      "microscope_model": "TFS GLACIOS",
+      "mode": "BRIGHT FIELD",
+      "nominal_cs": 2.7,
+      "nominal_defocus_max": 1800.0,
+      "nominal_defocus_min": 1400.0,
+      "nominal_magnification": 36000,
+      "specimen_id": "1"
+    }
+  ],
+  "em_particle_selection": [
+    {
+      "id": "1",
+      "image_processing_id": "1",
+      "num_particles_selected": 2425530
+    }
+  ],
+  "em_software": [
+    {
+      "category": "PARTICLE SELECTION",
+      "id": "1",
+      "image_processing_id": "1",
+      "name": "cryoSPARC"
+    },
+    {
+      "category": "IMAGE ACQUISITION",
+      "id": "2",
+      "imaging_id": "1",
+      "name": "SerialEM"
+    },
+    {
+      "category": "MASKING",
+      "id": "3"
+    },
+    {
+      "category": "CTF CORRECTION",
+      "id": "4",
+      "image_processing_id": "1",
+      "name": "cryoSPARC"
+    },
+    {
+      "category": "LAYERLINE INDEXING",
+      "id": "5"
+    },
+    {
+      "category": "DIFFRACTION INDEXING",
+      "id": "6"
+    },
+    {
+      "category": "MODEL FITTING",
+      "fitting_id": "1",
+      "id": "7",
+      "name": "PHENIX"
+    },
+    {
+      "category": "MODEL FITTING",
+      "fitting_id": "1",
+      "id": "8",
+      "name": "UCSF ChimeraX"
+    },
+    {
+      "category": "OTHER",
+      "id": "9"
+    },
+    {
+      "category": "MODEL REFINEMENT",
+      "fitting_id": "1",
+      "id": "10",
+      "name": "PHENIX"
+    },
+    {
+      "category": "MODEL REFINEMENT",
+      "fitting_id": "1",
+      "id": "11",
+      "name": "ISOLDE"
+    },
+    {
+      "category": "MODEL REFINEMENT",
+      "fitting_id": "1",
+      "id": "12",
+      "name": "Coot"
+    },
+    {
+      "category": "INITIAL EULER ASSIGNMENT",
+      "id": "13",
+      "image_processing_id": "1",
+      "name": "cryoSPARC"
+    },
+    {
+      "category": "FINAL EULER ASSIGNMENT",
+      "id": "14",
+      "image_processing_id": "1",
+      "name": "cryoSPARC"
+    },
+    {
+      "category": "CLASSIFICATION",
+      "id": "15",
+      "image_processing_id": "1"
+    },
+    {
+      "category": "RECONSTRUCTION",
+      "id": "16",
+      "image_processing_id": "1",
+      "name": "cryoSPARC"
+    },
+    {
+      "category": "VOLUME SELECTION",
+      "fitting_id": "1",
+      "id": "17",
+      "image_processing_id": "1",
+      "imaging_id": "1"
+    },
+    {
+      "category": "SERIES ALIGNMENT",
+      "fitting_id": "1",
+      "id": "18",
+      "image_processing_id": "1",
+      "imaging_id": "1"
+    },
+    {
+      "category": "MOLECULAR REPLACEMENT",
+      "fitting_id": "1",
+      "id": "19",
+      "image_processing_id": "1",
+      "imaging_id": "1"
+    },
+    {
+      "category": "LATTICE DISTORTION CORRECTION",
+      "fitting_id": "1",
+      "id": "20",
+      "image_processing_id": "1",
+      "imaging_id": "1"
+    },
+    {
+      "category": "SYMMETRY DETERMINATION",
+      "fitting_id": "1",
+      "id": "21",
+      "image_processing_id": "1",
+      "imaging_id": "1"
+    },
+    {
+      "category": "CRYSTALLOGRAPHY MERGING",
+      "fitting_id": "1",
+      "id": "22",
+      "image_processing_id": "1",
+      "imaging_id": "1"
+    }
+  ],
+  "em_specimen": [
+    {
+      "concentration": 0.15,
+      "embedding_applied": "NO",
+      "experiment_id": "1",
+      "id": "1",
+      "shadowing_applied": "NO",
+      "staining_applied": "NO",
+      "vitrification_applied": "YES"
+    }
+  ],
+  "em_vitrification": [
+    {
+      "chamber_temperature": 277.0,
+      "cryogen_name": "ETHANE",
+      "humidity": 100.0,
+      "id": "1",
+      "instrument": "FEI VITROBOT MARK IV",
+      "specimen_id": "1"
+    }
+  ],
+  "entry": {
+    "id": "9B9J"
+  },
+  "exptl": [
+    {
+      "method": "ELECTRON MICROSCOPY"
+    }
+  ],
+  "pdbx_audit_revision_category": [
+    {
+      "category": "citation",
+      "data_content_type": "Structure model",
+      "ordinal": 1,
+      "revision_ordinal": 2
+    },
+    {
+      "category": "citation_author",
+      "data_content_type": "Structure model",
+      "ordinal": 2,
+      "revision_ordinal": 2
+    },
+    {
+      "category": "em_admin",
+      "data_content_type": "Structure model",
+      "ordinal": 3,
+      "revision_ordinal": 2
+    }
+  ],
+  "pdbx_audit_revision_details": [
+    {
+      "data_content_type": "Structure model",
+      "ordinal": 1,
+      "provider": "repository",
+      "revision_ordinal": 1,
+      "type": "Initial release"
+    }
+  ],
+  "pdbx_audit_revision_group": [
+    {
+      "data_content_type": "Structure model",
+      "group": "Data collection",
+      "ordinal": 1,
+      "revision_ordinal": 2
+    },
+    {
+      "data_content_type": "Structure model",
+      "group": "Database references",
+      "ordinal": 2,
+      "revision_ordinal": 2
+    }
+  ],
+  "pdbx_audit_revision_history": [
+    {
+      "data_content_type": "Structure model",
+      "major_revision": 1,
+      "minor_revision": 0,
+      "ordinal": 1,
+      "revision_date": "2025-02-05T00:00:00.000+00:00"
+    },
+    {
+      "data_content_type": "Structure model",
+      "major_revision": 1,
+      "minor_revision": 1,
+      "ordinal": 2,
+      "revision_date": "2025-10-22T00:00:00.000+00:00"
+    }
+  ],
+  "pdbx_audit_revision_item": [
+    {
+      "data_content_type": "Structure model",
+      "item": "_citation.title",
+      "ordinal": 1,
+      "revision_ordinal": 2
+    },
+    {
+      "data_content_type": "Structure model",
+      "item": "_citation_author.identifier_ORCID",
+      "ordinal": 2,
+      "revision_ordinal": 2
+    },
+    {
+      "data_content_type": "Structure model",
+      "item": "_em_admin.last_update",
+      "ordinal": 3,
+      "revision_ordinal": 2
+    }
+  ],
+  "pdbx_audit_support": [
+    {
+      "country": "United States",
+      "funding_organization": "National Institutes of Health/National Institute of General Medical Sciences (NIH/NIGMS)",
+      "grant_number": "R35 GM147414-01",
+      "ordinal": 1
+    },
+    {
+      "country": "United States",
+      "funding_organization": "The Pew Charitable Trusts",
+      "grant_number": "NA",
+      "ordinal": 2
+    },
+    {
+      "funding_organization": "Other private",
+      "grant_number": "P30 CA015704-40",
+      "ordinal": 3
+    }
+  ],
+  "pdbx_database_related": [
+    {
+      "content_type": "unspecified",
+      "db_id": "8R38",
+      "db_name": "PDB",
+      "details": "integrin alpha-5 beta-1 in complex with MINT1526A Fab"
+    },
+    {
+      "content_type": "associated EM volume",
+      "db_id": "EMD-44386",
+      "db_name": "EMDB",
+      "details": "Integrin alpha-5 beta-1 in complex with BIIG2 Fab"
+    }
+  ],
+  "pdbx_database_status": {
+    "SG_entry": "N",
+    "deposit_site": "RCSB",
+    "pdb_format_compatible": "Y",
+    "process_site": "RCSB",
+    "recvd_initial_deposition_date": "2024-04-02T00:00:00.000+00:00",
+    "status_code": "REL"
+  },
+  "pdbx_initial_refinement_model": [
+    {
+      "accession_code": "3VI3",
+      "id": 1,
+      "source_name": "PDB",
+      "type": "experimental model"
+    }
+  ],
+  "pdbx_vrpt_summary": {
+    "attempted_validation_steps": "visualanalysis,mogul,buster-report,molprobity,validation-pack,validation_schema,percentiles,writexml,writecif,writepdf",
+    "ligands_for_buster_report": "N",
+    "report_creation_date": "2026-03-06T19:59:00.000+00:00"
+  },
+  "pdbx_vrpt_summary_em": [
+    {
+      "Q_score": 0.589,
+      "atom_inclusion_all_atoms": 0.947,
+      "atom_inclusion_backbone": 0.951,
+      "author_provided_fsc_resolution_by_cutoff_halfbit": 2.61,
+      "author_provided_fsc_resolution_by_cutoff_onebit": 2.75,
+      "author_provided_fsc_resolution_by_cutoff_pt_143": 2.59,
+      "author_provided_fsc_resolution_by_cutoff_pt_333": 2.75,
+      "author_provided_fsc_resolution_by_cutoff_pt_5": 2.84,
+      "author_provided_fsc_resolution_by_cutoff_threesigma": 2.37,
+      "calculated_fsc_resolution_by_cutoff_halfbit": 3.51,
+      "calculated_fsc_resolution_by_cutoff_onebit": 3.89,
+      "calculated_fsc_resolution_by_cutoff_pt_143": 3.42,
+      "calculated_fsc_resolution_by_cutoff_pt_333": 3.88,
+      "calculated_fsc_resolution_by_cutoff_pt_5": 4.21,
+      "calculated_fsc_resolution_by_cutoff_threesigma": 2.86,
+      "contour_level_primary_map": 0.24,
+      "exp_method": "electron microscopy"
+    }
+  ],
+  "pdbx_vrpt_summary_geometry": [
+    {
+      "angles_RMSZ": 0.33,
+      "bonds_RMSZ": 0.19,
+      "clashscore": 2.76,
+      "num_H_reduce": 8178,
+      "num_angles_RMSZ": 11236,
+      "num_bonds_RMSZ": 8281,
+      "percent_ramachandran_outliers": 0.1,
+      "percent_rotamer_outliers": 0.34
+    }
+  ],
+  "rcsb_accession_info": {
+    "deposit_date": "2024-04-02T00:00:00.000+00:00",
+    "has_released_experimental_data": "Y",
+    "initial_release_date": "2025-02-05T00:00:00.000+00:00",
+    "major_revision": 1,
+    "minor_revision": 1,
+    "revision_date": "2025-10-22T00:00:00.000+00:00",
+    "status_code": "REL"
+  },
+  "rcsb_entry_container_identifiers": {
+    "assembly_ids": [
+      "1"
+    ],
+    "branched_entity_ids": [
+      "5",
+      "6",
+      "7",
+      "8"
+    ],
+    "emdb_ids": [
+      "EMD-44386"
+    ],
+    "entity_ids": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10"
+    ],
+    "entry_id": "9B9J",
+    "model_ids": [
+      1
+    ],
+    "non_polymer_entity_ids": [
+      "9",
+      "10"
+    ],
+    "polymer_entity_ids": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "pubmed_id": 39829743,
+    "rcsb_id": "9B9J"
+  },
+  "rcsb_entry_info": {
+    "assembly_count": 1,
+    "branched_entity_count": 4,
+    "branched_molecular_weight_maximum": 1.07,
+    "branched_molecular_weight_minimum": 0.42,
+    "cis_peptide_count": 1,
+    "deposited_atom_count": 8517,
+    "deposited_branched_entity_instance_count": 10,
+    "deposited_deuterated_water_count": 0,
+    "deposited_hydrogen_atom_count": 8211,
+    "deposited_model_count": 1,
+    "deposited_modeled_polymer_monomer_count": 1055,
+    "deposited_nonpolymer_entity_instance_count": 8,
+    "deposited_polymer_entity_instance_count": 4,
+    "deposited_polymer_monomer_count": 2154,
+    "deposited_solvent_atom_count": 0,
+    "deposited_unmodeled_polymer_monomer_count": 1099,
+    "disulfide_bond_count": 9,
+    "entity_count": 10,
+    "experimental_method": "EM",
+    "experimental_method_count": 1,
+    "inter_mol_covalent_bond_count": 32,
+    "inter_mol_metalic_bond_count": 38,
+    "molecular_weight": 242.7,
+    "na_polymer_entity_types": "Other",
+    "nonpolymer_bound_components": [
+      "CA",
+      "NAG"
+    ],
+    "nonpolymer_entity_count": 2,
+    "nonpolymer_molecular_weight_maximum": 0.22,
+    "nonpolymer_molecular_weight_minimum": 0.04,
+    "polymer_composition": "protein/oligosaccharide",
+    "polymer_entity_count": 4,
+    "polymer_entity_count_DNA": 0,
+    "polymer_entity_count_RNA": 0,
+    "polymer_entity_count_nucleic_acid": 0,
+    "polymer_entity_count_nucleic_acid_hybrid": 0,
+    "polymer_entity_count_protein": 4,
+    "polymer_entity_taxonomy_count": 4,
+    "polymer_molecular_weight_maximum": 108.69,
+    "polymer_molecular_weight_minimum": 23.4,
+    "polymer_monomer_count_maximum": 995,
+    "polymer_monomer_count_minimum": 214,
+    "resolution_combined": [
+      2.6
+    ],
+    "selected_polymer_entity_types": "Protein/Oligosaccharide",
+    "software_programs_combined": [
+      "COOT",
+      "CRYOSPARC",
+      "ISOLDE",
+      "PHENIX",
+      "SERIALEM",
+      "UCSF CHIMERAX"
+    ],
+    "solvent_entity_count": 0,
+    "structure_determination_methodology": "experimental",
+    "structure_determination_methodology_priority": 10
+  },
+  "rcsb_external_references": [
+    {
+      "id": "EMD-44386",
+      "link": "https://www.emdataresource.org/EMD-44386",
+      "type": "EM DATA RESOURCE"
+    }
+  ],
+  "rcsb_primary_citation": {
+    "country": "US",
+    "id": "primary",
+    "journal_abbrev": "Biorxiv",
+    "journal_id_ISSN": "2692-8205",
+    "pdbx_database_id_DOI": "10.1101/2025.01.08.631572",
+    "pdbx_database_id_PubMed": 39829743,
+    "rcsb_ORCID_identifiers": [
+      "?",
+      "?",
+      "?",
+      "?",
+      "?",
+      "?",
+      "?",
+      "?",
+      "?",
+      "?",
+      "?",
+      "?"
+    ],
+    "rcsb_authors": [
+      "Nguyen, A.",
+      "Heim, J.B.",
+      "Cordara, G.",
+      "Chan, M.C.",
+      "Johannesen, H.",
+      "Charlesworth, C.",
+      "Li, M.",
+      "Azumaya, C.M.",
+      "Madden, B.",
+      "Krengel, U.",
+      "Meves, A.",
+      "Campbell, M.G."
+    ],
+    "rcsb_journal_abbrev": "bioRxiv",
+    "title": "Shared ligand-blocking mechanism but distinct conformational modulation by alpha 5-targeting antibodies BIIG2 and MINT1526A.",
+    "year": 2025
+  },
+  "refine_ls_restr": [
+    {
+      "dev_ideal": 0.004,
+      "number": 8696,
+      "pdbx_refine_id": "ELECTRON MICROSCOPY",
+      "type": "f_bond_d"
+    },
+    {
+      "dev_ideal": 0.524,
+      "number": 11800,
+      "pdbx_refine_id": "ELECTRON MICROSCOPY",
+      "type": "f_angle_d"
+    },
+    {
+      "dev_ideal": 8.587,
+      "number": 1375,
+      "pdbx_refine_id": "ELECTRON MICROSCOPY",
+      "type": "f_dihedral_angle_d"
+    },
+    {
+      "dev_ideal": 0.042,
+      "number": 1380,
+      "pdbx_refine_id": "ELECTRON MICROSCOPY",
+      "type": "f_chiral_restr"
+    },
+    {
+      "dev_ideal": 0.003,
+      "number": 1496,
+      "pdbx_refine_id": "ELECTRON MICROSCOPY",
+      "type": "f_plane_restr"
+    }
+  ],
+  "struct": {
+    "pdbx_CASP_flag": "N",
+    "title": "Integrin alpha-5 beta-1 in complex with BIIG2 Fab"
+  },
+  "struct_keywords": {
+    "pdbx_keywords": "SIGNALING PROTEIN,CELL ADHESION",
+    "text": "Integrin, Antibody Fab, Inhibitory, SIGNALING PROTEIN, CELL ADHESION"
+  },
+  "rcsb_id": "9B9J"
+}

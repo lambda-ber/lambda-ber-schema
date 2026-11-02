@@ -1,5 +1,7 @@
 """Tests for PDB loader."""
 
+import copy
+
 import pytest
 
 from lambda_ber_schema.loaders.pdb import PDBLoader
@@ -315,6 +317,56 @@ class TestPDBLoader:
         assert post_mock.call_count == 1
 
 
+def _em_loader(mocker, entry: dict) -> PDBLoader:
+    """A loader that returns ``entry`` and no polymer entities: only the workflow runs matter here."""
+    loader = PDBLoader()
+    mocker.patch.object(loader, "_fetch_entry", return_value=entry)
+    mocker.patch.object(loader, "_fetch_polymer_entities", return_value=[])
+    return loader
+
+
+class TestPDBLoaderEMReconstruction:
+    """A cryo-EM entry: one WorkflowRun per em_3d_reconstruction row, carrying its particle count."""
+
+    def test_reconstruction_records_particles_used(self, mocker, pdb_9b9j_entry_response):
+        """num_particles is the count in the map (317,066), not the 2,425,530 picked."""
+        result = _em_loader(mocker, pdb_9b9j_entry_response).load("9B9J")
+        [recon] = result.dataset.workflow_runs
+        assert recon.id == "pdb:9B9J/workflow/reconstruction/1"
+        assert recon.workflow_type == "refinement"
+        assert recon.number_of_particles == 317066
+        assert recon.software_name == "cryoSPARC"
+        assert recon.refinement_params.resolution_0_143.numeric_value == 2.6
+        assert recon.pdb_id == "9B9J"
+        # It is linked to the experiment like any other workflow run
+        assert [a.workflow_id for a in result.dataset.workflow_experiment_associations] == [recon.id]
+
+    def test_resolution_without_fsc_0143_is_not_called_0143(self, mocker, pdb_9b9j_entry_response):
+        entry = copy.deepcopy(pdb_9b9j_entry_response)
+        entry["em_3d_reconstruction"][0]["resolution_method"] = "FSC 0.5 CUT-OFF"
+        [recon] = _em_loader(mocker, entry).load("9B9J").dataset.workflow_runs
+        assert recon.refinement_params is None
+        assert "FSC 0.5 CUT-OFF" in recon.description
+
+    def test_missing_or_bad_particle_count_is_left_unset(self, mocker, pdb_9b9j_entry_response):
+        entry = copy.deepcopy(pdb_9b9j_entry_response)
+        second = dict(entry["em_3d_reconstruction"][0], id="2", num_particles=-1)
+        del entry["em_3d_reconstruction"][0]["num_particles"]
+        entry["em_3d_reconstruction"].append(second)
+        result = _em_loader(mocker, entry).load("9B9J")
+        assert [w.number_of_particles for w in result.dataset.workflow_runs] == [None, None]
+        assert [w.id for w in result.dataset.workflow_runs] == [
+            "pdb:9B9J/workflow/reconstruction/1",
+            "pdb:9B9J/workflow/reconstruction/2",
+        ]
+        assert any("num_particles -1" in w for w in result.warnings)
+
+    def test_xray_entry_has_no_reconstruction_run(self, loader):
+        result = loader.load("1HHO")
+        assert all("/reconstruction/" not in w.id for w in result.dataset.workflow_runs)
+        assert all(w.number_of_particles is None for w in result.dataset.workflow_runs)
+
+
 @pytest.mark.integration
 @pytest.mark.slow
 @pytest.fixture
@@ -409,6 +461,7 @@ class TestPDBLoaderIntegration:
         assert result.dataset is not None
         exp = result.dataset.experiment_runs[0]
         assert exp.technique == TechniqueEnum.cryo_em
+        assert any(w.number_of_particles for w in result.dataset.workflow_runs)
 
     def test_list_entries(self):
         """Test listing entries from PDB."""

@@ -38,6 +38,12 @@ def pdb_1hho_polymer_entities() -> list[dict]:
 
 
 @pytest.fixture
+def pdb_9b9j_entry_response() -> dict:
+    """Load mocked PDB 9B9J entry API response (cryo-EM, integrin a5b1 with the BIIG2 Fab)."""
+    return json.loads((FIXTURES_DIR / "pdb_9B9J_entry.json").read_text())
+
+
+@pytest.fixture
 def pdb_1aay_entry_response() -> dict:
     """Load mocked PDB 1AAY entry API response (Zif268 zinc finger bound to DNA)."""
     return json.loads((FIXTURES_DIR / "pdb_1AAY_entry.json").read_text())

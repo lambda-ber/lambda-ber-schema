@@ -1,5 +1,5 @@
 # metamodel_version: 1.7.0
-# version: 0.1.2.post368.dev0+c63f3e26
+# version: 0.0.0.post387.dev0+32c846d
 enum AffinityUnitEnum
   {
     molar
@@ -297,6 +297,8 @@ enum DataTypeEnum
     fsc_curve
     map_half
     validation_report
+    predicted_model
+    particle_assignments
     gain_reference
     defect_map
     atlas
@@ -544,6 +546,9 @@ enum InputTypeEnum
     reference
     parameters
     mask
+    particles
+    structure_prior
+    particle_assignments
   }
 
 enum InstrumentCategoryEnum
@@ -714,6 +719,7 @@ enum OutputTypeEnum
     statistics
     processed_data
     log
+    particle_assignments
   }
 
 enum ParticleConcentrationEnum
@@ -1037,6 +1043,9 @@ enum WorkflowTypeEnum
     map_validation
     model_refinement
     model_validation
+    structure_prediction
+    heterogeneity_analysis
+    particle_to_model_inference
     md_system_setup
     md_minimization
     md_equilibration
@@ -2548,6 +2557,8 @@ type WorkflowOutputAssociation
     workflowId: WorkflowRun!
     fileId: DataFile!
     outputType: OutputTypeEnum
+    conformationalState: String
+    numberOfParticles: Integer
   }
 
 type WorkflowPersonAssociation
@@ -2627,6 +2638,7 @@ type WorkflowRun
     mdSimulationParams: MDSimulationParameters
     refinementParams: RefinementParameters
     fscCurve: FSCCurve
+    numberOfParticles: Integer
     outputFiles: [DataFile]
   }
 
