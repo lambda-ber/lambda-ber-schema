@@ -19,8 +19,11 @@ from __future__ import annotations
 import argparse
 import json
 import logging
+import re
 import subprocess
 import sys
+from collections import Counter
+from functools import lru_cache
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -39,7 +42,8 @@ SOURCE_TO_DATASET_NAME: dict[str, str] = {
     "ssrl-mx": "ssrl_mx",
 }
 
-# Dataset-level slots that aggregate to one Parquet each (lambda_ber_schema.yaml:185-244).
+SCHEMA_PATH = REPO_ROOT / "src" / "lambda_ber_schema" / "schema" / "lambda_ber_schema.yaml"
+
 # Slot names whose silver-table name must differ from the bronze slot name.
 # `data_files` collides with the reserved Iceberg metadata-table name and
 # trips Polaris's path resolver (IllegalStateException:
@@ -49,25 +53,56 @@ SLOT_TO_SILVER_NAME: dict[str, str] = {
     "data_files": "dataset_files",
 }
 
-ENTITY_SLOTS: tuple[str, ...] = (
-    "studies",
+# Entities that many entries refer to, so each per-entry YAML carries a copy.
+# These collapse to one row per key; every other table stays entry-scoped.
+SHARED_ENTITY_SLOTS: tuple[str, ...] = (
     "instruments",
-    "protein_constructs",
-    "samples",
-    "sample_preparations",
-    "experiment_runs",
-    "workflow_runs",
-    "data_files",
-    "images",
-    "study_sample_associations",
-    "study_experiment_associations",
-    "study_workflow_associations",
-    "experiment_sample_associations",
-    "experiment_instrument_associations",
-    "workflow_experiment_associations",
-    "workflow_input_associations",
-    "workflow_output_associations",
+    "proteins",
+    "nucleic_acids",
+    "small_molecules",
+    "persons",
+    "organizations",
 )
+
+# Key fields tried in order when de-duplicating a shared entity row.
+SHARED_ENTITY_KEYS: dict[str, tuple[str, ...]] = {
+    "instruments": ("id", "instrument_code"),
+}
+
+# Protein fields a source may record per entry (mutants and constructs share a
+# UniProt ID). Each is copied to sample_protein_associations as entry_{field}, and
+# the shared row takes the most common values. Fields in a group stay paired.
+PROTEIN_DETAIL_FIELDS: tuple[str, ...] = (
+    "protein_name",
+    "organism_name",
+    "amino_acid_sequence",
+    "sequence_length",
+)
+MOST_COMMON_FIELD_GROUPS: dict[str, tuple[tuple[str, ...], ...]] = {
+    "proteins": (
+        ("protein_name", "title"),
+        ("organism_name",),
+        ("amino_acid_sequence", "sequence_length"),
+    ),
+}
+
+
+@lru_cache(maxsize=1)
+def get_entity_slots() -> tuple[str, ...]:
+    """Return every multivalued, class-ranged `Dataset` slot, in schema order.
+
+    Each one aggregates to one Parquet. Needs linkml_runtime, so run the convert
+    phase under `uv run`; upload and ingest can reuse its output with --skip-convert.
+    """
+    from linkml_runtime import SchemaView
+
+    view = SchemaView(str(SCHEMA_PATH))
+    classes = view.all_classes()
+    return tuple(
+        slot.name
+        for slot in view.class_induced_slots("Dataset")
+        if slot.multivalued and slot.range in classes
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -182,25 +217,128 @@ def _iter_yaml_docs(dump_dir: Path) -> Iterable[tuple[Path, dict]]:
         yield path, doc
 
 
+def _shared_entity_key(slot: str, row: dict) -> str | None:
+    for field in SHARED_ENTITY_KEYS.get(slot, ("id",)):
+        if row.get(field) is not None:
+            return row[field]
+    return None
+
+
+def copy_protein_details_to_associations(rows_by_slot: dict[str, list[dict]]) -> None:
+    """Add each entry's own protein details to its sample_protein_associations rows.
+
+    The entry_* columns are not schema slots. They keep what de-duplicating the
+    proteins table would otherwise lose.
+    """
+    by_entry_and_id = {
+        (row.get("source_entry_id"), row.get("id")): row
+        for row in rows_by_slot.get("proteins", [])
+    }
+    for association in rows_by_slot.get("sample_protein_associations", []):
+        protein = by_entry_and_id.get(
+            (association.get("source_entry_id"), association.get("protein_id")), {}
+        )
+        for field in PROTEIN_DETAIL_FIELDS:
+            if protein.get(field) is not None:
+                association[f"entry_{field}"] = protein[field]
+
+
+def _apply_most_common_values(slot: str, kept: dict, group_rows: list[dict]) -> None:
+    """Set each field group on `kept` to its most common values; ties go to the first seen."""
+    for fields in MOST_COMMON_FIELD_GROUPS.get(slot, ()):
+        values = Counter(
+            tuple(row.get(f) for f in fields)
+            for row in group_rows
+            if any(row.get(f) is not None for f in fields)
+        )
+        if values:
+            kept.update(zip(fields, values.most_common(1)[0][0]))
+
+
+def dedupe_shared_rows(slot: str, rows: list[dict]) -> tuple[list[dict], list[dict]]:
+    """Collapse `rows` to one per key, keeping the first seen.
+
+    Slots in MOST_COMMON_FIELD_GROUPS then take the most common values for those fields.
+
+    `source_entry_id` is dropped: a collapsed row belongs to many entries, and the
+    association tables lead back to them. Rows sharing a key but differing in any
+    other field are returned as conflicts. Rows with no key are kept as they are.
+
+    Returns (deduped_rows, conflicts).
+    """
+    first_by_key: dict[str, dict] = {}
+    rows_by_key: dict[str, list[dict]] = {}
+    conflict_by_key: dict[str, dict] = {}
+    deduped: list[dict] = []
+    for row in rows:
+        entry_id = row.get("source_entry_id")
+        fields = {k: v for k, v in row.items() if k != "source_entry_id"}
+        key = _shared_entity_key(slot, fields)
+        if key is None:
+            LOG.warning("%s: row from %s has no key; keeping it as is", slot, entry_id)
+            deduped.append(fields)
+            continue
+        rows_by_key.setdefault(key, []).append(fields)
+        kept = first_by_key.get(key)
+        if kept is None:
+            first_by_key[key] = dict(fields)
+            deduped.append(first_by_key[key])
+            continue
+        differing = sorted(
+            f for f in kept.keys() | fields.keys() if kept.get(f) != fields.get(f)
+        )
+        if differing:
+            conflict = conflict_by_key.setdefault(
+                key, {"slot": slot, "key": key, "fields": {}, "rows": 0}
+            )
+            conflict["rows"] += 1
+            for field in differing:
+                values = conflict["fields"].setdefault(field, [kept.get(field)])
+                if fields.get(field) not in values:
+                    values.append(fields.get(field))
+    for key in conflict_by_key:
+        _apply_most_common_values(slot, first_by_key[key], rows_by_key[key])
+    return deduped, list(conflict_by_key.values())
+
+
 def convert_yamls_to_parquet(dump_dir: Path, staging_dir: Path) -> list[str]:
     """Aggregate per-entry YAMLs into one Parquet per non-empty entity slot.
+
+    Shared entity slots collapse to one row per key; what that discards is logged
+    and written to {staging_dir}/dedupe_conflicts.json.
 
     Returns the list of slot names that produced a Parquet file.
     """
     staging_dir.mkdir(parents=True, exist_ok=True)
-    rows_by_slot: dict[str, list[dict]] = {slot: [] for slot in ENTITY_SLOTS}
+    entity_slots = get_entity_slots()
+    rows_by_slot: dict[str, list[dict]] = {slot: [] for slot in entity_slots}
 
     yaml_count = 0
     for _, doc in _iter_yaml_docs(dump_dir):
         yaml_count += 1
         entry_id = doc.get("id")
-        for slot in ENTITY_SLOTS:
+        for slot in entity_slots:
             for raw_row in (doc.get(slot) or []):
                 if not isinstance(raw_row, dict):
                     continue
                 rows_by_slot[slot].append(_flatten_row(raw_row, entry_id))
 
     LOG.info("Parsed %d YAML files from %s", yaml_count, dump_dir)
+
+    copy_protein_details_to_associations(rows_by_slot)
+
+    all_conflicts: list[dict] = []
+    for slot in SHARED_ENTITY_SLOTS:
+        before = len(rows_by_slot[slot])
+        rows_by_slot[slot], conflicts = dedupe_shared_rows(slot, rows_by_slot[slot])
+        all_conflicts.extend(conflicts)
+        if before:
+            LOG.info("De-duplicated %s: %d -> %d rows, %d key(s) with conflicts",
+                     slot, before, len(rows_by_slot[slot]), len(conflicts))
+        for conflict in conflicts[:5]:
+            LOG.warning("%s %s: collapsed to one row; %d row(s) differ in %s",
+                        slot, conflict["key"], conflict["rows"], sorted(conflict["fields"]))
+    (staging_dir / "dedupe_conflicts.json").write_text(json.dumps(all_conflicts, indent=2))
 
     written: list[str] = []
     for slot, rows in rows_by_slot.items():
@@ -249,8 +387,9 @@ def build_ingest_config(
     bucket: str,
     staging_dir: Path,
     slots: list[str],
+    dataset_suffix: str = "",
 ) -> dict:
-    dataset_name = SOURCE_TO_DATASET_NAME.get(source, source)
+    dataset_name = target_dataset_name(source, dataset_suffix)
     bronze_base = f"s3a://{bucket}/tenant-general-warehouse/{tenant}/datasets/{dataset_name}/"
     return {
         "tenant": tenant,
@@ -294,6 +433,33 @@ def get_minio_client():
     return client
 
 
+def ensure_target_is_new(
+    minio_client,
+    spark,
+    bucket: str,
+    tenant: str,
+    dataset_name: str,
+) -> None:
+    """Refuse to overwrite an existing load: bronze objects or silver tables.
+
+    Pass None for a client whose side of the target this run does not write.
+    """
+    if minio_client is not None:
+        prefix = f"tenant-general-warehouse/{tenant}/datasets/{dataset_name}/"
+        if next(iter(minio_client.list_objects(bucket, prefix=prefix, recursive=True)), None):
+            raise RuntimeError(
+                f"s3a://{bucket}/{prefix} already has objects. Choose a new --dataset-suffix, "
+                "or pass --replace-existing to overwrite them."
+            )
+    if spark is not None:
+        namespace = f"{tenant}.{dataset_name}"
+        if spark.catalog.databaseExists(namespace) and spark.sql(f"SHOW TABLES IN {namespace}").count():
+            raise RuntimeError(
+                f"{namespace} already has tables. Choose a new --dataset-suffix, "
+                "or pass --replace-existing to overwrite them."
+            )
+
+
 def upload_files(
     minio_client,
     bucket: str,
@@ -302,8 +468,9 @@ def upload_files(
     staging_dir: Path,
     slots: list[str],
     config_path: Path,
+    dataset_suffix: str = "",
 ) -> None:
-    dataset_name = SOURCE_TO_DATASET_NAME.get(source, source)
+    dataset_name = target_dataset_name(source, dataset_suffix)
     prefix = f"tenant-general-warehouse/{tenant}/datasets/{dataset_name}"
     for slot in slots:
         local = staging_dir / f"{slot}.parquet"
@@ -341,12 +508,12 @@ def run_direct_ingest(
     staging_dir: Path,
     slots: list[str],
 ) -> dict[str, int]:
-    """Create tables directly via Spark SQL (Delta/Hive flow).
+    """Create Iceberg tables directly via Spark SQL.
 
-    This bypasses data_lakehouse_ingest and works when the Iceberg catalog
-    flow is unavailable. Creates the namespace with the governance-aware
-    Delta/Hive flow, then reads each Parquet from the bronze S3 path and
-    writes it as a managed table.
+    This bypasses data_lakehouse_ingest. Creates the namespace with the
+    governance-aware flow, then reads each Parquet from the bronze S3 path and
+    writes it as a managed table. Any table of the same name is dropped first,
+    so callers guard existing targets with ensure_target_is_new().
     """
     from berdl_notebook_utils.spark.database import create_namespace_if_not_exists
 
@@ -356,7 +523,7 @@ def run_direct_ingest(
     dataset_name = config["dataset"]
 
     ns = create_namespace_if_not_exists(
-        spark, namespace=dataset_name, tenant_name=tenant, iceberg=False,
+        spark, namespace=dataset_name, tenant_name=tenant, iceberg=True,
     )
     LOG.info("Using namespace: %s", ns)
     spark.sql(f"USE {ns}")
@@ -391,8 +558,14 @@ def _build_spark_session():
 # Driver
 # ---------------------------------------------------------------------------
 
+def target_dataset_name(source: str, dataset_suffix: str = "") -> str:
+    """Return the name used for the bronze prefix and silver namespace."""
+    return SOURCE_TO_DATASET_NAME.get(source, source) + dataset_suffix
+
+
 def process_source(source: str, args: argparse.Namespace, minio_client) -> None:
     dataset_name = SOURCE_TO_DATASET_NAME.get(source, source)
+    target_name = target_dataset_name(source, args.dataset_suffix)
     dump_dir = args.dump_dir or (REPO_ROOT / "data" / f"{dataset_name}_dump")
     staging_dir = args.staging_dir or (REPO_ROOT / "data" / f"{dataset_name}_parquet")
     dump_dir = Path(dump_dir)
@@ -441,8 +614,18 @@ def process_source(source: str, args: argparse.Namespace, minio_client) -> None:
         bucket=args.bucket,
         staging_dir=staging_dir,
         slots=slots,
+        dataset_suffix=args.dataset_suffix,
     )
     config_path = write_ingest_config(config, staging_dir, source)
+
+    if not args.replace_existing:
+        ensure_target_is_new(
+            minio_client=None if args.skip_upload else minio_client,
+            spark=_build_spark_session() if (args.direct_ingest or args.run_ingest) else None,
+            bucket=args.bucket,
+            tenant=args.tenant,
+            dataset_name=target_name,
+        )
 
     if not args.skip_upload:
         if minio_client is None:
@@ -455,18 +638,19 @@ def process_source(source: str, args: argparse.Namespace, minio_client) -> None:
             staging_dir=staging_dir,
             slots=slots,
             config_path=config_path,
+            dataset_suffix=args.dataset_suffix,
         )
     else:
         LOG.info("Skipping upload phase for %s", source)
 
     if args.direct_ingest:
-        LOG.info("Running direct ingest (Delta/Hive flow) for %s", source)
+        LOG.info("Running direct ingest for %s", source)
         report = run_direct_ingest(config, staging_dir, slots)
         LOG.info("Direct ingest complete: %s", report)
     elif args.run_ingest:
         cfg_s3 = (
             f"s3a://{args.bucket}/tenant-general-warehouse/{args.tenant}"
-            f"/datasets/{dataset_name}/{config_path.name}"
+            f"/datasets/{target_name}/{config_path.name}"
         )
         LOG.info("Running data_lakehouse_ingest with config: %s", cfg_s3)
         report = run_ingest(cfg_s3, minio_client)
@@ -489,13 +673,18 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
                    help="Max entries per source (default: all)")
     p.add_argument("--tenant", default="lambda", help="Tenant name (default: lambda)")
     p.add_argument("--bucket", default="cdm-lake", help="Object-store bucket (default: cdm-lake)")
+    p.add_argument("--dataset-suffix", default="",
+                   help="Append to the bronze prefix and silver namespace, to load beside "
+                        "the current tables (e.g. _202611 writes lambda.sasbdb_202611)")
+    p.add_argument("--replace-existing", action="store_true",
+                   help="Allow overwriting a bronze prefix or silver tables that already exist")
     p.add_argument("--skip-dump", action="store_true")
     p.add_argument("--skip-convert", action="store_true")
     p.add_argument("--skip-upload", action="store_true")
     p.add_argument("--run-ingest", action="store_true",
                    help="After upload, invoke data_lakehouse_ingest.ingest()")
     p.add_argument("--direct-ingest", action="store_true",
-                   help="After upload, create tables directly via Spark SQL (Delta/Hive flow)")
+                   help="After upload, create Iceberg tables directly via Spark SQL")
     p.add_argument("--allow-failures", action="store_true",
                    help="Continue even if the dump phase reports failed entries")
     p.add_argument("--snapshots-dir", type=Path, default=None,
@@ -529,6 +718,9 @@ def main(argv: list[str] | None = None) -> int:
         raise SystemExit("--snapshots-dir is only valid with --sources=ssrl-mx")
     if "ssrl-mx" in sources and not args.skip_dump and not args.snapshots_dir:
         raise SystemExit("--snapshots-dir is required when dumping ssrl-mx")
+
+    if args.dataset_suffix and not re.fullmatch(r"[a-z0-9_]+", args.dataset_suffix):
+        raise SystemExit("--dataset-suffix may only contain lowercase letters, digits and _")
 
     minio_client = None
     if not args.skip_upload or args.run_ingest:
