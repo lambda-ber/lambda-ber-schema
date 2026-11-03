@@ -1,0 +1,1644 @@
+{
+  "@context": [
+    "https://w3id.org/ro/crate/1.2/context",
+    {
+      "lambda": "http://w3id.org/lambda/",
+      "lambdarc": "http://w3id.org/lambda/rocrate/",
+      "prov": "http://www.w3.org/ns/prov#",
+      "uniprot": "http://purl.uniprot.org/uniprot/",
+      "CHEBI": "http://purl.obolibrary.org/obo/CHEBI_",
+      "pdb.ligand": "https://www.rcsb.org/ligand/"
+    }
+  ],
+  "@graph": [
+    {
+      "@id": "s3a://cdm-lake/tenant-general-warehouse/lambda/datasets/nwbrave_cp12/ro-crate-metadata.json",
+      "@type": "CreativeWork",
+      "conformsTo": [
+        {
+          "@id": "https://w3id.org/ro/crate/1.2"
+        }
+      ],
+      "about": {
+        "@id": "s3a://cdm-lake/tenant-general-warehouse/lambda/datasets/nwbrave_cp12/"
+      }
+    },
+    {
+      "@id": "s3a://cdm-lake/tenant-general-warehouse/lambda/datasets/nwbrave_cp12/",
+      "@type": [
+        "Dataset",
+        "lambda:Dataset"
+      ],
+      "name": "Cyanophage CP12 remodels the Prochlorococcus MED4 dark complex: MD trajectories and analyses",
+      "description": "Molecular dynamics of the Prochlorococcus MED4 GAP2-CP12-PRK dark complex with host or cyanophage P-HM2 CP12, reduced and oxidized, 3 x 100 ns GROMACS replicates each, plus a 1,012-system cysteine PTM set per variant. A detached manifest as it would sit in the LAMBDA tenant of the BER Data Lakehouse: the bytes stay on Zenodo, EMSL and MassIVE, and the rigorous metadata travels as a lambda-ber-schema record beside this file.",
+      "datePublished": "2026-07-24",
+      "license": {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "conditionsOfAccess": "open",
+      "conformsTo": [
+        {
+          "@id": "https://w3id.org/ro/crate/1.2"
+        },
+        {
+          "@id": "https://w3id.org/lambda/profile/core/0.3.4"
+        }
+      ],
+      "identifier": [
+        {
+          "@type": "PropertyValue",
+          "propertyID": "DOI",
+          "value": "10.5281/zenodo.21536143"
+        }
+      ],
+      "citation": [
+        {
+          "@id": "https://doi.org/10.64898/2026.09.10.750766"
+        }
+      ],
+      "author": [
+        {
+          "@id": "https://orcid.org/0009-0009-5994-1896"
+        },
+        {
+          "@id": "https://orcid.org/0000-0002-8741-7823"
+        },
+        {
+          "@id": "https://orcid.org/0000-0001-9466-4462"
+        },
+        {
+          "@id": "https://orcid.org/0000-0001-7876-4359"
+        },
+        {
+          "@id": "https://orcid.org/0000-0001-9889-0467"
+        },
+        {
+          "@id": "https://orcid.org/0000-0002-6529-0905"
+        },
+        {
+          "@id": "https://orcid.org/0000-0002-1983-5927"
+        },
+        {
+          "@id": "https://orcid.org/0000-0003-3983-9009"
+        },
+        {
+          "@id": "https://orcid.org/0000-0002-9845-1584"
+        },
+        {
+          "@id": "https://orcid.org/0000-0001-9235-7661"
+        }
+      ],
+      "publisher": {
+        "@id": "https://ror.org/05h992307"
+      },
+      "keywords": [
+        "molecular dynamics",
+        "CP12",
+        "Calvin cycle",
+        "dark complex",
+        "cyanophage",
+        "Prochlorococcus",
+        "redox regulation",
+        "post-translational modification",
+        "NW-BRaVE"
+      ],
+      "technique": "molecular_dynamics",
+      "sample_code": "MED4/HM2 dark complex",
+      "protein_name": "GAP2-CP12-PRK dark complex",
+      "organism": "NCBITaxon:59919",
+      "proposal_id": "EMSL-61054",
+      "contentSize": "3043925147",
+      "packageTier": "manifest",
+      "sufficiency": {
+        "s1Findable": true,
+        "s2CoreComplete": true,
+        "s2AcquisitionComplete": false,
+        "s3Interpretable": false
+      },
+      "missing": [
+        {
+          "field": "facility_name",
+          "reason": "not-applicable",
+          "note": "Computed, not collected: there is no beamline or microscope. The compute sites are the instrument entities."
+        },
+        {
+          "field": "topology",
+          "reason": "not-deposited",
+          "blocks": "S2-acquisition",
+          "note": "topol.top, the modified amber99sb.ff and index files are not in the release, so the trajectories cannot be re-run or re-analysed with energies."
+        },
+        {
+          "field": "ptm_set_trajectories",
+          "reason": "not-deposited",
+          "blocks": "S2-acquisition",
+          "note": "The 2 x 1,012 PTM-set trajectories were not released; only analyses derived from them."
+        }
+      ],
+      "hasPart": [
+        {
+          "@id": "s3a://cdm-lake/tenant-general-warehouse/lambda/datasets/nwbrave_cp12/nwbrave_cp12_lambda_ber.yaml"
+        },
+        {
+          "@id": "https://doi.org/10.5281/zenodo.21536143"
+        },
+        {
+          "@id": "https://doi.org/10.25582/data.2026-08.3856177/3407882"
+        },
+        {
+          "@id": "https://doi.org/10.25582/data.2026-08.3853205/3407881"
+        },
+        {
+          "@id": "https://identifiers.org/massive:MSV000102848"
+        }
+      ]
+    },
+    {
+      "@id": "s3a://cdm-lake/tenant-general-warehouse/lambda/datasets/nwbrave_cp12/nwbrave_cp12_lambda_ber.yaml",
+      "@type": "File",
+      "name": "nwbrave_cp12_lambda_ber.yaml",
+      "description": "Full lambda-ber-schema Dataset record: 4 proteins, NAD+, 8 samples, 6 MD campaigns, 28 workflow runs, 38 data files.",
+      "encodingFormat": "application/yaml",
+      "contentSize": "86532",
+      "sha256": "becdd75805c7025acafb8042854e3e18c889fe7ec83a39227bbb9c40240d3b3f",
+      "file_format": "yaml",
+      "data_type": "metadata",
+      "file_role": "metadata",
+      "conformsTo": [
+        {
+          "@id": "http://w3id.org/lambda/"
+        }
+      ]
+    },
+    {
+      "@id": "https://doi.org/10.5281/zenodo.21536143",
+      "@type": "Dataset",
+      "name": "Zenodo 21536143: analysis package for Cyanophage CP12 Rewires Host Carbon Regulation",
+      "description": "Pointer mechanisms 2 and 3 together: the archive's own DOI and locator, and the full lambda-ber-schema record describing every trajectory, workflow and sample inside it.",
+      "identifier": [
+        {
+          "@type": "PropertyValue",
+          "propertyID": "DOI",
+          "value": "10.5281/zenodo.21536143"
+        }
+      ],
+      "url": "https://zenodo.org/records/21536143",
+      "schemaRecord": {
+        "@id": "s3a://cdm-lake/tenant-general-warehouse/lambda/datasets/nwbrave_cp12/nwbrave_cp12_lambda_ber.yaml"
+      },
+      "schemaVersion": "0.3.4",
+      "contentSize": "3043925147",
+      "partCount": 16,
+      "hasPart": [
+        {
+          "@id": "https://zenodo.org/records/21536143/files/trajectories.zip"
+        },
+        {
+          "@id": "https://zenodo.org/records/21536143/files/Static_interface_hmm_mapping.zip"
+        },
+        {
+          "@id": "https://zenodo.org/records/21536143/files/SASA-BSA.zip"
+        },
+        {
+          "@id": "https://zenodo.org/records/21536143/files/CP12_protein_family_HMM_column_metrics.zip"
+        },
+        {
+          "@id": "https://zenodo.org/records/21536143/files/Physico-Chemical.zip"
+        },
+        {
+          "@id": "https://zenodo.org/records/21536143/files/MMGBSA.zip"
+        },
+        {
+          "@id": "https://zenodo.org/records/21536143/files/CP12_protein_family_build.zip"
+        },
+        {
+          "@id": "https://zenodo.org/records/21536143/files/requirements.txt"
+        },
+        {
+          "@id": "https://zenodo.org/records/21536143/files/DISCLAIMER.txt"
+        },
+        {
+          "@id": "https://zenodo.org/records/21536143/files/agent_skills_for_data_exploration.zip"
+        },
+        {
+          "@id": "https://zenodo.org/records/21536143/files/MD_Simulations.zip"
+        },
+        {
+          "@id": "https://zenodo.org/records/21536143/files/PTM-plots.zip"
+        },
+        {
+          "@id": "https://zenodo.org/records/21536143/files/PCA.zip"
+        },
+        {
+          "@id": "https://zenodo.org/records/21536143/files/Contact_Analysis.zip"
+        },
+        {
+          "@id": "https://zenodo.org/records/21536143/files/README.md"
+        },
+        {
+          "@id": "https://zenodo.org/records/21536143/files/RMSF-bin.zip"
+        }
+      ]
+    },
+    {
+      "@id": "https://zenodo.org/records/21536143/files/trajectories.zip",
+      "@type": "File",
+      "name": "trajectories.zip",
+      "description": "Solute-only, PBC-fixed, fitted trajectories: 4 conditions x 3 replicates (.xtc, 1001 frames at 100 ps) plus one reference .pdb per condition.",
+      "encodingFormat": "application/zip",
+      "contentSize": "2984432463",
+      "sha256": "c8770aa30cbee35c64f4dc2518c6c86ff3e3bc0c7332e9290cb831dbea3c95d5",
+      "file_format": "zip",
+      "data_type": "trajectory",
+      "storage_uri": "https://zenodo.org/records/21536143/files/trajectories.zip",
+      "file_role": "archive"
+    },
+    {
+      "@id": "https://zenodo.org/records/21536143/files/Static_interface_hmm_mapping.zip",
+      "@type": "File",
+      "name": "Static_interface_hmm_mapping.zip",
+      "description": "Static CP12 interface residues mapped onto the PF02672 HMM, MED4 vs P-HM2.",
+      "encodingFormat": "application/zip",
+      "contentSize": "1917032",
+      "sha256": "8b31370dedbaabfd68f0fce37ade5408c556b548adedb1a745cae3f22a717026",
+      "file_format": "zip",
+      "data_type": "processed_data",
+      "storage_uri": "https://zenodo.org/records/21536143/files/Static_interface_hmm_mapping.zip",
+      "file_role": "archive",
+      "prov:wasGeneratedBy": {
+        "@id": "#wf-analysis-static-interface"
+      },
+      "prov:wasDerivedFrom": [
+        {
+          "@id": "https://zenodo.org/records/21536143/files/trajectories.zip"
+        }
+      ]
+    },
+    {
+      "@id": "https://zenodo.org/records/21536143/files/SASA-BSA.zip",
+      "@type": "File",
+      "name": "SASA-BSA.zip",
+      "description": "Per-frame SASA and buried surface area for every subunit pair over the 12 trajectories.",
+      "encodingFormat": "application/zip",
+      "contentSize": "695422",
+      "sha256": "ed469dc4ea06e238d8a42288bfd56486b81b24b956bcdebbd7ab23941f9ef90b",
+      "file_format": "zip",
+      "data_type": "processed_data",
+      "storage_uri": "https://zenodo.org/records/21536143/files/SASA-BSA.zip",
+      "file_role": "archive",
+      "prov:wasGeneratedBy": {
+        "@id": "#wf-analysis-sasa-bsa"
+      },
+      "prov:wasDerivedFrom": [
+        {
+          "@id": "https://zenodo.org/records/21536143/files/trajectories.zip"
+        }
+      ]
+    },
+    {
+      "@id": "https://zenodo.org/records/21536143/files/CP12_protein_family_HMM_column_metrics.zip",
+      "@type": "File",
+      "name": "CP12_protein_family_HMM_column_metrics.zip",
+      "description": "Per-HMM-column diversity, acidity and entropy, and a logistic classifier of CP12 architecture.",
+      "encodingFormat": "application/zip",
+      "contentSize": "233135",
+      "sha256": "7c7dab6262a52491935433f68eec1318b4c844bf711ecf8600c77a60577285e2",
+      "file_format": "zip",
+      "data_type": "processed_data",
+      "storage_uri": "https://zenodo.org/records/21536143/files/CP12_protein_family_HMM_column_metrics.zip",
+      "file_role": "archive"
+    },
+    {
+      "@id": "https://zenodo.org/records/21536143/files/Physico-Chemical.zip",
+      "@type": "File",
+      "name": "Physico-Chemical.zip",
+      "description": "Volume, hydrophobicity and charge change between the MED4 and P-HM2 CP12 sequences.",
+      "encodingFormat": "application/zip",
+      "contentSize": "8144",
+      "sha256": "056ef0b55f9f464b6a191ce7eb1e339dc5f8742bec2f888cf9504e9bb64e6386",
+      "file_format": "zip",
+      "data_type": "processed_data",
+      "storage_uri": "https://zenodo.org/records/21536143/files/Physico-Chemical.zip",
+      "file_role": "archive"
+    },
+    {
+      "@id": "https://zenodo.org/records/21536143/files/MMGBSA.zip",
+      "@type": "File",
+      "name": "MMGBSA.zip",
+      "description": "gmx_MMPBSA pipeline for CP12 binding to GAP2-PRK over the top 5% PCA-distant PTM systems.",
+      "encodingFormat": "application/zip",
+      "contentSize": "22753",
+      "sha256": "9780ceaa5624d37b0de2f7939ef64a87a2ef272d4b8b833a4eb5fff5faafd247",
+      "file_format": "zip",
+      "data_type": "processed_data",
+      "storage_uri": "https://zenodo.org/records/21536143/files/MMGBSA.zip",
+      "file_role": "archive",
+      "prov:wasGeneratedBy": {
+        "@id": "#wf-analysis-mmgbsa"
+      },
+      "prov:wasDerivedFrom": [
+        {
+          "@id": "https://zenodo.org/records/21536143/files/trajectories.zip"
+        }
+      ]
+    },
+    {
+      "@id": "https://zenodo.org/records/21536143/files/CP12_protein_family_build.zip",
+      "@type": "File",
+      "name": "CP12_protein_family_build.zip",
+      "description": "CP12 family assembled from metagenome-derived and NCBI/UniProt sequences: FASTA, Stockholm alignment, PF02672 HMM.",
+      "encodingFormat": "application/zip",
+      "contentSize": "288917",
+      "sha256": "b674d5624007725d71db5b36cf72b4f49d3e088f34ba9cc3db4ccd47b10289b1",
+      "file_format": "zip",
+      "data_type": "processed_data",
+      "storage_uri": "https://zenodo.org/records/21536143/files/CP12_protein_family_build.zip",
+      "file_role": "archive"
+    },
+    {
+      "@id": "https://zenodo.org/records/21536143/files/requirements.txt",
+      "@type": "File",
+      "name": "requirements.txt",
+      "description": "Python requirements for the analysis scripts.",
+      "encodingFormat": "text/plain",
+      "contentSize": "205",
+      "sha256": "eaaa3d4378d93efc5eccde76b9cc4fe32a96447153220977f97e2a214f6e705b",
+      "file_format": "ascii",
+      "data_type": "metadata",
+      "storage_uri": "https://zenodo.org/records/21536143/files/requirements.txt",
+      "file_role": "archive"
+    },
+    {
+      "@id": "https://zenodo.org/records/21536143/files/DISCLAIMER.txt",
+      "@type": "File",
+      "name": "DISCLAIMER.txt",
+      "description": "PNNL release disclaimer.",
+      "encodingFormat": "text/plain",
+      "contentSize": "1193",
+      "sha256": "7c1a2aa26119feaba3fcb611021595afd88daf6f381d65e2fc40a4085cef5884",
+      "file_format": "ascii",
+      "data_type": "metadata",
+      "storage_uri": "https://zenodo.org/records/21536143/files/DISCLAIMER.txt",
+      "file_role": "archive"
+    },
+    {
+      "@id": "https://zenodo.org/records/21536143/files/agent_skills_for_data_exploration.zip",
+      "@type": "File",
+      "name": "agent_skills_for_data_exploration.zip",
+      "description": "Copilot agent skills, prompt and an example trace for exploring the MED4 light/dark proteomics, with the processed proteomics tables.",
+      "encodingFormat": "application/zip",
+      "contentSize": "49191011",
+      "sha256": "d13a7a1533760f952d4e8173e473e772dffe542f6b1a4227f86470a163316328",
+      "file_format": "zip",
+      "data_type": "processed_data",
+      "storage_uri": "https://zenodo.org/records/21536143/files/agent_skills_for_data_exploration.zip",
+      "file_role": "archive"
+    },
+    {
+      "@id": "https://zenodo.org/records/21536143/files/MD_Simulations.zip",
+      "@type": "File",
+      "name": "MD_Simulations.zip",
+      "description": "GROMACS .mdp files, SLURM/Flux drivers, the two Modeller homology models and the ptmpsi PTM enumeration scripts.",
+      "encodingFormat": "application/zip",
+      "contentSize": "1280292",
+      "sha256": "aa4665d93159b6feb3afcbd7365bd3eaf308a52282f05e538ce2f68c8b1ca9d3",
+      "file_format": "zip",
+      "data_type": "processed_data",
+      "storage_uri": "https://zenodo.org/records/21536143/files/MD_Simulations.zip",
+      "file_role": "archive"
+    },
+    {
+      "@id": "https://zenodo.org/records/21536143/files/PTM-plots.zip",
+      "@type": "File",
+      "name": "PTM-plots.zip",
+      "description": "Scripts behind SI figures 11-14 (PTM distance, enrichment, kinetics, binding energy change).",
+      "encodingFormat": "application/zip",
+      "contentSize": "33962",
+      "sha256": "12c271f6d87918d165f3b4b2fa1ba8c0f73facd4ff85a2497d12058ae9aff719",
+      "file_format": "zip",
+      "data_type": "processed_data",
+      "storage_uri": "https://zenodo.org/records/21536143/files/PTM-plots.zip",
+      "file_role": "archive"
+    },
+    {
+      "@id": "https://zenodo.org/records/21536143/files/PCA.zip",
+      "@type": "File",
+      "name": "PCA.zip",
+      "description": "Structural PCA scripts for the reference and PTM ensembles.",
+      "encodingFormat": "application/zip",
+      "contentSize": "35210",
+      "sha256": "6ed001a394bfc01a6405937418a8c3a681da3e7893537d6d5f8de54abc045e60",
+      "file_format": "zip",
+      "data_type": "processed_data",
+      "storage_uri": "https://zenodo.org/records/21536143/files/PCA.zip",
+      "file_role": "archive",
+      "prov:wasGeneratedBy": {
+        "@id": "#wf-analysis-pca"
+      },
+      "prov:wasDerivedFrom": [
+        {
+          "@id": "https://zenodo.org/records/21536143/files/trajectories.zip"
+        }
+      ]
+    },
+    {
+      "@id": "https://zenodo.org/records/21536143/files/Contact_Analysis.zip",
+      "@type": "File",
+      "name": "Contact_Analysis.zip",
+      "description": "Interface contact occupancy, dwell, turnover and rewiring tables, collapsed to PF02672 HMM columns.",
+      "encodingFormat": "application/zip",
+      "contentSize": "5771426",
+      "sha256": "17c40e2b5aa100e2a87296aa028b6aeb4051ebdad91027214f25b3f4656178e6",
+      "file_format": "zip",
+      "data_type": "processed_data",
+      "storage_uri": "https://zenodo.org/records/21536143/files/Contact_Analysis.zip",
+      "file_role": "archive",
+      "prov:wasGeneratedBy": {
+        "@id": "#wf-analysis-contacts"
+      },
+      "prov:wasDerivedFrom": [
+        {
+          "@id": "https://zenodo.org/records/21536143/files/trajectories.zip"
+        }
+      ]
+    },
+    {
+      "@id": "https://zenodo.org/records/21536143/files/README.md",
+      "@type": "File",
+      "name": "README.md",
+      "description": "Release README: inventory and usage of every subfolder.",
+      "encodingFormat": "text/markdown",
+      "contentSize": "9113",
+      "sha256": "91859d3a8153d5a8993c9934e50a0676ff3c6bbfefca0e17a79aecdefd46df03",
+      "file_format": "ascii",
+      "data_type": "metadata",
+      "storage_uri": "https://zenodo.org/records/21536143/files/README.md",
+      "file_role": "archive"
+    },
+    {
+      "@id": "https://zenodo.org/records/21536143/files/RMSF-bin.zip",
+      "@type": "File",
+      "name": "RMSF-bin.zip",
+      "description": "CP12 C-alpha RMSF by interface region.",
+      "encodingFormat": "application/zip",
+      "contentSize": "4869",
+      "sha256": "4d153c14fe2b9208a15419148d53d14f8220867ec37bacfb839ddab41428dc64",
+      "file_format": "zip",
+      "data_type": "processed_data",
+      "storage_uri": "https://zenodo.org/records/21536143/files/RMSF-bin.zip",
+      "file_role": "archive",
+      "prov:wasGeneratedBy": {
+        "@id": "#wf-analysis-rmsf"
+      },
+      "prov:wasDerivedFrom": [
+        {
+          "@id": "https://zenodo.org/records/21536143/files/trajectories.zip"
+        }
+      ]
+    },
+    {
+      "@id": "https://doi.org/10.25582/data.2026-08.3856177/3407882",
+      "@type": "Dataset",
+      "name": "EMSL project 61054 release 3856177 (MED4)",
+      "description": "Pointer mechanism 3 - remote registration. Linked from the Zenodo record as isSupplementTo.",
+      "identifier": [
+        {
+          "@type": "PropertyValue",
+          "propertyID": "DOI",
+          "value": "10.25582/data.2026-08.3856177/3407882"
+        }
+      ],
+      "url": "https://release.my.emsl.pnnl.gov/released_data/3856177",
+      "missing": [
+        {
+          "field": "sha256",
+          "reason": "not-available",
+          "blocks": "S2-core",
+          "note": "EMSL publishes no per-dataset checksum, and the landing page refuses scripted access."
+        },
+        {
+          "field": "schemaRecord",
+          "reason": "not-registered",
+          "blocks": "S1",
+          "note": "The DataCite record has a generic title ('Data for EMSL Project 61054 from August 2026'), no description and no subjects, so neither this crate nor a search can say what the release contains."
+        }
+      ]
+    },
+    {
+      "@id": "https://doi.org/10.25582/data.2026-08.3853205/3407881",
+      "@type": "Dataset",
+      "name": "EMSL project 61054 release 3853205 (MED4 with phage P-HM2)",
+      "description": "Pointer mechanism 3 - remote registration. Linked from the Zenodo record as isSupplementTo.",
+      "identifier": [
+        {
+          "@type": "PropertyValue",
+          "propertyID": "DOI",
+          "value": "10.25582/data.2026-08.3853205/3407881"
+        }
+      ],
+      "url": "https://release.my.emsl.pnnl.gov/released_data/3853205",
+      "missing": [
+        {
+          "field": "sha256",
+          "reason": "not-available",
+          "blocks": "S2-core",
+          "note": "EMSL publishes no per-dataset checksum, and the landing page refuses scripted access."
+        },
+        {
+          "field": "schemaRecord",
+          "reason": "not-registered",
+          "blocks": "S1",
+          "note": "The DataCite record has a generic title ('Data for EMSL Project 61054 from August 2026'), no description and no subjects, so neither this crate nor a search can say what the release contains."
+        }
+      ]
+    },
+    {
+      "@id": "https://identifiers.org/massive:MSV000102848",
+      "@type": "Dataset",
+      "name": "MassIVE MSV000102848 (MED4 proteomics)",
+      "description": "Pointer mechanism 3 - remote registration. Linked from the Zenodo record as isSupplementTo. Proteomics is outside lambda-ber-schema; the crate records the link and nothing else.",
+      "identifier": [
+        {
+          "@type": "PropertyValue",
+          "propertyID": "MassIVE",
+          "value": "MSV000102848"
+        }
+      ],
+      "url": "https://identifiers.org/massive:MSV000102848",
+      "missing": [
+        {
+          "field": "sha256",
+          "reason": "not-available",
+          "blocks": "S2-core",
+          "note": "MassIVE's PROXI endpoint returns 404 for this accession; it may not be public yet."
+        }
+      ]
+    },
+    {
+      "@id": "https://doi.org/10.64898/2026.09.10.750766",
+      "@type": "CreativeWork",
+      "name": "Cyanophage CP12 Rewires Host Carbon Regulation through Interface Remodeling and Redox Buffering (bioRxiv preprint)",
+      "url": "https://www.biorxiv.org/content/10.64898/2026.09.10.750766v1"
+    },
+    {
+      "@id": "https://orcid.org/0009-0009-5994-1896",
+      "@type": "Person",
+      "name": "Malio Nelson",
+      "orcid": "https://orcid.org/0009-0009-5994-1896",
+      "givenName": "Malio",
+      "familyName": "Nelson",
+      "affiliation": "Pacific Northwest National Laboratory",
+      "affiliation_ror": "https://ror.org/05h992307",
+      "role": "author",
+      "author_position": 1
+    },
+    {
+      "@id": "https://orcid.org/0000-0002-8741-7823",
+      "@type": "Person",
+      "name": "Lindsey N. Anderson",
+      "orcid": "https://orcid.org/0000-0002-8741-7823",
+      "givenName": "Lindsey N.",
+      "familyName": "Anderson",
+      "affiliation": "Pacific Northwest National Laboratory",
+      "affiliation_ror": "https://ror.org/05h992307",
+      "role": "author",
+      "author_position": 2
+    },
+    {
+      "@id": "https://orcid.org/0000-0001-9466-4462",
+      "@type": "Person",
+      "name": "Ruonan Wu",
+      "orcid": "https://orcid.org/0000-0001-9466-4462",
+      "givenName": "Ruonan",
+      "familyName": "Wu",
+      "affiliation": "Pacific Northwest National Laboratory",
+      "affiliation_ror": "https://ror.org/05h992307",
+      "role": "author",
+      "author_position": 3
+    },
+    {
+      "@id": "https://orcid.org/0000-0001-7876-4359",
+      "@type": "Person",
+      "name": "August George",
+      "orcid": "https://orcid.org/0000-0001-7876-4359",
+      "givenName": "August",
+      "familyName": "George",
+      "affiliation": "Environmental Molecular Sciences Laboratory",
+      "affiliation_ror": "https://ror.org/04rc0xn13",
+      "role": "author",
+      "author_position": 4
+    },
+    {
+      "@id": "https://orcid.org/0000-0001-9889-0467",
+      "@type": "Person",
+      "name": "Scott Widmann",
+      "orcid": "https://orcid.org/0000-0001-9889-0467",
+      "givenName": "Scott",
+      "familyName": "Widmann",
+      "affiliation": "Texas Southern University",
+      "affiliation_ror": "https://ror.org/05ch0aw77",
+      "role": "author",
+      "author_position": 5
+    },
+    {
+      "@id": "https://orcid.org/0000-0002-6529-0905",
+      "@type": "Person",
+      "name": "Amity Andersen",
+      "orcid": "https://orcid.org/0000-0002-6529-0905",
+      "givenName": "Amity",
+      "familyName": "Andersen",
+      "affiliation": "Environmental Molecular Sciences Laboratory",
+      "affiliation_ror": "https://ror.org/04rc0xn13",
+      "role": "author",
+      "author_position": 6,
+      "corresponding": true
+    },
+    {
+      "@id": "https://orcid.org/0000-0002-1983-5927",
+      "@type": "Person",
+      "name": "Kehinde Idowu",
+      "orcid": "https://orcid.org/0000-0002-1983-5927",
+      "givenName": "Kehinde",
+      "familyName": "Idowu",
+      "affiliation": "Texas Southern University",
+      "affiliation_ror": "https://ror.org/05ch0aw77",
+      "role": "author",
+      "author_position": 7,
+      "corresponding": true
+    },
+    {
+      "@id": "https://orcid.org/0000-0003-3983-9009",
+      "@type": "Person",
+      "name": "Song Feng",
+      "orcid": "https://orcid.org/0000-0003-3983-9009",
+      "givenName": "Song",
+      "familyName": "Feng",
+      "affiliation": "Pacific Northwest National Laboratory",
+      "affiliation_ror": "https://ror.org/05h992307",
+      "role": "author",
+      "author_position": 8
+    },
+    {
+      "@id": "https://orcid.org/0000-0002-9845-1584",
+      "@type": "Person",
+      "name": "Xiaolu Li",
+      "orcid": "https://orcid.org/0000-0002-9845-1584",
+      "givenName": "Xiaolu",
+      "familyName": "Li",
+      "affiliation": "Pacific Northwest National Laboratory",
+      "affiliation_ror": "https://ror.org/05h992307",
+      "role": "author",
+      "author_position": 9
+    },
+    {
+      "@id": "https://orcid.org/0000-0001-9235-7661",
+      "@type": "Person",
+      "name": "Margaret Cheung",
+      "orcid": "https://orcid.org/0000-0001-9235-7661",
+      "givenName": "Margaret",
+      "familyName": "Cheung",
+      "affiliation": "Environmental Molecular Sciences Laboratory",
+      "affiliation_ror": "https://ror.org/04rc0xn13",
+      "role": "principal_investigator",
+      "author_position": 10,
+      "corresponding": true
+    },
+    {
+      "@id": "https://ror.org/05h992307",
+      "@type": "Organization",
+      "name": "Pacific Northwest National Laboratory",
+      "ror": "https://ror.org/05h992307",
+      "acronym": "PNNL",
+      "organization_type": "national_laboratory",
+      "location": "Richland, Washington, USA",
+      "country": "USA",
+      "isDoeFacility": false,
+      "doe_office": "Office of Science",
+      "organizationRole": "host_institution"
+    },
+    {
+      "@id": "https://ror.org/04rc0xn13",
+      "@type": "Organization",
+      "name": "Environmental Molecular Sciences Laboratory",
+      "ror": "https://ror.org/04rc0xn13",
+      "acronym": "EMSL",
+      "organization_type": "national_laboratory",
+      "location": "Richland, Washington, USA",
+      "country": "USA",
+      "isDoeFacility": true,
+      "doe_office": "Office of Science",
+      "facility_code": "EMSL",
+      "organizationRole": "operating_institution",
+      "award_number": "doi:10.46936/staf.proj.2023.61054/60012367"
+    },
+    {
+      "@id": "https://ror.org/05ch0aw77",
+      "@type": "Organization",
+      "name": "Texas Southern University",
+      "ror": "https://ror.org/05ch0aw77",
+      "acronym": "TSU",
+      "organization_type": "university",
+      "location": "Houston, Texas, USA",
+      "country": "USA",
+      "organizationRole": "collaborating_institution"
+    },
+    {
+      "@id": "https://ror.org/05v3mvq14",
+      "@type": "Organization",
+      "name": "National Energy Research Scientific Computing Center",
+      "ror": "https://ror.org/05v3mvq14",
+      "acronym": "NERSC",
+      "organization_type": "national_laboratory",
+      "location": "Berkeley, California, USA",
+      "country": "USA",
+      "isDoeFacility": true,
+      "doe_office": "Office of Science"
+    },
+    {
+      "@id": "https://ror.org/05p915b28",
+      "@type": "Organization",
+      "name": "Oak Ridge Leadership Computing Facility",
+      "ror": "https://ror.org/05p915b28",
+      "acronym": "OLCF",
+      "organization_type": "national_laboratory",
+      "location": "Oak Ridge, Tennessee, USA",
+      "country": "USA",
+      "isDoeFacility": true,
+      "doe_office": "Office of Science"
+    },
+    {
+      "@id": "#org-doe_ber",
+      "@type": "Organization",
+      "name": "DOE Office of Biological and Environmental Research",
+      "acronym": "BER",
+      "organization_type": "funding_agency",
+      "location": "Washington, DC, USA",
+      "country": "USA",
+      "organizationRole": "funder",
+      "award_number": "FWP 81832"
+    },
+    {
+      "@id": "http://purl.uniprot.org/uniprot/Q7TUI0",
+      "@type": [
+        "Protein",
+        "lambda:Protein"
+      ],
+      "name": "GAP2 (MED4)",
+      "protein_name": "Glyceraldehyde-3-phosphate dehydrogenase",
+      "gene_name": "gap2",
+      "organism": "NCBITaxon:59919",
+      "uniprot_id": "uniprot:Q7TUI0"
+    },
+    {
+      "@id": "http://purl.uniprot.org/uniprot/Q7V1S0",
+      "@type": [
+        "Protein",
+        "lambda:Protein"
+      ],
+      "name": "PRK (MED4)",
+      "protein_name": "Phosphoribulokinase",
+      "gene_name": "prk",
+      "organism": "NCBITaxon:59919",
+      "uniprot_id": "uniprot:Q7V1S0"
+    },
+    {
+      "@id": "#protein-med4-cp12-PMM0220",
+      "@type": [
+        "Protein",
+        "lambda:Protein"
+      ],
+      "name": "CP12 (MED4)",
+      "protein_name": "Calvin cycle protein CP12",
+      "gene_name": "PMM0220",
+      "organism": "NCBITaxon:59919",
+      "missing": [
+        {
+          "field": "uniprot_id",
+          "reason": "not-registered",
+          "blocks": "S1",
+          "note": "MED4 CP12 (locus PMM0220) has no UniProtKB entry; UniParc UPI0000D9F8C8 only."
+        }
+      ]
+    },
+    {
+      "@id": "http://purl.uniprot.org/uniprot/E3ST77",
+      "@type": [
+        "Protein",
+        "lambda:Protein"
+      ],
+      "name": "CP12 (cyanophage P-HM2)",
+      "protein_name": "CP12",
+      "gene_name": "PHM2_227",
+      "organism": "NCBITaxon:445696",
+      "uniprot_id": "uniprot:E3ST77"
+    },
+    {
+      "@id": "http://purl.obolibrary.org/obo/CHEBI_15846",
+      "@type": [
+        "MolecularEntity",
+        "lambda:SmallMolecule"
+      ],
+      "name": "NAD(+)",
+      "chebi_id": "CHEBI:15846",
+      "pdb_ligand_id": "pdb.ligand:NAD",
+      "chemical_class": "nucleotide",
+      "molecularFormula": "C21H28N7O14P2"
+    },
+    {
+      "@id": "#sample-med4-0000",
+      "@type": [
+        "BioChemEntity",
+        "lambda:Sample"
+      ],
+      "name": "MED4 dark complex, reduced (0000)",
+      "description": "System 0000: all cysteines reduced, no modification. Host gap2, host prk and host (med4) cp12. Solvent stripped from the released trajectories.",
+      "sample_code": "MED4-0000",
+      "sample_type": "complex",
+      "protein_name": "GAP2-CP12-PRK dark complex",
+      "hasBioChemEntityPart": [
+        {
+          "@id": "http://purl.uniprot.org/uniprot/Q7TUI0"
+        },
+        {
+          "@id": "http://purl.uniprot.org/uniprot/Q7V1S0"
+        },
+        {
+          "@id": "#protein-med4-cp12-PMM0220"
+        },
+        {
+          "@id": "http://purl.obolibrary.org/obo/CHEBI_15846"
+        }
+      ],
+      "organism": "NCBITaxon:59919"
+    },
+    {
+      "@id": "#sample-med4-0003",
+      "@type": [
+        "BioChemEntity",
+        "lambda:Sample"
+      ],
+      "name": "MED4 dark complex, oxidized (0003)",
+      "description": "System 0003: disulfides on CP12 and PRK, no other modification (oxidized reference). Host gap2, host prk and host (med4) cp12. Solvent stripped from the released trajectories.",
+      "sample_code": "MED4-0003",
+      "sample_type": "complex",
+      "protein_name": "GAP2-CP12-PRK dark complex",
+      "hasBioChemEntityPart": [
+        {
+          "@id": "http://purl.uniprot.org/uniprot/Q7TUI0"
+        },
+        {
+          "@id": "http://purl.uniprot.org/uniprot/Q7V1S0"
+        },
+        {
+          "@id": "#protein-med4-cp12-PMM0220"
+        },
+        {
+          "@id": "http://purl.obolibrary.org/obo/CHEBI_15846"
+        }
+      ],
+      "organism": "NCBITaxon:59919"
+    },
+    {
+      "@id": "#sample-med4-ptm-set",
+      "@type": [
+        "BioChemEntity",
+        "lambda:Sample"
+      ],
+      "name": "MED4 cysteine PTM combinatorial set (1,012 systems)",
+      "description": "46 GAP2 states x 11 PRK states x 2 CP12 states = 1,012 systems, including 0000 and 0003. GAP2 Cys20/78/157/161: reduced or SNO/SOH/SSG on any non-empty subset; PRK Cys201/225: reduced, disulfide, or SNO/SOH/SSG; CP12: reduced or disulfide. Each state is applied identically to every chain of that subunit. One sample row stands for all 1,012 because the schema has no way to enumerate variants compactly. Sulfenylation (SOH) and disulfide have no PTMTypeEnum term.",
+      "sample_code": "MED4-PTM-1012",
+      "sample_type": "complex",
+      "protein_name": "GAP2-CP12-PRK dark complex",
+      "hasBioChemEntityPart": [
+        {
+          "@id": "http://purl.uniprot.org/uniprot/Q7TUI0"
+        },
+        {
+          "@id": "http://purl.uniprot.org/uniprot/Q7V1S0"
+        },
+        {
+          "@id": "#protein-med4-cp12-PMM0220"
+        }
+      ],
+      "organism": "NCBITaxon:59919"
+    },
+    {
+      "@id": "#sample-hm2-0000",
+      "@type": [
+        "BioChemEntity",
+        "lambda:Sample"
+      ],
+      "name": "HM2 dark complex, reduced (0000)",
+      "description": "System 0000: all cysteines reduced, no modification. Host gap2 and host prk with the cyanophage p-hm2 cp12 in place of the host cp12. Solvent stripped from the released trajectories.",
+      "sample_code": "HM2-0000",
+      "sample_type": "complex",
+      "protein_name": "GAP2-CP12-PRK dark complex",
+      "hasBioChemEntityPart": [
+        {
+          "@id": "http://purl.uniprot.org/uniprot/Q7TUI0"
+        },
+        {
+          "@id": "http://purl.uniprot.org/uniprot/Q7V1S0"
+        },
+        {
+          "@id": "http://purl.uniprot.org/uniprot/E3ST77"
+        },
+        {
+          "@id": "http://purl.obolibrary.org/obo/CHEBI_15846"
+        }
+      ]
+    },
+    {
+      "@id": "#sample-hm2-0003",
+      "@type": [
+        "BioChemEntity",
+        "lambda:Sample"
+      ],
+      "name": "HM2 dark complex, oxidized (0003)",
+      "description": "System 0003: disulfides on CP12 and PRK, no other modification (oxidized reference). Host gap2 and host prk with the cyanophage p-hm2 cp12 in place of the host cp12. Solvent stripped from the released trajectories.",
+      "sample_code": "HM2-0003",
+      "sample_type": "complex",
+      "protein_name": "GAP2-CP12-PRK dark complex",
+      "hasBioChemEntityPart": [
+        {
+          "@id": "http://purl.uniprot.org/uniprot/Q7TUI0"
+        },
+        {
+          "@id": "http://purl.uniprot.org/uniprot/Q7V1S0"
+        },
+        {
+          "@id": "http://purl.uniprot.org/uniprot/E3ST77"
+        },
+        {
+          "@id": "http://purl.obolibrary.org/obo/CHEBI_15846"
+        }
+      ]
+    },
+    {
+      "@id": "#sample-hm2-ptm-set",
+      "@type": [
+        "BioChemEntity",
+        "lambda:Sample"
+      ],
+      "name": "HM2 cysteine PTM combinatorial set (1,012 systems)",
+      "description": "46 GAP2 states x 11 PRK states x 2 CP12 states = 1,012 systems, including 0000 and 0003. GAP2 Cys20/78/157/161: reduced or SNO/SOH/SSG on any non-empty subset; PRK Cys201/225: reduced, disulfide, or SNO/SOH/SSG; CP12: reduced or disulfide. Each state is applied identically to every chain of that subunit. One sample row stands for all 1,012 because the schema has no way to enumerate variants compactly. Sulfenylation (SOH) and disulfide have no PTMTypeEnum term.",
+      "sample_code": "HM2-PTM-1012",
+      "sample_type": "complex",
+      "protein_name": "GAP2-CP12-PRK dark complex",
+      "hasBioChemEntityPart": [
+        {
+          "@id": "http://purl.uniprot.org/uniprot/Q7TUI0"
+        },
+        {
+          "@id": "http://purl.uniprot.org/uniprot/Q7V1S0"
+        },
+        {
+          "@id": "http://purl.uniprot.org/uniprot/E3ST77"
+        }
+      ]
+    },
+    {
+      "@id": "#ix-0",
+      "@type": [
+        "lambda:SampleComponentInteraction"
+      ],
+      "sample_id": {
+        "@id": "#sample-med4-0000"
+      },
+      "subject_id": {
+        "@id": "#protein-med4-cp12-PMM0220"
+      },
+      "object_id": {
+        "@id": "http://purl.uniprot.org/uniprot/Q7TUI0"
+      },
+      "interaction_type": "binds",
+      "interaction_status": "expected",
+      "description": "Mean CP12-GAP2 buried surface area 9200 A^2 over 3 x 100 ns (SASA-BSA). The schema has no slot for it."
+    },
+    {
+      "@id": "#ix-1",
+      "@type": [
+        "lambda:SampleComponentInteraction"
+      ],
+      "sample_id": {
+        "@id": "#sample-med4-0000"
+      },
+      "subject_id": {
+        "@id": "#protein-med4-cp12-PMM0220"
+      },
+      "object_id": {
+        "@id": "http://purl.uniprot.org/uniprot/Q7V1S0"
+      },
+      "interaction_type": "binds",
+      "interaction_status": "expected",
+      "description": "Mean CP12-PRK buried surface area 12617 A^2 over 3 x 100 ns (SASA-BSA)."
+    },
+    {
+      "@id": "#ix-3",
+      "@type": [
+        "lambda:SampleComponentInteraction"
+      ],
+      "sample_id": {
+        "@id": "#sample-med4-0003"
+      },
+      "subject_id": {
+        "@id": "#protein-med4-cp12-PMM0220"
+      },
+      "object_id": {
+        "@id": "http://purl.uniprot.org/uniprot/Q7TUI0"
+      },
+      "interaction_type": "binds",
+      "interaction_status": "expected",
+      "description": "Mean CP12-GAP2 buried surface area 9438 A^2 over 3 x 100 ns (SASA-BSA). The schema has no slot for it."
+    },
+    {
+      "@id": "#ix-4",
+      "@type": [
+        "lambda:SampleComponentInteraction"
+      ],
+      "sample_id": {
+        "@id": "#sample-med4-0003"
+      },
+      "subject_id": {
+        "@id": "#protein-med4-cp12-PMM0220"
+      },
+      "object_id": {
+        "@id": "http://purl.uniprot.org/uniprot/Q7V1S0"
+      },
+      "interaction_type": "binds",
+      "interaction_status": "expected",
+      "description": "Mean CP12-PRK buried surface area 12695 A^2 over 3 x 100 ns (SASA-BSA)."
+    },
+    {
+      "@id": "#ix-6",
+      "@type": [
+        "lambda:SampleComponentInteraction"
+      ],
+      "sample_id": {
+        "@id": "#sample-hm2-0000"
+      },
+      "subject_id": {
+        "@id": "http://purl.uniprot.org/uniprot/E3ST77"
+      },
+      "object_id": {
+        "@id": "http://purl.uniprot.org/uniprot/Q7TUI0"
+      },
+      "interaction_type": "binds",
+      "interaction_status": "expected",
+      "description": "Mean CP12-GAP2 buried surface area 8283 A^2 over 3 x 100 ns (SASA-BSA). The schema has no slot for it."
+    },
+    {
+      "@id": "#ix-7",
+      "@type": [
+        "lambda:SampleComponentInteraction"
+      ],
+      "sample_id": {
+        "@id": "#sample-hm2-0000"
+      },
+      "subject_id": {
+        "@id": "http://purl.uniprot.org/uniprot/E3ST77"
+      },
+      "object_id": {
+        "@id": "http://purl.uniprot.org/uniprot/Q7V1S0"
+      },
+      "interaction_type": "binds",
+      "interaction_status": "expected",
+      "description": "Mean CP12-PRK buried surface area 12628 A^2 over 3 x 100 ns (SASA-BSA)."
+    },
+    {
+      "@id": "#ix-9",
+      "@type": [
+        "lambda:SampleComponentInteraction"
+      ],
+      "sample_id": {
+        "@id": "#sample-hm2-0003"
+      },
+      "subject_id": {
+        "@id": "http://purl.uniprot.org/uniprot/E3ST77"
+      },
+      "object_id": {
+        "@id": "http://purl.uniprot.org/uniprot/Q7TUI0"
+      },
+      "interaction_type": "binds",
+      "interaction_status": "expected",
+      "description": "Mean CP12-GAP2 buried surface area 8465 A^2 over 3 x 100 ns (SASA-BSA). The schema has no slot for it."
+    },
+    {
+      "@id": "#ix-10",
+      "@type": [
+        "lambda:SampleComponentInteraction"
+      ],
+      "sample_id": {
+        "@id": "#sample-hm2-0003"
+      },
+      "subject_id": {
+        "@id": "http://purl.uniprot.org/uniprot/E3ST77"
+      },
+      "object_id": {
+        "@id": "http://purl.uniprot.org/uniprot/Q7V1S0"
+      },
+      "interaction_type": "binds",
+      "interaction_status": "expected",
+      "description": "Mean CP12-PRK buried surface area 12670 A^2 over 3 x 100 ns (SASA-BSA)."
+    },
+    {
+      "@id": "#instrument-perlmutter",
+      "@type": [
+        "IndividualProduct",
+        "lambda:Instrument"
+      ],
+      "name": "NERSC Perlmutter GPU partition",
+      "description": "HPE Cray EX, 4 NVIDIA A100 GPUs per node. Ran the 12 reference replicates (1 node, 4 GPUs, 30 h walltime per replicate).",
+      "instrument_code": "NERSC-PERLMUTTER-GPU",
+      "facility_ror": "https://ror.org/05v3mvq14",
+      "manufacturer": "HPE",
+      "model": "Cray EX",
+      "vocabEntry": [
+        {
+          "module": "lambda-ber-schema",
+          "enum": "FacilityEnum",
+          "key": "NERSC",
+          "note": "NERSC is a DOE computing facility; FacilityEnum lists only light, neutron and EM sources."
+        },
+        {
+          "module": "lambda-ber-schema",
+          "enum": "InstrumentCategoryEnum",
+          "key": "HPC_SYSTEM",
+          "note": "No category for a supercomputer."
+        }
+      ]
+    },
+    {
+      "@id": "#instrument-frontier",
+      "@type": [
+        "IndividualProduct",
+        "lambda:Instrument"
+      ],
+      "name": "OLCF Frontier",
+      "description": "HPE Cray EX, 8 AMD MI250X GCDs per node. Ran the 2 x 1,012-system PTM set, one node per system, under a nested Flux scheduler inside one SLURM allocation.",
+      "instrument_code": "OLCF-FRONTIER",
+      "facility_ror": "https://ror.org/05p915b28",
+      "manufacturer": "HPE",
+      "model": "Cray EX",
+      "vocabEntry": [
+        {
+          "module": "lambda-ber-schema",
+          "enum": "FacilityEnum",
+          "key": "OLCF",
+          "note": "OLCF is a DOE computing facility; FacilityEnum lists only light, neutron and EM sources."
+        },
+        {
+          "module": "lambda-ber-schema",
+          "enum": "InstrumentCategoryEnum",
+          "key": "HPC_SYSTEM",
+          "note": "No category for a supercomputer."
+        }
+      ]
+    },
+    {
+      "@id": "#sw-gromacs",
+      "@type": "SoftwareApplication",
+      "name": "GROMACS",
+      "version": "2025.0",
+      "url": "https://www.gromacs.org/"
+    },
+    {
+      "@id": "#sw-ptmpsi",
+      "@type": "SoftwareApplication",
+      "name": "ptmpsi",
+      "description": "PNNL package that applies cysteine PTMs to a structure and writes bundled GROMACS jobs."
+    },
+    {
+      "@id": "#sw-gmx-mmpbsa",
+      "@type": "SoftwareApplication",
+      "name": "gmx_MMPBSA",
+      "url": "https://valdes-tresanco-ms.github.io/gmx_MMPBSA/"
+    },
+    {
+      "@id": "#exp-med4-0000",
+      "@type": [
+        "Action",
+        "lambda:ExperimentRun"
+      ],
+      "name": "MED4 0000 (reduced): 3 x 100 ns replicates",
+      "experiment_code": "MED4-0000-MD",
+      "technique": "molecular_dynamics",
+      "processing_status": "completed",
+      "object": [
+        {
+          "@id": "#sample-med4-0000"
+        }
+      ],
+      "instrument": [
+        {
+          "@id": "#instrument-perlmutter"
+        },
+        {
+          "@id": "#sw-gromacs"
+        }
+      ],
+      "raw_data_location": "https://zenodo.org/records/21536143/files/trajectories.zip",
+      "result": [
+        {
+          "@id": "https://zenodo.org/records/21536143/files/trajectories.zip"
+        }
+      ]
+    },
+    {
+      "@id": "#exp-med4-0003",
+      "@type": [
+        "Action",
+        "lambda:ExperimentRun"
+      ],
+      "name": "MED4 0003 (oxidized): 3 x 100 ns replicates",
+      "experiment_code": "MED4-0003-MD",
+      "technique": "molecular_dynamics",
+      "processing_status": "completed",
+      "object": [
+        {
+          "@id": "#sample-med4-0003"
+        }
+      ],
+      "instrument": [
+        {
+          "@id": "#instrument-perlmutter"
+        },
+        {
+          "@id": "#sw-gromacs"
+        }
+      ],
+      "raw_data_location": "https://zenodo.org/records/21536143/files/trajectories.zip",
+      "result": [
+        {
+          "@id": "https://zenodo.org/records/21536143/files/trajectories.zip"
+        }
+      ]
+    },
+    {
+      "@id": "#exp-med4-ptm-set",
+      "@type": [
+        "Action",
+        "lambda:ExperimentRun"
+      ],
+      "name": "MED4 PTM combinatorial set: 1,012 x 100 ns",
+      "experiment_code": "MED4-PTM-1012-MD",
+      "technique": "molecular_dynamics",
+      "processing_status": "completed",
+      "object": [
+        {
+          "@id": "#sample-med4-ptm-set"
+        }
+      ],
+      "instrument": [
+        {
+          "@id": "#instrument-frontier"
+        },
+        {
+          "@id": "#sw-gromacs"
+        },
+        {
+          "@id": "#sw-ptmpsi"
+        }
+      ],
+      "missing": [
+        {
+          "field": "result",
+          "reason": "not-deposited",
+          "blocks": "S2-acquisition",
+          "note": "Trajectories for the 1,012 PTM systems were not released."
+        }
+      ]
+    },
+    {
+      "@id": "#exp-hm2-0000",
+      "@type": [
+        "Action",
+        "lambda:ExperimentRun"
+      ],
+      "name": "HM2 0000 (reduced): 3 x 100 ns replicates",
+      "experiment_code": "HM2-0000-MD",
+      "technique": "molecular_dynamics",
+      "processing_status": "completed",
+      "object": [
+        {
+          "@id": "#sample-hm2-0000"
+        }
+      ],
+      "instrument": [
+        {
+          "@id": "#instrument-perlmutter"
+        },
+        {
+          "@id": "#sw-gromacs"
+        }
+      ],
+      "raw_data_location": "https://zenodo.org/records/21536143/files/trajectories.zip",
+      "result": [
+        {
+          "@id": "https://zenodo.org/records/21536143/files/trajectories.zip"
+        }
+      ]
+    },
+    {
+      "@id": "#exp-hm2-0003",
+      "@type": [
+        "Action",
+        "lambda:ExperimentRun"
+      ],
+      "name": "HM2 0003 (oxidized): 3 x 100 ns replicates",
+      "experiment_code": "HM2-0003-MD",
+      "technique": "molecular_dynamics",
+      "processing_status": "completed",
+      "object": [
+        {
+          "@id": "#sample-hm2-0003"
+        }
+      ],
+      "instrument": [
+        {
+          "@id": "#instrument-perlmutter"
+        },
+        {
+          "@id": "#sw-gromacs"
+        }
+      ],
+      "raw_data_location": "https://zenodo.org/records/21536143/files/trajectories.zip",
+      "result": [
+        {
+          "@id": "https://zenodo.org/records/21536143/files/trajectories.zip"
+        }
+      ]
+    },
+    {
+      "@id": "#exp-hm2-ptm-set",
+      "@type": [
+        "Action",
+        "lambda:ExperimentRun"
+      ],
+      "name": "HM2 PTM combinatorial set: 1,012 x 100 ns",
+      "experiment_code": "HM2-PTM-1012-MD",
+      "technique": "molecular_dynamics",
+      "processing_status": "completed",
+      "object": [
+        {
+          "@id": "#sample-hm2-ptm-set"
+        }
+      ],
+      "instrument": [
+        {
+          "@id": "#instrument-frontier"
+        },
+        {
+          "@id": "#sw-gromacs"
+        },
+        {
+          "@id": "#sw-ptmpsi"
+        }
+      ],
+      "missing": [
+        {
+          "field": "result",
+          "reason": "not-deposited",
+          "blocks": "S2-acquisition",
+          "note": "Trajectories for the 1,012 PTM systems were not released."
+        }
+      ]
+    },
+    {
+      "@id": "#wf-analysis-rmsf",
+      "@type": [
+        "CreateAction",
+        "lambda:WorkflowRun"
+      ],
+      "name": "CP12 C-alpha RMSF by interface region",
+      "workflow_code": "CP12-ANALYSIS-RMSF",
+      "workflow_type": "md_analysis",
+      "software_name": "interface_rmsf_by_region.py",
+      "result": [
+        {
+          "@id": "https://zenodo.org/records/21536143/files/RMSF-bin.zip"
+        }
+      ],
+      "prov:generated": [
+        {
+          "@id": "https://zenodo.org/records/21536143/files/RMSF-bin.zip"
+        }
+      ],
+      "object": [
+        {
+          "@id": "https://zenodo.org/records/21536143/files/trajectories.zip"
+        }
+      ],
+      "prov:used": [
+        {
+          "@id": "https://zenodo.org/records/21536143/files/trajectories.zip"
+        }
+      ],
+      "missing": [
+        {
+          "field": "software_version",
+          "reason": "not-available",
+          "blocks": "S3",
+          "note": "Analysis scripts carry no version; the release pins only requirements.txt."
+        }
+      ]
+    },
+    {
+      "@id": "#wf-analysis-pca",
+      "@type": [
+        "CreateAction",
+        "lambda:WorkflowRun"
+      ],
+      "name": "Structural PCA of the dark complex",
+      "workflow_code": "CP12-ANALYSIS-PCA",
+      "workflow_type": "md_analysis",
+      "software_name": "run_pca_analysis.py",
+      "result": [
+        {
+          "@id": "https://zenodo.org/records/21536143/files/PCA.zip"
+        }
+      ],
+      "prov:generated": [
+        {
+          "@id": "https://zenodo.org/records/21536143/files/PCA.zip"
+        }
+      ],
+      "object": [
+        {
+          "@id": "https://zenodo.org/records/21536143/files/trajectories.zip"
+        }
+      ],
+      "prov:used": [
+        {
+          "@id": "https://zenodo.org/records/21536143/files/trajectories.zip"
+        }
+      ],
+      "missing": [
+        {
+          "field": "software_version",
+          "reason": "not-available",
+          "blocks": "S3",
+          "note": "Analysis scripts carry no version; the release pins only requirements.txt."
+        }
+      ]
+    },
+    {
+      "@id": "#wf-analysis-contacts",
+      "@type": [
+        "CreateAction",
+        "lambda:WorkflowRun"
+      ],
+      "name": "Interface contact frequency, dwell and rewiring analysis",
+      "workflow_code": "CP12-ANALYSIS-CONTACTS",
+      "workflow_type": "md_analysis",
+      "software_name": "analyze_cp12_contact_pairs.py",
+      "result": [
+        {
+          "@id": "https://zenodo.org/records/21536143/files/Contact_Analysis.zip"
+        }
+      ],
+      "prov:generated": [
+        {
+          "@id": "https://zenodo.org/records/21536143/files/Contact_Analysis.zip"
+        }
+      ],
+      "object": [
+        {
+          "@id": "https://zenodo.org/records/21536143/files/trajectories.zip"
+        }
+      ],
+      "prov:used": [
+        {
+          "@id": "https://zenodo.org/records/21536143/files/trajectories.zip"
+        }
+      ],
+      "missing": [
+        {
+          "field": "software_version",
+          "reason": "not-available",
+          "blocks": "S3",
+          "note": "Analysis scripts carry no version; the release pins only requirements.txt."
+        }
+      ]
+    },
+    {
+      "@id": "#wf-analysis-sasa-bsa",
+      "@type": [
+        "CreateAction",
+        "lambda:WorkflowRun"
+      ],
+      "name": "Solvent-accessible and buried surface area per subunit pair",
+      "workflow_code": "CP12-ANALYSIS-SASA-BSA",
+      "workflow_type": "md_analysis",
+      "software_name": "complex_sasa_bsa_gmx.py",
+      "result": [
+        {
+          "@id": "https://zenodo.org/records/21536143/files/SASA-BSA.zip"
+        }
+      ],
+      "prov:generated": [
+        {
+          "@id": "https://zenodo.org/records/21536143/files/SASA-BSA.zip"
+        }
+      ],
+      "object": [
+        {
+          "@id": "https://zenodo.org/records/21536143/files/trajectories.zip"
+        }
+      ],
+      "prov:used": [
+        {
+          "@id": "https://zenodo.org/records/21536143/files/trajectories.zip"
+        }
+      ],
+      "missing": [
+        {
+          "field": "software_version",
+          "reason": "not-available",
+          "blocks": "S3",
+          "note": "Analysis scripts carry no version; the release pins only requirements.txt."
+        }
+      ]
+    },
+    {
+      "@id": "#wf-analysis-static-interface",
+      "@type": [
+        "CreateAction",
+        "lambda:WorkflowRun"
+      ],
+      "name": "Static CP12 interface mapped to PF02672 HMM columns",
+      "workflow_code": "CP12-ANALYSIS-STATIC-INTERFACE",
+      "workflow_type": "md_analysis",
+      "software_name": "phase2_extract_contacts.py",
+      "result": [
+        {
+          "@id": "https://zenodo.org/records/21536143/files/Static_interface_hmm_mapping.zip"
+        }
+      ],
+      "prov:generated": [
+        {
+          "@id": "https://zenodo.org/records/21536143/files/Static_interface_hmm_mapping.zip"
+        }
+      ],
+      "object": [
+        {
+          "@id": "https://zenodo.org/records/21536143/files/trajectories.zip"
+        }
+      ],
+      "prov:used": [
+        {
+          "@id": "https://zenodo.org/records/21536143/files/trajectories.zip"
+        }
+      ],
+      "missing": [
+        {
+          "field": "software_version",
+          "reason": "not-available",
+          "blocks": "S3",
+          "note": "Analysis scripts carry no version; the release pins only requirements.txt."
+        }
+      ]
+    },
+    {
+      "@id": "#wf-analysis-mmgbsa",
+      "@type": [
+        "CreateAction",
+        "lambda:WorkflowRun"
+      ],
+      "name": "MM/GBSA binding energy of CP12 to GAP2-PRK, top 5% PCA-distant PTM systems",
+      "workflow_code": "CP12-ANALYSIS-MMGBSA",
+      "workflow_type": "md_analysis",
+      "software_name": "gmx_MMPBSA",
+      "result": [
+        {
+          "@id": "https://zenodo.org/records/21536143/files/MMGBSA.zip"
+        }
+      ],
+      "prov:generated": [
+        {
+          "@id": "https://zenodo.org/records/21536143/files/MMGBSA.zip"
+        }
+      ],
+      "prov:wasInformedBy": [
+        {
+          "@id": "#exp-med4-ptm-set"
+        },
+        {
+          "@id": "#exp-hm2-ptm-set"
+        }
+      ],
+      "instrument": [
+        {
+          "@id": "#sw-gmx-mmpbsa"
+        }
+      ],
+      "missing": [
+        {
+          "field": "software_version",
+          "reason": "not-available",
+          "blocks": "S3",
+          "note": "Analysis scripts carry no version; the release pins only requirements.txt."
+        }
+      ]
+    }
+  ]
+}
