@@ -316,6 +316,7 @@ ssrlmx-ingest:
         --snapshots-dir {{ssrlmx_snapshots_dir}} \
         --metadata-file {{ssrlmx_metadata}} \
         --processing-file {{ssrlmx_processing}} \
+        --replace-existing \
         --direct-ingest
 
 # SSRL MX pipeline without the ingest phase (dump + convert + upload only)
@@ -325,7 +326,8 @@ ssrlmx-upload:
         --sources ssrl-mx \
         --snapshots-dir {{ssrlmx_snapshots_dir}} \
         --metadata-file {{ssrlmx_metadata}} \
-        --processing-file {{ssrlmx_processing}}
+        --processing-file {{ssrlmx_processing}} \
+        --replace-existing
 
 # ============================================================================
 # SSRL MX Clean Targets
