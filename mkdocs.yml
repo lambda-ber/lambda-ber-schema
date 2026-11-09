@@ -36,6 +36,7 @@ nav:
     - DIALS: background/dials.md
     - SASDB: background/sasdb.md
     - REMBI: background/rembi-alignment.md
+    - SSBD Ontology: background/ssbd-ontology.md
     - Data Lakehouse Strategy: background/lambda-ber-schema-data-lakehouse-strategy.md
     - Integration with BER: background/ber-doe-facilities.md
     - Data Quality Challenges: background/data-quality-challenges.md

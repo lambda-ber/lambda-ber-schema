@@ -18,6 +18,10 @@ CryoET geometry and processing interchange, with YAML examples, links to real im
 
 Portal metadata and API schemas, including public image and annotation examples and their relationship to LAMBDA.
 
+### [SSBD Ontology](ssbd-ontology.md)
+
+RIKEN's two-tier bioimaging ontology: FBbi-faceted imaging methods, specimen context from OBO vocabularies, data-quality notes, and a crosswalk to LAMBDA.
+
 ### [NeXus Alignment](nexus.md)
 Analysis of how lambda-ber-schema aligns with the NeXus data format, the international standard for neutron, X-ray, and muon science. This document covers:
 - Structural mapping between NeXus and lambda-ber-schema concepts
@@ -68,6 +72,7 @@ All analyzed standards are complementary to lambda-ber-schema rather than compet
 - **EMPIAR** manages petabyte-scale raw microscopy data with expanding modality support
 - **DIALS** delivers modern crystallography data processing with extensible architecture
 - **TomoBabel / CETS** develops cryoET coordinate, alignment, and annotation-geometry interchange
+- **SSBD Ontology** models bioimaging metadata with FBbi and other OBO terms that Lambda can share, without importing SSBD's own IRIs
 - **lambda-ber-schema** provides comprehensive workflow tracking and multi-modal integration
 
 The optimal approach involves using each standard for its strengths and building bridges between them for seamless data flow throughout the structural biology research lifecycle.

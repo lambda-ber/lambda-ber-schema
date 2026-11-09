@@ -48,6 +48,12 @@ Analysis of integration with the DIALS crystallography processing framework. Thi
 - Integration with other crystallography software
 - Support for serial and electron diffraction
 
+### [SSBD Ontology](ssbd-ontology.md)
+RIKEN's two-tier OWL model for bioimaging metadata, examined through its release files and live SPARQL endpoint. This document covers:
+- Its FBbi-faceted imaging-method properties and OBO-based specimen context
+- Data-quality notes for anyone ingesting SSBD
+- A crosswalk to LAMBDA and FBbi mappings for LAMBDA's imaging enums
+
 ### [PDB Deposition and OneDep](onedep-pdb-deposition.md)
 Practical guide to PDB deposition workflow and how lambda-ber-schema relates to the process:
 - OneDep deposition system overview
@@ -74,6 +80,7 @@ All analyzed standards are complementary to lambda-ber-schema rather than compet
 - **EMDB** provides the archive for 3D EM reconstructions with comprehensive validation
 - **EMPIAR** manages petabyte-scale raw microscopy data with expanding modality support
 - **DIALS** delivers modern crystallography data processing with extensible architecture
+- **SSBD Ontology** models bioimaging metadata with FBbi and other OBO terms that Lambda can share, without importing SSBD's own IRIs
 - **lambda-ber-schema** provides comprehensive workflow tracking and multi-modal integration
 
 The optimal approach involves using each standard for its strengths and building bridges between them for seamless data flow throughout the structural biology research lifecycle.
