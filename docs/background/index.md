@@ -49,10 +49,10 @@ Analysis of integration with the DIALS crystallography processing framework. Thi
 - Support for serial and electron diffraction
 
 ### [SSBD Ontology](ssbd-ontology.md)
-RIKEN's two-tier OWL model for bioimaging metadata, examined through its release files and live SPARQL endpoint. This document covers:
-- Its FBbi-faceted imaging-method properties and OBO-based specimen context
-- Data-quality notes for anyone ingesting SSBD
-- A crosswalk to LAMBDA and FBbi mappings for LAMBDA's imaging enums
+RIKEN's two-tier OWL model for bioimaging metadata, examined through its curation template (v3.1), ISWC 2025 paper, release files and live SPARQL endpoint. This document covers:
+- Its FBbi-faceted imaging-method fields and OBO-based specimen context
+- Data-quality notes for anyone ingesting SSBD, including the axis order of its dimension strings
+- A field-level crosswalk to LAMBDA, and the gaps it exposes for light microscopy and volume EM
 
 ### [PDB Deposition and OneDep](onedep-pdb-deposition.md)
 Practical guide to PDB deposition workflow and how lambda-ber-schema relates to the process:

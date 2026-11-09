@@ -20,7 +20,7 @@ Portal metadata and API schemas, including public image and annotation examples 
 
 ### [SSBD Ontology](ssbd-ontology.md)
 
-RIKEN's two-tier bioimaging ontology: FBbi-faceted imaging methods, specimen context from OBO vocabularies, data-quality notes, and a crosswalk to LAMBDA.
+RIKEN's two-tier bioimaging ontology and its curation template: FBbi-faceted imaging methods, specimen context from OBO vocabularies, data-quality notes, and a field-level crosswalk to LAMBDA.
 
 ### [NeXus Alignment](nexus.md)
 Analysis of how lambda-ber-schema aligns with the NeXus data format, the international standard for neutron, X-ray, and muon science. This document covers:
