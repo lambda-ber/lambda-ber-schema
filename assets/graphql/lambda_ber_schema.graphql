@@ -1,5 +1,5 @@
 # metamodel_version: 1.7.0
-# version: 0.0.0.post448.dev0+2e816ba
+# version: 0.0.0.post451.dev0+abe4841
 enum AffinityUnitEnum
   {
     molar
@@ -454,6 +454,14 @@ enum FileFormatEnum
     trr
     gro
     top
+    tpr
+    itp
+    mdp
+    cpt
+    edr
+    mdc
+    toml
+    png
     lib
   }
 

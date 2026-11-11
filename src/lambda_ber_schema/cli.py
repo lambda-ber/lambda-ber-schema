@@ -18,6 +18,7 @@ from lambda_ber_schema.loaders import (
     ANLLambdaLoader,
     BatchLoader,
     EMSLLoader,
+    MDRepoLoader,
     PDBLoader,
     ResponseCache,
     SASBDBLoader,
@@ -103,6 +104,46 @@ def _run_with_error_handling(
             err=True,
         )
         raise typer.Exit(1) from exc
+
+
+@etl_app.command("mdrepo")
+def etl_mdrepo(
+    entry: Annotated[str | None, typer.Option("--entry", "-e", help="MDRepo accession or numeric ID")] = None,
+    metadata: Annotated[Path | None, typer.Option("--metadata", help="Convert an archived API JSON response offline")] = None,
+    output: Annotated[Path | None, typer.Option("--output", "-o", help="Dataset output (default: stdout)")] = None,
+    format: Annotated[str, typer.Option("--format", "-f", help="yaml or json")] = "yaml",
+    raw_output: Annotated[Path | None, typer.Option("--raw-output", help="Save the complete source API JSON")] = None,
+) -> None:
+    """Import MDRepo metadata without downloading simulation payloads.
+
+    Example: lambda-ber-schema etl mdrepo --entry MDR00021021 --output dataset.yaml
+    """
+    if (entry is None) == (metadata is None):
+        raise typer.BadParameter("Specify exactly one of --entry and --metadata")
+    if format.lower() not in {"yaml", "json"}:
+        raise typer.BadParameter("Format must be yaml or json")
+    paths = [p.resolve() for p in (metadata, output, raw_output) if p is not None]
+    if len(paths) != len(set(paths)):
+        raise typer.BadParameter("Input, output and raw-output paths must be distinct")
+    loader = MDRepoLoader()
+    if metadata is not None:
+        result = _run_with_error_handling(
+            lambda: loader.convert(json.loads(metadata.read_text())),
+            http_error_message=lambda status: f"Error reading MDRepo metadata{status}",
+            value_error_message=lambda exc: f"Invalid MDRepo metadata: {exc}",
+            unexpected_error_message=lambda exc: f"Could not read MDRepo metadata: {exc}",
+        )
+    else:
+        result = _load_with_error_handling(loader, entry)
+    for warning in result.warnings:
+        typer.echo(f"Warning: {warning}", err=True)
+    content = _serialize_dataset(result.dataset, format)
+    if output:
+        output.write_text(content)
+    else:
+        typer.echo(content)
+    if raw_output:
+        raw_output.write_text(json.dumps(result.raw_data, indent=2) + "\n")
 
 
 @etl_app.command("sasbdb")

@@ -1,0 +1,520 @@
+{
+  "id": "lambda:mdrepo/MDR00021021",
+  "title": "MD simulation of Tyrosine-protein kinase JAK3 (Uniprot: P52333), in complex with a ligand. This is part of a collection of simulations of 59 kinases including both apo form and in complex with an average of 4 ligands per kinase.",
+  "description": "Metadata imported from https://mdrepo.org/explore/MDR00021021.\n\nMD simulation of Tyrosine-protein kinase JAK3 (Uniprot: P52333), in complex with a ligand. The simulation is based on the structure from PDB entry 3zc6.\nThis is part of a collection containing molecular dynamics simulations of 59 kinases both in their apo form and in complex with a total 220 ligands  (average of ~4 ligands per kinase). All-atom simulations were performed using GROMACS v2024 with the CHARMM36 force field (July 2020 version), and ligand parameters were generated with SwissParam. The protein was solvated in a periodic dodecahedron box with TIP3P water and neutralized with Na+/Cl− ions at 150 mM. Protonation states were assigned at pH 7 based on pKa values from propKa. Systems were energy minimized using the steepest descent algorithm for 5000 steps, followed by equilibration consisting of 1 ns with heavy-atom restraints (1000 kJ/mol/nm2) and 10 ns without restraints. Production simulations were carried out in the NPT ensemble for 500 ns in four replicates with different velocity seeds. A timestep of 2 fs was used, and coordinates were saved every 10 ps. Bonds involving hydrogens were constrained using LINCS. Electrostatics were treated with the Particle-Mesh Ewald method (grid spacing 0.12 nm, cubic interpolation), and van der Waals and electrostatic cutoffs were set to 1.0 nm. A long-range dispersion correction for energy and pressure was applied. Periodic boundary conditions were applied in all directions. The dataset also includes RMSD, RMSF, binding pocket analysis, kinase conformational states, residue-residue correlations, and distance measurements as detailed in the accompanying README_analysis.txt.",
+  "keywords": [
+    "MDRepo",
+    "molecular dynamics",
+    "metadata-only import"
+  ],
+  "studies": [
+    {
+      "id": "lambda:mdrepo/collection/14",
+      "title": "Kinase"
+    }
+  ],
+  "proteins": [
+    {
+      "id": "uniprot:P52333",
+      "uniprot_id": "uniprot:P52333",
+      "protein_name": "Tyrosine-protein kinase JAK3",
+      "amino_acid_sequence": "MAPPSEETPLIPQRSCSLLSTEAGALHVLLPARGPGPPQRLSFSFGDHLAEDLCVQAAKASGILPVYHSLFALATEDLSCWFPPSHIFSVEDASTQVLLYRIRFYFPNWFGLEKCHRFGLRKDLASAILDLPVLEHLFAQHRSDLVSGRLPVGLSLKEQGECLSLAVLDLARMAREQAQRPGELLKTVSYKACLPPSLRDLIQGLSFVTRRRIRRTVRRALRRVAACQADRHSLMAKYIMDLERLDPAGAAETFHVGLPGALGGHDGLGLLRVAGDGGIAWTQGEQEVLQPFCDFPEIVDISIKQAPRVGPAGEHRLVTVTRTDNQILEAEFPGLPEALSFVALVDGYFRLTTDSQHFFCKEVAPPRLLEEVAEQCHGPITLDFAINKLKTGGSRPGSYVLRRSPQDFDSFLLTVCVQNPLGPDYKGCLIRRSPTGTFLLVGLSRPHSSLRELLATCWDGGLHVDGVAVTLTSCCIPRPKEKSNLIVVQRGHSPPTSSLVQPQSQYQLSQMTFHKIPADSLEWHENLGHGSFTKIYRGCRHEVVDGEARKTEVLLKVMDAKHKNCMESFLEAASLMSQVSYRHLVLLHGVCMAGDSTMVQEFVHLGAIDMYLRKRGHLVPASWKLQVVKQLAYALNYLEDKGLPHGNVSARKVLLAREGADGSPPFIKLSDPGVSPAVLSLEMLTDRIPWVAPECLREAQTLSLEADKWGFGATVWEVFSGVTMPISALDPAKKLQFYEDRQQLPAPKWTELALLIQQCMAYEPVQRPSFRAVIRDLNSLISSDYELLSDPTPGALAPRDGLWNGAQLYACQDPTIFEERHLKYISQLGKGNFGSVELCRYDPLGDNTGALVAVKQLQHSGPDQQRDFQREIQILKALHSDFIVKYRGVSYGPGRQSLRLVMEYLPSGCLRDFLQRHRARLDASRLLLYSSQICKGMEYLGSRRCVHRDLAARNILVESEAHVKIADFGLAKLLPLDKDYYVVREPGQSPIFWYAPESLSDNIFSRQSDVWSFGVVLYELFTYCDKSCSPSAEFLRMMGCERDVPALCRLLELLEEGQRLPAPPACPAEVHELMKLCWAPSPQDRPSFSALGPQLDMLWSGSRGCETHAFTAHPEGKHHSLSFS"
+    }
+  ],
+  "protein_constructs": [
+    {
+      "id": "lambda:mdrepo/MDR00021021/construct/1",
+      "description": "[{\"c_terminal_cap\": null, \"chain_label\": \"A\", \"chain_order\": 1, \"first_residue\": 813, \"last_residue\": 1102, \"n_terminal_cap\": null, \"polymer\": {\"id\": 80032, \"match_method\": \"pdb\", \"num_residues\": 288, \"polymer_type\": \"protein\", \"sequence\": \"DPTIFEERHLKYISQLGKGNFGSVELCRYDPLGDNTGALVAVKQLQHSGPDQQRDFQREIQILKALHSDFIVKYRGVSYGPGRQSLRLVMEYLPSGCLRDFLQRHRARLDASRLLLYSSQICKGMEYLGSRRCVHRDLAARNILVESEAHVKIADFGLAKLLPLDKDYYVVREPGQSPIFWYAPESLSDNIFSRQSDVWSFGVVLYELFTYCDKSCSPSAEFLRMMGSERDVPALSRLLELLEEGQRLPAPPACPAEVHELMKLCWAPSPQDRPSFSALGPQLDMLWS\", \"uniprots\": [{\"identity\": 99.30555555555556, \"match_method\": \"pdb\", \"query_end\": 288, \"query_start\": 1, \"reference_end\": 1100, \"reference_start\": 813, \"uniprot\": {\"id\": 2666, \"name\": \"Tyrosine-protein kinase JAK3\", \"uniprot_id\": \"P52333\"}}]}, \"source\": \"structure\"}]",
+      "construct_id": "MDR00021021-chain-1",
+      "protein_id": "uniprot:P52333",
+      "construct_description": "Simulated sequence and source alignment; no cloning or expression history asserted."
+    }
+  ],
+  "small_molecules": [
+    {
+      "id": "lambda:mdrepo/MDR00021021/ligand/1",
+      "description": "{\"chain\": null, \"declared_identity\": null}",
+      "small_molecule_name": "VFC",
+      "smiles": "C[C@H](C(=O)N1CC(C1)C#N)NC(=O)c2c[nH]c3c2nc(cn3)c4c5ccc(cc5n(n4)C)F",
+      "inchi": "InChI=1S/C22H19FN8O2/c1-11(22(33)31-9-12(6-24)10-31)27-21(32)15-7-25-20-19(15)28-16(8-26-20)18-14-4-3-13(23)5-17(14)30(2)29-18/h3-5,7-8,11-12H,9-10H2,1-2H3,(H,25,26)(H,27,32)/t11-/m1/s1",
+      "inchikey": "AGTYRXOJPORGGM-LLVKDONJSA-N"
+    }
+  ],
+  "samples": [
+    {
+      "id": "lambda:mdrepo/MDR00021021/sample",
+      "description": "Computational molecular system represented using Sample; no physical preparation is asserted.",
+      "sample_code": "MDR00021021",
+      "sample_type": "complex"
+    }
+  ],
+  "sample_components": [
+    {
+      "id": "lambda:mdrepo/MDR00021021/component/chain/1",
+      "description": "[{\"c_terminal_cap\": null, \"chain_label\": \"A\", \"chain_order\": 1, \"first_residue\": 813, \"last_residue\": 1102, \"n_terminal_cap\": null, \"polymer\": {\"id\": 80032, \"match_method\": \"pdb\", \"num_residues\": 288, \"polymer_type\": \"protein\", \"sequence\": \"DPTIFEERHLKYISQLGKGNFGSVELCRYDPLGDNTGALVAVKQLQHSGPDQQRDFQREIQILKALHSDFIVKYRGVSYGPGRQSLRLVMEYLPSGCLRDFLQRHRARLDASRLLLYSSQICKGMEYLGSRRCVHRDLAARNILVESEAHVKIADFGLAKLLPLDKDYYVVREPGQSPIFWYAPESLSDNIFSRQSDVWSFGVVLYELFTYCDKSCSPSAEFLRMMGSERDVPALSRLLELLEEGQRLPAPPACPAEVHELMKLCWAPSPQDRPSFSALGPQLDMLWS\", \"uniprots\": [{\"identity\": 99.30555555555556, \"match_method\": \"pdb\", \"query_end\": 288, \"query_start\": 1, \"reference_end\": 1100, \"reference_start\": 813, \"uniprot\": {\"id\": 2666, \"name\": \"Tyrosine-protein kinase JAK3\", \"uniprot_id\": \"P52333\"}}]}, \"source\": \"structure\"}]",
+      "sample_id": "lambda:mdrepo/MDR00021021/sample",
+      "component_type": "protein",
+      "protein_id": "uniprot:P52333",
+      "copy_number": 1
+    },
+    {
+      "id": "lambda:mdrepo/MDR00021021/component/ligand/1",
+      "sample_id": "lambda:mdrepo/MDR00021021/sample",
+      "component_type": "small_molecule",
+      "small_molecule_id": "lambda:mdrepo/MDR00021021/ligand/1"
+    }
+  ],
+  "experiment_runs": [
+    {
+      "id": "lambda:mdrepo/MDR00021021/experiment",
+      "experiment_code": "MDR00021021",
+      "technique": "molecular_dynamics"
+    }
+  ],
+  "workflow_runs": [
+    {
+      "id": "lambda:mdrepo/MDR00021021/workflow",
+      "description": "MD simulation of Tyrosine-protein kinase JAK3 (Uniprot: P52333), in complex with a ligand. The simulation is based on the structure from PDB entry 3zc6.\nThis is part of a collection containing molecular dynamics simulations of 59 kinases both in their apo form and in complex with a total 220 ligands  (average of ~4 ligands per kinase). All-atom simulations were performed using GROMACS v2024 with the CHARMM36 force field (July 2020 version), and ligand parameters were generated with SwissParam. The protein was solvated in a periodic dodecahedron box with TIP3P water and neutralized with Na+/Cl− ions at 150 mM. Protonation states were assigned at pH 7 based on pKa values from propKa. Systems were energy minimized using the steepest descent algorithm for 5000 steps, followed by equilibration consisting of 1 ns with heavy-atom restraints (1000 kJ/mol/nm2) and 10 ns without restraints. Production simulations were carried out in the NPT ensemble for 500 ns in four replicates with different velocity seeds. A timestep of 2 fs was used, and coordinates were saved every 10 ps. Bonds involving hydrogens were constrained using LINCS. Electrostatics were treated with the Particle-Mesh Ewald method (grid spacing 0.12 nm, cubic interpolation), and van der Waals and electrostatic cutoffs were set to 1.0 nm. A long-range dispersion correction for energy and pressure was applied. Periodic boundary conditions were applied in all directions. The dataset also includes RMSD, RMSF, binding pocket analysis, kinase conformational states, residue-residue correlations, and distance measurements as detailed in the accompanying README_analysis.txt.",
+      "workflow_code": "MDR00021021",
+      "workflow_type": "md_production",
+      "software_name": "GROMACS",
+      "software_version": "2024",
+      "processing_parameters": "{\"contributor\": {\"first_name\": \"Amitava\", \"full_name\": \"Amitava Roy\", \"id\": 6, \"institution\": null, \"last_name\": \"Roy\", \"orcid\": \"0000-0002-9100-4108\", \"username\": \"amitroy\"}, \"creation_date\": \"2026-03-02T19:53:32.841361Z\", \"creators\": [{\"email\": \"amitava.roy@umontana.edu\", \"institution\": \"University of Montana\", \"name\": \"Amitava Roy\", \"orcid\": \"0000-0002-9100-4108\"}], \"duration\": 500.0, \"duration_unit\": \"ns (source entry value; may aggregate replicates)\", \"external_links\": [], \"forcefield\": \"CHARMM36\", \"forcefield_comments\": null, \"is_coarse_grained\": false, \"is_deprecated\": false, \"is_embargoed\": false, \"is_placeholder\": false, \"num_replicates\": 1, \"pdb\": {\"classification\": \"TRANSFERASE\", \"id\": 8098, \"num_simulations\": 0, \"pdb_id\": \"3zc6\", \"title\": \"Crystal structure of JAK3 kinase domain in complex with an indazole substituted pyrrolopyrazine inhibitor\"}, \"protonation_method\": \"PropKa\", \"pub\": [], \"run_commands\": \"gmx_mpi mdrun -s fname.tpr -deffnm fname -v -c fname.pdb -cpi fname.cpt -maxh clock_time -noappend -update gpu -bonded gpu -pme gpu -pmefft gpu -nb gpu\", \"sampling_frequency\": 0.01, \"sampling_frequency_unit\": \"ns between saved frames\", \"solutes\": [{\"concentration\": 0.15, \"name\": \"Na+\"}, {\"concentration\": 0.15, \"name\": \"Cl-\"}], \"source_url\": \"https://mdrepo.org/explore/MDR00021021\", \"superseding_simulation_id\": null, \"water_density\": null}",
+      "md_simulation_params": {
+        "simulation_engine": "GROMACS",
+        "simulation_engine_version": "2024",
+        "temperature": {
+          "unit": "kelvin",
+          "numeric_value": 300.0
+        },
+        "timestep": {
+          "unit": "femtosecond",
+          "numeric_value": 2.0
+        },
+        "duration_ns": {
+          "unit": "ns",
+          "numeric_value": 500.0
+        },
+        "trajectory_output_interval": {
+          "unit": "steps",
+          "numeric_value": 5000.0
+        }
+      }
+    }
+  ],
+  "data_files": [
+    {
+      "id": "lambda:mdrepo/MDR00021021/uploaded_files/215932",
+      "description": "{\"description\": \"protein\", \"file_size_bytes\": 1273931, \"file_type\": \"Topology\", \"filename\": \"3zc6.top\", \"id\": 215932, \"is_primary\": false, \"md5_hash\": \"e07040c4f41049a850274e473196ffc1\", \"source_group\": \"uploaded_files\"}",
+      "file_name": "3zc6.top",
+      "file_format": "top",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 1273931.0
+      },
+      "data_type": "topology",
+      "related_entity": "lambda:mdrepo/MDR00021021/experiment"
+    },
+    {
+      "id": "lambda:mdrepo/MDR00021021/uploaded_files/215946",
+      "description": "{\"description\": \"Distance correlation between residue pairs\", \"file_size_bytes\": 1800459, \"file_type\": \"User defined file\", \"filename\": \"3zc6_COM_dcor.txt\", \"id\": 215946, \"is_primary\": false, \"md5_hash\": \"863a7330c9e09358e7726704f7f71c65\", \"source_group\": \"uploaded_files\"}",
+      "file_name": "3zc6_COM_dcor.txt",
+      "file_format": "ascii",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 1800459.0
+      },
+      "related_entity": "lambda:mdrepo/MDR00021021/experiment"
+    },
+    {
+      "id": "lambda:mdrepo/MDR00021021/uploaded_files/215948",
+      "description": "{\"description\": \"Minimum distances between residue pairs\", \"file_size_bytes\": 1441013, \"file_type\": \"User defined file\", \"filename\": \"3zc6_COM_dist.txt\", \"id\": 215948, \"is_primary\": false, \"md5_hash\": \"377b514d717c4ec26a7ec5d5730e3745\", \"source_group\": \"uploaded_files\"}",
+      "file_name": "3zc6_COM_dist.txt",
+      "file_format": "ascii",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 1441013.0
+      },
+      "related_entity": "lambda:mdrepo/MDR00021021/experiment"
+    },
+    {
+      "id": "lambda:mdrepo/MDR00021021/uploaded_files/215947",
+      "description": "{\"description\": \"Distance variance of residues\", \"file_size_bytes\": 6491, \"file_type\": \"User defined file\", \"filename\": \"3zc6_COM_var.txt\", \"id\": 215947, \"is_primary\": false, \"md5_hash\": \"a7faab4566af7bef59f23453a7e0f1c8\", \"source_group\": \"uploaded_files\"}",
+      "file_name": "3zc6_COM_var.txt",
+      "file_format": "ascii",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 6491.0
+      },
+      "related_entity": "lambda:mdrepo/MDR00021021/experiment"
+    },
+    {
+      "id": "lambda:mdrepo/MDR00021021/uploaded_files/215933",
+      "description": "{\"description\": \"ligand\", \"file_size_bytes\": 27575, \"file_type\": \"Topology\", \"filename\": \"3zc6_ligand.itp\", \"id\": 215933, \"is_primary\": false, \"md5_hash\": \"af2d19bad018c48d55aaad8cdabf1bca\", \"source_group\": \"uploaded_files\"}",
+      "file_name": "3zc6_ligand.itp",
+      "file_format": "itp",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 27575.0
+      },
+      "data_type": "topology",
+      "related_entity": "lambda:mdrepo/MDR00021021/experiment"
+    },
+    {
+      "id": "lambda:mdrepo/MDR00021021/uploaded_files/215949",
+      "description": "{\"description\": \"Short description of the analyses protocols\", \"file_size_bytes\": 4736, \"file_type\": \"User defined file\", \"filename\": \"README_analysis.txt\", \"id\": 215949, \"is_primary\": false, \"md5_hash\": \"23996d822ec04c42ec4e66bf763325f8\", \"source_group\": \"uploaded_files\"}",
+      "file_name": "README_analysis.txt",
+      "file_format": "ascii",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 4736.0
+      },
+      "related_entity": "lambda:mdrepo/MDR00021021/experiment"
+    },
+    {
+      "id": "lambda:mdrepo/MDR00021021/uploaded_files/215941",
+      "description": "{\"description\": \"Backbone RMSD\", \"file_size_bytes\": 1326526, \"file_type\": \"User defined file\", \"filename\": \"bb_rmsd.csv\", \"id\": 215941, \"is_primary\": false, \"md5_hash\": \"2120730ab5464280f9c3758d3ed3a882\", \"source_group\": \"uploaded_files\"}",
+      "file_name": "bb_rmsd.csv",
+      "file_format": "csv",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 1326526.0
+      },
+      "related_entity": "lambda:mdrepo/MDR00021021/experiment"
+    },
+    {
+      "id": "lambda:mdrepo/MDR00021021/uploaded_files/215937",
+      "description": "{\"description\": \"force field file\", \"file_size_bytes\": 1093814, \"file_type\": \"User defined file\", \"filename\": \"charmm36.ff.tgz\", \"id\": 215937, \"is_primary\": false, \"md5_hash\": \"13e260820c893242c7e28e52dc7b90fa\", \"source_group\": \"uploaded_files\"}",
+      "file_name": "charmm36.ff.tgz",
+      "file_format": "gz",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 1093814.0
+      },
+      "related_entity": "lambda:mdrepo/MDR00021021/experiment"
+    },
+    {
+      "id": "lambda:mdrepo/MDR00021021/uploaded_files/215944",
+      "description": "{\"description\": \"Archived files of cluster of pockets at different cutoff values\", \"file_size_bytes\": 727133, \"file_type\": \"User defined file\", \"filename\": \"clustered_minprob.tgz\", \"id\": 215944, \"is_primary\": false, \"md5_hash\": \"f8a3cbef894a07348c018f2407c49487\", \"source_group\": \"uploaded_files\"}",
+      "file_name": "clustered_minprob.tgz",
+      "file_format": "gz",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 727133.0
+      },
+      "related_entity": "lambda:mdrepo/MDR00021021/experiment"
+    },
+    {
+      "id": "lambda:mdrepo/MDR00021021/uploaded_files/215942",
+      "description": "{\"description\": \"Kinase conformation state analysis\", \"file_size_bytes\": 6061212, \"file_type\": \"User defined file\", \"filename\": \"kinase_states.txt\", \"id\": 215942, \"is_primary\": false, \"md5_hash\": \"2a28890b05b3b026810737115a0c101b\", \"source_group\": \"uploaded_files\"}",
+      "file_name": "kinase_states.txt",
+      "file_format": "ascii",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 6061212.0
+      },
+      "related_entity": "lambda:mdrepo/MDR00021021/experiment"
+    },
+    {
+      "id": "lambda:mdrepo/MDR00021021/uploaded_files/215936",
+      "description": "{\"description\": null, \"file_size_bytes\": 10950, \"file_type\": \"Input\", \"filename\": \"mdout.mdp\", \"id\": 215936, \"is_primary\": false, \"md5_hash\": \"f0273d221a07e2a29e35e3d961850215\", \"source_group\": \"uploaded_files\"}",
+      "file_name": "mdout.mdp",
+      "file_format": "mdp",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 10950.0
+      },
+      "data_type": "metadata",
+      "related_entity": "lambda:mdrepo/MDR00021021/experiment"
+    },
+    {
+      "id": "lambda:mdrepo/MDR00021021/uploaded_files/215928",
+      "description": "{\"description\": null, \"file_size_bytes\": 5034, \"file_type\": \"Metadata\", \"filename\": \"mdrepo-metadata.toml\", \"id\": 215928, \"is_primary\": false, \"md5_hash\": \"03a10746eace8e436e1f181b2029b6c4\", \"source_group\": \"uploaded_files\"}",
+      "file_name": "mdrepo-metadata.toml",
+      "file_format": "toml",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 5034.0
+      },
+      "data_type": "metadata",
+      "related_entity": "lambda:mdrepo/MDR00021021/experiment"
+    },
+    {
+      "id": "lambda:mdrepo/MDR00021021/uploaded_files/215945",
+      "description": "{\"description\": \"Raw data from P2Rank for pocket analysis\", \"file_size_bytes\": 20722828, \"file_type\": \"User defined file\", \"filename\": \"p2rank_output.tar.gz\", \"id\": 215945, \"is_primary\": false, \"md5_hash\": \"4f1a1e53ebfb5c76bad5bc82034b72d2\", \"source_group\": \"uploaded_files\"}",
+      "file_name": "p2rank_output.tar.gz",
+      "file_format": "gz",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 20722828.0
+      },
+      "related_entity": "lambda:mdrepo/MDR00021021/experiment"
+    },
+    {
+      "id": "lambda:mdrepo/MDR00021021/uploaded_files/215943",
+      "description": "{\"description\": \"Pocket analysis\", \"file_size_bytes\": 1354315, \"file_type\": \"User defined file\", \"filename\": \"pockets.csv\", \"id\": 215943, \"is_primary\": false, \"md5_hash\": \"c484b30b630d984a3f9729acd924fe91\", \"source_group\": \"uploaded_files\"}",
+      "file_name": "pockets.csv",
+      "file_format": "csv",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 1354315.0
+      },
+      "related_entity": "lambda:mdrepo/MDR00021021/experiment"
+    },
+    {
+      "id": "lambda:mdrepo/MDR00021021/uploaded_files/215934",
+      "description": "{\"description\": null, \"file_size_bytes\": 1336364, \"file_type\": \"Checkpoint\", \"filename\": \"prod.cpt\", \"id\": 215934, \"is_primary\": false, \"md5_hash\": \"a1d08a59eaac391e658437f5da4548e1\", \"source_group\": \"uploaded_files\"}",
+      "file_name": "prod.cpt",
+      "file_format": "cpt",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 1336364.0
+      },
+      "data_type": "restart",
+      "related_entity": "lambda:mdrepo/MDR00021021/experiment"
+    },
+    {
+      "id": "lambda:mdrepo/MDR00021021/uploaded_files/215938",
+      "description": "{\"description\": \"energy file\", \"file_size_bytes\": 35422100, \"file_type\": \"User defined file\", \"filename\": \"prod.edr\", \"id\": 215938, \"is_primary\": false, \"md5_hash\": \"7c391d1d82316cc6e355b32e834808a1\", \"source_group\": \"uploaded_files\"}",
+      "file_name": "prod.edr",
+      "file_format": "edr",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 35422100.0
+      },
+      "related_entity": "lambda:mdrepo/MDR00021021/experiment"
+    },
+    {
+      "id": "lambda:mdrepo/MDR00021021/uploaded_files/215930",
+      "description": "{\"description\": null, \"file_size_bytes\": 4391216, \"file_type\": \"Structure\", \"filename\": \"prod.pdb\", \"id\": 215930, \"is_primary\": true, \"md5_hash\": \"10e6fbf20d192ae08f150a2e9a01959b\", \"source_group\": \"uploaded_files\"}",
+      "file_name": "prod.pdb",
+      "file_format": "pdb",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 4391216.0
+      },
+      "data_type": "model",
+      "related_entity": "lambda:mdrepo/MDR00021021/experiment"
+    },
+    {
+      "id": "lambda:mdrepo/MDR00021021/uploaded_files/215931",
+      "description": "{\"description\": null, \"file_size_bytes\": 2727152, \"file_type\": \"Topology\", \"filename\": \"prod.tpr\", \"id\": 215931, \"is_primary\": true, \"md5_hash\": \"eef1c12bb3ee954643acd373eff1255e\", \"source_group\": \"uploaded_files\"}",
+      "file_name": "prod.tpr",
+      "file_format": "tpr",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 2727152.0
+      },
+      "data_type": "topology",
+      "related_entity": "lambda:mdrepo/MDR00021021/experiment"
+    },
+    {
+      "id": "lambda:mdrepo/MDR00021021/uploaded_files/215935",
+      "description": "{\"description\": null, \"file_size_bytes\": 1336364, \"file_type\": \"Checkpoint\", \"filename\": \"prod_prev.cpt\", \"id\": 215935, \"is_primary\": false, \"md5_hash\": \"d58887620ecadd9487a9a2ce76a8fbdf\", \"source_group\": \"uploaded_files\"}",
+      "file_name": "prod_prev.cpt",
+      "file_format": "cpt",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 1336364.0
+      },
+      "data_type": "restart",
+      "related_entity": "lambda:mdrepo/MDR00021021/experiment"
+    },
+    {
+      "id": "lambda:mdrepo/MDR00021021/uploaded_files/215929",
+      "description": "{\"description\": null, \"file_size_bytes\": 10138884896, \"file_type\": \"Trajectory\", \"filename\": \"prodw.xtc\", \"id\": 215929, \"is_primary\": true, \"md5_hash\": \"8ca09f42ed9c01088bb4bb4f19e11f51\", \"source_group\": \"uploaded_files\"}",
+      "file_name": "prodw.xtc",
+      "file_format": "xtc",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 10138884896.0
+      },
+      "data_type": "trajectory",
+      "related_entity": "lambda:mdrepo/MDR00021021/experiment"
+    },
+    {
+      "id": "lambda:mdrepo/MDR00021021/uploaded_files/215939",
+      "description": "{\"description\": \"Residue RMSF\", \"file_size_bytes\": 18977, \"file_type\": \"User defined file\", \"filename\": \"rmsf_ci.csv\", \"id\": 215939, \"is_primary\": false, \"md5_hash\": \"e62a4bb544f6b88ddbef1bd70baa83a9\", \"source_group\": \"uploaded_files\"}",
+      "file_name": "rmsf_ci.csv",
+      "file_format": "csv",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 18977.0
+      },
+      "related_entity": "lambda:mdrepo/MDR00021021/experiment"
+    },
+    {
+      "id": "lambda:mdrepo/MDR00021021/uploaded_files/215940",
+      "description": "{\"description\": \"Residue RMSF image\", \"file_size_bytes\": 83487, \"file_type\": \"User defined file\", \"filename\": \"rmsf_ci.png\", \"id\": 215940, \"is_primary\": false, \"md5_hash\": \"6449259da97cf4a17848baede51e1ff7\", \"source_group\": \"uploaded_files\"}",
+      "file_name": "rmsf_ci.png",
+      "file_format": "png",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 83487.0
+      },
+      "related_entity": "lambda:mdrepo/MDR00021021/experiment"
+    },
+    {
+      "id": "lambda:mdrepo/MDR00021021/processed_files/344723",
+      "description": "{\"description\": null, \"file_size_bytes\": 2501349, \"file_type\": \"Processed GRO structure\", \"filename\": \"full.gro\", \"id\": 344723, \"local_file_path\": \"MDR00021021/processed/full.gro\", \"md5_hash\": \"578cabe8e111943460c45d2e8a51686e\", \"source_group\": \"processed_files\"}",
+      "file_name": "full.gro",
+      "file_format": "gro",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 2501349.0
+      },
+      "data_type": "model",
+      "related_entity": "lambda:mdrepo/MDR00021021/experiment"
+    },
+    {
+      "id": "lambda:mdrepo/MDR00021021/processed_files/344724",
+      "description": "{\"description\": null, \"file_size_bytes\": 4391268, \"file_type\": \"Processed PDB structure\", \"filename\": \"full.pdb\", \"id\": 344724, \"local_file_path\": \"MDR00021021/processed/full.pdb\", \"md5_hash\": \"6e22ea2e9322fcbd518e3ce72c2263c3\", \"source_group\": \"processed_files\"}",
+      "file_name": "full.pdb",
+      "file_format": "pdb",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 4391268.0
+      },
+      "data_type": "model",
+      "related_entity": "lambda:mdrepo/MDR00021021/experiment"
+    },
+    {
+      "id": "lambda:mdrepo/MDR00021021/processed_files/344725",
+      "description": "{\"description\": null, \"file_size_bytes\": 10138840584, \"file_type\": \"Processed trajectory\", \"filename\": \"full.xtc\", \"id\": 344725, \"local_file_path\": \"MDR00021021/processed/full.xtc\", \"md5_hash\": \"5b01c5e5a7b643a80d77f34b8e3d302a\", \"source_group\": \"processed_files\"}",
+      "file_name": "full.xtc",
+      "file_format": "xtc",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 10138840584.0
+      },
+      "data_type": "trajectory",
+      "related_entity": "lambda:mdrepo/MDR00021021/experiment"
+    },
+    {
+      "id": "lambda:mdrepo/MDR00021021/processed_files/344726",
+      "description": "{\"description\": null, \"file_size_bytes\": 209070, \"file_type\": \"Minimal GRO structure\", \"filename\": \"minimal.gro\", \"id\": 344726, \"local_file_path\": \"MDR00021021/processed/minimal.gro\", \"md5_hash\": \"eabc5ae90ad2baa1cff297b97aa0a85f\", \"source_group\": \"processed_files\"}",
+      "file_name": "minimal.gro",
+      "file_format": "gro",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 209070.0
+      },
+      "data_type": "model",
+      "related_entity": "lambda:mdrepo/MDR00021021/experiment"
+    },
+    {
+      "id": "lambda:mdrepo/MDR00021021/processed_files/344727",
+      "description": "{\"description\": null, \"file_size_bytes\": 366977, \"file_type\": \"Minimal PDB structure\", \"filename\": \"minimal.pdb\", \"id\": 344727, \"local_file_path\": \"MDR00021021/processed/minimal.pdb\", \"md5_hash\": \"1fc875c099f20f343834e61f79bb2b2c\", \"source_group\": \"processed_files\"}",
+      "file_name": "minimal.pdb",
+      "file_format": "pdb",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 366977.0
+      },
+      "data_type": "model",
+      "related_entity": "lambda:mdrepo/MDR00021021/experiment"
+    },
+    {
+      "id": "lambda:mdrepo/MDR00021021/processed_files/344728",
+      "description": "{\"description\": null, \"file_size_bytes\": 884539564, \"file_type\": \"Minimal trajectory\", \"filename\": \"minimal.xtc\", \"id\": 344728, \"local_file_path\": \"MDR00021021/processed/minimal.xtc\", \"md5_hash\": \"7531b4f4d37742c9209c909d1d29a00e\", \"source_group\": \"processed_files\"}",
+      "file_name": "minimal.xtc",
+      "file_format": "xtc",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 884539564.0
+      },
+      "data_type": "trajectory",
+      "related_entity": "lambda:mdrepo/MDR00021021/experiment"
+    },
+    {
+      "id": "lambda:mdrepo/MDR00021021/processed_files/344729",
+      "description": "{\"description\": null, \"file_size_bytes\": 1767208, \"file_type\": \"Sampled minimal trajectory\", \"filename\": \"sampled.xtc\", \"id\": 344729, \"local_file_path\": \"MDR00021021/processed/sampled.xtc\", \"md5_hash\": \"d5df23be82399e584029ac758b12a0d6\", \"source_group\": \"processed_files\"}",
+      "file_name": "sampled.xtc",
+      "file_format": "xtc",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 1767208.0
+      },
+      "data_type": "trajectory",
+      "related_entity": "lambda:mdrepo/MDR00021021/experiment"
+    },
+    {
+      "id": "lambda:mdrepo/MDR00021021/processed_files/344730",
+      "description": "{\"description\": null, \"file_size_bytes\": 99982, \"file_type\": \"Preview image\", \"filename\": \"thumbnail.png\", \"id\": 344730, \"local_file_path\": \"MDR00021021/processed/thumbnail.png\", \"md5_hash\": \"1112eb089372cff7a708ff0a1834a368\", \"source_group\": \"processed_files\"}",
+      "file_name": "thumbnail.png",
+      "file_format": "png",
+      "file_size_bytes": {
+        "unit": "bytes",
+        "numeric_value": 99982.0
+      },
+      "related_entity": "lambda:mdrepo/MDR00021021/experiment"
+    }
+  ],
+  "study_sample_associations": [
+    {
+      "study_id": "lambda:mdrepo/collection/14",
+      "sample_id": "lambda:mdrepo/MDR00021021/sample"
+    }
+  ],
+  "study_experiment_associations": [
+    {
+      "study_id": "lambda:mdrepo/collection/14",
+      "experiment_id": "lambda:mdrepo/MDR00021021/experiment"
+    }
+  ],
+  "study_workflow_associations": [
+    {
+      "study_id": "lambda:mdrepo/collection/14",
+      "workflow_id": "lambda:mdrepo/MDR00021021/workflow"
+    }
+  ],
+  "experiment_sample_associations": [
+    {
+      "experiment_id": "lambda:mdrepo/MDR00021021/experiment",
+      "sample_id": "lambda:mdrepo/MDR00021021/sample"
+    }
+  ],
+  "sample_protein_associations": [
+    {
+      "sample_id": "lambda:mdrepo/MDR00021021/sample",
+      "protein_id": "uniprot:P52333",
+      "construct_id": "lambda:mdrepo/MDR00021021/construct/1",
+      "copy_number": 1,
+      "residue_range": "813-1100",
+      "chain_ids": [
+        "A"
+      ]
+    }
+  ],
+  "workflow_experiment_associations": [
+    {
+      "workflow_id": "lambda:mdrepo/MDR00021021/workflow",
+      "experiment_id": "lambda:mdrepo/MDR00021021/experiment"
+    }
+  ],
+  "workflow_input_associations": [
+    {
+      "workflow_id": "lambda:mdrepo/MDR00021021/workflow",
+      "file_id": "lambda:mdrepo/MDR00021021/uploaded_files/215932"
+    },
+    {
+      "workflow_id": "lambda:mdrepo/MDR00021021/workflow",
+      "file_id": "lambda:mdrepo/MDR00021021/uploaded_files/215933"
+    },
+    {
+      "workflow_id": "lambda:mdrepo/MDR00021021/workflow",
+      "file_id": "lambda:mdrepo/MDR00021021/uploaded_files/215936"
+    },
+    {
+      "workflow_id": "lambda:mdrepo/MDR00021021/workflow",
+      "file_id": "lambda:mdrepo/MDR00021021/uploaded_files/215931"
+    }
+  ],
+  "workflow_output_associations": [
+    {
+      "workflow_id": "lambda:mdrepo/MDR00021021/workflow",
+      "file_id": "lambda:mdrepo/MDR00021021/uploaded_files/215929"
+    }
+  ],
+  "@type": "Dataset"
+}

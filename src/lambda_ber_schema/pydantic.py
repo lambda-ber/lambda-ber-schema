@@ -27,7 +27,7 @@ from pydantic import (
 
 
 metamodel_version = "None"
-version = "0.0.0.post448.dev0+2e816ba"
+version = "0.0.0.post451.dev0+abe4841"
 
 
 class ConfiguredBaseModel(BaseModel):
@@ -2638,6 +2638,38 @@ class FileFormatEnum(str, Enum):
     top = "top"
     """
     GROMACS topology file format
+    """
+    tpr = "tpr"
+    """
+    GROMACS portable binary run input (topology and simulation parameters)
+    """
+    itp = "itp"
+    """
+    GROMACS include topology file
+    """
+    mdp = "mdp"
+    """
+    GROMACS molecular dynamics parameter file
+    """
+    cpt = "cpt"
+    """
+    GROMACS checkpoint file
+    """
+    edr = "edr"
+    """
+    GROMACS binary energy file
+    """
+    mdc = "mdc"
+    """
+    MDCompress compressed molecular dynamics trajectory
+    """
+    toml = "toml"
+    """
+    TOML configuration or metadata file
+    """
+    png = "png"
+    """
+    Portable Network Graphics image
     """
     lib = "lib"
     """

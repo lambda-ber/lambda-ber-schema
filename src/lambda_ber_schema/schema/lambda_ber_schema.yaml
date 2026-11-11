@@ -1,6 +1,6 @@
 id: http://w3id.org/lambda/
 name: lambda-ber-schema
-version: "0.0.0.post451.dev0+abe4841" # Managed by uv-dynamic-versioning
+version: "0.1.2.post389.dev0+6f146a5dcc" # Managed by uv-dynamic-versioning
 description: |
   lambda-ber-schema is a comprehensive schema for representing multimodal structural biology imaging data, 
   from atomic-resolution structures to tissue-level organization. It supports diverse experimental 
@@ -5810,6 +5810,22 @@ enums:
         description: "GROMACS coordinate file format"
       top:
         description: "GROMACS topology file format"
+      tpr:
+        description: "GROMACS portable binary run input (topology and simulation parameters)"
+      itp:
+        description: "GROMACS include topology file"
+      mdp:
+        description: "GROMACS molecular dynamics parameter file"
+      cpt:
+        description: "GROMACS checkpoint file"
+      edr:
+        description: "GROMACS binary energy file"
+      mdc:
+        description: "MDCompress compressed molecular dynamics trajectory"
+      toml:
+        description: "TOML configuration or metadata file"
+      png:
+        description: "Portable Network Graphics image"
       lib:
         description: "Amber residue library file"
 
