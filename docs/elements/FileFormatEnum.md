@@ -35,6 +35,32 @@ URI: [lambda:FileFormatEnum](http://w3id.org/lambda/FileFormatEnum)
 | csv | None | Comma-separated values format |
 | ccp4 | None | CCP4 map format |
 | gz | None | Gzip compressed format |
+| nmr_star | None | NMR-STAR format for NMR data (chemical shifts, restraints, sample conditions)... |
+| yaml | None | YAML text format (e |
+| mdoc | None | SerialEM autodoc metadata sidecar ( |
+| nav | None | SerialEM navigator file ( |
+| dm4 | None | Gatan DigitalMicrograph 4 image format ( |
+| mol2 | None | Tripos MOL2 format for parameterized small molecules |
+| sdf | None | Structure-Data File format for chemical structures |
+| frcmod | None | Amber force field modification file |
+| prmtop | None | Amber topology (parameter/topology) file |
+| inpcrd | None | Amber initial coordinates file |
+| rst7 | None | Amber restart file (ASCII coordinates/velocities) |
+| netcdf | None | NetCDF trajectory format (Amber mdcrd binary) |
+| dcd | None | DCD trajectory format (CHARMM/NAMD) |
+| xtc | None | XTC compressed trajectory format (GROMACS) |
+| trr | None | TRR full-precision trajectory format (GROMACS) |
+| gro | None | GROMACS coordinate file format |
+| top | None | GROMACS topology file format |
+| tpr | None | GROMACS portable binary run input (topology and simulation parameters) |
+| itp | None | GROMACS include topology file |
+| mdp | None | GROMACS molecular dynamics parameter file |
+| cpt | None | GROMACS checkpoint file |
+| edr | None | GROMACS binary energy file |
+| mdc | None | MDCompress compressed molecular dynamics trajectory |
+| toml | None | TOML configuration or metadata file |
+| png | None | Portable Network Graphics image |
+| lib | None | Amber residue library file |
 
 
 
@@ -141,6 +167,90 @@ permissible_values:
   gz:
     text: gz
     description: Gzip compressed format
+  nmr_star:
+    text: nmr_star
+    description: NMR-STAR format for NMR data (chemical shifts, restraints, sample
+      conditions), as distributed by BMRB
+  yaml:
+    text: yaml
+    description: YAML text format (e.g., a facility acquisition protocol sheet)
+  mdoc:
+    text: mdoc
+    description: 'SerialEM autodoc metadata sidecar (.mdoc): per-image or per-tile
+      acquisition parameters for an MRC or TIFF file'
+  nav:
+    text: nav
+    description: 'SerialEM navigator file (.nav): acquisition targets with stage coordinates
+      and the maps they were picked from'
+  dm4:
+    text: dm4
+    description: Gatan DigitalMicrograph 4 image format (.dm4), commonly used for
+      K2/K3 gain references
+  mol2:
+    text: mol2
+    description: Tripos MOL2 format for parameterized small molecules
+  sdf:
+    text: sdf
+    description: Structure-Data File format for chemical structures
+  frcmod:
+    text: frcmod
+    description: Amber force field modification file
+  prmtop:
+    text: prmtop
+    description: Amber topology (parameter/topology) file
+  inpcrd:
+    text: inpcrd
+    description: Amber initial coordinates file
+  rst7:
+    text: rst7
+    description: Amber restart file (ASCII coordinates/velocities)
+  netcdf:
+    text: netcdf
+    description: NetCDF trajectory format (Amber mdcrd binary)
+    comments:
+    - Standard binary trajectory format for Amber MD simulations
+  dcd:
+    text: dcd
+    description: DCD trajectory format (CHARMM/NAMD)
+  xtc:
+    text: xtc
+    description: XTC compressed trajectory format (GROMACS)
+  trr:
+    text: trr
+    description: TRR full-precision trajectory format (GROMACS)
+  gro:
+    text: gro
+    description: GROMACS coordinate file format
+  top:
+    text: top
+    description: GROMACS topology file format
+  tpr:
+    text: tpr
+    description: GROMACS portable binary run input (topology and simulation parameters)
+  itp:
+    text: itp
+    description: GROMACS include topology file
+  mdp:
+    text: mdp
+    description: GROMACS molecular dynamics parameter file
+  cpt:
+    text: cpt
+    description: GROMACS checkpoint file
+  edr:
+    text: edr
+    description: GROMACS binary energy file
+  mdc:
+    text: mdc
+    description: MDCompress compressed molecular dynamics trajectory
+  toml:
+    text: toml
+    description: TOML configuration or metadata file
+  png:
+    text: png
+    description: Portable Network Graphics image
+  lib:
+    text: lib
+    description: Amber residue library file
 
 ```
 </details>

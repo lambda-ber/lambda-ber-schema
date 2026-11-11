@@ -3436,6 +3436,38 @@
           "description": "GROMACS topology file format"
         },
         {
+          "text": "tpr",
+          "description": "GROMACS portable binary run input (topology and simulation parameters)"
+        },
+        {
+          "text": "itp",
+          "description": "GROMACS include topology file"
+        },
+        {
+          "text": "mdp",
+          "description": "GROMACS molecular dynamics parameter file"
+        },
+        {
+          "text": "cpt",
+          "description": "GROMACS checkpoint file"
+        },
+        {
+          "text": "edr",
+          "description": "GROMACS binary energy file"
+        },
+        {
+          "text": "mdc",
+          "description": "MDCompress compressed molecular dynamics trajectory"
+        },
+        {
+          "text": "toml",
+          "description": "TOML configuration or metadata file"
+        },
+        {
+          "text": "png",
+          "description": "Portable Network Graphics image"
+        },
+        {
           "text": "lib",
           "description": "Amber residue library file"
         }
@@ -36422,9 +36454,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda_rocrate_core.yaml",
-  "source_file_date": "2026-11-02T18:27:34",
+  "source_file_date": "2026-11-03T09:18:36",
   "source_file_size": 94945,
-  "generation_date": "2026-11-02T18:31:32",
+  "generation_date": "2026-11-06T15:04:45",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/rocrate/jsonld/lambda_rocrate_core.context.jsonld",

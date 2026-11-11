@@ -1,0 +1,66 @@
+{
+  "source": "MDRepo",
+  "license": "CC-BY-4.0",
+  "payloads_downloaded": false,
+  "entries": [
+    {
+      "id": "MDR00020971",
+      "case": "apo",
+      "retrieved_at": "2026-11-06T23:01:06.640345+00:00",
+      "source_url": "https://mdrepo.org/explore/MDR00020971",
+      "api_url": "https://mdrepo.org/api/v1/simulation_view/20971",
+      "snapshot_sha256": "2536caffdd79ec3b066433d77313043fd6e32f707d6c73e806d70324ceadb0b3",
+      "output": "tests/data/valid/Dataset-mdrepo-apo.yaml",
+      "counts": {
+        "proteins": 1,
+        "small_molecules": 0,
+        "sample_components": 1,
+        "workflow_runs": 1,
+        "data_files": 29
+      },
+      "warnings": [
+        "MD5 hashes are retained in file descriptions; DataFile.checksum is reserved for SHA-256. Payloads were not downloaded or verified."
+      ]
+    },
+    {
+      "id": "MDR00021021",
+      "case": "ligand",
+      "retrieved_at": "2026-11-06T23:01:06.991305+00:00",
+      "source_url": "https://mdrepo.org/explore/MDR00021021",
+      "api_url": "https://mdrepo.org/api/v1/simulation_view/21021",
+      "snapshot_sha256": "862d6a8baf771c36962e6616f446abcc2a2796371e79e0f563605aa2b966a794",
+      "output": "tests/data/valid/Dataset-mdrepo-ligand.yaml",
+      "counts": {
+        "proteins": 1,
+        "small_molecules": 1,
+        "sample_components": 2,
+        "workflow_runs": 1,
+        "data_files": 30
+      },
+      "warnings": [
+        "No structured water model; prose was not interpreted as a structured value.",
+        "MD5 hashes are retained in file descriptions; DataFile.checksum is reserved for SHA-256. Payloads were not downloaded or verified."
+      ]
+    },
+    {
+      "id": "MDR00079393",
+      "case": "ensemble",
+      "retrieved_at": "2026-11-06T23:01:07.335835+00:00",
+      "source_url": "https://mdrepo.org/explore/MDR00079393",
+      "api_url": "https://mdrepo.org/api/v1/simulation_view/79393",
+      "snapshot_sha256": "8d84c54be0a540507380ff4e16ebddec1e37139a3a80da5a8c479783664bd32b",
+      "output": "tests/data/valid/Dataset-mdrepo-ensemble.yaml",
+      "counts": {
+        "proteins": 1,
+        "small_molecules": 2,
+        "sample_components": 3,
+        "workflow_runs": 1,
+        "data_files": 16
+      },
+      "warnings": [
+        "Entry describes 5 replicates; retained as one ensemble workflow. Source duration is preserved without treating it as per-replicate duration.",
+        "MD5 hashes are retained in file descriptions; DataFile.checksum is reserved for SHA-256. Payloads were not downloaded or verified."
+      ]
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 # Auto generated from lambda_ber_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-11-02T18:05:01
+# Generation date: 2026-11-06T15:02:29
 # Schema: lambda-ber-schema
 #
 # id: http://w3id.org/lambda/
@@ -202,7 +202,7 @@ from linkml_runtime.linkml_model.types import Boolean, Curie, Date, Float, Integ
 from linkml_runtime.utils.metamodelcore import Bool, Curie, URI, URIorCURIE, XSDDate
 
 metamodel_version = "1.7.0"
-version = "0.0.0.post448.dev0+2e816ba"
+version = "0.0.0.post451.dev0+abe4841"
 
 # Namespaces
 CHEBI = CurieNamespace('CHEBI', 'http://purl.obolibrary.org/obo/CHEBI_')
@@ -7426,6 +7426,30 @@ class FileFormatEnum(EnumDefinitionImpl):
     top = PermissibleValue(
         text="top",
         description="GROMACS topology file format")
+    tpr = PermissibleValue(
+        text="tpr",
+        description="GROMACS portable binary run input (topology and simulation parameters)")
+    itp = PermissibleValue(
+        text="itp",
+        description="GROMACS include topology file")
+    mdp = PermissibleValue(
+        text="mdp",
+        description="GROMACS molecular dynamics parameter file")
+    cpt = PermissibleValue(
+        text="cpt",
+        description="GROMACS checkpoint file")
+    edr = PermissibleValue(
+        text="edr",
+        description="GROMACS binary energy file")
+    mdc = PermissibleValue(
+        text="mdc",
+        description="MDCompress compressed molecular dynamics trajectory")
+    toml = PermissibleValue(
+        text="toml",
+        description="TOML configuration or metadata file")
+    png = PermissibleValue(
+        text="png",
+        description="Portable Network Graphics image")
     lib = PermissibleValue(
         text="lib",
         description="Amber residue library file")

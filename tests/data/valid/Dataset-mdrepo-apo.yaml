@@ -1,0 +1,481 @@
+id: lambda:mdrepo/MDR00020971
+title: 'MD simulation of Tau-tubulin kinase 2 (Uniprot: Q6IQ55), in unbound (apo)
+  form. This is part of a collection of simulations of 59 kinases including both apo
+  form and in complex with an average of 4 ligands per kinase.'
+description: 'Metadata imported from https://mdrepo.org/explore/MDR00020971.
+
+
+  MD simulation of Tau-tubulin kinase 2 (Uniprot: Q6IQ55), in unbound (apo) form.
+  The simulation is based on the structure from PDB entry 6vrf.
+
+  This is part of a collection containing molecular dynamics simulations of 59 kinases
+  both in their apo form and in complex with a total 220 ligands  (average of ~4 ligands
+  per kinase). All-atom simulations were performed using GROMACS v2024 with the CHARMM36
+  force field (July 2020 version), and ligand parameters were generated with SwissParam.
+  The protein was solvated in a periodic dodecahedron box with TIP3P water and neutralized
+  with Na+/Cl− ions at 150 mM. Protonation states were assigned at pH 7 based on pKa
+  values from propKa. Systems were energy minimized using the steepest descent algorithm
+  for 5000 steps, followed by equilibration consisting of 1 ns with heavy-atom restraints
+  (1000 kJ/mol/nm2) and 10 ns without restraints. Production simulations were carried
+  out in the NPT ensemble for 500 ns in four replicates with different velocity seeds.
+  A timestep of 2 fs was used, and coordinates were saved every 10 ps. Bonds involving
+  hydrogens were constrained using LINCS. Electrostatics were treated with the Particle-Mesh
+  Ewald method (grid spacing 0.12 nm, cubic interpolation), and van der Waals and
+  electrostatic cutoffs were set to 1.0 nm. A long-range dispersion correction for
+  energy and pressure was applied. Periodic boundary conditions were applied in all
+  directions. The dataset also includes RMSD, RMSF, binding pocket analysis, kinase
+  conformational states, residue-residue correlations, and distance measurements as
+  detailed in the accompanying README_analysis.txt.'
+keywords:
+- MDRepo
+- molecular dynamics
+- metadata-only import
+studies:
+- id: lambda:mdrepo/collection/14
+  title: Kinase
+proteins:
+- id: uniprot:Q6IQ55
+  uniprot_id: uniprot:Q6IQ55
+  protein_name: Tau-tubulin kinase 2
+  amino_acid_sequence: MSGGGEQLDILSVGILVKERWKVLRKIGGGGFGEIYDALDMLTRENVALKVESAQQPKQVLKMEVAVLKKLQGKDHVCRFIGCGRNDRFNYVVMQLQGRNLADLRRSQSRGTFTISTTLRLGRQILESIESIHSVGFLHRDIKPSNFAMGRFPSTCRKCYMLDFGLARQFTNSCGDVRPPRAVAGFRGTVRYASINAHRNREMGRHDDLWSLFYMLVEFVVGQLPWRKIKDKEQVGSIKERYDHRLMLKHLPPEFSIFLDHISSLDYFTKPDYQLLTSVFDNSIKTFGVIESDPFDWEKTGNDGSLTTTTTSTTPQLHTRLTPAAIGIANATPIPGDLLRENTDEVFPDEQLSDGENGIPVGVSPDKLPGSLGHPRPQEKDVWEEMDANKNKIKLGICKAATEEENSHGQANGLLNAPSLGSPIRVRSEITQPDRDIPLVRKLRSIHSFELEKRLTLEPKPDTDKFLETCLEKMQKDTSAGKESILPALLHKPCVPAVSRTDHIWHYDEEYLPDASKPASANTPEQADGGGSNGFIAVNLSSCKQEIDSKEWVIVDKEQDLQDFRTNEAVGHKTTGSPSDEEPEVLQVLEASPQDEKLQLGPWAENDHLKKETSGVVLALSAEGPPTAASEQYTDRLELQPGAASQFIAATPTSLMEAQAEGPLTAITIPRPSVASTQSTSGSFHCGQQPEKKDLQPMEPTVELYSPRENFSGLVVTEGEPPSGGSRTDLGLQIDHIGHDMLPNIRESNKSQDLGPKELPDHNRLVVREFENLPGETEEKSILLESDNEDEKLSRGQHCIEISSLPGDLVIVEKDHSATTEPLDVTKTQTFSVVPNQDKNNEIMKLLTVGTSEISSRDIDPHVEGQIGQVAEMQKNKISKDDDIMSEDLPGHQGDLSTFLHQEGKREKITPRNGELFHCVSENEHGAPTRKDMVRSSFVTRHSRIPVLAQEIDSTLESSSPVSAKEKLLQKKAYQPDLVKLLVEKRQFKSFLGDLSSASDKLLEEKLATVPAPFCEEEVLTPFSRLTVDSHLSRSAEDSFLSPIISQSRKSKIPRPVSWVNTDQVNSSTSSQFFPRPPPGKPPTRPGVEARLRRYKVLGSSNSDSDLFSRLAQILQNGSQKPRSTTQCKSPGSPHNPKTPPKSPVVPRRSPSASPRSSSLPRTSSSSPSRAGRPHHDQRSSSPHLGRSKSPPSHSGSSSSRRSCQQEHCKPSKNGLKGSGSLHHHSASTKTPQGKSKPASKLSR
+protein_constructs:
+- id: lambda:mdrepo/MDR00020971/construct/1
+  description: '[{"c_terminal_cap": null, "chain_label": "", "chain_order": 1, "first_residue":
+    1, "last_residue": 299, "n_terminal_cap": null, "polymer": {"id": 79983, "match_method":
+    "pdb", "num_residues": 299, "polymer_type": "protein", "sequence": "MSGGGEQPDILSVGILVKERWKVLRKIGGGGFGEIYDALDMLTRENVALKVESAQQPKQVLKMEVAVLKKLQGKDHVCRFIGCGRNDRFNYVVMQLQGRNLADLRRSQSRGTFTISTTLRLGRQILESIESIHSVGFLHRDIKPSNFAMGRFPSTCRKCYMLDFGLARQFTNSCGDVRPPRAVAGFRGTVRYASINAHRNREMGRHDDLWSLFYMLVEFVVGQLPWRKIKDKEQVGSIKERYDHRLMLKHLPPEFSIFLDHISSLDYFTKPDYQLLTSVFDNSIKTFGVIESDPFDWEK",
+    "uniprots": [{"identity": 99.66555183946488, "match_method": "pdb", "query_end":
+    299, "query_start": 1, "reference_end": 299, "reference_start": 1, "uniprot":
+    {"id": 4613, "name": "Tau-tubulin kinase 2", "uniprot_id": "Q6IQ55"}}]}, "source":
+    "structure"}]'
+  construct_id: MDR00020971-chain-1
+  protein_id: uniprot:Q6IQ55
+  construct_description: Simulated sequence and source alignment; no cloning or expression
+    history asserted.
+samples:
+- id: lambda:mdrepo/MDR00020971/sample
+  description: Computational molecular system represented using Sample; no physical
+    preparation is asserted.
+  sample_code: MDR00020971
+  sample_type: protein
+sample_components:
+- id: lambda:mdrepo/MDR00020971/component/chain/1
+  description: '[{"c_terminal_cap": null, "chain_label": "", "chain_order": 1, "first_residue":
+    1, "last_residue": 299, "n_terminal_cap": null, "polymer": {"id": 79983, "match_method":
+    "pdb", "num_residues": 299, "polymer_type": "protein", "sequence": "MSGGGEQPDILSVGILVKERWKVLRKIGGGGFGEIYDALDMLTRENVALKVESAQQPKQVLKMEVAVLKKLQGKDHVCRFIGCGRNDRFNYVVMQLQGRNLADLRRSQSRGTFTISTTLRLGRQILESIESIHSVGFLHRDIKPSNFAMGRFPSTCRKCYMLDFGLARQFTNSCGDVRPPRAVAGFRGTVRYASINAHRNREMGRHDDLWSLFYMLVEFVVGQLPWRKIKDKEQVGSIKERYDHRLMLKHLPPEFSIFLDHISSLDYFTKPDYQLLTSVFDNSIKTFGVIESDPFDWEK",
+    "uniprots": [{"identity": 99.66555183946488, "match_method": "pdb", "query_end":
+    299, "query_start": 1, "reference_end": 299, "reference_start": 1, "uniprot":
+    {"id": 4613, "name": "Tau-tubulin kinase 2", "uniprot_id": "Q6IQ55"}}]}, "source":
+    "structure"}]'
+  sample_id: lambda:mdrepo/MDR00020971/sample
+  component_type: protein
+  protein_id: uniprot:Q6IQ55
+  copy_number: 1
+experiment_runs:
+- id: lambda:mdrepo/MDR00020971/experiment
+  experiment_code: MDR00020971
+  technique: molecular_dynamics
+workflow_runs:
+- id: lambda:mdrepo/MDR00020971/workflow
+  description: 'MD simulation of Tau-tubulin kinase 2 (Uniprot: Q6IQ55), in unbound
+    (apo) form. The simulation is based on the structure from PDB entry 6vrf.
+
+    This is part of a collection containing molecular dynamics simulations of 59 kinases
+    both in their apo form and in complex with a total 220 ligands  (average of ~4
+    ligands per kinase). All-atom simulations were performed using GROMACS v2024 with
+    the CHARMM36 force field (July 2020 version), and ligand parameters were generated
+    with SwissParam. The protein was solvated in a periodic dodecahedron box with
+    TIP3P water and neutralized with Na+/Cl− ions at 150 mM. Protonation states were
+    assigned at pH 7 based on pKa values from propKa. Systems were energy minimized
+    using the steepest descent algorithm for 5000 steps, followed by equilibration
+    consisting of 1 ns with heavy-atom restraints (1000 kJ/mol/nm2) and 10 ns without
+    restraints. Production simulations were carried out in the NPT ensemble for 500
+    ns in four replicates with different velocity seeds. A timestep of 2 fs was used,
+    and coordinates were saved every 10 ps. Bonds involving hydrogens were constrained
+    using LINCS. Electrostatics were treated with the Particle-Mesh Ewald method (grid
+    spacing 0.12 nm, cubic interpolation), and van der Waals and electrostatic cutoffs
+    were set to 1.0 nm. A long-range dispersion correction for energy and pressure
+    was applied. Periodic boundary conditions were applied in all directions. The
+    dataset also includes RMSD, RMSF, binding pocket analysis, kinase conformational
+    states, residue-residue correlations, and distance measurements as detailed in
+    the accompanying README_analysis.txt.'
+  workflow_code: MDR00020971
+  workflow_type: md_production
+  software_name: GROMACS
+  software_version: '2024'
+  processing_parameters: '{"contributor": {"first_name": "Amitava", "full_name": "Amitava
+    Roy", "id": 6, "institution": null, "last_name": "Roy", "orcid": "0000-0002-9100-4108",
+    "username": "amitroy"}, "creation_date": "2026-02-02T15:46:05.123807Z", "creators":
+    [{"email": "amitava.roy@umontana.edu", "institution": "University of Montana",
+    "name": "Amitava Roy", "orcid": "0000-0002-9100-4108"}], "duration": 500.0, "duration_unit":
+    "ns (source entry value; may aggregate replicates)", "external_links": [], "forcefield":
+    "CHARMM36", "forcefield_comments": null, "is_coarse_grained": false, "is_deprecated":
+    false, "is_embargoed": false, "is_placeholder": false, "num_replicates": 1, "pdb":
+    {"classification": "TRANSFERASE", "id": 17113, "num_simulations": 0, "pdb_id":
+    "6vrf", "title": "ADP bound TTBK2 kinase domain"}, "protonation_method": "PropKa",
+    "pub": [], "run_commands": null, "sampling_frequency": 0.01, "sampling_frequency_unit":
+    "ns between saved frames", "solutes": [{"concentration": 0.15, "name": "Na+"},
+    {"concentration": 0.15, "name": "Cl-"}], "source_url": "https://mdrepo.org/explore/MDR00020971",
+    "superseding_simulation_id": null, "water_density": 1000.0}'
+  md_simulation_params:
+    simulation_engine: GROMACS
+    simulation_engine_version: '2024'
+    water_model: TIP3P
+    temperature:
+      numeric_value: 300.0
+      unit: kelvin
+    timestep:
+      numeric_value: 2.0
+      unit: femtosecond
+    duration_ns:
+      numeric_value: 500.0
+      unit: ns
+    trajectory_output_interval:
+      numeric_value: 5000.0
+      unit: steps
+data_files:
+- id: lambda:mdrepo/MDR00020971/uploaded_files/214845
+  description: '{"description": "protein", "file_size_bytes": 1340688, "file_type":
+    "Topology", "filename": "6vrf.top", "id": 214845, "is_primary": false, "md5_hash":
+    "5e05c309227d60bd42f6c7b864265e22", "source_group": "uploaded_files"}'
+  file_name: 6vrf.top
+  file_format: top
+  file_size_bytes:
+    numeric_value: 1340688.0
+    unit: bytes
+  data_type: topology
+  related_entity: lambda:mdrepo/MDR00020971/experiment
+- id: lambda:mdrepo/MDR00020971/uploaded_files/214858
+  description: '{"description": "Distance correlation between residue pairs", "file_size_bytes":
+    1928519, "file_type": "User defined file", "filename": "6vrf_APO_dcor.txt", "id":
+    214858, "is_primary": false, "md5_hash": "fe923b667d893609a2c583b71af4e5ba", "source_group":
+    "uploaded_files"}'
+  file_name: 6vrf_APO_dcor.txt
+  file_format: ascii
+  file_size_bytes:
+    numeric_value: 1928519.0
+    unit: bytes
+  related_entity: lambda:mdrepo/MDR00020971/experiment
+- id: lambda:mdrepo/MDR00020971/uploaded_files/214860
+  description: '{"description": "Minimum distances between residue pairs", "file_size_bytes":
+    1544314, "file_type": "User defined file", "filename": "6vrf_APO_dist.txt", "id":
+    214860, "is_primary": false, "md5_hash": "89cdf8d658629494b4b7c838237d2856", "source_group":
+    "uploaded_files"}'
+  file_name: 6vrf_APO_dist.txt
+  file_format: ascii
+  file_size_bytes:
+    numeric_value: 1544314.0
+    unit: bytes
+  related_entity: lambda:mdrepo/MDR00020971/experiment
+- id: lambda:mdrepo/MDR00020971/uploaded_files/214859
+  description: '{"description": "Distance variance of residues", "file_size_bytes":
+    6725, "file_type": "User defined file", "filename": "6vrf_APO_var.txt", "id":
+    214859, "is_primary": false, "md5_hash": "5e4fea8bfa04c2d3674597a123f9a5b4", "source_group":
+    "uploaded_files"}'
+  file_name: 6vrf_APO_var.txt
+  file_format: ascii
+  file_size_bytes:
+    numeric_value: 6725.0
+    unit: bytes
+  related_entity: lambda:mdrepo/MDR00020971/experiment
+- id: lambda:mdrepo/MDR00020971/uploaded_files/214861
+  description: '{"description": "Short description of the analyses protocols", "file_size_bytes":
+    4736, "file_type": "User defined file", "filename": "README_analysis.txt", "id":
+    214861, "is_primary": false, "md5_hash": "23996d822ec04c42ec4e66bf763325f8", "source_group":
+    "uploaded_files"}'
+  file_name: README_analysis.txt
+  file_format: ascii
+  file_size_bytes:
+    numeric_value: 4736.0
+    unit: bytes
+  related_entity: lambda:mdrepo/MDR00020971/experiment
+- id: lambda:mdrepo/MDR00020971/uploaded_files/214853
+  description: '{"description": "Backbone RMSD", "file_size_bytes": 1304431, "file_type":
+    "User defined file", "filename": "bb_rmsd.csv", "id": 214853, "is_primary": false,
+    "md5_hash": "59c4d14357daf2f6d374295bdaaab4e6", "source_group": "uploaded_files"}'
+  file_name: bb_rmsd.csv
+  file_format: csv
+  file_size_bytes:
+    numeric_value: 1304431.0
+    unit: bytes
+  related_entity: lambda:mdrepo/MDR00020971/experiment
+- id: lambda:mdrepo/MDR00020971/uploaded_files/214849
+  description: '{"description": "force field file", "file_size_bytes": 1093814, "file_type":
+    "User defined file", "filename": "charmm36.ff.tgz", "id": 214849, "is_primary":
+    false, "md5_hash": "13e260820c893242c7e28e52dc7b90fa", "source_group": "uploaded_files"}'
+  file_name: charmm36.ff.tgz
+  file_format: gz
+  file_size_bytes:
+    numeric_value: 1093814.0
+    unit: bytes
+  related_entity: lambda:mdrepo/MDR00020971/experiment
+- id: lambda:mdrepo/MDR00020971/uploaded_files/214856
+  description: '{"description": "Archived files of cluster of pockets at different
+    cutoff values", "file_size_bytes": 981196, "file_type": "User defined file", "filename":
+    "clustered_minprob.tgz", "id": 214856, "is_primary": false, "md5_hash": "94e44c8178299474225316f111547315",
+    "source_group": "uploaded_files"}'
+  file_name: clustered_minprob.tgz
+  file_format: gz
+  file_size_bytes:
+    numeric_value: 981196.0
+    unit: bytes
+  related_entity: lambda:mdrepo/MDR00020971/experiment
+- id: lambda:mdrepo/MDR00020971/uploaded_files/214854
+  description: '{"description": "Kinase conformation state analysis", "file_size_bytes":
+    6061212, "file_type": "User defined file", "filename": "kinase_states.txt", "id":
+    214854, "is_primary": false, "md5_hash": "e1a3bbd4de762daa4b234944e02b419f", "source_group":
+    "uploaded_files"}'
+  file_name: kinase_states.txt
+  file_format: ascii
+  file_size_bytes:
+    numeric_value: 6061212.0
+    unit: bytes
+  related_entity: lambda:mdrepo/MDR00020971/experiment
+- id: lambda:mdrepo/MDR00020971/uploaded_files/214848
+  description: '{"description": null, "file_size_bytes": 10953, "file_type": "Input",
+    "filename": "mdout.mdp", "id": 214848, "is_primary": false, "md5_hash": "421588aeffba6b4da1e6fd5e42f79a1e",
+    "source_group": "uploaded_files"}'
+  file_name: mdout.mdp
+  file_format: mdp
+  file_size_bytes:
+    numeric_value: 10953.0
+    unit: bytes
+  data_type: metadata
+  related_entity: lambda:mdrepo/MDR00020971/experiment
+- id: lambda:mdrepo/MDR00020971/uploaded_files/214841
+  description: '{"description": null, "file_size_bytes": 5743, "file_type": "Metadata",
+    "filename": "mdrepo-metadata.toml", "id": 214841, "is_primary": false, "md5_hash":
+    "40223960373854d6f27f71cf38e58a2a", "source_group": "uploaded_files"}'
+  file_name: mdrepo-metadata.toml
+  file_format: toml
+  file_size_bytes:
+    numeric_value: 5743.0
+    unit: bytes
+  data_type: metadata
+  related_entity: lambda:mdrepo/MDR00020971/experiment
+- id: lambda:mdrepo/MDR00020971/uploaded_files/214857
+  description: '{"description": "Raw data from P2Rank for pocket analysis", "file_size_bytes":
+    23908528, "file_type": "User defined file", "filename": "p2rank_output.tar.gz",
+    "id": 214857, "is_primary": false, "md5_hash": "a23cfe937759f7b761d696c3ac6a1a34",
+    "source_group": "uploaded_files"}'
+  file_name: p2rank_output.tar.gz
+  file_format: gz
+  file_size_bytes:
+    numeric_value: 23908528.0
+    unit: bytes
+  related_entity: lambda:mdrepo/MDR00020971/experiment
+- id: lambda:mdrepo/MDR00020971/uploaded_files/214855
+  description: '{"description": "Pocket analysis", "file_size_bytes": 1556570, "file_type":
+    "User defined file", "filename": "pockets.csv", "id": 214855, "is_primary": false,
+    "md5_hash": "b0a5be3ea8bb81c81dd324fd7d10eb56", "source_group": "uploaded_files"}'
+  file_name: pockets.csv
+  file_format: csv
+  file_size_bytes:
+    numeric_value: 1556570.0
+    unit: bytes
+  related_entity: lambda:mdrepo/MDR00020971/experiment
+- id: lambda:mdrepo/MDR00020971/uploaded_files/214846
+  description: '{"description": null, "file_size_bytes": 1238324, "file_type": "Checkpoint",
+    "filename": "prod.cpt", "id": 214846, "is_primary": false, "md5_hash": "38f8ea279b836419c6a3bc1d06811628",
+    "source_group": "uploaded_files"}'
+  file_name: prod.cpt
+  file_format: cpt
+  file_size_bytes:
+    numeric_value: 1238324.0
+    unit: bytes
+  data_type: restart
+  related_entity: lambda:mdrepo/MDR00020971/experiment
+- id: lambda:mdrepo/MDR00020971/uploaded_files/214850
+  description: '{"description": "energy file", "file_size_bytes": 34820332, "file_type":
+    "User defined file", "filename": "prod.edr", "id": 214850, "is_primary": false,
+    "md5_hash": "1dea4cf9ce52d49193990c422447db40", "source_group": "uploaded_files"}'
+  file_name: prod.edr
+  file_format: edr
+  file_size_bytes:
+    numeric_value: 34820332.0
+    unit: bytes
+  related_entity: lambda:mdrepo/MDR00020971/experiment
+- id: lambda:mdrepo/MDR00020971/uploaded_files/214844
+  description: '{"description": null, "file_size_bytes": 4068580, "file_type": "Structure",
+    "filename": "prod.pdb", "id": 214844, "is_primary": true, "md5_hash": "a0d06c5f44e2181eafd5c9ae2bf57f2b",
+    "source_group": "uploaded_files"}'
+  file_name: prod.pdb
+  file_format: pdb
+  file_size_bytes:
+    numeric_value: 4068580.0
+    unit: bytes
+  data_type: model
+  related_entity: lambda:mdrepo/MDR00020971/experiment
+- id: lambda:mdrepo/MDR00020971/uploaded_files/214843
+  description: '{"description": null, "file_size_bytes": 2653556, "file_type": "Topology",
+    "filename": "prod.tpr", "id": 214843, "is_primary": true, "md5_hash": "f66ec770ba52275123657d2f82a1070a",
+    "source_group": "uploaded_files"}'
+  file_name: prod.tpr
+  file_format: tpr
+  file_size_bytes:
+    numeric_value: 2653556.0
+    unit: bytes
+  data_type: topology
+  related_entity: lambda:mdrepo/MDR00020971/experiment
+- id: lambda:mdrepo/MDR00020971/uploaded_files/214847
+  description: '{"description": null, "file_size_bytes": 1238324, "file_type": "Checkpoint",
+    "filename": "prod_prev.cpt", "id": 214847, "is_primary": false, "md5_hash": "af060216c4f08c09e49e0e47d61ea134",
+    "source_group": "uploaded_files"}'
+  file_name: prod_prev.cpt
+  file_format: cpt
+  file_size_bytes:
+    numeric_value: 1238324.0
+    unit: bytes
+  data_type: restart
+  related_entity: lambda:mdrepo/MDR00020971/experiment
+- id: lambda:mdrepo/MDR00020971/uploaded_files/214842
+  description: '{"description": null, "file_size_bytes": 9381909312, "file_type":
+    "Trajectory", "filename": "prodw.xtc", "id": 214842, "is_primary": true, "md5_hash":
+    "26aa4dbbd12d44ef5b3397f5844745f5", "source_group": "uploaded_files"}'
+  file_name: prodw.xtc
+  file_format: xtc
+  file_size_bytes:
+    numeric_value: 9381909312.0
+    unit: bytes
+  data_type: trajectory
+  related_entity: lambda:mdrepo/MDR00020971/experiment
+- id: lambda:mdrepo/MDR00020971/uploaded_files/214851
+  description: '{"description": "Residue RMSF", "file_size_bytes": 19318, "file_type":
+    "User defined file", "filename": "rmsf_ci.csv", "id": 214851, "is_primary": false,
+    "md5_hash": "ca4c009ea2d54da58125b97dc50ce901", "source_group": "uploaded_files"}'
+  file_name: rmsf_ci.csv
+  file_format: csv
+  file_size_bytes:
+    numeric_value: 19318.0
+    unit: bytes
+  related_entity: lambda:mdrepo/MDR00020971/experiment
+- id: lambda:mdrepo/MDR00020971/uploaded_files/214852
+  description: '{"description": "Residue RMSF image", "file_size_bytes": 66518, "file_type":
+    "User defined file", "filename": "rmsf_ci.png", "id": 214852, "is_primary": false,
+    "md5_hash": "fc6f5146eb217dae8fb176db6d3bfdbe", "source_group": "uploaded_files"}'
+  file_name: rmsf_ci.png
+  file_format: png
+  file_size_bytes:
+    numeric_value: 66518.0
+    unit: bytes
+  related_entity: lambda:mdrepo/MDR00020971/experiment
+- id: lambda:mdrepo/MDR00020971/processed_files/332813
+  description: '{"description": null, "file_size_bytes": 2317569, "file_type": "Processed
+    GRO structure", "filename": "full.gro", "id": 332813, "local_file_path": "MDR00020971/processed/full.gro",
+    "md5_hash": "7f383e5ad5ef21d5996f29ecd6c858b0", "source_group": "processed_files"}'
+  file_name: full.gro
+  file_format: gro
+  file_size_bytes:
+    numeric_value: 2317569.0
+    unit: bytes
+  data_type: model
+  related_entity: lambda:mdrepo/MDR00020971/experiment
+- id: lambda:mdrepo/MDR00020971/processed_files/332820
+  description: '{"description": null, "file_size_bytes": 4068632, "file_type": "Processed
+    PDB structure", "filename": "full.pdb", "id": 332820, "local_file_path": "MDR00020971/processed/full.pdb",
+    "md5_hash": "2afc1cc9556db0c02d3351b2ca5a3d00", "source_group": "processed_files"}'
+  file_name: full.pdb
+  file_format: pdb
+  file_size_bytes:
+    numeric_value: 4068632.0
+    unit: bytes
+  data_type: model
+  related_entity: lambda:mdrepo/MDR00020971/experiment
+- id: lambda:mdrepo/MDR00020971/processed_files/332818
+  description: '{"description": null, "file_size_bytes": 9381909272, "file_type":
+    "Processed trajectory", "filename": "full.xtc", "id": 332818, "local_file_path":
+    "MDR00020971/processed/full.xtc", "md5_hash": "4a90db0255d1e5adc13d1d2f88cc60ad",
+    "source_group": "processed_files"}'
+  file_name: full.xtc
+  file_format: xtc
+  file_size_bytes:
+    numeric_value: 9381909272.0
+    unit: bytes
+  data_type: trajectory
+  related_entity: lambda:mdrepo/MDR00020971/experiment
+- id: lambda:mdrepo/MDR00020971/processed_files/332814
+  description: '{"description": null, "file_size_bytes": 218520, "file_type": "Minimal
+    GRO structure", "filename": "minimal.gro", "id": 332814, "local_file_path": "MDR00020971/processed/minimal.gro",
+    "md5_hash": "c239f4b1283fa9feacd2bb48f5ae4793", "source_group": "processed_files"}'
+  file_name: minimal.gro
+  file_format: gro
+  file_size_bytes:
+    numeric_value: 218520.0
+    unit: bytes
+  data_type: model
+  related_entity: lambda:mdrepo/MDR00020971/experiment
+- id: lambda:mdrepo/MDR00020971/processed_files/332817
+  description: '{"description": null, "file_size_bytes": 383567, "file_type": "Minimal
+    PDB structure", "filename": "minimal.pdb", "id": 332817, "local_file_path": "MDR00020971/processed/minimal.pdb",
+    "md5_hash": "f4937c182a9d76b5d23db9c587e9cc8d", "source_group": "processed_files"}'
+  file_name: minimal.pdb
+  file_format: pdb
+  file_size_bytes:
+    numeric_value: 383567.0
+    unit: bytes
+  data_type: model
+  related_entity: lambda:mdrepo/MDR00020971/experiment
+- id: lambda:mdrepo/MDR00020971/processed_files/332815
+  description: '{"description": null, "file_size_bytes": 924133668, "file_type": "Minimal
+    trajectory", "filename": "minimal.xtc", "id": 332815, "local_file_path": "MDR00020971/processed/minimal.xtc",
+    "md5_hash": "876a6e10e5b6c5c5134c279edb805e06", "source_group": "processed_files"}'
+  file_name: minimal.xtc
+  file_format: xtc
+  file_size_bytes:
+    numeric_value: 924133668.0
+    unit: bytes
+  data_type: trajectory
+  related_entity: lambda:mdrepo/MDR00020971/experiment
+- id: lambda:mdrepo/MDR00020971/processed_files/332819
+  description: '{"description": null, "file_size_bytes": 1850552, "file_type": "Sampled
+    minimal trajectory", "filename": "sampled.xtc", "id": 332819, "local_file_path":
+    "MDR00020971/processed/sampled.xtc", "md5_hash": "025dfc59266cc7de853e1f46b4432de3",
+    "source_group": "processed_files"}'
+  file_name: sampled.xtc
+  file_format: xtc
+  file_size_bytes:
+    numeric_value: 1850552.0
+    unit: bytes
+  data_type: trajectory
+  related_entity: lambda:mdrepo/MDR00020971/experiment
+- id: lambda:mdrepo/MDR00020971/processed_files/332816
+  description: '{"description": null, "file_size_bytes": 82155, "file_type": "Preview
+    image", "filename": "thumbnail.png", "id": 332816, "local_file_path": "MDR00020971/processed/thumbnail.png",
+    "md5_hash": "1999eae21e31156673a14dee57607a48", "source_group": "processed_files"}'
+  file_name: thumbnail.png
+  file_format: png
+  file_size_bytes:
+    numeric_value: 82155.0
+    unit: bytes
+  related_entity: lambda:mdrepo/MDR00020971/experiment
+study_sample_associations:
+- study_id: lambda:mdrepo/collection/14
+  sample_id: lambda:mdrepo/MDR00020971/sample
+study_experiment_associations:
+- study_id: lambda:mdrepo/collection/14
+  experiment_id: lambda:mdrepo/MDR00020971/experiment
+study_workflow_associations:
+- study_id: lambda:mdrepo/collection/14
+  workflow_id: lambda:mdrepo/MDR00020971/workflow
+experiment_sample_associations:
+- experiment_id: lambda:mdrepo/MDR00020971/experiment
+  sample_id: lambda:mdrepo/MDR00020971/sample
+sample_protein_associations:
+- sample_id: lambda:mdrepo/MDR00020971/sample
+  protein_id: uniprot:Q6IQ55
+  construct_id: lambda:mdrepo/MDR00020971/construct/1
+  copy_number: 1
+  residue_range: 1-299
+  chain_ids: []
+workflow_experiment_associations:
+- workflow_id: lambda:mdrepo/MDR00020971/workflow
+  experiment_id: lambda:mdrepo/MDR00020971/experiment
+workflow_input_associations:
+- workflow_id: lambda:mdrepo/MDR00020971/workflow
+  file_id: lambda:mdrepo/MDR00020971/uploaded_files/214845
+- workflow_id: lambda:mdrepo/MDR00020971/workflow
+  file_id: lambda:mdrepo/MDR00020971/uploaded_files/214848
+- workflow_id: lambda:mdrepo/MDR00020971/workflow
+  file_id: lambda:mdrepo/MDR00020971/uploaded_files/214843
+workflow_output_associations:
+- workflow_id: lambda:mdrepo/MDR00020971/workflow
+  file_id: lambda:mdrepo/MDR00020971/uploaded_files/214842
