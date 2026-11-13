@@ -178,6 +178,7 @@ prefixes:
   wikidata: http://www.wikidata.org/entity/
   CHMO: http://purl.obolibrary.org/obo/CHMO_
   pdb: https://www.rcsb.org/structure/
+  pdb-redo: https://pdb-redo.eu/db/
   sasbdb: https://www.sasbdb.org/data/
   bmrb: https://bmrb.io/data_library/summary/index.php?bmrbId=
   simplescattering: https://www.simplescattering.com/open_dataset/

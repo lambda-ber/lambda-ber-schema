@@ -178,6 +178,13 @@ class BatchLoader:
         if self.loader.source_name == "pdb":
             return self._get_all_pdb_entries(limit=limit, **filters)
 
+        # PDB-REDO publishes no entry list and re-refines X-ray entries only, so page
+        # through those; one it skipped fails to load and lands in the error log
+        if self.loader.source_name == "pdb-redo":
+            return self._get_all_pdb_entries(
+                limit=limit, **{**filters, "experimental_method": "X-RAY"}
+            )
+
         # For other loaders, use their list_entries method
         if hasattr(self.loader, "list_entries"):
             entries = self.loader.list_entries(limit=limit, **filters)

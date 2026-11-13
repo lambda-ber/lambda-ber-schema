@@ -5,6 +5,7 @@ Available loaders:
 - SASBDBLoader: Small Angle Scattering Biological Data Bank
 - SimpleScatteringLoader: Simple Scattering (SEC-SAXS from SIBYLS)
 - EMSLLoader: EMSL public API transactions and metadata
+- PDBREDOLoader: PDB-REDO re-refinements of PDB X-ray entries (wraps PDBLoader)
 - SSRLMXLoader: SSRL macromolecular crystallography (DCSS snapshots + sidecars)
 - ANLLambdaLoader: ANL LAMBDA API (SBC MX experiments and the LIMS export; needs an API key)
 
@@ -22,6 +23,7 @@ from lambda_ber_schema.loaders.batch import BatchLoader, BatchProgress
 from lambda_ber_schema.loaders.cache import ResponseCache
 from lambda_ber_schema.loaders.emsl import EMSLLoader
 from lambda_ber_schema.loaders.pdb import PDBLoader
+from lambda_ber_schema.loaders.pdb_redo import PDBREDOLoader
 from lambda_ber_schema.loaders.sasbdb import SASBDBLoader
 from lambda_ber_schema.loaders.simplescattering import SimpleScatteringLoader
 from lambda_ber_schema.loaders.ssrl_mx import SSRLMXLoader
@@ -34,6 +36,7 @@ __all__ = [
     "EMSLLoader",
     "LoaderResult",
     "PDBLoader",
+    "PDBREDOLoader",
     "ResponseCache",
     "SASBDBLoader",
     "SimpleScatteringLoader",

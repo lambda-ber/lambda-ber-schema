@@ -183,6 +183,73 @@ class TestCLI:
         assert calls["retry_failed"] == "json"
         assert "load_all_called" not in calls
 
+    def test_etl_pdb_redo_help(self):
+        result = runner.invoke(app, ["etl", "pdb-redo", "--help"])
+        assert result.exit_code == 0
+        assert "PDB-REDO" in plain(result.output)
+
+    def test_etl_pdb_redo_says_why_an_entry_is_missing(self, mocker):
+        class FakeLoader:
+            def __init__(self, cache=None):
+                pass
+
+            def load(self, entry_id):
+                raise ValueError(f"{entry_id} is not in the PDB-REDO databank")
+
+        mocker.patch("lambda_ber_schema.cli.PDBREDOLoader", FakeLoader)
+        result = runner.invoke(app, ["etl", "pdb-redo", "--entry", "7MLZ"])
+        assert result.exit_code == 2
+        assert "7MLZ is not in the PDB-REDO databank" in result.output
+
+    def test_etl_list_pdb_redo_routes_to_the_loader(self, mocker):
+        calls: dict[str, object] = {}
+
+        class FakeLoader:
+            def list_entries(self, limit=None):
+                calls["limit"] = limit
+                return ["1CBS", "1HHO"]
+
+        mocker.patch("lambda_ber_schema.cli.PDBREDOLoader", FakeLoader)
+        result = runner.invoke(app, ["etl", "list", "pdb-redo", "--limit", "2"])
+        assert result.exit_code == 0
+        assert "Found 2 entries" in result.output
+        assert calls["limit"] == 2
+
+    def test_etl_dump_pdb_redo_calls_load_all(self, mocker, tmp_path):
+        calls: dict[str, object] = {}
+
+        class FakeBatchLoader:
+            def __init__(self, loader, output_dir, requests_per_second, max_workers):
+                calls["loader"] = loader
+                calls["requests_per_second"] = requests_per_second
+                calls["max_workers"] = max_workers
+
+            def load_all(self, format="yaml", limit=None, **filters):
+                calls["load_all"] = {"format": format, "limit": limit, "filters": filters}
+                return {"total_entries": 3, "successful": 2, "failed": 1}
+
+        class FakeLoader:
+            pass
+
+        mocker.patch("lambda_ber_schema.cli.PDBREDOLoader", FakeLoader)
+        mocker.patch("lambda_ber_schema.cli.BatchLoader", FakeBatchLoader)
+        mocker.patch("lambda_ber_schema.cli.logging.FileHandler",
+                     return_value=logging.NullHandler())
+        mocker.patch("lambda_ber_schema.cli.logging.basicConfig")
+
+        output_dir = tmp_path / "pdb_redo_dump"
+        result = runner.invoke(
+            app,
+            ["etl", "dump-pdb-redo", "--output-dir", str(output_dir),
+             "--limit", "3", "--rate", "1.5", "--workers", "2"],
+        )
+        assert result.exit_code == 0
+        assert isinstance(calls["loader"], FakeLoader)
+        assert calls["requests_per_second"] == 1.5
+        assert calls["max_workers"] == 2
+        # The method is fixed by the loader's source, not passed as a filter
+        assert calls["load_all"] == {"format": "yaml", "limit": 3, "filters": {}}
+
     def test_etl_dump_sasbdb_calls_load_all_with_filters(self, mocker, tmp_path):
         """Test dump-sasbdb invokes BatchLoader.load_all with expected options."""
         calls: dict[str, object] = {}

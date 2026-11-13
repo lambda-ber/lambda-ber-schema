@@ -1,6 +1,6 @@
 ---
 name: ingest-runner
-description: Run ETL data ingestion pipelines for structural biology sources (PDB, SASBDB, SimpleScattering, EMSL, SSRL MX snapshots, ANL LAMBDA). Use when asked to load, dump, or ingest data from an external source such as the Protein Data Bank or the Argonne LIMS. Handles batch operations, progress monitoring, cache management, API keys, and safe cleanup.
+description: Run ETL data ingestion pipelines for structural biology sources (PDB, PDB-REDO, SASBDB, SimpleScattering, EMSL, SSRL MX snapshots, ANL LAMBDA). Use when asked to load, dump, or ingest data from an external source such as the Protein Data Bank or the Argonne LIMS. Handles batch operations, progress monitoring, cache management, API keys, and safe cleanup.
 ---
 
 # Ingest Runner
@@ -12,13 +12,14 @@ Run ETL pipelines to load structural biology data from external databases into l
 | Source | Command | Data | Needs |
 |--------|---------|------|-------|
 | PDB | `just pdb-*` | Protein Data Bank (~248k structures) | nothing |
+| PDB-REDO | `just pdb-redo-*` | PDB X-ray entries re-refined by PDB-REDO (walks ~209k X-ray entries) | nothing |
 | SASBDB | `just sasbdb-*` | Small Angle Scattering (~2k entries) | nothing |
 | SimpleScattering | `just simplescattering-*` | SAXS datasets from simplescattering.com | nothing |
 | EMSL | `just emsl-load`, `just emsl-list` | EMSL datasets by sample query | JWT token (`--token`) |
 | SSRL MX | `just ssrlmx-*` | Beamline snapshot directories on disk | snapshot files, no API |
 | ANL LAMBDA | `just anllambda-*` | Argonne SBC MX experiments and the LIMS export | API key (see below) |
 
-PDB, SASBDB, SimpleScattering and ANL LAMBDA share the batch dump machinery
+PDB, PDB-REDO, SASBDB, SimpleScattering and ANL LAMBDA share the batch dump machinery
 described here (`*-dump-start`, `*-dump-status`, `*-clean*`). EMSL and SSRL MX
 have single-shot recipes only.
 
@@ -27,6 +28,7 @@ have single-shot recipes only.
 ```bash
 # Single entry
 just pdb-load 1HHO
+just pdb-redo-load 1CBS
 just sasbdb-load SASDA52
 just simplescattering-load xsbhevph
 just anllambda-load e22fc16d-4e38-43f3-ad9b-50eea6b8ac69
@@ -53,6 +55,22 @@ just pdb-dump-stop
 just sasbdb-dump-stop
 just anllambda-dump-stop
 ```
+
+## PDB-REDO
+
+PDB-REDO (https://pdb-redo.eu) re-refines PDB X-ray entries against their deposited
+structure factors. `etl pdb-redo` loads the PDB entry exactly as `etl pdb` does,
+with the same `pdb:` ids, and adds one `pdb-redo:{ID}/workflow/re-refinement`
+WorkflowRun (final R, R-free, clashscore; deposited-vs-final Z-scores in
+`processing_notes`), the PDB-REDO files, and input links to the deposited model
+and structure factors. A PDB dump and a PDB-REDO dump therefore merge on their
+sample, protein, instrument and experiment rows.
+
+PDB-REDO publishes no entry list, so `dump-pdb-redo` walks every X-ray PDB entry.
+Entries it does not hold (mostly those deposited without structure factors)
+land in `errors.log` as `ValueError: ... not in the PDB-REDO databank`; that is
+expected, not a fault. Each entry costs two pdb-redo.eu requests plus the PDB
+loader's RCSB requests, about 2.6 s with one worker.
 
 ## ANL LAMBDA
 
@@ -167,7 +185,8 @@ just pdb-cache-info
 | `just {source}-clean-progress` | Output + progress | Cache |
 | `just {source}-realclean` | Prints warning only | Everything |
 
-Where `{source}` is `pdb`, `sasbdb`, `simplescattering` or `anllambda`.
+Where `{source}` is `pdb`, `sasbdb`, `simplescattering` or `anllambda`; `pdb-redo`
+has `pdb-redo-clean` only.
 SSRL MX has `ssrlmx-clean` and `ssrlmx-realclean` only; it keeps no cache.
 
 ### Re-process with updated code
@@ -216,7 +235,8 @@ samples:
 
 Check if process is running:
 ```bash
-pgrep -f "dump-pdb"
+pgrep -f "dump-pdb --"       # not dump-pdb-redo
+pgrep -f "dump-pdb-redo"
 pgrep -f "dump-sasbdb"
 pgrep -f "dump-simplescattering"
 pgrep -f "dump-anl-lambda"

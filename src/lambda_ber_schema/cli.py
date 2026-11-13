@@ -19,6 +19,7 @@ from lambda_ber_schema.loaders import (
     BatchLoader,
     EMSLLoader,
     PDBLoader,
+    PDBREDOLoader,
     ResponseCache,
     SASBDBLoader,
     SimpleScatteringLoader,
@@ -284,6 +285,77 @@ def etl_pdb(
             typer.echo(f"Warning: {warning}", err=True)
 
     # Serialize output
+    output_str = _serialize_dataset(result.dataset, format)
+
+    if output:
+        output.write_text(output_str)
+        typer.echo(f"Wrote output to: {output}", err=True)
+    else:
+        typer.echo(output_str)
+
+
+@etl_app.command("pdb-redo")
+def etl_pdb_redo(
+    entry: Annotated[
+        str,
+        typer.Option("--entry", "-e", help="PDB entry ID of an X-ray structure (e.g., 1CBS)"),
+    ],
+    output: Annotated[
+        Path | None,
+        typer.Option("--output", "-o",
+                     help="Output file path (stdout if not specified)"),
+    ] = None,
+    format: Annotated[
+        str,
+        typer.Option("--format", "-f", help="Output format: yaml or json"),
+    ] = "yaml",
+    cache: Annotated[
+        bool,
+        typer.Option("--cache/--no-cache",
+                     help="Enable/disable response caching"),
+    ] = False,
+    cache_dir: Annotated[
+        Path | None,
+        typer.Option("--cache-dir", help="Cache directory (default: .cache)"),
+    ] = None,
+) -> None:
+    """
+    Load a PDB-REDO re-refinement of a PDB X-ray entry.
+
+    The output is the PDB entry as `etl pdb` loads it, with its pdb: ids, plus the
+    PDB-REDO run, its final R/R-free and validation figures, and its files. Entries
+    PDB-REDO does not hold (NMR, cryo-EM, X-ray without structure factors) exit 2
+    with the reason.
+
+    Examples:
+
+        lambda-ber-schema etl pdb-redo --entry 1CBS
+
+        lambda-ber-schema etl pdb-redo --entry 1HHO --output 1hho-redo.yaml --cache
+    """
+    response_cache = ResponseCache(
+        cache_dir=cache_dir or Path(".cache"),
+        enabled=cache,
+    )
+    loader = PDBREDOLoader(cache=response_cache)
+
+    typer.echo(f"Loading PDB-REDO entry: {entry}", err=True)
+    # The loader's ValueError says why an entry is missing, which the generic message drops
+    result = _run_with_error_handling(
+        lambda: loader.load(entry),
+        http_error_message=lambda status_msg: (
+            f"Error: failed to fetch {entry} from pdb-redo{status_msg}"
+        ),
+        value_error_message=lambda exc: f"Error: {exc}",
+        unexpected_error_message=lambda _exc: (
+            f"Error: unexpected failure loading {entry} from pdb-redo"
+        ),
+    )
+
+    if result.warnings:
+        for warning in result.warnings:
+            typer.echo(f"Warning: {warning}", err=True)
+
     output_str = _serialize_dataset(result.dataset, format)
 
     if output:
@@ -660,7 +732,7 @@ def etl_list(
     source: Annotated[
         str,
         typer.Argument(
-            help="Data source: pdb, sasbdb, simplescattering, emsl, ssrl-mx, anl-lambda"),
+            help="Data source: pdb, pdb-redo, sasbdb, simplescattering, emsl, ssrl-mx, anl-lambda"),
     ],
     molecular_type: Annotated[
         str | None,
@@ -710,6 +782,8 @@ def etl_list(
 
         lambda-ber-schema etl list pdb --method X-RAY --limit 10
 
+        lambda-ber-schema etl list pdb-redo --limit 10
+
         lambda-ber-schema etl list emsl --sample apo --limit 10
 
         lambda-ber-schema etl list ssrl-mx --directory /path/to/snapshots
@@ -728,6 +802,10 @@ def etl_list(
     elif source_lower == "pdb":
         loader = PDBLoader()
         entries = loader.list_entries(experimental_method=method, limit=limit)
+    elif source_lower == "pdb-redo":
+        # PDB-REDO has no public entry list; this lists the X-ray PDB entries it covers
+        loader = PDBREDOLoader()
+        entries = loader.list_entries(limit=limit)
     elif source_lower == "emsl":
         if not sample:
             typer.echo(
@@ -767,7 +845,7 @@ def etl_list(
         )
     else:
         typer.echo(
-            f"Unknown source: {source}. Available: pdb, sasbdb, simplescattering, emsl, "
+            f"Unknown source: {source}. Available: pdb, pdb-redo, sasbdb, simplescattering, emsl, "
             "ssrl-mx, anl-lambda",
             err=True,
         )
@@ -961,6 +1039,90 @@ def etl_dump_pdb(
             typer.echo(f"Filter: method={method}", err=True)
 
         result = batch.load_all(format=format, limit=limit, **filters)
+        typer.echo(f"Complete: {result}", err=True)
+
+
+@etl_app.command("dump-pdb-redo")
+def etl_dump_pdb_redo(
+    output_dir: Annotated[
+        Path,
+        typer.Option("--output-dir", "-o",
+                     help="Directory to save output files"),
+    ],
+    format: Annotated[
+        str,
+        typer.Option("--format", "-f", help="Output format: yaml or json"),
+    ] = "yaml",
+    limit: Annotated[
+        int | None,
+        typer.Option("--limit", "-n",
+                     help="Maximum entries to load (default: all)"),
+    ] = None,
+    rate: Annotated[
+        float,
+        typer.Option("--rate", "-r",
+                     help="Entries per second (default: 2.0)"),
+    ] = 2.0,
+    workers: Annotated[
+        int,
+        typer.Option("--workers", "-w",
+                     help="Concurrent workers (default: 1)"),
+    ] = 1,
+    retry_failed: Annotated[
+        bool,
+        typer.Option("--retry-failed", help="Retry previously failed entries"),
+    ] = False,
+) -> None:
+    """
+    Dump PDB-REDO entries to a directory, one file per entry.
+
+    PDB-REDO publishes no entry list, so this walks every X-ray entry in the PDB.
+    Those PDB-REDO did not process, mostly entries deposited without structure
+    factors, are recorded as failed with a "not in the PDB-REDO databank" message
+    in errors.log. Each entry costs two PDB-REDO requests plus the PDB loader's RCSB
+    requests. Supports resume: run again to continue.
+
+    Examples:
+
+        # First 100 X-ray entries, for testing
+        lambda-ber-schema etl dump-pdb-redo --output-dir ./pdb_redo_test --limit 100
+
+        # Everything (many hours); run again to resume
+        lambda-ber-schema etl dump-pdb-redo --output-dir ./pdb_redo_dump
+
+        # Retry failed entries
+        lambda-ber-schema etl dump-pdb-redo --output-dir ./pdb_redo_dump --retry-failed
+    """
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s [%(levelname)s] %(message)s",
+        handlers=[
+            logging.StreamHandler(),
+            logging.FileHandler(output_dir / "batch.log"),
+        ],
+    )
+
+    loader = PDBREDOLoader()
+    batch = BatchLoader(
+        loader=loader,
+        output_dir=output_dir,
+        requests_per_second=rate,
+        max_workers=workers,
+    )
+
+    if retry_failed:
+        typer.echo("Retrying failed entries...", err=True)
+        result = batch.retry_failed(format=format)
+        typer.echo(f"Retry complete: {result}", err=True)
+    else:
+        typer.echo(f"Starting PDB-REDO dump to {output_dir}...", err=True)
+        typer.echo(f"Rate limit: {rate} entries/sec, Workers: {workers}", err=True)
+        if limit:
+            typer.echo(f"Limit: {limit} entries", err=True)
+
+        result = batch.load_all(format=format, limit=limit)
         typer.echo(f"Complete: {result}", err=True)
 
 

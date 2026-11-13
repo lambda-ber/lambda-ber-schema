@@ -44,6 +44,18 @@ def pdb_9b9j_entry_response() -> dict:
 
 
 @pytest.fixture
+def pdb_redo_1hho_data() -> dict:
+    """PDB-REDO data.json for 1HHO, trimmed to the summary the loader reads (no per-residue angles)."""
+    return json.loads((FIXTURES_DIR / "pdb_redo_1HHO_data.json").read_text())
+
+
+@pytest.fixture
+def pdb_redo_1hho_versions() -> dict:
+    """PDB-REDO versions.json for 1HHO: software used and the PDB revisions it started from."""
+    return json.loads((FIXTURES_DIR / "pdb_redo_1HHO_versions.json").read_text())
+
+
+@pytest.fixture
 def pdb_1aay_entry_response() -> dict:
     """Load mocked PDB 1AAY entry API response (Zif268 zinc finger bound to DNA)."""
     return json.loads((FIXTURES_DIR / "pdb_1AAY_entry.json").read_text())

@@ -10,6 +10,7 @@ sasbdb_dump_dir := "data/sasbdb_dump"
 simplescattering_dump_dir := "data/simplescattering_dump"
 ssrlmx_dump_dir := "data/ssrl_mx_dump"
 anllambda_dump_dir := "data/anl_lambda_dump"
+pdbredo_dump_dir := "data/pdb_redo_dump"
 ssrlmx_snapshots_dir := "tests/data/raw/beamline-snapshots"
 ssrlmx_metadata := "tests/loaders/fixtures/ssrl/sample_metadata.json"
 ssrlmx_processing := "tests/loaders/fixtures/ssrl/processing_results.json"
@@ -48,7 +49,7 @@ pdb-dump-start-fast:
 [group('etl')]
 pdb-dump-status:
     #!/usr/bin/env bash
-    if pgrep -f "dump-pdb" > /dev/null; then echo "✓ Running"; else echo "✗ Not running"; fi
+    if pgrep -f "dump-pdb --" > /dev/null; then echo "✓ Running"; else echo "✗ Not running"; fi
     tail -5 {{pdb_dump_dir}}/output.log 2>/dev/null || true
     if [ -f {{pdb_dump_dir}}/progress.json ]; then
       python3 -c "import json; d=json.load(open('{{pdb_dump_dir}}/progress.json')); print(f'Completed: {len(d[\"completed\"])} | Failed: {len(d[\"failed\"])}')"
@@ -57,7 +58,7 @@ pdb-dump-status:
 # Stop PDB dump
 [group('etl')]
 pdb-dump-stop:
-    pkill -f "dump-pdb" && echo "Stopped" || echo "Not running"
+    pkill -f "dump-pdb --" && echo "Stopped" || echo "Not running"
 
 # Retry failed PDB entries
 [group('etl')]
@@ -96,6 +97,59 @@ pdb-realclean:
     @echo ""
     @echo "To confirm, manually run:"
     @echo "  rm -rf {{pdb_dump_dir}} && mkdir -p {{pdb_dump_dir}}"
+
+# ============================================================================
+# PDB-REDO (re-refined PDB X-ray entries) Ingestion
+# ============================================================================
+# Each entry is the PDB entry as pdb-load builds it plus the PDB-REDO run and files.
+# PDB-REDO has no public entry list, so the dump walks every X-ray PDB entry; those
+# it did not process are logged as failed ("not in the PDB-REDO databank").
+
+# Load a single PDB-REDO entry (e.g., just pdb-redo-load 1CBS)
+[group('etl')]
+pdb-redo-load entry:
+    uv run lambda-ber-schema etl pdb-redo --entry {{entry}}
+
+# List X-ray PDB entries, the ones PDB-REDO covers
+[group('etl')]
+pdb-redo-list:
+    uv run lambda-ber-schema etl list pdb-redo --limit 20
+
+# Start full PDB-REDO dump (background, 2 entries/sec)
+[group('etl')]
+pdb-redo-dump-start:
+    mkdir -p {{pdbredo_dump_dir}}
+    @echo "Starting PDB-REDO dump to {{pdbredo_dump_dir}}"
+    @echo "Monitor: just pdb-redo-dump-status"
+    @echo "Stop: just pdb-redo-dump-stop"
+    nohup uv run lambda-ber-schema etl dump-pdb-redo --output-dir {{pdbredo_dump_dir}} --rate 2 > {{pdbredo_dump_dir}}/output.log 2>&1 &
+
+# Check PDB-REDO dump status
+[group('etl')]
+pdb-redo-dump-status:
+    #!/usr/bin/env bash
+    if pgrep -f "dump-pdb-redo" > /dev/null; then echo "✓ Running"; else echo "✗ Not running"; fi
+    tail -5 {{pdbredo_dump_dir}}/output.log 2>/dev/null || true
+    if [ -f {{pdbredo_dump_dir}}/progress.json ]; then
+      python3 -c "import json; d=json.load(open('{{pdbredo_dump_dir}}/progress.json')); print(f'Completed: {len(d[\"completed\"])} | Failed: {len(d[\"failed\"])}')"
+    fi
+
+# Stop PDB-REDO dump
+[group('etl')]
+pdb-redo-dump-stop:
+    pkill -f "dump-pdb-redo" && echo "Stopped" || echo "Not running"
+
+# Retry failed PDB-REDO entries
+[group('etl')]
+pdb-redo-dump-retry:
+    uv run lambda-ber-schema etl dump-pdb-redo --output-dir {{pdbredo_dump_dir}} --retry-failed
+
+# Clean PDB-REDO output files (preserves cache + progress)
+[group('etl-clean')]
+pdb-redo-clean:
+    @echo "Cleaning output files (preserving cache + progress)"
+    find {{pdbredo_dump_dir}} -maxdepth 1 -name "*.yaml" -type f -delete 2>/dev/null || true
+    rm -f {{pdbredo_dump_dir}}/batch.log {{pdbredo_dump_dir}}/errors.log {{pdbredo_dump_dir}}/output.log
 
 # ============================================================================
 # SASBDB (Small Angle Scattering) Ingestion
