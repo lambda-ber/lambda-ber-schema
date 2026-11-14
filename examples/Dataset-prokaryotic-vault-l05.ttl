@@ -1,0 +1,719 @@
+@base <http://example.org/> .
+@prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
+@prefix NCBITaxon: <http://purl.obolibrary.org/obo/NCBITaxon_> .
+@prefix chebi: <http://purl.obolibrary.org/obo/CHEBI_> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lambdaber: <http://w3id.org/lambda/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
+@prefix uniprot: <http://purl.uniprot.org/uniprot/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+lambdaber:dataset-prokaryotic-vault-l05 a lambdaber:Dataset ;
+    dcterms:title "Phage L05 vault nanocapsule - cryo-EM structure and engineered wall expansion" ;
+    lambdaber:data_files lambdaber:file-l05-composite-map,
+        lambdaber:file-l05-consensus-map,
+        lambdaber:file-l05-model,
+        lambdaber:file-l05-movies,
+        lambdaber:file-l05-particles,
+        lambdaber:file-l05-plus2-map,
+        lambdaber:file-l05-plus2-model,
+        lambdaber:file-l05-predicted-shell ;
+    lambdaber:description "Worked example covering the structural half of Athukoralage et al., \"Prokaryotic homologs of the major vault protein form engineerable vault nanocapsules\" (bioRxiv 2026.11.04.764334). Tracks one bacteriophage MVP homolog (L05) from construct through E. coli expression, size-exclusion capture, cryo-EM and model building, beside the human MVP control expressed in Sf9 cells. Exercises the prediction-as-experimental-reference pattern: an OpenFold3 whole-shell model supplies the starting reference for refinement, because ab initio maps could not distinguish the vault from its mirror image. No PDB, EMDB or EMPIAR accessions had been released when this example was written, so file names are placeholders and no checksums or storage URIs are asserted. Several facts from the paper have no slot in the schema and are carried as free text here; each is marked \"SCHEMA GAP\" in the description of the record that carries it." ;
+    lambdaber:experiment_instrument_associations [ a lambdaber:ExperimentInstrumentAssociation ;
+            lambdaber:experiment_id lambdaber:exp-l05-plus2-cryoem ;
+            lambdaber:instrument_id lambdaber:instrument-krios-g4-tfs ;
+            lambdaber:role "primary" ],
+        [ a lambdaber:ExperimentInstrumentAssociation ;
+            lambdaber:experiment_id lambdaber:exp-l05-cryoem ;
+            lambdaber:instrument_id lambdaber:instrument-krios-g4-tfs ;
+            lambdaber:role "primary" ] ;
+    lambdaber:experiment_runs lambdaber:exp-l05-cryoem,
+        lambdaber:exp-l05-plus2-cryoem ;
+    lambdaber:experiment_sample_associations [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id lambdaber:exp-l05-cryoem ;
+            lambdaber:role "target" ;
+            lambdaber:sample_id lambdaber:sample-l05-vault ],
+        [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id lambdaber:exp-l05-plus2-cryoem ;
+            lambdaber:role "target" ;
+            lambdaber:sample_id lambdaber:sample-l05-plus2-vault ] ;
+    lambdaber:instruments lambdaber:instrument-krios-g4-tfs ;
+    lambdaber:keywords "bacteriophage",
+        "cryo-EM",
+        "major vault protein",
+        "protein nanocapsule",
+        "structure prediction",
+        "vault" ;
+    lambdaber:protein_constructs lambdaber:construct-hsmvp-sf9,
+        lambdaber:construct-l05-cap-truncation,
+        lambdaber:construct-l05-i794d,
+        lambdaber:construct-l05-plus2,
+        lambdaber:construct-l05-r55e,
+        lambdaber:construct-l05-wt ;
+    lambdaber:proteins uniprot:Q14764,
+        lambdaber:protein-c0,
+        lambdaber:protein-l05 ;
+    lambdaber:sample_component_interactions [ a lambdaber:SampleComponentInteraction ;
+            lambdaber:description "Cryo-EM density not accounted for by the protein model; a computational fit of 25,000 candidate molecules ranked coenzyme A and its derivatives highest. The ligand is NOT identified, so interaction_status is \"expected\". Analogous to NAD+ and related nucleotides binding the lumenal wall of the human vault." ;
+            lambdaber:evidence "experimental",
+                "predicted" ;
+            lambdaber:interaction_status "expected" ;
+            lambdaber:interaction_type "binds" ;
+            lambdaber:object_id lambdaber:component-l05-shell ;
+            lambdaber:object_site "basic pocket between neighboring chains, repeats 1 and 2" ;
+            lambdaber:sample_id lambdaber:sample-l05-vault ;
+            lambdaber:subject_id lambdaber:component-l05-unknown-ligand ;
+            lambdaber:subject_site "unassigned density at the repeat seam, lumenal face" ] ;
+    lambdaber:sample_components lambdaber:component-human-vault-shell,
+        lambdaber:component-l05-shell,
+        lambdaber:component-l05-unknown-ligand ;
+    lambdaber:sample_preparations lambdaber:prep-l05-ecoli,
+        lambdaber:prep-l05-grids ;
+    lambdaber:sample_protein_associations [ a lambdaber:SampleProteinAssociation ;
+            lambdaber:construct_id lambdaber:construct-hsmvp-sf9 ;
+            lambdaber:copy_number 78 ;
+            lambdaber:protein_id uniprot:Q14764 ;
+            lambdaber:role "subunit" ;
+            lambdaber:sample_id lambdaber:sample-human-vault ],
+        [ a lambdaber:SampleProteinAssociation ;
+            lambdaber:construct_id lambdaber:construct-l05-wt ;
+            lambdaber:copy_number 96 ;
+            lambdaber:protein_id lambdaber:protein-l05 ;
+            lambdaber:residue_range "8-798" ;
+            lambdaber:role "subunit" ;
+            lambdaber:sample_id lambdaber:sample-l05-vault ],
+        [ a lambdaber:SampleProteinAssociation ;
+            lambdaber:construct_id lambdaber:construct-l05-plus2 ;
+            lambdaber:copy_number 96 ;
+            lambdaber:protein_id lambdaber:protein-l05 ;
+            lambdaber:role "subunit" ;
+            lambdaber:sample_id lambdaber:sample-l05-plus2-vault ] ;
+    lambdaber:samples lambdaber:sample-human-vault,
+        lambdaber:sample-l05-plus2-vault,
+        lambdaber:sample-l05-vault ;
+    lambdaber:small_molecules chebi:15346 ;
+    lambdaber:studies lambdaber:study-prokaryotic-vaults ;
+    lambdaber:study_experiment_associations [ a lambdaber:StudyExperimentAssociation ;
+            lambdaber:experiment_id lambdaber:exp-l05-plus2-cryoem ;
+            lambdaber:study_id lambdaber:study-prokaryotic-vaults ],
+        [ a lambdaber:StudyExperimentAssociation ;
+            lambdaber:experiment_id lambdaber:exp-l05-cryoem ;
+            lambdaber:study_id lambdaber:study-prokaryotic-vaults ] ;
+    lambdaber:study_sample_associations [ a lambdaber:StudySampleAssociation ;
+            lambdaber:role "control" ;
+            lambdaber:sample_id lambdaber:sample-human-vault ;
+            lambdaber:study_id lambdaber:study-prokaryotic-vaults ],
+        [ a lambdaber:StudySampleAssociation ;
+            lambdaber:role "target" ;
+            lambdaber:sample_id lambdaber:sample-l05-vault ;
+            lambdaber:study_id lambdaber:study-prokaryotic-vaults ],
+        [ a lambdaber:StudySampleAssociation ;
+            lambdaber:role "target" ;
+            lambdaber:sample_id lambdaber:sample-l05-plus2-vault ;
+            lambdaber:study_id lambdaber:study-prokaryotic-vaults ] ;
+    lambdaber:study_workflow_associations [ a lambdaber:StudyWorkflowAssociation ;
+            lambdaber:study_id lambdaber:study-prokaryotic-vaults ;
+            lambdaber:workflow_id lambdaber:workflow-c0-shell-relaxation ],
+        [ a lambdaber:StudyWorkflowAssociation ;
+            lambdaber:study_id lambdaber:study-prokaryotic-vaults ;
+            lambdaber:workflow_id lambdaber:workflow-l05-shell-prediction ],
+        [ a lambdaber:StudyWorkflowAssociation ;
+            lambdaber:study_id lambdaber:study-prokaryotic-vaults ;
+            lambdaber:workflow_id lambdaber:workflow-l05-ligand-search ],
+        [ a lambdaber:StudyWorkflowAssociation ;
+            lambdaber:study_id lambdaber:study-prokaryotic-vaults ;
+            lambdaber:workflow_id lambdaber:workflow-l05-composite ],
+        [ a lambdaber:StudyWorkflowAssociation ;
+            lambdaber:study_id lambdaber:study-prokaryotic-vaults ;
+            lambdaber:workflow_id lambdaber:workflow-l05-model-refinement ],
+        [ a lambdaber:StudyWorkflowAssociation ;
+            lambdaber:study_id lambdaber:study-prokaryotic-vaults ;
+            lambdaber:workflow_id lambdaber:workflow-l05-consensus-refine ] ;
+    lambdaber:workflow_experiment_associations [ a lambdaber:WorkflowExperimentAssociation ;
+            lambdaber:experiment_id lambdaber:exp-l05-cryoem ;
+            lambdaber:workflow_id lambdaber:workflow-l05-consensus-refine ],
+        [ a lambdaber:WorkflowExperimentAssociation ;
+            lambdaber:experiment_id lambdaber:exp-l05-cryoem ;
+            lambdaber:workflow_id lambdaber:workflow-l05-ctf ],
+        [ a lambdaber:WorkflowExperimentAssociation ;
+            lambdaber:experiment_id lambdaber:exp-l05-cryoem ;
+            lambdaber:workflow_id lambdaber:workflow-l05-picking ],
+        [ a lambdaber:WorkflowExperimentAssociation ;
+            lambdaber:experiment_id lambdaber:exp-l05-cryoem ;
+            lambdaber:workflow_id lambdaber:workflow-l05-motioncorr ],
+        [ a lambdaber:WorkflowExperimentAssociation ;
+            lambdaber:experiment_id lambdaber:exp-l05-plus2-cryoem ;
+            lambdaber:workflow_id lambdaber:workflow-l05-plus2-halves-refine ] ;
+    lambdaber:workflow_input_associations [ a lambdaber:WorkflowInputAssociation ;
+            lambdaber:file_id lambdaber:file-l05-consensus-map ;
+            lambdaber:input_type "raw_data" ;
+            lambdaber:workflow_id lambdaber:workflow-l05-composite ],
+        [ a lambdaber:WorkflowInputAssociation ;
+            lambdaber:file_id lambdaber:file-l05-predicted-shell ;
+            lambdaber:input_type "reference" ;
+            lambdaber:workflow_id lambdaber:workflow-l05-consensus-refine ],
+        [ a lambdaber:WorkflowInputAssociation ;
+            lambdaber:file_id lambdaber:file-l05-composite-map ;
+            lambdaber:input_type "reference" ;
+            lambdaber:workflow_id lambdaber:workflow-l05-model-building ],
+        [ a lambdaber:WorkflowInputAssociation ;
+            lambdaber:file_id lambdaber:file-l05-movies ;
+            lambdaber:input_type "raw_data" ;
+            lambdaber:workflow_id lambdaber:workflow-l05-motioncorr ],
+        [ a lambdaber:WorkflowInputAssociation ;
+            lambdaber:file_id lambdaber:file-l05-composite-map ;
+            lambdaber:input_type "reference" ;
+            lambdaber:workflow_id lambdaber:workflow-l05-ligand-search ],
+        [ a lambdaber:WorkflowInputAssociation ;
+            lambdaber:file_id lambdaber:file-l05-particles ;
+            lambdaber:input_type "particles" ;
+            lambdaber:workflow_id lambdaber:workflow-l05-consensus-refine ] ;
+    lambdaber:workflow_output_associations [ a lambdaber:WorkflowOutputAssociation ;
+            lambdaber:file_id lambdaber:file-l05-model ;
+            lambdaber:output_type "model" ;
+            lambdaber:workflow_id lambdaber:workflow-l05-model-refinement ],
+        [ a lambdaber:WorkflowOutputAssociation ;
+            lambdaber:file_id lambdaber:file-l05-composite-map ;
+            lambdaber:output_type "map" ;
+            lambdaber:workflow_id lambdaber:workflow-l05-composite ],
+        [ a lambdaber:WorkflowOutputAssociation ;
+            lambdaber:file_id lambdaber:file-l05-predicted-shell ;
+            lambdaber:output_type "model" ;
+            lambdaber:workflow_id lambdaber:workflow-l05-shell-prediction ],
+        [ a lambdaber:WorkflowOutputAssociation ;
+            lambdaber:file_id lambdaber:file-l05-plus2-map ;
+            lambdaber:number_of_particles 35558 ;
+            lambdaber:output_type "map" ;
+            lambdaber:workflow_id lambdaber:workflow-l05-plus2-halves-refine ],
+        [ a lambdaber:WorkflowOutputAssociation ;
+            lambdaber:file_id lambdaber:file-l05-consensus-map ;
+            lambdaber:number_of_particles 11675 ;
+            lambdaber:output_type "map" ;
+            lambdaber:workflow_id lambdaber:workflow-l05-consensus-refine ],
+        [ a lambdaber:WorkflowOutputAssociation ;
+            lambdaber:file_id lambdaber:file-l05-particles ;
+            lambdaber:number_of_particles 28358 ;
+            lambdaber:output_type "particles" ;
+            lambdaber:workflow_id lambdaber:workflow-l05-class2d ] ;
+    lambdaber:workflow_runs lambdaber:workflow-c0-shell-relaxation,
+        lambdaber:workflow-l05-abinitio,
+        lambdaber:workflow-l05-cap-refine,
+        lambdaber:workflow-l05-class2d,
+        lambdaber:workflow-l05-class3d,
+        lambdaber:workflow-l05-composite,
+        lambdaber:workflow-l05-consensus-refine,
+        lambdaber:workflow-l05-ctf,
+        lambdaber:workflow-l05-ligand-search,
+        lambdaber:workflow-l05-local-barrel,
+        lambdaber:workflow-l05-local-caphelix,
+        lambdaber:workflow-l05-local-shoulder,
+        lambdaber:workflow-l05-local-waist,
+        lambdaber:workflow-l05-model-building,
+        lambdaber:workflow-l05-model-refinement,
+        lambdaber:workflow-l05-motioncorr,
+        lambdaber:workflow-l05-picking,
+        lambdaber:workflow-l05-plus2-halves-refine,
+        lambdaber:workflow-l05-shell-prediction .
+
+lambdaber:component-human-vault-shell a lambdaber:SampleComponent ;
+    dcterms:title "Human MVP chains forming the shell" ;
+    lambdaber:component_type "protein" ;
+    lambdaber:copy_number 78 ;
+    lambdaber:protein_id uniprot:Q14764 ;
+    lambdaber:role "subunit" ;
+    lambdaber:sample_id lambdaber:sample-human-vault .
+
+lambdaber:construct-l05-cap-truncation a lambdaber:ProteinConstruct ;
+    dcterms:title "L05 cap truncation (1-755)" ;
+    lambdaber:construct_description "C-terminal truncation removing the cap helix. Greatly reduced excluded-volume material; amorphous aggregates by negative stain." ;
+    lambdaber:construct_id "L05-1-755" ;
+    lambdaber:insert_boundaries "1-755" ;
+    lambdaber:protein_id lambdaber:protein-l05 ;
+    lambdaber:vector_name "pET-21(+)" .
+
+lambdaber:construct-l05-i794d a lambdaber:ProteinConstruct ;
+    dcterms:title "L05 I794D cap-helix substitution" ;
+    lambdaber:construct_description "Single substitution in the cap helix. Still elutes in the excluded volume but forms rosettes rather than closed shells." ;
+    lambdaber:construct_id "L05-I794D" ;
+    lambdaber:protein_id lambdaber:protein-l05 ;
+    lambdaber:vector_name "pET-21(+)" .
+
+lambdaber:construct-l05-r55e a lambdaber:ProteinConstruct ;
+    dcterms:title "L05 R55E wall-seam charge reversal" ;
+    lambdaber:construct_description "Single charge reversal in the wall seam. Still elutes in the excluded volume but forms rosettes rather than closed shells." ;
+    lambdaber:construct_id "L05-R55E" ;
+    lambdaber:protein_id lambdaber:protein-l05 ;
+    lambdaber:vector_name "pET-21(+)" .
+
+lambdaber:file-l05-plus2-model a lambdaber:DataFile ;
+    dcterms:title "L05+2 atomic model" ;
+    lambdaber:data_type "model" ;
+    lambdaber:description "Built by splitting the L05 chain between residues 326 and 327 and adding a second copy of residues 220-326; pieces docked as rigid units, joined and refined (wall to 3.5 A, cap to 3.7 A)." ;
+    lambdaber:file_format "mmcif" ;
+    lambdaber:file_name "l05_plus2_model.cif" .
+
+lambdaber:prep-l05-ecoli a lambdaber:SamplePreparation ;
+    dcterms:title "L05 expression in E. coli and excluded-volume capture" ;
+    lambdaber:antibiotic_selection "carbenicillin 100 ug/mL" ;
+    lambdaber:expression_system "bacteria" ;
+    lambdaber:growth_temperature_c [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "37.0"^^xsd:float ;
+            lambdaber:unit "degrees Celsius" ] ;
+    lambdaber:host_strain_or_cell_line "BL21(DE3)" ;
+    lambdaber:inducer_concentration "0.5 mM" ;
+    lambdaber:induction_agent "IPTG" ;
+    lambdaber:induction_temperature_c [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "37.0"^^xsd:float ;
+            lambdaber:unit "degrees Celsius" ] ;
+    lambdaber:induction_time_h [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "4.0"^^xsd:float ;
+            lambdaber:unit "hours" ] ;
+    lambdaber:lysis_method "B-PER Complete with 150 mM NaCl, 1.5 mM MgCl2, protease inhibitors and Benzonase, 20 min at room temperature" ;
+    lambdaber:medium "Terrific Broth" ;
+    lambdaber:preparation_type "protein_purification" ;
+    lambdaber:protocol_description "Clarification at 21,000 x g for 20 min at 4 C, then 0.22 um polyethersulfone filtration, then size-exclusion chromatography at 0.75 mL/min and 4 C. The first peak of each extract was defined as the excluded volume, fractions eluting between 7.97 and 9.72 mL. Vault particles are ~9 MDa, so they were captured in the excluded volume rather than by affinity; isolation takes about 90 minutes. SCHEMA GAP: PurificationStepEnum has no term for an excluded-volume capture that is the isolation step itself rather than a polishing step, and no slot carries the clarification and filtration conditions." ;
+    lambdaber:purification_steps "size_exclusion" ;
+    lambdaber:sample_id "lambdaber:sample-l05-vault" ;
+    lambdaber:sec_buffer "50 mM Tris-HCl pH 7.5, 150 mM NaCl, 1 mM MgCl2" ;
+    lambdaber:sec_column "Superose 6 Increase 10/300 GL" .
+
+lambdaber:prep-l05-grids a lambdaber:SamplePreparation ;
+    dcterms:title "Cryo-EM grid preparation for L05" ;
+    lambdaber:preparation_type "cryo_em" ;
+    lambdaber:protocol_description "Excluded-volume fractions pooled and concentrated at 4 C in 100-kDa centrifugal concentrators. Quantifoil R 1.2/1.3 300-mesh gold grids, glow-discharged; 2.5 uL applied; Vitrobot Mark IV at 5 C and 100% humidity, blot force 0, blot time 3 s; plunge-frozen in liquid ethane. SCHEMA GAP: the CryoEMPreparation class exists but no class references it, so grid and vitrification parameters cannot be attached to a SamplePreparation and are recorded here as prose." ;
+    lambdaber:sample_id "lambdaber:sample-l05-vault" .
+
+lambdaber:protein-c0 a lambdaber:Protein ;
+    dcterms:title "Phage C0 major vault protein homolog" ;
+    lambdaber:description "MVP homolog from an uncultured bacteriophage, confirmed as a vault by cryo-EM. Included here because its predicted whole-shell model was the only one subjected to energy minimization." ;
+    lambdaber:protein_name "Major vault protein homolog C0" .
+
+lambdaber:workflow-l05-abinitio a lambdaber:WorkflowRun ;
+    dcterms:title "Ab initio reconstruction of L05" ;
+    lambdaber:description "Three-class ab initio without symmetry from the complete vaults. The resulting maps did not distinguish the vault from its mirror image, so refinement was started from the filtered prediction instead." ;
+    lambdaber:number_of_particles 19389 ;
+    lambdaber:software_name "RELION" ;
+    lambdaber:software_version "5.0.1" ;
+    lambdaber:workflow_code "WF-L05-ABINITIO" ;
+    lambdaber:workflow_type "ab_initio" .
+
+lambdaber:workflow-l05-cap-refine a lambdaber:WorkflowRun ;
+    dcterms:title "Refinement of the L05 cap disk" ;
+    lambdaber:description "23,404 caps from 11,702 separately selected vaults. Refined under C16; the tip was reconstructed under C8. SCHEMA GAP: C16 is not a permissible value of SymmetryEnum." ;
+    lambdaber:number_of_particles 23404 ;
+    lambdaber:processing_parameters "C16 symmetry for the cap; C8 for the tip" ;
+    lambdaber:refinement_params [ a lambdaber:RefinementParameters ;
+            lambdaber:resolution_0_143 [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "3.3"^^xsd:float ;
+                    lambdaber:unit "Angstroms" ] ] ;
+    lambdaber:software_name "RELION" ;
+    lambdaber:software_version "5.0.1" ;
+    lambdaber:workflow_code "WF-L05-CAP-C16" ;
+    lambdaber:workflow_type "refinement" .
+
+lambdaber:workflow-l05-class3d a lambdaber:WorkflowRun ;
+    dcterms:title "3D classification of L05 particles" ;
+    lambdaber:description "Four-class 3D classification without symmetry, using references derived from the ab initio maps. 11,945 vaults were closed and also complete in 2D classification." ;
+    lambdaber:number_of_particles 11945 ;
+    lambdaber:software_name "RELION" ;
+    lambdaber:software_version "5.0.1" ;
+    lambdaber:workflow_code "WF-L05-CLASS3D" ;
+    lambdaber:workflow_type "classification_3d" .
+
+lambdaber:workflow-l05-local-barrel a lambdaber:WorkflowRun ;
+    dcterms:title "Localized refinement of the L05 barrel" ;
+    lambdaber:refinement_params [ a lambdaber:RefinementParameters ;
+            lambdaber:resolution_0_143 [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "3.02"^^xsd:float ;
+                    lambdaber:unit "Angstroms" ] ] ;
+    lambdaber:software_name "RELION" ;
+    lambdaber:software_version "5.0.1" ;
+    lambdaber:workflow_code "WF-L05-LOCAL-BARREL" ;
+    lambdaber:workflow_type "refinement" .
+
+lambdaber:workflow-l05-local-caphelix a lambdaber:WorkflowRun ;
+    dcterms:title "Localized refinement of the L05 cap helices" ;
+    lambdaber:refinement_params [ a lambdaber:RefinementParameters ;
+            lambdaber:resolution_0_143 [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "3.24"^^xsd:float ;
+                    lambdaber:unit "Angstroms" ] ] ;
+    lambdaber:software_name "RELION" ;
+    lambdaber:software_version "5.0.1" ;
+    lambdaber:workflow_code "WF-L05-LOCAL-CAPHELIX" ;
+    lambdaber:workflow_type "refinement" .
+
+lambdaber:workflow-l05-local-shoulder a lambdaber:WorkflowRun ;
+    dcterms:title "Localized refinement of the L05 shoulder" ;
+    lambdaber:refinement_params [ a lambdaber:RefinementParameters ;
+            lambdaber:resolution_0_143 [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "3.39"^^xsd:float ;
+                    lambdaber:unit "Angstroms" ] ] ;
+    lambdaber:software_name "RELION" ;
+    lambdaber:software_version "5.0.1" ;
+    lambdaber:workflow_code "WF-L05-LOCAL-SHOULDER" ;
+    lambdaber:workflow_type "refinement" .
+
+lambdaber:workflow-l05-local-waist a lambdaber:WorkflowRun ;
+    dcterms:title "Localized refinement of the L05 waist" ;
+    lambdaber:description "SCHEMA GAP: one of five local refinements whose mean is the reported nominal resolution of 3.2 A. Nothing in the schema links a local refinement to its parent consensus refinement, nor records that the overlapping regions were obtained by symmetry expansion and localized reconstruction and then merged into a composite map." ;
+    lambdaber:processing_parameters "symmetry expansion then local refinement without symmetry" ;
+    lambdaber:refinement_params [ a lambdaber:RefinementParameters ;
+            lambdaber:resolution_0_143 [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "2.95"^^xsd:float ;
+                    lambdaber:unit "Angstroms" ] ] ;
+    lambdaber:software_name "RELION" ;
+    lambdaber:software_version "5.0.1" ;
+    lambdaber:workflow_code "WF-L05-LOCAL-WAIST" ;
+    lambdaber:workflow_type "refinement" .
+
+chebi:15346 a lambdaber:SmallMolecule ;
+    dcterms:title "Coenzyme A" ;
+    lambdaber:chebi_id "CHEBI:15346"^^xsd:anyURI ;
+    lambdaber:chemical_class "organic" ;
+    lambdaber:description "Candidate identity for the unassigned lumenal density in the L05 wall pocket. A computational search of 25,000 molecules against the density ranked coenzyme A and its derivatives highest. The identity is NOT established; the corresponding SampleComponentInteraction carries interaction_status \"expected\" rather than \"observed\"." ;
+    lambdaber:small_molecule_name "Coenzyme A" .
+
+lambdaber:component-l05-shell a lambdaber:SampleComponent ;
+    dcterms:title "L05 MVP chains forming the shell" ;
+    lambdaber:component_type "protein" ;
+    lambdaber:copy_number 96 ;
+    lambdaber:protein_id lambdaber:protein-l05 ;
+    lambdaber:role "subunit" ;
+    lambdaber:sample_id lambdaber:sample-l05-vault .
+
+lambdaber:component-l05-unknown-ligand a lambdaber:SampleComponent ;
+    dcterms:title "Unassigned lumenal density modeled as coenzyme A" ;
+    lambdaber:component_type "small_molecule" ;
+    lambdaber:description "Well-resolved density of uncertain origin at each repeat seam on the lumenal face of the wall, in a basic pocket between neighboring chains formed by repeats 1 and 2, flanked by an unresolved lumenal loop from repeat 3 (residues 208-213). Present in both L05 and L05+2 maps." ;
+    lambdaber:role "ligand" ;
+    lambdaber:sample_id lambdaber:sample-l05-vault ;
+    lambdaber:small_molecule_id chebi:15346 .
+
+lambdaber:construct-hsmvp-sf9 a lambdaber:ProteinConstruct ;
+    dcterms:title "Human MVP for baculovirus expression" ;
+    lambdaber:cloning_method "Recombinant baculovirus generated in Sf9 cells" ;
+    lambdaber:construct_id "HsMVP-pFastBac1" ;
+    lambdaber:gene_name "MVP" ;
+    lambdaber:ncbi_taxid "9606" ;
+    lambdaber:protein_id uniprot:Q14764 ;
+    lambdaber:uniprot_id "uniprot:Q14764"^^xsd:anyURI ;
+    lambdaber:vector_name "pFastBac1" .
+
+lambdaber:construct-l05-plus2 a lambdaber:ProteinConstruct ;
+    dcterms:title "L05 with two added wall repeats" ;
+    lambdaber:construct_description "A second copy of residues 220-326 (wall repeats 4 and 5) inserted into L05, giving nine wall repeats. Residues 327-433 of L05+2 are the added copy; residues 327-866 of L05 become 434-973." ;
+    lambdaber:construct_id "L05+2" ;
+    lambdaber:protein_id lambdaber:protein-l05 ;
+    lambdaber:sequence_length_aa [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "973.0"^^xsd:float ;
+            lambdaber:unit "residues" ] ;
+    lambdaber:vector_name "pET-21(+)" .
+
+lambdaber:construct-l05-wt a lambdaber:ProteinConstruct ;
+    dcterms:title "L05 wild type, untagged" ;
+    lambdaber:cloning_method "Synthetic gene cloned into pET-21(+)" ;
+    lambdaber:codon_optimization_organism "Escherichia coli" ;
+    lambdaber:construct_description "Untagged full-length open reading frame, codon-optimized for E. coli." ;
+    lambdaber:construct_id "L05-WT" ;
+    lambdaber:gene_synthesis_provider "Twist Bioscience" ;
+    lambdaber:protein_id lambdaber:protein-l05 ;
+    lambdaber:sequence_length_aa [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "866.0"^^xsd:float ;
+            lambdaber:unit "residues" ] ;
+    lambdaber:sequence_verified_by "whole-plasmid sequencing" ;
+    lambdaber:vector_name "pET-21(+)" .
+
+lambdaber:file-l05-model a lambdaber:DataFile ;
+    dcterms:title "L05 atomic model, 96 chains" ;
+    lambdaber:data_type "model" ;
+    lambdaber:file_format "mmcif" ;
+    lambdaber:file_name "l05_vault_model.cif" .
+
+lambdaber:file-l05-movies a lambdaber:DataFile ;
+    dcterms:title "L05 cryo-EM movies" ;
+    lambdaber:data_type "movie" ;
+    lambdaber:description "Placeholder record; no EMPIAR accession had been released when this example was written." ;
+    lambdaber:file_format "eer" ;
+    lambdaber:file_name "l05_movies.eer" .
+
+lambdaber:file-l05-plus2-map a lambdaber:DataFile ;
+    dcterms:title "L05+2 composite map" ;
+    lambdaber:data_type "volume" ;
+    lambdaber:file_format "mrc" ;
+    lambdaber:file_name "l05_plus2_composite.mrc" .
+
+lambdaber:workflow-c0-shell-relaxation a lambdaber:WorkflowRun ;
+    dcterms:title "Energy minimization of the predicted C0 vault shell" ;
+    lambdaber:description "The only predicted whole-vault model that was relaxed. 73 of 100 predictions were usable." ;
+    lambdaber:md_simulation_params [ a lambdaber:MDSimulationParameters ;
+            lambdaber:protein_force_field "Amber ff14SB" ;
+            lambdaber:simulation_engine "OpenMM" ;
+            lambdaber:simulation_engine_version "8.2" ;
+            lambdaber:simulation_stage "minimization_unrestrained" ] ;
+    lambdaber:software_name "OpenMM" ;
+    lambdaber:software_version "8.2" ;
+    lambdaber:workflow_code "WF-C0-OPENMM-RELAX" ;
+    lambdaber:workflow_type "md_minimization" .
+
+lambdaber:workflow-l05-class2d a lambdaber:WorkflowRun ;
+    dcterms:title "2D classification of L05 particles" ;
+    lambdaber:description "28,358 particles retained, of which 19,389 were complete vaults." ;
+    lambdaber:number_of_particles 28358 ;
+    lambdaber:software_name "RELION" ;
+    lambdaber:software_version "5.0.1" ;
+    lambdaber:workflow_code "WF-L05-CLASS2D" ;
+    lambdaber:workflow_type "classification_2d" .
+
+lambdaber:workflow-l05-ctf a lambdaber:WorkflowRun ;
+    dcterms:title "CTF estimation for L05 micrographs" ;
+    lambdaber:processing_parameters "3,007 of 3,041 micrographs fit to 6 A or better were carried forward" ;
+    lambdaber:software_name "CTFFIND" ;
+    lambdaber:software_version "4.1.14" ;
+    lambdaber:workflow_code "WF-L05-CTFFIND" ;
+    lambdaber:workflow_type "ctf_estimation" .
+
+lambdaber:workflow-l05-model-building a lambdaber:WorkflowRun ;
+    dcterms:title "Model building into the L05 composite map" ;
+    lambdaber:additional_software "AlphaFold2 via ColabFold 1.6.1" ;
+    lambdaber:description "An AlphaFold2 model was docked into the map, the cap helix was built from ideal helices, and the end of the chain was built in the C16 and C8 maps." ;
+    lambdaber:software_name "Coot" ;
+    lambdaber:software_version "1.3.3" ;
+    lambdaber:workflow_code "WF-L05-COOT" ;
+    lambdaber:workflow_type "model_building" .
+
+lambdaber:workflow-l05-picking a lambdaber:WorkflowRun ;
+    dcterms:title "Particle picking for L05" ;
+    lambdaber:number_of_particles 34337 ;
+    lambdaber:particle_picking_params [ a lambdaber:ParticlePickingParameters ;
+            lambdaber:model_source "trained in-house on manually selected particles" ;
+            lambdaber:picking_method "neural_network" ] ;
+    lambdaber:software_name "Topaz" ;
+    lambdaber:workflow_code "WF-L05-TOPAZ" ;
+    lambdaber:workflow_type "particle_picking" .
+
+lambdaber:file-l05-consensus-map a lambdaber:DataFile ;
+    dcterms:title "L05 consensus map at 3.50 A" ;
+    lambdaber:data_type "volume" ;
+    lambdaber:file_format "mrc" ;
+    lambdaber:file_name "l05_consensus_d16.mrc" .
+
+lambdaber:file-l05-particles a lambdaber:DataFile ;
+    dcterms:title "L05 particle stack after 2D classification" ;
+    lambdaber:data_type "particles" ;
+    lambdaber:file_format "mrcs" ;
+    lambdaber:file_name "l05_particles.mrcs" .
+
+lambdaber:file-l05-predicted-shell a lambdaber:DataFile ;
+    dcterms:title "Predicted L05 whole-shell model" ;
+    lambdaber:data_type "predicted_model" ;
+    lambdaber:description "48 chains per half, residues 8-798, not relaxed. Low-pass filtered to 20 A to serve as the refinement starting reference." ;
+    lambdaber:file_format "mmcif" ;
+    lambdaber:file_name "l05_openfold3_shell_48.cif" .
+
+lambdaber:instrument-krios-g4-tfs dcterms:title "Titan Krios G4 with Falcon 4i and energy filter" ;
+    lambdaber:accelerating_voltage [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "300.0"^^xsd:float ;
+            lambdaber:unit "kilovolts" ] ;
+    lambdaber:current_status "operational" ;
+    lambdaber:description "Operated at the Thermo Fisher Scientific Cryo-EM Drug Discovery Center. SCHEMA GAP: facility_name is bound to FacilityEnum, a closed list of synchrotron and neutron sources, so a commercial or vendor cryo-EM centre cannot be named; the slot is left unset, per its own guidance for laboratory instruments." ;
+    lambdaber:detector_manufacturer "Thermo Fisher Scientific" ;
+    lambdaber:detector_mode "counting" ;
+    lambdaber:detector_model "Falcon 4i" ;
+    lambdaber:detector_technology "direct_electron_detector" ;
+    lambdaber:energy_filter_present true ;
+    lambdaber:energy_filter_slit_width [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "10.0"^^xsd:float ;
+            lambdaber:unit "eV" ] ;
+    lambdaber:instrument_category "ELECTRON_MICROSCOPE" ;
+    lambdaber:instrument_code "KRIOS-G4-CRYOEM-DDC" ;
+    lambdaber:instrument_type "CryoEMInstrument" ;
+    lambdaber:manufacturer "Thermo Fisher Scientific" ;
+    lambdaber:microscope_software "EPU" ;
+    lambdaber:model "Titan Krios G4" .
+
+lambdaber:workflow-l05-ligand-search a lambdaber:WorkflowRun ;
+    dcterms:title "Density-fit screen for the unassigned lumenal density" ;
+    lambdaber:description "A computational search of 25,000 molecules against the unassigned density ranked coenzyme A and its derivatives highest. SCHEMA GAP: there is no ligand_identification value in WorkflowTypeEnum; map_validation is used as the nearest fit." ;
+    lambdaber:processing_parameters "25,000 candidate molecules scored against the unassigned density" ;
+    lambdaber:software_name "not stated in the main text" ;
+    lambdaber:workflow_code "WF-L05-LIGAND-SEARCH" ;
+    lambdaber:workflow_type "map_validation" .
+
+lambdaber:workflow-l05-model-refinement a lambdaber:WorkflowRun ;
+    dcterms:title "Refinement of the L05 atomic model" ;
+    lambdaber:description "Refined under strict symmetry with residue-by-residue inspection. D8 symmetry generates the 96 chains of the model from six, which adopt four conformations (A, B, C and C-prime) that differ beyond residue 788. Each chain contains 717 to 724 of the 866 residues." ;
+    lambdaber:refinement_params [ a lambdaber:RefinementParameters ;
+            lambdaber:symmetry "D8" ] ;
+    lambdaber:software_name "Servalcat" ;
+    lambdaber:software_version "0.4.131" ;
+    lambdaber:workflow_code "WF-L05-SERVALCAT" ;
+    lambdaber:workflow_type "model_refinement" .
+
+lambdaber:workflow-l05-motioncorr a lambdaber:WorkflowRun ;
+    dcterms:title "Motion correction of L05 movies" ;
+    lambdaber:additional_software "MotionCor2 implementation" ;
+    lambdaber:motion_correction_params [ a lambdaber:MotionCorrectionParameters ;
+            lambdaber:dose_weighting true ] ;
+    lambdaber:software_name "RELION" ;
+    lambdaber:software_version "5.0.1" ;
+    lambdaber:workflow_code "WF-L05-MOTIONCORR" ;
+    lambdaber:workflow_type "motion_correction" .
+
+lambdaber:workflow-l05-plus2-halves-refine a lambdaber:WorkflowRun ;
+    dcterms:title "Half-vault refinement of L05+2" ;
+    lambdaber:description "Whole-vault refinement under D16 did not reach Nyquist, so each half was treated as a separate particle. 35,558 halves reached 4.2 A under C48 at 1.25 A per pixel. Refinement to convergence increased the difference between the half maps in the shells from 4.7 to 3.5 A, which the authors report as evidence of some fitted noise. SCHEMA GAP: C48 is not a permissible value of SymmetryEnum, and there is no slot for a self-reported fitted-noise check." ;
+    lambdaber:number_of_particles 35558 ;
+    lambdaber:processing_parameters "C48 symmetry on isolated halves; 1.25 A per pixel" ;
+    lambdaber:refinement_params [ a lambdaber:RefinementParameters ;
+            lambdaber:gold_standard true ;
+            lambdaber:pixel_size [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "1.25"^^xsd:float ;
+                    lambdaber:unit "Angstroms" ] ;
+            lambdaber:resolution_0_143 [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "4.2"^^xsd:float ;
+                    lambdaber:unit "Angstroms" ] ] ;
+    lambdaber:software_name "RELION" ;
+    lambdaber:workflow_code "WF-L05P2-HALVES-C48" ;
+    lambdaber:workflow_type "refinement" .
+
+lambdaber:workflow-l05-shell-prediction a lambdaber:WorkflowRun ;
+    dcterms:title "OpenFold3 whole-shell prediction of the L05 vault" ;
+    lambdaber:additional_software "OpenBind-0 weights; ColabFold alignments" ;
+    lambdaber:description "Pairs of full-length chains co-folded without templates from unpaired ColabFold alignments. Predictions were kept when the chains lay side by side with continuous cap helices 8-11.5 A apart. C-alpha distances below 14 A between neighboring chains, present in at least half of the pooled predictions, became restraints used to optimize one chain so that 48 exact copies about one axis satisfied them; the second half was generated by a two-fold axis 1.5 A from the first at the waist. 127 of 150 predictions were usable; the model covers residues 8-798 of 866 and was not energy-minimized. Handedness was checked against the human vault. SCHEMA GAP: no slot records handedness determination." ;
+    lambdaber:processing_parameters "48 chains per half; no templates; unpaired MSAs; restraint cutoff 14 A C-alpha; two-fold axis offset 1.5 A at the waist" ;
+    lambdaber:software_name "OpenFold3" ;
+    lambdaber:software_version "0.5.0" ;
+    lambdaber:workflow_code "WF-L05-OF3-SHELL" ;
+    lambdaber:workflow_type "structure_prediction" .
+
+uniprot:Q14764 a lambdaber:Protein ;
+    dcterms:title "Human major vault protein" ;
+    lambdaber:description "Control protein for the size-exclusion capture method. 893 residues with nine wall repeats; assembles into the 78-chain mammalian vault." ;
+    lambdaber:gene_name "MVP" ;
+    lambdaber:organism NCBITaxon:9606 ;
+    lambdaber:organism_name "Homo sapiens" ;
+    lambdaber:pdb_entries "pdb:9BW6"^^xsd:anyURI ;
+    lambdaber:protein_name "Major vault protein" ;
+    lambdaber:uniprot_id "uniprot:Q14764"^^xsd:anyURI .
+
+lambdaber:file-l05-composite-map a lambdaber:DataFile ;
+    dcterms:title "L05 composite map" ;
+    lambdaber:data_type "volume" ;
+    lambdaber:description "Merge of the five local refinements plus the C8 tip." ;
+    lambdaber:file_format "mrc" ;
+    lambdaber:file_name "l05_composite.mrc" .
+
+lambdaber:sample-human-vault a lambdaber:Sample ;
+    dcterms:title "Human vault particle from Sf9 cells" ;
+    lambdaber:description "Control for the size-exclusion capture method; intact human vaults confirmed by negative stain." ;
+    lambdaber:sample_code "HSMVP-VAULT-001" ;
+    lambdaber:sample_type "complex" .
+
+lambdaber:sample-l05-plus2-vault a lambdaber:Sample ;
+    dcterms:title "L05+2 vault particle from E. coli" ;
+    lambdaber:sample_code "L05P2-VAULT-001" ;
+    lambdaber:sample_type "complex" .
+
+lambdaber:workflow-l05-composite a lambdaber:WorkflowRun ;
+    dcterms:title "Composite map assembly for L05" ;
+    lambdaber:description "Local maps merged into one composite map. Sub-particle extraction, cap sorting, geometric mask construction, composite map assembly, the check for fitted noise and directional FSC were performed with custom Python scripts, because RELION has no job type for them. SCHEMA GAP: no workflow type for composite map assembly, and no way to record software that has no release version." ;
+    lambdaber:processing_parameters "nominal resolution 3.2 A reported as the mean of the five local refinement values (2.95, 3.02, 3.39, 3.24, 3.30 A)" ;
+    lambdaber:software_name "custom Python scripts" ;
+    lambdaber:workflow_code "WF-L05-COMPOSITE" ;
+    lambdaber:workflow_type "postprocessing" .
+
+lambdaber:exp-l05-plus2-cryoem a lambdaber:ExperimentRun ;
+    dcterms:title "Single-particle cryo-EM of the L05+2 vault" ;
+    lambdaber:accelerating_voltage [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "300.0"^^xsd:float ;
+            lambdaber:unit "kV" ] ;
+    lambdaber:calibrated_pixel_size [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "0.937"^^xsd:float ;
+            lambdaber:unit "Angstroms" ] ;
+    lambdaber:defocus_range_max [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "-2.0"^^xsd:float ;
+            lambdaber:unit "micrometers" ] ;
+    lambdaber:defocus_range_min [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "-0.8"^^xsd:float ;
+            lambdaber:unit "micrometers" ] ;
+    lambdaber:description "Whole-vault refinement under D16 did not reach the Nyquist limit (8.1 A at best) and was abandoned in favor of treating each half as a separate particle." ;
+    lambdaber:detector "Falcon 4i" ;
+    lambdaber:experiment_code "L05P2-CRYOEM-130K" ;
+    lambdaber:magnification [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "130000.0"^^xsd:float ;
+            lambdaber:unit "x" ] ;
+    lambdaber:number_of_images [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "16824.0"^^xsd:float ;
+            lambdaber:unit "movies" ] ;
+    lambdaber:technique CHMO:0002413 ;
+    lambdaber:total_dose [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "53.5"^^xsd:float ;
+            lambdaber:unit "electrons per square Angstrom" ] .
+
+lambdaber:workflow-l05-consensus-refine a lambdaber:WorkflowRun ;
+    dcterms:title "Consensus refinement of the L05 vault" ;
+    lambdaber:description "Refinement under D16 symmetry from a 20 A smoothened shell of the predicted model, with CTF refinement and 3D classification-based cleanup against decoy references. SCHEMA GAP: D16 is not a permissible value of SymmetryEnum, which stops at D10, so the symmetry slot is left unset and recorded here instead. Refinements without symmetry from a featureless reference preferentially showed 48 ribs around the wall." ;
+    lambdaber:number_of_particles 11675 ;
+    lambdaber:processing_parameters "D16 symmetry; starting reference low-pass filtered to 20 A" ;
+    lambdaber:refinement_params [ a lambdaber:RefinementParameters ;
+            lambdaber:gold_standard true ;
+            lambdaber:pixel_size [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "0.937"^^xsd:float ;
+                    lambdaber:unit "Angstroms" ] ;
+            lambdaber:resolution_0_143 [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "3.5"^^xsd:float ;
+                    lambdaber:unit "Angstroms" ] ] ;
+    lambdaber:software_name "RELION" ;
+    lambdaber:software_version "5.0.1" ;
+    lambdaber:workflow_code "WF-L05-REFINE-D16" ;
+    lambdaber:workflow_type "refinement" .
+
+lambdaber:sample-l05-vault a lambdaber:Sample ;
+    dcterms:title "L05 vault particle from E. coli" ;
+    lambdaber:description "Excluded-volume fraction from BL21(DE3) expressing untagged L05." ;
+    lambdaber:sample_code "L05-VAULT-001" ;
+    lambdaber:sample_type "complex" .
+
+lambdaber:exp-l05-cryoem a lambdaber:ExperimentRun ;
+    dcterms:title "Single-particle cryo-EM of the L05 vault" ;
+    lambdaber:accelerating_voltage [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "300.0"^^xsd:float ;
+            lambdaber:unit "kV" ] ;
+    lambdaber:acquisition_software "EPU" ;
+    lambdaber:calibrated_pixel_size [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "0.937"^^xsd:float ;
+            lambdaber:unit "Angstroms" ] ;
+    lambdaber:defocus_range_max [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "-1.5"^^xsd:float ;
+            lambdaber:unit "micrometers" ] ;
+    lambdaber:defocus_range_min [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "-0.5"^^xsd:float ;
+            lambdaber:unit "micrometers" ] ;
+    lambdaber:description "SCHEMA GAP: the five local resolutions that make up the reported nominal resolution are carried on separate WorkflowRun records with no link back to the consensus refinement." ;
+    lambdaber:detector "Falcon 4i" ;
+    lambdaber:energy_filter_slit_width [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "10.0"^^xsd:float ;
+            lambdaber:unit "eV" ] ;
+    lambdaber:experiment_code "L05-CRYOEM-130K" ;
+    lambdaber:magnification [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "130000.0"^^xsd:float ;
+            lambdaber:unit "x" ] ;
+    lambdaber:number_of_images [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "3041.0"^^xsd:float ;
+            lambdaber:unit "movies" ] ;
+    lambdaber:technique CHMO:0002413 ;
+    lambdaber:total_dose [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "54.3"^^xsd:float ;
+            lambdaber:unit "electrons per square Angstrom" ] .
+
+lambdaber:protein-l05 a lambdaber:Protein ;
+    dcterms:title "Phage L05 major vault protein homolog" ;
+    lambdaber:description "MVP homolog encoded by an uncultured bacteriophage, recovered from a metagenomic survey. 866 residues with seven wall repeats, a shoulder (SPFH) domain, a cap helix and a C-terminal region. Assembles into a 96-chain vault. Member of the MVP-1 cluster, which carries seven wall repeats and an ~80-residue linker loop between the sixth and seventh repeats. No UniProt accession exists; a local identifier is used. Source phage is uncultured and unnamed." ;
+    lambdaber:protein_name "Major vault protein homolog L05" .
+
+lambdaber:study-prokaryotic-vaults a lambdaber:Study ;
+    dcterms:title "Prokaryotic and bacteriophage MVP homologs form vault particles" ;
+    lambdaber:description "Survey of the MVP family across ~15 billion predicted proteins, followed by heterologous expression and structural characterization of selected homologs. Only the structural work is represented here; the sequence survey, phylogenetics and gene-neighborhood analyses are out of scope for this schema." ;
+    lambdaber:keywords "prokaryotic homolog",
+        "vault" .
+
