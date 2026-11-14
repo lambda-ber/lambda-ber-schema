@@ -457,13 +457,8 @@ class ANLLambdaLoader(BaseLoader):
         )
         self.include_files = include_files
 
-    @property
-    def _cache(self) -> ResponseCache:
-        """The client's cache; BatchLoader swaps this for a long-lived one."""
-        return self.client.cache
-
-    @_cache.setter
-    def _cache(self, cache: ResponseCache) -> None:
+    def set_cache(self, cache: ResponseCache) -> None:
+        """Requests go through the client, so the cache is the client's."""
         self.client.cache = cache
 
     # ------------------------------------------------------------------ MX experiments

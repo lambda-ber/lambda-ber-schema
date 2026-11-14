@@ -7,6 +7,14 @@ from concurrent.futures import ThreadPoolExecutor as StdThreadPoolExecutor
 
 import pytest
 
+from lambda_ber_schema.loaders import (
+    ANLLambdaLoader,
+    EMSLLoader,
+    PDBLoader,
+    PDBREDOLoader,
+    SASBDBLoader,
+    SimpleScatteringLoader,
+)
 from lambda_ber_schema.loaders.base import BaseLoader, LoaderResult
 from lambda_ber_schema.loaders.batch import BatchLoader
 from lambda_ber_schema.pydantic import Dataset
@@ -277,3 +285,57 @@ class TestBatchLoader:
         with pytest.raises(ValueError, match="greater than 0"):
             BatchLoader(loader=loader, output_dir=tmp_path /
                         "negative", requests_per_second=-1)
+
+
+def _is_batch_cache(cache, tmp_path) -> bool:
+    return cache.enabled and cache.cache_dir == tmp_path / ".cache" and cache.ttl.days == 7
+
+
+class TestBatchCache:
+    """BatchLoader gives the loader one long-lived cache in the output directory."""
+
+    @pytest.mark.parametrize(
+        "make_loader",
+        [PDBLoader, SASBDBLoader, SimpleScatteringLoader, EMSLLoader],
+        ids=["pdb", "sasbdb", "simplescattering", "emsl"],
+    )
+    def test_cache_reaches_the_loader(self, make_loader, tmp_path):
+        loader = make_loader()
+        BatchLoader(loader, output_dir=tmp_path)
+        assert _is_batch_cache(loader.cache, tmp_path)
+
+    def test_cache_reaches_the_pdb_loader_pdb_redo_wraps(self, tmp_path):
+        loader = PDBREDOLoader()
+        BatchLoader(loader, output_dir=tmp_path)
+        assert _is_batch_cache(loader.cache, tmp_path)
+        assert loader.pdb_loader.cache is loader.cache
+
+    def test_cache_reaches_the_anl_lambda_client(self, tmp_path):
+        loader = ANLLambdaLoader(api_key="k")
+        BatchLoader(loader, output_dir=tmp_path)
+        assert _is_batch_cache(loader.client.cache, tmp_path)
+
+    def test_a_loader_without_a_cache_is_left_alone(self, tmp_path):
+        loader = DummyLoader(["A"])
+        BatchLoader(loader, output_dir=tmp_path)
+        assert not hasattr(loader, "cache")
+
+    def test_a_rerun_reads_what_the_first_run_fetched(self, mocker, tmp_path):
+        """Before, the batch cache never attached, so every run fetched everything again."""
+        response = mocker.Mock()
+        response.json.return_value = {"rcsb_id": "1HHO"}
+        get = mocker.patch(
+            "lambda_ber_schema.loaders.pdb.requests.get", return_value=response
+        )
+
+        first = PDBLoader()
+        BatchLoader(first, output_dir=tmp_path)
+        assert first._fetch_entry("1HHO") == {"rcsb_id": "1HHO"}
+
+        # A new process resuming the same dump directory
+        second = PDBLoader()
+        BatchLoader(second, output_dir=tmp_path)
+        assert second._fetch_entry("1HHO") == {"rcsb_id": "1HHO"}
+
+        assert get.call_count == 1
+        assert list((tmp_path / ".cache").glob("*.json"))

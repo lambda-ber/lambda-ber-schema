@@ -11,6 +11,7 @@ from typing import Any
 from pydantic import BaseModel
 from pydantic import Field
 
+from lambda_ber_schema.loaders.cache import ResponseCache
 from lambda_ber_schema.pydantic import Dataset
 
 
@@ -174,6 +175,23 @@ class BaseLoader(ABC):
             List of entry identifiers that can be passed to load()
         """
         ...
+
+    def set_cache(self, cache: ResponseCache) -> None:
+        """
+        Send every later request through this cache.
+
+        BatchLoader calls this to give a dump one long-lived cache in its output
+        directory, so a resumed or repeated dump reads what it already fetched.
+        The default replaces ``self.cache``, where the loaders keep theirs. A loader
+        whose requests go through something else, such as an API client or a
+        wrapped loader, overrides it; one that makes no requests has no ``cache``
+        and is left alone.
+
+        Args:
+            cache: The cache to use from now on
+        """
+        if hasattr(self, "cache"):
+            self.cache = cache
 
     def load_batch(self, identifiers: list[str]) -> list[LoaderResult]:
         """

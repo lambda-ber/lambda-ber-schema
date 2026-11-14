@@ -112,6 +112,11 @@ class PDBREDOLoader(BaseLoader):
         self.cache = cache or ResponseCache(enabled=False)
         self.pdb_loader = pdb_loader or PDBLoader(cache=self.cache)
 
+    def set_cache(self, cache: ResponseCache) -> None:
+        """Use the cache for PDB-REDO requests and for the wrapped PDB loader's RCSB requests."""
+        self.cache = cache
+        self.pdb_loader.set_cache(cache)
+
     def load(self, entry_id: str) -> LoaderResult:
         """
         Load the PDB-REDO entry for a PDB entry.

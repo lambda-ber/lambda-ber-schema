@@ -6,6 +6,8 @@ Useful for development and testing to avoid hitting APIs repeatedly.
 
 import hashlib
 import json
+import os
+import threading
 from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Any, Callable
@@ -80,7 +82,11 @@ class ResponseCache:
         if not self._is_valid(cache_file):
             return None
 
-        return json.loads(cache_file.read_text())
+        try:
+            return json.loads(cache_file.read_text())
+        except (OSError, ValueError):
+            # Unreadable or cut short: fetch again rather than fail the entry for good
+            return None
 
     def set(self, key: str, data: dict[str, Any]) -> None:
         """
@@ -94,7 +100,13 @@ class ResponseCache:
             return
 
         cache_file = self._key_to_path(key)
-        cache_file.write_text(json.dumps(data, indent=2))
+        # Write beside the target and rename over it, so a dump stopped mid-write, or
+        # another worker reading at the same moment, never sees half a file
+        tmp_file = cache_file.with_name(
+            f"{cache_file.name}.{os.getpid()}.{threading.get_ident()}.tmp"
+        )
+        tmp_file.write_text(json.dumps(data, indent=2))
+        os.replace(tmp_file, cache_file)
 
     def get_or_fetch(
         self, key: str, fetch_func: Callable[[], dict[str, Any]]
@@ -120,5 +132,6 @@ class ResponseCache:
     def clear(self) -> None:
         """Clear all cached responses."""
         if self.cache_dir.exists():
-            for cache_file in self.cache_dir.glob("*.json"):
-                cache_file.unlink()
+            for pattern in ("*.json", "*.tmp"):
+                for cache_file in self.cache_dir.glob(pattern):
+                    cache_file.unlink()

@@ -147,17 +147,15 @@ class BatchLoader:
         # Progress tracking
         self.progress = BatchProgress(self.output_dir / "progress.json")
 
-        # Setup caching with extended TTL for batch operations (7 days)
-        if hasattr(self.loader, "_cache"):
-            object.__setattr__(
-                self.loader,
-                "_cache",
-                ResponseCache(
-                    cache_dir=self.cache_dir,
-                    enabled=True,
-                    ttl=timedelta(days=7),
-                ),
+        # One cache for the whole dump, kept in the output directory with an extended
+        # TTL (7 days), so a resumed run or a re-run reads responses it already has
+        self.loader.set_cache(
+            ResponseCache(
+                cache_dir=self.cache_dir,
+                enabled=True,
+                ttl=timedelta(days=7),
             )
+        )
 
         # Error log
         self.error_log = self.output_dir / "errors.log"
