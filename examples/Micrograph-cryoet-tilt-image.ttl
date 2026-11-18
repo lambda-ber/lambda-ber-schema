@@ -1,0 +1,28 @@
+@base <http://example.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lambdaber: <http://w3id.org/lambda/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+lambdaber:tilt_ts026_z22 a lambdaber:Micrograph ;
+    dcterms:title "TS_026 tilt image at 0 degrees" ;
+    lambdaber:accumulated_dose [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "0.0"^^xsd:float ;
+            lambdaber:unit "electrons per Angstrom squared" ] ;
+    lambdaber:acquisition_order 0 ;
+    lambdaber:description "Zero-degree image of a dose-symmetric tilt series of an S. pombe lamella, section 22 of 44 in the stack" ;
+    lambdaber:dimensions_x [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "3708.0"^^xsd:float ;
+            lambdaber:unit "pixels" ] ;
+    lambdaber:dimensions_y [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "3838.0"^^xsd:float ;
+            lambdaber:unit "pixels" ] ;
+    lambdaber:file_name "TS_026.mrc" ;
+    lambdaber:pixel_size [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "3.3702"^^xsd:float ;
+            lambdaber:unit "Angstroms" ] ;
+    lambdaber:tilt_angle [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "-0.00499939"^^xsd:float ;
+            lambdaber:unit "degrees" ] ;
+    lambdaber:tilt_index 22 .
+

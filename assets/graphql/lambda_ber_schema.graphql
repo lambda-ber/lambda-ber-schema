@@ -1,5 +1,5 @@
 # metamodel_version: 1.7.0
-# version: 0.0.0.post448.dev0+2e816ba
+# version: 0.1.2.post389.dev0+6f146a5d
 enum AffinityUnitEnum
   {
     molar
@@ -317,6 +317,11 @@ enum DataTypeEnum
     md_event_detection
     md_dihedral_entropy
     md_energy
+    tilt_series
+    tomogram
+    tilt_series_alignment
+    segmentation
+    mesh
   }
 
 enum DetectorModeEnum
@@ -455,6 +460,16 @@ enum FileFormatEnum
     gro
     top
     lib
+    ome_zarr
+    tlt
+    xf
+    aln
+    ndjson
+    imod_model
+    obj
+    stl
+    vtk
+    glb
   }
 
 enum FunctionalEffectEnum
@@ -549,6 +564,9 @@ enum InputTypeEnum
     particles
     structure_prior
     particle_assignments
+    tilt_series
+    tilt_series_alignment
+    tomogram
   }
 
 enum InstrumentCategoryEnum
@@ -720,6 +738,9 @@ enum OutputTypeEnum
     processed_data
     log
     particle_assignments
+    tilt_series_alignment
+    tomogram
+    segmentation
   }
 
 enum ParticleConcentrationEnum
@@ -1046,6 +1067,13 @@ enum WorkflowTypeEnum
     structure_prediction
     heterogeneity_analysis
     particle_to_model_inference
+    tilt_series_alignment
+    tomogram_reconstruction
+    ctf_correction
+    denoising
+    segmentation
+    template_matching
+    subtomogram_averaging
     md_system_setup
     md_minimization
     md_equilibration
@@ -1564,6 +1592,10 @@ type FluorescenceImage
     dose: QuantityValue
     defocus: QuantityValue
     astigmatism: QuantityValue
+    tiltAngle: QuantityValue
+    tiltIndex: Integer
+    acquisitionOrder: Integer
+    accumulatedDose: QuantityValue
     excitationWavelength: QuantityValue
     emissionWavelength: QuantityValue
     excitationFilter: String
@@ -1656,6 +1688,10 @@ type Image2D
     dose: QuantityValue
     defocus: QuantityValue
     astigmatism: QuantityValue
+    tiltAngle: QuantityValue
+    tiltIndex: Integer
+    acquisitionOrder: Integer
+    accumulatedDose: QuantityValue
   }
 
 type Image3D
@@ -1781,6 +1817,10 @@ type Micrograph
     exposureTime: QuantityValue
     defocus: QuantityValue
     astigmatism: QuantityValue
+    tiltAngle: QuantityValue
+    tiltIndex: Integer
+    acquisitionOrder: Integer
+    accumulatedDose: QuantityValue
     dose: QuantityValue
     originMovieId: String
     defocusU: QuantityValue
@@ -1788,6 +1828,7 @@ type Micrograph
     astigmatismAngle: QuantityValue
     resolutionFitLimit: QuantityValue
     ctfQualityScore: QuantityValue
+    phaseShift: QuantityValue
   }
 
 type MolecularComposition
@@ -1825,6 +1866,10 @@ type Movie
     dose: QuantityValue
     defocus: QuantityValue
     astigmatism: QuantityValue
+    tiltAngle: QuantityValue
+    tiltIndex: Integer
+    acquisitionOrder: Integer
+    accumulatedDose: QuantityValue
     frames: QuantityValue
     superResolution: Boolean
     pixelSizeUnbinned: QuantityValue
@@ -1923,6 +1968,10 @@ type OpticalImage
     dose: QuantityValue
     defocus: QuantityValue
     astigmatism: QuantityValue
+    tiltAngle: QuantityValue
+    tiltIndex: Integer
+    acquisitionOrder: Integer
+    accumulatedDose: QuantityValue
     illuminationType: IlluminationTypeEnum
     magnification: QuantityValue
     numericalAperture: QuantityValue
@@ -2192,6 +2241,10 @@ type Sample
     organism: OntologyTerm
     anatomy: OntologyTerm
     cellType: OntologyTerm
+    strainOrCellLine: OntologyTerm
+    cellularComponent: OntologyTerm
+    developmentStage: OntologyTerm
+    disease: OntologyTerm
     parentSampleId: Sample
     purityPercentage: QuantityValue
     qualityMetrics: String
@@ -2718,6 +2771,10 @@ type XRFImage
     dose: QuantityValue
     defocus: QuantityValue
     astigmatism: QuantityValue
+    tiltAngle: QuantityValue
+    tiltIndex: Integer
+    acquisitionOrder: Integer
+    accumulatedDose: QuantityValue
     beamEnergy: QuantityValue
     beamSize: QuantityValue
     dwellTime: QuantityValue

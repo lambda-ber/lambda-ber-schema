@@ -1,6 +1,6 @@
 id: http://w3id.org/lambda/
 name: lambda-ber-schema
-version: "0.0.0.post451.dev0+abe4841" # Managed by uv-dynamic-versioning
+version: "0.1.2.post389.dev0+6f146a5d" # Managed by uv-dynamic-versioning
 description: |
   lambda-ber-schema is a comprehensive schema for representing multimodal structural biology imaging data, 
   from atomic-resolution structures to tissue-level organization. It supports diverse experimental 
@@ -169,6 +169,9 @@ prefixes:
   UBERON: http://purl.obolibrary.org/obo/UBERON_
   CL: http://purl.obolibrary.org/obo/CL_
   GO: http://purl.obolibrary.org/obo/GO_
+  MONDO: http://purl.obolibrary.org/obo/MONDO_
+  HsapDv: http://purl.obolibrary.org/obo/HsapDv_
+  CVCL: https://www.cellosaurus.org/CVCL_
   nsls2: https://github.com/NSLS2/BER-LAMBDA/
   imgCIF: https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#
   mmCIF: http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/
@@ -618,6 +621,22 @@ classes:
         range: OntologyTerm
       cell_type:
         description: "Cell type if applicable (e.g., CL:0000057 for fibroblast)"
+        range: OntologyTerm
+      strain_or_cell_line:
+        description: "Strain or cell line the sample itself was taken from, for a cellular or tissue sample (e.g., CVCL:0030 for HeLa, or a strain-level NCBITaxon term). Use a Cellosaurus CURIE for a cell line where one exists."
+        range: OntologyTerm
+        comments:
+          - "This is the imaged material. The host used to express a recombinant protein is SamplePreparation.host_strain_or_cell_line."
+      cellular_component:
+        description: "Cellular component the sample was taken from or the study focuses on, as a GO cellular component term (e.g., GO:0005739 for mitochondrion, for purified mitochondria or a lamella through one)."
+        range: OntologyTerm
+        comments:
+          - "Describes the sample as a whole. A structure located within a tomogram is identified on the annotation that locates it, not here."
+      development_stage:
+        description: "Developmental stage of the organism the sample was taken from (e.g., an HsapDv or UBERON stage term)."
+        range: OntologyTerm
+      disease:
+        description: "Disease or condition of the organism the sample was taken from, as a MONDO term where one exists (e.g., MONDO:0004975 for Alzheimer disease)."
         range: OntologyTerm
       parent_sample_id:
         description: "Reference to parent sample for derivation tracking"
@@ -2743,6 +2762,31 @@ classes:
         description: "Astigmatism value, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
+      # Tilt-series position, for an image that is one tilt of a tomographic acquisition
+      tilt_angle:
+        description: "Nominal stage tilt angle at which this image was acquired, as reported by the microscope, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
+        comments:
+          - "This is the raw angle the microscope reported. The refined angle from tilt-series alignment belongs with the alignment, not here."
+          - "For a single-orientation acquisition at a fixed tilt, use ExperimentRun.stage_tilt instead."
+      tilt_index:
+        description: "Zero-based position of this image in the tilt-series stack, as ordered in the stack file (usually by tilt angle, not by acquisition time)."
+        range: integer
+        minimum_value: 0
+        comments:
+          - "Use acquisition_order for the order in which the tilts were collected; in a dose-symmetric scheme the two differ."
+      acquisition_order:
+        description: "Position of this image in the order of acquisition within its tilt series, starting at 0 for the first image collected."
+        range: integer
+        minimum_value: 0
+      accumulated_dose:
+        description: "Electron dose the specimen had received before this image was acquired, typically specified in e-/Angstrom^2. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
+        comments:
+          - "Prior dose only, excluding this image's own exposure (recorded in dose), as in the SerialEM mdoc PriorRecordDose field. It is the input to dose weighting of the tilt series."
+          - "Some sources report a cumulative dose that includes the current exposure; subtract the image's own dose when converting from them."
 
   Image3D:
     is_a: Image
@@ -2854,6 +2898,12 @@ classes:
         description: "CTF estimation quality score"
         range: QuantityValue
         inlined: true
+      phase_shift:
+        description: "Additional phase shift estimated during CTF fitting, as from a phase plate, typically specified in radians. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
+        comments:
+          - "Omit when no phase plate was used and the fit did not estimate a phase shift."
 
   FTIRImage:
     is_a: Image
@@ -5710,6 +5760,25 @@ enums:
         comments:
           - "Distinct from model_building, which fits a model into a map that an earlier refinement produced"
           - "Record the particles as input_type particles, the prior as input_type structure_prior, and one output per state with conformational_state set"
+      # Cryo-electron tomography workflow types
+      tilt_series_alignment:
+        description: "Alignment of the images of a tilt series to a common tilt axis, by fiducial tracking, patch tracking or projection matching (e.g., IMOD etomo, AreTomo)"
+      tomogram_reconstruction:
+        description: "Reconstruction of a tomogram from an aligned tilt series (e.g., weighted back-projection, SART, SIRT)"
+      ctf_correction:
+        description: "Correction of images or a tomogram for the contrast transfer function, as distinct from estimating it (e.g., phase flipping, 3D CTF correction in novaCTF)"
+        comments:
+          - "Use ctf_estimation for fitting the CTF parameters"
+      denoising:
+        description: "Noise reduction of images or volumes, often by a trained network (e.g., cryoCARE, Topaz-Denoise, IsoNet)"
+      segmentation:
+        description: "Labelling voxels of a tomogram or map as belonging to a structure such as a membrane, filament or organelle (e.g., MemBrain, Amira, membrain-seg)"
+      template_matching:
+        description: "Locating copies of a known structure in a tomogram or micrograph by cross-correlation with a template (e.g., pytom-match-pick, GAPSTOP, 2DTM)"
+        comments:
+          - "For template-based picking of single particles as a step toward a reconstruction, particle_picking with ParticlePickingParameters.picking_method template_matching also fits"
+      subtomogram_averaging:
+        description: "Alignment and averaging of subvolumes extracted from tomograms to obtain a higher-resolution map of a repeated structure (e.g., RELION, Warp/M, Dynamo, emClarity)"
       # Molecular dynamics workflow types
       md_system_setup:
         description: "MD system preparation - parameterization, solvation, topology building"
@@ -5812,6 +5881,29 @@ enums:
         description: "GROMACS topology file format"
       lib:
         description: "Amber residue library file"
+      # Cryo-electron tomography formats
+      ome_zarr:
+        description: "OME-Zarr (OME-NGFF) chunked, multiscale array, as used for tomograms and segmentation masks"
+        comments:
+          - "Stored as a directory of chunk files, not a single file. Point file_path or storage_uri at the top-level directory; a single checksum does not cover it"
+      tlt:
+        description: "Tilt angle list with one angle per line, as written by IMOD (.tlt for refined angles, .rawtlt for nominal)"
+      xf:
+        description: "IMOD linear transform file, one 2D transform per tilt image (.xf)"
+      aln:
+        description: "AreTomo tilt-series alignment file (.aln)"
+      ndjson:
+        description: "Newline-delimited JSON, one record per line, as used for point and oriented-point annotations"
+      imod_model:
+        description: "IMOD model file (.mod), holding points, contours or meshes"
+      obj:
+        description: "Wavefront OBJ mesh"
+      stl:
+        description: "STL triangle mesh"
+      vtk:
+        description: "VTK mesh or data file"
+      glb:
+        description: "glTF binary mesh (.glb)"
 
   DataTypeEnum:
     description: "Types of data"
@@ -5891,6 +5983,17 @@ enums:
         description: "Configurational (dihedral) entropy analysis"
       md_energy:
         description: "Energy terms from MD simulation output"
+      # Cryo-electron tomography data types
+      tilt_series:
+        description: "Stack of images of one specimen area collected over a range of tilt angles"
+      tomogram:
+        description: "3D volume reconstructed from a tilt series"
+      tilt_series_alignment:
+        description: "Per-tilt shifts, rotations and refined angles that align a tilt series, as in IMOD .xf/.tlt or AreTomo .aln files"
+      segmentation:
+        description: "Voxel labels marking structures in a tomogram or map, as a mask or instance segmentation"
+      mesh:
+        description: "Surface mesh of a segmented structure"
 
   CollectionModeEnum:
     description: "Data collection modes"
@@ -6550,6 +6653,12 @@ enums:
         description: "A predicted or previously determined structure the workflow starts from and lets the data move, as opposed to a fixed reference it is compared or aligned against"
       particle_assignments:
         description: "Per-particle poses, state or class assignments, or confidence scores produced by an earlier run, used to select or split particles"
+      tilt_series:
+        description: "Tilt series to be aligned or reconstructed into a tomogram"
+      tilt_series_alignment:
+        description: "Per-tilt shifts, rotations and refined angles from an earlier alignment, applied during reconstruction"
+      tomogram:
+        description: "Tomogram to be denoised, segmented, searched or averaged from"
 
   OutputTypeEnum:
     description: "Types of outputs from computational workflows"
@@ -6574,6 +6683,12 @@ enums:
         description: "Processing log files"
       particle_assignments:
         description: "Per-particle poses, state or class assignments, and confidence scores"
+      tilt_series_alignment:
+        description: "Per-tilt shifts, rotations and refined angles that align a tilt series"
+      tomogram:
+        description: "Tomogram reconstructed from a tilt series, or a processed version of one (denoised, filtered, or an even or odd half)"
+      segmentation:
+        description: "Voxel labels or surface meshes marking structures in a tomogram or map"
 
   IceContaminationEnum:
     description: "Assessment of ice contamination level on a cryo-EM grid"

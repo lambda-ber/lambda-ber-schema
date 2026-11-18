@@ -1,0 +1,20 @@
+@base <http://example.org/> .
+@prefix CL: <http://purl.obolibrary.org/obo/CL_> .
+@prefix HsapDv: <http://purl.obolibrary.org/obo/HsapDv_> .
+@prefix MONDO: <http://purl.obolibrary.org/obo/MONDO_> .
+@prefix NCBITaxon: <http://purl.obolibrary.org/obo/NCBITaxon_> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix go: <http://purl.obolibrary.org/obo/GO_> .
+@prefix lambdaber: <http://w3id.org/lambda/> .
+
+lambdaber:sample_mito_patient_fibroblast_001 a lambdaber:Sample ;
+    dcterms:title "Mitochondria purified from patient fibroblasts" ;
+    lambdaber:cell_type CL:0000057 ;
+    lambdaber:cellular_component go:0005739 ;
+    lambdaber:description "Mitochondria isolated from dermal fibroblasts of an adult with a mitochondrial disease, for cryo-ET of cristae" ;
+    lambdaber:development_stage HsapDv:0000087 ;
+    lambdaber:disease MONDO:0044970 ;
+    lambdaber:organism NCBITaxon:9606 ;
+    lambdaber:sample_code "MITO-FIB-2024-001" ;
+    lambdaber:sample_type "organelle" .
+

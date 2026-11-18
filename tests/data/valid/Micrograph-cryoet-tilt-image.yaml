@@ -1,0 +1,24 @@
+# Section 22 of the DS-10000 TS_026 tilt series (CZ cryoET Data Portal, CC0):
+# the zero-degree tilt, collected first in a dose-symmetric scheme, so no
+# dose had accumulated before it.
+id: lambdaber:tilt_ts026_z22
+title: TS_026 tilt image at 0 degrees
+description: Zero-degree image of a dose-symmetric tilt series of an S. pombe lamella, section 22 of 44 in the stack
+file_name: TS_026.mrc
+pixel_size:
+  numeric_value: 3.3702
+  unit: Angstroms
+dimensions_x:
+  numeric_value: 3708
+  unit: pixels
+dimensions_y:
+  numeric_value: 3838
+  unit: pixels
+tilt_angle:
+  numeric_value: -0.00499939
+  unit: degrees
+tilt_index: 22
+acquisition_order: 0
+accumulated_dose:
+  numeric_value: 0
+  unit: electrons per Angstrom squared

@@ -3243,6 +3243,40 @@
           ]
         },
         {
+          "text": "tilt_series_alignment",
+          "description": "Alignment of the images of a tilt series to a common tilt axis, by fiducial tracking, patch tracking or projection matching (e.g., IMOD etomo, AreTomo)"
+        },
+        {
+          "text": "tomogram_reconstruction",
+          "description": "Reconstruction of a tomogram from an aligned tilt series (e.g., weighted back-projection, SART, SIRT)"
+        },
+        {
+          "text": "ctf_correction",
+          "description": "Correction of images or a tomogram for the contrast transfer function, as distinct from estimating it (e.g., phase flipping, 3D CTF correction in novaCTF)",
+          "comments": [
+            "Use ctf_estimation for fitting the CTF parameters"
+          ]
+        },
+        {
+          "text": "denoising",
+          "description": "Noise reduction of images or volumes, often by a trained network (e.g., cryoCARE, Topaz-Denoise, IsoNet)"
+        },
+        {
+          "text": "segmentation",
+          "description": "Labelling voxels of a tomogram or map as belonging to a structure such as a membrane, filament or organelle (e.g., MemBrain, Amira, membrain-seg)"
+        },
+        {
+          "text": "template_matching",
+          "description": "Locating copies of a known structure in a tomogram or micrograph by cross-correlation with a template (e.g., pytom-match-pick, GAPSTOP, 2DTM)",
+          "comments": [
+            "For template-based picking of single particles as a step toward a reconstruction, particle_picking with ParticlePickingParameters.picking_method template_matching also fits"
+          ]
+        },
+        {
+          "text": "subtomogram_averaging",
+          "description": "Alignment and averaging of subvolumes extracted from tomograms to obtain a higher-resolution map of a repeated structure (e.g., RELION, Warp/M, Dynamo, emClarity)"
+        },
+        {
           "text": "md_system_setup",
           "description": "MD system preparation - parameterization, solvation, topology building",
           "comments": [
@@ -3438,6 +3472,49 @@
         {
           "text": "lib",
           "description": "Amber residue library file"
+        },
+        {
+          "text": "ome_zarr",
+          "description": "OME-Zarr (OME-NGFF) chunked, multiscale array, as used for tomograms and segmentation masks",
+          "comments": [
+            "Stored as a directory of chunk files, not a single file. Point file_path or storage_uri at the top-level directory; a single checksum does not cover it"
+          ]
+        },
+        {
+          "text": "tlt",
+          "description": "Tilt angle list with one angle per line, as written by IMOD (.tlt for refined angles, .rawtlt for nominal)"
+        },
+        {
+          "text": "xf",
+          "description": "IMOD linear transform file, one 2D transform per tilt image (.xf)"
+        },
+        {
+          "text": "aln",
+          "description": "AreTomo tilt-series alignment file (.aln)"
+        },
+        {
+          "text": "ndjson",
+          "description": "Newline-delimited JSON, one record per line, as used for point and oriented-point annotations"
+        },
+        {
+          "text": "imod_model",
+          "description": "IMOD model file (.mod), holding points, contours or meshes"
+        },
+        {
+          "text": "obj",
+          "description": "Wavefront OBJ mesh"
+        },
+        {
+          "text": "stl",
+          "description": "STL triangle mesh"
+        },
+        {
+          "text": "vtk",
+          "description": "VTK mesh or data file"
+        },
+        {
+          "text": "glb",
+          "description": "glTF binary mesh (.glb)"
         }
       ]
     },
@@ -3594,6 +3671,26 @@
         {
           "text": "md_energy",
           "description": "Energy terms from MD simulation output"
+        },
+        {
+          "text": "tilt_series",
+          "description": "Stack of images of one specimen area collected over a range of tilt angles"
+        },
+        {
+          "text": "tomogram",
+          "description": "3D volume reconstructed from a tilt series"
+        },
+        {
+          "text": "tilt_series_alignment",
+          "description": "Per-tilt shifts, rotations and refined angles that align a tilt series, as in IMOD .xf/.tlt or AreTomo .aln files"
+        },
+        {
+          "text": "segmentation",
+          "description": "Voxel labels marking structures in a tomogram or map, as a mask or instance segmentation"
+        },
+        {
+          "text": "mesh",
+          "description": "Surface mesh of a segmented structure"
         }
       ]
     },
@@ -4814,6 +4911,18 @@
         {
           "text": "particle_assignments",
           "description": "Per-particle poses, state or class assignments, or confidence scores produced by an earlier run, used to select or split particles"
+        },
+        {
+          "text": "tilt_series",
+          "description": "Tilt series to be aligned or reconstructed into a tomogram"
+        },
+        {
+          "text": "tilt_series_alignment",
+          "description": "Per-tilt shifts, rotations and refined angles from an earlier alignment, applied during reconstruction"
+        },
+        {
+          "text": "tomogram",
+          "description": "Tomogram to be denoised, segmented, searched or averaged from"
         }
       ]
     },
@@ -4862,6 +4971,18 @@
         {
           "text": "particle_assignments",
           "description": "Per-particle poses, state or class assignments, and confidence scores"
+        },
+        {
+          "text": "tilt_series_alignment",
+          "description": "Per-tilt shifts, rotations and refined angles that align a tilt series"
+        },
+        {
+          "text": "tomogram",
+          "description": "Tomogram reconstructed from a tilt series, or a processed version of one (denoised, filtered, or an even or odd half)"
+        },
+        {
+          "text": "segmentation",
+          "description": "Voxel labels or surface meshes marking structures in a tomogram or map"
         }
       ]
     },
@@ -11270,6 +11391,64 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "sample__strain_or_cell_line",
+      "description": "Strain or cell line the sample itself was taken from, for a cellular or tissue sample (e.g., CVCL:0030 for HeLa, or a strain-level NCBITaxon term). Use a Cellosaurus CURIE for a cell line where one exists.",
+      "comments": [
+        "This is the imaged material. The host used to express a recombinant protein is SamplePreparation.host_strain_or_cell_line."
+      ],
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/strain_or_cell_line",
+      "alias": "strain_or_cell_line",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "range": "OntologyTerm",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sample__cellular_component",
+      "description": "Cellular component the sample was taken from or the study focuses on, as a GO cellular component term (e.g., GO:0005739 for mitochondrion, for purified mitochondria or a lamella through one).",
+      "comments": [
+        "Describes the sample as a whole. A structure located within a tomogram is identified on the annotation that locates it, not here."
+      ],
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/cellular_component",
+      "alias": "cellular_component",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "range": "OntologyTerm",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sample__development_stage",
+      "description": "Developmental stage of the organism the sample was taken from (e.g., an HsapDv or UBERON stage term).",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/development_stage",
+      "alias": "development_stage",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "range": "OntologyTerm",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sample__disease",
+      "description": "Disease or condition of the organism the sample was taken from, as a MONDO term where one exists (e.g., MONDO:0004975 for Alzheimer disease).",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/disease",
+      "alias": "disease",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "range": "OntologyTerm",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "sample__parent_sample_id",
       "description": "Reference to parent sample for derivation tracking",
       "from_schema": "http://w3id.org/lambda/",
@@ -17441,6 +17620,73 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "image2D__tilt_angle",
+      "description": "Nominal stage tilt angle at which this image was acquired, as reported by the microscope, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
+      "comments": [
+        "This is the raw angle the microscope reported. The refined angle from tilt-series alignment belongs with the alignment, not here.",
+        "For a single-orientation acquisition at a fixed tilt, use ExperimentRun.stage_tilt instead."
+      ],
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/tilt_angle",
+      "alias": "tilt_angle",
+      "owner": "Image2D",
+      "domain_of": [
+        "Image2D"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "image2D__tilt_index",
+      "description": "Zero-based position of this image in the tilt-series stack, as ordered in the stack file (usually by tilt angle, not by acquisition time).",
+      "comments": [
+        "Use acquisition_order for the order in which the tilts were collected; in a dose-symmetric scheme the two differ."
+      ],
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/tilt_index",
+      "alias": "tilt_index",
+      "owner": "Image2D",
+      "domain_of": [
+        "Image2D"
+      ],
+      "range": "integer",
+      "minimum_value": 0,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "image2D__acquisition_order",
+      "description": "Position of this image in the order of acquisition within its tilt series, starting at 0 for the first image collected.",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/acquisition_order",
+      "alias": "acquisition_order",
+      "owner": "Image2D",
+      "domain_of": [
+        "Image2D"
+      ],
+      "range": "integer",
+      "minimum_value": 0,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "image2D__accumulated_dose",
+      "description": "Electron dose the specimen had received before this image was acquired, typically specified in e-/Angstrom^2. Data providers may specify alternative units by including the unit in the QuantityValue.",
+      "comments": [
+        "Prior dose only, excluding this image's own exposure (recorded in dose), as in the SerialEM mdoc PriorRecordDose field. It is the input to dose weighting of the tilt series.",
+        "Some sources report a cumulative dose that includes the current exposure; subtract the image's own dose when converting from them."
+      ],
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/accumulated_dose",
+      "alias": "accumulated_dose",
+      "owner": "Image2D",
+      "domain_of": [
+        "Image2D"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "image3D__dimensions_z",
       "description": "Image depth, typically specified in pixels or slices. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
@@ -17775,6 +18021,23 @@
       "from_schema": "http://w3id.org/lambda/",
       "slot_uri": "http://w3id.org/lambda/ctf_quality_score",
       "alias": "ctf_quality_score",
+      "owner": "Micrograph",
+      "domain_of": [
+        "Micrograph"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "micrograph__phase_shift",
+      "description": "Additional phase shift estimated during CTF fitting, as from a phase plate, typically specified in radians. Data providers may specify alternative units by including the unit in the QuantityValue.",
+      "comments": [
+        "Omit when no phase plate was used and the fit did not estimate a phase shift."
+      ],
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/phase_shift",
+      "alias": "phase_shift",
       "owner": "Micrograph",
       "domain_of": [
         "Micrograph"
@@ -27099,6 +27362,10 @@
         "sample__organism",
         "sample__anatomy",
         "sample__cell_type",
+        "sample__strain_or_cell_line",
+        "sample__cellular_component",
+        "sample__development_stage",
+        "sample__disease",
         "sample__parent_sample_id",
         "sample__purity_percentage",
         "sample__quality_metrics",
@@ -27190,6 +27457,36 @@
         {
           "name": "cell_type",
           "description": "Cell type if applicable (e.g., CL:0000057 for fibroblast)",
+          "range": "OntologyTerm",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "strain_or_cell_line",
+          "description": "Strain or cell line the sample itself was taken from, for a cellular or tissue sample (e.g., CVCL:0030 for HeLa, or a strain-level NCBITaxon term). Use a Cellosaurus CURIE for a cell line where one exists.",
+          "comments": [
+            "This is the imaged material. The host used to express a recombinant protein is SamplePreparation.host_strain_or_cell_line."
+          ],
+          "range": "OntologyTerm",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "cellular_component",
+          "description": "Cellular component the sample was taken from or the study focuses on, as a GO cellular component term (e.g., GO:0005739 for mitochondrion, for purified mitochondria or a lamella through one).",
+          "comments": [
+            "Describes the sample as a whole. A structure located within a tomogram is identified on the annotation that locates it, not here."
+          ],
+          "range": "OntologyTerm",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "development_stage",
+          "description": "Developmental stage of the organism the sample was taken from (e.g., an HsapDv or UBERON stage term).",
+          "range": "OntologyTerm",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "disease",
+          "description": "Disease or condition of the organism the sample was taken from, as a MONDO term where one exists (e.g., MONDO:0004975 for Alzheimer disease).",
           "range": "OntologyTerm",
           "@type": "SlotDefinition"
         },
@@ -31375,7 +31672,11 @@
         "image__exposure_time",
         "image__dose",
         "image2D__defocus",
-        "image2D__astigmatism"
+        "image2D__astigmatism",
+        "image2D__tilt_angle",
+        "image2D__tilt_index",
+        "image2D__acquisition_order",
+        "image2D__accumulated_dose"
       ],
       "slot_usage": {},
       "attributes": [
@@ -31389,6 +31690,45 @@
         {
           "name": "astigmatism",
           "description": "Astigmatism value, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "tilt_angle",
+          "description": "Nominal stage tilt angle at which this image was acquired, as reported by the microscope, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "comments": [
+            "This is the raw angle the microscope reported. The refined angle from tilt-series alignment belongs with the alignment, not here.",
+            "For a single-orientation acquisition at a fixed tilt, use ExperimentRun.stage_tilt instead."
+          ],
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "tilt_index",
+          "description": "Zero-based position of this image in the tilt-series stack, as ordered in the stack file (usually by tilt angle, not by acquisition time).",
+          "comments": [
+            "Use acquisition_order for the order in which the tilts were collected; in a dose-symmetric scheme the two differ."
+          ],
+          "range": "integer",
+          "minimum_value": 0,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "acquisition_order",
+          "description": "Position of this image in the order of acquisition within its tilt series, starting at 0 for the first image collected.",
+          "range": "integer",
+          "minimum_value": 0,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "accumulated_dose",
+          "description": "Electron dose the specimen had received before this image was acquired, typically specified in e-/Angstrom^2. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "comments": [
+            "Prior dose only, excluding this image's own exposure (recorded in dose), as in the SerialEM mdoc PriorRecordDose field. It is the input to dose weighting of the tilt series.",
+            "Some sources report a cumulative dose that includes the current exposure; subtract the image's own dose when converting from them."
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -31466,6 +31806,10 @@
         "image__dose",
         "image2D__defocus",
         "image2D__astigmatism",
+        "image2D__tilt_angle",
+        "image2D__tilt_index",
+        "image2D__acquisition_order",
+        "image2D__accumulated_dose",
         "movie__frames",
         "movie__super_resolution",
         "movie__pixel_size_unbinned",
@@ -31606,13 +31950,18 @@
         "image__exposure_time",
         "image2D__defocus",
         "image2D__astigmatism",
+        "image2D__tilt_angle",
+        "image2D__tilt_index",
+        "image2D__acquisition_order",
+        "image2D__accumulated_dose",
         "micrograph__dose",
         "micrograph__origin_movie_id",
         "micrograph__defocus_u",
         "micrograph__defocus_v",
         "micrograph__astigmatism_angle",
         "micrograph__resolution_fit_limit",
-        "micrograph__ctf_quality_score"
+        "micrograph__ctf_quality_score",
+        "micrograph__phase_shift"
       ],
       "slot_usage": {},
       "attributes": [
@@ -31660,6 +32009,16 @@
         {
           "name": "ctf_quality_score",
           "description": "CTF estimation quality score",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "phase_shift",
+          "description": "Additional phase shift estimated during CTF fitting, as from a phase plate, typically specified in radians. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "comments": [
+            "Omit when no phase plate was used and the fit did not estimate a phase shift."
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -31765,6 +32124,10 @@
         "image__dose",
         "image2D__defocus",
         "image2D__astigmatism",
+        "image2D__tilt_angle",
+        "image2D__tilt_index",
+        "image2D__acquisition_order",
+        "image2D__accumulated_dose",
         "fluorescenceImage__excitation_wavelength",
         "fluorescenceImage__emission_wavelength",
         "fluorescenceImage__excitation_filter",
@@ -31859,6 +32222,10 @@
         "image__dose",
         "image2D__defocus",
         "image2D__astigmatism",
+        "image2D__tilt_angle",
+        "image2D__tilt_index",
+        "image2D__acquisition_order",
+        "image2D__accumulated_dose",
         "opticalImage__illumination_type",
         "opticalImage__magnification",
         "opticalImage__numerical_aperture",
@@ -31930,6 +32297,10 @@
         "image__dose",
         "image2D__defocus",
         "image2D__astigmatism",
+        "image2D__tilt_angle",
+        "image2D__tilt_index",
+        "image2D__acquisition_order",
+        "image2D__accumulated_dose",
         "xRFImage__beam_energy",
         "xRFImage__beam_size",
         "xRFImage__dwell_time",
@@ -36422,9 +36793,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda_rocrate_core.yaml",
-  "source_file_date": "2026-11-02T18:27:34",
+  "source_file_date": "2026-11-18T10:33:14",
   "source_file_size": 94945,
-  "generation_date": "2026-11-02T18:31:32",
+  "generation_date": "2026-11-18T11:07:11",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/rocrate/jsonld/lambda_rocrate_core.context.jsonld",

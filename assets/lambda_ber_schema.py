@@ -1,5 +1,5 @@
 # Auto generated from lambda_ber_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-11-02T18:05:01
+# Generation date: 2026-11-18T11:01:33
 # Schema: lambda-ber-schema
 #
 # id: http://w3id.org/lambda/
@@ -202,14 +202,17 @@ from linkml_runtime.linkml_model.types import Boolean, Curie, Date, Float, Integ
 from linkml_runtime.utils.metamodelcore import Bool, Curie, URI, URIorCURIE, XSDDate
 
 metamodel_version = "1.7.0"
-version = "0.0.0.post448.dev0+2e816ba"
+version = "0.1.2.post389.dev0+6f146a5d"
 
 # Namespaces
 CHEBI = CurieNamespace('CHEBI', 'http://purl.obolibrary.org/obo/CHEBI_')
 CHMO = CurieNamespace('CHMO', 'http://purl.obolibrary.org/obo/CHMO_')
 CL = CurieNamespace('CL', 'http://purl.obolibrary.org/obo/CL_')
+CVCL = CurieNamespace('CVCL', 'https://www.cellosaurus.org/CVCL_')
 GO = CurieNamespace('GO', 'http://purl.obolibrary.org/obo/GO_')
+HSAPDV = CurieNamespace('HsapDv', 'http://purl.obolibrary.org/obo/HsapDv_')
 IHMCIF = CurieNamespace('IHMCIF', 'https://mmcif.wwpdb.org/dictionaries/mmcif_ihm_ext.dic/Items/')
+MONDO = CurieNamespace('MONDO', 'http://purl.obolibrary.org/obo/MONDO_')
 NCBITAXON = CurieNamespace('NCBITaxon', 'http://purl.obolibrary.org/obo/NCBITaxon_')
 PANET = CurieNamespace('PaNET', 'http://purl.org/pan-science/PaNET/PaNET')
 ROR = CurieNamespace('ROR', 'https://ror.org/')
@@ -840,6 +843,10 @@ class Sample(NamedThing):
     organism: Optional[Union[str, OntologyTermId]] = None
     anatomy: Optional[Union[str, OntologyTermId]] = None
     cell_type: Optional[Union[str, OntologyTermId]] = None
+    strain_or_cell_line: Optional[Union[str, OntologyTermId]] = None
+    cellular_component: Optional[Union[str, OntologyTermId]] = None
+    development_stage: Optional[Union[str, OntologyTermId]] = None
+    disease: Optional[Union[str, OntologyTermId]] = None
     parent_sample_id: Optional[Union[str, SampleId]] = None
     purity_percentage: Optional[Union[dict, "QuantityValue"]] = None
     quality_metrics: Optional[str] = None
@@ -903,6 +910,18 @@ class Sample(NamedThing):
 
         if self.cell_type is not None and not isinstance(self.cell_type, OntologyTermId):
             self.cell_type = OntologyTermId(self.cell_type)
+
+        if self.strain_or_cell_line is not None and not isinstance(self.strain_or_cell_line, OntologyTermId):
+            self.strain_or_cell_line = OntologyTermId(self.strain_or_cell_line)
+
+        if self.cellular_component is not None and not isinstance(self.cellular_component, OntologyTermId):
+            self.cellular_component = OntologyTermId(self.cellular_component)
+
+        if self.development_stage is not None and not isinstance(self.development_stage, OntologyTermId):
+            self.development_stage = OntologyTermId(self.development_stage)
+
+        if self.disease is not None and not isinstance(self.disease, OntologyTermId):
+            self.disease = OntologyTermId(self.disease)
 
         if self.parent_sample_id is not None and not isinstance(self.parent_sample_id, SampleId):
             self.parent_sample_id = SampleId(self.parent_sample_id)
@@ -3041,6 +3060,10 @@ class Image2D(Image):
     file_name: str = None
     defocus: Optional[Union[dict, "QuantityValue"]] = None
     astigmatism: Optional[Union[dict, "QuantityValue"]] = None
+    tilt_angle: Optional[Union[dict, "QuantityValue"]] = None
+    tilt_index: Optional[int] = None
+    acquisition_order: Optional[int] = None
+    accumulated_dose: Optional[Union[dict, "QuantityValue"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -3053,6 +3076,18 @@ class Image2D(Image):
 
         if self.astigmatism is not None and not isinstance(self.astigmatism, QuantityValue):
             self.astigmatism = QuantityValue(**as_dict(self.astigmatism))
+
+        if self.tilt_angle is not None and not isinstance(self.tilt_angle, QuantityValue):
+            self.tilt_angle = QuantityValue(**as_dict(self.tilt_angle))
+
+        if self.tilt_index is not None and not isinstance(self.tilt_index, int):
+            self.tilt_index = int(self.tilt_index)
+
+        if self.acquisition_order is not None and not isinstance(self.acquisition_order, int):
+            self.acquisition_order = int(self.acquisition_order)
+
+        if self.accumulated_dose is not None and not isinstance(self.accumulated_dose, QuantityValue):
+            self.accumulated_dose = QuantityValue(**as_dict(self.accumulated_dose))
 
         super().__post_init__(**kwargs)
 
@@ -3198,6 +3233,7 @@ class Micrograph(Image2D):
     astigmatism_angle: Optional[Union[dict, "QuantityValue"]] = None
     resolution_fit_limit: Optional[Union[dict, "QuantityValue"]] = None
     ctf_quality_score: Optional[Union[dict, "QuantityValue"]] = None
+    phase_shift: Optional[Union[dict, "QuantityValue"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -3225,6 +3261,9 @@ class Micrograph(Image2D):
 
         if self.ctf_quality_score is not None and not isinstance(self.ctf_quality_score, QuantityValue):
             self.ctf_quality_score = QuantityValue(**as_dict(self.ctf_quality_score))
+
+        if self.phase_shift is not None and not isinstance(self.phase_shift, QuantityValue):
+            self.phase_shift = QuantityValue(**as_dict(self.phase_shift))
 
         super().__post_init__(**kwargs)
 
@@ -7284,6 +7323,27 @@ class WorkflowTypeEnum(EnumDefinitionImpl):
     particle_to_model_inference = PermissibleValue(
         text="particle_to_model_inference",
         description="""An atomic model inferred directly from particle images, with no reconstructed map in between, usually guided by a structure-prediction prior and refining particle poses as it goes (e.g., Fold'EM)""")
+    tilt_series_alignment = PermissibleValue(
+        text="tilt_series_alignment",
+        description="""Alignment of the images of a tilt series to a common tilt axis, by fiducial tracking, patch tracking or projection matching (e.g., IMOD etomo, AreTomo)""")
+    tomogram_reconstruction = PermissibleValue(
+        text="tomogram_reconstruction",
+        description="""Reconstruction of a tomogram from an aligned tilt series (e.g., weighted back-projection, SART, SIRT)""")
+    ctf_correction = PermissibleValue(
+        text="ctf_correction",
+        description="""Correction of images or a tomogram for the contrast transfer function, as distinct from estimating it (e.g., phase flipping, 3D CTF correction in novaCTF)""")
+    denoising = PermissibleValue(
+        text="denoising",
+        description="""Noise reduction of images or volumes, often by a trained network (e.g., cryoCARE, Topaz-Denoise, IsoNet)""")
+    segmentation = PermissibleValue(
+        text="segmentation",
+        description="""Labelling voxels of a tomogram or map as belonging to a structure such as a membrane, filament or organelle (e.g., MemBrain, Amira, membrain-seg)""")
+    template_matching = PermissibleValue(
+        text="template_matching",
+        description="""Locating copies of a known structure in a tomogram or micrograph by cross-correlation with a template (e.g., pytom-match-pick, GAPSTOP, 2DTM)""")
+    subtomogram_averaging = PermissibleValue(
+        text="subtomogram_averaging",
+        description="""Alignment and averaging of subvolumes extracted from tomograms to obtain a higher-resolution map of a repeated structure (e.g., RELION, Warp/M, Dynamo, emClarity)""")
     md_system_setup = PermissibleValue(
         text="md_system_setup",
         description="MD system preparation - parameterization, solvation, topology building")
@@ -7429,6 +7489,36 @@ class FileFormatEnum(EnumDefinitionImpl):
     lib = PermissibleValue(
         text="lib",
         description="Amber residue library file")
+    ome_zarr = PermissibleValue(
+        text="ome_zarr",
+        description="OME-Zarr (OME-NGFF) chunked, multiscale array, as used for tomograms and segmentation masks")
+    tlt = PermissibleValue(
+        text="tlt",
+        description="""Tilt angle list with one angle per line, as written by IMOD (.tlt for refined angles, .rawtlt for nominal)""")
+    xf = PermissibleValue(
+        text="xf",
+        description="IMOD linear transform file, one 2D transform per tilt image (.xf)")
+    aln = PermissibleValue(
+        text="aln",
+        description="AreTomo tilt-series alignment file (.aln)")
+    ndjson = PermissibleValue(
+        text="ndjson",
+        description="Newline-delimited JSON, one record per line, as used for point and oriented-point annotations")
+    imod_model = PermissibleValue(
+        text="imod_model",
+        description="IMOD model file (.mod), holding points, contours or meshes")
+    obj = PermissibleValue(
+        text="obj",
+        description="Wavefront OBJ mesh")
+    stl = PermissibleValue(
+        text="stl",
+        description="STL triangle mesh")
+    vtk = PermissibleValue(
+        text="vtk",
+        description="VTK mesh or data file")
+    glb = PermissibleValue(
+        text="glb",
+        description="glTF binary mesh (.glb)")
 
     _defn = EnumDefinition(
         name="FileFormatEnum",
@@ -7550,6 +7640,21 @@ class DataTypeEnum(EnumDefinitionImpl):
     md_energy = PermissibleValue(
         text="md_energy",
         description="Energy terms from MD simulation output")
+    tilt_series = PermissibleValue(
+        text="tilt_series",
+        description="Stack of images of one specimen area collected over a range of tilt angles")
+    tomogram = PermissibleValue(
+        text="tomogram",
+        description="3D volume reconstructed from a tilt series")
+    tilt_series_alignment = PermissibleValue(
+        text="tilt_series_alignment",
+        description="""Per-tilt shifts, rotations and refined angles that align a tilt series, as in IMOD .xf/.tlt or AreTomo .aln files""")
+    segmentation = PermissibleValue(
+        text="segmentation",
+        description="Voxel labels marking structures in a tomogram or map, as a mask or instance segmentation")
+    mesh = PermissibleValue(
+        text="mesh",
+        description="Surface mesh of a segmented structure")
 
     _defn = EnumDefinition(
         name="DataTypeEnum",
@@ -8445,6 +8550,15 @@ class InputTypeEnum(EnumDefinitionImpl):
     particle_assignments = PermissibleValue(
         text="particle_assignments",
         description="""Per-particle poses, state or class assignments, or confidence scores produced by an earlier run, used to select or split particles""")
+    tilt_series = PermissibleValue(
+        text="tilt_series",
+        description="Tilt series to be aligned or reconstructed into a tomogram")
+    tilt_series_alignment = PermissibleValue(
+        text="tilt_series_alignment",
+        description="""Per-tilt shifts, rotations and refined angles from an earlier alignment, applied during reconstruction""")
+    tomogram = PermissibleValue(
+        text="tomogram",
+        description="Tomogram to be denoised, segmented, searched or averaged from")
 
     _defn = EnumDefinition(
         name="InputTypeEnum",
@@ -8485,6 +8599,15 @@ class OutputTypeEnum(EnumDefinitionImpl):
     particle_assignments = PermissibleValue(
         text="particle_assignments",
         description="Per-particle poses, state or class assignments, and confidence scores")
+    tilt_series_alignment = PermissibleValue(
+        text="tilt_series_alignment",
+        description="Per-tilt shifts, rotations and refined angles that align a tilt series")
+    tomogram = PermissibleValue(
+        text="tomogram",
+        description="""Tomogram reconstructed from a tilt series, or a processed version of one (denoised, filtered, or an even or odd half)""")
+    segmentation = PermissibleValue(
+        text="segmentation",
+        description="Voxel labels or surface meshes marking structures in a tomogram or map")
 
     _defn = EnumDefinition(
         name="OutputTypeEnum",
@@ -9787,6 +9910,18 @@ slots.sample__anatomy = Slot(uri=LAMBDA.anatomy, name="sample__anatomy", curie=L
 slots.sample__cell_type = Slot(uri=LAMBDA.cell_type, name="sample__cell_type", curie=LAMBDA.curie('cell_type'),
                    model_uri=LAMBDA.sample__cell_type, domain=None, range=Optional[Union[str, OntologyTermId]])
 
+slots.sample__strain_or_cell_line = Slot(uri=LAMBDA.strain_or_cell_line, name="sample__strain_or_cell_line", curie=LAMBDA.curie('strain_or_cell_line'),
+                   model_uri=LAMBDA.sample__strain_or_cell_line, domain=None, range=Optional[Union[str, OntologyTermId]])
+
+slots.sample__cellular_component = Slot(uri=LAMBDA.cellular_component, name="sample__cellular_component", curie=LAMBDA.curie('cellular_component'),
+                   model_uri=LAMBDA.sample__cellular_component, domain=None, range=Optional[Union[str, OntologyTermId]])
+
+slots.sample__development_stage = Slot(uri=LAMBDA.development_stage, name="sample__development_stage", curie=LAMBDA.curie('development_stage'),
+                   model_uri=LAMBDA.sample__development_stage, domain=None, range=Optional[Union[str, OntologyTermId]])
+
+slots.sample__disease = Slot(uri=LAMBDA.disease, name="sample__disease", curie=LAMBDA.curie('disease'),
+                   model_uri=LAMBDA.sample__disease, domain=None, range=Optional[Union[str, OntologyTermId]])
+
 slots.sample__parent_sample_id = Slot(uri=LAMBDA.parent_sample_id, name="sample__parent_sample_id", curie=LAMBDA.curie('parent_sample_id'),
                    model_uri=LAMBDA.sample__parent_sample_id, domain=None, range=Optional[Union[str, SampleId]])
 
@@ -11029,6 +11164,18 @@ slots.image2D__defocus = Slot(uri=LAMBDA.defocus, name="image2D__defocus", curie
 slots.image2D__astigmatism = Slot(uri=LAMBDA.astigmatism, name="image2D__astigmatism", curie=LAMBDA.curie('astigmatism'),
                    model_uri=LAMBDA.image2D__astigmatism, domain=None, range=Optional[Union[dict, QuantityValue]])
 
+slots.image2D__tilt_angle = Slot(uri=LAMBDA.tilt_angle, name="image2D__tilt_angle", curie=LAMBDA.curie('tilt_angle'),
+                   model_uri=LAMBDA.image2D__tilt_angle, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.image2D__tilt_index = Slot(uri=LAMBDA.tilt_index, name="image2D__tilt_index", curie=LAMBDA.curie('tilt_index'),
+                   model_uri=LAMBDA.image2D__tilt_index, domain=None, range=Optional[int])
+
+slots.image2D__acquisition_order = Slot(uri=LAMBDA.acquisition_order, name="image2D__acquisition_order", curie=LAMBDA.curie('acquisition_order'),
+                   model_uri=LAMBDA.image2D__acquisition_order, domain=None, range=Optional[int])
+
+slots.image2D__accumulated_dose = Slot(uri=LAMBDA.accumulated_dose, name="image2D__accumulated_dose", curie=LAMBDA.curie('accumulated_dose'),
+                   model_uri=LAMBDA.image2D__accumulated_dose, domain=None, range=Optional[Union[dict, QuantityValue]])
+
 slots.image3D__dimensions_z = Slot(uri=LAMBDA.dimensions_z, name="image3D__dimensions_z", curie=LAMBDA.curie('dimensions_z'),
                    model_uri=LAMBDA.image3D__dimensions_z, domain=None, range=Optional[Union[dict, QuantityValue]])
 
@@ -11103,6 +11250,9 @@ slots.micrograph__resolution_fit_limit = Slot(uri=LAMBDA.resolution_fit_limit, n
 
 slots.micrograph__ctf_quality_score = Slot(uri=LAMBDA.ctf_quality_score, name="micrograph__ctf_quality_score", curie=LAMBDA.curie('ctf_quality_score'),
                    model_uri=LAMBDA.micrograph__ctf_quality_score, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.micrograph__phase_shift = Slot(uri=LAMBDA.phase_shift, name="micrograph__phase_shift", curie=LAMBDA.curie('phase_shift'),
+                   model_uri=LAMBDA.micrograph__phase_shift, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.fTIRImage__wavenumber_min = Slot(uri=LAMBDA.wavenumber_min, name="fTIRImage__wavenumber_min", curie=LAMBDA.curie('wavenumber_min'),
                    model_uri=LAMBDA.fTIRImage__wavenumber_min, domain=None, range=Optional[Union[dict, QuantityValue]])

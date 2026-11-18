@@ -1,0 +1,22 @@
+id: lambdaber:tilt_ts026_z22
+title: TS_026 tilt image at 0 degrees
+description: Zero-degree image of a dose-symmetric tilt series of an S. pombe lamella,
+  section 22 of 44 in the stack
+file_name: TS_026.mrc
+pixel_size:
+  unit: Angstroms
+  numeric_value: 3.3702
+dimensions_x:
+  unit: pixels
+  numeric_value: 3708.0
+dimensions_y:
+  unit: pixels
+  numeric_value: 3838.0
+tilt_angle:
+  unit: degrees
+  numeric_value: -0.00499939
+tilt_index: 22
+acquisition_order: 0
+accumulated_dose:
+  unit: electrons per Angstrom squared
+  numeric_value: 0.0

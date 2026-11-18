@@ -1,7 +1,7 @@
  syntax="proto3";
  package
 // metamodel_version: 1.7.0
-// version: 0.0.0.post448.dev0+2e816ba
+// version: 0.1.2.post389.dev0+6f146a5d
 // Aggregated view of all structural and functional data for a protein
 message AggregatedProteinView
  {
@@ -491,6 +491,10 @@ message FluorescenceImage
   quantityValue dose = 0
   quantityValue defocus = 0
   quantityValue astigmatism = 0
+  quantityValue tiltAngle = 0
+  integer tiltIndex = 0
+  integer acquisitionOrder = 0
+  quantityValue accumulatedDose = 0
   quantityValue excitationWavelength = 0
   quantityValue emissionWavelength = 0
   string excitationFilter = 0
@@ -587,6 +591,10 @@ message Image2D
   quantityValue dose = 0
   quantityValue defocus = 0
   quantityValue astigmatism = 0
+  quantityValue tiltAngle = 0
+  integer tiltIndex = 0
+  integer acquisitionOrder = 0
+  quantityValue accumulatedDose = 0
  }
 // A 3D volume or tomogram
 message Image3D
@@ -712,6 +720,10 @@ message Micrograph
   quantityValue exposureTime = 0
   quantityValue defocus = 0
   quantityValue astigmatism = 0
+  quantityValue tiltAngle = 0
+  integer tiltIndex = 0
+  integer acquisitionOrder = 0
+  quantityValue accumulatedDose = 0
   quantityValue dose = 0
   string originMovieId = 0
   quantityValue defocusU = 0
@@ -719,6 +731,7 @@ message Micrograph
   quantityValue astigmatismAngle = 0
   quantityValue resolutionFitLimit = 0
   quantityValue ctfQualityScore = 0
+  quantityValue phaseShift = 0
  }
 // Molecular composition of a sample
 message MolecularComposition
@@ -756,6 +769,10 @@ message Movie
   quantityValue dose = 0
   quantityValue defocus = 0
   quantityValue astigmatism = 0
+  quantityValue tiltAngle = 0
+  integer tiltIndex = 0
+  integer acquisitionOrder = 0
+  quantityValue accumulatedDose = 0
   quantityValue frames = 0
   boolean superResolution = 0
   quantityValue pixelSizeUnbinned = 0
@@ -847,6 +864,10 @@ message OpticalImage
   quantityValue dose = 0
   quantityValue defocus = 0
   quantityValue astigmatism = 0
+  quantityValue tiltAngle = 0
+  integer tiltIndex = 0
+  integer acquisitionOrder = 0
+  quantityValue accumulatedDose = 0
   illuminationTypeEnum illuminationType = 0
   quantityValue magnification = 0
   quantityValue numericalAperture = 0
@@ -1117,6 +1138,10 @@ message Sample
   ontologyTerm organism = 0
   ontologyTerm anatomy = 0
   ontologyTerm cellType = 0
+  ontologyTerm strainOrCellLine = 0
+  ontologyTerm cellularComponent = 0
+  ontologyTerm developmentStage = 0
+  ontologyTerm disease = 0
   sample parentSampleId = 0
   quantityValue purityPercentage = 0
   string qualityMetrics = 0
@@ -1638,6 +1663,10 @@ message XRFImage
   quantityValue dose = 0
   quantityValue defocus = 0
   quantityValue astigmatism = 0
+  quantityValue tiltAngle = 0
+  integer tiltIndex = 0
+  integer acquisitionOrder = 0
+  quantityValue accumulatedDose = 0
   quantityValue beamEnergy = 0
   quantityValue beamSize = 0
   quantityValue dwellTime = 0
