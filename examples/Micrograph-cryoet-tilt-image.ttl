@@ -10,7 +10,7 @@ lambdaber:tilt_ts026_z22 a lambdaber:Micrograph ;
             lambdaber:numeric_value "0.0"^^xsd:float ;
             lambdaber:unit "electrons per Angstrom squared" ] ;
     lambdaber:acquisition_order 0 ;
-    lambdaber:description "Zero-degree image of a dose-symmetric tilt series of an S. pombe lamella, section 22 of 44 in the stack" ;
+    lambdaber:description "Zero-degree image of a dose-symmetric tilt series of an S. pombe lamella, at zero-based position 22 (the 23rd of 44 images) in the stack" ;
     lambdaber:dimensions_x [ a nmdc:QuantityValue ;
             lambdaber:numeric_value "3708.0"^^xsd:float ;
             lambdaber:unit "pixels" ] ;

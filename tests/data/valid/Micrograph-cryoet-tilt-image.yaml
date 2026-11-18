@@ -1,9 +1,11 @@
-# Section 22 of the DS-10000 TS_026 tilt series (Biohub CryoET Data Portal, CC0):
+# The image at zero-based tilt_index 22 (the 23rd of 44) in the DS-10000 TS_026
+# tilt series (Biohub CryoET Data Portal, CC0), where the portal gives z_index 22
+# and raw_angle -0.00499939:
 # the zero-degree tilt, collected first in a dose-symmetric scheme, so no
 # dose had accumulated before it.
 id: lambdaber:tilt_ts026_z22
 title: TS_026 tilt image at 0 degrees
-description: Zero-degree image of a dose-symmetric tilt series of an S. pombe lamella, section 22 of 44 in the stack
+description: Zero-degree image of a dose-symmetric tilt series of an S. pombe lamella, at zero-based position 22 (the 23rd of 44 images) in the stack
 file_name: TS_026.mrc
 pixel_size:
   numeric_value: 3.3702
