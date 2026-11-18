@@ -18,7 +18,7 @@ CETS builds on the earlier `cryo-et-standards/cryoet-geometry` work: merged [PR 
 | **Biohub CryoET Data Portal** | Data publication and discovery | Public volumes and annotations, biological object labels, deposition context, annotation methods and authorship |
 | **LAMBDA** | Structural biology experiments and their biological context | Proteins, samples, preparation, instruments, workflows, file provenance, and ontology annotations |
 
-These roles follow from the [CETS schema][entities], [portal schema][portal-schema], and [LAMBDA schema][lambda]. The dedicated [portal converter][portal-converter] exports portal runs into CETS and creates draft portal-ingestion staging files in the reverse direction. It does not establish that the portal has replaced its API or published metadata schema with CETS. See the separate [Biohub CryoET Data Portal background page](czi-cryoet.md).
+These roles follow from the [CETS schema][entities], [portal schema][portal-schema], and [LAMBDA schema][lambda]. The dedicated [portal converter][portal-converter] exports portal runs into CETS and creates draft portal-ingestion staging files in the reverse direction. It does not establish that the portal has replaced its API or published metadata schema with CETS. See the separate [Biohub CryoET Data Portal background page](czi-cryoet.md), and its [summary of which of the two LAMBDA follows for what](czi-cryoet.md#relationship-to-tomobabel-cets).
 
 ## Versions: distinguish core from converter profiles
 

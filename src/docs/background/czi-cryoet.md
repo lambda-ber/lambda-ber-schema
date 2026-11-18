@@ -6,7 +6,7 @@ Research date: 2026-09-15. Scope: the Biohub CryoET Data Portal metadata and API
 
 ## Findings
 
-For the separate CZII-funded interchange effort, see [TomoBabel / CETS](tomobabel-cets.md), which covers coordinate systems, processing-tool converters, spatial annotations, and their relationship to LAMBDA and the portal.
+For the separate CZII-funded interchange effort, see [TomoBabel / CETS](tomobabel-cets.md), which covers coordinate systems, processing-tool converters, spatial annotations, and their relationship to LAMBDA and the portal. How the two fit together, and which one LAMBDA follows for what, is summarized in [Relationship to TomoBabel / CETS](#relationship-to-tomobabel-cets).
 
 The portal is a useful reference for extending LAMBDA's cryoET support. Both projects use LinkML. LAMBDA already represents acquisition parameters, instruments, preparation, workflows, movies, and 3D images. The biggest opportunities are explicit tilt-series identity, alignment and coordinate-system provenance, and spatial annotation entities.
 
@@ -171,6 +171,28 @@ Three distinct meanings should remain separate in a LAMBDA integration:
 - **Protein functional/localization annotation:** a GO assertion about a Protein is a different relationship. A ribosome point alone does not establish the identity, function, or localization of every constituent protein.
 
 This suggests a useful synergy: connect GO-classified image objects to explicitly supported molecular entities and experimental provenance, while keeping the spatial observation and the biological assertion separately traceable. The algal RubisCO example is particularly relevant to connecting molecular structure with organization in photosynthetic cells.
+
+## Relationship to TomoBabel / CETS
+
+The portal and CETS solve different problems and are maintained by different groups:
+
+- **The Biohub CryoET Data Portal** publishes cryoET data for discovery and reuse. Its schemas (core metadata, metadata files, API) describe what is deposited: biological context, acquisition, reconstructions, annotations and who made them, laid out in a public object store.
+- **CETS** (Cryo Electron Tomography Standard), from [TomoBabel](tomobabel-cets.md#what-is-tomobabel), is an interchange format for moving tilt series, alignments, tomograms and annotations between processing tools and archives. Its strength is geometry: named coordinate systems and the transforms between them.
+
+They meet in TomoBabel's [portal converter](https://github.com/TomoBabel/cets-cryoet-data-portal/tree/1162528d8f96f5616d88fb759472dffcc440165b), which exports a portal run to CETS and drafts portal ingestion files from CETS. What core CETS cannot hold, such as GO object identifiers, annotation methods, authorship and confidence, travels in companion files. The converter pins an unmerged CETS revision ([PR #34](https://github.com/TomoBabel/cets-data-models/pull/34)). At inspection the portal had not replaced its own schemas with CETS, so the two remain separate references. Details: [TomoBabel / CETS: versions](tomobabel-cets.md#versions-distinguish-core-from-converter-profiles) and [converter ecosystem](tomobabel-cets.md#converter-ecosystem).
+
+For LAMBDA, the practical rule is: **follow the portal for what was imaged and who said what about it, and CETS for where things are.**
+
+| Concern | Portal | CETS | LAMBDA follows |
+| --- | --- | --- | --- |
+| Sample and biological context | Dataset organism, tissue, cell type, strain, cellular component, disease, development stage | Not in core | Portal; `Sample` fields added in [PR #155](https://github.com/lambda-ber/lambda-ber-schema/pull/155) |
+| Per-tilt acquisition | `PerSectionParameters`, `Frame` | Tilt images and movie stacks; `accumulated_dose` is pre-exposure | Both; they agree, and `Image2D.accumulated_dose` uses the same pre-exposure meaning |
+| Alignment and coordinates | `Alignment` with a 4 × 4 affine, per-tilt offsets and rotation | Coordinate systems and transform sequences; core `Affine` is 3 × 3, conventions set by profiles | Portal fields for what is recorded, CETS for frame conventions ([#152](https://github.com/lambda-ber/lambda-ber-schema/issues/152)) |
+| Annotations | Object identity (GO, UniProtKB, CL, ...), method, software, authors, confidence, shape | Geometry types (points, oriented points, masks, meshes, ...); no ontology or provenance fields | Portal for meaning and provenance, CETS for geometry ([#153](https://github.com/lambda-ber/lambda-ber-schema/issues/153)) |
+| Files | MRC and multiscale OME-Zarr, S3 and HTTPS paths | Paths to external files; no checksum or OME-Zarr multiscale model | LAMBDA `DataFile` |
+| Grouping | Deposition, Dataset, Run | Nested Dataset, Region, Average | LAMBDA's flat Dataset with association tables; map each explicitly ([#154](https://github.com/lambda-ber/lambda-ber-schema/issues/154)) |
+
+Where the two disagree, as with the 4 × 4 versus 3 × 3 affine, a LAMBDA record should say which source and convention it follows and not assume they are interchangeable. Mappings to both should pin the upstream version: the portal backend commit, and the CETS core commit plus any converter profile.
 
 ## Proposed mapping to lambda-ber-schema
 
