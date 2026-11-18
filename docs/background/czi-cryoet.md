@@ -190,21 +190,44 @@ These are design recommendations inferred from comparison with `src/lambda_ber_s
 
 The existing `ExperimentRun` already has `tilting_scheme`, `tilt_angle_min`, `tilt_angle_max`, `tilt_angle_increment`, `tilt_axis_angle`, `number_of_tilt_images`, `dose_per_tilt`, and `total_dose`. `Image3D` already has `dimensions_z`, `voxel_size`, and `reconstruction_method`, plus inherited image dimensions. Avoid duplicating these without defining ownership and synchronization.
 
+## What LAMBDA now covers
+
+The first, additive step toward this alignment ([PR #155](https://github.com/lambda-ber/lambda-ber-schema/pull/155)) added the fields and vocabulary that need no new entities. Correspondences below are to the portal's API schema; they are design mappings, not yet recorded as `exact_mappings` in the schema (planned in [#154](https://github.com/lambda-ber/lambda-ber-schema/issues/154)).
+
+| LAMBDA | Portal | Notes |
+| --- | --- | --- |
+| `Image2D.tilt_angle` | `PerSectionParameters.raw_angle` | Nominal angle from the microscope; the refined angle belongs with the alignment |
+| `Image2D.tilt_index` | `PerSectionParameters.z_index` | Zero-based position in the stack |
+| `Image2D.acquisition_order` | `frame_acquisition_order` | Differs from `tilt_index` in dose-symmetric schemes |
+| `Image2D.accumulated_dose` | `Frame.accumulated_dose` | LAMBDA defines it as dose before the image (mdoc `PriorRecordDose`); the portal's meaning still needs confirming |
+| `Micrograph.phase_shift` | `PerSectionParameters.phase_shift` | Portal unit is radians |
+| `Micrograph.resolution_fit_limit` | `PerSectionParameters.max_resolution` | Already present |
+| `Sample.strain_or_cell_line` | `Dataset.cell_strain` | The imaged material, not an expression host |
+| `Sample.cellular_component` | `Dataset.cell_component` | A property of the whole sample, not of anything located in an image |
+| `Sample.development_stage`, `Sample.disease` | `Dataset.development_stage`, `Dataset.disease` | |
+| `DetectorModeEnum.correlated_double_sampling` | `cds` camera acquire mode | Already present |
+
+Vocabulary added at the same time: tomography workflow types (`tilt_series_alignment`, `tomogram_reconstruction`, `ctf_correction`, `denoising`, `segmentation`, `template_matching`, `subtomogram_averaging`); file formats for OME-Zarr, IMOD and AreTomo alignment files, NDJSON point annotations and meshes; and data, input and output types for tilt series, alignments, tomograms, segmentations and meshes.
+
+[`tests/data/valid/Dataset-cryoet-pombe-ts026.yaml`](https://github.com/lambda-ber/lambda-ber-schema/blob/main/tests/data/valid/Dataset-cryoet-pombe-ts026.yaml) expresses run TS_026 from the examples above in LAMBDA, with its acquisition values, the IMOD alignment and reconstruction as workflow runs, and their files; `Micrograph-cryoet-tilt-image.yaml` is its zero-degree tilt.
+
+What still needs new entities is tracked in issues: tilt series and tomograms ([#151](https://github.com/lambda-ber/lambda-ber-schema/issues/151)), alignments ([#152](https://github.com/lambda-ber/lambda-ber-schema/issues/152)), spatial annotations ([#153](https://github.com/lambda-ber/lambda-ber-schema/issues/153)), and the crosswalk and loader ([#154](https://github.com/lambda-ber/lambda-ber-schema/issues/154)).
+
 ## Conversion pitfalls
 
 1. **Units:** portal accelerating voltage is in volts; pixel/voxel spacing uses angstroms; total flux is electrons per square angstrom. Convert explicitly into LAMBDA `QuantityValue` values and units. Portal precision/recall are percentages on 0–100. [Common definitions](https://github.com/chanzuckerberg/cryoet-data-portal-backend/blob/a991047558b09decf1a3f323adc6b24a8e8eef54/schema/core/v2.0.0/common.yaml)
 2. **Tilt range:** file metadata uses a structured min/max range, while the API has a scalar total-range field. A scalar range cannot recover asymmetric endpoints. Prefer sidecars or actual angle lists when needed. [Core](https://github.com/chanzuckerberg/cryoet-data-portal-backend/blob/a991047558b09decf1a3f323adc6b24a8e8eef54/schema/core/v2.0.0/metadata.yaml), [API](https://github.com/chanzuckerberg/cryoet-data-portal-backend/blob/a991047558b09decf1a3f323adc6b24a8e8eef54/apiv2/schema/schema.yaml)
 3. **Identity:** portal UniProt identifiers use `UniProtKB:`; this repository requires `uniprot:` for Protein identifiers. Normalize deliberately, retain source identifiers, and only create Protein records for protein targets. [Identifier patterns](https://github.com/chanzuckerberg/cryoet-data-portal-backend/blob/a991047558b09decf1a3f323adc6b24a8e8eef54/schema/core/v2.0.0/common.yaml)
 4. **Dates:** portal date fields need explicit serialization into LAMBDA's intentionally string-based date fields. [Core](https://github.com/chanzuckerberg/cryoet-data-portal-backend/blob/a991047558b09decf1a3f323adc6b24a8e8eef54/schema/core/v2.0.0/metadata.yaml)
-5. **Storage:** the portal has MRC files and multiscale OME-Zarr directories. LAMBDA's current `FileFormatEnum` includes MRC but lacks Zarr/OME-Zarr. Directory-backed array assets need an explicit representation, not an assumed single-file checksum. [Storage layout](https://github.com/chanzuckerberg/cryoet-data-portal-backend/blob/a991047558b09decf1a3f323adc6b24a8e8eef54/schema/README.md)
+5. **Storage:** the portal has MRC files and multiscale OME-Zarr directories. `FileFormatEnum` now has `ome_zarr`, documented as a directory: point `file_path` or `storage_uri` at the top-level directory and do not expect a single-file checksum to cover it. [Storage layout](https://github.com/chanzuckerberg/cryoet-data-portal-backend/blob/a991047558b09decf1a3f323adc6b24a8e8eef54/schema/README.md)
 6. **Source consistency:** common shape enums include captions, while the inspected `AnnotationFileMetadata.format.any_of` does not list the caption-format enum. Verify generated validators and actual payloads before promising all shapes round-trip through every layer. [Common](https://github.com/chanzuckerberg/cryoet-data-portal-backend/blob/a991047558b09decf1a3f323adc6b24a8e8eef54/schema/core/v2.0.0/common.yaml), [metadata files](https://github.com/chanzuckerberg/cryoet-data-portal-backend/blob/a991047558b09decf1a3f323adc6b24a8e8eef54/schema/metadata_files/v2.0.0/metadata_files.yaml)
 
 ## Recommended next steps
 
-1. Define a small cryoET profile reusing existing instruments, preparation, acquisition quantities, workflows, and files.
-2. Add explicit tilt-series and alignment/coordinate records, then spatial annotation records with object identifiers, shapes, provenance, and file applicability.
+1. ~~Define a small cryoET profile reusing existing instruments, preparation, acquisition quantities, workflows, and files.~~ Done for fields and vocabulary; see [What LAMBDA now covers](#what-lambda-now-covers).
+2. Add explicit tilt-series and alignment/coordinate records ([#151](https://github.com/lambda-ber/lambda-ber-schema/issues/151), [#152](https://github.com/lambda-ber/lambda-ber-schema/issues/152)), then spatial annotation records with object identifiers, shapes, provenance, and file applicability ([#153](https://github.com/lambda-ber/lambda-ber-schema/issues/153)).
 3. Keep new entity collections flat in Dataset; use association tables for M:N relationships, consistent with this repository's design.
-4. Add OME-Zarr support and explicit units/identifier conversion rules.
-5. Validate a crosswalk against one real run with multiple reconstruction variants and annotations, checking transforms, spacing, dose units, and source provenance. Pin both upstream schema and client versions.
+4. ~~Add OME-Zarr support~~ (done); write down explicit units/identifier conversion rules ([#154](https://github.com/lambda-ber/lambda-ber-schema/issues/154)).
+5. Validate a crosswalk against one real run with multiple reconstruction variants and annotations, checking transforms, spacing, dose units, and source provenance. Pin both upstream schema and client versions ([#154](https://github.com/lambda-ber/lambda-ber-schema/issues/154)).
 
-No schema changes or adapter implementation were made as part of this research. Verification covered public JSON metadata, lossless YAML reserialization, all 838 ribosome point records, the preview image, OME-Zarr metadata, and 1,024-byte HTTP range reads of the image/mask MRC headers. Full volumes were not downloaded, and no full upstream-schema or image-overlay validation was performed.
+The research itself made no schema changes or adapter implementation; the schema work since is listed above. Verification covered public JSON metadata, lossless YAML reserialization, all 838 ribosome point records, the preview image, OME-Zarr metadata, and 1,024-byte HTTP range reads of the image/mask MRC headers. Full volumes were not downloaded, and no full upstream-schema or image-overlay validation was performed.
