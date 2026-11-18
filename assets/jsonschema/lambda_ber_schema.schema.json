@@ -9789,7 +9789,7 @@
                     ]
                 },
                 "cellular_component": {
-                    "description": "Cellular component the sample was taken from or the study focuses on, as a GO cellular component term (e.g., GO:0005739 for mitochondrion, for purified mitochondria or a lamella through one).",
+                    "description": "The part of the cell this sample consists of or was prepared to target, as a GO cellular component term. Examples: GO:0005739 (mitochondrion) for a preparation of purified mitochondria, or GO:0005634 (nucleus) for cells milled so the lamellae pass through the nucleus.",
                     "type": [
                         "string",
                         "null"

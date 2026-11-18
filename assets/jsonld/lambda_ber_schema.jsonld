@@ -7459,9 +7459,11 @@
     },
     {
       "name": "sample__cellular_component",
-      "description": "Cellular component the sample was taken from or the study focuses on, as a GO cellular component term (e.g., GO:0005739 for mitochondrion, for purified mitochondria or a lamella through one).",
+      "description": "The part of the cell this sample consists of or was prepared to target, as a GO cellular component term. Examples: GO:0005739 (mitochondrion) for a preparation of purified mitochondria, or GO:0005634 (nucleus) for cells milled so the lamellae pass through the nucleus.",
       "comments": [
-        "Describes the sample as a whole. A structure located within a tomogram is identified on the annotation that locates it, not here."
+        "A property of the whole sample, set when it is prepared. It does not identify anything picked, segmented or otherwise located in an image: a picked ribosome or a segmented membrane is a finding about one image, not a description of the sample, and this schema does not yet model those.",
+        "Leave it unset for a purified protein or complex, and for whole cells or tissue imaged without targeting a particular compartment.",
+        "Corresponds to cell_component on a Biohub CryoET Data Portal dataset."
       ],
       "from_schema": "http://w3id.org/lambda/",
       "slot_uri": "http://w3id.org/lambda/cellular_component",
@@ -21406,9 +21408,11 @@
         },
         {
           "name": "cellular_component",
-          "description": "Cellular component the sample was taken from or the study focuses on, as a GO cellular component term (e.g., GO:0005739 for mitochondrion, for purified mitochondria or a lamella through one).",
+          "description": "The part of the cell this sample consists of or was prepared to target, as a GO cellular component term. Examples: GO:0005739 (mitochondrion) for a preparation of purified mitochondria, or GO:0005634 (nucleus) for cells milled so the lamellae pass through the nucleus.",
           "comments": [
-            "Describes the sample as a whole. A structure located within a tomogram is identified on the annotation that locates it, not here."
+            "A property of the whole sample, set when it is prepared. It does not identify anything picked, segmented or otherwise located in an image: a picked ribosome or a segmented membrane is a finding about one image, not a description of the sample, and this schema does not yet model those.",
+            "Leave it unset for a purified protein or complex, and for whole cells or tissue imaged without targeting a particular compartment.",
+            "Corresponds to cell_component on a Biohub CryoET Data Portal dataset."
           ],
           "range": "OntologyTerm",
           "@type": "SlotDefinition"
@@ -30728,9 +30732,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda_ber_schema.yaml",
-  "source_file_date": "2026-11-18T11:01:00",
-  "source_file_size": 295733,
-  "generation_date": "2026-11-18T11:01:13",
+  "source_file_date": "2026-11-18T11:55:26",
+  "source_file_size": 296195,
+  "generation_date": "2026-11-18T11:55:41",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda_ber_schema.context.jsonld",

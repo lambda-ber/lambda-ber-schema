@@ -5289,10 +5289,17 @@ class Sample(NamedThing):
                       'recombinant protein is '
                       'SamplePreparation.host_strain_or_cell_line.'],
          'domain_of': ['Sample']} })
-    cellular_component: Optional[str] = Field(default=None, description="""Cellular component the sample was taken from or the study focuses on, as a GO cellular component term (e.g., GO:0005739 for mitochondrion, for purified mitochondria or a lamella through one).""", json_schema_extra = { "linkml_meta": {'alias': 'cellular_component',
-         'comments': ['Describes the sample as a whole. A structure located within a '
-                      'tomogram is identified on the annotation that locates it, not '
-                      'here.'],
+    cellular_component: Optional[str] = Field(default=None, description="""The part of the cell this sample consists of or was prepared to target, as a GO cellular component term. Examples: GO:0005739 (mitochondrion) for a preparation of purified mitochondria, or GO:0005634 (nucleus) for cells milled so the lamellae pass through the nucleus.""", json_schema_extra = { "linkml_meta": {'alias': 'cellular_component',
+         'comments': ['A property of the whole sample, set when it is prepared. It '
+                      'does not identify anything picked, segmented or otherwise '
+                      'located in an image: a picked ribosome or a segmented membrane '
+                      'is a finding about one image, not a description of the sample, '
+                      'and this schema does not yet model those.',
+                      'Leave it unset for a purified protein or complex, and for whole '
+                      'cells or tissue imaged without targeting a particular '
+                      'compartment.',
+                      'Corresponds to cell_component on a Biohub CryoET Data Portal '
+                      'dataset.'],
          'domain_of': ['Sample']} })
     development_stage: Optional[str] = Field(default=None, description="""Developmental stage of the organism the sample was taken from (e.g., an HsapDv or UBERON stage term).""", json_schema_extra = { "linkml_meta": {'alias': 'development_stage', 'domain_of': ['Sample']} })
     disease: Optional[str] = Field(default=None, description="""Disease or condition of the organism the sample was taken from, as a MONDO term where one exists (e.g., MONDO:0004975 for Alzheimer disease).""", json_schema_extra = { "linkml_meta": {'alias': 'disease', 'domain_of': ['Sample']} })

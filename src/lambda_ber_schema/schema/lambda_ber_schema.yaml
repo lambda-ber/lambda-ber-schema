@@ -628,10 +628,12 @@ classes:
         comments:
           - "This is the imaged material. The host used to express a recombinant protein is SamplePreparation.host_strain_or_cell_line."
       cellular_component:
-        description: "Cellular component the sample was taken from or the study focuses on, as a GO cellular component term (e.g., GO:0005739 for mitochondrion, for purified mitochondria or a lamella through one)."
+        description: "The part of the cell this sample consists of or was prepared to target, as a GO cellular component term. Examples: GO:0005739 (mitochondrion) for a preparation of purified mitochondria, or GO:0005634 (nucleus) for cells milled so the lamellae pass through the nucleus."
         range: OntologyTerm
         comments:
-          - "Describes the sample as a whole. A structure located within a tomogram is identified on the annotation that locates it, not here."
+          - "A property of the whole sample, set when it is prepared. It does not identify anything picked, segmented or otherwise located in an image: a picked ribosome or a segmented membrane is a finding about one image, not a description of the sample, and this schema does not yet model those."
+          - "Leave it unset for a purified protein or complex, and for whole cells or tissue imaged without targeting a particular compartment."
+          - "Corresponds to cell_component on a Biohub CryoET Data Portal dataset."
       development_stage:
         description: "Developmental stage of the organism the sample was taken from (e.g., an HsapDv or UBERON stage term)."
         range: OntologyTerm
