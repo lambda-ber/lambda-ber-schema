@@ -30,7 +30,7 @@ nav:
     - NEXUS: background/nexus.md
     - mmCIF: background/mmcif.md
     - EMPIAR: background/empiar.md
-    - CZ cryoET Data Portal: background/czi-cryoet.md
+    - Biohub CryoET Data Portal: background/czi-cryoet.md
     - TomoBabel / CETS: background/tomobabel-cets.md
     - EMDB: background/emdb.md
     - DIALS: background/dials.md

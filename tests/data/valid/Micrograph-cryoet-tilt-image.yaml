@@ -1,4 +1,4 @@
-# Section 22 of the DS-10000 TS_026 tilt series (CZ cryoET Data Portal, CC0):
+# Section 22 of the DS-10000 TS_026 tilt series (Biohub CryoET Data Portal, CC0):
 # the zero-degree tilt, collected first in a dose-symmetric scheme, so no
 # dose had accumulated before it.
 id: lambdaber:tilt_ts026_z22

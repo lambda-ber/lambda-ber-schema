@@ -1,8 +1,8 @@
-# CZ cryoET Data Portal schema: research and LAMBDA alignment
+# Biohub CryoET Data Portal schema: research and LAMBDA alignment
 
 LAMBDA focuses on structural biology: connecting proteins and complexes to samples, experiments, and the workflows used to determine their structures. Cryo-electron tomography (cryoET) adds three-dimensional cellular context, imaging structures such as ribosomes, membranes, mitochondria, microtubules, and RubisCO complexes within frozen specimens. Linking LAMBDA's molecular and experimental records to cryoET images and spatial annotations could connect what a structure is with where it occurs and how it is organized in a cell. The [yeast](https://cryoetdataportal.czscience.com/datasets/10000) and [algal](https://cryoetdataportal.czscience.com/datasets/10301) examples below illustrate this opportunity.
 
-Research date: 2026-09-15. Scope: the Chan Zuckerberg cryoET Data Portal metadata and API schemas, compared with this repository's current schema. This is a design assessment, not an implemented crosswalk. Selected public metadata and small assets were inspected as described below.
+Research date: 2026-09-15. Scope: the Biohub CryoET Data Portal metadata and API schemas, compared with this repository's current schema. This is a design assessment, not an implemented crosswalk. Selected public metadata and small assets were inspected as described below.
 
 ## Findings
 
@@ -10,7 +10,7 @@ For the separate CZII-funded interchange effort, see [TomoBabel / CETS](tomobabe
 
 The portal is a useful reference for extending LAMBDA's cryoET support. Both projects use LinkML. LAMBDA already represents acquisition parameters, instruments, preparation, workflows, movies, and 3D images. The biggest opportunities are explicit tilt-series identity, alignment and coordinate-system provenance, and spatial annotation entities.
 
-The portal's source has several distinct schema layers; “the CZI schema” does not identify a single interchangeable serialization. The backend snapshot inspected was `a991047558b09decf1a3f323adc6b24a8e8eef54`. The local schema baseline was `cdb7221a57c7439cf371847fd6a2989d7cb71678`.
+The portal's source has several distinct schema layers; “the Biohub schema” does not identify a single interchangeable serialization. The backend snapshot inspected was `a991047558b09decf1a3f323adc6b24a8e8eef54`. The local schema baseline was `cdb7221a57c7439cf371847fd6a2989d7cb71678`.
 
 ## Authoritative sources and versions
 

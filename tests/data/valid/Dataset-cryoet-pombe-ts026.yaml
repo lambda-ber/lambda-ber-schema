@@ -1,4 +1,4 @@
-# Run TS_026 of CZ cryoET Data Portal dataset DS-10000 (CC0): an S. pombe
+# Run TS_026 of Biohub CryoET Data Portal dataset DS-10000 (CC0): an S. pombe
 # cryo-FIB lamella imaged by defocus cryo-ET, aligned by patch tracking and
 # reconstructed by weighted back-projection in IMOD. Values come from the
 # portal's dataset, tilt-series, alignment and tomogram metadata; see
