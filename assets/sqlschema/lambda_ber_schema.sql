@@ -1796,7 +1796,7 @@ CREATE TABLE "MolecularComposition_modifications" (
 	modifications TEXT,
 	PRIMARY KEY ("MolecularComposition_id", modifications),
 	FOREIGN KEY("MolecularComposition_id") REFERENCES "MolecularComposition" (id)
-);CREATE INDEX "ix_MolecularComposition_modifications_modifications" ON "MolecularComposition_modifications" (modifications);CREATE INDEX "ix_MolecularComposition_modifications_MolecularComposition_id" ON "MolecularComposition_modifications" ("MolecularComposition_id");
+);CREATE INDEX "ix_MolecularComposition_modifications_MolecularComposition_id" ON "MolecularComposition_modifications" ("MolecularComposition_id");CREATE INDEX "ix_MolecularComposition_modifications_modifications" ON "MolecularComposition_modifications" (modifications);
 CREATE TABLE "MolecularComposition_ligands" (
 	"MolecularComposition_id" INTEGER,
 	ligands TEXT,
@@ -1808,7 +1808,7 @@ CREATE TABLE "ProteinAnnotation_publication_ids" (
 	publication_ids TEXT,
 	PRIMARY KEY ("ProteinAnnotation_id", publication_ids),
 	FOREIGN KEY("ProteinAnnotation_id") REFERENCES "ProteinAnnotation" (id)
-);CREATE INDEX "ix_ProteinAnnotation_publication_ids_publication_ids" ON "ProteinAnnotation_publication_ids" (publication_ids);CREATE INDEX "ix_ProteinAnnotation_publication_ids_ProteinAnnotation_id" ON "ProteinAnnotation_publication_ids" ("ProteinAnnotation_id");
+);CREATE INDEX "ix_ProteinAnnotation_publication_ids_ProteinAnnotation_id" ON "ProteinAnnotation_publication_ids" ("ProteinAnnotation_id");CREATE INDEX "ix_ProteinAnnotation_publication_ids_publication_ids" ON "ProteinAnnotation_publication_ids" (publication_ids);
 CREATE TABLE "ConformationalEnsemble_principal_motions" (
 	"ConformationalEnsemble_id" TEXT,
 	principal_motions TEXT,
@@ -1820,19 +1820,19 @@ CREATE TABLE "EvolutionaryConservation_conserved_residues" (
 	conserved_residues TEXT,
 	PRIMARY KEY ("EvolutionaryConservation_id", conserved_residues),
 	FOREIGN KEY("EvolutionaryConservation_id") REFERENCES "EvolutionaryConservation" (id)
-);CREATE INDEX "ix_EvolutionaryConservation_conserved_residues_EvolutionaryConservation_id" ON "EvolutionaryConservation_conserved_residues" ("EvolutionaryConservation_id");CREATE INDEX "ix_EvolutionaryConservation_conserved_residues_conserved_residues" ON "EvolutionaryConservation_conserved_residues" (conserved_residues);
+);CREATE INDEX "ix_EvolutionaryConservation_conserved_residues_conserved_residues" ON "EvolutionaryConservation_conserved_residues" (conserved_residues);CREATE INDEX "ix_EvolutionaryConservation_conserved_residues_EvolutionaryConservation_id" ON "EvolutionaryConservation_conserved_residues" ("EvolutionaryConservation_id");
 CREATE TABLE "EvolutionaryConservation_variable_residues" (
 	"EvolutionaryConservation_id" TEXT,
 	variable_residues TEXT,
 	PRIMARY KEY ("EvolutionaryConservation_id", variable_residues),
 	FOREIGN KEY("EvolutionaryConservation_id") REFERENCES "EvolutionaryConservation" (id)
-);CREATE INDEX "ix_EvolutionaryConservation_variable_residues_variable_residues" ON "EvolutionaryConservation_variable_residues" (variable_residues);CREATE INDEX "ix_EvolutionaryConservation_variable_residues_EvolutionaryConservation_id" ON "EvolutionaryConservation_variable_residues" ("EvolutionaryConservation_id");
+);CREATE INDEX "ix_EvolutionaryConservation_variable_residues_EvolutionaryConservation_id" ON "EvolutionaryConservation_variable_residues" ("EvolutionaryConservation_id");CREATE INDEX "ix_EvolutionaryConservation_variable_residues_variable_residues" ON "EvolutionaryConservation_variable_residues" (variable_residues);
 CREATE TABLE "EvolutionaryConservation_coevolved_residues" (
 	"EvolutionaryConservation_id" TEXT,
 	coevolved_residues TEXT,
 	PRIMARY KEY ("EvolutionaryConservation_id", coevolved_residues),
 	FOREIGN KEY("EvolutionaryConservation_id") REFERENCES "EvolutionaryConservation" (id)
-);CREATE INDEX "ix_EvolutionaryConservation_coevolved_residues_EvolutionaryConservation_id" ON "EvolutionaryConservation_coevolved_residues" ("EvolutionaryConservation_id");CREATE INDEX "ix_EvolutionaryConservation_coevolved_residues_coevolved_residues" ON "EvolutionaryConservation_coevolved_residues" (coevolved_residues);
+);CREATE INDEX "ix_EvolutionaryConservation_coevolved_residues_coevolved_residues" ON "EvolutionaryConservation_coevolved_residues" (coevolved_residues);CREATE INDEX "ix_EvolutionaryConservation_coevolved_residues_EvolutionaryConservation_id" ON "EvolutionaryConservation_coevolved_residues" ("EvolutionaryConservation_id");
 CREATE TABLE "EvolutionaryConservation_publication_ids" (
 	"EvolutionaryConservation_id" TEXT,
 	publication_ids TEXT,
@@ -2895,7 +2895,7 @@ CREATE TABLE "ConformationalState_pdb_entries" (
 	pdb_entries TEXT,
 	PRIMARY KEY ("ConformationalState_id", pdb_entries),
 	FOREIGN KEY("ConformationalState_id") REFERENCES "ConformationalState" (id)
-);CREATE INDEX "ix_ConformationalState_pdb_entries_ConformationalState_id" ON "ConformationalState_pdb_entries" ("ConformationalState_id");CREATE INDEX "ix_ConformationalState_pdb_entries_pdb_entries" ON "ConformationalState_pdb_entries" (pdb_entries);
+);CREATE INDEX "ix_ConformationalState_pdb_entries_pdb_entries" ON "ConformationalState_pdb_entries" (pdb_entries);CREATE INDEX "ix_ConformationalState_pdb_entries_ConformationalState_id" ON "ConformationalState_pdb_entries" ("ConformationalState_id");
 CREATE TABLE "ConformationalState_characteristic_features" (
 	"ConformationalState_id" INTEGER,
 	characteristic_features TEXT,
@@ -3239,7 +3239,7 @@ CREATE TABLE "Protein_pdb_entries" (
 	pdb_entries TEXT,
 	PRIMARY KEY ("Protein_id", pdb_entries),
 	FOREIGN KEY("Protein_id") REFERENCES "Protein" (id)
-);CREATE INDEX "ix_Protein_pdb_entries_Protein_id" ON "Protein_pdb_entries" ("Protein_id");CREATE INDEX "ix_Protein_pdb_entries_pdb_entries" ON "Protein_pdb_entries" (pdb_entries);
+);CREATE INDEX "ix_Protein_pdb_entries_pdb_entries" ON "Protein_pdb_entries" (pdb_entries);CREATE INDEX "ix_Protein_pdb_entries_Protein_id" ON "Protein_pdb_entries" ("Protein_id");
 CREATE TABLE "NucleicAcid_rfam_families" (
 	"NucleicAcid_id" TEXT,
 	rfam_families TEXT,
@@ -3257,7 +3257,7 @@ CREATE TABLE "NucleicAcid_pdb_entries" (
 	pdb_entries TEXT,
 	PRIMARY KEY ("NucleicAcid_id", pdb_entries),
 	FOREIGN KEY("NucleicAcid_id") REFERENCES "NucleicAcid" (id)
-);CREATE INDEX "ix_NucleicAcid_pdb_entries_NucleicAcid_id" ON "NucleicAcid_pdb_entries" ("NucleicAcid_id");CREATE INDEX "ix_NucleicAcid_pdb_entries_pdb_entries" ON "NucleicAcid_pdb_entries" (pdb_entries);
+);CREATE INDEX "ix_NucleicAcid_pdb_entries_pdb_entries" ON "NucleicAcid_pdb_entries" (pdb_entries);CREATE INDEX "ix_NucleicAcid_pdb_entries_NucleicAcid_id" ON "NucleicAcid_pdb_entries" ("NucleicAcid_id");
 CREATE TABLE "SamplePreparation_protocol_references" (
 	"SamplePreparation_id" TEXT,
 	protocol_references TEXT,
@@ -3275,7 +3275,7 @@ CREATE TABLE "BeamlineInstrument_techniques_supported" (
 	techniques_supported VARCHAR(29) NOT NULL,
 	PRIMARY KEY ("BeamlineInstrument_id", techniques_supported),
 	FOREIGN KEY("BeamlineInstrument_id") REFERENCES "BeamlineInstrument" (id)
-);CREATE INDEX "ix_BeamlineInstrument_techniques_supported_BeamlineInstrument_id" ON "BeamlineInstrument_techniques_supported" ("BeamlineInstrument_id");CREATE INDEX "ix_BeamlineInstrument_techniques_supported_techniques_supported" ON "BeamlineInstrument_techniques_supported" (techniques_supported);
+);CREATE INDEX "ix_BeamlineInstrument_techniques_supported_techniques_supported" ON "BeamlineInstrument_techniques_supported" (techniques_supported);CREATE INDEX "ix_BeamlineInstrument_techniques_supported_BeamlineInstrument_id" ON "BeamlineInstrument_techniques_supported" ("BeamlineInstrument_id");
 CREATE TABLE "FTIRImage_molecular_signatures" (
 	"FTIRImage_id" TEXT,
 	molecular_signatures TEXT,
@@ -3299,7 +3299,7 @@ CREATE TABLE "BufferComposition_components" (
 	components TEXT,
 	PRIMARY KEY ("BufferComposition_id", components),
 	FOREIGN KEY("BufferComposition_id") REFERENCES "BufferComposition" (id)
-);CREATE INDEX "ix_BufferComposition_components_components" ON "BufferComposition_components" (components);CREATE INDEX "ix_BufferComposition_components_BufferComposition_id" ON "BufferComposition_components" ("BufferComposition_id");
+);CREATE INDEX "ix_BufferComposition_components_BufferComposition_id" ON "BufferComposition_components" ("BufferComposition_id");CREATE INDEX "ix_BufferComposition_components_components" ON "BufferComposition_components" (components);
 CREATE TABLE "BufferComposition_additives" (
 	"BufferComposition_id" INTEGER,
 	additives TEXT,
@@ -3311,7 +3311,7 @@ CREATE TABLE "MDSimulationParameters_ion_species" (
 	ion_species TEXT,
 	PRIMARY KEY ("MDSimulationParameters_id", ion_species),
 	FOREIGN KEY("MDSimulationParameters_id") REFERENCES "MDSimulationParameters" (id)
-);CREATE INDEX "ix_MDSimulationParameters_ion_species_ion_species" ON "MDSimulationParameters_ion_species" (ion_species);CREATE INDEX "ix_MDSimulationParameters_ion_species_MDSimulationParameters_id" ON "MDSimulationParameters_ion_species" ("MDSimulationParameters_id");
+);CREATE INDEX "ix_MDSimulationParameters_ion_species_MDSimulationParameters_id" ON "MDSimulationParameters_ion_species" ("MDSimulationParameters_id");CREATE INDEX "ix_MDSimulationParameters_ion_species_ion_species" ON "MDSimulationParameters_ion_species" (ion_species);
 CREATE TABLE "SampleComponent" (
 	sample_id TEXT NOT NULL,
 	component_type VARCHAR(16) NOT NULL,
@@ -3787,7 +3787,7 @@ CREATE TABLE "WorkflowRun_output_files" (
 	PRIMARY KEY ("WorkflowRun_id", output_files_id),
 	FOREIGN KEY("WorkflowRun_id") REFERENCES "WorkflowRun" (id),
 	FOREIGN KEY(output_files_id) REFERENCES "DataFile" (id)
-);CREATE INDEX "ix_WorkflowRun_output_files_WorkflowRun_id" ON "WorkflowRun_output_files" ("WorkflowRun_id");CREATE INDEX "ix_WorkflowRun_output_files_output_files_id" ON "WorkflowRun_output_files" (output_files_id);
+);CREATE INDEX "ix_WorkflowRun_output_files_output_files_id" ON "WorkflowRun_output_files" (output_files_id);CREATE INDEX "ix_WorkflowRun_output_files_WorkflowRun_id" ON "WorkflowRun_output_files" ("WorkflowRun_id");
 CREATE TABLE "StudyExperimentAssociation" (
 	id INTEGER NOT NULL,
 	study_id TEXT NOT NULL,
@@ -3915,7 +3915,7 @@ CREATE TABLE "SampleProteinAssociation_modifications" (
 	modifications TEXT,
 	PRIMARY KEY ("SampleProteinAssociation_id", modifications),
 	FOREIGN KEY("SampleProteinAssociation_id") REFERENCES "SampleProteinAssociation" (id)
-);CREATE INDEX "ix_SampleProteinAssociation_modifications_modifications" ON "SampleProteinAssociation_modifications" (modifications);CREATE INDEX "ix_SampleProteinAssociation_modifications_SampleProteinAssociation_id" ON "SampleProteinAssociation_modifications" ("SampleProteinAssociation_id");
+);CREATE INDEX "ix_SampleProteinAssociation_modifications_SampleProteinAssociation_id" ON "SampleProteinAssociation_modifications" ("SampleProteinAssociation_id");CREATE INDEX "ix_SampleProteinAssociation_modifications_modifications" ON "SampleProteinAssociation_modifications" (modifications);
 CREATE TABLE "SampleNucleicAcidAssociation_chain_ids" (
 	"SampleNucleicAcidAssociation_id" INTEGER,
 	chain_ids TEXT,
@@ -3933,7 +3933,7 @@ CREATE TABLE "FunctionalSite_residues" (
 	residues TEXT,
 	PRIMARY KEY ("FunctionalSite_id", residues),
 	FOREIGN KEY("FunctionalSite_id") REFERENCES "FunctionalSite" (id)
-);CREATE INDEX "ix_FunctionalSite_residues_residues" ON "FunctionalSite_residues" (residues);CREATE INDEX "ix_FunctionalSite_residues_FunctionalSite_id" ON "FunctionalSite_residues" ("FunctionalSite_id");
+);CREATE INDEX "ix_FunctionalSite_residues_FunctionalSite_id" ON "FunctionalSite_residues" ("FunctionalSite_id");CREATE INDEX "ix_FunctionalSite_residues_residues" ON "FunctionalSite_residues" (residues);
 CREATE TABLE "FunctionalSite_go_terms" (
 	"FunctionalSite_id" TEXT,
 	go_terms TEXT,
@@ -3951,7 +3951,7 @@ CREATE TABLE "StructuralFeature_publication_ids" (
 	publication_ids TEXT,
 	PRIMARY KEY ("StructuralFeature_id", publication_ids),
 	FOREIGN KEY("StructuralFeature_id") REFERENCES "StructuralFeature" (id)
-);CREATE INDEX "ix_StructuralFeature_publication_ids_publication_ids" ON "StructuralFeature_publication_ids" (publication_ids);CREATE INDEX "ix_StructuralFeature_publication_ids_StructuralFeature_id" ON "StructuralFeature_publication_ids" ("StructuralFeature_id");
+);CREATE INDEX "ix_StructuralFeature_publication_ids_StructuralFeature_id" ON "StructuralFeature_publication_ids" ("StructuralFeature_id");CREATE INDEX "ix_StructuralFeature_publication_ids_publication_ids" ON "StructuralFeature_publication_ids" (publication_ids);
 CREATE TABLE "ProteinProteinInteraction_interface_residues" (
 	"ProteinProteinInteraction_id" TEXT,
 	interface_residues TEXT,
@@ -3969,7 +3969,7 @@ CREATE TABLE "ProteinProteinInteraction_interaction_evidence" (
 	interaction_evidence VARCHAR(14),
 	PRIMARY KEY ("ProteinProteinInteraction_id", interaction_evidence),
 	FOREIGN KEY("ProteinProteinInteraction_id") REFERENCES "ProteinProteinInteraction" (id)
-);CREATE INDEX "ix_ProteinProteinInteraction_interaction_evidence_interaction_evidence" ON "ProteinProteinInteraction_interaction_evidence" (interaction_evidence);CREATE INDEX "ix_ProteinProteinInteraction_interaction_evidence_ProteinProteinInteraction_id" ON "ProteinProteinInteraction_interaction_evidence" ("ProteinProteinInteraction_id");
+);CREATE INDEX "ix_ProteinProteinInteraction_interaction_evidence_ProteinProteinInteraction_id" ON "ProteinProteinInteraction_interaction_evidence" ("ProteinProteinInteraction_id");CREATE INDEX "ix_ProteinProteinInteraction_interaction_evidence_interaction_evidence" ON "ProteinProteinInteraction_interaction_evidence" (interaction_evidence);
 CREATE TABLE "ProteinProteinInteraction_publication_ids" (
 	"ProteinProteinInteraction_id" TEXT,
 	publication_ids TEXT,
@@ -3987,7 +3987,7 @@ CREATE TABLE "PostTranslationalModification_publication_ids" (
 	publication_ids TEXT,
 	PRIMARY KEY ("PostTranslationalModification_id", publication_ids),
 	FOREIGN KEY("PostTranslationalModification_id") REFERENCES "PostTranslationalModification" (id)
-);CREATE INDEX "ix_PostTranslationalModification_publication_ids_PostTranslationalModification_id" ON "PostTranslationalModification_publication_ids" ("PostTranslationalModification_id");CREATE INDEX "ix_PostTranslationalModification_publication_ids_publication_ids" ON "PostTranslationalModification_publication_ids" (publication_ids);
+);CREATE INDEX "ix_PostTranslationalModification_publication_ids_publication_ids" ON "PostTranslationalModification_publication_ids" (publication_ids);CREATE INDEX "ix_PostTranslationalModification_publication_ids_PostTranslationalModification_id" ON "PostTranslationalModification_publication_ids" ("PostTranslationalModification_id");
 CREATE TABLE "SampleComponentInteraction_evidence" (
 	"SampleComponentInteraction_id" INTEGER,
 	evidence VARCHAR(14),
@@ -3999,4 +3999,4 @@ CREATE TABLE "LigandInteraction_binding_site_residues" (
 	binding_site_residues TEXT,
 	PRIMARY KEY ("LigandInteraction_id", binding_site_residues),
 	FOREIGN KEY("LigandInteraction_id") REFERENCES "LigandInteraction" (id)
-);CREATE INDEX "ix_LigandInteraction_binding_site_residues_binding_site_residues" ON "LigandInteraction_binding_site_residues" (binding_site_residues);CREATE INDEX "ix_LigandInteraction_binding_site_residues_LigandInteraction_id" ON "LigandInteraction_binding_site_residues" ("LigandInteraction_id");
+);CREATE INDEX "ix_LigandInteraction_binding_site_residues_LigandInteraction_id" ON "LigandInteraction_binding_site_residues" ("LigandInteraction_id");CREATE INDEX "ix_LigandInteraction_binding_site_residues_binding_site_residues" ON "LigandInteraction_binding_site_residues" (binding_site_residues);

@@ -6690,7 +6690,11 @@ enums:
       tomogram:
         description: "Tomogram reconstructed from a tilt series, or a processed version of one (denoised, filtered, or an even or odd half)"
       segmentation:
-        description: "Voxel labels or surface meshes marking structures in a tomogram or map"
+        description: "Voxel labels marking structures in a tomogram or map, as a mask or instance segmentation"
+        comments:
+          - "Use mesh for a surface representation of a segmented structure"
+      mesh:
+        description: "Surface mesh of a segmented structure"
 
   IceContaminationEnum:
     description: "Assessment of ice contamination level on a cryo-EM grid"

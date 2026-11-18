@@ -1,5 +1,5 @@
 # Auto generated from lambda_ber_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-11-18T11:55:49
+# Generation date: 2026-11-18T11:59:24
 # Schema: lambda-ber-schema
 #
 # id: http://w3id.org/lambda/
@@ -8607,7 +8607,10 @@ class OutputTypeEnum(EnumDefinitionImpl):
         description="""Tomogram reconstructed from a tilt series, or a processed version of one (denoised, filtered, or an even or odd half)""")
     segmentation = PermissibleValue(
         text="segmentation",
-        description="Voxel labels or surface meshes marking structures in a tomogram or map")
+        description="Voxel labels marking structures in a tomogram or map, as a mask or instance segmentation")
+    mesh = PermissibleValue(
+        text="mesh",
+        description="Surface mesh of a segmented structure")
 
     _defn = EnumDefinition(
         name="OutputTypeEnum",

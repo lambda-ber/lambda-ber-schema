@@ -4982,7 +4982,14 @@
         },
         {
           "text": "segmentation",
-          "description": "Voxel labels or surface meshes marking structures in a tomogram or map"
+          "description": "Voxel labels marking structures in a tomogram or map, as a mask or instance segmentation",
+          "comments": [
+            "Use mesh for a surface representation of a segmented structure"
+          ]
+        },
+        {
+          "text": "mesh",
+          "description": "Surface mesh of a segmented structure"
         }
       ]
     },
@@ -36799,7 +36806,7 @@
   "source_file": "lambda_rocrate_core.yaml",
   "source_file_date": "2026-11-18T10:33:14",
   "source_file_size": 94945,
-  "generation_date": "2026-11-18T11:57:54",
+  "generation_date": "2026-11-18T12:01:56",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/rocrate/jsonld/lambda_rocrate_core.context.jsonld",

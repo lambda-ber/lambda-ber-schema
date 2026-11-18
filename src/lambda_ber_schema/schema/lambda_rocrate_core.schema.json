@@ -9330,7 +9330,8 @@
                 "particle_assignments",
                 "tilt_series_alignment",
                 "tomogram",
-                "segmentation"
+                "segmentation",
+                "mesh"
             ],
             "title": "OutputTypeEnum",
             "type": "string"

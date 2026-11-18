@@ -741,6 +741,7 @@ enum OutputTypeEnum
     tilt_series_alignment
     tomogram
     segmentation
+    mesh
   }
 
 enum ParticleConcentrationEnum

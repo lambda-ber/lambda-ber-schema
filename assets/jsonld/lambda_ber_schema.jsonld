@@ -4996,7 +4996,14 @@
         },
         {
           "text": "segmentation",
-          "description": "Voxel labels or surface meshes marking structures in a tomogram or map"
+          "description": "Voxel labels marking structures in a tomogram or map, as a mask or instance segmentation",
+          "comments": [
+            "Use mesh for a surface representation of a segmented structure"
+          ]
+        },
+        {
+          "text": "mesh",
+          "description": "Surface mesh of a segmented structure"
         }
       ]
     },
@@ -30732,9 +30739,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda_ber_schema.yaml",
-  "source_file_date": "2026-11-18T11:55:26",
-  "source_file_size": 296195,
-  "generation_date": "2026-11-18T11:55:41",
+  "source_file_date": "2026-11-18T11:59:05",
+  "source_file_size": 296381,
+  "generation_date": "2026-11-18T11:59:15",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda_ber_schema.context.jsonld",

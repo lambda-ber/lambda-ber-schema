@@ -3919,7 +3919,11 @@ class OutputTypeEnum(str, Enum):
     """
     segmentation = "segmentation"
     """
-    Voxel labels or surface meshes marking structures in a tomogram or map
+    Voxel labels marking structures in a tomogram or map, as a mask or instance segmentation
+    """
+    mesh = "mesh"
+    """
+    Surface mesh of a segmented structure
     """
 
 
