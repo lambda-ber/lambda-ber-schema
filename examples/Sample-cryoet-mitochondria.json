@@ -1,0 +1,13 @@
+{
+  "id": "lambdaber:sample_mito_patient_fibroblast_001",
+  "title": "Mitochondria purified from patient fibroblasts",
+  "description": "Mitochondria isolated from dermal fibroblasts of an adult with a mitochondrial disease, for cryo-ET of cristae",
+  "sample_code": "MITO-FIB-2024-001",
+  "sample_type": "organelle",
+  "organism": "NCBITaxon:9606",
+  "cell_type": "CL:0000057",
+  "cellular_component": "GO:0005739",
+  "development_stage": "HsapDv:0000087",
+  "disease": "MONDO:0044970",
+  "@type": "Sample"
+}

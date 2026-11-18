@@ -2,7 +2,7 @@
 #mapping_set_id: http://w3id.org/lambda/
 #mapping_tool: https://w3id.org/linkml/
 #creator_id: linkml_user
-#mapping_date: 2026-10-31
+#mapping_date: 2026-11-18
 #curie_map: 
 # lambda: http://w3id.org/lambda/
 # lambdaber: http://w3id.org/lambda/
@@ -27,11 +27,15 @@
 # UBERON: http://purl.obolibrary.org/obo/UBERON_
 # CL: http://purl.obolibrary.org/obo/CL_
 # GO: http://purl.obolibrary.org/obo/GO_
+# MONDO: http://purl.obolibrary.org/obo/MONDO_
+# HsapDv: http://purl.obolibrary.org/obo/HsapDv_
+# CVCL: https://www.cellosaurus.org/CVCL_
 # nsls2: https://github.com/NSLS2/BER-LAMBDA/
 # imgCIF: https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#
 # mmCIF: http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/
 # IHMCIF: https://mmcif.wwpdb.org/dictionaries/mmcif_ihm_ext.dic/Items/
 # ROR: https://ror.org/
+# doi: https://doi.org/
 # wikidata: http://www.wikidata.org/entity/
 # CHMO: http://purl.obolibrary.org/obo/CHMO_
 # pdb: https://www.rcsb.org/structure/
@@ -287,6 +291,7 @@ lambda:copy_number	sampleComponent__copy_number	skos:exactMatch		mmCIF:_entity.p
 lambda:chain_ids	sampleNucleicAcidAssociation__chain_ids	skos:exactMatch		mmCIF:_entity_poly.pdbx_strand_id		skos:exactMatch	http://w3id.org/lambda/									
 lambda:copy_number	sampleNucleicAcidAssociation__copy_number	skos:exactMatch		mmCIF:_entity.pdbx_number_of_molecules		skos:exactMatch	http://w3id.org/lambda/									
 lambda:residue_range	sampleNucleicAcidAssociation__residue_range	skos:relatedMatch		IHMCIF:_ihm_entity_poly_segment		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:protocol_references	samplePreparation__protocol_references	skos:relatedMatch		prov:hadPlan		skos:relatedMatch	http://w3id.org/lambda/									
 lambda:chain_ids	sampleProteinAssociation__chain_ids	skos:exactMatch		mmCIF:_entity_poly.pdbx_strand_id		skos:exactMatch	http://w3id.org/lambda/									
 lambda:copy_number	sampleProteinAssociation__copy_number	skos:exactMatch		mmCIF:_entity.pdbx_number_of_molecules		skos:exactMatch	http://w3id.org/lambda/									
 lambda:residue_range	sampleProteinAssociation__residue_range	skos:relatedMatch		IHMCIF:_ihm_entity_poly_segment		skos:relatedMatch	http://w3id.org/lambda/									
@@ -294,12 +299,16 @@ lambda:molecular_formula	smallMolecule__molecular_formula	skos:exactMatch		mmCIF
 lambda:molecular_weight_theoretical	smallMolecule__molecular_weight_theoretical	skos:exactMatch		mmCIF:_chem_comp.formula_weight		skos:exactMatch	http://w3id.org/lambda/									
 lambda:pdb_ligand_id	smallMolecule__pdb_ligand_id	skos:exactMatch		mmCIF:_chem_comp.id		skos:exactMatch	http://w3id.org/lambda/									
 lambda:small_molecule_name	smallMolecule__small_molecule_name	skos:exactMatch		mmCIF:_chem_comp.name		skos:exactMatch	http://w3id.org/lambda/									
+lambda:conformational_state	workflowOutputAssociation__conformational_state	skos:relatedMatch		IHMCIF:_ihm_ensemble_info.ensemble_name		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:conformational_state	workflowOutputAssociation__conformational_state	skos:relatedMatch		IHMCIF:_ihm_model_group.name		skos:relatedMatch	http://w3id.org/lambda/									
+lambda:number_of_particles	workflowOutputAssociation__number_of_particles	skos:relatedMatch		mmCIF:_em_3d_reconstruction.num_particles		skos:relatedMatch	http://w3id.org/lambda/									
 lambda:anomalous_completeness	workflowRun__anomalous_completeness	skos:exactMatch		ispyb:AutoProcScalingStatistics.anomalousCompleteness		skos:exactMatch	http://w3id.org/lambda/									
 lambda:completeness_percent	workflowRun__completeness_percent	skos:exactMatch		nsls2:Completeness		skos:exactMatch	http://w3id.org/lambda/									
 lambda:completeness_percent	workflowRun__completeness_percent	skos:exactMatch		mmCIF:_reflns.percent_possible_obs		skos:exactMatch	http://w3id.org/lambda/									
 lambda:completeness_percent	workflowRun__completeness_percent	skos:exactMatch		ispyb:AutoProcScalingStatistics.completeness		skos:exactMatch	http://w3id.org/lambda/									
 lambda:n_total_observations	workflowRun__n_total_observations	skos:exactMatch		mmCIF:_reflns.number_all		skos:exactMatch	http://w3id.org/lambda/									
 lambda:n_total_unique	workflowRun__n_total_unique	skos:exactMatch		mmCIF:_reflns.number_obs		skos:exactMatch	http://w3id.org/lambda/									
+lambda:number_of_particles	workflowRun__number_of_particles	skos:exactMatch		mmCIF:_em_3d_reconstruction.num_particles		skos:exactMatch	http://w3id.org/lambda/									
 lambda:parameters_file_path	workflowRun__parameters_file_path	skos:relatedMatch		IHMCIF:_ihm_modeling_protocol_details.script_file_id		skos:relatedMatch	http://w3id.org/lambda/									
 lambda:parameters_file_path	workflowRun__parameters_file_path	skos:relatedMatch		IHMCIF:_ihm_external_files.file_path		skos:relatedMatch	http://w3id.org/lambda/									
 lambda:processing_parameters	workflowRun__processing_parameters	skos:relatedMatch		IHMCIF:_ihm_modeling_protocol_details.description		skos:relatedMatch	http://w3id.org/lambda/									

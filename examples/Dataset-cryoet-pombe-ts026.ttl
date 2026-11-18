@@ -1,0 +1,193 @@
+@base <http://example.org/> .
+@prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
+@prefix NCBITaxon: <http://purl.obolibrary.org/obo/NCBITaxon_> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lambdaber: <http://w3id.org/lambda/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+lambdaber:dataset_cryoet_pombe_ts026 a lambdaber:Dataset ;
+    dcterms:title "S. pombe cells with defocus, run TS_026" ;
+    lambdaber:data_files lambdaber:file_ts026_rawtlt,
+        lambdaber:file_ts026_tiltseries,
+        lambdaber:file_ts026_tlt,
+        lambdaber:file_ts026_tomogram_mrc,
+        lambdaber:file_ts026_tomogram_zarr,
+        lambdaber:file_ts026_xf ;
+    lambdaber:description "Defocus cryo-ET of S. pombe cryo-FIB lamellae, one run with its alignment and tomogram" ;
+    lambdaber:experiment_instrument_associations [ a lambdaber:ExperimentInstrumentAssociation ;
+            lambdaber:experiment_id lambdaber:exp_cdp_ts026 ;
+            lambdaber:instrument_id lambdaber:instrument_cdp_ds10000_krios ] ;
+    lambdaber:experiment_runs lambdaber:exp_cdp_ts026 ;
+    lambdaber:experiment_sample_associations [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id lambdaber:exp_cdp_ts026 ;
+            lambdaber:sample_id lambdaber:sample_pombe_972h_lamella ] ;
+    lambdaber:instruments lambdaber:instrument_cdp_ds10000_krios ;
+    lambdaber:keywords "Schizosaccharomyces pombe",
+        "cryo-electron tomography" ;
+    lambdaber:samples lambdaber:sample_pombe_972h_lamella ;
+    lambdaber:studies lambdaber:study_cdp_ds10000 ;
+    lambdaber:study_experiment_associations [ a lambdaber:StudyExperimentAssociation ;
+            lambdaber:experiment_id lambdaber:exp_cdp_ts026 ;
+            lambdaber:study_id lambdaber:study_cdp_ds10000 ] ;
+    lambdaber:study_sample_associations [ a lambdaber:StudySampleAssociation ;
+            lambdaber:sample_id lambdaber:sample_pombe_972h_lamella ;
+            lambdaber:study_id lambdaber:study_cdp_ds10000 ] ;
+    lambdaber:workflow_experiment_associations [ a lambdaber:WorkflowExperimentAssociation ;
+            lambdaber:experiment_id lambdaber:exp_cdp_ts026 ;
+            lambdaber:workflow_id lambdaber:workflow_ts026_alignment ],
+        [ a lambdaber:WorkflowExperimentAssociation ;
+            lambdaber:experiment_id lambdaber:exp_cdp_ts026 ;
+            lambdaber:workflow_id lambdaber:workflow_ts026_reconstruction ] ;
+    lambdaber:workflow_input_associations [ a lambdaber:WorkflowInputAssociation ;
+            lambdaber:file_id lambdaber:file_ts026_tiltseries ;
+            lambdaber:input_type "tilt_series" ;
+            lambdaber:workflow_id lambdaber:workflow_ts026_reconstruction ],
+        [ a lambdaber:WorkflowInputAssociation ;
+            lambdaber:file_id lambdaber:file_ts026_rawtlt ;
+            lambdaber:input_type "parameters" ;
+            lambdaber:workflow_id lambdaber:workflow_ts026_alignment ],
+        [ a lambdaber:WorkflowInputAssociation ;
+            lambdaber:file_id lambdaber:file_ts026_xf ;
+            lambdaber:input_type "tilt_series_alignment" ;
+            lambdaber:workflow_id lambdaber:workflow_ts026_reconstruction ],
+        [ a lambdaber:WorkflowInputAssociation ;
+            lambdaber:file_id lambdaber:file_ts026_tiltseries ;
+            lambdaber:input_type "tilt_series" ;
+            lambdaber:workflow_id lambdaber:workflow_ts026_alignment ],
+        [ a lambdaber:WorkflowInputAssociation ;
+            lambdaber:file_id lambdaber:file_ts026_tlt ;
+            lambdaber:input_type "tilt_series_alignment" ;
+            lambdaber:workflow_id lambdaber:workflow_ts026_reconstruction ] ;
+    lambdaber:workflow_output_associations [ a lambdaber:WorkflowOutputAssociation ;
+            lambdaber:file_id lambdaber:file_ts026_xf ;
+            lambdaber:output_type "tilt_series_alignment" ;
+            lambdaber:workflow_id lambdaber:workflow_ts026_alignment ],
+        [ a lambdaber:WorkflowOutputAssociation ;
+            lambdaber:file_id lambdaber:file_ts026_tomogram_mrc ;
+            lambdaber:output_type "tomogram" ;
+            lambdaber:workflow_id lambdaber:workflow_ts026_reconstruction ],
+        [ a lambdaber:WorkflowOutputAssociation ;
+            lambdaber:file_id lambdaber:file_ts026_tomogram_zarr ;
+            lambdaber:output_type "tomogram" ;
+            lambdaber:workflow_id lambdaber:workflow_ts026_reconstruction ],
+        [ a lambdaber:WorkflowOutputAssociation ;
+            lambdaber:file_id lambdaber:file_ts026_tlt ;
+            lambdaber:output_type "tilt_series_alignment" ;
+            lambdaber:workflow_id lambdaber:workflow_ts026_alignment ] ;
+    lambdaber:workflow_runs lambdaber:workflow_ts026_alignment,
+        lambdaber:workflow_ts026_reconstruction .
+
+lambdaber:file_ts026_rawtlt a lambdaber:DataFile ;
+    lambdaber:data_type "metadata" ;
+    lambdaber:file_format "tlt" ;
+    lambdaber:file_name "TS_026_vali.rawtlt" ;
+    lambdaber:storage_uri "s3://cryoet-data-portal-public/10000/TS_026/TiltSeries/100/TS_026_vali.rawtlt" .
+
+lambdaber:file_ts026_tomogram_mrc a lambdaber:DataFile ;
+    lambdaber:data_type "tomogram" ;
+    lambdaber:file_format "mrc" ;
+    lambdaber:file_name "TS_026.mrc" ;
+    lambdaber:storage_uri "s3://cryoet-data-portal-public/10000/TS_026/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_026.mrc" .
+
+lambdaber:file_ts026_tomogram_zarr a lambdaber:DataFile ;
+    lambdaber:data_type "tomogram" ;
+    lambdaber:file_format "ome_zarr" ;
+    lambdaber:file_name "TS_026.zarr" ;
+    lambdaber:storage_uri "s3://cryoet-data-portal-public/10000/TS_026/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_026.zarr" .
+
+lambdaber:instrument_cdp_ds10000_krios dcterms:title "Krios with K2 Summit and GIF Quantum LS" ;
+    lambdaber:accelerating_voltage [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "300.0"^^xsd:float ;
+            lambdaber:unit "kV" ] ;
+    lambdaber:cs [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "2.7"^^xsd:float ;
+            lambdaber:unit "mm" ] ;
+    lambdaber:detector_manufacturer "Gatan" ;
+    lambdaber:detector_model "K2 Summit" ;
+    lambdaber:energy_filter_make "Gatan" ;
+    lambdaber:energy_filter_model "GIF Quantum LS" ;
+    lambdaber:energy_filter_present true ;
+    lambdaber:instrument_code "DS-10000-KRIOS" ;
+    lambdaber:instrument_type "CryoEMInstrument" ;
+    lambdaber:manufacturer "Thermo Fisher Scientific" ;
+    lambdaber:model "Krios" .
+
+lambdaber:file_ts026_tiltseries a lambdaber:DataFile ;
+    lambdaber:data_type "tilt_series" ;
+    lambdaber:file_format "mrc" ;
+    lambdaber:file_name "TS_026.mrc" ;
+    lambdaber:storage_uri "s3://cryoet-data-portal-public/10000/TS_026/TiltSeries/100/TS_026.mrc" .
+
+lambdaber:file_ts026_tlt a lambdaber:DataFile ;
+    lambdaber:data_type "tilt_series_alignment" ;
+    lambdaber:file_format "tlt" ;
+    lambdaber:file_name "TS_026.tlt" ;
+    lambdaber:storage_uri "s3://cryoet-data-portal-public/10000/TS_026/Alignments/100/TS_026.tlt" .
+
+lambdaber:file_ts026_xf a lambdaber:DataFile ;
+    lambdaber:data_type "tilt_series_alignment" ;
+    lambdaber:file_format "xf" ;
+    lambdaber:file_name "TS_026.xf" ;
+    lambdaber:storage_uri "s3://cryoet-data-portal-public/10000/TS_026/Alignments/100/TS_026.xf" .
+
+lambdaber:sample_pombe_972h_lamella a lambdaber:Sample ;
+    dcterms:title "S. pombe 972h- cells, cryo-FIB lamella" ;
+    lambdaber:description "Vegetative fission yeast cells, plunge-frozen and milled to lamellae" ;
+    lambdaber:organism NCBITaxon:4896 ;
+    lambdaber:sample_code "DS-10000-POMBE" ;
+    lambdaber:sample_type "cell" ;
+    lambdaber:strain_or_cell_line NCBITaxon:284812 .
+
+lambdaber:study_cdp_ds10000 a lambdaber:Study ;
+    dcterms:title "S. pombe cells with defocus" ;
+    lambdaber:description "Defocus cryo-electron tomography of S. pombe cryo-FIB lamellae with comprehensive annotations of structures and macromolecules" .
+
+lambdaber:exp_cdp_ts026 a lambdaber:ExperimentRun ;
+    dcterms:title "Tilt series TS_026" ;
+    lambdaber:accelerating_voltage [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "300.0"^^xsd:float ;
+            lambdaber:unit "kV" ] ;
+    lambdaber:acquisition_software "SerialEM" ;
+    lambdaber:calibrated_pixel_size [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "3.3702"^^xsd:float ;
+            lambdaber:unit "Angstroms per pixel" ] ;
+    lambdaber:cs [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "2.7"^^xsd:float ;
+            lambdaber:unit "mm" ] ;
+    lambdaber:experiment_code "DS-10000-TS_026" ;
+    lambdaber:number_of_tilt_images [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "44.0"^^xsd:float ;
+            lambdaber:unit "images" ] ;
+    lambdaber:technique CHMO:0002413 ;
+    lambdaber:tilt_angle_increment [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "2.0"^^xsd:float ;
+            lambdaber:unit "degrees" ] ;
+    lambdaber:tilt_angle_max [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "42.0004"^^xsd:float ;
+            lambdaber:unit "degrees" ] ;
+    lambdaber:tilt_angle_min [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "-43.9991"^^xsd:float ;
+            lambdaber:unit "degrees" ] ;
+    lambdaber:tilt_axis_angle [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "84.7"^^xsd:float ;
+            lambdaber:unit "degrees" ] ;
+    lambdaber:tilting_scheme "dose_symmetric" ;
+    lambdaber:total_dose [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "122.0"^^xsd:float ;
+            lambdaber:unit "electrons per Angstrom squared" ] .
+
+lambdaber:workflow_ts026_alignment a lambdaber:WorkflowRun ;
+    dcterms:title "TS_026 tilt-series alignment" ;
+    lambdaber:processing_parameters "patch tracking, non-fiducial" ;
+    lambdaber:software_name "IMOD" ;
+    lambdaber:workflow_code "WF-TS026-ALN-100" ;
+    lambdaber:workflow_type "tilt_series_alignment" .
+
+lambdaber:workflow_ts026_reconstruction a lambdaber:WorkflowRun ;
+    dcterms:title "TS_026 tomogram reconstruction" ;
+    lambdaber:processing_parameters "weighted back-projection at 13.48 Angstrom voxel spacing; not CTF corrected" ;
+    lambdaber:software_name "IMOD" ;
+    lambdaber:workflow_code "WF-TS026-RECON-100" ;
+    lambdaber:workflow_type "tomogram_reconstruction" .
+

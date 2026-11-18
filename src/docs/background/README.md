@@ -14,7 +14,7 @@ Scientific data access in the Bluesky ecosystem: BNL/NSLS-II origins, verified u
 
 CryoET geometry and processing interchange, with YAML examples, links to real images and GO annotations, converter/version boundaries, and proposed LAMBDA integration.
 
-### [CZ cryoET Data Portal](czi-cryoet.md)
+### [Biohub CryoET Data Portal](czi-cryoet.md)
 
 Portal metadata and API schemas, including public image and annotation examples and their relationship to LAMBDA.
 

@@ -15,10 +15,10 @@ CETS builds on the earlier `cryo-et-standards/cryoet-geometry` work: merged [PR 
 | Project | Principal role | Useful contribution to an integration |
 | --- | --- | --- |
 | **TomoBabel / CETS** | Interchange between cryoET processing tools and archives | Tilt images, coordinate frames, transforms, alignments, annotation geometry, and particle-map references |
-| **CZ cryoET Data Portal** | Data publication and discovery | Public volumes and annotations, biological object labels, deposition context, annotation methods and authorship |
+| **Biohub CryoET Data Portal** | Data publication and discovery | Public volumes and annotations, biological object labels, deposition context, annotation methods and authorship |
 | **LAMBDA** | Structural biology experiments and their biological context | Proteins, samples, preparation, instruments, workflows, file provenance, and ontology annotations |
 
-These roles follow from the [CETS schema][entities], [portal schema][portal-schema], and [LAMBDA schema][lambda]. The dedicated [portal converter][portal-converter] exports portal runs into CETS and creates draft portal-ingestion staging files in the reverse direction. It does not establish that the portal has replaced its API or published metadata schema with CETS. See the separate [CZ cryoET Data Portal background page](czi-cryoet.md).
+These roles follow from the [CETS schema][entities], [portal schema][portal-schema], and [LAMBDA schema][lambda]. The dedicated [portal converter][portal-converter] exports portal runs into CETS and creates draft portal-ingestion staging files in the reverse direction. It does not establish that the portal has replaced its API or published metadata schema with CETS. See the separate [Biohub CryoET Data Portal background page](czi-cryoet.md), and its [summary of which of the two LAMBDA follows for what](czi-cryoet.md#relationship-to-tomobabel-cets).
 
 ## Versions: distinguish core from converter profiles
 
@@ -154,7 +154,7 @@ The investigation inspected implementations in the following repositories. This 
 | [Scipion][scipion] | Tilt series, CTF, tomograms, coordinates, and subtomograms |
 | [EMPIAR][empiar-config] / [mmCIF][mmcif] | Archive import examples and CETS-to-mmCIF export |
 | [AreTomo3][aretomo] / [Warp/M][warpm] | Rigid alignment exchange using the PR #34 model; varying local deformation requires refusal or explicit loss |
-| [CZ cryoET Data Portal][portal-converter] | Run export and reverse ingestion staging; companions preserve information outside core CETS |
+| [Biohub CryoET Data Portal][portal-converter] | Run export and reverse ingestion staging; companions preserve information outside core CETS |
 
 For the portal exporter, alignment and grid compatibility affect whether annotations can be included. Reverse conversion produces a draft for ingestion, not an automatic submission. Preserve converter options, skipped products, and losses as part of workflow provenance. [Converter implementation][portal-converter]
 

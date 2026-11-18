@@ -1,0 +1,163 @@
+id: lambdaber:dataset_cryoet_pombe_ts026
+title: S. pombe cells with defocus, run TS_026
+description: Defocus cryo-ET of S. pombe cryo-FIB lamellae, one run with its alignment
+  and tomogram
+keywords:
+- cryo-electron tomography
+- Schizosaccharomyces pombe
+studies:
+- id: lambdaber:study_cdp_ds10000
+  title: S. pombe cells with defocus
+  description: Defocus cryo-electron tomography of S. pombe cryo-FIB lamellae with
+    comprehensive annotations of structures and macromolecules
+instruments:
+- id: lambdaber:instrument_cdp_ds10000_krios
+  title: Krios with K2 Summit and GIF Quantum LS
+  instrument_code: DS-10000-KRIOS
+  instrument_type: CryoEMInstrument
+  manufacturer: Thermo Fisher Scientific
+  model: Krios
+  accelerating_voltage:
+    unit: kV
+    numeric_value: 300.0
+  detector_manufacturer: Gatan
+  detector_model: K2 Summit
+  cs:
+    unit: mm
+    numeric_value: 2.7
+  energy_filter_present: true
+  energy_filter_make: Gatan
+  energy_filter_model: GIF Quantum LS
+samples:
+- id: lambdaber:sample_pombe_972h_lamella
+  title: S. pombe 972h- cells, cryo-FIB lamella
+  description: Vegetative fission yeast cells, plunge-frozen and milled to lamellae
+  sample_code: DS-10000-POMBE
+  sample_type: cell
+  organism: NCBITaxon:4896
+  strain_or_cell_line: NCBITaxon:284812
+experiment_runs:
+- id: lambdaber:exp_cdp_ts026
+  title: Tilt series TS_026
+  experiment_code: DS-10000-TS_026
+  technique: cryo_et
+  accelerating_voltage:
+    unit: kV
+    numeric_value: 300.0
+  cs:
+    unit: mm
+    numeric_value: 2.7
+  calibrated_pixel_size:
+    unit: Angstroms per pixel
+    numeric_value: 3.3702
+  total_dose:
+    unit: electrons per Angstrom squared
+    numeric_value: 122.0
+  tilting_scheme: dose_symmetric
+  tilt_angle_min:
+    unit: degrees
+    numeric_value: -43.9991
+  tilt_angle_max:
+    unit: degrees
+    numeric_value: 42.0004
+  tilt_angle_increment:
+    unit: degrees
+    numeric_value: 2.0
+  tilt_axis_angle:
+    unit: degrees
+    numeric_value: 84.7
+  number_of_tilt_images:
+    unit: images
+    numeric_value: 44.0
+  acquisition_software: SerialEM
+workflow_runs:
+- id: lambdaber:workflow_ts026_alignment
+  title: TS_026 tilt-series alignment
+  workflow_code: WF-TS026-ALN-100
+  workflow_type: tilt_series_alignment
+  software_name: IMOD
+  processing_parameters: patch tracking, non-fiducial
+- id: lambdaber:workflow_ts026_reconstruction
+  title: TS_026 tomogram reconstruction
+  workflow_code: WF-TS026-RECON-100
+  workflow_type: tomogram_reconstruction
+  software_name: IMOD
+  processing_parameters: weighted back-projection at 13.48 Angstrom voxel spacing;
+    not CTF corrected
+data_files:
+- id: lambdaber:file_ts026_tiltseries
+  file_name: TS_026.mrc
+  file_format: mrc
+  data_type: tilt_series
+  storage_uri: s3://cryoet-data-portal-public/10000/TS_026/TiltSeries/100/TS_026.mrc
+- id: lambdaber:file_ts026_rawtlt
+  file_name: TS_026_vali.rawtlt
+  file_format: tlt
+  data_type: metadata
+  storage_uri: s3://cryoet-data-portal-public/10000/TS_026/TiltSeries/100/TS_026_vali.rawtlt
+- id: lambdaber:file_ts026_xf
+  file_name: TS_026.xf
+  file_format: xf
+  data_type: tilt_series_alignment
+  storage_uri: s3://cryoet-data-portal-public/10000/TS_026/Alignments/100/TS_026.xf
+- id: lambdaber:file_ts026_tlt
+  file_name: TS_026.tlt
+  file_format: tlt
+  data_type: tilt_series_alignment
+  storage_uri: s3://cryoet-data-portal-public/10000/TS_026/Alignments/100/TS_026.tlt
+- id: lambdaber:file_ts026_tomogram_zarr
+  file_name: TS_026.zarr
+  file_format: ome_zarr
+  data_type: tomogram
+  storage_uri: s3://cryoet-data-portal-public/10000/TS_026/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_026.zarr
+- id: lambdaber:file_ts026_tomogram_mrc
+  file_name: TS_026.mrc
+  file_format: mrc
+  data_type: tomogram
+  storage_uri: s3://cryoet-data-portal-public/10000/TS_026/Reconstructions/VoxelSpacing13.480/Tomograms/100/TS_026.mrc
+study_sample_associations:
+- study_id: lambdaber:study_cdp_ds10000
+  sample_id: lambdaber:sample_pombe_972h_lamella
+study_experiment_associations:
+- study_id: lambdaber:study_cdp_ds10000
+  experiment_id: lambdaber:exp_cdp_ts026
+experiment_sample_associations:
+- experiment_id: lambdaber:exp_cdp_ts026
+  sample_id: lambdaber:sample_pombe_972h_lamella
+experiment_instrument_associations:
+- experiment_id: lambdaber:exp_cdp_ts026
+  instrument_id: lambdaber:instrument_cdp_ds10000_krios
+workflow_experiment_associations:
+- workflow_id: lambdaber:workflow_ts026_alignment
+  experiment_id: lambdaber:exp_cdp_ts026
+- workflow_id: lambdaber:workflow_ts026_reconstruction
+  experiment_id: lambdaber:exp_cdp_ts026
+workflow_input_associations:
+- workflow_id: lambdaber:workflow_ts026_alignment
+  file_id: lambdaber:file_ts026_tiltseries
+  input_type: tilt_series
+- workflow_id: lambdaber:workflow_ts026_alignment
+  file_id: lambdaber:file_ts026_rawtlt
+  input_type: parameters
+- workflow_id: lambdaber:workflow_ts026_reconstruction
+  file_id: lambdaber:file_ts026_tiltseries
+  input_type: tilt_series
+- workflow_id: lambdaber:workflow_ts026_reconstruction
+  file_id: lambdaber:file_ts026_xf
+  input_type: tilt_series_alignment
+- workflow_id: lambdaber:workflow_ts026_reconstruction
+  file_id: lambdaber:file_ts026_tlt
+  input_type: tilt_series_alignment
+workflow_output_associations:
+- workflow_id: lambdaber:workflow_ts026_alignment
+  file_id: lambdaber:file_ts026_xf
+  output_type: tilt_series_alignment
+- workflow_id: lambdaber:workflow_ts026_alignment
+  file_id: lambdaber:file_ts026_tlt
+  output_type: tilt_series_alignment
+- workflow_id: lambdaber:workflow_ts026_reconstruction
+  file_id: lambdaber:file_ts026_tomogram_zarr
+  output_type: tomogram
+- workflow_id: lambdaber:workflow_ts026_reconstruction
+  file_id: lambdaber:file_ts026_tomogram_mrc
+  output_type: tomogram

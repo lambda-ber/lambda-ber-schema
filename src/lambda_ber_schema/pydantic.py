@@ -27,7 +27,7 @@ from pydantic import (
 
 
 metamodel_version = "None"
-version = "0.0.0.post448.dev0+2e816ba"
+version = "0.1.2.post389.dev0+6f146a5d"
 
 
 class ConfiguredBaseModel(BaseModel):
@@ -299,10 +299,16 @@ linkml_meta = LinkMLMeta({'default_prefix': 'lambda',
                            'prefix_reference': 'http://purl.obolibrary.org/obo/CHMO_'},
                   'CL': {'prefix_prefix': 'CL',
                          'prefix_reference': 'http://purl.obolibrary.org/obo/CL_'},
+                  'CVCL': {'prefix_prefix': 'CVCL',
+                           'prefix_reference': 'https://www.cellosaurus.org/CVCL_'},
                   'GO': {'prefix_prefix': 'GO',
                          'prefix_reference': 'http://purl.obolibrary.org/obo/GO_'},
+                  'HsapDv': {'prefix_prefix': 'HsapDv',
+                             'prefix_reference': 'http://purl.obolibrary.org/obo/HsapDv_'},
                   'IHMCIF': {'prefix_prefix': 'IHMCIF',
                              'prefix_reference': 'https://mmcif.wwpdb.org/dictionaries/mmcif_ihm_ext.dic/Items/'},
+                  'MONDO': {'prefix_prefix': 'MONDO',
+                            'prefix_reference': 'http://purl.obolibrary.org/obo/MONDO_'},
                   'NCBITaxon': {'prefix_prefix': 'NCBITaxon',
                                 'prefix_reference': 'http://purl.obolibrary.org/obo/NCBITaxon_'},
                   'PaNET': {'prefix_prefix': 'PaNET',
@@ -2457,6 +2463,34 @@ class WorkflowTypeEnum(str, Enum):
     """
     An atomic model inferred directly from particle images, with no reconstructed map in between, usually guided by a structure-prediction prior and refining particle poses as it goes (e.g., Fold'EM)
     """
+    tilt_series_alignment = "tilt_series_alignment"
+    """
+    Alignment of the images of a tilt series to a common tilt axis, by fiducial tracking, patch tracking or projection matching (e.g., IMOD etomo, AreTomo)
+    """
+    tomogram_reconstruction = "tomogram_reconstruction"
+    """
+    Reconstruction of a tomogram from an aligned tilt series (e.g., weighted back-projection, SART, SIRT)
+    """
+    ctf_correction = "ctf_correction"
+    """
+    Correction of images or a tomogram for the contrast transfer function, as distinct from estimating it (e.g., phase flipping, 3D CTF correction in novaCTF)
+    """
+    denoising = "denoising"
+    """
+    Noise reduction of images or volumes, often by a trained network (e.g., cryoCARE, Topaz-Denoise, IsoNet)
+    """
+    segmentation = "segmentation"
+    """
+    Labelling voxels of a tomogram or map as belonging to a structure such as a membrane, filament or organelle (e.g., MemBrain, Amira, membrain-seg)
+    """
+    template_matching = "template_matching"
+    """
+    Locating copies of a known structure in a tomogram or micrograph by cross-correlation with a template (e.g., pytom-match-pick, GAPSTOP, 2DTM)
+    """
+    subtomogram_averaging = "subtomogram_averaging"
+    """
+    Alignment and averaging of subvolumes extracted from tomograms to obtain a higher-resolution map of a repeated structure (e.g., RELION, Warp/M, Dynamo, emClarity)
+    """
     md_system_setup = "md_system_setup"
     """
     MD system preparation - parameterization, solvation, topology building
@@ -2643,6 +2677,46 @@ class FileFormatEnum(str, Enum):
     """
     Amber residue library file
     """
+    ome_zarr = "ome_zarr"
+    """
+    OME-Zarr (OME-NGFF) chunked, multiscale array, as used for tomograms and segmentation masks
+    """
+    tlt = "tlt"
+    """
+    Tilt angle list with one angle per line, as written by IMOD (.tlt for refined angles, .rawtlt for nominal)
+    """
+    xf = "xf"
+    """
+    IMOD linear transform file, one 2D transform per tilt image (.xf)
+    """
+    aln = "aln"
+    """
+    AreTomo tilt-series alignment file (.aln)
+    """
+    ndjson = "ndjson"
+    """
+    Newline-delimited JSON, one record per line, as used for point and oriented-point annotations
+    """
+    imod_model = "imod_model"
+    """
+    IMOD model file (.mod), holding points, contours or meshes
+    """
+    obj = "obj"
+    """
+    Wavefront OBJ mesh
+    """
+    stl = "stl"
+    """
+    STL triangle mesh
+    """
+    vtk = "vtk"
+    """
+    VTK mesh or data file
+    """
+    glb = "glb"
+    """
+    glTF binary mesh (.glb)
+    """
 
 
 class DataTypeEnum(str, Enum):
@@ -2796,6 +2870,26 @@ class DataTypeEnum(str, Enum):
     md_energy = "md_energy"
     """
     Energy terms from MD simulation output
+    """
+    tilt_series = "tilt_series"
+    """
+    Stack of images of one specimen area collected over a range of tilt angles
+    """
+    tomogram = "tomogram"
+    """
+    3D volume reconstructed from a tilt series
+    """
+    tilt_series_alignment = "tilt_series_alignment"
+    """
+    Per-tilt shifts, rotations and refined angles that align a tilt series, as in IMOD .xf/.tlt or AreTomo .aln files
+    """
+    segmentation = "segmentation"
+    """
+    Voxel labels marking structures in a tomogram or map, as a mask or instance segmentation
+    """
+    mesh = "mesh"
+    """
+    Surface mesh of a segmented structure
     """
 
 
@@ -3757,6 +3851,18 @@ class InputTypeEnum(str, Enum):
     """
     Per-particle poses, state or class assignments, or confidence scores produced by an earlier run, used to select or split particles
     """
+    tilt_series = "tilt_series"
+    """
+    Tilt series to be aligned or reconstructed into a tomogram
+    """
+    tilt_series_alignment = "tilt_series_alignment"
+    """
+    Per-tilt shifts, rotations and refined angles from an earlier alignment, applied during reconstruction
+    """
+    tomogram = "tomogram"
+    """
+    Tomogram to be denoised, segmented, searched or averaged from
+    """
 
 
 class OutputTypeEnum(str, Enum):
@@ -3802,6 +3908,22 @@ class OutputTypeEnum(str, Enum):
     particle_assignments = "particle_assignments"
     """
     Per-particle poses, state or class assignments, and confidence scores
+    """
+    tilt_series_alignment = "tilt_series_alignment"
+    """
+    Per-tilt shifts, rotations and refined angles that align a tilt series
+    """
+    tomogram = "tomogram"
+    """
+    Tomogram reconstructed from a tilt series, or a processed version of one (denoised, filtered, or an even or odd half)
+    """
+    segmentation = "segmentation"
+    """
+    Voxel labels marking structures in a tomogram or map, as a mask or instance segmentation
+    """
+    mesh = "mesh"
+    """
+    Surface mesh of a segmented structure
     """
 
 
@@ -5166,6 +5288,25 @@ class Sample(NamedThing):
          'domain_of': ['AggregatedProteinView', 'Sample', 'Protein', 'NucleicAcid']} })
     anatomy: Optional[str] = Field(default=None, description="""Anatomical part or tissue (e.g., UBERON:0008945 for leaf)""", json_schema_extra = { "linkml_meta": {'alias': 'anatomy', 'domain_of': ['Sample']} })
     cell_type: Optional[str] = Field(default=None, description="""Cell type if applicable (e.g., CL:0000057 for fibroblast)""", json_schema_extra = { "linkml_meta": {'alias': 'cell_type', 'domain_of': ['Sample']} })
+    strain_or_cell_line: Optional[str] = Field(default=None, description="""Strain or cell line the sample itself was taken from, for a cellular or tissue sample (e.g., CVCL:0030 for HeLa, or a strain-level NCBITaxon term). Use a Cellosaurus CURIE for a cell line where one exists.""", json_schema_extra = { "linkml_meta": {'alias': 'strain_or_cell_line',
+         'comments': ['This is the imaged material. The host used to express a '
+                      'recombinant protein is '
+                      'SamplePreparation.host_strain_or_cell_line.'],
+         'domain_of': ['Sample']} })
+    cellular_component: Optional[str] = Field(default=None, description="""The part of the cell this sample consists of or was prepared to target, as a GO cellular component term. Examples: GO:0005739 (mitochondrion) for a preparation of purified mitochondria, or GO:0005634 (nucleus) for cells milled so the lamellae pass through the nucleus.""", json_schema_extra = { "linkml_meta": {'alias': 'cellular_component',
+         'comments': ['A property of the whole sample, set when it is prepared. It '
+                      'does not identify anything picked, segmented or otherwise '
+                      'located in an image: a picked ribosome or a segmented membrane '
+                      'is a finding about one image, not a description of the sample, '
+                      'and this schema does not yet model those.',
+                      'Leave it unset for a purified protein or complex, and for whole '
+                      'cells or tissue imaged without targeting a particular '
+                      'compartment.',
+                      'Corresponds to cell_component on a Biohub CryoET Data Portal '
+                      'dataset.'],
+         'domain_of': ['Sample']} })
+    development_stage: Optional[str] = Field(default=None, description="""Developmental stage of the organism the sample was taken from (e.g., an HsapDv or UBERON stage term).""", json_schema_extra = { "linkml_meta": {'alias': 'development_stage', 'domain_of': ['Sample']} })
+    disease: Optional[str] = Field(default=None, description="""Disease or condition of the organism the sample was taken from, as a MONDO term where one exists (e.g., MONDO:0004975 for Alzheimer disease).""", json_schema_extra = { "linkml_meta": {'alias': 'disease', 'domain_of': ['Sample']} })
     parent_sample_id: Optional[str] = Field(default=None, description="""Reference to parent sample for derivation tracking""", json_schema_extra = { "linkml_meta": {'alias': 'parent_sample_id', 'domain_of': ['Sample']} })
     purity_percentage: Optional[QuantityValue] = Field(default=None, description="""Sample purity, typically specified as a percentage (range: 0-100). Data providers may specify as decimal fraction by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'purity_percentage', 'domain_of': ['Sample']} })
     quality_metrics: Optional[str] = Field(default=None, description="""Quality control metrics for the sample""", json_schema_extra = { "linkml_meta": {'alias': 'quality_metrics', 'domain_of': ['Sample', 'ExperimentRun']} })
@@ -6976,6 +7117,26 @@ class Image2D(Image):
 
     defocus: Optional[QuantityValue] = Field(default=None, description="""Defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'defocus', 'domain_of': ['Image2D']} })
     astigmatism: Optional[QuantityValue] = Field(default=None, description="""Astigmatism value, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'astigmatism', 'domain_of': ['Image2D']} })
+    tilt_angle: Optional[QuantityValue] = Field(default=None, description="""Nominal stage tilt angle at which this image was acquired, as reported by the microscope, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'tilt_angle',
+         'comments': ['This is the raw angle the microscope reported. The refined '
+                      'angle from tilt-series alignment belongs with the alignment, '
+                      'not here.',
+                      'For a single-orientation acquisition at a fixed tilt, use '
+                      'ExperimentRun.stage_tilt instead.'],
+         'domain_of': ['Image2D']} })
+    tilt_index: Optional[int] = Field(default=None, description="""Zero-based position of this image in the tilt-series stack, as ordered in the stack file (usually by tilt angle, not by acquisition time).""", ge=0, json_schema_extra = { "linkml_meta": {'alias': 'tilt_index',
+         'comments': ['Use acquisition_order for the order in which the tilts were '
+                      'collected; in a dose-symmetric scheme the two differ.'],
+         'domain_of': ['Image2D']} })
+    acquisition_order: Optional[int] = Field(default=None, description="""Position of this image in the order of acquisition within its tilt series, starting at 0 for the first image collected.""", ge=0, json_schema_extra = { "linkml_meta": {'alias': 'acquisition_order', 'domain_of': ['Image2D']} })
+    accumulated_dose: Optional[QuantityValue] = Field(default=None, description="""Electron dose the specimen had received before this image was acquired, typically specified in e-/Angstrom^2. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'accumulated_dose',
+         'comments': ["Prior dose only, excluding this image's own exposure (recorded "
+                      'in dose), as in the SerialEM mdoc PriorRecordDose field. It is '
+                      'the input to dose weighting of the tilt series.',
+                      'Some sources report a cumulative dose that includes the current '
+                      "exposure; subtract the image's own dose when converting from "
+                      'them.'],
+         'domain_of': ['Image2D']} })
     file_name: str = Field(default=..., description="""Image file name""", json_schema_extra = { "linkml_meta": {'alias': 'file_name', 'domain_of': ['DataFile', 'Image']} })
     acquisition_date: Optional[str] = Field(default=None, description="""Date image was acquired""", json_schema_extra = { "linkml_meta": {'alias': 'acquisition_date', 'domain_of': ['Image']} })
     pixel_size: Optional[QuantityValue] = Field(default=None, description="""Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'pixel_size', 'domain_of': ['Image', 'RefinementParameters']} })
@@ -7044,6 +7205,26 @@ class Movie(Image2D):
     acquisition_group: Optional[str] = Field(default=None, description="""Acquisition group identifier (e.g., template or area)""", json_schema_extra = { "linkml_meta": {'alias': 'acquisition_group', 'domain_of': ['Movie']} })
     defocus: Optional[QuantityValue] = Field(default=None, description="""Defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'defocus', 'domain_of': ['Image2D']} })
     astigmatism: Optional[QuantityValue] = Field(default=None, description="""Astigmatism value, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'astigmatism', 'domain_of': ['Image2D']} })
+    tilt_angle: Optional[QuantityValue] = Field(default=None, description="""Nominal stage tilt angle at which this image was acquired, as reported by the microscope, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'tilt_angle',
+         'comments': ['This is the raw angle the microscope reported. The refined '
+                      'angle from tilt-series alignment belongs with the alignment, '
+                      'not here.',
+                      'For a single-orientation acquisition at a fixed tilt, use '
+                      'ExperimentRun.stage_tilt instead.'],
+         'domain_of': ['Image2D']} })
+    tilt_index: Optional[int] = Field(default=None, description="""Zero-based position of this image in the tilt-series stack, as ordered in the stack file (usually by tilt angle, not by acquisition time).""", ge=0, json_schema_extra = { "linkml_meta": {'alias': 'tilt_index',
+         'comments': ['Use acquisition_order for the order in which the tilts were '
+                      'collected; in a dose-symmetric scheme the two differ.'],
+         'domain_of': ['Image2D']} })
+    acquisition_order: Optional[int] = Field(default=None, description="""Position of this image in the order of acquisition within its tilt series, starting at 0 for the first image collected.""", ge=0, json_schema_extra = { "linkml_meta": {'alias': 'acquisition_order', 'domain_of': ['Image2D']} })
+    accumulated_dose: Optional[QuantityValue] = Field(default=None, description="""Electron dose the specimen had received before this image was acquired, typically specified in e-/Angstrom^2. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'accumulated_dose',
+         'comments': ["Prior dose only, excluding this image's own exposure (recorded "
+                      'in dose), as in the SerialEM mdoc PriorRecordDose field. It is '
+                      'the input to dose weighting of the tilt series.',
+                      'Some sources report a cumulative dose that includes the current '
+                      "exposure; subtract the image's own dose when converting from "
+                      'them.'],
+         'domain_of': ['Image2D']} })
     file_name: str = Field(default=..., description="""Image file name""", json_schema_extra = { "linkml_meta": {'alias': 'file_name', 'domain_of': ['DataFile', 'Image']} })
     acquisition_date: Optional[str] = Field(default=None, description="""Date image was acquired""", json_schema_extra = { "linkml_meta": {'alias': 'acquisition_date', 'domain_of': ['Image']} })
     pixel_size: Optional[QuantityValue] = Field(default=None, description="""Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'pixel_size', 'domain_of': ['Image', 'RefinementParameters']} })
@@ -7074,8 +7255,32 @@ class Micrograph(Image2D):
     astigmatism_angle: Optional[QuantityValue] = Field(default=None, description="""Astigmatism angle, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'astigmatism_angle', 'domain_of': ['Micrograph']} })
     resolution_fit_limit: Optional[QuantityValue] = Field(default=None, description="""Resolution fit limit, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'resolution_fit_limit', 'domain_of': ['Micrograph']} })
     ctf_quality_score: Optional[QuantityValue] = Field(default=None, description="""CTF estimation quality score""", json_schema_extra = { "linkml_meta": {'alias': 'ctf_quality_score', 'domain_of': ['Micrograph']} })
+    phase_shift: Optional[QuantityValue] = Field(default=None, description="""Additional phase shift estimated during CTF fitting, as from a phase plate, typically specified in radians. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'phase_shift',
+         'comments': ['Omit when no phase plate was used and the fit did not estimate '
+                      'a phase shift.'],
+         'domain_of': ['Micrograph']} })
     defocus: Optional[QuantityValue] = Field(default=None, description="""Defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'defocus', 'domain_of': ['Image2D']} })
     astigmatism: Optional[QuantityValue] = Field(default=None, description="""Astigmatism value, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'astigmatism', 'domain_of': ['Image2D']} })
+    tilt_angle: Optional[QuantityValue] = Field(default=None, description="""Nominal stage tilt angle at which this image was acquired, as reported by the microscope, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'tilt_angle',
+         'comments': ['This is the raw angle the microscope reported. The refined '
+                      'angle from tilt-series alignment belongs with the alignment, '
+                      'not here.',
+                      'For a single-orientation acquisition at a fixed tilt, use '
+                      'ExperimentRun.stage_tilt instead.'],
+         'domain_of': ['Image2D']} })
+    tilt_index: Optional[int] = Field(default=None, description="""Zero-based position of this image in the tilt-series stack, as ordered in the stack file (usually by tilt angle, not by acquisition time).""", ge=0, json_schema_extra = { "linkml_meta": {'alias': 'tilt_index',
+         'comments': ['Use acquisition_order for the order in which the tilts were '
+                      'collected; in a dose-symmetric scheme the two differ.'],
+         'domain_of': ['Image2D']} })
+    acquisition_order: Optional[int] = Field(default=None, description="""Position of this image in the order of acquisition within its tilt series, starting at 0 for the first image collected.""", ge=0, json_schema_extra = { "linkml_meta": {'alias': 'acquisition_order', 'domain_of': ['Image2D']} })
+    accumulated_dose: Optional[QuantityValue] = Field(default=None, description="""Electron dose the specimen had received before this image was acquired, typically specified in e-/Angstrom^2. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'accumulated_dose',
+         'comments': ["Prior dose only, excluding this image's own exposure (recorded "
+                      'in dose), as in the SerialEM mdoc PriorRecordDose field. It is '
+                      'the input to dose weighting of the tilt series.',
+                      'Some sources report a cumulative dose that includes the current '
+                      "exposure; subtract the image's own dose when converting from "
+                      'them.'],
+         'domain_of': ['Image2D']} })
     file_name: str = Field(default=..., description="""Image file name""", json_schema_extra = { "linkml_meta": {'alias': 'file_name', 'domain_of': ['DataFile', 'Image']} })
     acquisition_date: Optional[str] = Field(default=None, description="""Date image was acquired""", json_schema_extra = { "linkml_meta": {'alias': 'acquisition_date', 'domain_of': ['Image']} })
     pixel_size: Optional[QuantityValue] = Field(default=None, description="""Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'pixel_size', 'domain_of': ['Image', 'RefinementParameters']} })
@@ -7139,6 +7344,26 @@ class FluorescenceImage(Image2D):
     quantum_yield: Optional[QuantityValue] = Field(default=None, description="""Quantum yield of the fluorophore""", json_schema_extra = { "linkml_meta": {'alias': 'quantum_yield', 'domain_of': ['FluorescenceImage']} })
     defocus: Optional[QuantityValue] = Field(default=None, description="""Defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'defocus', 'domain_of': ['Image2D']} })
     astigmatism: Optional[QuantityValue] = Field(default=None, description="""Astigmatism value, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'astigmatism', 'domain_of': ['Image2D']} })
+    tilt_angle: Optional[QuantityValue] = Field(default=None, description="""Nominal stage tilt angle at which this image was acquired, as reported by the microscope, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'tilt_angle',
+         'comments': ['This is the raw angle the microscope reported. The refined '
+                      'angle from tilt-series alignment belongs with the alignment, '
+                      'not here.',
+                      'For a single-orientation acquisition at a fixed tilt, use '
+                      'ExperimentRun.stage_tilt instead.'],
+         'domain_of': ['Image2D']} })
+    tilt_index: Optional[int] = Field(default=None, description="""Zero-based position of this image in the tilt-series stack, as ordered in the stack file (usually by tilt angle, not by acquisition time).""", ge=0, json_schema_extra = { "linkml_meta": {'alias': 'tilt_index',
+         'comments': ['Use acquisition_order for the order in which the tilts were '
+                      'collected; in a dose-symmetric scheme the two differ.'],
+         'domain_of': ['Image2D']} })
+    acquisition_order: Optional[int] = Field(default=None, description="""Position of this image in the order of acquisition within its tilt series, starting at 0 for the first image collected.""", ge=0, json_schema_extra = { "linkml_meta": {'alias': 'acquisition_order', 'domain_of': ['Image2D']} })
+    accumulated_dose: Optional[QuantityValue] = Field(default=None, description="""Electron dose the specimen had received before this image was acquired, typically specified in e-/Angstrom^2. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'accumulated_dose',
+         'comments': ["Prior dose only, excluding this image's own exposure (recorded "
+                      'in dose), as in the SerialEM mdoc PriorRecordDose field. It is '
+                      'the input to dose weighting of the tilt series.',
+                      'Some sources report a cumulative dose that includes the current '
+                      "exposure; subtract the image's own dose when converting from "
+                      'them.'],
+         'domain_of': ['Image2D']} })
     file_name: str = Field(default=..., description="""Image file name""", json_schema_extra = { "linkml_meta": {'alias': 'file_name', 'domain_of': ['DataFile', 'Image']} })
     acquisition_date: Optional[str] = Field(default=None, description="""Date image was acquired""", json_schema_extra = { "linkml_meta": {'alias': 'acquisition_date', 'domain_of': ['Image']} })
     pixel_size: Optional[QuantityValue] = Field(default=None, description="""Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'pixel_size', 'domain_of': ['Image', 'RefinementParameters']} })
@@ -7170,6 +7395,26 @@ class OpticalImage(Image2D):
     contrast_method: Optional[str] = Field(default=None, description="""Contrast enhancement method used""", json_schema_extra = { "linkml_meta": {'alias': 'contrast_method', 'domain_of': ['OpticalImage']} })
     defocus: Optional[QuantityValue] = Field(default=None, description="""Defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'defocus', 'domain_of': ['Image2D']} })
     astigmatism: Optional[QuantityValue] = Field(default=None, description="""Astigmatism value, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'astigmatism', 'domain_of': ['Image2D']} })
+    tilt_angle: Optional[QuantityValue] = Field(default=None, description="""Nominal stage tilt angle at which this image was acquired, as reported by the microscope, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'tilt_angle',
+         'comments': ['This is the raw angle the microscope reported. The refined '
+                      'angle from tilt-series alignment belongs with the alignment, '
+                      'not here.',
+                      'For a single-orientation acquisition at a fixed tilt, use '
+                      'ExperimentRun.stage_tilt instead.'],
+         'domain_of': ['Image2D']} })
+    tilt_index: Optional[int] = Field(default=None, description="""Zero-based position of this image in the tilt-series stack, as ordered in the stack file (usually by tilt angle, not by acquisition time).""", ge=0, json_schema_extra = { "linkml_meta": {'alias': 'tilt_index',
+         'comments': ['Use acquisition_order for the order in which the tilts were '
+                      'collected; in a dose-symmetric scheme the two differ.'],
+         'domain_of': ['Image2D']} })
+    acquisition_order: Optional[int] = Field(default=None, description="""Position of this image in the order of acquisition within its tilt series, starting at 0 for the first image collected.""", ge=0, json_schema_extra = { "linkml_meta": {'alias': 'acquisition_order', 'domain_of': ['Image2D']} })
+    accumulated_dose: Optional[QuantityValue] = Field(default=None, description="""Electron dose the specimen had received before this image was acquired, typically specified in e-/Angstrom^2. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'accumulated_dose',
+         'comments': ["Prior dose only, excluding this image's own exposure (recorded "
+                      'in dose), as in the SerialEM mdoc PriorRecordDose field. It is '
+                      'the input to dose weighting of the tilt series.',
+                      'Some sources report a cumulative dose that includes the current '
+                      "exposure; subtract the image's own dose when converting from "
+                      'them.'],
+         'domain_of': ['Image2D']} })
     file_name: str = Field(default=..., description="""Image file name""", json_schema_extra = { "linkml_meta": {'alias': 'file_name', 'domain_of': ['DataFile', 'Image']} })
     acquisition_date: Optional[str] = Field(default=None, description="""Date image was acquired""", json_schema_extra = { "linkml_meta": {'alias': 'acquisition_date', 'domain_of': ['Image']} })
     pixel_size: Optional[QuantityValue] = Field(default=None, description="""Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'pixel_size', 'domain_of': ['Image', 'RefinementParameters']} })
@@ -7212,6 +7457,26 @@ class XRFImage(Image2D):
     calibration_standard: Optional[str] = Field(default=None, description="""Reference standard used for calibration""", json_schema_extra = { "linkml_meta": {'alias': 'calibration_standard', 'domain_of': ['XRFImage']} })
     defocus: Optional[QuantityValue] = Field(default=None, description="""Defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'defocus', 'domain_of': ['Image2D']} })
     astigmatism: Optional[QuantityValue] = Field(default=None, description="""Astigmatism value, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'astigmatism', 'domain_of': ['Image2D']} })
+    tilt_angle: Optional[QuantityValue] = Field(default=None, description="""Nominal stage tilt angle at which this image was acquired, as reported by the microscope, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'tilt_angle',
+         'comments': ['This is the raw angle the microscope reported. The refined '
+                      'angle from tilt-series alignment belongs with the alignment, '
+                      'not here.',
+                      'For a single-orientation acquisition at a fixed tilt, use '
+                      'ExperimentRun.stage_tilt instead.'],
+         'domain_of': ['Image2D']} })
+    tilt_index: Optional[int] = Field(default=None, description="""Zero-based position of this image in the tilt-series stack, as ordered in the stack file (usually by tilt angle, not by acquisition time).""", ge=0, json_schema_extra = { "linkml_meta": {'alias': 'tilt_index',
+         'comments': ['Use acquisition_order for the order in which the tilts were '
+                      'collected; in a dose-symmetric scheme the two differ.'],
+         'domain_of': ['Image2D']} })
+    acquisition_order: Optional[int] = Field(default=None, description="""Position of this image in the order of acquisition within its tilt series, starting at 0 for the first image collected.""", ge=0, json_schema_extra = { "linkml_meta": {'alias': 'acquisition_order', 'domain_of': ['Image2D']} })
+    accumulated_dose: Optional[QuantityValue] = Field(default=None, description="""Electron dose the specimen had received before this image was acquired, typically specified in e-/Angstrom^2. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'accumulated_dose',
+         'comments': ["Prior dose only, excluding this image's own exposure (recorded "
+                      'in dose), as in the SerialEM mdoc PriorRecordDose field. It is '
+                      'the input to dose weighting of the tilt series.',
+                      'Some sources report a cumulative dose that includes the current '
+                      "exposure; subtract the image's own dose when converting from "
+                      'them.'],
+         'domain_of': ['Image2D']} })
     file_name: str = Field(default=..., description="""Image file name""", json_schema_extra = { "linkml_meta": {'alias': 'file_name', 'domain_of': ['DataFile', 'Image']} })
     acquisition_date: Optional[str] = Field(default=None, description="""Date image was acquired""", json_schema_extra = { "linkml_meta": {'alias': 'acquisition_date', 'domain_of': ['Image']} })
     pixel_size: Optional[QuantityValue] = Field(default=None, description="""Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'pixel_size', 'domain_of': ['Image', 'RefinementParameters']} })
